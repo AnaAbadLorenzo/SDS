@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class table="rol" name="pojos.Rol">
+
+
+		<id name="idRol" type="java.lang.Integer">
+			<column name="idRol" />
+			<generator class="identity" />
+		</id>
+
+		<property name="rolName" type="string">
+			<column name="rolName" />
+		</property>
+
+		<set table="Usuario" name="usuarios" fetch="select" lazy="false"
+			inverse="true">
+			<key>
+				<column name="idRol" not-null="true" />
+			</key>
+
+			<one-to-many class="pojos.Usuario" />
+		</set>
+
+		<set table="rolaccionfuncionalidad" name="acciones" fetch="select"
+			lazy="false" inverse="false">
+			<key>
+				<column name="idRol" not-null="true" />
+			</key>
+
+			<many-to-many entity-name="pojos.Accion">
+				<column name="idAccion" not-null="true" />
+			</many-to-many>
+		</set>
+
+		<set table="rolaccionfuncionalidad" name="funcionalidades"
+			fetch="select" lazy="false" inverse="false">
+			<key>
+				<column name="idRol" not-null="true" />
+			</key>
+
+			<many-to-many entity-name="pojos.Funcionalidad">
+				<column name="idFuncionalidad" not-null="true" />
+			</many-to-many>
+		</set>
+
+	</class>
+
+</hibernate-mapping>

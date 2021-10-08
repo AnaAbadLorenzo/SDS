@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping SYSTEM "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" 
+PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN">
+
+<hibernate-mapping>
+<class table="persona" name="Pojos.Persona">
+	<id name="dniP" type="string">
+		<column name="dniP"/>
+	</id>
+
+	<property name="nombreP" type="string">
+		<column name="nombreP"/>
+	</property>
+
+	<property name="apellidosP" type="string">
+		<column name="apellidosP"/>
+	</property>
+
+	<property name="fechaNacP" type="java.util.Date">
+		<column name="fechaNacP"/>
+	</property>
+
+	<property name="direccionP" type="string">
+		<column name="direccionP"/>
+	</property>
+
+	<property name="telefonoP" type="string">
+		<column name="telefonoP"/>
+	</property>
+
+	<property name="emailP" type="string">
+		<column name="emailP"/>
+	</property>
+
+	<property name="borrado_P" type="java.lang.Integer">
+		<column name="borrado_P"/>
+	</property>
+
+	<one-to-one name="usuario"/>
+
+</class>
+
+</hibernate-mapping>
