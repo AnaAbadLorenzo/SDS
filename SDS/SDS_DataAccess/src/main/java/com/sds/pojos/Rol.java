@@ -2,8 +2,10 @@ package com.sds.pojos;
 
 import java.util.Set;
 
-public class Rol {
+public class Rol extends GenericPojo {
 
+	private static final long serialVersionUID = 1L;
+	
 	public Integer idRol;
 	public String rolName;
 	public String rolDescription;

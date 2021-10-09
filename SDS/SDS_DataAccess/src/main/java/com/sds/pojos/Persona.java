@@ -3,7 +3,10 @@ package com.sds.pojos;
 
 import java.util.Date;
 
-public class Persona {
+public class Persona extends GenericPojo{
+
+	private static final long serialVersionUID = 1L;
+
 
 	public String dniP;
 	

@@ -55,5 +55,6 @@
 		<module>SDS-Controller</module>
 		<module>SDS_DataAccess</module>
 		<module>SDS_Security</module>
+		<module>SDS_Service</module>
 	</modules>
 </project>

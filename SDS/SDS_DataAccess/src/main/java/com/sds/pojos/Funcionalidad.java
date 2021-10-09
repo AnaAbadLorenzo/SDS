@@ -2,7 +2,9 @@ package com.sds.pojos;
 
 import java.util.Set;
 
-public class Funcionalidad {
+public class Funcionalidad extends GenericPojo{
+
+	private static final long serialVersionUID = 1L;
 
 	public Integer idFuncionalidad;
 	public String nombreFuncionalidad;

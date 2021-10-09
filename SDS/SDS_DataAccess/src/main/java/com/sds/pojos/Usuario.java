@@ -1,7 +1,9 @@
 package com.sds.pojos;
 
 
-public class Usuario  {
+public class Usuario extends GenericPojo  {
+
+	private static final long serialVersionUID = 1L;
 
 	public Integer idUsuario;
 	

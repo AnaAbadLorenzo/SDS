@@ -1,6 +1,8 @@
 package com.sds.pojos;
 
-public class RolAccionFuncionalidad {
+public class RolAccionFuncionalidad extends GenericPojo{
+	
+	private static final long serialVersionUID = 1L;
 	public Integer idRol;
 	public Integer idAccion;
 	public Integer idFuncionalidad;

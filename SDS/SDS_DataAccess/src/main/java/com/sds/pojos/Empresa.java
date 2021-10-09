@@ -1,6 +1,6 @@
 package com.sds.pojos;
 
-public class Empresa {
+public class Empresa extends GenericPojo{
 
 	public Integer idEmpresa;
 	public String cifEmpresa;

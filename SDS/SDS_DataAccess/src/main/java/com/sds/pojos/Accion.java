@@ -2,8 +2,10 @@ package com.sds.pojos;
 
 import java.util.Set;
 
-public class Accion {
+public class Accion extends GenericPojo{
 
+	private static final long serialVersionUID = 1L;
+	
 	public Integer idAccion;
 	public String nombreAccion;
 	public String descripAccion;
