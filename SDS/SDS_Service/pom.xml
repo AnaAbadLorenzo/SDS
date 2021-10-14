@@ -11,6 +11,7 @@
 
 
 	<artifactId>SDS-Service</artifactId>
+	<groupId>com.sds.service</groupId>
 
 
 	<name>SDS-Service</name>
@@ -31,8 +32,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.sds.dataAccess</groupId>
+			<artifactId>SDS-DataAccess</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 
+		<dependency>
+			<groupId>com.sds.security</groupId>
+			<artifactId>SDS-Security</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
+
 
 	<build>
 		<pluginManagement><!-- lock down plugins versions to avoid using Maven 

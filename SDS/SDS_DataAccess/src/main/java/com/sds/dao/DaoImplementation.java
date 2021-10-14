@@ -1,6 +1,8 @@
 package com.sds.dao;
 
 
+import java.io.Serializable;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -53,9 +55,6 @@ public class DaoImplementation implements GenericDao{
 		}
 		
 	}
-	
-	
-	
 	
 	private void iniciaOperacion() throws HibernateException 
     { 

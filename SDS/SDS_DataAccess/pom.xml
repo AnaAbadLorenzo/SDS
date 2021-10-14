@@ -16,6 +16,7 @@
 	</properties>
 
 	<artifactId>SDS-DataAccess</artifactId>
+	<groupId>com.sds.dataAccess</groupId>
 
 	<dependencies>
 		<dependency>

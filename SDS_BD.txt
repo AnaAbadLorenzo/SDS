@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `rolaccionfuncionalidad`;
 CREATE TABLE `accion` (
   `idAccion` int(11) NOT NULL AUTO_INCREMENT,
   `nombreAccion` varchar(48) NOT NULL,
-  `descripAccion` varchar(256) NOT NULL,
+  `descripAccion` text NOT NULL,
   `borradoAccion` int(1) NOT NULL,
    PRIMARY KEY (`idAccion`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -59,7 +59,7 @@ CREATE TABLE `empresa` (
 CREATE TABLE `funcionalidad` (
   `idFuncionalidad` int(11) NOT NULL AUTO_INCREMENT,
   `nombreFuncionalidad` varchar(48) NOT NULL,
-  `descripFuncionalidad` varchar(256) NOT NULL,
+  `descripFuncionalidad` text NOT NULL,
   `borradoFuncionalidad` int(1) NOT NULL,
    PRIMARY KEY (`idFuncionalidad`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
