@@ -1,5 +1,8 @@
 package com.sds.service.impl;
 
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,5 +28,9 @@ public class IUsuarioServiceImpl implements IUsuarioService{
 	
 	public void eliminar(Usuario usuario) {
 		dao.eliminar(usuario);
+	}
+	
+	public List buscarCriteria(DetachedCriteria criteria){
+		return dao.buscarCriteria(criteria);
 	}
 }

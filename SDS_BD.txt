@@ -103,11 +103,11 @@ CREATE TABLE `rolaccionfuncionalidad` (
    KEY `id_accion_idx` (`idAccion`),
    KEY `id_funcionalidad_idx` (`idFuncionalidad`),
    INDEX `rolaccionfuncionalidad_accion_fk`(`idAccion`),
-   INDEX `rolaccionfuncionalidad_funcionalidad_fk` (`idFuncionalidad`)
-   INDEX `rolaccionfuncionalidad_rol_fk`(`idRol`)
+   INDEX `rolaccionfuncionalidad_funcionalidad_fk` (`idFuncionalidad`),
+   INDEX `rolaccionfuncionalidad_rol_fk`(`idRol`),
    CONSTRAINT `rolaccionfuncionalidad_accion_fk` FOREIGN KEY (`idAccion`) REFERENCES `accion` (`idAccion`),
    CONSTRAINT `rolaccionfuncionalidad_funcionalidad_fk` FOREIGN KEY (`idFuncionalidad`) REFERENCES `funcionalidad` (`idFuncionalidad`),
-   CONSTRAINT `rolaccionfuncionalidad_rol_fk` FOREIGN KEY (`idRol`) REFERENCES `grupo` (`idRol`)
+   CONSTRAINT `rolaccionfuncionalidad_rol_fk` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -122,11 +122,11 @@ CREATE TABLE `usuario` (
   `borradoUsuario` int(1) NOT NULL,
   `idRol` int(11) NOT NULL,
   `idEmpresa` int(11) NOT NULL,
-   PRIMARY KEY (`idUsuario),
+   PRIMARY KEY (`idUsuario`),
    UNIQUE KEY `dniUsuario_UNIQUE` (`dniUsuario`),
    KEY `id_rol_usuario_idx` (`idRol`),
-   INDEX `dniUsuario_fk`(`dniUsuario`)
-   INDEX `idRol_fk`(`idRol`)
+   INDEX `dniUsuario_fk`(`dniUsuario`),
+   INDEX `idRol_fk`(`idRol`),
    CONSTRAINT `dniUsuario_fk` FOREIGN KEY (`dniUsuario`) REFERENCES `persona` (`dniP`) ON DELETE NO ACTION ON UPDATE CASCADE,
    CONSTRAINT `idRol_fk` FOREIGN KEY (`idRol`) REFERENCES `rol` (`idRol`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

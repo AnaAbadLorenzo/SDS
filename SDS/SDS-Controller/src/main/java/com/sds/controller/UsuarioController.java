@@ -1,15 +1,21 @@
 package com.sds.controller;
 
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sds.pojos.Usuario;
 import com.sds.security.JWToken;
 import com.sds.service.IUsuarioService;
 
@@ -17,8 +23,7 @@ import com.sds.service.IUsuarioService;
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
-	@Autowired
-	private AuthenticationManager authManager;
+	/*private AuthenticationManager authManager;*/
 	
 	@Autowired
 	public IUsuarioService usuarioService;
@@ -46,20 +51,25 @@ public class UsuarioController {
 		listaUsuarios=usuarioService.listarUsuarios();
 		
 		return listaUsuarios;
-	}
+	}*/
 	
 	@GetMapping("/buscarUsuario")
+	public Usuario buscarUsuario(String email) {
 	
-	public UsuarioE buscarUsuario(String email) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
+		Usuario user = null;
 		
-		UsuarioE user = null;
+		criteria.add(Restrictions.eq("email", email));
 		
-		user=usuarioService.buscarUsuario(email);
+		List<Usuario> usuario = usuarioService.buscarCriteria(criteria);
 		
+		for(int i=0; i<usuario.size(); i++) {
+			user = usuario.get(i);
+		}
 		return user;
 	}
 	
-	@PostMapping("/insertarUsuario")
+	/*@PostMapping("/insertarUsuario")
 	
 	public void insertarUsuario(String dniUsuario, String usuario, String passwdUsuario, Integer borradoUsuario) {
 		UsuarioE user = null;

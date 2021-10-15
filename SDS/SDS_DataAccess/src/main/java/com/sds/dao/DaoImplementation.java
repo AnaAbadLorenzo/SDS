@@ -6,6 +6,10 @@ import java.io.Serializable;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.DetachedCriteria;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sds.pojos.GenericPojo;
 import com.sds.utilidades.HibernateUtilities;
@@ -54,6 +58,13 @@ public class DaoImplementation implements GenericDao{
 			session.close();
 		}
 		
+	}
+	
+	public List buscarCriteria(DetachedCriteria criteria){
+		List lista = new ArrayList<>();
+		lista = criteria.getExecutableCriteria(session).list();
+		
+		return lista;
 	}
 	
 	private void iniciaOperacion() throws HibernateException 
