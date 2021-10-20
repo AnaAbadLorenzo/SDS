@@ -30,6 +30,8 @@ public class Persona extends GenericPojo{
 	
 	public Integer borrado_P;
 	
+	public Empresa empresa;
+	
 	
 	public String getDniP() {
 		return dniP;
@@ -94,6 +96,14 @@ public class Persona extends GenericPojo{
 	public void setBorrado_P(Integer borrado_P) {
 		this.borrado_P = borrado_P;
 	}
+	
+	public Empresa getEmpresa() {
+		return empresa;
+	}
+	
+	public void setEmpresa(Empresa empresa) {
+		this.empresa = empresa;
+	}
 
 	@Override
 	public String toString() {
@@ -104,7 +114,8 @@ public class Persona extends GenericPojo{
 				", direccionP=" + direccionP + 
 				", telefonoP=" + telefonoP + 
 				", emailP=" + emailP + 
-				", borrado_P=" + borrado_P + "]";
+				", borrado_P=" + borrado_P + 
+				", empresa=" + empresa + "]";
 	}
 
 

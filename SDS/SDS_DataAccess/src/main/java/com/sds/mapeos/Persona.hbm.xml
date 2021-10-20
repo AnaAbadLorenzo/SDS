@@ -37,6 +37,9 @@
 	</property>
 
 	<one-to-one name="usuario"/>
+	
+	<one-to-one name="empresa">
+		</one-to-one>
 
 </class>
 

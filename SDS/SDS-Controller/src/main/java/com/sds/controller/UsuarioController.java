@@ -23,25 +23,9 @@ import com.sds.service.IUsuarioService;
 @RequestMapping("/usuario")
 public class UsuarioController {
 	
-	/*private AuthenticationManager authManager;*/
-	
+
 	@Autowired
 	public IUsuarioService usuarioService;
-	
-	@Autowired
-	public JWToken jwtToken;
-	
-	/*@PostMapping("/login")
-	public ResponseEntity<?> loginUser(String nombreUsuario, String passwdUsuario){
-		Authentication auth = authManager.authenticate(
-				new UsernamePasswordAuthenticationToken(nombreUsuario, passwdUsuario));
-		
-		SecurityContextHolder.getContext().setAuthentication(auth);
-		
-		String token = jwtToken.generateToken(auth);
-		
-		return ResponseEntity.ok(new TokenAuth(token));
-	}*/
 	
 	/*@GetMapping("/listarUsuarios")
 	public List<UsuarioE> listarUsuarios(){

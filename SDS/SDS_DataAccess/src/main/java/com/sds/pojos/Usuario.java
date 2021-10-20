@@ -22,7 +22,6 @@ public class Usuario extends GenericPojo  {
 	
 	private Persona persona;
 	
-	private Empresa empresa;
 	
 
 	public Integer getIdUsuario() {
@@ -82,14 +81,6 @@ public class Usuario extends GenericPojo  {
 
 	
 
-	public Empresa getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Empresa empresa) {
-		this.empresa = empresa;
-	}
-
 	@Override
 	public String toString() {
 		return "Usuario [idUsuario=" + idUsuario + 
@@ -98,8 +89,7 @@ public class Usuario extends GenericPojo  {
 				", passwdUsuario=" + passwdUsuario + 
 				", borradoUsuario=" + borradoUsuario + 
 				", rol=" + rol + 
-				", persona=" + persona + 
-				", empresa=" + empresa + "]";
+				", persona=" + persona + "]";
 	}
 
 	

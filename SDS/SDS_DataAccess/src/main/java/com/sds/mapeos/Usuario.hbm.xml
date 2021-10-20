@@ -33,8 +33,6 @@
 		<one-to-one name="persona">
 		</one-to-one>
 		
-		<one-to-one name="empresa">
-		</one-to-one>
 
 	</class>
 
