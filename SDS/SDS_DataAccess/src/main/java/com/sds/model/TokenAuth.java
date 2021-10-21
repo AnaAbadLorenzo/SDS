@@ -4,11 +4,7 @@ public class TokenAuth {
 
 	public String token;
 
-	public TokenAuth() {
-
-	}
-
-	public TokenAuth(String token) {
+	public TokenAuth(final String token) {
 		this.token = token;
 	}
 
@@ -16,7 +12,7 @@ public class TokenAuth {
 		return token;
 	}
 
-	public void setToken(String token) {
+	public void setToken(final String token) {
 		this.token = token;
 	}
 }
