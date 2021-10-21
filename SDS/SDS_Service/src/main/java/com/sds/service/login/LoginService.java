@@ -2,8 +2,10 @@ package com.sds.service.login;
 
 import org.springframework.http.ResponseEntity;
 
+import com.sds.service.login.model.Login;
+
 public interface LoginService {
 
-	ResponseEntity<?> loginUser(final String usuario, final String passwdUsuario);
+	ResponseEntity<?> loginUser(final Login login);
 
 }

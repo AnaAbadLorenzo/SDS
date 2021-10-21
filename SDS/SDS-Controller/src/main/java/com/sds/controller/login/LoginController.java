@@ -2,10 +2,12 @@ package com.sds.controller.login;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sds.service.login.LoginService;
 import com.sds.service.login.impl.LoginServiceImpl;
+import com.sds.service.login.model.Login;
 
 @RestController
 public class LoginController {
@@ -17,7 +19,7 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<?> loginUser(final String usuario, final String passwdUsuario) {
-		return loginService.loginUser(usuario, passwdUsuario);
+	public ResponseEntity<?> loginUser(@RequestBody final Login login) {
+		return loginService.loginUser(login);
 	}
 }
