@@ -1,41 +1,30 @@
 package com.sds.pojos;
 
-
-public class Usuario extends GenericPojo  {
+public class Usuario extends GenericPojo {
 
 	private static final long serialVersionUID = 1L;
 
 	public Integer idUsuario;
-	
 	public String dniUsuario;
-
 	public String usuario;
-
-	
 	public String passwdUsuario;
-
-
 	public int borradoUsuario;
-
-	
 	private Rol rol;
-	
 	private Persona persona;
-	
-	
 
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
-	
-	public void setIdUsuario(Integer idUsuario) {
+
+	public void setIdUsuario(final Integer idUsuario) {
 		this.idUsuario = idUsuario;
 	}
+
 	public String getDniUsuario() {
 		return dniUsuario;
 	}
 
-	public void setDniUsuario(String dniUsuario) {
+	public void setDniUsuario(final String dniUsuario) {
 		this.dniUsuario = dniUsuario;
 	}
 
@@ -43,7 +32,7 @@ public class Usuario extends GenericPojo  {
 		return usuario;
 	}
 
-	public void setUsuario(String usuario) {
+	public void setUsuario(final String usuario) {
 		this.usuario = usuario;
 	}
 
@@ -51,7 +40,7 @@ public class Usuario extends GenericPojo  {
 		return passwdUsuario;
 	}
 
-	public void setPasswdUsuario(String passwdUsuario) {
+	public void setPasswdUsuario(final String passwdUsuario) {
 		this.passwdUsuario = passwdUsuario;
 	}
 
@@ -59,7 +48,7 @@ public class Usuario extends GenericPojo  {
 		return borradoUsuario;
 	}
 
-	public void setBorradoUsuario(int borradoUsuario) {
+	public void setBorradoUsuario(final int borradoUsuario) {
 		this.borradoUsuario = borradoUsuario;
 	}
 
@@ -67,7 +56,7 @@ public class Usuario extends GenericPojo  {
 		return rol;
 	}
 
-	public void setRol(Rol rol) {
+	public void setRol(final Rol rol) {
 		this.rol = rol;
 	}
 
@@ -75,25 +64,15 @@ public class Usuario extends GenericPojo  {
 		return persona;
 	}
 
-	public void setPersona(Persona persona) {
+	public void setPersona(final Persona persona) {
 		this.persona = persona;
 	}
 
-	
-
 	@Override
 	public String toString() {
-		return "Usuario [idUsuario=" + idUsuario + 
-				", dniUsuario=" + dniUsuario + 
-				", usuario=" + usuario + 
-				", passwdUsuario=" + passwdUsuario + 
-				", borradoUsuario=" + borradoUsuario + 
-				", rol=" + rol + 
-				", persona=" + persona + "]";
+		return "Usuario [idUsuario=" + idUsuario + ", dniUsuario=" + dniUsuario + ", usuario=" + usuario
+				+ ", passwdUsuario=" + passwdUsuario + ", borradoUsuario=" + borradoUsuario + ", rol=" + rol
+				+ ", persona=" + persona + "]";
 	}
-
-	
-	
-	
 
 }

@@ -1,4 +1,4 @@
-package com.sds.controller;
+package com.sds.controller.test;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

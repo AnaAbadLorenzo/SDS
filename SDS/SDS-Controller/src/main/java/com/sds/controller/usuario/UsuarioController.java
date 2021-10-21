@@ -1,0 +1,84 @@
+package com.sds.controller.usuario;
+
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.sds.pojos.Usuario;
+import com.sds.service.usuario.UsuarioService;
+import com.sds.service.usuario.impl.UsuarioServiceImpl;
+
+@RestController
+@RequestMapping("/usuario")
+public class UsuarioController {
+
+	private final UsuarioService usuarioService;
+
+	public UsuarioController() {
+		usuarioService = new UsuarioServiceImpl();
+	}
+
+	/*
+	 * @GetMapping("/listarUsuarios") public List<UsuarioE> listarUsuarios(){
+	 *
+	 * List<UsuarioE> listaUsuarios = new ArrayList<UsuarioE>();
+	 *
+	 * listaUsuarios=usuarioService.listarUsuarios();
+	 *
+	 * return listaUsuarios; }
+	 */
+
+	@GetMapping("/buscarUsuario")
+	public Usuario buscarUsuario(final String email) {
+
+		final DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
+		Usuario user = null;
+
+		criteria.add(Restrictions.eq("email", email));
+
+		final List<Usuario> usuario = usuarioService.buscarPorCriteria(criteria);
+
+		for (int i = 0; i < usuario.size(); i++) {
+			user = usuario.get(i);
+		}
+		return user;
+	}
+
+	/*
+	 * @PostMapping("/insertarUsuario")
+	 *
+	 * public void insertarUsuario(String dniUsuario, String usuario, String
+	 * passwdUsuario, Integer borradoUsuario) { UsuarioE user = null;
+	 *
+	 * user=usuarioService.buscarUsuario(dniUsuario);
+	 *
+	 * if(user == null) { usuarioService.insertarUsuario(dniUsuario, usuario,
+	 * passwdUsuario, borradoUsuario); }else { //Error el usuario ya existe } }
+	 *
+	 * @PutMapping("/modificarUsuario/{idUsuario}") public void
+	 * modificarUsuario(String dniUsuario, String usuario, String
+	 * passwdUsuario,Integer borradoUsuario, @PathVariable("idUsuario") Integer
+	 * idUsuario) throws BadRequestException{ UsuarioE user = null;
+	 *
+	 * user = usuarioService.buscarUsuarioId(idUsuario);
+	 *
+	 * if(user == null) { throw new BadRequestException("El usuario no existe");
+	 * }else { usuarioService.modificarUsuario(dniUsuario,usuario,passwdUsuario,
+	 * borradoUsuario, idUsuario); } }
+	 *
+	 * @DeleteMapping("/eliminarUsuario/{idUsuario}")
+	 *
+	 * public void eliminarUsuario( @PathVariable("idUsuario")Integer idUsuario)
+	 * throws BadRequestException { UsuarioE user = null;
+	 *
+	 * user = usuarioService.buscarUsuarioId(idUsuario);
+	 *
+	 * if(user == null) { throw new BadRequestException("El usuario no existe");
+	 * }else { usuarioService.eliminarUsuario(idUsuario); } }
+	 */
+
+}
