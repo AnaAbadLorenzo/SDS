@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.sds.model.TokenAuth;
 import com.sds.security.JWToken;
 import com.sds.service.login.LoginService;
+import com.sds.service.login.model.Login;
 
 @Service(value = "LoginService")
 public class LoginServiceImpl implements LoginService {
@@ -18,10 +19,10 @@ public class LoginServiceImpl implements LoginService {
 	JWToken jwtToken;
 
 	@Override
-	public ResponseEntity<?> loginUser(final String usuario, final String passwdUsuario) {
+	public ResponseEntity<?> loginUser(final Login login) {
 
-		final UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(usuario,
-				passwdUsuario);
+		final UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(login.getUsuario(),
+				login.getPasswdUsuario());
 
 		final Authentication auth = authManager.authenticate(user);
 
