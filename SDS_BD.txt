@@ -77,9 +77,9 @@ CREATE TABLE `persona` (
   `telefonoP` varchar(9) NOT NULL,
   `emailP` varchar(48) NOT NULL,
   `borradoP` int(1) NOT NULL,
-  `idEmpresa` int(11) NOT NULL,
+  `idEmpresa` int(11),
    PRIMARY KEY (`dniP`),
-   CONSTRAINT `idEmpresa_fk` FOREIGN KEY (`idEmpresa`) REFERENCES `empresa` (`idEmpresa`) ON DELETE NO ACTION ON UPDATE CASCADE,
+   CONSTRAINT `idEmpresa_fk` FOREIGN KEY (`idEmpresa`) REFERENCES `empresa` (`idEmpresa`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
