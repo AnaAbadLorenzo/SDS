@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sds.exception.DataNullException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.impl.LoginServiceImpl;
 import com.sds.service.login.model.Login;
@@ -19,7 +20,8 @@ public class LoginController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<?> loginUser(@RequestBody final Login login) {
+	public ResponseEntity<?> loginUser(@RequestBody final Login login) throws DataNullException {
 		return loginService.loginUser(login);
+
 	}
 }
