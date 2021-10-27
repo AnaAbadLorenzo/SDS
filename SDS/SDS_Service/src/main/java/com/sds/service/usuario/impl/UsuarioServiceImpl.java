@@ -1,14 +1,8 @@
 package com.sds.service.usuario.impl;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.sds.dao.DaoImplementation;
@@ -49,26 +43,4 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return dao.buscarPorCriteria(Usuario.class, criteria);
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-
-		final DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
-		criteria.add(Restrictions.eq(USUARIO, username));
-
-		final Usuario usuario = (Usuario) dao.buscarPorCriteria(Usuario.class, criteria);
-		if (usuario == null) {
-			throw new UsernameNotFoundException(USERNAME_NOT_FOUND_EXCEPTION);
-		}
-
-		return new org.springframework.security.core.userdetails.User(usuario.getUsuario(), usuario.getPasswdUsuario(),
-				getAuth(usuario));
-	}
-
-	private Set<SimpleGrantedAuthority> getAuth(final Usuario usuario) {
-		final Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-
-		authorities.add(new SimpleGrantedAuthority(ROL + usuario.getRol().getRolName()));
-
-		return authorities;
-	}
 }
