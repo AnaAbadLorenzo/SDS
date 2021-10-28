@@ -79,7 +79,7 @@ public class Funcionalidad extends GenericPojo {
 	public String toString() {
 		return "Funcionalidad [idFuncionalidad=" + idFuncionalidad + ", nombreFuncionalidad=" + nombreFuncionalidad
 				+ ", descripFuncionalidad=" + descripFuncionalidad + ", borradoFuncionalidad=" + borradoFuncionalidad
-				+ ", acciones=" + acciones + ", roles=" + roles + "]";
+				+ "]";
 	}
 
 }

@@ -12,6 +12,9 @@ import pojos.GenericPojo;
 
 public class Collections {
 
+	public Collections() {
+	}
+
 	public static List castList(final Class clazz, final Collection c) throws ClassCastException {
 		final List r = new ArrayList(c.size());
 		Object o;

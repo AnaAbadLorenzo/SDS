@@ -78,8 +78,7 @@ public class Accion extends GenericPojo {
 	@Override
 	public String toString() {
 		return "Accion [idAccion=" + idAccion + ", nombreAccion=" + nombreAccion + ", descripAccion=" + descripAccion
-				+ ", borradoAccion=" + borradoAccion + ", roles=" + roles + ", funcionalidades=" + funcionalidades
-				+ "]";
+				+ ", borradoAccion=" + borradoAccion + "]";
 	}
 
 }

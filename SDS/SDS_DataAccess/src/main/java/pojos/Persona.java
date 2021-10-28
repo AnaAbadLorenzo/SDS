@@ -122,7 +122,7 @@ public class Persona extends GenericPojo {
 	public String toString() {
 		return "Persona [dniP=" + dniP + ", nombreP=" + nombreP + ", apellidosP=" + apellidosP + ", fechaNacP="
 				+ fechaNacP + ", direccionP=" + direccionP + ", telefonoP=" + telefonoP + ", emailP=" + emailP
-				+ ", borradoP=" + borradoP + ", empresa=" + empresa + "]";
+				+ ", borradoP=" + borradoP + "]";
 	}
 
 }

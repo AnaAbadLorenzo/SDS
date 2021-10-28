@@ -55,7 +55,7 @@ public class Usuario extends GenericPojo {
 		return borradoUsuario;
 	}
 
-	public void setBorradoUsuario(final int borradoUsuario) {
+	public void setBorradoUsuario(final Integer borradoUsuario) {
 		this.borradoUsuario = borradoUsuario;
 	}
 
@@ -78,7 +78,7 @@ public class Usuario extends GenericPojo {
 	@Override
 	public String toString() {
 		return "Usuario [dniUsuario=" + dniUsuario + ", usuario=" + usuario + ", passwdUsuario=" + passwdUsuario
-				+ ", borradoUsuario=" + borradoUsuario + ", rol=" + rol + ", persona=" + persona + "]";
+				+ ", borradoUsuario=" + borradoUsuario + "]";
 	}
 
 }

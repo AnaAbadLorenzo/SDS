@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -65,11 +66,38 @@ public class DaoImplementation implements GenericDao {
 	public List buscarPorCriteria(final Class pojoClass, final DetachedCriteria criteria) {
 		try {
 			iniciaOperacion();
-			// final List result = criteria.getExecutableCriteria(session).list();
 			final List result = Collections.castList(pojoClass, criteria.getExecutableCriteria(session).list());
 			return result;
 		} catch (final Exception e) {
 			e.printStackTrace();
+			throw new DataBaseException(e);
+		} finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public List buscarTodos(final Class pojoClass) {
+		try {
+			iniciaOperacion();
+			final String tableName = session.getSessionFactory().getClassMetadata(pojoClass).getEntityName();
+			final String hql = (new StringBuilder("select x from ")).append(tableName).append(" x").toString();
+			final List result = buscarPorHql(pojoClass, hql);
+			return (result != null ? result : new ArrayList());
+		} catch (final Exception e) {
+			throw new DataBaseException(e);
+		} finally {
+			// sesion.close();
+		}
+	}
+
+	private List buscarPorHql(final Class pojoClass, final String hql) {
+		final List result = Collections.castList(pojoClass, session.createQuery(hql).list());
+		if (result.size() == 0)
+			return null;
+		try {
+			return result;
+		} catch (final Exception e) {
 			throw new DataBaseException(e);
 		} finally {
 			session.close();

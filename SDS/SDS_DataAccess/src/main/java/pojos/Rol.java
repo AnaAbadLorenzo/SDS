@@ -75,8 +75,7 @@ public class Rol extends GenericPojo {
 
 	@Override
 	public String toString() {
-		return "Rol [idRol=" + idRol + ", rolName=" + rolName + ", acciones=" + acciones + ", funcionalidades="
-				+ funcionalidades + ", usuarios=" + usuarios + "]";
+		return "Rol [idRol=" + idRol + ", rolName=" + rolName + ", rolDescription=" + rolDescription + "]";
 	}
 
 }
