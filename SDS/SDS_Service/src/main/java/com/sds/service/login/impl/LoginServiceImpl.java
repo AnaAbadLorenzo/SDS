@@ -1,85 +1,76 @@
 package com.sds.service.login.impl;
 
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import com.sds.dao.DaoImplementation;
-import com.sds.dao.GenericDao;
-import com.sds.exception.UserNotFound;
-import com.sds.model.TokenAuth;
-import com.sds.pojos.Usuario;
-import com.sds.security.JWToken;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
+import com.sds.service.util.CodeMessageErrors;
+import com.sds.service.util.Util;
+
+import dao.DaoImplementation;
+import dao.GenericDao;
+import exception.PasswordIncorrectoException;
+import exception.UserNotFound;
+import pojos.Usuario;
 
 @Service(value = "LoginService")
 public class LoginServiceImpl implements LoginService {
-	public static final String USUARIO = "usuario";
-	public static final String PASSWD = "passwdUsuario";
-	public static final String USERNAME_NOT_FOUND_EXCEPTION = "El usuario no existe";
+
+	private static final String USUARIO = "usuario";
 
 	private final GenericDao dao;
+	private final GetJWTToken jWTToken;
+	private final Util util;
 
 	public LoginServiceImpl() {
 		dao = new DaoImplementation();
+		jWTToken = new GetJWTToken();
+		util = new Util();
 	}
 
-	AuthenticationManager authManager;
-	JWToken jwtToken;
-
 	@Override
-	public ResponseEntity<?> loginUser(final Login login) {
-		ResponseEntity<?> response = null;
+	public String loginUser(final Login login) throws UserNotFound, PasswordIncorrectoException {
 
-		try {
+		String resultado = StringUtils.EMPTY;
 
+		final Boolean loginValido = util.comprobarLogin(login);
+
+		if (loginValido) {
 			if (existsUser(login)) {
-				response = getLogUser(login);
+				resultado = jWTToken.getJWTToken(login.getUsuario());
 			}
-		} catch (final UserNotFound e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return response;
-	}
-
-	@Override
-	public boolean existsUser(final Login login) throws UserNotFound {
-		boolean toret = false;
-		final DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
-		criteria.add(Restrictions.eq(USUARIO, login.getUsuario()));
-		criteria.add(Restrictions.eq(PASSWD, login.getPasswdUsuario()));
-
-		final Usuario usuario = (Usuario) dao.buscarPorCriteria(Login.class, criteria);
-
-		if (usuario == null) {
-			throw new UserNotFound(USERNAME_NOT_FOUND_EXCEPTION);
 		} else {
-			toret = true;
+			resultado = CodeMessageErrors.LOGIN_BLANK.name();
 		}
 
-		return toret;
+		return resultado;
 	}
 
-	private ResponseEntity<?> getLogUser(final Login login) {
-		final UsernamePasswordAuthenticationToken user = new UsernamePasswordAuthenticationToken(login.getUsuario(),
-				login.getPasswdUsuario());
+	private boolean existsUser(final Login login) throws UserNotFound, PasswordIncorrectoException {
 
-		final Authentication auth = authManager.authenticate(user);
+		final DetachedCriteria crit = DetachedCriteria.forClass(Usuario.class);
+		crit.add(Restrictions.like(USUARIO, login.getUsuario()));
 
-		SecurityContextHolder.getContext().setAuthentication(auth);
+		final List<Usuario> usuarios = dao.buscarPorCriteria(Usuario.class, crit);
 
-		final String token = jwtToken.generateToken(auth);
-
-		return ResponseEntity.ok(new TokenAuth(token));
-
+		if (usuarios.isEmpty() || usuarios == null) {
+			throw new UserNotFound(CodeMessageErrors.USERNAME_NOT_FOUND_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.USERNAME_NOT_FOUND_EXCEPTION.getCodigo()));
+		} else {
+			final String pass = login.getPasswdUsuario();
+			if (pass.equals(usuarios.get(0).getPasswdUsuario())) {
+				return true;
+			} else {
+				throw new PasswordIncorrectoException(CodeMessageErrors.PASSWORD_INCORRECTO_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PASSWORD_INCORRECTO_EXCEPTION.getCodigo()));
+			}
+		}
 	}
 
 }

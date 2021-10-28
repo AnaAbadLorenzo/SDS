@@ -5,10 +5,11 @@ import java.util.List;
 import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.stereotype.Service;
 
-import com.sds.dao.DaoImplementation;
-import com.sds.dao.GenericDao;
-import com.sds.pojos.Usuario;
 import com.sds.service.usuario.UsuarioService;
+
+import dao.DaoImplementation;
+import dao.GenericDao;
+import pojos.Usuario;
 
 @Service(value = "UsuarioService")
 public class UsuarioServiceImpl implements UsuarioService {
