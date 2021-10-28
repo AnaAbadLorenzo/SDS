@@ -18,6 +18,7 @@ import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.util.Util;
 
+import exception.PasswordIncorrectoException;
 import exception.UserNotFound;
 
 @RunWith(SpringRunner.class)
@@ -36,7 +37,8 @@ public class LoginServiceTest {
 	private LoginService loginService;
 
 	@Test
-	public void LoginService_loginUserUsuarioContraseñaVacio() throws UserNotFound, IOException, ParseException {
+	public void LoginService_loginUserUsuarioContraseñaVacio()
+			throws UserNotFound, IOException, ParseException, PasswordIncorrectoException {
 
 		final Login login = generateLogin(URL_JSON_DATA, USUARIO_CONTRASENA_VACIOS_DATA);
 
@@ -46,7 +48,8 @@ public class LoginServiceTest {
 	}
 
 	@Test
-	public void LoginService_loginUserUsuarioVacio() throws UserNotFound, IOException, ParseException {
+	public void LoginService_loginUserUsuarioVacio()
+			throws UserNotFound, IOException, ParseException, PasswordIncorrectoException {
 
 		final Login login = generateLogin(URL_JSON_DATA, USUARIO_VACIO_DATA);
 
@@ -56,7 +59,8 @@ public class LoginServiceTest {
 	}
 
 	@Test
-	public void LoginService_loginUserContrasenaVacia() throws UserNotFound, IOException, ParseException {
+	public void LoginService_loginUserContrasenaVacia()
+			throws UserNotFound, IOException, ParseException, PasswordIncorrectoException {
 
 		final Login login = generateLogin(URL_JSON_DATA, CONTRASENA_VACIA_DATA);
 

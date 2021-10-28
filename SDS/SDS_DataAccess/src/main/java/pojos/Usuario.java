@@ -12,6 +12,21 @@ public class Usuario extends GenericPojo {
 	private Rol rol;
 	private Persona persona;
 
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(final String dniUsuario, final String usuario, final String passwdUsuario,
+			final Integer borradoUsuario, final Rol rol, final Persona persona) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.usuario = usuario;
+		this.passwdUsuario = passwdUsuario;
+		this.borradoUsuario = borradoUsuario;
+		this.rol = rol;
+		this.persona = persona;
+	}
+
 	public String getDniUsuario() {
 		return dniUsuario;
 	}

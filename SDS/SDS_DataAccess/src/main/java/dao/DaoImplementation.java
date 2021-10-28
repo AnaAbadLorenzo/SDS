@@ -9,6 +9,7 @@ import org.hibernate.criterion.DetachedCriteria;
 
 import exception.DataBaseException;
 import pojos.GenericPojo;
+import utilidades.Collections;
 import utilidades.HibernateUtilities;
 
 public class DaoImplementation implements GenericDao {
@@ -64,7 +65,8 @@ public class DaoImplementation implements GenericDao {
 	public List buscarPorCriteria(final Class pojoClass, final DetachedCriteria criteria) {
 		try {
 			iniciaOperacion();
-			final List result = criteria.getExecutableCriteria(session).list();
+			// final List result = criteria.getExecutableCriteria(session).list();
+			final List result = Collections.castList(pojoClass, criteria.getExecutableCriteria(session).list());
 			return result;
 		} catch (final Exception e) {
 			e.printStackTrace();

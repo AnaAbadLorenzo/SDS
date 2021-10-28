@@ -13,6 +13,7 @@ import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 
+import exception.PasswordIncorrectoException;
 import exception.UserNotFound;
 
 @RestController
@@ -41,6 +42,8 @@ public class LoginController {
 				return new RespEntity(RespCode.LOGIN_OK, resultado);
 			} catch (final UserNotFound userNotFound) {
 				return new RespEntity(RespCode.USER_NOT_FOUND, login);
+			} catch (final PasswordIncorrectoException passwordIncorrecto) {
+				return new RespEntity(RespCode.PASSWORD_INCORRECTO, login);
 			}
 		}
 

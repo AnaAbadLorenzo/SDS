@@ -14,6 +14,19 @@ public class Funcionalidad extends GenericPojo {
 	private Set<Accion> acciones;
 	private Set<Rol> roles;
 
+	public Funcionalidad() {
+		super();
+	}
+
+	public Funcionalidad(final Integer idFuncionalidad, final String nombreFuncionalidad,
+			final String descripFuncionalidad, final Integer borradoFuncionalidad) {
+		super();
+		this.idFuncionalidad = idFuncionalidad;
+		this.nombreFuncionalidad = nombreFuncionalidad;
+		this.descripFuncionalidad = descripFuncionalidad;
+		this.borradoFuncionalidad = borradoFuncionalidad;
+	}
+
 	public Integer getIdFuncionalidad() {
 		return idFuncionalidad;
 	}

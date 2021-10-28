@@ -14,6 +14,7 @@ import com.sds.service.util.Util;
 
 import dao.DaoImplementation;
 import dao.GenericDao;
+import exception.PasswordIncorrectoException;
 import exception.UserNotFound;
 import pojos.Usuario;
 
@@ -33,7 +34,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String loginUser(final Login login) throws UserNotFound {
+	public String loginUser(final Login login) throws UserNotFound, PasswordIncorrectoException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -50,21 +51,26 @@ public class LoginServiceImpl implements LoginService {
 		return resultado;
 	}
 
-	private boolean existsUser(final Login login) throws UserNotFound {
+	private boolean existsUser(final Login login) throws UserNotFound, PasswordIncorrectoException {
 
 		final DetachedCriteria crit = DetachedCriteria.forClass(Usuario.class);
 		crit.add(Restrictions.like(USUARIO, login.getUsuario()));
 
 		final List<Usuario> usuarios = dao.buscarPorCriteria(Usuario.class, crit);
 
-		if (usuarios.isEmpty()) {
+		if (usuarios.isEmpty() || usuarios == null) {
 			throw new UserNotFound(CodeMessageErrors.USERNAME_NOT_FOUND_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.USERNAME_NOT_FOUND_EXCEPTION.getCodigo()));
 		} else {
-			//
+			final String pass = login.getPasswdUsuario();
+			if (pass.equals(usuarios.get(0).getPasswdUsuario())) {
+				return true;
+			} else {
+				throw new PasswordIncorrectoException(CodeMessageErrors.PASSWORD_INCORRECTO_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PASSWORD_INCORRECTO_EXCEPTION.getCodigo()));
+			}
 		}
-
-		return true;
 	}
 
 }

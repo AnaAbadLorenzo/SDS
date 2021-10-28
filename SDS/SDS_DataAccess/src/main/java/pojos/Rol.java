@@ -14,6 +14,17 @@ public class Rol extends GenericPojo {
 	private Set<Funcionalidad> funcionalidades;
 	private Set<Usuario> usuarios;
 
+	public Rol() {
+		super();
+	}
+
+	public Rol(final Integer idRol, final String rolName, final String rolDescription) {
+		super();
+		this.idRol = idRol;
+		this.rolName = rolName;
+		this.rolDescription = rolDescription;
+	}
+
 	public Integer getIdRol() {
 		return idRol;
 	}

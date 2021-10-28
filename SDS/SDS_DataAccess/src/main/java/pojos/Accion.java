@@ -14,6 +14,19 @@ public class Accion extends GenericPojo {
 	private Set<Rol> roles;
 	private Set<Funcionalidad> funcionalidades;
 
+	public Accion() {
+		super();
+	}
+
+	public Accion(final Integer idAccion, final String nombreAccion, final String descripAccion,
+			final Integer borradoAccion) {
+		super();
+		this.idAccion = idAccion;
+		this.nombreAccion = nombreAccion;
+		this.descripAccion = descripAccion;
+		this.borradoAccion = borradoAccion;
+	}
+
 	public Integer getIdAccion() {
 		return idAccion;
 	}

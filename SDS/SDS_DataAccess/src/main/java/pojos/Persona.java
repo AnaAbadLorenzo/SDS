@@ -18,6 +18,26 @@ public class Persona extends GenericPojo {
 	private Empresa empresa;
 	private Usuario usuario;
 
+	public Persona() {
+		super();
+	}
+
+	public Persona(final String dniP, final String nombreP, final String apellidosP, final Date fechaNacP,
+			final String direccionP, final String telefonoP, final String emailP, final Integer borradoP,
+			final Empresa empresa, final Usuario usuario) {
+		super();
+		this.dniP = dniP;
+		this.nombreP = nombreP;
+		this.apellidosP = apellidosP;
+		this.fechaNacP = fechaNacP;
+		this.direccionP = direccionP;
+		this.telefonoP = telefonoP;
+		this.emailP = emailP;
+		this.borradoP = borradoP;
+		this.empresa = empresa;
+		this.usuario = usuario;
+	}
+
 	public String getDniP() {
 		return dniP;
 	}

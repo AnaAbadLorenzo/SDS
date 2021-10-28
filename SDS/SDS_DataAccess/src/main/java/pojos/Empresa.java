@@ -15,6 +15,21 @@ public class Empresa extends GenericPojo {
 
 	private Set<Persona> personas;
 
+	public Empresa() {
+		super();
+	}
+
+	public Empresa(final Integer idEmpresa, final String cifEmpresa, final String nombreEmpresa,
+			final String direccionEmpresa, final String telefonoEmpresa, final String borradoEmpresa) {
+		super();
+		this.idEmpresa = idEmpresa;
+		this.cifEmpresa = cifEmpresa;
+		this.nombreEmpresa = nombreEmpresa;
+		this.direccionEmpresa = direccionEmpresa;
+		this.telefonoEmpresa = telefonoEmpresa;
+		this.borradoEmpresa = borradoEmpresa;
+	}
+
 	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}
