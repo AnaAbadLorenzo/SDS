@@ -11,12 +11,13 @@
 		<property name="hibernate.connection.password">user_sds</property>
 		<property name="show_sql">true</property>
 	
-		<mapping resource="com.sds.mapeos/Accion.hbm.xml"/>
-		<mapping resource="com.sds.mapeos/Funcionalidad.hbm.xml"/>
-		<mapping resource="com.sds.mapeos/Persona.hbm.xml"/>
-		<mapping resource="com.sds.mapeos/Rol.hbm.xml"/>
-		<mapping resource="com.sds.mapeos/RolAccionFuncionalidad.hbm.xml"/>
-		<mapping resource="com.sds.mapeos/Usuario.hbm.xml"/>
+		<mapping resource="mapeos/Accion.hbm.xml"/>
+		<mapping resource="mapeos/Funcionalidad.hbm.xml"/>
+		<mapping resource="mapeos/Persona.hbm.xml"/>
+		<mapping resource="mapeos/Rol.hbm.xml"/>
+		<mapping resource="mapeos/RolAccionFuncionalidad.hbm.xml"/>
+		<mapping resource="mapeos/Usuario.hbm.xml"/>
+		<mapping resource="mapeos/Empresa.hbm.xml"/>
 
 	</session-factory>
 

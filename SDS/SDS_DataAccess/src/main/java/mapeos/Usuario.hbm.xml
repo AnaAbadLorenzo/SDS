@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class table="usuario" name="pojos.Usuario">
+		<id name="dniUsuario" type="string">
+			<column name="dniUsuario" />
+		</id>
+
+		<property name="usuario" type="string">
+			<column name="usuario" />
+		</property>
+
+		<property name="passwdUsuario" type="string">
+			<column name="passwdUsuario" />
+		</property>
+
+		<property name="borradoUsuario" type="java.lang.Integer">
+			<column name="borradoUsuario" />
+		</property>
+
+		<many-to-one name="rol" fetch="select" lazy="false">
+			<column name="idRol" />
+		</many-to-one>
+		
+		<one-to-one name="persona"/>	
+	</class>
+</hibernate-mapping>

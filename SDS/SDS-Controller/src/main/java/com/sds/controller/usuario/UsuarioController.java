@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sds.pojos.Usuario;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.impl.UsuarioServiceImpl;
+
+import pojos.Usuario;
 
 @RestController
 @RequestMapping("/usuario")

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 
-import com.sds.pojos.Usuario;
+import pojos.Usuario;
 
 public interface UsuarioService {
 
