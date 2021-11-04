@@ -13,6 +13,6 @@ import com.sds.service.usuario.UsuarioService;
 public class UsuarioServiceTest {
 
 	@Autowired
-	private UsuarioService usuarioService;
+	UsuarioService usuarioService;
 
 }

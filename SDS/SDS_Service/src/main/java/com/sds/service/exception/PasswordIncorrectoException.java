@@ -1,4 +1,4 @@
-package exception;
+package com.sds.service.exception;
 
 public class PasswordIncorrectoException extends Exception {
 

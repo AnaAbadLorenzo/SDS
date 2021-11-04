@@ -10,5 +10,17 @@
  	"contrasenaVacia" : {
  		"usuario" : "prueba",
 		"passwdUsuario" : ""
+ 	},
+ 	"usuarioNoExiste" : {
+ 		"usuario" : "prueba",
+		"passwdUsuario" : "prueba"
+ 	},
+ 	"contrasenaIncorrecta":  {
+ 		"usuario" : "aicuna",
+		"passwdUsuario" : "prueba"
+ 	},
+ 	"usuarioContrasenaCorrectos":  {
+ 		"usuario" : "aicuna",
+		"passwdUsuario" : "aicuna"
  	}
 }

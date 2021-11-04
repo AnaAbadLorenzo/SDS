@@ -1,25 +1,48 @@
-package pojos;
+package com.sds.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class Empresa extends GenericPojo {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "empresa")
+public class EmpresaEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_empresa")
 	private Integer idEmpresa;
+
+	@Column(name = "cif_empresa")
 	private String cifEmpresa;
+
+	@Column(name = "nombre_empresa")
 	private String nombreEmpresa;
+
+	@Column(name = "direccion_empresa")
 	private String direccionEmpresa;
+
+	@Column(name = "telefono_empresa")
 	private String telefonoEmpresa;
+
+	@Column(name = "borrado_empresa")
 	private String borradoEmpresa;
 
-	private Set<Persona> personas;
+	@OneToMany(mappedBy = "empresa")
+	private final Set<PersonaEntity> personas = new HashSet();
 
-	public Empresa() {
+	public EmpresaEntity() {
 		super();
 	}
 
-	public Empresa(final Integer idEmpresa, final String cifEmpresa, final String nombreEmpresa,
+	public EmpresaEntity(final Integer idEmpresa, final String cifEmpresa, final String nombreEmpresa,
 			final String direccionEmpresa, final String telefonoEmpresa, final String borradoEmpresa) {
 		super();
 		this.idEmpresa = idEmpresa;
@@ -62,14 +85,6 @@ public class Empresa extends GenericPojo {
 		this.direccionEmpresa = direccionEmpresa;
 	}
 
-	public String getBorradoEmpresa() {
-		return borradoEmpresa;
-	}
-
-	public void setBorradoEmpresa(final String borradoEmpresa) {
-		this.borradoEmpresa = borradoEmpresa;
-	}
-
 	public String getTelefonoEmpresa() {
 		return telefonoEmpresa;
 	}
@@ -78,18 +93,22 @@ public class Empresa extends GenericPojo {
 		this.telefonoEmpresa = telefonoEmpresa;
 	}
 
-	public Set<Persona> getPersonas() {
-		return personas;
+	public String getBorradoEmpresa() {
+		return borradoEmpresa;
 	}
 
-	public void setPersonas(final Set<Persona> personas) {
-		this.personas = personas;
+	public void setBorradoEmpresa(final String borradoEmpresa) {
+		this.borradoEmpresa = borradoEmpresa;
+	}
+
+	public Set<PersonaEntity> getPersonas() {
+		return personas;
 	}
 
 	@Override
 	public String toString() {
-		return "Empresa [idEmpresa=" + idEmpresa + ", cifEmpresa=" + cifEmpresa + ", nombreEmpresa=" + nombreEmpresa
-				+ ", direccionEmpresa=" + direccionEmpresa + ", telefonoEmpresa=" + telefonoEmpresa
+		return "EmpresaEntity [idEmpresa=" + idEmpresa + ", cifEmpresa=" + cifEmpresa + ", nombreEmpresa="
+				+ nombreEmpresa + ", direccionEmpresa=" + direccionEmpresa + ", telefonoEmpresa=" + telefonoEmpresa
 				+ ", borradoEmpresa=" + borradoEmpresa + "]";
 	}
 
