@@ -1,30 +1,64 @@
-package pojos;
+package com.sds.model;
 
 import java.util.Date;
 
-public class Persona extends GenericPojo {
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-	private static final long serialVersionUID = 1L;
+@Entity
+@Table(name = "persona")
+public class PersonaEntity {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "dni_persona")
 	private String dniP;
+
+	@Column(name = "nombre_persona")
 	private String nombreP;
+
+	@Column(name = "apellidos_persona")
 	private String apellidosP;
+
+	@Column(name = "fecha_nac_persona")
 	private Date fechaNacP;
+
+	@Column(name = "direccion_persona")
 	private String direccionP;
+
+	@Column(name = "telefono_persona")
 	private String telefonoP;
+
+	@Column(name = "email_persona")
 	private String emailP;
+
+	@Column(name = "borrado_persona")
 	private Integer borradoP;
 
-	private Empresa empresa;
-	private Usuario usuario;
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+	private EmpresaEntity empresa;
 
-	public Persona() {
+	@OneToOne
+	@JoinColumn(name = "dni_persona", referencedColumnName = "dni_usuario", updatable = false)
+	private UsuarioEntity usuario;
+
+	public PersonaEntity() {
 		super();
 	}
 
-	public Persona(final String dniP, final String nombreP, final String apellidosP, final Date fechaNacP,
+	public PersonaEntity(final String dniP, final String nombreP, final String apellidosP, final Date fechaNacP,
 			final String direccionP, final String telefonoP, final String emailP, final Integer borradoP,
-			final Empresa empresa, final Usuario usuario) {
+			final EmpresaEntity empresa, final UsuarioEntity usuario) {
 		super();
 		this.dniP = dniP;
 		this.nombreP = nombreP;
@@ -102,25 +136,25 @@ public class Persona extends GenericPojo {
 		this.borradoP = borradoP;
 	}
 
-	public Empresa getEmpresa() {
+	public EmpresaEntity getEmpresa() {
 		return empresa;
 	}
 
-	public void setEmpresa(final Empresa empresa) {
+	public void setEmpresa(final EmpresaEntity empresa) {
 		this.empresa = empresa;
 	}
 
-	public Usuario getUsuario() {
+	public UsuarioEntity getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(final Usuario usuario) {
+	public void setUsuario(final UsuarioEntity usuario) {
 		this.usuario = usuario;
 	}
 
 	@Override
 	public String toString() {
-		return "Persona [dniP=" + dniP + ", nombreP=" + nombreP + ", apellidosP=" + apellidosP + ", fechaNacP="
+		return "PersonaEntity [dniP=" + dniP + ", nombreP=" + nombreP + ", apellidosP=" + apellidosP + ", fechaNacP="
 				+ fechaNacP + ", direccionP=" + direccionP + ", telefonoP=" + telefonoP + ", emailP=" + emailP
 				+ ", borradoP=" + borradoP + "]";
 	}

@@ -2,8 +2,8 @@ package com.sds.service.util;
 
 public enum CodeMessageErrors {
 
-	LOGIN_BLANK("00001"), //
-	USERNAME_NOT_FOUND_EXCEPTION("00002"), //
+	LOGIN_VACIO("00001"), //
+	USUARIO_NO_ENCONTRADO_EXCEPTION("00002"), //
 	PASSWORD_INCORRECTO_EXCEPTION("00003");
 
 	private String codigo;

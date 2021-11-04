@@ -2,8 +2,10 @@ package com.sds.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -12,8 +14,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.sds.config.JWTAuthorizationFilter;
 
-@ComponentScan(basePackages = { "com.sds.controller", "com.sds.service", "com.sds.dao" })
+//@ComponentScan(basePackages = { "com.sds.controller", "com.sds.service", "com.sds.model", "com.sds.repository" })
 @SpringBootApplication
+@ComponentScan({ "com.sds.controller", "com.sds.service" })
+@EntityScan("com.sds.model")
+@EnableJpaRepositories("com.sds.repository")
 public class SDSApplication {
 
 	public static void main(final String[] args) {

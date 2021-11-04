@@ -1,40 +1,36 @@
 package com.sds.service.login.impl;
 
-import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.sds.model.UsuarioEntity;
+import com.sds.repository.UsuarioRepository;
+import com.sds.service.exception.PasswordIncorrectoException;
+import com.sds.service.exception.UsuarioNoEncontrado;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 
-import dao.DaoImplementation;
-import dao.GenericDao;
-import exception.PasswordIncorrectoException;
-import exception.UserNotFound;
-import pojos.Usuario;
-
-@Service(value = "LoginService")
+@Service(value = "loginService")
 public class LoginServiceImpl implements LoginService {
 
-	private static final String USUARIO = "usuario";
+	@Autowired
+	@Qualifier("usuarioRepository")
+	UsuarioRepository usuarioRepository;
 
-	private final GenericDao dao;
 	private final GetJWTToken jWTToken;
 	private final Util util;
 
 	public LoginServiceImpl() {
-		dao = new DaoImplementation();
 		jWTToken = new GetJWTToken();
 		util = new Util();
 	}
 
 	@Override
-	public String loginUser(final Login login) throws UserNotFound, PasswordIncorrectoException {
+	public String loginUser(final Login login) throws UsuarioNoEncontrado, PasswordIncorrectoException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -45,25 +41,24 @@ public class LoginServiceImpl implements LoginService {
 				resultado = jWTToken.getJWTToken(login.getUsuario());
 			}
 		} else {
-			resultado = CodeMessageErrors.LOGIN_BLANK.name();
+			resultado = CodeMessageErrors.LOGIN_VACIO.name();
 		}
 
 		return resultado;
 	}
 
-	private boolean existsUser(final Login login) throws UserNotFound, PasswordIncorrectoException {
+	private boolean existsUser(final Login login) throws UsuarioNoEncontrado, PasswordIncorrectoException {
 
-		final DetachedCriteria crit = DetachedCriteria.forClass(Usuario.class);
-		crit.add(Restrictions.like(USUARIO, login.getUsuario()));
+		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 
-		final List<Usuario> usuarios = dao.buscarPorCriteria(Usuario.class, crit);
-
-		if (usuarios.isEmpty() || usuarios == null) {
-			throw new UserNotFound(CodeMessageErrors.USERNAME_NOT_FOUND_EXCEPTION.getCodigo(),
-					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.USERNAME_NOT_FOUND_EXCEPTION.getCodigo()));
+		if (usuario == null) {
+			throw new UsuarioNoEncontrado(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 		} else {
 			final String pass = login.getPasswdUsuario();
-			if (pass.equals(usuarios.get(0).getPasswdUsuario())) {
+
+			if (pass.equals(usuario.getPasswdUsuario())) {
 				return true;
 			} else {
 				throw new PasswordIncorrectoException(CodeMessageErrors.PASSWORD_INCORRECTO_EXCEPTION.getCodigo(),
