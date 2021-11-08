@@ -1,16 +1,27 @@
 package com.sds.service.util;
 
-import org.apache.commons.lang3.StringUtils;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
-import com.sds.service.login.model.Login;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.springframework.util.ResourceUtils;
 
 public class Util {
 
-	public boolean comprobarLogin(final Login login) {
-		if (StringUtils.isBlank(login.getUsuario()) || StringUtils.isBlank(login.getPasswdUsuario())) {
-			return false;
-		}
-		return true;
-	}
+	public JSONObject getDatosJson(final String fichero, final String nombrePrueba) throws IOException, ParseException {
 
+		final JSONParser parser = new JSONParser();
+		final File file = ResourceUtils.getFile(fichero);
+		final FileReader reader = new FileReader(file);
+		final Object obj = parser.parse(reader);
+		final JSONObject pJsonObj = (JSONObject) obj;
+		final JSONArray array = new JSONArray();
+		array.add(pJsonObj.get(nombrePrueba));
+
+		return (JSONObject) array.get(0);
+	}
 }

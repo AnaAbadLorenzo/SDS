@@ -1,0 +1,14 @@
+{ 
+	"usuarioNoExiste" : {
+		"usuario" : "pepito",
+		"passwdUsuario" : "pepito"
+	},
+ 	"contrasenaIncorrecta" : {
+ 		"usuario" : "aicuna",
+		"passwdUsuario" : "pepito"
+ 	},
+ 	"loginCorrecto" : {
+ 		"usuario" : "aicuna",
+		"passwdUsuario" : "aicuna"
+ 	}
+}
