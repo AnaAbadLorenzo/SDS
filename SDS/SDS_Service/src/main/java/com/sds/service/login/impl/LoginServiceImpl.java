@@ -2,7 +2,6 @@ package com.sds.service.login.impl;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.sds.model.UsuarioEntity;
@@ -12,21 +11,20 @@ import com.sds.service.exception.UsuarioNoEncontrado;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
-import com.sds.service.util.Util;
+import com.sds.service.util.validaciones.Validaciones;
 
 @Service(value = "loginService")
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	@Qualifier("usuarioRepository")
 	UsuarioRepository usuarioRepository;
 
 	private final GetJWTToken jWTToken;
-	private final Util util;
+	private final Validaciones validaciones;
 
 	public LoginServiceImpl() {
 		jWTToken = new GetJWTToken();
-		util = new Util();
+		validaciones = new Validaciones();
 	}
 
 	@Override
@@ -34,10 +32,10 @@ public class LoginServiceImpl implements LoginService {
 
 		String resultado = StringUtils.EMPTY;
 
-		final Boolean loginValido = util.comprobarLogin(login);
+		final Boolean loginValido = validaciones.comprobarLoginBlank(login);
 
 		if (loginValido) {
-			if (existsUser(login)) {
+			if (existeUsuario(login)) {
 				resultado = jWTToken.getJWTToken(login.getUsuario());
 			}
 		} else {
@@ -47,7 +45,7 @@ public class LoginServiceImpl implements LoginService {
 		return resultado;
 	}
 
-	private boolean existsUser(final Login login) throws UsuarioNoEncontrado, PasswordIncorrectoException {
+	private boolean existeUsuario(final Login login) throws UsuarioNoEncontrado, PasswordIncorrectoException {
 
 		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 

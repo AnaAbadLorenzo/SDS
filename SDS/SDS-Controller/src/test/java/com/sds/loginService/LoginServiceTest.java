@@ -14,27 +14,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
+import com.sds.service.common.Constantes;
 import com.sds.service.exception.PasswordIncorrectoException;
 import com.sds.service.exception.UsuarioNoEncontrado;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
-import com.sds.util.Util;
+import com.sds.service.util.Util;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SDSApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class LoginServiceTest {
-
-	private static final String URL_JSON_DATA = "classpath:LoginServiceData.json";
-	private static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
-	private static final String USUARIO_VACIO_DATA = "usuarioVacio";
-	private static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";
-	private static final String USUARIO_NO_EXISTE = "usuarioNoExiste";
-	private static final String CONTRASENA_INCORRECTA = "contrasenaIncorrecta";
-	private static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
-
-	private static final String PASSWD_USUARIO = "passwdUsuario";
-	private static final String USUARIO = "usuario";
 
 	@Autowired
 	LoginService loginService;
@@ -43,7 +33,7 @@ public class LoginServiceTest {
 	public void LoginService_loginUserUsuarioContraseñaVacio()
 			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
 
-		final Login login = generateLogin(URL_JSON_DATA, USUARIO_CONTRASENA_VACIOS_DATA);
+		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_CONTRASENA_VACIOS_DATA);
 
 		final String respuesta = loginService.loginUser(login);
 
@@ -54,7 +44,7 @@ public class LoginServiceTest {
 	public void LoginService_loginUserUsuarioVacio()
 			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
 
-		final Login login = generateLogin(URL_JSON_DATA, USUARIO_VACIO_DATA);
+		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_VACIO_DATA);
 
 		final String respuesta = loginService.loginUser(login);
 
@@ -65,7 +55,7 @@ public class LoginServiceTest {
 	public void LoginService_loginUserContrasenaVacia()
 			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
 
-		final Login login = generateLogin(URL_JSON_DATA, CONTRASENA_VACIA_DATA);
+		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.CONTRASENA_VACIA_DATA);
 
 		final String respuesta = loginService.loginUser(login);
 
@@ -76,7 +66,7 @@ public class LoginServiceTest {
 	public void LoginService_loginUserUsuarioNoExiste()
 			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
 
-		final Login login = generateLogin(URL_JSON_DATA, USUARIO_NO_EXISTE);
+		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_NO_EXISTE);
 
 		loginService.loginUser(login);
 	}
@@ -85,7 +75,7 @@ public class LoginServiceTest {
 	public void LoginService_loginUserContrasenaIncorrecta()
 			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
 
-		final Login login = generateLogin(URL_JSON_DATA, CONTRASENA_INCORRECTA);
+		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.CONTRASENA_INCORRECTA);
 
 		loginService.loginUser(login);
 	}
@@ -94,7 +84,7 @@ public class LoginServiceTest {
 	public void LoginService_loginUserLoginOkConToken()
 			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
 
-		final Login login = generateLogin(URL_JSON_DATA, USUARIO_CONTRASENA_CORRECTOS);
+		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_CONTRASENA_CORRECTOS);
 
 		final String respuesta = loginService.loginUser(login);
 
@@ -106,8 +96,8 @@ public class LoginServiceTest {
 		final JSONObject jsonUsuarioContrasenaVacios = new Util().getDatosJson(fichero, nombrePrueba);
 
 		final Login login = new Login();
-		login.setPasswdUsuario(jsonUsuarioContrasenaVacios.get(PASSWD_USUARIO).toString());
-		login.setUsuario(jsonUsuarioContrasenaVacios.get(USUARIO).toString());
+		login.setPasswdUsuario(jsonUsuarioContrasenaVacios.get(Constantes.PASSWD_USUARIO).toString());
+		login.setUsuario(jsonUsuarioContrasenaVacios.get(Constantes.USUARIO).toString());
 
 		return login;
 

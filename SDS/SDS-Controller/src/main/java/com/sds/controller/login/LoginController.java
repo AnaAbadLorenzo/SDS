@@ -13,7 +13,7 @@ import com.sds.service.exception.UsuarioNoEncontrado;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
-import com.sds.service.util.Util;
+import com.sds.service.util.validaciones.Validaciones;
 
 @RestController
 public class LoginController {
@@ -21,17 +21,17 @@ public class LoginController {
 	@Autowired
 	LoginService loginService;
 
-	private final Util util;
+	private final Validaciones validaciones;
 
 	public LoginController() {
-		util = new Util();
+		validaciones = new Validaciones();
 	}
 
 	@PostMapping(value = "/login")
 	@ResponseBody
 	public RespEntity loginUser(@RequestBody final Login login) {
 
-		final Boolean loginValido = util.comprobarLogin(login);
+		final Boolean loginValido = validaciones.comprobarLoginBlank(login);
 
 		if (loginValido) {
 			try {
