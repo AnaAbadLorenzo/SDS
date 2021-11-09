@@ -14,6 +14,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.sds.service.util.CodeMessageErrors;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -41,10 +43,18 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 				SecurityContextHolder.clearContext();
 			}
 			chain.doFilter(request, response);
-		} catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException e) {
-			response.setStatus(HttpServletResponse.SC_FORBIDDEN);
-			response.sendError(HttpServletResponse.SC_FORBIDDEN, e.getMessage());
-			return;
+		} catch (final ExpiredJwtException expiredJwtException) {
+			response.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
+			response.sendError(HttpServletResponse.SC_PRECONDITION_FAILED, expiredJwtException.getMessage());
+			throw new ServletException(CodeMessageErrors.JWT_EXPIRADO_EXCEPTION.getCodigo());
+		} catch (final UnsupportedJwtException unsupportedJwtException) {
+			response.setStatus(HttpServletResponse.SC_NOT_ACCEPTABLE);
+			response.sendError(HttpServletResponse.SC_NOT_ACCEPTABLE, unsupportedJwtException.getMessage());
+			throw new ServletException(CodeMessageErrors.JWT_NO_SOPORTADO_EXCEPTION.getCodigo());
+		} catch (final MalformedJwtException malformedJwtException) {
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			response.sendError(HttpServletResponse.SC_UNAUTHORIZED, malformedJwtException.getMessage());
+			throw new ServletException(CodeMessageErrors.JWT_MALFORMADO_EXCEPTION.getCodigo());
 		}
 	}
 

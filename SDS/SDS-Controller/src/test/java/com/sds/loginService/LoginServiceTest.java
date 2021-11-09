@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.sds.app.SDSApplication;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.PasswordIncorrectoException;
-import com.sds.service.exception.UsuarioNoEncontrado;
+import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
@@ -31,7 +31,7 @@ public class LoginServiceTest {
 
 	@Test
 	public void LoginService_loginUserUsuarioContraseñaVacio()
-			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
+			throws UsuarioNoEncontradoException, PasswordIncorrectoException, IOException, ParseException {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_CONTRASENA_VACIOS_DATA);
 
@@ -42,7 +42,7 @@ public class LoginServiceTest {
 
 	@Test
 	public void LoginService_loginUserUsuarioVacio()
-			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
+			throws UsuarioNoEncontradoException, PasswordIncorrectoException, IOException, ParseException {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_VACIO_DATA);
 
@@ -53,7 +53,7 @@ public class LoginServiceTest {
 
 	@Test
 	public void LoginService_loginUserContrasenaVacia()
-			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
+			throws UsuarioNoEncontradoException, PasswordIncorrectoException, IOException, ParseException {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.CONTRASENA_VACIA_DATA);
 
@@ -62,9 +62,9 @@ public class LoginServiceTest {
 		assertEquals(respuesta, CodeMessageErrors.LOGIN_VACIO.name());
 	}
 
-	@Test(expected = UsuarioNoEncontrado.class)
+	@Test(expected = UsuarioNoEncontradoException.class)
 	public void LoginService_loginUserUsuarioNoExiste()
-			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
+			throws UsuarioNoEncontradoException, PasswordIncorrectoException, IOException, ParseException {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_NO_EXISTE);
 
@@ -73,7 +73,7 @@ public class LoginServiceTest {
 
 	@Test(expected = PasswordIncorrectoException.class)
 	public void LoginService_loginUserContrasenaIncorrecta()
-			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
+			throws UsuarioNoEncontradoException, PasswordIncorrectoException, IOException, ParseException {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.CONTRASENA_INCORRECTA);
 
@@ -82,7 +82,7 @@ public class LoginServiceTest {
 
 	@Test
 	public void LoginService_loginUserLoginOkConToken()
-			throws UsuarioNoEncontrado, PasswordIncorrectoException, IOException, ParseException {
+			throws UsuarioNoEncontradoException, PasswordIncorrectoException, IOException, ParseException {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_CONTRASENA_CORRECTOS);
 

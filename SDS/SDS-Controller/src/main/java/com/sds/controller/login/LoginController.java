@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.exception.PasswordIncorrectoException;
-import com.sds.service.exception.UsuarioNoEncontrado;
+import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
@@ -40,7 +40,7 @@ public class LoginController {
 					return new RespEntity(RespCode.LOGIN_VACIO, login);
 				}
 				return new RespEntity(RespCode.LOGIN_OK, resultado);
-			} catch (final UsuarioNoEncontrado userNotFound) {
+			} catch (final UsuarioNoEncontradoException userNotFound) {
 				return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, login);
 			} catch (final PasswordIncorrectoException passwordIncorrecto) {
 				return new RespEntity(RespCode.PASSWORD_INCORRECTO, login);

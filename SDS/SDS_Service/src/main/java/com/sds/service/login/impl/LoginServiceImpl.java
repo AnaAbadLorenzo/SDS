@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.exception.PasswordIncorrectoException;
-import com.sds.service.exception.UsuarioNoEncontrado;
+import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
@@ -28,7 +28,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String loginUser(final Login login) throws UsuarioNoEncontrado, PasswordIncorrectoException {
+	public String loginUser(final Login login) throws UsuarioNoEncontradoException, PasswordIncorrectoException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -45,12 +45,12 @@ public class LoginServiceImpl implements LoginService {
 		return resultado;
 	}
 
-	private boolean existeUsuario(final Login login) throws UsuarioNoEncontrado, PasswordIncorrectoException {
+	private boolean existeUsuario(final Login login) throws UsuarioNoEncontradoException, PasswordIncorrectoException {
 
 		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 
 		if (usuario == null) {
-			throw new UsuarioNoEncontrado(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
+			throw new UsuarioNoEncontradoException(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
 					CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 		} else {
