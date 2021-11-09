@@ -16,7 +16,7 @@ import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
 import com.sds.service.exception.PasswordIncorrectoException;
-import com.sds.service.exception.UsuarioNoEncontrado;
+import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.test.TestLoginService;
@@ -208,7 +208,7 @@ public class TestLoginServiceImpl implements TestLoginService {
 			if (resultadoUsuario != null || resultadoUsuario != StringUtils.EMPTY) {
 				resultado = CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
 			}
-		} catch (final UsuarioNoEncontrado userNotFound) {
+		} catch (final UsuarioNoEncontradoException userNotFound) {
 			resultado = CodigosMensajes.LOGIN_USUARIO_INCORRECTO + " - " + Mensajes.LOGIN_USUARIO_NO_EXISTE;
 		} catch (final PasswordIncorrectoException passwordIncorrecto) {
 			resultado = CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - " + Mensajes.CONTRASENA_INCORRECTA;
