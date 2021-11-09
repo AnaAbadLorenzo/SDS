@@ -11,13 +11,12 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sds.model.UsuarioEntity;
+import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
-import com.sds.service.exception.PasswordIncorrectoException;
-import com.sds.service.exception.UsuarioNoEncontradoException;
-import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.test.TestLoginService;
 import com.sds.service.test.impl.atributos.TestAtributoContrasenaLogin;
@@ -36,7 +35,7 @@ public class TestLoginServiceImpl implements TestLoginService {
 	private final GenerarJSON generarJSON;
 
 	@Autowired
-	LoginService loginService;
+	UsuarioRepository usuarioRepository;
 
 	public TestLoginServiceImpl() {
 		testAtributoUsuarioLogin = new TestAtributoUsuarioLogin();
@@ -203,15 +202,18 @@ public class TestLoginServiceImpl implements TestLoginService {
 
 		String resultado = StringUtils.EMPTY;
 
-		try {
-			final String resultadoUsuario = loginService.loginUser(login);
-			if (resultadoUsuario != null || resultadoUsuario != StringUtils.EMPTY) {
-				resultado = CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
-			}
-		} catch (final UsuarioNoEncontradoException userNotFound) {
+		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
+
+		if (usuario == null) {
 			resultado = CodigosMensajes.LOGIN_USUARIO_INCORRECTO + " - " + Mensajes.LOGIN_USUARIO_NO_EXISTE;
-		} catch (final PasswordIncorrectoException passwordIncorrecto) {
-			resultado = CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - " + Mensajes.CONTRASENA_INCORRECTA;
+		} else {
+			final String pass = login.getPasswdUsuario();
+
+			if (pass.equals(usuario.getPasswdUsuario())) {
+				resultado = CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
+			} else {
+				resultado = CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - " + Mensajes.CONTRASENA_INCORRECTA;
+			}
 		}
 
 		return resultado;
