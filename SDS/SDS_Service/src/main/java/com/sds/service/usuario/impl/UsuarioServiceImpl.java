@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.sds.service.usuario.UsuarioService;
 
-@Service(value = "usuarioService")
+@Service
 public class UsuarioServiceImpl implements UsuarioService {
 
 }

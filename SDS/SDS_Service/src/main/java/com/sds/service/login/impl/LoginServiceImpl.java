@@ -13,7 +13,7 @@ import com.sds.service.login.model.Login;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
-@Service(value = "loginService")
+@Service
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired

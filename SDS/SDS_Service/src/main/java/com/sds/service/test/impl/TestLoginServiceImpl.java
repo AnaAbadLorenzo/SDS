@@ -2,33 +2,46 @@ package com.sds.service.test.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.DefinicionPruebas;
+import com.sds.service.common.Mensajes;
+import com.sds.service.exception.PasswordIncorrectoException;
+import com.sds.service.exception.UsuarioNoEncontrado;
+import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
 import com.sds.service.test.TestLoginService;
-import com.sds.service.test.impl.acciones.TestAccionesLogin;
 import com.sds.service.test.impl.atributos.TestAtributoContrasenaLogin;
 import com.sds.service.test.impl.atributos.TestAtributoUsuarioLogin;
 import com.sds.service.test.model.DatosPruebaAcciones;
 import com.sds.service.test.model.DatosPruebaAtributos;
+import com.sds.service.test.util.CrearDatosPruebaAcciones;
 import com.sds.service.test.util.GenerarJSON;
 
-@Service(value = "testLoginService")
+@Service
 public class TestLoginServiceImpl implements TestLoginService {
 
 	private final TestAtributoUsuarioLogin testAtributoUsuarioLogin;
 	private final TestAtributoContrasenaLogin testAtributoContrasenaLogin;
-	private final TestAccionesLogin testAccionesLogin;
+	private final CrearDatosPruebaAcciones crearDatosPruebaAcciones;
 	private final GenerarJSON generarJSON;
+
+	@Autowired
+	LoginService loginService;
 
 	public TestLoginServiceImpl() {
 		testAtributoUsuarioLogin = new TestAtributoUsuarioLogin();
 		testAtributoContrasenaLogin = new TestAtributoContrasenaLogin();
-		testAccionesLogin = new TestAccionesLogin();
+		crearDatosPruebaAcciones = new CrearDatosPruebaAcciones();
 		generarJSON = new GenerarJSON();
 	}
 
@@ -140,14 +153,77 @@ public class TestLoginServiceImpl implements TestLoginService {
 
 		final Login datosEntradaLoginUsuarioNoExiste = generarJSON.generateLogin(Constantes.URL_JSON_LOGIN_ACCIONES,
 				Constantes.USUARIO_NO_EXISTE);
-//		final Login datosEntradaLoginContrasenaIncorrecta = generarJSON
-//				.generateLogin(Constantes.URL_JSON_LOGIN_ACCIONES, Constantes.CONTRASENA_INCORRECTA);
-//		final Login datosEntradaLoginCorrecto = generarJSON.generateLogin(Constantes.URL_JSON_LOGIN_ACCIONES,
-//				Constantes.LOGIN_CORRECTO);
+		final Login datosEntradaLoginContrasenaIncorrecta = generarJSON
+				.generateLogin(Constantes.URL_JSON_LOGIN_ACCIONES, Constantes.CONTRASENA_INCORRECTA);
+		final Login datosEntradaLoginCorrecto = generarJSON.generateLogin(Constantes.URL_JSON_LOGIN_ACCIONES,
+				Constantes.LOGIN_CORRECTO);
 
-		datosPruebaAcciones.add(testAccionesLogin.getTestLoginUsuarioNoExiste(datosEntradaLoginUsuarioNoExiste));
+		datosPruebaAcciones.add(getTestLoginUsuarioNoExiste(datosEntradaLoginUsuarioNoExiste));
+		datosPruebaAcciones.add(getTestLoginContrasenaIncorrecta(datosEntradaLoginContrasenaIncorrecta));
+		datosPruebaAcciones.add(getTestLoginCorrecto(datosEntradaLoginCorrecto));
 
 		return datosPruebaAcciones;
+	}
+
+	private DatosPruebaAcciones getTestLoginUsuarioNoExiste(final Login datosEntradaLoginUsuarioNoExiste) {
+
+		final String resultadoObtenido = existeUsuario(datosEntradaLoginUsuarioNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.LOGIN_USUARIO_INCORRECTO + " - "
+				+ Mensajes.LOGIN_USUARIO_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.USUARIO_NO_EXISTE, Constantes.ERROR, getValorLogin(datosEntradaLoginUsuarioNoExiste));
+
+	}
+
+	private DatosPruebaAcciones getTestLoginContrasenaIncorrecta(final Login datosEntradaLoginContrasenaIncorrecta) {
+
+		final String resultadoObtenido = existeUsuario(datosEntradaLoginContrasenaIncorrecta);
+
+		final String resultadoEsperado = CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - "
+				+ Mensajes.CONTRASENA_INCORRECTA;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.CONTRASENA_INCORRECTA, Constantes.ERROR,
+				getValorLogin(datosEntradaLoginContrasenaIncorrecta));
+	}
+
+	private DatosPruebaAcciones getTestLoginCorrecto(final Login datosEntradaLoginCorrecto) {
+
+		final String resultadoObtenido = existeUsuario(datosEntradaLoginCorrecto);
+
+		final String resultadoEsperado = CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.LOGIN_CORRECTO, Constantes.EXITO, getValorLogin(datosEntradaLoginCorrecto));
+	}
+
+	private String existeUsuario(final Login login) {
+
+		String resultado = StringUtils.EMPTY;
+
+		try {
+			final String resultadoUsuario = loginService.loginUser(login);
+			if (resultadoUsuario != null || resultadoUsuario != StringUtils.EMPTY) {
+				resultado = CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
+			}
+		} catch (final UsuarioNoEncontrado userNotFound) {
+			resultado = CodigosMensajes.LOGIN_USUARIO_INCORRECTO + " - " + Mensajes.LOGIN_USUARIO_NO_EXISTE;
+		} catch (final PasswordIncorrectoException passwordIncorrecto) {
+			resultado = CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - " + Mensajes.CONTRASENA_INCORRECTA;
+		}
+
+		return resultado;
+	}
+
+	private Map<String, String> getValorLogin(final Login login) {
+
+		final Map<String, String> valor = new HashMap<>();
+		valor.put(Constantes.USUARIO, login.getUsuario());
+		valor.put(Constantes.PASSWD_USUARIO, login.getPasswdUsuario());
+
+		return valor;
 	}
 
 }

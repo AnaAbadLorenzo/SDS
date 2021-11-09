@@ -1,9 +1,11 @@
 package com.sds.service.test.model;
 
+import java.util.Map;
+
 public class DatosPruebaAcciones {
 
 	private String prueba;
-	private String valor;
+	private Map<String, String> valor;
 	private String resultadoEsperado;
 	private String resultadoObtenido;
 	private String tipoPrueba;
@@ -16,11 +18,11 @@ public class DatosPruebaAcciones {
 		this.prueba = prueba;
 	}
 
-	public String getValor() {
+	public Map<String, String> getValor() {
 		return valor;
 	}
 
-	public void setValor(final String valor) {
+	public void setValor(final Map<String, String> valor) {
 		this.valor = valor;
 	}
 

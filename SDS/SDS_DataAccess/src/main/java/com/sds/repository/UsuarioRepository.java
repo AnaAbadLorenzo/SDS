@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 import com.sds.model.UsuarioEntity;
 
-@Component("usuarioRepository")
+@Component
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, String> {
 
 	UsuarioEntity findByUsuario(String usuario);
