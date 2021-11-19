@@ -19,7 +19,6 @@ import javax.persistence.Table;
 public class PersonaEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "dni_persona")
 	private String dniP;
 
