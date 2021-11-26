@@ -40,6 +40,41 @@ public class ValidacionesAtributosAcentos {
 					default:
 						break;
 					}
+					
+				case REGISTRAR:
+					switch(atr) {
+					case DNI_PERSONA:
+						resultado = CodigosMensajes.DNI_PERSONA_ALFANUMERICO_INCORRECTO + " - "
+						+ Mensajes.DNI_PERSONA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+						
+					case FECHA_NACIMIENTO:
+						resultado = CodigosMensajes.FECHA_NACIMIENTO_NUMERICA_INCORRECTA + " - "
+						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+						break;
+						
+					case TELEFONO:
+						resultado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
+						+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+						break;
+						
+					case EMAIL:
+						resultado = CodigosMensajes.EMAIL_ALFANUMERICO_INCORRECTO + " - " 
+						+ Mensajes.EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						
+					case USUARIO:
+						resultado = CodigosMensajes.LOGIN_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.LOGIN_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case PASSWD_USUARIO:
+						resultado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+						
+					case CIF_EMPRESA:
+						resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
+						+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+					}
 				default:
 					break;
 				}
