@@ -50,7 +50,7 @@ public class Validaciones {
 		return true;
 	}
 
-	private boolean comprobarEmpresaBlank(final EmpresaEntity empresa) {
+	public boolean comprobarEmpresaBlank(final EmpresaEntity empresa) {
 		if (StringUtils.isBlank(empresa.getCifEmpresa()) || StringUtils.isBlank(empresa.getNombreEmpresa())
 				|| StringUtils.isBlank(empresa.getDireccionEmpresa())
 				|| StringUtils.isBlank(empresa.getTelefonoEmpresa()) || empresa.getBorradoEmpresa() == null) {

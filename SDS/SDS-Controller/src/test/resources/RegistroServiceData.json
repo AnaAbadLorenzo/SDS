@@ -1,0 +1,50 @@
+{
+	"registroPersonaUsuarioEmpresaVacio" : {
+		"datosPersona" : {},
+		"datosUsuario" : {},
+		"datosEmpresa" : {}
+	},
+	
+	"registroPersonaVacio" : {
+		"datosPersona" : {},
+		"datosUsuario" : {
+			"dniUsuario" : "45146321N",
+			"usuario" : "ana",
+			"passwdUsuario" : "ana",
+			"borradoUsuario" : 0,
+			"idRol" : 2
+		},
+		"datosEmpresa" : {
+			"idEmpresa" : 1,
+			"cifEmpresa" : "E45678765",
+			"nombreEmpresa" : "Empresa",
+			"direccionEmpresa" : "C/Prueba N12",
+			"telefonoEmpresa" : "999999999",
+			"borradoEmpresa" : 0
+		}
+	},
+	
+	"registroUsuarioVacio" : {
+		"datosPersona" : {
+			"dniPersona" : "45146321N",
+			"nombrePersona": "Ana",
+			"apellidosPersona" : "Abad Lorenzo",
+			"fechaNacPersona" : "2000-12-13",
+			"direccionPersona" : "Direccion Persona N13",
+			"emailPersona" : "ana@ana.com",
+			"telefonoPersona" : "888888888",
+			"borradoPersona" : 0
+			
+		},
+		"datosUsuario" : {},
+		
+		"datosEmpresa" : {
+			"idEmpresa" : 1,
+			"cifEmpresa" : "E45678765",
+			"nombreEmpresa" : "Empresa",
+			"direccionEmpresa" : "C/Prueba N12",
+			"telefonoEmpresa" : "999999999",
+			"borradoEmpresa" : 0
+		}
+	}
+}

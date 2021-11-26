@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.PersonaEntity;
+import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.EmpresaRepository;
 import com.sds.repository.PersonaRepository;
@@ -49,7 +50,25 @@ public class RegistroServiceImpl implements RegistroService {
 		if (registroValido) {
 			if (!existeRegistro(registro)) {
 				personaRepository.saveAndFlush(registro.getDatosPersona());
+				RolEntity rol = new RolEntity();
+				rol.setIdRol(2);
+				rol.setRolName("usuario");
+				rol.setRolDescription("Grupo que incluye a los usuarios de la aplicacion");
+				registro.getDatosUsuario().setRol(rol);
 				usuarioRepository.saveAndFlush(registro.getDatosUsuario());
+				
+				if(registro.getDatosEmpresa().getIdEmpresa() == null) {
+					final EmpresaEntity empresa = empresaRepository.findByCif(registro.getDatosEmpresa().getCifEmpresa());
+					
+					if(empresa == null) {
+						empresaRepository.saveAndFlush(registro.getDatosEmpresa());
+					}else {
+						throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
+					}
+					
+				}
 
 				resultado = "ok";
 			}
@@ -69,18 +88,6 @@ public class RegistroServiceImpl implements RegistroService {
 			final UsuarioEntity usuario = usuarioRepository.findByUsuario(registro.getDatosUsuario().getUsuario());
 
 			if (usuario == null) {
-				if (registro.getDatosEmpresa() != null) {
-					final EmpresaEntity empresa = empresaRepository
-							.findByCif(registro.getDatosEmpresa().getCifEmpresa());
-
-					if (empresa == null) {
-						return false;
-					} else {
-						throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
-								CodeMessageErrors.getTipoNameByCodigo(
-										CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
-					}
-				}
 				return false;
 			} else {
 				throw new UsuarioYaExisteException(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo(),
