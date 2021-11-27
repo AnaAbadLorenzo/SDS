@@ -7913,3 +7913,549 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.sds.dataA
 2021-10-27 17:34:45,934 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-10-27 17:34:45,934 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
 2021-10-27 17:34:45,935 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 07:49:38,029 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2021-11-27 07:50:18,403 [Worker-3: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.sds:SDS:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\pom.xml.
+2021-11-27 07:50:23,033 [Worker-9: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.service:SDS-Service:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\pom.xml.
+2021-11-27 07:50:23,702 [Worker-9: Updating Maven Dependencies] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.dataAccess:SDS-DataAccess:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-11-27 07:50:30,090 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS-Controller\pom.xml.
+2021-11-27 07:50:30,612 [Worker-7: Updating Maven Dependencies] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.dataAccess:SDS-DataAccess:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-11-27 07:50:31,388 [Worker-7: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-11-27 07:50:33,083 [Worker-8: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\pom.xml.
+2021-11-27 07:50:37,258 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:50:37,259 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 07:50:37,271 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2021-11-27 07:50:37,932 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 07:50:38,392 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS-Controller\pom.xml.
+2021-11-27 07:50:38,546 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:50:38,548 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 07:50:38,548 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 07:50:39,020 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-11-27 07:50:39,021 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 07:50:39,935 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.service:SDS-Service:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\pom.xml.
+2021-11-27 07:50:40,831 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 07:50:41,784 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS-Controller\pom.xml.
+2021-11-27 07:50:41,888 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-11-27 07:50:41,908 [Worker-3: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 07:50:53,873 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:50:53,874 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 07:50:53,881 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2021-11-27 07:50:54,293 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 07:50:54,703 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:50:54,704 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 07:50:54,704 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 07:51:01,730 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 07:51:02,247 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:51:02,248 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 07:51:02,248 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 07:51:02,253 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:51:02,253 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 07:51:11,114 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-11-27 07:51:11,118 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 07:51:11,184 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:51:11,186 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 07:51:11,230 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 07:51:11,312 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 07:51:11,313 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-11-27 08:17:12,799 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2021-11-27 08:23:34,743 [main] ERROR o.e.m.e.x.p.MavenStructuredPomEditorPageFactory - Cannot determine URI for '/SDS_Security/pom.xml'.
+org.eclipse.ui.PartInitException: Cannot determine URI for '/SDS_Security/pom.xml'.
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3204)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3215)
+	at org.eclipse.wst.sse.ui.StructuredTextEditor.init(StructuredTextEditor.java:2739)
+	at org.eclipse.ui.part.MultiPageEditorPart.addPage(MultiPageEditorPart.java:224)
+	at org.eclipse.ui.forms.editor.FormEditor.addPage(FormEditor.java:331)
+	at org.eclipse.ui.part.MultiPageEditorPart.addPage(MultiPageEditorPart.java:203)
+	at org.eclipse.ui.forms.editor.FormEditor.addPage(FormEditor.java:313)
+	at org.eclipse.m2e.editor.xml.pomeditor.MavenStructuredPomEditorPageFactory.addPages(MavenStructuredPomEditorPageFactory.java:34)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.addEditorPageExtensions(MavenPomEditor.java:415)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.addPages(MavenPomEditor.java:329)
+	at org.eclipse.ui.forms.editor.FormEditor.createPages(FormEditor.java:143)
+	at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:333)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.createPartControl(CompatibilityPart.java:158)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor.createPartControl(CompatibilityEditor.java:96)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:365)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:995)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:960)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:140)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:403)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:330)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:202)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:91)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:60)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:132)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:994)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:658)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:762)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:727)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:711)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.lambda$0(PartServiceImpl.java:104)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.lambda$0(UIEventHandler.java:38)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:236)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4770)
+	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:38)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:205)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:203)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:228)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:133)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:75)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:63)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElementGen(ElementContainerImpl.java:170)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:188)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.hidePart(PartServiceImpl.java:1380)
+	at org.eclipse.ui.internal.WorkbenchPage.hidePart(WorkbenchPage.java:1547)
+	at org.eclipse.ui.internal.WorkbenchPage.hidePart(WorkbenchPage.java:1499)
+	at org.eclipse.ui.internal.WorkbenchPage.closeEditors(WorkbenchPage.java:1469)
+	at org.eclipse.ui.actions.CloseResourceAction.closeEditors(CloseResourceAction.java:433)
+	at org.eclipse.ui.actions.CloseResourceAction$1.run(CloseResourceAction.java:358)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.actions.CloseResourceAction.lambda$2(CloseResourceAction.java:349)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.ui.actions.CloseResourceAction.closeMatchingEditors(CloseResourceAction.java:362)
+	at org.eclipse.ui.actions.DeleteResourceAction.run(DeleteResourceAction.java:453)
+	at org.eclipse.ui.actions.BaseSelectionListenerAction.runWithEvent(BaseSelectionListenerAction.java:171)
+	at org.eclipse.ui.actions.TextActionHandler$DeleteActionHandler.runWithEvent(TextActionHandler.java:189)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:121)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:317)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:251)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:308)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:580)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:647)
+	at org.eclipse.e4.ui.bindings.keys.OutOfOrderListener.handleEvent(OutOfOrderListener.java:75)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4237)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1060)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1069)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1111)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1107)
+	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1792)
+	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5162)
+	at org.eclipse.swt.widgets.Tree.WM_KEYDOWN(Tree.java:6111)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4785)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:5979)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4958)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3624)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1150)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1041)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/SDS_Security/pom.xml'.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:115)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:563)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:481)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4183)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:262)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1479)
+	at org.eclipse.ui.editors.text.TextEditor.doSetInput(TextEditor.java:153)
+	at org.eclipse.wst.sse.ui.StructuredTextEditor.doSetInput(StructuredTextEditor.java:2037)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.lambda$1(AbstractTextEditor.java:3173)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:434)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:352)
+	at org.eclipse.ui.internal.WorkbenchWindow.lambda$7(WorkbenchWindow.java:2345)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2343)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3190)
+	... 122 common frames omitted
+2021-11-27 08:23:34,799 [main] ERROR o.e.m2e.editor.pom.MavenPomEditor - Cannot determine URI for '/SDS_Security/pom.xml'.
+org.eclipse.ui.PartInitException: Cannot determine URI for '/SDS_Security/pom.xml'.
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3204)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3215)
+	at org.eclipse.ui.part.MultiPageEditorPart.addPage(MultiPageEditorPart.java:224)
+	at org.eclipse.ui.forms.editor.FormEditor.addPage(FormEditor.java:331)
+	at org.eclipse.ui.part.MultiPageEditorPart.addPage(MultiPageEditorPart.java:203)
+	at org.eclipse.ui.forms.editor.FormEditor.addPage(FormEditor.java:313)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.addFallbackEditors(MavenPomEditor.java:356)
+	at org.eclipse.m2e.editor.pom.MavenPomEditor.addPages(MavenPomEditor.java:330)
+	at org.eclipse.ui.forms.editor.FormEditor.createPages(FormEditor.java:143)
+	at org.eclipse.ui.part.MultiPageEditorPart.createPartControl(MultiPageEditorPart.java:333)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.createPartControl(CompatibilityPart.java:158)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityEditor.createPartControl(CompatibilityEditor.java:96)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:365)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:995)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:960)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:140)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:403)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:330)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:202)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:91)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:60)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:132)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:994)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:658)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:762)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:727)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:711)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.lambda$0(PartServiceImpl.java:104)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.lambda$0(UIEventHandler.java:38)
+	at org.eclipse.swt.widgets.Synchronizer.syncExec(Synchronizer.java:236)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:133)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4770)
+	at org.eclipse.e4.ui.workbench.swt.DisplayUISynchronize.syncExec(DisplayUISynchronize.java:34)
+	at org.eclipse.e4.ui.services.internal.events.UIEventHandler.handleEvent(UIEventHandler.java:38)
+	at org.eclipse.equinox.internal.event.EventHandlerWrapper.handleEvent(EventHandlerWrapper.java:205)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:203)
+	at org.eclipse.equinox.internal.event.EventHandlerTracker.dispatchEvent(EventHandlerTracker.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:228)
+	at org.eclipse.osgi.framework.eventmgr.ListenerQueue.dispatchEventSynchronous(ListenerQueue.java:151)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.dispatchEvent(EventAdminImpl.java:133)
+	at org.eclipse.equinox.internal.event.EventAdminImpl.sendEvent(EventAdminImpl.java:75)
+	at org.eclipse.equinox.internal.event.EventComponent.sendEvent(EventComponent.java:44)
+	at org.eclipse.e4.ui.services.internal.events.EventBroker.send(EventBroker.java:55)
+	at org.eclipse.e4.ui.internal.workbench.UIEventPublisher.notifyChanged(UIEventPublisher.java:63)
+	at org.eclipse.emf.common.notify.impl.BasicNotifierImpl.eNotify(BasicNotifierImpl.java:424)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElementGen(ElementContainerImpl.java:170)
+	at org.eclipse.e4.ui.model.application.ui.impl.ElementContainerImpl.setSelectedElement(ElementContainerImpl.java:188)
+	at org.eclipse.e4.ui.internal.workbench.PartServiceImpl.hidePart(PartServiceImpl.java:1380)
+	at org.eclipse.ui.internal.WorkbenchPage.hidePart(WorkbenchPage.java:1547)
+	at org.eclipse.ui.internal.WorkbenchPage.hidePart(WorkbenchPage.java:1499)
+	at org.eclipse.ui.internal.WorkbenchPage.closeEditors(WorkbenchPage.java:1469)
+	at org.eclipse.ui.actions.CloseResourceAction.closeEditors(CloseResourceAction.java:433)
+	at org.eclipse.ui.actions.CloseResourceAction$1.run(CloseResourceAction.java:358)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.actions.CloseResourceAction.lambda$2(CloseResourceAction.java:349)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.ui.actions.CloseResourceAction.closeMatchingEditors(CloseResourceAction.java:362)
+	at org.eclipse.ui.actions.DeleteResourceAction.run(DeleteResourceAction.java:453)
+	at org.eclipse.ui.actions.BaseSelectionListenerAction.runWithEvent(BaseSelectionListenerAction.java:171)
+	at org.eclipse.ui.actions.TextActionHandler$DeleteActionHandler.runWithEvent(TextActionHandler.java:189)
+	at org.eclipse.jface.commands.ActionHandler.execute(ActionHandler.java:121)
+	at org.eclipse.ui.internal.handlers.E4HandlerProxy.execute(E4HandlerProxy.java:97)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invokeUsingClass(InjectorImpl.java:317)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.invoke(InjectorImpl.java:251)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.invoke(ContextInjectionFactory.java:173)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceHandler.execute(HandlerServiceHandler.java:156)
+	at org.eclipse.core.commands.Command.executeWithChecks(Command.java:488)
+	at org.eclipse.core.commands.ParameterizedCommand.executeWithChecks(ParameterizedCommand.java:487)
+	at org.eclipse.e4.core.commands.internal.HandlerServiceImpl.executeHandler(HandlerServiceImpl.java:213)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.executeCommand(KeyBindingDispatcher.java:308)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.press(KeyBindingDispatcher.java:580)
+	at org.eclipse.e4.ui.bindings.keys.KeyBindingDispatcher.processKeyEvent(KeyBindingDispatcher.java:647)
+	at org.eclipse.e4.ui.bindings.keys.OutOfOrderListener.handleEvent(OutOfOrderListener.java:75)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4237)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1060)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1069)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1111)
+	at org.eclipse.swt.widgets.Widget.sendKeyEvent(Widget.java:1107)
+	at org.eclipse.swt.widgets.Widget.wmKeyDown(Widget.java:1792)
+	at org.eclipse.swt.widgets.Control.WM_KEYDOWN(Control.java:5162)
+	at org.eclipse.swt.widgets.Tree.WM_KEYDOWN(Tree.java:6111)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4785)
+	at org.eclipse.swt.widgets.Tree.windowProc(Tree.java:5979)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:4958)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(Native Method)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3624)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1150)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1041)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:644)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:551)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:156)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:401)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/SDS_Security/pom.xml'.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:115)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:563)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:481)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4183)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:262)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1479)
+	at org.eclipse.ui.editors.text.TextEditor.doSetInput(TextEditor.java:153)
+	at org.eclipse.ui.internal.genericeditor.ExtensionBasedTextEditor.doSetInput(ExtensionBasedTextEditor.java:74)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.lambda$1(AbstractTextEditor.java:3173)
+	at org.eclipse.jface.operation.ModalContext.runInCurrentThread(ModalContext.java:434)
+	at org.eclipse.jface.operation.ModalContext.run(ModalContext.java:352)
+	at org.eclipse.ui.internal.WorkbenchWindow.lambda$7(WorkbenchWindow.java:2345)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:74)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2343)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3190)
+	... 120 common frames omitted
+2021-11-27 08:23:49,168 [Worker-12: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.sds:SDS:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto\SDS\SDS\pom.xml.
+2021-11-27 08:24:01,987 [Worker-16: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\pom.xml.
+2021-11-27 08:24:01,987 [Worker-13: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS-Controller\pom.xml.
+2021-11-27 08:24:02,088 [Worker-13: Updating Maven Dependencies] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.service:SDS-Service:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-11-27 08:24:02,122 [Worker-13: Updating Maven Dependencies] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.dataAccess:SDS-DataAccess:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-11-27 08:24:09,384 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:09,384 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:24:09,415 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2021-11-27 08:24:09,432 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 08:24:09,440 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:09,440 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:24:09,440 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 08:24:13,442 [Worker-20: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS-Controller\pom.xml.
+2021-11-27 08:24:13,544 [Worker-20: Updating Maven Dependencies] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.service:SDS-Service:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-11-27 08:24:13,854 [Worker-20: Updating Maven Dependencies] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 08:24:14,026 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:14,026 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:24:14,034 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 10 resources
+2021-11-27 08:24:14,342 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 08:24:14,596 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:14,598 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:24:14,599 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 08:24:16,612 [Worker-14: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.service:SDS-Service:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\pom.xml.
+2021-11-27 08:24:16,975 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 08:24:17,672 [Worker-14: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS-Controller\pom.xml.
+2021-11-27 08:24:17,697 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-11-27 08:24:17,705 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 08:24:19,610 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:19,628 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:24:19,629 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:24:19,637 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:19,651 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 08:24:21,245 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-11-27 08:24:21,246 [Worker-14: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 08:24:21,276 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:21,277 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:24:21,333 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:24:21,337 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:21,338 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-11-27 08:24:29,383 [Worker-18: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-11-27 08:24:29,405 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:29,405 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:24:29,406 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:24:29,410 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:29,410 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 08:24:33,642 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:33,644 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:24:33,673 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:24:33,726 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:24:33,728 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-11-27 08:25:51,317 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:25:51,318 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:25:51,318 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:25:51,321 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:25:51,321 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 08:26:08,632 [Worker-22: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:26:08,633 [Worker-22: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:26:08,776 [Worker-22: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:26:08,776 [Worker-22: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:26:08,920 [Worker-22: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:26:08,921 [Worker-22: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:27:09,095 [Worker-20: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:27:09,096 [Worker-20: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:27:09,165 [Worker-20: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:27:09,165 [Worker-20: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:27:09,243 [Worker-20: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:27:09,243 [Worker-20: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:28:31,376 [Worker-17: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:28:31,377 [Worker-17: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:28:31,480 [Worker-17: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:28:31,480 [Worker-17: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:28:31,579 [Worker-17: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:28:31,579 [Worker-17: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:30:16,818 [Worker-13: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:30:16,818 [Worker-13: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:30:16,914 [Worker-13: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:30:16,914 [Worker-13: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:30:17,034 [Worker-13: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:30:17,035 [Worker-13: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:31:28,928 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:31:28,928 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:31:28,929 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:31:28,932 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:31:28,933 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 08:31:47,686 [Worker-12: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:31:47,687 [Worker-12: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:31:47,775 [Worker-12: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:31:47,775 [Worker-12: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:31:47,886 [Worker-12: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:31:47,887 [Worker-12: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:34:06,642 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:34:06,648 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:34:06,648 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:34:06,651 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:34:06,652 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 08:34:35,671 [Worker-18: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:34:35,671 [Worker-18: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:34:35,782 [Worker-18: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:34:35,782 [Worker-18: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:34:35,893 [Worker-18: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:34:35,893 [Worker-18: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:37:12,986 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:37:12,987 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:37:12,990 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2021-11-27 08:37:13,076 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 08:37:13,099 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:37:13,099 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:37:13,099 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 08:38:39,029 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:38:39,030 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:38:39,040 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2021-11-27 08:38:39,143 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 08:38:39,169 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:38:39,170 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:38:39,170 [Worker-16: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 08:38:44,707 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:38:44,707 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:38:44,710 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2021-11-27 08:38:44,774 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 08:38:44,792 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:38:44,792 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:38:44,793 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 08:39:39,855 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:39:39,856 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:39:39,863 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 11 resources
+2021-11-27 08:39:39,928 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-11-27 08:39:39,957 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:39:39,957 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-11-27 08:39:39,957 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-11-27 08:40:54,430 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:40:54,431 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:40:54,431 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\main\resources
+2021-11-27 08:40:54,435 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:40:54,436 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto\SDS\SDS\SDS_Service\src\test\resources
+2021-11-27 08:41:03,431 [Worker-21: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:41:03,432 [Worker-21: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:41:03,531 [Worker-21: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:41:03,531 [Worker-21: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:41:03,622 [Worker-21: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:41:03,623 [Worker-21: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:44:02,656 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:44:02,657 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:44:02,958 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.2/junit-platform-launcher-1.7.2.jar
+2021-11-27 08:44:03,040 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.7.2/junit-platform-launcher-1.7.2.jar
+2021-11-27 08:44:03,376 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:44:03,377 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:48:42,948 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:48:42,949 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:48:42,950 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:48:42,952 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:48:42,953 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-11-27 08:49:05,917 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:49:05,918 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:49:06,040 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:49:06,040 [Worker-26: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:50:14,229 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:50:14,231 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:50:14,231 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:50:14,234 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:50:14,235 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-11-27 08:50:24,954 [Worker-21: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:50:24,955 [Worker-21: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:50:25,066 [Worker-21: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:50:25,066 [Worker-21: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:51:31,244 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:51:31,244 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:51:31,377 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:51:31,377 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:51:58,575 [Worker-23: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:51:58,576 [Worker-23: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:51:58,658 [Worker-23: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:51:58,658 [Worker-23: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:51:58,737 [Worker-23: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:51:58,737 [Worker-23: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:54:10,581 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:54:10,582 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:54:10,614 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:54:10,618 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:54:10,618 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:55:48,014 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:55:48,015 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:55:48,212 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:55:48,217 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:55:48,218 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:55:57,602 [Worker-26: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:55:57,603 [Worker-26: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:55:57,694 [Worker-26: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:55:57,694 [Worker-26: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:55:57,782 [Worker-26: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:55:57,783 [Worker-26: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:56:40,745 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:56:40,746 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:56:40,772 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-11-27 08:56:40,776 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:56:40,776 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:22,186 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:57:22,187 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:22,188 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:22,190 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:57:22,191 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:23,206 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:57:23,207 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:23,207 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:23,209 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:57:23,209 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:28,106 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:57:28,107 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:28,108 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:57:28,110 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-11-27 08:57:28,112 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-11-27 08:58:13,372 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:58:13,373 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:58:13,558 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:58:13,558 [Worker-15: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:58:29,294 [Worker-24: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:58:29,294 [Worker-24: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-11-27 08:58:29,457 [Worker-24: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-11-27 08:58:29,458 [Worker-24: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes

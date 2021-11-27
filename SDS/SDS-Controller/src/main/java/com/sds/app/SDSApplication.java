@@ -34,8 +34,7 @@ public class SDSApplication {
 			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
-					.antMatchers(HttpMethod.POST, "/registro").permitAll().anyRequest()
-					.authenticated();
+					.antMatchers(HttpMethod.POST, "/registro").permitAll().anyRequest().authenticated();
 
 		}
 	}

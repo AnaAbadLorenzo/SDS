@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
+    <libraryInfo home="C:\Users\anaa1\Downloads\sts-4.12.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.0.v20211012-1059" version="17"/>
     <libraryInfo home="C:\Users\PC\Downloads\sts-4.12.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.2.v20210721-1149\jre" version="16.0.2"/>
     <libraryInfo home="C:\Program Files\Java\jdk1.8.0_202" version="1.8.0_202">
         <bootpath>
@@ -41,5 +42,6 @@
     </libraryInfo>
     <libraryInfo home="C:\Users\Ana\Downloads\sts-4.12.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.2.v20210721-1149\jre" version="16.0.2"/>
     <libraryInfo home="C:\Users\Ana\Downloads\sts-4.12.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.2.v20210721-1149" version="16.0.2"/>
+    <libraryInfo home="C:\Users\anaa1\Downloads\sts-4.12.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.0.v20211012-1059\jre" version="17"/>
     <libraryInfo home="C:\Users\PC\Downloads\sts-4.12.0.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_16.0.2.v20210721-1149" version="16.0.2"/>
 </libraryInfos>

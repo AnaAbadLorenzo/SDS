@@ -12,6 +12,7 @@ import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.EmpresaRepository;
 import com.sds.repository.PersonaRepository;
+import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
@@ -33,6 +34,9 @@ public class RegistroServiceImpl implements RegistroService {
 	@Autowired
 	EmpresaRepository empresaRepository;
 
+	@Autowired
+	RolRepository rolRepository;
+
 	private final Validaciones validaciones;
 
 	public RegistroServiceImpl() {
@@ -49,26 +53,29 @@ public class RegistroServiceImpl implements RegistroService {
 
 		if (registroValido) {
 			if (!existeRegistro(registro)) {
-				personaRepository.saveAndFlush(registro.getDatosPersona());
-				RolEntity rol = new RolEntity();
-				rol.setIdRol(2);
-				rol.setRolName("usuario");
-				rol.setRolDescription("Grupo que incluye a los usuarios de la aplicacion");
-				registro.getDatosUsuario().setRol(rol);
-				usuarioRepository.saveAndFlush(registro.getDatosUsuario());
-				
-				if(registro.getDatosEmpresa().getIdEmpresa() == null) {
-					final EmpresaEntity empresa = empresaRepository.findByCif(registro.getDatosEmpresa().getCifEmpresa());
-					
-					if(empresa == null) {
+
+				if (registro.getDatosEmpresa().getIdEmpresa() == null) {
+					final EmpresaEntity empresa = empresaRepository
+							.findByCif(registro.getDatosEmpresa().getCifEmpresa());
+
+					if (empresa == null) {
 						empresaRepository.saveAndFlush(registro.getDatosEmpresa());
-					}else {
+					} else {
 						throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
 					}
-					
+
 				}
+
+				registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
+				personaRepository.saveAndFlush(registro.getDatosPersona());
+
+				final RolEntity rol = rolRepository.findByRolName("usuario");
+				registro.getDatosUsuario().setRol(rol);
+				registro.getDatosUsuario().setPersona(registro.getDatosPersona());
+				registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
+				usuarioRepository.saveAndFlush(registro.getDatosUsuario());
 
 				resultado = "ok";
 			}

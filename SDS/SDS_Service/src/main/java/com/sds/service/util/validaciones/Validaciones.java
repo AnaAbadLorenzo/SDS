@@ -21,7 +21,7 @@ public class Validaciones {
 		if (!comprobarPersonaBlank(registro.getDatosPersona()) || !comprobarUsuarioBlank(registro.getDatosUsuario())) {
 			return false;
 		} else {
-			if (registro.getDatosEmpresa() != null) {
+			if (registro.getDatosEmpresa().getIdEmpresa() == null) {
 				if (!comprobarEmpresaBlank(registro.getDatosEmpresa())) {
 					return false;
 				}
@@ -42,8 +42,8 @@ public class Validaciones {
 	}
 
 	private boolean comprobarUsuarioBlank(final UsuarioEntity usuario) {
-		if (StringUtils.isBlank(usuario.getDniUsuario()) || StringUtils.isBlank(usuario.getUsuario())
-				|| StringUtils.isBlank(usuario.getPasswdUsuario()) || usuario.getBorradoUsuario() == null) {
+		if (StringUtils.isBlank(usuario.getUsuario()) || StringUtils.isBlank(usuario.getPasswdUsuario())
+				|| usuario.getBorradoUsuario() == null) {
 			return false;
 		}
 
