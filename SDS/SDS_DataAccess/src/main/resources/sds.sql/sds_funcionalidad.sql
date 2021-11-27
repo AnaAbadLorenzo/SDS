@@ -40,6 +40,8 @@ CREATE TABLE `funcionalidad` (
 LOCK TABLES `funcionalidad` WRITE;
 /*!40000 ALTER TABLE `funcionalidad` DISABLE KEYS */;
 INSERT INTO `funcionalidad` VALUES (1,'usuario','usuario',0);
+INSERT INTO `funcionalidad` VALUES (2,'login','login',0);
+INSERT INTO `funcionalidad` VALUES (3,'registrar','registrar',0);
 /*!40000 ALTER TABLE `funcionalidad` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

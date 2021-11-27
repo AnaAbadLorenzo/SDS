@@ -39,6 +39,7 @@ CREATE TABLE `rol` (
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
 INSERT INTO `rol` VALUES (1,'admin','admin');
+INSERT INTO `rol` VALUES (2,'usuario','Contendra a todos los usuarios registrados de la aplicacion');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
