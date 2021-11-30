@@ -26,8 +26,8 @@ public class TestController {
 
 	@Autowired
 	TestLoginService testLoginService;
-	
-	@Autowired 
+
+	@Autowired
 	TestRegistrarService testRegistrarService;
 
 	@GetMapping(value = "/test/login/atributos")
@@ -73,7 +73,7 @@ public class TestController {
 
 		return new RespEntity(RespCode.TEST_ACCIONES_LOGIN_OK, respuestaTestAcciones);
 	}
-	
+
 	@GetMapping(value = "/test/registrar/atributos")
 	@ResponseBody
 	public RespEntity TestRegistrarAtributos() {
@@ -84,10 +84,11 @@ public class TestController {
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoDniPersona = testRegistrarService.getPruebasAtributoDniP();
-			final List<DatosPruebaAtributos> pruebaAtributoNombrePersona = testRegistrarService.getPruebasAtributoNombreP();
+			final List<DatosPruebaAtributos> pruebaAtributoNombrePersona = testRegistrarService
+					.getPruebasAtributoNombreP();
 			resultadoPruebasAtributos.addAll(pruebaAtributoDniPersona);
 			resultadoPruebasAtributos.addAll(pruebaAtributoNombrePersona);
-		} catch (IOException | ParseException  | java.text.ParseException exc) {
+		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_KO, StringUtils.EMPTY);
 		}
 
@@ -98,7 +99,27 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_REGISTRO_OK, respuestaTestAtributos);
 	}
 
-	
-	
+	@GetMapping(value = "/test/registrar/acciones")
+	@ResponseBody
+	public RespEntity TestRegistrarAcciones() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testRegistrarService.getPruebasAccionesRegistro();
+		} catch (IOException | ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_KO, StringUtils.EMPTY);
+		} catch (final java.text.ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.REGISTRAR);
+		respuestaTestAcciones.setAccion(Constantes.REGISTRAR);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_OK, respuestaTestAcciones);
+	}
 
 }

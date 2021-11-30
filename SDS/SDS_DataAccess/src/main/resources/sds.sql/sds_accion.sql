@@ -40,6 +40,8 @@ CREATE TABLE `accion` (
 LOCK TABLES `accion` WRITE;
 /*!40000 ALTER TABLE `accion` DISABLE KEYS */;
 INSERT INTO `accion` VALUES (1,'add','añadir',0);
+INSERT INTO `accion` VALUES (2,'login','login',0);
+INSERT INTO `accion` VALUES (3,'registro','registro',0);
 /*!40000 ALTER TABLE `accion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

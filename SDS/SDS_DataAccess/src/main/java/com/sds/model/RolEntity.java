@@ -13,11 +13,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "rol")
+@NamedQueries({
+		@NamedQuery(name = "RolEntity.findByRolName", query = "SELECT r FROM RolEntity r WHERE r.rolName =: rolName") })
 public class RolEntity {
 
 	@Id
