@@ -108,11 +108,8 @@ public class TestController {
 
 		try {
 			datosPruebaAcciones = testRegistrarService.getPruebasAccionesRegistro();
-		} catch (IOException | ParseException e) {
+		} catch (IOException | ParseException | java.text.ParseException e) {
 			return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_KO, StringUtils.EMPTY);
-		} catch (final java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 
 		respuestaTestAcciones.setFuncionalidad(Constantes.REGISTRAR);

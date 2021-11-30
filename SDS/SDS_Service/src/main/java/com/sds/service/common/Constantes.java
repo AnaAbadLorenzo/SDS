@@ -18,7 +18,7 @@ public class Constantes {
 	public static final String EMAILP = "emailP";
 	public static final String CIF_EMPRESA = "cifEmpresa";
 	public static final String NOMBRE_EMPRESA = "nombreEmpresa";
-	public static final String DIRECCION_EMPRESA ="direccionEmpresa";
+	public static final String DIRECCION_EMPRESA = "direccionEmpresa";
 	public static final String TELEFONO_EMPRESA = "telefonoEmpresa";
 
 	// Constantes para los JSON
@@ -44,7 +44,7 @@ public class Constantes {
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
-	public static final String REGISTRO_PERSONA_USUARIO_EMPRESA_VACIOS_DATA = "registroPersonaUsuarioEmpresaVacios";
+	public static final String REGISTRO_PERSONA_USUARIO_EMPRESA_VACIOS_DATA = "registroPersonaUsuarioEmpresaVacio";
 	public static final String REGISTRO_PERSONA_USUARIO_EMPRESA_CORRECTOS = "registroPersonaUsuarioEmpresaCorrectos";
 
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
@@ -62,7 +62,6 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_VACIO_DATA = "telefonoEmpresaVacio";
 	public static final String PERSONA_VACIO_DATA = "personaVacia";
 	public static final String EMPRESA_VACIO_DATA = "empresaVacio";
-	
 
 	public static final String USUARIO_ALFANUMERICO_ENHE_DATA = "usuarioAlfanumericoEnhe";
 	public static final String CONTRASENA_ALFANUMERICA_ENHE_DATA = "contrasenaAlfanumericaEnhe";
@@ -82,7 +81,6 @@ public class Constantes {
 	public static final String CIFEMPRESA_ALFANUMERICO_ACENTOS_DATA = "cifEmpresaAlfanumericoAcentos";
 	public static final String TELEFONOEMPRESA_NUMERICO_ACENTOS_DATA = "telefonoEmpresaNumericoAcentos";
 
-
 	public static final String USUARIO_ALFANUMERICO_CARACTERES_ESPECIALES_DATA = "usuarioAlfanumericoCaracteresEspeciales";
 	public static final String CONTRASENA_ALFANUMERICA_CARACTERES_ESPECIALES_DATA = "contrasenaAlfanumericaCaracteresEspeciales";
 	public static final String DNIPERSONA_ALFANUMERICO_CARACTERES_ESPECIALES_DATA = "dniPersonaAlfanumericoCaracteresEspeciales";
@@ -94,7 +92,6 @@ public class Constantes {
 	public static final String NOMBREEMPRESA_ALFANUMERICO_CARACTERES_ESPECIALES_DATA = "nombreEmpresaAlfanumericoCaracteresEspeciales";
 	public static final String TELEFONOEMPRESA_NUMERICO_CARACTERES_ESPECIALES_DATA = "telefonoEmpresaNumericoCaracteresEspeciales";
 
-	
 	public static final String USUARIO_ALFANUMERICO_ESPACIOS_DATA = "usuarioAlfanumericoEspacios";
 	public static final String CONTRASENA_ALFANUMERICA_ESPACIOS_DATA = "contrasenaAlfanumericaEspacios";
 	public static final String DNIPERSONA_ALFANUMERICO_ESPACIOS_DATA = "dniPersonaAlfanumericoEspacios";
@@ -160,7 +157,6 @@ public class Constantes {
 	public static final String DIRECCIONEMPRESA_ALFANUMERICO_DATA = "direccionEmpresaAlfanumerico";
 	public static final String TELEFONOEMPRESA_ALFANUMERICO_DATA = "telefonoEmpresaAlfanumerico";
 
-
 	public static final String USUARIO_NUMERICO_DATA = "usuarioNumerico";
 	public static final String CONTRASENA_NUMERICA_DATA = "contrasenaNumerica";
 	public static final String DNIPERSONA_NUMERICO_DATA = "dniPersonaNumerico";
@@ -174,7 +170,6 @@ public class Constantes {
 	public static final String NOMBREEMPRESA_NUMERICO_DATA = "nombreEmpresaNumerico";
 	public static final String DIRECCIONEMPRESA_NUMERICO_DATA = "direccionEmpresaNumerico";
 	public static final String TELEFONOEMPRESA_NUMERICO_DATA = "telefonoEmpresaNumerico";
-	
 
 	public static final String USUARIO_NO_EXISTE = "usuarioNoExiste";
 	public static final String CONTRASENA_INCORRECTA = "contrasenaIncorrecta";
@@ -184,7 +179,9 @@ public class Constantes {
 	public static final String USUARIO_YA_EXISTE = "usuarioYaExiste";
 	public static final String EMPRESA_YA_EXISTE = "empresaYaExiste";
 	public static final String REGISTRO_CORRECTO = "registroCorrecto";
-	
+
+	public static final String OK = "OK";
+
 	// Constantes tipo de pruebas
 	public static final String ERROR = "Error";
 	public static final String EXITO = "Éxito";
