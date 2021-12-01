@@ -1,8 +1,14 @@
 package com.sds.controller.common;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class CommonUtilities {
 
-	public static <T> T coalesce(final T one, final T two) {
-		return one != null ? one : two;
+	public static String coalesce(final String one, final String two) {
+		if(one != null || one == StringUtils.EMPTY) {
+			return one;
+		}else {
+			return two;
+		}
 	}
 }

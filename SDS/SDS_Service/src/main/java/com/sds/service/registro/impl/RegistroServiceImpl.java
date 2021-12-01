@@ -60,6 +60,7 @@ public class RegistroServiceImpl implements RegistroService {
 							.findByCif(registro.getDatosEmpresa().getCifEmpresa());
 
 					if (empresa == null) {
+						registro.getDatosEmpresa().setBorradoEmpresa(0);
 						empresaRepository.saveAndFlush(registro.getDatosEmpresa());
 					} else {
 						throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
@@ -69,6 +70,7 @@ public class RegistroServiceImpl implements RegistroService {
 
 				}
 
+				registro.getDatosPersona().setBorradoP(0);
 				registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 				personaRepository.saveAndFlush(registro.getDatosPersona());
 
@@ -76,6 +78,7 @@ public class RegistroServiceImpl implements RegistroService {
 				registro.getDatosUsuario().setRol(rol);
 				registro.getDatosUsuario().setPersona(registro.getDatosPersona());
 				registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
+				registro.getDatosUsuario().setBorradoUsuario(0);
 				usuarioRepository.saveAndFlush(registro.getDatosUsuario());
 
 				resultado = Constantes.OK;

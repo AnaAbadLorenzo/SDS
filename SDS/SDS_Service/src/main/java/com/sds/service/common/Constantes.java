@@ -16,10 +16,13 @@ public class Constantes {
 	public static final String DIRECCIONP = "direccionP";
 	public static final String TELEFONOP = "telefonoP";
 	public static final String EMAILP = "emailP";
+	public static final String BORRADOP = "borradoP";
+	public static final String BORRADOU = "borradoUsuario";
 	public static final String CIF_EMPRESA = "cifEmpresa";
 	public static final String NOMBRE_EMPRESA = "nombreEmpresa";
 	public static final String DIRECCION_EMPRESA = "direccionEmpresa";
 	public static final String TELEFONO_EMPRESA = "telefonoEmpresa";
+	
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";

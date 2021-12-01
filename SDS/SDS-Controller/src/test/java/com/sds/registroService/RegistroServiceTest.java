@@ -127,8 +127,15 @@ public class RegistroServiceTest {
 				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.APELLIDOSP).toString(), StringUtils.EMPTY));
 
 		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
-		final Date date = formato.parse(
-				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.FECHANACP).toString(), StringUtils.EMPTY));
+		
+		final Date date;
+		if(jsonCargaDatos.get(Constantes.FECHANACP).toString() == StringUtils.EMPTY){
+			date = formato.parse("0000-00-00");
+		}else {
+			date = formato.parse(
+					CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.FECHANACP).toString(), StringUtils.EMPTY));
+		}
+		
 
 		persona.setFechaNacP(date);
 
@@ -144,6 +151,7 @@ public class RegistroServiceTest {
 		usuario.setPasswdUsuario(
 				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.PASSWD_USUARIO).toString(), StringUtils.EMPTY));
 
+		
 		empresa.setCifEmpresa(
 				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.CIF_EMPRESA).toString(), StringUtils.EMPTY));
 		empresa.setNombreEmpresa(
