@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
@@ -16,6 +17,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
+import com.sds.controller.common.CommonUtilities;
+import com.sds.model.EmpresaEntity;
+import com.sds.model.PersonaEntity;
+import com.sds.model.UsuarioEntity;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
@@ -34,7 +39,7 @@ public class RegistroServiceTest {
 
 	@Test
 	public void RegistroService_registroPersonaUsuarioEmpresaVacio() throws IOException, ParseException,
-			UsuarioYaExisteException, PersonaYaExisteException, EmpresaYaExisteException {
+			UsuarioYaExisteException, PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA,
 				Constantes.REGISTRO_PERSONA_USUARIO_EMPRESA_VACIOS_DATA);
@@ -46,7 +51,7 @@ public class RegistroServiceTest {
 
 	@Test
 	public void RegistroService_registroPersonaVacio() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException {
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.PERSONA_VACIO_DATA);
 
@@ -57,7 +62,7 @@ public class RegistroServiceTest {
 
 	@Test
 	public void RegistroService_registroUsuarioVacio() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException {
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.USUARIO_VACIO_DATA);
 
@@ -68,7 +73,7 @@ public class RegistroServiceTest {
 
 	@Test(expected = PersonaYaExisteException.class)
 	public void RegistroService_registroPersonaYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException {
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.PERSONA_YA_EXISTE);
 
@@ -77,7 +82,7 @@ public class RegistroServiceTest {
 
 	@Test(expected = UsuarioYaExisteException.class)
 	public void RegistroService_registroUsuarioYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException {
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.USUARIO_YA_EXISTE);
 
@@ -86,7 +91,7 @@ public class RegistroServiceTest {
 
 	@Test(expected = EmpresaYaExisteException.class)
 	public void RegistroService_registroEmpresaYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException {
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.EMPRESA_YA_EXISTE);
 
@@ -95,7 +100,7 @@ public class RegistroServiceTest {
 
 	@Test
 	public void RegistroService_registroOk() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException {
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA,
 				Constantes.REGISTRO_PERSONA_USUARIO_EMPRESA_CORRECTOS);
@@ -106,41 +111,59 @@ public class RegistroServiceTest {
 	}
 
 	private Registro generateRegistro(final String fichero, final String nombrePrueba)
-			throws IOException, ParseException {
+			throws IOException, ParseException, java.text.ParseException {
 
-		final JSONObject jsonPersonaUsuarioEmpresaVacios = new Util().getDatosJson(fichero, nombrePrueba);
+		final JSONObject jsonCargaDatos = new Util().getDatosJson(fichero, nombrePrueba);
 
 		final Registro registro = new Registro();
-		registro.getDatosPersona().setDniP(jsonPersonaUsuarioEmpresaVacios.get(Constantes.DNIP).toString());
-		registro.getDatosPersona().setNombreP(jsonPersonaUsuarioEmpresaVacios.get(Constantes.NOMBREP).toString());
-		registro.getDatosPersona().setApellidosP(jsonPersonaUsuarioEmpresaVacios.get(Constantes.APELLIDOSP).toString());
+		final PersonaEntity persona = new PersonaEntity();
+		final UsuarioEntity usuario = new UsuarioEntity();
+		final EmpresaEntity empresa = new EmpresaEntity();
+
+		persona.setDniP(CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.DNIP).toString(), StringUtils.EMPTY));
+		persona.setNombreP(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.NOMBREP).toString(), StringUtils.EMPTY));
+		persona.setApellidosP(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.APELLIDOSP).toString(), StringUtils.EMPTY));
 
 		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
-		Date date = null;
-		try {
-			date = formato.parse(jsonPersonaUsuarioEmpresaVacios.get(Constantes.FECHANACP).toString());
-		} catch (final java.text.ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		final Date date;
+		if(jsonCargaDatos.get(Constantes.FECHANACP).toString() == StringUtils.EMPTY){
+			date = formato.parse("0000-00-00");
+		}else {
+			date = formato.parse(
+					CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.FECHANACP).toString(), StringUtils.EMPTY));
 		}
+		
 
-		registro.getDatosPersona().setFechaNacP(date);
-		registro.getDatosPersona().setDireccionP(jsonPersonaUsuarioEmpresaVacios.get(Constantes.DIRECCIONP).toString());
-		registro.getDatosPersona().setEmailP(jsonPersonaUsuarioEmpresaVacios.get(Constantes.EMAILP).toString());
-		registro.getDatosPersona().setTelefonoP(jsonPersonaUsuarioEmpresaVacios.get(Constantes.TELEFONOP).toString());
+		persona.setFechaNacP(date);
 
-		registro.getDatosUsuario().setUsuario(jsonPersonaUsuarioEmpresaVacios.get(Constantes.USUARIO).toString());
-		registro.getDatosUsuario()
-				.setPasswdUsuario(jsonPersonaUsuarioEmpresaVacios.get(Constantes.PASSWD_USUARIO).toString());
+		persona.setDireccionP(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.DIRECCIONP).toString(), StringUtils.EMPTY));
+		persona.setEmailP(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.EMAILP).toString(), StringUtils.EMPTY));
+		persona.setTelefonoP(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.TELEFONOP).toString(), StringUtils.EMPTY));
 
-		registro.getDatosEmpresa()
-				.setCifEmpresa(jsonPersonaUsuarioEmpresaVacios.get(Constantes.CIF_EMPRESA).toString());
-		registro.getDatosEmpresa()
-				.setNombreEmpresa(jsonPersonaUsuarioEmpresaVacios.get(Constantes.NOMBRE_EMPRESA).toString());
-		registro.getDatosEmpresa()
-				.setDireccionEmpresa(jsonPersonaUsuarioEmpresaVacios.get(Constantes.DIRECCION_EMPRESA).toString());
-		registro.getDatosEmpresa()
-				.setTelefonoEmpresa(jsonPersonaUsuarioEmpresaVacios.get(Constantes.TELEFONO_EMPRESA).toString());
+		usuario.setUsuario(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
+		usuario.setPasswdUsuario(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.PASSWD_USUARIO).toString(), StringUtils.EMPTY));
+
+		
+		empresa.setCifEmpresa(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.CIF_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setNombreEmpresa(
+				CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.NOMBRE_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setDireccionEmpresa(CommonUtilities
+				.coalesce(jsonCargaDatos.get(Constantes.DIRECCION_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setTelefonoEmpresa(CommonUtilities.coalesce(jsonCargaDatos.get(Constantes.TELEFONO_EMPRESA).toString(),
+				StringUtils.EMPTY));
+
+		registro.setDatosPersona(persona);
+		registro.setDatosUsuario(usuario);
+		registro.setDatosEmpresa(empresa);
 
 		return registro;
 

@@ -14,6 +14,7 @@ import com.sds.repository.EmpresaRepository;
 import com.sds.repository.PersonaRepository;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
+import com.sds.service.common.Constantes;
 import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.UsuarioYaExisteException;
@@ -59,6 +60,7 @@ public class RegistroServiceImpl implements RegistroService {
 							.findByCif(registro.getDatosEmpresa().getCifEmpresa());
 
 					if (empresa == null) {
+						registro.getDatosEmpresa().setBorradoEmpresa(0);
 						empresaRepository.saveAndFlush(registro.getDatosEmpresa());
 					} else {
 						throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
@@ -68,16 +70,18 @@ public class RegistroServiceImpl implements RegistroService {
 
 				}
 
+				registro.getDatosPersona().setBorradoP(0);
 				registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 				personaRepository.saveAndFlush(registro.getDatosPersona());
 
-				final RolEntity rol = rolRepository.findByRolName("usuario");
+				final RolEntity rol = rolRepository.findByRolName(Constantes.USUARIO);
 				registro.getDatosUsuario().setRol(rol);
 				registro.getDatosUsuario().setPersona(registro.getDatosPersona());
 				registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
+				registro.getDatosUsuario().setBorradoUsuario(0);
 				usuarioRepository.saveAndFlush(registro.getDatosUsuario());
 
-				resultado = "ok";
+				resultado = Constantes.OK;
 			}
 		} else {
 			resultado = CodeMessageErrors.REGISTRO_VACIO.name();

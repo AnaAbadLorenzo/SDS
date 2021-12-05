@@ -1,50 +1,159 @@
 {
 	"registroPersonaUsuarioEmpresaVacio" : {
-		"datosPersona" : {},
-		"datosUsuario" : {},
-		"datosEmpresa" : {}
+
+			"dniP" : "",
+			"nombreP": "",
+			"apellidosP" : "",
+			"fechaNacP" : "",
+			"direccionP" : "",
+			"emailP" : "",
+			"telefonoP" : "",
+		
+
+			"dniUsuario" : "",
+			"usuario" : "",
+			"passwdUsuario" : "",
+			"borradoUsuario" : "",
+			"idRol" : "",
+	
+	
+			"idEmpresa" : "",
+			"cifEmpresa" : "",
+			"nombreEmpresa" : "",
+			"direccionEmpresa" : "",
+			"telefonoEmpresa" : ""
 	},
 	
-	"registroPersonaVacio" : {
-		"datosPersona" : {},
-		"datosUsuario" : {
-			"dniUsuario" : "45146321N",
+	"personaVacia" : {
+		
+			"dniP" : "",
+			"nombreP": "",
+			"apellidosP" : "",
+			"fechaNacP" : "",
+			"direccionP" : "",
+			"emailP" : "",
+			"telefonoP" : "",
+		
 			"usuario" : "ana",
 			"passwdUsuario" : "ana",
-			"borradoUsuario" : 0,
-			"idRol" : 2
-		},
-		"datosEmpresa" : {
+			"idRol" : 2,
+	
 			"idEmpresa" : 1,
 			"cifEmpresa" : "E45678765",
 			"nombreEmpresa" : "Empresa",
 			"direccionEmpresa" : "C/Prueba N12",
-			"telefonoEmpresa" : "999999999",
-			"borradoEmpresa" : 0
-		}
+			"telefonoEmpresa" : "999999999"
+			
+		
 	},
 	
-	"registroUsuarioVacio" : {
-		"datosPersona" : {
-			"dniPersona" : "45146321N",
-			"nombrePersona": "Ana",
-			"apellidosPersona" : "Abad Lorenzo",
-			"fechaNacPersona" : "2000-12-13",
-			"direccionPersona" : "Direccion Persona N13",
-			"emailPersona" : "ana@ana.com",
-			"telefonoPersona" : "888888888",
-			"borradoPersona" : 0
-			
-		},
-		"datosUsuario" : {},
+	"usuarioVacio" : {
+			"dniP" : "45146321N",
+			"nombreP": "Ana",
+			"apellidosP" : "Abad Lorenzo",
+			"fechaNacP" : "2000-12-13",
+			"direccionP" : "Direccion Persona N13",
+			"emailP" : "ana@ana.com",
+			"telefonoP" : "888888888",
 		
-		"datosEmpresa" : {
+			"usuario" : "",
+			"passwdUsuario" : "",
+			"idRol" : "",
+			
 			"idEmpresa" : 1,
 			"cifEmpresa" : "E45678765",
 			"nombreEmpresa" : "Empresa",
 			"direccionEmpresa" : "C/Prueba N12",
-			"telefonoEmpresa" : "999999999",
-			"borradoEmpresa" : 0
-		}
+			"telefonoEmpresa" : "999999999"
+		
+		
+	},
+	
+	"personaYaExiste" : {
+			"dniP" : "44460662Y",
+			"nombreP": "Alexandra",
+			"apellidosP" : "Iglesias",
+			"fechaNacP" : "1987-03-09",
+			"direccionP" : "Prueba",
+			"emailP" : "a@a.com",
+			"telefonoP" : "988222222",
+	
+			"usuario" : "alexandra",
+			"passwdUsuario" : "alexandra",
+			"idRol" : 2,
+		
+			"idEmpresa" : 1,
+			"cifEmpresa" : "E45678765",
+			"nombreEmpresa" : "Empresa",
+			"direccionEmpresa" : "C/Prueba N12",
+			"telefonoEmpresa" : "999999999"
+			
+		
+	},
+	
+	"usuarioYaExiste" : {
+		
+			"dniP" : "44444444M",
+			"nombreP": "Pepe",
+			"apellidosP" : "Ruiz",
+			"fechaNacP" : "1987-03-09",
+			"direccionP" : "Prueba",
+			"emailP" : "pepe@pepe.es",
+			"telefonoP" : "987452364",
+	
+			"usuario" : "aicuna",
+			"passwdUsuario" : "aicuna",
+			"idRol" : 2,
+			
+			"idEmpresa" : 1,
+			"cifEmpresa" : "E45678765",
+			"nombreEmpresa" : "Empresa",
+			"direccionEmpresa" : "C/Prueba N12",
+			"telefonoEmpresa" : "999999999"
+			
+		
+	},
+	
+	"empresaYaExiste" : {
+			"dniP" : "55555555M",
+			"nombreP": "Pablo",
+			"apellidosP" : "A",
+			"fechaNacP" : "1989-05-31",
+			"direccionP" : "Prueba",
+			"emailP" : "pablo@pablo.es",
+			"telefonoP" : "777777777",
+			
+        	"usuario" : "pabloa",
+        	"passwdUsuario" : "pablo",
+			"idRol" : 2,
+			
+			"idEmpresa" : "",
+			"cifEmpresa" : "J26903286",
+			"nombreEmpresa" : "Prueba",
+			"direccionEmpresa" : "Prueba",
+			"telefonoEmpresa" : "988212121"
+			
+		
+	},
+	
+	"registroPersonaUsuarioEmpresaCorrectos" : {
+		
+			"dniP" : "34947359D",
+			"nombreP": "Jorge",
+			"apellidosP" : "Abad",
+			"fechaNacP" : "1964-05-09",
+			"direccionP" : "Avenida de Portugal N144",
+			"emailP" : "jorge@jorge.es",
+			"telefonoP" : "654789512",
+		
+			"usuario" : "jorge",
+			"passwdUsuario" : "jorgito",
+			"idRol" : 2,
+	
+			"idEmpresa" : 4,
+			"cifEmpresa" : "R56797544",
+			"nombreEmpresa" : "EmpresasPepe",
+			"direccionEmpresa" : "Prueba",
+			"telefonoEmpresa" : "988212121"
 	}
 }

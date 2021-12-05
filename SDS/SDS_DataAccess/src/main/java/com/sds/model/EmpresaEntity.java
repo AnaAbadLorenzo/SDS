@@ -37,7 +37,7 @@ public class EmpresaEntity {
 	private String telefonoEmpresa;
 
 	@Column(name = "borrado_empresa")
-	private String borradoEmpresa;
+	private Integer borradoEmpresa;
 
 	@OneToMany(mappedBy = "empresa")
 	private final Set<PersonaEntity> personas = new HashSet();
@@ -47,7 +47,7 @@ public class EmpresaEntity {
 	}
 
 	public EmpresaEntity(final Integer idEmpresa, final String cifEmpresa, final String nombreEmpresa,
-			final String direccionEmpresa, final String telefonoEmpresa, final String borradoEmpresa) {
+			final String direccionEmpresa, final String telefonoEmpresa, final Integer borradoEmpresa) {
 		super();
 		this.idEmpresa = idEmpresa;
 		this.cifEmpresa = cifEmpresa;
@@ -97,11 +97,11 @@ public class EmpresaEntity {
 		this.telefonoEmpresa = telefonoEmpresa;
 	}
 
-	public String getBorradoEmpresa() {
+	public Integer getBorradoEmpresa() {
 		return borradoEmpresa;
 	}
 
-	public void setBorradoEmpresa(final String borradoEmpresa) {
+	public void setBorradoEmpresa(final Integer borradoEmpresa) {
 		this.borradoEmpresa = borradoEmpresa;
 	}
 
