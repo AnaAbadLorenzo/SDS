@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.PersonaEntity;
+import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
 import com.sds.service.registro.model.Registro;
@@ -39,19 +40,19 @@ public class Validaciones {
 				|| StringUtils.isBlank(persona.getApellidosP()) || StringUtils.isBlank(persona.getDireccionP())
 				|| StringUtils.isBlank(persona.getTelefonoP()) || StringUtils.isBlank(persona.getEmailP())
 				|| persona.getFechaNacP().equals(null)) {
-			SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
-			Date date=null;
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+			Date date = null;
 			try {
 				date = formato.parse("0000-00-00");
-			} catch (ParseException e) {
+			} catch (final ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			if(persona.getFechaNacP().equals(date)) {
+
+			if (persona.getFechaNacP().equals(date)) {
 				return false;
 			}
-			
+
 		}
 
 		return true;
@@ -75,4 +76,19 @@ public class Validaciones {
 		return true;
 	}
 
+	public boolean comprobarRolBlank(final RolEntity rol) {
+		if (StringUtils.isBlank(rol.getRolName()) || StringUtils.isBlank(rol.getRolDescription())) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarNombreRolBlank(final String rolName) {
+		if (StringUtils.isBlank(rolName)) {
+			return false;
+		}
+
+		return true;
+	}
 }

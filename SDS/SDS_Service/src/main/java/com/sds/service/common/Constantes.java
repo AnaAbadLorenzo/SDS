@@ -22,28 +22,27 @@ public class Constantes {
 	public static final String NOMBRE_EMPRESA = "nombreEmpresa";
 	public static final String DIRECCION_EMPRESA = "direccionEmpresa";
 	public static final String TELEFONO_EMPRESA = "telefonoEmpresa";
-	
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_CONTRASENA = "classpath:LoginServiceAtributosContrasena.json";
 	public static final String URL_JSON_REGISTRAR_DATA = "classpath:RegistroServiceData.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DNIP = "classpath:RegistrarServiceAtributosDniP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREP = "classpath:RegistrarServiceAtributosNombreP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_APELLIDOSP = "classpath:RegistrarServiceAtributosApellidosP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_FECHANACP = "classpath:RegistrarServiceAtributosFechaNacP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DIRECCIONP = "classpath:RegistrarServiceAtributosDireccionP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_TELEFONOP = "classpath:RegistrarServiceAtributosTelefonoP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_EMAILP = "classpath:RegistrarServiceAtributosEmailP.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_USUARIO = "classpath:RegistrarServiceAtributosUsuario.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_CONTRASENA = "classpath:RegistrarServiceAtributosContrasena.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA = "classpath:RegistrarServiceAtributosCifEmpresa.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREEMPRESA = "classpath:RegistrarServiceAtributosNombreEmpresa.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DIRECCIONEMPRESA = "classpath:RegistrarServiceAtributosDireccionEmpresa.json";
-	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_TELEFONOEMPRESA = "classpath:RegistrarServiceAtributosTelefonoEmpresa.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DNIP = "classpath:RegistroServiceAtributosDniPersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREP = "classpath:RegistroServiceAtributosNombrePersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_APELLIDOSP = "classpath:RegistroServiceAtributosApellidosPersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_FECHANACP = "classpath:RegistroServiceAtributosFechaNacPersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DIRECCIONP = "classpath:RegistroServiceAtributosDireccionPersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_TELEFONOP = "classpath:RegistroServiceAtributosTelefonoPersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_EMAILP = "classpath:RegistroServiceAtributosEmailPersona.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_USUARIO = "classpath:RegistroServiceAtributosUsuario.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_CONTRASENA = "classpath:RegistroServiceAtributosContrasena.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA = "classpath:RegistroServiceAtributosCifEmpresa.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREEMPRESA = "classpath:RegistroServiceAtributosNombreEmpresa.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DIRECCIONEMPRESA = "classpath:RegistroServiceAtributosDireccionEmpresa.json";
+	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_TELEFONOEMPRESA = "classpath:RegistroServiceAtributosTelefonoEmpresa.json";
 	public static final String URL_JSON_LOGIN_ACCIONES = "classpath:LoginServiceAcciones.json";
-	public static final String URL_JSON_REGISTRAR_ACCIONES = "classpath:RegistrarServiceAcciones.json";
+	public static final String URL_JSON_REGISTRAR_ACCIONES = "classpath:RegistroServiceAcciones.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";

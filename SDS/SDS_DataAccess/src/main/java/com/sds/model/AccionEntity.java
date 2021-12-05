@@ -9,10 +9,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "accion")
+@NamedQueries({
+	@NamedQuery(name = "AccionEntity.findNombreAccionById", query = "SELECT a.nombreAccion FROM AccionEntity a WHERE a.idAccion =: idAccion") })
 public class AccionEntity {
 
 	@Id

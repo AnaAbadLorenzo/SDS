@@ -34,7 +34,12 @@ public class SDSApplication {
 			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
-					.antMatchers(HttpMethod.POST, "/registro").permitAll().anyRequest().authenticated();
+					.antMatchers(HttpMethod.GET, "/menu/funcionalidadesUsuario").permitAll()
+					.antMatchers(HttpMethod.GET, "/menu/accionesFuncionalidad").permitAll()
+					.antMatchers(HttpMethod.GET, "/rol/listarRol").permitAll().antMatchers(HttpMethod.POST, "/rol")
+					.permitAll().antMatchers(HttpMethod.POST, "/rol/modificarRol").permitAll()
+					.antMatchers(HttpMethod.POST, "/rol/eliminarRol").permitAll().antMatchers(HttpMethod.POST, "/rol")
+					.permitAll().antMatchers(HttpMethod.POST, "/registro").permitAll().anyRequest().authenticated();
 
 		}
 	}

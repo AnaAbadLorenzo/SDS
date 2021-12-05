@@ -17,7 +17,8 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "usuario")
 @NamedQueries({
-		@NamedQuery(name = "UsuarioEntity.findByUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario =: usuario") })
+		@NamedQuery(name = "UsuarioEntity.findByUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario =: usuario"),
+		@NamedQuery(name = "UsuarioEntity.findRolUsuario", query = "SELECT u.rol FROM UsuarioEntity u WHERE u.usuario =: usuario")})
 public class UsuarioEntity {
 
 	@Id
