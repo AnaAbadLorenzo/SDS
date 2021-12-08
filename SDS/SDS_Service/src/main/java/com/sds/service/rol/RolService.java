@@ -12,11 +12,15 @@ public interface RolService {
 	RolEntity buscarRol(String rolName) throws RolNoExisteException;
 
 	List<RolEntity> buscarTodos() throws NoHayRolesException;
+	
+	List<RolEntity> buscarRolesEliminados() throws NoHayRolesException;
 
 	String guardarRol(RolEntity rol) throws RolYaExisteException;
 
 	String eliminarRol(RolEntity rol) throws RolNoExisteException;
 
 	String modificarRol(RolEntity rol) throws RolNoExisteException;
+	
+	
 
 }

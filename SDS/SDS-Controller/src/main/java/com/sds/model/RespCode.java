@@ -10,6 +10,8 @@ public enum RespCode {
 	ROL_MODIFICADO("ROL_MODIFICADO", "El rol se ha modificado correctamente"), //
 	ROL_ELIMINADO("ROL_ELIMINADO", "El rol se ha eliminado correctamente"), //
 	ROL_GUARDADO("ROL_GUARDADO", "El rol se ha guadado correctamente"), //
+	ROLES_LISTADOS("ROLES_LISTADOS", "Los roles se han listado correctamente"), //
+	ROLES_ELIMINADOS_LISTADOS("ROLES_ELIMINADOS_LISTADOS", "Los roles eliminados se han listado correctamente"), //
 	REGISTRO_VACIO("REGISTRO_VACIO", "Los datos de persona y usuario no pueden ser vacíos."), //
 	ROL_ENCONTRADO("ROL_ENCONTRADO", "El rol se ha encontrado con éxito"), //
 	USUARIO_YA_EXISTE("USUARIO_YA_EXISTE", "El usuario ya existe"), //

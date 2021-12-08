@@ -1,5 +1,7 @@
 package com.sds.controller.rol;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.model.RolEntity;
+import com.sds.service.exception.NoHayRolesException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.rol.RolService;
@@ -48,6 +51,32 @@ public class RolController {
 
 		return new RespEntity(RespCode.ROL_VACIO, rolName);
 
+	}
+	
+	@RequestMapping(value="/listarRoles", method = RequestMethod.GET)
+	@ResponseBody
+	public RespEntity buscarTodos() {
+		try {
+			final List<RolEntity> resultado = rolService.buscarTodos();
+			
+			return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
+		
+		}catch(final NoHayRolesException rolesNoExists) {
+			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
+		}
+	}
+	
+	@RequestMapping(value = "/listarRolesEliminados", method=RequestMethod.GET)
+	@ResponseBody
+	public RespEntity buscarRolesEliminados() {
+		try {
+			final List<RolEntity> resultado = rolService.buscarRolesEliminados();
+			
+			return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
+		
+		}catch(final NoHayRolesException rolesNoExists) {
+			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
+		}
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
