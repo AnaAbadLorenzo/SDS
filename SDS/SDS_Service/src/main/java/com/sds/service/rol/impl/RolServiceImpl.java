@@ -130,6 +130,7 @@ public class RolServiceImpl implements RolService {
 			} else {
 				rol.setRolName(rol.getRolName());
 				rol.setRolDescription(rol.getRolDescription());
+				rol.setBorradoRol(rol.getBorradoRol());
 				rolRepository.saveAndFlush(rol);
 				resultado = Constantes.OK;
 			}
