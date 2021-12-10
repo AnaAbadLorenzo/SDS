@@ -86,8 +86,42 @@ public class TestController {
 			final List<DatosPruebaAtributos> pruebaAtributoDniPersona = testRegistrarService.getPruebasAtributoDniP();
 			final List<DatosPruebaAtributos> pruebaAtributoNombrePersona = testRegistrarService
 					.getPruebasAtributoNombreP();
+			final List<DatosPruebaAtributos> pruebaAtributoApellidosPersona = testRegistrarService
+					.getPruebasAtributoApellidosP();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaNacPersona = testRegistrarService
+					.getPruebasAtributoFechaNacP();
+			final List<DatosPruebaAtributos> pruebaAtributoDireccionPersona = testRegistrarService
+					.getPruebasAtributoDireccionP();
+			final List<DatosPruebaAtributos> pruebaAtributoEmailPersona = testRegistrarService
+					.getPruebasAtributoEmailP();
+			final List<DatosPruebaAtributos> pruebaAtributoTelefonoPersona = testRegistrarService
+					.getPruebasAtributoTelefonoP();
+			final List<DatosPruebaAtributos> pruebaAtributoUsuario = testRegistrarService.getPruebasAtributoUsuario();
+			final List<DatosPruebaAtributos> pruebaAtributoContrasena = testRegistrarService
+					.getPruebasAtributoContrasena();
+			final List<DatosPruebaAtributos> pruebaAtributoCifEmpresa = testRegistrarService
+					.getPruebasAtributoCifEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoNombreEmpresa = testRegistrarService
+					.getPruebasAtributoNombreEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoDireccionEmpresa = testRegistrarService
+					.getPruebasAtributoDireccionEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoTelefonoEmpresa = testRegistrarService
+					.getPruebasAtributoTelefonoEmpresa();
+
 			resultadoPruebasAtributos.addAll(pruebaAtributoDniPersona);
 			resultadoPruebasAtributos.addAll(pruebaAtributoNombrePersona);
+			resultadoPruebasAtributos.addAll(pruebaAtributoApellidosPersona);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaNacPersona);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDireccionPersona);
+			resultadoPruebasAtributos.addAll(pruebaAtributoEmailPersona);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTelefonoPersona);
+			resultadoPruebasAtributos.addAll(pruebaAtributoUsuario);
+			resultadoPruebasAtributos.addAll(pruebaAtributoContrasena);
+			resultadoPruebasAtributos.addAll(pruebaAtributoCifEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDireccionEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTelefonoEmpresa);
+
 		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_KO, StringUtils.EMPTY);
 		}

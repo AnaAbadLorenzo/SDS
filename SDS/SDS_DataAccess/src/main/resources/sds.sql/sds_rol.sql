@@ -28,6 +28,7 @@ CREATE TABLE `rol` (
   `id_rol` int NOT NULL AUTO_INCREMENT,
   `rol_name` varchar(32) NOT NULL,
   `rol_description` text NOT NULL,
+  `borrado_rol` int NOT NULL,
   PRIMARY KEY (`id_rol`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,8 +39,9 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'admin','admin');
-INSERT INTO `rol` VALUES (2,'usuario','Contendra a todos los usuarios registrados de la aplicacion');
+INSERT INTO `rol` VALUES (1,'admin','admin',0);
+INSERT INTO `rol` VALUES (2,'usuario','Contendra a todos los usuarios registrados de la aplicacion',0);
+INSERT INTO `rol`VALUES (3, 'superadministrador', 'Contendrá a todos los superadministradores de la aplicacion', 1);
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
