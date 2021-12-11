@@ -6,6 +6,7 @@ import com.sds.model.RolEntity;
 import com.sds.service.exception.NoHayRolesException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
+import com.sds.service.exception.RolAsociadoUsuarioException;
 
 public interface RolService {
 
@@ -17,7 +18,7 @@ public interface RolService {
 
 	String guardarRol(RolEntity rol) throws RolYaExisteException;
 
-	String eliminarRol(RolEntity rol) throws RolNoExisteException;
+	String eliminarRol(RolEntity rol) throws RolNoExisteException, RolAsociadoUsuarioException;
 
 	String modificarRol(RolEntity rol) throws RolNoExisteException;
 	

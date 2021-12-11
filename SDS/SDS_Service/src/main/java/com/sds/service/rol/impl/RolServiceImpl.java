@@ -9,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sds.model.RolEntity;
+import com.sds.model.UsuarioEntity;
 import com.sds.repository.RolRepository;
+import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.NoHayRolesException;
+import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.rol.RolService;
@@ -23,6 +26,9 @@ public class RolServiceImpl implements RolService {
 
 	@Autowired
 	RolRepository rolRepository;
+	
+	@Autowired
+	UsuarioRepository usuarioRepository;
 
 	final Validaciones validaciones;
 
@@ -100,7 +106,7 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
-	public String eliminarRol(final RolEntity rol) throws RolNoExisteException {
+	public String eliminarRol(final RolEntity rol) throws RolNoExisteException, RolAsociadoUsuarioException {
 		final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
 		String resultado = StringUtils.EMPTY;
 
@@ -108,7 +114,17 @@ public class RolServiceImpl implements RolService {
 			throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
-			rolRepository.delete(rol);
+			final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
+			
+			for(UsuarioEntity usuario : usuarios) {
+				if(usuario.getRol().getIdRol().equals(rol.getIdRol())) {
+					throw new RolAsociadoUsuarioException(CodeMessageErrors.ROL_ASOCIADO_USUARIO_EXCEPTION.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_ASOCIADO_USUARIO_EXCEPTION.getCodigo()));
+				}
+			}
+			
+			rol.setBorradoRol(1);
+			modificarRol(rol);
 			resultado = Constantes.OK;
 		}
 

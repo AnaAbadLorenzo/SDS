@@ -1,0 +1,26 @@
+{ 
+	"usuarioContrasenaVacios" : {
+		"usuario" : "",
+		"passwdUsuario" : ""
+	},
+ 	"usuarioVacio" : {
+ 		"usuario" : "",
+		"passwdUsuario" : "prueba"
+ 	},
+ 	"contrasenaVacia" : {
+ 		"usuario" : "prueba",
+		"passwdUsuario" : ""
+ 	},
+ 	"usuarioNoExiste" : {
+		"usuario" : "pepito",
+		"passwdUsuario" : "pepito"
+	},
+ 	"contrasenaIncorrecta" : {
+ 		"usuario" : "aicuna",
+		"passwdUsuario" : "pepito"
+ 	},
+ 	"usuarioContrasenaCorrectos" : {
+ 		"usuario" : "aicuna",
+		"passwdUsuario" : "aicuna"
+ 	}
+}

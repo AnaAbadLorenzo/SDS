@@ -13,6 +13,7 @@ import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.model.RolEntity;
 import com.sds.service.exception.NoHayRolesException;
+import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.rol.RolService;
@@ -127,9 +128,12 @@ public class RolController {
 
 		try {
 			final String resultado = rolService.eliminarRol(rol);
+			
 			return new RespEntity(RespCode.ROL_ELIMINADO, resultado);
 		} catch (final RolNoExisteException rolNoExists) {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
+		}catch(final RolAsociadoUsuarioException rolAsociatedUser) {
+			return new RespEntity(RespCode.ROL_ASOCIADO_USUARIO_EXCEPTION, rol);
 		}
 
 	}
