@@ -194,4 +194,6 @@ public class Constantes {
 	public static final String PATRON_CARACTERES_ESPECIALES = "[/¡/!/¿/?/@/#/$/%/(/)/=/+/-/€/./,//]";
 	public static final String ESPACIO = " ";
 	public static final String ALFANUMERICO = "^[a-zA-Z0-9]+$";
+	public static final String FORMATO_FECHAS = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}";
+	public static final String FORMATO_EMAIL = "^[A-Za-z0-9]+(/@)[a-z]+(/.)[a-z]{2,3}";
 }

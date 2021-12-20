@@ -53,34 +53,34 @@ public class RolController {
 		return new RespEntity(RespCode.ROL_VACIO, rolName);
 
 	}
-	
-	@RequestMapping(value="/listarRoles", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/listarRoles", method = RequestMethod.GET)
 	@ResponseBody
 	public RespEntity buscarTodos() {
 		try {
 			final List<RolEntity> resultado = rolService.buscarTodos();
-			
+
 			return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
-		
-		}catch(final NoHayRolesException rolesNoExists) {
-			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
-		}
-	}
-	
-	@RequestMapping(value = "/listarRolesEliminados", method=RequestMethod.GET)
-	@ResponseBody
-	public RespEntity buscarRolesEliminados() {
-		try {
-			final List<RolEntity> resultado = rolService.buscarRolesEliminados();
-			
-			return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
-		
-		}catch(final NoHayRolesException rolesNoExists) {
+
+		} catch (final NoHayRolesException rolesNoExists) {
 			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
 		}
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/listarRolesEliminados", method = RequestMethod.GET)
+	@ResponseBody
+	public RespEntity buscarRolesEliminados() {
+		try {
+			final List<RolEntity> resultado = rolService.buscarRolesEliminados();
+
+			return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
+
+		} catch (final NoHayRolesException rolesNoExists) {
+			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
+		}
+	}
+
+	@RequestMapping(value = "/rol", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity guardarRol(@RequestBody final RolEntity rol) {
 
@@ -128,11 +128,11 @@ public class RolController {
 
 		try {
 			final String resultado = rolService.eliminarRol(rol);
-			
+
 			return new RespEntity(RespCode.ROL_ELIMINADO, resultado);
 		} catch (final RolNoExisteException rolNoExists) {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
-		}catch(final RolAsociadoUsuarioException rolAsociatedUser) {
+		} catch (final RolAsociadoUsuarioException rolAsociatedUser) {
 			return new RespEntity(RespCode.ROL_ASOCIADO_USUARIO_EXCEPTION, rol);
 		}
 

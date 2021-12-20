@@ -35,11 +35,13 @@ public class Validaciones {
 		return true;
 	}
 
-	private boolean comprobarPersonaBlank(final PersonaEntity persona) {
+	public boolean comprobarPersonaBlank(final PersonaEntity persona) {
 		if (StringUtils.isBlank(persona.getDniP()) || StringUtils.isBlank(persona.getNombreP())
 				|| StringUtils.isBlank(persona.getApellidosP()) || StringUtils.isBlank(persona.getDireccionP())
-				|| StringUtils.isBlank(persona.getTelefonoP()) || StringUtils.isBlank(persona.getEmailP())
-				|| persona.getFechaNacP().equals(null)) {
+				|| StringUtils.isBlank(persona.getTelefonoP()) || StringUtils.isBlank(persona.getEmailP())) {
+			return false;
+
+		} else {
 			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 			Date date = null;
 			try {
@@ -52,13 +54,12 @@ public class Validaciones {
 			if (persona.getFechaNacP().equals(date)) {
 				return false;
 			}
-
 		}
 
 		return true;
 	}
 
-	private boolean comprobarUsuarioBlank(final UsuarioEntity usuario) {
+	public boolean comprobarUsuarioBlank(final UsuarioEntity usuario) {
 		if (StringUtils.isBlank(usuario.getUsuario()) || StringUtils.isBlank(usuario.getPasswdUsuario())) {
 			return false;
 		}

@@ -47,6 +47,29 @@
 		
 	},
 	
+	"empresaVacia" : {
+		
+			"dniP" : "41236589K",
+			"nombreP": "Fatima",
+			"apellidosP" : "Abad",
+			"fechaNacP" : "1997-10-12",
+			"direccionP" : "Avenida Flores N12 1º",
+			"emailP" : "fatima@gmail.com",
+			"telefonoP" : "987441252",
+		
+			"usuario" : "fatima",
+			"passwdUsuario" : "fatima",
+			"idRol" : 2,
+	
+			"idEmpresa" : "",
+			"cifEmpresa" : "",
+			"nombreEmpresa" : "",
+			"direccionEmpresa" : "",
+			"telefonoEmpresa" : ""
+			
+		
+	},
+	
 	"usuarioVacio" : {
 			"dniP" : "45146321N",
 			"nombreP": "Ana",

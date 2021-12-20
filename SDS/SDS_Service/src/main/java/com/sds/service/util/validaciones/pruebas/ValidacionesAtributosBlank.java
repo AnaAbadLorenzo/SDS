@@ -1,5 +1,9 @@
 package com.sds.service.util.validaciones.pruebas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.sds.service.common.CodigosMensajes;
@@ -12,6 +16,23 @@ public class ValidacionesAtributosBlank {
 	public String comprobarAtributoBlank(final String atributo, final Funcionalidad funcionalidad, final Atributo atr) {
 
 		String resultado = StringUtils.EMPTY;
+
+		if (atr.equals(Atributo.FECHA_NACIMIENTO)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+			try {
+				fecha = format.parse("0000-00-00");
+				fechaSql = new java.sql.Date(fecha.getTime());
+				if (atributo.equals(fechaSql.toString())) {
+					resultado = CodigosMensajes.FECHA_NACIMIENTO_VACIA + " - "
+							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_VACIA;
+				}
+			} catch (final ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		if (StringUtils.isBlank(atributo)) {
 			switch (funcionalidad) {
@@ -27,35 +48,27 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
-				
+
 			case REGISTRAR:
-				switch(atr) {
+				switch (atr) {
 				case DNI_PERSONA:
-					resultado = CodigosMensajes.DNI_PERSONA_VACIO + " - "
-						+ Mensajes.DNI_PERSONA_NO_PUEDE_SER_VACIO;
+					resultado = CodigosMensajes.DNI_PERSONA_VACIO + " - " + Mensajes.DNI_PERSONA_NO_PUEDE_SER_VACIO;
 					break;
 				case NOMBRE:
-					resultado = CodigosMensajes.NOMBRE_VACIO + " - "
-						+ Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
+					resultado = CodigosMensajes.NOMBRE_VACIO + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
 					break;
 				case APELLIDOS_PERSONA:
 					resultado = CodigosMensajes.APELLIDOS_PERSONA_VACIO + " - "
-						+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_VACIO;
+							+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_VACIO;
 					break;
-				case FECHA_NACIMIENTO:
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_VACIA + " - "
-						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_VACIA;
 				case EMAIL:
-					resultado = CodigosMensajes.EMAIL_VACIO + " - "
-						+ Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+					resultado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
 					break;
 				case TELEFONO:
-					resultado = CodigosMensajes.TELEFONO_VACIO + " - "
-						+ Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
+					resultado = CodigosMensajes.TELEFONO_VACIO + " - " + Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
 					break;
 				case DIRECCION:
-					resultado = CodigosMensajes.DIRECCION_VACIO + " - "
-						+ Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
+					resultado = CodigosMensajes.DIRECCION_VACIO + " - " + Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
 					break;
 				case USUARIO:
 					resultado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - " + Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
@@ -65,8 +78,7 @@ public class ValidacionesAtributosBlank {
 							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_VACIA;
 					break;
 				case CIF_EMPRESA:
-					resultado = CodigosMensajes.CIF_EMPRESA_VACIO + " - "
-							+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_VACIO;
+					resultado = CodigosMensajes.CIF_EMPRESA_VACIO + " - " + Mensajes.CIF_EMPRESA_NO_PUEDE_SER_VACIO;
 					break;
 				}
 			default:

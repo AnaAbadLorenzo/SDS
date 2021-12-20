@@ -11,7 +11,7 @@ import com.sds.service.test.model.DatosPruebaAtributos;
 import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosAcentos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoEmail;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEnhe;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEspacios;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
@@ -25,7 +25,7 @@ public class TestAtributoEmailPersonaRegistro {
 	private final ValidacionesAtributosEspacios validacionesAtributosEspacios;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosCorrectoEmail validacionesAtributosCorrectoEmail;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoEmailPersonaRegistro() {
@@ -35,24 +35,25 @@ public class TestAtributoEmailPersonaRegistro {
 		validacionesAtributosEspacios = new ValidacionesAtributosEspacios();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosCorrectoEmail = new ValidacionesAtributosCorrectoEmail();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
 	public DatosPruebaAtributos getTestRegistroEmailPersonaVacio(final Registro datosEntradaRegistroEmailPersonaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroEmailPersonaVacio.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR, Atributo.EMAIL);
+				datosEntradaRegistroEmailPersonaVacio.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
+				Atributo.EMAIL);
 
-		final String resultadoEsperado = CodigosMensajes.EMAIL_VACIO + " - "
-				+ Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+		final String resultadoEsperado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroEmailPersonaVacio.getDatosPersona().getEmailP(),
-				Constantes.EMAILP);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroEmailPersonaVacio.getDatosPersona().getEmailP(), Constantes.EMAILP);
 	}
 
-	public DatosPruebaAtributos getTestRegistroEmailPersonaAlfanumericoEnhe(final Registro datosEntradaRegistroEmailPersonaAlfanumericoEnhe) {
+	public DatosPruebaAtributos getTestRegistroEmailPersonaAlfanumericoEnhe(
+			final Registro datosEntradaRegistroEmailPersonaAlfanumericoEnhe) {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroEmailPersonaAlfanumericoEnhe.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
@@ -71,8 +72,8 @@ public class TestAtributoEmailPersonaRegistro {
 			final Registro datosEntradaRegistroEmailPersonaAlfanumericoAcentos) {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
-				datosEntradaRegistroEmailPersonaAlfanumericoAcentos.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
-				Atributo.EMAIL);
+				datosEntradaRegistroEmailPersonaAlfanumericoAcentos.getDatosPersona().getEmailP(),
+				Funcionalidad.REGISTRAR, Atributo.EMAIL);
 
 		final String resultadoEsperado = CodigosMensajes.EMAIL_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
@@ -82,7 +83,6 @@ public class TestAtributoEmailPersonaRegistro {
 				datosEntradaRegistroEmailPersonaAlfanumericoAcentos.getDatosPersona().getEmailP(), Constantes.EMAILP);
 
 	}
-
 
 	public DatosPruebaAtributos getTestRegistroEmailPAlfanumericoEspacios(
 			final Registro datosEntradaRegistroEmailPAlfanumericoEspacios) {
@@ -131,8 +131,8 @@ public class TestAtributoEmailPersonaRegistro {
 
 	public DatosPruebaAtributos getTestRegistroEmailPCorrectoAlfanumerico(final Registro datosEntradaRegistroEmailP) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroEmailP.getDatosPersona().getEmailP());
+		final String resultadoObtenido = validacionesAtributosCorrectoEmail
+				.comprobarAtributoCorrectoEmail(datosEntradaRegistroEmailP.getDatosPersona().getEmailP());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 

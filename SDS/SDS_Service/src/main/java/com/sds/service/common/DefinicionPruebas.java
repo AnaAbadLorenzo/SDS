@@ -24,13 +24,16 @@ public class DefinicionPruebas {
 	public static final String NUMERICO_MENOR_8 = "Numérico menor de 8 caracteres";
 	public static final String NUMERICO_MAYOR_8 = "Numérico mayor de 8 caracteres";
 	public static final String NUMERICO_FECHA_CORRECTO = "Numérico sin acentos, ni ñ, ni caracteres especiales, tamaño 8";
-	
+
 	public static final String USUARIO_NO_EXISTE = "El usuario no existe";
 	public static final String CONTRASENA_INCORRECTA = "La contraseña no es correcta";
 	public static final String LOGIN_CORRECTO = "Login correcto";
-	
+
 	public static final String PERSONA_YA_EXISTE = "La persona ya existe";
 	public static final String USUARIO_YA_EXISTE = "El usuario ya existe";
 	public static final String EMPRESA_YA_EXISTE = "La empresa ya existe";
+	public static final String PERSONA_VACIA = "Los datos de persona no pueden ser vacíos";
+	public static final String USUARIO_VACIO = "Los datos de usuario no pueden ser vacíos";
+	public static final String EMPRESA_VACIA = "Los datos de empresa no pueden ser vacíos";
 	public static final String REGISTRO_CORRECTO = "Registro correcto";
 }

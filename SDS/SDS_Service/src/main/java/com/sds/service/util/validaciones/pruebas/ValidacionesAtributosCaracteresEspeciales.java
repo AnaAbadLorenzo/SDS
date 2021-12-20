@@ -1,5 +1,8 @@
 package com.sds.service.util.validaciones.pruebas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +20,24 @@ public class ValidacionesAtributosCaracteresEspeciales {
 			final Atributo atr) {
 
 		String resultado = StringUtils.EMPTY;
+
+		if (atr.equals(Atributo.FECHA_NACIMIENTO)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+			try {
+				fecha = format.parse("0000-00-00");
+				fechaSql = new java.sql.Date(fecha.getTime());
+				if (atributo.equals(fechaSql.toString())) {
+					resultado = CodigosMensajes.FECHA_NACIMIENTO_NUMERICA_INCORRECTA + " - "
+							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+
+				}
+			} catch (final ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		for (int i = 0; i < atributo.length(); i++) {
 
@@ -40,24 +61,24 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
-					
+
 				case REGISTRAR:
-					switch(atr) {
+					switch (atr) {
 					case DNI_PERSONA:
 						resultado = CodigosMensajes.DNI_PERSONA_ALFANUMERICO_INCORRECTO + " - "
-							+ Mensajes.DNI_PERSONA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+								+ Mensajes.DNI_PERSONA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 						break;
 					case NOMBRE:
 						resultado = CodigosMensajes.NOMBRE_LETRAS_ACENTOS_INCORRECTO + " - "
-							+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+								+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
 						break;
 					case APELLIDOS_PERSONA:
 						resultado = CodigosMensajes.APELLIDOS_PERSONA_LETRAS_ACENTOS_INCORRECTO + " - "
-							+ Mensajes.APELLIDOS_PERSONA_NO_PUEDEN_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+								+ Mensajes.APELLIDOS_PERSONA_NO_PUEDEN_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
 						break;
 					case TELEFONO:
 						resultado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
-							+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+								+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 						break;
 					case USUARIO:
 						resultado = CodigosMensajes.LOGIN_ALFANUMERICO_INCORRECTO + " - "
@@ -71,9 +92,9 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 								+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 						break;
-						}
-					default:
-						break;
+					}
+				default:
+					break;
 				}
 			}
 		}

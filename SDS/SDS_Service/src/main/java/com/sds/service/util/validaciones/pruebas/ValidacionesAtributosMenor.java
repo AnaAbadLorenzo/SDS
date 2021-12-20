@@ -1,5 +1,9 @@
 package com.sds.service.util.validaciones.pruebas;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.commons.lang3.StringUtils;
 
 import com.sds.service.common.CodigosMensajes;
@@ -13,6 +17,24 @@ public class ValidacionesAtributosMenor {
 			final Integer tamanhoMinimo) {
 
 		String resultado = StringUtils.EMPTY;
+
+		if (atr.equals(Atributo.FECHA_NACIMIENTO)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+			try {
+				fecha = format.parse("0000-00-00");
+				fechaSql = new java.sql.Date(fecha.getTime());
+				if (atributo.equals(fechaSql.toString())) {
+					resultado = CodigosMensajes.FECHA_NACIMIENTO_MENOR_QUE_8 + " - "
+							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_MENOR_QUE_8;
+
+				}
+			} catch (final ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		if (atributo.length() < tamanhoMinimo) {
 			switch (funcionalidad) {
@@ -33,31 +55,25 @@ public class ValidacionesAtributosMenor {
 			case REGISTRAR:
 				switch (atr) {
 				case DNI_PERSONA:
-					resultado = CodigosMensajes.DNI_PERSONA_MENOR_QUE_9 + " - "
-						+ Mensajes.DNI_NO_PUEDE_SER_MENOR_QUE_9;
+					resultado = CodigosMensajes.DNI_PERSONA_MENOR_QUE_9 + " - " + Mensajes.DNI_NO_PUEDE_SER_MENOR_QUE_9;
 					break;
 				case NOMBRE:
-					resultado = CodigosMensajes.NOMBRE_MENOR_QUE_3 + " - "
-					+ Mensajes.NOMBRE_NO_PUEDE_SER_MENOR_QUE_3;
+					resultado = CodigosMensajes.NOMBRE_MENOR_QUE_3 + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
 				case APELLIDOS_PERSONA:
 					resultado = CodigosMensajes.APELLIDOS_PERSONA_MENOR_QUE_3 + " - "
-						+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_MENOR_QUE_3;
+							+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
-				case FECHA_NACIMIENTO:
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_MENOR_QUE_8 + " - "
-						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_MENOR_QUE_8;
 				case EMAIL:
-					resultado = CodigosMensajes.EMAIL_MENOR_QUE_4 + " - "
-						+ Mensajes.EMAIL_NO_PUEDE_SER_MENOR_QUE_4;
+					resultado = CodigosMensajes.EMAIL_MENOR_QUE_4 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MENOR_QUE_4;
 					break;
 				case TELEFONO:
 					resultado = CodigosMensajes.TELEFONO_MENOR_QUE_9 + " - "
-						+ Mensajes.TELEFONO_NO_PUEDE_SER_MENOR_QUE_9;
+							+ Mensajes.TELEFONO_NO_PUEDE_SER_MENOR_QUE_9;
 					break;
 				case DIRECCION:
 					resultado = CodigosMensajes.DIRECCION_MENOR_QUE_3 + " - "
-						+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
+							+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
 				case USUARIO:
 					resultado = CodigosMensajes.LOGIN_MENOR_QUE_3 + " - "

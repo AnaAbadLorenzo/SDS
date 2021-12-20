@@ -39,9 +39,11 @@ public class SDSApplication {
 					.antMatchers(HttpMethod.GET, "/rol/listarRol").permitAll()
 					.antMatchers(HttpMethod.GET, "/rol/listarRoles").permitAll()
 					.antMatchers(HttpMethod.GET, "/rol/listarRolesEliminados").permitAll()
-					.antMatchers(HttpMethod.POST, "/rol").permitAll()
-					.antMatchers(HttpMethod.POST, "/rol/modificarRol").permitAll()
-					.antMatchers(HttpMethod.POST, "/rol/eliminarRol").permitAll()
+					.antMatchers(HttpMethod.POST, "/rol").permitAll().antMatchers(HttpMethod.POST, "/rol/modificarRol")
+					.permitAll().antMatchers(HttpMethod.POST, "/rol/eliminarRol").permitAll()
+					.antMatchers(HttpMethod.GET, "/test/registrar/acciones").permitAll()
+					.antMatchers(HttpMethod.GET, "/test/registrar/atributos").permitAll()
+					.antMatchers(HttpMethod.GET, "/test/login/atributos").permitAll()
 					.antMatchers(HttpMethod.POST, "/registro").permitAll().anyRequest().authenticated();
 
 		}
