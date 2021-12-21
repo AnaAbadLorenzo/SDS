@@ -18,6 +18,7 @@ import com.sds.model.RespEntity;
 import com.sds.service.common.Constantes;
 import com.sds.service.test.TestLoginService;
 import com.sds.service.test.TestRegistrarService;
+import com.sds.service.test.TestRolService;
 import com.sds.service.test.model.DatosPruebaAcciones;
 import com.sds.service.test.model.DatosPruebaAtributos;
 
@@ -29,6 +30,9 @@ public class TestController {
 
 	@Autowired
 	TestRegistrarService testRegistrarService;
+
+	@Autowired
+	TestRolService testRolService;
 
 	@GetMapping(value = "/test/login/atributos")
 	@ResponseBody
@@ -123,7 +127,7 @@ public class TestController {
 			resultadoPruebasAtributos.addAll(pruebaAtributoTelefonoEmpresa);
 
 		} catch (IOException | ParseException | java.text.ParseException exc) {
-			return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_KO, StringUtils.EMPTY);
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_REGISTRO_KO, StringUtils.EMPTY);
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.REGISTRAR);
@@ -151,6 +155,33 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/test/rol/atributos")
+	@ResponseBody
+	public RespEntity TestRolAtributos() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolName();
+			final List<DatosPruebaAtributos> pruebaAtributoRolDescription = testRolService
+					.getPruebasAtributoRolDescription();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
+			resultadoPruebasAtributos.addAll(pruebaAtributoRolDescription);
+
+		} catch (IOException | ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
+		respuestaTestAtributos.setAccion(Constantes.AÑADIR_MODIFICAR);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
 	}
 
 }

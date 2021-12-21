@@ -80,7 +80,24 @@ public class ValidacionesAtributosBlank {
 				case CIF_EMPRESA:
 					resultado = CodigosMensajes.CIF_EMPRESA_VACIO + " - " + Mensajes.CIF_EMPRESA_NO_PUEDE_SER_VACIO;
 					break;
+				default:
+					break;
 				}
+
+			case GESTION_ROLES:
+				switch (atr) {
+				case ROL_NAME:
+					resultado = CodigosMensajes.ROL_NAME_VACIO + " - " + Mensajes.ROL_NAME_NO_PUEDE_SER_VACIO;
+					break;
+
+				case ROL_DESCRIPTION:
+					resultado = CodigosMensajes.ROL_DESCRIPTION_VACIO + " - "
+							+ Mensajes.ROL_DESCRIPTION_NO_PUEDE_SER_VACIO;
+					break;
+				default:
+					break;
+				}
+
 			default:
 				break;
 			}

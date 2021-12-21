@@ -89,7 +89,17 @@ public class ValidacionesAtributosMayor {
 					resultado = CodigosMensajes.CIF_EMPRESA_MAYOR_QUE_9 + " - "
 							+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MAYOR_QUE_9;
 					break;
+				default:
+					break;
 				}
+			case GESTION_ROLES:
+				switch (atr) {
+				case ROL_NAME:
+					resultado = CodigosMensajes.ROL_NAME_MAYOR_QUE_32 + " - "
+							+ Mensajes.ROL_NAME_NO_PUEDE_SER_MAYOR_QUE_32;
+					break;
+				}
+
 			default:
 				break;
 			}

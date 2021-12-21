@@ -58,6 +58,15 @@ public class Mensajes {
 	public static final String CIF_EMPRESA_NO_PUEDE_SER_MENOR_QUE_9 = "El cif de la empresa no puede ser menor que 9";
 	public static final String CIF_EMPRESA_NO_PUEDE_SER_MAYOR_QUE_9 = "El cif de la empresa no puede ser mayor que 9";
 
+	public static final String ROL_NAME_NO_PUEDE_SER_VACIO = "El nombre del rol no puede ser vacío";
+	public static final String ROL_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS = "El nombre del rol sólo puede contener letras";
+	public static final String ROL_NAME_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre del rol no puede ser menor que 3";
+	public static final String ROL_NAME_NO_PUEDE_SER_MAYOR_QUE_32 = "El nombre del rol no puede ser mayor que 32";
+
+	public static final String ROL_DESCRIPTION_NO_PUEDE_SER_VACIO = "La descripción del rol no puede ser vacía";
+	public static final String ROL_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS = "La descripción del rol no puede contener más que letras";
+	public static final String ROL_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción del rol no puede ser menor que 3";
+
 	public static final String REGISTRO_CORRECTO = "El registro se ha realizado correctamente";
 	public static final String REGISTRO_PERSONA_YA_EXISTE = "La persona ya existe";
 	public static final String REGISTRO_USUARIO_YA_EXISTE = "El usuario ya existe";

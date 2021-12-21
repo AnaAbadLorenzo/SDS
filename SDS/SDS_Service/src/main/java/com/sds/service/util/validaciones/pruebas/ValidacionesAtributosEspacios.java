@@ -80,7 +80,18 @@ public class ValidacionesAtributosEspacios {
 					resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 							+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 					break;
+				default:
+					break;
 				}
+
+			case GESTION_ROLES:
+				switch (atr) {
+				case ROL_NAME:
+					resultado = CodigosMensajes.ROL_NAME_ALFABETICO_INCORRECTO + " - "
+							+ Mensajes.ROL_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+					break;
+				}
+
 			default:
 				break;
 			}

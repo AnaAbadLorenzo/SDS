@@ -13,7 +13,6 @@ import com.sds.model.UsuarioEntity;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
-import com.sds.service.exception.NoHayRolesException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
@@ -26,7 +25,7 @@ public class RolServiceImpl implements RolService {
 
 	@Autowired
 	RolRepository rolRepository;
-	
+
 	@Autowired
 	UsuarioRepository usuarioRepository;
 
@@ -40,36 +39,32 @@ public class RolServiceImpl implements RolService {
 	public RolEntity buscarRol(final String rolName) throws RolNoExisteException {
 		final Boolean rolValido = validaciones.comprobarNombreRolBlank(rolName);
 		RolEntity rolUser = null;
-		final RolEntity rol;
+		RolEntity rol = null;
 
 		if (rolValido) {
 			rol = rolRepository.findByRolName(rolName);
 
-			if (rol.equals(null)) {
+			if (rol == null) {
 				throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
 						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
 			} else {
 				rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(), rol.getBorradoRol());
 			}
 		}
+
 		return rolUser;
 	}
 
 	@Override
-	public List<RolEntity> buscarTodos() throws NoHayRolesException {
+	public List<RolEntity> buscarTodos() {
 		final List<RolEntity> roles = rolRepository.findAll();
 		final List<RolEntity> toret = new ArrayList<RolEntity>();
-		
-		if (roles.isEmpty()) {
-			throw new NoHayRolesException(CodeMessageErrors.NO_HAY_ROLES_EXCEPTION.getCodigo(),
-					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.NO_HAY_ROLES_EXCEPTION.getCodigo()));
-		}
-		
-		for(int i =0; i< roles.size(); i++) {
-			RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(), roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
+
+		for (int i = 0; i < roles.size(); i++) {
+			final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
+					roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
 			toret.add(rol);
 		}
-		
 
 		return toret;
 	}
@@ -115,14 +110,15 @@ public class RolServiceImpl implements RolService {
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
 			final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
-			
-			for(UsuarioEntity usuario : usuarios) {
-				if(usuario.getRol().getIdRol().equals(rol.getIdRol())) {
+
+			for (final UsuarioEntity usuario : usuarios) {
+				if (usuario.getRol().getIdRol().equals(rol.getIdRol())) {
 					throw new RolAsociadoUsuarioException(CodeMessageErrors.ROL_ASOCIADO_USUARIO_EXCEPTION.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_ASOCIADO_USUARIO_EXCEPTION.getCodigo()));
+							CodeMessageErrors
+									.getTipoNameByCodigo(CodeMessageErrors.ROL_ASOCIADO_USUARIO_EXCEPTION.getCodigo()));
 				}
 			}
-			
+
 			rol.setBorradoRol(1);
 			modificarRol(rol);
 			resultado = Constantes.OK;
@@ -156,23 +152,18 @@ public class RolServiceImpl implements RolService {
 
 		return resultado;
 	}
-	
+
 	@Override
-	public List<RolEntity> buscarRolesEliminados() throws NoHayRolesException{
-		List<RolEntity> rolesEliminados = rolRepository.findDeleteRol(1);
+	public List<RolEntity> buscarRolesEliminados() {
+		final List<RolEntity> rolesEliminados = rolRepository.findDeleteRol(1);
 		final List<RolEntity> toret = new ArrayList<RolEntity>();
-		
-		if(rolesEliminados == null) {
-			throw new NoHayRolesException(CodeMessageErrors.NO_HAY_ROLES_EXCEPTION.getCodigo(),
-					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.NO_HAY_ROLES_EXCEPTION.getCodigo()));
-			
-		}
-		
-		for(int i = 0; i<rolesEliminados.size(); i++) {
-			RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(), rolesEliminados.get(i).getRolName(), rolesEliminados.get(i).getRolDescription(),rolesEliminados.get(i).getBorradoRol());
+
+		for (int i = 0; i < rolesEliminados.size(); i++) {
+			final RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(), rolesEliminados.get(i).getRolName(),
+					rolesEliminados.get(i).getRolDescription(), rolesEliminados.get(i).getBorradoRol());
 			toret.add(rol);
 		}
-		
+
 		return toret;
 
 	}

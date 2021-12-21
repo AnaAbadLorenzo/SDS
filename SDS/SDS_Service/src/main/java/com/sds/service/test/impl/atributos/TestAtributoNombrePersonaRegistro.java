@@ -11,9 +11,10 @@ import com.sds.service.test.model.DatosPruebaAtributos;
 import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfabetico;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosNumerico;
 
 public class TestAtributoNombrePersonaRegistro {
 
@@ -21,7 +22,8 @@ public class TestAtributoNombrePersonaRegistro {
 	private final ValidacionesAtributosCaracteresEspeciales validacionesAtributosCaracteresEspeciales;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosNumerico validacionesAtributosNumerico;
+	private final ValidacionesAtributosCorrectoAlfabetico validacionesAtributosCorrectoAlfabetico;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoNombrePersonaRegistro() {
@@ -29,24 +31,24 @@ public class TestAtributoNombrePersonaRegistro {
 		validacionesAtributosCaracteresEspeciales = new ValidacionesAtributosCaracteresEspeciales();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosNumerico = new ValidacionesAtributosNumerico();
+		validacionesAtributosCorrectoAlfabetico = new ValidacionesAtributosCorrectoAlfabetico();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroNombrePersonaVacio(final Registro datosEntradaRegistroNombrePersonaVacio) {
+	public DatosPruebaAtributos getTestRegistroNombrePersonaVacio(
+			final Registro datosEntradaRegistroNombrePersonaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroNombrePersonaVacio.getDatosPersona().getNombreP(), Funcionalidad.REGISTRAR, Atributo.NOMBRE);
+				datosEntradaRegistroNombrePersonaVacio.getDatosPersona().getNombreP(), Funcionalidad.REGISTRAR,
+				Atributo.NOMBRE);
 
-		final String resultadoEsperado = CodigosMensajes.NOMBRE_VACIO + " - "
-				+ Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
+		final String resultadoEsperado = CodigosMensajes.NOMBRE_VACIO + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroNombrePersonaVacio.getDatosPersona().getNombreP(),
-				Constantes.NOMBREP);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroNombrePersonaVacio.getDatosPersona().getNombreP(), Constantes.NOMBREP);
 	}
-
-
 
 	public DatosPruebaAtributos getTestRegistroNombrePAlfanumericoCaracteresEspeciales(
 			final Registro datosEntradaRegistroNombrePAlfanumericoCaracteresEspeciales) {
@@ -65,13 +67,12 @@ public class TestAtributoNombrePersonaRegistro {
 				Constantes.NOMBREP);
 	}
 
-
 	public DatosPruebaAtributos getTestRegistroNombrePAlfanumericoMenor3(
 			final Registro datosEntradaRegistroNombrePersonaAlfanumericoMenor3) {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
-				datosEntradaRegistroNombrePersonaAlfanumericoMenor3.getDatosPersona().getNombreP(), Funcionalidad.REGISTRAR,
-				Atributo.NOMBRE, 3);
+				datosEntradaRegistroNombrePersonaAlfanumericoMenor3.getDatosPersona().getNombreP(),
+				Funcionalidad.REGISTRAR, Atributo.NOMBRE, 3);
 
 		final String resultadoEsperado = CodigosMensajes.NOMBRE_MENOR_QUE_3 + " - "
 				+ Mensajes.NOMBRE_NO_PUEDE_SER_MENOR_QUE_3;
@@ -96,15 +97,29 @@ public class TestAtributoNombrePersonaRegistro {
 				datosEntradaRegistroNombrePAlfanumericoMayor56.getDatosPersona().getNombreP(), Constantes.NOMBREP);
 	}
 
-	public DatosPruebaAtributos getTestRegistroNombrePCorrectoAlfanumerico(final Registro datosEntradaRegistroNombreP) {
+	public DatosPruebaAtributos getTestRegistroNombrePNumerico(final Registro datosEntradaRegistroNombrePNumerico) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroNombreP.getDatosPersona().getNombreP());
+		final String resultadoObtenido = validacionesAtributosNumerico.comprobarAtributoNumerico(
+				datosEntradaRegistroNombrePNumerico.getDatosPersona().getNombreP(), Funcionalidad.REGISTRAR,
+				Atributo.NOMBRE);
+
+		final String resultadoEsperado = CodigosMensajes.NOMBRE_LETRAS_ACENTOS_INCORRECTO + " - "
+				+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.NUMERICO, Constantes.ERROR,
+				datosEntradaRegistroNombrePNumerico.getDatosPersona().getNombreP(), Constantes.NOMBREP);
+	}
+
+	public DatosPruebaAtributos getTestRegistroNombrePCorrectoAlfabetico(final Registro datosEntradaRegistroNombreP) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoAlfabetico
+				.comprobarAtributoCorrectoAlfabetico(datosEntradaRegistroNombreP.getDatosPersona().getNombreP());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.ALFABETICO_CORRECTO, Constantes.EXITO,
 				datosEntradaRegistroNombreP.getDatosPersona().getNombreP(), Constantes.NOMBREP);
 
 	}

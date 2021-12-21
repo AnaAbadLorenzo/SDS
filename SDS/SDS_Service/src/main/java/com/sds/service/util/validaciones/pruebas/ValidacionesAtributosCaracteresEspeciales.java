@@ -92,10 +92,26 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 								+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 						break;
+					default:
+						break;
 					}
+
+				case GESTION_ROLES:
+					switch (atr) {
+					case ROL_NAME:
+						resultado = CodigosMensajes.ROL_NAME_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.ROL_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+						break;
+					case ROL_DESCRIPTION:
+						resultado = CodigosMensajes.ROL_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.ROL_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+						break;
+					}
+
 				default:
 					break;
 				}
+
 			}
 		}
 

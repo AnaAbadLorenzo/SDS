@@ -88,6 +88,19 @@ public class ValidacionesAtributosMenor {
 							+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MENOR_QUE_9;
 					break;
 				}
+
+			case GESTION_ROLES:
+				switch (atr) {
+				case ROL_NAME:
+					resultado = CodigosMensajes.ROL_NAME_MENOR_QUE_3 + " - "
+							+ Mensajes.ROL_NAME_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case ROL_DESCRIPTION:
+					resultado = CodigosMensajes.ROL_DESCRIPTION_MENOR_QUE_3 + " - "
+							+ Mensajes.ROL_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				}
+
 			default:
 				break;
 			}

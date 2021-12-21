@@ -1,0 +1,22 @@
+{
+	"buscarRolCorrecto":{
+		"idRol":1,
+		"rolName":"admin",
+		"rolDescription": "admin",
+		"borradoRol": 0
+	},
+	
+	"rolNameVacio":{
+		"idRol":1,
+		"rolName":"",
+		"rolDescription": "admin",
+		"borradoRol": 0
+	},
+	
+	"rolNoExiste":{
+		"idRol":1,
+		"rolName":"prueba",
+		"rolDescription": "prueba`",
+		"borradoRol": 0
+	}
+}

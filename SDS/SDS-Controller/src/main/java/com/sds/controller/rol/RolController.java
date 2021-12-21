@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.model.RolEntity;
-import com.sds.service.exception.NoHayRolesException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
@@ -57,27 +56,18 @@ public class RolController {
 	@RequestMapping(value = "/listarRoles", method = RequestMethod.GET)
 	@ResponseBody
 	public RespEntity buscarTodos() {
-		try {
-			final List<RolEntity> resultado = rolService.buscarTodos();
+		final List<RolEntity> resultado = rolService.buscarTodos();
 
-			return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
-
-		} catch (final NoHayRolesException rolesNoExists) {
-			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
-		}
+		return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
 	}
 
 	@RequestMapping(value = "/listarRolesEliminados", method = RequestMethod.GET)
 	@ResponseBody
 	public RespEntity buscarRolesEliminados() {
-		try {
-			final List<RolEntity> resultado = rolService.buscarRolesEliminados();
+		final List<RolEntity> resultado = rolService.buscarRolesEliminados();
 
-			return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
+		return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
 
-		} catch (final NoHayRolesException rolesNoExists) {
-			return new RespEntity(RespCode.NO_HAY_ROLES_EXCEPTION);
-		}
 	}
 
 	@RequestMapping(value = "/rol", method = RequestMethod.POST)

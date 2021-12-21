@@ -122,4 +122,20 @@ public class GenerarJSON {
 
 		return registro;
 	}
+
+	public RolEntity generarRol(final String fichero, final String nombrePrueba) throws IOException, ParseException {
+
+		final JSONObject jsonRolVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final RolEntity rol = new RolEntity();
+
+		rol.setRolName(CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ROL_NAME).toString(), StringUtils.EMPTY));
+		rol.setRolDescription(
+				CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ROL_DESCRIPTION).toString(), StringUtils.EMPTY));
+
+		rol.setBorradoRol(0);
+
+		return rol;
+
+	}
 }
