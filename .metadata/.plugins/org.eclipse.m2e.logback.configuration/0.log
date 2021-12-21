@@ -14695,3 +14695,31 @@ Caused by: java.io.IOException: El volumen para un archivo ha sido alterado exte
 2021-12-21 11:27:35,871 [Worker-212: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2021-12-21 11:27:35,874 [Worker-212: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-12-21 11:27:35,878 [Worker-212: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 11:52:02,613 [Stop Help Server] INFO  org.eclipse.jetty.server.Server - Stopped Server@2380f476{STOPPING}[10.0.6,sto=0]
+2021-12-21 11:52:02,654 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@d7b9ca2{HTTP/1.1, (http/1.1)}{127.0.0.1:0}
+2021-12-21 11:52:02,720 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@409de0e8{/help,null,STOPPED}
+2021-12-21 16:04:51,374 [Worker-5: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2021-12-21 16:05:08,700 [Worker-1: Check for devtools] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-12-21 16:05:08,711 [Worker-1: Check for devtools] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-21 16:05:12,888 [Worker-2: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:05:12,889 [Worker-2: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:05:13,356 [Worker-2: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:05:13,357 [Worker-2: Launching RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:06:35,630 [Worker-3: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:06:35,630 [Worker-3: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:06:36,110 [Worker-3: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:06:36,111 [Worker-3: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:07:17,172 [Worker-2: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:07:17,172 [Worker-2: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:07:17,570 [Worker-2: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:07:17,570 [Worker-2: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:12:51,618 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:12:51,640 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-21 16:12:51,720 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-21 16:12:51,735 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:12:51,736 [Worker-9: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 16:13:06,797 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:13:06,799 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 16:13:06,800 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 16:13:06,805 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:13:06,813 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources

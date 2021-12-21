@@ -80,20 +80,20 @@ public class RegistroServiceTest {
 		registroService.registrar(registro);
 	}
 
-	@Test(expected = UsuarioYaExisteException.class)
-	public void RegistroService_registroUsuarioYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
-
-		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.USUARIO_YA_EXISTE);
-
-		registroService.registrar(registro);
-	}
-
 	@Test(expected = EmpresaYaExisteException.class)
 	public void RegistroService_registroEmpresaYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
 			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.EMPRESA_YA_EXISTE);
+
+		registroService.registrar(registro);
+	}
+
+	@Test(expected = UsuarioYaExisteException.class)
+	public void RegistroService_registroUsuarioYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
+			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException {
+
+		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.USUARIO_YA_EXISTE);
 
 		registroService.registrar(registro);
 	}
