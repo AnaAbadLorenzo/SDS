@@ -14723,3 +14723,746 @@ Caused by: java.io.IOException: El volumen para un archivo ha sido alterado exte
 2021-12-21 16:13:06,800 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2021-12-21 16:13:06,805 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-12-21 16:13:06,813 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 16:21:02,359 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:21:02,359 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 16:21:02,360 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 16:21:02,364 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:21:02,366 [Worker-13: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 16:21:36,234 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:21:36,235 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 16:21:36,238 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 16:21:36,243 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 16:21:36,245 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 16:21:48,014 [Worker-16: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:21:48,014 [Worker-16: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:21:48,396 [Worker-16: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:21:48,396 [Worker-16: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:22:38,586 [Worker-12: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:22:38,587 [Worker-12: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 16:22:39,067 [Worker-12: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 16:22:39,067 [Worker-12: Launching Rerun com.sds.registroService.RegistroServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 18:44:07,958 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:44:07,959 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 18:44:07,960 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 18:44:07,964 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:44:07,965 [Worker-11: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 18:44:29,339 [Worker-19: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 18:44:29,339 [Worker-19: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 18:44:29,671 [Worker-19: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 18:44:29,672 [Worker-19: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 18:56:13,894 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:56:13,895 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 18:56:13,895 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 18:56:13,899 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:56:13,900 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 18:57:16,294 [Worker-24: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-21 18:57:16,348 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:57:16,348 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-21 18:57:16,349 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-21 18:57:16,352 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:57:16,353 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-21 18:57:22,756 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:57:22,760 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 18:57:22,761 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-21 18:57:22,818 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 18:57:22,819 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 18:57:38,178 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 18:57:38,179 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 18:57:38,572 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 18:57:38,572 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 19:02:30,308 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:02:30,308 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 19:02:30,309 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-21 19:02:30,357 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:02:30,358 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 19:04:07,372 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:04:07,373 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-21 19:04:07,373 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-21 19:04:07,377 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:04:07,378 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory D:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-21 19:04:35,889 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:04:35,890 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 19:04:35,891 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-21 19:04:35,938 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:04:35,938 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 19:05:41,258 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:05:41,265 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 19:05:41,266 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 19:05:41,274 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 19:05:41,276 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 19:05:43,159 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 19:05:43,160 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 19:05:43,511 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 19:05:43,511 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 21:38:28,363 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 21:38:28,370 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 21:38:28,371 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-21 21:38:28,374 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-21 21:38:28,376 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-21 21:39:00,560 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 21:39:00,561 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-21 21:39:00,977 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-21 21:39:00,978 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:36:04,422 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2021-12-22 17:38:02,039 [Worker-14: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.service:SDS-Service:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\pom.xml.
+2021-12-22 17:38:04,311 [Worker-14: Updating Maven Dependencies] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.dataAccess:SDS-DataAccess:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-12-22 17:39:31,171 [Worker-17: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using NULL lifecycle mapping for MavenProject: com.sds:SDS:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\pom.xml.
+2021-12-22 17:39:32,337 [Worker-17: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.service:SDS-Service:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\pom.xml.
+2021-12-22 17:39:32,477 [Worker-17: Building] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sds.dataAccess:SDS-DataAccess:jar:1.0.0-SNAPSHOT is missing, no dependency information available
+2021-12-22 17:39:55,574 [Worker-17: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_DataAccess\pom.xml.
+2021-12-22 17:39:56,705 [Worker-17: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds.service:SDS-Service:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\pom.xml.
+2021-12-22 17:39:56,773 [Worker-17: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-22 17:40:04,929 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:04,929 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-12-22 17:40:04,937 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 16 resources
+2021-12-22 17:40:04,954 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-12-22 17:40:04,987 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:04,987 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-12-22 17:40:04,992 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-12-22 17:40:08,905 [Worker-17: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-22 17:40:09,662 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:09,662 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:40:09,662 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:40:09,667 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:09,667 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 17:40:11,188 [Worker-17: Building] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.sds:SDS-Controller:1.0.0-SNAPSHOT @ F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS-Controller\pom.xml.
+2021-12-22 17:40:11,478 [Worker-17: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-12-22 17:40:11,479 [Worker-17: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-22 17:40:12,288 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:12,290 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 17:40:14,095 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-22 17:40:14,102 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:14,103 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 17:40:40,204 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:40,204 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-12-22 17:40:40,232 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 16 resources
+2021-12-22 17:40:41,013 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 8 resources
+2021-12-22 17:40:41,563 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:40:41,563 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2021-12-22 17:40:41,563 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_DataAccess\src\test\resources
+2021-12-22 17:41:30,127 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:41:30,127 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:41:30,127 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:41:30,130 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:41:30,130 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 17:41:35,209 [Worker-10: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-12-22 17:41:35,210 [Worker-10: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-22 17:41:35,232 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:41:35,236 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 17:41:35,296 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-22 17:41:43,413 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:41:43,413 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 17:43:47,953 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:43:47,953 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:43:47,953 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:43:47,993 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:43:47,993 [Worker-14: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 17:47:34,215 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:47:34,221 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:47:34,221 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:47:34,225 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:47:34,225 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 17:49:11,050 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:49:11,050 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:49:11,050 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 17:49:11,053 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:49:11,053 [Worker-3: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 17:53:50,052 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:53:50,053 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 17:53:50,054 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 17:53:53,743 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:53:53,744 [Worker-10: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 17:54:12,873 [Worker-8: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:54:12,873 [Worker-8: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:54:13,035 [Worker-8: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:54:13,035 [Worker-8: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:55:48,317 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:55:48,318 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 17:55:48,318 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 17:55:48,355 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:55:48,356 [Worker-8: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 17:55:59,221 [Worker-10: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:55:59,221 [Worker-10: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:55:59,333 [Worker-10: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:55:59,333 [Worker-10: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:58:01,871 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:58:01,872 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 17:58:01,873 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 17:58:01,910 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 17:58:01,910 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 17:58:05,651 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:58:05,651 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:58:05,791 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:58:05,791 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:59:20,076 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:59:20,076 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 17:59:20,197 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 17:59:20,197 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:00:19,313 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:00:19,313 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:00:19,314 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 18:00:19,351 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:00:19,352 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:00:19,476 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:00:19,476 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:00:19,562 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:00:19,562 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:03:21,328 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:03:21,329 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:03:21,329 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 18:03:21,365 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:03:21,365 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:03:48,333 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:03:48,333 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 18:03:48,333 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 18:03:48,335 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:03:48,335 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 18:03:50,213 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:03:50,214 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:03:50,214 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:03:50,216 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:03:50,217 [Worker-7: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 18:04:03,975 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:04:03,976 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:04:03,976 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:04:03,978 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:04:03,978 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 18:04:11,625 [Worker-11: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:04:11,625 [Worker-11: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:04:11,739 [Worker-11: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:04:11,739 [Worker-11: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:06:00,181 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:00,181 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 18:06:00,182 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 18:06:00,185 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:00,185 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 18:06:02,219 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:02,225 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:06:02,225 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:06:02,228 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:02,229 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 18:06:31,483 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:31,483 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 18:06:31,483 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-22 18:06:31,485 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:31,486 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-22 18:06:37,232 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:37,233 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:06:37,233 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:06:37,236 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:06:37,237 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 18:07:32,455 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:07:32,456 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:07:32,459 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:07:32,462 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:07:32,462 [Worker-18: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 18:07:36,119 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:07:36,119 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:07:36,207 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:07:36,207 [Worker-19: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:19:27,502 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:19:27,503 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:19:27,503 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:19:27,505 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:19:27,506 [Worker-28: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 18:20:59,627 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:20:59,627 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:20:59,718 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:20:59,718 [Worker-23: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:22:55,380 [Worker-32: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:22:55,380 [Worker-32: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:22:55,472 [Worker-32: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 18:22:55,473 [Worker-32: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 18:23:50,255 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:23:50,256 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:23:50,256 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 18:23:50,260 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 18:23:50,261 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 21:43:33,864 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:43:33,865 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:43:33,939 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:43:33,940 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:44:45,856 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 21:44:45,857 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 21:44:45,857 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 21:44:45,866 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 21:44:45,872 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-22 21:44:57,178 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:44:57,179 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:44:57,261 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:44:57,262 [Worker-36: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:50:00,683 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 21:50:00,684 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 21:50:00,685 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 21:50:00,719 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 21:50:00,719 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 21:50:09,231 [Worker-39: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:50:09,231 [Worker-39: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:50:09,314 [Worker-39: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:50:09,314 [Worker-39: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:52:53,511 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 21:52:53,511 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 21:52:53,512 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-22 21:52:53,550 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-22 21:52:53,550 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-22 21:52:57,220 [Worker-46: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:52:57,221 [Worker-46: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-22 21:52:57,304 [Worker-46: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-22 21:52:57,304 [Worker-46: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:40:40,145 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2021-12-23 11:41:29,398 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier  to /SDS_Service/target/classes
+2021-12-23 11:41:31,101 [Worker-5: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-23 11:41:42,234 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 11:41:42,284 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 11:41:57,001 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-23 11:41:57,017 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 11:41:57,018 [Worker-5: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-23 11:44:08,213 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:44:08,214 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:44:08,352 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:44:08,352 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:50:01,285 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:50:01,286 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:50:01,406 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:50:01,407 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:51:28,101 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:51:28,101 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:51:28,205 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:51:28,206 [Worker-5: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:52:32,418 [Worker-13: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:52:32,418 [Worker-13: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:52:32,510 [Worker-13: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:52:32,510 [Worker-13: Launching RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:53:54,766 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 11:53:54,768 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 11:53:54,768 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 11:53:54,770 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 11:53:54,773 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-23 11:54:04,083 [Worker-16: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:54:04,083 [Worker-16: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 11:54:04,167 [Worker-16: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 11:54:04,167 [Worker-16: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:01:09,752 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:01:09,754 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:01:09,755 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:01:09,798 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:01:09,799 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:01:17,896 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:01:17,897 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:01:17,897 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:01:17,958 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:01:17,959 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:01:29,357 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:01:29,357 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:01:29,454 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:01:29,455 [Worker-18: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:10:09,647 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:10:09,648 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:10:09,649 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:10:09,652 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:10:09,653 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-23 12:10:25,500 [Worker-15: Building] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier  to /SDS_DataAccess/target/classes
+2021-12-23 12:10:25,516 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:10:25,517 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:10:25,517 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:10:25,520 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:10:25,520 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:10:31,445 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:10:31,446 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:10:31,447 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:10:31,484 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:10:31,485 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-23 12:10:37,763 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:10:37,763 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:10:37,848 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:10:37,848 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:12:24,826 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:12:24,827 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:12:24,828 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:12:24,866 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:12:24,867 [Worker-17: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:12:29,697 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:12:29,697 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:12:29,790 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:12:29,790 [Worker-20: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:13:51,951 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:13:51,952 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:13:51,952 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:13:51,954 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:13:51,955 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2021-12-23 12:15:25,365 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:15:25,365 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:15:25,472 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:15:25,472 [Worker-22: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:16:12,015 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:16:12,016 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:16:12,016 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:16:12,054 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:16:12,054 [Worker-20: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:16:21,449 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:16:21,449 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:16:21,532 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 12:16:21,532 [Worker-17: Launching Rerun com.sds.rolService.RolServiceTest] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 12:20:30,897 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:20:30,898 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:30,899 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:30,902 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:20:30,903 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:20:39,372 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:20:39,372 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:39,373 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:39,376 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:20:39,376 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:54,922 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:20:54,922 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:54,923 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 12:20:54,925 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:20:54,925 [Worker-19: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 12:28:28,537 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:28:28,538 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:28:28,538 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:28:28,540 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:28:28,541 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:31:53,838 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:31:53,838 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:31:53,838 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:31:53,840 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:31:53,841 [Worker-23: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:37:04,471 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:37:04,471 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:37:04,471 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:37:04,475 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:37:04,475 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:43:39,918 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:43:39,918 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:43:39,918 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:43:39,921 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:43:39,921 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:43:43,030 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:43:43,031 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:43:43,032 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:43:43,036 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:43:43,036 [Worker-15: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:45:07,185 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:45:07,185 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:45:07,186 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:45:07,188 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:45:07,188 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:46:49,772 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:46:49,772 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:46:49,772 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:46:49,774 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:46:49,774 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 12:47:23,214 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:47:23,215 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:47:23,215 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 12:47:23,217 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 12:47:23,217 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:40:39,959 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:40:39,960 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:40:39,960 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:40:39,962 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:40:39,962 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:41:26,402 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:41:26,402 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:41:26,402 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:41:26,404 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:41:26,405 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:41:30,298 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:41:30,298 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:41:30,298 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:41:30,301 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:41:30,301 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:42:22,916 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:42:22,922 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:42:22,922 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:42:22,932 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:42:22,938 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:42:23,059 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:42:23,062 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 15:42:23,102 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-23 15:42:23,109 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:42:23,109 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 15:42:34,722 [Worker-52: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:42:34,722 [Worker-52: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:42:34,778 [Worker-52: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:42:34,779 [Worker-52: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:42:34,846 [Worker-52: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:42:34,846 [Worker-52: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:43:28,918 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:43:28,937 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 15:43:32,628 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-23 15:43:32,641 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:43:32,642 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 15:44:46,371 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:44:46,374 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 15:44:46,404 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-23 15:44:46,410 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:44:46,411 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 15:46:03,373 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:46:03,374 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:46:03,374 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:46:03,378 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:46:03,378 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:47:52,636 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:47:52,637 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:47:52,637 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:47:52,638 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:47:52,639 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:50:44,357 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:50:44,357 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:50:44,357 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:50:44,359 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:50:44,359 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:51:20,460 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:51:20,460 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:51:20,460 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:51:20,463 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:51:20,463 [Worker-54: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:51:28,989 [Worker-57: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:51:28,990 [Worker-57: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:51:29,061 [Worker-57: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:51:29,061 [Worker-57: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:51:29,132 [Worker-57: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:51:29,133 [Worker-57: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:54:00,098 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:54:00,098 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:54:00,098 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:54:00,101 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:54:00,101 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:54:48,402 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:54:48,403 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:54:48,403 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:54:48,406 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:54:48,406 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:56:58,054 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:56:58,068 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 15:56:58,101 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-23 15:56:58,105 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:56:58,105 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 15:57:47,359 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:57:47,362 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2021-12-23 15:57:47,492 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 22 resources
+2021-12-23 15:57:47,503 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:57:47,503 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2021-12-23 15:58:10,250 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:58:10,251 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:58:10,251 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:58:10,253 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:58:10,253 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 15:58:19,479 [Worker-51: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:58:19,480 [Worker-51: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:58:19,543 [Worker-51: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:58:19,543 [Worker-51: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:58:19,602 [Worker-51: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 15:58:19,602 [Worker-51: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 15:59:13,072 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:59:13,077 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:59:13,078 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 15:59:13,085 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 15:59:13,085 [Worker-57: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:23:02,067 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:23:02,067 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:23:02,068 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:23:02,069 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:23:02,069 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:24:20,548 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:24:20,548 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:24:20,548 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:24:20,550 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:24:20,550 [Worker-64: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:25:03,807 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:25:03,807 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:25:03,807 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:25:03,809 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:25:03,809 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:26:39,513 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:26:39,514 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:26:39,514 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:26:39,515 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:26:39,515 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:27:32,947 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:27:32,947 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:27:32,947 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:27:32,949 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:27:32,949 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:28:15,618 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:28:15,618 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:28:15,618 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:28:15,620 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:28:15,620 [Worker-62: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:28:32,170 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:28:32,170 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:28:32,171 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:28:32,182 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:28:32,188 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:28:53,514 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:28:53,514 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:28:53,514 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:28:53,531 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:28:53,532 [Worker-66: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:30:24,122 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:30:24,122 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:30:24,122 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:30:24,124 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:30:24,124 [Worker-65: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:31:07,101 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:31:07,102 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:31:07,102 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:31:07,103 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:31:07,103 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:43:49,290 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:43:49,290 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:43:49,291 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:43:49,292 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:43:49,293 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:44:49,519 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:44:49,519 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:44:49,519 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:44:49,522 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:44:49,522 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:51:08,068 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:51:08,069 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:51:08,069 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:51:08,070 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:51:08,071 [Worker-68: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:51:58,157 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:51:58,157 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:51:58,157 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:51:58,159 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:51:58,159 [Worker-67: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:52:14,587 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:52:14,588 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:52:14,588 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:52:14,589 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:52:14,590 [Worker-69: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:54:03,817 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:54:03,817 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:54:03,817 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:54:03,819 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:54:03,819 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 16:54:03,930 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 16:54:03,930 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 16:54:04,016 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 16:54:04,016 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 16:54:04,073 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 16:54:04,073 [Worker-64: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 16:56:31,773 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:56:31,773 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:56:31,773 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 16:56:31,776 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 16:56:31,776 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:01:38,168 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:01:38,169 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:01:38,169 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:01:38,171 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:01:38,171 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:02:48,087 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:02:48,087 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:02:48,087 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:02:48,089 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:02:48,089 [Worker-78: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:09:26,198 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:09:26,198 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:09:26,198 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:09:26,200 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:09:26,200 [Worker-76: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:09:52,867 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:09:52,867 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:09:52,867 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:09:52,869 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:09:52,870 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:10:15,041 [Worker-77: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:10:15,041 [Worker-77: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:10:15,041 [Worker-77: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:10:15,042 [Worker-77: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:10:15,043 [Worker-77: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:14:53,033 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:14:53,038 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:14:53,038 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:14:53,046 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:14:53,047 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:15:15,503 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:15:15,503 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:15:15,503 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:15:15,505 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:15:15,505 [Worker-79: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:19:37,421 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:19:37,421 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:19:37,422 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:19:37,424 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:19:37,424 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:20:05,024 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:20:05,024 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:20:05,024 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:20:05,026 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:20:05,027 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:20:14,317 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:20:14,318 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:20:14,372 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:20:14,372 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:20:14,428 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:20:14,428 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:20:56,713 [Worker-85: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:20:56,714 [Worker-85: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:20:56,715 [Worker-85: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:20:56,716 [Worker-85: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:20:56,717 [Worker-85: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:23:09,878 [Worker-84: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:23:09,878 [Worker-84: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:23:09,878 [Worker-84: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:23:09,881 [Worker-84: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:23:09,881 [Worker-84: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:23:13,808 [Worker-81: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:23:13,808 [Worker-81: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:23:13,880 [Worker-81: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:23:13,880 [Worker-81: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:23:13,943 [Worker-81: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:23:13,943 [Worker-81: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:24:46,930 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:24:46,931 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:24:46,994 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:24:46,994 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:24:47,045 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:24:47,045 [Worker-83: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:27:25,776 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:27:25,777 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:27:25,777 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:27:25,779 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:27:25,779 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:27:38,950 [Worker-85: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:27:38,951 [Worker-85: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:27:39,012 [Worker-85: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:27:39,013 [Worker-85: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:27:39,072 [Worker-85: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_Service: com.sds.service:SDS-Service:1.0.0-SNAPSHOT with classifier null to /SDS_Service/target/classes
+2021-12-23 17:27:39,072 [Worker-85: Launching SDS-Controller - SDSApplication] INFO  o.e.m.c.i.p.WorkspaceClassifierResolverManager - Resolving P/SDS_DataAccess: com.sds.dataAccess:SDS-DataAccess:1.0.0-SNAPSHOT with classifier null to /SDS_DataAccess/target/classes
+2021-12-23 17:31:24,721 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:31:24,721 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:31:24,721 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:31:24,724 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:31:24,724 [Worker-81: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:32:39,254 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:32:39,255 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:32:39,255 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:32:39,256 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:32:39,257 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:33:10,437 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:33:10,437 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:33:10,437 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:33:10,439 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:33:10,439 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:33:44,255 [Worker-88: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:33:44,256 [Worker-88: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:33:44,256 [Worker-88: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:33:44,259 [Worker-88: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:33:44,260 [Worker-88: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:36:04,434 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:36:04,434 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:36:04,434 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:36:04,436 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:36:04,436 [Worker-82: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources
+2021-12-23 17:42:32,653 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:42:32,654 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:42:32,654 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\main\resources
+2021-12-23 17:42:32,656 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-23 17:42:32,656 [Worker-83: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_Correcto_v2\SDS\SDS\SDS_Service\src\test\resources

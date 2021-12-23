@@ -92,4 +92,12 @@ public class Validaciones {
 
 		return true;
 	}
+
+	public boolean comprobarDescriptionRolBlank(final String rolDescription) {
+		if (StringUtils.isBlank(rolDescription)) {
+			return false;
+		}
+
+		return true;
+	}
 }

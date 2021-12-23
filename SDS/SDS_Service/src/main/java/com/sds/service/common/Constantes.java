@@ -27,6 +27,7 @@ public class Constantes {
 	public static final String DIRECCION_EMPRESA = "direccionEmpresa";
 	public static final String TELEFONO_EMPRESA = "telefonoEmpresa";
 
+	public static final String ROL_ID = "idRol";
 	public static final String ROL_NAME = "rolName";
 	public static final String ROL_DESCRIPTION = "rolDescription";
 
@@ -61,6 +62,13 @@ public class Constantes {
 
 	public static final String BUSCAR_ROL = "buscarRolCorrecto";
 	public static final String ROL_NO_EXISTE = "rolNoExiste";
+	public static final String ROL_YA_EXISTE = "rolYaExiste";
+	public static final String GUARDAR_ROL = "guardarRolCorrecto";
+	public static final String ROL_NAME_DESCRIPTION_VACIOS = "rolNameDescriptionVacios";
+	public static final String ELIMINAR_ROL = "eliminarRol";
+	public static final String ELIMINAR_ROL_NO_EXISTE = "eliminarRolNoExiste";
+	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "eliminarRolAsociadoUsuario";
+	public static final String MODIFICAR_ROL = "modificarRol";
 
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
 	public static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";

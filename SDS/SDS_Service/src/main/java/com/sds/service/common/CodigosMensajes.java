@@ -74,5 +74,14 @@ public class CodigosMensajes {
 	public static final String REGISTRO_PERSONA_VACIA = "REGISTRO_PERSONA_VACIA";
 	public static final String REGISTRO_USUARIO_VACIO = "REGISTRO_USUARIO_VACIO";
 	public static final String REGISTRO_EMPRESA_VACIA = "REGISTRO_EMPRESA_VACIA";
+	public static final String ROL_VACIO = "ROL_VACIO";
+	public static final String ROL_NO_EXISTE = "ROL_NO_EXISTE";
+	public static final String BUSCAR_ROL_CORRECTO = "BUSCAR_ROL_CORRECTO";
+	public static final String GUARDAR_ROL_CORRRECTO = "GUARDAR_ROL_CORRECTO";
+	public static final String GUARDAR_ROL_VACIO = "GUARDAR_ROL_VACIO";
+	public static final String GUARDAR_ROL_YA_EXISTE = "GUARDAR_ROL_YA_EXISTE";
+	public static final String ELIMINAR_ROL_CORRECTO = "ELIMINAR_ROL_CORRECTO";
+	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "ELIMINAR_ROL_ASOCIADO_USUARIO";
+	public static final String MODIFICAR_ROL = "MODIFICAR_ROL";
 
 }

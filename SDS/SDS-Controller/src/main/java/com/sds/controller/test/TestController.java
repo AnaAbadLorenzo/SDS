@@ -184,4 +184,25 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
 	}
 
+	@GetMapping(value = "/test/rol/acciones")
+	@ResponseBody
+	public RespEntity TestRolAcciones() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testRolService.getPruebasAccionesRol();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
+		respuestaTestAcciones.setAccion(Constantes.GESTION_ROLES);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
+	}
+
 }

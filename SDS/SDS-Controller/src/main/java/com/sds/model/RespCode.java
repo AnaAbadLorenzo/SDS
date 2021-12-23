@@ -39,7 +39,9 @@ public enum RespCode {
 			"Se ha producido un error al ejecutar los tests de acciones para el registro"), //
 	TEST_ATRIBUTOS_ROL_KO("TEST_ATRIBUTOS_ROL_KO",
 			"Se ha producido un error al ejecutar los test de atributo para el rol"), //
-	TEST_ATRIBUTOS_ROL_OK("TEST_ATRIBUTO_ROL_OK", "Los tests de atributos para el rol se han ejecutado correctamente");
+	TEST_ATRIBUTOS_ROL_OK("TEST_ATRIBUTO_ROL_OK", "Los tests de atributos para el rol se han ejecutado correctamente"), //
+	TEST_ACCIONES_ROL_KO("TEST_ACCIONES_ROL_KO", "Se ha producido un fallo alejecutar los tests de acciones para rol"), //
+	TEST_ACCIONES_ROL_OK("TEST_ACCIONES_ROL_OK", "Los test de acciones se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

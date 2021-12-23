@@ -129,6 +129,11 @@ public class GenerarJSON {
 
 		final RolEntity rol = new RolEntity();
 
+		if (jsonRolVacio.get(Constantes.ROL_ID).toString().equals("")) {
+			rol.setIdRol(0);
+		} else {
+			rol.setIdRol(Integer.parseInt(jsonRolVacio.get(Constantes.ROL_ID).toString()));
+		}
 		rol.setRolName(CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ROL_NAME).toString(), StringUtils.EMPTY));
 		rol.setRolDescription(
 				CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ROL_DESCRIPTION).toString(), StringUtils.EMPTY));

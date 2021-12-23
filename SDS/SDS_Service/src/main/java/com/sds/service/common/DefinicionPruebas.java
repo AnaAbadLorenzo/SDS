@@ -42,4 +42,17 @@ public class DefinicionPruebas {
 	public static final String USUARIO_VACIO = "Los datos de usuario no pueden ser vacíos";
 	public static final String EMPRESA_VACIA = "Los datos de empresa no pueden ser vacíos";
 	public static final String REGISTRO_CORRECTO = "Registro correcto";
+	public static final String BUSCAR_CORRECTO = "Buscar rol correcto";
+	public static final String BUSCAR_ROL_NAME_VACIO = "Buscar nombre de rol vacio";
+	public static final String BUSCAR_ROL_NO_EXISTE = "Buscar un rol que no existe";
+	public static final String GUARDAR_ROL_CORRECTO = "El rol se ha guardado correctamente";
+	public static final String ROL_YA_EXISTE = "El rol ya existe";
+	public static final String ROL_NAME_VACIO = "El nombre del rol es vacío";
+	public static final String ROL_DESCRIPTION_VACIO = "La descripción del rol es vacía";
+	public static final String ROL_VACIO = "El rol está vacío";
+	public static final String ELIMINAR_ROL_CORRECTO = "El rol se ha eliminado correctamente";
+	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol no ha podido eliminarse porque tiene un usuario asociado";
+	public static final String ELIMINAR_ROL_NO_EXISTE = "El rol no ha podido eliminarse porque no existe";
+	public static final String MODIFICAR_ROL = "EL rol se ha modificado correctamente";
+	public static final String MODIFICAR_ROL_NO_EXISTE = "EL rol que desa modificar no existe";
 }

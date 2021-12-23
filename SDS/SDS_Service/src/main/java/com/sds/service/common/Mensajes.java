@@ -76,4 +76,13 @@ public class Mensajes {
 	public static final String REGISTRO_EMPRESA_VACIA = "Los datos de empresa no pueden ser vacios";
 	public static final String REGISTRO_VACIO = "Los datos de persona, usuario y empresa no pueden ser vacios";
 
+	public static final String ROL_VACIO = "El nombre y la descripción del rol no pueden ser vacias";
+	public static final String ROL_NO_EXISTE = "El rol que busca no existe";
+	public static final String BUSCAR_ROL_CORRECTO = "El rol se ha encontrado correctamente";
+	public static final String GUARDAR_ROL_CORRECTO = "El rol se ha guardado correctamente";
+	public static final String GUARDAR_ROL_YA_EXISTE = "El rol que desea registrar ya existe";
+	public static final String ELIMINAR_ROL_CORRECTO = "El rol se ha eliminado correctamente";
+	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol a eliminar tiene un usuario asociado";
+	public static final String MODIFICAR_ROL = "El rol se ha modificado correctamente";
+
 }

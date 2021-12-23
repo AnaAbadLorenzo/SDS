@@ -129,7 +129,7 @@ public class RegistroServiceTest {
 		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 
 		final Date date;
-		if (jsonCargaDatos.get(Constantes.FECHANACP).toString() == StringUtils.EMPTY) {
+		if (jsonCargaDatos.get(Constantes.FECHANACP).toString().equals(StringUtils.EMPTY)) {
 			date = formato.parse("0000-00-00");
 		} else {
 			date = formato.parse(
