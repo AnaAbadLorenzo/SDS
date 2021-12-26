@@ -14,6 +14,16 @@ public interface TestRolService {
 
 	List<DatosPruebaAtributos> getPruebasAtributoRolDescription() throws IOException, ParseException;
 
-	List<DatosPruebaAcciones> getPruebasAccionesRol() throws IOException, ParseException, java.text.ParseException;
+	List<DatosPruebaAcciones> getPruebasAccionesRolBuscar()
+			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesRolGuardar()
+			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesRolEliminar()
+			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesRolModificar()
+			throws IOException, ParseException, java.text.ParseException;
 
 }

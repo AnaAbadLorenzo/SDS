@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -200,23 +199,19 @@ public class TestLoginServiceImpl implements TestLoginService {
 
 	private String existeUsuario(final Login login) {
 
-		String resultado = StringUtils.EMPTY;
-
 		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 
 		if (usuario == null) {
-			resultado = CodigosMensajes.LOGIN_USUARIO_INCORRECTO + " - " + Mensajes.LOGIN_USUARIO_NO_EXISTE;
+			return CodigosMensajes.LOGIN_USUARIO_INCORRECTO + " - " + Mensajes.LOGIN_USUARIO_NO_EXISTE;
 		} else {
 			final String pass = login.getPasswdUsuario();
 
 			if (pass.equals(usuario.getPasswdUsuario())) {
-				resultado = CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
+				return CodigosMensajes.LOGIN_CORRECTO + " - " + Mensajes.LOGIN_CORRECTO;
 			} else {
-				resultado = CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - " + Mensajes.CONTRASENA_INCORRECTA;
+				return CodigosMensajes.LOGIN_CONTRASENA_INCORRECTO + " - " + Mensajes.CONTRASENA_INCORRECTA;
 			}
 		}
-
-		return resultado;
 	}
 
 	private Map<String, String> getValorLogin(final Login login) {
