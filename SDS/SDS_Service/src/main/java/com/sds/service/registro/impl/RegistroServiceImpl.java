@@ -109,6 +109,7 @@ public class RegistroServiceImpl implements RegistroService {
 
 				}
 
+				registro.getDatosEmpresa().setBorradoEmpresa(0);
 				registro.getDatosPersona().setBorradoP(0);
 				registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 				personaRepository.saveAndFlush(registro.getDatosPersona());

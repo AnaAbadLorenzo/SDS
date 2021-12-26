@@ -115,7 +115,7 @@ public class TestRolServiceImpl implements TestRolService {
 	}
 
 	@Override
-	public List<DatosPruebaAcciones> getPruebasAccionesRol()
+	public List<DatosPruebaAcciones> getPruebasAccionesRolBuscar()
 			throws IOException, ParseException, java.text.ParseException {
 
 		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
@@ -126,22 +126,67 @@ public class TestRolServiceImpl implements TestRolService {
 				Constantes.ROL_NAME_VACIO_DATA);
 		final RolEntity datosEntradaRolbuscarRolNoExiste = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ROL_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRol));
+		datosPruebaAcciones.add(getTestBuscarRolRolNameVacio(datosEntradaRolbuscarRolRolNameVacio));
+		datosPruebaAcciones.add(getTestBuscarRolNoExiste(datosEntradaRolbuscarRolNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesRolGuardar()
+			throws IOException, ParseException, java.text.ParseException {
+
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+
 		final RolEntity datosEntradaRolGuardarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.GUARDAR_ROL);
-		final RolEntity datosEntradaRolguardarRolRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+		final RolEntity datosEntradaRolGuardarRolRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ROL_NAME_VACIO_DATA);
-		final RolEntity datosEntradaRolguardarRolRolDescriptionVacio = generarJSON
+		final RolEntity datosEntradaRolGuardarRolRolDescriptionVacio = generarJSON
 				.generarRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_DESCRIPTION_VACIO_DATA);
 		final RolEntity datosEntradaRolGuardarRolNameDescriptionVacio = generarJSON
 				.generarRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_DESCRIPTION_VACIOS);
 		final RolEntity datosEntradaRolGuardarRolYaExiste = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ROL_YA_EXISTE);
+
+		datosPruebaAcciones.add(getTestGuardarRol(datosEntradaRolGuardarRol));
+		datosPruebaAcciones.add(getTestGuardarRolRolNameVacio(datosEntradaRolGuardarRolRolNameVacio));
+		datosPruebaAcciones.add(getTestGuardarRolRolDescriptionVacio(datosEntradaRolGuardarRolRolDescriptionVacio));
+		datosPruebaAcciones
+				.add(getTestGuardarRolRolNameDescriptionVacio(datosEntradaRolGuardarRolNameDescriptionVacio));
+		datosPruebaAcciones.add(getTestGuardarRolYaExiste(datosEntradaRolGuardarRolYaExiste));
+
+		return datosPruebaAcciones;
+	}
+
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesRolEliminar()
+			throws IOException, ParseException, java.text.ParseException {
+
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+
 		final RolEntity datosEntradaRolEliminarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL);
 		final RolEntity datosEntradaRolEliminarRolNoExiste = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL_NO_EXISTE);
 		final RolEntity datosEntradaRolEliminarRolAsociadoUsuario = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL_ASOCIADO_USUARIO);
+
+		datosPruebaAcciones.add(getTestEliminarRol(datosEntradaRolEliminarRol));
+		datosPruebaAcciones.add(getTestEliminarRolAsociadoUsuario(datosEntradaRolEliminarRolAsociadoUsuario));
+		datosPruebaAcciones.add(getTestEliminarRolNoExiste(datosEntradaRolEliminarRolNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesRolModificar()
+			throws IOException, ParseException, java.text.ParseException {
+
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+
 		final RolEntity datosEntradaRolModificarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.MODIFICAR_ROL);
 		final RolEntity datosEntradaRolModificarRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
@@ -153,18 +198,6 @@ public class TestRolServiceImpl implements TestRolService {
 		final RolEntity datosEntradaRolModificarRolNoExiste = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ROL_NO_EXISTE);
 
-		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRol));
-		datosPruebaAcciones.add(getTestBuscarRolRolNameVacio(datosEntradaRolbuscarRolRolNameVacio));
-		datosPruebaAcciones.add(getTestBuscarRolNoExiste(datosEntradaRolbuscarRolNoExiste));
-		datosPruebaAcciones.add(getTestGuardarRol(datosEntradaRolGuardarRol));
-		datosPruebaAcciones.add(getTestGuardarRolRolNameVacio(datosEntradaRolguardarRolRolNameVacio));
-		datosPruebaAcciones.add(getTestGuardarRolRolDescriptionVacio(datosEntradaRolguardarRolRolDescriptionVacio));
-		datosPruebaAcciones
-				.add(getTestGuardarRolRolNameDescriptionVacio(datosEntradaRolGuardarRolNameDescriptionVacio));
-		datosPruebaAcciones.add(getTestGuardarRolYaExiste(datosEntradaRolGuardarRolYaExiste));
-		datosPruebaAcciones.add(getTestEliminarRol(datosEntradaRolEliminarRol));
-		datosPruebaAcciones.add(getTestEliminarRolAsociadoUsuario(datosEntradaRolEliminarRolAsociadoUsuario));
-		datosPruebaAcciones.add(getTestEliminarRolNoExiste(datosEntradaRolEliminarRolNoExiste));
 		datosPruebaAcciones.add(getTestModificarRol(datosEntradaRolModificarRol));
 		datosPruebaAcciones.add(getTestModificarRolNameVacio(datosEntradaRolModificarRolNameVacio));
 		datosPruebaAcciones.add(getTestModificarRolDescriptionVacio(datosEntradaRolModificarRolDescriptionVacio));
@@ -391,6 +424,7 @@ public class TestRolServiceImpl implements TestRolService {
 			final RolEntity rolUsuario = rolRepository.findByRolName(rol.getRolName());
 
 			if (rolUsuario == null) {
+				// TODO implementar el guardado del rol
 				resultado = CodigosMensajes.GUARDAR_ROL_CORRRECTO + " - " + Mensajes.GUARDAR_ROL_CORRECTO;
 
 			} else {
@@ -420,6 +454,7 @@ public class TestRolServiceImpl implements TestRolService {
 				resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 
 			} else {
+				// TODO implementar el modificacion del rol
 				resultado = CodigosMensajes.MODIFICAR_ROL + " - " + Mensajes.MODIFICAR_ROL;
 			}
 
@@ -444,6 +479,7 @@ public class TestRolServiceImpl implements TestRolService {
 					break;
 
 				} else {
+					// TODO implementar el eliminar del rol
 					resultado = CodigosMensajes.ELIMINAR_ROL_CORRECTO + " - " + Mensajes.ELIMINAR_ROL_CORRECTO;
 				}
 

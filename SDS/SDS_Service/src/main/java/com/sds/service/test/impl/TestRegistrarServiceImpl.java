@@ -7,16 +7,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.apache.commons.lang3.StringUtils;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.PersonaEntity;
+import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.EmpresaRepository;
 import com.sds.repository.PersonaRepository;
+import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
@@ -71,6 +72,9 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 
 	@Autowired
 	PersonaRepository personaRepository;
+
+	@Autowired
+	RolRepository rolRepository;
 
 	public TestRegistrarServiceImpl() {
 		testAtributoDniPersonaRegistro = new TestAtributoDniPersonaRegistro();
@@ -778,18 +782,16 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 
 	private String existeRegistro(final Registro registro) {
 
-		String resultado = StringUtils.EMPTY;
-
 		if (!validaciones.comprobarPersonaBlank(registro.getDatosPersona())) {
-			resultado = CodigosMensajes.REGISTRO_PERSONA_VACIA + " - " + Mensajes.REGISTRO_PERSONA_VACIA;
+			return CodigosMensajes.REGISTRO_PERSONA_VACIA + " - " + Mensajes.REGISTRO_PERSONA_VACIA;
 		}
 
 		else if (!validaciones.comprobarEmpresaBlank(registro.getDatosEmpresa())) {
-			resultado = CodigosMensajes.REGISTRO_EMPRESA_VACIA + " - " + Mensajes.REGISTRO_EMPRESA_VACIA;
+			return CodigosMensajes.REGISTRO_EMPRESA_VACIA + " - " + Mensajes.REGISTRO_EMPRESA_VACIA;
 		}
 
 		else if (!validaciones.comprobarUsuarioBlank(registro.getDatosUsuario())) {
-			resultado = CodigosMensajes.REGISTRO_USUARIO_VACIO + " - " + Mensajes.REGISTRO_USUARIO_VACIO;
+			return CodigosMensajes.REGISTRO_USUARIO_VACIO + " - " + Mensajes.REGISTRO_USUARIO_VACIO;
 		}
 
 		else {
@@ -807,23 +809,53 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 								.findByCif(registro.getDatosEmpresa().getCifEmpresa());
 
 						if (empresa != null) {
-							resultado = CodigosMensajes.REGISTRO_EMPRESA_EXISTE + " - "
+							return CodigosMensajes.REGISTRO_EMPRESA_EXISTE + " - "
 									+ Mensajes.REGISTRO_EMPRESA_YA_EXISTE;
 						} else {
+							registro.getDatosEmpresa().setBorradoEmpresa(0);
+							empresaRepository.saveAndFlush(registro.getDatosEmpresa());
 
-							resultado = CodigosMensajes.REGISTRO_CORRECTO + " - " + Mensajes.REGISTRO_CORRECTO;
+							registro.getDatosEmpresa().setBorradoEmpresa(0);
+							registro.getDatosPersona().setBorradoP(0);
+							registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
+							registro.getDatosPersona().setUsuario(null);
+							personaRepository.saveAndFlush(registro.getDatosPersona());
+
+							final RolEntity rol = rolRepository.findByRolName(Constantes.USUARIO);
+							registro.getDatosUsuario().setRol(rol);
+							registro.getDatosUsuario().setPersona(registro.getDatosPersona());
+							registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
+							registro.getDatosUsuario().setBorradoUsuario(0);
+							usuarioRepository.saveAndFlush(registro.getDatosUsuario());
+
+							return CodigosMensajes.REGISTRO_CORRECTO + " - " + Mensajes.REGISTRO_CORRECTO;
 						}
+					} else {
+						registro.getDatosEmpresa().setBorradoEmpresa(0);
+						registro.getDatosPersona().setBorradoP(0);
+						registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
+						registro.getDatosPersona().setUsuario(null);
+						personaRepository.saveAndFlush(registro.getDatosPersona());
+
+						final RolEntity rol = rolRepository.findByRolName(Constantes.USUARIO);
+						registro.getDatosUsuario().setRol(rol);
+						registro.getDatosUsuario().setPersona(registro.getDatosPersona());
+						registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
+						registro.getDatosUsuario().setBorradoUsuario(0);
+						usuarioRepository.saveAndFlush(registro.getDatosUsuario());
+
+						return CodigosMensajes.REGISTRO_CORRECTO + " - " + Mensajes.REGISTRO_CORRECTO;
 					}
 
 				} else {
-					resultado = CodigosMensajes.REGISTRO_USUARIO_EXISTE + " - " + Mensajes.REGISTRO_USUARIO_YA_EXISTE;
+					return CodigosMensajes.REGISTRO_USUARIO_EXISTE + " - " + Mensajes.REGISTRO_USUARIO_YA_EXISTE;
 				}
 			} else {
-				resultado = CodigosMensajes.REGISTRO_PERSONA_EXISTE + " - " + Mensajes.REGISTRO_PERSONA_YA_EXISTE;
+				return CodigosMensajes.REGISTRO_PERSONA_EXISTE + " - " + Mensajes.REGISTRO_PERSONA_YA_EXISTE;
 			}
 
 		}
-		return resultado;
+
 	}
 
 	private Map<String, String> getValorRegistro(final Registro registro) {

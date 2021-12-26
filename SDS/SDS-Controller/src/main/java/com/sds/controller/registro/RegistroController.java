@@ -30,7 +30,7 @@ public class RegistroController {
 		validaciones = new Validaciones();
 	}
 
-	@PostMapping(value = "/registro")
+	@PostMapping(value = "/registrar")
 	@ResponseBody
 	public RespEntity registerUser(@RequestBody final Registro registro) {
 
