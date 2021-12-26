@@ -21,4 +21,8 @@ public class Login {
 		this.passwdUsuario = passwdUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "Login [usuario=" + usuario + ", passwdUsuario=" + passwdUsuario + "]";
+	}
 }

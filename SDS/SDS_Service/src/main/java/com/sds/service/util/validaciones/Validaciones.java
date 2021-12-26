@@ -7,6 +7,8 @@ import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 
 import com.sds.model.EmpresaEntity;
+import com.sds.model.LogAccionesEntity;
+import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -95,6 +97,23 @@ public class Validaciones {
 
 	public boolean comprobarDescriptionRolBlank(final String rolDescription) {
 		if (StringUtils.isBlank(rolDescription)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarLogExcepcionesBlank(final LogExcepcionesEntity logExcepciones) {
+		if (StringUtils.isBlank(logExcepciones.getTipoExcepcion())
+				|| StringUtils.isBlank(logExcepciones.getDescripcionExcepcion())) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarLogAccionesBlank(final LogAccionesEntity logAcciones) {
+		if (StringUtils.isBlank(logAcciones.getAccion()) || StringUtils.isBlank(logAcciones.getDatos())) {
 			return false;
 		}
 

@@ -4,8 +4,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,11 +16,11 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 @NamedQueries({
 		@NamedQuery(name = "UsuarioEntity.findByUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario =: usuario"),
-		@NamedQuery(name = "UsuarioEntity.findRolUsuario", query = "SELECT u.rol FROM UsuarioEntity u WHERE u.usuario =: usuario")})
+		@NamedQuery(name = "UsuarioEntity.findRolUsuario", query = "SELECT u.rol FROM UsuarioEntity u WHERE u.usuario =: usuario") })
 public class UsuarioEntity {
 
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "dni_usuario")
 	private String dniUsuario;
 

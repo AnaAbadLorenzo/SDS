@@ -1,14 +1,11 @@
 package com.sds.service.acl.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sds.model.AccionEntity;
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.RolEntity;
 import com.sds.repository.AccionRepository;
@@ -29,7 +26,7 @@ public class ACLServiceImpl implements ACLService {
 
 	@Autowired
 	FuncionalidadRepository funcionalidadRepository;
-	
+
 	@Autowired
 	AccionRepository accionRepository;
 
@@ -62,8 +59,8 @@ public class ACLServiceImpl implements ACLService {
 		final Integer idFuncionalidad = funcionalidadRepository.findIdFuncionalidadByName(funcionalidad);
 
 		idAcciones = rolAccionFuncionalidadRepository.findAccionByIdFuncionality(idFuncionalidad);
-		
-		for(Integer accion : idAcciones) {
+
+		for (final Integer accion : idAcciones) {
 			acciones.add(accionRepository.findNombreAccionById(accion));
 		}
 

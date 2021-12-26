@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.exception.EmpresaYaExisteException;
+import com.sds.service.exception.LogAccionesNoGuardadoException;
+import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.registro.RegistroService;
@@ -36,11 +38,18 @@ public class RegistroController {
 
 		if (registroValido) {
 			try {
-				final String resultado = registroService.registrar(registro);
-				if (CodeMessageErrors.REGISTRO_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.REGISTRO_VACIO, registro);
+				String resultado;
+				try {
+					resultado = registroService.registrar(registro);
+					if (CodeMessageErrors.REGISTRO_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.REGISTRO_VACIO, registro);
+					}
+					return new RespEntity(RespCode.REGISTRO_OK, resultado);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, registro);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, registro);
 				}
-				return new RespEntity(RespCode.REGISTRO_OK, resultado);
 			} catch (final UsuarioYaExisteException useralredyExists) {
 				return new RespEntity(RespCode.USUARIO_YA_EXISTE, registro);
 			} catch (final PersonaYaExisteException personAlreadyExists) {

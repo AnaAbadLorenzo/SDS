@@ -1,5 +1,7 @@
 {
 	"buscarRolCorrecto":{
+		"usuario": "aicuna",
+		
 		"idRol":1,
 		"rolName":"admin",
 		"rolDescription": "admin",
@@ -7,6 +9,8 @@
 	},
 	
 	"rolNameVacio":{
+		"usuario": "aicuna",
+		
 		"idRol":1,
 		"rolName":"",
 		"rolDescription": "admin",
@@ -14,6 +18,8 @@
 	},
 	
 	"rolNoExiste":{
+		"usuario": "aicuna",
+		
 		"idRol":"",
 		"rolName":"rolDePrueba",
 		"rolDescription": "prueba",
@@ -21,6 +27,8 @@
 	},
 	
 	"guardarRolCorrecto":{
+		"usuario": "aicuna",
+		
 		"idRol":"",
 		"rolName":"Prueba",
 		"rolDescription":"Esta es una prueba",
@@ -28,6 +36,8 @@
 	},
 	
 	"rolDescriptionVacio": {
+		"usuario": "aicuna",
+		
 		"idRol":"",
 		"rolName":"Prueba",
 		"rolDescription":"",
@@ -35,6 +45,8 @@
 	},
 	
 	"rolNameDescriptionVacios":{
+		"usuario": "aicuna",
+		
 		"idRol":"",
 		"rolName":"",
 		"rolDescription":"",
@@ -42,6 +54,8 @@
 	},
 	
 	"rolYaExiste":{
+		"usuario": "aicuna",
+		
 		"idRol":"1",
 		"rolName":"admin",
 		"rolDescription":"admin",
@@ -49,6 +63,8 @@
 	},
 	
 	"eliminarRol":{
+		"usuario": "aicuna",
+		
 		"idRol":"4",
 		"rolName":"Nuevo rol",
 		"rolDescription":"Esta es una prueba de rol",
@@ -56,6 +72,8 @@
 	},
 	
 	"eliminarRolNoExiste":{
+		"usuario": "aicuna",
+		
 		"idRol":"",
 		"rolName": "rol",
 		"rolDescription": "Este es un rol",
@@ -63,6 +81,8 @@
 	},
 	
 	"eliminarRolAsociadoUsuario":{
+		"usuario": "aicuna",
+		
 		"idRol":"2",
 		"rolName":"usuario",
 		"rolDescription": "Contendra a todos los usuarios registrados de la aplicacion",
@@ -71,6 +91,8 @@
 	},
 	
 	"modificarRol":{
+		"usuario": "aicuna",
+		
 		"idRol":4,
 		"rolName": "Nuevo rol",
 		"rolDescription": "Prueba",

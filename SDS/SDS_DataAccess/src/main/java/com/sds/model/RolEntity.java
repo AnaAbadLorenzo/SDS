@@ -22,7 +22,7 @@ import javax.persistence.Table;
 @Table(name = "rol")
 @NamedQueries({
 		@NamedQuery(name = "RolEntity.findByRolName", query = "SELECT r FROM RolEntity r WHERE r.rolName =: rolName"),
-		@NamedQuery(name = "RolEntity.findDeleteRol", query= "SELECT r FROM RolEntity r WHERE r.borradoRol =: borradoRol")})
+		@NamedQuery(name = "RolEntity.findDeleteRol", query = "SELECT r FROM RolEntity r WHERE r.borradoRol =: borradoRol") })
 public class RolEntity {
 
 	@Id
@@ -35,7 +35,7 @@ public class RolEntity {
 
 	@Column(name = "rol_description")
 	private String rolDescription;
-	
+
 	@Column(name = "borrado_rol")
 	private int borradoRol;
 
@@ -87,12 +87,12 @@ public class RolEntity {
 	public void setRolDescription(final String rolDescription) {
 		this.rolDescription = rolDescription;
 	}
-	
+
 	public int getBorradoRol() {
 		return borradoRol;
 	}
-	
-	public void setBorradoRol(int borradoRol) {
+
+	public void setBorradoRol(final int borradoRol) {
 		this.borradoRol = borradoRol;
 	}
 
@@ -110,7 +110,8 @@ public class RolEntity {
 
 	@Override
 	public String toString() {
-		return "RolEntity [idRol=" + idRol + ", rolName=" + rolName + ", rolDescription=" + rolDescription + "]";
+		return "RolEntity [idRol=" + idRol + ", rolName=" + rolName + ", rolDescription=" + rolDescription
+				+ ", borradoRol=" + borradoRol + "]";
 	}
 
 }

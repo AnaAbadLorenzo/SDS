@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.sds.model.AccionEntity;
 import com.sds.model.RolAccionFuncionalidadEntity;
 import com.sds.model.compositekey.RolAccionFuncionalidadKey;
 

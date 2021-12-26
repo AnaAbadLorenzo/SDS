@@ -10,5 +10,6 @@ import com.sds.model.UsuarioEntity;
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, String> {
 
 	UsuarioEntity findByUsuario(String usuario);
+
 	RolEntity findRolUsuario(String usuario);
 }

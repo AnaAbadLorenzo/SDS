@@ -6,6 +6,10 @@ public class Constantes {
 	public static final String LOGIN = "Login";
 	public static final String REGISTRAR = "Registrar";
 	public static final String GESTION_ROLES = "Gestión de roles";
+	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
+	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
+	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
+	public static final String ACCION_BUSCAR_ROL = "Buscar rol";
 
 	// Constantes para las acciones
 	public static final String AÑADIR_MODIFICAR = "Añadir / modificar";
@@ -216,6 +220,8 @@ public class Constantes {
 	public static final String REGISTRO_CORRECTO = "registroCorrecto";
 
 	public static final String OK = "OK";
+
+	public static final String USUARIO_GENERICO = "usuario_generico";
 
 	// Constantes tipo de pruebas
 	public static final String ERROR = "Error";

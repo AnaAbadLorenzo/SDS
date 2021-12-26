@@ -98,6 +98,8 @@ public class ValidacionesAtributosMayor {
 					resultado = CodigosMensajes.ROL_NAME_MAYOR_QUE_32 + " - "
 							+ Mensajes.ROL_NAME_NO_PUEDE_SER_MAYOR_QUE_32;
 					break;
+				default:
+					break;
 				}
 
 			default:

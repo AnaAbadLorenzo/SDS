@@ -21,7 +21,11 @@ public enum RespCode {
 	ROL_NO_EXISTE_EXCEPTION("ROL_NO_EXISTE", "El rol no existe"), //
 	NO_HAY_ROLES_EXCEPTION("NO_HAY_ROLES", "No existe ningún rol registrado"), //
 	ROL_ASOCIADO_USUARIO_EXCEPTION("ROL_ASOCIADO_USUARIO", "Hay un usuario que tiene asociado el rol a eliminar"), //
-	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
+	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"),
+	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
+			"No se ha guardado el registro de acciones en la base de datos"), //
+	LOG_EXCEPCIONES_NO_GUARDADO("LOG_EXCEPCIONES_NO_GUARDADO",
+			"No se ha guardado el registro de excepciones en la base de datos"), //
 	TEST_ATRIBUTOS_LOGIN_OK("TEST_ATRIBUTOS_LOGIN_OK",
 			"Los tests de atributos para el login se han ejecutado correctamente"), //
 	TEST_ATRIBUTOS_LOGIN_KO("TEST_ATRIBUTOS_LOGIN_KO",
