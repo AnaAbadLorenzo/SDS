@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.model.RolEntity;
+import com.sds.service.exception.LogAccionesNoGuardadoException;
+import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.rol.RolService;
+import com.sds.service.rol.model.Rol;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -72,17 +75,24 @@ public class RolController {
 
 	@RequestMapping(value = "/rol", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity guardarRol(@RequestBody final RolEntity rol) {
+	public RespEntity guardarRol(@RequestBody final Rol rol) {
 
-		final Boolean rolValido = validaciones.comprobarRolBlank(rol);
+		final Boolean rolValido = validaciones.comprobarRolBlank(rol.getRol());
 
 		if (rolValido) {
 			try {
-				final String resultado = rolService.guardarRol(rol);
-				if (CodeMessageErrors.ROL_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.ROL_VACIO, rol);
+				String resultado;
+				try {
+					resultado = rolService.guardarRol(rol);
+					if (CodeMessageErrors.ROL_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.ROL_VACIO, rol);
+					}
+					return new RespEntity(RespCode.ROL_GUARDADO, resultado);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, rol);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, rol);
 				}
-				return new RespEntity(RespCode.ROL_GUARDADO, resultado);
 			} catch (final RolYaExisteException rolAlreadyExists) {
 				return new RespEntity(RespCode.ROL_YA_EXISTE_EXCEPTION, rol);
 			}
@@ -93,17 +103,24 @@ public class RolController {
 
 	@RequestMapping(value = "/modificarRol", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity modificarRol(@RequestBody final RolEntity rol) {
+	public RespEntity modificarRol(@RequestBody final Rol rol) {
 
-		final Boolean rolValido = validaciones.comprobarRolBlank(rol);
+		final Boolean rolValido = validaciones.comprobarRolBlank(rol.getRol());
 
 		if (rolValido) {
 			try {
-				final String resultado = rolService.modificarRol(rol);
-				if (CodeMessageErrors.ROL_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.ROL_VACIO, rol);
+				String resultado;
+				try {
+					resultado = rolService.modificarRol(rol);
+					if (CodeMessageErrors.ROL_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.ROL_VACIO, rol);
+					}
+					return new RespEntity(RespCode.ROL_MODIFICADO, resultado);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, rol);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, rol);
 				}
-				return new RespEntity(RespCode.ROL_MODIFICADO, resultado);
 			} catch (final RolNoExisteException rolNoExists) {
 				return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
 			}
@@ -114,12 +131,18 @@ public class RolController {
 
 	@RequestMapping(value = "/eliminarRol", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity eliminarRol(@RequestBody final RolEntity rol) {
+	public RespEntity eliminarRol(@RequestBody final Rol rol) {
 
 		try {
-			final String resultado = rolService.eliminarRol(rol);
-
-			return new RespEntity(RespCode.ROL_ELIMINADO, resultado);
+			String resultado;
+			try {
+				resultado = rolService.eliminarRol(rol);
+				return new RespEntity(RespCode.ROL_ELIMINADO, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, rol);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, rol);
+			}
 		} catch (final RolNoExisteException rolNoExists) {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
 		} catch (final RolAsociadoUsuarioException rolAsociatedUser) {

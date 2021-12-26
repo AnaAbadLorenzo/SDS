@@ -168,6 +168,8 @@ public class TestRolServiceImpl implements TestRolService {
 		datosPruebaAcciones.add(getTestModificarRol(datosEntradaRolModificarRol));
 		datosPruebaAcciones.add(getTestModificarRolNameVacio(datosEntradaRolModificarRolNameVacio));
 		datosPruebaAcciones.add(getTestModificarRolDescriptionVacio(datosEntradaRolModificarRolDescriptionVacio));
+		datosPruebaAcciones
+				.add(getTestModificarRolNameDescriptionVacio(datosEntradaRolModificarRolNameDescriptionVacio));
 		datosPruebaAcciones.add(getTestModificarRolNoExiste(datosEntradaRolModificarRolNoExiste));
 
 		return datosPruebaAcciones;

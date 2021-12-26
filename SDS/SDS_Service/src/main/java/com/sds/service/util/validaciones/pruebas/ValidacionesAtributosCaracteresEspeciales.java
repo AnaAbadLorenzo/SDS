@@ -106,6 +106,8 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						resultado = CodigosMensajes.ROL_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
 								+ Mensajes.ROL_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
 						break;
+					default:
+						break;
 					}
 
 				default:

@@ -19,10 +19,13 @@ import com.sds.app.SDSApplication;
 import com.sds.model.RolEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.exception.LogAccionesNoGuardadoException;
+import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.rol.RolService;
+import com.sds.service.rol.model.Rol;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 
@@ -36,19 +39,22 @@ public class RolServiceTest {
 	@Test
 	public void RolService_buscarRol() throws RolNoExisteException, IOException, ParseException {
 
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.BUSCAR_ROL);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.BUSCAR_ROL);
+		final RolEntity rolEntity = rol.getRol();
 
-		final RolEntity rolEncontrado = rolService.buscarRol(rol.getRolName());
+		final RolEntity rolEncontrado = rolService.buscarRol(rolEntity.getRolName());
 
 		assertNotNull(rolEncontrado);
 	}
 
 	@Test
 	public void RolService_NombreVacio() throws RolNoExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
+		final RolEntity rolEntity = rol.getRol();
+
 		String respuesta = StringUtils.EMPTY;
 
-		final RolEntity rolRespuesta = rolService.buscarRol(rol.getRolName());
+		final RolEntity rolRespuesta = rolService.buscarRol(rolEntity.getRolName());
 
 		if (rolRespuesta == null) {
 			respuesta = CodeMessageErrors.ROL_VACIO.name();
@@ -60,9 +66,10 @@ public class RolServiceTest {
 	@Test(expected = RolNoExisteException.class)
 	public void RolService_rolNoExiste() throws RolNoExisteException, IOException, ParseException {
 
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NO_EXISTE);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NO_EXISTE);
+		final RolEntity rolEntity = rol.getRol();
 
-		rolService.buscarRol(rol.getRolName());
+		rolService.buscarRol(rolEntity.getRolName());
 
 	}
 
@@ -75,8 +82,9 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarRol() throws RolYaExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.GUARDAR_ROL);
+	public void RolService_guardarRol() throws RolYaExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.GUARDAR_ROL);
 
 		String respuesta = StringUtils.EMPTY;
 
@@ -86,8 +94,9 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarRolRolNameVacio() throws RolYaExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
+	public void RolService_guardarRolRolNameVacio() throws RolYaExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
 		String respuesta = StringUtils.EMPTY;
 
 		respuesta = rolService.guardarRol(rol);
@@ -96,8 +105,9 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarRolRolDescriptionVacio() throws RolYaExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_DESCRIPTION_VACIO_DATA);
+	public void RolService_guardarRolRolDescriptionVacio() throws RolYaExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_DESCRIPTION_VACIO_DATA);
 		String respuesta = StringUtils.EMPTY;
 
 		respuesta = rolService.guardarRol(rol);
@@ -106,9 +116,10 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarRolRolNameDescriptionVacios()
-			throws RolYaExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_DESCRIPTION_VACIOS);
+	public void RolService_guardarRolRolNameDescriptionVacios() throws RolYaExisteException, IOException,
+			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_DESCRIPTION_VACIOS);
+
 		String respuesta = StringUtils.EMPTY;
 
 		respuesta = rolService.guardarRol(rol);
@@ -117,17 +128,19 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolYaExisteException.class)
-	public void RolService_guardarRolRolYaExiste() throws RolYaExisteException, IOException, ParseException {
+	public void RolService_guardarRolRolYaExiste() throws RolYaExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_YA_EXISTE);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_YA_EXISTE);
 
 		rolService.guardarRol(rol);
 
 	}
 
 	@Test
-	public void RolService_modificarRol() throws RolNoExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.MODIFICAR_ROL);
+	public void RolService_modificarRol() throws RolNoExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.MODIFICAR_ROL);
 
 		String respuesta = StringUtils.EMPTY;
 
@@ -138,8 +151,9 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_modificarRolRolNameVacio() throws RolNoExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
+	public void RolService_modificarRolRolNameVacio() throws RolNoExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
 
 		String respuesta = StringUtils.EMPTY;
 
@@ -149,8 +163,9 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_modificarRolRolDescriptionVacio() throws RolNoExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_DESCRIPTION_VACIO_DATA);
+	public void RolService_modificarRolRolDescriptionVacio() throws RolNoExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_DESCRIPTION_VACIO_DATA);
 
 		String respuesta = StringUtils.EMPTY;
 
@@ -160,9 +175,9 @@ public class RolServiceTest {
 	}
 
 	@Test
-	public void RolService_modificarRolRolNameDescriptionVacio()
-			throws RolNoExisteException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_DESCRIPTION_VACIOS);
+	public void RolService_modificarRolRolNameDescriptionVacio() throws RolNoExisteException, IOException,
+			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_DESCRIPTION_VACIOS);
 
 		String respuesta = StringUtils.EMPTY;
 
@@ -172,18 +187,19 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolNoExisteException.class)
-	public void RolService_modificarRolRolNoExiste() throws RolNoExisteException, IOException, ParseException {
+	public void RolService_modificarRolRolNoExiste() throws RolNoExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NO_EXISTE);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NO_EXISTE);
 
 		rolService.modificarRol(rol);
 
 	}
 
 	@Test
-	public void RolService_eliminarRolCorrecto()
-			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException {
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL);
+	public void RolService_eliminarRolCorrecto() throws RolNoExisteException, RolAsociadoUsuarioException, IOException,
+			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL);
 
 		final String respuesta = rolService.eliminarRol(rol);
 
@@ -192,20 +208,20 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolNoExisteException.class)
-	public void RolService_eliminarRolNoExiste()
-			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException {
+	public void RolService_eliminarRolNoExiste() throws RolNoExisteException, RolAsociadoUsuarioException, IOException,
+			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_NO_EXISTE);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_NO_EXISTE);
 
 		rolService.eliminarRol(rol);
 
 	}
 
 	@Test(expected = RolAsociadoUsuarioException.class)
-	public void RolService_eliminarRolAsociadoUsuario()
-			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException {
+	public void RolService_eliminarRolAsociadoUsuario() throws RolNoExisteException, RolAsociadoUsuarioException,
+			IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 
-		final RolEntity rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_ASOCIADO_USUARIO);
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_ASOCIADO_USUARIO);
 
 		rolService.eliminarRol(rol);
 
@@ -219,25 +235,29 @@ public class RolServiceTest {
 		assertNotNull(rolEncontrado);
 	}
 
-	private RolEntity generateRol(final String fichero, final String nombrePrueba) throws IOException, ParseException {
+	private Rol generateRol(final String fichero, final String nombrePrueba) throws IOException, ParseException {
 
-		final JSONObject jsonRolVacios = new Util().getDatosJson(fichero, nombrePrueba);
+		final JSONObject jsonRol = new Util().getDatosJson(fichero, nombrePrueba);
 
-		final RolEntity rol = new RolEntity();
+		final Rol rol = new Rol();
+		final RolEntity rolEntity = new RolEntity();
 
-		final String idRol = CommonUtilities.coalesce(jsonRolVacios.get(Constantes.ROL_ID).toString(),
-				StringUtils.EMPTY);
+		final String idRol = CommonUtilities.coalesce(jsonRol.get(Constantes.ROL_ID).toString(), StringUtils.EMPTY);
+
+		rol.setUsuario(CommonUtilities.coalesce(jsonRol.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
 
 		if (idRol.equals("")) {
-			rol.setIdRol(0);
+			rolEntity.setIdRol(0);
 		} else {
-			rol.setIdRol(Integer.parseInt(idRol));
+			rolEntity.setIdRol(Integer.parseInt(idRol));
 		}
 
-		rol.setRolName(CommonUtilities.coalesce(jsonRolVacios.get(Constantes.ROL_NAME).toString(), StringUtils.EMPTY));
-		rol.setRolDescription(
-				CommonUtilities.coalesce(jsonRolVacios.get(Constantes.ROL_DESCRIPTION).toString(), StringUtils.EMPTY));
-		rol.setBorradoRol(0);
+		rolEntity.setRolName(CommonUtilities.coalesce(jsonRol.get(Constantes.ROL_NAME).toString(), StringUtils.EMPTY));
+		rolEntity.setRolDescription(
+				CommonUtilities.coalesce(jsonRol.get(Constantes.ROL_DESCRIPTION).toString(), StringUtils.EMPTY));
+		rolEntity.setBorradoRol(0);
+
+		rol.setRol(rolEntity);
 
 		return rol;
 

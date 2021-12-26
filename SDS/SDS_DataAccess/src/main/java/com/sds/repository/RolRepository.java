@@ -11,5 +11,6 @@ import com.sds.model.RolEntity;
 public interface RolRepository extends JpaRepository<RolEntity, Integer> {
 
 	RolEntity findByRolName(String rolName);
+
 	List<RolEntity> findDeleteRol(int borradoRol);
 }

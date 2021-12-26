@@ -87,6 +87,8 @@ public class ValidacionesAtributosMenor {
 					resultado = CodigosMensajes.CIF_EMPRESA_MENOR_QUE_9 + " - "
 							+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MENOR_QUE_9;
 					break;
+				default:
+					break;
 				}
 
 			case GESTION_ROLES:
@@ -98,6 +100,8 @@ public class ValidacionesAtributosMenor {
 				case ROL_DESCRIPTION:
 					resultado = CodigosMensajes.ROL_DESCRIPTION_MENOR_QUE_3 + " - "
 							+ Mensajes.ROL_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				default:
 					break;
 				}
 

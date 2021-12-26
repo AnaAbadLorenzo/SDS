@@ -90,6 +90,8 @@ public class ValidacionesAtributosEspacios {
 					resultado = CodigosMensajes.ROL_NAME_ALFABETICO_INCORRECTO + " - "
 							+ Mensajes.ROL_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
 					break;
+				default:
+					break;
 				}
 
 			default:

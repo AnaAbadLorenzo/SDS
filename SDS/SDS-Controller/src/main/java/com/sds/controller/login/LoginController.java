@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.exception.LogAccionesNoGuardadoException;
+import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PasswordIncorrectoException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
@@ -35,11 +37,18 @@ public class LoginController {
 
 		if (loginValido) {
 			try {
-				final String resultado = loginService.loginUser(login);
-				if (CodeMessageErrors.LOGIN_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.LOGIN_VACIO, login);
+				String resultado;
+				try {
+					resultado = loginService.loginUser(login);
+					if (CodeMessageErrors.LOGIN_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.LOGIN_VACIO, login);
+					}
+					return new RespEntity(RespCode.LOGIN_OK, resultado);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, login);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, login);
 				}
-				return new RespEntity(RespCode.LOGIN_OK, resultado);
 			} catch (final UsuarioNoEncontradoException userNotFound) {
 				return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, login);
 			} catch (final PasswordIncorrectoException passwordIncorrecto) {

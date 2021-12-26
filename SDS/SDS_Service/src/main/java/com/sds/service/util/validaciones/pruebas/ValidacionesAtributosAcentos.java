@@ -90,6 +90,8 @@ public class ValidacionesAtributosAcentos {
 					case CIF_EMPRESA:
 						resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 								+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+					default:
+						break;
 					}
 				default:
 					break;
