@@ -34,7 +34,7 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<LogExcepcionesEntity> buscarTodosLogExcepciones() {
 		final List<LogExcepcionesEntity> logExcepciones = logExcepcionesRepository.findAll();
-		final List<LogExcepcionesEntity> toret = new ArrayList<LogExcepcionesEntity>();
+		final List<LogExcepcionesEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < logExcepciones.size(); i++) {
 			final LogExcepcionesEntity log = new LogExcepcionesEntity(logExcepciones.get(i).getIdLogExcepciones(),
@@ -49,7 +49,7 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<LogExcepcionesEntity> buscarPorUsuarioLogExcepciones(final String usuario) {
 		final List<LogExcepcionesEntity> logExcepciones = logExcepcionesRepository.findByUsuario(usuario);
-		final List<LogExcepcionesEntity> toret = new ArrayList<LogExcepcionesEntity>();
+		final List<LogExcepcionesEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < logExcepciones.size(); i++) {
 			final LogExcepcionesEntity log = new LogExcepcionesEntity(logExcepciones.get(i).getIdLogExcepciones(),
@@ -79,7 +79,7 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<LogAccionesEntity> buscarTodosLogAcciones() {
 		final List<LogAccionesEntity> logAcciones = logAccionesRepository.findAll();
-		final List<LogAccionesEntity> toret = new ArrayList<LogAccionesEntity>();
+		final List<LogAccionesEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < logAcciones.size(); i++) {
 			final LogAccionesEntity log = new LogAccionesEntity(logAcciones.get(i).getIdLogAcciones(),
@@ -94,7 +94,7 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<LogAccionesEntity> buscarPorUsuarioLogAcciones(final String usuario) {
 		final List<LogAccionesEntity> logAcciones = logAccionesRepository.findByUsuario(usuario);
-		final List<LogAccionesEntity> toret = new ArrayList<LogAccionesEntity>();
+		final List<LogAccionesEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < logAcciones.size(); i++) {
 			final LogAccionesEntity log = new LogAccionesEntity(logAcciones.get(i).getIdLogAcciones(),
@@ -109,7 +109,7 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<LogAccionesEntity> buscarPorAccionLogAcciones(final String accion) {
 		final List<LogAccionesEntity> logAcciones = logAccionesRepository.findByAccion(accion);
-		final List<LogAccionesEntity> toret = new ArrayList<LogAccionesEntity>();
+		final List<LogAccionesEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < logAcciones.size(); i++) {
 			final LogAccionesEntity log = new LogAccionesEntity(logAcciones.get(i).getIdLogAcciones(),
@@ -124,7 +124,7 @@ public class LogServiceImpl implements LogService {
 	@Override
 	public List<LogAccionesEntity> buscarPorUsuarioAccionLogAcciones(final String usuario, final String accion) {
 		final List<LogAccionesEntity> logAcciones = logAccionesRepository.findByUsuarioAccion(usuario, accion);
-		final List<LogAccionesEntity> toret = new ArrayList<LogAccionesEntity>();
+		final List<LogAccionesEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < logAcciones.size(); i++) {
 			final LogAccionesEntity log = new LogAccionesEntity(logAcciones.get(i).getIdLogAcciones(),

@@ -16710,3 +16710,58 @@ Caused by: java.io.IOException: El volumen para un archivo ha sido alterado exte
 2021-12-30 14:36:25,691 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
 2021-12-30 14:36:25,695 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-12-30 14:36:25,695 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:49:03,412 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:49:03,415 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:49:03,416 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:49:03,418 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:49:03,419 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:51:00,020 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:51:00,021 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:51:00,021 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:51:00,023 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:51:00,023 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:51:31,592 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:51:31,592 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:51:31,593 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:51:31,595 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:51:31,596 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:51:49,119 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:51:49,120 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:51:49,120 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:51:49,133 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:51:49,135 [Worker-27: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:52:30,403 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:52:30,406 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:52:30,411 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:52:30,437 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:52:30,448 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:53:10,682 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:53:10,683 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:53:10,683 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:53:10,685 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:53:10,685 [Worker-26: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:54:28,509 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:54:32,167 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:54:32,172 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:54:32,174 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:54:32,175 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:54:45,874 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:54:45,875 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:54:45,876 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:54:45,881 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:54:45,881 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:55:01,089 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:55:01,090 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:55:01,091 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:55:01,093 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:55:01,094 [Worker-25: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:56:12,484 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:56:12,488 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:56:12,488 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:56:12,489 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:56:12,490 [Worker-22: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 19:56:52,198 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:56:52,199 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:56:52,200 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 19:56:52,202 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 19:56:52,203 [Worker-24: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources

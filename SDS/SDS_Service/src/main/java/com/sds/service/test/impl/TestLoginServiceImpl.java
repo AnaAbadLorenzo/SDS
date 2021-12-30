@@ -46,7 +46,7 @@ public class TestLoginServiceImpl implements TestLoginService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoUsuario() throws IOException, ParseException {
 
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Login datosEntradaLoginUsuarioVacio = generarJSON
 				.generateLogin(Constantes.URL_JSON_LOGIN_ATRIBUTOS_USUARIO, Constantes.USUARIO_VACIO_DATA);
@@ -96,7 +96,7 @@ public class TestLoginServiceImpl implements TestLoginService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoContrasena() throws IOException, ParseException {
 
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Login datosEntradaLoginContrasenaVacio = generarJSON
 				.generateLogin(Constantes.URL_JSON_LOGIN_ATRIBUTOS_CONTRASENA, Constantes.CONTRASENA_VACIA_DATA);
@@ -147,7 +147,7 @@ public class TestLoginServiceImpl implements TestLoginService {
 	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesLogin() throws IOException, ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final Login datosEntradaLoginUsuarioNoExiste = generarJSON.generateLogin(Constantes.URL_JSON_LOGIN_ACCIONES,
 				Constantes.USUARIO_NO_EXISTE);

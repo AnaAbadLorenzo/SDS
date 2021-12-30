@@ -54,7 +54,7 @@ public class TestRolServiceImpl implements TestRolService {
 
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoRolName() throws IOException, ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final RolEntity datosEntradaRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME,
 				Constantes.ROL_NAME_VACIO_DATA);
@@ -87,7 +87,7 @@ public class TestRolServiceImpl implements TestRolService {
 
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoRolDescription() throws IOException, ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final RolEntity datosEntradaRolDescriptionVacio = generarJSON
 				.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLDESCRIPTION, Constantes.ROL_DESCRIPTION_VACIO_DATA);
@@ -118,7 +118,7 @@ public class TestRolServiceImpl implements TestRolService {
 	public List<DatosPruebaAcciones> getPruebasAccionesRolBuscar()
 			throws IOException, ParseException, java.text.ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final RolEntity datosEntradaRolBuscarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.BUSCAR_ROL);
@@ -138,7 +138,7 @@ public class TestRolServiceImpl implements TestRolService {
 	public List<DatosPruebaAcciones> getPruebasAccionesRolGuardar()
 			throws IOException, ParseException, java.text.ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final RolEntity datosEntradaRolGuardarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.GUARDAR_ROL);
@@ -165,7 +165,7 @@ public class TestRolServiceImpl implements TestRolService {
 	public List<DatosPruebaAcciones> getPruebasAccionesRolEliminar()
 			throws IOException, ParseException, java.text.ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final RolEntity datosEntradaRolEliminarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL);
@@ -185,7 +185,7 @@ public class TestRolServiceImpl implements TestRolService {
 	public List<DatosPruebaAcciones> getPruebasAccionesRolModificar()
 			throws IOException, ParseException, java.text.ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final RolEntity datosEntradaRolModificarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.MODIFICAR_ROL);

@@ -1,15 +1,15 @@
 package com.sds.service.usuario;
 
+import com.sds.model.UsuarioEntity;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
-import com.sds.service.usuario.model.Usuario;
 
 public interface UsuarioService {
 
-	String eliminarUsuario(Usuario usuario)
+	String eliminarUsuario(final UsuarioEntity user)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 
-	String modificarUsuario(Usuario usuario)
+	String modificarUsuario(final UsuarioEntity user)
 			throws LogExcepcionesNoGuardadoException, UsuarioNoEncontradoException, LogAccionesNoGuardadoException;
 }

@@ -98,7 +98,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoDniP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroDniPersonaVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIP_VACIO_DATA);
@@ -149,7 +149,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoNombreP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroNombrePersonaVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREP, Constantes.NOMBREPERSONA_VACIO_DATA);
@@ -185,7 +185,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoApellidosP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroApellidosPersonaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_APELLIDOSP, Constantes.APELLIDOSPERSONA_VACIOS_DATA);
@@ -222,7 +222,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoDireccionP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroDireccionPersonaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DIRECCIONP, Constantes.DIRECCIONPERSONA_VACIA_DATA);
@@ -255,7 +255,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoTelefonoP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroTelefonoPersonaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_TELEFONOP, Constantes.TELEFONOPERSONA_VACIO_DATA);
@@ -299,7 +299,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoEmailP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroEmailPersonaVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_EMAILP, Constantes.EMAIL_VACIO_DATA);
@@ -337,7 +337,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoFechaNacP()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroFechaNacimientoPersonaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_FECHANACP, Constantes.FECHANACPERSONA_VACIA_DATA);
@@ -387,7 +387,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoUsuario()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroUsuarioVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_USUARIO, Constantes.USUARIO_VACIO_DATA);
@@ -438,7 +438,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoContrasena()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroContrasenaVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CONTRASENA, Constantes.CONTRASENA_VACIA_DATA);
@@ -490,7 +490,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoCifEmpresa()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroCifEmpresaVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_VACIO_DATA);
@@ -542,7 +542,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoNombreEmpresa()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroNombreEmpresaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREEMPRESA, Constantes.NOMBREEMPRESA_VACIO_DATA);
@@ -580,7 +580,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoDireccionEmpresa()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroDireccionEmpresaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DIRECCIONEMPRESA, Constantes.DIRECCIONEMPRESA_VACIO_DATA);
@@ -614,7 +614,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoTelefonoEmpresa()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final Registro datosEntradaRegistroTelefonoEmpresaVacio = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_VACIO_DATA);
@@ -671,7 +671,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 	public List<DatosPruebaAcciones> getPruebasAccionesRegistro()
 			throws IOException, ParseException, java.text.ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final Registro datosEntradaRegistroPersonaExiste = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ACCIONES, Constantes.PERSONA_YA_EXISTE);
