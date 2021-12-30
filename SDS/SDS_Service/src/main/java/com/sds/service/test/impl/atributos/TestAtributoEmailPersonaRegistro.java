@@ -121,8 +121,8 @@ public class TestAtributoEmailPersonaRegistro {
 				datosEntradaRegistroEmailPAlfanumericoMayor128.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
 				Atributo.EMAIL, 48);
 
-		final String resultadoEsperado = CodigosMensajes.EMAIL_MAYOR_QUE_128 + " - "
-				+ Mensajes.EMAIL_NO_PUEDE_SER_MAYOR_QUE_128;
+		final String resultadoEsperado = CodigosMensajes.EMAIL_MAYOR_QUE_48 + " - "
+				+ Mensajes.EMAIL_NO_PUEDE_SER_MAYOR_QUE_48;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MAYOR_48, Constantes.ERROR,

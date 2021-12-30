@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
@@ -24,7 +25,7 @@ public class Validaciones {
 		return true;
 	}
 
-	public boolean comprobarRegistroBlank(final Registro registro) {
+	public boolean comprobarRegistroBlank(final Registro registro) throws ParseException {
 		if (!comprobarPersonaBlank(registro.getDatosPersona()) || !comprobarUsuarioBlank(registro.getDatosUsuario())) {
 			return false;
 		} else {
@@ -37,7 +38,7 @@ public class Validaciones {
 		return true;
 	}
 
-	public boolean comprobarPersonaBlank(final PersonaEntity persona) {
+	public boolean comprobarPersonaBlank(final PersonaEntity persona) throws ParseException {
 		if (StringUtils.isBlank(persona.getDniP()) || StringUtils.isBlank(persona.getNombreP())
 				|| StringUtils.isBlank(persona.getApellidosP()) || StringUtils.isBlank(persona.getDireccionP())
 				|| StringUtils.isBlank(persona.getTelefonoP()) || StringUtils.isBlank(persona.getEmailP())) {
@@ -46,13 +47,7 @@ public class Validaciones {
 		} else {
 			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
 			Date date = null;
-			try {
-				date = formato.parse("0000-00-00");
-			} catch (final ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
+			date = formato.parse("0000-00-00");
 			if (persona.getFechaNacP().equals(date)) {
 				return false;
 			}
@@ -118,5 +113,21 @@ public class Validaciones {
 		}
 
 		return true;
+	}
+
+	public boolean comprobarAccionBlank(final AccionEntity accion) {
+		if (StringUtils.isBlank(accion.getNombreAccion()) || StringUtils.isBlank(accion.getDescripAccion())) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarNombreAccionBlank(final String nombreAccion) {
+		if (StringUtils.isBlank(nombreAccion)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

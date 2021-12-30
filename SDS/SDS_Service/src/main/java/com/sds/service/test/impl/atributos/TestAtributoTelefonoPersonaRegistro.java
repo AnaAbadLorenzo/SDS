@@ -30,7 +30,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
-	public  TestAtributoTelefonoPersonaRegistro() {
+	public TestAtributoTelefonoPersonaRegistro() {
 		validacionesAtributosBlank = new ValidacionesAtributosBlank();
 		validacionesAtributosEnhe = new ValidacionesAtributosEnhe();
 		validacionesAtributosAcentos = new ValidacionesAtributosAcentos();
@@ -42,24 +42,26 @@ public class TestAtributoTelefonoPersonaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroTelefonoPersonaVacio(final Registro datosEntradaRegistroTelefonoPersonaVacio) {
+	public DatosPruebaAtributos getTestRegistroTelefonoPersonaVacio(
+			final Registro datosEntradaRegistroTelefonoPersonaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroTelefonoPersonaVacio.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR, Atributo.TELEFONO);
+				datosEntradaRegistroTelefonoPersonaVacio.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,
+				Atributo.TELEFONO);
 
-		final String resultadoEsperado = CodigosMensajes.TELEFONO_VACIO + " - "
-				+ Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
+		final String resultadoEsperado = CodigosMensajes.TELEFONO_VACIO + " - " + Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroTelefonoPersonaVacio.getDatosPersona().getTelefonoP(),
-				Constantes.TELEFONOP);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroTelefonoPersonaVacio.getDatosPersona().getTelefonoP(), Constantes.TELEFONOP);
 	}
 
-	public DatosPruebaAtributos getTestRegistroTelefonoPersonaNumericoEnhe(final Registro datosEntradaRegistroTelefonoPersonaNumericoEnhe) {
+	public DatosPruebaAtributos getTestRegistroTelefonoPersonaNumericoEnhe(
+			final Registro datosEntradaRegistroTelefonoPersonaNumericoEnhe) {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
-				datosEntradaRegistroTelefonoPersonaNumericoEnhe.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,
-				Atributo.TELEFONO);
+				datosEntradaRegistroTelefonoPersonaNumericoEnhe.getDatosPersona().getTelefonoP(),
+				Funcionalidad.REGISTRAR, Atributo.TELEFONO);
 
 		final String resultadoEsperado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
 				+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
@@ -74,15 +76,16 @@ public class TestAtributoTelefonoPersonaRegistro {
 			final Registro datosEntradaRegistroTelefonoPersonaNumericoAcentos) {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
-				datosEntradaRegistroTelefonoPersonaNumericoAcentos.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,
-				Atributo.TELEFONO);
+				datosEntradaRegistroTelefonoPersonaNumericoAcentos.getDatosPersona().getTelefonoP(),
+				Funcionalidad.REGISTRAR, Atributo.TELEFONO);
 
 		final String resultadoEsperado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
 				+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.NUMERICO_ACENTOS, Constantes.ERROR,
-				datosEntradaRegistroTelefonoPersonaNumericoAcentos.getDatosPersona().getTelefonoP(), Constantes.TELEFONOP);
+				datosEntradaRegistroTelefonoPersonaNumericoAcentos.getDatosPersona().getTelefonoP(),
+				Constantes.TELEFONOP);
 
 	}
 
@@ -107,15 +110,16 @@ public class TestAtributoTelefonoPersonaRegistro {
 			final Registro datosEntradaRegistroTelefonoPAlfanumericoEspacios) {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
-				datosEntradaRegistroTelefonoPAlfanumericoEspacios.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,
-				Atributo.TELEFONO);
+				datosEntradaRegistroTelefonoPAlfanumericoEspacios.getDatosPersona().getTelefonoP(),
+				Funcionalidad.REGISTRAR, Atributo.TELEFONO);
 
 		final String resultadoEsperado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
 				+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.NUMERICO_ESPACIOS, Constantes.ERROR,
-				datosEntradaRegistroTelefonoPAlfanumericoEspacios.getDatosPersona().getTelefonoP(), Constantes.TELEFONOP);
+				datosEntradaRegistroTelefonoPAlfanumericoEspacios.getDatosPersona().getTelefonoP(),
+				Constantes.TELEFONOP);
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPNumericoMenor9(
@@ -129,7 +133,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 				+ Mensajes.TELEFONO_NO_PUEDE_SER_MENOR_QUE_9;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.NUMERICO_MENOR_8, Constantes.ERROR,
+				DefinicionPruebas.NUMERICO_MENOR_9, Constantes.ERROR,
 				datosEntradaRegistroTelefonoPNumericoMenor9.getDatosPersona().getTelefonoP(), Constantes.TELEFONOP);
 	}
 
@@ -144,19 +148,21 @@ public class TestAtributoTelefonoPersonaRegistro {
 				+ Mensajes.TELEFONO_NO_PUEDE_SER_MAYOR_QUE_9;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.NUMERICO_MAYOR_8, Constantes.ERROR,
+				DefinicionPruebas.NUMERICO_MAYOR_9, Constantes.ERROR,
 				datosEntradaRegistroTelefonoPNumericoMayor9.getDatosPersona().getTelefonoP(), Constantes.TELEFONOP);
 	}
 
-	public DatosPruebaAtributos getTestRegistroTelefonoPersonaCorrectoNumerico(final Registro datosEntradaRegistroTelefonoPersona) {
+	public DatosPruebaAtributos getTestRegistroTelefonoPersonaCorrectoNumerico(
+			final Registro datosEntradaRegistroTelefonoPersona) {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroTelefonoPersona.getDatosPersona().getTelefonoP());
+				.comprobarAtributoCorrectoAlfanumerico(
+						datosEntradaRegistroTelefonoPersona.getDatosPersona().getTelefonoP());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.NUMERICO_FECHA_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.NUMERICO_TELEFONO_CORRECTO, Constantes.EXITO,
 				datosEntradaRegistroTelefonoPersona.getDatosPersona().getTelefonoP(), Constantes.TELEFONOP);
 
 	}

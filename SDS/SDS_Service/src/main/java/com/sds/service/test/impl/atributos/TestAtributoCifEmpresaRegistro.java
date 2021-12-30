@@ -19,7 +19,7 @@ import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
 
 public class TestAtributoCifEmpresaRegistro {
-	
+
 	private final ValidacionesAtributosBlank validacionesAtributosBlank;
 	private final ValidacionesAtributosEnhe validacionesAtributosEnhe;
 	private final ValidacionesAtributosAcentos validacionesAtributosAcentos;
@@ -45,28 +45,31 @@ public class TestAtributoCifEmpresaRegistro {
 	public DatosPruebaAtributos getTestRegistroCifEmpresaVacio(final Registro datosEntradaRegistroCifEmpresaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroCifEmpresaVacio.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaVacio.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
+				Atributo.CIF_EMPRESA);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_VACIO + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroCifEmpresaVacio.getDatosEmpresa().getCifEmpresa(),
-				Constantes.CIF_EMPRESA);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroCifEmpresaVacio.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
 	}
 
-	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoEnhe(final Registro datosEntradaRegistroCifEmpresaAlfanumericoEnhe) {
+	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoEnhe(
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoEnhe) {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
-				 datosEntradaRegistroCifEmpresaAlfanumericoEnhe.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoEnhe.getDatosEmpresa().getCifEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_ENHE, Constantes.ERROR,
-				datosEntradaRegistroCifEmpresaAlfanumericoEnhe.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoEnhe.getDatosEmpresa().getCifEmpresa(),
+				Constantes.CIF_EMPRESA);
 
 	}
 
@@ -74,15 +77,16 @@ public class TestAtributoCifEmpresaRegistro {
 			final Registro datosEntradaRegistroCifEmpresaAlfanumericoAcentos) {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
-				datosEntradaRegistroCifEmpresaAlfanumericoAcentos.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoAcentos.getDatosEmpresa().getCifEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_ACENTOS, Constantes.ERROR,
-				datosEntradaRegistroCifEmpresaAlfanumericoAcentos.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoAcentos.getDatosEmpresa().getCifEmpresa(),
+				Constantes.CIF_EMPRESA);
 
 	}
 
@@ -90,9 +94,8 @@ public class TestAtributoCifEmpresaRegistro {
 			final Registro datosEntradaRegistroCifEmpresaAlfanumericoCaracteresEspeciales) {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
-				.comprobarAtributoCaracteresEspeciales(
-						datosEntradaRegistroCifEmpresaAlfanumericoCaracteresEspeciales.getDatosEmpresa().getCifEmpresa(),
-						Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA);
+				.comprobarAtributoCaracteresEspeciales(datosEntradaRegistroCifEmpresaAlfanumericoCaracteresEspeciales
+						.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
@@ -107,56 +110,61 @@ public class TestAtributoCifEmpresaRegistro {
 			final Registro datosEntradaRegistroCifEmpresaAlfanumericoEspacios) {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
-				datosEntradaRegistroCifEmpresaAlfanumericoEspacios.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoEspacios.getDatosEmpresa().getCifEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_ESPACIOS, Constantes.ERROR,
-				datosEntradaRegistroCifEmpresaAlfanumericoEspacios.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoEspacios.getDatosEmpresa().getCifEmpresa(),
+				Constantes.CIF_EMPRESA);
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoMenor9(
 			final Registro datosEntradaRegistroCifEmpresaAlfanumericoMenor9) {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
-				datosEntradaRegistroCifEmpresaAlfanumericoMenor9.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.CIF_EMPRESA, 9);
+				datosEntradaRegistroCifEmpresaAlfanumericoMenor9.getDatosEmpresa().getCifEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA, 9);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_MENOR_QUE_9 + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MENOR_QUE_9;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MENOR_9, Constantes.ERROR,
-				datosEntradaRegistroCifEmpresaAlfanumericoMenor9.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoMenor9.getDatosEmpresa().getCifEmpresa(),
+				Constantes.CIF_EMPRESA);
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoMayor9(
 			final Registro datosEntradaRegistroCifEmpresaAlfanumericoMayor9) {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
-				datosEntradaRegistroCifEmpresaAlfanumericoMayor9.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.CIF_EMPRESA, 9);
+				datosEntradaRegistroCifEmpresaAlfanumericoMayor9.getDatosEmpresa().getCifEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.CIF_EMPRESA, 9);
 
 		final String resultadoEsperado = CodigosMensajes.CIF_EMPRESA_MAYOR_QUE_9 + " - "
 				+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MAYOR_QUE_9;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MAYOR_9, Constantes.ERROR,
-				datosEntradaRegistroCifEmpresaAlfanumericoMayor9.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
+				datosEntradaRegistroCifEmpresaAlfanumericoMayor9.getDatosEmpresa().getCifEmpresa(),
+				Constantes.CIF_EMPRESA);
 	}
 
-	public DatosPruebaAtributos getTestRegistroCifEmpresaCorrectoAlfanumerico(final Registro datosEntradaRegistroCifEmpresa) {
+	public DatosPruebaAtributos getTestRegistroCifEmpresaCorrectoAlfanumerico(
+			final Registro datosEntradaRegistroCifEmpresa) {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroCifEmpresa.getDatosEmpresa().getCifEmpresa());
+				.comprobarAtributoCorrectoAlfanumerico(
+						datosEntradaRegistroCifEmpresa.getDatosEmpresa().getCifEmpresa());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.IDENTIFICADOR_CORRECTO, Constantes.EXITO,
 				datosEntradaRegistroCifEmpresa.getDatosEmpresa().getCifEmpresa(), Constantes.CIF_EMPRESA);
 
 	}

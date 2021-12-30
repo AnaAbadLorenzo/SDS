@@ -1,6 +1,5 @@
 package com.sds.service.test.impl.atributos;
 
-
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -46,17 +45,19 @@ public class TestAtributoDniPersonaRegistro {
 	public DatosPruebaAtributos getTestRegistroDniPersonaVacio(final Registro datosEntradaRegistroDniPersonaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroDniPersonaVacio.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR, Atributo.DNI_PERSONA);
+				datosEntradaRegistroDniPersonaVacio.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
+				Atributo.DNI_PERSONA);
 
 		final String resultadoEsperado = CodigosMensajes.DNI_PERSONA_VACIO + " - "
 				+ Mensajes.DNI_PERSONA_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroDniPersonaVacio.getDatosPersona().getDniP(),
-				Constantes.DNIP);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroDniPersonaVacio.getDatosPersona().getDniP(), Constantes.DNIP);
 	}
 
-	public DatosPruebaAtributos getTestRegistroDniPersonaAlfanumericoEnhe(final Registro datosEntradaRegistroDniPersonaAlfanumericoEnhe) {
+	public DatosPruebaAtributos getTestRegistroDniPersonaAlfanumericoEnhe(
+			final Registro datosEntradaRegistroDniPersonaAlfanumericoEnhe) {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroDniPersonaAlfanumericoEnhe.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
@@ -100,8 +101,7 @@ public class TestAtributoDniPersonaRegistro {
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_CARACTERES_ESPECIALES, Constantes.ERROR,
-				datosEntradaRegistroDniPAlfanumericoCaracteresEspeciales.getDatosPersona().getDniP(),
-				Constantes.DNIP);
+				datosEntradaRegistroDniPAlfanumericoCaracteresEspeciales.getDatosPersona().getDniP(), Constantes.DNIP);
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPAlfanumericoEspacios(
@@ -157,7 +157,7 @@ public class TestAtributoDniPersonaRegistro {
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.IDENTIFICADOR_CORRECTO, Constantes.EXITO,
 				datosEntradaRegistroDniP.getDatosPersona().getDniP(), Constantes.DNIP);
 
 	}

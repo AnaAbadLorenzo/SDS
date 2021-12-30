@@ -1,5 +1,6 @@
 package com.sds.service.registro.impl;
 
+import java.text.ParseException;
 import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
@@ -56,8 +57,9 @@ public class RegistroServiceImpl implements RegistroService {
 	}
 
 	@Override
-	public String registrar(final Registro registro) throws UsuarioYaExisteException, PersonaYaExisteException,
-			EmpresaYaExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+	public String registrar(final Registro registro)
+			throws UsuarioYaExisteException, PersonaYaExisteException, EmpresaYaExisteException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ParseException {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;

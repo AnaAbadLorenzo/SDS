@@ -13,4 +13,5 @@ public interface RolAccionFuncionalidadRepository
 	List<Integer> findFuncionalityByRolId(Integer idRol);
 
 	List<Integer> findAccionByIdFuncionality(Integer idFuncionalidad);
+
 }

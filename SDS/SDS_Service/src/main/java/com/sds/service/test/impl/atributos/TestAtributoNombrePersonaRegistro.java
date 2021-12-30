@@ -62,7 +62,7 @@ public class TestAtributoNombrePersonaRegistro {
 				+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CARACTERES_ESPECIALES, Constantes.ERROR,
+				DefinicionPruebas.ALFABETICO_CARACTERES_ESPECIALES, Constantes.ERROR,
 				datosEntradaRegistroNombrePAlfanumericoCaracteresEspeciales.getDatosPersona().getNombreP(),
 				Constantes.NOMBREP);
 	}
@@ -78,7 +78,7 @@ public class TestAtributoNombrePersonaRegistro {
 				+ Mensajes.NOMBRE_NO_PUEDE_SER_MENOR_QUE_3;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_MENOR_3, Constantes.ERROR,
+				DefinicionPruebas.ALFABETICO_MENOR_3, Constantes.ERROR,
 				datosEntradaRegistroNombrePersonaAlfanumericoMenor3.getDatosPersona().getNombreP(), Constantes.NOMBREP);
 	}
 
@@ -93,7 +93,7 @@ public class TestAtributoNombrePersonaRegistro {
 				+ Mensajes.NOMBRE_NO_PUEDE_SER_MAYOR_QUE_56;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_MAYOR_56, Constantes.ERROR,
+				DefinicionPruebas.ALFABETICO_MAYOR_56, Constantes.ERROR,
 				datosEntradaRegistroNombrePAlfanumericoMayor56.getDatosPersona().getNombreP(), Constantes.NOMBREP);
 	}
 
@@ -119,7 +119,7 @@ public class TestAtributoNombrePersonaRegistro {
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFABETICO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.NOMBRE_ALFABETICO_CORRECTO, Constantes.EXITO,
 				datosEntradaRegistroNombreP.getDatosPersona().getNombreP(), Constantes.NOMBREP);
 
 	}

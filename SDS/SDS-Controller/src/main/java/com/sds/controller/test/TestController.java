@@ -40,7 +40,7 @@ public class TestController {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList();
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoUsuario = testLoginService.getPruebasAtributoUsuario();
@@ -142,7 +142,7 @@ public class TestController {
 	public RespEntity TestRegistrarAcciones() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
 
 		try {
 			datosPruebaAcciones = testRegistrarService.getPruebasAccionesRegistro();
