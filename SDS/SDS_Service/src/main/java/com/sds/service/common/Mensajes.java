@@ -26,8 +26,8 @@ public class Mensajes {
 
 	public static final String NOMBRE_NO_PUEDE_SER_VACIO = "El nombre no puede ser vacío";
 	public static final String NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS = "El nombre de la persona no puede contener más que letras y acentos";
-	public static final String NOMBRE_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre no puede ser menor que 9";
-	public static final String NOMBRE_NO_PUEDE_SER_MAYOR_QUE_56 = "El nombre no puede ser mayor que 9";
+	public static final String NOMBRE_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre no puede ser menor que 3";
+	public static final String NOMBRE_NO_PUEDE_SER_MAYOR_QUE_56 = "El nombre no puede ser mayor que 56";
 
 	public static final String APELLIDOS_PERSONA_NO_PUEDE_SER_VACIO = "Los apellidos de la persona no pueden ser vacío";
 	public static final String APELLIDOS_PERSONA_NO_PUEDEN_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS = "El nombre de la persona no puede contener más que letras y acentos";
@@ -51,7 +51,7 @@ public class Mensajes {
 	public static final String EMAIL_NO_PUEDE_SER_VACIO = "El email no puede ser vacío";
 	public static final String EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS = "El email no puede contener más que letras y números";
 	public static final String EMAIL_NO_PUEDE_SER_MENOR_QUE_4 = "El email no puede ser menor que 4";
-	public static final String EMAIL_NO_PUEDE_SER_MAYOR_QUE_128 = "El email no puede ser mayor que 128";
+	public static final String EMAIL_NO_PUEDE_SER_MAYOR_QUE_48 = "El email no puede ser mayor que 48";
 
 	public static final String CIF_EMPRESA_NO_PUEDE_SER_VACIO = "El cif de la empresa no puede ser vacío";
 	public static final String CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS = "El cif de la empresa no puede contener más que letras y números";

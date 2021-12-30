@@ -66,7 +66,7 @@ public class ValidacionesAtributosMayor {
 							+ Mensajes.APELlIDOS_PERSONA_NO_PUEDE_SER_MAYOR_QUE_128;
 					break;
 				case EMAIL:
-					resultado = CodigosMensajes.EMAIL_MAYOR_QUE_128 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MAYOR_QUE_128;
+					resultado = CodigosMensajes.EMAIL_MAYOR_QUE_48 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MAYOR_QUE_48;
 					break;
 				case TELEFONO:
 					resultado = CodigosMensajes.TELEFONO_MAYOR_QUE_9 + " - "

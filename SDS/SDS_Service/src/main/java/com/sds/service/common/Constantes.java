@@ -10,6 +10,16 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
 	public static final String ACCION_BUSCAR_ROL = "Buscar rol";
+	public static final String ACCION_MODIFICAR_USUARIO = "Modificar usuario";
+	public static final String ACCION_ELIMINAR_USUARIO = "Eliminar usuario";
+	public static final String ACCION_MODIFICAR_PERSONA = "Modificar persona";
+	public static final String ACCION_ELIMINAR_PERSONA = "Eliminar persona";
+	public static final String ACCION_BUSCAR_PERSONA = "Buscar persona";
+	public static final String ACCION_BUSCAR_EMPRESA = "Buscar empresa";
+	public static final String ACCION_MODIFICAR_EMPRESA = "Modificar empresa";
+	public static final String ACCION_AÑADIR_ACCION = "Añadir usuario";
+	public static final String ACCION_BUSCAR_ACCION = "Buscar accion";
+	public static final String ACCION_MODIFICAR_ACCION = "Modificar accion";
 
 	// Constantes para las acciones
 	public static final String AÑADIR_MODIFICAR = "Añadir / modificar";

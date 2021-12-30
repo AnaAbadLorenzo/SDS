@@ -15,7 +15,7 @@ import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
 
 public class TestAtributoDireccionPersonaRegistro {
-	
+
 	private final ValidacionesAtributosBlank validacionesAtributosBlank;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
@@ -30,58 +30,64 @@ public class TestAtributoDireccionPersonaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroDireccionPersonaVacio(final Registro datosEntradaRegistroDireccionPersonaVacio) {
+	public DatosPruebaAtributos getTestRegistroDireccionPersonaVacio(
+			final Registro datosEntradaRegistroDireccionPersonaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroDireccionPersonaVacio.getDatosPersona().getDireccionP(), Funcionalidad.REGISTRAR, Atributo.DIRECCION);
+				datosEntradaRegistroDireccionPersonaVacio.getDatosPersona().getDireccionP(), Funcionalidad.REGISTRAR,
+				Atributo.DIRECCION);
 
 		final String resultadoEsperado = CodigosMensajes.DIRECCION_VACIO + " - "
 				+ Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroDireccionPersonaVacio.getDatosPersona().getDireccionP(),
-				Constantes.DIRECCIONP);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroDireccionPersonaVacio.getDatosPersona().getDireccionP(), Constantes.DIRECCIONP);
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionPersonaAlfanumericoMenor3(
 			final Registro datosEntradaRegistroDireccionPersonaAlfanumericoMenor3) {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
-				 datosEntradaRegistroDireccionPersonaAlfanumericoMenor3.getDatosPersona().getDireccionP(), Funcionalidad.REGISTRAR,
-				Atributo.DIRECCION, 3);
+				datosEntradaRegistroDireccionPersonaAlfanumericoMenor3.getDatosPersona().getDireccionP(),
+				Funcionalidad.REGISTRAR, Atributo.DIRECCION, 3);
 
 		final String resultadoEsperado = CodigosMensajes.DIRECCION_MENOR_QUE_3 + " - "
 				+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MENOR_3, Constantes.ERROR,
-				 datosEntradaRegistroDireccionPersonaAlfanumericoMenor3.getDatosPersona().getDireccionP(), Constantes.DIRECCIONP);
+				datosEntradaRegistroDireccionPersonaAlfanumericoMenor3.getDatosPersona().getDireccionP(),
+				Constantes.DIRECCIONP);
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionPersonaAlfanumericoMayor128(
 			final Registro datosEntradaRegistroDireccionPersonaAlfanumericoMayor128) {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
-				datosEntradaRegistroDireccionPersonaAlfanumericoMayor128.getDatosPersona().getDireccionP(), Funcionalidad.REGISTRAR,
-				Atributo.DIRECCION, 128);
+				datosEntradaRegistroDireccionPersonaAlfanumericoMayor128.getDatosPersona().getDireccionP(),
+				Funcionalidad.REGISTRAR, Atributo.DIRECCION, 128);
 
 		final String resultadoEsperado = CodigosMensajes.DIRECCION_MAYOR_QUE_128 + " - "
 				+ Mensajes.DIRECCION_NO_PUEDE_SER_MAYOR_QUE_128;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MAYOR_128, Constantes.ERROR,
-				datosEntradaRegistroDireccionPersonaAlfanumericoMayor128.getDatosPersona().getDireccionP(), Constantes.DIRECCIONP);
+				datosEntradaRegistroDireccionPersonaAlfanumericoMayor128.getDatosPersona().getDireccionP(),
+				Constantes.DIRECCIONP);
 	}
 
-	public DatosPruebaAtributos getTestRegistroDireccionPCorrectoAlfanumerico(final Registro datosEntradaRegistroDireccionP) {
+	public DatosPruebaAtributos getTestRegistroDireccionPCorrectoAlfanumerico(
+			final Registro datosEntradaRegistroDireccionP) {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroDireccionP.getDatosPersona().getDireccionP());
+				.comprobarAtributoCorrectoAlfanumerico(
+						datosEntradaRegistroDireccionP.getDatosPersona().getDireccionP());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.DIRECCION_CORRECTO, Constantes.EXITO,
 				datosEntradaRegistroDireccionP.getDatosPersona().getDireccionP(), Constantes.DIRECCIONP);
 
 	}

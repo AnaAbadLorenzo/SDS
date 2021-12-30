@@ -34,10 +34,11 @@ public class RegistroController {
 	@ResponseBody
 	public RespEntity registerUser(@RequestBody final Registro registro) {
 
-		final Boolean registroValido = validaciones.comprobarRegistroBlank(registro);
+		Boolean registroValido;
+		try {
+			registroValido = validaciones.comprobarRegistroBlank(registro);
+			if (registroValido) {
 
-		if (registroValido) {
-			try {
 				String resultado;
 				try {
 					resultado = registroService.registrar(registro);
@@ -50,14 +51,17 @@ public class RegistroController {
 				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, registro);
 				}
-			} catch (final UsuarioYaExisteException useralredyExists) {
-				return new RespEntity(RespCode.USUARIO_YA_EXISTE, registro);
-			} catch (final PersonaYaExisteException personAlreadyExists) {
-				return new RespEntity(RespCode.PERSONA_YA_EXISTE, registro);
-			} catch (final EmpresaYaExisteException empresaAlreadyExists) {
-				return new RespEntity(RespCode.EMPRESA_YA_EXISTE, registro);
 			}
+		} catch (final UsuarioYaExisteException useralredyExists) {
+			return new RespEntity(RespCode.USUARIO_YA_EXISTE, registro);
+		} catch (final PersonaYaExisteException personAlreadyExists) {
+			return new RespEntity(RespCode.PERSONA_YA_EXISTE, registro);
+		} catch (final EmpresaYaExisteException empresaAlreadyExists) {
+			return new RespEntity(RespCode.EMPRESA_YA_EXISTE, registro);
+		} catch (final java.text.ParseException ex) {
+			return new RespEntity(RespCode.REGISTRO_VACIO, registro);
 		}
+
 		return new RespEntity(RespCode.REGISTRO_VACIO, registro);
 	}
 }

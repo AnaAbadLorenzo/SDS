@@ -62,7 +62,7 @@ public class TestAtributoApellidosPersonaRegistro {
 				+ Mensajes.APELLIDOS_PERSONA_NO_PUEDEN_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CARACTERES_ESPECIALES, Constantes.ERROR,
+				DefinicionPruebas.ALFABETICO_CARACTERES_ESPECIALES, Constantes.ERROR,
 				datosEntradaRegistroApellidosPAlfanumericoCaracteresEspeciales.getDatosPersona().getApellidosP(),
 				Constantes.APELLIDOSP);
 	}
@@ -78,7 +78,7 @@ public class TestAtributoApellidosPersonaRegistro {
 				+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_MENOR_QUE_3;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_MENOR_3, Constantes.ERROR,
+				DefinicionPruebas.ALFABETICO_MENOR_3, Constantes.ERROR,
 				datosEntradaRegistroApellidosPersonaAlfanumericoMenor3.getDatosPersona().getApellidosP(),
 				Constantes.APELLIDOSP);
 	}
@@ -94,7 +94,7 @@ public class TestAtributoApellidosPersonaRegistro {
 				+ Mensajes.APELlIDOS_PERSONA_NO_PUEDE_SER_MAYOR_QUE_128;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_MAYOR_128, Constantes.ERROR,
+				DefinicionPruebas.ALFABETICO_MAYOR_128, Constantes.ERROR,
 				datosEntradaRegistroApellidosPAlfanumericoMayor128.getDatosPersona().getApellidosP(),
 				Constantes.APELLIDOSP);
 	}

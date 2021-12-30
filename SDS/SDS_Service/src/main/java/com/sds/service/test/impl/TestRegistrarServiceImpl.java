@@ -700,7 +700,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 		return datosPruebaAcciones;
 	}
 
-	private DatosPruebaAcciones getTestRegistroPersonaYaExiste(final Registro datosEntradaRegistroPersonaYaExiste) {
+	private DatosPruebaAcciones getTestRegistroPersonaYaExiste(final Registro datosEntradaRegistroPersonaYaExiste)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroPersonaYaExiste);
 
@@ -713,7 +714,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 
 	}
 
-	private DatosPruebaAcciones getTestRegistroUsuarioYaExiste(final Registro datosEntradaRegistroUsuarioYaExiste) {
+	private DatosPruebaAcciones getTestRegistroUsuarioYaExiste(final Registro datosEntradaRegistroUsuarioYaExiste)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroUsuarioYaExiste);
 
@@ -725,7 +727,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				getValorRegistro(datosEntradaRegistroUsuarioYaExiste));
 	}
 
-	private DatosPruebaAcciones getTestRegistroEmpresaYaExiste(final Registro datosEntradaRegistroEmpresaYaExiste) {
+	private DatosPruebaAcciones getTestRegistroEmpresaYaExiste(final Registro datosEntradaRegistroEmpresaYaExiste)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroEmpresaYaExiste);
 
@@ -737,7 +740,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				getValorRegistro(datosEntradaRegistroEmpresaYaExiste));
 	}
 
-	private DatosPruebaAcciones getTestRegistroPersonaVacia(final Registro datosEntradaRegistroPersonaVacia) {
+	private DatosPruebaAcciones getTestRegistroPersonaVacia(final Registro datosEntradaRegistroPersonaVacia)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroPersonaVacia);
 
@@ -748,7 +752,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				DefinicionPruebas.PERSONA_VACIA, Constantes.ERROR, getValorRegistro(datosEntradaRegistroPersonaVacia));
 	}
 
-	private DatosPruebaAcciones getTestRegistroUsuarioVacio(final Registro datosEntradaRegistroUsuarioVacio) {
+	private DatosPruebaAcciones getTestRegistroUsuarioVacio(final Registro datosEntradaRegistroUsuarioVacio)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroUsuarioVacio);
 
@@ -759,7 +764,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				DefinicionPruebas.USUARIO_VACIO, Constantes.ERROR, getValorRegistro(datosEntradaRegistroUsuarioVacio));
 	}
 
-	private DatosPruebaAcciones getTestRegistroEmpresaVacia(final Registro datosEntradaRegistroEmpresaVacia) {
+	private DatosPruebaAcciones getTestRegistroEmpresaVacia(final Registro datosEntradaRegistroEmpresaVacia)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroEmpresaVacia);
 
@@ -770,7 +776,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				DefinicionPruebas.EMPRESA_VACIA, Constantes.ERROR, getValorRegistro(datosEntradaRegistroEmpresaVacia));
 	}
 
-	private DatosPruebaAcciones getTestRegistroCorrecto(final Registro datosEntradaRegistroCorrecto) {
+	private DatosPruebaAcciones getTestRegistroCorrecto(final Registro datosEntradaRegistroCorrecto)
+			throws java.text.ParseException {
 
 		final String resultadoObtenido = existeRegistro(datosEntradaRegistroCorrecto);
 
@@ -780,7 +787,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				DefinicionPruebas.REGISTRO_CORRECTO, Constantes.EXITO, getValorRegistro(datosEntradaRegistroCorrecto));
 	}
 
-	private String existeRegistro(final Registro registro) {
+	private String existeRegistro(final Registro registro) throws java.text.ParseException {
 
 		if (!validaciones.comprobarPersonaBlank(registro.getDatosPersona())) {
 			return CodigosMensajes.REGISTRO_PERSONA_VACIA + " - " + Mensajes.REGISTRO_PERSONA_VACIA;

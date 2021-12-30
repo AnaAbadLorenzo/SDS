@@ -16,7 +16,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "accion")
 @NamedQueries({
-	@NamedQuery(name = "AccionEntity.findNombreAccionById", query = "SELECT a.nombreAccion FROM AccionEntity a WHERE a.idAccion =: idAccion") })
+		@NamedQuery(name = "AccionEntity.findNombreAccionById", query = "SELECT a.nombreAccion FROM AccionEntity a WHERE a.idAccion =: idAccion"),
+		@NamedQuery(name = "AccionEntity.findAccionByName", query = "SELECT * FROM AccionEntity a WHERE a.nombreAccion =: nombreAccion"),
+		@NamedQuery(name = "AccionEntity.findAccionesElimiandas", query = "SELECT * FROM AccionEntity a WHERE a.borradoAccion =: borradoAccion") })
 public class AccionEntity {
 
 	@Id

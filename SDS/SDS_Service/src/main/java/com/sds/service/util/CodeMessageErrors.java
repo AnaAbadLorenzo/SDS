@@ -9,6 +9,7 @@ public enum CodeMessageErrors {
 	USUARIO_YA_EXISTE_EXCEPTION("El usuario ya existe"), //
 	PERSONA_YA_EXISTE_EXCEPTION("La persona ya existe"), //
 	EMPRESA_YA_EXISTE_EXCEPTION("La empresa ya existe"), //
+	PERSONA_NO_EXISTE_EXCEPTION("La persona no existe"), //
 	JWT_EXPIRADO_EXCEPTION("JWT expirado"), //
 	JWT_MALFORMADO_EXCEPTION("JWT malformado"), //
 	JWT_NO_SOPORTADO_EXCEPTION("JWT no soportado"), //
@@ -16,7 +17,17 @@ public enum CodeMessageErrors {
 	ROL_YA_EXISTE_EXCEPTION("El rol ya existe"), //
 	NO_HAY_ROLES_EXCEPTION("No se han encontrado roles"), //
 	ROL_ASOCIADO_USUARIO_EXCEPTION("Rol asociado a un usuario"), //
+	USUARIO_ASOCIADO_PERSONA_EXCEPTION("La persona está asociada a un usuario"), //
+	EMPRESA_ASOCIADA_PERSONA_EXCEPTION("La empresa contiene personas asociadas"), //
+	ACCION_YA_EXISTE_EXCEPTION("La accion ya existe"), //
+	ACCION_NO_EXISTE_EXCEPTION("La accion que busca no existe"), //
+	ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION("La accion esta asociada con una accion y una funcionalidad"), //
 	ROL_VACIO("Rol vacío"), //
+	USUARIO_VACIO("Usuario vacío"), //
+	PERSONA_VACIO("Persona vacia"), //
+	EMPRESA_VACIO("Empresa vacia"), //
+	ACCION_VACIA("Accion vacia"), //
+	EMPRESA_NO_ENCONTRADA_EXCEPTION("La empresa no existe"), //
 	LOG_EXCEPCIONES_VACIO("LogExcepciones vacío"), //
 	LOG_ACCIONES_VACIO("LogAcciones vacío");
 

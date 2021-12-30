@@ -30,16 +30,19 @@ public class TestAtributoDireccionEmpresaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroDireccionEmpresaVacio(final Registro datosEntradaRegistroDireccionEmpresaVacio) {
+	public DatosPruebaAtributos getTestRegistroDireccionEmpresaVacio(
+			final Registro datosEntradaRegistroDireccionEmpresaVacio) {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroDireccionEmpresaVacio.getDatosEmpresa().getDireccionEmpresa(), Funcionalidad.REGISTRAR, Atributo.DIRECCION);
+				datosEntradaRegistroDireccionEmpresaVacio.getDatosEmpresa().getDireccionEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.DIRECCION);
 
 		final String resultadoEsperado = CodigosMensajes.DIRECCION_VACIO + " - "
 				+ Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroDireccionEmpresaVacio.getDatosEmpresa().getDireccionEmpresa(),
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroDireccionEmpresaVacio.getDatosEmpresa().getDireccionEmpresa(),
 				Constantes.DIRECCION_EMPRESA);
 	}
 
@@ -47,42 +50,47 @@ public class TestAtributoDireccionEmpresaRegistro {
 			final Registro datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3) {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
-				datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3.getDatosEmpresa().getDireccionEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.DIRECCION, 3);
+				datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3.getDatosEmpresa().getDireccionEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.DIRECCION, 3);
 
 		final String resultadoEsperado = CodigosMensajes.DIRECCION_MENOR_QUE_3 + " - "
 				+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_MENOR_3, Constantes.ERROR,
-				 datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3.getDatosEmpresa().getDireccionEmpresa(), Constantes.DIRECCION_EMPRESA);
+				DefinicionPruebas.ALFABETICO_MENOR_3, Constantes.ERROR,
+				datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3.getDatosEmpresa().getDireccionEmpresa(),
+				Constantes.DIRECCION_EMPRESA);
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionEmpresaAlfanumericoMayor128(
 			final Registro datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128) {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
-				datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128.getDatosEmpresa().getDireccionEmpresa(), Funcionalidad.REGISTRAR,
-				Atributo.DIRECCION, 128);
+				datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128.getDatosEmpresa().getDireccionEmpresa(),
+				Funcionalidad.REGISTRAR, Atributo.DIRECCION, 128);
 
 		final String resultadoEsperado = CodigosMensajes.DIRECCION_MAYOR_QUE_128 + " - "
 				+ Mensajes.DIRECCION_NO_PUEDE_SER_MAYOR_QUE_128;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_MAYOR_128, Constantes.ERROR,
-				datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128.getDatosEmpresa().getDireccionEmpresa(), Constantes.DIRECCION_EMPRESA);
+				DefinicionPruebas.ALFABETICO_MAYOR_128, Constantes.ERROR,
+				datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128.getDatosEmpresa().getDireccionEmpresa(),
+				Constantes.DIRECCION_EMPRESA);
 	}
 
-	public DatosPruebaAtributos getTestRegistroDireccionEmpresaCorrectoAlfanumerico(final Registro datosEntradaRegistroDireccionEmpresa) {
+	public DatosPruebaAtributos getTestRegistroDireccionEmpresaCorrectoAlfanumerico(
+			final Registro datosEntradaRegistroDireccionEmpresa) {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroDireccionEmpresa.getDatosEmpresa().getDireccionEmpresa());
+				.comprobarAtributoCorrectoAlfanumerico(
+						datosEntradaRegistroDireccionEmpresa.getDatosEmpresa().getDireccionEmpresa());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFANUMERICO_CORRECTO, Constantes.EXITO,
-				datosEntradaRegistroDireccionEmpresa.getDatosEmpresa().getDireccionEmpresa(), Constantes.DIRECCION_EMPRESA);
+				DefinicionPruebas.DIRECCION_CORRECTO, Constantes.EXITO,
+				datosEntradaRegistroDireccionEmpresa.getDatosEmpresa().getDireccionEmpresa(),
+				Constantes.DIRECCION_EMPRESA);
 
 	}
 
