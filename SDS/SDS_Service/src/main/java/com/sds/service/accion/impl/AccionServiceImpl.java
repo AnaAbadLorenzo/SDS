@@ -209,36 +209,35 @@ public class AccionServiceImpl implements AccionService {
 							CodeMessageErrors.getTipoNameByCodigo(
 									CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo()));
 
-				} else {
-					accionEntity.setBorradoAccion(1);
-
-					accion.setAccion(accionEntity);
-					accionRepository.saveAndFlush(accionEntity);
-
-					final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(accion.getUsuario(),
-							Constantes.ACCION_BUSCAR_ACCION, accionEntity.toString());
-
-					resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
-
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(accion.getUsuario(),
-							Constantes.ACCION_MODIFICAR_ACCION, accion.getAccion().toString());
-
-					resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
-
-					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
-							|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
-						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-					}
-
-					resultado = Constantes.OK;
 				}
 			}
+			accionEntity.setBorradoAccion(1);
+
+			accion.setAccion(accionEntity);
+			accionRepository.saveAndFlush(accionEntity);
+
+			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(accion.getUsuario(),
+					Constantes.ACCION_BUSCAR_ACCION, accionEntity.toString());
+
+			resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
+
+			final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(accion.getUsuario(),
+					Constantes.ACCION_MODIFICAR_ACCION, accion.getAccion().toString());
+
+			resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
+
+			if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
+					|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
+				throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+			}
+
+			resultado = Constantes.OK;
 
 		}
 
 		return resultado;
+
 	}
 
 	@Override

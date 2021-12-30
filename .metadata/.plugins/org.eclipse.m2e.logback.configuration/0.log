@@ -16700,3 +16700,13 @@ Caused by: java.io.IOException: El volumen para un archivo ha sido alterado exte
 2021-12-30 14:27:12,435 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
 2021-12-30 14:27:12,436 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2021-12-30 14:27:12,437 [Worker-4: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 14:35:40,035 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 14:35:40,036 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 14:35:40,036 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 14:35:40,039 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 14:35:40,040 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
+2021-12-30 14:36:25,690 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 14:36:25,691 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 14:36:25,691 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\main\resources
+2021-12-30 14:36:25,695 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2021-12-30 14:36:25,695 [Worker-12: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory F:\Universidad\TFG\SDS_TFG\SDS\SDS\SDS_Service\src\test\resources
