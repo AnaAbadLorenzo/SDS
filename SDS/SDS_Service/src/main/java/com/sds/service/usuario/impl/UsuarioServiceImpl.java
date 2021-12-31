@@ -16,7 +16,6 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.log.impl.LogServiceImpl;
 import com.sds.service.usuario.UsuarioService;
-import com.sds.service.usuario.model.Usuario;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -39,10 +38,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public String eliminarUsuario(final Usuario usuario)
+	public String eliminarUsuario(final UsuarioEntity user)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 
-		final UsuarioEntity user = usuario.getUsuarioEntity();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 
@@ -51,7 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
 
 		if (!usuarioBD.isPresent()) {
-			logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuarioLogg(),
+			logExcepciones = util.generarDatosLogExcepciones(user.getUsuario(),
 					CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
 					CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
@@ -68,8 +66,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 		} else {
 			user.setBorradoUsuario(1);
-			usuario.setUsuarioEntity(user);
-			modificarUsuario(usuario);
+			modificarUsuario(user);
 			resultado = Constantes.OK;
 		}
 
@@ -77,9 +74,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public String modificarUsuario(final Usuario usuario)
+	public String modificarUsuario(final UsuarioEntity user)
 			throws LogExcepcionesNoGuardadoException, UsuarioNoEncontradoException, LogAccionesNoGuardadoException {
-		final UsuarioEntity user = usuario.getUsuarioEntity();
 		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(user);
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
@@ -89,7 +85,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
 
 			if (!usuarioBD.isPresent()) {
-				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuarioLogg(),
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(user.getUsuario(),
 						CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
 						CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
@@ -112,13 +108,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 				usuarioRepository.saveAndFlush(user);
 
-				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuarioLogg(),
-						Constantes.ACCION_MODIFICAR_USUARIO, usuario.toString());
+				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(user.getUsuario(),
+						Constantes.ACCION_MODIFICAR_USUARIO, user.toString());
 
 				resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
 
-				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuarioLogg(),
-						Constantes.ACCION_MODIFICAR_USUARIO, usuario.toString());
+				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(user.getUsuario(),
+						Constantes.ACCION_MODIFICAR_USUARIO, user.toString());
 
 				resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
 

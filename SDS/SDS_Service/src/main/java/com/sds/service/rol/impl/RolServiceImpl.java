@@ -70,7 +70,7 @@ public class RolServiceImpl implements RolService {
 	@Override
 	public List<RolEntity> buscarTodos() {
 		final List<RolEntity> roles = rolRepository.findAll();
-		final List<RolEntity> toret = new ArrayList<RolEntity>();
+		final List<RolEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < roles.size(); i++) {
 			final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
@@ -253,7 +253,7 @@ public class RolServiceImpl implements RolService {
 	@Override
 	public List<RolEntity> buscarRolesEliminados() {
 		final List<RolEntity> rolesEliminados = rolRepository.findDeleteRol(1);
-		final List<RolEntity> toret = new ArrayList<RolEntity>();
+		final List<RolEntity> toret = new ArrayList<>();
 
 		for (int i = 0; i < rolesEliminados.size(); i++) {
 			final RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(), rolesEliminados.get(i).getRolName(),

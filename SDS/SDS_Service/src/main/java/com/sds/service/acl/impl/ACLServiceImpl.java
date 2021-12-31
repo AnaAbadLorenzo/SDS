@@ -33,7 +33,7 @@ public class ACLServiceImpl implements ACLService {
 	@Override
 	public Menu funcionesUsuario(final String usuario) {
 		final Menu menu = new Menu();
-		final List<String> funcionalidadesMenu = new ArrayList<String>();
+		final List<String> funcionalidadesMenu = new ArrayList<>();
 
 		final RolEntity rolUsuario = usuarioRepository.findRolUsuario(usuario);
 
@@ -53,7 +53,7 @@ public class ACLServiceImpl implements ACLService {
 
 	@Override
 	public List<String> accionesUsuarioFuncionalidad(final String usuario, final String funcionalidad) {
-		final List<String> acciones = new ArrayList<String>();
+		final List<String> acciones = new ArrayList<>();
 		final List<Integer> idAcciones;
 
 		final Integer idFuncionalidad = funcionalidadRepository.findIdFuncionalidadByName(funcionalidad);

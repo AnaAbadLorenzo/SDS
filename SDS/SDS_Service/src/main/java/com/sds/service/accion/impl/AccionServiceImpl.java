@@ -75,7 +75,7 @@ public class AccionServiceImpl implements AccionService {
 	public List<AccionEntity> buscarTodos() {
 		final List<AccionEntity> acciones = accionRepository.findAll();
 
-		final List<AccionEntity> toret = new ArrayList<AccionEntity>();
+		final List<AccionEntity> toret = new ArrayList<>();
 
 		final AccionEntity accionToret = new AccionEntity();
 
@@ -95,7 +95,7 @@ public class AccionServiceImpl implements AccionService {
 	public List<AccionEntity> buscarAccionesEliminadas() {
 		final List<AccionEntity> acciones = accionRepository.findAccionesEliminadas(1);
 
-		final List<AccionEntity> toret = new ArrayList<AccionEntity>();
+		final List<AccionEntity> toret = new ArrayList<>();
 
 		final AccionEntity accionToret = new AccionEntity();
 
