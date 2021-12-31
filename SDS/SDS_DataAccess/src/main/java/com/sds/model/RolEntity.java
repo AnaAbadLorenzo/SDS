@@ -39,12 +39,12 @@ public class RolEntity {
 	@Column(name = "borrado_rol")
 	private int borradoRol;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "rolaccionfuncionalidad", joinColumns = { @JoinColumn(name = "id_rol") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_accion") })
 	private final Set<AccionEntity> acciones = new HashSet();
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "rolaccionfuncionalidad", joinColumns = { @JoinColumn(name = "id_rol") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_funcionalidad") })
 	private final Set<FuncionalidadEntity> funcionalidades = new HashSet();

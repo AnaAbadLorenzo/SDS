@@ -38,7 +38,7 @@ public class FuncionalidadEntity {
 	@Column(name = "borrado_funcionalidad")
 	private Integer borradoFuncionalidad;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "rolaccionfuncionalidad", joinColumns = {
 			@JoinColumn(name = "id_funcionalidad") }, inverseJoinColumns = { @JoinColumn(name = "id_accion") })
 	private final Set<AccionEntity> acciones = new HashSet();

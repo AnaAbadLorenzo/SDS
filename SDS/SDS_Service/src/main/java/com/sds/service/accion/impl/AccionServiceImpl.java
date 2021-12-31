@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sds.model.AccionEntity;
 import com.sds.model.LogAccionesEntity;
@@ -26,6 +27,7 @@ import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
 
+@Service
 public class AccionServiceImpl implements AccionService {
 
 	@Autowired

@@ -178,4 +178,35 @@ public class PersonaServiceImpl implements PersonaService {
 
 	}
 
+	@Override
+	public void deletePersona(final PersonaEntity persona)
+			throws PersonaNoExisteException, ParseException, UsuarioAsociadoPersonaException {
+		final Boolean personaValida = validaciones.comprobarPersonaBlank(persona);
+
+		if (personaValida) {
+
+			final Optional<PersonaEntity> person = personaRepository.findById(persona.getDniP());
+
+			if (!person.isPresent()) {
+				throw new PersonaNoExisteException(
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+			} else {
+				final Optional<UsuarioEntity> user = usuarioRepository.findById(persona.getDniP());
+
+				if (user.isPresent()) {
+					throw new UsuarioAsociadoPersonaException(
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.USUARIO_ASOCIADO_PERSONA_EXCEPTION.getCodigo()),
+							CodeMessageErrors.USUARIO_ASOCIADO_PERSONA_EXCEPTION.getCodigo());
+
+				} else {
+					personaRepository.deletePersona(persona.getDniP());
+					personaRepository.flush();
+				}
+			}
+		}
+	}
+
 }

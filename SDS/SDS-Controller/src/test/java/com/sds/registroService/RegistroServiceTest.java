@@ -22,13 +22,21 @@ import com.sds.model.EmpresaEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.Constantes;
+import com.sds.service.empresa.EmpresaService;
+import com.sds.service.exception.EmpresaAsociadaPersonasException;
+import com.sds.service.exception.EmpresaNoEncontradaException;
 import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
+import com.sds.service.exception.UsuarioAsociadoPersonaException;
+import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.exception.UsuarioYaExisteException;
+import com.sds.service.persona.PersonaService;
 import com.sds.service.registro.RegistroService;
 import com.sds.service.registro.model.Registro;
+import com.sds.service.usuario.UsuarioService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 
@@ -38,6 +46,15 @@ public class RegistroServiceTest {
 
 	@Autowired
 	RegistroService registroService;
+
+	@Autowired
+	UsuarioService usuarioService;
+
+	@Autowired
+	PersonaService personaService;
+
+	@Autowired
+	EmpresaService empresaService;
 
 	@Test
 	public void RegistroService_registroPersonaUsuarioEmpresaVacio() throws IOException, ParseException,
@@ -107,9 +124,11 @@ public class RegistroServiceTest {
 	}
 
 	@Test
-	public void RegistroService_registroOk() throws IOException, ParseException, UsuarioYaExisteException,
-			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+	public void RegistroService_registroOk()
+			throws IOException, ParseException, UsuarioYaExisteException, PersonaYaExisteException,
+			EmpresaYaExisteException, java.text.ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, UsuarioNoEncontradoException, PersonaNoExisteException,
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaAsociadaPersonasException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA,
 				Constantes.REGISTRO_PERSONA_USUARIO_EMPRESA_CORRECTOS);
@@ -117,6 +136,10 @@ public class RegistroServiceTest {
 		final String respuesta = registroService.registrar(registro);
 
 		assertNotNull(respuesta);
+
+		usuarioService.deleteUsuario(registro.getDatosUsuario());
+		personaService.deletePersona(registro.getDatosPersona());
+		empresaService.deleteEmpresa(registro.getDatosEmpresa());
 	}
 
 	private Registro generateRegistro(final String fichero, final String nombrePrueba)
