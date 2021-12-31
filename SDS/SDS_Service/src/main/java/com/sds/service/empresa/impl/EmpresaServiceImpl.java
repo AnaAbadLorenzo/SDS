@@ -4,6 +4,7 @@ import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
@@ -23,6 +24,7 @@ import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
 
+@Service
 public class EmpresaServiceImpl implements EmpresaService {
 
 	@Autowired
@@ -94,9 +96,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
 						CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
 
-			}
-
-			else {
+			} else {
 				empresaEntity.setBorradoEmpresa(1);
 				empresa.setEmpresa(empresaEntity);
 				modificarEmpresa(empresa);
@@ -177,6 +177,23 @@ public class EmpresaServiceImpl implements EmpresaService {
 		}
 
 		return resultado;
+	}
+
+	@Override
+	public void deleteEmpresa(final EmpresaEntity empresa)
+			throws EmpresaNoEncontradaException, EmpresaAsociadaPersonasException {
+		final EmpresaEntity empre = empresaRepository.findByCif(empresa.getCifEmpresa());
+
+		if (empre == null) {
+			throw new EmpresaNoEncontradaException(
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+					CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+		} else {
+			empresaRepository.deleteEmpresa(empre.getCifEmpresa());
+			empresaRepository.flush();
+		}
+
 	}
 
 }

@@ -7,6 +7,8 @@ import com.sds.service.exception.UsuarioNoEncontradoException;
 
 public interface UsuarioService {
 
+	void deleteUsuario(UsuarioEntity user) throws UsuarioNoEncontradoException;
+
 	String eliminarUsuario(final UsuarioEntity user)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 

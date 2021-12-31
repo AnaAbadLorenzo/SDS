@@ -133,4 +133,22 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return resultado;
 	}
 
+	@Override
+	public void deleteUsuario(final UsuarioEntity user) throws UsuarioNoEncontradoException {
+		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(user);
+
+		if (usuarioValido) {
+			final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
+
+			if (!usuarioBD.isPresent()) {
+				throw new UsuarioNoEncontradoException(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
+			} else {
+				usuarioRepository.deleteUsuario(user.getDniUsuario());
+				usuarioRepository.flush();
+			}
+		}
+	}
+
 }
