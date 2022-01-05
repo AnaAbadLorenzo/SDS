@@ -130,4 +130,12 @@ public class Validaciones {
 			return true;
 		}
 	}
+
+	public boolean comprobarDescripcionAccionBlank(final String descripcionAccion) {
+		if (StringUtils.isBlank(descripcionAccion)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

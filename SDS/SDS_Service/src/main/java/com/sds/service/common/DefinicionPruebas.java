@@ -21,6 +21,7 @@ public class DefinicionPruebas {
 	public static final String ALFANUMERICO_MAYOR_128 = "Alfanumérico mayor de 128 caracteres";
 	public static final String ALFABETICO_MAYOR_128 = "Alfabético mayor de 128 caracteres";
 	public static final String ALFABETICO_MAYOR_32 = "Alfabético mayor de 32 caracteres";
+	public static final String ALFABETICO_MAYOR_48 = "Alfabético mayor de 48 caracteres";
 	public static final String ALFABETICO_CORRECTO = "Alfabético sin caracateres especiales, tamaño mayor que 3";
 	public static final String NOMBRE_ALFABETICO_CORRECTO = "Alfabético sin caracateres especiales, tamaño mayor que 3 y menor que 56";
 	public static final String ALFANUMERICO_CORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño mayor que 3 y menor que 45";
@@ -63,4 +64,13 @@ public class DefinicionPruebas {
 	public static final String ELIMINAR_ROL_NO_EXISTE = "El rol no ha podido eliminarse porque no existe";
 	public static final String MODIFICAR_ROL = "EL rol se ha modificado correctamente";
 	public static final String MODIFICAR_ROL_NO_EXISTE = "EL rol que desa modificar no existe";
+	public static final String ACCION_NAME_VACIO = "El nombre de la accion es vacio";
+	public static final String ACCION_NO_EXISTE = "La acción que busca no existe";
+	public static final String GUARDAR_ACCION_CORRECTO = "La acción se ha guardado correctamente";
+	public static final String ACCION_YA_EXISTE = "La acción que busca ya existe";
+	public static final String MODIFICAR_ACCION_CORRECTO = "La acción se ha modificado correctamente";
+	public static final String ELIMINAR_ACCION_CORRECTO = "La acción se ha eliminado correctamente";
+	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La acción tiene asociada un rol y una funcionalidad";
+	public static final String ACCION_DESCRIPTION_VACIO = "La descripción de la acción es vacia";
+	public static final String ACCION_VACIA = "El nombre y descripción de la acción son vacios";
 }

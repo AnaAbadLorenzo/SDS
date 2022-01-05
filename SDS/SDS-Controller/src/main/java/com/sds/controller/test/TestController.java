@@ -16,6 +16,7 @@ import com.sds.controller.test.model.RespuestaTestAtributos;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.common.Constantes;
+import com.sds.service.test.TestAccionService;
 import com.sds.service.test.TestLoginService;
 import com.sds.service.test.TestRegistrarService;
 import com.sds.service.test.TestRolService;
@@ -33,6 +34,9 @@ public class TestController {
 
 	@Autowired
 	TestRolService testRolService;
+
+	@Autowired
+	TestAccionService testAccionService;
 
 	@GetMapping(value = "/test/login/atributos")
 	@ResponseBody
@@ -157,9 +161,9 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/rol/atributos")
+	@GetMapping(value = "/test/rol/atributos/guardar")
 	@ResponseBody
-	public RespEntity TestRolAtributos() {
+	public RespEntity TestRolAtributosAccionGuardar() {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
@@ -178,10 +182,236 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
-		respuestaTestAtributos.setAccion(Constantes.AÑADIR_MODIFICAR);
+		respuestaTestAtributos.setAccion(Constantes.AÑADIR);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/test/rol/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestRolAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolName();
+			final List<DatosPruebaAtributos> pruebaAtributoRolDescription = testRolService
+					.getPruebasAtributoRolDescription();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
+			resultadoPruebasAtributos.addAll(pruebaAtributoRolDescription);
+
+		} catch (IOException | ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
+		respuestaTestAtributos.setAccion(Constantes.MODIFICAR);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/test/rol/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestRolAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolName();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
+
+		} catch (IOException | ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
+		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/test/accion/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestAccionAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoAccionName = testAccionService
+					.getPruebasAtributoAccionName();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
+
+		} catch (IOException | ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/test/accion/atributos/anadir")
+	@ResponseBody
+	public RespEntity TestAccionAtributosAccionAnadir() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoAccionName = testAccionService
+					.getPruebasAtributoAccionName();
+			final List<DatosPruebaAtributos> pruebaAtributosAccionDescription = testAccionService
+					.getPruebasAtributoAccionDescription();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
+			resultadoPruebasAtributos.addAll(pruebaAtributosAccionDescription);
+
+		} catch (IOException | ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAtributos.setAccion(Constantes.AÑADIR);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/test/accion/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestAccionAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoAccionName = testAccionService
+					.getPruebasAtributoAccionName();
+			final List<DatosPruebaAtributos> pruebaAtributosAccionDescription = testAccionService
+					.getPruebasAtributoAccionDescription();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
+			resultadoPruebasAtributos.addAll(pruebaAtributosAccionDescription);
+
+		} catch (IOException | ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAtributos.setAccion(Constantes.MODIFICAR);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/test/accion/accion/buscar")
+	@ResponseBody
+	public RespEntity TestAccionAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
+	}
+
+	@GetMapping(value = "/test/accion/accion/anadir")
+	@ResponseBody
+	public RespEntity TestAccionAccionAnadir() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionGuardar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
+	}
+
+	@GetMapping(value = "/test/accion/accion/modificar")
+	@ResponseBody
+	public RespEntity TestAccionAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
+	}
+
+	@GetMapping(value = "/test/accion/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestAccionAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ELIMINAR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
 	}
 
 	@GetMapping(value = "/test/rol/accion/buscar")

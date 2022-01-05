@@ -1,0 +1,36 @@
+{
+	"rolDescriptionVacio":{
+		"idRol":"",
+		"rolName":"administrador",
+		"rolDescription":"",
+		"borradoRol":0
+	},
+	
+	"rolDescriptionAlfabeticoCaracteresEspeciales":{
+		"idRol":"",
+		"rolName":"administrador",
+		"rolDescription":"@@@@prueba",
+		"borradoRol":0
+	},
+	
+	"rolDescriptionAlfabeticoMenor3":{
+		"idRol":"",
+		"rolName":"administrador",
+		"rolDescription":"pr",
+		"borradoRol":0
+	},
+	
+	"rolDescriptionAlfabetico":{
+		"idRol":"",
+		"rolName":"administrador",
+		"rolDescription":"Prueba",
+		"borradoRol":0
+	},
+	
+	"rolDescriptionNumerico" : {
+		"idRol":"",
+		"rolName": "administrador",
+		"rolDescription":"12345",
+		"borradoRol":0
+	}
+}

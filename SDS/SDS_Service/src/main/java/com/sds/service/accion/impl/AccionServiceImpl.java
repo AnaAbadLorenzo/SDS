@@ -50,7 +50,7 @@ public class AccionServiceImpl implements AccionService {
 	@Override
 	public AccionEntity buscarAccion(final String nombreAccion) throws AccionNoExisteException {
 		final Boolean nombreAccionValido = validaciones.comprobarNombreAccionBlank(nombreAccion);
-		final AccionEntity accionToret = new AccionEntity();
+		AccionEntity accionToret = new AccionEntity();
 
 		if (nombreAccionValido) {
 			final AccionEntity accion = accionRepository.findAccionByName(nombreAccion);
@@ -67,6 +67,8 @@ public class AccionServiceImpl implements AccionService {
 				accionToret.setBorradoAccion(accion.getBorradoAccion());
 			}
 
+		} else {
+			accionToret = null;
 		}
 
 		return accionToret;
@@ -301,6 +303,26 @@ public class AccionServiceImpl implements AccionService {
 		}
 
 		return resultado;
+
+	}
+
+	@Override
+	public void deleteAccion(final AccionEntity accion) throws AccionNoExisteException {
+
+		final Boolean accionValida = validaciones.comprobarAccionBlank(accion);
+
+		if (accionValida) {
+			final Optional<AccionEntity> accionBD = accionRepository.findById(accion.getIdAccion());
+
+			if (!accionBD.isPresent()) {
+				throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
+			} else {
+				accionRepository.deleteAccion(accion.getIdAccion());
+				accionRepository.flush();
+			}
+		}
 
 	}
 

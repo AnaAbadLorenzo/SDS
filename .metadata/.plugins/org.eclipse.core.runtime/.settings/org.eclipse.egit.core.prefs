@@ -1,4 +1,4 @@
-GitRepositoriesView.GitDirectories=E\:\\Universidad\\SDS\\.git;
-GitRepositoriesView.GitDirectories.relative=.git;
+GitRepositoriesView.GitDirectories=/Volumes/KINGSTON/Universidad/TFG/SDS_TFG/SDS/.git;\:/Volumes/KINGSTON/Universidad/TFG/SDS_TFG/SDS/.git\:
+GitRepositoriesView.GitDirectories.relative=.git;\:.git\:
 core_autoIgnoreDerivedResources=false
 eclipse.preferences.version=1

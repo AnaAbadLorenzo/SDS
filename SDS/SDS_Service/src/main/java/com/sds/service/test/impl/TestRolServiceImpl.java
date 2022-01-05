@@ -313,7 +313,7 @@ public class TestRolServiceImpl implements TestRolService {
 	private DatosPruebaAcciones getTestEliminarRolAsociadoUsuario(
 			final RolEntity datosEntradaRolEliminarRolAsociadoUsuario) {
 
-		final String resultadoObtenido = eliminarRol(datosEntradaRolEliminarRolAsociadoUsuario);
+		final String resultadoObtenido = eliminarRolAsociadoUsuario(datosEntradaRolEliminarRolAsociadoUsuario);
 
 		final String resultadoEsperado = CodigosMensajes.ELIMINAR_ROL_ASOCIADO_USUARIO + " - "
 				+ Mensajes.ELIMINAR_ROL_ASOCIADO_USUARIO;
@@ -325,7 +325,7 @@ public class TestRolServiceImpl implements TestRolService {
 
 	private DatosPruebaAcciones getTestEliminarRolNoExiste(final RolEntity datosEntradaRolEliminarRolNoExiste) {
 
-		final String resultadoObtenido = eliminarRol(datosEntradaRolEliminarRolNoExiste);
+		final String resultadoObtenido = eliminarRolNoExiste(datosEntradaRolEliminarRolNoExiste);
 
 		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 
@@ -346,7 +346,7 @@ public class TestRolServiceImpl implements TestRolService {
 
 	private DatosPruebaAcciones getTestModificarRolNoExiste(final RolEntity datosEntradaRolModificarRolNoExiste) {
 
-		final String resultadoObtenido = modificarRol(datosEntradaRolModificarRolNoExiste);
+		final String resultadoObtenido = modificarRolNoExiste(datosEntradaRolModificarRolNoExiste);
 
 		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 
@@ -424,8 +424,11 @@ public class TestRolServiceImpl implements TestRolService {
 			final RolEntity rolUsuario = rolRepository.findByRolName(rol.getRolName());
 
 			if (rolUsuario == null) {
-				// TODO implementar el guardado del rol
+				rolRepository.saveAndFlush(rol);
 				resultado = CodigosMensajes.GUARDAR_ROL_CORRRECTO + " - " + Mensajes.GUARDAR_ROL_CORRECTO;
+
+				final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
+				rolRepository.deleteRol(rolBD.getIdRol());
 
 			} else {
 				resultado = CodigosMensajes.GUARDAR_ROL_YA_EXISTE + " - " + Mensajes.GUARDAR_ROL_YA_EXISTE;
@@ -451,11 +454,39 @@ public class TestRolServiceImpl implements TestRolService {
 			final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
 
 			if (!rolUsuario.isPresent()) {
-				resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
+				rolRepository.saveAndFlush(rol);
 
-			} else {
-				// TODO implementar el modificacion del rol
+				rol.setRolName("Modificacion");
+				rol.setRolDescription("Descripcion modificada");
+				rol.setBorradoRol(0);
+				rolRepository.saveAndFlush(rol);
 				resultado = CodigosMensajes.MODIFICAR_ROL + " - " + Mensajes.MODIFICAR_ROL;
+
+				final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
+				rolRepository.deleteRol(rolBD.getIdRol());
+			}
+
+		}
+
+		return resultado;
+	}
+
+	private String modificarRolNoExiste(final RolEntity rol) {
+		String resultado = StringUtils.EMPTY;
+
+		if (!validaciones.comprobarNombreRolBlank(rol.getRolName())
+				&& !validaciones.comprobarDescriptionRolBlank(rol.getRolDescription())) {
+			resultado = CodigosMensajes.ROL_VACIO + " - " + Mensajes.ROL_VACIO;
+		} else if (!validaciones.comprobarNombreRolBlank(rol.getRolName())) {
+			resultado = CodigosMensajes.ROL_NAME_VACIO + " - " + Mensajes.ROL_NAME_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarDescriptionRolBlank(rol.getRolDescription())) {
+			resultado = CodigosMensajes.ROL_DESCRIPTION_VACIO + " - " + Mensajes.ROL_DESCRIPTION_NO_PUEDE_SER_VACIO;
+
+		} else {
+			final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
+
+			if (!rolUsuario.isPresent()) {
+				resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 			}
 
 		}
@@ -464,30 +495,53 @@ public class TestRolServiceImpl implements TestRolService {
 	}
 
 	private String eliminarRol(final RolEntity rol) {
+		final RolEntity rolUsuario = rolRepository.findByRolName(rol.getRolName());
+		String resultado = StringUtils.EMPTY;
+
+		if (rolUsuario == null) {
+			rolRepository.saveAndFlush(rol);
+			final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
+
+			rolBD.setBorradoRol(1);
+			rolRepository.saveAndFlush(rolBD);
+
+			resultado = CodigosMensajes.ELIMINAR_ROL_CORRECTO + " - " + Mensajes.ELIMINAR_ROL_CORRECTO;
+
+			rolRepository.deleteRol(rolBD.getIdRol());
+		}
+
+		return resultado;
+
+	}
+
+	private String eliminarRolAsociadoUsuario(final RolEntity rol) {
 		final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
 		String resultado = StringUtils.EMPTY;
 
-		if (!rolUsuario.isPresent()) {
-			resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
-		} else {
+		if (rolUsuario != null) {
 			final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
 
 			for (final UsuarioEntity usuario : usuarios) {
 				if (usuario.getRol().getIdRol().equals(rol.getIdRol())) {
 					resultado = CodigosMensajes.ELIMINAR_ROL_ASOCIADO_USUARIO + " - "
 							+ Mensajes.ELIMINAR_ROL_ASOCIADO_USUARIO;
-					break;
-
-				} else {
-					// TODO implementar el eliminar del rol
-					resultado = CodigosMensajes.ELIMINAR_ROL_CORRECTO + " - " + Mensajes.ELIMINAR_ROL_CORRECTO;
 				}
-
 			}
 		}
 
 		return resultado;
 
+	}
+
+	private String eliminarRolNoExiste(final RolEntity rol) {
+		final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
+		String resultado = StringUtils.EMPTY;
+
+		if (!rolUsuario.isPresent()) {
+			resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
+		}
+
+		return resultado;
 	}
 
 	private Map<String, String> getValorRol(final RolEntity rol) {

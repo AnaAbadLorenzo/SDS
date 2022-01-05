@@ -69,6 +69,19 @@ public class PersonaEntity {
 		this.usuario = usuario;
 	}
 
+	public PersonaEntity(final String dniP, final String nombreP, final String apellidosP, final Date fechaNacP,
+			final String direccionP, final String telefonoP, final String emailP, final Integer borradoP) {
+		super();
+		this.dniP = dniP;
+		this.nombreP = nombreP;
+		this.apellidosP = apellidosP;
+		this.fechaNacP = fechaNacP;
+		this.direccionP = direccionP;
+		this.telefonoP = telefonoP;
+		this.emailP = emailP;
+		this.borradoP = borradoP;
+	}
+
 	public String getDniP() {
 		return dniP;
 	}
