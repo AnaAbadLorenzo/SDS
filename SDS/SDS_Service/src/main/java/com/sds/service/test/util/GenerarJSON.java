@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
+import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
@@ -141,6 +142,29 @@ public class GenerarJSON {
 		rol.setBorradoRol(0);
 
 		return rol;
+
+	}
+
+	public AccionEntity generarAccion(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonRolVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final AccionEntity accion = new AccionEntity();
+
+		if (jsonRolVacio.get(Constantes.ACCION_ID).toString().equals("")) {
+			accion.setIdAccion(0);
+		} else {
+			accion.setIdAccion(Integer.parseInt(jsonRolVacio.get(Constantes.ACCION_ID).toString()));
+		}
+		accion.setNombreAccion(
+				CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ACCION_NAME).toString(), StringUtils.EMPTY));
+		accion.setDescripAccion(CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ACCION_DESCRIPTION).toString(),
+				StringUtils.EMPTY));
+
+		accion.setBorradoAccion(0);
+
+		return accion;
 
 	}
 }

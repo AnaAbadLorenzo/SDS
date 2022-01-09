@@ -1,0 +1,101 @@
+{
+	"buscarRolCorrecto":{
+		"usuario": "aicuna",
+		
+		"idRol":1,
+		"rolName":"admin",
+		"rolDescription": "admin",
+		"borradoRol": 0
+	},
+	
+	"rolNameVacio":{
+		"usuario": "aicuna",
+		
+		"idRol":1,
+		"rolName":"",
+		"rolDescription": "admin",
+		"borradoRol": 0
+	},
+	
+	"rolNoExiste":{
+		"usuario": "aicuna",
+		
+		"idRol":"",
+		"rolName":"rolDePrueba",
+		"rolDescription": "prueba",
+		"borradoRol": 0
+	},
+	
+	"guardarRolCorrecto":{
+		"usuario": "aicuna",
+		
+		"idRol":"",
+		"rolName":"Prueba",
+		"rolDescription":"Esta es una prueba",
+		"borradoRol": 0
+	},
+	
+	"rolDescriptionVacio": {
+		"usuario": "aicuna",
+		
+		"idRol":"",
+		"rolName":"Prueba",
+		"rolDescription":"",
+		"borradoRol": 0
+	},
+	
+	"rolNameDescriptionVacios":{
+		"usuario": "aicuna",
+		
+		"idRol":"",
+		"rolName":"",
+		"rolDescription":"",
+		"borradoRol": 0
+	},
+	
+	"rolYaExiste":{
+		"usuario": "aicuna",
+		
+		"idRol":"1",
+		"rolName":"admin",
+		"rolDescription":"admin",
+		"borradoRol": 0
+	},
+	
+	"eliminarRol":{
+		"usuario": "aicuna",
+		
+		"idRol":"4",
+		"rolName":"Nuevo rol",
+		"rolDescription":"Esta es una prueba de rol",
+		"borradoRol":1
+	},
+	
+	"eliminarRolNoExiste":{
+		"usuario": "aicuna",
+		
+		"idRol":"",
+		"rolName": "rol",
+		"rolDescription": "Este es un rol",
+		"borradoRol": 0
+	},
+	
+	"eliminarRolAsociadoUsuario":{
+		"usuario": "aicuna",
+		
+		"idRol":"2",
+		"rolName":"usuario",
+		"rolDescription": "Contendra a todos los usuarios registrados de la aplicacion",
+		"borradoRol":0
+		
+	},
+	
+	"modificarRol":{
+		"usuario": "aicuna",
+		
+		"idRol":4,
+		"rolName": "Nuevo rol",
+		"rolDescription": "Prueba",
+		"borradoRol":1
+	}
+}

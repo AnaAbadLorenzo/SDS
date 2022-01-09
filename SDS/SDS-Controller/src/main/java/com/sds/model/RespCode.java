@@ -21,6 +21,18 @@ public enum RespCode {
 	ROL_NO_EXISTE_EXCEPTION("ROL_NO_EXISTE", "El rol no existe"), //
 	NO_HAY_ROLES_EXCEPTION("NO_HAY_ROLES", "No existe ningún rol registrado"), //
 	ROL_ASOCIADO_USUARIO_EXCEPTION("ROL_ASOCIADO_USUARIO", "Hay un usuario que tiene asociado el rol a eliminar"), //
+	ACCION_VACIA("ACCION_VACIA", "El nombre y/o la descripción de la acción están vacíos"), //
+	ACCION_ENCONTRADA("ACCION_ECONTRADA", "La acción que busca se ha encontrado correctamente"), //
+	ACCIONES_LISTADAS("ACCIONES_LISTADAS", "Las acciones se han listdo correctamente"), //
+	ACCIONES_ELIMINADAS_LISTADAS("ACCIONES_ELIMINADAS_LISTADAS",
+			"Las acciones eliminadas se han listado correctamente"), //
+	ACCION_GUARDADA("ACCION_GUARDADA", "La acción se ha guadado correctamente"), //
+	ACCION_MODIFICADA("ACCION_MODIFICADA", "La acción se ha modificado correctamente"), //
+	ACCION_ELIMINADA("ACCION_ELIMINADA", "La acción se ha eliminado correctamente"), //
+	ACCION_ASOCIADA_ROL_FUNCIONALIDAD("ACCION_ASOCIDADA_ROL_FUNCIONALIDAD",
+			"La accion se encuentra asociada a una accion y funcionalidad"), //
+	ACCION_YA_EXISTE_EXCEPTION("ACCION_YA_EXISTE", "La acción ya existe"), //
+	ACCION_NO_EXISTE_EXCEPTION("ACCION_NO_EXISTE_EXCEPTION", "La accion que busca no existe"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"),
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de acciones en la base de datos"), //
@@ -45,7 +57,15 @@ public enum RespCode {
 			"Se ha producido un error al ejecutar los test de atributo para el rol"), //
 	TEST_ATRIBUTOS_ROL_OK("TEST_ATRIBUTO_ROL_OK", "Los tests de atributos para el rol se han ejecutado correctamente"), //
 	TEST_ACCIONES_ROL_KO("TEST_ACCIONES_ROL_KO", "Se ha producido un fallo alejecutar los tests de acciones para rol"), //
-	TEST_ACCIONES_ROL_OK("TEST_ACCIONES_ROL_OK", "Los test de acciones se han ejecutado correctamente");
+	TEST_ACCIONES_ROL_OK("TEST_ACCIONES_ROL_OK", "Los test de acciones se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_ACCION_KO("TEST_ATRIBUTOS_ACCION_KO",
+			"Se ha producido un error al ejecutar los test de atributos para accion"), //
+	TEST_ATRIBUTOS_ACCION_OK("TEST_ATRIBUTOS_ACCION_OK",
+			"Los test de atributo para acción se han ejecutado correctamente"), //
+	TEST_ACCIONES_ACCION_KO("TEST_ACCIONES_ACCION_KO",
+			"Se ha producido un fallo al ejecutar los test de acciones para accion"), //
+	TEST_ACCIONES_ACCION_OK("TEST_ACCION_ACCION_OK",
+			"Los tests de acciones para accion se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

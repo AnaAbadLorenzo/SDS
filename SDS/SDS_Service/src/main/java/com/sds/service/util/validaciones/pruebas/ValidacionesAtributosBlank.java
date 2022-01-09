@@ -98,6 +98,20 @@ public class ValidacionesAtributosBlank {
 					break;
 				}
 
+			case GESTION_ACCIONES:
+				switch (atr) {
+				case ACCION_NAME:
+					resultado = CodigosMensajes.ACCION_NAME_VACIO + " - " + Mensajes.ACCION_NAME_NO_PUEDE_SER_VACIO;
+					break;
+
+				case ACCION_DESCRIPTION:
+					resultado = CodigosMensajes.ACCION_DESCRIPTION_VACIO + " - "
+							+ Mensajes.ACCION_DESCRIPTION_NO_PUEDE_SER_VACIO;
+					break;
+				default:
+					break;
+				}
+
 			default:
 				break;
 			}

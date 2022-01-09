@@ -265,4 +265,21 @@ public class RolServiceImpl implements RolService {
 
 	}
 
+	@Override
+	public void deleteRol(final Rol rol) throws RolNoExisteException {
+		final Boolean rolValido = validaciones.comprobarRolBlank(rol.getRol());
+
+		if (rolValido) {
+			final Optional<RolEntity> rolBD = rolRepository.findById(rol.getRol().getIdRol());
+
+			if (!rolBD.isPresent()) {
+				throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
+			} else {
+				rolRepository.deleteRol(rol.getRol().getIdRol());
+				rolRepository.flush();
+			}
+		}
+	}
+
 }

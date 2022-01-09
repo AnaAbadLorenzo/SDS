@@ -104,6 +104,20 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+			case GESTION_ACCIONES:
+				switch (atr) {
+				case ACCION_NAME:
+					resultado = CodigosMensajes.ACCION_NAME_MENOR_QUE_3 + " - "
+							+ Mensajes.ACCION_NAME_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+
+				case ACCION_DESCRIPTION:
+					resultado = CodigosMensajes.ACCION_DESCRIPTION_MENOR_QUE_3 + " - "
+							+ Mensajes.ACCION_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				default:
+					break;
+				}
 
 			default:
 				break;

@@ -15,7 +15,7 @@ import com.sds.model.compositekey.RolAccionFuncionalidadKey;
 @Table(name = "rolaccionfuncionalidad")
 @NamedQueries({
 		@NamedQuery(name = "RolAccionFuncionalidadEntity.findFuncionalityByRolId", query = "SELECT r.idFuncionalidad FROM RolAccionFuncionalidadEntity r WHERE r.idRol =: idRol"),
-		@NamedQuery(name = "RolAccionFuncionalidadEntity.findAccionByIdFuncionality", query = "SELECT r.idAccion FROM RolAccionFuncionalidadEntity r WHERE r.idFuncionalidad =: idFuncionalidad")})
+		@NamedQuery(name = "RolAccionFuncionalidadEntity.findAccionByIdFuncionality", query = "SELECT r.idAccion FROM RolAccionFuncionalidadEntity r WHERE r.idFuncionalidad =: idFuncionalidad") })
 
 public class RolAccionFuncionalidadEntity {
 	@Id
@@ -34,7 +34,7 @@ public class RolAccionFuncionalidadEntity {
 		super();
 	}
 
-	public RolAccionFuncionalidadEntity(final Integer idRol, final Integer idAccion, final Integer idFuncionalidad) {
+	public RolAccionFuncionalidadEntity(final Integer idAccion, final Integer idFuncionalidad, final Integer idRol) {
 		super();
 		this.idRol = idRol;
 		this.idAccion = idAccion;
@@ -45,7 +45,7 @@ public class RolAccionFuncionalidadEntity {
 		return idRol;
 	}
 
-	public void setIdRol(Integer idRol) {
+	public void setIdRol(final Integer idRol) {
 		this.idRol = idRol;
 	}
 
@@ -53,7 +53,7 @@ public class RolAccionFuncionalidadEntity {
 		return idAccion;
 	}
 
-	public void setIdAccion(Integer idAccion) {
+	public void setIdAccion(final Integer idAccion) {
 		this.idAccion = idAccion;
 	}
 
@@ -61,7 +61,7 @@ public class RolAccionFuncionalidadEntity {
 		return idFuncionalidad;
 	}
 
-	public void setIdFuncionalidad(Integer idFuncionalidad) {
+	public void setIdFuncionalidad(final Integer idFuncionalidad) {
 		this.idFuncionalidad = idFuncionalidad;
 	}
 
@@ -71,6 +71,4 @@ public class RolAccionFuncionalidadEntity {
 				+ idFuncionalidad + "]";
 	}
 
-	
-	
 }

@@ -102,6 +102,16 @@ public class ValidacionesAtributosMayor {
 					break;
 				}
 
+			case GESTION_ACCIONES:
+				switch (atr) {
+				case ACCION_NAME:
+					resultado = CodigosMensajes.ACCION_NAME_MAYOR_QUE_48 + " - "
+							+ Mensajes.ACCION_NAME_NO_PUEDE_SER_MAYOR_QUE_48;
+					break;
+				default:
+					break;
+				}
+
 			default:
 				break;
 			}

@@ -1,0 +1,36 @@
+{
+	"accionDescriptionVacio":{
+		"idAccion": "",
+		"nombreAccion" : "Anadir",
+		"descripAccion" : "",
+		"borradoAccion" : 0
+	},
+	
+	"accionDescriptionAlfabeticoCaracteresEspeciales":{
+		"idAccion": "",
+		"nombreAccion" : "Anadir",
+		"descripAccion" : "//**@@",
+		"borradoAccion" : 0
+	},
+	
+	"accionDescriptionAlfabeticoMenor3":{
+		"idAccion": "",
+		"nombreAccion" : "Anadir",
+		"descripAccion" : "E",
+		"borradoAccion" : 0
+	},
+	
+	"accionDescriptionAlfabetico": {
+		"idAccion": "",
+		"nombreAccion" : "Anadir",
+		"descripAccion" : "Accion",
+		"borradoAccion" : 0
+	},
+	
+	"accionDescriptionNumerico":{
+		"idAccion": "",
+		"nombreAccion" : "Anadir",
+		"descripAccion" : "12345",
+		"borradoAccion" : 0
+	}
+}

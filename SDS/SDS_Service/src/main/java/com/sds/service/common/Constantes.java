@@ -6,6 +6,7 @@ public class Constantes {
 	public static final String LOGIN = "Login";
 	public static final String REGISTRAR = "Registrar";
 	public static final String GESTION_ROLES = "Gestión de roles";
+	public static final String GESTION_ACCIONES = "Gestión de acciones";
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
@@ -22,7 +23,9 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_ACCION = "Modificar accion";
 
 	// Constantes para las acciones
-	public static final String AÑADIR_MODIFICAR = "Añadir / modificar";
+	public static final String AÑADIR = "Añadir";
+	public static final String BUSCAR = "Buscar";
+	public static final String MODIFICAR = "Modificar";
 
 	// Contantes para nombres de atributos de base de datos
 	public static final String PASSWD_USUARIO = "passwdUsuario";
@@ -44,6 +47,10 @@ public class Constantes {
 	public static final String ROL_ID = "idRol";
 	public static final String ROL_NAME = "rolName";
 	public static final String ROL_DESCRIPTION = "rolDescription";
+
+	public static final String ACCION_ID = "idAccion";
+	public static final String ACCION_NAME = "nombreAccion";
+	public static final String ACCION_DESCRIPTION = "descripAccion";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -68,6 +75,9 @@ public class Constantes {
 	public static final String URL_JSON_ROL_DATA = "classpath:RolServiceData.json";
 	public static final String URL_JSON_ROL_ATRIBUTOS_ROLNAME = "classpath:RolServiceAtributosRolName.json";
 	public static final String URL_JSON_ROL_ATRIBUTOS_ROLDESCRIPTION = "classpath:RolServiceAtributosRolDescription.json";
+	public static final String URL_JSON_ACCION_DATA = "classpath:AccionServiceData.json";
+	public static final String URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME = "classpath:AccionServiceAtributosAccionName.json";
+	public static final String URL_JSON_ACCION_ATRIBUTOS_ACCIONDESCRIPTION = "classpath:AccionServiceAtributosAccionDescription.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -83,6 +93,16 @@ public class Constantes {
 	public static final String ELIMINAR_ROL_NO_EXISTE = "eliminarRolNoExiste";
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "eliminarRolAsociadoUsuario";
 	public static final String MODIFICAR_ROL = "modificarRol";
+
+	public static final String BUSCAR_ACCION = "buscarAccionCorrecto";
+	public static final String ACCION_NO_EXISTE = "accionNoExiste";
+	public static final String ACCION_YA_EXISTE = "accionYaExiste";
+	public static final String GUARDAR_ACCION = "guardarAccionCorrecto";
+	public static final String ACCION_NAME_DESCRIPTION_VACIOS = "accionNameDescriptionVacios";
+	public static final String ELIMINAR_ACCION = "eliminarAccion";
+	public static final String ELIMINAR_ACCION_NO_EXISTE = "eliminarAccionNoExiste";
+	public static final String MODIFICAR_ACCION = "modificarAccion";
+	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "eliminarAccionAsociadaRolFuncionalidad";
 
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
 	public static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";
@@ -101,6 +121,8 @@ public class Constantes {
 	public static final String EMPRESA_VACIO_DATA = "empresaVacio";
 	public static final String ROL_NAME_VACIO_DATA = "rolNameVacio";
 	public static final String ROL_DESCRIPTION_VACIO_DATA = "rolDescriptionVacio";
+	public static final String ACCION_NAME_VACIO_DATA = "accionNameVacio";
+	public static final String ACCION_DESCRIPTION_VACIO_DATA = "accionDescriptionVacio";
 
 	public static final String USUARIO_ALFANUMERICO_ENHE_DATA = "usuarioAlfanumericoEnhe";
 	public static final String CONTRASENA_ALFANUMERICA_ENHE_DATA = "contrasenaAlfanumericaEnhe";
@@ -132,6 +154,8 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_NUMERICO_CARACTERES_ESPECIALES_DATA = "telefonoEmpresaNumericoCaracteresEspeciales";
 	public static final String ROLNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA = "rolNameAlfabeticoCaracteresEspeciales";
 	public static final String ROLDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA = "rolDescriptionAlfabeticoCaracteresEspeciales";
+	public static final String ACCIONNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA = "accionNameAlfabeticoCaracteresEspeciales";
+	public static final String ACCIONDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA = "accionDescriptionAlfabeticoCaracteresEspeciales";
 
 	public static final String USUARIO_ALFANUMERICO_ESPACIOS_DATA = "usuarioAlfanumericoEspacios";
 	public static final String CONTRASENA_ALFANUMERICA_ESPACIOS_DATA = "contrasenaAlfanumericaEspacios";
@@ -142,6 +166,7 @@ public class Constantes {
 	public static final String CIFEMPRESA_ALFANUMERICO_ESPACIOS_DATA = "cifEmpresaNumericoEspacios";
 	public static final String TELEFONOEMPRESA_NUMERICO_ESPACIOS_DATA = "telefonoEmpresaNumericoEspacios";
 	public static final String ROLNAME_ALFABETICO_ESPACIOS_DATA = "rolNameAlfabeticoEspacios";
+	public static final String ACCIONNAME_ALFABETICO_ESPACIOS_DATA = "accionNameAlfabeticoEspacios";
 
 	public static final String USUARIO_ALFANUMERICO_MENOR_3_DATA = "usuarioAlfanumericoMenor3";
 	public static final String CONTRASENA_ALFANUMERICA_MENOR_3_DATA = "contrasenaAlfanumericaMenor3";
@@ -158,6 +183,8 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_NUMERICO_MENOR_9_DATA = "telefonoEmpresaNumericoMenor9";
 	public static final String ROLNAME_ALFABETICO_MENOR_3_DATA = "rolNameAlfabeticoMenor3";
 	public static final String ROLDESCRIPTION_ALFABETICO_MENOR_3_DATA = "rolDescriptionAlfabeticoMenor3";
+	public static final String ACCIONNAME_ALFABETICO_MENOR_3_DATA = "accionNameAlfabeticoMenor3";
+	public static final String ACCIONDESCRIPTION_ALFABETICO_MENOR_3_DATA = "accionDescriptionAlfabeticoMenor3";
 
 	public static final String USUARIO_ALFANUMERICO_MAYOR_45_DATA = "usuarioAlfanumericoMayor45";
 	public static final String CONTRASENA_ALFANUMERICA_MAYOR_45_DATA = "contrasenaAlfanumericaMayor45";
@@ -173,6 +200,7 @@ public class Constantes {
 	public static final String DIRECCIONEMPRESA_ALFANUMERICO_MAYOR_128_DATA = "direccionEmpresaAlfanumericoMayor128";
 	public static final String TELEFONOEMPRESA_NUMERICO_MAYOR_9_DATA = "telefonoEmpresaNumericoMayor9";
 	public static final String ROLNAME_ALFABETICO_MAYOR_32_DATA = "rolNameAlfabeticoMayor32";
+	public static final String ACCIONNAME_ALFABETICO_MAYOR_48_DATA = "accionNameAlfabeticoMayor48";
 
 	public static final String USUARIO_ALFABETICO_DATA = "usuarioAlfabetico";
 	public static final String CONTRASENA_ALFABETICA_DATA = "contrasenaAlfabetica";
@@ -189,6 +217,8 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_ALFABETICO_DATA = "telefonoEmpresaAlfabetico";
 	public static final String ROLNAME_ALFABETICO_DATA = "rolNameAlfabetico";
 	public static final String ROLDESCRIPTION_ALFABETICO_DATA = "rolDescriptionAlfabetico";
+	public static final String ACCIONNAME_ALFABETICO_DATA = "accionNameAlfabetico";
+	public static final String ACCIONDESCRIPTION_ALFABETICO_DATA = "accionDescriptionAlfabetico";
 
 	public static final String USUARIO_ALFANUMERICO_DATA = "usuarioAlfanumerico";
 	public static final String CONTRASENA_ALFANUMERICA_DATA = "contrasenaAlfanumerica";
@@ -219,6 +249,8 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_NUMERICO_DATA = "telefonoEmpresaNumerico";
 	public static final String ROLNAME_NUMERICO_DATA = "rolNameNumerico";
 	public static final String ROLDESCRIPTION_NUMERICO_DATA = "rolDescriptionNumerico";
+	public static final String ACCIONNAME_NUMERICO_DATA = "accionNameNumerico";
+	public static final String ACCIONDESCRIPTION_NUMERICO_DATA = "accionDescriptionNumerico";
 
 	public static final String USUARIO_NO_EXISTE = "usuarioNoExiste";
 	public static final String CONTRASENA_INCORRECTA = "contrasenaIncorrecta";

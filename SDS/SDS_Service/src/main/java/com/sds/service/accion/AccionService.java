@@ -27,4 +27,6 @@ public interface AccionService {
 	String modificarAccion(final Accion accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException;
 
+	void deleteAccion(final AccionEntity accion) throws AccionNoExisteException;
+
 }

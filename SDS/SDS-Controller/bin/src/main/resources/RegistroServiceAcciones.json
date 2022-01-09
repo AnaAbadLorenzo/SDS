@@ -1,0 +1,128 @@
+{
+	"personaYaExiste":{
+		"dniP": "44460662Y" ,
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"usuario": "alba",
+		"passwdUsuario": "albita",
+		"idRol": 2,
+		"idEmpresa": 4,
+		"cifEmpresa": "P56565756",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"usuarioYaExiste":{
+		"dniP": "45146321N" ,
+		"nombreP": "Ana",
+		"apellidosP": "Abad",
+		"fechaNacP": "2000-12-13",
+		"direccionP": "Calle de prueba",
+		"emailP": "ana@ana.com",
+		"telefonoP": "98846985",
+		"usuario": "aicuna",
+		"passwdUsuario": "aicuna",
+		"idRol": 1,
+		"idEmpresa": 4,
+		"cifEmpresa": "B12345678",
+		"nombreEmpresa": "EmpresasCB",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"empresaYaExiste":{
+		"dniP": "47851236P" ,
+		"nombreP": "Pedro",
+		"apellidosP": "González",
+		"fechaNacP": "1989-05-31",
+		"direccionP": "Calle Pedrito N13",
+		"emailP": "pedrito@pedro.es",
+		"telefonoP": "652417896",
+		"usuario": "pedro",
+		"passwdUsuario": "pedro",
+		"idRol": 2,
+		"idEmpresa": 1,
+		"cifEmpresa": "J26903286",
+		"nombreEmpresa": "Prueba",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"personaVacia" : {
+		"dniP": "" ,
+		"nombreP": "",
+		"apellidosP": "",
+		"fechaNacP": "0000-00-00",
+		"direccionP": "",
+		"emailP": "",
+		"telefonoP": "",
+		"usuario": "alba",
+		"passwdUsuario": "albita",
+		"idRol": 2,
+		"idEmpresa": "",
+		"cifEmpresa": "A12345636",
+		"nombreEmpresa": "Probar",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"empresaVacio":{
+		
+		"dniP": "45147896H",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512",
+		"usuario": "alba",
+		"passwdUsuario": "albita",
+		"idRol": 2,
+		"idEmpresa": "",
+		"cifEmpresa": "",
+		"nombreEmpresa": "",
+		"direccionEmpresa": "",
+		"telefonoEmpresa": ""
+		
+	},
+	
+	"usuarioVacio":{
+		"dniP": "45147896H",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512",
+		"usuario": "",
+		"passwdUsuario": "",
+		"idRol": "",
+		"idEmpresa": 4,
+		"cifEmpresa": "C12345678",
+		"nombreEmpresa": "Empresita",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"registroCorrecto":{
+		"dniP": "85479652H",
+		"nombreP": "Andrea",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N165",
+		"emailP": "andrea@andrea.com",
+		"telefonoP": "654789512",
+		"usuario": "andrea",
+		"passwdUsuario": "andrea",
+		"idRol": 2,
+		"cifEmpresa": "C12345678",
+		"nombreEmpresa": "Prueba",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	}
+}

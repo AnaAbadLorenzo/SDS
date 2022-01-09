@@ -67,6 +67,15 @@ public class Mensajes {
 	public static final String ROL_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS = "La descripción del rol no puede contener más que letras";
 	public static final String ROL_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción del rol no puede ser menor que 3";
 
+	public static final String ACCION_NAME_NO_PUEDE_SER_VACIO = "El nombre de la accion no puede ser vacío";
+	public static final String ACCION_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS = "El nombre de la accion no puede contener más que letras";
+	public static final String ACCION_NAME_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre de la accion no puede ser menor que 3";
+	public static final String ACCION_NAME_NO_PUEDE_SER_MAYOR_QUE_48 = "El nombre de la accion no puede ser mayor que 48";
+
+	public static final String ACCION_DESCRIPTION_NO_PUEDE_SER_VACIO = "La descripción de la accion no puede ser vacía";
+	public static final String ACCION_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS = "La descripción de la accion no puede contener más que letras";
+	public static final String ACCION_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción de la accion no puede ser menor que 3";
+
 	public static final String REGISTRO_CORRECTO = "El registro se ha realizado correctamente";
 	public static final String REGISTRO_PERSONA_YA_EXISTE = "La persona ya existe";
 	public static final String REGISTRO_USUARIO_YA_EXISTE = "El usuario ya existe";
@@ -85,4 +94,12 @@ public class Mensajes {
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol a eliminar tiene un usuario asociado";
 	public static final String MODIFICAR_ROL = "El rol se ha modificado correctamente";
 
+	public static final String ACCION_VACIA = "El nombre y descripción de la accion no pueden ser vacios";
+	public static final String ACCION_NO_EXISTE = "La accion que busca no existe";
+	public static final String BUSCAR_ACCION_CORRECTO = "La accion se ha encontrado correctamente";
+	public static final String ACCION_YA_EXISTE = "La accion ya existe";
+	public static final String GUARDAR_ACCION_CORRECTO = "La accion se ha guardado correctamente";
+	public static final String MODIFICAR_ACCION_CORRECTO = "La accion se ha modificado correctamente";
+	public static final String ELIMINAR_ACCION_CORRECTO = "La accion se ha eliminado correctamente";
+	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La accion no se puede eliminar porque tiene un rol y una funcionalidad asociadas";
 }

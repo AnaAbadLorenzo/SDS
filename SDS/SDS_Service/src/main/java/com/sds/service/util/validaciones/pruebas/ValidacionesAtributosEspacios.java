@@ -94,6 +94,16 @@ public class ValidacionesAtributosEspacios {
 					break;
 				}
 
+			case GESTION_ACCIONES:
+				switch (atr) {
+				case ACCION_NAME:
+					resultado = CodigosMensajes.ACCION_NAME_ALFABETICO_INCORRECTO + " - "
+							+ Mensajes.ACCION_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+					break;
+				default:
+					break;
+				}
+
 			default:
 				break;
 			}

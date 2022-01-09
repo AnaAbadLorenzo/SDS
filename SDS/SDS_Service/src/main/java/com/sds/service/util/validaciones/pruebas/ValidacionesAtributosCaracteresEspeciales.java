@@ -110,6 +110,21 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						break;
 					}
 
+				case GESTION_ACCIONES:
+					switch (atr) {
+					case ACCION_NAME:
+						resultado = CodigosMensajes.ACCION_NAME_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.ACCION_NAME_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+						break;
+
+					case ACCION_DESCRIPTION:
+						resultado = CodigosMensajes.ACCION_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.ACCION_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+						break;
+					default:
+						break;
+					}
+
 				default:
 					break;
 				}

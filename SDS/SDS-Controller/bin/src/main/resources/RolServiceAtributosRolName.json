@@ -1,0 +1,50 @@
+{
+	"rolNameVacio" : {
+		"idRol": 1,
+		"rolName": "",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	},
+	
+	"rolNameAlfabeticoCaracteresEspeciales":{
+		"idRol": 1,
+		"rolName": "N@@@Bre",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	},
+	
+	"rolNameAlfabeticoEspacios":{
+		"idRol": 1,
+		"rolName": "adminis trador",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	},
+	
+	"rolNameAlfabeticoMenor3":{
+		"idRol": 1,
+		"rolName": "ad",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	},
+	
+	"rolNameAlfabeticoMayor32" : {
+		"idRol": 1,
+		"rolName": "adminadminadminadminadminadminadminadminadminadmin",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	},
+	
+	"rolNameAlfabetico" :{
+		"idRol": 1,
+		"rolName": "administrador",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	},
+	
+	"rolNameNumerico" :{
+		"idRol": 1,
+		"rolName": "12345",
+		"rolDescription": "Esta es la descripcion del rol",
+		"borradoRol": 0
+	}
+}
