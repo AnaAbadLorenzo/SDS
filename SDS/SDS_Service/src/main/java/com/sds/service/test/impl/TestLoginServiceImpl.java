@@ -44,7 +44,8 @@ public class TestLoginServiceImpl implements TestLoginService {
 	}
 
 	@Override
-	public List<DatosPruebaAtributos> getPruebasAtributoUsuario() throws IOException, ParseException {
+	public List<DatosPruebaAtributos> getPruebasAtributoUsuario()
+			throws IOException, ParseException, java.text.ParseException {
 
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
@@ -94,7 +95,8 @@ public class TestLoginServiceImpl implements TestLoginService {
 	}
 
 	@Override
-	public List<DatosPruebaAtributos> getPruebasAtributoContrasena() throws IOException, ParseException {
+	public List<DatosPruebaAtributos> getPruebasAtributoContrasena()
+			throws IOException, ParseException, java.text.ParseException {
 
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 

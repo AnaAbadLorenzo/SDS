@@ -76,6 +76,15 @@ public class Mensajes {
 	public static final String ACCION_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS = "La descripción de la accion no puede contener más que letras";
 	public static final String ACCION_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción de la accion no puede ser menor que 3";
 
+	public static final String FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_VACIA = "La descripción de la funcionalidad no puede ser vacia";
+	public static final String FUNCIONALIDAD_DESCRIPTION_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS = "La descripción de la funcionalidad solo puede contener letras y acentos";
+	public static final String FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción de la funcionalidad no puede ser menor que 3";
+
+	public static final String FUNCIONALIDAD_NAME_NO_PUEDE_SER_VACIA = "El nombre de la funcionalidad no puede ser vacio";
+	public static final String FUNCIONALIDAD_NAME_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS = "El nombre de la funcionalidad solo puede contener letras y acentos";
+	public static final String FUNCIONALIDAD_NAME_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre de la funcionalidad no puede ser menor que 3";
+	public static final String FUNCIONALIDAD_NAME_NO_PUEDE_SER_MAYOR_QUE_48 = "El nombre de la funcionalidad no puede ser mayor que 48";
+
 	public static final String REGISTRO_CORRECTO = "El registro se ha realizado correctamente";
 	public static final String REGISTRO_PERSONA_YA_EXISTE = "La persona ya existe";
 	public static final String REGISTRO_USUARIO_YA_EXISTE = "El usuario ya existe";

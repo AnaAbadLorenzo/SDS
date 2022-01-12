@@ -14,7 +14,8 @@ import com.sds.service.common.enumerados.Funcionalidad;
 
 public class ValidacionesAtributosEnhe {
 
-	public String comprobarAtributoEnhe(final String atributo, final Funcionalidad funcionalidad, final Atributo atr) {
+	public String comprobarAtributoEnhe(final String atributo, final Funcionalidad funcionalidad, final Atributo atr)
+			throws ParseException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -22,18 +23,15 @@ public class ValidacionesAtributosEnhe {
 			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha;
 			java.sql.Date fechaSql = null;
-			try {
-				fecha = format.parse("0000-00-00");
-				fechaSql = new java.sql.Date(fecha.getTime());
-				if (atributo.equals(fechaSql.toString())) {
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_NUMERICA_INCORRECTA + " - "
-							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 
-				}
-			} catch (final ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NACIMIENTO_NUMERICA_INCORRECTA + " - "
+						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+
 			}
+
 		}
 
 		if (atributo.contains(Constantes.ENHE)) {

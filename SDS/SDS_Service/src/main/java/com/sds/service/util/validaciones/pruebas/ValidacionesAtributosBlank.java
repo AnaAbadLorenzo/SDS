@@ -13,7 +13,8 @@ import com.sds.service.common.enumerados.Funcionalidad;
 
 public class ValidacionesAtributosBlank {
 
-	public String comprobarAtributoBlank(final String atributo, final Funcionalidad funcionalidad, final Atributo atr) {
+	public String comprobarAtributoBlank(final String atributo, final Funcionalidad funcionalidad, final Atributo atr)
+			throws ParseException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -21,17 +22,13 @@ public class ValidacionesAtributosBlank {
 			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha;
 			java.sql.Date fechaSql = null;
-			try {
-				fecha = format.parse("0000-00-00");
-				fechaSql = new java.sql.Date(fecha.getTime());
-				if (atributo.equals(fechaSql.toString())) {
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_VACIA + " - "
-							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_VACIA;
-				}
-			} catch (final ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NACIMIENTO_VACIA + " - "
+						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_VACIA;
 			}
+
 		}
 
 		if (StringUtils.isBlank(atributo)) {
@@ -110,6 +107,16 @@ public class ValidacionesAtributosBlank {
 					break;
 				default:
 					break;
+				}
+			case GESTION_FUNCIONALIDADES:
+				switch (atr) {
+				case FUNCIONALIDAD_NAME:
+					resultado = CodigosMensajes.FUNCIONALIDAD_NAME_VACIA + " - "
+							+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_VACIA;
+					break;
+				case FUNCIONALIDAD_DESCRIPTION:
+					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_VACIA + " - "
+							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_VACIA;
 				}
 
 			default:

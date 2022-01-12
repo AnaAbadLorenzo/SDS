@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -36,8 +38,8 @@ public class TestAtributoNombrePersonaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroNombrePersonaVacio(
-			final Registro datosEntradaRegistroNombrePersonaVacio) {
+	public DatosPruebaAtributos getTestRegistroNombrePersonaVacio(final Registro datosEntradaRegistroNombrePersonaVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroNombrePersonaVacio.getDatosPersona().getNombreP(), Funcionalidad.REGISTRAR,
@@ -51,7 +53,7 @@ public class TestAtributoNombrePersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroNombrePAlfanumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroNombrePAlfanumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroNombrePAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -68,7 +70,7 @@ public class TestAtributoNombrePersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroNombrePAlfanumericoMenor3(
-			final Registro datosEntradaRegistroNombrePersonaAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroNombrePersonaAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroNombrePersonaAlfanumericoMenor3.getDatosPersona().getNombreP(),
@@ -83,7 +85,7 @@ public class TestAtributoNombrePersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroNombrePAlfanumericoMayor56(
-			final Registro datosEntradaRegistroNombrePAlfanumericoMayor56) {
+			final Registro datosEntradaRegistroNombrePAlfanumericoMayor56) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroNombrePAlfanumericoMayor56.getDatosPersona().getNombreP(), Funcionalidad.REGISTRAR,

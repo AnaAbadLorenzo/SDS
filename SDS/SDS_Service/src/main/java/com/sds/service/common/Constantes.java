@@ -22,6 +22,11 @@ public class Constantes {
 	public static final String ACCION_BUSCAR_ACCION = "Buscar accion";
 	public static final String ACCION_MODIFICAR_ACCION = "Modificar accion";
 
+	public static final String ACCION_AÑADIR_FUNCIONALIDAD = "Añadir funcionalidad";
+	public static final String ACCION_MODIFICAR_FUNCIONALIDAD = "Modificar funcionalidad";
+	public static final String ACCION_ELIMINAR_FUNCIONALIDAD = "Eliminar funcionalidad";
+	public static final String ACCION_BUSCAR_FUNCIONALIDAD = "Buscar funcionalidad";
+
 	// Constantes para las acciones
 	public static final String AÑADIR = "Añadir";
 	public static final String BUSCAR = "Buscar";
@@ -278,5 +283,5 @@ public class Constantes {
 	public static final String ALFABETICO = "^[a-zA-Z]+$";
 	public static final String NUMERICO = "^[0-9]+$";
 	public static final String FORMATO_FECHAS = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}";
-	public static final String FORMATO_EMAIL = "^[A-Za-z0-9]+(/@)[a-z]+(/.)[a-z]{2,3}";
+	public static final String FORMATO_EMAIL = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 }

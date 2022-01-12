@@ -17,7 +17,7 @@ import com.sds.service.common.enumerados.Funcionalidad;
 public class ValidacionesAtributosCaracteresEspeciales {
 
 	public String comprobarAtributoCaracteresEspeciales(final String atributo, final Funcionalidad funcionalidad,
-			final Atributo atr) {
+			final Atributo atr) throws ParseException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -25,18 +25,15 @@ public class ValidacionesAtributosCaracteresEspeciales {
 			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha;
 			java.sql.Date fechaSql = null;
-			try {
-				fecha = format.parse("0000-00-00");
-				fechaSql = new java.sql.Date(fecha.getTime());
-				if (atributo.equals(fechaSql.toString())) {
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_NUMERICA_INCORRECTA + " - "
-							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 
-				}
-			} catch (final ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NACIMIENTO_NUMERICA_INCORRECTA + " - "
+						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+
 			}
+
 		}
 
 		for (int i = 0; i < atributo.length(); i++) {
@@ -124,6 +121,18 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+
+				case GESTION_FUNCIONALIDADES:
+					switch (atr) {
+					case FUNCIONALIDAD_NAME:
+						resultado = CodigosMensajes.FUNCIONALIDAD_NAME_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.FUNCIONALIDAD_NAME_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS;
+						break;
+					case FUNCIONALIDAD_DESCRIPTION:
+						resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.FUNCIONALIDAD_DESCRIPTION_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS;
+					}
+					break;
 
 				default:
 					break;

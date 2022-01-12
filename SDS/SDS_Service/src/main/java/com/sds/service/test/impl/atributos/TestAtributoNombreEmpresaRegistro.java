@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -36,8 +38,8 @@ public class TestAtributoNombreEmpresaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroNombreEmpresaVacio(
-			final Registro datosEntradaRegistroNombreEmpresaVacio) {
+	public DatosPruebaAtributos getTestRegistroNombreEmpresaVacio(final Registro datosEntradaRegistroNombreEmpresaVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroNombreEmpresaVacio.getDatosEmpresa().getNombreEmpresa(), Funcionalidad.REGISTRAR,
@@ -51,7 +53,7 @@ public class TestAtributoNombreEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroNombreEmpresaAlfanumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroNombreEmpresaAlfanumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroNombreEmpresaAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(datosEntradaRegistroNombreEmpresaAlfanumericoCaracteresEspeciales
@@ -67,7 +69,7 @@ public class TestAtributoNombreEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroNombreEmpresaAlfanumericoMenor3(
-			final Registro datosEntradaRegistroNombreEmpresaAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroNombreEmpresaAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroNombreEmpresaAlfanumericoMenor3.getDatosEmpresa().getNombreEmpresa(),
@@ -83,7 +85,7 @@ public class TestAtributoNombreEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroNombreEmpresaAlfanumericoMayor56(
-			final Registro datosEntradaRegistroNombreEmpresaAlfanumericoMayor56) {
+			final Registro datosEntradaRegistroNombreEmpresaAlfanumericoMayor56) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroNombreEmpresaAlfanumericoMayor56.getDatosEmpresa().getNombreEmpresa(),

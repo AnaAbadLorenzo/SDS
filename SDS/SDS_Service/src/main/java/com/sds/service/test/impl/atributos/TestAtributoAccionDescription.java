@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.model.AccionEntity;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
@@ -33,7 +35,8 @@ public class TestAtributoAccionDescription {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestAccionDescriptionVacio(final AccionEntity datosEntradaAccionDescriptionVacio) {
+	public DatosPruebaAtributos getTestAccionDescriptionVacio(final AccionEntity datosEntradaAccionDescriptionVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaAccionDescriptionVacio.getDescripAccion(), Funcionalidad.GESTION_ACCIONES,
@@ -48,7 +51,7 @@ public class TestAtributoAccionDescription {
 	}
 
 	public DatosPruebaAtributos getTestAccionDescriptionAlfabeticoCaracteresEspeciales(
-			final AccionEntity datosEntradaAccionDescriptionCaracteresEspeciales) {
+			final AccionEntity datosEntradaAccionDescriptionCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -64,7 +67,7 @@ public class TestAtributoAccionDescription {
 	}
 
 	public DatosPruebaAtributos getTestAccionDescriptionAlfabeticoMenor3(
-			final AccionEntity datosEntradaAccionDescriptionAlfabeticoMenor3) {
+			final AccionEntity datosEntradaAccionDescriptionAlfabeticoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaAccionDescriptionAlfabeticoMenor3.getDescripAccion(), Funcionalidad.GESTION_ACCIONES,
@@ -79,7 +82,7 @@ public class TestAtributoAccionDescription {
 	}
 
 	public DatosPruebaAtributos getTestAccionDescriptionNumerico(
-			final AccionEntity datosEntradaAccionDescriptionNumerico) {
+			final AccionEntity datosEntradaAccionDescriptionNumerico) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosNumerico.comprobarAtributoNumerico(
 				datosEntradaAccionDescriptionNumerico.getDescripAccion(), Funcionalidad.GESTION_ACCIONES,

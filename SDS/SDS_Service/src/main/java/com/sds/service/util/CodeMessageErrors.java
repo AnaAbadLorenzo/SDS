@@ -28,6 +28,10 @@ public enum CodeMessageErrors {
 	EMPRESA_VACIO("Empresa vacia"), //
 	ACCION_VACIA("Accion vacia"), //
 	EMPRESA_NO_ENCONTRADA_EXCEPTION("La empresa no existe"), //
+	FUNCIONALIDAD_VACIA("Funcionalidad vacía"), //
+	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("La funcionalidad que busca ya existe"), //
+	FUNCIONALIDAD_NO_EXISTE_EXCEPTION("La funcionalidad que busca no existe"), //
+	FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION("La funcionalidad está asociada a un rol y a una funcionalidad"), //
 	LOG_EXCEPCIONES_VACIO("LogExcepciones vacío"), //
 	LOG_ACCIONES_VACIO("LogAcciones vacío");
 

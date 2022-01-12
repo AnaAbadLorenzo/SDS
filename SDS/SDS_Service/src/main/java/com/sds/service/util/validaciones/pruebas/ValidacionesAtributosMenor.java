@@ -14,7 +14,7 @@ import com.sds.service.common.enumerados.Funcionalidad;
 public class ValidacionesAtributosMenor {
 
 	public String comprobarAtributoMenor(final String atributo, final Funcionalidad funcionalidad, final Atributo atr,
-			final Integer tamanhoMinimo) {
+			final Integer tamanhoMinimo) throws ParseException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -22,17 +22,12 @@ public class ValidacionesAtributosMenor {
 			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha;
 			java.sql.Date fechaSql = null;
-			try {
-				fecha = format.parse("0000-00-00");
-				fechaSql = new java.sql.Date(fecha.getTime());
-				if (atributo.equals(fechaSql.toString())) {
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_MENOR_QUE_8 + " - "
-							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_MENOR_QUE_8;
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NACIMIENTO_MENOR_QUE_8 + " - "
+						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_MENOR_QUE_8;
 
-				}
-			} catch (final ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
 
@@ -116,6 +111,17 @@ public class ValidacionesAtributosMenor {
 							+ Mensajes.ACCION_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
 				default:
+					break;
+				}
+			case GESTION_FUNCIONALIDADES:
+				switch (atr) {
+				case FUNCIONALIDAD_NAME:
+					resultado = CodigosMensajes.FUNCIONALIDAD_NAME_MENOR_QUE_3 + " - "
+							+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case FUNCIONALIDAD_DESCRIPTION:
+					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3 + " - "
+							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
 				}
 

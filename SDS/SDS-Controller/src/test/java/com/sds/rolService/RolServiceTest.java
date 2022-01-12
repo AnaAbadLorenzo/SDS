@@ -272,7 +272,7 @@ public class RolServiceTest {
 
 		rol.setUsuario(CommonUtilities.coalesce(jsonRol.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
 
-		if (idRol.equals("")) {
+		if (idRol.equals(StringUtils.EMPTY)) {
 			rolEntity.setIdRol(0);
 		} else {
 			rolEntity.setIdRol(Integer.parseInt(idRol));

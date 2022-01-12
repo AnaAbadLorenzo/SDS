@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.model.AccionEntity;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
@@ -39,7 +41,8 @@ public class TestAtributoAccionName {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestAccionNameVacio(final AccionEntity datosEntradaAccionNameVacio) {
+	public DatosPruebaAtributos getTestAccionNameVacio(final AccionEntity datosEntradaAccionNameVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaAccionNameVacio.getNombreAccion(), Funcionalidad.GESTION_ACCIONES, Atributo.ACCION_NAME);
@@ -53,7 +56,7 @@ public class TestAtributoAccionName {
 	}
 
 	public DatosPruebaAtributos getTestAccionNameAlfabeticoCaracteresEspeciales(
-			final AccionEntity datosEntradaAccionNameAlfabeticoCaracteresEspeciales) {
+			final AccionEntity datosEntradaAccionNameAlfabeticoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -69,7 +72,7 @@ public class TestAtributoAccionName {
 	}
 
 	public DatosPruebaAtributos getTestAccionNameAlfabeticoEspacios(
-			final AccionEntity datosEntradaAccionNameAlfabeticoEspacios) {
+			final AccionEntity datosEntradaAccionNameAlfabeticoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaAccionNameAlfabeticoEspacios.getNombreAccion(), Funcionalidad.GESTION_ACCIONES,
@@ -84,7 +87,7 @@ public class TestAtributoAccionName {
 	}
 
 	public DatosPruebaAtributos getTestAccionNameAlfabeticoMenor3(
-			final AccionEntity datosEntradaAccionNameAlfabeticoMenor3) {
+			final AccionEntity datosEntradaAccionNameAlfabeticoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaAccionNameAlfabeticoMenor3.getNombreAccion(), Funcionalidad.GESTION_ACCIONES,
@@ -99,7 +102,7 @@ public class TestAtributoAccionName {
 	}
 
 	public DatosPruebaAtributos getTestAccionNameAlfabeticoMayor48(
-			final AccionEntity datosEntradaAccionNameAlfabeticoMayor48) {
+			final AccionEntity datosEntradaAccionNameAlfabeticoMayor48) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaAccionNameAlfabeticoMayor48.getNombreAccion(), Funcionalidad.GESTION_ACCIONES,
@@ -113,7 +116,8 @@ public class TestAtributoAccionName {
 				datosEntradaAccionNameAlfabeticoMayor48.getNombreAccion(), Constantes.ACCION_NAME);
 	}
 
-	public DatosPruebaAtributos getTestAccionNameNumerico(final AccionEntity datosEntradaAccionNameNumerico) {
+	public DatosPruebaAtributos getTestAccionNameNumerico(final AccionEntity datosEntradaAccionNameNumerico)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosNumerico.comprobarAtributoNumerico(
 				datosEntradaAccionNameNumerico.getNombreAccion(), Funcionalidad.GESTION_ACCIONES, Atributo.ACCION_NAME);

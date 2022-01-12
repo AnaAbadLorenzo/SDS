@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -19,7 +21,7 @@ import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
 
 public class TestAtributoContrasenaRegistro {
-	
+
 	private final ValidacionesAtributosBlank validacionesAtributosBlank;
 	private final ValidacionesAtributosEnhe validacionesAtributosEnhe;
 	private final ValidacionesAtributosAcentos validacionesAtributosAcentos;
@@ -42,57 +44,60 @@ public class TestAtributoContrasenaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroContrasenaVacio(final Registro datosEntradaRegistroContrasenaVacio) {
+	public DatosPruebaAtributos getTestRegistroContrasenaVacio(final Registro datosEntradaRegistroContrasenaVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
-				datosEntradaRegistroContrasenaVacio.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaVacio.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR,
+				Atributo.PASSWD_USUARIO);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_USUARIO_VACIO + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_VACIA;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.VACIO, Constantes.ERROR, datosEntradaRegistroContrasenaVacio.getDatosUsuario().getPasswdUsuario(),
-				Constantes.PASSWD_USUARIO);
+				DefinicionPruebas.VACIO, Constantes.ERROR,
+				datosEntradaRegistroContrasenaVacio.getDatosUsuario().getPasswdUsuario(), Constantes.PASSWD_USUARIO);
 	}
 
 	public DatosPruebaAtributos getTestRegistroContrasenaAlfanumericoEnhe(
-			final Registro datosEntradaRegistroContrasenaAlfanumericoEnhe) {
+			final Registro datosEntradaRegistroContrasenaAlfanumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
-				datosEntradaRegistroContrasenaAlfanumericoEnhe.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR,
-				Atributo.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoEnhe.getDatosUsuario().getPasswdUsuario(),
+				Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_ENHE, Constantes.ERROR,
-				datosEntradaRegistroContrasenaAlfanumericoEnhe.getDatosUsuario().getPasswdUsuario(), Constantes.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoEnhe.getDatosUsuario().getPasswdUsuario(),
+				Constantes.PASSWD_USUARIO);
 
 	}
 
 	public DatosPruebaAtributos getTestRegistroContrasenaAlfanumericoAcentos(
-			final Registro datosEntradaRegistroContrasenaAlfanumericoAcentos) {
+			final Registro datosEntradaRegistroContrasenaAlfanumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
-				datosEntradaRegistroContrasenaAlfanumericoAcentos.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR,
-				Atributo.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoAcentos.getDatosUsuario().getPasswdUsuario(),
+				Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_ACENTOS, Constantes.ERROR,
-				datosEntradaRegistroContrasenaAlfanumericoAcentos.getDatosUsuario().getPasswdUsuario(), Constantes.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoAcentos.getDatosUsuario().getPasswdUsuario(),
+				Constantes.PASSWD_USUARIO);
 	}
 
 	public DatosPruebaAtributos getTestRegistroContrasenaAlfanumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroContrasenaAlfanumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroContrasenaAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
-				.comprobarAtributoCaracteresEspeciales(
-						datosEntradaRegistroContrasenaAlfanumericoCaracteresEspeciales.getDatosUsuario().getPasswdUsuario(),
-						Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO);
+				.comprobarAtributoCaracteresEspeciales(datosEntradaRegistroContrasenaAlfanumericoCaracteresEspeciales
+						.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
@@ -104,54 +109,59 @@ public class TestAtributoContrasenaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroContrasenaAlfanumericoEspacios(
-			final Registro datosEntradaRegistroContrasenaAlfanumericoEspacios) {
+			final Registro datosEntradaRegistroContrasenaAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
-				datosEntradaRegistroContrasenaAlfanumericoEspacios.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR,
-				Atributo.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoEspacios.getDatosUsuario().getPasswdUsuario(),
+				Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_ESPACIOS, Constantes.ERROR,
-				datosEntradaRegistroContrasenaAlfanumericoEspacios.getDatosUsuario().getPasswdUsuario(), Constantes.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoEspacios.getDatosUsuario().getPasswdUsuario(),
+				Constantes.PASSWD_USUARIO);
 	}
 
 	public DatosPruebaAtributos getTestRegistroContrasenaAlfanumericoMenor3(
-			final Registro datosEntradaRegistroContrasenaAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroContrasenaAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
-				datosEntradaRegistroContrasenaAlfanumericoMenor3.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR,
-				Atributo.PASSWD_USUARIO, 3);
+				datosEntradaRegistroContrasenaAlfanumericoMenor3.getDatosUsuario().getPasswdUsuario(),
+				Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO, 3);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_MENOR_QUE_3 + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MENOR_3, Constantes.ERROR,
-				datosEntradaRegistroContrasenaAlfanumericoMenor3.getDatosUsuario().getPasswdUsuario(), Constantes.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoMenor3.getDatosUsuario().getPasswdUsuario(),
+				Constantes.PASSWD_USUARIO);
 	}
 
 	public DatosPruebaAtributos getTestRegistroContrasenaAlfanumericoMayor45(
-			final Registro datosEntradaRegistroContrasenaAlfanumericoMayor45) {
+			final Registro datosEntradaRegistroContrasenaAlfanumericoMayor45) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
-				datosEntradaRegistroContrasenaAlfanumericoMayor45.getDatosUsuario().getPasswdUsuario(), Funcionalidad.REGISTRAR,
-				Atributo.PASSWD_USUARIO, 45);
+				datosEntradaRegistroContrasenaAlfanumericoMayor45.getDatosUsuario().getPasswdUsuario(),
+				Funcionalidad.REGISTRAR, Atributo.PASSWD_USUARIO, 45);
 
 		final String resultadoEsperado = CodigosMensajes.PASS_MAYOR_QUE_45 + " - "
 				+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_MAYOR_QUE_45;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_MAYOR_45, Constantes.ERROR,
-				datosEntradaRegistroContrasenaAlfanumericoMayor45.getDatosUsuario().getPasswdUsuario(), Constantes.PASSWD_USUARIO);
+				datosEntradaRegistroContrasenaAlfanumericoMayor45.getDatosUsuario().getPasswdUsuario(),
+				Constantes.PASSWD_USUARIO);
 	}
 
-	public DatosPruebaAtributos getTestRegistroContrasenaCorrectoAlfanumerico(final Registro datosEntradaRegistroContrasena) {
+	public DatosPruebaAtributos getTestRegistroContrasenaCorrectoAlfanumerico(
+			final Registro datosEntradaRegistroContrasena) {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroContrasena.getDatosUsuario().getPasswdUsuario());
+				.comprobarAtributoCorrectoAlfanumerico(
+						datosEntradaRegistroContrasena.getDatosUsuario().getPasswdUsuario());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 

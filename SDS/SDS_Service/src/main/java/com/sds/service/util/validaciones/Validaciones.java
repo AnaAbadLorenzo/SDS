@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
+import com.sds.model.FuncionalidadEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.PersonaEntity;
@@ -133,6 +134,31 @@ public class Validaciones {
 
 	public boolean comprobarDescripcionAccionBlank(final String descripcionAccion) {
 		if (StringUtils.isBlank(descripcionAccion)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarFuncionalidadBlank(final FuncionalidadEntity funcionalidad) {
+		if (StringUtils.isBlank(funcionalidad.getNombreFuncionalidad())
+				|| StringUtils.isBlank(funcionalidad.getDescripFuncionalidad())) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarNombreFuncionalidadBlank(final String nombreFuncionalidad) {
+		if (StringUtils.isBlank(nombreFuncionalidad)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarDescripcionFuncionalidadBlank(final String descripFuncionalidad) {
+		if (StringUtils.isBlank(descripFuncionalidad)) {
 			return false;
 		} else {
 			return true;

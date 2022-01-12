@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -43,7 +45,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPersonaVacio(
-			final Registro datosEntradaRegistroTelefonoPersonaVacio) {
+			final Registro datosEntradaRegistroTelefonoPersonaVacio) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroTelefonoPersonaVacio.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,
@@ -57,7 +59,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPersonaNumericoEnhe(
-			final Registro datosEntradaRegistroTelefonoPersonaNumericoEnhe) {
+			final Registro datosEntradaRegistroTelefonoPersonaNumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroTelefonoPersonaNumericoEnhe.getDatosPersona().getTelefonoP(),
@@ -73,7 +75,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPersonaNumericoAcentos(
-			final Registro datosEntradaRegistroTelefonoPersonaNumericoAcentos) {
+			final Registro datosEntradaRegistroTelefonoPersonaNumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
 				datosEntradaRegistroTelefonoPersonaNumericoAcentos.getDatosPersona().getTelefonoP(),
@@ -90,7 +92,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPNumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroTelefonoPNumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroTelefonoPNumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -107,7 +109,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPNumericoEspacios(
-			final Registro datosEntradaRegistroTelefonoPAlfanumericoEspacios) {
+			final Registro datosEntradaRegistroTelefonoPAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaRegistroTelefonoPAlfanumericoEspacios.getDatosPersona().getTelefonoP(),
@@ -123,7 +125,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPNumericoMenor9(
-			final Registro datosEntradaRegistroTelefonoPNumericoMenor9) {
+			final Registro datosEntradaRegistroTelefonoPNumericoMenor9) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroTelefonoPNumericoMenor9.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,
@@ -138,7 +140,7 @@ public class TestAtributoTelefonoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroTelefonoPNumericoMayor9(
-			final Registro datosEntradaRegistroTelefonoPNumericoMayor9) {
+			final Registro datosEntradaRegistroTelefonoPNumericoMayor9) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroTelefonoPNumericoMayor9.getDatosPersona().getTelefonoP(), Funcionalidad.REGISTRAR,

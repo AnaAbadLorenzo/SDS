@@ -51,7 +51,7 @@ public class TestController {
 			final List<DatosPruebaAtributos> pruebaAtributoContrasena = testLoginService.getPruebasAtributoContrasena();
 			resultadoPruebasAtributos.addAll(pruebaAtributoUsuario);
 			resultadoPruebasAtributos.addAll(pruebaAtributoContrasena);
-		} catch (IOException | ParseException e) {
+		} catch (IOException | ParseException | java.text.ParseException e) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_LOGIN_KO, StringUtils.EMPTY);
 		}
 
@@ -177,7 +177,7 @@ public class TestController {
 			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
 			resultadoPruebasAtributos.addAll(pruebaAtributoRolDescription);
 
-		} catch (IOException | ParseException exc) {
+		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
 		}
 
@@ -205,7 +205,7 @@ public class TestController {
 			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
 			resultadoPruebasAtributos.addAll(pruebaAtributoRolDescription);
 
-		} catch (IOException | ParseException exc) {
+		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
 		}
 
@@ -217,58 +217,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/rol/atributos/buscar")
-	@ResponseBody
-	public RespEntity TestRolAtributosAccionBuscar() {
-
-		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
-
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
-
-		try {
-			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolName();
-
-			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
-
-		} catch (IOException | ParseException exc) {
-			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
-		}
-
-		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
-		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
-		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
-
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
-
-	}
-
-	@GetMapping(value = "/test/accion/atributos/buscar")
-	@ResponseBody
-	public RespEntity TestAccionAtributosAccionBuscar() {
-
-		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
-
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
-
-		try {
-			final List<DatosPruebaAtributos> pruebaAtributoAccionName = testAccionService
-					.getPruebasAtributoAccionName();
-
-			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
-
-		} catch (IOException | ParseException exc) {
-			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);
-		}
-
-		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
-		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
-		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
-
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
-
-	}
-
-	@GetMapping(value = "/test/accion/atributos/anadir")
+	@GetMapping(value = "/test/accion/atributos/guardar")
 	@ResponseBody
 	public RespEntity TestAccionAtributosAccionAnadir() {
 
@@ -285,7 +234,7 @@ public class TestController {
 			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
 			resultadoPruebasAtributos.addAll(pruebaAtributosAccionDescription);
 
-		} catch (IOException | ParseException exc) {
+		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);
 		}
 
@@ -314,7 +263,7 @@ public class TestController {
 			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
 			resultadoPruebasAtributos.addAll(pruebaAtributosAccionDescription);
 
-		} catch (IOException | ParseException exc) {
+		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);
 		}
 
@@ -326,29 +275,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/accion/buscar")
-	@ResponseBody
-	public RespEntity TestAccionAccionBuscar() {
-
-		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
-
-		try {
-			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionBuscar();
-
-		} catch (IOException | ParseException | java.text.ParseException e) {
-			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
-		}
-
-		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
-		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_ACCION);
-		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
-
-		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
-
-	}
-
-	@GetMapping(value = "/test/accion/accion/anadir")
+	@GetMapping(value = "/test/accion/accion/guardar")
 	@ResponseBody
 	public RespEntity TestAccionAccionAnadir() {
 
@@ -412,27 +339,6 @@ public class TestController {
 
 		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
 
-	}
-
-	@GetMapping(value = "/test/rol/accion/buscar")
-	@ResponseBody
-	public RespEntity TestRolAccionBuscar() {
-
-		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
-
-		try {
-			datosPruebaAcciones = testRolService.getPruebasAccionesRolBuscar();
-
-		} catch (IOException | ParseException | java.text.ParseException e) {
-			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
-		}
-
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_ROL);
-		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_ROL);
-		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
-
-		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
 	}
 
 	@GetMapping(value = "/test/rol/accion/guardar")

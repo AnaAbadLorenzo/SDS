@@ -10,9 +10,11 @@ import com.sds.service.test.model.DatosPruebaAtributos;
 
 public interface TestAccionService {
 
-	List<DatosPruebaAtributos> getPruebasAtributoAccionName() throws IOException, ParseException;
+	List<DatosPruebaAtributos> getPruebasAtributoAccionName()
+			throws IOException, ParseException, java.text.ParseException;
 
-	List<DatosPruebaAtributos> getPruebasAtributoAccionDescription() throws IOException, ParseException;
+	List<DatosPruebaAtributos> getPruebasAtributoAccionDescription()
+			throws IOException, ParseException, java.text.ParseException;
 
 	List<DatosPruebaAcciones> getPruebasAccionesAccionBuscar()
 			throws IOException, ParseException, java.text.ParseException;

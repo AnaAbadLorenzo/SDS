@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.model.RolEntity;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
@@ -33,7 +35,8 @@ public class TestAtributoRolDescription {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRolDescriptionVacio(final RolEntity datosEntradaRolDescriptionVacio) {
+	public DatosPruebaAtributos getTestRolDescriptionVacio(final RolEntity datosEntradaRolDescriptionVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRolDescriptionVacio.getRolDescription(), Funcionalidad.GESTION_ROLES,
@@ -48,7 +51,7 @@ public class TestAtributoRolDescription {
 	}
 
 	public DatosPruebaAtributos getTestRolDescriptionAlfabeticoCaracteresEspeciales(
-			final RolEntity datosEntradaRolDescriptionCaracteresEspeciales) {
+			final RolEntity datosEntradaRolDescriptionCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -64,7 +67,7 @@ public class TestAtributoRolDescription {
 	}
 
 	public DatosPruebaAtributos getTestRolDescriptionAlfabeticoMenor3(
-			final RolEntity datosEntradaRolDescriptionAlfabeticoMenor3) {
+			final RolEntity datosEntradaRolDescriptionAlfabeticoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRolDescriptionAlfabeticoMenor3.getRolDescription(), Funcionalidad.GESTION_ROLES,
