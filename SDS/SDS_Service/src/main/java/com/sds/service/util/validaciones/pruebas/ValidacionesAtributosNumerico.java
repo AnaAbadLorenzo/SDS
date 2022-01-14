@@ -58,6 +58,17 @@ public class ValidacionesAtributosNumerico {
 				default:
 					break;
 				}
+			case GESTION_FUNCIONALIDADES:
+				switch (atr) {
+				case FUNCIONALIDAD_NAME:
+					resultado = CodigosMensajes.FUNCIONALIDAD_NAME_ALFABETICO_INCORRECTO + " - "
+							+ Mensajes.FUNCIONALIDAD_NAME_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS;
+					break;
+				case FUNCIONALIDAD_DESCRIPTION:
+					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
+							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS;
+					break;
+				}
 
 			default:
 				break;

@@ -146,7 +146,7 @@ public class AccionController {
 		} catch (final AccionNoExisteException accionNoExists) {
 			return new RespEntity(RespCode.ACCION_NO_EXISTE_EXCEPTION, accion);
 		} catch (final AccionAsociadaRolFuncionalidadException accionAssociatedFuncionalityRol) {
-			return new RespEntity(RespCode.ROL_ASOCIADO_USUARIO_EXCEPTION, accion);
+			return new RespEntity(RespCode.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION, accion);
 		}
 
 	}

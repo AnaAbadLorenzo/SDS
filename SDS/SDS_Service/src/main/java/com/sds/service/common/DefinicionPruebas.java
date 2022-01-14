@@ -73,4 +73,14 @@ public class DefinicionPruebas {
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La acción tiene asociada un rol y una funcionalidad";
 	public static final String ACCION_DESCRIPTION_VACIO = "La descripción de la acción es vacia";
 	public static final String ACCION_VACIA = "El nombre y descripción de la acción son vacios";
+	public static final String FUNCIONALIDAD_NAME_VACIO = "El nombre de la funcionalidad es vacio";
+	public static final String FUNCIONALIDAD_NO_EXISTE = "La funcionalidad que busca no existe";
+	public static final String FUNCIONALIDAD_ACCION_CORRECTO = "La funcionalidad se ha guardado correctamente";
+	public static final String FUNCIONALIDAD_YA_EXISTE = "La funcionalidad que busca ya existe";
+	public static final String GUARDAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha guardado correctamente";
+	public static final String MODIFICAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha modificado correctamente";
+	public static final String ELIMINAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha eliminado correctamente";
+	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "La funcionalidad tiene asociada un rol y una acción";
+	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO = "La descripción de la funcionalidad es vacia";
+	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad son vacios";
 }

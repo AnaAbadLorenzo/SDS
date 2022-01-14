@@ -29,7 +29,7 @@ public enum RespCode {
 	ACCION_GUARDADA("ACCION_GUARDADA", "La acción se ha guadado correctamente"), //
 	ACCION_MODIFICADA("ACCION_MODIFICADA", "La acción se ha modificado correctamente"), //
 	ACCION_ELIMINADA("ACCION_ELIMINADA", "La acción se ha eliminado correctamente"), //
-	ACCION_ASOCIADA_ROL_FUNCIONALIDAD("ACCION_ASOCIDADA_ROL_FUNCIONALIDAD",
+	ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION("ACCION_ASOCIDADA_ROL_FUNCIONALIDAD",
 			"La accion se encuentra asociada a una accion y funcionalidad"), //
 	ACCION_YA_EXISTE_EXCEPTION("ACCION_YA_EXISTE", "La acción ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("ACCION_NO_EXISTE_EXCEPTION", "La accion que busca no existe"), //
@@ -77,7 +77,15 @@ public enum RespCode {
 	TEST_ACCIONES_ACCION_KO("TEST_ACCIONES_ACCION_KO",
 			"Se ha producido un fallo al ejecutar los test de acciones para accion"), //
 	TEST_ACCIONES_ACCION_OK("TEST_ACCION_ACCION_OK",
-			"Los tests de acciones para accion se han ejecutado correctamente");
+			"Los tests de acciones para accion se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_FUNCIONALIDAD_KO("TEST_ATRIBUTOS_FUNCIONALIDAD_KO",
+			"Se ha producido un error al ejecutar los test de atributos para funcionalidad"), //
+	TEST_ATRIBUTOS_FUNCIONALIDAD_OK("TEST_ATRIBUTOS_FUNCIONALIDAD_OK",
+			"Los test de atributo para funcionalidad se han ejecutado correctamente"), //
+	TEST_ACCIONES_FUNCIONALIDAD_KO("TEST_ACCIONES_FUNCIONALIDAD_KO",
+			"Se ha producido un error al ejecutar los test de acciones para funcionalidad"), //
+	TEST_ACCIONES_FUNCIONALIDAD_OK("TEST_ACCIONES_FUNCIONALIDAD_OK",
+			"Los test de acciones para funcionalidad se han ejecutado correctamente");
 
 	private String code;
 	private String msg;
