@@ -309,15 +309,15 @@ public class TestAccionServiceImpl implements TestAccionService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarAccionNameDescriptionVacio(
-			final AccionEntity datosEntradaAccionGuardarAccionDescriptionVacio) {
+			final AccionEntity datosEntradaAccionGuardarAccionNameDescriptionVacio) {
 
-		final String resultadoObtenido = guardarAccion(datosEntradaAccionGuardarAccionDescriptionVacio);
+		final String resultadoObtenido = guardarAccion(datosEntradaAccionGuardarAccionNameDescriptionVacio);
 
 		final String resultadoEsperado = CodigosMensajes.ACCION_VACIA + " - " + Mensajes.ACCION_VACIA;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ACCION_VACIA, Constantes.ERROR,
-				getValorAccion(datosEntradaAccionGuardarAccionDescriptionVacio));
+				getValorAccion(datosEntradaAccionGuardarAccionNameDescriptionVacio));
 
 	}
 

@@ -7,6 +7,7 @@ public class Constantes {
 	public static final String REGISTRAR = "Registrar";
 	public static final String GESTION_ROLES = "Gestión de roles";
 	public static final String GESTION_ACCIONES = "Gestión de acciones";
+	public static final String GESTION_FUNCIONALIDADES = "Gestión de funcionalidades";
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
@@ -57,6 +58,10 @@ public class Constantes {
 	public static final String ACCION_NAME = "nombreAccion";
 	public static final String ACCION_DESCRIPTION = "descripAccion";
 
+	public static final String FUNCIONALIDAD_ID = "idFuncionalidad";
+	public static final String FUNCIONALIDAD_NAME = "nombreFuncionalidad";
+	public static final String FUNCIONALIDAD_DESCRIPTION = "descripFuncionalidad";
+
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";
@@ -83,6 +88,11 @@ public class Constantes {
 	public static final String URL_JSON_ACCION_DATA = "classpath:AccionServiceData.json";
 	public static final String URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME = "classpath:AccionServiceAtributosAccionName.json";
 	public static final String URL_JSON_ACCION_ATRIBUTOS_ACCIONDESCRIPTION = "classpath:AccionServiceAtributosAccionDescription.json";
+	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME = "classpath:FuncionalidadServiceAtributosFuncionalidadName.json";
+	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION = "classpath:FuncionalidadServiceAtributosFuncionalidadDescription.json";
+	public static final String URL_JSON_FUNCIONALIDAD_DATA = "classpath:FuncionalidadServiceData.json";
+	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_ACCIONNAME = "classpath:FuncionalidadServiceAtributosFuncionalidadName.json";
+	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_ACCIONDESCRIPTION = "classpath:FuncionalidadServiceAtributosFuncionalidadDescription.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -109,6 +119,16 @@ public class Constantes {
 	public static final String MODIFICAR_ACCION = "modificarAccion";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "eliminarAccionAsociadaRolFuncionalidad";
 
+	public static final String BUSCAR_FUNCIONALIDAD = "buscarFuncionalidadCorrecto";
+	public static final String FUNCIONALIDAD_NO_EXISTE = "funcionalidadNoExiste";
+	public static final String FUNCIONALIDAD_YA_EXISTE = "funcionalidadYaExiste";
+	public static final String GUARDAR_FUNCIONALIDAD = "guardarFuncionalidadCorrecto";
+	public static final String FUNCIONALIDAD_NAME_DESCRIPTION_VACIOS = "funcionalidadNameDescriptionVacios";
+	public static final String ELIMINAR_FUNCIONALIDAD = "eliminarFuncionalidad";
+	public static final String ELIMINAR_FUNCIONALIDAD_NO_EXISTE = "eliminarFuncionalidadNoExiste";
+	public static final String MODIFICAR_FUNCIONALIDAD = "modificarFuncionalidad";
+	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "eliminarFuncionalidadAsociadaRolAccion";
+
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
 	public static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";
 	public static final String DNIP_VACIO_DATA = "dniPVacio";
@@ -128,6 +148,8 @@ public class Constantes {
 	public static final String ROL_DESCRIPTION_VACIO_DATA = "rolDescriptionVacio";
 	public static final String ACCION_NAME_VACIO_DATA = "accionNameVacio";
 	public static final String ACCION_DESCRIPTION_VACIO_DATA = "accionDescriptionVacio";
+	public static final String FUNCIONALIDAD_NAME_VACIO_DATA = "funcionalidadNameVacio";
+	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO_DATA = "funcionalidadDescriptionVacio";
 
 	public static final String USUARIO_ALFANUMERICO_ENHE_DATA = "usuarioAlfanumericoEnhe";
 	public static final String CONTRASENA_ALFANUMERICA_ENHE_DATA = "contrasenaAlfanumericaEnhe";
@@ -161,6 +183,8 @@ public class Constantes {
 	public static final String ROLDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA = "rolDescriptionAlfabeticoCaracteresEspeciales";
 	public static final String ACCIONNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA = "accionNameAlfabeticoCaracteresEspeciales";
 	public static final String ACCIONDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA = "accionDescriptionAlfabeticoCaracteresEspeciales";
+	public static final String FUNCIONALIDADNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA = "funcionalidadNameAlfabeticoCaracteresEspeciales";
+	public static final String FUNCIONALIDADDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA = "funcionalidadDescriptionAlfabeticoCaracteresEspeciales";
 
 	public static final String USUARIO_ALFANUMERICO_ESPACIOS_DATA = "usuarioAlfanumericoEspacios";
 	public static final String CONTRASENA_ALFANUMERICA_ESPACIOS_DATA = "contrasenaAlfanumericaEspacios";
@@ -172,6 +196,7 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_NUMERICO_ESPACIOS_DATA = "telefonoEmpresaNumericoEspacios";
 	public static final String ROLNAME_ALFABETICO_ESPACIOS_DATA = "rolNameAlfabeticoEspacios";
 	public static final String ACCIONNAME_ALFABETICO_ESPACIOS_DATA = "accionNameAlfabeticoEspacios";
+	public static final String FUNCIONALIDADNAME_ALFABETICO_ESPACIOS_DATA = "funcionalidadNameAlfabeticoEspacios";
 
 	public static final String USUARIO_ALFANUMERICO_MENOR_3_DATA = "usuarioAlfanumericoMenor3";
 	public static final String CONTRASENA_ALFANUMERICA_MENOR_3_DATA = "contrasenaAlfanumericaMenor3";
@@ -190,6 +215,8 @@ public class Constantes {
 	public static final String ROLDESCRIPTION_ALFABETICO_MENOR_3_DATA = "rolDescriptionAlfabeticoMenor3";
 	public static final String ACCIONNAME_ALFABETICO_MENOR_3_DATA = "accionNameAlfabeticoMenor3";
 	public static final String ACCIONDESCRIPTION_ALFABETICO_MENOR_3_DATA = "accionDescriptionAlfabeticoMenor3";
+	public static final String FUNCIONALIDADNAME_ALFABETICO_MENOR_3_DATA = "funcionalidadNameAlfabeticoMenor3";
+	public static final String FUNCIONALIDADDESCRIPTION_ALFABETICO_MENOR_3_DATA = "funcionalidadDescriptionAlfabeticoMenor3";
 
 	public static final String USUARIO_ALFANUMERICO_MAYOR_45_DATA = "usuarioAlfanumericoMayor45";
 	public static final String CONTRASENA_ALFANUMERICA_MAYOR_45_DATA = "contrasenaAlfanumericaMayor45";
@@ -206,6 +233,7 @@ public class Constantes {
 	public static final String TELEFONOEMPRESA_NUMERICO_MAYOR_9_DATA = "telefonoEmpresaNumericoMayor9";
 	public static final String ROLNAME_ALFABETICO_MAYOR_32_DATA = "rolNameAlfabeticoMayor32";
 	public static final String ACCIONNAME_ALFABETICO_MAYOR_48_DATA = "accionNameAlfabeticoMayor48";
+	public static final String FUNCIONALIDADNAME_ALFABETICO_MAYOR_48_DATA = "funcionalidadNameAlfabeticoMayor48";
 
 	public static final String USUARIO_ALFABETICO_DATA = "usuarioAlfabetico";
 	public static final String CONTRASENA_ALFABETICA_DATA = "contrasenaAlfabetica";
@@ -224,6 +252,8 @@ public class Constantes {
 	public static final String ROLDESCRIPTION_ALFABETICO_DATA = "rolDescriptionAlfabetico";
 	public static final String ACCIONNAME_ALFABETICO_DATA = "accionNameAlfabetico";
 	public static final String ACCIONDESCRIPTION_ALFABETICO_DATA = "accionDescriptionAlfabetico";
+	public static final String FUNCIONALIDADNAME_ALFABETICO_DATA = "funcionalidadNameAlfabetico";
+	public static final String FUNCIONALIDADDESCRIPTION_ALFABETICO_DATA = "funcionalidadDescriptionAlfabetico";
 
 	public static final String USUARIO_ALFANUMERICO_DATA = "usuarioAlfanumerico";
 	public static final String CONTRASENA_ALFANUMERICA_DATA = "contrasenaAlfanumerica";
@@ -256,6 +286,8 @@ public class Constantes {
 	public static final String ROLDESCRIPTION_NUMERICO_DATA = "rolDescriptionNumerico";
 	public static final String ACCIONNAME_NUMERICO_DATA = "accionNameNumerico";
 	public static final String ACCIONDESCRIPTION_NUMERICO_DATA = "accionDescriptionNumerico";
+	public static final String FUNCIONALIDADNAME_NUMERICO_DATA = "funcionalidadNameNumerico";
+	public static final String FUNCIONALIDADDESCRIPTION_NUMERICO_DATA = "funcionalidadDescriptionNumerico";
 
 	public static final String USUARIO_NO_EXISTE = "usuarioNoExiste";
 	public static final String CONTRASENA_INCORRECTA = "contrasenaIncorrecta";

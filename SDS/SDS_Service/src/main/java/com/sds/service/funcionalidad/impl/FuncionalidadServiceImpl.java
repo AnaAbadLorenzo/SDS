@@ -51,7 +51,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	public FuncionalidadEntity buscarFuncionalidad(final String nombreFuncionalidad)
 			throws FuncionalidadNoExisteException {
 		final Boolean nombreValido = validaciones.comprobarNombreFuncionalidadBlank(nombreFuncionalidad);
-		final FuncionalidadEntity toret = new FuncionalidadEntity();
+		FuncionalidadEntity toret = new FuncionalidadEntity();
 
 		if (nombreValido) {
 			final FuncionalidadEntity funcionalidadBD = funcionalidadRepository
@@ -67,6 +67,8 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 				toret.setDescripFuncionalidad(funcionalidadBD.getDescripFuncionalidad());
 				toret.setBorradoFuncionalidad(funcionalidadBD.getBorradoFuncionalidad());
 			}
+		} else {
+			toret = null;
 		}
 		return toret;
 	}

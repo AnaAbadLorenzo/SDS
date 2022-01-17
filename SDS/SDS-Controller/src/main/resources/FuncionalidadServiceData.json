@@ -1,0 +1,72 @@
+{
+	"buscarFuncionalidadCorrecto": {
+		"usuario": "ana",
+		"idFuncionalidad": 2,
+		"nombreFuncionalidad": "login",
+		"descripFuncionalidad": "login",
+		"borradoFuncionalidad": 0
+	},
+	"funcionalidadNameVacio": {
+		"usuario": "ana",
+		"idFuncionalidad": 2,
+		"nombreFuncionalidad": "",
+		"descripFuncionalidad": "login",
+		"borradoFuncionalidad": 0
+	},
+	"funcionalidadDescriptionVacio": {
+		"usuario": "ana",
+		"idFuncionalidad": 2,
+		"nombreFuncionalidad": "login",
+		"descripFuncionalidad": "",
+		"borradoFuncionalidad": 0
+	},
+	"funcionalidadNameDescriptionVacios": {
+		"usuario": "ana",
+		"idFuncionalidad": 2,
+		"nombreFuncionalidad": "",
+		"descripFuncionalidad": "",
+		"borradoFuncionalidad": 0
+	},
+	"funcionalidadNoExiste": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "funcionalidad",
+		"descripFuncionalidad": "funcionalidad",
+		"borradoFuncionalidad": 0
+	},
+	"guardarFuncionalidadCorrecto": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "Funcionalidad",
+		"descripFuncionalidad": "Funcionalidad",
+		"borradoFuncionalidad": 0
+	},
+	"funcionalidadYaExiste": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "login",
+		"descripFuncionalidad": "login",
+		"borradoFuncionalidad": 0
+	},
+	"modificarFuncionalidad": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "Funcionalidad",
+		"descripFuncionalidad": "Funcionalidad",
+		"borradoFuncionalidad": 0
+	},
+	"eliminarFuncionalidad": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "Funcionalidad",
+		"descripFuncionalidad": "Funcionalidad",
+		"borradoFuncionalidad": 0
+	},
+	"eliminarFuncionalidadAsociadaRolAccion":{
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "Funcionalidad",
+		"descripFuncionalidad": "Funcionalidad",
+		"borradoFuncionalidad": 0
+	}
+}

@@ -1,0 +1,47 @@
+{
+	"funcionalidadNameVacio":{
+		"idFuncionalidad": "",
+		"nombreFuncionalidad" : "",
+		"descripFuncionalidad" : "Esta es la descripción de la nueva funcionalidad",
+		"borradoFuncionalidad" : 0
+	},
+	
+	"funcionalidadNameAlfabeticoCaracteresEspeciales": {
+		"idFuncionalidad": "",
+		"nombreFuncionalidad" : "Esta//***",
+		"descripFuncionalidad" : "Esta es la descripción de la nueva funcionalidad",
+		"borradoFuncionalidad" : 0
+	},
+	
+	"funcionalidadNameAlfabeticoMenor3":{
+		"idFuncionalidad": "",
+		"nombreFuncionalidad" : "Es",
+		"descripFuncionalidad" : "Esta es la descripción de la nueva funcionalidad",
+		"borradoFuncionalidad" : 0
+	},
+	
+	"funcionalidadNameAlfabeticoMayor48":{
+		"idFuncionalidad": "",
+		"nombreFuncionalidad" : "Gestión de accionesssssssssssssssssssssssssssssssss",
+		"descripFuncionalidad" : "Esta es la descripción de la nueva funcionalidad",
+		"borradoFuncionalidad" : 0
+	
+	},
+	
+	"funcionalidadNameAlfabetico":{
+		"idFuncionalidad": "",
+		"nombreFuncionalidad" : "Funcionalidades",
+		"descripFuncionalidad" : "Esta es la descripción de la nueva funcionalidad",
+		"borradoFuncionalidad" : 0
+	
+	},
+	
+	"funcionalidadNameNumerico":{
+		"idFuncionalidad": "",
+		"nombreFuncionalidad" : "12345",
+		"descripFuncionalidad" : "Esta es la descripción de la nueva funcionalidad",
+		"borradoFuncionalidad" : 0
+	
+	}
+
+}

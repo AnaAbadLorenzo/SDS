@@ -12,6 +12,7 @@ import org.json.simple.parser.ParseException;
 
 import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
+import com.sds.model.FuncionalidadEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -165,6 +166,30 @@ public class GenerarJSON {
 		accion.setBorradoAccion(0);
 
 		return accion;
+
+	}
+
+	public FuncionalidadEntity generarFuncionalidad(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonFuncionalidadVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final FuncionalidadEntity funcionalidad = new FuncionalidadEntity();
+
+		if (jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString().equals("")) {
+			funcionalidad.setIdFuncionalidad(0);
+		} else {
+			funcionalidad.setIdFuncionalidad(
+					Integer.parseInt(jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString()));
+		}
+		funcionalidad.setNombreFuncionalidad(CommonUtilities
+				.coalesce(jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_NAME).toString(), StringUtils.EMPTY));
+		funcionalidad.setDescripFuncionalidad(CommonUtilities.coalesce(
+				jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_DESCRIPTION).toString(), StringUtils.EMPTY));
+
+		funcionalidad.setBorradoFuncionalidad(0);
+
+		return funcionalidad;
 
 	}
 }
