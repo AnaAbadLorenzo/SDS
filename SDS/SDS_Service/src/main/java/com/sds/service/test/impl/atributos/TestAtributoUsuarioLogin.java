@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -42,7 +44,8 @@ public class TestAtributoUsuarioLogin {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestLoginUsuarioVacio(final Login datosEntradaLoginUsuarioVacio) {
+	public DatosPruebaAtributos getTestLoginUsuarioVacio(final Login datosEntradaLoginUsuarioVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaLoginUsuarioVacio.getUsuario(), Funcionalidad.LOGIN, Atributo.USUARIO);
@@ -56,7 +59,7 @@ public class TestAtributoUsuarioLogin {
 	}
 
 	public DatosPruebaAtributos getTestLoginUsuarioAlfanumericoEnhe(
-			final Login datosEntradaLoginUsuarioAlfanumericoEnhe) {
+			final Login datosEntradaLoginUsuarioAlfanumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaLoginUsuarioAlfanumericoEnhe.getUsuario(), Funcionalidad.LOGIN, Atributo.USUARIO);
@@ -71,7 +74,7 @@ public class TestAtributoUsuarioLogin {
 	}
 
 	public DatosPruebaAtributos getTestLoginUsuarioAlfanumericoAcentos(
-			final Login datosEntradaLoginUsuarioAlfanumericoAcentos) {
+			final Login datosEntradaLoginUsuarioAlfanumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
 				datosEntradaLoginUsuarioAlfanumericoAcentos.getUsuario(), Funcionalidad.LOGIN, Atributo.USUARIO);
@@ -86,7 +89,7 @@ public class TestAtributoUsuarioLogin {
 	}
 
 	public DatosPruebaAtributos getTestLoginUsuarioAlfanumericoCaracteresEspeciales(
-			final Login datosEntradaLoginUsuarioAlfanumericoCaracteresEspeciales) {
+			final Login datosEntradaLoginUsuarioAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -102,7 +105,7 @@ public class TestAtributoUsuarioLogin {
 	}
 
 	public DatosPruebaAtributos getTestLoginUsuarioAlfanumericoEspacios(
-			final Login datosEntradaLoginUsuarioAlfanumericoEspacios) {
+			final Login datosEntradaLoginUsuarioAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaLoginUsuarioAlfanumericoEspacios.getUsuario(), Funcionalidad.LOGIN, Atributo.USUARIO);
@@ -116,7 +119,7 @@ public class TestAtributoUsuarioLogin {
 	}
 
 	public DatosPruebaAtributos getTestLoginUsuarioAlfanumericoMenor3(
-			final Login datosEntradaLoginUsuarioAlfanumericoMenor3) {
+			final Login datosEntradaLoginUsuarioAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaLoginUsuarioAlfanumericoMenor3.getUsuario(), Funcionalidad.LOGIN, Atributo.USUARIO, 3);
@@ -130,7 +133,7 @@ public class TestAtributoUsuarioLogin {
 	}
 
 	public DatosPruebaAtributos getTestLoginUsuarioAlfanumericoMayor45(
-			final Login datosEntradaLoginUsuarioAlfanumericoMayor45) {
+			final Login datosEntradaLoginUsuarioAlfanumericoMayor45) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaLoginUsuarioAlfanumericoMayor45.getUsuario(), Funcionalidad.LOGIN, Atributo.USUARIO, 45);

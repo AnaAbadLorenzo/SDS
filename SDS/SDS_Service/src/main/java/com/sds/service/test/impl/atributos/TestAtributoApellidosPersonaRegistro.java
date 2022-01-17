@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -37,7 +39,7 @@ public class TestAtributoApellidosPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroApellidosPersonaVacio(
-			final Registro datosEntradaRegistroApellidosPersonaVacio) {
+			final Registro datosEntradaRegistroApellidosPersonaVacio) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroApellidosPersonaVacio.getDatosPersona().getApellidosP(), Funcionalidad.REGISTRAR,
@@ -52,7 +54,7 @@ public class TestAtributoApellidosPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroApellidosPAlfanumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroApellidosPAlfanumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroApellidosPAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(datosEntradaRegistroApellidosPAlfanumericoCaracteresEspeciales
@@ -68,7 +70,7 @@ public class TestAtributoApellidosPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroApellidosPAlfanumericoMenor3(
-			final Registro datosEntradaRegistroApellidosPersonaAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroApellidosPersonaAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroApellidosPersonaAlfanumericoMenor3.getDatosPersona().getApellidosP(),
@@ -84,7 +86,7 @@ public class TestAtributoApellidosPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroApellidosPAlfanumericoMayor128(
-			final Registro datosEntradaRegistroApellidosPAlfanumericoMayor128) {
+			final Registro datosEntradaRegistroApellidosPAlfanumericoMayor128) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroApellidosPAlfanumericoMayor128.getDatosPersona().getApellidosP(),
@@ -100,7 +102,7 @@ public class TestAtributoApellidosPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroAppellidosPNumerico(
-			final Registro datosEntradaRegistroApellidosPNumerico) {
+			final Registro datosEntradaRegistroApellidosPNumerico) throws ParseException {
 		final String resultadoObtenido = validacionesAtributosNumerico.comprobarAtributoNumerico(
 				datosEntradaRegistroApellidosPNumerico.getDatosPersona().getApellidosP(), Funcionalidad.REGISTRAR,
 				Atributo.APELLIDOS_PERSONA);

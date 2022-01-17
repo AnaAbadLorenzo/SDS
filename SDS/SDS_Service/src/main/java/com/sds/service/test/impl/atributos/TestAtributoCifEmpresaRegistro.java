@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -42,7 +44,8 @@ public class TestAtributoCifEmpresaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroCifEmpresaVacio(final Registro datosEntradaRegistroCifEmpresaVacio) {
+	public DatosPruebaAtributos getTestRegistroCifEmpresaVacio(final Registro datosEntradaRegistroCifEmpresaVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroCifEmpresaVacio.getDatosEmpresa().getCifEmpresa(), Funcionalidad.REGISTRAR,
@@ -57,7 +60,7 @@ public class TestAtributoCifEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoEnhe(
-			final Registro datosEntradaRegistroCifEmpresaAlfanumericoEnhe) {
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroCifEmpresaAlfanumericoEnhe.getDatosEmpresa().getCifEmpresa(),
@@ -74,7 +77,7 @@ public class TestAtributoCifEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoAcentos(
-			final Registro datosEntradaRegistroCifEmpresaAlfanumericoAcentos) {
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
 				datosEntradaRegistroCifEmpresaAlfanumericoAcentos.getDatosEmpresa().getCifEmpresa(),
@@ -91,7 +94,7 @@ public class TestAtributoCifEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroCifEmpresaAlfanumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(datosEntradaRegistroCifEmpresaAlfanumericoCaracteresEspeciales
@@ -107,7 +110,7 @@ public class TestAtributoCifEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoEspacios(
-			final Registro datosEntradaRegistroCifEmpresaAlfanumericoEspacios) {
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaRegistroCifEmpresaAlfanumericoEspacios.getDatosEmpresa().getCifEmpresa(),
@@ -123,7 +126,7 @@ public class TestAtributoCifEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoMenor9(
-			final Registro datosEntradaRegistroCifEmpresaAlfanumericoMenor9) {
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoMenor9) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroCifEmpresaAlfanumericoMenor9.getDatosEmpresa().getCifEmpresa(),
@@ -139,7 +142,7 @@ public class TestAtributoCifEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroCifEmpresaAlfanumericoMayor9(
-			final Registro datosEntradaRegistroCifEmpresaAlfanumericoMayor9) {
+			final Registro datosEntradaRegistroCifEmpresaAlfanumericoMayor9) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroCifEmpresaAlfanumericoMayor9.getDatosEmpresa().getCifEmpresa(),

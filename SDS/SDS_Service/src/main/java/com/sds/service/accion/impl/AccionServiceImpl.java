@@ -218,7 +218,8 @@ public class AccionServiceImpl implements AccionService {
 			accionEntity.setBorradoAccion(1);
 
 			accion.setAccion(accionEntity);
-			accionRepository.saveAndFlush(accionEntity);
+
+			modificarAccion(accion);
 
 			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(accion.getUsuario(),
 					Constantes.ACCION_BUSCAR_ACCION, accionEntity.toString());

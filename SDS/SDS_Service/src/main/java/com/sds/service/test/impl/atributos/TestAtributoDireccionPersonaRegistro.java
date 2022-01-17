@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -31,7 +33,7 @@ public class TestAtributoDireccionPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionPersonaVacio(
-			final Registro datosEntradaRegistroDireccionPersonaVacio) {
+			final Registro datosEntradaRegistroDireccionPersonaVacio) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroDireccionPersonaVacio.getDatosPersona().getDireccionP(), Funcionalidad.REGISTRAR,
@@ -46,7 +48,7 @@ public class TestAtributoDireccionPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionPersonaAlfanumericoMenor3(
-			final Registro datosEntradaRegistroDireccionPersonaAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroDireccionPersonaAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroDireccionPersonaAlfanumericoMenor3.getDatosPersona().getDireccionP(),
@@ -62,7 +64,7 @@ public class TestAtributoDireccionPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionPersonaAlfanumericoMayor128(
-			final Registro datosEntradaRegistroDireccionPersonaAlfanumericoMayor128) {
+			final Registro datosEntradaRegistroDireccionPersonaAlfanumericoMayor128) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroDireccionPersonaAlfanumericoMayor128.getDatosPersona().getDireccionP(),
@@ -78,7 +80,7 @@ public class TestAtributoDireccionPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionPCorrectoAlfanumerico(
-			final Registro datosEntradaRegistroDireccionP) {
+			final Registro datosEntradaRegistroDireccionP) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
 				.comprobarAtributoCorrectoAlfanumerico(

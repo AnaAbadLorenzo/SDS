@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -43,7 +45,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPersonaVacio(
-			final Registro datosEntradaRegistroFechaNacimientoPersonaVacio) {
+			final Registro datosEntradaRegistroFechaNacimientoPersonaVacio) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroFechaNacimientoPersonaVacio.getDatosPersona().getFechaNacP().toString(),
@@ -59,7 +61,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPersonaNumericoEnhe(
-			final Registro datosEntradaRegistroFechaNacimientoPersonaNumericoEnhe) {
+			final Registro datosEntradaRegistroFechaNacimientoPersonaNumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroFechaNacimientoPersonaNumericoEnhe.getDatosPersona().getFechaNacP().toString(),
@@ -76,7 +78,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPersonaNumericoAcentos(
-			final Registro datosEntradaRegistroFechaNacimientoPersonaNumericoAcentos) {
+			final Registro datosEntradaRegistroFechaNacimientoPersonaNumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
 				datosEntradaRegistroFechaNacimientoPersonaNumericoAcentos.getDatosPersona().getFechaNacP().toString(),
@@ -93,7 +95,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPNumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroFechaNacimientoPNumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroFechaNacimientoPNumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(datosEntradaRegistroFechaNacimientoPNumericoCaracteresEspeciales
@@ -111,7 +113,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPAlfanumericoEspacios(
-			final Registro datosEntradaRegistroFechaNacimientoPAlfanumericoEspacios) {
+			final Registro datosEntradaRegistroFechaNacimientoPAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaRegistroFechaNacimientoPAlfanumericoEspacios.getDatosPersona().getFechaNacP().toString(),
@@ -127,7 +129,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPAlfanumericoMenor8(
-			final Registro datosEntradaRegistroFechaNacimientoPAlfanumericoMenor8) {
+			final Registro datosEntradaRegistroFechaNacimientoPAlfanumericoMenor8) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroFechaNacimientoPAlfanumericoMenor8.getDatosPersona().getFechaNacP().toString(),
@@ -143,7 +145,7 @@ public class TestAtributoFechaNacimientoPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroFechaNacimientoPAlfanumericoMayor8(
-			final Registro datosEntradaRegistroFechaNacimientoPAlfanumericoMayor8) {
+			final Registro datosEntradaRegistroFechaNacimientoPAlfanumericoMayor8) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroFechaNacimientoPAlfanumericoMayor8.getDatosPersona().getFechaNacP().toString(),

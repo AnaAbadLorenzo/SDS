@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -42,7 +44,8 @@ public class TestAtributoDniPersonaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroDniPersonaVacio(final Registro datosEntradaRegistroDniPersonaVacio) {
+	public DatosPruebaAtributos getTestRegistroDniPersonaVacio(final Registro datosEntradaRegistroDniPersonaVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroDniPersonaVacio.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
@@ -57,7 +60,7 @@ public class TestAtributoDniPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPersonaAlfanumericoEnhe(
-			final Registro datosEntradaRegistroDniPersonaAlfanumericoEnhe) {
+			final Registro datosEntradaRegistroDniPersonaAlfanumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroDniPersonaAlfanumericoEnhe.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
@@ -73,7 +76,7 @@ public class TestAtributoDniPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPersonaAlfanumericoAcentos(
-			final Registro datosEntradaRegistroDniPersonaAlfanumericoAcentos) {
+			final Registro datosEntradaRegistroDniPersonaAlfanumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
 				datosEntradaRegistroDniPersonaAlfanumericoAcentos.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
@@ -89,7 +92,7 @@ public class TestAtributoDniPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPAlfanumericoCaracteresEspeciales(
-			final Registro datosEntradaRegistroDniPAlfanumericoCaracteresEspeciales) {
+			final Registro datosEntradaRegistroDniPAlfanumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(
@@ -105,7 +108,7 @@ public class TestAtributoDniPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPAlfanumericoEspacios(
-			final Registro datosEntradaRegistroDniPAlfanumericoEspacios) {
+			final Registro datosEntradaRegistroDniPAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaRegistroDniPAlfanumericoEspacios.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
@@ -120,7 +123,7 @@ public class TestAtributoDniPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPAlfanumericoMenor9(
-			final Registro datosEntradaRegistroDniPAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroDniPAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroDniPAlfanumericoMenor3.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,
@@ -135,7 +138,7 @@ public class TestAtributoDniPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDniPAlfanumericoMayor9(
-			final Registro datosEntradaRegistroDniPAlfanumericoMayor9) {
+			final Registro datosEntradaRegistroDniPAlfanumericoMayor9) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroDniPAlfanumericoMayor9.getDatosPersona().getDniP(), Funcionalidad.REGISTRAR,

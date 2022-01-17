@@ -53,7 +53,8 @@ public class TestRolServiceImpl implements TestRolService {
 	}
 
 	@Override
-	public List<DatosPruebaAtributos> getPruebasAtributoRolName() throws IOException, ParseException {
+	public List<DatosPruebaAtributos> getPruebasAtributoRolName()
+			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final RolEntity datosEntradaRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME,
@@ -86,7 +87,8 @@ public class TestRolServiceImpl implements TestRolService {
 	}
 
 	@Override
-	public List<DatosPruebaAtributos> getPruebasAtributoRolDescription() throws IOException, ParseException {
+	public List<DatosPruebaAtributos> getPruebasAtributoRolDescription()
+			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final RolEntity datosEntradaRolDescriptionVacio = generarJSON

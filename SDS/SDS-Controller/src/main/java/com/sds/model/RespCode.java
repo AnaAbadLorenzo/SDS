@@ -33,6 +33,18 @@ public enum RespCode {
 			"La accion se encuentra asociada a una accion y funcionalidad"), //
 	ACCION_YA_EXISTE_EXCEPTION("ACCION_YA_EXISTE", "La acción ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("ACCION_NO_EXISTE_EXCEPTION", "La accion que busca no existe"), //
+	FUNCIONALIDAD_VACIA("FUNCIONALIDAD_VACIA", "La funcionalidad está vacía"), //
+	FUNCIONALIDAD_ENCONTRADA("FUNCIONALIDAD_ENCONTRADA", "La funcionalidad se ha encontrado correctamente"), //
+	FUNCIONALIDADES_LISTADAS("FUNCIONALIDADES_LISTADAS", "Las funcionalidades se han listado correctamente"), //
+	FUNCIONALIDADES_ELIMINADAS_LISTADAS("FUNCIONALIDADES_ELIMINADAS_LISTADAS",
+			"Las funcionalidades eliminadas se han listado correctamente"), //
+	FUNCIONALIDAD_MODIFICADA("FUNCIONALIDAD_MODIFICADA", "La funcionalidad se ha modificado correctamente"), //
+	FUNCIONALIDAD_ELIMINADA("FUNCIONALIDAD_ELIMINADA", "La funcionalidad se ha eliminado correctamente"), //
+	FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION("FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION",
+			"La funcionalidad está asociada a un rol y una funcionalidad"), //
+	FUNCIONALIDAD_NO_EXISTE_EXCEPTION("FUNCIONALIDAD_NO_EXISTE_EXCEPTION", "La funcionalidad que busca no existe"), //
+	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("FUNCIONALIDAD_YA_EXISTE_EXCEPTION", "La funcionalidad que busca ya existe"), //
+	FUNCIONALIDAD_GUARDADA("FUNCIONALIDAD_GUARDADA", "La funcionalidad se ha guardado correctamente"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"),
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de acciones en la base de datos"), //

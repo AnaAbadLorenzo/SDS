@@ -67,7 +67,7 @@ public class AccionServiceTest {
 	}
 
 	@Test(expected = AccionNoExisteException.class)
-	public void RolService_accionNoExiste() throws IOException, ParseException, AccionNoExisteException {
+	public void AccionService_accionNoExiste() throws IOException, ParseException, AccionNoExisteException {
 
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NO_EXISTE);
 		final AccionEntity accionEntity = accion.getAccion();
@@ -103,7 +103,7 @@ public class AccionServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarAccionAccionNameVacio()
+	public void AccionService_guardarAccionNameVacio()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			AccionYaExisteException, AccionNoExisteException {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NAME_VACIO_DATA);
@@ -116,7 +116,7 @@ public class AccionServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarAccionAccionDescriptionVacio() throws IOException, ParseException,
+	public void AccionService_guardarAccionDescriptionVacio() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionYaExisteException {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_DESCRIPTION_VACIO_DATA);
 		String respuesta = StringUtils.EMPTY;
@@ -127,7 +127,7 @@ public class AccionServiceTest {
 	}
 
 	@Test
-	public void RolService_guardarAccionAccionNameDescriptionVacios() throws IOException, ParseException,
+	public void AccionService_guardarAccionNameDescriptionVacios() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionYaExisteException {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ACCION_NAME_DESCRIPTION_VACIOS);
@@ -139,7 +139,7 @@ public class AccionServiceTest {
 	}
 
 	@Test(expected = AccionYaExisteException.class)
-	public void RolService_guardarAccionAccionYaExiste() throws IOException, ParseException,
+	public void AccionService_guardarAccionYaExiste() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionYaExisteException {
 
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_YA_EXISTE);
@@ -174,7 +174,7 @@ public class AccionServiceTest {
 	}
 
 	@Test
-	public void AccionService_modificarAccionAccionNameVacio() throws IOException, ParseException,
+	public void AccionService_modificarAccionNameVacio() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionNoExisteException {
 		final Accion accionGuardar = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NAME_VACIO_DATA);
 
@@ -186,7 +186,7 @@ public class AccionServiceTest {
 	}
 
 	@Test
-	public void RolService_modificarRolRolDescriptionVacio() throws IOException, ParseException,
+	public void AccionService_modificarAccionDescriptionVacio() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionNoExisteException {
 		final Accion accionGuardar = generateAccion(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ACCION_DESCRIPTION_VACIO_DATA);
@@ -199,7 +199,7 @@ public class AccionServiceTest {
 	}
 
 	@Test
-	public void AccionService_modificarAccionAccionNameDescriptionVacio() throws IOException, ParseException,
+	public void AccionService_modificarAccionNameDescriptionVacio() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionNoExisteException {
 		final Accion accionGuardar = generateAccion(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ACCION_NAME_DESCRIPTION_VACIOS);
@@ -212,7 +212,7 @@ public class AccionServiceTest {
 	}
 
 	@Test(expected = AccionNoExisteException.class)
-	public void AccionService_modificarAccionAccionNoExiste() throws RolNoExisteException, IOException, ParseException,
+	public void AccionService_modificarAccionNoExiste() throws RolNoExisteException, IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionNoExisteException {
 
 		final Accion accionGuardar = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NO_EXISTE);
@@ -284,7 +284,7 @@ public class AccionServiceTest {
 
 		accion.setUsuario(CommonUtilities.coalesce(jsonAccion.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
 
-		if (idAccion.equals("")) {
+		if (idAccion.equals(StringUtils.EMPTY)) {
 			accionEntity.setIdAccion(0);
 		} else {
 			accionEntity.setIdAccion(Integer.parseInt(idAccion));

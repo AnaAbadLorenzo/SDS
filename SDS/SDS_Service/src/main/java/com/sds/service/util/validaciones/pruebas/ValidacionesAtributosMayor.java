@@ -14,7 +14,7 @@ import com.sds.service.common.enumerados.Funcionalidad;
 public class ValidacionesAtributosMayor {
 
 	public String comprobarAtributoMayor(final String atributo, final Funcionalidad funcionalidad, final Atributo atr,
-			final Integer tamanhoMiaximo) {
+			final Integer tamanhoMiaximo) throws ParseException {
 
 		String resultado = StringUtils.EMPTY;
 
@@ -22,18 +22,15 @@ public class ValidacionesAtributosMayor {
 			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			Date fecha;
 			java.sql.Date fechaSql = null;
-			try {
-				fecha = format.parse("0000-00-00");
-				fechaSql = new java.sql.Date(fecha.getTime());
-				if (atributo.equals(fechaSql.toString())) {
-					resultado = CodigosMensajes.FECHA_NACIMIENTO_MAYOR_QUE_8 + " - "
-							+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_MAYOR_QUE_8;
 
-				}
-			} catch (final ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NACIMIENTO_MAYOR_QUE_8 + " - "
+						+ Mensajes.FECHA_NACIMIENTO_NO_PUEDE_SER_MAYOR_QUE_8;
+
 			}
+
 		}
 
 		if (atributo.length() > tamanhoMiaximo) {
@@ -110,6 +107,12 @@ public class ValidacionesAtributosMayor {
 					break;
 				default:
 					break;
+				}
+			case GESTION_FUNCIONALIDADES:
+				switch (atr) {
+				case FUNCIONALIDAD_NAME:
+					resultado = CodigosMensajes.FUNCIONALIDAD_NAME_MAYOR_QUE_48 + " - "
+							+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_MAYOR_QUE_48;
 				}
 
 			default:

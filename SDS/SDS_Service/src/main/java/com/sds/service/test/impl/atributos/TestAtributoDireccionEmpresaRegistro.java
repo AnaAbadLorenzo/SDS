@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -31,7 +33,7 @@ public class TestAtributoDireccionEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionEmpresaVacio(
-			final Registro datosEntradaRegistroDireccionEmpresaVacio) {
+			final Registro datosEntradaRegistroDireccionEmpresaVacio) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroDireccionEmpresaVacio.getDatosEmpresa().getDireccionEmpresa(),
@@ -47,7 +49,7 @@ public class TestAtributoDireccionEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionEmpresaAlfanumericoMenor3(
-			final Registro datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3) {
+			final Registro datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroDireccionEmpresaAlfanumericoMenor3.getDatosEmpresa().getDireccionEmpresa(),
@@ -63,7 +65,7 @@ public class TestAtributoDireccionEmpresaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroDireccionEmpresaAlfanumericoMayor128(
-			final Registro datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128) {
+			final Registro datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroDireccionEmpresaAlfanumericoMayor128.getDatosEmpresa().getDireccionEmpresa(),

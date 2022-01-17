@@ -56,7 +56,8 @@ public class TestAccionServiceImpl implements TestAccionService {
 	}
 
 	@Override
-	public List<DatosPruebaAtributos> getPruebasAtributoAccionName() throws IOException, ParseException {
+	public List<DatosPruebaAtributos> getPruebasAtributoAccionName()
+			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final AccionEntity datosEntradaAccionNameVacio = generarJSON
@@ -92,7 +93,8 @@ public class TestAccionServiceImpl implements TestAccionService {
 	}
 
 	@Override
-	public List<DatosPruebaAtributos> getPruebasAtributoAccionDescription() throws IOException, ParseException {
+	public List<DatosPruebaAtributos> getPruebasAtributoAccionDescription()
+			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
 
 		final AccionEntity datosEntradaAccionDescriptionVacio = generarJSON.generarAccion(

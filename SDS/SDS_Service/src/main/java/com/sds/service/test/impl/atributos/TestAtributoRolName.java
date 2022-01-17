@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.model.RolEntity;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
@@ -39,7 +41,7 @@ public class TestAtributoRolName {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRolNameVacio(final RolEntity datosEntradaRolNameVacio) {
+	public DatosPruebaAtributos getTestRolNameVacio(final RolEntity datosEntradaRolNameVacio) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRolNameVacio.getRolName(), Funcionalidad.GESTION_ROLES, Atributo.ROL_NAME);
@@ -51,7 +53,7 @@ public class TestAtributoRolName {
 	}
 
 	public DatosPruebaAtributos getTestRolNameAlfabeticoCaracteresEspeciales(
-			final RolEntity datosEntradaRolNameNumericoCaracteresEspeciales) {
+			final RolEntity datosEntradaRolNameNumericoCaracteresEspeciales) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosCaracteresEspeciales
 				.comprobarAtributoCaracteresEspeciales(datosEntradaRolNameNumericoCaracteresEspeciales.getRolName(),
@@ -65,8 +67,8 @@ public class TestAtributoRolName {
 				datosEntradaRolNameNumericoCaracteresEspeciales.getRolName(), Constantes.ROL_NAME);
 	}
 
-	public DatosPruebaAtributos getTestRolNameAlfabeticoEspacios(
-			final RolEntity datosEntradaRolNameAlfabeticoEspacios) {
+	public DatosPruebaAtributos getTestRolNameAlfabeticoEspacios(final RolEntity datosEntradaRolNameAlfabeticoEspacios)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaRolNameAlfabeticoEspacios.getRolName(), Funcionalidad.GESTION_ROLES, Atributo.ROL_NAME);
@@ -79,7 +81,8 @@ public class TestAtributoRolName {
 				datosEntradaRolNameAlfabeticoEspacios.getRolName(), Constantes.ROL_NAME);
 	}
 
-	public DatosPruebaAtributos getTestRolNameAlfabeticoMenor3(final RolEntity datosEntradaRolNameAlfabeticoMenor3) {
+	public DatosPruebaAtributos getTestRolNameAlfabeticoMenor3(final RolEntity datosEntradaRolNameAlfabeticoMenor3)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRolNameAlfabeticoMenor3.getRolName(), Funcionalidad.GESTION_ROLES, Atributo.ROL_NAME, 3);
@@ -92,7 +95,8 @@ public class TestAtributoRolName {
 				datosEntradaRolNameAlfabeticoMenor3.getRolName(), Constantes.ROL_NAME);
 	}
 
-	public DatosPruebaAtributos getTestRolNameAlfabeticoMayor32(final RolEntity datosEntradaRolNameAlfabeticoMayor9) {
+	public DatosPruebaAtributos getTestRolNameAlfabeticoMayor32(final RolEntity datosEntradaRolNameAlfabeticoMayor9)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRolNameAlfabeticoMayor9.getRolName(), Funcionalidad.GESTION_ROLES, Atributo.ROL_NAME, 32);

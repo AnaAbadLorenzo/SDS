@@ -1,5 +1,7 @@
 package com.sds.service.test.impl.atributos;
 
+import java.text.ParseException;
+
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -39,7 +41,8 @@ public class TestAtributoEmailPersonaRegistro {
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
-	public DatosPruebaAtributos getTestRegistroEmailPersonaVacio(final Registro datosEntradaRegistroEmailPersonaVacio) {
+	public DatosPruebaAtributos getTestRegistroEmailPersonaVacio(final Registro datosEntradaRegistroEmailPersonaVacio)
+			throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosBlank.comprobarAtributoBlank(
 				datosEntradaRegistroEmailPersonaVacio.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
@@ -53,7 +56,7 @@ public class TestAtributoEmailPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroEmailPersonaAlfanumericoEnhe(
-			final Registro datosEntradaRegistroEmailPersonaAlfanumericoEnhe) {
+			final Registro datosEntradaRegistroEmailPersonaAlfanumericoEnhe) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEnhe.comprobarAtributoEnhe(
 				datosEntradaRegistroEmailPersonaAlfanumericoEnhe.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
@@ -69,7 +72,7 @@ public class TestAtributoEmailPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroEmailPersonaAlfanumericoAcentos(
-			final Registro datosEntradaRegistroEmailPersonaAlfanumericoAcentos) {
+			final Registro datosEntradaRegistroEmailPersonaAlfanumericoAcentos) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosAcentos.comprobarAtributoAcentos(
 				datosEntradaRegistroEmailPersonaAlfanumericoAcentos.getDatosPersona().getEmailP(),
@@ -85,7 +88,7 @@ public class TestAtributoEmailPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroEmailPAlfanumericoEspacios(
-			final Registro datosEntradaRegistroEmailPAlfanumericoEspacios) {
+			final Registro datosEntradaRegistroEmailPAlfanumericoEspacios) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosEspacios.comprobarAtributoEspacios(
 				datosEntradaRegistroEmailPAlfanumericoEspacios.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
@@ -100,7 +103,7 @@ public class TestAtributoEmailPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroEmailPAlfanumericoMenor4(
-			final Registro datosEntradaRegistroEmailPAlfanumericoMenor4) {
+			final Registro datosEntradaRegistroEmailPAlfanumericoMenor4) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaRegistroEmailPAlfanumericoMenor4.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,
@@ -115,7 +118,7 @@ public class TestAtributoEmailPersonaRegistro {
 	}
 
 	public DatosPruebaAtributos getTestRegistroEmailPAlfanumericoMayor128(
-			final Registro datosEntradaRegistroEmailPAlfanumericoMayor128) {
+			final Registro datosEntradaRegistroEmailPAlfanumericoMayor128) throws ParseException {
 
 		final String resultadoObtenido = validacionesAtributosMayor.comprobarAtributoMayor(
 				datosEntradaRegistroEmailPAlfanumericoMayor128.getDatosPersona().getEmailP(), Funcionalidad.REGISTRAR,

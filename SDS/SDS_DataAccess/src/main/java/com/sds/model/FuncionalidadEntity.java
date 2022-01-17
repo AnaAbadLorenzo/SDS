@@ -21,7 +21,9 @@ import javax.persistence.Table;
 @Table(name = "funcionalidad")
 @NamedQueries({
 		@NamedQuery(name = "FuncionalidadEntity.findByIdFuncionalidad", query = "SELECT f FROM FuncionalidadEntity f WHERE f.idFuncionalidad =: idFuncionalidad"),
-		@NamedQuery(name = "FuncionalidadEntity.findIdFuncionalidadByName", query = "SELECT f.idFuncionalidad FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad =: nombreFuncionalidad") })
+		@NamedQuery(name = "FuncionalidadEntity.findIdFuncionalidadByName", query = "SELECT f.idFuncionalidad FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad =: nombreFuncionalidad"),
+		@NamedQuery(name = "FuncionalidadEntity.findFuncionalityByName", query = "SELECT f FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad =: nombreFuncionalidad"),
+		@NamedQuery(name = "FuncionalidadEntity.findFuncionalidadesEliminadas", query = "SELECT f FROM FuncionalidadEntity f WHERE f.borradoFuncionalidad =: borradoFuncionalidad") })
 public class FuncionalidadEntity {
 
 	@Id

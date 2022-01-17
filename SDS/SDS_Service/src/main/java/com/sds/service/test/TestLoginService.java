@@ -10,9 +10,10 @@ import com.sds.service.test.model.DatosPruebaAtributos;
 
 public interface TestLoginService {
 
-	List<DatosPruebaAtributos> getPruebasAtributoUsuario() throws IOException, ParseException;
+	List<DatosPruebaAtributos> getPruebasAtributoUsuario() throws IOException, ParseException, java.text.ParseException;
 
-	List<DatosPruebaAtributos> getPruebasAtributoContrasena() throws IOException, ParseException;
+	List<DatosPruebaAtributos> getPruebasAtributoContrasena()
+			throws IOException, ParseException, java.text.ParseException;
 
 	List<DatosPruebaAcciones> getPruebasAccionesLogin() throws IOException, ParseException;
 }
