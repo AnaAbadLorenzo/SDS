@@ -131,7 +131,7 @@ public class GenerarJSON {
 
 		final RolEntity rol = new RolEntity();
 
-		if (jsonRolVacio.get(Constantes.ROL_ID).toString().equals("")) {
+		if (jsonRolVacio.get(Constantes.ROL_ID).toString().equals(StringUtils.EMPTY)) {
 			rol.setIdRol(0);
 		} else {
 			rol.setIdRol(Integer.parseInt(jsonRolVacio.get(Constantes.ROL_ID).toString()));
@@ -153,7 +153,7 @@ public class GenerarJSON {
 
 		final AccionEntity accion = new AccionEntity();
 
-		if (jsonRolVacio.get(Constantes.ACCION_ID).toString().equals("")) {
+		if (jsonRolVacio.get(Constantes.ACCION_ID).toString().equals(StringUtils.EMPTY)) {
 			accion.setIdAccion(0);
 		} else {
 			accion.setIdAccion(Integer.parseInt(jsonRolVacio.get(Constantes.ACCION_ID).toString()));
@@ -176,7 +176,7 @@ public class GenerarJSON {
 
 		final FuncionalidadEntity funcionalidad = new FuncionalidadEntity();
 
-		if (jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString().equals("")) {
+		if (jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString().equals(StringUtils.EMPTY)) {
 			funcionalidad.setIdFuncionalidad(0);
 		} else {
 			funcionalidad.setIdFuncionalidad(

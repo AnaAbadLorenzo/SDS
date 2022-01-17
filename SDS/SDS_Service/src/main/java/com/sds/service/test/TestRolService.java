@@ -12,6 +12,9 @@ public interface TestRolService {
 
 	List<DatosPruebaAtributos> getPruebasAtributoRolName() throws IOException, ParseException, java.text.ParseException;
 
+	List<DatosPruebaAtributos> getPruebasAtributoRolNameBuscar()
+			throws IOException, ParseException, java.text.ParseException;
+
 	List<DatosPruebaAtributos> getPruebasAtributoRolDescription()
 			throws IOException, ParseException, java.text.ParseException;
 

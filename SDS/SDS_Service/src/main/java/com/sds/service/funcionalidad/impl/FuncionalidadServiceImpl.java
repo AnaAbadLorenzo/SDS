@@ -80,11 +80,9 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findAll();
 
 		for (final FuncionalidadEntity funcionalidad : funcionalidades) {
-			final FuncionalidadEntity func = new FuncionalidadEntity();
-			func.setIdFuncionalidad(funcionalidad.getIdFuncionalidad());
-			func.setNombreFuncionalidad(funcionalidad.getNombreFuncionalidad());
-			func.setDescripFuncionalidad(funcionalidad.getDescripFuncionalidad());
-			func.setBorradoFuncionalidad(funcionalidad.getBorradoFuncionalidad());
+			final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
+					funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+					funcionalidad.getBorradoFuncionalidad());
 
 			funcionalidadesToret.add(func);
 		}
@@ -98,11 +96,9 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findFuncionalidadesEliminadas(1);
 
 		for (final FuncionalidadEntity funcionalidad : funcionalidades) {
-			final FuncionalidadEntity func = new FuncionalidadEntity();
-			func.setIdFuncionalidad(funcionalidad.getIdFuncionalidad());
-			func.setNombreFuncionalidad(funcionalidad.getNombreFuncionalidad());
-			func.setDescripFuncionalidad(funcionalidad.getDescripFuncionalidad());
-			func.setBorradoFuncionalidad(funcionalidad.getBorradoFuncionalidad());
+			final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
+					funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+					funcionalidad.getBorradoFuncionalidad());
 
 			funcionalidadesToret.add(func);
 		}

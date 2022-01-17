@@ -87,6 +87,33 @@ public class TestRolServiceImpl implements TestRolService {
 	}
 
 	@Override
+	public List<DatosPruebaAtributos> getPruebasAtributoRolNameBuscar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
+
+		final RolEntity datosEntradaRolNameCaracteresEspeciales = generarJSON.generarRol(
+				Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME, Constantes.ROLNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA);
+		final RolEntity datosEntradaRolNameEspacios = generarJSON.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME,
+				Constantes.ROLNAME_ALFABETICO_ESPACIOS_DATA);
+		final RolEntity datosEntradaRolNameAlfabeticoMayor32 = generarJSON
+				.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME, Constantes.ROLNAME_ALFABETICO_MAYOR_32_DATA);
+		final RolEntity datosEntradaRolNameNumerico = generarJSON.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME,
+				Constantes.ROLNAME_NUMERICO_DATA);
+		final RolEntity datosEntradaRolNameAlfabetico = generarJSON
+				.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLNAME, Constantes.ROLNAME_ALFABETICO_DATA);
+
+		datosPruebaAtributos.add(testAtributoRolName
+				.getTestRolNameAlfabeticoCaracteresEspeciales(datosEntradaRolNameCaracteresEspeciales));
+		datosPruebaAtributos.add(testAtributoRolName.getTestRolNameAlfabeticoEspacios(datosEntradaRolNameEspacios));
+		datosPruebaAtributos
+				.add(testAtributoRolName.getTestRolNameAlfabeticoMayor32(datosEntradaRolNameAlfabeticoMayor32));
+		datosPruebaAtributos.add(testAtributoRolName.getTestRolNameNumerico(datosEntradaRolNameNumerico));
+		datosPruebaAtributos.add(testAtributoRolName.getTestRolNameCorrectoAlfabetico(datosEntradaRolNameAlfabetico));
+
+		return datosPruebaAtributos;
+	}
+
+	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoRolDescription()
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();

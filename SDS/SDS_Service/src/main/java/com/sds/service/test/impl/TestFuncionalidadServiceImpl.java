@@ -93,6 +93,37 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 	}
 
 	@Override
+	public List<DatosPruebaAtributos> getPruebasAtributoFuncionalidadNameBuscar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
+
+		final FuncionalidadEntity datosEntradaFuncionalidadNameCaracteresEspeciales = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
+				Constantes.FUNCIONALIDADNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA);
+		final FuncionalidadEntity datosEntradaFuncionalidadNameAlfabeticoMayor48 = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
+				Constantes.FUNCIONALIDADNAME_ALFABETICO_MAYOR_48_DATA);
+		final FuncionalidadEntity datosEntradaFuncionalidadNameNumerico = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
+				Constantes.FUNCIONALIDADNAME_NUMERICO_DATA);
+		final FuncionalidadEntity datosEntradaFuncionalidadNameAlfabetico = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
+				Constantes.FUNCIONALIDADNAME_ALFABETICO_DATA);
+
+		datosPruebaAtributos.add(testAtributoFuncionalidadName.getTestFuncionalidadNameAlfabeticoCaracteresEspeciales(
+				datosEntradaFuncionalidadNameCaracteresEspeciales));
+		datosPruebaAtributos.add(testAtributoFuncionalidadName
+				.getTestFuncionalidadNameAlfabeticoMayor48(datosEntradaFuncionalidadNameAlfabeticoMayor48));
+		datosPruebaAtributos.add(
+				testAtributoFuncionalidadName.getTestFuncionalidadNameNumerico(datosEntradaFuncionalidadNameNumerico));
+		datosPruebaAtributos.add(testAtributoFuncionalidadName
+				.getTestFuncionalidadNameCorrectoAlfabetico(datosEntradaFuncionalidadNameAlfabetico));
+
+		return datosPruebaAtributos;
+
+	}
+
+	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoFuncionalidadDescription()
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
