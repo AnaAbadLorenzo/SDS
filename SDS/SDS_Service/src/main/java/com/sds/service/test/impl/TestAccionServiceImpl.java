@@ -93,6 +93,36 @@ public class TestAccionServiceImpl implements TestAccionService {
 	}
 
 	@Override
+	public List<DatosPruebaAtributos> getPruebasAtributoAccionNameBuscar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
+
+		final AccionEntity datosEntradaAccionNameCaracteresEspeciales = generarJSON.generarAccion(
+				Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME,
+				Constantes.ACCIONNAME_ALFABETICO_CARACTERES_ESPECIALES_DATA);
+		final AccionEntity datosEntradaAccionNameAlfabeticoEspacios = generarJSON.generarAccion(
+				Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME, Constantes.ACCIONNAME_ALFABETICO_ESPACIOS_DATA);
+		final AccionEntity datosEntradaAccionNameAlfabeticoMayor48 = generarJSON.generarAccion(
+				Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME, Constantes.ACCIONNAME_ALFABETICO_MAYOR_48_DATA);
+		final AccionEntity datosEntradaAccionNameNumerico = generarJSON
+				.generarAccion(Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME, Constantes.ACCIONNAME_NUMERICO_DATA);
+		final AccionEntity datosEntradaAccionNameAlfabetico = generarJSON
+				.generarAccion(Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONNAME, Constantes.ACCIONNAME_ALFABETICO_DATA);
+
+		datosPruebaAtributos.add(testAtributoAccionName
+				.getTestAccionNameAlfabeticoCaracteresEspeciales(datosEntradaAccionNameCaracteresEspeciales));
+		datosPruebaAtributos.add(
+				testAtributoAccionName.getTestAccionNameAlfabeticoEspacios(datosEntradaAccionNameAlfabeticoEspacios));
+		datosPruebaAtributos.add(
+				testAtributoAccionName.getTestAccionNameAlfabeticoMayor48(datosEntradaAccionNameAlfabeticoMayor48));
+		datosPruebaAtributos.add(testAtributoAccionName.getTestAccionNameNumerico(datosEntradaAccionNameNumerico));
+		datosPruebaAtributos
+				.add(testAtributoAccionName.getTestAccionNameCorrectoAlfabetico(datosEntradaAccionNameAlfabetico));
+
+		return datosPruebaAtributos;
+	}
+
+	@Override
 	public List<DatosPruebaAtributos> getPruebasAtributoAccionDescription()
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();

@@ -13,6 +13,9 @@ public interface TestAccionService {
 	List<DatosPruebaAtributos> getPruebasAtributoAccionName()
 			throws IOException, ParseException, java.text.ParseException;
 
+	List<DatosPruebaAtributos> getPruebasAtributoAccionNameBuscar()
+			throws IOException, ParseException, java.text.ParseException;
+
 	List<DatosPruebaAtributos> getPruebasAtributoAccionDescription()
 			throws IOException, ParseException, java.text.ParseException;
 
