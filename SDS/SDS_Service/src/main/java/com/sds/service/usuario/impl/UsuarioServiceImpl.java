@@ -1,5 +1,7 @@
 package com.sds.service.usuario.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
@@ -15,6 +18,7 @@ import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.log.impl.LogServiceImpl;
+import com.sds.service.rol.impl.RolServiceImpl;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
@@ -30,11 +34,32 @@ public class UsuarioServiceImpl implements UsuarioService {
 	UsuarioRepository usuarioRepository;
 
 	@Autowired
+	RolServiceImpl rolServiceImpl;
+
+	@Autowired
 	LogServiceImpl logServiceImpl;
 
 	public UsuarioServiceImpl() {
 		util = new Util();
 		validaciones = new Validaciones();
+	}
+
+	@Override
+	public List<UsuarioEntity> buscarTodos() {
+		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
+
+		final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
+
+		for (final UsuarioEntity usuario : usuarios) {
+			final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
+					usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
+			final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
+					usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
+
+			usuariosToret.add(user);
+		}
+
+		return usuariosToret;
 	}
 
 	@Override

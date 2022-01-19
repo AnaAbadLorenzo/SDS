@@ -48,23 +48,25 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
-	public RolEntity buscarRol(final String rolName) throws RolNoExisteException {
-		final Boolean rolValido = validaciones.comprobarNombreRolBlank(rolName);
-		RolEntity rolUser = null;
-		RolEntity rol = null;
+	public List<RolEntity> buscarRol(final String rolName, final String rolDescription) {
+		RolEntity rolUser = new RolEntity();
+		List<RolEntity> rolesBD = new ArrayList<>();
+		final List<RolEntity> toret = new ArrayList<>();
 
-		if (rolValido) {
-			rol = rolRepository.findByRolName(rolName);
+		rolesBD = rolRepository.findRol(rolName, rolDescription);
 
-			if (rol == null) {
-				throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
-						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
-			} else {
-				rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(), rol.getBorradoRol());
+		if (!rolesBD.isEmpty()) {
+			for (final RolEntity rol : rolesBD) {
+				if (rol.getBorradoRol() == 0) {
+					rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(),
+							rol.getBorradoRol());
+					toret.add(rolUser);
+				}
 			}
+
 		}
 
-		return rolUser;
+		return toret;
 	}
 
 	@Override

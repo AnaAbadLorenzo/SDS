@@ -21,8 +21,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "rol")
 @NamedQueries({
-		@NamedQuery(name = "RolEntity.findByRolName", query = "SELECT r FROM RolEntity r WHERE r.rolName =: rolName"),
-		@NamedQuery(name = "RolEntity.findDeleteRol", query = "SELECT r FROM RolEntity r WHERE r.borradoRol =: borradoRol") })
+		@NamedQuery(name = "RolEntity.findRol", query = "SELECT r FROM RolEntity r WHERE r.rolName LIKE CONCAT('%', :rolName, '%') AND r.rolDescription LIKE CONCAT('%', :rolDescription, '%')"),
+		@NamedQuery(name = "RolEntity.findDeleteRol", query = "SELECT r FROM RolEntity r WHERE r.borradoRol =: borradoRol"),
+		@NamedQuery(name = "RolEntity.findByRolName", query = "SELECT r FROM RolEntity r WHERE r.rolName =: rolName") })
 public class RolEntity {
 
 	@Id

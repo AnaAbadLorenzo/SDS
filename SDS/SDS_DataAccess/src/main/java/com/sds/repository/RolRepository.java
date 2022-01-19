@@ -15,6 +15,8 @@ public interface RolRepository extends JpaRepository<RolEntity, Integer> {
 
 	RolEntity findByRolName(String rolName);
 
+	List<RolEntity> findRol(String rolName, String rolDescription);
+
 	List<RolEntity> findDeleteRol(int borradoRol);
 
 	@Transactional
