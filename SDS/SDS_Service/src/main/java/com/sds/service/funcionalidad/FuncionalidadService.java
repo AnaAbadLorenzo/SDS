@@ -12,7 +12,7 @@ import com.sds.service.funcionalidad.model.Funcionalidad;
 
 public interface FuncionalidadService {
 
-	FuncionalidadEntity buscarFuncionalidad(final String nombreFuncionalidad) throws FuncionalidadNoExisteException;
+	List<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad, final String descripFuncionalidad);
 
 	List<FuncionalidadEntity> buscarTodos();
 

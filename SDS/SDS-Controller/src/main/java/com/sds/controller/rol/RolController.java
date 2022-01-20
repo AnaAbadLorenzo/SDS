@@ -19,6 +19,7 @@ import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.rol.RolService;
 import com.sds.service.rol.model.Rol;
+import com.sds.service.rol.model.RolBuscar;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -37,22 +38,11 @@ public class RolController {
 
 	@RequestMapping(value = "/listarRol", method = RequestMethod.GET)
 	@ResponseBody
-	public RespEntity buscarRol(@RequestBody final String rolName) {
-		final Boolean nombreValido = validaciones.comprobarNombreRolBlank(rolName);
+	public RespEntity buscarRol(@RequestBody final RolBuscar rolBuscar) {
 
-		if (nombreValido) {
-			try {
-				final RolEntity resultado = rolService.buscarRol(rolName);
-				if (resultado == null) {
-					return new RespEntity(RespCode.ROL_VACIO, rolName);
-				}
-				return new RespEntity(RespCode.ROL_ENCONTRADO, resultado);
-			} catch (final RolNoExisteException rolNoExists) {
-				return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rolName);
-			}
-		}
+		final List<RolEntity> resultado = rolService.buscarRol(rolBuscar.getRolName(), rolBuscar.getRolDescription());
 
-		return new RespEntity(RespCode.ROL_VACIO, rolName);
+		return new RespEntity(RespCode.ROL_ENCONTRADO, resultado);
 
 	}
 

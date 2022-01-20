@@ -19,6 +19,7 @@ import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.funcionalidad.FuncionalidadService;
 import com.sds.service.funcionalidad.model.Funcionalidad;
+import com.sds.service.funcionalidad.model.FuncionalidadBuscar;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -37,22 +38,12 @@ public class FuncionalidadController {
 
 	@RequestMapping(value = "/listarFuncionalidad", method = RequestMethod.GET)
 	@ResponseBody
-	public RespEntity buscarFuncionalidad(@RequestBody final String funcionalidadName) {
-		final Boolean nombreValido = validaciones.comprobarNombreFuncionalidadBlank(funcionalidadName);
+	public RespEntity buscarFuncionalidad(@RequestBody final FuncionalidadBuscar funcionalidad) {
 
-		if (nombreValido) {
-			try {
-				final FuncionalidadEntity resultado = funcionalidadService.buscarFuncionalidad(funcionalidadName);
-				if (resultado == null) {
-					return new RespEntity(RespCode.FUNCIONALIDAD_VACIA, funcionalidadName);
-				}
-				return new RespEntity(RespCode.FUNCIONALIDAD_ENCONTRADA, resultado);
-			} catch (final FuncionalidadNoExisteException funcionalidadNoExists) {
-				return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, funcionalidadName);
-			}
-		}
+		final List<FuncionalidadEntity> resultado = funcionalidadService
+				.buscarFuncionalidad(funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad());
 
-		return new RespEntity(RespCode.FUNCIONALIDAD_VACIA, funcionalidadName);
+		return new RespEntity(RespCode.FUNCIONALIDAD_ENCONTRADA, resultado);
 
 	}
 

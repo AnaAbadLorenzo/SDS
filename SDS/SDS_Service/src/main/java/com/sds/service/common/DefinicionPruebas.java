@@ -51,7 +51,7 @@ public class DefinicionPruebas {
 	public static final String USUARIO_VACIO = "Los datos de usuario no pueden ser vacíos";
 	public static final String EMPRESA_VACIA = "Los datos de empresa no pueden ser vacíos";
 	public static final String REGISTRO_CORRECTO = "Registro correcto";
-	public static final String BUSCAR_CORRECTO = "Buscar rol correcto";
+	public static final String BUSCAR_CORRECTO = "Buscar correcto";
 	public static final String BUSCAR_ROL_NAME_VACIO = "Buscar nombre de rol vacio";
 	public static final String BUSCAR_ROL_NO_EXISTE = "Buscar un rol que no existe";
 	public static final String GUARDAR_ROL_CORRECTO = "El rol se ha guardado correctamente";

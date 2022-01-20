@@ -144,6 +144,29 @@ public class TestRolServiceImpl implements TestRolService {
 	}
 
 	@Override
+	public List<DatosPruebaAtributos> getPruebasAtributoRolDescriptionBuscar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
+
+		final RolEntity datosEntradaRolDescriptionCaracteresEspeciales = generarJSON.generarRol(
+				Constantes.URL_JSON_ROL_ATRIBUTOS_ROLDESCRIPTION,
+				Constantes.ROLDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA);
+		final RolEntity datosEntradaRolDescriptionAlfabetico = generarJSON.generarRol(
+				Constantes.URL_JSON_ROL_ATRIBUTOS_ROLDESCRIPTION, Constantes.ROLDESCRIPTION_ALFABETICO_DATA);
+		final RolEntity datosEntradaRolDescriptionNumerico = generarJSON
+				.generarRol(Constantes.URL_JSON_ROL_ATRIBUTOS_ROLDESCRIPTION, Constantes.ROLDESCRIPTION_NUMERICO_DATA);
+
+		datosPruebaAtributos.add(testAtributoRolDescription
+				.getTestRolDescriptionAlfabeticoCaracteresEspeciales(datosEntradaRolDescriptionCaracteresEspeciales));
+		datosPruebaAtributos
+				.add(testAtributoRolDescription.getTestRolDescriptionNumerico(datosEntradaRolDescriptionNumerico));
+		datosPruebaAtributos.add(testAtributoRolDescription
+				.getTestRolDescriptionAlfabeticoCorrecto(datosEntradaRolDescriptionAlfabetico));
+
+		return datosPruebaAtributos;
+	}
+
+	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesRolBuscar()
 			throws IOException, ParseException, java.text.ParseException {
 
@@ -151,14 +174,17 @@ public class TestRolServiceImpl implements TestRolService {
 
 		final RolEntity datosEntradaRolBuscarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.BUSCAR_ROL);
-		final RolEntity datosEntradaRolbuscarRolRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+		final RolEntity datosEntradaRolBuscarRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ROL_NAME_VACIO_DATA);
-		final RolEntity datosEntradaRolbuscarRolNoExiste = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
-				Constantes.ROL_NO_EXISTE);
+		final RolEntity datosEntradaRolBuscarRolDescriptionVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+				Constantes.ROL_DESCRIPTION_VACIO_DATA);
+		final RolEntity datosEntradaRolBuscarRolVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+				Constantes.ROL_NAME_DESCRIPTION_VACIOS);
 
 		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRol));
-		datosPruebaAcciones.add(getTestBuscarRolRolNameVacio(datosEntradaRolbuscarRolRolNameVacio));
-		datosPruebaAcciones.add(getTestBuscarRolNoExiste(datosEntradaRolbuscarRolNoExiste));
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRolNameVacio));
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRolDescriptionVacio));
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRolVacio));
 
 		return datosPruebaAcciones;
 	}
@@ -248,27 +274,16 @@ public class TestRolServiceImpl implements TestRolService {
 
 	}
 
-	private DatosPruebaAcciones getTestBuscarRolRolNameVacio(final RolEntity datosEntradaRolbuscarRolRolNameVacio) {
+	private DatosPruebaAcciones getTestBuscarRolNameDescriptionVacio(
+			final RolEntity datosEntradaRolbuscarRolNameDescriptionVacio) {
 
-		final String resultadoObtenido = buscarRol(datosEntradaRolbuscarRolRolNameVacio);
+		final String resultadoObtenido = buscarRol(datosEntradaRolbuscarRolNameDescriptionVacio);
 
-		final String resultadoEsperado = CodigosMensajes.ROL_NAME_VACIO + " - " + Mensajes.ROL_NAME_NO_PUEDE_SER_VACIO;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.BUSCAR_ROL_NAME_VACIO, Constantes.ERROR,
-				getValorRol(datosEntradaRolbuscarRolRolNameVacio));
-
-	}
-
-	private DatosPruebaAcciones getTestBuscarRolNoExiste(final RolEntity datosEntradaRolbuscarRolNoExiste) {
-
-		final String resultadoObtenido = buscarRol(datosEntradaRolbuscarRolNoExiste);
-
-		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
+		final String resultadoEsperado = CodigosMensajes.BUSCAR_ROL_CORRECTO + " - " + Mensajes.BUSCAR_ROL_CORRECTO;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.BUSCAR_ROL_NO_EXISTE, Constantes.ERROR,
-				getValorRol(datosEntradaRolbuscarRolNoExiste));
+				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO,
+				getValorRol(datosEntradaRolbuscarRolNameDescriptionVacio));
 
 	}
 
@@ -422,18 +437,10 @@ public class TestRolServiceImpl implements TestRolService {
 	private String buscarRol(final RolEntity rol) {
 		String resultado = StringUtils.EMPTY;
 
-		if (!validaciones.comprobarNombreRolBlank(rol.getRolName())) {
-			resultado = CodigosMensajes.ROL_NAME_VACIO + " - " + Mensajes.ROL_NAME_NO_PUEDE_SER_VACIO;
-		} else {
-			RolEntity rolUser = null;
-			rolUser = rolRepository.findByRolName(rol.getRolName());
+		List<RolEntity> rolUser = new ArrayList<>();
+		rolUser = rolRepository.findRol(rol.getRolName(), "");
 
-			if (rolUser == null) {
-				resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
-			} else {
-				resultado = CodigosMensajes.BUSCAR_ROL_CORRECTO + " - " + Mensajes.BUSCAR_ROL_CORRECTO;
-			}
-		}
+		resultado = CodigosMensajes.BUSCAR_ROL_CORRECTO + " - " + Mensajes.BUSCAR_ROL_CORRECTO;
 
 		return resultado;
 	}

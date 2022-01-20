@@ -17,6 +17,8 @@ public interface FuncionalidadRepository extends JpaRepository<FuncionalidadEnti
 
 	FuncionalidadEntity findFuncionalityByName(String nombreFuncionalidad);
 
+	List<FuncionalidadEntity> findFuncionality(String nombreFuncionalidad, String descripFuncionalidad);
+
 	List<FuncionalidadEntity> findFuncionalidadesEliminadas(Integer borradoFuncionalidad);
 
 	@Transactional

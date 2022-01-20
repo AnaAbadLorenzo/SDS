@@ -55,6 +55,16 @@ public class UsuarioEntity {
 		this.persona = persona;
 	}
 
+	public UsuarioEntity(final String dniUsuario, final String usuario, final String passwdUsuario,
+			final Integer borradoUsuario, final RolEntity rol) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.usuario = usuario;
+		this.passwdUsuario = passwdUsuario;
+		this.borradoUsuario = borradoUsuario;
+		this.rol = rol;
+	}
+
 	public String getDniUsuario() {
 		return dniUsuario;
 	}

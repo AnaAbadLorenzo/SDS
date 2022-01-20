@@ -203,8 +203,11 @@ public class TestController {
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolNameBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoRolDescription = testRolService
+					.getPruebasAtributoRolDescriptionBuscar();
 
 			resultadoPruebasAtributos.addAll(pruebaAtributoRolName);
+			resultadoPruebasAtributos.addAll(pruebaAtributoRolDescription);
 
 		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_KO, StringUtils.EMPTY);
@@ -286,8 +289,11 @@ public class TestController {
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoAccionName = testAccionService
 					.getPruebasAtributoAccionNameBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoAccionDescription = testAccionService
+					.getPruebasAtributoAccionDescriptionBuscar();
 
 			resultadoPruebasAtributos.addAll(pruebaAtributoAccionName);
+			resultadoPruebasAtributos.addAll(pruebaAtributoAccionDescription);
 
 		} catch (IOException | ParseException | java.text.ParseException exc) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_KO, StringUtils.EMPTY);

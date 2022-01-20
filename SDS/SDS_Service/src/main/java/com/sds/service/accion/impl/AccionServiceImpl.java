@@ -48,27 +48,20 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
-	public AccionEntity buscarAccion(final String nombreAccion) throws AccionNoExisteException {
-		final Boolean nombreAccionValido = validaciones.comprobarNombreAccionBlank(nombreAccion);
-		AccionEntity accionToret = new AccionEntity();
+	public List<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion) {
+		final List<AccionEntity> accionToret = new ArrayList<>();
 
-		if (nombreAccionValido) {
-			final AccionEntity accion = accionRepository.findAccionByName(nombreAccion);
+		final List<AccionEntity> acciones = accionRepository.findAccion(nombreAccion, descripAccion);
 
-			if (accion == null) {
-				throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
+		if (!acciones.isEmpty()) {
+			for (final AccionEntity accion : acciones) {
+				if (accion.getBorradoAccion() == 0) {
+					final AccionEntity acc = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
+							accion.getDescripAccion(), accion.getBorradoAccion());
+					accionToret.add(acc);
+				}
 
-			} else {
-				accionToret.setIdAccion(accion.getIdAccion());
-				accionToret.setNombreAccion(accion.getNombreAccion());
-				accionToret.setDescripAccion(accion.getDescripAccion());
-				accionToret.setBorradoAccion(accion.getBorradoAccion());
 			}
-
-		} else {
-			accionToret = null;
 		}
 
 		return accionToret;
@@ -171,7 +164,7 @@ public class AccionServiceImpl implements AccionService {
 		final AccionEntity accionEntity = accion.getAccion();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
-		String resultadoLog2 = StringUtils.EMPTY;
+		final String resultadoLog2 = StringUtils.EMPTY;
 
 		final Optional<AccionEntity> accionBD = accionRepository.findById(accionEntity.getIdAccion());
 
@@ -191,53 +184,35 @@ public class AccionServiceImpl implements AccionService {
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
 			final List<RolAccionFuncionalidadEntity> rolAccionFuncionalidad = rolAccionFuncionalidadRepository
-					.findAll();
+					.findByAccionId(accionEntity.getIdAccion());
 
-			for (int i = 0; i < rolAccionFuncionalidad.size(); i++) {
-				if (rolAccionFuncionalidad.get(i).getIdAccion() == accionEntity.getIdAccion()) {
-					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
-							CodeMessageErrors.getTipoNameByCodigo(
-									CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo()),
-							CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo());
+			if (!rolAccionFuncionalidad.isEmpty()) {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo()),
+						CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo());
 
-					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-					}
-
-					throw new AccionAsociadaRolFuncionalidadException(
-							CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(
-									CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo()));
-
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
 				}
+
+				throw new AccionAsociadaRolFuncionalidadException(
+						CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo()));
+
+			} else {
+				accionEntity.setBorradoAccion(1);
+
+				accion.setAccion(accionEntity);
+
+				modificarAccion(accion);
+
+				resultado = Constantes.OK;
 			}
-			accionEntity.setBorradoAccion(1);
-
-			accion.setAccion(accionEntity);
-
-			modificarAccion(accion);
-
-			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(accion.getUsuario(),
-					Constantes.ACCION_BUSCAR_ACCION, accionEntity.toString());
-
-			resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
-
-			final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(accion.getUsuario(),
-					Constantes.ACCION_MODIFICAR_ACCION, accion.getAccion().toString());
-
-			resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
-
-			if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
-					|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
-				throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-			}
-
-			resultado = Constantes.OK;
 
 		}
 

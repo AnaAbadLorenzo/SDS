@@ -12,7 +12,7 @@ import com.sds.service.rol.model.Rol;
 
 public interface RolService {
 
-	RolEntity buscarRol(String rolName) throws RolNoExisteException;
+	List<RolEntity> buscarRol(String rolName, String rolDescription);
 
 	List<RolEntity> buscarTodos();
 

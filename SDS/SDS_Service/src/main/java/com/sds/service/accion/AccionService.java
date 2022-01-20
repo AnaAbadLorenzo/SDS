@@ -12,7 +12,7 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 
 public interface AccionService {
 
-	AccionEntity buscarAccion(final String nombreAccion) throws AccionNoExisteException;
+	List<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion);
 
 	List<AccionEntity> buscarTodos();
 

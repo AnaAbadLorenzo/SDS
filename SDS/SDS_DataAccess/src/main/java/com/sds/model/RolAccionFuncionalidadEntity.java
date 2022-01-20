@@ -15,7 +15,8 @@ import com.sds.model.compositekey.RolAccionFuncionalidadKey;
 @Table(name = "rolaccionfuncionalidad")
 @NamedQueries({
 		@NamedQuery(name = "RolAccionFuncionalidadEntity.findFuncionalityByRolId", query = "SELECT r.idFuncionalidad FROM RolAccionFuncionalidadEntity r WHERE r.idRol =: idRol"),
-		@NamedQuery(name = "RolAccionFuncionalidadEntity.findAccionByIdFuncionality", query = "SELECT r.idAccion FROM RolAccionFuncionalidadEntity r WHERE r.idFuncionalidad =: idFuncionalidad") })
+		@NamedQuery(name = "RolAccionFuncionalidadEntity.findAccionByIdFuncionality", query = "SELECT r.idAccion FROM RolAccionFuncionalidadEntity r WHERE r.idFuncionalidad =: idFuncionalidad"),
+		@NamedQuery(name = "RolAccionFuncionalidadEntity.findByAccionId", query = "SELECT r FROM RolAccionFuncionalidadEntity r WHERE r.idAccion =: idAccion") })
 
 public class RolAccionFuncionalidadEntity {
 	@Id
