@@ -174,11 +174,17 @@ public class TestRolServiceImpl implements TestRolService {
 
 		final RolEntity datosEntradaRolBuscarRol = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.BUSCAR_ROL);
+		final RolEntity datosEntradaRolBuscarRolNameVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+				Constantes.ROL_NAME_VACIO_DATA);
+		final RolEntity datosEntradaRolBuscarRolDescriptionVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+				Constantes.ROL_DESCRIPTION_VACIO_DATA);
 		final RolEntity datosEntradaRolBuscarRolVacio = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ROL_NAME_DESCRIPTION_VACIOS);
 
 		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRol));
-		datosPruebaAcciones.add(getTestBuscarRolNameDescriptionVacio(datosEntradaRolBuscarRolVacio));
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRolNameVacio));
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRolDescriptionVacio));
+		datosPruebaAcciones.add(getTestBuscarRol(datosEntradaRolBuscarRolVacio));
 
 		return datosPruebaAcciones;
 	}

@@ -149,7 +149,29 @@ public class TestAccionServiceImpl implements TestAccionService {
 				testAtributoAccionDescription.getTestAccionDescriptionNumerico(datosEntradaAccionDescriptionNumerico));
 		datosPruebaAtributos.add(testAtributoAccionDescription
 				.getTestAccionDescriptionAlfabeticoCorrecto(datosEntradaAccionDescriptionAlfabetico));
-		;
+
+		return datosPruebaAtributos;
+	}
+
+	@Override
+	public List<DatosPruebaAtributos> getPruebasAtributoAccionDescriptionBuscar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
+
+		final AccionEntity datosEntradaAccionDescriptionCaracteresEspeciales = generarJSON.generarAccion(
+				Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONDESCRIPTION,
+				Constantes.ACCIONDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA);
+		final AccionEntity datosEntradaAccionDescriptionAlfabetico = generarJSON.generarAccion(
+				Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONDESCRIPTION, Constantes.ACCIONDESCRIPTION_ALFABETICO_DATA);
+		final AccionEntity datosEntradaAccionDescriptionNumerico = generarJSON.generarAccion(
+				Constantes.URL_JSON_ACCION_ATRIBUTOS_ACCIONDESCRIPTION, Constantes.ACCIONDESCRIPTION_NUMERICO_DATA);
+
+		datosPruebaAtributos.add(testAtributoAccionDescription.getTestAccionDescriptionAlfabeticoCaracteresEspeciales(
+				datosEntradaAccionDescriptionCaracteresEspeciales));
+		datosPruebaAtributos.add(
+				testAtributoAccionDescription.getTestAccionDescriptionNumerico(datosEntradaAccionDescriptionNumerico));
+		datosPruebaAtributos.add(testAtributoAccionDescription
+				.getTestAccionDescriptionAlfabeticoCorrecto(datosEntradaAccionDescriptionAlfabetico));
 
 		return datosPruebaAtributos;
 	}
@@ -164,12 +186,15 @@ public class TestAccionServiceImpl implements TestAccionService {
 				Constantes.BUSCAR_ACCION);
 		final AccionEntity datosEntradaBuscarAccionNameVacio = generarJSON
 				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NAME_VACIO_DATA);
-		final AccionEntity datosEntradaBuscarAccionNoExiste = generarJSON.generarAccion(Constantes.URL_JSON_ACCION_DATA,
-				Constantes.ACCION_NO_EXISTE);
+		final AccionEntity datosEntradaBuscarAccionDescriptionVacio = generarJSON
+				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_DESCRIPTION_VACIO_DATA);
+		final AccionEntity datosEntradaBuscarAccionNameDescriptionVacios = generarJSON
+				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NAME_DESCRIPTION_VACIOS);
 
 		datosPruebaAcciones.add(getTestBuscarAccion(datosEntradaBuscarAccionCorrecto));
-		datosPruebaAcciones.add(getTestBuscarAccionNameVacio(datosEntradaBuscarAccionNameVacio));
-		datosPruebaAcciones.add(getTestBuscarAccionNoExiste(datosEntradaBuscarAccionNoExiste));
+		datosPruebaAcciones.add(getTestBuscarAccion(datosEntradaBuscarAccionNameVacio));
+		datosPruebaAcciones.add(getTestBuscarAccion(datosEntradaBuscarAccionDescriptionVacio));
+		datosPruebaAcciones.add(getTestBuscarAccion(datosEntradaBuscarAccionNameDescriptionVacios));
 
 		return datosPruebaAcciones;
 	}
@@ -255,32 +280,6 @@ public class TestAccionServiceImpl implements TestAccionService {
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO, getValorAccion(datosEntradaAccionBuscarAccion));
-
-	}
-
-	private DatosPruebaAcciones getTestBuscarAccionNameVacio(
-			final AccionEntity datosEntradaAccionBuscarAccionNameVacio) {
-
-		final String resultadoObtenido = buscarAccion(datosEntradaAccionBuscarAccionNameVacio);
-
-		final String resultadoEsperado = CodigosMensajes.ACCION_NAME_VACIO + " - "
-				+ Mensajes.ACCION_NAME_NO_PUEDE_SER_VACIO;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ACCION_NAME_VACIO, Constantes.ERROR,
-				getValorAccion(datosEntradaAccionBuscarAccionNameVacio));
-
-	}
-
-	private DatosPruebaAcciones getTestBuscarAccionNoExiste(final AccionEntity datosEntradaAccionBuscarAccionNoExiste) {
-
-		final String resultadoObtenido = buscarAccion(datosEntradaAccionBuscarAccionNoExiste);
-
-		final String resultadoEsperado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ACCION_NO_EXISTE, Constantes.ERROR,
-				getValorAccion(datosEntradaAccionBuscarAccionNoExiste));
 
 	}
 
@@ -464,18 +463,10 @@ public class TestAccionServiceImpl implements TestAccionService {
 	private String buscarAccion(final AccionEntity accion) {
 		String resultado = StringUtils.EMPTY;
 
-		if (!validaciones.comprobarNombreAccionBlank(accion.getNombreAccion())) {
-			resultado = CodigosMensajes.ACCION_NAME_VACIO + " - " + Mensajes.ACCION_NAME_NO_PUEDE_SER_VACIO;
-		} else {
-			AccionEntity accionBD = null;
-			accionBD = accionRepository.findAccionByName(accion.getNombreAccion());
+		final List<AccionEntity> accionBD = accionRepository.findAccion(accion.getNombreAccion(),
+				accion.getDescripAccion());
 
-			if (accionBD == null) {
-				resultado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
-			} else {
-				resultado = CodigosMensajes.BUSCAR_ACCION_CORRECTO + " - " + Mensajes.BUSCAR_ACCION_CORRECTO;
-			}
-		}
+		resultado = CodigosMensajes.BUSCAR_ACCION_CORRECTO + " - " + Mensajes.BUSCAR_ACCION_CORRECTO;
 
 		return resultado;
 	}

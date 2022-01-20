@@ -15,6 +15,8 @@ public interface AccionRepository extends JpaRepository<AccionEntity, Integer> {
 
 	AccionEntity findAccionByName(String nombreAccion);
 
+	List<AccionEntity> findAccion(String nombreAccion, String descripAccion);
+
 	List<AccionEntity> findAccionesEliminadas(Integer borradoAccion);
 
 	@Transactional

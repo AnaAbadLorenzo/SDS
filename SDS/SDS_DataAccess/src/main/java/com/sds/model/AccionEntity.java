@@ -18,6 +18,7 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "AccionEntity.findNombreAccionById", query = "SELECT a.nombreAccion FROM AccionEntity a WHERE a.idAccion =: idAccion"),
 		@NamedQuery(name = "AccionEntity.findAccionByName", query = "SELECT a FROM AccionEntity a WHERE a.nombreAccion =: nombreAccion"),
+		@NamedQuery(name = "AccionEntity.findAccion", query = "SELECT a FROM AccionEntity a WHERE a.nombreAccion LIKE CONCAT('%', :nombreAccion, '%') AND a.descripAccion LIKE CONCAT('%',:descripAccion, '%')"),
 		@NamedQuery(name = "AccionEntity.findAccionesEliminadas", query = "SELECT a FROM AccionEntity a WHERE a.borradoAccion =: borradoAccion") })
 public class AccionEntity {
 

@@ -17,6 +17,8 @@ public interface RolAccionFuncionalidadRepository
 
 	List<Integer> findAccionByIdFuncionality(Integer idFuncionalidad);
 
+	List<RolAccionFuncionalidadEntity> findByAccionId(Integer idAccion);
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM RolAccionFuncionalidadEntity a WHERE a.idAccion = ?1 AND a.idRol =?2 AND a.idFuncionalidad = ?3")

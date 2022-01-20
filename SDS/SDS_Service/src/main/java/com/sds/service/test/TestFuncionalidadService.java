@@ -19,6 +19,9 @@ public interface TestFuncionalidadService {
 	List<DatosPruebaAtributos> getPruebasAtributoFuncionalidadDescription()
 			throws IOException, ParseException, java.text.ParseException;
 
+	List<DatosPruebaAtributos> getPruebasAtributoFuncionalidadDescriptionBuscar()
+			throws IOException, ParseException, java.text.ParseException;
+
 	List<DatosPruebaAcciones> getPruebasAccionesFuncionalidadBuscar()
 			throws IOException, ParseException, java.text.ParseException;
 

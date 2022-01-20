@@ -14,6 +14,7 @@ import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
+import com.sds.service.accion.model.AccionBuscar;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
@@ -37,22 +38,12 @@ public class AccionController {
 
 	@RequestMapping(value = "/listarAccion", method = RequestMethod.GET)
 	@ResponseBody
-	public RespEntity buscarAccion(@RequestBody final String accionName) {
-		final Boolean nombreValido = validaciones.comprobarNombreAccionBlank(accionName);
+	public RespEntity buscarAccion(@RequestBody final AccionBuscar accion) {
 
-		if (nombreValido) {
-			try {
-				final AccionEntity resultado = accionService.buscarAccion(accionName);
-				if (resultado == null) {
-					return new RespEntity(RespCode.ACCION_VACIA, accionName);
-				}
-				return new RespEntity(RespCode.ACCION_ENCONTRADA, resultado);
-			} catch (final AccionNoExisteException accionNoExists) {
-				return new RespEntity(RespCode.ACCION_NO_EXISTE_EXCEPTION, accionName);
-			}
-		}
+		final List<AccionEntity> resultado = accionService.buscarAccion(accion.getNombreAccion(),
+				accion.getDescripAccion());
 
-		return new RespEntity(RespCode.ACCION_VACIA, accionName);
+		return new RespEntity(RespCode.ACCION_ENCONTRADA, resultado);
 
 	}
 

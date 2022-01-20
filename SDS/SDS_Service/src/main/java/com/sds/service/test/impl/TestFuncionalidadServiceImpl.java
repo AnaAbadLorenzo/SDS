@@ -160,6 +160,33 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 	}
 
 	@Override
+	public List<DatosPruebaAtributos> getPruebasAtributoFuncionalidadDescriptionBuscar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAtributos> datosPruebaAtributos = new ArrayList<>();
+
+		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionCaracteresEspeciales = generarJSON
+				.generarFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
+						Constantes.FUNCIONALIDADDESCRIPTION_ALFABETICO_CARACTERES_ESPECIALES_DATA);
+		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionAlfabetico = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
+				Constantes.FUNCIONALIDADDESCRIPTION_ALFABETICO_DATA);
+		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionNumerico = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
+				Constantes.FUNCIONALIDADDESCRIPTION_NUMERICO_DATA);
+
+		datosPruebaAtributos
+				.add(testAtributoFuncionalidadDescription.getTestFuncionalidadDescriptionAlfabeticoCaracteresEspeciales(
+						datosEntradaFuncionalidadDescriptionCaracteresEspeciales));
+
+		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
+				.getTestFuncionalidadDescriptionNumerico(datosEntradaFuncionalidadDescriptionNumerico));
+		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
+				.getTestFuncionalidadDescriptionAlfabeticoCorrecto(datosEntradaFuncionalidadDescriptionAlfabetico));
+
+		return datosPruebaAtributos;
+	}
+
+	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesFuncionalidadBuscar()
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
@@ -168,12 +195,16 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 				.generarFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA, Constantes.BUSCAR_FUNCIONALIDAD);
 		final FuncionalidadEntity datosEntradaBuscarFuncionalidadNameVacio = generarJSON
 				.generarFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA, Constantes.FUNCIONALIDAD_NAME_VACIO_DATA);
-		final FuncionalidadEntity datosEntradaBuscarFuncionalidadNoExiste = generarJSON
-				.generarFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA, Constantes.FUNCIONALIDAD_NO_EXISTE);
+		final FuncionalidadEntity datosEntradaBuscarFuncionalidadDescriptionVacio = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_DATA, Constantes.FUNCIONALIDAD_DESCRIPTION_VACIO_DATA);
+		final FuncionalidadEntity datosEntradaBuscarFuncionalidadNameDescriptionVacios = generarJSON
+				.generarFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
+						Constantes.FUNCIONALIDAD_NAME_DESCRIPTION_VACIOS);
 
 		datosPruebaAcciones.add(getTestBuscarFuncionalidad(datosEntradaBuscarFuncionalidadCorrecto));
-		datosPruebaAcciones.add(getTestBuscarFuncionalidadNameVacio(datosEntradaBuscarFuncionalidadNameVacio));
-		datosPruebaAcciones.add(getTestBuscarFuncionalidadNoExiste(datosEntradaBuscarFuncionalidadNoExiste));
+		datosPruebaAcciones.add(getTestBuscarFuncionalidad(datosEntradaBuscarFuncionalidadNameVacio));
+		datosPruebaAcciones.add(getTestBuscarFuncionalidad(datosEntradaBuscarFuncionalidadDescriptionVacio));
+		datosPruebaAcciones.add(getTestBuscarFuncionalidad(datosEntradaBuscarFuncionalidadNameDescriptionVacios));
 
 		return datosPruebaAcciones;
 	}
@@ -265,34 +296,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO,
 				getValorFuncionalidad(datosEntradaAccionBuscarFuncionalidad));
-
-	}
-
-	private DatosPruebaAcciones getTestBuscarFuncionalidadNameVacio(
-			final FuncionalidadEntity datosEntradaAccionBuscarFuncionalidadNameVacio) {
-
-		final String resultadoObtenido = buscarFuncionalidad(datosEntradaAccionBuscarFuncionalidadNameVacio);
-
-		final String resultadoEsperado = CodigosMensajes.FUNCIONALIDAD_NAME_VACIA + " - "
-				+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_VACIA;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.FUNCIONALIDAD_NAME_VACIO, Constantes.ERROR,
-				getValorFuncionalidad(datosEntradaAccionBuscarFuncionalidadNameVacio));
-
-	}
-
-	private DatosPruebaAcciones getTestBuscarFuncionalidadNoExiste(
-			final FuncionalidadEntity datosEntradaAccionBuscarFuncionalidadNoExiste) {
-
-		final String resultadoObtenido = buscarFuncionalidad(datosEntradaAccionBuscarFuncionalidadNoExiste);
-
-		final String resultadoEsperado = CodigosMensajes.FUNCIONALIDAD_NO_EXISTE + " - "
-				+ Mensajes.FUNCIONALIDAD_NO_EXISTE;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.FUNCIONALIDAD_NO_EXISTE, Constantes.ERROR,
-				getValorFuncionalidad(datosEntradaAccionBuscarFuncionalidadNoExiste));
 
 	}
 
@@ -482,22 +485,13 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 	}
 
 	private String buscarFuncionalidad(final FuncionalidadEntity funcionalidad) {
+
 		String resultado = StringUtils.EMPTY;
 
-		if (!validaciones.comprobarNombreFuncionalidadBlank(funcionalidad.getNombreFuncionalidad())) {
-			resultado = CodigosMensajes.FUNCIONALIDAD_NAME_VACIA + " - "
-					+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_VACIA;
-		} else {
-			FuncionalidadEntity funcionalidadBD = null;
-			funcionalidadBD = funcionalidadRepository.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+		final List<FuncionalidadEntity> funcionalidadBD = funcionalidadRepository
+				.findFuncionality(funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad());
 
-			if (funcionalidadBD == null) {
-				resultado = CodigosMensajes.FUNCIONALIDAD_NO_EXISTE + " - " + Mensajes.FUNCIONALIDAD_NO_EXISTE;
-			} else {
-				resultado = CodigosMensajes.BUSCAR_FUNCIONALIDAD_CORRECTO + " - "
-						+ Mensajes.BUSCAR_FUNCIONALIDAD_CORRECTO;
-			}
-		}
+		resultado = CodigosMensajes.BUSCAR_FUNCIONALIDAD_CORRECTO + " - " + Mensajes.BUSCAR_FUNCIONALIDAD_CORRECTO;
 
 		return resultado;
 	}
