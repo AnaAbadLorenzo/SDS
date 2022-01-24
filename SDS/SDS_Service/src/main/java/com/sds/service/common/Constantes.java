@@ -12,8 +12,10 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
 	public static final String ACCION_BUSCAR_ROL = "Buscar rol";
+	public static final String ACCION_AÑADIR_USUARIO = "Añadir usuario";
 	public static final String ACCION_MODIFICAR_USUARIO = "Modificar usuario";
 	public static final String ACCION_ELIMINAR_USUARIO = "Eliminar usuario";
+	public static final String ACCION_AÑADIR_PERSONA = "Añadir persona";
 	public static final String ACCION_MODIFICAR_PERSONA = "Modificar persona";
 	public static final String ACCION_ELIMINAR_PERSONA = "Eliminar persona";
 	public static final String ACCION_BUSCAR_PERSONA = "Buscar persona";
@@ -27,6 +29,10 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_FUNCIONALIDAD = "Modificar funcionalidad";
 	public static final String ACCION_ELIMINAR_FUNCIONALIDAD = "Eliminar funcionalidad";
 	public static final String ACCION_BUSCAR_FUNCIONALIDAD = "Buscar funcionalidad";
+
+	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
+	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
+	public static final String TIPO_CONTENIDO = "text/plain";
 
 	// Constantes para las acciones
 	public static final String AÑADIR = "Añadir";

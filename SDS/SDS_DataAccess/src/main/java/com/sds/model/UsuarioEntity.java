@@ -16,7 +16,10 @@ import javax.persistence.Table;
 @Table(name = "usuario")
 @NamedQueries({
 		@NamedQuery(name = "UsuarioEntity.findByUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario =: usuario"),
-		@NamedQuery(name = "UsuarioEntity.findRolUsuario", query = "SELECT u.rol FROM UsuarioEntity u WHERE u.usuario =: usuario") })
+		@NamedQuery(name = "UsuarioEntity.findRolUsuario", query = "SELECT u.rol FROM UsuarioEntity u WHERE u.usuario =: usuario"),
+		@NamedQuery(name = "UsuarioEntity.findUsuariosEliminados", query = "SELECT u FROM UsuarioEntity u WHERE u.borradoUsuario =: borradoUsuario"),
+		@NamedQuery(name = "UsuarioEntity.findByDni", query = "SELECT u.dniUsuario FROM UsuarioEntity u WHERE u.dniUsuario =: dniUsuario"),
+		@NamedQuery(name = "UsuarioEntity.findUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.rol LIKE CONCAT('%', :rol, '%')") })
 public class UsuarioEntity {
 
 	@Id

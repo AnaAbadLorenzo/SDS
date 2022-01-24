@@ -74,13 +74,9 @@ public class AccionServiceImpl implements AccionService {
 
 		final List<AccionEntity> toret = new ArrayList<>();
 
-		final AccionEntity accionToret = new AccionEntity();
-
 		for (final AccionEntity accion : acciones) {
-			accionToret.setIdAccion(accion.getIdAccion());
-			accionToret.setNombreAccion(accion.getNombreAccion());
-			accionToret.setDescripAccion(accion.getDescripAccion());
-			accionToret.setBorradoAccion(accion.getBorradoAccion());
+			final AccionEntity accionToret = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
+					accion.getDescripAccion(), accion.getBorradoAccion());
 
 			toret.add(accionToret);
 		}

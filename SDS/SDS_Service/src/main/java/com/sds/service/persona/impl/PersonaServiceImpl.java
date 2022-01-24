@@ -1,12 +1,16 @@
 package com.sds.service.persona.impl;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.PersonaEntity;
@@ -17,6 +21,7 @@ import com.sds.service.common.Constantes;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
+import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.log.impl.LogServiceImpl;
 import com.sds.service.persona.PersonaService;
@@ -43,6 +48,69 @@ public class PersonaServiceImpl implements PersonaService {
 	public PersonaServiceImpl() {
 		util = new Util();
 		validaciones = new Validaciones();
+	}
+
+	@Override
+	public List<PersonaEntity> buscarTodos() {
+		final List<PersonaEntity> personas = personaRepository.findAll();
+		final List<PersonaEntity> toret = new ArrayList<>();
+
+		if (!personas.isEmpty()) {
+			for (final PersonaEntity persona : personas) {
+				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), persona.getEmpresa(),
+						persona.getUsuario());
+
+				toret.add(person);
+			}
+		}
+
+		return toret;
+	}
+
+	@Override
+	public List<PersonaEntity> buscarPersonasEliminadas() {
+		final List<PersonaEntity> personas = personaRepository.findPersonasEliminadas(1);
+		final List<PersonaEntity> toret = new ArrayList<>();
+
+		if (!personas.isEmpty()) {
+			for (final PersonaEntity persona : personas) {
+				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), persona.getEmpresa(),
+						persona.getUsuario());
+
+				toret.add(person);
+			}
+		}
+
+		return toret;
+	}
+
+	@Override
+	public List<PersonaEntity> buscarPersona(final String dniP, final String nombreP, final String apellidosP,
+			final Date fechaNacP, final String direccionP, final String telefonoP, final String emailP,
+			final EmpresaEntity empresa) {
+		final List<PersonaEntity> personasToret = personaRepository.findPersona(dniP, nombreP, apellidosP, fechaNacP,
+				direccionP, telefonoP, emailP, empresa);
+		final List<PersonaEntity> toret = new ArrayList<>();
+
+		if (!personasToret.isEmpty()) {
+			for (final PersonaEntity persona : personasToret) {
+				if (persona.getBorradoP() == 0) {
+
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), persona.getEmpresa(),
+							persona.getUsuario());
+
+					toret.add(person);
+				}
+			}
+		}
+
+		return toret;
 	}
 
 	@Override
@@ -102,6 +170,55 @@ public class PersonaServiceImpl implements PersonaService {
 				resultado = Constantes.OK;
 			}
 
+		}
+
+		return resultado;
+	}
+
+	@Override
+	public String añadirPersona(final Persona persona) throws PersonaYaExisteException, ParseException,
+			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+		final PersonaEntity personaEntity = persona.getPersona();
+
+		final Boolean personaValida = validaciones.comprobarPersonaBlank(personaEntity);
+
+		if (personaValida) {
+			final Optional<PersonaEntity> personaBD = personaRepository.findById(personaEntity.getDniP());
+			if (!personaBD.isPresent()) {
+				personaRepository.saveAndFlush(personaEntity);
+
+				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(persona.getUsuario(),
+						Constantes.ACCION_AÑADIR_PERSONA, persona.getPersona().toString());
+
+				resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+				if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+				}
+
+				resultado = Constantes.OK;
+			} else {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(persona.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new PersonaYaExisteException(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()));
+			}
+		} else {
+			resultado = CodeMessageErrors.PERSONA_VACIO.name();
 		}
 
 		return resultado;

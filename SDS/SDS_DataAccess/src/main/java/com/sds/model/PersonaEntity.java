@@ -9,11 +9,16 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "persona")
+@NamedQueries({
+		@NamedQuery(name = "PersonaEntity.findPersona", query = "SELECT p FROM PersonaEntity p WHERE p.dniP LIKE CONCAT('%', :dniP, '%') AND p.nombreP LIKE CONCAT('%', :nombreP, '%') AND p.apellidosP LIKE CONCAT('%', :apellidosP, '%') AND p.fechaNacP LIKE CONCAT('%', :fechaNacP, '%') AND p.direccionP LIKE CONCAT('%', :direccionP, '%') AND p.telefonoP LIKE CONCAT('%', :telefonoP, '%') AND p.emailP LIKE CONCAT('%', :emalP, '%') AND p.empresa LIKE CONCAT('%', :empresa, '%')"),
+		@NamedQuery(name = "PersonaEntity.findPersonasEliminadas", query = "SELECT p FROM PersonaEntity p WHERE p.borradoP =: borradoP ") })
 public class PersonaEntity {
 
 	@Id
