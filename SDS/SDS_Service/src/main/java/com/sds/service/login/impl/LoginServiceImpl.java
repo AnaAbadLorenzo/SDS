@@ -26,9 +26,9 @@ import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.log.LogService;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
-import com.sds.service.mail.impl.MailServiceImpl;
+import com.sds.service.mail.MailService;
 import com.sds.service.mail.model.Mail;
-import com.sds.service.usuario.impl.UsuarioServiceImpl;
+import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
@@ -47,10 +47,10 @@ public class LoginServiceImpl implements LoginService {
 	LogService logServiceImpl;
 
 	@Autowired
-	UsuarioServiceImpl usuarioServiceImpl;
+	UsuarioService usuarioServiceImpl;
 
 	@Autowired
-	MailServiceImpl mailServiceImpl;
+	MailService mailServiceImpl;
 
 	private final GetJWTToken jWTToken;
 	private final Validaciones validaciones;

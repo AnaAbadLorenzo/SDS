@@ -1,5 +1,6 @@
 package com.sds.controller.usuario;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,12 @@ import com.sds.model.RespEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.exception.PersonaNoExisteException;
+import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
+import com.sds.service.usuario.model.UsuarioAñadir;
 import com.sds.service.usuario.model.UsuarioBuscar;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
@@ -60,36 +62,41 @@ public class UsuarioController {
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/usuario", method=RequestMethod.POST)
+	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity insertarUsuario(@RequestBody final Usuario usuario) {
-		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuario.getUsuarioEntity());
-		
-		if(usuarioValido){
+	public RespEntity insertarUsuario(@RequestBody final UsuarioAñadir usuarioAñadir) {
+		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuarioAñadir.getUsuarioEntity());
+
+		if (usuarioValido) {
 			try {
 				String resultado;
-				resultado = usuarioService.añadirUsuario(usuario);
-				
-				if(CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.USUARIO_VACIO, usuario);
+
+				try {
+					resultado = usuarioService.añadirUsuario(usuarioAñadir);
+
+					if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.USUARIO_VACIO, usuarioAñadir);
+					}
+
+					return new RespEntity(RespCode.USUARIO_GUARDADO, usuarioAñadir);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuarioAñadir);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuarioAñadir);
 				}
-				
-				return new RespEntity(RespCode.USUARIO_GUARDADO, resultado);
-			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
-				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
-			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
-				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
-			}catch (final UsuarioYaExisteException usuarioYaExiste) {
-				return new RespEntity(RespCode.USUARIO_YA_EXISTE, usuario);
-			} catch (final PersonaNoExisteException personaNoExiste) {
-				return new RespEntity(RespCode.PERSONA_NO_EXISTE, usuario);
+			} catch (final UsuarioYaExisteException usuarioYaExiste) {
+				return new RespEntity(RespCode.USUARIO_YA_EXISTE, usuarioAñadir);
+			} catch (final PersonaYaExisteException personaYaExiste) {
+				return new RespEntity(RespCode.PERSONA_YA_EXISTE, usuarioAñadir);
+			} catch (final ParseException parseException) {
+				return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioAñadir);
 			}
 		}
-		
-		return new RespEntity(RespCode.USUARIO_VACIO, usuario);
-			
-			
+
+		return new RespEntity(RespCode.USUARIO_VACIO, usuarioAñadir);
+
 	}
+
 	@RequestMapping(value = "/eliminarUsuario", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity eliminarUsuario(@RequestBody final Usuario usuario) {
@@ -114,17 +121,20 @@ public class UsuarioController {
 		if (usuarioValido) {
 			try {
 				String resultado;
-				resultado = usuarioService.modificarUsuario(usuario);
+				try {
 
-				if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.USUARIO_VACIO, usuario);
+					resultado = usuarioService.modificarUsuario(usuario);
 
+					if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.USUARIO_VACIO, usuario);
+
+					}
+					return new RespEntity(RespCode.USUARIO_MODIFICADO, resultado);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
 				}
-				return new RespEntity(RespCode.USUARIO_MODIFICADO, resultado);
-			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
-				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
-			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
-				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
 			} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
 				return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuario);
 			}

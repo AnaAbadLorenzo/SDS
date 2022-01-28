@@ -1,5 +1,6 @@
 package com.sds.service.usuario.impl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -19,14 +20,15 @@ import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.exception.PersonaNoExisteException;
+import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.exception.UsuarioYaExisteException;
-import com.sds.service.log.impl.LogServiceImpl;
-import com.sds.service.rol.impl.RolServiceImpl;
+import com.sds.service.log.LogService;
+import com.sds.service.rol.RolService;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
+import com.sds.service.usuario.model.UsuarioAñadir;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -47,10 +49,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	RolRepository rolRepository;
 
 	@Autowired
-	RolServiceImpl rolServiceImpl;
+	RolService rolServiceImpl;
 
 	@Autowired
-	LogServiceImpl logServiceImpl;
+	LogService logServiceImpl;
 
 	public UsuarioServiceImpl() {
 		util = new Util();
@@ -114,25 +116,67 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public String añadirUsuario(final Usuario usuario) throws UsuarioYaExisteException, PersonaNoExisteException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+	public String añadirUsuario(final UsuarioAñadir usuarioAñadir)
+			throws UsuarioYaExisteException, PersonaYaExisteException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, ParseException {
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
-		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
+		final UsuarioEntity usuarioEntity = usuarioAñadir.getUsuarioEntity();
+		final PersonaEntity personaEntity = usuarioAñadir.getPersonaEntity();
 
 		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuarioEntity);
+		final Boolean personaValida = validaciones.comprobarPersonaBlank(personaEntity);
 
 		if (usuarioValido) {
-			final Optional<PersonaEntity> persona = personaRepository.findById(usuarioEntity.getDniUsuario());
+			if (personaValida) {
+				final Optional<PersonaEntity> persona = personaRepository.findById(usuarioEntity.getDniUsuario());
 
-			if (persona.isPresent()) {
-				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuarioEntity.getDniUsuario());
+				if (!persona.isPresent()) {
+					personaRepository.saveAndFlush(personaEntity);
 
-				if (usuarioBD.isPresent()) {
-					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
+					final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuarioEntity.getDniUsuario());
+
+					if (usuarioBD.isPresent()) {
+						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+								usuarioAñadir.getUsuario(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()),
+								CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo());
+
+						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
+
+						throw new UsuarioYaExisteException(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()));
+					} else {
+						usuarioRepository.saveAndFlush(usuarioEntity);
+
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuarioAñadir.getUsuario(),
+								Constantes.ACCION_AÑADIR_USUARIO, usuarioAñadir.getUsuarioEntity().toString());
+
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						}
+
+						resultado = Constantes.OK;
+					}
+
+				} else {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+							usuarioAñadir.getUsuario(),
 							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()),
-							CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo());
+									.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()),
+							CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo());
 
 					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
@@ -142,42 +186,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
 					}
 
-					throw new UsuarioYaExisteException(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo(),
+					throw new PersonaYaExisteException(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo(),
 							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()));
-				} else {
-					usuarioRepository.saveAndFlush(usuarioEntity);
-
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
-							Constantes.ACCION_AÑADIR_USUARIO, usuario.getUsuarioEntity().toString());
-
-					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
-
-					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-					}
-
-					resultado = Constantes.OK;
+									.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()));
 				}
-
 			} else {
-				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
-						CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
-
-				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-				}
-
-				throw new PersonaNoExisteException(CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo()));
+				resultado = CodeMessageErrors.PERSONA_VACIO.name();
 			}
 		} else {
 			resultado = CodeMessageErrors.USUARIO_VACIO.name();

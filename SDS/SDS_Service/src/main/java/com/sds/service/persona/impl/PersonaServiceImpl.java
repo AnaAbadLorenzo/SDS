@@ -23,7 +23,7 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.UsuarioAsociadoPersonaException;
-import com.sds.service.log.impl.LogServiceImpl;
+import com.sds.service.log.LogService;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
 import com.sds.service.util.CodeMessageErrors;
@@ -43,7 +43,7 @@ public class PersonaServiceImpl implements PersonaService {
 	UsuarioRepository usuarioRepository;
 
 	@Autowired
-	LogServiceImpl logServiceImpl;
+	LogService logServiceImpl;
 
 	public PersonaServiceImpl() {
 		util = new Util();

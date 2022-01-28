@@ -21,7 +21,7 @@ import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.funcionalidad.FuncionalidadService;
 import com.sds.service.funcionalidad.model.Funcionalidad;
-import com.sds.service.log.impl.LogServiceImpl;
+import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -33,7 +33,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	FuncionalidadRepository funcionalidadRepository;
 
 	@Autowired
-	LogServiceImpl logServiceImpl;
+	LogService logServiceImpl;
 
 	@Autowired
 	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
@@ -159,7 +159,6 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
-		final String resultadoLog2 = StringUtils.EMPTY;
 
 		final Optional<FuncionalidadEntity> funcionalidadBD = funcionalidadRepository
 				.findById(funcionalidadEntity.getIdFuncionalidad());

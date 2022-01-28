@@ -188,6 +188,7 @@ public class RolServiceImpl implements RolService {
 			}
 
 			rolEntity.setBorradoRol(1);
+			rol.setRol(rolEntity);
 			modificarRol(rol);
 			resultado = Constantes.OK;
 		}
