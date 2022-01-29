@@ -124,59 +124,22 @@ public class UsuarioServiceImpl implements UsuarioService {
 		final UsuarioEntity usuarioEntity = usuarioAñadir.getUsuarioEntity();
 		final PersonaEntity personaEntity = usuarioAñadir.getPersonaEntity();
 
-		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuarioEntity);
-		final Boolean personaValida = validaciones.comprobarPersonaBlank(personaEntity);
+		final Boolean usuarioValido = validaciones.comprobarUsuarioAñadirBlank(usuarioAñadir);
 
 		if (usuarioValido) {
-			if (personaValida) {
-				final Optional<PersonaEntity> persona = personaRepository.findById(usuarioEntity.getDniUsuario());
+			final Optional<PersonaEntity> persona = personaRepository.findById(usuarioEntity.getDniUsuario());
 
-				if (!persona.isPresent()) {
-					personaRepository.saveAndFlush(personaEntity);
+			if (!persona.isPresent()) {
+				personaRepository.saveAndFlush(personaEntity);
 
-					final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuarioEntity.getDniUsuario());
+				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuarioEntity.getDniUsuario());
 
-					if (usuarioBD.isPresent()) {
-						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-								usuarioAñadir.getUsuario(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()),
-								CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo());
-
-						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-							throw new LogExcepcionesNoGuardadoException(
-									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
-											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-						}
-
-						throw new UsuarioYaExisteException(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo(),
-								CodeMessageErrors.getTipoNameByCodigo(
-										CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()));
-					} else {
-						usuarioRepository.saveAndFlush(usuarioEntity);
-
-						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuarioAñadir.getUsuario(),
-								Constantes.ACCION_AÑADIR_USUARIO, usuarioAñadir.getUsuarioEntity().toString());
-
-						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
-
-						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-									CodeMessageErrors
-											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-						}
-
-						resultado = Constantes.OK;
-					}
-
-				} else {
+				if (usuarioBD.isPresent()) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 							usuarioAñadir.getUsuario(),
 							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()),
-							CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo());
+									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()),
+							CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo());
 
 					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
@@ -186,15 +149,45 @@ public class UsuarioServiceImpl implements UsuarioService {
 										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
 					}
 
-					throw new PersonaYaExisteException(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo(),
+					throw new UsuarioYaExisteException(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo(),
 							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()));
+									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()));
+				} else {
+					usuarioRepository.saveAndFlush(usuarioEntity);
+
+					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuarioAñadir.getUsuario(),
+							Constantes.ACCION_AÑADIR_USUARIO, usuarioAñadir.getUsuarioEntity().toString());
+
+					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+					}
+
+					resultado = Constantes.OK;
 				}
+
 			} else {
-				resultado = CodeMessageErrors.PERSONA_VACIO.name();
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuarioAñadir.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new PersonaYaExisteException(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()));
 			}
 		} else {
-			resultado = CodeMessageErrors.USUARIO_VACIO.name();
+			resultado = CodeMessageErrors.USUARIO_AÑADIR_VACIO.name();
 		}
 
 		return resultado;

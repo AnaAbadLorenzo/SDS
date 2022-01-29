@@ -1,8 +1,8 @@
 package com.sds.model;
 
 public enum RespCode {
-	
-	PARSE_EXCEPTION("PARSE_EXCEPTION", "Error al parsear los datos"),//
+
+	PARSE_EXCEPTION("PARSE_EXCEPTION", "Error al parsear los datos"), //
 
 	LOGIN_VACIO("LOGIN_VACIO", "Los datos de usuario y contraseña no pueden ser vacíos."), //
 	USUARIO_NO_ENCONTRADO("USUARIO_NO_EXISTE", "El usuario no existe."), //
@@ -19,10 +19,10 @@ public enum RespCode {
 	USUARIO_YA_EXISTE("USUARIO_YA_EXISTE", "El usuario ya existe"), //
 	PERSONA_YA_EXISTE("PERSONA_YA_EXISTE", "La persona ya existe"), //
 	PERSONA_NO_EXISTE("PERSONA_NO_EXISTE", "La persona no existe"), //
-	PERSONAS_LISTADAS("PERSONAS_LISTADAS", "Las personas se han listado correctamente"),//
-	PERSONA_ENCONTRADA("PERSONA_ENCONTRADA", "La persona se ha encontrado correctamente"),//
+	PERSONAS_LISTADAS("PERSONAS_LISTADAS", "Las personas se han listado correctamente"), //
+	PERSONA_ENCONTRADA("PERSONA_ENCONTRADA", "La persona se ha encontrado correctamente"), //
 	PERSONA_ELIMINADA("PERSONA_ELIMINADA", "La persona se ha eliminado correctamente"), //
-	PERSONA_VACIA("PERSONA_VACIA", "Los datos de persona no pueden ser vacíos"),//
+	PERSONA_VACIA("PERSONA_VACIA", "Los datos de persona no pueden ser vacíos"), //
 	PERSONA_GUARDADA("PERSONA_GUARDADA", "La persona se ha guardado correctamente"), //
 	PERSONA_MODIFICADA("PERSONA_MODIFICADA", "La persona se ha modificado correcrtamente"), //
 	USUARIO_ASOCIADO_PERSONA_EXCEPTION("USUARIO_ASOCIADO_PERSONA_EXCEPTION", "La persona tiene un usuario asociado"), //
@@ -32,10 +32,11 @@ public enum RespCode {
 	RECUPERAR_PASS_VACIO("RECUPERAR_PASS_VACIO", "El email y/o el usuario para recuperar la contraseña están vacíos"), //
 	EMAIL_VACIO("EMAIL_VACIO", "El email de usuario es vacío"), //
 	USUARIO_VACIO("USUARIO_VACIO", "El usuario es vacío"), //
-	USUARIO_GUARDADO("USUARIO_GUARDADO", "El usuario se ha guardado correctamente"),//
+	USUARIO_GUARDADO("USUARIO_GUARDADO", "El usuario se ha guardado correctamente"), //
 	USUARIO_ELIMINADO("USUARIO_ELIMINADO", "El usuario se ha eliminado correctamente"), //
 	USUARIO_MODIFICADO("USUARIO_MODIFICADO", "El usuario se ha modificado correctamente"), //
 	RECUPERAR_PASS_OK("RECUPERAR_PASS_OK", "La nueva contraseña se ha enviado correctamente"), //
+	USUARIO_AÑADIR_VACIO("USUARIO_AÑADIR_VACIO", "Los datos de usuario y/o persona son vacios"), //
 	ROL_YA_EXISTE_EXCEPTION("ROL_YA_EXISTE", "El rol ya existe"), //
 	ROL_NO_EXISTE_EXCEPTION("ROL_NO_EXISTE", "El rol no existe"), //
 	NO_HAY_ROLES_EXCEPTION("NO_HAY_ROLES", "No existe ningún rol registrado"), //

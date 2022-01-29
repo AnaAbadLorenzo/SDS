@@ -65,17 +65,16 @@ public class UsuarioController {
 	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity insertarUsuario(@RequestBody final UsuarioAñadir usuarioAñadir) {
-		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuarioAñadir.getUsuarioEntity());
-
-		if (usuarioValido) {
-			try {
+		Boolean usuarioValido;
+		try {
+			usuarioValido = validaciones.comprobarUsuarioAñadirBlank(usuarioAñadir);
+			if (usuarioValido) {
 				String resultado;
-
 				try {
 					resultado = usuarioService.añadirUsuario(usuarioAñadir);
 
-					if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
-						return new RespEntity(RespCode.USUARIO_VACIO, usuarioAñadir);
+					if (CodeMessageErrors.USUARIO_AÑADIR_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.USUARIO_AÑADIR_VACIO, usuarioAñadir);
 					}
 
 					return new RespEntity(RespCode.USUARIO_GUARDADO, usuarioAñadir);
@@ -84,16 +83,16 @@ public class UsuarioController {
 				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuarioAñadir);
 				}
-			} catch (final UsuarioYaExisteException usuarioYaExiste) {
-				return new RespEntity(RespCode.USUARIO_YA_EXISTE, usuarioAñadir);
-			} catch (final PersonaYaExisteException personaYaExiste) {
-				return new RespEntity(RespCode.PERSONA_YA_EXISTE, usuarioAñadir);
-			} catch (final ParseException parseException) {
-				return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioAñadir);
 			}
+		} catch (final UsuarioYaExisteException usuarioYaExiste) {
+			return new RespEntity(RespCode.USUARIO_YA_EXISTE, usuarioAñadir);
+		} catch (final PersonaYaExisteException personaYaExiste) {
+			return new RespEntity(RespCode.PERSONA_YA_EXISTE, usuarioAñadir);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioAñadir);
 		}
 
-		return new RespEntity(RespCode.USUARIO_VACIO, usuarioAñadir);
+		return new RespEntity(RespCode.USUARIO_AÑADIR_VACIO, usuarioAñadir);
 
 	}
 

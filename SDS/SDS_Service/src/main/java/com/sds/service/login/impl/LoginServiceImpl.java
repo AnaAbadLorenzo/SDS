@@ -99,7 +99,7 @@ public class LoginServiceImpl implements LoginService {
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuario);
-		final Boolean emailUsuarioValido = validaciones.comprobarUsuarioBlank(emailUsuario);
+		final Boolean emailUsuarioValido = validaciones.comprobarEmailUsuarioBlank(emailUsuario);
 
 		if (usuarioValido) {
 			if (emailUsuarioValido) {

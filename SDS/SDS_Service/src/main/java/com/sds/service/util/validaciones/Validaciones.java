@@ -17,6 +17,7 @@ import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
 import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.registro.model.Registro;
+import com.sds.service.usuario.model.UsuarioAñadir;
 
 public class Validaciones {
 
@@ -196,5 +197,14 @@ public class Validaciones {
 		} else {
 			return true;
 		}
+	}
+
+	public boolean comprobarUsuarioAñadirBlank(final UsuarioAñadir usuarioAñadir) throws ParseException {
+		if (!comprobarUsuarioBlank(usuarioAñadir.getUsuarioEntity())
+				|| !comprobarPersonaBlank(usuarioAñadir.getPersonaEntity())) {
+			return false;
+		}
+
+		return true;
 	}
 }

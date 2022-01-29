@@ -5,6 +5,7 @@ public enum CodeMessageErrors {
 	LOGIN_VACIO("El login es vacío"), //
 	REGISTRO_VACIO("El registro está vacío"), //
 	USUARIO_NO_ENCONTRADO_EXCEPTION("No se ha encontrado el usuario"), //
+	USUARIO_AÑADIR_VACIO("Los datos de usuaio y/o persona son vacios"), //
 	PASSWORD_INCORRECTO_EXCEPTION("El password es incorrecto"), //
 	USUARIO_YA_EXISTE_EXCEPTION("El usuario ya existe"), //
 	PERSONA_YA_EXISTE_EXCEPTION("La persona ya existe"), //
