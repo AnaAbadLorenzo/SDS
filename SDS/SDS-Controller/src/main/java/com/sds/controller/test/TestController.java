@@ -251,7 +251,7 @@ public class TestController {
 
 	@GetMapping(value = "/test/accion/atributos/guardar")
 	@ResponseBody
-	public RespEntity TestAccionAtributosAccionAnadir() {
+	public RespEntity TestAccionAtributosAccionGuardar() {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
@@ -338,7 +338,7 @@ public class TestController {
 
 	@GetMapping(value = "/test/funcionalidad/atributos/modificar")
 	@ResponseBody
-	public RespEntity TestAccionAtributosFuncionalidadModificar() {
+	public RespEntity TestFuncionalidadAtributosAccionModificar() {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
@@ -367,7 +367,7 @@ public class TestController {
 
 	@GetMapping(value = "/test/funcionalidad/atributos/guardar")
 	@ResponseBody
-	public RespEntity TestAccionAtributosFuncionalidadGuardar() {
+	public RespEntity TestFuncionalidadAtributosAccionGuardar() {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
@@ -422,7 +422,7 @@ public class TestController {
 
 	@GetMapping(value = "/test/accion/accion/guardar")
 	@ResponseBody
-	public RespEntity TestAccionAccionAnadir() {
+	public RespEntity TestAccionAccionGuardar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
 		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();

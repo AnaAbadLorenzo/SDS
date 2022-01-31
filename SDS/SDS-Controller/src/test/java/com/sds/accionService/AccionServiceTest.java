@@ -53,7 +53,6 @@ public class AccionServiceTest {
 	public void AccionService_buscarAccionNameVacio() throws IOException, ParseException {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NAME_VACIO_DATA);
 		final AccionEntity accionEntity = accion.getAccion();
-		final String respuesta = StringUtils.EMPTY;
 
 		final List<AccionEntity> accionEncontrada = accionService.buscarAccion(accionEntity.getNombreAccion(),
 				accionEntity.getDescripAccion());

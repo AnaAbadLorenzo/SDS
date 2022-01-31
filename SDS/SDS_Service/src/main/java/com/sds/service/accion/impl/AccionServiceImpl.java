@@ -22,7 +22,7 @@ import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.log.impl.LogServiceImpl;
+import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -37,7 +37,7 @@ public class AccionServiceImpl implements AccionService {
 	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
 
 	@Autowired
-	LogServiceImpl logServiceImpl;
+	LogService logServiceImpl;
 
 	private final Validaciones validaciones;
 	private final Util util;
@@ -74,13 +74,9 @@ public class AccionServiceImpl implements AccionService {
 
 		final List<AccionEntity> toret = new ArrayList<>();
 
-		final AccionEntity accionToret = new AccionEntity();
-
 		for (final AccionEntity accion : acciones) {
-			accionToret.setIdAccion(accion.getIdAccion());
-			accionToret.setNombreAccion(accion.getNombreAccion());
-			accionToret.setDescripAccion(accion.getDescripAccion());
-			accionToret.setBorradoAccion(accion.getBorradoAccion());
+			final AccionEntity accionToret = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
+					accion.getDescripAccion(), accion.getBorradoAccion());
 
 			toret.add(accionToret);
 		}

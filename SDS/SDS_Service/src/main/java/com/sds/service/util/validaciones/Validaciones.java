@@ -15,7 +15,9 @@ import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
+import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.registro.model.Registro;
+import com.sds.service.usuario.model.UsuarioAñadir;
 
 public class Validaciones {
 
@@ -59,6 +61,38 @@ public class Validaciones {
 
 	public boolean comprobarUsuarioBlank(final UsuarioEntity usuario) {
 		if (StringUtils.isBlank(usuario.getUsuario()) || StringUtils.isBlank(usuario.getPasswdUsuario())) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarPasswdUsuarioBlank(final String passwdUsuario) {
+		if (StringUtils.isBlank(passwdUsuario)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarUsuarioBlank(final String usuario) {
+		if (StringUtils.isBlank(usuario)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarEmailUsuarioBlank(final String emailUsuario) {
+		if (StringUtils.isBlank(emailUsuario)) {
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean comprobarRecuperarPassBlank(final RecuperarPass recuperarPass) {
+		if (StringUtils.isBlank(recuperarPass.getUsuario()) || StringUtils.isBlank(recuperarPass.getEmailUsuario())) {
 			return false;
 		}
 
@@ -163,5 +197,14 @@ public class Validaciones {
 		} else {
 			return true;
 		}
+	}
+
+	public boolean comprobarUsuarioAñadirBlank(final UsuarioAñadir usuarioAñadir) throws ParseException {
+		if (!comprobarUsuarioBlank(usuarioAñadir.getUsuarioEntity())
+				|| !comprobarPersonaBlank(usuarioAñadir.getPersonaEntity())) {
+			return false;
+		}
+
+		return true;
 	}
 }

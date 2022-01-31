@@ -131,6 +131,7 @@ public class FuncionalidadController {
 			try {
 				resultado = funcionalidadService.eliminarFuncionalidad(funcionalidad);
 				return new RespEntity(RespCode.FUNCIONALIDAD_ELIMINADA, resultado);
+
 			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, funcionalidad);
 			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {

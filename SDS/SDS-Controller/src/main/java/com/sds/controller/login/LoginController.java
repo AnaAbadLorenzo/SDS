@@ -1,23 +1,30 @@
 package com.sds.controller.login;
 
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.exception.EmailNoEncontradoException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PasswordIncorrectoException;
+import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
+import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
 @RestController
+@RequestMapping(value = "/login")
 public class LoginController {
 
 	@Autowired
@@ -57,5 +64,41 @@ public class LoginController {
 		}
 
 		return new RespEntity(RespCode.LOGIN_VACIO, login);
+	}
+
+	@PostMapping(value = "/recuperarPass")
+	@ResponseBody
+	public RespEntity recuperarPass(@RequestBody final RecuperarPass recuperarPass) {
+		final Boolean infoValida = validaciones.comprobarRecuperarPassBlank(recuperarPass);
+
+		if (infoValida) {
+			try {
+				String resultado;
+				resultado = loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(),
+						recuperarPass.getEmailUsuario());
+				if (CodeMessageErrors.EMAIL_VACIO.name().equals(resultado)) {
+					return new RespEntity(RespCode.EMAIL_VACIO, recuperarPass);
+				}
+				if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
+					return new RespEntity(RespCode.USUARIO_VACIO, recuperarPass);
+				}
+				return new RespEntity(RespCode.RECUPERAR_PASS_OK, resultado);
+			} catch (final UsuarioNoEncontradoException usuarioNoEncontradoException) {
+				return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, recuperarPass);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, recuperarPass);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, recuperarPass);
+			} catch (final EmailNoEncontradoException emailNoEncontradoException) {
+				return new RespEntity(RespCode.EMAIL_NO_ENCONTRADO, recuperarPass);
+			} catch (final PersonaNoExisteException personaNoExisteException) {
+				return new RespEntity(RespCode.PERSONA_NO_EXISTE, recuperarPass);
+			} catch (final MessagingException messagingException) {
+				return new RespEntity(RespCode.ENVIO_EMAIL_EXCEPTION, recuperarPass);
+			}
+		}
+
+		return new RespEntity(RespCode.RECUPERAR_PASS_VACIO, recuperarPass);
+
 	}
 }

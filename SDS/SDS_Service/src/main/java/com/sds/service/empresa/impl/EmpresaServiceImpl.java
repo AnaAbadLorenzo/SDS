@@ -19,7 +19,7 @@ import com.sds.service.exception.EmpresaAsociadaPersonasException;
 import com.sds.service.exception.EmpresaNoEncontradaException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.log.impl.LogServiceImpl;
+import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -34,7 +34,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	PersonaRepository personaRepository;
 
 	@Autowired
-	LogServiceImpl logServiceImpl;
+	LogService logServiceImpl;
 
 	private final Util util;
 	private final Validaciones validaciones;

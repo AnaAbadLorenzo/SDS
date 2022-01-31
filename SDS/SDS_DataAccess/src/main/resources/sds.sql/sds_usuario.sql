@@ -32,6 +32,7 @@ CREATE TABLE `usuario` (
   `id_rol` int NOT NULL,
   PRIMARY KEY (`dni_usuario`),
   UNIQUE KEY `dniUsuario_UNIQUE` (`dni_usuario`),
+  UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   KEY `id_rol_usuario_idx` (`id_rol`),
   KEY `dniUsuario_fk` (`dni_usuario`),
   KEY `idRol_fk` (`id_rol`),

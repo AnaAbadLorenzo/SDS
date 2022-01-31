@@ -164,7 +164,7 @@ public class RolServiceTest {
 
 		rolService.guardarRol(rolGuardar);
 
-		final List<RolEntity> rolModificar = rolService.buscarRol(rolGuardar.getRol().getRolName(), "");
+		final List<RolEntity> rolModificar = rolService.buscarRol(rolGuardar.getRol().getRolName(), StringUtils.EMPTY);
 
 		rolModificar.get(0).setRolName("Modificacion");
 		rolModificar.get(0).setRolDescription("Hecha la modificacion");
@@ -232,7 +232,7 @@ public class RolServiceTest {
 
 		rolService.guardarRol(rol);
 
-		final List<RolEntity> rolGuardado = rolService.buscarRol(rol.getRol().getRolName(), "");
+		final List<RolEntity> rolGuardado = rolService.buscarRol(rol.getRol().getRolName(), StringUtils.EMPTY);
 
 		rol.setRol(rolGuardado.get(0));
 

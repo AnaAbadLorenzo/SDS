@@ -5,6 +5,7 @@ public enum CodeMessageErrors {
 	LOGIN_VACIO("El login es vacío"), //
 	REGISTRO_VACIO("El registro está vacío"), //
 	USUARIO_NO_ENCONTRADO_EXCEPTION("No se ha encontrado el usuario"), //
+	USUARIO_AÑADIR_VACIO("Los datos de usuaio y/o persona son vacios"), //
 	PASSWORD_INCORRECTO_EXCEPTION("El password es incorrecto"), //
 	USUARIO_YA_EXISTE_EXCEPTION("El usuario ya existe"), //
 	PERSONA_YA_EXISTE_EXCEPTION("La persona ya existe"), //
@@ -18,7 +19,8 @@ public enum CodeMessageErrors {
 	NO_HAY_ROLES_EXCEPTION("No se han encontrado roles"), //
 	ROL_ASOCIADO_USUARIO_EXCEPTION("Rol asociado a un usuario"), //
 	USUARIO_ASOCIADO_PERSONA_EXCEPTION("La persona está asociada a un usuario"), //
-	EMPRESA_ASOCIADA_PERSONA_EXCEPTION("La empresa contiene personas asociadas"), //
+	EMPRESA_ASOCIADA_PERSONA_EXCEPTION("El email proporcionado no existe"), //
+	EMAIL_NO_ENCONTRADO_EXCEPTION("La empresa contiene personas asociadas"), //
 	ACCION_YA_EXISTE_EXCEPTION("La accion ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("La accion que busca no existe"), //
 	ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION("La accion esta asociada con una accion y una funcionalidad"), //
@@ -27,6 +29,8 @@ public enum CodeMessageErrors {
 	PERSONA_VACIO("Persona vacia"), //
 	EMPRESA_VACIO("Empresa vacia"), //
 	ACCION_VACIA("Accion vacia"), //
+	PASSWDUSUARIO_VACIA("Contraseña vacía"), //
+	EMAIL_VACIO("Email vacío"), //
 	EMPRESA_NO_ENCONTRADA_EXCEPTION("La empresa no existe"), //
 	FUNCIONALIDAD_VACIA("Funcionalidad vacía"), //
 	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("La funcionalidad que busca ya existe"), //

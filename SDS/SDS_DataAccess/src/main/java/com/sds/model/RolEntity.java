@@ -38,7 +38,7 @@ public class RolEntity {
 	private String rolDescription;
 
 	@Column(name = "borrado_rol")
-	private int borradoRol;
+	private Integer borradoRol;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "rolaccionfuncionalidad", joinColumns = { @JoinColumn(name = "id_rol") }, inverseJoinColumns = {
@@ -57,7 +57,7 @@ public class RolEntity {
 		super();
 	}
 
-	public RolEntity(final Integer idRol, final String rolName, final String rolDescription, final int borradoRol) {
+	public RolEntity(final Integer idRol, final String rolName, final String rolDescription, final Integer borradoRol) {
 		super();
 		this.idRol = idRol;
 		this.rolName = rolName;
@@ -89,11 +89,11 @@ public class RolEntity {
 		this.rolDescription = rolDescription;
 	}
 
-	public int getBorradoRol() {
+	public Integer getBorradoRol() {
 		return borradoRol;
 	}
 
-	public void setBorradoRol(final int borradoRol) {
+	public void setBorradoRol(final Integer borradoRol) {
 		this.borradoRol = borradoRol;
 	}
 
