@@ -45,7 +45,7 @@ public class PersonaController {
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 	
-	@RequestMapping(value="/listarPersonas", method=RequestMethod.GET)
+	@RequestMapping(value="/listarPersona", method=RequestMethod.GET)
 	@ResponseBody
 	public RespEntity buscarPersona(@RequestBody final PersonaBuscar persona) {
 		List<PersonaEntity> personas = personaService.buscarPersona(persona.getDnip(), persona.getNombreP(), persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP(), persona.getEmpresaP());
