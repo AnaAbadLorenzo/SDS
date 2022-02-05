@@ -1,0 +1,100 @@
+{
+	"fechaNacPersonaVacia": {
+		"dniP": "32547896L",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	"fechaNacimientoPersonaNumericaEnhe": {
+		"dniP": "78451254L",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-ññ",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	"fechaNacimientoPersonaNumericaAcentos": {
+		"dniP": "78451254O",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-á",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"fechaNacimientoPersonaNumericaCaracteresEspeciales": {
+		"dniP": "78412563L",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-@@",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"fechaNacPersonaNumericaEspacios":{
+		"dniP": "45655412L",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-0 5-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"fechaNacPersonaNumericaMenor8":{
+		"dniP": "34851204J",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"fechaNacPersonaNumericaMayor8":{
+		"dniP": "12345678P",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-090587",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"fechaNacimientoPersonaAlfabetico":{
+		"dniP": "89562314O",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "AAAA-BB-BB",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	"fechaNacimientoPersonaAlfanumerico":{
+		"dniP": "45789654T",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-aa-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"fechaNacimientoPersonaNumerico":{
+		"dniP": "78894556U",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	}
+	
+	
+}

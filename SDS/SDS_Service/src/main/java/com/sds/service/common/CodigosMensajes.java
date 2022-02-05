@@ -88,6 +88,11 @@ public class CodigosMensajes {
 
 	public static final String FUNCIONALIDAD_VACIA = "FUNCIONALIDAD_VACIA";
 
+	public static final String USUARIO_VACIO = "USUARIO_VACIO";
+	public static final String ROL_USUARIO_MODIFICADO_OK = "ROL_USUARIO_MODIFICADO_OK";
+
+	public static final String PERSONA_AÑADIR_VACIA = "PERSONA_AÑADIR_VACIA";
+
 	public static final String REGISTRO_CORRECTO = "REGISTRO_CORRECTO";
 	public static final String REGISTRO_VACIO = "REGISTRO_VACIO";
 	public static final String REGISTRO_PERSONA_EXISTE = "REGISTRO_PERSONA_EXISTE";
@@ -104,6 +109,7 @@ public class CodigosMensajes {
 	public static final String GUARDAR_ROL_YA_EXISTE = "GUARDAR_ROL_YA_EXISTE";
 	public static final String ELIMINAR_ROL_CORRECTO = "ELIMINAR_ROL_CORRECTO";
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "ELIMINAR_ROL_ASOCIADO_USUARIO";
+	public static final String ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD = "ELIMINAR_ROL_ASOCIAO_ACCION_FUNCIONALIDAD";
 	public static final String MODIFICAR_ROL = "MODIFICAR_ROL";
 	public static final String ACCION_NO_EXISTE = "ACCION_NO_EXISTE";
 	public static final String BUSCAR_ACCION_CORRECTO = "BUSCAR_ACCION_CORRECTO";
@@ -119,5 +125,21 @@ public class CodigosMensajes {
 	public static final String MODIFICAR_FUNCIONALIDAD_CORRECTO = "MODIFICAR_FUNCIONALIDAD_CORRECTO";
 	public static final String ELIMINAR_FUNCIONALIDAD_CORRECTO = "ELIMINAR_FUNCIONALIDAD_CORRECTO";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION";
+	public static final String BUSCAR_USUARIO_CORRECTO = "BUSCAR_USUARIO_CORRECTO";
+	public static final String ELIMINAR_USUARIO_CORRECTO = "ELIMINAR_USUARIO_CORRECTO";
+	public static final String USUARIO_NO_ENCONTRADO = "USUARIO_NO_ENCONTRADO";
+	public static final String CONTRASEÑA_MODIFICADA_OK = "CONTRASEÑA_MODIFICADA_OK";
+	public static final String BUSCAR_PERSONA_CORRECTO = "BUSCAR_PERSONA_CORRECTO";
+
+	public static final String PERSONA_YA_EXISTE = "PERSONA_YA_EXISTE";
+	public static final String USUARIO_YA_EXISTE = "USUARIO_YA_EXISTE";
+	public static final String GUARDAR_PERSONA_CORRECTO = "GUARDAR_PERSONA_CORRECTO";
+	public static final String ELIMINAR_PERSONA_CORRECTO = "ELIMINAR_PERSONA_CORRECTO";
+	public static final String PERSONA_NO_EXISTE = "PERSONA_NO_EXISTE";
+	public static final String MODIFICAR_PERSONA_CORRECTO = "MODIFICAR_PERSONA_CORRECTO";
+
+	public static final String MAIL_NO_ENVIADO = "MAIL_NO_ENVIADO";
+	public static final String RECUPERAR_CONTRASEÑA_CORRECTO = "RECUPERAR_CONTRASEÑA_CORRECTO";
+	public static final String MAIL_NO_ENCONTRADO = "MAIL_NO_ENCONTRADO";
 
 }

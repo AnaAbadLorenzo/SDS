@@ -70,6 +70,20 @@ public class ValidacionesAtributosNumerico {
 					break;
 				}
 
+			case GESTION_PERSONAS:
+				switch (atr) {
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_LETRAS_ACENTOS_INCORRECTO + " - "
+							+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+					break;
+				case APELLIDOS_PERSONA:
+					resultado = CodigosMensajes.APELLIDOS_PERSONA_LETRAS_ACENTOS_INCORRECTO + " - "
+							+ Mensajes.APELLIDOS_PERSONA_NO_PUEDEN_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+					break;
+
+				default:
+					break;
+				}
 			default:
 				break;
 			}

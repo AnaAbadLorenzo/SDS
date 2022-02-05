@@ -6,5 +6,5 @@ import com.sds.service.mail.model.Mail;
 
 public interface MailService {
 
-	public void enviarCorreo(Mail mail) throws MessagingException;
+	public String enviarCorreo(Mail mail) throws MessagingException;
 }

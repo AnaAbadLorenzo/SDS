@@ -31,7 +31,8 @@ CREATE TABLE `empresa` (
   `direccion_empresa` varchar(128) NOT NULL,
   `telefono_empresa` varchar(9) NOT NULL,
   `borrado_empresa` int NOT NULL,
-  PRIMARY KEY (`id_empresa`)
+  PRIMARY KEY (`id_empresa`),
+  UNIQUE KEY `cifEmpresa_UNIQUE` (`cif_empresa`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

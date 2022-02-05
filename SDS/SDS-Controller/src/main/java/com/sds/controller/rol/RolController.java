@@ -14,6 +14,7 @@ import com.sds.model.RespEntity;
 import com.sds.model.RolEntity;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
@@ -137,6 +138,8 @@ public class RolController {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
 		} catch (final RolAsociadoUsuarioException rolAsociatedUser) {
 			return new RespEntity(RespCode.ROL_ASOCIADO_USUARIO_EXCEPTION, rol);
+		} catch (final RolAsociadoAccionFuncionalidadException rolAsociadoAccionFuncionalidad) {
+			return new RespEntity(RespCode.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION, rol);
 		}
 
 	}

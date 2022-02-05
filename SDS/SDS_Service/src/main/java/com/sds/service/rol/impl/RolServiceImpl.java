@@ -12,11 +12,13 @@ import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
+import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
@@ -35,6 +37,9 @@ public class RolServiceImpl implements RolService {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
+
+	@Autowired
+	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -140,7 +145,7 @@ public class RolServiceImpl implements RolService {
 
 	@Override
 	public String eliminarRol(final Rol rol) throws RolNoExisteException, RolAsociadoUsuarioException,
-			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, RolAsociadoAccionFuncionalidadException {
 		final RolEntity rolEntity = rol.getRol();
 		final Optional<RolEntity> rolUsuario = rolRepository.findById(rolEntity.getIdRol());
 		String resultado = StringUtils.EMPTY;
@@ -187,10 +192,33 @@ public class RolServiceImpl implements RolService {
 				}
 			}
 
-			rolEntity.setBorradoRol(1);
-			rol.setRol(rolEntity);
-			modificarRol(rol);
-			resultado = Constantes.OK;
+			final List<Integer> rolAccionFuncionalidad = rolAccionFuncionalidadRepository
+					.findFuncionalityByRolId(rolEntity.getIdRol());
+
+			if (rolAccionFuncionalidad.isEmpty()) {
+				rolEntity.setBorradoRol(1);
+				rol.setRol(rolEntity);
+				modificarRol(rol);
+				resultado = Constantes.OK;
+			} else {
+				logExcepciones = util.generarDatosLogExcepciones(rol.getUsuario(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo()),
+						CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new RolAsociadoAccionFuncionalidadException(
+						CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo()));
+			}
+
 		}
 
 		return resultado;

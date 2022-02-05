@@ -90,6 +90,15 @@
 		
 	},
 	
+	"eliminarRolAsociadoAccionFuncionalidad":{
+		"usuario": "aicuna",
+		
+		"idRol":"3",
+		"rolName":"superadministrador",
+		"rolDescription": "Contendrá a todos los superadministradores de la aplicacion",
+		"borradoRol":0
+	},
+	
 	"modificarRol":{
 		"usuario": "aicuna",
 		

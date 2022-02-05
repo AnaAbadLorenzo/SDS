@@ -119,6 +119,62 @@ public class ValidacionesAtributosBlank {
 							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_VACIA;
 				}
 
+			case GESTION_USUARIOS:
+				switch (atr) {
+				case DNI_USUARIO:
+					resultado = CodigosMensajes.DNI_PERSONA_VACIO + " - " + Mensajes.DNI_PERSONA_NO_PUEDE_SER_VACIO;
+					break;
+				case USUARIO:
+					resultado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - " + Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
+					break;
+				case PASSWD_USUARIO:
+					resultado = CodigosMensajes.PASS_USUARIO_VACIO + " - "
+							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_VACIA;
+					break;
+				}
+
+			case GESTION_PERSONAS:
+				switch (atr) {
+				case DNI_PERSONA:
+					resultado = CodigosMensajes.DNI_PERSONA_VACIO + " - " + Mensajes.DNI_PERSONA_NO_PUEDE_SER_VACIO;
+					break;
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_VACIO + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
+					break;
+				case APELLIDOS_PERSONA:
+					resultado = CodigosMensajes.APELLIDOS_PERSONA_VACIO + " - "
+							+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_VACIO;
+					break;
+				case EMAIL:
+					resultado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+					break;
+				case TELEFONO:
+					resultado = CodigosMensajes.TELEFONO_VACIO + " - " + Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
+					break;
+				case DIRECCION:
+					resultado = CodigosMensajes.DIRECCION_VACIO + " - " + Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
+					break;
+				case USUARIO:
+					resultado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - " + Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
+					break;
+				case PASSWD_USUARIO:
+					resultado = CodigosMensajes.PASS_USUARIO_VACIO + " - "
+							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_VACIA;
+					break;
+				default:
+					break;
+				}
+
+			case RECUPERAR_PASS:
+				switch (atr) {
+				case USUARIO:
+					resultado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - " + Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
+					break;
+				case EMAIL:
+					resultado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+					break;
+				}
+
 			default:
 				break;
 			}

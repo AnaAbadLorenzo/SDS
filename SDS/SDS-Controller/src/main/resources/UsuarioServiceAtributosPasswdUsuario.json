@@ -1,0 +1,52 @@
+{ 
+	"contrasenaVacia" : {
+		"dniUsuario": "45146321N",
+		"usuario" : "",
+		"passwdUsuario" : ""
+	},
+ 	"contrasenaAlfanumericaEnhe" : {
+		"dniUsuario": "45146321N",
+ 		"usuario" : "aicuña",
+		"passwdUsuario" : "caña"
+ 	},
+ 	"contrasenaAlfanumericaAcentos" : {
+		"dniUsuario": "45146321N",
+ 		"usuario" : "águila",
+		"passwdUsuario" : "águila"
+ 	},
+ 	"contrasenaAlfanumericaCaracteresEspeciales" : {
+		"dniUsuario": "45146321N",
+ 		"usuario" : "aicuna?",
+		"passwdUsuario" : "aicuna/"
+ 	},
+ 	"contrasenaAlfanumericaEspacios":  {
+		"dniUsuario": "45146321N",
+ 		"usuario" : "aic 87",
+		"passwdUsuario" : "casa 87"
+ 	},
+ 	"contrasenaAlfanumericaMenor3":  {
+		"dniUsuario": "45146321N",
+ 		"usuario" : "ai",
+		"passwdUsuario" : "ai"
+ 	},
+ 	"contrasenaAlfanumericaMayor45":  {
+		"dniUsuario": "45146321N",
+ 		"usuario" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		"passwdUsuario" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+ 	},
+ 	"contrasenaAlfabetica" : {
+		"dniUsuario": "45146321N",
+		"usuario" : "aicuna",
+		"passwdUsuario" : "infinite"
+	},
+	"contrasenaAlfanumerica" : {
+		"dniUsuario": "45146321N",
+		"usuario" : "aicuna87",
+		"passwdUsuario" : "infinite87"
+	},
+	"contrasenaNumerica" : {
+		"dniUsuario": "45146321N",
+		"usuario" : "12387",
+		"passwdUsuario" : "12387"
+	}
+}

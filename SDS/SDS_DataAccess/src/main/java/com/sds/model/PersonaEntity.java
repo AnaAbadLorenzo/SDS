@@ -17,7 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "persona")
 @NamedQueries({
-		@NamedQuery(name = "PersonaEntity.findPersona", query = "SELECT p FROM PersonaEntity p WHERE p.dniP LIKE CONCAT('%', :dniP, '%') AND p.nombreP LIKE CONCAT('%', :nombreP, '%') AND p.apellidosP LIKE CONCAT('%', :apellidosP, '%') AND p.fechaNacP LIKE CONCAT('%', :fechaNacP, '%') AND p.direccionP LIKE CONCAT('%', :direccionP, '%') AND p.telefonoP LIKE CONCAT('%', :telefonoP, '%') AND p.emailP LIKE CONCAT('%', :emalP, '%') AND p.empresa LIKE CONCAT('%', :empresa, '%')"),
+		@NamedQuery(name = "PersonaEntity.findPersona", query = "SELECT p FROM PersonaEntity p WHERE p.dniP LIKE CONCAT('%', :dniP, '%') AND p.nombreP LIKE CONCAT('%', :nombreP, '%') AND p.apellidosP LIKE CONCAT('%', :apellidosP, '%') AND p.fechaNacP LIKE CONCAT('%', :fechaNacP, '%') AND p.direccionP LIKE CONCAT('%', :direccionP, '%') AND p.telefonoP LIKE CONCAT('%', :telefonoP, '%') AND p.emailP LIKE CONCAT('%', :emailP, '%') AND p.empresa LIKE CONCAT('%', :empresa, '%')"),
 		@NamedQuery(name = "PersonaEntity.findPersonasEliminadas", query = "SELECT p FROM PersonaEntity p WHERE p.borradoP =: borradoP ") })
 public class PersonaEntity {
 
@@ -85,6 +85,21 @@ public class PersonaEntity {
 		this.telefonoP = telefonoP;
 		this.emailP = emailP;
 		this.borradoP = borradoP;
+	}
+
+	public PersonaEntity(final String dniP, final String nombreP, final String apellidosP, final Date fechaNacP,
+			final String direccionP, final String telefonoP, final String emailP, final Integer borradoP,
+			final EmpresaEntity empresa) {
+		super();
+		this.dniP = dniP;
+		this.nombreP = nombreP;
+		this.apellidosP = apellidosP;
+		this.fechaNacP = fechaNacP;
+		this.direccionP = direccionP;
+		this.telefonoP = telefonoP;
+		this.emailP = emailP;
+		this.borradoP = borradoP;
+		this.empresa = empresa;
 	}
 
 	public String getDniP() {

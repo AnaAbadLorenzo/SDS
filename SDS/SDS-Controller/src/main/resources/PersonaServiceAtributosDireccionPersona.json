@@ -1,0 +1,50 @@
+{
+	"direccionPersonaVacia": {
+		"dniP": "45146327N",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"direccionPersonaAlfanumericaMenor3": {
+		"dniP": "45146327N",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Av",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	"direccionPersonaAlfanumericaMayor128": {
+		"dniP": "45178965P*",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N144AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"direccionPersonaAlfabetico":{
+		"dniP": "45655412L",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	},
+	
+	"direccionPersonaAlfanumerico":{
+		"dniP": "34947852L",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Calle53",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512"
+	}
+}

@@ -101,6 +101,7 @@ public class Mensajes {
 	public static final String GUARDAR_ROL_YA_EXISTE = "El rol que desea registrar ya existe";
 	public static final String ELIMINAR_ROL_CORRECTO = "El rol se ha eliminado correctamente";
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol a eliminar tiene un usuario asociado";
+	public static final String ELIMINAR_ROL_ASOCIADA_ACCION_FUNCIONALIDAD = "El rol tiene asociado una accion y una funcionalidad";
 	public static final String MODIFICAR_ROL = "El rol se ha modificado correctamente";
 
 	public static final String ACCION_VACIA = "El nombre y descripción de la accion no pueden ser vacios";
@@ -120,4 +121,25 @@ public class Mensajes {
 	public static final String MODIFICAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha modificado correctamente";
 	public static final String ELIMINAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha eliminado correctamente";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "La funcionalidad no se puede eliminar porque tiene un rol y una acción asociadas";
+
+	public static final String USUARIO_VACIO = "Los datos de usuario están vacíos";
+	public static final String BUSCAR_USUARIO_CORRECTO = "El usuario se ha encontrado de forma correcta";
+	public static final String ELIMINAR_USUARIO_CORRECTO = "El usuario se ha eliminado correctamente";
+	public static final String USUARIO_NO_ENCONTRADO = "El usuario no existe";
+	public static final String ROL_USUARIO_MODIFICADO_CORRECTO = "El rol del usuario se ha modificado correctamente";
+	public static final String CONTRASEÑA_USUARIO_MODIFICADA_CORRECTAMENTE = "La contraseña del usuario se ha modificado correctamente";
+
+	public static final String PERSONA_AÑADIR_VACIA = "Los datos para añadir a una persona están vacíos";
+	public static final String PERSONA_YA_EXISTE = "La persona ya existe";
+	public static final String USUARIO_YA_EXISTE = "El usuario ya existe";
+	public static final String GUARDAR_PERSONA_CORRECTO = "La persona se ha guardado correctamente";
+	public static final String ELIMINAR_PERSONA_CORRECTAMENTE = "La persona se ha eliminado correctamente";
+	public static final String BUSCAR_PERSONA_CORRECTO = "La persona se ha encontrado correctamente";
+	public static final String PERSONA_NO_EXISTE = "La persona no existe";
+	public static final String MODIFICAR_PERSONA_CORRECTAMENTE = "La persona se ha modificado correctamente";
+
+	public static final String ERROR_AL_ENVIAR_MAIL = "Ha ocurrido un error al enviar el email con la nueva password";
+	public static final String CONTRASEÑA_RECUPERADA_CORRECTAMENTE = "La contraseña ha sido recuperada correctamente";
+	public static final String MAIL_NO_ENCONTRADO_CORRECTAMENTE = "El email del usuario no se ha encontrado";
+
 }

@@ -14,6 +14,7 @@ import com.sds.model.RespEntity;
 import com.sds.service.exception.EmailNoEncontradoException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.MailNoEnviadoException;
 import com.sds.service.exception.PasswordIncorrectoException;
 import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
@@ -93,7 +94,7 @@ public class LoginController {
 				return new RespEntity(RespCode.EMAIL_NO_ENCONTRADO, recuperarPass);
 			} catch (final PersonaNoExisteException personaNoExisteException) {
 				return new RespEntity(RespCode.PERSONA_NO_EXISTE, recuperarPass);
-			} catch (final MessagingException messagingException) {
+			} catch (final MailNoEnviadoException | MessagingException messagingException) {
 				return new RespEntity(RespCode.ENVIO_EMAIL_EXCEPTION, recuperarPass);
 			}
 		}

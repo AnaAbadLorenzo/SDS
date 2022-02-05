@@ -17,13 +17,15 @@ public enum CodeMessageErrors {
 	ROL_NO_EXISTE_EXCEPTION("El rol no existe"), //
 	ROL_YA_EXISTE_EXCEPTION("El rol ya existe"), //
 	NO_HAY_ROLES_EXCEPTION("No se han encontrado roles"), //
-	ROL_ASOCIADO_USUARIO_EXCEPTION("Rol asociado a un usuario"), //
+	ROL_ASOCIADO_USUARIO_EXCEPTION("El rol tiene un usuario asociado"), //
+	ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION("El rol tiene asociado una accion y una funcionalidad"), //
 	USUARIO_ASOCIADO_PERSONA_EXCEPTION("La persona está asociada a un usuario"), //
 	EMPRESA_ASOCIADA_PERSONA_EXCEPTION("El email proporcionado no existe"), //
 	EMAIL_NO_ENCONTRADO_EXCEPTION("La empresa contiene personas asociadas"), //
 	ACCION_YA_EXISTE_EXCEPTION("La accion ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("La accion que busca no existe"), //
 	ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION("La accion esta asociada con una accion y una funcionalidad"), //
+	MAIL_NO_ENVIADO_EXCEPTION("Se ha producido un error al enviar el email"), //
 	ROL_VACIO("Rol vacío"), //
 	USUARIO_VACIO("Usuario vacío"), //
 	PERSONA_VACIO("Persona vacia"), //

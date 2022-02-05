@@ -61,6 +61,7 @@ public class DefinicionPruebas {
 	public static final String ROL_VACIO = "El rol está vacío";
 	public static final String ELIMINAR_ROL_CORRECTO = "El rol se ha eliminado correctamente";
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol no ha podido eliminarse porque tiene un usuario asociado";
+	public static final String ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD = "El rol no ha podido eliminarse porque tienen un rol y una funcionalidad asociado";
 	public static final String ELIMINAR_ROL_NO_EXISTE = "El rol no ha podido eliminarse porque no existe";
 	public static final String MODIFICAR_ROL = "EL rol se ha modificado correctamente";
 	public static final String MODIFICAR_ROL_NO_EXISTE = "EL rol que desa modificar no existe";
@@ -83,4 +84,19 @@ public class DefinicionPruebas {
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "La funcionalidad tiene asociada un rol y una acción";
 	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO = "La descripción de la funcionalidad es vacia";
 	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad son vacios";
+	public static final String ELIMINAR_USUARIO_CORRECTO = "El usuario se ha eliminado correctamente";
+	public static final String ELIMINAR_USUARIO_NO_EXISTE = "El usuario que desea eliminar no existe";
+	public static final String MODIFICAR_ROL_USUARIO_OK = "El rol del usuario se ha modificado correctamente";
+	public static final String MODIFICAR_ROL_USUARIO_ROL_NO_EXISTE = "El rol no existe";
+	public static final String MODIFICAR_ROL_USUARIO_NO_EXISTE = "El usuario no existe";
+	public static final String MODIFICAR_PASSWD_USUARIO_OK = "La contraseña del usuario se ha modificado corrrectamente";
+	public static final String MODIFICAR_PASSWD_USUARIO_NO_EXISTE = "El usuario no existe";
+
+	public static final String GUARDAR_PERSONA_CORRECTO = "La persona se ha guardado correctamente";
+	public static final String ELIMINAR_PERSONA_CORRECTO = "La persona se ha eliminado correctamente";
+	public static final String PERSONA_NO_EXISTE = "La persona no existe";
+	public static final String MODIFICAR_PERSONA_CORRECTO = "La persona se ha modificado correctamente";
+	public static final String RECUPERAR_PASS = "La contraseña se ha recuperado correctamente";
+	public static final String EMAIL_NO_ENCONTRADO = "El email no se ha encontrado";
+
 }

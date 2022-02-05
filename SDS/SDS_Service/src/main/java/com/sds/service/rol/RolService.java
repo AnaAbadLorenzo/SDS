@@ -5,6 +5,7 @@ import java.util.List;
 import com.sds.model.RolEntity;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
@@ -22,7 +23,7 @@ public interface RolService {
 			throws RolYaExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
 
 	String eliminarRol(Rol rol) throws RolNoExisteException, RolAsociadoUsuarioException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException;
 
 	String modificarRol(Rol rol)
 			throws RolNoExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;

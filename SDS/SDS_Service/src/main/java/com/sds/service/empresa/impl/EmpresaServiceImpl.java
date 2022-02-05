@@ -17,6 +17,7 @@ import com.sds.service.empresa.EmpresaService;
 import com.sds.service.empresa.model.Empresa;
 import com.sds.service.exception.EmpresaAsociadaPersonasException;
 import com.sds.service.exception.EmpresaNoEncontradaException;
+import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.log.LogService;
@@ -104,6 +105,58 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 			}
 
+		}
+
+		return resultado;
+	}
+
+	@Override
+	public String añadirEmpresa(final Empresa empresa)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, EmpresaYaExisteException {
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+		final EmpresaEntity empresaEntity = empresa.getEmpresa();
+		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
+
+		final Boolean empresaValida = validaciones.comprobarEmpresaBlank(empresaEntity);
+
+		if (empresaValida) {
+			final EmpresaEntity empresaBD = empresaRepository.findByCif(empresaEntity.getCifEmpresa());
+
+			if (empresaBD != null) {
+				logExcepciones = util.generarDatosLogExcepciones(empresa.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new EmpresaYaExisteException(
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo());
+			} else {
+				empresaRepository.saveAndFlush(empresaEntity);
+
+				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(empresa.getUsuario(),
+						Constantes.ACCION_AÑADIR_EMPRESA, empresa.getEmpresa().toString());
+
+				resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+				if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+				}
+
+				resultado = Constantes.OK;
+			}
+		} else {
+			resultado = CodeMessageErrors.EMPRESA_VACIO.name();
 		}
 
 		return resultado;
