@@ -162,15 +162,12 @@ public class TestRecuperarPassServiceImpl implements TestRecuperarPassService {
 
 		final RecuperarPass datosEntradaRecuperarPassCorrecto = generarJSON
 				.generateRecuperarPass(Constantes.URL_JSON_RECUPERARPASS_DATA, Constantes.RECUPERAR_PASS_CORRECTO);
-		final RecuperarPass datosEntradaRecuperarPassPersonaNoExiste = generarJSON
-				.generateRecuperarPass(Constantes.URL_JSON_RECUPERARPASS_DATA, Constantes.PERSONA_NO_EXISTE);
 		final RecuperarPass datosEntradaRecuperarPassUsuarioNoEncontrado = generarJSON
 				.generateRecuperarPass(Constantes.URL_JSON_RECUPERARPASS_DATA, Constantes.USUARIO_NO_EXISTE);
 		final RecuperarPass datosEntradaRecuperarPassEmailNoEncontrado = generarJSON
 				.generateRecuperarPass(Constantes.URL_JSON_RECUPERARPASS_DATA, Constantes.EMAIL_NO_ENCONTRADO);
 
 		datosPruebaAcciones.add(getTestRecuperarPassCorrecto(datosEntradaRecuperarPassCorrecto));
-		datosPruebaAcciones.add(getTestRecuperarPassPersonaNoExiste(datosEntradaRecuperarPassPersonaNoExiste));
 		datosPruebaAcciones.add(getTestRecuperarPassUsuarioNoEncontrado(datosEntradaRecuperarPassUsuarioNoEncontrado));
 		datosPruebaAcciones.add(getTestRecuperarPassEmailNoEncontrado(datosEntradaRecuperarPassEmailNoEncontrado));
 
@@ -186,28 +183,15 @@ public class TestRecuperarPassServiceImpl implements TestRecuperarPassService {
 				+ Mensajes.CONTRASEÑA_RECUPERADA_CORRECTAMENTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.REGISTRO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.RECUPERAR_PASS, Constantes.EXITO,
 				getValorRecuperarContrasena(datosEntradaRecuperarPassCorrecto));
-	}
-
-	private DatosPruebaAcciones getTestRecuperarPassPersonaNoExiste(
-			final RecuperarPass datosEntradaRecuperarPassPersonaNoExiste)
-			throws java.text.ParseException, MessagingException {
-
-		final String resultadoObtenido = recuperarPass(datosEntradaRecuperarPassPersonaNoExiste);
-
-		final String resultadoEsperado = CodigosMensajes.PERSONA_NO_EXISTE + " - " + Mensajes.PERSONA_NO_EXISTE;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.PERSONA_NO_EXISTE, Constantes.EXITO,
-				getValorRecuperarContrasena(datosEntradaRecuperarPassPersonaNoExiste));
 	}
 
 	private DatosPruebaAcciones getTestRecuperarPassUsuarioNoEncontrado(
 			final RecuperarPass datosEntradaRecuperarPassUsuarioNoEncontrado)
 			throws java.text.ParseException, MessagingException {
 
-		final String resultadoObtenido = recuperarPass(datosEntradaRecuperarPassUsuarioNoEncontrado);
+		final String resultadoObtenido = recuperarPassUsuarioNoEncontrado(datosEntradaRecuperarPassUsuarioNoEncontrado);
 
 		final String resultadoEsperado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
 
@@ -220,7 +204,7 @@ public class TestRecuperarPassServiceImpl implements TestRecuperarPassService {
 			final RecuperarPass datosEntradaRecuperarPassEmailNoEncontrado)
 			throws java.text.ParseException, MessagingException {
 
-		final String resultadoObtenido = recuperarPass(datosEntradaRecuperarPassEmailNoEncontrado);
+		final String resultadoObtenido = recuperarPassEmailNoEncontrado(datosEntradaRecuperarPassEmailNoEncontrado);
 
 		final String resultadoEsperado = CodigosMensajes.MAIL_NO_ENCONTRADO + " - "
 				+ Mensajes.MAIL_NO_ENCONTRADO_CORRECTAMENTE;
@@ -254,7 +238,145 @@ public class TestRecuperarPassServiceImpl implements TestRecuperarPassService {
 			personaRepository.saveAndFlush(persona);
 			usuarioRepository.saveAndFlush(usuario);
 
-			final UsuarioEntity user = usuarioRepository.findByUsuario(usuario.getUsuario());
+			final UsuarioEntity user = usuarioRepository.findByUsuario(recuperarPass.getUsuario());
+
+			if (user != null) {
+				final Optional<PersonaEntity> personaBD = personaRepository.findById(usuario.getDniUsuario());
+
+				if (personaBD.isPresent()) {
+					if (personaBD.get().getEmailP().equals(recuperarPass.getEmailUsuario())) {
+						passwdTmp = generarPasswdAleatoria();
+
+						final Mail email = new Mail(Constantes.EMISOR_EMAIL, recuperarPass.getEmailUsuario(),
+								Constantes.ASUNTO_EMAIL_RECU, passwdTmp, Constantes.TIPO_CONTENIDO, null);
+
+						final String result = mailServiceImpl.enviarCorreo(email);
+
+						if (result.equals(StringUtils.EMPTY)) {
+							resultado = CodigosMensajes.MAIL_NO_ENVIADO + " - " + Mensajes.ERROR_AL_ENVIAR_MAIL;
+						} else {
+
+							final String passEncrypt = DigestUtils.md5Hex(passwdTmp);
+							user.setPasswdUsuario(passEncrypt);
+							usuarioRepository.saveAndFlush(user);
+
+							resultado = CodigosMensajes.CONTRASEÑA_MODIFICADA_OK + "  - "
+									+ Mensajes.CONTRASEÑA_RECUPERADA_CORRECTAMENTE;
+						}
+
+					} else {
+						resultado = CodigosMensajes.MAIL_NO_ENCONTRADO + " - "
+								+ Mensajes.MAIL_NO_ENCONTRADO_CORRECTAMENTE;
+					}
+				} else {
+					resultado = CodigosMensajes.PERSONA_NO_EXISTE + " - " + Mensajes.PERSONA_NO_EXISTE;
+				}
+			} else {
+				resultado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
+			}
+
+			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
+			personaRepository.deletePersona(persona.getDniP());
+
+		}
+
+		return resultado;
+	}
+
+	private String recuperarPassEmailNoEncontrado(final RecuperarPass recuperarPass)
+			throws MessagingException, java.text.ParseException {
+		String resultado = StringUtils.EMPTY;
+		String passwdTmp = StringUtils.EMPTY;
+
+		if (!validaciones.comprobarUsuarioBlank(recuperarPass.getUsuario())) {
+			resultado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - " + Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarEmailUsuarioBlank(recuperarPass.getEmailUsuario())) {
+			resultado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+		} else {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = format.parse("2000-12-13");
+
+			final EmpresaEntity empresa = new EmpresaEntity(1, "J26903286", "Prueba", "Prueba", "988212121", 0);
+			final PersonaEntity persona = new PersonaEntity("22222222A", "Persona", "Apellidos", date, "Direccion",
+					"977777777", "anaa1312@gmail.com", 0, empresa);
+			final RolEntity rol = new RolEntity(2, "usuario",
+					"Contendrá a todos los usuarios registrados de la aplicación", 0);
+			final UsuarioEntity usuario = new UsuarioEntity("22222222A", "usuario", "usuario", 0, rol);
+
+			personaRepository.saveAndFlush(persona);
+			usuarioRepository.saveAndFlush(usuario);
+
+			final UsuarioEntity user = usuarioRepository.findByUsuario(recuperarPass.getUsuario());
+
+			if (user != null) {
+				final Optional<PersonaEntity> personaBD = personaRepository.findById(usuario.getDniUsuario());
+
+				if (personaBD.isPresent()) {
+					if (personaBD.get().getEmailP().equals(recuperarPass.getEmailUsuario())) {
+						passwdTmp = generarPasswdAleatoria();
+
+						final Mail email = new Mail(Constantes.EMISOR_EMAIL, recuperarPass.getEmailUsuario(),
+								Constantes.ASUNTO_EMAIL_RECU, passwdTmp, Constantes.TIPO_CONTENIDO, null);
+
+						final String result = mailServiceImpl.enviarCorreo(email);
+
+						if (result.equals(StringUtils.EMPTY)) {
+							resultado = CodigosMensajes.MAIL_NO_ENVIADO + " - " + Mensajes.ERROR_AL_ENVIAR_MAIL;
+						} else {
+
+							final String passEncrypt = DigestUtils.md5Hex(passwdTmp);
+							user.setPasswdUsuario(passEncrypt);
+							usuarioRepository.saveAndFlush(user);
+
+							resultado = CodigosMensajes.CONTRASEÑA_MODIFICADA_OK + "  - "
+									+ Mensajes.CONTRASEÑA_RECUPERADA_CORRECTAMENTE;
+						}
+
+					} else {
+						resultado = CodigosMensajes.MAIL_NO_ENCONTRADO + " - "
+								+ Mensajes.MAIL_NO_ENCONTRADO_CORRECTAMENTE;
+					}
+				} else {
+					resultado = CodigosMensajes.PERSONA_NO_EXISTE + " - " + Mensajes.PERSONA_NO_EXISTE;
+				}
+			} else {
+				resultado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
+			}
+
+			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
+			personaRepository.deletePersona(persona.getDniP());
+
+		}
+
+		return resultado;
+	}
+
+	private String recuperarPassUsuarioNoEncontrado(final RecuperarPass recuperarPass)
+			throws MessagingException, java.text.ParseException {
+		String resultado = StringUtils.EMPTY;
+		String passwdTmp = StringUtils.EMPTY;
+
+		if (!validaciones.comprobarUsuarioBlank(recuperarPass.getUsuario())) {
+			resultado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - " + Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarEmailUsuarioBlank(recuperarPass.getEmailUsuario())) {
+			resultado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+		} else {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = format.parse("2000-12-13");
+
+			final EmpresaEntity empresa = new EmpresaEntity(1, "J26903286", "Prueba", "Prueba", "988212121", 0);
+			final PersonaEntity persona = new PersonaEntity("33333333A", "Persona", "Apellidos", date, "Direccion",
+					"977777777", "anaa1312@gmail.com", 0, empresa);
+			final RolEntity rol = new RolEntity(2, "usuario",
+					"Contendrá a todos los usuarios registrados de la aplicación", 0);
+			final UsuarioEntity usuario = new UsuarioEntity("33333333A", "usuario", "usuario", 0, rol);
+
+			personaRepository.saveAndFlush(persona);
+			usuarioRepository.saveAndFlush(usuario);
+
+			final UsuarioEntity user = usuarioRepository.findByUsuario(recuperarPass.getUsuario());
 
 			if (user != null) {
 				final Optional<PersonaEntity> personaBD = personaRepository.findById(usuario.getDniUsuario());

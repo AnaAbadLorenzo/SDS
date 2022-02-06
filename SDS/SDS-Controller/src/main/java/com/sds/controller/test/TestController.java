@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.mail.MessagingException;
+
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,10 +89,9 @@ public class TestController {
 		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
 
 		try {
-			// final List<DatosPruebaAtributos> pruebaAtributoUsuario =
-			// testRecuperarPass.getPruebasAtributoUsuario();
+			final List<DatosPruebaAtributos> pruebaAtributoUsuario = testRecuperarPass.getPruebasAtributoUsuario();
 			final List<DatosPruebaAtributos> pruebaAtributoEmail = testRecuperarPass.getPruebasAtributoEmail();
-			// resultadoPruebasAtributos.addAll(pruebaAtributoUsuario);
+			resultadoPruebasAtributos.addAll(pruebaAtributoUsuario);
 			resultadoPruebasAtributos.addAll(pruebaAtributoEmail);
 		} catch (IOException | ParseException | java.text.ParseException e) {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_KO, StringUtils.EMPTY);
@@ -121,6 +122,27 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_LOGIN_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/test/recuperarPass/acciones")
+	@ResponseBody
+	public RespEntity TestRecuperarPassAcciones() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			final List<DatosPruebaAcciones> pruebaAtributoAcciones = testRecuperarPass
+					.getPruebasAccionesRecuperarPass();
+			datosPruebaAcciones.addAll(pruebaAtributoAcciones);
+		} catch (IOException | ParseException | java.text.ParseException | MessagingException e) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_KO, StringUtils.EMPTY);
+		}
+		respuestaTestAcciones.setFuncionalidad(Constantes.LOGIN);
+		respuestaTestAcciones.setAccion(Constantes.RECUPERAR_PASS);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_OK, respuestaTestAcciones);
 	}
 
 	@GetMapping(value = "/test/registrar/atributos")

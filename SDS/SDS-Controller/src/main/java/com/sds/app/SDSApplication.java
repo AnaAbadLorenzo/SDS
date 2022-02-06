@@ -44,6 +44,7 @@ public class SDSApplication {
 					.antMatchers(HttpMethod.GET, "/test/registrar/atributos").permitAll()
 					.antMatchers(HttpMethod.GET, "/test/login/atributos").permitAll()
 					.antMatchers(HttpMethod.GET, "/test/recuperarPass/atributos").permitAll()
+					.antMatchers(HttpMethod.GET, "/test/recuperarPass/acciones").permitAll()
 					.antMatchers(HttpMethod.GET, "/test/login/acciones").permitAll()
 					.antMatchers(HttpMethod.GET, "/test/rol/atributos/guardar").permitAll()
 					.antMatchers(HttpMethod.GET, "/test/rol/atributos/modificar").permitAll()
