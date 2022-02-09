@@ -196,6 +196,8 @@ public class PersonaServiceImpl implements PersonaService {
 						personaRepository.saveAndFlush(personaEntity);
 						usuarioRepository.saveAndFlush(usuarioEntity);
 
+						resultado = Constantes.OK;
+
 						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(personaAñadir.getUsuario(),
 								Constantes.ACCION_AÑADIR_PERSONA, personaAñadir.getPersonaEntity().toString());
 

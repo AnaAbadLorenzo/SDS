@@ -71,7 +71,7 @@ public class PersonaController {
 		try {
 			String resultado;
 			resultado = personaService.eliminarPersona(persona);
-			return new RespEntity(RespCode.PERSONA_ELIMINADA, persona);
+			return new RespEntity(RespCode.PERSONA_ELIMINADA, resultado);
 		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
 			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, persona);
 		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
@@ -104,7 +104,7 @@ public class PersonaController {
 					return new RespEntity(RespCode.USUARIO_VACIO, persona);
 				}
 
-				return new RespEntity(RespCode.PERSONA_GUARDADA, persona);
+				return new RespEntity(RespCode.PERSONA_GUARDADA, resultado);
 			}
 		} catch (final PersonaYaExisteException personaYaExiste) {
 			return new RespEntity(RespCode.PERSONA_YA_EXISTE, personaYaExiste);
@@ -135,10 +135,50 @@ public class PersonaController {
 					return new RespEntity(RespCode.PERSONA_VACIA, persona);
 				}
 
-				return new RespEntity(RespCode.PERSONA_GUARDADA, persona);
+				return new RespEntity(RespCode.PERSONA_MODIFICADA, resultado);
 			}
 		} catch (final PersonaNoExisteException personaNoExiste) {
 			return new RespEntity(RespCode.PERSONA_NO_EXISTE, persona);
+		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, persona);
+		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, persona);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
+		}
+
+		return new RespEntity(RespCode.PERSONA_VACIA, persona);
+	}
+
+	@RequestMapping(value = "/anadirPersona", method = RequestMethod.POST)
+	@ResponseBody
+	public RespEntity anadirPersona(@RequestBody final PersonaAñadir persona) {
+		try {
+			final Boolean personaValida = validaciones.comprobarPersonaBlank(persona.getPersonaEntity());
+
+			if (personaValida) {
+				final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(persona.getUsuarioEntity());
+				if (usuarioValido) {
+					String resultado;
+					resultado = personaService.añadirPersona(persona);
+
+					if (CodeMessageErrors.PERSONA_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.PERSONA_VACIA, persona);
+					}
+
+					if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.USUARIO_VACIO, persona);
+					}
+
+					return new RespEntity(RespCode.PERSONA_GUARDADA, resultado);
+				} else {
+					return new RespEntity(RespCode.USUARIO_VACIO, persona);
+				}
+			}
+		} catch (final UsuarioYaExisteException usuarioYaExiste) {
+			return new RespEntity(RespCode.USUARIO_YA_EXISTE, persona);
+		} catch (final PersonaYaExisteException personaYaExiste) {
+			return new RespEntity(RespCode.PERSONA_YA_EXISTE, persona);
 		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
 			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, persona);
 		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {

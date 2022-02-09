@@ -35,6 +35,7 @@ public enum RespCode {
 	USUARIO_GUARDADO("USUARIO_GUARDADO", "El usuario se ha guardado correctamente"), //
 	USUARIO_ELIMINADO("USUARIO_ELIMINADO", "El usuario se ha eliminado correctamente"), //
 	USUARIO_MODIFICADO("USUARIO_MODIFICADO", "El usuario se ha modificado correctamente"), //
+	USUARIO_MODIFICAR_VACIO("USUARIO_MODIFICAR_VACIO", "El usuario y/o el rol es vacio"), //
 	RECUPERAR_PASS_OK("RECUPERAR_PASS_OK", "La nueva contraseña se ha enviado correctamente"), //
 	USUARIO_AÑADIR_VACIO("USUARIO_AÑADIR_VACIO", "Los datos de usuario y/o persona son vacios"), //
 	ROL_YA_EXISTE_EXCEPTION("ROL_YA_EXISTE", "El rol ya existe"), //

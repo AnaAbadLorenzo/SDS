@@ -25,6 +25,7 @@ public enum CodeMessageErrors {
 	ACCION_YA_EXISTE_EXCEPTION("La accion ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("La accion que busca no existe"), //
 	ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION("La accion esta asociada con una accion y una funcionalidad"), //
+	USUARIO_MODIFICAR_VACIO("El suuario/rol a modificar es vacío"), //
 	MAIL_NO_ENVIADO_EXCEPTION("Se ha producido un error al enviar el email"), //
 	ROL_VACIO("Rol vacío"), //
 	USUARIO_VACIO("Usuario vacío"), //

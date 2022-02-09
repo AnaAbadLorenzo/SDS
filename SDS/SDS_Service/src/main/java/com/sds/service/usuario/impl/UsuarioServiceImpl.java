@@ -249,10 +249,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 									CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 				}
 			} else {
-				resultado = CodeMessageErrors.ROL_VACIO.name();
+				resultado = CodeMessageErrors.USUARIO_VACIO.name();
 			}
 		} else {
-			resultado = CodeMessageErrors.USUARIO_VACIO.name();
+			resultado = CodeMessageErrors.ROL_VACIO.name();
 		}
 
 		return resultado;

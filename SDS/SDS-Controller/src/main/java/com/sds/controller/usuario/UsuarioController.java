@@ -1,5 +1,6 @@
 package com.sds.controller.usuario;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
 import com.sds.service.usuario.model.UsuarioBuscar;
 import com.sds.service.usuario.model.UsuarioModificar;
+import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
 @RestController
@@ -80,22 +82,38 @@ public class UsuarioController {
 	@RequestMapping(value = "/modificarRolUsuario", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity modificarRol(@RequestBody final UsuarioModificar usuarioModificar) {
+		Boolean usuarioModificarValido;
 		try {
-			String resultado;
-			try {
-				resultado = usuarioService.modificarRolUsuario(usuarioModificar.getRolEntity(),
-						usuarioModificar.getUsuario());
-				return new RespEntity(RespCode.ROL_USUARIO_MODIFICADO_OK, resultado);
-			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
-				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuarioModificar);
-			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
-				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuarioModificar);
+			usuarioModificarValido = validaciones.comprobarUsuarioModificarBlank(usuarioModificar);
+			if (usuarioModificarValido) {
+				String resultado;
+				try {
+					resultado = usuarioService.modificarRolUsuario(usuarioModificar.getRolEntity(),
+							usuarioModificar.getUsuario());
+					if (CodeMessageErrors.ROL_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.ROL_VACIO, usuarioModificar);
+					}
+
+					if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.USUARIO_VACIO, usuarioModificar);
+					}
+
+					return new RespEntity(RespCode.ROL_USUARIO_MODIFICADO_OK, resultado);
+
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuarioModificar);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuarioModificar);
+				}
 			}
+
 		} catch (final RolNoExisteException rolNoExiste) {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, usuarioModificar);
 		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
 			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuarioModificar);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioModificar);
 		}
+		return new RespEntity(RespCode.USUARIO_MODIFICAR_VACIO, usuarioModificar);
 	}
-
 }
