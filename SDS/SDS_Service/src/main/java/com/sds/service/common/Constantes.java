@@ -5,9 +5,13 @@ public class Constantes {
 	// Constantes para las funcionalidades
 	public static final String LOGIN = "Login";
 	public static final String REGISTRAR = "Registrar";
+	public static final String RECUPERAR_PASS = "Recuperar contrasena usuario";
 	public static final String GESTION_ROLES = "Gestión de roles";
 	public static final String GESTION_ACCIONES = "Gestión de acciones";
 	public static final String GESTION_FUNCIONALIDADES = "Gestión de funcionalidades";
+	public static final String GESTION_USUARIOS = "Gestión de usuarios";
+	public static final String GESTION_PERSONAS = "Gestión de personas";
+
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
@@ -15,6 +19,7 @@ public class Constantes {
 	public static final String ACCION_AÑADIR_USUARIO = "Añadir usuario";
 	public static final String ACCION_MODIFICAR_USUARIO = "Modificar usuario";
 	public static final String ACCION_ELIMINAR_USUARIO = "Eliminar usuario";
+	public static final String ACCION_BUSCAR_USUARIO = "Buscar usuario";
 	public static final String ACCION_AÑADIR_PERSONA = "Añadir persona";
 	public static final String ACCION_MODIFICAR_PERSONA = "Modificar persona";
 	public static final String ACCION_ELIMINAR_PERSONA = "Eliminar persona";
@@ -30,6 +35,11 @@ public class Constantes {
 	public static final String ACCION_ELIMINAR_FUNCIONALIDAD = "Eliminar funcionalidad";
 	public static final String ACCION_BUSCAR_FUNCIONALIDAD = "Buscar funcionalidad";
 
+	public static final String ACCION_AÑADIR_EMPRESA = "Añadir empresa";
+
+	public static final String ACCION_MODIFICAR_ROL_USUARIO = "Modificar rol de usuario";
+	public static final String ACCION_MODIFICAR_PASSWD_USUARIO = "Modificar contraseña de usuario";
+
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";
@@ -43,6 +53,7 @@ public class Constantes {
 	public static final String PASSWD_USUARIO = "passwdUsuario";
 	public static final String USUARIO = "usuario";
 	public static final String DNIP = "dniP";
+	public static final String DNI_USUARIO = "dniUsuario";
 	public static final String NOMBREP = "nombreP";
 	public static final String APELLIDOSP = "apellidosP";
 	public static final String FECHANACP = "fechaNacP";
@@ -68,10 +79,16 @@ public class Constantes {
 	public static final String FUNCIONALIDAD_NAME = "nombreFuncionalidad";
 	public static final String FUNCIONALIDAD_DESCRIPTION = "descripFuncionalidad";
 
+	public static final String USUARIO_DNI = "dniUsuario";
+	public static final String USER = "user";
+
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_CONTRASENA = "classpath:LoginServiceAtributosContrasena.json";
+	public static final String URL_JSON_RECUPERARPASS_DATA = "classpath:RecuperarPassServiceData.json";
+	public static final String URL_JSON_RECUPERARPASS_ATRIBUTOS_USUARIO = "classpath:RecuperarPassServiceAtributosUsuario.json";
+	public static final String URL_JSON_RECUPERARPASS_ATRIBUTOS_EMAIL = "classpath:RecuperarPassServiceAtributosEmail.json";
 	public static final String URL_JSON_REGISTRAR_DATA = "classpath:RegistroServiceData.json";
 	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_DNIP = "classpath:RegistroServiceAtributosDniPersona.json";
 	public static final String URL_JSON_REGISTRAR_ATRIBUTOS_NOMBREP = "classpath:RegistroServiceAtributosNombrePersona.json";
@@ -97,8 +114,20 @@ public class Constantes {
 	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME = "classpath:FuncionalidadServiceAtributosFuncionalidadName.json";
 	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION = "classpath:FuncionalidadServiceAtributosFuncionalidadDescription.json";
 	public static final String URL_JSON_FUNCIONALIDAD_DATA = "classpath:FuncionalidadServiceData.json";
-	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_ACCIONNAME = "classpath:FuncionalidadServiceAtributosFuncionalidadName.json";
-	public static final String URL_JSON_FUNCIONALIDAD_ATRIBUTOS_ACCIONDESCRIPTION = "classpath:FuncionalidadServiceAtributosFuncionalidadDescription.json";
+	public static final String URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO = "classpath:UsuarioServiceAtributosDniUsuario.json";
+	public static final String URL_JSON_USUARIO_ATRIBUTOS_NOMBREUSUARIO = "classpath:UsuarioServiceAtributosNombreUsuario.json";
+	public static final String URL_JSON_USUARIO_ATRIBUTOS_PASSWDUSUARIO = "classpath:UsuarioServiceAtributosPasswdUsuario.json";
+	public static final String URL_JSON_USUARIO_DATA = "classpath:UsuarioServiceData.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_DNIP = "classpath:PersonaServiceAtributosDniPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_NOMBREP = "classpath:PersonaServiceAtributosNombrePersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_APELLIDOSP = "classpath:PersonaServiceAtributosApellidosPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_DIRECCIONP = "classpath:PersonaServiceAtributosDireccionPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_TELEFONOP = "classpath:PersonaServiceAtributosTelefonoPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_EMAILP = "classpath:PersonaServiceAtributosEmailPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_FECHANACP = "classpath:PersonaServiceAtributosFechaNacPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_USUARIO = "classpath:PersonaServiceAtributosUsuarioPersona.json";
+	public static final String URL_JSON_PERSONA_ATRIBUTOS_CONTRASENA = "classpath:PersonaServiceAtributosContrasenaPersona.json";
+	public static final String URL_JSON_PERSONA_DATA = "classpath:PersonaServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -113,6 +142,7 @@ public class Constantes {
 	public static final String ELIMINAR_ROL = "eliminarRol";
 	public static final String ELIMINAR_ROL_NO_EXISTE = "eliminarRolNoExiste";
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "eliminarRolAsociadoUsuario";
+	public static final String ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD = "eliminarRolAsociadoAccionFuncionalidad";
 	public static final String MODIFICAR_ROL = "modificarRol";
 
 	public static final String BUSCAR_ACCION = "buscarAccionCorrecto";
@@ -135,6 +165,19 @@ public class Constantes {
 	public static final String MODIFICAR_FUNCIONALIDAD = "modificarFuncionalidad";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "eliminarFuncionalidadAsociadaRolAccion";
 
+	public static final String BUSCAR_USUARIO = "buscarUsuarioCorrecto";
+	public static final String USUARIO_DNI_NOMBRE_VACIOS = "usuarioDniNombreVacios";
+	public static final String ELIMINAR_USUARIO = "eliminarUsuario";
+	public static final String GUARDAR_USUARIO = "guardarUsuario";
+	public static final String MODIFICAR_ROL_USUARIO = "modificarRolUsuario";
+	public static final String MODIFICAR_PASSWD_USUARIO = "modificarPasswdUsuario";
+	public static final String ROL_USUARIO = "rolUsuario";
+
+	public static final String BUSCAR_PERSONA = "buscarPersonaCorrecto";
+	public static final String GUARDAR_PERSONA = "guardarPersonaCorrecto";
+	public static final String ELIMINAR_PERSONA = "eliminarPersonaCorrecto";
+	public static final String PERSONA_NO_EXISTE = "personaNoExiste";
+
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
 	public static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";
 	public static final String DNIP_VACIO_DATA = "dniPVacio";
@@ -156,6 +199,8 @@ public class Constantes {
 	public static final String ACCION_DESCRIPTION_VACIO_DATA = "accionDescriptionVacio";
 	public static final String FUNCIONALIDAD_NAME_VACIO_DATA = "funcionalidadNameVacio";
 	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO_DATA = "funcionalidadDescriptionVacio";
+	public static final String PARAMETROS_PERSONA_VACIOS_DATA = "parametrosPersonaVacios";
+	public static final String PARAMETROS_USUARIO_VACIOS = "parametrosUsuarioVacios";
 
 	public static final String USUARIO_ALFANUMERICO_ENHE_DATA = "usuarioAlfanumericoEnhe";
 	public static final String CONTRASENA_ALFANUMERICA_ENHE_DATA = "contrasenaAlfanumericaEnhe";
@@ -303,6 +348,9 @@ public class Constantes {
 	public static final String USUARIO_YA_EXISTE = "usuarioYaExiste";
 	public static final String EMPRESA_YA_EXISTE = "empresaYaExiste";
 	public static final String REGISTRO_CORRECTO = "registroCorrecto";
+
+	public static final String EMAIL_NO_ENCONTRADO = "emailNoEncontrado";
+	public static final String RECUPERAR_PASS_CORRECTO = "recuperarPassCorrecto";
 
 	public static final String OK = "OK";
 

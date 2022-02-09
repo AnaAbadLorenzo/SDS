@@ -17,7 +17,7 @@ import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
 import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.registro.model.Registro;
-import com.sds.service.usuario.model.UsuarioAñadir;
+import com.sds.service.usuario.model.UsuarioModificar;
 
 public class Validaciones {
 
@@ -57,6 +57,71 @@ public class Validaciones {
 		}
 
 		return true;
+	}
+
+	public Boolean comprobarDniPersonaBlank(final String dniPersona) {
+		if (StringUtils.isBlank(dniPersona)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarNombrePersonaBlank(final String nombreP) {
+		if (StringUtils.isBlank(nombreP)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarApellidosPersonaBlank(final String apellidosP) {
+		if (StringUtils.isBlank(apellidosP)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarDireccionPersonaBlank(final String direccionP) {
+		if (StringUtils.isBlank(direccionP)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarTelefonoPersonaBlank(final String telefonoP) {
+		if (StringUtils.isBlank(telefonoP)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarEmailBlank(final String emailP) {
+		if (StringUtils.isBlank(emailP)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public Boolean comprobarFechaNacPersonaBlank(final String fechaNacP) throws ParseException {
+		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		java.sql.Date fechaSql;
+
+		Date date = null;
+		date = formato.parse("0000-00-00");
+		fechaSql = new java.sql.Date(date.getTime());
+		final String fecha = fechaSql.toString();
+
+		if (fechaNacP.equals(fecha)) {
+			return false;
+
+		} else {
+			return true;
+		}
 	}
 
 	public boolean comprobarUsuarioBlank(final UsuarioEntity usuario) {
@@ -199,9 +264,9 @@ public class Validaciones {
 		}
 	}
 
-	public boolean comprobarUsuarioAñadirBlank(final UsuarioAñadir usuarioAñadir) throws ParseException {
-		if (!comprobarUsuarioBlank(usuarioAñadir.getUsuarioEntity())
-				|| !comprobarPersonaBlank(usuarioAñadir.getPersonaEntity())) {
+	public boolean comprobarUsuarioModificarBlank(final UsuarioModificar usuarioModificar) throws ParseException {
+		if (!comprobarUsuarioBlank(usuarioModificar.getUsuario().getUsuarioEntity())
+				|| !comprobarRolBlank(usuarioModificar.getRolEntity())) {
 			return false;
 		}
 

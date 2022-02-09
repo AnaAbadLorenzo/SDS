@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
+import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.CodigosMensajes;
@@ -43,6 +44,9 @@ public class TestRolServiceImpl implements TestRolService {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
+
+	@Autowired
+	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
 
 	public TestRolServiceImpl() {
 		testAtributoRolName = new TestAtributoRolName();
@@ -228,10 +232,14 @@ public class TestRolServiceImpl implements TestRolService {
 				Constantes.ELIMINAR_ROL_NO_EXISTE);
 		final RolEntity datosEntradaRolEliminarRolAsociadoUsuario = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL_ASOCIADO_USUARIO);
+		final RolEntity datosEntradaRolEliminarRolAsociadoAccionFuncionalidad = generarJSON
+				.generarRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD);
 
 		datosPruebaAcciones.add(getTestEliminarRol(datosEntradaRolEliminarRol));
 		datosPruebaAcciones.add(getTestEliminarRolAsociadoUsuario(datosEntradaRolEliminarRolAsociadoUsuario));
 		datosPruebaAcciones.add(getTestEliminarRolNoExiste(datosEntradaRolEliminarRolNoExiste));
+		datosPruebaAcciones.add(
+				getTestEliminarRolAsociadoAccionFuncionalidad(datosEntradaRolEliminarRolAsociadoAccionFuncionalidad));
 
 		return datosPruebaAcciones;
 	}
@@ -271,19 +279,6 @@ public class TestRolServiceImpl implements TestRolService {
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO, getValorRol(datosEntradaRolbuscarRol));
-
-	}
-
-	private DatosPruebaAcciones getTestBuscarRolNameDescriptionVacio(
-			final RolEntity datosEntradaRolbuscarRolNameDescriptionVacio) {
-
-		final String resultadoObtenido = buscarRol(datosEntradaRolbuscarRolNameDescriptionVacio);
-
-		final String resultadoEsperado = CodigosMensajes.BUSCAR_ROL_CORRECTO + " - " + Mensajes.BUSCAR_ROL_CORRECTO;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO,
-				getValorRol(datosEntradaRolbuscarRolNameDescriptionVacio));
 
 	}
 
@@ -378,6 +373,20 @@ public class TestRolServiceImpl implements TestRolService {
 				getValorRol(datosEntradaRolEliminarRolNoExiste));
 	}
 
+	private DatosPruebaAcciones getTestEliminarRolAsociadoAccionFuncionalidad(
+			final RolEntity datosEntradaRolEliminarRolAsociadoAccionFuncionalidad) {
+
+		final String resultadoObtenido = eliminarRolAsociadoAccionFuncionalidad(
+				datosEntradaRolEliminarRolAsociadoAccionFuncionalidad);
+
+		final String resultadoEsperado = CodigosMensajes.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD + " - "
+				+ Mensajes.ELIMINAR_ROL_ASOCIADA_ACCION_FUNCIONALIDAD;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD, Constantes.EXITO,
+				getValorRol(datosEntradaRolEliminarRolAsociadoAccionFuncionalidad));
+	}
+
 	private DatosPruebaAcciones getTestModificarRol(final RolEntity datosEntradaRolModificarRol) {
 
 		final String resultadoObtenido = modificarRol(datosEntradaRolModificarRol);
@@ -438,7 +447,7 @@ public class TestRolServiceImpl implements TestRolService {
 		String resultado = StringUtils.EMPTY;
 
 		List<RolEntity> rolUser = new ArrayList<>();
-		rolUser = rolRepository.findRol(rol.getRolName(), "");
+		rolUser = rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
 
 		resultado = CodigosMensajes.BUSCAR_ROL_CORRECTO + " - " + Mensajes.BUSCAR_ROL_CORRECTO;
 
@@ -578,6 +587,24 @@ public class TestRolServiceImpl implements TestRolService {
 		}
 
 		return resultado;
+	}
+
+	private String eliminarRolAsociadoAccionFuncionalidad(final RolEntity rol) {
+		final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
+		String resultado = StringUtils.EMPTY;
+
+		if (rolUsuario != null) {
+			final List<Integer> rolAccionFuncionalidad = rolAccionFuncionalidadRepository
+					.findFuncionalityByRolId(rol.getIdRol());
+
+			if (!rolAccionFuncionalidad.isEmpty()) {
+				resultado = CodigosMensajes.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD + " - "
+						+ Mensajes.ELIMINAR_ROL_ASOCIADA_ACCION_FUNCIONALIDAD;
+			}
+		}
+
+		return resultado;
+
 	}
 
 	private Map<String, String> getValorRol(final RolEntity rol) {

@@ -7,6 +7,12 @@ public class Empresa {
 	public String usuario;
 	public EmpresaEntity empresa;
 
+	public Empresa(final String usuario, final EmpresaEntity empresa) {
+		super();
+		this.usuario = usuario;
+		this.empresa = empresa;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

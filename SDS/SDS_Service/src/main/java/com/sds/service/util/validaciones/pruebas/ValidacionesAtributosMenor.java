@@ -125,6 +125,66 @@ public class ValidacionesAtributosMenor {
 					break;
 				}
 
+			case GESTION_USUARIOS:
+				switch (atr) {
+				case DNI_USUARIO:
+					resultado = CodigosMensajes.DNI_PERSONA_MENOR_QUE_9 + " - " + Mensajes.DNI_NO_PUEDE_SER_MENOR_QUE_9;
+					break;
+				case USUARIO:
+					resultado = CodigosMensajes.LOGIN_MENOR_QUE_3 + " - "
+							+ Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case PASSWD_USUARIO:
+					resultado = CodigosMensajes.PASS_MENOR_QUE_3 + " - "
+							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+
+				}
+
+			case GESTION_PERSONAS:
+				switch (atr) {
+				case DNI_PERSONA:
+					resultado = CodigosMensajes.DNI_PERSONA_MENOR_QUE_9 + " - " + Mensajes.DNI_NO_PUEDE_SER_MENOR_QUE_9;
+					break;
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_MENOR_QUE_3 + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case APELLIDOS_PERSONA:
+					resultado = CodigosMensajes.APELLIDOS_PERSONA_MENOR_QUE_3 + " - "
+							+ Mensajes.APELLIDOS_PERSONA_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case EMAIL:
+					resultado = CodigosMensajes.EMAIL_MENOR_QUE_4 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MENOR_QUE_4;
+					break;
+				case TELEFONO:
+					resultado = CodigosMensajes.TELEFONO_MENOR_QUE_9 + " - "
+							+ Mensajes.TELEFONO_NO_PUEDE_SER_MENOR_QUE_9;
+					break;
+				case DIRECCION:
+					resultado = CodigosMensajes.DIRECCION_MENOR_QUE_3 + " - "
+							+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case USUARIO:
+					resultado = CodigosMensajes.LOGIN_MENOR_QUE_3 + " - "
+							+ Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case PASSWD_USUARIO:
+					resultado = CodigosMensajes.PASS_MENOR_QUE_3 + " - "
+							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				default:
+					break;
+				}
+			case RECUPERAR_PASS:
+				switch (atr) {
+				case USUARIO:
+					resultado = CodigosMensajes.LOGIN_MENOR_QUE_3 + " - "
+							+ Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case EMAIL:
+					resultado = CodigosMensajes.EMAIL_MENOR_QUE_4 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MENOR_QUE_4;
+					break;
+				}
 			default:
 				break;
 			}

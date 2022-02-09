@@ -1,0 +1,52 @@
+{ 
+	"usuarioVacio" : {
+		"dniUsuario":"45146321N",
+		"usuario" : "",
+		"passwdUsuario" : ""
+	},
+ 	"usuarioAlfanumericoEnhe" : {
+		"dniUsuario":"45146321N",
+ 		"usuario" : "aicuña",
+		"passwdUsuario" : "prueba"
+ 	},
+ 	"usuarioAlfanumericoAcentos" : {
+	"dniUsuario":"45146321N",
+ 		"usuario" : "águila",
+		"passwdUsuario" : ""
+ 	},
+ 	"usuarioAlfanumericoCaracteresEspeciales" : {
+		"dniUsuario":"45146321N",
+ 		"usuario" : "aicuna?",
+		"passwdUsuario" : "prueba"
+ 	},
+ 	"usuarioAlfanumericoEspacios":  {
+		"dniUsuario":"45146321N",
+ 		"usuario" : "aic 87",
+		"passwdUsuario" : "prueba"
+ 	},
+ 	"usuarioAlfanumericoMenor3":  {
+		"dniUsuario":"45146321N",
+ 		"usuario" : "ai",
+		"passwdUsuario" : "aicuna"
+ 	},
+ 	"usuarioAlfanumericoMayor45":  {
+		"dniUsuario":"45146321N",
+ 		"usuario" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		"passwdUsuario" : "aicuna"
+ 	},
+ 	"usuarioAlfabetico" : {
+		"dniUsuario":"45146321N",
+		"usuario" : "aicuna",
+		"passwdUsuario" : ""
+	},
+	"usuarioAlfanumerico" : {
+		"dniUsuario":"45146321N",
+		"usuario" : "aicuna87",
+		"passwdUsuario" : ""
+	},
+	"usuarioNumerico" : {
+		"dniUsuario":"45146321N",
+		"usuario" : "12387",
+		"passwdUsuario" : ""
+	}
+}

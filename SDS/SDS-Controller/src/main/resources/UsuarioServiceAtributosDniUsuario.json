@@ -1,0 +1,63 @@
+{
+	"dniPVacio": {
+		"dniUsuario":"",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	"dniPersonaAlfanumericoEnhe": {
+		"dniUsuario": "78451254ñ",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+		
+	},
+	"dniPersonaAlfanumericoAcentos": {
+		"dniUsuario": "78451254Ó",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	"dniPersonaAlfanumericoCaracteresEspeciales": {
+		"dniUsuario": "**//@@*",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	
+	"dniPersonaAlfanumericoEspacios":{
+		"dniUsuario": "4565 5412L",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	
+	"dniPAlfanumericoMenor9":{
+		"dniUsuario": "34K",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	
+	"dniPAlfanumericoMayor9":{
+		"dniUsuario": "1234567894P",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	
+	"dniPersonaAlfabetico":{
+		"dniUsuario": "AAAAAAAAA",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+		
+	},
+	
+	"dniPersonaAlfanumerico":{
+		"dniUsuario": "45789654T",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+	},
+	
+	"dniPersonaNumerico":{
+		"dniUsuario": "788945561",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+		
+	}
+	
+	
+}

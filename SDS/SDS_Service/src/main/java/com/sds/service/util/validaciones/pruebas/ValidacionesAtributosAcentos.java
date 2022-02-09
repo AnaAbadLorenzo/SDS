@@ -87,7 +87,66 @@ public class ValidacionesAtributosAcentos {
 					case CIF_EMPRESA:
 						resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
 								+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
 					default:
+						break;
+					}
+
+				case GESTION_USUARIOS:
+					switch (atr) {
+					case DNI_USUARIO:
+						resultado = CodigosMensajes.DNI_PERSONA_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.DNI_PERSONA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case USUARIO:
+						resultado = CodigosMensajes.LOGIN_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.LOGIN_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case PASSWD_USUARIO:
+						resultado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					}
+
+				case GESTION_PERSONAS: {
+					switch (atr) {
+					case DNI_PERSONA:
+						resultado = CodigosMensajes.DNI_PERSONA_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.DNI_PERSONA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+
+					case TELEFONO:
+						resultado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
+								+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+						break;
+
+					case EMAIL:
+						resultado = CodigosMensajes.EMAIL_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case USUARIO:
+						resultado = CodigosMensajes.LOGIN_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.LOGIN_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case PASSWD_USUARIO:
+						resultado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+
+					default:
+						break;
+					}
+				}
+
+				case RECUPERAR_PASS:
+					switch (atr) {
+					case USUARIO:
+						resultado = CodigosMensajes.LOGIN_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.LOGIN_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case EMAIL:
+						resultado = CodigosMensajes.EMAIL_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 						break;
 					}
 				default:

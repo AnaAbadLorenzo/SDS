@@ -15,18 +15,17 @@ import com.sds.model.RespEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.exception.PersonaYaExisteException;
+import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
-import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
-import com.sds.service.usuario.model.UsuarioAñadir;
 import com.sds.service.usuario.model.UsuarioBuscar;
+import com.sds.service.usuario.model.UsuarioModificar;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping(value = "/usuario")
 public class UsuarioController {
 
 	private final Validaciones validaciones;
@@ -62,85 +61,59 @@ public class UsuarioController {
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/usuario", method = RequestMethod.POST)
-	@ResponseBody
-	public RespEntity insertarUsuario(@RequestBody final UsuarioAñadir usuarioAñadir) {
-		Boolean usuarioValido;
-		try {
-			usuarioValido = validaciones.comprobarUsuarioAñadirBlank(usuarioAñadir);
-			if (usuarioValido) {
-				String resultado;
-				try {
-					resultado = usuarioService.añadirUsuario(usuarioAñadir);
-
-					if (CodeMessageErrors.USUARIO_AÑADIR_VACIO.name().equals(resultado)) {
-						return new RespEntity(RespCode.USUARIO_AÑADIR_VACIO, usuarioAñadir);
-					}
-
-					return new RespEntity(RespCode.USUARIO_GUARDADO, usuarioAñadir);
-				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
-					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuarioAñadir);
-				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
-					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuarioAñadir);
-				}
-			}
-		} catch (final UsuarioYaExisteException usuarioYaExiste) {
-			return new RespEntity(RespCode.USUARIO_YA_EXISTE, usuarioAñadir);
-		} catch (final PersonaYaExisteException personaYaExiste) {
-			return new RespEntity(RespCode.PERSONA_YA_EXISTE, usuarioAñadir);
-		} catch (final ParseException parseException) {
-			return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioAñadir);
-		}
-
-		return new RespEntity(RespCode.USUARIO_AÑADIR_VACIO, usuarioAñadir);
-
-	}
-
 	@RequestMapping(value = "/eliminarUsuario", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity eliminarUsuario(@RequestBody final Usuario usuario) {
 		try {
 			String resultado;
-			resultado = usuarioService.eliminarUsuario(usuario);
-			return new RespEntity(RespCode.USUARIO_ELIMINADO, resultado);
-		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
-			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
-		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
-			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
+			try {
+				resultado = usuarioService.eliminarUsuario(usuario);
+				return new RespEntity(RespCode.USUARIO_ELIMINADO, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
+			}
 		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
 			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuario);
 		}
 	}
 
-	@RequestMapping(value = "/modificarUsuario", method = RequestMethod.POST)
+	@RequestMapping(value = "/modificarRolUsuario", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity modificarUsuario(@RequestBody final Usuario usuario) {
-		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuario.getUsuarioEntity());
-
-		if (usuarioValido) {
-			try {
+	public RespEntity modificarRol(@RequestBody final UsuarioModificar usuarioModificar) {
+		Boolean usuarioModificarValido;
+		try {
+			usuarioModificarValido = validaciones.comprobarUsuarioModificarBlank(usuarioModificar);
+			if (usuarioModificarValido) {
 				String resultado;
 				try {
-
-					resultado = usuarioService.modificarUsuario(usuario);
+					resultado = usuarioService.modificarRolUsuario(usuarioModificar.getRolEntity(),
+							usuarioModificar.getUsuario());
+					if (CodeMessageErrors.ROL_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.ROL_VACIO, usuarioModificar);
+					}
 
 					if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
-						return new RespEntity(RespCode.USUARIO_VACIO, usuario);
-
+						return new RespEntity(RespCode.USUARIO_VACIO, usuarioModificar);
 					}
-					return new RespEntity(RespCode.USUARIO_MODIFICADO, resultado);
+
+					return new RespEntity(RespCode.ROL_USUARIO_MODIFICADO_OK, resultado);
+
 				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
-					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuarioModificar);
 				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
-					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuarioModificar);
 				}
-			} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
-				return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuario);
 			}
+
+		} catch (final RolNoExisteException rolNoExiste) {
+			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, usuarioModificar);
+		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
+			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuarioModificar);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioModificar);
 		}
-
-		return new RespEntity(RespCode.USUARIO_VACIO, usuario);
-
+		return new RespEntity(RespCode.USUARIO_MODIFICAR_VACIO, usuarioModificar);
 	}
-
 }

@@ -1,6 +1,5 @@
 package com.sds.service.usuario.impl;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
-import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.PersonaRepository;
@@ -20,15 +18,12 @@ import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
-import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.log.LogService;
 import com.sds.service.rol.RolService;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
-import com.sds.service.usuario.model.UsuarioAñadir;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -66,12 +61,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 		final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
 
 		for (final UsuarioEntity usuario : usuarios) {
+
 			final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
 					usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
 			final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
 					usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
 
 			usuariosToret.add(user);
+
 		}
 
 		return usuariosToret;
@@ -116,89 +113,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public String añadirUsuario(final UsuarioAñadir usuarioAñadir)
-			throws UsuarioYaExisteException, PersonaYaExisteException, LogAccionesNoGuardadoException,
-			LogExcepcionesNoGuardadoException, ParseException {
-		String resultado = StringUtils.EMPTY;
-		String resultadoLog = StringUtils.EMPTY;
-		final UsuarioEntity usuarioEntity = usuarioAñadir.getUsuarioEntity();
-		final PersonaEntity personaEntity = usuarioAñadir.getPersonaEntity();
-
-		final Boolean usuarioValido = validaciones.comprobarUsuarioAñadirBlank(usuarioAñadir);
-
-		if (usuarioValido) {
-			final Optional<PersonaEntity> persona = personaRepository.findById(usuarioEntity.getDniUsuario());
-
-			if (!persona.isPresent()) {
-				personaRepository.saveAndFlush(personaEntity);
-
-				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuarioEntity.getDniUsuario());
-
-				if (usuarioBD.isPresent()) {
-					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-							usuarioAñadir.getUsuario(),
-							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()),
-							CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo());
-
-					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-					}
-
-					throw new UsuarioYaExisteException(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo(),
-							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_YA_EXISTE_EXCEPTION.getCodigo()));
-				} else {
-					usuarioRepository.saveAndFlush(usuarioEntity);
-
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuarioAñadir.getUsuario(),
-							Constantes.ACCION_AÑADIR_USUARIO, usuarioAñadir.getUsuarioEntity().toString());
-
-					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
-
-					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-					}
-
-					resultado = Constantes.OK;
-				}
-
-			} else {
-				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuarioAñadir.getUsuario(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()),
-						CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo());
-
-				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-				}
-
-				throw new PersonaYaExisteException(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_YA_EXISTE_EXCEPTION.getCodigo()));
-			}
-		} else {
-			resultado = CodeMessageErrors.USUARIO_AÑADIR_VACIO.name();
-		}
-
-		return resultado;
-	}
-
-	@Override
 	public String eliminarUsuario(final Usuario usuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String resultadoLog2 = StringUtils.EMPTY;
 		final UsuarioEntity user = usuario.getUsuarioEntity();
 
 		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
@@ -224,69 +144,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 		} else {
 			user.setBorradoUsuario(1);
 			usuario.setUsuarioEntity(user);
-			modificarUsuario(usuario);
-			resultado = Constantes.OK;
-		}
+			usuarioRepository.saveAndFlush(user);
 
-		return resultado;
-	}
+			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
+					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
 
-	@Override
-	public String modificarUsuario(final Usuario usuario)
-			throws LogExcepcionesNoGuardadoException, UsuarioNoEncontradoException, LogAccionesNoGuardadoException {
-		String resultado = StringUtils.EMPTY;
-		String resultadoLog = StringUtils.EMPTY;
-		String resultadoLog2 = StringUtils.EMPTY;
-		final UsuarioEntity user = usuario.getUsuarioEntity();
-		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(user);
+			resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
 
-		if (usuarioValido) {
-			final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
+			final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
+					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
 
-			if (!usuarioBD.isPresent()) {
-				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
-						CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
+			resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
 
-				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-				}
-
-				throw new UsuarioNoEncontradoException(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
-			} else {
-
-				user.setUsuario(user.getUsuario());
-				user.setPasswdUsuario(user.getPasswdUsuario());
-				user.setBorradoUsuario(user.getBorradoUsuario());
-
-				usuarioRepository.saveAndFlush(user);
-
-				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
-						Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
-
-				resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
-
-				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
-						Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
-
-				resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
-
-				if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
-						|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
-					throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-				}
-
-				resultado = Constantes.OK;
+			if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
+					|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
+				throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
 			}
-		} else {
-			resultado = CodeMessageErrors.USUARIO_VACIO.name();
+
+			resultado = Constantes.OK;
 		}
 
 		return resultado;
@@ -298,11 +174,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 			RolNoExisteException {
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String resultadoLog2 = StringUtils.EMPTY;
 		final UsuarioEntity user = usuario.getUsuarioEntity();
-		final Boolean userValido = validaciones.comprobarUsuarioBlank(user);
+
 		final Boolean rolValido = validaciones.comprobarRolBlank(rol);
 
 		if (rolValido) {
+			final Boolean userValido = validaciones.comprobarUsuarioBlank(user);
 			if (userValido) {
 				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
 
@@ -312,7 +190,26 @@ public class UsuarioServiceImpl implements UsuarioService {
 					if (rolUser.isPresent()) {
 						user.setRol(rol);
 						usuario.setUsuarioEntity(user);
-						modificarUsuario(usuario);
+						usuarioRepository.saveAndFlush(user);
+
+						final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
+								Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
+
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
+								Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+
+						resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
+
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
+								|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						}
+
+						resultado = Constantes.OK;
 					} else {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 								usuario.getUsuario(),
@@ -352,10 +249,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 									CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 				}
 			} else {
-				resultado = CodeMessageErrors.ROL_VACIO.name();
+				resultado = CodeMessageErrors.USUARIO_VACIO.name();
 			}
 		} else {
-			resultado = CodeMessageErrors.USUARIO_VACIO.name();
+			resultado = CodeMessageErrors.ROL_VACIO.name();
 		}
 
 		return resultado;
@@ -366,6 +263,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String resultadoLog2 = StringUtils.EMPTY;
 
 		final UsuarioEntity user = usuario.getUsuarioEntity();
 		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(user);
@@ -396,8 +294,27 @@ public class UsuarioServiceImpl implements UsuarioService {
 				} else {
 					user.setPasswdUsuario(passwdUsuario);
 					usuario.setUsuarioEntity(user);
-					modificarUsuario(usuario);
+					usuarioRepository.saveAndFlush(user);
+
+					final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
+							Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+
+					resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
+
+					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
+							Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+
+					resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
+
+					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
+							|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
+						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+					}
+
 					resultado = Constantes.OK;
+
 				}
 			} else {
 				resultado = CodeMessageErrors.PASSWDUSUARIO_VACIA.name();

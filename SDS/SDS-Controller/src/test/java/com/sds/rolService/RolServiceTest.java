@@ -21,6 +21,7 @@ import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
@@ -227,7 +228,8 @@ public class RolServiceTest {
 
 	@Test
 	public void RolService_eliminarRolCorrecto() throws RolNoExisteException, RolAsociadoUsuarioException, IOException,
-			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolYaExisteException {
+			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolYaExisteException,
+			RolAsociadoAccionFuncionalidadException {
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.GUARDAR_ROL);
 
 		rolService.guardarRol(rol);
@@ -245,8 +247,9 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolNoExisteException.class)
-	public void RolService_eliminarRolNoExiste() throws RolNoExisteException, RolAsociadoUsuarioException, IOException,
-			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+	public void RolService_eliminarRolNoExiste()
+			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException {
 
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_NO_EXISTE);
 
@@ -255,10 +258,23 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolAsociadoUsuarioException.class)
-	public void RolService_eliminarRolAsociadoUsuario() throws RolNoExisteException, RolAsociadoUsuarioException,
-			IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+	public void RolService_eliminarRolAsociadoUsuario()
+			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException {
 
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ELIMINAR_ROL_ASOCIADO_USUARIO);
+
+		rolService.eliminarRol(rol);
+
+	}
+
+	@Test(expected = RolAsociadoAccionFuncionalidadException.class)
+	public void RolService_eliminarRolAsociadoAccionFuncionalidad()
+			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException {
+
+		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA,
+				Constantes.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD);
 
 		rolService.eliminarRol(rol);
 

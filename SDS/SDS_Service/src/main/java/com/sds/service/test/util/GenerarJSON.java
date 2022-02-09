@@ -19,6 +19,7 @@ import com.sds.model.UsuarioEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.login.model.Login;
+import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.registro.model.Registro;
 import com.sds.service.util.Util;
 
@@ -33,6 +34,19 @@ public class GenerarJSON {
 		login.setUsuario(jsonUsuarioContrasenaVacios.get(Constantes.USUARIO).toString());
 
 		return login;
+
+	}
+
+	public RecuperarPass generateRecuperarPass(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonRecuperarPass = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final RecuperarPass recuperarPass = new RecuperarPass();
+		recuperarPass.setUsuario(jsonRecuperarPass.get(Constantes.USUARIO).toString());
+		recuperarPass.setEmailUsuario(jsonRecuperarPass.get(Constantes.EMAILP).toString());
+
+		return recuperarPass;
 
 	}
 
@@ -192,4 +206,92 @@ public class GenerarJSON {
 		return funcionalidad;
 
 	}
+
+	public UsuarioEntity generateUsuario(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonUsuarioVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final UsuarioEntity usuario = new UsuarioEntity();
+
+		usuario.setDniUsuario(
+				CommonUtilities.coalesce(jsonUsuarioVacio.get(Constantes.USUARIO_DNI).toString(), StringUtils.EMPTY));
+		usuario.setUsuario(
+				CommonUtilities.coalesce(jsonUsuarioVacio.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
+		usuario.setPasswdUsuario(CommonUtilities.coalesce(jsonUsuarioVacio.get(Constantes.PASSWD_USUARIO).toString(),
+				StringUtils.EMPTY));
+
+		usuario.setBorradoUsuario(0);
+
+		final RolEntity rol = new RolEntity(2, "usuario", "Contendra a todos los usuarios registrados de la aplicacion",
+				0);
+
+		usuario.setRol(rol);
+
+		return usuario;
+
+	}
+
+	public PersonaEntity generatePersona(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException, java.text.ParseException {
+
+		final JSONObject jsonPersonaVacios = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final EmpresaEntity empresa = new EmpresaEntity(1, "J26903286", "Prueba", "Prueba", "988212121", 0);
+		final PersonaEntity persona = new PersonaEntity();
+		boolean acentos = false;
+		boolean caracEspeciales = false;
+
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String date = CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.FECHANACP).toString(),
+				StringUtils.EMPTY);
+		Date fecha = null;
+		java.sql.Date fechaSql = null;
+
+		for (int i = 0; i < date.length(); i++) {
+
+			final String letra = date.charAt(i) + "";
+
+			final Pattern patronAcentos = Pattern.compile(Constantes.PATRON_ACENTOS);
+			final Matcher comprobacionAcentos = patronAcentos.matcher(letra);
+			final Pattern patronEspeciales = Pattern.compile(Constantes.PATRON_CARACTERES_ESPECIALES);
+			final Matcher comprobacionEspeciales = patronEspeciales.matcher(letra);
+
+			if (comprobacionAcentos.matches()) {
+				acentos = true;
+			}
+
+			if (comprobacionEspeciales.matches()) {
+				caracEspeciales = true;
+			}
+		}
+
+		if (date == "" || date.contains(Constantes.ENHE) || acentos || caracEspeciales
+				|| date.contains(Constantes.ESPACIO) || date.length() < 8 || date.length() > 10) {
+			fecha = sdf.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+		} else {
+			fecha = sdf.parse(date);
+			fechaSql = new java.sql.Date(fecha.getTime());
+
+		}
+
+		persona.setDniP(CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.DNIP).toString(), StringUtils.EMPTY));
+		persona.setNombreP(
+				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.NOMBREP).toString(), StringUtils.EMPTY));
+		persona.setApellidosP(
+				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.APELLIDOSP).toString(), StringUtils.EMPTY));
+		persona.setFechaNacP(fechaSql);
+		persona.setDireccionP(
+				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.DIRECCIONP).toString(), StringUtils.EMPTY));
+		persona.setEmailP(
+				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.EMAILP).toString(), StringUtils.EMPTY));
+		persona.setTelefonoP(
+				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.TELEFONOP).toString(), StringUtils.EMPTY));
+		persona.setBorradoP(0);
+		persona.setEmpresa(empresa);
+
+		return persona;
+	}
+
 }

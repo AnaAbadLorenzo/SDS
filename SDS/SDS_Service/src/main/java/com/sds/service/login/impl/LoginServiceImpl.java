@@ -20,6 +20,7 @@ import com.sds.service.common.Constantes;
 import com.sds.service.exception.EmailNoEncontradoException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.MailNoEnviadoException;
 import com.sds.service.exception.PasswordIncorrectoException;
 import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
@@ -94,14 +95,15 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public String recuperarPasswdUsuario(final String usuario, final String emailUsuario)
 			throws UsuarioNoEncontradoException, MessagingException, LogExcepcionesNoGuardadoException,
-			PersonaNoExisteException, EmailNoEncontradoException, LogAccionesNoGuardadoException {
+			PersonaNoExisteException, EmailNoEncontradoException, LogAccionesNoGuardadoException,
+			MailNoEnviadoException {
 		String passwdTemp = StringUtils.EMPTY;
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuario);
-		final Boolean emailUsuarioValido = validaciones.comprobarEmailUsuarioBlank(emailUsuario);
 
 		if (usuarioValido) {
+			final Boolean emailUsuarioValido = validaciones.comprobarEmailUsuarioBlank(emailUsuario);
 			if (emailUsuarioValido) {
 				final UsuarioEntity user = usuarioRepository.findByUsuario(usuario);
 
@@ -114,14 +116,35 @@ public class LoginServiceImpl implements LoginService {
 							final Mail email = new Mail(Constantes.EMISOR_EMAIL, emailUsuario,
 									Constantes.ASUNTO_EMAIL_RECU, passwdTemp, Constantes.TIPO_CONTENIDO, null);
 
-							mailServiceImpl.enviarCorreo(email);
+							final String result = mailServiceImpl.enviarCorreo(email);
 
-							final String passEncrypt = DigestUtils.md5Hex(passwdTemp);
+							if (result.equals(StringUtils.EMPTY)) {
+								final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario,
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.MAIL_NO_ENVIADO_EXCEPTION.getCodigo()),
+										CodeMessageErrors.MAIL_NO_ENVIADO_EXCEPTION.getCodigo());
+								resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-							user.setPasswdUsuario(passEncrypt);
-							final Usuario usuarioM = new Usuario(usuario, user);
-							usuarioServiceImpl.cambiarContraseña(usuarioM, passEncrypt);
-							resultado = Constantes.OK;
+								if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+									throw new LogExcepcionesNoGuardadoException(
+											CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+											CodeMessageErrors.getTipoNameByCodigo(
+													CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+								}
+
+								throw new MailNoEnviadoException(
+										CodeMessageErrors.MAIL_NO_ENVIADO_EXCEPTION.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.MAIL_NO_ENVIADO_EXCEPTION.getCodigo()));
+							} else {
+
+								final String passEncrypt = DigestUtils.md5Hex(passwdTemp);
+
+								user.setPasswdUsuario(passEncrypt);
+								final Usuario usuarioM = new Usuario(usuario, user);
+								usuarioServiceImpl.cambiarContraseña(usuarioM, passEncrypt);
+								resultado = Constantes.OK;
+							}
 
 						} else {
 							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario,

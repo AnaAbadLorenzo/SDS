@@ -695,6 +695,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 		datosPruebaAcciones.add(getTestRegistroPersonaVacia(datosEntradaRegistroPersonaVacia));
 		datosPruebaAcciones.add(getTestRegistroUsuarioVacio(datosEntradaRegistroUsuarioVacio));
 		datosPruebaAcciones.add(getTestRegistroEmpresaVacia(datosEntradaRegistroEmpresaVacia));
+
 		datosPruebaAcciones.add(getTestRegistroCorrecto(datosEntradaRegistroCorrecto));
 
 		return datosPruebaAcciones;
@@ -833,7 +834,12 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 							registro.getDatosUsuario().setPersona(registro.getDatosPersona());
 							registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
 							registro.getDatosUsuario().setBorradoUsuario(0);
+							registro.getDatosUsuario().setPersona(registro.getDatosPersona());
 							usuarioRepository.saveAndFlush(registro.getDatosUsuario());
+
+							usuarioRepository.deleteUsuario(registro.getDatosUsuario().getDniUsuario());
+							personaRepository.deletePersona(registro.getDatosPersona().getDniP());
+							empresaRepository.deleteEmpresa(registro.getDatosEmpresa().getCifEmpresa());
 
 							return CodigosMensajes.REGISTRO_CORRECTO + " - " + Mensajes.REGISTRO_CORRECTO;
 						}
@@ -849,7 +855,12 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 						registro.getDatosUsuario().setPersona(registro.getDatosPersona());
 						registro.getDatosUsuario().setDniUsuario(registro.getDatosPersona().getDniP());
 						registro.getDatosUsuario().setBorradoUsuario(0);
+						registro.getDatosUsuario().setPersona(registro.getDatosPersona());
 						usuarioRepository.saveAndFlush(registro.getDatosUsuario());
+
+						usuarioRepository.deleteUsuario(registro.getDatosUsuario().getDniUsuario());
+						personaRepository.deletePersona(registro.getDatosPersona().getDniP());
+						empresaRepository.deleteEmpresa(registro.getDatosEmpresa().getCifEmpresa());
 
 						return CodigosMensajes.REGISTRO_CORRECTO + " - " + Mensajes.REGISTRO_CORRECTO;
 					}

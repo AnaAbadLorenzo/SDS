@@ -35,10 +35,13 @@ public enum RespCode {
 	USUARIO_GUARDADO("USUARIO_GUARDADO", "El usuario se ha guardado correctamente"), //
 	USUARIO_ELIMINADO("USUARIO_ELIMINADO", "El usuario se ha eliminado correctamente"), //
 	USUARIO_MODIFICADO("USUARIO_MODIFICADO", "El usuario se ha modificado correctamente"), //
+	USUARIO_MODIFICAR_VACIO("USUARIO_MODIFICAR_VACIO", "El usuario y/o el rol es vacio"), //
 	RECUPERAR_PASS_OK("RECUPERAR_PASS_OK", "La nueva contraseña se ha enviado correctamente"), //
 	USUARIO_AÑADIR_VACIO("USUARIO_AÑADIR_VACIO", "Los datos de usuario y/o persona son vacios"), //
 	ROL_YA_EXISTE_EXCEPTION("ROL_YA_EXISTE", "El rol ya existe"), //
 	ROL_NO_EXISTE_EXCEPTION("ROL_NO_EXISTE", "El rol no existe"), //
+	ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION("ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION",
+			"El rol tiene asociado una accion y una funcionalidad"), //
 	NO_HAY_ROLES_EXCEPTION("NO_HAY_ROLES", "No existe ningún rol registrado"), //
 	ROL_ASOCIADO_USUARIO_EXCEPTION("ROL_ASOCIADO_USUARIO", "Hay un usuario que tiene asociado el rol a eliminar"), //
 	ACCION_VACIA("ACCION_VACIA", "El nombre y/o la descripción de la acción están vacíos"), //
@@ -66,7 +69,8 @@ public enum RespCode {
 	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("FUNCIONALIDAD_YA_EXISTE_EXCEPTION", "La funcionalidad que busca ya existe"), //
 	FUNCIONALIDAD_GUARDADA("FUNCIONALIDAD_GUARDADA", "La funcionalidad se ha guardado correctamente"), //
 	USUARIOS_LISTADOS("USUARIOS_LISTADOS", "Los usuarios se han listado correctamente"), //
-	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"),
+	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
+	ROL_USUARIO_MODIFICADO_OK("ROL_USUARIO_MODIFICADO_OK", "El rol del usuario se ha modificado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de acciones en la base de datos"), //
 	LOG_EXCEPCIONES_NO_GUARDADO("LOG_EXCEPCIONES_NO_GUARDADO",
@@ -106,7 +110,31 @@ public enum RespCode {
 	TEST_ACCIONES_FUNCIONALIDAD_KO("TEST_ACCIONES_FUNCIONALIDAD_KO",
 			"Se ha producido un error al ejecutar los test de acciones para funcionalidad"), //
 	TEST_ACCIONES_FUNCIONALIDAD_OK("TEST_ACCIONES_FUNCIONALIDAD_OK",
-			"Los test de acciones para funcionalidad se han ejecutado correctamente");
+			"Los test de acciones para funcionalidad se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_USUARIO_KO("TEST_ATRIBUTOS_USUARIO_KO",
+			"Se ha producido un error al ejecutar los test de atributos para usuario"), //
+	TEST_ATRIBUTOS_USUARIO_OK("TEST_ATRIBUTOS_USUARIO_OK",
+			"Los test de atributo para usuario se han ejecutado correctamente"), //
+	TEST_ACCIONES_USUARIO_KO("TEST_ACCIONES_USUARIO_KO",
+			"Se ha producido un error al ejecutar los test de acciones para usuario"), //
+	TEST_ACCIONES_USUARIO_OK("TEST_ACCIONES_USUARIO_OK",
+			"Los test de acciones para usuario se han ejecutado correctamente"), //
+	TEST_ACCIONES_PERSONA_KO("TEST_ACCIONES_PERSONA_KO",
+			"Se ha producido un error al ejecutar los test de acciones para persona"), //
+	TEST_ACCIONES_PERSONA_OK("TEST_ACCIONES_PERSONA_OK",
+			"Los test de acciones para persona se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_PERSONA_KO("TEST_ATRIBUTOS_PERSONA_KO",
+			"Se ha producido un error al ejecutar los test de atributos para persona"), //
+	TEST_ATRIBUTOS_PERSONA_OK("TEST_ATRIBUTOS_PERSONA_OK",
+			"Los test de atributo para persona se han ejecutado correctamente"), //
+	TEST_ACCIONES_RECUPERARPASS_KO("TEST_ACCIONES_RECUPERARPASS_KO",
+			"Se ha producido un error al ejecutar los test de acciones para recuperar contraseña"), //
+	TEST_ACCIONES_RECUPERARPASS_OK("TEST_ACCIONES_RECUPERARPASS_OK",
+			"Los test de acciones para la recuperacion de contraseña se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_RECUPERARPASS_KO("TEST_ATRIBUTOS_RECUPERARPASS_KO",
+			"Se ha producido un error al ejecutar los test de atributos para recuperar contraseña"), //
+	TEST_ATRIBUTOS_RECUPERARPASS_OK("TEST_ATRIBUTOS_RECUPERARPASS_OK",
+			"Los test de atributo para la recuperacion de contraseña se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

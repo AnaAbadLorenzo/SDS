@@ -1,19 +1,25 @@
-package com.sds.service.usuario.model;
+package com.sds.service.persona.model;
 
 import com.sds.model.PersonaEntity;
 import com.sds.model.UsuarioEntity;
 
-public class UsuarioAñadir {
+public class PersonaAñadir {
 
 	private String usuario;
 	private PersonaEntity personaEntity;
 	private UsuarioEntity usuarioEntity;
 
-	public UsuarioAñadir() {
+	public PersonaAñadir() {
 
 	}
 
-	public UsuarioAñadir(final String usuario, final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
+	public PersonaAñadir(final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
+		super();
+		this.personaEntity = personaEntity;
+		this.usuarioEntity = usuarioEntity;
+	}
+
+	public PersonaAñadir(final String usuario, final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
 		super();
 		this.usuario = usuario;
 		this.personaEntity = personaEntity;
@@ -46,7 +52,7 @@ public class UsuarioAñadir {
 
 	@Override
 	public String toString() {
-		return "UsuarioAñadir [usuario=" + usuario + ", personaEntity=" + personaEntity + ", usuarioEntity="
+		return "PersonaAñadir [usuario=" + usuario + ", personaEntity=" + personaEntity + ", usuarioEntity="
 				+ usuarioEntity + "]";
 	}
 

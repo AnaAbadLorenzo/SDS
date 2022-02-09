@@ -7,6 +7,16 @@ public class Persona {
 	public String usuario;
 	public PersonaEntity persona;
 
+	public Persona() {
+
+	}
+
+	public Persona(final String usuario, final PersonaEntity persona) {
+		super();
+		this.usuario = usuario;
+		this.persona = persona;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

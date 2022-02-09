@@ -1,0 +1,33 @@
+{
+	"emailVacio": {
+		"usuario" : "aicuna",
+		"emailP" : ""
+	},
+	"emailAlfanumericoEnhe":{
+		"usuario" : "aicuna",
+		"emailP" : "ññ@gmail.com"
+	},
+	"emailAlfanumericoAcentos": {
+		"usuario" : "aicuna",
+		"emailP" : "águila@gmail.com"
+	},
+	"emailPersonaAlfanumericoEspacios": {
+		"usuario" : "aicuna",
+		"emailP" : "ana 13@gmail.com"
+	},
+	"emailAlfanumericoMenor4": {
+		"usuario" : "aicuna",
+		"emailP" : "ana"
+	},
+	
+	"emailAlfanumericoMayor128":{
+		"usuario" : "",
+		"emailP": "albaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA@alba.com"
+	},
+	
+	"emailPersonaAlfabetico":{
+		"usuario" : "",
+		"emailP": "alba@alba.com"	
+	}
+	
+}

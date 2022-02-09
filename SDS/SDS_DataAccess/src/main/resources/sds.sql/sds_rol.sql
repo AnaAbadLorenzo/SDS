@@ -41,7 +41,7 @@ LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
 INSERT INTO `rol` VALUES (1,'admin','admin',0);
 INSERT INTO `rol` VALUES (2,'usuario','Contendra a todos los usuarios registrados de la aplicacion',0);
-INSERT INTO `rol`VALUES (3, 'superadministrador', 'Contendrá a todos los superadministradores de la aplicacion', 1);
+INSERT INTO `rol` VALUES (3, 'superadministrador', 'Contendrá a todos los superadministradores de la aplicacion', 1);
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
