@@ -47,6 +47,7 @@ public class PersonaController {
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 
+
 	@RequestMapping(value = "/listarPersona", method = RequestMethod.GET)
 	@ResponseBody
 	public RespEntity buscarPersona(@RequestBody final PersonaBuscar persona) {
