@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +31,7 @@ import com.sds.service.test.model.DatosPruebaAcciones;
 import com.sds.service.test.model.DatosPruebaAtributos;
 
 @RestController
+@RequestMapping(value = "/test")
 public class TestController {
 
 	@Autowired
@@ -56,7 +58,7 @@ public class TestController {
 	@Autowired
 	TestRecuperarPassService testRecuperarPass;
 
-	@GetMapping(value = "/test/login/atributos")
+	@GetMapping(value = "/login/atributos")
 	@ResponseBody
 	public RespEntity TestLoginAtributos() {
 
@@ -80,7 +82,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_LOGIN_OK, respuestaTestAtributos);
 	}
 
-	@GetMapping(value = "/test/recuperarPass/atributos")
+	@GetMapping(value = "/recuperarPass/atributos")
 	@ResponseBody
 	public RespEntity TestRecuperarPassAtributos() {
 
@@ -97,14 +99,14 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAtributos.setFuncionalidad(Constantes.RECUPERAR_PASS);
+		respuestaTestAtributos.setFuncionalidad(Constantes.LOGIN);
 		respuestaTestAtributos.setAccion(Constantes.RECUPERAR_PASS);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_OK, respuestaTestAtributos);
 	}
 
-	@GetMapping(value = "/test/login/acciones")
+	@GetMapping(value = "/login/acciones")
 	@ResponseBody
 	public RespEntity TestLoginAcciones() {
 
@@ -124,7 +126,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_LOGIN_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/recuperarPass/acciones")
+	@GetMapping(value = "/recuperarPass/acciones")
 	@ResponseBody
 	public RespEntity TestRecuperarPassAcciones() {
 
@@ -145,7 +147,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/registrar/atributos")
+	@GetMapping(value = "/registrar/atributos")
 	@ResponseBody
 	public RespEntity TestRegistrarAtributos() {
 
@@ -204,7 +206,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_REGISTRO_OK, respuestaTestAtributos);
 	}
 
-	@GetMapping(value = "/test/registrar/acciones")
+	@GetMapping(value = "/registrar/acciones")
 	@ResponseBody
 	public RespEntity TestRegistrarAcciones() {
 
@@ -224,7 +226,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_REGISTRO_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/rol/atributos/guardar")
+	@GetMapping(value = "/rol/atributos/guardar")
 	@ResponseBody
 	public RespEntity TestRolAtributosAccionGuardar() {
 
@@ -252,7 +254,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/rol/atributos/buscar")
+	@GetMapping(value = "/rol/atributos/buscar")
 	@ResponseBody
 	public RespEntity TestRolAtributosAccionBuscar() {
 
@@ -280,7 +282,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/rol/atributos/modificar")
+	@GetMapping(value = "/rol/atributos/modificar")
 	@ResponseBody
 	public RespEntity TestRolAtributosAccionModificar() {
 
@@ -308,7 +310,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/atributos/guardar")
+	@GetMapping(value = "/accion/atributos/guardar")
 	@ResponseBody
 	public RespEntity TestAccionAtributosAccionGuardar() {
 
@@ -337,7 +339,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/atributos/buscar")
+	@GetMapping(value = "/accion/atributos/buscar")
 	@ResponseBody
 	public RespEntity TestAccionAtributosAccionBuscar() {
 
@@ -366,7 +368,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/atributos/modificar")
+	@GetMapping(value = "/accion/atributos/modificar")
 	@ResponseBody
 	public RespEntity TestAccionAtributosAccionModificar() {
 
@@ -395,7 +397,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/funcionalidad/atributos/modificar")
+	@GetMapping(value = "/funcionalidad/atributos/modificar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAtributosAccionModificar() {
 
@@ -424,7 +426,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/funcionalidad/atributos/guardar")
+	@GetMapping(value = "/funcionalidad/atributos/guardar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAtributosAccionGuardar() {
 
@@ -453,7 +455,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/funcionalidad/atributos/buscar")
+	@GetMapping(value = "/funcionalidad/atributos/buscar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAtributosAccionBuscar() {
 
@@ -479,7 +481,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/usuario/atributos/modificarRol")
+	@GetMapping(value = "/usuario/atributos/modificarRol")
 	@ResponseBody
 	public RespEntity TestUsuarioAtributosAccionModificar() {
 
@@ -516,7 +518,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/usuario/atributos/buscar")
+	@GetMapping(value = "/usuario/atributos/buscar")
 	@ResponseBody
 	public RespEntity TestUsuarioAtributosAccionBuscar() {
 
@@ -545,7 +547,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/persona/atributos/buscar")
+	@GetMapping(value = "/persona/atributos/buscar")
 	@ResponseBody
 	public RespEntity TestPersonaAtributosAccionBuscar() {
 
@@ -591,7 +593,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/persona/atributos/anadir")
+	@GetMapping(value = "/persona/atributos/anadir")
 	@ResponseBody
 	public RespEntity TestPersonaAtributosAccionAnadir() {
 
@@ -638,7 +640,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/persona/atributos/modificar")
+	@GetMapping(value = "/persona/atributos/modificar")
 	@ResponseBody
 	public RespEntity TestPersonaAtributosAccionModificar() {
 
@@ -679,7 +681,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/accion/guardar")
+	@GetMapping(value = "/accion/accion/guardar")
 	@ResponseBody
 	public RespEntity TestAccionAccionGuardar() {
 
@@ -701,7 +703,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/accion/modificar")
+	@GetMapping(value = "/accion/accion/modificar")
 	@ResponseBody
 	public RespEntity TestAccionAccionModificar() {
 
@@ -723,7 +725,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/accion/eliminar")
+	@GetMapping(value = "/accion/accion/eliminar")
 	@ResponseBody
 	public RespEntity TestAccionAccionEliminar() {
 
@@ -745,7 +747,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/accion/accion/buscar")
+	@GetMapping(value = "/accion/accion/buscar")
 	@ResponseBody
 	public RespEntity TestAccionAccionBuscar() {
 
@@ -767,7 +769,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/test/rol/accion/guardar")
+	@GetMapping(value = "/rol/accion/guardar")
 	@ResponseBody
 	public RespEntity TestRolAccionGuardar() {
 
@@ -788,7 +790,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/rol/accion/eliminar")
+	@GetMapping(value = "/rol/accion/eliminar")
 	@ResponseBody
 	public RespEntity TestRolAccionEliminar() {
 
@@ -809,7 +811,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/rol/accion/modificar")
+	@GetMapping(value = "/rol/accion/modificar")
 	@ResponseBody
 	public RespEntity TestRolAccionModificar() {
 
@@ -830,7 +832,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/rol/accion/buscar")
+	@GetMapping(value = "/rol/accion/buscar")
 	@ResponseBody
 	public RespEntity TestRolAccionBuscar() {
 
@@ -851,7 +853,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/funcionalidad/accion/buscar")
+	@GetMapping(value = "/funcionalidad/accion/buscar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAccionBuscar() {
 
@@ -872,7 +874,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/funcionalidad/accion/guardar")
+	@GetMapping(value = "/funcionalidad/accion/guardar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAccionGuardar() {
 
@@ -893,7 +895,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/funcionalidad/accion/modificar")
+	@GetMapping(value = "/funcionalidad/accion/modificar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAccionModificar() {
 
@@ -914,7 +916,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/funcionalidad/accion/eliminar")
+	@GetMapping(value = "/funcionalidad/accion/eliminar")
 	@ResponseBody
 	public RespEntity TestFuncionalidadAccionEliminar() {
 
@@ -935,7 +937,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/usuario/accion/buscar")
+	@GetMapping(value = "/usuario/accion/buscar")
 	@ResponseBody
 	public RespEntity TestUsuarioAccionBuscar() {
 
@@ -956,7 +958,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/usuario/accion/eliminar")
+	@GetMapping(value = "/usuario/accion/eliminar")
 	@ResponseBody
 	public RespEntity TestUsuarioAccionEliminar() {
 
@@ -977,7 +979,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/usuario/accion/modificarRolUsuario")
+	@GetMapping(value = "/usuario/accion/modificarRolUsuario")
 	@ResponseBody
 	public RespEntity TestUsuarioAccionModificarRolUsuario() {
 
@@ -998,7 +1000,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/usuario/accion/modificarPasswdUsuario")
+	@GetMapping(value = "/usuario/accion/modificarPasswdUsuario")
 	@ResponseBody
 	public RespEntity TestUsuarioAccionModificarPasswdUsuario() {
 
@@ -1019,7 +1021,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/persona/accion/buscar")
+	@GetMapping(value = "/persona/accion/buscar")
 	@ResponseBody
 	public RespEntity TestPersonaAccionBuscar() {
 
@@ -1040,7 +1042,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/persona/accion/guardar")
+	@GetMapping(value = "/persona/accion/guardar")
 	@ResponseBody
 	public RespEntity TestPersonaAccionGuardar() {
 
@@ -1061,7 +1063,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/persona/accion/eliminar")
+	@GetMapping(value = "/persona/accion/eliminar")
 	@ResponseBody
 	public RespEntity TestPersonaAccionEliminar() {
 
@@ -1082,7 +1084,7 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/test/persona/accion/modificar")
+	@GetMapping(value = "/persona/accion/modificar")
 	@ResponseBody
 	public RespEntity TestPersonaAccionModificar() {
 
