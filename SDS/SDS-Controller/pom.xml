@@ -9,9 +9,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 
-
 	<artifactId>SDS-Controller</artifactId>
-
 
 	<name>SDS-Controller</name>
 
@@ -27,24 +25,24 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.sds.service</groupId>
 			<artifactId>SDS-Service</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<artifactId>SDS-DataAccess</artifactId>
 			<groupId>com.sds.dataAccess</groupId>
@@ -96,6 +94,10 @@
 				<plugin>
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
 				</plugin>
 			</plugins>
 		</pluginManagement>

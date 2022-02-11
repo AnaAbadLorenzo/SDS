@@ -1,7 +1,6 @@
 package com.sds.service.persona.impl;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -95,7 +94,7 @@ public class PersonaServiceImpl implements PersonaService {
 	public List<PersonaEntity> buscarPersona(final String dniP, final String nombreP, final String apellidosP,
 			final Date fechaNacP, final String direccionP, final String telefonoP, final String emailP,
 			final EmpresaEntity empresa) {
-		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+
 		java.sql.Date fechaSql;
 		fechaSql = new java.sql.Date(fechaNacP.getTime());
 		final String fecha = fechaSql.toString();
@@ -128,7 +127,6 @@ public class PersonaServiceImpl implements PersonaService {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
-		final String resultadoLog2 = StringUtils.EMPTY;
 
 		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
 

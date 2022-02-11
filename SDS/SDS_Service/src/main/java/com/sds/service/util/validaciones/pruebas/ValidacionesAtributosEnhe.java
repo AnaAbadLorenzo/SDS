@@ -93,6 +93,8 @@ public class ValidacionesAtributosEnhe {
 					resultado = CodigosMensajes.PASS_ALFANUMERICO_INCORRECTO + " - "
 							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 					break;
+				default:
+					break;
 				}
 
 			case GESTION_PERSONAS:
@@ -131,6 +133,8 @@ public class ValidacionesAtributosEnhe {
 				case EMAIL:
 					resultado = CodigosMensajes.EMAIL_ALFANUMERICO_INCORRECTO + " - "
 							+ Mensajes.EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+					break;
+				default:
 					break;
 				}
 

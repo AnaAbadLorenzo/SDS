@@ -31,6 +31,11 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response,
 			final FilterChain chain) throws ServletException, IOException {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "POST, GET");
+		response.setHeader("Access-Control-Max-Age", "3600");
+		response.setHeader("Access-Control-Allow-Headers",
+				"Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 		try {
 			if (existeJWTToken(request, response)) {
 				final Claims claims = validateToken(request);

@@ -160,7 +160,6 @@ public class AccionServiceImpl implements AccionService {
 		final AccionEntity accionEntity = accion.getAccion();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
-		final String resultadoLog2 = StringUtils.EMPTY;
 
 		final Optional<AccionEntity> accionBD = accionRepository.findById(accionEntity.getIdAccion());
 

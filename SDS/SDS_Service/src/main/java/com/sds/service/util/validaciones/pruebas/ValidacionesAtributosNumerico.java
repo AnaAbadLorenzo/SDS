@@ -68,6 +68,8 @@ public class ValidacionesAtributosNumerico {
 					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
 							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS;
 					break;
+				default:
+					break;
 				}
 
 			case GESTION_PERSONAS:

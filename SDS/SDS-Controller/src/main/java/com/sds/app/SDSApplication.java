@@ -1,5 +1,7 @@
 package com.sds.app;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -11,6 +13,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
 
 import com.sds.config.JWTAuthorizationFilter;
 
@@ -31,9 +35,15 @@ public class SDSApplication {
 
 		@Override
 		protected void configure(final HttpSecurity http) throws Exception {
+			http.cors().configurationSource(new CorsConfigurationSource() {
+				@Override
+				public CorsConfiguration getCorsConfiguration(final HttpServletRequest request) {
+					return new CorsConfiguration().applyPermitDefaultValues();
+				}
+			});
 			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
-					.authorizeRequests().antMatchers(HttpMethod.POST, "/login").permitAll()
+					.authorizeRequests().antMatchers(HttpMethod.POST, "/login/*").permitAll()
 					.antMatchers(HttpMethod.GET, "/menu/*").permitAll().antMatchers(HttpMethod.GET, "/rol/*")
 					.permitAll().antMatchers(HttpMethod.POST, "/rol").permitAll().antMatchers(HttpMethod.POST, "/rol/*")
 					.permitAll().antMatchers(HttpMethod.GET, "/accion/*").permitAll()

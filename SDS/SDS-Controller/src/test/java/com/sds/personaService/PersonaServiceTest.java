@@ -35,7 +35,6 @@ import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
 import com.sds.service.persona.model.PersonaAñadir;
 import com.sds.service.usuario.UsuarioService;
-import com.sds.service.usuario.model.Usuario;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 
@@ -307,8 +306,6 @@ public class PersonaServiceTest {
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			PersonaNoExisteException, UsuarioNoEncontradoException, UsuarioAsociadoPersonaException {
 
-		final UsuarioEntity user = new UsuarioEntity();
-
 		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.GUARDAR_PERSONA);
 
@@ -346,9 +343,6 @@ public class PersonaServiceTest {
 
 		final Persona persona = new Persona();
 		final PersonaEntity personaEntity = new PersonaEntity();
-
-		final Usuario usuario = new Usuario();
-		final UsuarioEntity usuarioEntity = new UsuarioEntity();
 
 		final EmpresaEntity empresaEntity = new EmpresaEntity(1, "J26903286", "Prueba", "Prueba", "988212121", 0);
 

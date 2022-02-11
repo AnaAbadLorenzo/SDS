@@ -113,6 +113,8 @@ public class ValidacionesAtributosMayor {
 				case FUNCIONALIDAD_NAME:
 					resultado = CodigosMensajes.FUNCIONALIDAD_NAME_MAYOR_QUE_48 + " - "
 							+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_MAYOR_QUE_48;
+				default:
+					break;
 				}
 
 			case GESTION_USUARIOS:
@@ -127,6 +129,8 @@ public class ValidacionesAtributosMayor {
 				case PASSWD_USUARIO:
 					resultado = CodigosMensajes.PASS_MAYOR_QUE_45 + " - "
 							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_MAYOR_QUE_45;
+					break;
+				default:
 					break;
 				}
 
@@ -174,6 +178,8 @@ public class ValidacionesAtributosMayor {
 					break;
 				case EMAIL:
 					resultado = CodigosMensajes.EMAIL_MAYOR_QUE_48 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MAYOR_QUE_48;
+					break;
+				default:
 					break;
 				}
 			default:
