@@ -14,7 +14,6 @@ import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfabetico;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEspacios;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosNumerico;
@@ -23,7 +22,6 @@ public class TestAtributoFuncionalidadName {
 
 	private final ValidacionesAtributosBlank validacionesAtributosBlank;
 	private final ValidacionesAtributosCaracteresEspeciales validacionesAtributosCaracteresEspeciales;
-	private final ValidacionesAtributosEspacios validacionesAtributosEspacios;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
 	private final ValidacionesAtributosNumerico validacionesAtributosNumerico;
@@ -33,7 +31,6 @@ public class TestAtributoFuncionalidadName {
 	public TestAtributoFuncionalidadName() {
 		validacionesAtributosBlank = new ValidacionesAtributosBlank();
 		validacionesAtributosCaracteresEspeciales = new ValidacionesAtributosCaracteresEspeciales();
-		validacionesAtributosEspacios = new ValidacionesAtributosEspacios();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
 		validacionesAtributosNumerico = new ValidacionesAtributosNumerico();

@@ -188,6 +188,8 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						resultado = CodigosMensajes.LOGIN_ALFANUMERICO_INCORRECTO + " - "
 								+ Mensajes.LOGIN_USUARIO_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
 						break;
+					default:
+						break;
 					}
 
 				default:

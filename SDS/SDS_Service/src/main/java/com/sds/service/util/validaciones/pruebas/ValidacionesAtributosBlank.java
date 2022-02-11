@@ -117,6 +117,8 @@ public class ValidacionesAtributosBlank {
 				case FUNCIONALIDAD_DESCRIPTION:
 					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_VACIA + " - "
 							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_VACIA;
+				default:
+					break;
 				}
 
 			case GESTION_USUARIOS:
@@ -130,6 +132,8 @@ public class ValidacionesAtributosBlank {
 				case PASSWD_USUARIO:
 					resultado = CodigosMensajes.PASS_USUARIO_VACIO + " - "
 							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_VACIA;
+					break;
+				default:
 					break;
 				}
 
@@ -172,6 +176,8 @@ public class ValidacionesAtributosBlank {
 					break;
 				case EMAIL:
 					resultado = CodigosMensajes.EMAIL_VACIO + " - " + Mensajes.EMAIL_NO_PUEDE_SER_VACIO;
+					break;
+				default:
 					break;
 				}
 

@@ -1,7 +1,6 @@
 package com.sds.service.test.impl;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1198,8 +1197,6 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		String resultado = StringUtils.EMPTY;
 
 		List<PersonaEntity> personaBD = new ArrayList<>();
-
-		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		java.sql.Date fechaSql;
 		fechaSql = new java.sql.Date(persona.getFechaNacP().getTime());
 		final String fecha = fechaSql.toString();

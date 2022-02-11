@@ -123,6 +123,8 @@ public class ValidacionesAtributosMenor {
 					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3 + " - "
 							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
+				default:
+					break;
 				}
 
 			case GESTION_USUARIOS:
@@ -138,7 +140,8 @@ public class ValidacionesAtributosMenor {
 					resultado = CodigosMensajes.PASS_MENOR_QUE_3 + " - "
 							+ Mensajes.CONTRASENA_USUARIO_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
-
+				default:
+					break;
 				}
 
 			case GESTION_PERSONAS:
@@ -183,6 +186,8 @@ public class ValidacionesAtributosMenor {
 					break;
 				case EMAIL:
 					resultado = CodigosMensajes.EMAIL_MENOR_QUE_4 + " - " + Mensajes.EMAIL_NO_PUEDE_SER_MENOR_QUE_4;
+					break;
+				default:
 					break;
 				}
 			default:
