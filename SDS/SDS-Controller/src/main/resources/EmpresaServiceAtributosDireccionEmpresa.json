@@ -1,0 +1,41 @@
+{
+	"direccionEmpresaVacio": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"direccionEmpresaAlfanumericoMenor3": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Av",
+		"telefonoEmpresa": "988212121"
+	},
+	"direccionEmpresaAlfanumericoMayor128": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Pruebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"direccionEmpresaAlfabetico":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	"direccionEmpresaAlfanumerico":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe53",
+		"direccionEmpresa": "Prueba53",
+		"telefonoEmpresa": "988212121"
+	}
+	
+	
+}

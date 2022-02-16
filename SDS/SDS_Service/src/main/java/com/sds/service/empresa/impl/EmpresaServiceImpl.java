@@ -1,6 +1,7 @@
 package com.sds.service.empresa.impl;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,65 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	public List<EmpresaEntity> buscarEmpresa(final String cifEmpresa, final String nombreEmpresa,
+			final String direccionEmpresa, final String telefonoEmpresa) {
+		List<EmpresaEntity> empresaBD = new ArrayList();
+		final List<EmpresaEntity> toret = new ArrayList();
+
+		empresaBD = empresaRepository.findEmpresa(cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
+
+		for (final EmpresaEntity empresa : empresaBD) {
+			if (empresa.getBorradoEmpresa() == 0) {
+				final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+						empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+						empresa.getBorradoEmpresa());
+
+				toret.add(empresaToret);
+
+			}
+
+		}
+
+		return toret;
+	}
+
+	@Override
+	public List<EmpresaEntity> buscarTodos() {
+		List<EmpresaEntity> empresaBD = new ArrayList();
+		final List<EmpresaEntity> toret = new ArrayList();
+
+		empresaBD = empresaRepository.findAll();
+
+		for (final EmpresaEntity empresa : empresaBD) {
+			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+					empresa.getBorradoEmpresa());
+
+		}
+
+		return toret;
+
+	}
+
+	@Override
+	public List<EmpresaEntity> buscarEmpresasEliminadas() {
+		List<EmpresaEntity> empresaBD = new ArrayList();
+		final List<EmpresaEntity> toret = new ArrayList();
+
+		empresaBD = empresaRepository.findEmpresasEliminadas(1);
+
+		for (final EmpresaEntity empresa : empresaBD) {
+			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+					empresa.getBorradoEmpresa());
+
+		}
+
+		return toret;
+
+	}
+
+	@Override
 	public String eliminarEmpresa(final Empresa empresa) throws LogExcepcionesNoGuardadoException,
 			EmpresaNoEncontradaException, EmpresaAsociadaPersonasException, LogAccionesNoGuardadoException {
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
@@ -76,38 +136,41 @@ public class EmpresaServiceImpl implements EmpresaService {
 							.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
 					CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
 		} else {
-			final Set<PersonaEntity> personasEmpresa = empresaEntity.getPersonas();
+			final List<PersonaEntity> personasEmpresa = personaRepository.findAll();
 
-			if (!personasEmpresa.isEmpty()) {
+			for (final PersonaEntity person : personasEmpresa) {
+				if (person.getEmpresa().getCifEmpresa().equals(empresa.getEmpresa().getCifEmpresa())) {
 
-				logExcepciones = util.generarDatosLogExcepciones(empresa.getUsuario(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
-						CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
+					logExcepciones = util.generarDatosLogExcepciones(empresa.getUsuario(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
+							CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
 
-				resultadoLog2 = logServiceImpl.guardarLogExcepciones(logExcepciones);
+					resultadoLog2 = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog2)) {
-					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog2)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new EmpresaAsociadaPersonasException(
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
+
+							CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
+				} else {
+					empresaEntity.setBorradoEmpresa(1);
+					empresa.setEmpresa(empresaEntity);
+					modificarEmpresa(empresa);
+					resultado = Constantes.OK;
 				}
-
-				throw new EmpresaAsociadaPersonasException(
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
-						CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
-
-			} else {
-				empresaEntity.setBorradoEmpresa(1);
-				empresa.setEmpresa(empresaEntity);
-				modificarEmpresa(empresa);
-				resultado = Constantes.OK;
-
 			}
 
 		}
 
 		return resultado;
+
 	}
 
 	@Override
@@ -197,6 +260,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 						CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
 
 			} else {
+				empresaEntity.setIdEmpresa(empre.getIdEmpresa());
 				empresaEntity.setCifEmpresa(empresaEntity.getCifEmpresa());
 				empresaEntity.setNombreEmpresa(empresaEntity.getNombreEmpresa());
 				empresaEntity.setDireccionEmpresa(empresaEntity.getDireccionEmpresa());

@@ -13,7 +13,7 @@ import com.sds.service.exception.PersonaYaExisteException;
 import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.model.Persona;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 
 public interface PersonaService {
 
@@ -24,7 +24,7 @@ public interface PersonaService {
 	List<PersonaEntity> buscarPersona(String dniP, String nombreP, String apellidosP, Date fechaNacP, String direccionP,
 			String telefonoP, String emailP, EmpresaEntity empresa);
 
-	String añadirPersona(final PersonaAñadir personaAñadir) throws PersonaYaExisteException, UsuarioYaExisteException,
+	String añadirPersona(final PersonaAnadir personaAñadir) throws PersonaYaExisteException, UsuarioYaExisteException,
 			ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 
 	void deletePersona(final PersonaEntity persona)

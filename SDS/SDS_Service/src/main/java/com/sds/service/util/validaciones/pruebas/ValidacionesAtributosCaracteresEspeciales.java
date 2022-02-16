@@ -191,6 +191,21 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+				case GESTION_EMPRESAS:
+					switch (atr) {
+					case CIF_EMPRESA:
+						resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+						break;
+					case NOMBRE:
+						resultado = CodigosMensajes.NOMBRE_LETRAS_ACENTOS_INCORRECTO + " - "
+								+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+						break;
+					case TELEFONO:
+						resultado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
+								+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+						break;
+					}
 
 				default:
 					break;

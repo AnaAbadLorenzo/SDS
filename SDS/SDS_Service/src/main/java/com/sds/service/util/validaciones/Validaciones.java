@@ -174,6 +174,34 @@ public class Validaciones {
 		return true;
 	}
 
+	public boolean comprobarCifEmpresa(final String cifEmpresa) {
+		if (StringUtils.isBlank(cifEmpresa)) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean comprobarNombreEmpresa(final String nombreEmpresa) {
+		if (StringUtils.isBlank(nombreEmpresa)) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean comprobarDireccionEmpresa(final String direccionEmpresa) {
+		if (StringUtils.isBlank(direccionEmpresa)) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean comprobarTelefonoEmpresa(final String telefonoEmpresa) {
+		if (StringUtils.isBlank(telefonoEmpresa)) {
+			return false;
+		}
+		return true;
+	}
+
 	public boolean comprobarRolBlank(final RolEntity rol) {
 		if (StringUtils.isBlank(rol.getRolName()) || StringUtils.isBlank(rol.getRolDescription())) {
 			return false;

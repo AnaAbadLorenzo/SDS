@@ -27,7 +27,7 @@ import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.log.LogService;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -171,7 +171,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public String añadirPersona(final PersonaAñadir personaAñadir)
+	public String añadirPersona(final PersonaAnadir personaAñadir)
 			throws PersonaYaExisteException, UsuarioYaExisteException, ParseException,
 			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;

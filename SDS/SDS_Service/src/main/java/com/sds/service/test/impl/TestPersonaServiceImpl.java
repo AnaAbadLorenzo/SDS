@@ -23,7 +23,7 @@ import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.test.TestPersonaService;
 import com.sds.service.test.impl.atributos.TestAtributoApellidosPersona;
 import com.sds.service.test.impl.atributos.TestAtributoContrasenaUsuario;
@@ -765,31 +765,31 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				.generateUsuario(Constantes.URL_JSON_PERSONA_DATA, Constantes.PARAMETROS_USUARIO_VACIOS);
 
 		datosPruebaAcciones.add(getTestGuardarPersonaCorrecto(
-				new PersonaAñadir(datosEntradaAnadirPersonaCorrecto, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaCorrecto, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaYaExiste(
-				new PersonaAñadir(datosEntradaAnadirPersonaYaExiste, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaYaExiste, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaUsuarioYaExiste(
-				new PersonaAñadir(datosEntradaAnadirPersonaCorrecto, datosEntradaAnadirUsuarioYaExiste)));
+				new PersonaAnadir(datosEntradaAnadirPersonaCorrecto, datosEntradaAnadirUsuarioYaExiste)));
 		datosPruebaAcciones.add(getTestGuardarPersonaDniPersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaDniVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaDniVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaNombrePersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaNombreVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaNombreVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaApellidosPersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaApellidosVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaApellidosVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaDireccionPersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaDireccionVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaDireccionVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaFechaNacPersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaFechaNacVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaFechaNacVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaTelefonoPersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaTelefonoVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaTelefonoVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaEmailPersonaVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaEmailVacio, datosEntradaUsuario)));
+				new PersonaAnadir(datosEntradaAnadirPersonaEmailVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaParametrosVacios(
-				new PersonaAñadir(datosEntradaAnadirParametrosPersonaVacios, datosEntradaUsuarioParametrosVacios)));
+				new PersonaAnadir(datosEntradaAnadirParametrosPersonaVacios, datosEntradaUsuarioParametrosVacios)));
 		datosPruebaAcciones.add(getTestGuardarPersonaUsuarioVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaCorrecto, datosEntradaUsuarioVacio)));
+				new PersonaAnadir(datosEntradaAnadirPersonaCorrecto, datosEntradaUsuarioVacio)));
 		datosPruebaAcciones.add(getTestGuardarPersonaPasswdUsuarioVacio(
-				new PersonaAñadir(datosEntradaAnadirPersonaCorrecto, datosEntradaUsuarioContrasenaVacio)));
+				new PersonaAnadir(datosEntradaAnadirPersonaCorrecto, datosEntradaUsuarioContrasenaVacio)));
 
 		return datosPruebaAcciones;
 
@@ -877,7 +877,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 
 	}
 
-	private DatosPruebaAcciones getTestGuardarPersonaCorrecto(final PersonaAñadir datosEntradaPersonaGuardarCorrecto)
+	private DatosPruebaAcciones getTestGuardarPersonaCorrecto(final PersonaAnadir datosEntradaPersonaGuardarCorrecto)
 			throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarCorrecto);
@@ -892,7 +892,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaYaExiste(
-			final PersonaAñadir datosEntradaPersonaGuardarPersonaYaExiste) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarPersonaYaExiste) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarPersonaYaExiste);
 
@@ -905,7 +905,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaUsuarioYaExiste(
-			final PersonaAñadir datosEntradaPersonaGuardarPersonaUsuarioYaExiste) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarPersonaUsuarioYaExiste) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarPersonaUsuarioYaExiste);
 
@@ -918,7 +918,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaDniPersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarDniPersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarDniPersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarDniPersonaVacio);
 
@@ -932,7 +932,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaNombrePersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarNombrePersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarNombrePersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarNombrePersonaVacio);
 
@@ -945,7 +945,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaApellidosPersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarApellidosPersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarApellidosPersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarApellidosPersonaVacio);
 
@@ -959,7 +959,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaDireccionPersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarDireccionPersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarDireccionPersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarDireccionPersonaVacio);
 
@@ -973,7 +973,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaFechaNacPersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarFechaNacPersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarFechaNacPersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarFechaNacPersonaVacio);
 
@@ -987,7 +987,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaEmailPersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarEmailPersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarEmailPersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarEmailPersonaVacio);
 
@@ -1000,7 +1000,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaTelefonoPersonaVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarTelefonoPersonaVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarTelefonoPersonaVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarTelefonoPersonaVacio);
 
@@ -1013,7 +1013,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaUsuarioVacio(
-			final PersonaAñadir datosEntradaPersonaGuardarUsuarioVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaGuardarUsuarioVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarUsuarioVacio);
 
@@ -1026,7 +1026,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaPasswdUsuarioVacio(
-			final PersonaAñadir datosEntradaPersonaPasswdUsuarioVacio) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaPasswdUsuarioVacio) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaPasswdUsuarioVacio);
 
@@ -1040,7 +1040,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	}
 
 	private DatosPruebaAcciones getTestGuardarPersonaParametrosVacios(
-			final PersonaAñadir datosEntradaPersonaParametrosVacios) throws java.text.ParseException {
+			final PersonaAnadir datosEntradaPersonaParametrosVacios) throws java.text.ParseException {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaParametrosVacios);
 
@@ -1209,7 +1209,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		return resultado;
 	}
 
-	private String guardarPersona(final PersonaAñadir persona) throws java.text.ParseException {
+	private String guardarPersona(final PersonaAnadir persona) throws java.text.ParseException {
 		String resultado = StringUtils.EMPTY;
 
 		if (!validaciones.comprobarPersonaBlank(persona.getPersonaEntity())
@@ -1412,7 +1412,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		return valor;
 	}
 
-	private Map<String, String> getValorPersonaAñadir(final PersonaAñadir persona) {
+	private Map<String, String> getValorPersonaAñadir(final PersonaAnadir persona) {
 
 		final Map<String, String> valor = new HashMap<>();
 

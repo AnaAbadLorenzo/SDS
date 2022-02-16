@@ -99,4 +99,9 @@ public class DefinicionPruebas {
 	public static final String RECUPERAR_PASS = "La contraseña se ha recuperado correctamente";
 	public static final String EMAIL_NO_ENCONTRADO = "El email no se ha encontrado";
 
+	public static final String GUARDAR_EMPRESA_CORRECTO = "La empresa se ha guardado correctamente";
+	public static final String MODIFICAR_EMPRESA_CORRECTO = "La empresa se ha modificado correctamente";
+	public static final String EMPRESA_NO_EXISTE = "La empresa no existe";
+	public static final String ELIMINAR_EMPRESA_CORRECTO = "La empresa se ha eliminado correctamente";
+	public static final String EMPRESA_ASOCIADA_PERSONAS = "La empresa tiene personas asociadas";
 }

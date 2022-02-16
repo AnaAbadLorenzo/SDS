@@ -1,6 +1,7 @@
 package com.sds.loginService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 import javax.mail.MessagingException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.junit.Test;
@@ -35,9 +37,10 @@ import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
+import com.sds.service.login.model.LoginRol;
 import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.persona.PersonaService;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
@@ -62,9 +65,9 @@ public class LoginServiceTest {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_CONTRASENA_VACIOS_DATA);
 
-		final String respuesta = loginService.loginUser(login);
+		final LoginRol respuesta = loginService.loginUser(login);
 
-		assertEquals(respuesta, CodeMessageErrors.LOGIN_VACIO.name());
+		assertEquals(respuesta.getTokenUsuario(), CodeMessageErrors.LOGIN_VACIO.name());
 	}
 
 	@Test
@@ -73,9 +76,9 @@ public class LoginServiceTest {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_VACIO_DATA);
 
-		final String respuesta = loginService.loginUser(login);
+		final LoginRol respuesta = loginService.loginUser(login);
 
-		assertEquals(respuesta, CodeMessageErrors.LOGIN_VACIO.name());
+		assertEquals(respuesta.getTokenUsuario(), CodeMessageErrors.LOGIN_VACIO.name());
 	}
 
 	@Test
@@ -85,9 +88,9 @@ public class LoginServiceTest {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.CONTRASENA_VACIA_DATA);
 
-		final String respuesta = loginService.loginUser(login);
+		final LoginRol respuesta = loginService.loginUser(login);
 
-		assertEquals(respuesta, CodeMessageErrors.LOGIN_VACIO.name());
+		assertEquals(respuesta.getTokenUsuario(), CodeMessageErrors.LOGIN_VACIO.name());
 	}
 
 	@Test(expected = UsuarioNoEncontradoException.class)
@@ -117,9 +120,9 @@ public class LoginServiceTest {
 
 		final Login login = generateLogin(Constantes.URL_JSON_LOGIN_DATA, Constantes.USUARIO_CONTRASENA_CORRECTOS);
 
-		final String respuesta = loginService.loginUser(login);
+		final LoginRol respuesta = loginService.loginUser(login);
 
-		assertNotNull(respuesta);
+		assertNotEquals(respuesta.getRolUsuario(), StringUtils.EMPTY);
 	}
 
 	@Test(expected = EmailNoEncontradoException.class)
@@ -140,7 +143,7 @@ public class LoginServiceTest {
 				0);
 		final UsuarioEntity usuario = new UsuarioEntity("11111111A", "usuario", "usuario", 0, rol);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(persona, usuario);
+		final PersonaAnadir personaAñadir = new PersonaAnadir(persona, usuario);
 
 		personaAñadir.setUsuario("usuario");
 
@@ -179,7 +182,7 @@ public class LoginServiceTest {
 				0);
 		final UsuarioEntity usuario = new UsuarioEntity("11111111A", "usuario", "usuario", 0, rol);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(persona, usuario);
+		final PersonaAnadir personaAñadir = new PersonaAnadir(persona, usuario);
 
 		personaAñadir.setUsuario("usuario");
 
@@ -218,7 +221,7 @@ public class LoginServiceTest {
 				0);
 		final UsuarioEntity usuario = new UsuarioEntity("11111111A", "usuario", "usuario", 0, rol);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(persona, usuario);
+		final PersonaAnadir personaAñadir = new PersonaAnadir(persona, usuario);
 
 		personaAñadir.setUsuario("usuario");
 

@@ -33,7 +33,7 @@ import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
@@ -198,14 +198,14 @@ public class PersonaServiceTest {
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			UsuarioNoEncontradoException, PersonaNoExisteException, UsuarioAsociadoPersonaException {
-		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.GUARDAR_PERSONA);
 
 		String respuesta = StringUtils.EMPTY;
 
 		respuesta = personaService.añadirPersona(persona);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		final List<PersonaEntity> personaBD = personaService.buscarPersona(persona.getPersonaEntity().getDniP(),
 				persona.getPersonaEntity().getNombreP(), persona.getPersonaEntity().getApellidosP(),
@@ -225,7 +225,7 @@ public class PersonaServiceTest {
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 
-		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.PARAMETROS_PERSONA_VACIOS_DATA);
 		String respuesta = StringUtils.EMPTY;
 
@@ -239,7 +239,7 @@ public class PersonaServiceTest {
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 
-		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.PERSONA_YA_EXISTE);
 
 		personaService.añadirPersona(persona);
@@ -251,7 +251,7 @@ public class PersonaServiceTest {
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 
-		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.USUARIO_YA_EXISTE);
 
 		personaService.añadirPersona(persona);
@@ -266,7 +266,7 @@ public class PersonaServiceTest {
 
 		UsuarioEntity user = new UsuarioEntity();
 
-		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.GUARDAR_PERSONA);
 
 		personaService.añadirPersona(persona);
@@ -274,7 +274,7 @@ public class PersonaServiceTest {
 		final Persona personaEliminar = new Persona(persona.getUsuario(), persona.getPersonaEntity());
 		final String respuesta = personaService.eliminarPersona(personaEliminar);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		final List<UsuarioEntity> usuario = usuarioService.buscarUsuariosEliminados();
 
@@ -306,7 +306,7 @@ public class PersonaServiceTest {
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			PersonaNoExisteException, UsuarioNoEncontradoException, UsuarioAsociadoPersonaException {
 
-		final PersonaAñadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.GUARDAR_PERSONA);
 
 		personaService.añadirPersona(persona);
@@ -316,7 +316,7 @@ public class PersonaServiceTest {
 
 		final String respuesta = personaService.modificarPersona(personaModificar);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		final List<UsuarioEntity> usuario = usuarioService.buscarUsuario(persona.getUsuarioEntity().getDniUsuario(),
 				persona.getUsuarioEntity().getUsuario(), persona.getUsuarioEntity().getRol());
@@ -334,6 +334,13 @@ public class PersonaServiceTest {
 
 		personaService.modificarPersona(persona);
 
+	}
+
+	@Test
+	public void PersonaService_buscarTodosEliminados() throws IOException, ParseException {
+		final List<PersonaEntity> personasEliminadas = personaService.buscarPersonasEliminadas();
+
+		assertNotNull(personasEliminadas);
 	}
 
 	private Persona generatePersona(final String fichero, final String nombrePrueba)
@@ -380,12 +387,12 @@ public class PersonaServiceTest {
 
 	}
 
-	private PersonaAñadir generatePersonaAñadir(final String fichero, final String nombrePrueba)
+	private PersonaAnadir generatePersonaAñadir(final String fichero, final String nombrePrueba)
 			throws IOException, ParseException, java.text.ParseException {
 
 		final JSONObject jsonPersona = new Util().getDatosJson(fichero, nombrePrueba);
 
-		final PersonaAñadir persona = new PersonaAñadir();
+		final PersonaAnadir persona = new PersonaAnadir();
 		final PersonaEntity personaEntity = new PersonaEntity();
 
 		final UsuarioEntity usuarioEntity = new UsuarioEntity();

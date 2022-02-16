@@ -86,6 +86,13 @@ public class ValidacionesAtributosNumerico {
 				default:
 					break;
 				}
+			case GESTION_EMPRESAS:
+				switch (atr) {
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_LETRAS_ACENTOS_INCORRECTO + " - "
+							+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
+					break;
+				}
 			default:
 				break;
 			}

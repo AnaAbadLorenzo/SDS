@@ -111,7 +111,7 @@ public class FuncionalidadServiceTest {
 
 		respuesta = funcionalidadService.anadirFuncionalidad(funcionalidad);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		final List<FuncionalidadEntity> funcionalidadDelete = funcionalidadService.buscarFuncionalidad(
 				funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
@@ -192,7 +192,7 @@ public class FuncionalidadServiceTest {
 
 		respuesta = funcionalidadService.modificarFuncionalidad(funcionalidadGuardar);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		funcionalidadService.deleteFuncionalidad(funcionalidadGuardar.getFuncionalidadEntity());
 
@@ -238,7 +238,7 @@ public class FuncionalidadServiceTest {
 	}
 
 	@Test(expected = FuncionalidadNoExisteException.class)
-	public void FuncionalidadService_modificarFuncionalidadnNoExiste() throws IOException, ParseException,
+	public void FuncionalidadService_modificarFuncionalidadNoExiste() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException {
 
 		final Funcionalidad funcionalidadGuardar = generateFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
@@ -265,7 +265,7 @@ public class FuncionalidadServiceTest {
 
 		final String respuesta = funcionalidadService.eliminarFuncionalidad(funcionalidad);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		funcionalidadService.deleteFuncionalidad(funcionalidad.getFuncionalidadEntity());
 

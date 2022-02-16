@@ -15,6 +15,7 @@ import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.PersonaRepository;
+import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.EmailNoEncontradoException;
@@ -27,6 +28,7 @@ import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.log.LogService;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
+import com.sds.service.login.model.LoginRol;
 import com.sds.service.mail.MailService;
 import com.sds.service.mail.model.Mail;
 import com.sds.service.usuario.UsuarioService;
@@ -43,6 +45,9 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	PersonaRepository personaRepository;
+
+	@Autowired
+	RolRepository rolRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -64,18 +69,21 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String loginUser(final Login login) throws UsuarioNoEncontradoException, PasswordIncorrectoException,
+	public LoginRol loginUser(final Login login) throws UsuarioNoEncontradoException, PasswordIncorrectoException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		final LoginRol result = new LoginRol();
 
 		final Boolean loginValido = validaciones.comprobarLoginBlank(login);
 
 		if (loginValido) {
 			if (existeUsuario(login)) {
 				resultado = jWTToken.getJWTToken(login.getUsuario());
-
+				final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
+				result.setTokenUsuario(resultado);
+				result.setRolUsuario(usuario.getRol().getRolName());
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(login.getUsuario(), Constantes.LOGIN,
 						login.toString());
 				resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
@@ -87,9 +95,11 @@ public class LoginServiceImpl implements LoginService {
 			}
 		} else {
 			resultado = CodeMessageErrors.LOGIN_VACIO.name();
+			result.setTokenUsuario(resultado);
+			result.setRolUsuario(StringUtils.EMPTY);
 		}
 
-		return resultado;
+		return result;
 	}
 
 	@Override

@@ -1,0 +1,42 @@
+{
+	"usuarioVacio" : {
+		"usuario" : "",
+		"emailP" : ""
+	},
+ 	"usuarioAlfanumericoEnhe" : {
+ 		"usuario" : "aicuña",
+		"emailP" : "prueba"
+ 	},
+ 	"usuarioAlfanumericoAcentos" : {
+ 		"usuario" : "águila",
+		"emailP" : ""
+ 	},
+ 	"usuarioAlfanumericoCaracteresEspeciales" : {
+ 		"usuario" : "aicuna?",
+		"emailP" : "prueba"
+ 	},
+ 	"usuarioAlfanumericoEspacios":  {
+ 		"usuario" : "aic 87",
+		"emailP" : "prueba"
+ 	},
+ 	"usuarioAlfanumericoMenor3":  {
+ 		"usuario" : "ai",
+		"emailP" : "aicuna"
+ 	},
+ 	"usuarioAlfanumericoMayor45":  {
+ 		"usuario" : "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+		"emailP" : "aicuna"
+ 	},
+ 	"usuarioAlfabetico" : {
+		"usuario" : "aicuna",
+		"emailP" : ""
+	},
+	"usuarioAlfanumerico" : {
+		"usuario" : "aicuna87",
+		"emailP" : ""
+	},
+	"usuarioNumerico" : {
+		"usuario" : "12387",
+		"emailP" : ""
+	}
+}

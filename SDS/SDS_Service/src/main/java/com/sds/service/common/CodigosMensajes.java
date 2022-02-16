@@ -131,6 +131,15 @@ public class CodigosMensajes {
 	public static final String CONTRASEÑA_MODIFICADA_OK = "CONTRASEÑA_MODIFICADA_OK";
 	public static final String BUSCAR_PERSONA_CORRECTO = "BUSCAR_PERSONA_CORRECTO";
 
+	public static final String BUSCAR_EMPRESA_CORRECTO = "BUSCAR_EMPRESA_CORRECTO";
+	public static final String EMPRESA_VACIA = "EMPRESA_VACIA";
+	public static final String GUARDAR_EMPRESA_CORRECTO = "GUARDAR_EMPRESA_CORRECTO";
+	public static final String EMPRESA_YA_EXISTE = "EMPRESA_YA_EXISTE";
+	public static final String MODIFICAR_EMPRESA_CORRECTO = "MODIFICAR_EMPRESA_CORRECTO";
+	public static final String EMPRESA_NO_EXISTE = "EMPRESA_NO_EXISTE";
+	public static final String ELIMINAR_EMPRESA_CORRECTO = "ELIMINAR_EMPRESA_CORRECTO";
+	public static final String EMPRESA_ASOCIADA_PERSONAS = "EMPRESA_ASOCIADAS_PERSONAS";
+
 	public static final String PERSONA_YA_EXISTE = "PERSONA_YA_EXISTE";
 	public static final String USUARIO_YA_EXISTE = "USUARIO_YA_EXISTE";
 	public static final String GUARDAR_PERSONA_CORRECTO = "GUARDAR_PERSONA_CORRECTO";

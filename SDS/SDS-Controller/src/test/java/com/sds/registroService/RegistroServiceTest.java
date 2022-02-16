@@ -1,7 +1,6 @@
 package com.sds.registroService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -135,7 +134,7 @@ public class RegistroServiceTest {
 
 		final String respuesta = registroService.registrar(registro);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		usuarioService.deleteUsuario(registro.getDatosUsuario());
 		personaService.deletePersona(registro.getDatosPersona());

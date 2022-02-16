@@ -49,7 +49,9 @@ public class SDSApplication {
 					.permitAll().antMatchers(HttpMethod.GET, "/accion/*").permitAll()
 					.antMatchers(HttpMethod.POST, "/accion").permitAll().antMatchers(HttpMethod.POST, "/accion/*")
 					.permitAll().antMatchers(HttpMethod.GET, "/usuario/*").permitAll()
-					.antMatchers(HttpMethod.POST, "/usuario/*").permitAll().antMatchers(HttpMethod.GET, "/test/*")
+					.antMatchers(HttpMethod.POST, "/usuario/*").permitAll().antMatchers(HttpMethod.GET, "/empresa/*")
+					.permitAll().antMatchers(HttpMethod.POST, "/empresa/*").permitAll()
+					.antMatchers(HttpMethod.POST, "/empresa").permitAll().antMatchers(HttpMethod.GET, "/test/*")
 					.permitAll().antMatchers(HttpMethod.POST, "/registrar").permitAll().anyRequest().authenticated();
 
 		}

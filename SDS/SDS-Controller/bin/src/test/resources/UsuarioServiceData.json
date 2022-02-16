@@ -1,0 +1,77 @@
+{
+	"buscarUsuarioCorrecto":{
+		"user": "ana",
+		"dniUsuario": "44460662Y",
+		"usuario": "aicuna",
+		"passwdUsuario": "aicuna",
+		"borradoUsuario": 0
+		
+	},
+	
+	"usuarioVacio": {
+		"user": "ana",
+		"dniUsuario": "44460662Y",
+		"usuario": "",
+		"passwdUsuario": "aicuna",
+		"borradoUsuario": 0
+	},
+	
+	"usuarioDniNombreVacios": {
+		"user": "ana",
+		"dniUsuario": "",
+		"usuario": "",
+		"passwdUsuario": "aicuna",
+		"borradoUsuario": 0
+	},
+	"dniPVacio":{
+			"user": "ana",
+		"dniUsuario": "",
+		"usuario": "aicuna",
+		"passwdUsuario": "aicuna",
+		"borradoUsuario": 0
+	},
+	
+	"guardarUsuario":{
+		"user": "ana",
+		
+		"dniUsuario": "47859623K",
+		"usuario": "pepe",
+		"passwdUsuario": "pepe",
+		"borradoUsuario": 0
+	},
+	
+	"usuarioNoExiste":{
+		"user": "ana",
+		
+		"dniUsuario": "47859623K",
+		"usuario": "pepe",
+		"passwdUsuario": "pepe",
+		"borradoUsuario": 0
+	},
+	"rolUsuario": {
+		"usuario": "ana",
+		
+		"idRol":"",
+		"rolName":"Prueba",
+		"rolDescription":"Esta es una prueba",
+		"borradoRol": 0
+	},
+	
+	"modificarRolUsuario":{
+		"user": "ana",
+		
+		"dniUsuario": "95687451K",
+		"usuario": "usuario",
+		"passwdUsuario": "usuario",
+		"borradoUsuario": 0
+	},
+	
+	"modificarPasswdUsuario": {
+		"user": "ana",
+		
+		"dniUsuario": "85744125O",
+		"usuario": "user",
+		"passwdUsuario": "miContrasena",
+		"borradoUsuario": 0
+	}
+}

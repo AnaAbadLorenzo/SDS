@@ -21,7 +21,7 @@ import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.persona.model.PersonaBuscar;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
@@ -89,7 +89,7 @@ public class PersonaController {
 
 	@RequestMapping(value = "/persona", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity añadirPersona(@RequestBody final PersonaAñadir persona) {
+	public RespEntity añadirPersona(@RequestBody final PersonaAnadir persona) {
 		try {
 			final Boolean personaValida = validaciones.comprobarPersonaBlank(persona.getPersonaEntity());
 
@@ -153,7 +153,7 @@ public class PersonaController {
 
 	@RequestMapping(value = "/anadirPersona", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity anadirPersona(@RequestBody final PersonaAñadir persona) {
+	public RespEntity anadirPersona(@RequestBody final PersonaAnadir persona) {
 		try {
 			final Boolean personaValida = validaciones.comprobarPersonaBlank(persona.getPersonaEntity());
 

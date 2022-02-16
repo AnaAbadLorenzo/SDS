@@ -1,0 +1,54 @@
+{
+	"accionNameVacio":{
+		"idAccion": "",
+		"nombreAccion" : "",
+		"descripAccion" : "Esta es la descripción de la nueva accion",
+		"borradoAccion" : 0
+	},
+	
+	"accionNameAlfabeticoCaracteresEspeciales": {
+		"idAccion" : "",
+		"nombreAccion" : "Esta//***",
+		"descripAccion" : "Esta es la descripción de la nueva accion",
+		"borradoAccion" : 0		
+	},
+	
+	"accionNameAlfabeticoEspacios": {
+		"idAccion" : "",
+		"nombreAccion" : "Ana dir",
+		"descripAccion" : "Esta es la descripción de la nueva accion",
+		"borradoAccion" : 0		
+	},
+	
+	"accionNameAlfabeticoMenor3":{
+		"idAccion":"",
+		"nombreAccion":"Ge",
+		"descripAccion":"Esta es la descripcion de la accion",
+		"borradoAccion" : 0
+	},
+	
+	"accionNameAlfabeticoMayor48":{
+		"idAccion":"",
+		"nombreAccion":"Gestion de accionesssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+		"descripAccion":"Esta es la descipcion de la accion",
+		"borradoAccion":0
+	
+	},
+	
+	"accionNameAlfabetico":{
+		"idAccion":"",
+		"nombreAccion":"Acciones",
+		"descripAccion": "Esta es la descripcion de la accion",
+		"borradoAccion":0
+	
+	},
+	
+	"accionNameNumerico":{
+		"idAccion":"",
+		"nombreAccion":"12345",
+		"descripAccion": "Esta es la descripcion de la accion",
+		"borradoAccion":0
+	
+	}
+
+}

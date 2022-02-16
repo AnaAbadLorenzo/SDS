@@ -92,6 +92,14 @@ public class AccionServiceTest {
 	}
 
 	@Test
+	public void AccionService_buscarAccionesEliminadas() throws IOException, ParseException {
+
+		final List<AccionEntity> accionEncontrada = accionService.buscarAccionesEliminadas();
+
+		assertNotNull(accionEncontrada);
+	}
+
+	@Test
 	public void AccionService_guardarAccion() throws IOException, ParseException, LogAccionesNoGuardadoException,
 			LogExcepcionesNoGuardadoException, AccionNoExisteException, AccionYaExisteException {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.GUARDAR_ACCION);
@@ -100,7 +108,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.anadirAccion(accion);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		final List<AccionEntity> accionDelete = accionService.buscarAccion(accion.getAccion().getNombreAccion(),
 				accion.getAccion().getDescripAccion());
@@ -176,7 +184,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.modificarAccion(accionGuardar);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		accionService.deleteAccion(accionGuardar.getAccion());
 
@@ -245,7 +253,7 @@ public class AccionServiceTest {
 
 		final String respuesta = accionService.eliminarAccion(accion);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		accionService.deleteAccion(accion.getAccion());
 
@@ -272,14 +280,6 @@ public class AccionServiceTest {
 
 		accionService.eliminarAccion(accion);
 
-	}
-
-	@Test
-	public void AccionService_buscarAccionesEliminadas() throws IOException, ParseException {
-
-		final List<AccionEntity> accionEncontrada = accionService.buscarAccionesEliminadas();
-
-		assertNotNull(accionEncontrada);
 	}
 
 	private Accion generateAccion(final String fichero, final String nombrePrueba) throws IOException, ParseException {

@@ -20,6 +20,7 @@ import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.common.Constantes;
 import com.sds.service.test.TestAccionService;
+import com.sds.service.test.TestEmpresaService;
 import com.sds.service.test.TestFuncionalidadService;
 import com.sds.service.test.TestLoginService;
 import com.sds.service.test.TestPersonaService;
@@ -57,6 +58,9 @@ public class TestController {
 
 	@Autowired
 	TestRecuperarPassService testRecuperarPass;
+
+	@Autowired
+	TestEmpresaService testEmpresaService;
 
 	@GetMapping(value = "/login/atributos")
 	@ResponseBody
@@ -681,6 +685,114 @@ public class TestController {
 
 	}
 
+	@GetMapping(value = "/empresa/atributos/guardar")
+	@ResponseBody
+	public RespEntity TestEmpresaAtributosAccionGuardar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+
+			final List<DatosPruebaAtributos> pruebaAtributoCifEmpresa = testEmpresaService
+					.getPruebasAtributoCifEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoNombreEmpresa = testEmpresaService
+					.getPruebasAtributoNombreEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoDireccionEmpresa = testEmpresaService
+					.getPruebasAtributoDireccionEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoTelefonoEmpresa = testEmpresaService
+					.getPruebasAtributoTelefonoEmpresa();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoCifEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDireccionEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTelefonoEmpresa);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_EMPRESAS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_EMPRESA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PERSONA_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/empresa/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestEmpresaAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+
+			final List<DatosPruebaAtributos> pruebaAtributoCifEmpresa = testEmpresaService
+					.getPruebasAtributoCifEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoNombreEmpresa = testEmpresaService
+					.getPruebasAtributoNombreEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoDireccionEmpresa = testEmpresaService
+					.getPruebasAtributoDireccionEmpresa();
+			final List<DatosPruebaAtributos> pruebaAtributoTelefonoEmpresa = testEmpresaService
+					.getPruebasAtributoTelefonoEmpresa();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoCifEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDireccionEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTelefonoEmpresa);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_EMPRESAS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_EMPRESA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PERSONA_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/empresa/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestEmpresaAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+
+			final List<DatosPruebaAtributos> pruebaAtributoCifEmpresa = testEmpresaService
+					.getPruebasAtributoCifEmpresaBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoNombreEmpresa = testEmpresaService
+					.getPruebasAtributoNombreEmpresaBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoDireccionEmpresa = testEmpresaService
+					.getPruebasAtributoDireccionEmpresaBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoTelefonoEmpresa = testEmpresaService
+					.getPruebasAtributoTelefonoEmpresaBuscar();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoCifEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDireccionEmpresa);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTelefonoEmpresa);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_EMPRESAS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_EMPRESA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_EMPRESA_OK, respuestaTestAtributos);
+
+	}
+
 	@GetMapping(value = "/accion/accion/guardar")
 	@ResponseBody
 	public RespEntity TestAccionAccionGuardar() {
@@ -1103,5 +1215,89 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/empresa/accion/buscar")
+	@ResponseBody
+	public RespEntity TestEmpresaAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_EMPRESA);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_EMPRESA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/empresa/accion/guardar")
+	@ResponseBody
+	public RespEntity TestEmpresaAccionGuardar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaGuardar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_EMPRESA);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_EMPRESA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/empresa/accion/modificar")
+	@ResponseBody
+	public RespEntity TestEmpresaAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_EMPRESA);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_EMPRESA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/empresa/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestEmpresaAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_ELIMINAR_EMPRESA);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_EMPRESA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);
 	}
 }

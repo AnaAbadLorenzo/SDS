@@ -294,4 +294,25 @@ public class GenerarJSON {
 		return persona;
 	}
 
+	public EmpresaEntity generateEmpresa(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonEmpresaVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final EmpresaEntity empresa = new EmpresaEntity();
+
+		empresa.setCifEmpresa(
+				CommonUtilities.coalesce(jsonEmpresaVacio.get(Constantes.CIF_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setNombreEmpresa(CommonUtilities.coalesce(jsonEmpresaVacio.get(Constantes.NOMBRE_EMPRESA).toString(),
+				StringUtils.EMPTY));
+		empresa.setDireccionEmpresa(CommonUtilities
+				.coalesce(jsonEmpresaVacio.get(Constantes.DIRECCION_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setTelefonoEmpresa(CommonUtilities
+				.coalesce(jsonEmpresaVacio.get(Constantes.TELEFONO_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setBorradoEmpresa(0);
+
+		return empresa;
+
+	}
+
 }

@@ -11,6 +11,7 @@ public class Constantes {
 	public static final String GESTION_FUNCIONALIDADES = "Gestión de funcionalidades";
 	public static final String GESTION_USUARIOS = "Gestión de usuarios";
 	public static final String GESTION_PERSONAS = "Gestión de personas";
+	public static final String GESTION_EMPRESAS = "Gestión de empresas";
 
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
@@ -24,8 +25,6 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_PERSONA = "Modificar persona";
 	public static final String ACCION_ELIMINAR_PERSONA = "Eliminar persona";
 	public static final String ACCION_BUSCAR_PERSONA = "Buscar persona";
-	public static final String ACCION_BUSCAR_EMPRESA = "Buscar empresa";
-	public static final String ACCION_MODIFICAR_EMPRESA = "Modificar empresa";
 	public static final String ACCION_AÑADIR_ACCION = "Añadir usuario";
 	public static final String ACCION_BUSCAR_ACCION = "Buscar accion";
 	public static final String ACCION_MODIFICAR_ACCION = "Modificar accion";
@@ -36,6 +35,9 @@ public class Constantes {
 	public static final String ACCION_BUSCAR_FUNCIONALIDAD = "Buscar funcionalidad";
 
 	public static final String ACCION_AÑADIR_EMPRESA = "Añadir empresa";
+	public static final String ACCION_BUSCAR_EMPRESA = "Buscar empresa";
+	public static final String ACCION_MODIFICAR_EMPRESA = "Modificar empresa";
+	public static final String ACCION_ELIMINAR_EMPRESA = "Eliminar empresa";
 
 	public static final String ACCION_MODIFICAR_ROL_USUARIO = "Modificar rol de usuario";
 	public static final String ACCION_MODIFICAR_PASSWD_USUARIO = "Modificar contraseña de usuario";
@@ -81,6 +83,8 @@ public class Constantes {
 
 	public static final String USUARIO_DNI = "dniUsuario";
 	public static final String USER = "user";
+
+	public static final String ID_EMPRESA = "idEmpresa";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -128,6 +132,11 @@ public class Constantes {
 	public static final String URL_JSON_PERSONA_ATRIBUTOS_USUARIO = "classpath:PersonaServiceAtributosUsuarioPersona.json";
 	public static final String URL_JSON_PERSONA_ATRIBUTOS_CONTRASENA = "classpath:PersonaServiceAtributosContrasenaPersona.json";
 	public static final String URL_JSON_PERSONA_DATA = "classpath:PersonaServiceData.json";
+	public static final String URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA = "classpath:EmpresaServiceAtributosCifEmpresa.json";
+	public static final String URL_JSON_EMPRESA_ATRIBUTOS_NOMBREEMPRESA = "classpath:EmpresaServiceAtributosNombreEmpresa.json";
+	public static final String URL_JSON_EMPRESA_ATRIBUTOS_DIRECCIONEMPRESA = "classpath:EmpresaServiceAtributosDireccionEmpresa.json";
+	public static final String URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA = "classpath:EmpresaServiceAtributosTelefonoEmpresa.json";
+	public static final String URL_JSON_EMPRESA_DATA = "classpath:EmpresaServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -178,6 +187,13 @@ public class Constantes {
 	public static final String ELIMINAR_PERSONA = "eliminarPersonaCorrecto";
 	public static final String PERSONA_NO_EXISTE = "personaNoExiste";
 
+	public static final String BUSCAR_EMPRESA = "buscarEmpresaCorrecto";
+	public static final String GUARDAR_EMPRESA_CORRECTO = "guardarEmpresaCorrecto";
+	public static final String MODIFICAR_EMPRESA_CORRECTO = "modificarEmpresaCorrecto";
+	public static final String EMPRESA_NO_EXISTE = "empresaNoExiste";
+	public static final String ELIMINAR_EMPRESA_CORRECTO = "eliminarEmpresaCorrecto";
+	public static final String ELIMINAR_EMPRESA_ASOCIADA_PERSONAS = "eliminarEmpresaAsociadaPersonas";
+
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
 	public static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";
 	public static final String DNIP_VACIO_DATA = "dniPVacio";
@@ -201,6 +217,7 @@ public class Constantes {
 	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO_DATA = "funcionalidadDescriptionVacio";
 	public static final String PARAMETROS_PERSONA_VACIOS_DATA = "parametrosPersonaVacios";
 	public static final String PARAMETROS_USUARIO_VACIOS = "parametrosUsuarioVacios";
+	public static final String PARAMETROS_EMPRESA_VACIOS = "parametrosEmpresaVacios";
 
 	public static final String USUARIO_ALFANUMERICO_ENHE_DATA = "usuarioAlfanumericoEnhe";
 	public static final String CONTRASENA_ALFANUMERICA_ENHE_DATA = "contrasenaAlfanumericaEnhe";

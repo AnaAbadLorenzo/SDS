@@ -190,6 +190,26 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+			case GESTION_EMPRESAS:
+				switch (atr) {
+				case CIF_EMPRESA:
+					resultado = CodigosMensajes.CIF_EMPRESA_MENOR_QUE_9 + " - "
+							+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MENOR_QUE_9;
+					break;
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_MENOR_QUE_3 + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case TELEFONO:
+					resultado = CodigosMensajes.TELEFONO_MENOR_QUE_9 + " - "
+							+ Mensajes.TELEFONO_NO_PUEDE_SER_MENOR_QUE_9;
+					break;
+				case DIRECCION:
+					resultado = CodigosMensajes.DIRECCION_MENOR_QUE_3 + " - "
+							+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				default:
+					break;
+				}
 			default:
 				break;
 			}

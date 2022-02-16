@@ -1,0 +1,22 @@
+{
+	"recuperarPassCorrecto":{
+		"usuario": "usuario",
+		"emailP": "anaa1312@gmail.com"
+	},
+	
+	"personaNoExiste":{
+		"usuario":"usuario",
+		"emailP": "usuario@usuario.com"
+	},
+	
+	"usuarioNoExiste":{
+		"usuario":"ana",
+		"emailP": "usuario@usuario.com"
+		
+	},
+	
+	"emailNoEncontrado":{
+		"usuario":"usuario",
+		"emailP":"usuario@usuario.com"
+	}
+}

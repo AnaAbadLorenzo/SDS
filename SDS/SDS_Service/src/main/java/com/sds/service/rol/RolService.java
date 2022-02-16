@@ -15,6 +15,8 @@ public interface RolService {
 
 	List<RolEntity> buscarRol(String rolName, String rolDescription);
 
+	List<RolEntity> buscarRolPagination(String rolName, String rolDescription, int inicio, int tamanoPagina);
+
 	List<RolEntity> buscarTodos();
 
 	List<RolEntity> buscarRolesEliminados();

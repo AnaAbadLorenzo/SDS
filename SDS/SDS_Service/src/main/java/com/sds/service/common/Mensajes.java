@@ -138,6 +138,15 @@ public class Mensajes {
 	public static final String PERSONA_NO_EXISTE = "La persona no existe";
 	public static final String MODIFICAR_PERSONA_CORRECTAMENTE = "La persona se ha modificado correctamente";
 
+	public static final String BUSCAR_EMPRESA_CORRECTAMENTE = "La empresa se ha encontrado correctamente";
+	public static final String EMPRESA_NO_PUEDE_SER_VACIA = "Los datos de empresa no pueden ser vacíos";
+	public static final String EMPRESA_GUARDADA_CORRECTAMENTE = "La empresa se ha guardado correctamente";
+	public static final String EMPRESA_YA_EXISTE = "La empresa ya existe";
+	public static final String EMPRESA_MODIFICADA_CORRECTAMENTE = "La empresa se ha modificado correctamente";
+	public static final String EMPRESA_NO_EXISTE = "La empresa no existe";
+	public static final String EMPRESA_ELIMINADA_CORRECTAMENTE = "La empresa se ha eliminado correctamente";
+	public static final String EMPRESA_TIENE_PERSONAS_ASOCIADAS = "La empresa no puede eliminarse porque tiene personas asociadas";
+
 	public static final String ERROR_AL_ENVIAR_MAIL = "Ha ocurrido un error al enviar el email con la nueva password";
 	public static final String CONTRASEÑA_RECUPERADA_CORRECTAMENTE = "La contraseña ha sido recuperada correctamente";
 	public static final String MAIL_NO_ENCONTRADO_CORRECTAMENTE = "El email del usuario no se ha encontrado";

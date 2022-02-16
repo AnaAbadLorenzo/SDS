@@ -522,7 +522,6 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
 					format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0);
 			final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
-			empresaRepository.saveAndFlush(empresa);
 			persona.setEmpresa(empresa);
 			personaRepository.saveAndFlush(persona);
 

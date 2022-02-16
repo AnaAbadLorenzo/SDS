@@ -7,6 +7,10 @@ public class Empresa {
 	public String usuario;
 	public EmpresaEntity empresa;
 
+	public Empresa() {
+
+	}
+
 	public Empresa(final String usuario, final EmpresaEntity empresa) {
 		super();
 		this.usuario = usuario;

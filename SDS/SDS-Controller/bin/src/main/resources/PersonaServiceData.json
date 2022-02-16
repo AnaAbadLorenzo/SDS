@@ -1,0 +1,207 @@
+{
+	"dniPVacio": {
+		"user": "ana",
+		
+		"dniP": "",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	"nombrePersonaVacio": {
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	"apellidosPersonaVacios": {
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	"direccionPersonaVacia": {
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	"fechaNacPersonaVacia": {
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	"emailVacio": {
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	"telefonoPersonaVacio": {
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "",
+		"borradoPersona":0
+	},
+	"parametrosPersonaVacios":{
+		"user": "ana",
+		
+		"dniP": "",
+		"nombreP": "",
+		"apellidosP": "",
+		"fechaNacP": "",
+		"direccionP": "",
+		"emailP": "",
+		"telefonoP": "",
+		"borradoPersona":""
+	},
+	"buscarPersonaCorrecto":{
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	
+	"guardarPersonaCorrecto":{
+		"user": "ana",
+		
+		"dniP": "45146321N",
+		"nombreP": "Ana",
+		"apellidosP": "Abad",
+		"fechaNacP": "2000-12-13",
+		"direccionP": "Calle de Prueba",
+		"emailP": "ana@ana.com",
+		"telefonoP": "988245263",
+		"borradoPersona":0
+	},
+	
+	"guardarUsuario":{
+		"user": "ana",
+		
+		"dniUsuario": "45146321N",
+		"usuario": "anitaAna",
+		"passwdUsuario": "anita",
+		"borradoUsuario": 0
+	},
+	
+	"personaYaExiste":{
+		"user": "ana",
+		
+		"dniP": "44460662Y",
+		"nombreP": "Alexandra",
+		"apellidosP": "Iglesias",
+		"fechaNacP": "1987-03-09",
+		"direccionP": "Prueba",
+		"emailP": "a@a.com",
+		"telefonoP": "988222222",
+		"borradoPersona":0
+	},
+	
+	"usuarioYaExiste":{
+		"user": "ana",
+		
+		"dniUsuario": "44460662Y",
+		"usuario": "aicuna",
+		"passwdUsuario": "aicuna",
+		"borradoUsuario": 0
+	},
+	
+	"usuarioVacio":{
+		"user": "ana",
+		
+		"dniUsuario": "45146321N",
+		"usuario": "",
+		"passwdUsuario": "anita",
+		"borradoUsuario": 0
+	},
+	
+	"contrasenaVacia":{
+		"user": "ana",
+		
+		"dniUsuario": "45146321N",
+		"usuario": "anita",
+		"passwdUsuario": "",
+		"borradoUsuario": 0
+	},
+	
+	"parametrosUsuarioVacios":{
+		"user": "ana",
+		
+		"dniUsuario": "",
+		"usuario": "",
+		"passwdUsuario": "",
+		"borradoUsuario": 0
+	},
+	
+	"eliminarPersonaCorrecto":{
+		"user": "ana",
+		
+		"dniP": "45146321N",
+		"nombreP": "Ana",
+		"apellidosP": "Abad",
+		"fechaNacP": "2000-12-13",
+		"direccionP": "Calle de Prueba",
+		"emailP": "ana@ana.com",
+		"telefonoP": "988245263",
+		"borradoPersona":0
+	},
+	
+	"personaNoExiste":{
+		"user": "ana",
+		
+		"dniP": "47852145H",
+		"nombreP": "Javier",
+		"apellidosP": "Gonzalez",
+		"fechaNacP": "2000-12-04",
+		"direccionP": "Calle de Prueba",
+		"emailP": "javier@gmail.com",
+		"telefonoP": "988245263",
+		"borradoPersona":0
+	}
+}

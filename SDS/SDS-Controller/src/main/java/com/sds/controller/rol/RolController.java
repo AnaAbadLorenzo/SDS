@@ -47,6 +47,17 @@ public class RolController {
 
 	}
 
+	@RequestMapping(value = "/buscarRol", method = RequestMethod.GET)
+	@ResponseBody
+	public RespEntity buscarRolPagination(@RequestBody final RolBuscar rolBuscar) {
+
+		final List<RolEntity> resultado = rolService.buscarRolPagination(rolBuscar.getRolName(),
+				rolBuscar.getRolDescription(), rolBuscar.getInicio(), rolBuscar.getTamanoPagina());
+
+		return new RespEntity(RespCode.ROL_ENCONTRADO, resultado);
+
+	}
+
 	@RequestMapping(value = "/listarRoles", method = RequestMethod.GET)
 	@ResponseBody
 	public RespEntity buscarTodos() {

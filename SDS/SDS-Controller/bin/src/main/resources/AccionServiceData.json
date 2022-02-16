@@ -1,0 +1,72 @@
+{
+	"buscarAccionCorrecto": {
+		"usuario": "ana",
+		"idAccion": 1,
+		"nombreAccion": "add",
+		"descripAccion": "añadir",
+		"borradoAccion": 0
+	},
+	"accionNameVacio": {
+		"usuario": "ana",
+		"idAccion": 1,
+		"nombreAccion": "",
+		"descripAccion": "añadir",
+		"borradoAccion": 0
+	},
+	"accionDescriptionVacio": {
+		"usuario": "ana",
+		"idAccion": 1,
+		"nombreAccion": "añadir",
+		"descripAccion": "",
+		"borradoAccion": 0
+	},
+	"accionNameDescriptionVacios": {
+		"usuario": "ana",
+		"idAccion": 1,
+		"nombreAccion": "",
+		"descripAccion": "",
+		"borradoAccion": 0
+	},
+	"accionNoExiste": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion",
+		"descripAccion": "accion",
+		"borradoAccion": 0
+	},
+	"guardarAccionCorrecto": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion",
+		"descripAccion": "accion",
+		"borradoAccion": 0
+	},
+	"accionYaExiste": {
+		"usuario": "ana",
+		"idAccion": 1,
+		"nombreAccion": "add",
+		"descripAccion": "añadir",
+		"borradoAccion": 0
+	},
+	"modificarAccion": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion",
+		"descripAccion": "accion",
+		"borradoAccion": 0
+	},
+	"eliminarAccion": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion",
+		"descripAccion": "accion",
+		"borradoAccion": 0
+	},
+	"eliminarAccionAsociadaRolFuncionalidad":{
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "accion",
+		"descripAccion": "accion",
+		"borradoAccion": 0
+	}
+}

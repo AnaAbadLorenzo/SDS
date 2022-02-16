@@ -20,6 +20,7 @@ import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.login.LoginService;
 import com.sds.service.login.model.Login;
+import com.sds.service.login.model.LoginRol;
 import com.sds.service.login.model.RecuperarPass;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
@@ -45,10 +46,10 @@ public class LoginController {
 
 		if (loginValido) {
 			try {
-				String resultado;
+				LoginRol resultado;
 				try {
 					resultado = loginService.loginUser(login);
-					if (CodeMessageErrors.LOGIN_VACIO.name().equals(resultado)) {
+					if (CodeMessageErrors.LOGIN_VACIO.name().equals(resultado.getTokenUsuario())) {
 						return new RespEntity(RespCode.LOGIN_VACIO, login);
 					}
 					return new RespEntity(RespCode.LOGIN_OK, resultado);

@@ -1,5 +1,6 @@
 package com.sds.usuarioService;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
@@ -36,7 +37,7 @@ import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.PersonaService;
-import com.sds.service.persona.model.PersonaAñadir;
+import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.rol.RolService;
 import com.sds.service.rol.model.Rol;
 import com.sds.service.usuario.UsuarioService;
@@ -132,14 +133,14 @@ public class UsuarioServiceTest {
 		final PersonaEntity persona = new PersonaEntity(usuario.getUsuarioEntity().getDniUsuario(), "Pepe", "Pepe pepe",
 				format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(usuario.getUsuario(), persona,
+		final PersonaAnadir personaAñadir = new PersonaAnadir(usuario.getUsuario(), persona,
 				usuario.getUsuarioEntity());
 
 		personaService.añadirPersona(personaAñadir);
 
 		final String respuesta = usuarioService.eliminarUsuario(usuario);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		usuarioService.deleteUsuario(usuario.getUsuarioEntity());
 		personaService.deletePersona(persona);
@@ -173,7 +174,7 @@ public class UsuarioServiceTest {
 		final PersonaEntity persona = new PersonaEntity(usuario.getUsuarioEntity().getDniUsuario(), "Pepe", "Pepe pepe",
 				format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(usuario.getUsuario(), persona,
+		final PersonaAnadir personaAñadir = new PersonaAnadir(usuario.getUsuario(), persona,
 				usuario.getUsuarioEntity());
 
 		personaService.añadirPersona(personaAñadir);
@@ -182,7 +183,7 @@ public class UsuarioServiceTest {
 
 		final String respuesta = usuarioService.cambiarContraseña(usuario, passwdUsuario);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		usuarioService.deleteUsuario(usuario.getUsuarioEntity());
 		personaService.deletePersona(persona);
@@ -221,7 +222,7 @@ public class UsuarioServiceTest {
 		final PersonaEntity persona = new PersonaEntity(usuario.getUsuarioEntity().getDniUsuario(), "Pepe", "Pepe pepe",
 				format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(usuario.getUsuario(), persona,
+		final PersonaAnadir personaAñadir = new PersonaAnadir(usuario.getUsuario(), persona,
 				usuario.getUsuarioEntity());
 
 		rolService.guardarRol(rol);
@@ -233,7 +234,7 @@ public class UsuarioServiceTest {
 
 		final String respuesta = usuarioService.modificarRolUsuario(rol.getRol(), usuario);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		usuarioService.deleteUsuario(usuario.getUsuarioEntity());
 		personaService.deletePersona(persona);
@@ -286,7 +287,7 @@ public class UsuarioServiceTest {
 		final PersonaEntity persona = new PersonaEntity(usuario.getUsuarioEntity().getDniUsuario(), "Pepe", "Pepe pepe",
 				format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
 
-		final PersonaAñadir personaAñadir = new PersonaAñadir(usuario.getUsuario(), persona,
+		final PersonaAnadir personaAñadir = new PersonaAnadir(usuario.getUsuario(), persona,
 				usuario.getUsuarioEntity());
 
 		personaService.añadirPersona(personaAñadir);

@@ -102,7 +102,7 @@ public class RolServiceTest {
 
 		respuesta = rolService.guardarRol(rol);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		final List<RolEntity> rolDelete = rolService.buscarRol(rol.getRol().getRolName(), "");
 
@@ -174,7 +174,7 @@ public class RolServiceTest {
 
 		respuesta = rolService.modificarRol(rolGuardar);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		rolService.deleteRol(rolGuardar);
 
@@ -240,7 +240,7 @@ public class RolServiceTest {
 
 		final String respuesta = rolService.eliminarRol(rol);
 
-		assertNotNull(respuesta);
+		assertEquals(respuesta, Constantes.OK);
 
 		rolService.deleteRol(rol);
 

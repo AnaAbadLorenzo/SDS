@@ -3,23 +3,23 @@ package com.sds.service.persona.model;
 import com.sds.model.PersonaEntity;
 import com.sds.model.UsuarioEntity;
 
-public class PersonaAñadir {
+public class PersonaAnadir {
 
 	private String usuario;
 	private PersonaEntity personaEntity;
 	private UsuarioEntity usuarioEntity;
 
-	public PersonaAñadir() {
+	public PersonaAnadir() {
 
 	}
 
-	public PersonaAñadir(final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
+	public PersonaAnadir(final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
 		super();
 		this.personaEntity = personaEntity;
 		this.usuarioEntity = usuarioEntity;
 	}
 
-	public PersonaAñadir(final String usuario, final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
+	public PersonaAnadir(final String usuario, final PersonaEntity personaEntity, final UsuarioEntity usuarioEntity) {
 		super();
 		this.usuario = usuario;
 		this.personaEntity = personaEntity;

@@ -24,10 +24,21 @@ public enum RespCode {
 	PERSONA_ELIMINADA("PERSONA_ELIMINADA", "La persona se ha eliminado correctamente"), //
 	PERSONA_VACIA("PERSONA_VACIA", "Los datos de persona no pueden ser vacíos"), //
 	PERSONA_GUARDADA("PERSONA_GUARDADA", "La persona se ha guardado correctamente"), //
-	PERSONA_MODIFICADA("PERSONA_MODIFICADA", "La persona se ha modificado correcrtamente"), //
+	PERSONA_MODIFICADA("PERSONA_MODIFICADA", "La persona se ha modificado correctamente"), //
 	USUARIO_ASOCIADO_PERSONA_EXCEPTION("USUARIO_ASOCIADO_PERSONA_EXCEPTION", "La persona tiene un usuario asociado"), //
 	ENVIO_EMAIL_EXCEPTION("ENVIO_EMAIL_EXCEPTION", "Ha ocurrido un errror al enviar el email"), //
 	EMPRESA_YA_EXISTE("EMPRESA_YA_EXISTE", "La empresa ya existe"), //
+	EMPRESA_ENCONTRADA("EMPRESA_ENCONTRADA", "La empresa se ha encontrado perfectamente"), //
+	EMPRESAS_LISTADAS("EMPRESAS_LISTADAS", "Las empresas se han listado correctamente"), //
+	EMPRESAS_LISTADAS_ELIMINADAS("EMPRESAS_LISTADAS_ELIMINADAS",
+			"Las empresas eliminadas se han listado correctamente"), //
+	EMPRESA_VACIA("EMPRESA_VACIA", "Los datos de la empresa son vacíos"), //
+	EMPRESA_GUARDADA("EMPRESA_GUARDADA", "La empresa se ha guardado correctamente"), //
+	EMPRESA_YA_EXISTE_EXCEPTION("EMPRESA_YA_EXISTE_EXCEPTION", "La empresa ya existe"), //
+	EMPRESA_MODIFICADA("EMPRESA_MODIFICADA", "La empresa se ha modificado correctamente"), //
+	EMPRESA_NO_ENCONTRADA_EXCEPTION("EMPRESA_NO_ENCONTRADA_EXCEPTION", "La empresa no existe"), //
+	EMPRESA_ELIMINADA("EMPRESA_ELIMINADA", "La empresa se ha eliminado correctamente"), //
+	EMPRESA_ASOCIADA_PERSONAS_EXCEPTION("EMPRESA_ASOCIADA_PERSONAS_EXCEPTION", "La empresa tiene personas asociadas"), //
 	EMAIL_NO_ENCONTRADO("EMAIL_NO_ENCONTRADO", "El email no existe"), //
 	RECUPERAR_PASS_VACIO("RECUPERAR_PASS_VACIO", "El email y/o el usuario para recuperar la contraseña están vacíos"), //
 	EMAIL_VACIO("EMAIL_VACIO", "El email de usuario es vacío"), //
@@ -134,7 +145,15 @@ public enum RespCode {
 	TEST_ATRIBUTOS_RECUPERARPASS_KO("TEST_ATRIBUTOS_RECUPERARPASS_KO",
 			"Se ha producido un error al ejecutar los test de atributos para recuperar contraseña"), //
 	TEST_ATRIBUTOS_RECUPERARPASS_OK("TEST_ATRIBUTOS_RECUPERARPASS_OK",
-			"Los test de atributo para la recuperacion de contraseña se han ejecutado correctamente");
+			"Los test de atributo para la recuperacion de contraseña se han ejecutado correctamente"), //
+	TEST_ACCIONES_EMPRESA_KO("TEST_ACCIONES_EMPRESA_KO",
+			"Se ha producido un error al ejecutar los test de acciones para empresa"), //
+	TEST_ACCIONES_EMPRESA_OK("TEST_ACCIONES_EMPRESA_OK",
+			"Los test de acciones para la empresa se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_EMPRESA_KO("TEST_ATRIBUTOS_EMPRESA_KO",
+			"Se ha producido un error al ejecutar los test de atributos para empresa"), //
+	TEST_ATRIBUTOS_EMPRESA_OK("TEST_ATRIBUTOS_EMPRESA_OK",
+			"Los test de atributo para la empresa se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

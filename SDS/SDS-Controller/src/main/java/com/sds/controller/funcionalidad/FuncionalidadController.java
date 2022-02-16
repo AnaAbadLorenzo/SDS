@@ -122,7 +122,7 @@ public class FuncionalidadController {
 		return new RespEntity(RespCode.FUNCIONALIDAD_VACIA, funcionalidad);
 	}
 
-	@RequestMapping(value = "/eliminarFuncionaldiad", method = RequestMethod.POST)
+	@RequestMapping(value = "/eliminarFuncionalidad", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity eliminarFuncionalidad(@RequestBody final Funcionalidad funcionalidad) {
 

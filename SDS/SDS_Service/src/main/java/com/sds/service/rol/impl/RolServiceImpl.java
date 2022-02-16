@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +34,9 @@ import com.sds.service.util.validaciones.Validaciones;
 
 @Service
 public class RolServiceImpl implements RolService {
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	RolRepository rolRepository;
@@ -72,6 +78,32 @@ public class RolServiceImpl implements RolService {
 		}
 
 		return toret;
+	}
+
+	@Override
+	public List<RolEntity> buscarRolPagination(final String rolName, final String rolDescription, final int inicio,
+			final int tamanoPagina) {
+		RolEntity rolUser = new RolEntity();
+		List<RolEntity> rolesBD = new ArrayList<>();
+		final List<RolEntity> toret = new ArrayList<>();
+
+		rolesBD = entityManager.createNamedQuery("RolEntity.findRol").setParameter("rolName", rolName)
+				.setParameter("rolDescription", rolDescription).setFirstResult(inicio).setMaxResults(tamanoPagina)
+				.getResultList();
+
+		if (!rolesBD.isEmpty()) {
+			for (final RolEntity rol : rolesBD) {
+				if (rol.getBorradoRol() == 0) {
+					rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(),
+							rol.getBorradoRol());
+					toret.add(rolUser);
+				}
+			}
+
+		}
+
+		return toret;
+
 	}
 
 	@Override

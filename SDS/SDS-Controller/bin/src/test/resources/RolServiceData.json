@@ -62,14 +62,6 @@
 		"borradoRol": 0
 	},
 	
-	"eliminarRol":{
-		"usuario": "aicuna",
-		
-		"idRol":"4",
-		"rolName":"Nuevo rol",
-		"rolDescription":"Esta es una prueba de rol",
-		"borradoRol":1
-	},
 	
 	"eliminarRolNoExiste":{
 		"usuario": "aicuna",
@@ -90,12 +82,12 @@
 		
 	},
 	
-	"modificarRol":{
+	"eliminarRolAsociadoAccionFuncionalidad":{
 		"usuario": "aicuna",
 		
-		"idRol":4,
-		"rolName": "Nuevo rol",
-		"rolDescription": "Prueba",
-		"borradoRol":1
+		"idRol":"3",
+		"rolName":"superadministrador",
+		"rolDescription": "Contendrá a todos los superadministradores de la aplicacion",
+		"borradoRol":0
 	}
 }

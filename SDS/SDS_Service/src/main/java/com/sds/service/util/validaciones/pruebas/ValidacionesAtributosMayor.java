@@ -182,6 +182,24 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+			case GESTION_EMPRESAS:
+				switch (atr) {
+				case CIF_EMPRESA:
+					resultado = CodigosMensajes.CIF_EMPRESA_MAYOR_QUE_9 + " - "
+							+ Mensajes.CIF_EMPRESA_NO_PUEDE_SER_MAYOR_QUE_9;
+					break;
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_MAYOR_QUE_56 + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_MAYOR_QUE_56;
+					break;
+				case TELEFONO:
+					resultado = CodigosMensajes.TELEFONO_MAYOR_QUE_9 + " - "
+							+ Mensajes.TELEFONO_NO_PUEDE_SER_MAYOR_QUE_9;
+					break;
+				case DIRECCION:
+					resultado = CodigosMensajes.DIRECCION_MAYOR_QUE_128 + " - "
+							+ Mensajes.DIRECCION_NO_PUEDE_SER_MAYOR_QUE_128;
+					break;
+				}
 			default:
 				break;
 			}

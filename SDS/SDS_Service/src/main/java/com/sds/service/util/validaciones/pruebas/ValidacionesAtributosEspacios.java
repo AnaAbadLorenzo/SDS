@@ -159,6 +159,22 @@ public class ValidacionesAtributosEspacios {
 				default:
 					break;
 				}
+
+			case GESTION_EMPRESAS:
+				switch (atr) {
+				case CIF_EMPRESA:
+					resultado = CodigosMensajes.CIF_EMPRESA_ALFANUMERICO_INCORRECTO + " - "
+							+ Mensajes.CIF_EMPRESA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+					break;
+				case EMAIL:
+					resultado = CodigosMensajes.EMAIL_ALFANUMERICO_INCORRECTO + " - "
+							+ Mensajes.EMAIL_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS;
+					break;
+				case TELEFONO:
+					resultado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
+							+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+					break;
+				}
 			default:
 				break;
 			}

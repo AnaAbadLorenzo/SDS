@@ -181,6 +181,23 @@ public class ValidacionesAtributosBlank {
 					break;
 				}
 
+			case GESTION_EMPRESAS:
+				switch (atr) {
+				case CIF_EMPRESA:
+					resultado = CodigosMensajes.CIF_EMPRESA_VACIO + " - " + Mensajes.CIF_EMPRESA_NO_PUEDE_SER_VACIO;
+					break;
+				case NOMBRE:
+					resultado = CodigosMensajes.NOMBRE_VACIO + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
+					break;
+				case TELEFONO:
+					resultado = CodigosMensajes.TELEFONO_VACIO + " - " + Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
+					break;
+				case DIRECCION:
+					resultado = CodigosMensajes.DIRECCION_VACIO + " - " + Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
+					break;
+				default:
+					break;
+				}
 			default:
 				break;
 			}

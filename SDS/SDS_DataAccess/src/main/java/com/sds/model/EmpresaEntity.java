@@ -16,7 +16,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "empresa")
 @NamedQueries({
-		@NamedQuery(name = "EmpresaEntity.findByCif", query = "SELECT e FROM EmpresaEntity e WHERE e.cifEmpresa =: cifEmpresa") })
+		@NamedQuery(name = "EmpresaEntity.findEmpresa", query = "SELECT e FROM EmpresaEntity e WHERE e.cifEmpresa LIKE CONCAT('%', :cifEmpresa, '%') AND e.nombreEmpresa LIKE CONCAT('%', :nombreEmpresa, '%') AND e.direccionEmpresa LIKE CONCAT('%', :direccionEmpresa, '%') AND e.telefonoEmpresa LIKE CONCAT('%',:telefonoEmpresa, '%')"),
+		@NamedQuery(name = "EmpresaEntity.findByCif", query = "SELECT e FROM EmpresaEntity e WHERE e.cifEmpresa =: cifEmpresa"),
+		@NamedQuery(name = "EmpresaEntity.findEmpresasEliminadas", query = "SELECT e FROM EmpresaEntity e WHERE e.borradoEmpresa =: borradoEmpresa") })
 public class EmpresaEntity {
 
 	@Id
