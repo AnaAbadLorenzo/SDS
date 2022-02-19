@@ -101,7 +101,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
 					empresa.getBorradoEmpresa());
 
-			toret.add(empresaToret)
+			toret.add(empresaToret);
 		}
 
 		return toret;
