@@ -80,6 +80,8 @@ public class EmpresaServiceImpl implements EmpresaService {
 			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
 					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
 					empresa.getBorradoEmpresa());
+			
+			toret.add(empresaToret);
 
 		}
 
@@ -99,6 +101,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
 					empresa.getBorradoEmpresa());
 
+			toret.add(empresaToret);
 		}
 
 		return toret;
