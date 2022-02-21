@@ -84,6 +84,7 @@ public class LoginServiceImpl implements LoginService {
 				final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 				result.setTokenUsuario(resultado);
 				result.setRolUsuario(usuario.getRol().getRolName());
+				result.setUsuario(login.getUsuario());
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(login.getUsuario(), Constantes.LOGIN,
 						login.toString());
 				resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
@@ -97,6 +98,7 @@ public class LoginServiceImpl implements LoginService {
 			resultado = CodeMessageErrors.LOGIN_VACIO.name();
 			result.setTokenUsuario(resultado);
 			result.setRolUsuario(StringUtils.EMPTY);
+			result.setUsuario(login.getUsuario());
 		}
 
 		return result;

@@ -4,15 +4,17 @@ public class LoginRol {
 
 	private String tokenUsuario;
 	private String rolUsuario;
+	private String usuario;
 
 	public LoginRol() {
 
 	}
 
-	public LoginRol(final String tokenUsuario, final String rolUsuario) {
+	public LoginRol(final String tokenUsuario, final String rolUsuario, final String usuario) {
 		super();
 		this.tokenUsuario = tokenUsuario;
 		this.rolUsuario = rolUsuario;
+		this.usuario = usuario;
 	}
 
 	public String getTokenUsuario() {
@@ -29,6 +31,14 @@ public class LoginRol {
 
 	public void setRolUsuario(final String rolUsuario) {
 		this.rolUsuario = rolUsuario;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(final String usuario) {
+		this.usuario = usuario;
 	}
 
 }
