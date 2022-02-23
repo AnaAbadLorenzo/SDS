@@ -1,0 +1,2672 @@
+{
+	"info": {
+		"_postman_id": "768d5957-8367-4357-a695-960f1a19fa23",
+		"name": "SDS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Login para obtener token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has tokenUsuario\"] = responseBody.has(\"tokenUsuario\");\r",
+											"tests[\"Tokeb Usuario: \" + json.data.tokenUsuario] = json.data.tokenUsuario !== null;\r",
+											"\r",
+											"tests[\"Body has rolUsuario\"] = responseBody.has(\"rolUsuario\");\r",
+											"tests[\"Rol Usuario: \" + json.data.rolUsuario] = json.data.rolUsuario === \"admin\";\r",
+											"\r",
+											"tests[\"Body has usuario\"] = responseBody.has(\"usuario\");\r",
+											"tests[\"Usuario: \" + json.data.usuario] = json.data.usuario === \"aicuna\";\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"tokenUsuario\", json.data.tokenUsuario); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\" : \"aicuna\",\r\n    \"passwdUsuario\" : \"aicuna\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Login Atributos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Login\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Login\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_LOGIN_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de atributos para el login se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/login/atributos",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"login",
+										"atributos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Recuperar Pass Atributos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Login\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Recuperar contrasena usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_RECUPERARPASS_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para la recuperacion de contraseña se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/recuperarPass/atributos",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"recuperarPass",
+										"atributos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Login Acciones",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Login\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Login\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_LOGIN_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El test de acciones para el login se ha ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/login/acciones",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"login",
+										"acciones"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Registrar",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Registrar Atributos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Registrar\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Registrar\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_REGISTRO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de atributos para el registro se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/registrar/atributos",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"registrar",
+										"atributos"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Registrar Acciones",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Registrar\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Registrar\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_REGISTRO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El test de acciones para el registro se ha ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/registrar/acciones",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"registrar",
+										"acciones"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestión de Roles",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Rol Atributos Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTO_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de atributos para el rol se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/atributos/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"atributos",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Rol Atributos Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTO_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de atributos para el rol se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/atributos/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"atributos",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Rol Atributos Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTO_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de atributos para el rol se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/atributos/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"atributos",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Rol Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Añadir rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/accion/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"accion",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Rol Accion Eliminar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funacionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Eliminar rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/accion/eliminar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"accion",
+										"eliminar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Rol Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/accion/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"accion",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Rol Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de roles\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Buscar rol\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_ROL_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/rol/accion/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"rol",
+										"accion",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestión de Acciones",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Accion Atributos Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para acción se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/atributos/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"atributos",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Accion Atributos Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para acción se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/atributos/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"atributos",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Accion Atributos Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para acción se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/atributos/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"atributos",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Accion Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCION_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de acciones para accion se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/accion/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"accion",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Accion Accion Eliminar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Eliminar acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCION_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de acciones para accion se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/accion/eliminar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"accion",
+										"eliminar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Accion Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCION_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de acciones para accion se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/accion/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"accion",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Accion Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCION_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de acciones para accion se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/accion/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"accion",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestión de Funcionalidades",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Funcionalidad Atributos Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Añadir funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/atributos/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"atributos",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Funcionalidad Atributos Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Buscar funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/atributos/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"atributos",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Funcionalidad Atributos Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Modificar funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/atributos/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"atributos",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Accion",
+					"item": [
+						{
+							"name": "Test Funcionalidad Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Añadir funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/accion/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"accion",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Funcionalidad Accion Eliminar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Eliminar funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/accion/eliminar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"accion",
+										"eliminar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Funcionalidad Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Modificar funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/accion/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"accion",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Funcionalidad Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Buscar funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/accion/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"accion",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestión de Usuarios",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Usuiario Atributos Accion Modificar Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de usuarios\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar rol de usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_USUARIO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para usuario se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/usuario/atributos/modificarRol",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"usuario",
+										"atributos",
+										"modificarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Usuario Atributos Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de usuarios\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_USUARIO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para usuario se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/usuario/atributos/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"usuario",
+										"atributos",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Usuario Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de usuarios\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_USUARIO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para usuario se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/usuario/accion/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"usuario",
+										"accion",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Usuario Accion Modificar Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de usuarios\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar rol de usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_USUARIO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para usuario se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/usuario/accion/modificarRolUsuario",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"usuario",
+										"accion",
+										"modificarRolUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Usuario Accion Modificar Passwd",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de usuarios\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar contraseña de usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_USUARIO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para usuario se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/usuario/accion/modificarPasswdUsuario",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"usuario",
+										"accion",
+										"modificarPasswdUsuario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestuión de Personas",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Persona Atributos Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/atributos/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"atributos",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Persona Atributos Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/atributos/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"atributos",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Persona Atributos Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/atributos/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"atributos",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Persona Acción Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/accion/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"accion",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Persona Accion Eliminar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Eliminar persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/accion/eliminar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"accion",
+										"eliminar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Persona Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/accion/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"accion",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Persona Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar persona\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_PERSONA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para persona se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/persona/accion/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"persona",
+										"accion",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Gestión de Empresas",
+			"item": [
+				{
+					"name": "Atributos",
+					"item": [
+						{
+							"name": "Test Empresa Atributos Accion Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/atributos/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"atributos",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Empresa Atributos Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/atributos/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"atributos",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Empresa Atributos Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ATRIBUTOS_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de atributo para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAtributos\"] = responseBody.has(\"datosPruebaAtributos\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAtributos.length] = json.data.datosPruebaAtributos.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAtributos.length; i++) {\r",
+											"    tests[\"Validación campo: \" + json.data.datosPruebaAtributos[i].campo + \", prueba: \" + json.data.datosPruebaAtributos[i].prueba + \", valor: \" + json.data.datosPruebaAtributos[i].valor + \", resultado esperado: \" + json.data.datosPruebaAtributos[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAtributos[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAtributos[i].tipoPrueba] = json.data.datosPruebaAtributos[i].campo !== null;\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/atributos/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"atributos",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Test Empresa Acción Guardar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Añadir empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/accion/guardar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"accion",
+										"guardar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Empresa Accion Eliminar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Eliminar empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/accion/eliminar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"accion",
+										"eliminar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Empresa Accion Modificar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Modificar empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/accion/modificar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"accion",
+										"modificar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Empresa Accion Buscar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Buscar empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/accion/buscar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"accion",
+										"buscar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
