@@ -90,7 +90,7 @@ public enum RespCode {
 			"Los tests de atributos para el login se han ejecutado correctamente"), //
 	TEST_ATRIBUTOS_LOGIN_KO("TEST_ATRIBUTOS_LOGIN_KO",
 			"Se ha producido un error al ejecutar los tests de atributos para el login"), //
-	TEST_ACCIONES_LOGIN_OK("TEST_ACCIONES_LOGIN_OK", "EL test de acciones para el login se ha ejecutado correctamente"), //
+	TEST_ACCIONES_LOGIN_OK("TEST_ACCIONES_LOGIN_OK", "El test de acciones para el login se ha ejecutado correctamente"), //
 	TEST_ACCIONES_LOGIN_KO("TEST_ACCIONES_LOGIN_KO",
 			"Se ha producido un error al ejecutar los tests de acciones para el login"), //
 	TEST_ATRIBUTOS_REGISTRO_OK("TEST_ATRIBUTOS_REGISTRO_OK",
@@ -98,7 +98,7 @@ public enum RespCode {
 	TEST_ATRIBUTOS_REGISTRO_KO("TEST_ATRIBUTOS_REGISTRO_KO",
 			"Se ha producido un error al ejecutar los tests de atributos para el registro"), //
 	TEST_ACCIONES_REGISTRO_OK("TEST_ACCIONES_REGISTRO_OK",
-			"EL test de acciones para el registro se ha ejecutado correctamente"), //
+			"El test de acciones para el registro se ha ejecutado correctamente"), //
 	TEST_ACCIONES_REGISTRO_KO("TEST_ACCIONES_REGISTRO_KO",
 			"Se ha producido un error al ejecutar los tests de acciones para el registro"), //
 	TEST_ATRIBUTOS_ROL_KO("TEST_ATRIBUTOS_ROL_KO",

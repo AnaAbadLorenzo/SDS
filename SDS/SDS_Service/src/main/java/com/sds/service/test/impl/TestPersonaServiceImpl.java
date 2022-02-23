@@ -727,6 +727,9 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		final PersonaEntity datosEntradaAnadirPersonaCorrecto = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.GUARDAR_PERSONA);
 		datosEntradaAnadirPersonaCorrecto.setEmpresa(empresa);
+		final PersonaEntity datosEntradPersonaNoExiste = generarJSON.generatePersona(Constantes.URL_JSON_PERSONA_DATA,
+				Constantes.PERSONA_NO_EXISTE);
+		datosEntradPersonaNoExiste.setEmpresa(empresa);
 		final PersonaEntity datosEntradaAnadirPersonaDniVacio = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.DNIP_VACIO_DATA);
 		datosEntradaAnadirPersonaDniVacio.setEmpresa(empresa);
@@ -769,7 +772,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		datosPruebaAcciones.add(getTestGuardarPersonaYaExiste(
 				new PersonaAnadir(datosEntradaAnadirPersonaYaExiste, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaUsuarioYaExiste(
-				new PersonaAnadir(datosEntradaAnadirPersonaCorrecto, datosEntradaAnadirUsuarioYaExiste)));
+				new PersonaAnadir(datosEntradPersonaNoExiste, datosEntradaAnadirUsuarioYaExiste)));
 		datosPruebaAcciones.add(getTestGuardarPersonaDniPersonaVacio(
 				new PersonaAnadir(datosEntradaAnadirPersonaDniVacio, datosEntradaUsuario)));
 		datosPruebaAcciones.add(getTestGuardarPersonaNombrePersonaVacio(
@@ -1017,7 +1020,8 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 
 		final String resultadoObtenido = guardarPersona(datosEntradaPersonaGuardarUsuarioVacio);
 
-		final String resultadoEsperado = CodigosMensajes.USUARIO_VACIO + " - " + Mensajes.USUARIO_VACIO;
+		final String resultadoEsperado = CodigosMensajes.LOGIN_USUARIO_VACIO + " - "
+				+ Mensajes.LOGIN_USUARIO_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.VACIO, Constantes.ERROR,
@@ -1256,7 +1260,9 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 							.findById(persona.getUsuarioEntity().getDniUsuario());
 
 					usuarioRepository.deleteUsuario(usuarioBuscar.get().getDniUsuario());
+					usuarioRepository.flush();
 					personaRepository.deletePersona(personaBuscar.get().getDniP());
+					personaRepository.flush();
 
 				}
 			}
@@ -1294,7 +1300,9 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				resultado = CodigosMensajes.ELIMINAR_PERSONA_CORRECTO + " - " + Mensajes.ELIMINAR_PERSONA_CORRECTAMENTE;
 
 				usuarioRepository.deleteUsuario(persona.getDniP());
+				usuarioRepository.flush();
 				personaRepository.deletePersona(persona.getDniP());
+				personaRepository.flush();
 			}
 		}
 
@@ -1357,7 +1365,9 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 						+ Mensajes.MODIFICAR_PERSONA_CORRECTAMENTE;
 
 				usuarioRepository.deleteUsuario(persona.getDniP());
+				usuarioRepository.flush();
 				personaRepository.deletePersona(persona.getDniP());
+				personaRepository.flush();
 			}
 		}
 
