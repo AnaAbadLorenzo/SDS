@@ -717,7 +717,7 @@ public class TestController {
 		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_EMPRESA);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_PERSONA_OK, respuestaTestAtributos);
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_EMPRESA_OK, respuestaTestAtributos);
 
 	}
 
@@ -753,7 +753,7 @@ public class TestController {
 		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_EMPRESA);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_PERSONA_OK, respuestaTestAtributos);
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_EMPRESA_OK, respuestaTestAtributos);
 
 	}
 
