@@ -500,6 +500,8 @@ public class TestRolServiceImpl implements TestRolService {
 
 			if (!rolUsuario.isPresent()) {
 				rolRepository.saveAndFlush(rol);
+				final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
+				rolRepository.deleteRol(rolBD.getIdRol());
 
 				rol.setRolName("Modificacion");
 				rol.setRolDescription("Descripcion modificada");
@@ -507,8 +509,8 @@ public class TestRolServiceImpl implements TestRolService {
 				rolRepository.saveAndFlush(rol);
 				resultado = CodigosMensajes.MODIFICAR_ROL + " - " + Mensajes.MODIFICAR_ROL;
 
-				final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
-				rolRepository.deleteRol(rolBD.getIdRol());
+				final RolEntity rolBD2 = rolRepository.findByRolName(rol.getRolName());
+				rolRepository.deleteRol(rolBD2.getIdRol());
 			}
 
 		}
