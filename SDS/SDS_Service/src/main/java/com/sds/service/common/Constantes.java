@@ -17,17 +17,21 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
 	public static final String ACCION_BUSCAR_ROL = "Buscar rol";
+
 	public static final String ACCION_AÑADIR_USUARIO = "Añadir usuario";
 	public static final String ACCION_MODIFICAR_USUARIO = "Modificar usuario";
 	public static final String ACCION_ELIMINAR_USUARIO = "Eliminar usuario";
 	public static final String ACCION_BUSCAR_USUARIO = "Buscar usuario";
+
 	public static final String ACCION_AÑADIR_PERSONA = "Añadir persona";
 	public static final String ACCION_MODIFICAR_PERSONA = "Modificar persona";
 	public static final String ACCION_ELIMINAR_PERSONA = "Eliminar persona";
 	public static final String ACCION_BUSCAR_PERSONA = "Buscar persona";
-	public static final String ACCION_AÑADIR_ACCION = "Añadir usuario";
-	public static final String ACCION_BUSCAR_ACCION = "Buscar accion";
-	public static final String ACCION_MODIFICAR_ACCION = "Modificar accion";
+
+	public static final String ACCION_AÑADIR_ACCION = "Añadir acción";
+	public static final String ACCION_BUSCAR_ACCION = "Buscar acción";
+	public static final String ACCION_MODIFICAR_ACCION = "Modificar acción";
+	public static final String ACCION_ELIMINAR_ACCION = "Eliminar acción";
 
 	public static final String ACCION_AÑADIR_FUNCIONALIDAD = "Añadir funcionalidad";
 	public static final String ACCION_MODIFICAR_FUNCIONALIDAD = "Modificar funcionalidad";

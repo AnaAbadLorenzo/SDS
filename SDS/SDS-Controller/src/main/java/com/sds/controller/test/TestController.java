@@ -251,7 +251,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
-		respuestaTestAtributos.setAccion(Constantes.AÑADIR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_ROL);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
@@ -279,7 +279,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
-		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_ROL);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
@@ -307,7 +307,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ROLES);
-		respuestaTestAtributos.setAccion(Constantes.MODIFICAR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_ROL);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
@@ -336,7 +336,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
-		respuestaTestAtributos.setAccion(Constantes.AÑADIR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_ACCION);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
@@ -365,7 +365,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
-		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_ACCION);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_OK, respuestaTestAtributos);
@@ -394,7 +394,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_ACCIONES);
-		respuestaTestAtributos.setAccion(Constantes.MODIFICAR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_ACCION);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
@@ -423,7 +423,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
-		respuestaTestAtributos.setAccion(Constantes.MODIFICAR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_FUNCIONALIDAD);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_FUNCIONALIDAD_OK, respuestaTestAtributos);
@@ -452,7 +452,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
-		respuestaTestAtributos.setAccion(Constantes.AÑADIR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_FUNCIONALIDAD);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_FUNCIONALIDAD_OK, respuestaTestAtributos);
@@ -478,7 +478,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
-		respuestaTestAtributos.setAccion(Constantes.BUSCAR);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_FUNCIONALIDAD);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_FUNCIONALIDAD_OK, respuestaTestAtributos);
@@ -515,7 +515,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_USUARIOS);
-		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_USUARIO);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_ROL_USUARIO);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_USUARIO_OK, respuestaTestAtributos);
@@ -597,7 +597,7 @@ public class TestController {
 
 	}
 
-	@GetMapping(value = "/persona/atributos/anadir")
+	@GetMapping(value = "/persona/atributos/guardar")
 	@ResponseBody
 	public RespEntity TestPersonaAtributosAccionAnadir() {
 
@@ -678,7 +678,7 @@ public class TestController {
 		}
 
 		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PERSONAS);
-		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_PERSONA);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_PERSONA);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
 		return new RespEntity(RespCode.TEST_ATRIBUTOS_PERSONA_OK, respuestaTestAtributos);
@@ -807,7 +807,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_ACCION);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_ACCION);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -829,7 +829,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_ACCION);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_ACCION);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -851,8 +851,8 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ELIMINAR_ACCION);
-		respuestaTestAcciones.setAccion(Constantes.ELIMINAR_ACCION);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_ACCION);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
@@ -873,8 +873,8 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.BUSCAR_ACCION);
-		respuestaTestAcciones.setAccion(Constantes.BUSCAR_ACCION);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_ACCION);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
@@ -895,7 +895,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_ROL);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_ROL);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -916,7 +916,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_ELIMINAR_ROL);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_ROL);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -937,7 +937,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_ROL);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_ROL);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -958,7 +958,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_ROL);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_ROL);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -979,7 +979,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_FUNCIONALIDAD);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_FUNCIONALIDAD);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1000,7 +1000,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_FUNCIONALIDAD);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_FUNCIONALIDAD);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1021,7 +1021,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_FUNCIONALIDAD);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_FUNCIONALIDAD);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1042,7 +1042,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_ELIMINAR_FUNCIONALIDAD);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_FUNCIONALIDAD);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1063,7 +1063,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_USUARIO);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_USUARIOS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_USUARIO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1084,7 +1084,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_ELIMINAR_USUARIO);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_USUARIOS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_USUARIO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1105,7 +1105,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_ROL_USUARIO);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_USUARIOS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_ROL_USUARIO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1126,7 +1126,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_PASSWD_USUARIO);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_USUARIOS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_PASSWD_USUARIO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1147,7 +1147,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_PERSONA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PERSONAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_PERSONA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1168,7 +1168,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_PERSONA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PERSONAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_PERSONA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1189,7 +1189,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_ELIMINAR_PERSONA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PERSONAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_PERSONA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1210,8 +1210,8 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_PERSONA);
-		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_PERSONA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PERSONAS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_PERSONA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
@@ -1231,7 +1231,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_BUSCAR_EMPRESA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_EMPRESAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_EMPRESA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1252,7 +1252,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_AÑADIR_EMPRESA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_EMPRESAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_EMPRESA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1273,7 +1273,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_MODIFICAR_EMPRESA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_EMPRESAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_EMPRESA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
@@ -1294,7 +1294,7 @@ public class TestController {
 			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
 		}
 
-		respuestaTestAcciones.setFuncionalidad(Constantes.ACCION_ELIMINAR_EMPRESA);
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_EMPRESAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_EMPRESA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
