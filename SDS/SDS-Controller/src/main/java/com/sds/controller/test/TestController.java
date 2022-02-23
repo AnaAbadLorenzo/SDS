@@ -339,7 +339,7 @@ public class TestController {
 		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_ACCION);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_OK, respuestaTestAtributos);
 
 	}
 
@@ -397,7 +397,7 @@ public class TestController {
 		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_ACCION);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_ROL_OK, respuestaTestAtributos);
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_ACCION_OK, respuestaTestAtributos);
 
 	}
 
