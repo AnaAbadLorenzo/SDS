@@ -68,5 +68,12 @@
 		"nombreFuncionalidad": "Funcionalidad",
 		"descripFuncionalidad": "Funcionalidad",
 		"borradoFuncionalidad": 0
+	},
+	"reactivarFuncionalidadCorrecto": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "Funcionalidad",
+		"descripFuncionalidad": "Funcionalidad",
+		"borradoFuncionalidad": 1
 	}
 }

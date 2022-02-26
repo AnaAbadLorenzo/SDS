@@ -1,7 +1,6 @@
 package com.sds.controller.persona;
 
 import java.text.ParseException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,11 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
-import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
@@ -39,29 +39,33 @@ public class PersonaController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarPersonas", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarPersonas", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarTodos() {
-		final List<PersonaEntity> personas = personaService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+
+		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarTodos(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 
-
-	@RequestMapping(value = "/listarPersona", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarPersona", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity buscarPersona(@RequestBody final PersonaBuscar persona) {
-		final List<PersonaEntity> personas = personaService.buscarPersona(persona.getDnip(), persona.getNombreP(),
-				persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(), persona.getTelefonoP(),
-				persona.getEmailP(), persona.getEmpresaP());
+
+		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersona(persona.getDniP(),
+				persona.getNombreP(), persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+				persona.getTelefonoP(), persona.getEmailP(), persona.getInicio(), persona.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 
-	@RequestMapping(value = "/listarPersonasEliminadas", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarPersonasEliminadas", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarPersonasEliminadas() {
-		final List<PersonaEntity> personas = personaService.buscarPersonasEliminadas();
+	public RespEntity buscarPersonasEliminadas(@RequestBody final Paginacion paginacion) {
+
+		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersonasEliminadas(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
@@ -79,8 +83,25 @@ public class PersonaController {
 			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, persona);
 		} catch (final PersonaNoExisteException personaNoExiste) {
 			return new RespEntity(RespCode.PERSONA_NO_EXISTE, persona);
-		} catch (final UsuarioAsociadoPersonaException usuarioAsociadoPersona) {
-			return new RespEntity(RespCode.USUARIO_ASOCIADO_PERSONA_EXCEPTION, persona);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
+		}
+
+	}
+
+	@RequestMapping(value = "/reactivarPersona", method = RequestMethod.POST)
+	@ResponseBody
+	public RespEntity reactivarPersona(@RequestBody final Persona persona) {
+		try {
+			String resultado;
+			resultado = personaService.reactivarPersona(persona);
+			return new RespEntity(RespCode.PERSONA_REACTIVADA, resultado);
+		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, persona);
+		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, persona);
+		} catch (final PersonaNoExisteException personaNoExiste) {
+			return new RespEntity(RespCode.PERSONA_NO_EXISTE, persona);
 		} catch (final ParseException parseException) {
 			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
 		}

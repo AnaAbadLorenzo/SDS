@@ -868,6 +868,22 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 
 	}
 
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesPersonaReactivar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		final PersonaEntity datosEntradaReactivarPersona = generarJSON.generatePersona(Constantes.URL_JSON_PERSONA_DATA,
+				Constantes.REACTIVAR_PERSONA_CORRECTO);
+		final PersonaEntity datosEntradaReactivarPersonaNoExiste = generarJSON
+				.generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.PERSONA_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestReactivarPersonaCorrecto(datosEntradaReactivarPersona));
+		datosPruebaAcciones.add(getTestReactivarPersonaNoExiste(datosEntradaReactivarPersonaNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
 	private DatosPruebaAcciones getTestBuscarPersona(final PersonaEntity datosEntradaAccionBuscarPersona) {
 
 		final String resultadoObtenido = buscarPersona(datosEntradaAccionBuscarPersona);
@@ -1197,6 +1213,33 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 
 	}
 
+	private DatosPruebaAcciones getTestReactivarPersonaCorrecto(
+			final PersonaEntity datosEntradaReactivarPersonaCorrecto) throws java.text.ParseException {
+
+		final String resultadoObtenido = reactivarPersona(datosEntradaReactivarPersonaCorrecto);
+
+		final String resultadoEsperado = CodigosMensajes.REACTIVAR_PERSONA_CORRECTO + " - "
+				+ Mensajes.PERSONA_REACTIVADA_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.REACTIVAR_PERSONA_CORRETO, Constantes.EXITO,
+				getValorPersona(datosEntradaReactivarPersonaCorrecto));
+
+	}
+
+	private DatosPruebaAcciones getTestReactivarPersonaNoExiste(
+			final PersonaEntity datosEntradaReactivarPersonaNoExiste) throws java.text.ParseException {
+
+		final String resultadoObtenido = reactivarPersonaNoExiste(datosEntradaReactivarPersonaNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.PERSONA_NO_EXISTE + " - " + Mensajes.PERSONA_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.PERSONA_NO_EXISTE, Constantes.ERROR,
+				getValorPersona(datosEntradaReactivarPersonaNoExiste));
+
+	}
+
 	private String buscarPersona(final PersonaEntity persona) {
 		String resultado = StringUtils.EMPTY;
 
@@ -1206,7 +1249,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		final String fecha = fechaSql.toString();
 
 		personaBD = personaRepository.findPersona(persona.getDniP(), persona.getNombreP(), persona.getApellidosP(),
-				fecha, persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP(), persona.getEmpresa());
+				fecha, persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP());
 
 		resultado = CodigosMensajes.BUSCAR_PERSONA_CORRECTO + " - " + Mensajes.BUSCAR_PERSONA_CORRECTO;
 
@@ -1402,6 +1445,37 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 			if (!personaBD.isPresent()) {
 				resultado = CodigosMensajes.PERSONA_NO_EXISTE + " - " + Mensajes.PERSONA_NO_EXISTE;
 			}
+		}
+
+		return resultado;
+	}
+
+	private String reactivarPersona(final PersonaEntity persona) {
+		String resultado = StringUtils.EMPTY;
+
+		personaRepository.saveAndFlush(persona);
+
+		final Optional<PersonaEntity> personaUsuario = personaRepository.findById(persona.getDniP());
+
+		personaUsuario.get().setBorradoP(0);
+
+		personaRepository.saveAndFlush(personaUsuario.get());
+
+		resultado = CodigosMensajes.REACTIVAR_PERSONA_CORRECTO + " - " + Mensajes.PERSONA_REACTIVADA_CORRECTAMENTE;
+
+		personaRepository.deletePersona(persona.getDniP());
+		personaRepository.flush();
+
+		return resultado;
+
+	}
+
+	private String reactivarPersonaNoExiste(final PersonaEntity persona) {
+		final Optional<PersonaEntity> personaBD = personaRepository.findById(persona.getDniP());
+		String resultado = StringUtils.EMPTY;
+
+		if (!personaBD.isPresent()) {
+			resultado = CodigosMensajes.PERSONA_NO_EXISTE + " - " + Mensajes.PERSONA_NO_EXISTE;
 		}
 
 		return resultado;

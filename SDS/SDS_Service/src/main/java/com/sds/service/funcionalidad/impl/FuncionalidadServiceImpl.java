@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import com.sds.model.LogExcepcionesEntity;
 import com.sds.repository.FuncionalidadRepository;
 import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FuncionalidadAsociadaRolAccionException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.FuncionalidadYaExisteException;
@@ -28,6 +32,9 @@ import com.sds.service.util.validaciones.Validaciones;
 
 @Service
 public class FuncionalidadServiceImpl implements FuncionalidadService {
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	FuncionalidadRepository funcionalidadRepository;
@@ -47,34 +54,45 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
-	public List<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad,
-			final String descripFuncionalidad) {
+	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad,
+			final String descripFuncionalidad, final int inicio, final int tamanhoPagina) {
 
 		final List<FuncionalidadEntity> funcionalidadToret = new ArrayList<>();
 
-		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findFuncionality(nombreFuncionalidad,
+		final List<FuncionalidadEntity> funcionalidades = entityManager
+				.createNamedQuery("FuncionalidadEntity.findFuncionality")
+				.setParameter("nombreFuncionalidad", nombreFuncionalidad)
+				.setParameter("descripFuncionalidad", descripFuncionalidad).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = funcionalidadRepository.numberFindFuncionality(nombreFuncionalidad,
 				descripFuncionalidad);
 
 		if (!funcionalidades.isEmpty()) {
 			for (final FuncionalidadEntity funcionalidad : funcionalidades) {
-				if (funcionalidad.getBorradoFuncionalidad() == 0) {
-					final FuncionalidadEntity fun = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
-							funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
-							funcionalidad.getBorradoFuncionalidad());
-					funcionalidadToret.add(fun);
-				}
+				final FuncionalidadEntity fun = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
+						funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+						funcionalidad.getBorradoFuncionalidad());
+				funcionalidadToret.add(fun);
 
 			}
 		}
 
-		return funcionalidadToret;
+		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(funcionalidadToret,
+				numberTotalResults, funcionalidadToret.size());
+
+		return result;
 	}
 
 	@Override
-	public List<FuncionalidadEntity> buscarTodos() {
+	public ReturnBusquedas<FuncionalidadEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
 
-		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findAll();
+		final List<FuncionalidadEntity> funcionalidades = entityManager
+				.createNamedQuery("FuncionalidadEntity.findAllFuncionalities").setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = funcionalidadRepository.numberFindAllFuncionalities();
 
 		for (final FuncionalidadEntity funcionalidad : funcionalidades) {
 			final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
@@ -83,14 +101,22 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 
 			funcionalidadesToret.add(func);
 		}
-		return funcionalidadesToret;
+		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
+				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());
+
+		return result;
 	}
 
 	@Override
-	public List<FuncionalidadEntity> buscarFuncionalidadesEliminadas() {
+	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidadesEliminadas(final int inicio,
+			final int tamanhoPagina) {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
 
-		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findFuncionalidadesEliminadas(1);
+		final List<FuncionalidadEntity> funcionalidades = entityManager
+				.createNamedQuery("FuncionalidadEntity.findFuncionalidadesEliminadas").setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = funcionalidadRepository.numberFindFuncionalidadesEliminadas();
 
 		for (final FuncionalidadEntity funcionalidad : funcionalidades) {
 			final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
@@ -99,7 +125,10 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 
 			funcionalidadesToret.add(func);
 		}
-		return funcionalidadesToret;
+		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
+				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());
+
+		return result;
 	}
 
 	@Override
@@ -267,6 +296,44 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		} else {
 			resultado = CodeMessageErrors.FUNCIONALIDAD_VACIA.name();
 		}
+		return resultado;
+	}
+
+	@Override
+	public String reactivarFuncionalidad(final Funcionalidad funcionalidad)
+			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, LogAccionesNoGuardadoException {
+		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
+
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		final Optional<FuncionalidadEntity> funcionalidadBD = funcionalidadRepository
+				.findById(funcionalidadEntity.getIdFuncionalidad());
+
+		if (!funcionalidadBD.isPresent()) {
+			final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(funcionalidad.getUsuario(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new FuncionalidadNoExisteException(CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()));
+		} else {
+
+			funcionalidadEntity.setBorradoFuncionalidad(0);
+			funcionalidad.setFuncionalidadEntity(funcionalidadEntity);
+			resultado = modificarFuncionalidad(funcionalidad);
+
+		}
+
 		return resultado;
 	}
 

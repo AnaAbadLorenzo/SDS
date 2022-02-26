@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -19,6 +18,7 @@ import com.sds.app.SDSApplication;
 import com.sds.model.RolEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
@@ -43,10 +43,10 @@ public class RolServiceTest {
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.BUSCAR_ROL);
 		final RolEntity rolEntity = rol.getRol();
 
-		final List<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
-				rolEntity.getRolDescription());
+		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
+				rolEntity.getRolDescription(), 0, 1);
 
-		assertNotNull(rolEncontrado);
+		assertNotNull(rolEncontrado.getListaBusquedas());
 	}
 
 	@Test
@@ -55,10 +55,10 @@ public class RolServiceTest {
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_VACIO_DATA);
 		final RolEntity rolEntity = rol.getRol();
 
-		final List<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
-				rolEntity.getRolDescription());
+		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
+				rolEntity.getRolDescription(), 0, 1);
 
-		assertNotNull(rolEncontrado);
+		assertNotNull(rolEncontrado.getListaBusquedas());
 	}
 
 	@Test
@@ -67,10 +67,10 @@ public class RolServiceTest {
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_DESCRIPTION_VACIO_DATA);
 		final RolEntity rolEntity = rol.getRol();
 
-		final List<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
-				rolEntity.getRolDescription());
+		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
+				rolEntity.getRolDescription(), 0, 1);
 
-		assertNotNull(rolEncontrado);
+		assertNotNull(rolEncontrado.getListaBusquedas());
 	}
 
 	@Test
@@ -79,18 +79,18 @@ public class RolServiceTest {
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NAME_DESCRIPTION_VACIOS);
 		final RolEntity rolEntity = rol.getRol();
 
-		final List<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
-				rolEntity.getRolDescription());
+		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
+				rolEntity.getRolDescription(), 0, 1);
 
-		assertNotNull(rolEncontrado);
+		assertNotNull(rolEncontrado.getListaBusquedas());
 	}
 
 	@Test
 	public void RolService_buscarTodos() throws IOException, ParseException {
 
-		final List<RolEntity> roles = rolService.buscarTodos();
+		final ReturnBusquedas<RolEntity> roles = rolService.buscarTodos(0, 5);
 
-		assertNotNull(roles);
+		assertNotNull(roles.getListaBusquedas());
 	}
 
 	@Test
@@ -104,9 +104,10 @@ public class RolServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final List<RolEntity> rolDelete = rolService.buscarRol(rol.getRol().getRolName(), "");
+		final ReturnBusquedas<RolEntity> rolDelete = rolService.buscarRol(rol.getRol().getRolName(),
+				rol.getRol().getRolDescription(), 0, 1);
 
-		rol.setRol(rolDelete.get(0));
+		rol.setRol(rolDelete.getListaBusquedas().get(0));
 
 		rolService.deleteRol(rol);
 	}
@@ -165,12 +166,13 @@ public class RolServiceTest {
 
 		rolService.guardarRol(rolGuardar);
 
-		final List<RolEntity> rolModificar = rolService.buscarRol(rolGuardar.getRol().getRolName(), StringUtils.EMPTY);
+		final ReturnBusquedas<RolEntity> rolModificar = rolService.buscarRol(rolGuardar.getRol().getRolName(),
+				rolGuardar.getRol().getRolDescription(), 0, 1);
 
-		rolModificar.get(0).setRolName("Modificacion");
-		rolModificar.get(0).setRolDescription("Hecha la modificacion");
+		rolModificar.getListaBusquedas().get(0).setRolName("Modificacion");
+		rolModificar.getListaBusquedas().get(0).setRolDescription("Hecha la modificacion");
 
-		rolGuardar.setRol(rolModificar.get(0));
+		rolGuardar.setRol(rolModificar.getListaBusquedas().get(0));
 
 		respuesta = rolService.modificarRol(rolGuardar);
 
@@ -234,9 +236,10 @@ public class RolServiceTest {
 
 		rolService.guardarRol(rol);
 
-		final List<RolEntity> rolGuardado = rolService.buscarRol(rol.getRol().getRolName(), StringUtils.EMPTY);
+		final ReturnBusquedas<RolEntity> rolGuardado = rolService.buscarRol(rol.getRol().getRolName(),
+				rol.getRol().getRolDescription(), 0, 1);
 
-		rol.setRol(rolGuardado.get(0));
+		rol.setRol(rolGuardado.getListaBusquedas().get(0));
 
 		final String respuesta = rolService.eliminarRol(rol);
 
@@ -283,9 +286,9 @@ public class RolServiceTest {
 	@Test
 	public void RolService_buscarRolesEliminados() throws RolNoExisteException, IOException, ParseException {
 
-		final List<RolEntity> rolEncontrado = rolService.buscarRolesEliminados();
+		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRolesEliminados(0, 5);
 
-		assertNotNull(rolEncontrado);
+		assertNotNull(rolEncontrado.getListaBusquedas());
 	}
 
 	private Rol generateRol(final String fichero, final String nombrePrueba) throws IOException, ParseException {

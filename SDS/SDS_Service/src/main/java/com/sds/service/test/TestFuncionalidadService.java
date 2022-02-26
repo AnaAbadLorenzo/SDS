@@ -33,4 +33,7 @@ public interface TestFuncionalidadService {
 
 	List<DatosPruebaAcciones> getPruebasAccionesFuncionalidadModificar()
 			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesFuncionalidadReactivar()
+			throws IOException, ParseException, java.text.ParseException;
 }

@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -19,6 +18,7 @@ import com.sds.app.SDSApplication;
 import com.sds.model.FuncionalidadEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FuncionalidadAsociadaRolAccionException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.FuncionalidadYaExisteException;
@@ -44,10 +44,10 @@ public class FuncionalidadServiceTest {
 				Constantes.BUSCAR_FUNCIONALIDAD);
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
 
-		final List<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
-				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad());
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
+				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad(), 0, 1);
 
-		assertNotNull(funcionalidadEncontrada);
+		assertNotNull(funcionalidadEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -58,10 +58,10 @@ public class FuncionalidadServiceTest {
 				Constantes.FUNCIONALIDAD_NAME_VACIO_DATA);
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
 
-		final List<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
-				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad());
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
+				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad(), 0, 1);
 
-		assertNotNull(funcionalidadEncontrada);
+		assertNotNull(funcionalidadEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -72,10 +72,10 @@ public class FuncionalidadServiceTest {
 				Constantes.FUNCIONALIDAD_DESCRIPTION_VACIO_DATA);
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
 
-		final List<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
-				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad());
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
+				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad(), 0, 1);
 
-		assertNotNull(funcionalidadEncontrada);
+		assertNotNull(funcionalidadEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -86,18 +86,18 @@ public class FuncionalidadServiceTest {
 				Constantes.FUNCIONALIDAD_NAME_DESCRIPTION_VACIOS);
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
 
-		final List<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
-				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad());
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
+				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad(), 0, 1);
 
-		assertNotNull(funcionalidadEncontrada);
+		assertNotNull(funcionalidadEncontrada.getListaBusquedas());
 	}
 
 	@Test
 	public void FuncionalidadService_buscarTodos() throws IOException, ParseException {
 
-		final List<FuncionalidadEntity> funcionalidades = funcionalidadService.buscarTodos();
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidades = funcionalidadService.buscarTodos(0, 5);
 
-		assertNotNull(funcionalidades);
+		assertNotNull(funcionalidades.getListaBusquedas());
 	}
 
 	@Test
@@ -113,11 +113,11 @@ public class FuncionalidadServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final List<FuncionalidadEntity> funcionalidadDelete = funcionalidadService.buscarFuncionalidad(
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadDelete = funcionalidadService.buscarFuncionalidad(
 				funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
-				funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad());
+				funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
 
-		funcionalidad.setFuncionalidadEntity(funcionalidadDelete.get(0));
+		funcionalidad.setFuncionalidadEntity(funcionalidadDelete.getListaBusquedas().get(0));
 
 		funcionalidadService.deleteFuncionalidad(funcionalidad.getFuncionalidadEntity());
 	}
@@ -181,14 +181,14 @@ public class FuncionalidadServiceTest {
 
 		funcionalidadService.anadirFuncionalidad(funcionalidadGuardar);
 
-		final List<FuncionalidadEntity> funcionalidadModificar = funcionalidadService.buscarFuncionalidad(
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadModificar = funcionalidadService.buscarFuncionalidad(
 				funcionalidadGuardar.getFuncionalidadEntity().getNombreFuncionalidad(),
-				funcionalidadGuardar.getFuncionalidadEntity().getDescripFuncionalidad());
+				funcionalidadGuardar.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
 
-		funcionalidadModificar.get(0).setNombreFuncionalidad("Modificación");
-		funcionalidadModificar.get(0).setDescripFuncionalidad("Hecha la modificación");
+		funcionalidadModificar.getListaBusquedas().get(0).setNombreFuncionalidad("Modificación");
+		funcionalidadModificar.getListaBusquedas().get(0).setDescripFuncionalidad("Hecha la modificación");
 
-		funcionalidadGuardar.setFuncionalidadEntity(funcionalidadModificar.get(0));
+		funcionalidadGuardar.setFuncionalidadEntity(funcionalidadModificar.getListaBusquedas().get(0));
 
 		respuesta = funcionalidadService.modificarFuncionalidad(funcionalidadGuardar);
 
@@ -257,11 +257,11 @@ public class FuncionalidadServiceTest {
 
 		funcionalidadService.anadirFuncionalidad(funcionalidad);
 
-		final List<FuncionalidadEntity> funcionalidadGuardada = funcionalidadService.buscarFuncionalidad(
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadGuardada = funcionalidadService.buscarFuncionalidad(
 				funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
-				funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad());
+				funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
 
-		funcionalidad.setFuncionalidadEntity(funcionalidadGuardada.get(0));
+		funcionalidad.setFuncionalidadEntity(funcionalidadGuardada.getListaBusquedas().get(0));
 
 		final String respuesta = funcionalidadService.eliminarFuncionalidad(funcionalidad);
 
@@ -298,10 +298,45 @@ public class FuncionalidadServiceTest {
 	@Test
 	public void FuncionalidadService_buscarFuncionalidadesEliminadas() throws IOException, ParseException {
 
-		final List<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService
-				.buscarFuncionalidadesEliminadas();
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService
+				.buscarFuncionalidadesEliminadas(0, 5);
 
-		assertNotNull(funcionalidadEncontrada);
+		assertNotNull(funcionalidadEncontrada.getListaBusquedas());
+	}
+
+	@Test
+	public void FuncionalidadService_reactivarFuncionalidadCorrecto()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			FuncionalidadYaExisteException, FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException {
+		final Funcionalidad funcionalidad = generateFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
+				Constantes.REACTIVAR_FUNCIONALIDAD_CORRECTO);
+
+		funcionalidadService.anadirFuncionalidad(funcionalidad);
+
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadGuardada = funcionalidadService.buscarFuncionalidad(
+				funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
+				funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
+
+		funcionalidad.setFuncionalidadEntity(funcionalidadGuardada.getListaBusquedas().get(0));
+
+		final String respuesta = funcionalidadService.reactivarFuncionalidad(funcionalidad);
+
+		assertEquals(respuesta, Constantes.OK);
+
+		funcionalidadService.deleteFuncionalidad(funcionalidad.getFuncionalidadEntity());
+
+	}
+
+	@Test(expected = FuncionalidadNoExisteException.class)
+	public void FuncionalidadService_reactivarFuncionalidadNoExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException {
+
+		final Funcionalidad funcionalidad = generateFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
+				Constantes.FUNCIONALIDAD_NO_EXISTE);
+
+		funcionalidadService.eliminarFuncionalidad(funcionalidad);
+
 	}
 
 	private Funcionalidad generateFuncionalidad(final String fichero, final String nombrePrueba)

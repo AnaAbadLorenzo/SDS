@@ -1,7 +1,6 @@
 package com.sds.controller.usuario;
 
 import java.text.ParseException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.model.UsuarioEntity;
+import com.sds.service.common.Paginacion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolNoExisteException;
@@ -37,26 +38,28 @@ public class UsuarioController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarUsuarios", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarUsuarios", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarTodos() {
-		final List<UsuarioEntity> resultado = usuarioService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarTodos(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/listarUsuario", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarUsuario", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity buscarUsuario(@RequestBody final UsuarioBuscar usuario) {
-		final List<UsuarioEntity> resultado = usuarioService.buscarUsuario(usuario.getDniUsuario(),
-				usuario.getUsuario(), usuario.getRol());
+		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuario(usuario.getDniUsuario(),
+				usuario.getUsuario(), usuario.getRol(), usuario.getInicio(), usuario.getTamanhoPagina());
 
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/listarUsuariosEliminados", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarUsuariosEliminados", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarUsuariosEliminados() {
-		final List<UsuarioEntity> resultado = usuarioService.buscarUsuariosEliminados();
+	public RespEntity buscarUsuariosEliminados(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuariosEliminados(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
@@ -68,6 +71,24 @@ public class UsuarioController {
 			String resultado;
 			try {
 				resultado = usuarioService.eliminarUsuario(usuario);
+				return new RespEntity(RespCode.USUARIO_ELIMINADO, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, usuario);
+			}
+		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
+			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuario);
+		}
+	}
+
+	@RequestMapping(value = "/reactivarUsuario", method = RequestMethod.POST)
+	@ResponseBody
+	public RespEntity reactivarUsuario(@RequestBody final Usuario usuario) {
+		try {
+			String resultado;
+			try {
+				resultado = usuarioService.reactivarUsuario(usuario);
 				return new RespEntity(RespCode.USUARIO_ELIMINADO, resultado);
 			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);

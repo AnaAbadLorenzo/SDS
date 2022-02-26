@@ -65,7 +65,7 @@
 	"eliminarRol":{
 		"usuario": "aicuna",
 		
-		"idRol":"4",
+		"idRol":"",
 		"rolName":"Nuevo rol",
 		"rolDescription":"Esta es una prueba de rol",
 		"borradoRol":1
@@ -102,7 +102,7 @@
 	"modificarRol":{
 		"usuario": "aicuna",
 		
-		"idRol":4,
+		"idRol":"",
 		"rolName": "Nuevo rol",
 		"rolDescription": "Prueba",
 		"borradoRol":1

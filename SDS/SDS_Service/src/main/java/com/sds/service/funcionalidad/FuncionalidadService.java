@@ -1,8 +1,7 @@
 package com.sds.service.funcionalidad;
 
-import java.util.List;
-
 import com.sds.model.FuncionalidadEntity;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FuncionalidadAsociadaRolAccionException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.FuncionalidadYaExisteException;
@@ -12,11 +11,12 @@ import com.sds.service.funcionalidad.model.Funcionalidad;
 
 public interface FuncionalidadService {
 
-	List<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad, final String descripFuncionalidad);
+	ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad,
+			final String descripFuncionalidad, final int inicio, final int tamanhoPagina);
 
-	List<FuncionalidadEntity> buscarTodos();
+	ReturnBusquedas<FuncionalidadEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
-	List<FuncionalidadEntity> buscarFuncionalidadesEliminadas();
+	ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidadesEliminadas(final int inicio, final int tamanhoPagina);
 
 	String anadirFuncionalidad(final Funcionalidad funcionalidad)
 			throws FuncionalidadYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
@@ -25,6 +25,9 @@ public interface FuncionalidadService {
 			LogAccionesNoGuardadoException, FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException;
 
 	String modificarFuncionalidad(final Funcionalidad funcionalidad)
+			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, LogAccionesNoGuardadoException;
+
+	String reactivarFuncionalidad(final Funcionalidad funcionalidad)
 			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, LogAccionesNoGuardadoException;
 
 	void deleteFuncionalidad(final FuncionalidadEntity funcionalidad) throws FuncionalidadNoExisteException;

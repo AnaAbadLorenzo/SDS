@@ -109,5 +109,16 @@
 		"direccionEmpresa":"Empresa",
 		"telefonoEmpresa":"988232323",
 		"borradoEmpresa":0
+	},
+	
+	"reactivarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E32589671",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":1
 	}
 }

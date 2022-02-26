@@ -345,6 +345,22 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 	}
 
 	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesUsuarioReactivar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		final UsuarioEntity datosEntradaUsuarioReactivarUsuario = generarJSON
+				.generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.REACTIVAR_USUARIO_CORRECTO);
+		final UsuarioEntity datosEntradaUsuarioReactivarUsuarioNoExiste = generarJSON
+				.generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestReactivarUsuario(datosEntradaUsuarioReactivarUsuario));
+		datosPruebaAcciones.add(getTestReactivarUsuarioNoExiste(datosEntradaUsuarioReactivarUsuarioNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
+	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesUsuarioModificarRol()
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
@@ -502,6 +518,33 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 
 	}
 
+	private DatosPruebaAcciones getTestReactivarUsuario(final UsuarioEntity datosEntradaUsuarioReactivarUsuario)
+			throws java.text.ParseException {
+
+		final String resultadoObtenido = reactivarUsuario(datosEntradaUsuarioReactivarUsuario);
+
+		final String resultadoEsperado = CodigosMensajes.REACTIVAR_USUARIO_CORRECTO + " - "
+				+ Mensajes.USUARIO_REACTIVADO_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.REACTIVAR_USUARIO_CORRECTO, Constantes.EXITO,
+				getValorUsuario(datosEntradaUsuarioReactivarUsuario));
+
+	}
+
+	private DatosPruebaAcciones getTestReactivarUsuarioNoExiste(
+			final UsuarioEntity datosEntradaUsuarioReactivarUsuarioNoExiste) {
+
+		final String resultadoObtenido = eliminarUsuarioNoExiste(datosEntradaUsuarioReactivarUsuarioNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.USUARIO_NO_EXISTE, Constantes.ERROR,
+				getValorUsuario(datosEntradaUsuarioReactivarUsuarioNoExiste));
+
+	}
+
 	private String buscarUsuario(final UsuarioEntity usuario) {
 		String resultado = StringUtils.EMPTY;
 
@@ -535,6 +578,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 			personaRepository.deletePersona(usuario.getDniUsuario());
 			empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+			rolRepository.deleteRol(usuario.getRol().getIdRol());
 
 		}
 
@@ -652,6 +696,9 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 					resultado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
 				}
 			}
+
+			final List<RolEntity> rol = rolRepository.findRol(rolUsuario.getRolName(), rolUsuario.getRolDescription());
+			rolRepository.deleteRol(rol.get(0).getIdRol());
 		}
 
 		return resultado;
@@ -691,6 +738,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 				usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 				personaRepository.deletePersona(persona.getDniP());
 				empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+
 			}
 		}
 
@@ -710,6 +758,45 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			if (usuarioBD == null) {
 				resultado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
 			}
+		}
+
+		return resultado;
+	}
+
+	private String reactivarUsuario(final UsuarioEntity usuario) throws java.text.ParseException {
+		final UsuarioEntity usuarioBD = usuarioRepository.findByDni(usuario.getDniUsuario());
+		String resultado = StringUtils.EMPTY;
+		final SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+
+		if (usuarioBD == null) {
+			final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
+					format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0);
+			final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
+			persona.setEmpresa(empresa);
+			personaRepository.saveAndFlush(persona);
+
+			usuarioRepository.saveAndFlush(usuario);
+
+			usuario.setBorradoUsuario(0);
+			usuarioRepository.saveAndFlush(usuario);
+
+			resultado = CodigosMensajes.REACTIVAR_USUARIO_CORRECTO + " - " + Mensajes.USUARIO_REACTIVADO_CORRECTAMENTE;
+
+			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
+			personaRepository.deletePersona(usuario.getDniUsuario());
+			empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+
+		}
+
+		return resultado;
+	}
+
+	private String reactivarUsuarioNoExiste(final UsuarioEntity usuario) {
+		final UsuarioEntity usuarioBD = usuarioRepository.findByDni(usuario.getDniUsuario());
+		String resultado = StringUtils.EMPTY;
+
+		if (usuarioBD == null) {
+			resultado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
 		}
 
 		return resultado;

@@ -15,10 +15,18 @@ public interface EmpresaRepository extends JpaRepository<EmpresaEntity, Integer>
 
 	EmpresaEntity findByCif(String cifEmpresa);
 
+	List<EmpresaEntity> findAllEmpresas();
+
+	Integer numberFindAllEmpresas();
+
 	List<EmpresaEntity> findEmpresa(String cifEmpresa, String nombreEmpresa, String direccionEmpresa,
 			String telefonoEmpresa);
 
-	List<EmpresaEntity> findEmpresasEliminadas(Integer borradoEmpresa);
+	Integer numberFindEmpresa(String cifEmpresa, String nombreEmpresa, String direccionEmpresa, String telefonoEmpresa);
+
+	List<EmpresaEntity> findEmpresasEliminadas();
+
+	Integer numberFindEmpresasEliminadas();
 
 	@Transactional
 	@Modifying

@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -23,6 +22,7 @@ import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.empresa.EmpresaService;
 import com.sds.service.empresa.model.Empresa;
 import com.sds.service.exception.EmpresaAsociadaPersonasException;
@@ -58,11 +58,11 @@ public class EmpresaServiceTest {
 		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.BUSCAR_EMPRESA);
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(empresaEntity.getCifEmpresa(),
-				empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
-				empresaEntity.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(
+				empresaEntity.getCifEmpresa(), empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
+				empresaEntity.getTelefonoEmpresa(), 0, 1);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -71,11 +71,11 @@ public class EmpresaServiceTest {
 		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.CIFEMPRESA_VACIO_DATA);
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(empresaEntity.getCifEmpresa(),
-				empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
-				empresaEntity.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(
+				empresaEntity.getCifEmpresa(), empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
+				empresaEntity.getTelefonoEmpresa(), 0, 1);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -84,11 +84,11 @@ public class EmpresaServiceTest {
 		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.NOMBREEMPRESA_VACIO_DATA);
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(empresaEntity.getCifEmpresa(),
-				empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
-				empresaEntity.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(
+				empresaEntity.getCifEmpresa(), empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
+				empresaEntity.getTelefonoEmpresa(), 0, 1);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -98,11 +98,11 @@ public class EmpresaServiceTest {
 				Constantes.DIRECCIONEMPRESA_VACIO_DATA);
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(empresaEntity.getCifEmpresa(),
-				empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
-				empresaEntity.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(
+				empresaEntity.getCifEmpresa(), empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
+				empresaEntity.getTelefonoEmpresa(), 0, 1);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -112,11 +112,11 @@ public class EmpresaServiceTest {
 				Constantes.TELEFONOEMPRESA_VACIO_DATA);
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(empresaEntity.getCifEmpresa(),
-				empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
-				empresaEntity.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(
+				empresaEntity.getCifEmpresa(), empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
+				empresaEntity.getTelefonoEmpresa(), 0, 1);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -125,27 +125,27 @@ public class EmpresaServiceTest {
 		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.PARAMETROS_EMPRESA_VACIOS);
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(empresaEntity.getCifEmpresa(),
-				empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
-				empresaEntity.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresa(
+				empresaEntity.getCifEmpresa(), empresaEntity.getNombreEmpresa(), empresaEntity.getDireccionEmpresa(),
+				empresaEntity.getTelefonoEmpresa(), 0, 1);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
 	public void EmpresaService_buscarTodos() throws IOException, ParseException {
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarTodos();
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarTodos(0, 5);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
 	public void EmpresaService_buscarEmpresasEliminadas() throws IOException, ParseException {
 
-		final List<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresasEliminadas();
+		final ReturnBusquedas<EmpresaEntity> empresaEncontrada = empresaService.buscarEmpresasEliminadas(0, 5);
 
-		assertNotNull(empresaEncontrada);
+		assertNotNull(empresaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -158,11 +158,11 @@ public class EmpresaServiceTest {
 
 		assertEquals(resultado, Constantes.OK);
 
-		final List<EmpresaEntity> empresaBD = empresaService.buscarEmpresa(empresa.getEmpresa().getCifEmpresa(),
-				empresa.getEmpresa().getNombreEmpresa(), empresa.getEmpresa().getDireccionEmpresa(),
-				empresa.getEmpresa().getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> empresaBD = empresaService.buscarEmpresa(
+				empresa.getEmpresa().getCifEmpresa(), empresa.getEmpresa().getNombreEmpresa(),
+				empresa.getEmpresa().getDireccionEmpresa(), empresa.getEmpresa().getTelefonoEmpresa(), 0, 1);
 
-		empresaService.deleteEmpresa(empresaBD.get(0));
+		empresaService.deleteEmpresa(empresaBD.getListaBusquedas().get(0));
 	}
 
 	@Test(expected = EmpresaYaExisteException.class)
@@ -322,6 +322,31 @@ public class EmpresaServiceTest {
 
 	@Test(expected = EmpresaNoEncontradaException.class)
 	public void EmpresaService_eliminarEmpresaNoExiste()
+			throws IOException, ParseException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException,
+			EmpresaAsociadaPersonasException, LogAccionesNoGuardadoException {
+		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.EMPRESA_NO_EXISTE);
+
+		empresaService.eliminarEmpresa(empresa);
+	}
+
+	@Test
+	public void EmpresaService_reactivarEmpresa()
+			throws IOException, ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			EmpresaYaExisteException, EmpresaNoEncontradaException, EmpresaAsociadaPersonasException {
+		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA,
+				Constantes.REACTIVAR_EMPRESA_CORRECTO);
+
+		empresaService.añadirEmpresa(empresa);
+
+		final String resultado = empresaService.reactivarEmpresa(empresa);
+
+		assertEquals(resultado, Constantes.OK);
+
+		empresaService.deleteEmpresa(empresa.getEmpresa());
+	}
+
+	@Test(expected = EmpresaNoEncontradaException.class)
+	public void EmpresaService_reactivarEmpresaNoExiste()
 			throws IOException, ParseException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException,
 			EmpresaAsociadaPersonasException, LogAccionesNoGuardadoException {
 		final Empresa empresa = generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.EMPRESA_NO_EXISTE);

@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +20,7 @@ import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
@@ -29,6 +33,9 @@ import com.sds.service.util.validaciones.Validaciones;
 
 @Service
 public class AccionServiceImpl implements AccionService {
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	AccionRepository accionRepository;
@@ -48,31 +55,41 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
-	public List<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion) {
+	public ReturnBusquedas<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion,
+			final int inicio, final int tamanhoPagina) {
 		final List<AccionEntity> accionToret = new ArrayList<>();
 
-		final List<AccionEntity> acciones = accionRepository.findAccion(nombreAccion, descripAccion);
+		final Integer numberTotalResults = accionRepository.numberFindAccion(nombreAccion, descripAccion);
+
+		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccion")
+				.setParameter("nombreAccion", nombreAccion).setParameter("descripAccion", descripAccion)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		if (!acciones.isEmpty()) {
 			for (final AccionEntity accion : acciones) {
-				if (accion.getBorradoAccion() == 0) {
-					final AccionEntity acc = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
-							accion.getDescripAccion(), accion.getBorradoAccion());
-					accionToret.add(acc);
-				}
+				final AccionEntity acc = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
+						accion.getDescripAccion(), accion.getBorradoAccion());
+				accionToret.add(acc);
 
 			}
 		}
 
-		return accionToret;
+		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(accionToret, numberTotalResults,
+				accionToret.size());
+
+		return result;
 
 	}
 
 	@Override
-	public List<AccionEntity> buscarTodos() {
-		final List<AccionEntity> acciones = accionRepository.findAll();
+	public ReturnBusquedas<AccionEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
+
+		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAllAccion")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final List<AccionEntity> toret = new ArrayList<>();
+
+		final Integer numberTotalResults = accionRepository.numberFindAllAccion();
 
 		for (final AccionEntity accion : acciones) {
 			final AccionEntity accionToret = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
@@ -81,16 +98,22 @@ public class AccionServiceImpl implements AccionService {
 			toret.add(accionToret);
 		}
 
-		return toret;
+		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return result;
 	}
 
 	@Override
-	public List<AccionEntity> buscarAccionesEliminadas() {
-		final List<AccionEntity> acciones = accionRepository.findAccionesEliminadas(1);
+	public ReturnBusquedas<AccionEntity> buscarAccionesEliminadas(final int inicio, final int tamanhoPagina) {
+		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccionesEliminadas")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final List<AccionEntity> toret = new ArrayList<>();
 
 		final AccionEntity accionToret = new AccionEntity();
+
+		final Integer numberTotalResults = accionRepository.numberFindAccionesEliminadas();
 
 		for (final AccionEntity accion : acciones) {
 			accionToret.setIdAccion(accion.getIdAccion());
@@ -101,7 +124,10 @@ public class AccionServiceImpl implements AccionService {
 			toret.add(accionToret);
 		}
 
-		return toret;
+		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return result;
 	}
 
 	@Override
@@ -275,6 +301,40 @@ public class AccionServiceImpl implements AccionService {
 
 		return resultado;
 
+	}
+
+	@Override
+	public String reactivarAccion(final Accion accion)
+			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException {
+		final AccionEntity accionEntity = accion.getAccion();
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		final Optional<AccionEntity> accionBD = accionRepository.findById(accionEntity.getIdAccion());
+
+		if (!accionBD.isPresent()) {
+			final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
+
+		} else {
+			accionEntity.setBorradoAccion(0);
+			accion.setAccion(accionEntity);
+			accionRepository.saveAndFlush(accionEntity);
+			resultado = modificarAccion(accion);
+		}
+
+		return resultado;
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -24,6 +23,7 @@ import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -54,12 +54,11 @@ public class PersonaServiceTest {
 		final Persona persona = generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.BUSCAR_PERSONA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -68,12 +67,11 @@ public class PersonaServiceTest {
 		final Persona persona = generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.DNIP_VACIO_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -83,12 +81,11 @@ public class PersonaServiceTest {
 		final Persona persona = generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.NOMBREPERSONA_VACIO_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -99,12 +96,11 @@ public class PersonaServiceTest {
 				Constantes.APELLIDOSPERSONA_VACIOS_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -115,12 +111,11 @@ public class PersonaServiceTest {
 				Constantes.FECHANACPERSONA_VACIA_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -131,12 +126,11 @@ public class PersonaServiceTest {
 				Constantes.DIRECCIONPERSONA_VACIA_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -147,12 +141,11 @@ public class PersonaServiceTest {
 				Constantes.TELEFONOPERSONA_VACIO_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -161,12 +154,11 @@ public class PersonaServiceTest {
 		final Persona persona = generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.EMAIL_VACIO_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -177,20 +169,19 @@ public class PersonaServiceTest {
 				Constantes.PARAMETROS_PERSONA_VACIOS_DATA);
 		final PersonaEntity personaEntity = persona.getPersona();
 
-		final List<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
+		final ReturnBusquedas<PersonaEntity> personaEncontrada = personaService.buscarPersona(personaEntity.getDniP(),
 				personaEntity.getNombreP(), personaEntity.getApellidosP(), personaEntity.getFechaNacP(),
-				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(),
-				personaEntity.getEmpresa());
+				personaEntity.getDireccionP(), personaEntity.getTelefonoP(), personaEntity.getEmailP(), 0, 1);
 
-		assertNotNull(personaEncontrada);
+		assertNotNull(personaEncontrada.getListaBusquedas());
 	}
 
 	@Test
 	public void PersonaService_buscarTodos() throws IOException, ParseException {
 
-		final List<PersonaEntity> personas = personaService.buscarTodos();
+		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarTodos(0, 3);
 
-		assertNotNull(personas);
+		assertNotNull(personas.getListaBusquedas());
 	}
 
 	@Test
@@ -207,17 +198,18 @@ public class PersonaServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final List<PersonaEntity> personaBD = personaService.buscarPersona(persona.getPersonaEntity().getDniP(),
-				persona.getPersonaEntity().getNombreP(), persona.getPersonaEntity().getApellidosP(),
-				persona.getPersonaEntity().getFechaNacP(), persona.getPersonaEntity().getDireccionP(),
-				persona.getPersonaEntity().getTelefonoP(), persona.getPersonaEntity().getEmailP(),
-				persona.getPersonaEntity().getEmpresa());
+		final ReturnBusquedas<PersonaEntity> personaBD = personaService.buscarPersona(
+				persona.getPersonaEntity().getDniP(), persona.getPersonaEntity().getNombreP(),
+				persona.getPersonaEntity().getApellidosP(), persona.getPersonaEntity().getFechaNacP(),
+				persona.getPersonaEntity().getDireccionP(), persona.getPersonaEntity().getTelefonoP(),
+				persona.getPersonaEntity().getEmailP(), 0, 1);
 
-		final List<UsuarioEntity> usuarioBD = usuarioService.buscarUsuario(persona.getUsuarioEntity().getDniUsuario(),
-				persona.getUsuarioEntity().getUsuario(), persona.getUsuarioEntity().getRol());
+		final ReturnBusquedas<UsuarioEntity> usuarioBD = usuarioService.buscarUsuario(
+				persona.getUsuarioEntity().getDniUsuario(), persona.getUsuarioEntity().getUsuario(),
+				persona.getUsuarioEntity().getRol(), 0, 1);
 
-		usuarioService.deleteUsuario(usuarioBD.get(0));
-		personaService.deletePersona(personaBD.get(0));
+		usuarioService.deleteUsuario(usuarioBD.getListaBusquedas().get(0));
+		personaService.deletePersona(personaBD.getListaBusquedas().get(0));
 	}
 
 	@Test
@@ -276,11 +268,11 @@ public class PersonaServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final List<UsuarioEntity> usuario = usuarioService.buscarUsuariosEliminados();
+		final ReturnBusquedas<UsuarioEntity> usuario = usuarioService.buscarUsuariosEliminados(0, 5);
 
-		for (int i = 0; i < usuario.size(); i++) {
-			if (usuario.get(i).getDniUsuario().equals(persona.getPersonaEntity().getDniP())) {
-				user = usuario.get(i);
+		for (int i = 0; i < usuario.getListaBusquedas().size(); i++) {
+			if (usuario.getListaBusquedas().get(i).getDniUsuario().equals(persona.getPersonaEntity().getDniP())) {
+				user = usuario.getListaBusquedas().get(i);
 			}
 		}
 
@@ -318,10 +310,11 @@ public class PersonaServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final List<UsuarioEntity> usuario = usuarioService.buscarUsuario(persona.getUsuarioEntity().getDniUsuario(),
-				persona.getUsuarioEntity().getUsuario(), persona.getUsuarioEntity().getRol());
+		final ReturnBusquedas<UsuarioEntity> usuario = usuarioService.buscarUsuario(
+				persona.getUsuarioEntity().getDniUsuario(), persona.getUsuarioEntity().getUsuario(),
+				persona.getUsuarioEntity().getRol(), 0, 1);
 
-		usuarioService.deleteUsuario(usuario.get(0));
+		usuarioService.deleteUsuario(usuario.getListaBusquedas().get(0));
 		personaService.deletePersona(persona.getPersonaEntity());
 
 	}
@@ -338,9 +331,45 @@ public class PersonaServiceTest {
 
 	@Test
 	public void PersonaService_buscarTodosEliminados() throws IOException, ParseException {
-		final List<PersonaEntity> personasEliminadas = personaService.buscarPersonasEliminadas();
+		final ReturnBusquedas<PersonaEntity> personasEliminadas = personaService.buscarPersonasEliminadas(0, 3);
 
-		assertNotNull(personasEliminadas);
+		assertNotNull(personasEliminadas.getListaBusquedas());
+	}
+
+	@Test
+	public void PersonaService_reactivarPersonaCorrecto()
+			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
+			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			PersonaNoExisteException, UsuarioNoEncontradoException, UsuarioAsociadoPersonaException {
+
+		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
+				Constantes.REACTIVAR_PERSONA_CORRECTO);
+
+		personaService.añadirPersona(persona);
+
+		final Persona personaModificar = new Persona(persona.getUsuario(), persona.getPersonaEntity());
+
+		final String respuesta = personaService.reactivarPersona(personaModificar);
+
+		assertEquals(respuesta, Constantes.OK);
+
+		final ReturnBusquedas<UsuarioEntity> usuario = usuarioService.buscarUsuario(
+				persona.getUsuarioEntity().getDniUsuario(), persona.getUsuarioEntity().getUsuario(),
+				persona.getUsuarioEntity().getRol(), 0, 1);
+
+		usuarioService.deleteUsuario(usuario.getListaBusquedas().get(0));
+		personaService.deletePersona(persona.getPersonaEntity());
+
+	}
+
+	@Test(expected = PersonaNoExisteException.class)
+	public void PersonaService_reactivarPersonaNoExiste() throws IOException, ParseException, java.text.ParseException,
+			LogExcepcionesNoGuardadoException, PersonaNoExisteException, LogAccionesNoGuardadoException {
+
+		final Persona persona = generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.PERSONA_NO_EXISTE);
+
+		personaService.reactivarPersona(persona);
+
 	}
 
 	private Persona generatePersona(final String fichero, final String nombrePrueba)

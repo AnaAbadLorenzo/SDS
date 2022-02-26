@@ -5,6 +5,12 @@ public class EmpresaBuscar {
 	private String nombreEmpresa;
 	private String direccionEmpresa;
 	private String telefonoEmpresa;
+	private int inicio;
+	private int tamanhoPagina;
+
+	public EmpresaBuscar() {
+
+	}
 
 	public EmpresaBuscar(final String cifEmpresa, final String nombreEmpresa, final String direccionEmpresa,
 			final String telefonoEmpresa) {
@@ -13,6 +19,17 @@ public class EmpresaBuscar {
 		this.nombreEmpresa = nombreEmpresa;
 		this.direccionEmpresa = direccionEmpresa;
 		this.telefonoEmpresa = telefonoEmpresa;
+	}
+
+	public EmpresaBuscar(final String cifEmpresa, final String nombreEmpresa, final String direccionEmpresa,
+			final String telefonoEmpresa, final int inicio, final int tamanhoPagina) {
+		super();
+		this.cifEmpresa = cifEmpresa;
+		this.nombreEmpresa = nombreEmpresa;
+		this.direccionEmpresa = direccionEmpresa;
+		this.telefonoEmpresa = telefonoEmpresa;
+		this.inicio = inicio;
+		this.tamanhoPagina = tamanhoPagina;
 	}
 
 	public String getCifEmpresa() {
@@ -45,6 +62,29 @@ public class EmpresaBuscar {
 
 	public void setTelefonoEmpresa(final String telefonoEmpresa) {
 		this.telefonoEmpresa = telefonoEmpresa;
+	}
+
+	public int getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(final int inicio) {
+		this.inicio = inicio;
+	}
+
+	public int getTamanhoPagina() {
+		return tamanhoPagina;
+	}
+
+	public void setTamanhoPagina(final int tamanhoPagina) {
+		this.tamanhoPagina = tamanhoPagina;
+	}
+
+	@Override
+	public String toString() {
+		return "EmpresaBuscar [cifEmpresa=" + cifEmpresa + ", nombreEmpresa=" + nombreEmpresa + ", direccionEmpresa="
+				+ direccionEmpresa + ", telefonoEmpresa=" + telefonoEmpresa + ", inicio=" + inicio + ", tamanhoPagina="
+				+ tamanhoPagina + "]";
 	}
 
 }

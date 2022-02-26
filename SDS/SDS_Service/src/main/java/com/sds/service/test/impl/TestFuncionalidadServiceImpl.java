@@ -258,6 +258,22 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 	}
 
 	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesFuncionalidadReactivar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		final FuncionalidadEntity datosEntradaReactivarFuncionalidadCorrecto = generarJSON.generarFuncionalidad(
+				Constantes.URL_JSON_FUNCIONALIDAD_DATA, Constantes.REACTIVAR_FUNCIONALIDAD_CORRECTO);
+		final FuncionalidadEntity datosEntradaReactivarFuncionalidadNoExiste = generarJSON
+				.generarFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA, Constantes.FUNCIONALIDAD_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestReactivarFuncionalidadCorrecto(datosEntradaReactivarFuncionalidadCorrecto));
+		datosPruebaAcciones.add(getTestReactivarFuncionalidadNoExiste(datosEntradaReactivarFuncionalidadNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
+	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesFuncionalidadModificar()
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
@@ -484,6 +500,35 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 
 	}
 
+	private DatosPruebaAcciones getTestReactivarFuncionalidadCorrecto(
+			final FuncionalidadEntity datosEntradaAccionReactivarFuncionalidadCorrecto) {
+
+		final String resultadoObtenido = reactivarFuncionalidad(datosEntradaAccionReactivarFuncionalidadCorrecto);
+
+		final String resultadoEsperado = CodigosMensajes.REACTIVAR_FUNCIONALIDAD_CORRECTO + " - "
+				+ Mensajes.FUNCIONALIDAD_REACTIVADA_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.REACTIVAR_FUNCIONALIDAD_CORRECTO, Constantes.EXITO,
+				getValorFuncionalidad(datosEntradaAccionReactivarFuncionalidadCorrecto));
+
+	}
+
+	private DatosPruebaAcciones getTestReactivarFuncionalidadNoExiste(
+			final FuncionalidadEntity datosEntradaAccionReactivarFuncionalidadNoExiste) {
+
+		final String resultadoObtenido = reactivarFuncionalidadNoExiste(
+				datosEntradaAccionReactivarFuncionalidadNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.FUNCIONALIDAD_NO_EXISTE + " - "
+				+ Mensajes.FUNCIONALIDAD_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.FUNCIONALIDAD_NO_EXISTE, Constantes.ERROR,
+				getValorFuncionalidad(datosEntradaAccionReactivarFuncionalidadNoExiste));
+
+	}
+
 	private String buscarFuncionalidad(final FuncionalidadEntity funcionalidad) {
 
 		String resultado = StringUtils.EMPTY;
@@ -574,6 +619,34 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 	}
 
 	private String eliminarFuncionalidadNoExiste(final FuncionalidadEntity funcionalidad) {
+		String resultado = StringUtils.EMPTY;
+
+		final FuncionalidadEntity funcionalidadBuscar = funcionalidadRepository
+				.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+
+		if (funcionalidadBuscar == null) {
+			resultado = CodigosMensajes.FUNCIONALIDAD_NO_EXISTE + " - " + Mensajes.FUNCIONALIDAD_NO_EXISTE;
+		}
+		return resultado;
+	}
+
+	private String reactivarFuncionalidad(final FuncionalidadEntity funcionalidad) {
+		String resultado = StringUtils.EMPTY;
+
+		funcionalidadRepository.saveAndFlush(funcionalidad);
+
+		final FuncionalidadEntity funcionalidadBuscar = funcionalidadRepository
+				.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+		funcionalidadBuscar.setBorradoFuncionalidad(0);
+		funcionalidadRepository.saveAndFlush(funcionalidadBuscar);
+		resultado = CodigosMensajes.REACTIVAR_FUNCIONALIDAD_CORRECTO + " - "
+				+ Mensajes.FUNCIONALIDAD_REACTIVADA_CORRECTAMENTE;
+		funcionalidadRepository.deleteFuncionalidad(funcionalidadBuscar.getIdFuncionalidad());
+
+		return resultado;
+	}
+
+	private String reactivarFuncionalidadNoExiste(final FuncionalidadEntity funcionalidad) {
 		String resultado = StringUtils.EMPTY;
 
 		final FuncionalidadEntity funcionalidadBuscar = funcionalidadRepository

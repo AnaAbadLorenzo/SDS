@@ -5,18 +5,18 @@ public class RolBuscar {
 	private String rolName;
 	private String rolDescription;
 	private int inicio;
-	private int tamanoPagina;
+	private int tamanhoPagina;
 
 	public RolBuscar() {
 
 	}
 
-	public RolBuscar(final String rolName, final String rolDescription, final int inicio, final int tamanoPagina) {
+	public RolBuscar(final String rolName, final String rolDescription, final int inicio, final int tamanhoPagina) {
 		super();
 		this.rolName = rolName;
 		this.rolDescription = rolDescription;
 		this.inicio = inicio;
-		this.tamanoPagina = tamanoPagina;
+		this.tamanhoPagina = tamanhoPagina;
 	}
 
 	public RolBuscar(final String rolName, final String rolDescription) {
@@ -48,12 +48,12 @@ public class RolBuscar {
 		this.inicio = inicio;
 	}
 
-	public int getTamanoPagina() {
-		return tamanoPagina;
+	public int getTamanhoPagina() {
+		return tamanhoPagina;
 	}
 
-	public void setTamanoPagina(final int tamanoPagina) {
-		this.tamanoPagina = tamanoPagina;
+	public void setTamanhoPagina(final int tamanhoPagina) {
+		this.tamanhoPagina = tamanhoPagina;
 	}
 
 }

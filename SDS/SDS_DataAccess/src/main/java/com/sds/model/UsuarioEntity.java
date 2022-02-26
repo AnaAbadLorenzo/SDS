@@ -17,9 +17,13 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "UsuarioEntity.findByUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.usuario =: usuario"),
 		@NamedQuery(name = "UsuarioEntity.findRolUsuario", query = "SELECT u.rol FROM UsuarioEntity u WHERE u.usuario =: usuario"),
-		@NamedQuery(name = "UsuarioEntity.findUsuariosEliminados", query = "SELECT u FROM UsuarioEntity u WHERE u.borradoUsuario =: borradoUsuario"),
+		@NamedQuery(name = "UsuarioEntity.findUsuariosEliminados", query = "SELECT u FROM UsuarioEntity u WHERE u.borradoUsuario = 1"),
+		@NamedQuery(name = "UsuarioEntity.numberFindUsuariosEliminados", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.borradoUsuario = 1"),
 		@NamedQuery(name = "UsuarioEntity.findByDni", query = "SELECT u.dniUsuario FROM UsuarioEntity u WHERE u.dniUsuario =: dniUsuario"),
-		@NamedQuery(name = "UsuarioEntity.findUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.rol LIKE CONCAT('%', :rol, '%')") })
+		@NamedQuery(name = "UsuarioEntity.findUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.rol LIKE CONCAT('%', :rol, '%') AND u.borradoUsuario = 0"),
+		@NamedQuery(name = "UsuarioEntity.numberFindUsuario", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.rol LIKE CONCAT('%', :rol, '%') AND u.borradoUsuario = 0"),
+		@NamedQuery(name = "UsuarioEntity.findAllUsuarios", query = "SELECT u FROM UsuarioEntity u"),
+		@NamedQuery(name = "UsuarioEntity.numberFindAllUsuarios", query = "SELECT COUNT(u) FROM UsuarioEntity u"), })
 public class UsuarioEntity {
 
 	@Id
@@ -66,6 +70,14 @@ public class UsuarioEntity {
 		this.passwdUsuario = passwdUsuario;
 		this.borradoUsuario = borradoUsuario;
 		this.rol = rol;
+	}
+
+	public UsuarioEntity(final String dniUsuario, final String usuario, final Integer borradoUsuario) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.usuario = usuario;
+		this.borradoUsuario = borradoUsuario;
+
 	}
 
 	public String getDniUsuario() {

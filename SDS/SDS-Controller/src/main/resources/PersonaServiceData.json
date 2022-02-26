@@ -203,5 +203,21 @@
 		"emailP": "javier@gmail.com",
 		"telefonoP": "988245263",
 		"borradoPersona":0
+	},
+	"reactivarPersonaCorrecto":{
+		"user": "ana",
+		
+		"dniP": "45146321N",
+		"nombreP": "Ana",
+		"apellidosP": "Abad",
+		"fechaNacP": "2000-12-13",
+		"direccionP": "Calle de Prueba",
+		"emailP": "ana@ana.com",
+		"telefonoP": "988245263",
+		"borradoPersona":1,
+		"dniUsuario": "45146321N",
+		"usuario": "ana",
+		"passwdUsuario": "ana",
+		"borradoUsuario":1
 	}
 }

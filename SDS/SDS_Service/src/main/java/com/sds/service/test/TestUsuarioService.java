@@ -35,4 +35,7 @@ public interface TestUsuarioService {
 
 	List<DatosPruebaAcciones> getPruebasAccionesUsuarioCambiarContraseña()
 			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesUsuarioReactivar()
+			throws IOException, ParseException, java.text.ParseException;
 }
