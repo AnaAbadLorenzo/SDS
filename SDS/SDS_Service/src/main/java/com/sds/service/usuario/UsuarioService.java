@@ -1,10 +1,13 @@
 package com.sds.service.usuario;
 
+import java.text.ParseException;
+
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.usuario.model.Usuario;
@@ -29,6 +32,6 @@ public interface UsuarioService {
 	String cambiarContraseña(final Usuario usuario, String passwdUsuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 
-	String reactivarUsuario(final Usuario usuario)
-			throws LogAccionesNoGuardadoException, UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException;
+	String reactivarUsuario(final Usuario usuario) throws UsuarioNoEncontradoException,
+			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PersonaNoExisteException, ParseException;
 }

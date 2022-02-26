@@ -89,25 +89,6 @@ public class PersonaController {
 
 	}
 
-	@RequestMapping(value = "/reactivarPersona", method = RequestMethod.POST)
-	@ResponseBody
-	public RespEntity reactivarPersona(@RequestBody final Persona persona) {
-		try {
-			String resultado;
-			resultado = personaService.reactivarPersona(persona);
-			return new RespEntity(RespCode.PERSONA_REACTIVADA, resultado);
-		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
-			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, persona);
-		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
-			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, persona);
-		} catch (final PersonaNoExisteException personaNoExiste) {
-			return new RespEntity(RespCode.PERSONA_NO_EXISTE, persona);
-		} catch (final ParseException parseException) {
-			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
-		}
-
-	}
-
 	@RequestMapping(value = "/persona", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity añadirPersona(@RequestBody final PersonaAnadir persona) {

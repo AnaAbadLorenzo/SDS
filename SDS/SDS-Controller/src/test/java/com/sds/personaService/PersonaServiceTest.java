@@ -336,42 +336,6 @@ public class PersonaServiceTest {
 		assertNotNull(personasEliminadas.getListaBusquedas());
 	}
 
-	@Test
-	public void PersonaService_reactivarPersonaCorrecto()
-			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			PersonaNoExisteException, UsuarioNoEncontradoException, UsuarioAsociadoPersonaException {
-
-		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
-				Constantes.REACTIVAR_PERSONA_CORRECTO);
-
-		personaService.añadirPersona(persona);
-
-		final Persona personaModificar = new Persona(persona.getUsuario(), persona.getPersonaEntity());
-
-		final String respuesta = personaService.reactivarPersona(personaModificar);
-
-		assertEquals(respuesta, Constantes.OK);
-
-		final ReturnBusquedas<UsuarioEntity> usuario = usuarioService.buscarUsuario(
-				persona.getUsuarioEntity().getDniUsuario(), persona.getUsuarioEntity().getUsuario(),
-				persona.getUsuarioEntity().getRol(), 0, 1);
-
-		usuarioService.deleteUsuario(usuario.getListaBusquedas().get(0));
-		personaService.deletePersona(persona.getPersonaEntity());
-
-	}
-
-	@Test(expected = PersonaNoExisteException.class)
-	public void PersonaService_reactivarPersonaNoExiste() throws IOException, ParseException, java.text.ParseException,
-			LogExcepcionesNoGuardadoException, PersonaNoExisteException, LogAccionesNoGuardadoException {
-
-		final Persona persona = generatePersona(Constantes.URL_JSON_PERSONA_DATA, Constantes.PERSONA_NO_EXISTE);
-
-		personaService.reactivarPersona(persona);
-
-	}
-
 	private Persona generatePersona(final String fichero, final String nombrePrueba)
 			throws IOException, ParseException, java.text.ParseException {
 

@@ -1281,27 +1281,6 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
 	}
 
-	@GetMapping(value = "/persona/accion/reactivar")
-	@ResponseBody
-	public RespEntity TestPersonaAccionReactivar() {
-
-		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
-
-		try {
-			datosPruebaAcciones = testPersonaService.getPruebasAccionesPersonaReactivar();
-
-		} catch (IOException | ParseException | java.text.ParseException e) {
-			return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_KO, StringUtils.EMPTY);
-		}
-
-		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PERSONAS);
-		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_PERSONA);
-		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
-
-		return new RespEntity(RespCode.TEST_ACCIONES_PERSONA_OK, respuestaTestAcciones);
-	}
-
 	@GetMapping(value = "/empresa/accion/buscar")
 	@ResponseBody
 	public RespEntity TestEmpresaAccionBuscar() {

@@ -2425,61 +2425,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Test Persona Accion Reactivar",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
-											"\r",
-											"var json = JSON.parse(responseBody);\r",
-											"\r",
-											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
-											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de personas\";\r",
-											"\r",
-											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
-											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Reactivar persona\";\r",
-											"\r",
-											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_PERSONA_OK\";\r",
-											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para persona se han ejecutado correctamente\";\r",
-											"\r",
-											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
-											"\r",
-											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
-											"\r",
-											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
-											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "{{tokenUsuario}}",
-										"type": "default"
-									}
-								],
-								"url": {
-									"raw": "{{urlTest}}/persona/accion/reactivar",
-									"host": [
-										"{{urlTest}}"
-									],
-									"path": [
-										"persona",
-										"accion",
-										"reactivar"
-									]
-								}
-							},
-							"response": []
 						}
 					]
 				}

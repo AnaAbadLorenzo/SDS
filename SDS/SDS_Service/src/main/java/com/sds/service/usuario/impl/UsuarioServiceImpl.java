@@ -1,5 +1,6 @@
 package com.sds.service.usuario.impl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.PersonaRepository;
@@ -22,9 +24,12 @@ import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.log.LogService;
+import com.sds.service.persona.PersonaService;
+import com.sds.service.persona.model.Persona;
 import com.sds.service.rol.RolService;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
@@ -49,6 +54,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
 	RolService rolServiceImpl;
+
+	@Autowired
+	PersonaService personaServiceImpl;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -193,7 +201,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public String reactivarUsuario(final Usuario usuario)
-			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			PersonaNoExisteException, ParseException {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
@@ -224,6 +233,29 @@ public class UsuarioServiceImpl implements UsuarioService {
 			user.setBorradoUsuario(0);
 			usuario.setUsuarioEntity(user);
 			usuarioRepository.saveAndFlush(user);
+
+			final Optional<PersonaEntity> persona = personaRepository.findById(user.getDniUsuario());
+
+			if (persona.isPresent()) {
+				final Persona person = new Persona(usuario.getUsuario(), persona.get());
+				personaServiceImpl.reactivarPersona(person);
+			} else {
+				logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new PersonaNoExisteException(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()));
+			}
 
 			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
 					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());

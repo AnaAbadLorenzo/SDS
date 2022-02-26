@@ -66,7 +66,4 @@ public interface TestPersonaService {
 	List<DatosPruebaAcciones> getPruebasAccionesPersonaModificar()
 			throws IOException, ParseException, java.text.ParseException;
 
-	List<DatosPruebaAcciones> getPruebasAccionesPersonaReactivar()
-			throws IOException, ParseException, java.text.ParseException;
-
 }

@@ -192,8 +192,9 @@ public class UsuarioServiceTest {
 	}
 
 	@Test(expected = UsuarioNoEncontradoException.class)
-	public void UsuarioService_reactivarUsuarioNoExiste() throws UsuarioNoEncontradoException, IOException,
-			ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+	public void UsuarioService_reactivarUsuarioNoExiste()
+			throws UsuarioNoEncontradoException, IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, PersonaNoExisteException, java.text.ParseException {
 
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_NO_EXISTE);
 

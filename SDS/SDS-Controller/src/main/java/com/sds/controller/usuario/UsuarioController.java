@@ -16,6 +16,7 @@ import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.usuario.UsuarioService;
@@ -97,6 +98,10 @@ public class UsuarioController {
 			}
 		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
 			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuario);
+		} catch (final PersonaNoExisteException e) {
+			return new RespEntity(RespCode.PERSONA_NO_EXISTE, usuario);
+		} catch (final ParseException e) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, usuario);
 		}
 	}
 
