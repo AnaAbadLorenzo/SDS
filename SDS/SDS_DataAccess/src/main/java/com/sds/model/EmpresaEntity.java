@@ -15,10 +15,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "empresa")
-@NamedQueries({
-		@NamedQuery(name = "EmpresaEntity.findEmpresa", query = "SELECT e FROM EmpresaEntity e WHERE e.cifEmpresa LIKE CONCAT('%', :cifEmpresa, '%') AND e.nombreEmpresa LIKE CONCAT('%', :nombreEmpresa, '%') AND e.direccionEmpresa LIKE CONCAT('%', :direccionEmpresa, '%') AND e.telefonoEmpresa LIKE CONCAT('%',:telefonoEmpresa, '%')"),
+@NamedQueries({ @NamedQuery(name = "EmpresaEntity.findAllEmpresas", query = "SELECT e FROM EmpresaEntity e"),
+		@NamedQuery(name = "EmpresaEntity.numberFindAllEmpresas", query = "SELECT COUNT(e) FROM EmpresaEntity e"),
+		@NamedQuery(name = "EmpresaEntity.findEmpresa", query = "SELECT e FROM EmpresaEntity e WHERE e.cifEmpresa LIKE CONCAT('%', :cifEmpresa, '%') AND e.nombreEmpresa LIKE CONCAT('%', :nombreEmpresa, '%') AND e.direccionEmpresa LIKE CONCAT('%', :direccionEmpresa, '%') AND e.telefonoEmpresa LIKE CONCAT('%',:telefonoEmpresa, '%') AND e.borradoEmpresa=0"),
+		@NamedQuery(name = "EmpresaEntity.numberFindEmpresa", query = "SELECT COUNT(e) FROM EmpresaEntity e WHERE e.cifEmpresa LIKE CONCAT('%', :cifEmpresa, '%') AND e.nombreEmpresa LIKE CONCAT('%', :nombreEmpresa, '%') AND e.direccionEmpresa LIKE CONCAT('%', :direccionEmpresa, '%') AND e.telefonoEmpresa LIKE CONCAT('%',:telefonoEmpresa, '%') AND e.borradoEmpresa=0"),
 		@NamedQuery(name = "EmpresaEntity.findByCif", query = "SELECT e FROM EmpresaEntity e WHERE e.cifEmpresa =: cifEmpresa"),
-		@NamedQuery(name = "EmpresaEntity.findEmpresasEliminadas", query = "SELECT e FROM EmpresaEntity e WHERE e.borradoEmpresa =: borradoEmpresa") })
+		@NamedQuery(name = "EmpresaEntity.findEmpresasEliminadas", query = "SELECT e FROM EmpresaEntity e WHERE e.borradoEmpresa = 1"),
+		@NamedQuery(name = "EmpresaEntity.numberFindEmpresasEliminadas", query = "SELECT COUNT(e) FROM EmpresaEntity e WHERE e.borradoEmpresa = 1") })
 public class EmpresaEntity {
 
 	@Id

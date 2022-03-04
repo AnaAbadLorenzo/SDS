@@ -881,6 +881,28 @@ public class TestController {
 
 	}
 
+	@GetMapping(value = "/accion/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestAccionAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
+	}
+
 	@GetMapping(value = "/rol/accion/guardar")
 	@ResponseBody
 	public RespEntity TestRolAccionGuardar() {
@@ -1049,6 +1071,27 @@ public class TestController {
 		return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_OK, respuestaTestAcciones);
 	}
 
+	@GetMapping(value = "/funcionalidad/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestFuncionalidadAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testFuncionalidadService.getPruebasAccionesFuncionalidadReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_FUNCIONALIDADES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_FUNCIONALIDAD);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_FUNCIONALIDAD_OK, respuestaTestAcciones);
+	}
+
 	@GetMapping(value = "/usuario/accion/buscar")
 	@ResponseBody
 	public RespEntity TestUsuarioAccionBuscar() {
@@ -1128,6 +1171,27 @@ public class TestController {
 
 		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_USUARIOS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_PASSWD_USUARIO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/usuario/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestUsuarioAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testUsuarioService.getPruebasAccionesUsuarioReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_USUARIOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_USUARIO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_USUARIO_OK, respuestaTestAcciones);
@@ -1296,6 +1360,27 @@ public class TestController {
 
 		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_EMPRESAS);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_EMPRESA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/empresa/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestEmpresaAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		try {
+			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_EMPRESAS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_EMPRESA);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);

@@ -1,5 +1,7 @@
 {
 	"buscarEmpresaCorrecto":{
+		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
@@ -9,6 +11,8 @@
 	},
 	
 	"cifEmpresaVacio": {
+		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"",
 		"nombreEmpresa":"Prueba",
@@ -17,6 +21,8 @@
 		"borradoEmpresa":0
 	}, 
 	"nombreEmpresaVacio": {
+		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"",
@@ -25,6 +31,8 @@
 		"borradoEmpresa":0
 	},
 	"direccionEmpresaVacio": {
+		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
@@ -33,6 +41,8 @@
 		"borradoEmpresa":0
 	},
 	"telefonoEmpresaVacio": {
+		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
@@ -42,6 +52,8 @@
 	},
 	
 	"parametrosEmpresaVacios":{
+		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"",
 		"nombreEmpresa":"",
@@ -51,6 +63,8 @@
 	},
 	
 	"empresaYaExiste":{
+		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
@@ -59,6 +73,8 @@
 		"borradoEmpresa":0
 	},
 	"guardarEmpresaCorrecto":{
+		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E32589671",
 		"nombreEmpresa":"Empresa",
@@ -67,6 +83,8 @@
 		"borradoEmpresa":0
 	},
 	"modificarEmpresaCorrecto":{
+		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E32589671",
 		"nombreEmpresa":"Empresa",
@@ -75,6 +93,8 @@
 		"borradoEmpresa":0
 	},
 	"empresaNoExiste":{
+		"usuario":"ana",
+		
 		"idEmpresa":3,
 		"cifEmpresa":"E98745148",
 		"nombreEmpresa":"Emp",
@@ -83,6 +103,8 @@
 		"borradoEmpresa":0
 	},
 	"eliminarEmpresaCorrecto":{
+		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E32589671",
 		"nombreEmpresa":"Empresa",
@@ -91,11 +113,23 @@
 		"borradoEmpresa":0
 	},
 	"eliminarEmpresaAsociadaPersonas":{
+		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E22222222",
 		"nombreEmpresa":"Empresa",
 		"direccionEmpresa":"Empresa",
 		"telefonoEmpresa":"988232323",
 		"borradoEmpresa":0
+	},
+	"reactivarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E32589671",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":1
 	}
 }

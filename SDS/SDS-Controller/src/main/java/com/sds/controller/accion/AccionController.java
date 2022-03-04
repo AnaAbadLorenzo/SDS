@@ -1,7 +1,5 @@
 package com.sds.controller.accion;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +13,8 @@ import com.sds.model.RespEntity;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionBuscar;
+import com.sds.service.common.Paginacion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
@@ -36,29 +36,31 @@ public class AccionController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarAccion", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarAccion", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity buscarAccion(@RequestBody final AccionBuscar accion) {
 
-		final List<AccionEntity> resultado = accionService.buscarAccion(accion.getNombreAccion(),
-				accion.getDescripAccion());
+		final ReturnBusquedas<AccionEntity> resultado = accionService.buscarAccion(accion.getNombreAccion(),
+				accion.getDescripAccion(), accion.getInicio(), accion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ACCION_ENCONTRADA, resultado);
 
 	}
 
-	@RequestMapping(value = "/listarAcciones", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarAcciones", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarTodos() {
-		final List<AccionEntity> resultado = accionService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<AccionEntity> resultado = accionService.buscarTodos(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ACCIONES_LISTADAS, resultado);
 	}
 
-	@RequestMapping(value = "/listarAccionesEliminadas", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarAccionesEliminadas", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarAccionesEliminadas() {
-		final List<AccionEntity> resultado = accionService.buscarAccionesEliminadas();
+	public RespEntity buscarAccionesEliminadas(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<AccionEntity> resultado = accionService.buscarAccionesEliminadas(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ACCIONES_ELIMINADAS_LISTADAS, resultado);
 
@@ -118,6 +120,26 @@ public class AccionController {
 		}
 
 		return new RespEntity(RespCode.ACCION_VACIA, accion);
+	}
+
+	@RequestMapping(value = "/reactivarAccion", method = RequestMethod.POST)
+	@ResponseBody
+	public RespEntity reactivarAccion(@RequestBody final Accion accion) {
+
+		try {
+			String resultado;
+			try {
+				resultado = accionService.reactivarAccion(accion);
+				return new RespEntity(RespCode.ACCION_REACTIVADA, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, accion);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, accion);
+			}
+		} catch (final AccionNoExisteException accionNoExists) {
+			return new RespEntity(RespCode.ACCION_NO_EXISTE_EXCEPTION, accion);
+		}
+
 	}
 
 	@RequestMapping(value = "/eliminarAccion", method = RequestMethod.POST)

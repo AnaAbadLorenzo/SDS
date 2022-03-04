@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -21,6 +20,7 @@ import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
@@ -43,10 +43,10 @@ public class AccionServiceTest {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.BUSCAR_ACCION);
 		final AccionEntity accionEntity = accion.getAccion();
 
-		final List<AccionEntity> accionEncontrada = accionService.buscarAccion(accionEntity.getNombreAccion(),
-				accionEntity.getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionEncontrada = accionService
+				.buscarAccion(accionEntity.getNombreAccion(), accionEntity.getDescripAccion(), 0, 1);
 
-		assertNotNull(accionEncontrada);
+		assertNotNull(accionEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -54,8 +54,8 @@ public class AccionServiceTest {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NAME_VACIO_DATA);
 		final AccionEntity accionEntity = accion.getAccion();
 
-		final List<AccionEntity> accionEncontrada = accionService.buscarAccion(accionEntity.getNombreAccion(),
-				accionEntity.getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionEncontrada = accionService
+				.buscarAccion(accionEntity.getNombreAccion(), accionEntity.getDescripAccion(), 0, 1);
 
 		assertNotNull(accionEncontrada);
 	}
@@ -65,8 +65,8 @@ public class AccionServiceTest {
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_DESCRIPTION_VACIO_DATA);
 		final AccionEntity accionEntity = accion.getAccion();
 
-		final List<AccionEntity> accionEncontrada = accionService.buscarAccion(accionEntity.getNombreAccion(),
-				accionEntity.getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionEncontrada = accionService
+				.buscarAccion(accionEntity.getNombreAccion(), accionEntity.getDescripAccion(), 0, 1);
 
 		assertNotNull(accionEncontrada);
 	}
@@ -77,8 +77,8 @@ public class AccionServiceTest {
 				Constantes.ACCION_NAME_DESCRIPTION_VACIOS);
 		final AccionEntity accionEntity = accion.getAccion();
 
-		final List<AccionEntity> accionEncontrada = accionService.buscarAccion(accionEntity.getNombreAccion(),
-				accionEntity.getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionEncontrada = accionService
+				.buscarAccion(accionEntity.getNombreAccion(), accionEntity.getDescripAccion(), 0, 1);
 
 		assertNotNull(accionEncontrada);
 	}
@@ -86,17 +86,17 @@ public class AccionServiceTest {
 	@Test
 	public void AccionService_buscarTodos() throws IOException, ParseException {
 
-		final List<AccionEntity> acciones = accionService.buscarTodos();
+		final ReturnBusquedas<AccionEntity> acciones = accionService.buscarTodos(0, 3);
 
-		assertNotNull(acciones);
+		assertNotNull(acciones.getListaBusquedas());
 	}
 
 	@Test
 	public void AccionService_buscarAccionesEliminadas() throws IOException, ParseException {
 
-		final List<AccionEntity> accionEncontrada = accionService.buscarAccionesEliminadas();
+		final ReturnBusquedas<AccionEntity> accionEncontrada = accionService.buscarAccionesEliminadas(0, 3);
 
-		assertNotNull(accionEncontrada);
+		assertNotNull(accionEncontrada.getListaBusquedas());
 	}
 
 	@Test
@@ -110,10 +110,10 @@ public class AccionServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final List<AccionEntity> accionDelete = accionService.buscarAccion(accion.getAccion().getNombreAccion(),
-				accion.getAccion().getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionDelete = accionService
+				.buscarAccion(accion.getAccion().getNombreAccion(), accion.getAccion().getDescripAccion(), 0, 1);
 
-		accion.setAccion(accionDelete.get(0));
+		accion.setAccion(accionDelete.getListaBusquedas().get(0));
 
 		accionService.deleteAccion(accion.getAccion());
 	}
@@ -174,13 +174,13 @@ public class AccionServiceTest {
 
 		accionService.anadirAccion(accionGuardar);
 
-		final List<AccionEntity> accionModificar = accionService.buscarAccion(
-				accionGuardar.getAccion().getNombreAccion(), accionGuardar.getAccion().getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionModificar = accionService.buscarAccion(
+				accionGuardar.getAccion().getNombreAccion(), accionGuardar.getAccion().getDescripAccion(), 0, 1);
 
-		accionModificar.get(0).setNombreAccion("Modificación");
-		accionModificar.get(0).setDescripAccion("Hecha la modificación");
+		accionModificar.getListaBusquedas().get(0).setNombreAccion("Modificación");
+		accionModificar.getListaBusquedas().get(0).setDescripAccion("Hecha la modificación");
 
-		accionGuardar.setAccion(accionModificar.get(0));
+		accionGuardar.setAccion(accionModificar.getListaBusquedas().get(0));
 
 		respuesta = accionService.modificarAccion(accionGuardar);
 
@@ -246,10 +246,10 @@ public class AccionServiceTest {
 
 		accionService.anadirAccion(accion);
 
-		final List<AccionEntity> accionGuardada = accionService.buscarAccion(accion.getAccion().getNombreAccion(),
-				accion.getAccion().getDescripAccion());
+		final ReturnBusquedas<AccionEntity> accionGuardada = accionService
+				.buscarAccion(accion.getAccion().getNombreAccion(), accion.getAccion().getDescripAccion(), 0, 1);
 
-		accion.setAccion(accionGuardada.get(0));
+		accion.setAccion(accionGuardada.getListaBusquedas().get(0));
 
 		final String respuesta = accionService.eliminarAccion(accion);
 
@@ -279,6 +279,42 @@ public class AccionServiceTest {
 				Constantes.ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD);
 
 		accionService.eliminarAccion(accion);
+
+	}
+
+	@Test
+	public void AccionService_reactivarAccion() throws IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, AccionYaExisteException, AccionNoExisteException {
+
+		final Accion accionGuardar = generateAccion(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.REACTIVAR_ACCION_CORRECTO);
+
+		String respuesta = StringUtils.EMPTY;
+
+		accionService.anadirAccion(accionGuardar);
+
+		final ReturnBusquedas<AccionEntity> accionModificar = accionService.buscarAccion(
+				accionGuardar.getAccion().getNombreAccion(), accionGuardar.getAccion().getDescripAccion(), 0, 1);
+
+		accionModificar.getListaBusquedas().get(0).setBorradoAccion(0);
+
+		accionGuardar.setAccion(accionModificar.getListaBusquedas().get(0));
+
+		respuesta = accionService.reactivarAccion(accionGuardar);
+
+		assertEquals(respuesta, Constantes.OK);
+
+		accionService.deleteAccion(accionGuardar.getAccion());
+
+	}
+
+	@Test(expected = AccionNoExisteException.class)
+	public void AccionService_reactivarAccionNoExiste() throws RolNoExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionNoExisteException {
+
+		final Accion accionGuardar = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NO_EXISTE);
+
+		accionService.reactivarAccion(accionGuardar);
 
 	}
 

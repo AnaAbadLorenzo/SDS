@@ -1,7 +1,5 @@
 package com.sds.controller.rol;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.model.RolEntity;
+import com.sds.service.common.Paginacion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
@@ -37,39 +37,31 @@ public class RolController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarRol", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarRol", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity buscarRol(@RequestBody final RolBuscar rolBuscar) {
 
-		final List<RolEntity> resultado = rolService.buscarRol(rolBuscar.getRolName(), rolBuscar.getRolDescription());
+		final ReturnBusquedas<RolEntity> resultado = rolService.buscarRol(rolBuscar.getRolName(),
+				rolBuscar.getRolDescription(), rolBuscar.getInicio(), rolBuscar.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ROL_ENCONTRADO, resultado);
 
 	}
 
-	@RequestMapping(value = "/buscarRol", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarRoles", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarRolPagination(@RequestBody final RolBuscar rolBuscar) {
-
-		final List<RolEntity> resultado = rolService.buscarRolPagination(rolBuscar.getRolName(),
-				rolBuscar.getRolDescription(), rolBuscar.getInicio(), rolBuscar.getTamanoPagina());
-
-		return new RespEntity(RespCode.ROL_ENCONTRADO, resultado);
-
-	}
-
-	@RequestMapping(value = "/listarRoles", method = RequestMethod.GET)
-	@ResponseBody
-	public RespEntity buscarTodos() {
-		final List<RolEntity> resultado = rolService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<RolEntity> resultado = rolService.buscarTodos(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/listarRolesEliminados", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarRolesEliminados", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarRolesEliminados() {
-		final List<RolEntity> resultado = rolService.buscarRolesEliminados();
+	public RespEntity buscarRolesEliminados(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<RolEntity> resultado = rolService.buscarRolesEliminados(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
 

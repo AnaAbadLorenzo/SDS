@@ -3,6 +3,9 @@ package com.sds.service.empresa.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import com.sds.model.PersonaEntity;
 import com.sds.repository.EmpresaRepository;
 import com.sds.repository.PersonaRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.empresa.EmpresaService;
 import com.sds.service.empresa.model.Empresa;
 import com.sds.service.exception.EmpresaAsociadaPersonasException;
@@ -28,6 +32,9 @@ import com.sds.service.util.validaciones.Validaciones;
 
 @Service
 public class EmpresaServiceImpl implements EmpresaService {
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	EmpresaRepository empresaRepository;
@@ -47,54 +54,45 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
-	public List<EmpresaEntity> buscarEmpresa(final String cifEmpresa, final String nombreEmpresa,
-			final String direccionEmpresa, final String telefonoEmpresa) {
+	public ReturnBusquedas<EmpresaEntity> buscarEmpresa(final String cifEmpresa, final String nombreEmpresa,
+			final String direccionEmpresa, final String telefonoEmpresa, final int inicio, final int tamanhoPagina) {
+
 		List<EmpresaEntity> empresaBD = new ArrayList();
 		final List<EmpresaEntity> toret = new ArrayList();
 
-		empresaBD = empresaRepository.findEmpresa(cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
+		empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresa").setParameter("cifEmpresa", cifEmpresa)
+				.setParameter("nombreEmpresa", nombreEmpresa).setParameter("direccionEmpresa", direccionEmpresa)
+				.setParameter("telefonoEmpresa", telefonoEmpresa).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+				.getResultList();
+
+		final Integer numberTotalResults = empresaRepository.numberFindEmpresa(cifEmpresa, nombreEmpresa,
+				direccionEmpresa, telefonoEmpresa);
 
 		for (final EmpresaEntity empresa : empresaBD) {
-			if (empresa.getBorradoEmpresa() == 0) {
-				final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
-						empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
-						empresa.getBorradoEmpresa());
 
-				toret.add(empresaToret);
-
-			}
-
-		}
-
-		return toret;
-	}
-
-	@Override
-	public List<EmpresaEntity> buscarTodos() {
-		List<EmpresaEntity> empresaBD = new ArrayList();
-		final List<EmpresaEntity> toret = new ArrayList();
-
-		empresaBD = empresaRepository.findAll();
-
-		for (final EmpresaEntity empresa : empresaBD) {
 			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
 					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
 					empresa.getBorradoEmpresa());
-			
+
 			toret.add(empresaToret);
 
 		}
 
-		return toret;
+		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
+				toret.size());
 
+		return result;
 	}
 
 	@Override
-	public List<EmpresaEntity> buscarEmpresasEliminadas() {
+	public ReturnBusquedas<EmpresaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		List<EmpresaEntity> empresaBD = new ArrayList();
 		final List<EmpresaEntity> toret = new ArrayList();
 
-		empresaBD = empresaRepository.findEmpresasEliminadas(1);
+		empresaBD = entityManager.createNamedQuery("EmpresaEntity.findAllEmpresas").setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = empresaRepository.numberFindAllEmpresas();
 
 		for (final EmpresaEntity empresa : empresaBD) {
 			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
@@ -102,9 +100,38 @@ public class EmpresaServiceImpl implements EmpresaService {
 					empresa.getBorradoEmpresa());
 
 			toret.add(empresaToret);
+
 		}
 
-		return toret;
+		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return result;
+
+	}
+
+	@Override
+	public ReturnBusquedas<EmpresaEntity> buscarEmpresasEliminadas(final int inicio, final int tamanhoPagina) {
+		List<EmpresaEntity> empresaBD = new ArrayList();
+		final List<EmpresaEntity> toret = new ArrayList();
+
+		empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresasEliminadas").setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = empresaRepository.numberFindEmpresasEliminadas();
+
+		for (final EmpresaEntity empresa : empresaBD) {
+			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+					empresa.getBorradoEmpresa());
+
+			toret.add(empresaToret);
+		}
+
+		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return result;
 
 	}
 
@@ -294,6 +321,44 @@ public class EmpresaServiceImpl implements EmpresaService {
 			}
 		} else {
 			resultado = CodeMessageErrors.EMPRESA_VACIO.name();
+		}
+
+		return resultado;
+	}
+
+	@Override
+	public String reactivarEmpresa(final Empresa empresa)
+			throws EmpresaNoEncontradaException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+		final EmpresaEntity empresaEntity = empresa.getEmpresa();
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
+
+		final EmpresaEntity empre = empresaRepository.findByCif(empresaEntity.getCifEmpresa());
+
+		if (empre == null) {
+			logExcepciones = util.generarDatosLogExcepciones(empresa.getUsuario(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+					CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new EmpresaNoEncontradaException(
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+					CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+
+		} else {
+			empresaEntity.setBorradoEmpresa(0);
+			empresa.setEmpresa(empresaEntity);
+			resultado = modificarEmpresa(empresa);
 		}
 
 		return resultado;

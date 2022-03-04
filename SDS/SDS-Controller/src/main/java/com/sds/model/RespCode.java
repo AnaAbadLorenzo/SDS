@@ -25,6 +25,7 @@ public enum RespCode {
 	PERSONA_VACIA("PERSONA_VACIA", "Los datos de persona no pueden ser vacíos"), //
 	PERSONA_GUARDADA("PERSONA_GUARDADA", "La persona se ha guardado correctamente"), //
 	PERSONA_MODIFICADA("PERSONA_MODIFICADA", "La persona se ha modificado correctamente"), //
+	PERSONA_REACTIVADA("PERSONA_REACTIVADA", "La persona se ha reactivado correctamente"), //
 	USUARIO_ASOCIADO_PERSONA_EXCEPTION("USUARIO_ASOCIADO_PERSONA_EXCEPTION", "La persona tiene un usuario asociado"), //
 	ENVIO_EMAIL_EXCEPTION("ENVIO_EMAIL_EXCEPTION", "Ha ocurrido un errror al enviar el email"), //
 	EMPRESA_YA_EXISTE("EMPRESA_YA_EXISTE", "La empresa ya existe"), //
@@ -34,6 +35,7 @@ public enum RespCode {
 			"Las empresas eliminadas se han listado correctamente"), //
 	EMPRESA_VACIA("EMPRESA_VACIA", "Los datos de la empresa son vacíos"), //
 	EMPRESA_GUARDADA("EMPRESA_GUARDADA", "La empresa se ha guardado correctamente"), //
+	EMPRESA_REACTIVADA("EMPRESA_REACTIVADA", "La empresa se ha reactivado correctamente"), //
 	EMPRESA_YA_EXISTE_EXCEPTION("EMPRESA_YA_EXISTE_EXCEPTION", "La empresa ya existe"), //
 	EMPRESA_MODIFICADA("EMPRESA_MODIFICADA", "La empresa se ha modificado correctamente"), //
 	EMPRESA_NO_ENCONTRADA_EXCEPTION("EMPRESA_NO_ENCONTRADA_EXCEPTION", "La empresa no existe"), //
@@ -46,6 +48,7 @@ public enum RespCode {
 	USUARIO_GUARDADO("USUARIO_GUARDADO", "El usuario se ha guardado correctamente"), //
 	USUARIO_ELIMINADO("USUARIO_ELIMINADO", "El usuario se ha eliminado correctamente"), //
 	USUARIO_MODIFICADO("USUARIO_MODIFICADO", "El usuario se ha modificado correctamente"), //
+	USUARIO_REACTIVADO("USUARIO_REACTIVADO", "El usuario se ha reactivado correctamente"), //
 	USUARIO_MODIFICAR_VACIO("USUARIO_MODIFICAR_VACIO", "El usuario y/o el rol es vacio"), //
 	RECUPERAR_PASS_OK("RECUPERAR_PASS_OK", "La nueva contraseña se ha enviado correctamente"), //
 	USUARIO_AÑADIR_VACIO("USUARIO_AÑADIR_VACIO", "Los datos de usuario y/o persona son vacios"), //
@@ -67,6 +70,7 @@ public enum RespCode {
 			"La accion se encuentra asociada a una accion y funcionalidad"), //
 	ACCION_YA_EXISTE_EXCEPTION("ACCION_YA_EXISTE", "La acción ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("ACCION_NO_EXISTE_EXCEPTION", "La accion que busca no existe"), //
+	ACCION_REACTIVADA("ACCION_REACTIVADA", "La accion se ha reactivado correctamente"), //
 	FUNCIONALIDAD_VACIA("FUNCIONALIDAD_VACIA", "La funcionalidad está vacía"), //
 	FUNCIONALIDAD_ENCONTRADA("FUNCIONALIDAD_ENCONTRADA", "La funcionalidad se ha encontrado correctamente"), //
 	FUNCIONALIDADES_LISTADAS("FUNCIONALIDADES_LISTADAS", "Las funcionalidades se han listado correctamente"), //
@@ -79,6 +83,7 @@ public enum RespCode {
 	FUNCIONALIDAD_NO_EXISTE_EXCEPTION("FUNCIONALIDAD_NO_EXISTE_EXCEPTION", "La funcionalidad que busca no existe"), //
 	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("FUNCIONALIDAD_YA_EXISTE_EXCEPTION", "La funcionalidad que busca ya existe"), //
 	FUNCIONALIDAD_GUARDADA("FUNCIONALIDAD_GUARDADA", "La funcionalidad se ha guardado correctamente"), //
+	FUNCIONALIDAD_REACTIVADA("FUNCIONALIDAD_REACTIVADA", "La funcionalidad se ha reactivado correctamente"), //
 	USUARIOS_LISTADOS("USUARIOS_LISTADOS", "Los usuarios se han listado correctamente"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
 	ROL_USUARIO_MODIFICADO_OK("ROL_USUARIO_MODIFICADO_OK", "El rol del usuario se ha modificado correctamente"), //

@@ -14,9 +14,17 @@ import com.sds.model.UsuarioEntity;
 @Component
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, String> {
 
-	List<UsuarioEntity> findUsuario(String dniUsuario, String usuario, RolEntity rol);
+	List<UsuarioEntity> findUsuario(final String dniUsuario, final String usuario, final RolEntity rol);
 
-	List<UsuarioEntity> findUsuariosEliminados(Integer borradoUsuario);
+	Integer numberFindUsuario(String dniUsuario, String usuario, RolEntity rol);
+
+	List<UsuarioEntity> findUsuariosEliminados();
+
+	Integer numberFindUsuariosEliminados();
+
+	List<UsuarioEntity> findAllUsuarios();
+
+	Integer numberFindAllUsuarios();
 
 	UsuarioEntity findByUsuario(String usuario);
 

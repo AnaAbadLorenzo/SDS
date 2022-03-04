@@ -72,6 +72,7 @@ public class DefinicionPruebas {
 	public static final String MODIFICAR_ACCION_CORRECTO = "La acción se ha modificado correctamente";
 	public static final String ELIMINAR_ACCION_CORRECTO = "La acción se ha eliminado correctamente";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La acción tiene asociada un rol y una funcionalidad";
+	public static final String REACTIVAR_ACCION_CORRECTO = "La acción se ha reactivado correctamente";
 	public static final String ACCION_DESCRIPTION_VACIO = "La descripción de la acción es vacia";
 	public static final String ACCION_VACIA = "El nombre y descripción de la acción son vacios";
 	public static final String FUNCIONALIDAD_NAME_VACIO = "El nombre de la funcionalidad es vacio";
@@ -82,10 +83,12 @@ public class DefinicionPruebas {
 	public static final String MODIFICAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha modificado correctamente";
 	public static final String ELIMINAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha eliminado correctamente";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "La funcionalidad tiene asociada un rol y una acción";
+	public static final String REACTIVAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha reactivado correctamente";
 	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO = "La descripción de la funcionalidad es vacia";
 	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad son vacios";
 	public static final String ELIMINAR_USUARIO_CORRECTO = "El usuario se ha eliminado correctamente";
 	public static final String ELIMINAR_USUARIO_NO_EXISTE = "El usuario que desea eliminar no existe";
+	public static final String REACTIVAR_USUARIO_CORRECTO = "El usuario se ha reactivado correctamente";
 	public static final String MODIFICAR_ROL_USUARIO_OK = "El rol del usuario se ha modificado correctamente";
 	public static final String MODIFICAR_ROL_USUARIO_ROL_NO_EXISTE = "El rol no existe";
 	public static final String MODIFICAR_ROL_USUARIO_NO_EXISTE = "El usuario no existe";
@@ -98,10 +101,12 @@ public class DefinicionPruebas {
 	public static final String MODIFICAR_PERSONA_CORRECTO = "La persona se ha modificado correctamente";
 	public static final String RECUPERAR_PASS = "La contraseña se ha recuperado correctamente";
 	public static final String EMAIL_NO_ENCONTRADO = "El email no se ha encontrado";
+	public static final String REACTIVAR_PERSONA_CORRETO = "La persona se ha reactivado correctamente";
 
 	public static final String GUARDAR_EMPRESA_CORRECTO = "La empresa se ha guardado correctamente";
 	public static final String MODIFICAR_EMPRESA_CORRECTO = "La empresa se ha modificado correctamente";
 	public static final String EMPRESA_NO_EXISTE = "La empresa no existe";
 	public static final String ELIMINAR_EMPRESA_CORRECTO = "La empresa se ha eliminado correctamente";
 	public static final String EMPRESA_ASOCIADA_PERSONAS = "La empresa tiene personas asociadas";
+	public static final String REACTIVAR_EMPRESA_CORRECTO = "La empresa se ha reactivado correctamente";
 }

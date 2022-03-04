@@ -2,10 +2,9 @@ package com.sds.service.persona;
 
 import java.text.ParseException;
 import java.util.Date;
-import java.util.List;
 
-import com.sds.model.EmpresaEntity;
 import com.sds.model.PersonaEntity;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -17,12 +16,12 @@ import com.sds.service.persona.model.PersonaAnadir;
 
 public interface PersonaService {
 
-	List<PersonaEntity> buscarTodos();
+	ReturnBusquedas<PersonaEntity> buscarTodos(int inicio, int tamanhoPagina);
 
-	List<PersonaEntity> buscarPersonasEliminadas();
+	ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(int inicio, int tamanhoPagina);
 
-	List<PersonaEntity> buscarPersona(String dniP, String nombreP, String apellidosP, Date fechaNacP, String direccionP,
-			String telefonoP, String emailP, EmpresaEntity empresa);
+	ReturnBusquedas<PersonaEntity> buscarPersona(String dniP, String nombreP, String apellidosP, Date fechaNacP,
+			String direccionP, String telefonoP, String emailP, int inicio, int tamanhoPagina);
 
 	String añadirPersona(final PersonaAnadir personaAñadir) throws PersonaYaExisteException, UsuarioYaExisteException,
 			ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
@@ -31,9 +30,12 @@ public interface PersonaService {
 			throws PersonaNoExisteException, UsuarioAsociadoPersonaException, ParseException;
 
 	String eliminarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException, PersonaNoExisteException,
-			UsuarioAsociadoPersonaException, ParseException, LogAccionesNoGuardadoException;
+			ParseException, LogAccionesNoGuardadoException;
 
 	String modificarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException, PersonaNoExisteException,
+			ParseException, LogAccionesNoGuardadoException;
+
+	String reactivarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException, PersonaNoExisteException,
 			ParseException, LogAccionesNoGuardadoException;
 
 }

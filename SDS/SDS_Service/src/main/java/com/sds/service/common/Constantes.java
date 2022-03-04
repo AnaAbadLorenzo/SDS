@@ -22,26 +22,31 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_USUARIO = "Modificar usuario";
 	public static final String ACCION_ELIMINAR_USUARIO = "Eliminar usuario";
 	public static final String ACCION_BUSCAR_USUARIO = "Buscar usuario";
+	public static final String ACCION_REACTIVAR_USUARIO = "Reactivar usuario";
 
 	public static final String ACCION_AÑADIR_PERSONA = "Añadir persona";
 	public static final String ACCION_MODIFICAR_PERSONA = "Modificar persona";
 	public static final String ACCION_ELIMINAR_PERSONA = "Eliminar persona";
 	public static final String ACCION_BUSCAR_PERSONA = "Buscar persona";
+	public static final String ACCION_REACTIVAR_PERSONA = "Reactivar persona";
 
 	public static final String ACCION_AÑADIR_ACCION = "Añadir acción";
 	public static final String ACCION_BUSCAR_ACCION = "Buscar acción";
 	public static final String ACCION_MODIFICAR_ACCION = "Modificar acción";
 	public static final String ACCION_ELIMINAR_ACCION = "Eliminar acción";
+	public static final String ACCION_REACTIVAR_ACCION = "Reactivar acción";
 
 	public static final String ACCION_AÑADIR_FUNCIONALIDAD = "Añadir funcionalidad";
 	public static final String ACCION_MODIFICAR_FUNCIONALIDAD = "Modificar funcionalidad";
 	public static final String ACCION_ELIMINAR_FUNCIONALIDAD = "Eliminar funcionalidad";
 	public static final String ACCION_BUSCAR_FUNCIONALIDAD = "Buscar funcionalidad";
+	public static final String ACCION_REACTIVAR_FUNCIONALIDAD = "Reactivar funcionalidad";
 
 	public static final String ACCION_AÑADIR_EMPRESA = "Añadir empresa";
 	public static final String ACCION_BUSCAR_EMPRESA = "Buscar empresa";
 	public static final String ACCION_MODIFICAR_EMPRESA = "Modificar empresa";
 	public static final String ACCION_ELIMINAR_EMPRESA = "Eliminar empresa";
+	public static final String ACCION_REACTIVAR_EMPRESA = "Reactivar empresa";
 
 	public static final String ACCION_MODIFICAR_ROL_USUARIO = "Modificar rol de usuario";
 	public static final String ACCION_MODIFICAR_PASSWD_USUARIO = "Modificar contraseña de usuario";
@@ -167,6 +172,7 @@ public class Constantes {
 	public static final String ELIMINAR_ACCION_NO_EXISTE = "eliminarAccionNoExiste";
 	public static final String MODIFICAR_ACCION = "modificarAccion";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "eliminarAccionAsociadaRolFuncionalidad";
+	public static final String REACTIVAR_ACCION_CORRECTO = "reactivarAccionCorrecto";
 
 	public static final String BUSCAR_FUNCIONALIDAD = "buscarFuncionalidadCorrecto";
 	public static final String FUNCIONALIDAD_NO_EXISTE = "funcionalidadNoExiste";
@@ -177,6 +183,7 @@ public class Constantes {
 	public static final String ELIMINAR_FUNCIONALIDAD_NO_EXISTE = "eliminarFuncionalidadNoExiste";
 	public static final String MODIFICAR_FUNCIONALIDAD = "modificarFuncionalidad";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "eliminarFuncionalidadAsociadaRolAccion";
+	public static final String REACTIVAR_FUNCIONALIDAD_CORRECTO = "reactivarFuncionalidadCorrecto";
 
 	public static final String BUSCAR_USUARIO = "buscarUsuarioCorrecto";
 	public static final String USUARIO_DNI_NOMBRE_VACIOS = "usuarioDniNombreVacios";
@@ -185,11 +192,13 @@ public class Constantes {
 	public static final String MODIFICAR_ROL_USUARIO = "modificarRolUsuario";
 	public static final String MODIFICAR_PASSWD_USUARIO = "modificarPasswdUsuario";
 	public static final String ROL_USUARIO = "rolUsuario";
+	public static final String REACTIVAR_USUARIO_CORRECTO = "reactivarUsuarioCorrecto";
 
 	public static final String BUSCAR_PERSONA = "buscarPersonaCorrecto";
 	public static final String GUARDAR_PERSONA = "guardarPersonaCorrecto";
 	public static final String ELIMINAR_PERSONA = "eliminarPersonaCorrecto";
 	public static final String PERSONA_NO_EXISTE = "personaNoExiste";
+	public static final String REACTIVAR_PERSONA_CORRECTO = "reactivarPersonaCorrecto";
 
 	public static final String BUSCAR_EMPRESA = "buscarEmpresaCorrecto";
 	public static final String GUARDAR_EMPRESA_CORRECTO = "guardarEmpresaCorrecto";
@@ -197,6 +206,7 @@ public class Constantes {
 	public static final String EMPRESA_NO_EXISTE = "empresaNoExiste";
 	public static final String ELIMINAR_EMPRESA_CORRECTO = "eliminarEmpresaCorrecto";
 	public static final String ELIMINAR_EMPRESA_ASOCIADA_PERSONAS = "eliminarEmpresaAsociadaPersonas";
+	public static final String REACTIVAR_EMPRESA_CORRECTO = "reactivarEmpresaCorrecto";
 
 	public static final String USUARIO_VACIO_DATA = "usuarioVacio";
 	public static final String CONTRASENA_VACIA_DATA = "contrasenaVacia";

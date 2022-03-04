@@ -45,4 +45,7 @@ public interface TestEmpresaService {
 
 	List<DatosPruebaAcciones> getPruebasAccionesEmpresaModificar()
 			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesEmpresaReactivar()
+			throws IOException, ParseException, java.text.ParseException;
 }

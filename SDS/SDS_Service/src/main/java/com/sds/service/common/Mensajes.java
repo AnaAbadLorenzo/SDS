@@ -112,6 +112,7 @@ public class Mensajes {
 	public static final String MODIFICAR_ACCION_CORRECTO = "La accion se ha modificado correctamente";
 	public static final String ELIMINAR_ACCION_CORRECTO = "La accion se ha eliminado correctamente";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La accion no se puede eliminar porque tiene un rol y una funcionalidad asociadas";
+	public static final String ACCION_REACTIVADA_CORRECTAMENTE = "La acción se ha reactivado correctamente";
 
 	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad no pueden ser vacios";
 	public static final String FUNCIONALIDAD_NO_EXISTE = "La funcionalidad que busca no existe";
@@ -121,6 +122,7 @@ public class Mensajes {
 	public static final String MODIFICAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha modificado correctamente";
 	public static final String ELIMINAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha eliminado correctamente";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "La funcionalidad no se puede eliminar porque tiene un rol y una acción asociadas";
+	public static final String FUNCIONALIDAD_REACTIVADA_CORRECTAMENTE = "La funcionalidad se ha reactivado correctamente";
 
 	public static final String USUARIO_VACIO = "Los datos de usuario están vacíos";
 	public static final String BUSCAR_USUARIO_CORRECTO = "El usuario se ha encontrado de forma correcta";
@@ -128,6 +130,7 @@ public class Mensajes {
 	public static final String USUARIO_NO_ENCONTRADO = "El usuario no existe";
 	public static final String ROL_USUARIO_MODIFICADO_CORRECTO = "El rol del usuario se ha modificado correctamente";
 	public static final String CONTRASEÑA_USUARIO_MODIFICADA_CORRECTAMENTE = "La contraseña del usuario se ha modificado correctamente";
+	public static final String USUARIO_REACTIVADO_CORRECTAMENTE = "El usuario se ha reactivado correctamente";
 
 	public static final String PERSONA_AÑADIR_VACIA = "Los datos para añadir a una persona están vacíos";
 	public static final String PERSONA_YA_EXISTE = "La persona ya existe";
@@ -137,6 +140,7 @@ public class Mensajes {
 	public static final String BUSCAR_PERSONA_CORRECTO = "La persona se ha encontrado correctamente";
 	public static final String PERSONA_NO_EXISTE = "La persona no existe";
 	public static final String MODIFICAR_PERSONA_CORRECTAMENTE = "La persona se ha modificado correctamente";
+	public static final String PERSONA_REACTIVADA_CORRECTAMENTE = "La persona se ha reactivado correctamente";
 
 	public static final String BUSCAR_EMPRESA_CORRECTAMENTE = "La empresa se ha encontrado correctamente";
 	public static final String EMPRESA_NO_PUEDE_SER_VACIA = "Los datos de empresa no pueden ser vacíos";
@@ -146,6 +150,7 @@ public class Mensajes {
 	public static final String EMPRESA_NO_EXISTE = "La empresa no existe";
 	public static final String EMPRESA_ELIMINADA_CORRECTAMENTE = "La empresa se ha eliminado correctamente";
 	public static final String EMPRESA_TIENE_PERSONAS_ASOCIADAS = "La empresa no puede eliminarse porque tiene personas asociadas";
+	public static final String EMPRESA_REACTIVADA_CORRECTAMENTE = "La empresa se ha reactivado correctamente";
 
 	public static final String ERROR_AL_ENVIAR_MAIL = "Ha ocurrido un error al enviar el email con la nueva password";
 	public static final String CONTRASEÑA_RECUPERADA_CORRECTAMENTE = "La contraseña ha sido recuperada correctamente";

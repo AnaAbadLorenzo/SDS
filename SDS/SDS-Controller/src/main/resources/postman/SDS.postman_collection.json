@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "768d5957-8367-4357-a695-960f1a19fa23",
+		"_postman_id": "a829ca12-8c72-4617-bbd6-24ef4d75fef5",
 		"name": "SDS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1161,6 +1161,61 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Test Accion Accion Reactivar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de acciones\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Reactivar acción\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCION_ACCION_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los tests de acciones para accion se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/accion/accion/reactivar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"accion",
+										"accion",
+										"reactivar"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -1567,6 +1622,61 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Test Funcionalidad Accion Reactivar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Message: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de funcionalidades\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Message: \" + json.data.accion] = json.data.accion === \"Reactivar funcionalidad\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_FUNCIONALIDAD_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para funcionalidad se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/funcionalidad/accion/reactivar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"funcionalidad",
+										"accion",
+										"reactivar"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -1853,6 +1963,61 @@
 										"usuario",
 										"accion",
 										"modificarPasswdUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Usuario Accion Reactivar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de usuarios\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Reactivar usuario\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_USUARIO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para usuario se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/usuario/accion/reactivar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"usuario",
+										"accion",
+										"reactivar"
 									]
 								}
 							},
@@ -2659,6 +2824,61 @@
 										"empresa",
 										"accion",
 										"buscar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test Empresa Accion Reactivar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Gestión de empresas\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Reactivar empresa\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_EMPRESA_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los test de acciones para la empresa se han ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/empresa/accion/reactivar",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"empresa",
+										"accion",
+										"reactivar"
 									]
 								}
 							},

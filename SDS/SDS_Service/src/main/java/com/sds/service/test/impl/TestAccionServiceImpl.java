@@ -271,6 +271,22 @@ public class TestAccionServiceImpl implements TestAccionService {
 		return datosPruebaAcciones;
 	}
 
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesAccionReactivar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		final AccionEntity datosEntradaReactivarAccionCorrecto = generarJSON
+				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.REACTIVAR_ACCION_CORRECTO);
+		final AccionEntity datosEntradaReactivarAccionNoExiste = generarJSON
+				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestReactivarAccionCorrecto(datosEntradaReactivarAccionCorrecto));
+		datosPruebaAcciones.add(getTestReactivarAccionNoExiste(datosEntradaReactivarAccionNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
 	private DatosPruebaAcciones getTestBuscarAccion(final AccionEntity datosEntradaAccionBuscarAccion) {
 
 		final String resultadoObtenido = buscarAccion(datosEntradaAccionBuscarAccion);
@@ -460,6 +476,33 @@ public class TestAccionServiceImpl implements TestAccionService {
 
 	}
 
+	private DatosPruebaAcciones getTestReactivarAccionCorrecto(
+			final AccionEntity datosEntradaAccionReactivarAccionCorrecto) {
+
+		final String resultadoObtenido = reactivarAccion(datosEntradaAccionReactivarAccionCorrecto);
+
+		final String resultadoEsperado = CodigosMensajes.REACTIVAR_ACCION_CORRECTO + " - "
+				+ Mensajes.ACCION_REACTIVADA_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.REACTIVAR_ACCION_CORRECTO, Constantes.EXITO,
+				getValorAccion(datosEntradaAccionReactivarAccionCorrecto));
+
+	}
+
+	private DatosPruebaAcciones getTestReactivarAccionNoExiste(
+			final AccionEntity datosEntradaAccionReactivarAccionNoExiste) {
+
+		final String resultadoObtenido = reactivarAccionNoExiste(datosEntradaAccionReactivarAccionNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.ACCION_NO_EXISTE, Constantes.EXITO,
+				getValorAccion(datosEntradaAccionReactivarAccionNoExiste));
+
+	}
+
 	private String buscarAccion(final AccionEntity accion) {
 		String resultado = StringUtils.EMPTY;
 
@@ -543,6 +586,32 @@ public class TestAccionServiceImpl implements TestAccionService {
 				resultado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
 			}
 
+		}
+
+		return resultado;
+	}
+
+	private String reactivarAccion(final AccionEntity accion) {
+		String resultado = StringUtils.EMPTY;
+
+		accionRepository.saveAndFlush(accion);
+
+		final AccionEntity accionBuscar = accionRepository.findAccionByName(accion.getNombreAccion());
+		accionBuscar.setBorradoAccion(0);
+		accionRepository.saveAndFlush(accionBuscar);
+		resultado = CodigosMensajes.REACTIVAR_ACCION_CORRECTO + " - " + Mensajes.ACCION_REACTIVADA_CORRECTAMENTE;
+		accionRepository.deleteAccion(accionBuscar.getIdAccion());
+
+		return resultado;
+	}
+
+	private String reactivarAccionNoExiste(final AccionEntity accion) {
+		String resultado = StringUtils.EMPTY;
+
+		final AccionEntity accionBuscar = accionRepository.findAccionByName(accion.getNombreAccion());
+
+		if (accionBuscar == null) {
+			resultado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
 		}
 
 		return resultado;

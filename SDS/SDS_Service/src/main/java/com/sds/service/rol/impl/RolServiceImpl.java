@@ -19,6 +19,7 @@ import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
@@ -59,57 +60,41 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
-	public List<RolEntity> buscarRol(final String rolName, final String rolDescription) {
-		RolEntity rolUser = new RolEntity();
-		List<RolEntity> rolesBD = new ArrayList<>();
-		final List<RolEntity> toret = new ArrayList<>();
-
-		rolesBD = rolRepository.findRol(rolName, rolDescription);
-
-		if (!rolesBD.isEmpty()) {
-			for (final RolEntity rol : rolesBD) {
-				if (rol.getBorradoRol() == 0) {
-					rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(),
-							rol.getBorradoRol());
-					toret.add(rolUser);
-				}
-			}
-
-		}
-
-		return toret;
-	}
-
-	@Override
-	public List<RolEntity> buscarRolPagination(final String rolName, final String rolDescription, final int inicio,
-			final int tamanoPagina) {
+	public ReturnBusquedas<RolEntity> buscarRol(final String rolName, final String rolDescription, final int inicio,
+			final int tamanhoPagina) {
 		RolEntity rolUser = new RolEntity();
 		List<RolEntity> rolesBD = new ArrayList<>();
 		final List<RolEntity> toret = new ArrayList<>();
 
 		rolesBD = entityManager.createNamedQuery("RolEntity.findRol").setParameter("rolName", rolName)
-				.setParameter("rolDescription", rolDescription).setFirstResult(inicio).setMaxResults(tamanoPagina)
+				.setParameter("rolDescription", rolDescription).setFirstResult(inicio).setMaxResults(tamanhoPagina)
 				.getResultList();
+
+		final Integer numberTotalResults = rolRepository.numberFindRol(rolName, rolDescription);
 
 		if (!rolesBD.isEmpty()) {
 			for (final RolEntity rol : rolesBD) {
-				if (rol.getBorradoRol() == 0) {
-					rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(),
-							rol.getBorradoRol());
-					toret.add(rolUser);
-				}
+				rolUser = new RolEntity(rol.getIdRol(), rol.getRolName(), rol.getRolDescription(), rol.getBorradoRol());
+				toret.add(rolUser);
+
 			}
 
 		}
 
-		return toret;
+		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
+				toret.size());
+		return result;
 
 	}
 
 	@Override
-	public List<RolEntity> buscarTodos() {
-		final List<RolEntity> roles = rolRepository.findAll();
+	public ReturnBusquedas<RolEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
+
+		final List<RolEntity> roles = entityManager.createNamedQuery("RolEntity.findAllRol").setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = rolRepository.numberFindAllRol();
 
 		for (int i = 0; i < roles.size(); i++) {
 			final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
@@ -117,7 +102,30 @@ public class RolServiceImpl implements RolService {
 			toret.add(rol);
 		}
 
-		return toret;
+		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
+				toret.size());
+		return result;
+	}
+
+	@Override
+	public ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina) {
+		final List<RolEntity> toret = new ArrayList<>();
+
+		final List<RolEntity> rolesEliminados = entityManager.createNamedQuery("RolEntity.findDeleteRol")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = rolRepository.numberFindDeleteRol();
+
+		for (int i = 0; i < rolesEliminados.size(); i++) {
+			final RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(), rolesEliminados.get(i).getRolName(),
+					rolesEliminados.get(i).getRolDescription(), rolesEliminados.get(i).getBorradoRol());
+			toret.add(rol);
+		}
+
+		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
+				toret.size());
+		return result;
+
 	}
 
 	@Override
@@ -311,21 +319,6 @@ public class RolServiceImpl implements RolService {
 		}
 
 		return resultado;
-	}
-
-	@Override
-	public List<RolEntity> buscarRolesEliminados() {
-		final List<RolEntity> rolesEliminados = rolRepository.findDeleteRol(1);
-		final List<RolEntity> toret = new ArrayList<>();
-
-		for (int i = 0; i < rolesEliminados.size(); i++) {
-			final RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(), rolesEliminados.get(i).getRolName(),
-					rolesEliminados.get(i).getRolDescription(), rolesEliminados.get(i).getBorradoRol());
-			toret.add(rol);
-		}
-
-		return toret;
-
 	}
 
 	@Override

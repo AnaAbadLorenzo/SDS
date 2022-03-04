@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -23,6 +22,7 @@ import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.empresa.EmpresaService;
 import com.sds.service.exception.EmpresaAsociadaPersonasException;
 import com.sds.service.exception.EmpresaNoEncontradaException;
@@ -67,10 +67,10 @@ public class UsuarioServiceTest {
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.BUSCAR_USUARIO);
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
-		final List<UsuarioEntity> usuarioEncontrado = usuarioService.buscarUsuario(usuarioEntity.getDniUsuario(),
-				usuarioEntity.getUsuario(), usuarioEntity.getRol());
+		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
-		assertNotNull(usuarioEncontrado);
+		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
 
 	@Test
@@ -79,10 +79,10 @@ public class UsuarioServiceTest {
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.DNIP_VACIO_DATA);
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
-		final List<UsuarioEntity> usuarioEncontrado = usuarioService.buscarUsuario(usuarioEntity.getDniUsuario(),
-				usuarioEntity.getUsuario(), usuarioEntity.getRol());
+		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
-		assertNotNull(usuarioEncontrado);
+		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
 
 	@Test
@@ -91,10 +91,10 @@ public class UsuarioServiceTest {
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_VACIO_DATA);
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
-		final List<UsuarioEntity> usuarioEncontrado = usuarioService.buscarUsuario(usuarioEntity.getDniUsuario(),
-				usuarioEntity.getUsuario(), usuarioEntity.getRol());
+		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
-		assertNotNull(usuarioEncontrado);
+		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
 
 	@Test
@@ -103,18 +103,19 @@ public class UsuarioServiceTest {
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_DNI_NOMBRE_VACIOS);
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
-		final List<UsuarioEntity> usuarioEncontrado = usuarioService.buscarUsuario(usuarioEntity.getDniUsuario(),
-				usuarioEntity.getUsuario(), usuarioEntity.getRol());
+		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
-		assertNotNull(usuarioEncontrado);
+		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
 
 	@Test
 	public void UsuarioService_buscarTodos() throws IOException, ParseException {
 
-		final List<UsuarioEntity> usuarios = usuarioService.buscarTodos();
+		final ReturnBusquedas<UsuarioEntity> usuarios = usuarioService.buscarTodos(0, 5);
 
-		assertNotNull(usuarios);
+		assertNotNull(usuarios.getListaBusquedas());
+
 	}
 
 	@Test
@@ -155,6 +156,49 @@ public class UsuarioServiceTest {
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_NO_EXISTE);
 
 		usuarioService.eliminarUsuario(usuario);
+
+	}
+
+	@Test
+	public void UsuarioService_reactivarUsuarioCorrecto()
+			throws UsuarioNoEncontradoException, IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, java.text.ParseException, PersonaNoExisteException,
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaAsociadaPersonasException,
+			EmpresaYaExisteException, PersonaYaExisteException, UsuarioYaExisteException {
+
+		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA,
+				Constantes.REACTIVAR_USUARIO_CORRECTO);
+
+		final SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+
+		final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
+
+		final PersonaEntity persona = new PersonaEntity(usuario.getUsuarioEntity().getDniUsuario(), "Pepe", "Pepe pepe",
+				format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
+
+		final PersonaAnadir personaAñadir = new PersonaAnadir(usuario.getUsuario(), persona,
+				usuario.getUsuarioEntity());
+
+		personaService.añadirPersona(personaAñadir);
+
+		final String respuesta = usuarioService.reactivarUsuario(usuario);
+
+		assertEquals(respuesta, Constantes.OK);
+
+		usuarioService.deleteUsuario(usuario.getUsuarioEntity());
+		personaService.deletePersona(persona);
+		empresaService.deleteEmpresa(empresa);
+
+	}
+
+	@Test(expected = UsuarioNoEncontradoException.class)
+	public void UsuarioService_reactivarUsuarioNoExiste()
+			throws UsuarioNoEncontradoException, IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, PersonaNoExisteException, java.text.ParseException {
+
+		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_NO_EXISTE);
+
+		usuarioService.reactivarUsuario(usuario);
 
 	}
 
@@ -228,9 +272,10 @@ public class UsuarioServiceTest {
 		rolService.guardarRol(rol);
 		personaService.añadirPersona(personaAñadir);
 
-		final List<RolEntity> rolBD = rolService.buscarRol(rol.getRol().getRolName(), rol.getRol().getRolDescription());
+		final ReturnBusquedas<RolEntity> rolBD = rolService.buscarRol(rol.getRol().getRolName(),
+				rol.getRol().getRolDescription(), 0, 1);
 
-		rol.getRol().setIdRol(rolBD.get(0).getIdRol());
+		rol.getRol().setIdRol(rolBD.getListaBusquedas().get(0).getIdRol());
 
 		final String respuesta = usuarioService.modificarRolUsuario(rol.getRol(), usuario);
 
@@ -254,9 +299,10 @@ public class UsuarioServiceTest {
 
 		rolService.guardarRol(rol);
 
-		final List<RolEntity> rolBD = rolService.buscarRol(rol.getRol().getRolName(), rol.getRol().getRolDescription());
+		final ReturnBusquedas<RolEntity> rolBD = rolService.buscarRol(rol.getRol().getRolName(),
+				rol.getRol().getRolDescription(), 0, 1);
 
-		rol.getRol().setIdRol(rolBD.get(0).getIdRol());
+		rol.getRol().setIdRol(rolBD.getListaBusquedas().get(0).getIdRol());
 
 		try {
 			usuarioService.modificarRolUsuario(rol.getRol(), usuario);

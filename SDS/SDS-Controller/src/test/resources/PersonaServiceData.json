@@ -9,7 +9,7 @@
 		"direccionP": "Prueba",
 		"emailP": "a@a.com",
 		"telefonoP": "988222222",
-		"borradoPersona":0
+		"borradoP":0
 	},
 	"dniPVacio": {
 		"user": "ana",
@@ -21,7 +21,7 @@
 		"direccionP": "Prueba",
 		"emailP": "a@a.com",
 		"telefonoP": "988222222",
-		"borradoPersona":0
+		"borradoP":0
 	},
 	"nombrePersonaVacio": {
 		"user": "ana",

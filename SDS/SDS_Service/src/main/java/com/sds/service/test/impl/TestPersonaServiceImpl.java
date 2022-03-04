@@ -1206,7 +1206,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 		final String fecha = fechaSql.toString();
 
 		personaBD = personaRepository.findPersona(persona.getDniP(), persona.getNombreP(), persona.getApellidosP(),
-				fecha, persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP(), persona.getEmpresa());
+				fecha, persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP());
 
 		resultado = CodigosMensajes.BUSCAR_PERSONA_CORRECTO + " - " + Mensajes.BUSCAR_PERSONA_CORRECTO;
 

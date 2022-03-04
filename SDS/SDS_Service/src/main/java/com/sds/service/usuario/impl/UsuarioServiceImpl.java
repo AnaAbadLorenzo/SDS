@@ -1,8 +1,12 @@
 package com.sds.service.usuario.impl;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,17 +14,22 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.PersonaRepository;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.log.LogService;
+import com.sds.service.persona.PersonaService;
+import com.sds.service.persona.model.Persona;
 import com.sds.service.rol.RolService;
 import com.sds.service.usuario.UsuarioService;
 import com.sds.service.usuario.model.Usuario;
@@ -31,8 +40,8 @@ import com.sds.service.util.validaciones.Validaciones;
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
 
-	private final Util util;
-	private final Validaciones validaciones;
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
@@ -47,7 +56,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 	RolService rolServiceImpl;
 
 	@Autowired
+	PersonaService personaServiceImpl;
+
+	@Autowired
 	LogService logServiceImpl;
+
+	private final Util util;
+	private final Validaciones validaciones;
 
 	public UsuarioServiceImpl() {
 		util = new Util();
@@ -55,13 +70,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public List<UsuarioEntity> buscarTodos() {
+	public ReturnBusquedas<UsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
 
-		final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
+		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findAllUsuarios")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = usuarioRepository.numberFindAllUsuarios();
 
 		for (final UsuarioEntity usuario : usuarios) {
-
 			final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
 					usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
 			final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
@@ -71,34 +88,46 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 		}
 
-		return usuariosToret;
+		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(usuariosToret,
+				numberTotalResults, usuariosToret.size());
+
+		return result;
 	}
 
 	@Override
-	public List<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario, final RolEntity rol) {
+	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario,
+			final RolEntity rol, final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> toret = new ArrayList<>();
-		final List<UsuarioEntity> usuarios = usuarioRepository.findUsuario(dniUsuario, usuario, rol);
+		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario")
+				.setParameter("dniUsuario", dniUsuario).setParameter("usuario", usuario).setParameter("rol", rol)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = usuarioRepository.numberFindUsuario(dniUsuario, usuario, rol);
 
 		for (final UsuarioEntity usuarioBuscar : usuarios) {
-			if (usuarioBuscar.getBorradoUsuario() == 0) {
-				final RolEntity rolUsuario = new RolEntity(usuarioBuscar.getRol().getIdRol(),
-						usuarioBuscar.getRol().getRolName(), usuarioBuscar.getRol().getRolDescription(),
-						usuarioBuscar.getRol().getBorradoRol());
-				final UsuarioEntity user = new UsuarioEntity(usuarioBuscar.getDniUsuario(), usuarioBuscar.getUsuario(),
-						usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario);
+			final RolEntity rolUsuario = new RolEntity(usuarioBuscar.getRol().getIdRol(),
+					usuarioBuscar.getRol().getRolName(), usuarioBuscar.getRol().getRolDescription(),
+					usuarioBuscar.getRol().getBorradoRol());
+			final UsuarioEntity user = new UsuarioEntity(usuarioBuscar.getDniUsuario(), usuarioBuscar.getUsuario(),
+					usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario);
 
-				toret.add(user);
-			}
+			toret.add(user);
+
 		}
+		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, numberTotalResults,
+				toret.size());
 
-		return toret;
+		return result;
 	}
 
 	@Override
-	public List<UsuarioEntity> buscarUsuariosEliminados() {
+	public ReturnBusquedas<UsuarioEntity> buscarUsuariosEliminados(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
 
-		final List<UsuarioEntity> usuarios = usuarioRepository.findUsuariosEliminados(1);
+		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuariosEliminados")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = usuarioRepository.numberFindUsuariosEliminados();
 
 		for (final UsuarioEntity usuario : usuarios) {
 			final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
@@ -108,8 +137,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 			usuariosToret.add(user);
 		}
+		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(usuariosToret,
+				numberTotalResults, usuariosToret.size());
 
-		return usuariosToret;
+		return result;
 	}
 
 	@Override
@@ -145,6 +176,86 @@ public class UsuarioServiceImpl implements UsuarioService {
 			user.setBorradoUsuario(1);
 			usuario.setUsuarioEntity(user);
 			usuarioRepository.saveAndFlush(user);
+
+			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
+					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+
+			resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
+
+			final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
+					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+
+			resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
+
+			if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
+					|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
+				throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+			}
+
+			resultado = Constantes.OK;
+		}
+
+		return resultado;
+	}
+
+	@Override
+	public String reactivarUsuario(final Usuario usuario)
+			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			PersonaNoExisteException, ParseException {
+
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+		String resultadoLog2 = StringUtils.EMPTY;
+		final UsuarioEntity user = usuario.getUsuarioEntity();
+
+		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
+
+		final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
+
+		if (!usuarioBD.isPresent()) {
+			logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
+					CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new UsuarioNoEncontradoException(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
+		} else {
+			user.setBorradoUsuario(0);
+			usuario.setUsuarioEntity(user);
+			usuarioRepository.saveAndFlush(user);
+
+			final Optional<PersonaEntity> persona = personaRepository.findById(user.getDniUsuario());
+
+			if (persona.isPresent()) {
+				final Persona person = new Persona(usuario.getUsuario(), persona.get());
+				personaServiceImpl.reactivarPersona(person);
+			} else {
+				logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new PersonaNoExisteException(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()));
+			}
 
 			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
 					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());

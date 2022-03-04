@@ -483,6 +483,22 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		return datosPruebaAcciones;
 	}
 
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesEmpresaReactivar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+
+		final EmpresaEntity datosEntradaEmpresaReactivarEmpresa = generarJSON
+				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.REACTIVAR_EMPRESA_CORRECTO);
+		final EmpresaEntity datosEntradaEmpresaReactivarEmpresaNoExiste = generarJSON
+				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.EMPRESA_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestReactivarEmpresaCorrecto(datosEntradaEmpresaReactivarEmpresa));
+		datosPruebaAcciones.add(getTestReactivarEmpresaNoExiste(datosEntradaEmpresaReactivarEmpresaNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
 	private DatosPruebaAcciones getTestBuscarEmpresa(final EmpresaEntity datosEntradaEmpresaBuscarEmpresa) {
 
 		final String resultadoObtenido = buscarEmpresa(datosEntradaEmpresaBuscarEmpresa);
@@ -705,6 +721,29 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 				getValorEmpresa(datosEntradaEliminarEmpresaAsociadaPersonas));
 	}
 
+	private DatosPruebaAcciones getTestReactivarEmpresaCorrecto(
+			final EmpresaEntity datosEntradaReactivarEmpresaCorrecto) {
+		final String resultadoObtenido = reactivarEmpresa(datosEntradaReactivarEmpresaCorrecto);
+
+		final String resultadoEsperado = CodigosMensajes.REACTIVAR_EMPRESA_CORRECTO + " - "
+				+ Mensajes.EMPRESA_REACTIVADA_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.REACTIVAR_EMPRESA_CORRECTO, Constantes.EXITO,
+				getValorEmpresa(datosEntradaReactivarEmpresaCorrecto));
+	}
+
+	private DatosPruebaAcciones getTestReactivarEmpresaNoExiste(
+			final EmpresaEntity datosEntradaReactivarEmpresaNoExiste) {
+		final String resultadoObtenido = reactivarEmpresaNoExiste(datosEntradaReactivarEmpresaNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.EMPRESA_NO_EXISTE + " - " + Mensajes.EMPRESA_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.EMPRESA_NO_EXISTE, Constantes.ERROR,
+				getValorEmpresa(datosEntradaReactivarEmpresaNoExiste));
+	}
+
 	private String buscarEmpresa(final EmpresaEntity empresa) {
 		String resultado = StringUtils.EMPTY;
 
@@ -713,7 +752,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		empresas = empresaRepository.findEmpresa(empresa.getCifEmpresa(), empresa.getNombreEmpresa(),
 				empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa());
 
-		resultado = CodigosMensajes.ELIMINAR_EMPRESA_CORRECTO + " - " + Mensajes.EMPRESA_ELIMINADA_CORRECTAMENTE;
+		resultado = CodigosMensajes.BUSCAR_EMPRESA_CORRECTO + " - " + Mensajes.BUSCAR_EMPRESA_CORRECTAMENTE;
 
 		return resultado;
 	}
@@ -887,6 +926,38 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 
 		return resultado;
 
+	}
+
+	private String reactivarEmpresa(final EmpresaEntity empresa) {
+		String resultado = StringUtils.EMPTY;
+
+		empresaRepository.saveAndFlush(empresa);
+
+		final EmpresaEntity empresaBD = empresaRepository.findByCif(empresa.getCifEmpresa());
+
+		if (empresaBD != null) {
+			empresa.setIdEmpresa(empresaBD.getIdEmpresa());
+			empresa.setBorradoEmpresa(0);
+			empresaRepository.saveAndFlush(empresa);
+
+			resultado = CodigosMensajes.REACTIVAR_EMPRESA_CORRECTO + " - " + Mensajes.EMPRESA_REACTIVADA_CORRECTAMENTE;
+		}
+
+		empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+
+		return resultado;
+	}
+
+	private String reactivarEmpresaNoExiste(final EmpresaEntity empresa) {
+		String resultado = StringUtils.EMPTY;
+
+		final EmpresaEntity empresaBD = empresaRepository.findByCif(empresa.getCifEmpresa());
+
+		if (empresaBD == null) {
+			resultado = CodigosMensajes.EMPRESA_NO_EXISTE + " - " + Mensajes.EMPRESA_NO_EXISTE;
+		}
+
+		return resultado;
 	}
 
 	private Map<String, String> getValorEmpresa(final EmpresaEntity empresa) {

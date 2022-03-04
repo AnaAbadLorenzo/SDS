@@ -1,9 +1,8 @@
 package com.sds.service.accion;
 
-import java.util.List;
-
 import com.sds.model.AccionEntity;
 import com.sds.service.accion.model.Accion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
@@ -12,11 +11,12 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 
 public interface AccionService {
 
-	List<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion);
+	ReturnBusquedas<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion, final int inicio,
+			final int tamanhoPagina);
 
-	List<AccionEntity> buscarTodos();
+	ReturnBusquedas<AccionEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
-	List<AccionEntity> buscarAccionesEliminadas();
+	ReturnBusquedas<AccionEntity> buscarAccionesEliminadas(final int inicio, final int tamanhoPagina);
 
 	String anadirAccion(final Accion accion)
 			throws AccionYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
@@ -25,6 +25,9 @@ public interface AccionService {
 			AccionNoExisteException, AccionAsociadaRolFuncionalidadException;
 
 	String modificarAccion(final Accion accion)
+			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException;
+
+	String reactivarAccion(final Accion accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException;
 
 	void deleteAccion(final AccionEntity accion) throws AccionNoExisteException;

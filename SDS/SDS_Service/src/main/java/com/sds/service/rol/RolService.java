@@ -1,8 +1,7 @@
 package com.sds.service.rol;
 
-import java.util.List;
-
 import com.sds.model.RolEntity;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
@@ -13,21 +12,20 @@ import com.sds.service.rol.model.Rol;
 
 public interface RolService {
 
-	List<RolEntity> buscarRol(String rolName, String rolDescription);
+	ReturnBusquedas<RolEntity> buscarRol(final String rolName, final String rolDescription, final int inicio,
+			final int tamanhoPagina);
 
-	List<RolEntity> buscarRolPagination(String rolName, String rolDescription, int inicio, int tamanoPagina);
+	ReturnBusquedas<RolEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
-	List<RolEntity> buscarTodos();
+	ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina);
 
-	List<RolEntity> buscarRolesEliminados();
-
-	String guardarRol(Rol rol)
+	String guardarRol(final Rol rol)
 			throws RolYaExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
 
-	String eliminarRol(Rol rol) throws RolNoExisteException, RolAsociadoUsuarioException,
+	String eliminarRol(final Rol rol) throws RolNoExisteException, RolAsociadoUsuarioException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException;
 
-	String modificarRol(Rol rol)
+	String modificarRol(final Rol rol)
 			throws RolNoExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
 
 	void deleteRol(final Rol rol) throws RolNoExisteException;

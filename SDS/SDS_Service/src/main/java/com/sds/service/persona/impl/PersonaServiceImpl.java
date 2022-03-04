@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,7 @@ import com.sds.model.UsuarioEntity;
 import com.sds.repository.PersonaRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -38,6 +42,9 @@ public class PersonaServiceImpl implements PersonaService {
 	private final Util util;
 	private final Validaciones validaciones;
 
+	@PersistenceContext
+	EntityManager entityManager;
+
 	@Autowired
 	PersonaRepository personaRepository;
 
@@ -52,72 +59,116 @@ public class PersonaServiceImpl implements PersonaService {
 		validaciones = new Validaciones();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<PersonaEntity> buscarTodos() {
-		final List<PersonaEntity> personas = personaRepository.findAll();
+	public ReturnBusquedas<PersonaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
+
+		final List<PersonaEntity> personas = entityManager.createNamedQuery("PersonaEntity.findAllPerson")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 		final List<PersonaEntity> toret = new ArrayList<>();
+
+		final Integer numberTotalResults = personaRepository.numberFindAll();
 
 		if (!personas.isEmpty()) {
 			for (final PersonaEntity persona : personas) {
+
+				final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+						persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+						persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+						persona.getEmpresa().getBorradoEmpresa());
+
 				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
 						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), persona.getEmpresa(),
-						persona.getUsuario());
+						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa);
 
 				toret.add(person);
 			}
 		}
 
-		return toret;
+		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return ret;
 	}
 
 	@Override
-	public List<PersonaEntity> buscarPersonasEliminadas() {
-		final List<PersonaEntity> personas = personaRepository.findPersonasEliminadas(1);
+	public ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(final int inicio, final int tamanhoPagina) {
+
+		final List<PersonaEntity> personas = entityManager.createNamedQuery("PersonaEntity.findPersonasEliminadas")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
 		final List<PersonaEntity> toret = new ArrayList<>();
+
+		final Integer numberTotalResults = personaRepository.numberPersonasEliminadas();
 
 		if (!personas.isEmpty()) {
 			for (final PersonaEntity persona : personas) {
+				final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+						persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+						persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+						persona.getEmpresa().getBorradoEmpresa());
+
 				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
 						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), persona.getEmpresa(),
-						persona.getUsuario());
+						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa);
 
 				toret.add(person);
 			}
 		}
 
-		return toret;
+		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return ret;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<PersonaEntity> buscarPersona(final String dniP, final String nombreP, final String apellidosP,
-			final Date fechaNacP, final String direccionP, final String telefonoP, final String emailP,
-			final EmpresaEntity empresa) {
+	public ReturnBusquedas<PersonaEntity> buscarPersona(final String dniP, final String nombreP,
+			final String apellidosP, final Date fechaNacP, final String direccionP, final String telefonoP,
+			final String emailP, final int inicio, final int tamanhoPagina) {
 
-		java.sql.Date fechaSql;
-		fechaSql = new java.sql.Date(fechaNacP.getTime());
-		final String fecha = fechaSql.toString();
-
-		final List<PersonaEntity> personasToret = personaRepository.findPersona(dniP, nombreP, apellidosP, fecha,
-				direccionP, telefonoP, emailP, empresa);
 		final List<PersonaEntity> toret = new ArrayList<>();
+		List<PersonaEntity> personasToret = new ArrayList<>();
+		String fecha = StringUtils.EMPTY;
+
+		if (fechaNacP != null) {
+			java.sql.Date fechaSql;
+			fechaSql = new java.sql.Date(fechaNacP.getTime());
+			fecha = fechaSql.toString();
+		} else {
+			fecha = StringUtils.EMPTY;
+		}
+
+		personasToret = entityManager.createNamedQuery("PersonaEntity.findPersona").setParameter("dniP", dniP)
+				.setParameter("nombreP", nombreP).setParameter("apellidosP", apellidosP)
+				.setParameter("fechaNacP", fecha).setParameter("direccionP", direccionP)
+				.setParameter("telefonoP", telefonoP).setParameter("emailP", emailP).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = personaRepository.numberFindPersona(dniP, nombreP, apellidosP, fecha,
+				direccionP, telefonoP, emailP);
 
 		if (!personasToret.isEmpty()) {
 			for (final PersonaEntity persona : personasToret) {
-				if (persona.getBorradoP() == 0) {
+				final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+						persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+						persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+						persona.getEmpresa().getBorradoEmpresa());
 
-					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
-							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), persona.getEmpresa(),
-							persona.getUsuario());
+				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa);
 
-					toret.add(person);
-				}
+				toret.add(person);
 			}
+
 		}
 
-		return toret;
+		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, numberTotalResults,
+				toret.size());
+
+		return ret;
 	}
 
 	@Override
@@ -329,6 +380,46 @@ public class PersonaServiceImpl implements PersonaService {
 			}
 		} else {
 			resultado = CodeMessageErrors.PERSONA_VACIO.name();
+		}
+
+		return resultado;
+
+	}
+
+	@Override
+	public String reactivarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException,
+			PersonaNoExisteException, ParseException, LogAccionesNoGuardadoException {
+		final PersonaEntity personaEntity = persona.getPersona();
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
+
+		final Optional<PersonaEntity> person = personaRepository.findById(personaEntity.getDniP());
+
+		if (!person.isPresent()) {
+			logExcepciones = util.generarDatosLogExcepciones(persona.getUsuario(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new PersonaNoExisteException(
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+		} else {
+
+			personaEntity.setBorradoP(0);
+
+			persona.setPersona(personaEntity);
+
+			resultado = modificarPersona(persona);
+
 		}
 
 		return resultado;

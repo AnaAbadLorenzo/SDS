@@ -7,9 +7,21 @@ public class UsuarioBuscar {
 	private String dniUsuario;
 	private String usuario;
 	private RolEntity rol;
+	private int inicio;
+	private int tamanhoPagina;
 
 	public UsuarioBuscar() {
 
+	}
+
+	public UsuarioBuscar(final String dniUsuario, final String usuario, final RolEntity rol, final int inicio,
+			final int tamanhoPagina) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.usuario = usuario;
+		this.rol = rol;
+		this.inicio = inicio;
+		this.tamanhoPagina = tamanhoPagina;
 	}
 
 	public UsuarioBuscar(final String dniUsuario, final String usuario, final RolEntity rol) {
@@ -41,6 +53,28 @@ public class UsuarioBuscar {
 
 	public void setRol(final RolEntity rol) {
 		this.rol = rol;
+	}
+
+	public int getInicio() {
+		return inicio;
+	}
+
+	public void setInicio(final int inicio) {
+		this.inicio = inicio;
+	}
+
+	public int getTamanhoPagina() {
+		return tamanhoPagina;
+	}
+
+	public void setTamanhoPagina(final int tamanhoPagina) {
+		this.tamanhoPagina = tamanhoPagina;
+	}
+
+	@Override
+	public String toString() {
+		return "UsuarioBuscar [dniUsuario=" + dniUsuario + ", usuario=" + usuario + ", rol=" + rol + ", inicio="
+				+ inicio + ", tamanhoPagina=" + tamanhoPagina + "]";
 	}
 
 }

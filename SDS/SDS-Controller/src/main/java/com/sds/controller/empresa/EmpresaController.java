@@ -1,7 +1,5 @@
 package com.sds.controller.empresa;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.EmpresaEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.empresa.EmpresaService;
 import com.sds.service.empresa.model.Empresa;
 import com.sds.service.empresa.model.EmpresaBuscar;
@@ -36,28 +36,31 @@ public class EmpresaController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarEmpresa", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarEmpresa", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity buscarEmpresa(@RequestBody final EmpresaBuscar empresa) {
-		final List<EmpresaEntity> resultado = empresaService.buscarEmpresa(empresa.getCifEmpresa(),
-				empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa());
+		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarEmpresa(empresa.getCifEmpresa(),
+				empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+				empresa.getInicio(), empresa.getTamanhoPagina());
 
 		return new RespEntity(RespCode.EMPRESA_ENCONTRADA, resultado);
 
 	}
 
-	@RequestMapping(value = "/listarEmpresas", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarEmpresas", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarTodos() {
-		final List<EmpresaEntity> resultado = empresaService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarTodos(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.EMPRESAS_LISTADAS, resultado);
 	}
 
-	@RequestMapping(value = "/listarEmpresasEliminadas", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarEmpresasEliminadas", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarEmpresasEliminadas() {
-		final List<EmpresaEntity> resultado = empresaService.buscarEmpresasEliminadas();
+	public RespEntity buscarEmpresasEliminadas(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarEmpresasEliminadas(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.EMPRESAS_LISTADAS_ELIMINADAS, resultado);
 	}
@@ -137,6 +140,26 @@ public class EmpresaController {
 			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, empresa);
 		} catch (final EmpresaAsociadaPersonasException empresaAsociadaPersonasException) {
 			return new RespEntity(RespCode.EMPRESA_ASOCIADA_PERSONAS_EXCEPTION, empresa);
+		}
+
+	}
+
+	@RequestMapping(value = "/reactivarEmpresa", method = RequestMethod.POST)
+	@ResponseBody
+	public RespEntity reactivarEmpresa(@RequestBody final Empresa empresa) {
+		try {
+			String resultado;
+			try {
+				resultado = empresaService.reactivarEmpresa(empresa);
+				return new RespEntity(RespCode.EMPRESA_REACTIVADA, resultado);
+
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, empresa);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, empresa);
+			}
+		} catch (final EmpresaNoEncontradaException empresaNoEncontradaException) {
+			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, empresa);
 		}
 
 	}

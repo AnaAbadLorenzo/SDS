@@ -1,7 +1,5 @@
 package com.sds.controller.funcionalidad;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FuncionalidadAsociadaRolAccionException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.FuncionalidadYaExisteException;
@@ -36,29 +36,32 @@ public class FuncionalidadController {
 		validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarFuncionalidad", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarFuncionalidad", method = RequestMethod.POST)
 	@ResponseBody
 	public RespEntity buscarFuncionalidad(@RequestBody final FuncionalidadBuscar funcionalidad) {
 
-		final List<FuncionalidadEntity> resultado = funcionalidadService
-				.buscarFuncionalidad(funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad());
+		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService.buscarFuncionalidad(
+				funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+				funcionalidad.getInicio(), funcionalidad.getTamanhoPagina());
 
 		return new RespEntity(RespCode.FUNCIONALIDAD_ENCONTRADA, resultado);
 
 	}
 
-	@RequestMapping(value = "/listarFuncionalidades", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarFuncionalidades", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarTodos() {
-		final List<FuncionalidadEntity> resultado = funcionalidadService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService.buscarTodos(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.FUNCIONALIDADES_LISTADAS, resultado);
 	}
 
-	@RequestMapping(value = "/listarFuncionalidadesEliminadas", method = RequestMethod.GET)
+	@RequestMapping(value = "/listarFuncionalidadesEliminadas", method = RequestMethod.POST)
 	@ResponseBody
-	public RespEntity buscarFuncionalidadesEliminadas() {
-		final List<FuncionalidadEntity> resultado = funcionalidadService.buscarFuncionalidadesEliminadas();
+	public RespEntity buscarFuncionalidadesEliminadas(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService
+				.buscarFuncionalidadesEliminadas(paginacion.getInicio(), paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.FUNCIONALIDADES_ELIMINADAS_LISTADAS, resultado);
 
@@ -141,6 +144,27 @@ public class FuncionalidadController {
 			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, funcionalidad);
 		} catch (final FuncionalidadAsociadaRolAccionException accionAssociatedFuncionalityRol) {
 			return new RespEntity(RespCode.FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION, funcionalidad);
+		}
+
+	}
+
+	@RequestMapping(value = "/reactivarFuncionalidad", method = RequestMethod.POST)
+	@ResponseBody
+	public RespEntity reactivarFuncionalidad(@RequestBody final Funcionalidad funcionalidad) {
+
+		try {
+			String resultado;
+			try {
+				resultado = funcionalidadService.reactivarFuncionalidad(funcionalidad);
+				return new RespEntity(RespCode.FUNCIONALIDAD_REACTIVADA, resultado);
+
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, funcionalidad);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, funcionalidad);
+			}
+		} catch (final FuncionalidadNoExisteException funcionalidadNoExists) {
+			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, funcionalidad);
 		}
 
 	}

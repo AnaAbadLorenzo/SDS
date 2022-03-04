@@ -41,6 +41,13 @@
 		"descripAccion": "",
 		"borradoAccion": 0
 	},
+	"reactivarAccionCorrecto":{
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "accion",
+		"descripAccion": "Reactivar esta accion",
+		"borradoAccion": 1
+	},
 	
 	"accionYaExiste": {
 		"usuario": "ana",
