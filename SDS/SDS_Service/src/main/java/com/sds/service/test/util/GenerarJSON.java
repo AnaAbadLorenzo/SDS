@@ -86,7 +86,7 @@ public class GenerarJSON {
 			}
 		}
 
-		if (date == "" || date.contains(Constantes.ENHE) || acentos || caracEspeciales
+		if (date.equals("") || date.contains(Constantes.ENHE) || acentos || caracEspeciales
 				|| date.contains(Constantes.ESPACIO) || date.length() < 8 || date.length() > 10) {
 			fecha = sdf.parse("0000-00-00");
 			fechaSql = new java.sql.Date(fecha.getTime());
@@ -266,7 +266,7 @@ public class GenerarJSON {
 			}
 		}
 
-		if (date == "" || date.contains(Constantes.ENHE) || acentos || caracEspeciales
+		if (date.equals("") || date.contains(Constantes.ENHE) || acentos || caracEspeciales
 				|| date.contains(Constantes.ESPACIO) || date.length() < 8 || date.length() > 10) {
 			fecha = sdf.parse("0000-00-00");
 			fechaSql = new java.sql.Date(fecha.getTime());

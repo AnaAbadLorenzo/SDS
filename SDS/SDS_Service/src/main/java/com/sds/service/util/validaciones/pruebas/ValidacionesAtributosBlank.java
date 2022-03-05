@@ -45,7 +45,7 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
-
+				break;
 			case REGISTRAR:
 				switch (atr) {
 				case DNI_PERSONA:
@@ -81,6 +81,7 @@ public class ValidacionesAtributosBlank {
 					break;
 				}
 
+				break;
 			case GESTION_ROLES:
 				switch (atr) {
 				case ROL_NAME:
@@ -95,6 +96,7 @@ public class ValidacionesAtributosBlank {
 					break;
 				}
 
+				break;
 			case GESTION_ACCIONES:
 				switch (atr) {
 				case ACCION_NAME:
@@ -108,6 +110,7 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
+				break;
 			case GESTION_FUNCIONALIDADES:
 				switch (atr) {
 				case FUNCIONALIDAD_NAME:
@@ -117,10 +120,12 @@ public class ValidacionesAtributosBlank {
 				case FUNCIONALIDAD_DESCRIPTION:
 					resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_VACIA + " - "
 							+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_VACIA;
+					break;
 				default:
 					break;
 				}
 
+				break;
 			case GESTION_USUARIOS:
 				switch (atr) {
 				case DNI_USUARIO:
@@ -137,6 +142,7 @@ public class ValidacionesAtributosBlank {
 					break;
 				}
 
+				break;
 			case GESTION_PERSONAS:
 				switch (atr) {
 				case DNI_PERSONA:
@@ -168,6 +174,7 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
+				break;
 
 			case RECUPERAR_PASS:
 				switch (atr) {
@@ -180,7 +187,7 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
-
+				break;
 			case GESTION_EMPRESAS:
 				switch (atr) {
 				case CIF_EMPRESA:
@@ -198,6 +205,7 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
+				break;
 			default:
 				break;
 			}

@@ -37,7 +37,7 @@ public class RegistroController {
 		Boolean registroValido;
 		try {
 			registroValido = validaciones.comprobarRegistroBlank(registro);
-			if (registroValido) {
+			if (Boolean.TRUE.equals(registroValido)) {
 
 				String resultado;
 				try {

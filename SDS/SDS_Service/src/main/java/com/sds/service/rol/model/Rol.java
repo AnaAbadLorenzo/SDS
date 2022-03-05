@@ -7,6 +7,10 @@ public class Rol {
 	private String usuario;
 	private RolEntity rol;
 
+	public Rol() {
+
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

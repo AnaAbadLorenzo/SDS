@@ -535,7 +535,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 	private DatosPruebaAcciones getTestReactivarUsuarioNoExiste(
 			final UsuarioEntity datosEntradaUsuarioReactivarUsuarioNoExiste) {
 
-		final String resultadoObtenido = eliminarUsuarioNoExiste(datosEntradaUsuarioReactivarUsuarioNoExiste);
+		final String resultadoObtenido = reactivarUsuarioNoExiste(datosEntradaUsuarioReactivarUsuarioNoExiste);
 
 		final String resultadoEsperado = CodigosMensajes.USUARIO_NO_ENCONTRADO + " - " + Mensajes.USUARIO_NO_ENCONTRADO;
 

@@ -85,6 +85,7 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_ROLES:
 				switch (atr) {
@@ -99,6 +100,7 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+				break;
 			case GESTION_ACCIONES:
 				switch (atr) {
 				case ACCION_NAME:
@@ -113,6 +115,7 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+				break;
 			case GESTION_FUNCIONALIDADES:
 				switch (atr) {
 				case FUNCIONALIDAD_NAME:
@@ -127,6 +130,7 @@ public class ValidacionesAtributosMenor {
 					break;
 				}
 
+				break;
 			case GESTION_USUARIOS:
 				switch (atr) {
 				case DNI_USUARIO:
@@ -144,6 +148,7 @@ public class ValidacionesAtributosMenor {
 					break;
 				}
 
+				break;
 			case GESTION_PERSONAS:
 				switch (atr) {
 				case DNI_PERSONA:
@@ -178,6 +183,7 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+				break;
 			case RECUPERAR_PASS:
 				switch (atr) {
 				case USUARIO:
@@ -190,6 +196,7 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+				break;
 			case GESTION_EMPRESAS:
 				switch (atr) {
 				case CIF_EMPRESA:
@@ -210,6 +217,7 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+				break;
 			default:
 				break;
 			}

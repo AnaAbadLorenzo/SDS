@@ -606,7 +606,8 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 					.findAll();
 
 			for (int i = 0; i < rolAccionFuncionalidadBD.size(); i++) {
-				if (rolAccionFuncionalidadBD.get(i).getIdFuncionalidad() == funcionalidadBuscar.getIdFuncionalidad()) {
+				if (rolAccionFuncionalidadBD.get(i).getIdFuncionalidad()
+						.equals(funcionalidadBuscar.getIdFuncionalidad())) {
 					resultado = CodigosMensajes.ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION + " - "
 							+ Mensajes.ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION;
 				}

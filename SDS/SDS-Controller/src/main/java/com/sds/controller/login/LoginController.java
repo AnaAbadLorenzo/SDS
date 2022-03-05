@@ -44,7 +44,7 @@ public class LoginController {
 
 		final Boolean loginValido = validaciones.comprobarLoginBlank(login);
 
-		if (loginValido) {
+		if (Boolean.TRUE.equals(loginValido)) {
 			try {
 				LoginRol resultado;
 				try {
@@ -73,7 +73,7 @@ public class LoginController {
 	public RespEntity recuperarPass(@RequestBody final RecuperarPass recuperarPass) {
 		final Boolean infoValida = validaciones.comprobarRecuperarPassBlank(recuperarPass);
 
-		if (infoValida) {
+		if (Boolean.TRUE.equals(infoValida)) {
 			try {
 				String resultado;
 				resultado = loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(),

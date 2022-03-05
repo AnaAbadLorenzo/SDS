@@ -59,6 +59,7 @@ public class RolServiceImpl implements RolService {
 		util = new Util();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<RolEntity> buscarRol(final String rolName, final String rolDescription, final int inicio,
 			final int tamanhoPagina) {
@@ -87,6 +88,7 @@ public class RolServiceImpl implements RolService {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<RolEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
@@ -96,10 +98,12 @@ public class RolServiceImpl implements RolService {
 
 		final Integer numberTotalResults = rolRepository.numberFindAllRol();
 
-		for (int i = 0; i < roles.size(); i++) {
-			final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
-					roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
-			toret.add(rol);
+		if (!roles.isEmpty()) {
+			for (int i = 0; i < roles.size(); i++) {
+				final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
+						roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
+				toret.add(rol);
+			}
 		}
 
 		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
@@ -107,6 +111,7 @@ public class RolServiceImpl implements RolService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
@@ -116,10 +121,13 @@ public class RolServiceImpl implements RolService {
 
 		final Integer numberTotalResults = rolRepository.numberFindDeleteRol();
 
-		for (int i = 0; i < rolesEliminados.size(); i++) {
-			final RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(), rolesEliminados.get(i).getRolName(),
-					rolesEliminados.get(i).getRolDescription(), rolesEliminados.get(i).getBorradoRol());
-			toret.add(rol);
+		if (!rolesEliminados.isEmpty()) {
+			for (int i = 0; i < rolesEliminados.size(); i++) {
+				final RolEntity rol = new RolEntity(rolesEliminados.get(i).getIdRol(),
+						rolesEliminados.get(i).getRolName(), rolesEliminados.get(i).getRolDescription(),
+						rolesEliminados.get(i).getBorradoRol());
+				toret.add(rol);
+			}
 		}
 
 		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,

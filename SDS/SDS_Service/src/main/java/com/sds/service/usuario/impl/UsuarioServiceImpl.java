@@ -69,6 +69,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		validaciones = new Validaciones();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<UsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
@@ -78,14 +79,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 		final Integer numberTotalResults = usuarioRepository.numberFindAllUsuarios();
 
-		for (final UsuarioEntity usuario : usuarios) {
-			final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
-					usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
-			final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
-					usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
+		if (!usuarios.isEmpty()) {
+			for (final UsuarioEntity usuario : usuarios) {
+				final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
+						usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
+				final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
+						usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
 
-			usuariosToret.add(user);
+				usuariosToret.add(user);
 
+			}
 		}
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(usuariosToret,
@@ -94,6 +97,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario,
 			final RolEntity rol, final int inicio, final int tamanhoPagina) {
@@ -104,15 +108,17 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 		final Integer numberTotalResults = usuarioRepository.numberFindUsuario(dniUsuario, usuario, rol);
 
-		for (final UsuarioEntity usuarioBuscar : usuarios) {
-			final RolEntity rolUsuario = new RolEntity(usuarioBuscar.getRol().getIdRol(),
-					usuarioBuscar.getRol().getRolName(), usuarioBuscar.getRol().getRolDescription(),
-					usuarioBuscar.getRol().getBorradoRol());
-			final UsuarioEntity user = new UsuarioEntity(usuarioBuscar.getDniUsuario(), usuarioBuscar.getUsuario(),
-					usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario);
+		if (!usuarios.isEmpty()) {
+			for (final UsuarioEntity usuarioBuscar : usuarios) {
+				final RolEntity rolUsuario = new RolEntity(usuarioBuscar.getRol().getIdRol(),
+						usuarioBuscar.getRol().getRolName(), usuarioBuscar.getRol().getRolDescription(),
+						usuarioBuscar.getRol().getBorradoRol());
+				final UsuarioEntity user = new UsuarioEntity(usuarioBuscar.getDniUsuario(), usuarioBuscar.getUsuario(),
+						usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario);
 
-			toret.add(user);
+				toret.add(user);
 
+			}
 		}
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, numberTotalResults,
 				toret.size());
@@ -120,6 +126,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<UsuarioEntity> buscarUsuariosEliminados(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
@@ -129,13 +136,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 		final Integer numberTotalResults = usuarioRepository.numberFindUsuariosEliminados();
 
-		for (final UsuarioEntity usuario : usuarios) {
-			final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
-					usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
-			final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
-					usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
+		if (!usuarios.isEmpty()) {
+			for (final UsuarioEntity usuario : usuarios) {
+				final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
+						usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
+				final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
+						usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
 
-			usuariosToret.add(user);
+				usuariosToret.add(user);
+			}
 		}
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(usuariosToret,
 				numberTotalResults, usuariosToret.size());

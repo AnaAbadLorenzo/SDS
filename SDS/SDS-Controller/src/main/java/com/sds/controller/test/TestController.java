@@ -68,7 +68,7 @@ public class TestController {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoUsuario = testLoginService.getPruebasAtributoUsuario();
@@ -92,7 +92,7 @@ public class TestController {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoUsuario = testRecuperarPass.getPruebasAtributoUsuario();
@@ -115,7 +115,7 @@ public class TestController {
 	public RespEntity TestLoginAcciones() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testLoginService.getPruebasAccionesLogin();
@@ -135,7 +135,7 @@ public class TestController {
 	public RespEntity TestRecuperarPassAcciones() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			final List<DatosPruebaAcciones> pruebaAtributoAcciones = testRecuperarPass
@@ -157,7 +157,7 @@ public class TestController {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoDniPersona = testRegistrarService.getPruebasAtributoDniP();
@@ -215,7 +215,7 @@ public class TestController {
 	public RespEntity TestRegistrarAcciones() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<DatosPruebaAcciones>();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testRegistrarService.getPruebasAccionesRegistro();
@@ -236,7 +236,7 @@ public class TestController {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolName();
@@ -292,7 +292,7 @@ public class TestController {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 
-		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<DatosPruebaAtributos>();
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
 
 		try {
 			final List<DatosPruebaAtributos> pruebaAtributoRolName = testRolService.getPruebasAtributoRolName();
@@ -798,7 +798,7 @@ public class TestController {
 	public RespEntity TestAccionAccionGuardar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionGuardar();
@@ -820,7 +820,7 @@ public class TestController {
 	public RespEntity TestAccionAccionModificar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionModificar();
@@ -842,7 +842,7 @@ public class TestController {
 	public RespEntity TestAccionAccionEliminar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionEliminar();
@@ -864,7 +864,7 @@ public class TestController {
 	public RespEntity TestAccionAccionBuscar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionBuscar();
@@ -886,7 +886,7 @@ public class TestController {
 	public RespEntity TestAccionAccionReactivar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionReactivar();
@@ -908,7 +908,7 @@ public class TestController {
 	public RespEntity TestRolAccionGuardar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testRolService.getPruebasAccionesRolGuardar();
@@ -929,7 +929,7 @@ public class TestController {
 	public RespEntity TestRolAccionEliminar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testRolService.getPruebasAccionesRolEliminar();
@@ -950,7 +950,7 @@ public class TestController {
 	public RespEntity TestRolAccionModificar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testRolService.getPruebasAccionesRolModificar();
@@ -971,7 +971,7 @@ public class TestController {
 	public RespEntity TestRolAccionBuscar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testRolService.getPruebasAccionesRolBuscar();
@@ -992,7 +992,7 @@ public class TestController {
 	public RespEntity TestFuncionalidadAccionBuscar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testFuncionalidadService.getPruebasAccionesFuncionalidadBuscar();
@@ -1013,7 +1013,7 @@ public class TestController {
 	public RespEntity TestFuncionalidadAccionGuardar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testFuncionalidadService.getPruebasAccionesFuncionalidadGuardar();
@@ -1034,7 +1034,7 @@ public class TestController {
 	public RespEntity TestFuncionalidadAccionModificar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testFuncionalidadService.getPruebasAccionesFuncionalidadModificar();
@@ -1055,7 +1055,7 @@ public class TestController {
 	public RespEntity TestFuncionalidadAccionEliminar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testFuncionalidadService.getPruebasAccionesFuncionalidadEliminar();
@@ -1076,7 +1076,7 @@ public class TestController {
 	public RespEntity TestFuncionalidadAccionReactivar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testFuncionalidadService.getPruebasAccionesFuncionalidadReactivar();
@@ -1097,7 +1097,7 @@ public class TestController {
 	public RespEntity TestUsuarioAccionBuscar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testUsuarioService.getPruebasAccionesUsuarioBuscar();
@@ -1118,7 +1118,7 @@ public class TestController {
 	public RespEntity TestUsuarioAccionEliminar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testUsuarioService.getPruebasAccionesUsuarioEliminar();
@@ -1139,7 +1139,7 @@ public class TestController {
 	public RespEntity TestUsuarioAccionModificarRolUsuario() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testUsuarioService.getPruebasAccionesUsuarioModificarRol();
@@ -1160,7 +1160,7 @@ public class TestController {
 	public RespEntity TestUsuarioAccionModificarPasswdUsuario() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testUsuarioService.getPruebasAccionesUsuarioCambiarContraseña();
@@ -1181,7 +1181,7 @@ public class TestController {
 	public RespEntity TestUsuarioAccionReactivar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testUsuarioService.getPruebasAccionesUsuarioReactivar();
@@ -1202,7 +1202,7 @@ public class TestController {
 	public RespEntity TestPersonaAccionBuscar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testPersonaService.getPruebasAccionesPersonaBuscar();
@@ -1223,7 +1223,7 @@ public class TestController {
 	public RespEntity TestPersonaAccionGuardar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testPersonaService.getPruebasAccionesPersonaGuardar();
@@ -1244,7 +1244,7 @@ public class TestController {
 	public RespEntity TestPersonaAccionEliminar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testPersonaService.getPruebasAccionesPersonaEliminar();
@@ -1265,7 +1265,7 @@ public class TestController {
 	public RespEntity TestPersonaAccionModificar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testPersonaService.getPruebasAccionesPersonaModificar();
@@ -1286,7 +1286,7 @@ public class TestController {
 	public RespEntity TestEmpresaAccionBuscar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaBuscar();
@@ -1307,7 +1307,7 @@ public class TestController {
 	public RespEntity TestEmpresaAccionGuardar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaGuardar();
@@ -1328,7 +1328,7 @@ public class TestController {
 	public RespEntity TestEmpresaAccionModificar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaModificar();
@@ -1349,7 +1349,7 @@ public class TestController {
 	public RespEntity TestEmpresaAccionEliminar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaEliminar();
@@ -1370,7 +1370,7 @@ public class TestController {
 	public RespEntity TestEmpresaAccionReactivar() {
 
 		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
-		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		try {
 			datosPruebaAcciones = testEmpresaService.getPruebasAccionesEmpresaReactivar();

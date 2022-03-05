@@ -56,4 +56,10 @@ public class RolBuscar {
 		this.tamanhoPagina = tamanhoPagina;
 	}
 
+	@Override
+	public String toString() {
+		return "RolBuscar [rolName=" + rolName + ", rolDescription=" + rolDescription + ", inicio=" + inicio
+				+ ", tamanhoPagina=" + tamanhoPagina + "]";
+	}
+
 }

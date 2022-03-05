@@ -3,9 +3,9 @@ package com.sds.controller.usuario;
 import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,7 +39,7 @@ public class UsuarioController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarUsuarios", method = RequestMethod.POST)
+	@PostMapping(value = "/listarUsuarios")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarTodos(paginacion.getInicio(),
@@ -47,7 +47,7 @@ public class UsuarioController {
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/listarUsuario", method = RequestMethod.POST)
+	@PostMapping(value = "/listarUsuario")
 	@ResponseBody
 	public RespEntity buscarUsuario(@RequestBody final UsuarioBuscar usuario) {
 		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuario(usuario.getDniUsuario(),
@@ -56,7 +56,7 @@ public class UsuarioController {
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/listarUsuariosEliminados", method = RequestMethod.POST)
+	@PostMapping(value = "/listarUsuariosEliminados")
 	@ResponseBody
 	public RespEntity buscarUsuariosEliminados(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuariosEliminados(paginacion.getInicio(),
@@ -65,7 +65,7 @@ public class UsuarioController {
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/eliminarUsuario", method = RequestMethod.POST)
+	@PostMapping(value = "/eliminarUsuario")
 	@ResponseBody
 	public RespEntity eliminarUsuario(@RequestBody final Usuario usuario) {
 		try {
@@ -83,7 +83,7 @@ public class UsuarioController {
 		}
 	}
 
-	@RequestMapping(value = "/reactivarUsuario", method = RequestMethod.POST)
+	@PostMapping(value = "/reactivarUsuario")
 	@ResponseBody
 	public RespEntity reactivarUsuario(@RequestBody final Usuario usuario) {
 		try {
@@ -105,13 +105,13 @@ public class UsuarioController {
 		}
 	}
 
-	@RequestMapping(value = "/modificarRolUsuario", method = RequestMethod.POST)
+	@PostMapping(value = "/modificarRolUsuario")
 	@ResponseBody
 	public RespEntity modificarRol(@RequestBody final UsuarioModificar usuarioModificar) {
 		Boolean usuarioModificarValido;
 		try {
 			usuarioModificarValido = validaciones.comprobarUsuarioModificarBlank(usuarioModificar);
-			if (usuarioModificarValido) {
+			if (Boolean.TRUE.equals(usuarioModificarValido)) {
 				String resultado;
 				try {
 					resultado = usuarioService.modificarRolUsuario(usuarioModificar.getRolEntity(),

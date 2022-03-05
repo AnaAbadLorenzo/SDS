@@ -50,6 +50,7 @@ public class ValidacionesAtributosEspacios {
 					break;
 				}
 
+				break;
 			case REGISTRAR:
 				switch (atr) {
 				case DNI_PERSONA:
@@ -80,6 +81,7 @@ public class ValidacionesAtributosEspacios {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_ROLES:
 				switch (atr) {
@@ -91,6 +93,7 @@ public class ValidacionesAtributosEspacios {
 					break;
 				}
 
+				break;
 			case GESTION_ACCIONES:
 				switch (atr) {
 				case ACCION_NAME:
@@ -100,6 +103,7 @@ public class ValidacionesAtributosEspacios {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_USUARIOS:
 				switch (atr) {
@@ -118,6 +122,7 @@ public class ValidacionesAtributosEspacios {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_PERSONAS:
 				switch (atr) {
@@ -145,6 +150,7 @@ public class ValidacionesAtributosEspacios {
 				default:
 					break;
 				}
+				break;
 
 			case RECUPERAR_PASS:
 				switch (atr) {
@@ -159,6 +165,7 @@ public class ValidacionesAtributosEspacios {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_EMPRESAS:
 				switch (atr) {
@@ -175,6 +182,7 @@ public class ValidacionesAtributosEspacios {
 							+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 					break;
 				}
+				break;
 			default:
 				break;
 			}

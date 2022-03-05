@@ -1,9 +1,9 @@
 package com.sds.controller.accion;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +36,7 @@ public class AccionController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarAccion", method = RequestMethod.POST)
+	@PostMapping(value = "/listarAccion")
 	@ResponseBody
 	public RespEntity buscarAccion(@RequestBody final AccionBuscar accion) {
 
@@ -47,7 +47,7 @@ public class AccionController {
 
 	}
 
-	@RequestMapping(value = "/listarAcciones", method = RequestMethod.POST)
+	@PostMapping(value = "/listarAcciones")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<AccionEntity> resultado = accionService.buscarTodos(paginacion.getInicio(),
@@ -56,7 +56,7 @@ public class AccionController {
 		return new RespEntity(RespCode.ACCIONES_LISTADAS, resultado);
 	}
 
-	@RequestMapping(value = "/listarAccionesEliminadas", method = RequestMethod.POST)
+	@PostMapping(value = "/listarAccionesEliminadas")
 	@ResponseBody
 	public RespEntity buscarAccionesEliminadas(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<AccionEntity> resultado = accionService.buscarAccionesEliminadas(paginacion.getInicio(),
@@ -66,13 +66,13 @@ public class AccionController {
 
 	}
 
-	@RequestMapping(value = "/accion", method = RequestMethod.POST)
+	@PostMapping(value = "/accion")
 	@ResponseBody
 	public RespEntity guardarAccion(@RequestBody final Accion accion) {
 
 		final Boolean accionValido = validaciones.comprobarAccionBlank(accion.getAccion());
 
-		if (accionValido) {
+		if (Boolean.TRUE.equals(accionValido)) {
 			try {
 				String resultado;
 				try {
@@ -94,13 +94,13 @@ public class AccionController {
 		return new RespEntity(RespCode.ACCION_VACIA, accion);
 	}
 
-	@RequestMapping(value = "/modificarAccion", method = RequestMethod.POST)
+	@PostMapping(value = "/modificarAccion")
 	@ResponseBody
 	public RespEntity modificarAccion(@RequestBody final Accion accion) {
 
 		final Boolean accionValida = validaciones.comprobarAccionBlank(accion.getAccion());
 
-		if (accionValida) {
+		if (Boolean.TRUE.equals(accionValida)) {
 			try {
 				String resultado;
 				try {
@@ -122,7 +122,7 @@ public class AccionController {
 		return new RespEntity(RespCode.ACCION_VACIA, accion);
 	}
 
-	@RequestMapping(value = "/reactivarAccion", method = RequestMethod.POST)
+	@PostMapping(value = "/reactivarAccion")
 	@ResponseBody
 	public RespEntity reactivarAccion(@RequestBody final Accion accion) {
 
@@ -142,7 +142,7 @@ public class AccionController {
 
 	}
 
-	@RequestMapping(value = "/eliminarAccion", method = RequestMethod.POST)
+	@PostMapping(value = "/eliminarAccion")
 	@ResponseBody
 	public RespEntity eliminarAccion(@RequestBody final Accion accion) {
 

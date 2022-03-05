@@ -1,9 +1,9 @@
 package com.sds.controller.empresa;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +36,7 @@ public class EmpresaController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarEmpresa", method = RequestMethod.POST)
+	@PostMapping(value = "/listarEmpresa")
 	@ResponseBody
 	public RespEntity buscarEmpresa(@RequestBody final EmpresaBuscar empresa) {
 		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarEmpresa(empresa.getCifEmpresa(),
@@ -47,7 +47,7 @@ public class EmpresaController {
 
 	}
 
-	@RequestMapping(value = "/listarEmpresas", method = RequestMethod.POST)
+	@PostMapping(value = "/listarEmpresas")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarTodos(paginacion.getInicio(),
@@ -56,7 +56,7 @@ public class EmpresaController {
 		return new RespEntity(RespCode.EMPRESAS_LISTADAS, resultado);
 	}
 
-	@RequestMapping(value = "/listarEmpresasEliminadas", method = RequestMethod.POST)
+	@PostMapping(value = "/listarEmpresasEliminadas")
 	@ResponseBody
 	public RespEntity buscarEmpresasEliminadas(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarEmpresasEliminadas(paginacion.getInicio(),
@@ -65,13 +65,13 @@ public class EmpresaController {
 		return new RespEntity(RespCode.EMPRESAS_LISTADAS_ELIMINADAS, resultado);
 	}
 
-	@RequestMapping(value = "/empresa", method = RequestMethod.POST)
+	@PostMapping(value = "/empresa")
 	@ResponseBody
 	public RespEntity guardarEmpresa(@RequestBody final Empresa empresa) {
 
 		final Boolean empresaValido = validaciones.comprobarEmpresaBlank(empresa.getEmpresa());
 
-		if (empresaValido) {
+		if (Boolean.TRUE.equals(empresaValido)) {
 			try {
 				String resultado;
 				try {
@@ -93,13 +93,13 @@ public class EmpresaController {
 		return new RespEntity(RespCode.EMPRESA_VACIA, empresa);
 	}
 
-	@RequestMapping(value = "/modificarEmpresa", method = RequestMethod.POST)
+	@PostMapping(value = "/modificarEmpresa")
 	@ResponseBody
 	public RespEntity modificarEmpresa(@RequestBody final Empresa empresa) {
 
 		final Boolean empresaValido = validaciones.comprobarEmpresaBlank(empresa.getEmpresa());
 
-		if (empresaValido) {
+		if (Boolean.TRUE.equals(empresaValido)) {
 			try {
 				String resultado;
 				try {
@@ -121,7 +121,7 @@ public class EmpresaController {
 		return new RespEntity(RespCode.EMPRESA_VACIA, empresa);
 	}
 
-	@RequestMapping(value = "/eliminarEmpresa", method = RequestMethod.POST)
+	@PostMapping(value = "/eliminarEmpresa")
 	@ResponseBody
 	public RespEntity eliminarEmpresa(@RequestBody final Empresa empresa) {
 
@@ -144,7 +144,7 @@ public class EmpresaController {
 
 	}
 
-	@RequestMapping(value = "/reactivarEmpresa", method = RequestMethod.POST)
+	@PostMapping(value = "/reactivarEmpresa")
 	@ResponseBody
 	public RespEntity reactivarEmpresa(@RequestBody final Empresa empresa) {
 		try {

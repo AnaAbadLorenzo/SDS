@@ -647,7 +647,7 @@ public class TestAccionServiceImpl implements TestAccionService {
 					.findAll();
 
 			for (int i = 0; i < rolAccionFuncionalidadBD.size(); i++) {
-				if (rolAccionFuncionalidadBD.get(i).getIdAccion() == accionBuscar.getIdAccion()) {
+				if (rolAccionFuncionalidadBD.get(i).getIdAccion().equals(accionBuscar.getIdAccion())) {
 					resultado = CodigosMensajes.ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD + " - "
 							+ Mensajes.ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD;
 				}

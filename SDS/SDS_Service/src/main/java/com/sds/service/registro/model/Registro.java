@@ -10,6 +10,10 @@ public class Registro {
 	private UsuarioEntity datosUsuario;
 	private EmpresaEntity datosEmpresa;
 
+	public Registro() {
+
+	}
+
 	public PersonaEntity getDatosPersona() {
 		return datosPersona;
 	}

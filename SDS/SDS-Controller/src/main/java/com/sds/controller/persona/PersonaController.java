@@ -3,9 +3,9 @@ package com.sds.controller.persona;
 import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,16 +30,16 @@ import com.sds.service.util.validaciones.Validaciones;
 @RequestMapping("/persona")
 public class PersonaController {
 
-	private final Validaciones validaciones;
-
 	@Autowired
 	PersonaService personaService;
+
+	private final Validaciones validaciones;
 
 	public PersonaController() {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarPersonas", method = RequestMethod.POST)
+	@PostMapping(value = "/listarPersonas")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 
@@ -49,7 +49,7 @@ public class PersonaController {
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 
-	@RequestMapping(value = "/listarPersona", method = RequestMethod.POST)
+	@PostMapping(value = "/listarPersona")
 	@ResponseBody
 	public RespEntity buscarPersona(@RequestBody final PersonaBuscar persona) {
 
@@ -60,7 +60,7 @@ public class PersonaController {
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 
-	@RequestMapping(value = "/listarPersonasEliminadas", method = RequestMethod.POST)
+	@PostMapping(value = "/listarPersonasEliminadas")
 	@ResponseBody
 	public RespEntity buscarPersonasEliminadas(@RequestBody final Paginacion paginacion) {
 
@@ -70,7 +70,7 @@ public class PersonaController {
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}
 
-	@RequestMapping(value = "/eliminarPersona", method = RequestMethod.POST)
+	@PostMapping(value = "/eliminarPersona")
 	@ResponseBody
 	public RespEntity eliminarPersona(@RequestBody final Persona persona) {
 		try {
@@ -89,48 +89,13 @@ public class PersonaController {
 
 	}
 
-	@RequestMapping(value = "/persona", method = RequestMethod.POST)
-	@ResponseBody
-	public RespEntity añadirPersona(@RequestBody final PersonaAnadir persona) {
-		try {
-			final Boolean personaValida = validaciones.comprobarPersonaBlank(persona.getPersonaEntity());
-
-			if (personaValida) {
-				String resultado;
-				resultado = personaService.añadirPersona(persona);
-
-				if (CodeMessageErrors.PERSONA_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.PERSONA_VACIA, persona);
-				}
-
-				if (CodeMessageErrors.USUARIO_VACIO.name().equals(resultado)) {
-					return new RespEntity(RespCode.USUARIO_VACIO, persona);
-				}
-
-				return new RespEntity(RespCode.PERSONA_GUARDADA, resultado);
-			}
-		} catch (final PersonaYaExisteException personaYaExiste) {
-			return new RespEntity(RespCode.PERSONA_YA_EXISTE, personaYaExiste);
-		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
-			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, persona);
-		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
-			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, persona);
-		} catch (final ParseException parseException) {
-			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
-		} catch (final UsuarioYaExisteException usuarioYaExiste) {
-			return new RespEntity(RespCode.USUARIO_YA_EXISTE, persona);
-		}
-
-		return new RespEntity(RespCode.PERSONA_VACIA, persona);
-	}
-
-	@RequestMapping(value = "/modificarPersona", method = RequestMethod.POST)
+	@PostMapping(value = "/modificarPersona")
 	@ResponseBody
 	public RespEntity modificarPersona(@RequestBody final Persona persona) {
 		try {
 			final Boolean personaValida = validaciones.comprobarPersonaBlank(persona.getPersona());
 
-			if (personaValida) {
+			if (Boolean.TRUE.equals(personaValida)) {
 				String resultado;
 				resultado = personaService.modificarPersona(persona);
 
@@ -153,13 +118,13 @@ public class PersonaController {
 		return new RespEntity(RespCode.PERSONA_VACIA, persona);
 	}
 
-	@RequestMapping(value = "/anadirPersona", method = RequestMethod.POST)
+	@PostMapping(value = "/anadirPersona")
 	@ResponseBody
 	public RespEntity anadirPersona(@RequestBody final PersonaAnadir persona) {
 		try {
 			final Boolean personaValida = validaciones.comprobarPersonaBlank(persona.getPersonaEntity());
 
-			if (personaValida) {
+			if (Boolean.TRUE.equals(personaValida)) {
 				final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(persona.getUsuarioEntity());
 				if (usuarioValido) {
 					String resultado;

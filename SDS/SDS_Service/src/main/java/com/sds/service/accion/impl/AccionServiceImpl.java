@@ -54,16 +54,17 @@ public class AccionServiceImpl implements AccionService {
 		util = new Util();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion,
 			final int inicio, final int tamanhoPagina) {
 		final List<AccionEntity> accionToret = new ArrayList<>();
 
-		final Integer numberTotalResults = accionRepository.numberFindAccion(nombreAccion, descripAccion);
-
 		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccion")
 				.setParameter("nombreAccion", nombreAccion).setParameter("descripAccion", descripAccion)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = accionRepository.numberFindAccion(nombreAccion, descripAccion);
 
 		if (!acciones.isEmpty()) {
 			for (final AccionEntity accion : acciones) {
@@ -81,21 +82,24 @@ public class AccionServiceImpl implements AccionService {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
+
+		final List<AccionEntity> toret = new ArrayList<>();
 
 		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAllAccion")
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
-		final List<AccionEntity> toret = new ArrayList<>();
-
 		final Integer numberTotalResults = accionRepository.numberFindAllAccion();
 
-		for (final AccionEntity accion : acciones) {
-			final AccionEntity accionToret = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
-					accion.getDescripAccion(), accion.getBorradoAccion());
+		if (!acciones.isEmpty()) {
+			for (final AccionEntity accion : acciones) {
+				final AccionEntity accionToret = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
+						accion.getDescripAccion(), accion.getBorradoAccion());
 
-			toret.add(accionToret);
+				toret.add(accionToret);
+			}
 		}
 
 		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(toret, numberTotalResults,
@@ -104,22 +108,19 @@ public class AccionServiceImpl implements AccionService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarAccionesEliminadas(final int inicio, final int tamanhoPagina) {
-		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccionesEliminadas")
-				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
-
 		final List<AccionEntity> toret = new ArrayList<>();
 
-		final AccionEntity accionToret = new AccionEntity();
+		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccionesEliminadas")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = accionRepository.numberFindAccionesEliminadas();
 
 		for (final AccionEntity accion : acciones) {
-			accionToret.setIdAccion(accion.getIdAccion());
-			accionToret.setNombreAccion(accion.getNombreAccion());
-			accionToret.setDescripAccion(accion.getDescripAccion());
-			accionToret.setBorradoAccion(accion.getBorradoAccion());
+			final AccionEntity accionToret = new AccionEntity(accion.getIdAccion(), accion.getNombreAccion(),
+					accion.getDescripAccion(), accion.getBorradoAccion());
 
 			toret.add(accionToret);
 		}
@@ -306,9 +307,9 @@ public class AccionServiceImpl implements AccionService {
 	@Override
 	public String reactivarAccion(final Accion accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException {
-		final AccionEntity accionEntity = accion.getAccion();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		final AccionEntity accionEntity = accion.getAccion();
 
 		final Optional<AccionEntity> accionBD = accionRepository.findById(accionEntity.getIdAccion());
 
@@ -330,7 +331,6 @@ public class AccionServiceImpl implements AccionService {
 		} else {
 			accionEntity.setBorradoAccion(0);
 			accion.setAccion(accionEntity);
-			accionRepository.saveAndFlush(accionEntity);
 			resultado = modificarAccion(accion);
 		}
 

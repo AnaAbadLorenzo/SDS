@@ -7,6 +7,10 @@ public class Accion {
 	public String usuario;
 	public AccionEntity accion;
 
+	public Accion() {
+
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

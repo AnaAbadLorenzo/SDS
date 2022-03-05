@@ -31,4 +31,9 @@ public class RecuperarPass {
 		this.emailUsuario = emailUsuario;
 	}
 
+	@Override
+	public String toString() {
+		return "RecuperarPass [usuario=" + usuario + ", emailUsuario=" + emailUsuario + "]";
+	}
+
 }

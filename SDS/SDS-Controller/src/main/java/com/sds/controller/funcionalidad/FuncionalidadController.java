@@ -1,9 +1,9 @@
 package com.sds.controller.funcionalidad;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,16 +27,16 @@ import com.sds.service.util.validaciones.Validaciones;
 @RequestMapping(value = "/funcionalidad")
 public class FuncionalidadController {
 
-	private final Validaciones validaciones;
-
 	@Autowired
 	FuncionalidadService funcionalidadService;
+
+	private final Validaciones validaciones;
 
 	public FuncionalidadController() {
 		validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarFuncionalidad", method = RequestMethod.POST)
+	@PostMapping(value = "/listarFuncionalidad")
 	@ResponseBody
 	public RespEntity buscarFuncionalidad(@RequestBody final FuncionalidadBuscar funcionalidad) {
 
@@ -48,7 +48,7 @@ public class FuncionalidadController {
 
 	}
 
-	@RequestMapping(value = "/listarFuncionalidades", method = RequestMethod.POST)
+	@PostMapping(value = "/listarFuncionalidades")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService.buscarTodos(paginacion.getInicio(),
@@ -57,7 +57,7 @@ public class FuncionalidadController {
 		return new RespEntity(RespCode.FUNCIONALIDADES_LISTADAS, resultado);
 	}
 
-	@RequestMapping(value = "/listarFuncionalidadesEliminadas", method = RequestMethod.POST)
+	@PostMapping(value = "/listarFuncionalidadesEliminadas")
 	@ResponseBody
 	public RespEntity buscarFuncionalidadesEliminadas(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService
@@ -67,14 +67,14 @@ public class FuncionalidadController {
 
 	}
 
-	@RequestMapping(value = "/funcionalidad", method = RequestMethod.POST)
+	@PostMapping(value = "/funcionalidad")
 	@ResponseBody
-	public RespEntity guardarAccion(@RequestBody final Funcionalidad funcionalidad) {
+	public RespEntity guardarFuncionalidad(@RequestBody final Funcionalidad funcionalidad) {
 
 		final Boolean funcionalidadValido = validaciones
 				.comprobarFuncionalidadBlank(funcionalidad.getFuncionalidadEntity());
 
-		if (funcionalidadValido) {
+		if (Boolean.TRUE.equals(funcionalidadValido)) {
 			try {
 				String resultado;
 				try {
@@ -96,14 +96,14 @@ public class FuncionalidadController {
 		return new RespEntity(RespCode.FUNCIONALIDAD_VACIA, funcionalidad);
 	}
 
-	@RequestMapping(value = "/modificarFuncionalidad", method = RequestMethod.POST)
+	@PostMapping(value = "/modificarFuncionalidad")
 	@ResponseBody
 	public RespEntity modificarFuncionalidad(@RequestBody final Funcionalidad funcionalidad) {
 
 		final Boolean funcionalidadValida = validaciones
 				.comprobarFuncionalidadBlank(funcionalidad.getFuncionalidadEntity());
 
-		if (funcionalidadValida) {
+		if (Boolean.TRUE.equals(funcionalidadValida)) {
 			try {
 				String resultado;
 				try {
@@ -125,7 +125,7 @@ public class FuncionalidadController {
 		return new RespEntity(RespCode.FUNCIONALIDAD_VACIA, funcionalidad);
 	}
 
-	@RequestMapping(value = "/eliminarFuncionalidad", method = RequestMethod.POST)
+	@PostMapping(value = "/eliminarFuncionalidad")
 	@ResponseBody
 	public RespEntity eliminarFuncionalidad(@RequestBody final Funcionalidad funcionalidad) {
 
@@ -148,7 +148,7 @@ public class FuncionalidadController {
 
 	}
 
-	@RequestMapping(value = "/reactivarFuncionalidad", method = RequestMethod.POST)
+	@PostMapping(value = "/reactivarFuncionalidad")
 	@ResponseBody
 	public RespEntity reactivarFuncionalidad(@RequestBody final Funcionalidad funcionalidad) {
 

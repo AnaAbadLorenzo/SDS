@@ -4,10 +4,10 @@ public enum RespCode {
 
 	PARSE_EXCEPTION("PARSE_EXCEPTION", "Error al parsear los datos"), //
 
-	LOGIN_VACIO("LOGIN_VACIO", "Los datos de usuario y contraseña no pueden ser vacíos."), //
-	USUARIO_NO_ENCONTRADO("USUARIO_NO_EXISTE", "El usuario no existe."), //
-	PASSWORD_INCORRECTO("PASSWORD_INCORRECTO", "La contraseña no coincide con el usuario."), //
-	LOGIN_OK("LOGIN_OK", "Usuario logeado correctamente."), //
+	LOGIN_VACIO("LOGIN_VACIO", "Los datos de usuario y contraseña no pueden ser vacíos"), //
+	USUARIO_NO_ENCONTRADO("USUARIO_NO_EXISTE", "El usuario no existe"), //
+	PASSWORD_INCORRECTO("PASSWORD_INCORRECTO", "La contraseña no coincide con el usuario"), //
+	LOGIN_OK("LOGIN_OK", "Usuario logeado correctamente"), //
 	ROL_VACIO("ROL_VACIO", "El nombre del rol y/o la descripcion no pueden ser vacios"), //
 	ROL_MODIFICADO("ROL_MODIFICADO", "El rol se ha modificado correctamente"), //
 	ROL_ELIMINADO("ROL_ELIMINADO", "El rol se ha eliminado correctamente"), //
@@ -51,7 +51,7 @@ public enum RespCode {
 	USUARIO_REACTIVADO("USUARIO_REACTIVADO", "El usuario se ha reactivado correctamente"), //
 	USUARIO_MODIFICAR_VACIO("USUARIO_MODIFICAR_VACIO", "El usuario y/o el rol es vacio"), //
 	RECUPERAR_PASS_OK("RECUPERAR_PASS_OK", "La nueva contraseña se ha enviado correctamente"), //
-	USUARIO_AÑADIR_VACIO("USUARIO_AÑADIR_VACIO", "Los datos de usuario y/o persona son vacios"), //
+	USUARIO_ANADIR_VACIO("USUARIO_AÑADIR_VACIO", "Los datos de usuario y/o persona son vacios"), //
 	ROL_YA_EXISTE_EXCEPTION("ROL_YA_EXISTE", "El rol ya existe"), //
 	ROL_NO_EXISTE_EXCEPTION("ROL_NO_EXISTE", "El rol no existe"), //
 	ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION("ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION",
