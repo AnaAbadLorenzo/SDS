@@ -58,7 +58,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
-
+					break;
 				case REGISTRAR:
 					switch (atr) {
 					case DNI_PERSONA:
@@ -92,7 +92,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
-
+					break;
 				case GESTION_ROLES:
 					switch (atr) {
 					case ROL_NAME:
@@ -106,7 +106,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
-
+					break;
 				case GESTION_ACCIONES:
 					switch (atr) {
 					case ACCION_NAME:
@@ -121,7 +121,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
-
+					break;
 				case GESTION_FUNCIONALIDADES:
 					switch (atr) {
 					case FUNCIONALIDAD_NAME:
@@ -135,6 +135,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+					break;
 				case GESTION_USUARIOS:
 					switch (atr) {
 					case DNI_USUARIO:
@@ -152,7 +153,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
-
+					break;
 				case GESTION_PERSONAS:
 					switch (atr) {
 					case DNI_PERSONA:
@@ -182,6 +183,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+					break;
 				case RECUPERAR_PASS:
 					switch (atr) {
 					case USUARIO:
@@ -191,6 +193,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+					break;
 				case GESTION_EMPRESAS:
 					switch (atr) {
 					case CIF_EMPRESA:
@@ -206,6 +209,7 @@ public class ValidacionesAtributosCaracteresEspeciales {
 								+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 						break;
 					}
+					break;
 
 				default:
 					break;

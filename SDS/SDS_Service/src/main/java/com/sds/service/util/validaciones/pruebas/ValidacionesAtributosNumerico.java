@@ -31,6 +31,7 @@ public class ValidacionesAtributosNumerico {
 					break;
 				}
 
+				break;
 			case GESTION_ROLES:
 				switch (atr) {
 				case ROL_NAME:
@@ -40,11 +41,13 @@ public class ValidacionesAtributosNumerico {
 				case ROL_DESCRIPTION:
 					resultado = CodigosMensajes.ROL_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
 							+ Mensajes.ROL_DESCRIPTION_NO_PUEDE_CONTENER_MAS_QUE_LETRAS;
+					break;
 
 				default:
 					break;
 				}
 
+				break;
 			case GESTION_ACCIONES:
 				switch (atr) {
 				case ACCION_NAME:
@@ -58,6 +61,7 @@ public class ValidacionesAtributosNumerico {
 				default:
 					break;
 				}
+				break;
 			case GESTION_FUNCIONALIDADES:
 				switch (atr) {
 				case FUNCIONALIDAD_NAME:
@@ -71,6 +75,7 @@ public class ValidacionesAtributosNumerico {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_PERSONAS:
 				switch (atr) {
@@ -86,6 +91,7 @@ public class ValidacionesAtributosNumerico {
 				default:
 					break;
 				}
+				break;
 			case GESTION_EMPRESAS:
 				switch (atr) {
 				case NOMBRE:
@@ -93,6 +99,7 @@ public class ValidacionesAtributosNumerico {
 							+ Mensajes.NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS;
 					break;
 				}
+				break;
 			default:
 				break;
 			}

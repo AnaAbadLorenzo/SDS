@@ -49,7 +49,7 @@ public class ValidacionesAtributosEnhe {
 				default:
 					break;
 				}
-
+				break;
 			case REGISTRAR:
 				switch (atr) {
 				case DNI_PERSONA:
@@ -79,6 +79,7 @@ public class ValidacionesAtributosEnhe {
 				default:
 					break;
 				}
+				break;
 			case GESTION_USUARIOS:
 				switch (atr) {
 				case DNI_USUARIO:
@@ -96,7 +97,7 @@ public class ValidacionesAtributosEnhe {
 				default:
 					break;
 				}
-
+				break;
 			case GESTION_PERSONAS:
 
 				switch (atr) {
@@ -123,7 +124,7 @@ public class ValidacionesAtributosEnhe {
 				default:
 					break;
 				}
-
+				break;
 			case RECUPERAR_PASS:
 				switch (atr) {
 				case USUARIO:
@@ -137,6 +138,7 @@ public class ValidacionesAtributosEnhe {
 				default:
 					break;
 				}
+				break;
 			case GESTION_EMPRESAS:
 				switch (atr) {
 				case CIF_EMPRESA:
@@ -148,7 +150,7 @@ public class ValidacionesAtributosEnhe {
 							+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 					break;
 				}
-
+				break;
 			default:
 				break;
 			}

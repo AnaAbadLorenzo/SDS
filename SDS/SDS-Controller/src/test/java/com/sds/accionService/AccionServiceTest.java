@@ -108,7 +108,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.anadirAccion(accion);
 
-		assertEquals(respuesta, Constantes.OK);
+		assertEquals(Constantes.OK, respuesta);
 
 		final ReturnBusquedas<AccionEntity> accionDelete = accionService
 				.buscarAccion(accion.getAccion().getNombreAccion(), accion.getAccion().getDescripAccion(), 0, 1);
@@ -127,7 +127,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.anadirAccion(accion);
 
-		assertEquals(respuesta, CodeMessageErrors.ACCION_VACIA.name());
+		assertEquals(CodeMessageErrors.ACCION_VACIA.name(), respuesta);
 
 	}
 
@@ -139,7 +139,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.anadirAccion(accion);
 
-		assertEquals(respuesta, CodeMessageErrors.ACCION_VACIA.name());
+		assertEquals(CodeMessageErrors.ACCION_VACIA.name(), respuesta);
 	}
 
 	@Test
@@ -151,7 +151,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.anadirAccion(accion);
 
-		assertEquals(respuesta, CodeMessageErrors.ACCION_VACIA.name());
+		assertEquals(CodeMessageErrors.ACCION_VACIA.name(), respuesta);
 	}
 
 	@Test(expected = AccionYaExisteException.class)
@@ -184,7 +184,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.modificarAccion(accionGuardar);
 
-		assertEquals(respuesta, Constantes.OK);
+		assertEquals(Constantes.OK, respuesta);
 
 		accionService.deleteAccion(accionGuardar.getAccion());
 
@@ -199,7 +199,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.modificarAccion(accionGuardar);
 
-		assertEquals(respuesta, CodeMessageErrors.ACCION_VACIA.name());
+		assertEquals(CodeMessageErrors.ACCION_VACIA.name(), respuesta);
 	}
 
 	@Test
@@ -212,7 +212,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.modificarAccion(accionGuardar);
 
-		assertEquals(respuesta, CodeMessageErrors.ACCION_VACIA.name());
+		assertEquals(CodeMessageErrors.ACCION_VACIA.name(), respuesta);
 	}
 
 	@Test
@@ -225,7 +225,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.modificarAccion(accionGuardar);
 
-		assertEquals(respuesta, CodeMessageErrors.ACCION_VACIA.name());
+		assertEquals(CodeMessageErrors.ACCION_VACIA.name(), respuesta);
 	}
 
 	@Test(expected = AccionNoExisteException.class)
@@ -253,7 +253,7 @@ public class AccionServiceTest {
 
 		final String respuesta = accionService.eliminarAccion(accion);
 
-		assertEquals(respuesta, Constantes.OK);
+		assertEquals(Constantes.OK, respuesta);
 
 		accionService.deleteAccion(accion.getAccion());
 
@@ -302,7 +302,7 @@ public class AccionServiceTest {
 
 		respuesta = accionService.reactivarAccion(accionGuardar);
 
-		assertEquals(respuesta, Constantes.OK);
+		assertEquals(Constantes.OK, respuesta);
 
 		accionService.deleteAccion(accionGuardar.getAccion());
 

@@ -39,9 +39,6 @@ import com.sds.service.util.validaciones.Validaciones;
 @Service
 public class PersonaServiceImpl implements PersonaService {
 
-	private final Util util;
-	private final Validaciones validaciones;
-
 	@PersistenceContext
 	EntityManager entityManager;
 
@@ -53,6 +50,9 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Autowired
 	LogService logServiceImpl;
+
+	private final Util util;
+	private final Validaciones validaciones;
 
 	public PersonaServiceImpl() {
 		util = new Util();
@@ -91,6 +91,7 @@ public class PersonaServiceImpl implements PersonaService {
 		return ret;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(final int inicio, final int tamanhoPagina) {
 

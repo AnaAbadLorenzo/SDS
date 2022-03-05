@@ -1,9 +1,9 @@
 package com.sds.controller.rol;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +37,7 @@ public class RolController {
 		this.validaciones = new Validaciones();
 	}
 
-	@RequestMapping(value = "/listarRol", method = RequestMethod.POST)
+	@PostMapping(value = "/listarRol")
 	@ResponseBody
 	public RespEntity buscarRol(@RequestBody final RolBuscar rolBuscar) {
 
@@ -48,7 +48,7 @@ public class RolController {
 
 	}
 
-	@RequestMapping(value = "/listarRoles", method = RequestMethod.POST)
+	@PostMapping(value = "/listarRoles")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<RolEntity> resultado = rolService.buscarTodos(paginacion.getInicio(),
@@ -57,7 +57,7 @@ public class RolController {
 		return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
 	}
 
-	@RequestMapping(value = "/listarRolesEliminados", method = RequestMethod.POST)
+	@PostMapping(value = "/listarRolesEliminados")
 	@ResponseBody
 	public RespEntity buscarRolesEliminados(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<RolEntity> resultado = rolService.buscarRolesEliminados(paginacion.getInicio(),
@@ -67,13 +67,13 @@ public class RolController {
 
 	}
 
-	@RequestMapping(value = "/rol", method = RequestMethod.POST)
+	@PostMapping(value = "/rol")
 	@ResponseBody
 	public RespEntity guardarRol(@RequestBody final Rol rol) {
 
 		final Boolean rolValido = validaciones.comprobarRolBlank(rol.getRol());
 
-		if (rolValido) {
+		if (Boolean.TRUE.equals(rolValido)) {
 			try {
 				String resultado;
 				try {
@@ -95,13 +95,13 @@ public class RolController {
 		return new RespEntity(RespCode.ROL_VACIO, rol);
 	}
 
-	@RequestMapping(value = "/modificarRol", method = RequestMethod.POST)
+	@PostMapping(value = "/modificarRol")
 	@ResponseBody
 	public RespEntity modificarRol(@RequestBody final Rol rol) {
 
 		final Boolean rolValido = validaciones.comprobarRolBlank(rol.getRol());
 
-		if (rolValido) {
+		if (Boolean.TRUE.equals(rolValido)) {
 			try {
 				String resultado;
 				try {
@@ -123,7 +123,7 @@ public class RolController {
 		return new RespEntity(RespCode.ROL_VACIO, rol);
 	}
 
-	@RequestMapping(value = "/eliminarRol", method = RequestMethod.POST)
+	@PostMapping(value = "/eliminarRol")
 	@ResponseBody
 	public RespEntity eliminarRol(@RequestBody final Rol rol) {
 

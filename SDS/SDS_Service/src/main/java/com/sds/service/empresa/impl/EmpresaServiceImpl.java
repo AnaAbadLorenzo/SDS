@@ -53,29 +53,30 @@ public class EmpresaServiceImpl implements EmpresaService {
 		validaciones = new Validaciones();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarEmpresa(final String cifEmpresa, final String nombreEmpresa,
 			final String direccionEmpresa, final String telefonoEmpresa, final int inicio, final int tamanhoPagina) {
 
-		List<EmpresaEntity> empresaBD = new ArrayList();
-		final List<EmpresaEntity> toret = new ArrayList();
+		final List<EmpresaEntity> toret = new ArrayList<>();
 
-		empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresa").setParameter("cifEmpresa", cifEmpresa)
-				.setParameter("nombreEmpresa", nombreEmpresa).setParameter("direccionEmpresa", direccionEmpresa)
-				.setParameter("telefonoEmpresa", telefonoEmpresa).setFirstResult(inicio).setMaxResults(tamanhoPagina)
-				.getResultList();
+		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresa")
+				.setParameter("cifEmpresa", cifEmpresa).setParameter("nombreEmpresa", nombreEmpresa)
+				.setParameter("direccionEmpresa", direccionEmpresa).setParameter("telefonoEmpresa", telefonoEmpresa)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = empresaRepository.numberFindEmpresa(cifEmpresa, nombreEmpresa,
 				direccionEmpresa, telefonoEmpresa);
 
-		for (final EmpresaEntity empresa : empresaBD) {
+		if (!empresaBD.isEmpty()) {
+			for (final EmpresaEntity empresa : empresaBD) {
+				final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+						empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+						empresa.getBorradoEmpresa());
 
-			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
-					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
-					empresa.getBorradoEmpresa());
+				toret.add(empresaToret);
 
-			toret.add(empresaToret);
-
+			}
 		}
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
@@ -84,23 +85,26 @@ public class EmpresaServiceImpl implements EmpresaService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
-		List<EmpresaEntity> empresaBD = new ArrayList();
-		final List<EmpresaEntity> toret = new ArrayList();
 
-		empresaBD = entityManager.createNamedQuery("EmpresaEntity.findAllEmpresas").setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
+		final List<EmpresaEntity> toret = new ArrayList<>();
+
+		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findAllEmpresas")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = empresaRepository.numberFindAllEmpresas();
 
-		for (final EmpresaEntity empresa : empresaBD) {
-			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
-					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
-					empresa.getBorradoEmpresa());
+		if (!empresaBD.isEmpty()) {
+			for (final EmpresaEntity empresa : empresaBD) {
+				final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+						empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+						empresa.getBorradoEmpresa());
 
-			toret.add(empresaToret);
+				toret.add(empresaToret);
 
+			}
 		}
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
@@ -110,22 +114,25 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarEmpresasEliminadas(final int inicio, final int tamanhoPagina) {
-		List<EmpresaEntity> empresaBD = new ArrayList();
-		final List<EmpresaEntity> toret = new ArrayList();
 
-		empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresasEliminadas").setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
+		final List<EmpresaEntity> toret = new ArrayList<>();
+
+		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresasEliminadas")
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = empresaRepository.numberFindEmpresasEliminadas();
 
-		for (final EmpresaEntity empresa : empresaBD) {
-			final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
-					empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
-					empresa.getBorradoEmpresa());
+		if (!empresaBD.isEmpty()) {
+			for (final EmpresaEntity empresa : empresaBD) {
+				final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+						empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+						empresa.getBorradoEmpresa());
 
-			toret.add(empresaToret);
+				toret.add(empresaToret);
+			}
 		}
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
@@ -329,9 +336,10 @@ public class EmpresaServiceImpl implements EmpresaService {
 	@Override
 	public String reactivarEmpresa(final Empresa empresa)
 			throws EmpresaNoEncontradaException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
-		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+
+		final EmpresaEntity empresaEntity = empresa.getEmpresa();
 
 		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
 

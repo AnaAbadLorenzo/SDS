@@ -5,6 +5,10 @@ public class Login {
 	private String usuario;
 	private String passwdUsuario;
 
+	public Login() {
+
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

@@ -53,6 +53,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		util = new Util();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad,
 			final String descripFuncionalidad, final int inicio, final int tamanhoPagina) {
@@ -84,6 +85,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
@@ -94,12 +96,14 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 
 		final Integer numberTotalResults = funcionalidadRepository.numberFindAllFuncionalities();
 
-		for (final FuncionalidadEntity funcionalidad : funcionalidades) {
-			final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
-					funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
-					funcionalidad.getBorradoFuncionalidad());
+		if (!funcionalidades.isEmpty()) {
+			for (final FuncionalidadEntity funcionalidad : funcionalidades) {
+				final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
+						funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+						funcionalidad.getBorradoFuncionalidad());
 
-			funcionalidadesToret.add(func);
+				funcionalidadesToret.add(func);
+			}
 		}
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
 				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());
@@ -107,6 +111,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		return result;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidadesEliminadas(final int inicio,
 			final int tamanhoPagina) {
@@ -118,12 +123,14 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 
 		final Integer numberTotalResults = funcionalidadRepository.numberFindFuncionalidadesEliminadas();
 
-		for (final FuncionalidadEntity funcionalidad : funcionalidades) {
-			final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
-					funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
-					funcionalidad.getBorradoFuncionalidad());
+		if (!funcionalidades.isEmpty()) {
+			for (final FuncionalidadEntity funcionalidad : funcionalidades) {
+				final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
+						funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+						funcionalidad.getBorradoFuncionalidad());
 
-			funcionalidadesToret.add(func);
+				funcionalidadesToret.add(func);
+			}
 		}
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
 				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());

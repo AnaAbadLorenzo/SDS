@@ -88,4 +88,11 @@ public class LogExcepcionesEntity {
 		this.fecha = fecha;
 	}
 
+	@Override
+	public String toString() {
+		return "LogExcepcionesEntity [idLogExcepciones=" + idLogExcepciones + ", usuario=" + usuario
+				+ ", tipoExcepcion=" + tipoExcepcion + ", descripcionExcepcion=" + descripcionExcepcion + ", fecha="
+				+ fecha + "]";
+	}
+
 }

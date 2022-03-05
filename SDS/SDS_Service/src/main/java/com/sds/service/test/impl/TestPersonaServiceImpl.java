@@ -1259,11 +1259,14 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 					final Optional<UsuarioEntity> usuarioBuscar = usuarioRepository
 							.findById(persona.getUsuarioEntity().getDniUsuario());
 
-					usuarioRepository.deleteUsuario(usuarioBuscar.get().getDniUsuario());
-					usuarioRepository.flush();
-					personaRepository.deletePersona(personaBuscar.get().getDniP());
-					personaRepository.flush();
-
+					if (usuarioBuscar.isPresent()) {
+						usuarioRepository.deleteUsuario(usuarioBuscar.get().getDniUsuario());
+						usuarioRepository.flush();
+					}
+					if (personaBuscar.isPresent()) {
+						personaRepository.deletePersona(personaBuscar.get().getDniP());
+						personaRepository.flush();
+					}
 				}
 			}
 		}
@@ -1291,18 +1294,22 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				personaUsuario = personaRepository.findById(persona.getDniP());
 				usuario = usuarioRepository.findById(persona.getDniP());
 
-				personaUsuario.get().setBorradoP(1);
-				usuario.get().setBorradoUsuario(1);
+				if (personaUsuario.isPresent() && usuario.isPresent()) {
 
-				personaRepository.saveAndFlush(personaUsuario.get());
-				usuarioRepository.saveAndFlush(usuario.get());
+					personaUsuario.get().setBorradoP(1);
+					usuario.get().setBorradoUsuario(1);
 
-				resultado = CodigosMensajes.ELIMINAR_PERSONA_CORRECTO + " - " + Mensajes.ELIMINAR_PERSONA_CORRECTAMENTE;
+					personaRepository.saveAndFlush(personaUsuario.get());
+					usuarioRepository.saveAndFlush(usuario.get());
 
-				usuarioRepository.deleteUsuario(persona.getDniP());
-				usuarioRepository.flush();
-				personaRepository.deletePersona(persona.getDniP());
-				personaRepository.flush();
+					resultado = CodigosMensajes.ELIMINAR_PERSONA_CORRECTO + " - "
+							+ Mensajes.ELIMINAR_PERSONA_CORRECTAMENTE;
+
+					usuarioRepository.deleteUsuario(persona.getDniP());
+					usuarioRepository.flush();
+					personaRepository.deletePersona(persona.getDniP());
+					personaRepository.flush();
+				}
 			}
 		}
 

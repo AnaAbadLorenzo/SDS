@@ -59,6 +59,8 @@ public class ValidacionesAtributosAcentos {
 						break;
 					}
 
+					break;
+
 				case REGISTRAR:
 					switch (atr) {
 					case DNI_PERSONA:
@@ -91,6 +93,7 @@ public class ValidacionesAtributosAcentos {
 					default:
 						break;
 					}
+					break;
 
 				case GESTION_USUARIOS:
 					switch (atr) {
@@ -109,6 +112,7 @@ public class ValidacionesAtributosAcentos {
 					default:
 						break;
 					}
+					break;
 
 				case GESTION_PERSONAS: {
 					switch (atr) {
@@ -139,6 +143,7 @@ public class ValidacionesAtributosAcentos {
 						break;
 					}
 				}
+					break;
 
 				case RECUPERAR_PASS:
 					switch (atr) {
@@ -153,6 +158,7 @@ public class ValidacionesAtributosAcentos {
 					default:
 						break;
 					}
+					break;
 
 				case GESTION_EMPRESAS:
 					switch (atr) {
@@ -167,6 +173,7 @@ public class ValidacionesAtributosAcentos {
 					default:
 						break;
 					}
+					break;
 				default:
 					break;
 				}

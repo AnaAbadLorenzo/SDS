@@ -11,6 +11,10 @@ public class Mail {
 	private String tipoContenido;
 	private List<Object> adjuntos;
 
+	public Mail() {
+		this.tipoContenido = "text/plain";
+	}
+
 	public Mail(final String emisorEmail, final String receptorEmail, final String asuntoEmail,
 			final String contenidoEmail, final String tipoContenido, final List<Object> adjuntos) {
 		super();
@@ -20,10 +24,6 @@ public class Mail {
 		this.contenidoEmail = contenidoEmail;
 		this.tipoContenido = tipoContenido;
 		this.adjuntos = adjuntos;
-	}
-
-	public Mail() {
-		this.tipoContenido = "text/plain";
 	}
 
 	public String getEmisorEmail() {
@@ -72,6 +72,13 @@ public class Mail {
 
 	public void setAdjuntos(final List<Object> adjuntos) {
 		this.adjuntos = adjuntos;
+	}
+
+	@Override
+	public String toString() {
+		return "Mail [emisorEmail=" + emisorEmail + ", receptorEmail=" + receptorEmail + ", asuntoEmail=" + asuntoEmail
+				+ ", contenidoEmail=" + contenidoEmail + ", tipoContenido=" + tipoContenido + ", adjuntos=" + adjuntos
+				+ "]";
 	}
 
 }

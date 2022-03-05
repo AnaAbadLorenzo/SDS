@@ -21,19 +21,16 @@ public class MenuController {
 	@GetMapping(value = "/funcionalidadesUsuario")
 	@ResponseBody
 	public Menu funcionalidadesUsuario(final String usuario) {
+		return aclService.funcionesUsuario(usuario);
 
-		final Menu menu = aclService.funcionesUsuario(usuario);
-
-		return menu;
 	}
 
 	@GetMapping(value = "/accionesFuncionalidad")
 	@ResponseBody
 	public List<String> accionesFuncionalidad(final String usuario, final String funcionalidad) {
 
-		final List<String> acciones = aclService.accionesUsuarioFuncionalidad(usuario, funcionalidad);
+		return aclService.accionesUsuarioFuncionalidad(usuario, funcionalidad);
 
-		return acciones;
 	}
 
 }

@@ -565,7 +565,7 @@ public class TestRolServiceImpl implements TestRolService {
 		final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
 		String resultado = StringUtils.EMPTY;
 
-		if (rolUsuario != null) {
+		if (rolUsuario.isPresent()) {
 			final List<UsuarioEntity> usuarios = usuarioRepository.findAll();
 
 			for (final UsuarioEntity usuario : usuarios) {
@@ -595,7 +595,7 @@ public class TestRolServiceImpl implements TestRolService {
 		final Optional<RolEntity> rolUsuario = rolRepository.findById(rol.getIdRol());
 		String resultado = StringUtils.EMPTY;
 
-		if (rolUsuario != null) {
+		if (rolUsuario.isPresent()) {
 			final List<Integer> rolAccionFuncionalidad = rolAccionFuncionalidadRepository
 					.findFuncionalityByRolId(rol.getIdRol());
 

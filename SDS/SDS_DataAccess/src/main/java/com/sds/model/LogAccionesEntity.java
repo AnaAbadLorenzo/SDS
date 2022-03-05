@@ -90,4 +90,10 @@ public class LogAccionesEntity {
 		this.fecha = fecha;
 	}
 
+	@Override
+	public String toString() {
+		return "LogAccionesEntity [idLogAcciones=" + idLogAcciones + ", usuario=" + usuario + ", accion=" + accion
+				+ ", datos=" + datos + ", fecha=" + fecha + "]";
+	}
+
 }

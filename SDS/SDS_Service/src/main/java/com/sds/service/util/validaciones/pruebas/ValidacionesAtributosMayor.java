@@ -89,6 +89,7 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+				break;
 			case GESTION_ROLES:
 				switch (atr) {
 				case ROL_NAME:
@@ -99,6 +100,7 @@ public class ValidacionesAtributosMayor {
 					break;
 				}
 
+				break;
 			case GESTION_ACCIONES:
 				switch (atr) {
 				case ACCION_NAME:
@@ -108,15 +110,18 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+				break;
 			case GESTION_FUNCIONALIDADES:
 				switch (atr) {
 				case FUNCIONALIDAD_NAME:
 					resultado = CodigosMensajes.FUNCIONALIDAD_NAME_MAYOR_QUE_48 + " - "
 							+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_MAYOR_QUE_48;
+					break;
 				default:
 					break;
 				}
 
+				break;
 			case GESTION_USUARIOS:
 				switch (atr) {
 				case DNI_USUARIO:
@@ -133,6 +138,7 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+				break;
 
 			case GESTION_PERSONAS:
 				switch (atr) {
@@ -169,6 +175,7 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+				break;
 
 			case RECUPERAR_PASS:
 				switch (atr) {
@@ -182,6 +189,7 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+				break;
 			case GESTION_EMPRESAS:
 				switch (atr) {
 				case CIF_EMPRESA:
@@ -200,6 +208,7 @@ public class ValidacionesAtributosMayor {
 							+ Mensajes.DIRECCION_NO_PUEDE_SER_MAYOR_QUE_128;
 					break;
 				}
+				break;
 			default:
 				break;
 			}
