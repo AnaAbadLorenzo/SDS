@@ -520,7 +520,7 @@ form button[type="button"]:hover {
 }
 
 /*********** TOOLTIPS ICONOS ***************/
-.tooltip, .tooltip2, .tooltip3, .tooltip4 {
+.tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5 {
     position: relative;
     display: inline-block;
     opacity: 1;
@@ -606,8 +606,28 @@ form button[type="button"]:hover {
   transition: opacity 1s;
 }
 
+.tooltip5 .tooltiptext5 {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  right: 83%;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 .tooltip .tooltiptext::after, .tooltip2 .tooltiptext2::after,
-.tooltip3 .tooltiptext3::after, .tooltip4 .tooltiptext4::after  {
+.tooltip3 .tooltiptext3::after, .tooltip4 .tooltiptext4::after,
+.tooltip5 .tooltiptext5::after  {
   content: "";
   position: absolute;
   top: 100%;
@@ -619,7 +639,8 @@ form button[type="button"]:hover {
 }
 
 .tooltip:hover .tooltiptext, .tooltip2:hover .tooltiptext2,
-.tooltip3:hover .tooltiptext3, .tooltip4:hover .tooltiptext4 {
+.tooltip3:hover .tooltiptext3, .tooltip4:hover .tooltiptext4,
+.tooltip5:hover .tooltiptext5 {
   visibility: visible;
   opacity: 1;
 }
