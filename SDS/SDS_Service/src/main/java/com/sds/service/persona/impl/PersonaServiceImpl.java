@@ -59,7 +59,6 @@ public class PersonaServiceImpl implements PersonaService {
 		validaciones = new Validaciones();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 
@@ -91,7 +90,6 @@ public class PersonaServiceImpl implements PersonaService {
 		return ret;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(final int inicio, final int tamanhoPagina) {
 
@@ -123,7 +121,6 @@ public class PersonaServiceImpl implements PersonaService {
 		return ret;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarPersona(final String dniP, final String nombreP,
 			final String apellidosP, final Date fechaNacP, final String direccionP, final String telefonoP,

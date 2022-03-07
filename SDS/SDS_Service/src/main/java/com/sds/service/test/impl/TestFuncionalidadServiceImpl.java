@@ -533,8 +533,8 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 
 		String resultado = StringUtils.EMPTY;
 
-		final List<FuncionalidadEntity> funcionalidadBD = funcionalidadRepository
-				.findFuncionality(funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad());
+		funcionalidadRepository.findFuncionality(funcionalidad.getNombreFuncionalidad(),
+				funcionalidad.getDescripFuncionalidad());
 
 		resultado = CodigosMensajes.BUSCAR_FUNCIONALIDAD_CORRECTO + " - " + Mensajes.BUSCAR_FUNCIONALIDAD_CORRECTO;
 

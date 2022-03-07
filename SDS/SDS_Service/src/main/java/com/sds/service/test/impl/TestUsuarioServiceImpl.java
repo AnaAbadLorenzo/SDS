@@ -548,8 +548,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 	private String buscarUsuario(final UsuarioEntity usuario) {
 		String resultado = StringUtils.EMPTY;
 
-		List<UsuarioEntity> user = new ArrayList<>();
-		user = usuarioRepository.findUsuario(usuario.getDniUsuario(), usuario.getUsuario(), usuario.getRol());
+		usuarioRepository.findUsuario(usuario.getDniUsuario(), usuario.getUsuario(), usuario.getRol());
 
 		resultado = CodigosMensajes.BUSCAR_USUARIO_CORRECTO + " - " + Mensajes.BUSCAR_USUARIO_CORRECTO;
 

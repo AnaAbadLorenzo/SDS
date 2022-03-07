@@ -10,6 +10,13 @@ arrayEN={
 
 	//Warnings
 	'BLOQUEO_MAYUSCULAS' : 'Caps Lock enabled',
+	
+	//Tooltip iconos
+	'ICONO_LOGIN' : 'Login',
+	'ICONO_REGISTRAR': 'Register',
+	'ICONO_ENTRAR' : 'Enter',
+	'ICONO_RECUPERAR_PASS': 'Recover password',
+	'ICONO_CERRAR': 'Close',
 
 	//Mensajes error
 	'ERROR': 'WARNING',

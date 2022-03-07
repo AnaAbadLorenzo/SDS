@@ -54,7 +54,6 @@ public class AccionServiceImpl implements AccionService {
 		util = new Util();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion,
 			final int inicio, final int tamanhoPagina) {
@@ -82,7 +81,6 @@ public class AccionServiceImpl implements AccionService {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 
@@ -108,7 +106,6 @@ public class AccionServiceImpl implements AccionService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarAccionesEliminadas(final int inicio, final int tamanhoPagina) {
 		final List<AccionEntity> toret = new ArrayList<>();

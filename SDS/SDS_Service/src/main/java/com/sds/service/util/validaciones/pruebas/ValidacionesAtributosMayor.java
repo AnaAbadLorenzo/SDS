@@ -207,6 +207,8 @@ public class ValidacionesAtributosMayor {
 					resultado = CodigosMensajes.DIRECCION_MAYOR_QUE_128 + " - "
 							+ Mensajes.DIRECCION_NO_PUEDE_SER_MAYOR_QUE_128;
 					break;
+				default:
+					break;
 				}
 				break;
 			default:

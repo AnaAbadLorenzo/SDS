@@ -446,8 +446,7 @@ public class TestRolServiceImpl implements TestRolService {
 	private String buscarRol(final RolEntity rol) {
 		String resultado = StringUtils.EMPTY;
 
-		List<RolEntity> rolUser = new ArrayList<>();
-		rolUser = rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
+		rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
 
 		resultado = CodigosMensajes.BUSCAR_ROL_CORRECTO + " - " + Mensajes.BUSCAR_ROL_CORRECTO;
 

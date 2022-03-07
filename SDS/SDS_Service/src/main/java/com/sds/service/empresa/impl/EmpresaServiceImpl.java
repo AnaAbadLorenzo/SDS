@@ -53,7 +53,6 @@ public class EmpresaServiceImpl implements EmpresaService {
 		validaciones = new Validaciones();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarEmpresa(final String cifEmpresa, final String nombreEmpresa,
 			final String direccionEmpresa, final String telefonoEmpresa, final int inicio, final int tamanhoPagina) {
@@ -85,7 +84,6 @@ public class EmpresaServiceImpl implements EmpresaService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 
@@ -114,7 +112,6 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarEmpresasEliminadas(final int inicio, final int tamanhoPagina) {
 

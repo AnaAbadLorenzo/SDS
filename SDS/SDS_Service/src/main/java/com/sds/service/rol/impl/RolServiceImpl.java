@@ -59,7 +59,6 @@ public class RolServiceImpl implements RolService {
 		util = new Util();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<RolEntity> buscarRol(final String rolName, final String rolDescription, final int inicio,
 			final int tamanhoPagina) {
@@ -88,7 +87,6 @@ public class RolServiceImpl implements RolService {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<RolEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
@@ -111,7 +109,6 @@ public class RolServiceImpl implements RolService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();

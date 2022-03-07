@@ -69,7 +69,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		validaciones = new Validaciones();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<UsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
@@ -97,7 +96,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario,
 			final RolEntity rol, final int inicio, final int tamanhoPagina) {
@@ -126,7 +124,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<UsuarioEntity> buscarUsuariosEliminados(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();

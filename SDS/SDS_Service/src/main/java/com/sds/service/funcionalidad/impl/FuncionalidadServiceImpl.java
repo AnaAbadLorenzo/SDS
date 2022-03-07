@@ -53,7 +53,6 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		util = new Util();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad,
 			final String descripFuncionalidad, final int inicio, final int tamanhoPagina) {
@@ -85,7 +84,6 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
@@ -111,7 +109,6 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		return result;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidadesEliminadas(final int inicio,
 			final int tamanhoPagina) {

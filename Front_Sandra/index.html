@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/login.js"></script>
@@ -55,13 +55,15 @@
 
 	<div class="row">
 	    <div class="col col-6 col-s-6">
-			<a href="#" data-toggle="modal" data-target="#login-modal">
+			<a href="#" data-toggle="modal" data-target="#login-modal" class="tooltip">
 				<img src="images/login.png" class="float-right img1 img-1 img-s-1"></img>
+				<span class="tooltiptext ICONO_LOGIN"></span>
 			</a>
 		</div>
 		 <div class="col col-6 col-s-6">
-			<a href="#" data-toggle="modal" data-target="#registro-modal">
+			<a href="#" data-toggle="modal" data-target="#registro-modal" class="tooltip2">
 				<img src="images/registrar.png" class="float-left img1 img-1 img-s-1"></img>
+				<span class="tooltiptext2 ICONO_REGISTRAR"></span>
 			</a>
 		</div>
 	</div>
@@ -79,8 +81,9 @@
 					<div style="display:none" class="BLOQUEO_MAYUSCULAS" id="bloqueoMayusculas"></div>  
                 	<div style="display:none" id="errorFormatoPass" class="alert alert-danger ocultar"></div>  
 					
-					<button type="submit" name="btnEntrar" value="Entrar" class="btnEntrar">
+					<button type="submit" name="btnEntrar" value="Entrar" class="btnEntrar tooltip3">
                         <img class="iconoEntrar iconEntrar" src="images/enterLogin.png" alt="Entrar" />
+                        <span class="tooltiptext3 ICONO_ENTRAR"></span>
                 	</button>
 
 				</form>	
@@ -206,8 +209,9 @@
 					<div style="display:none" id="errorFormatoEmail"></div>
 					<small>Formato: ejemplo@ejemplo.es</small>
 					
-					<button type="submit" name="btnResetPass" value="Recuperar Contraseña" class="btnResetPass">
+					<button type="submit" name="btnResetPass" value="Recuperar Contraseña" class="btnResetPass tooltip4">
                         <img class="iconoResetPass iconResetPass" src="images/resetPass.png" alt="Entrar" />
+                        <span class="tooltiptext4 ICONO_RECUPERAR_PASS"></span>
                 	</button>
 				</form>
 			</div>
@@ -215,14 +219,18 @@
 	</div>
 
    <div id="modal" tabindex="-1" role="dialog" style="display:none">
-	  <div class="modal-dialog" role="document">
+	  <div class="modal-dialog" role="document" id="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
+	        <img src="" name="aviso" class="imagenAviso"/>
 	        <h3 id="modal-title" class="modal-title"></h3>
 	      </div>
 	      <div id='mensajeError' class="modal-body"></div>
 	      <div class="modal-footer">
-        	<button type="button" class="btn btn-primary CERRARMODAL" data-dismiss="modal" onclick="cerrarModal()">Close</button>
+        	<a id="cerrar" href="#" onclick="cerrarModal()" class="tooltip">
+        		<img class="iconCerrar" alt="Cerrar" src="images/close.png"/>
+                <span class="tooltiptext ICONO_CERRAR"></span>
+        	</a>
       	  </div>
 	    </div>
 	  </div>

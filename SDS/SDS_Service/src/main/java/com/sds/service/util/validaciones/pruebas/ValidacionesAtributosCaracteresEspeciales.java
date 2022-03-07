@@ -208,6 +208,8 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						resultado = CodigosMensajes.TELEFONO_NUMERICO_INCORRECTO + " - "
 								+ Mensajes.TELEFONO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
 						break;
+					default:
+						break;
 					}
 					break;
 

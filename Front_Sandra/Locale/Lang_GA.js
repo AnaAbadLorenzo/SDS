@@ -11,6 +11,13 @@ arrayGA={
 
 	//Warnings bloqueo mayúsculas
 	'BLOQUEO_MAYUSCULAS' : 'Bloqueo de Maiúsculas activado',
+	
+	//Tooltip iconos
+	'ICONO_LOGIN' : 'Login',
+	'ICONO_REGISTRAR': 'Rexistrar',
+	'ICONO_ENTRAR' : 'Entrar',
+	'ICONO_RECUPERAR_PASS': 'Recuperar contrasinal',
+	'ICONO_CERRAR': 'Pechar',
 
 	//Mensajes error
 	'ERROR': 'ERRO',

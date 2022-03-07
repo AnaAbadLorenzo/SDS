@@ -206,7 +206,7 @@ function resetearFormulario(idFormulario, idElementoList) {
 }
 
 function cerrarModal(){
-	$('#modal').modal('toggle'); 
+	document.getElementById("modal").style.display = "none";
 }       
 
 function desconectar(){

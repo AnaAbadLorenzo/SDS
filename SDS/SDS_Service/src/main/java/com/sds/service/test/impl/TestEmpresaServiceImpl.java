@@ -747,9 +747,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 	private String buscarEmpresa(final EmpresaEntity empresa) {
 		String resultado = StringUtils.EMPTY;
 
-		List<EmpresaEntity> empresas = new ArrayList();
-
-		empresas = empresaRepository.findEmpresa(empresa.getCifEmpresa(), empresa.getNombreEmpresa(),
+		empresaRepository.findEmpresa(empresa.getCifEmpresa(), empresa.getNombreEmpresa(),
 				empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa());
 
 		resultado = CodigosMensajes.BUSCAR_EMPRESA_CORRECTO + " - " + Mensajes.BUSCAR_EMPRESA_CORRECTAMENTE;

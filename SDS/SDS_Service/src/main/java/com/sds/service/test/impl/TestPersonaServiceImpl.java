@@ -1200,13 +1200,12 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 	private String buscarPersona(final PersonaEntity persona) {
 		String resultado = StringUtils.EMPTY;
 
-		List<PersonaEntity> personaBD = new ArrayList<>();
 		java.sql.Date fechaSql;
 		fechaSql = new java.sql.Date(persona.getFechaNacP().getTime());
 		final String fecha = fechaSql.toString();
 
-		personaBD = personaRepository.findPersona(persona.getDniP(), persona.getNombreP(), persona.getApellidosP(),
-				fecha, persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP());
+		personaRepository.findPersona(persona.getDniP(), persona.getNombreP(), persona.getApellidosP(), fecha,
+				persona.getDireccionP(), persona.getTelefonoP(), persona.getEmailP());
 
 		resultado = CodigosMensajes.BUSCAR_PERSONA_CORRECTO + " - " + Mensajes.BUSCAR_PERSONA_CORRECTO;
 

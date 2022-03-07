@@ -506,8 +506,7 @@ public class TestAccionServiceImpl implements TestAccionService {
 	private String buscarAccion(final AccionEntity accion) {
 		String resultado = StringUtils.EMPTY;
 
-		final List<AccionEntity> accionBD = accionRepository.findAccion(accion.getNombreAccion(),
-				accion.getDescripAccion());
+		accionRepository.findAccion(accion.getNombreAccion(), accion.getDescripAccion());
 
 		resultado = CodigosMensajes.BUSCAR_ACCION_CORRECTO + " - " + Mensajes.BUSCAR_ACCION_CORRECTO;
 

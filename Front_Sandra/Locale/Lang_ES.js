@@ -12,6 +12,13 @@ arrayES={
 
 	//Warnings bloqueo mayúsculas
 	'BLOQUEO_MAYUSCULAS' : 'Bloqueo de Mayúsculas activado',
+	
+	//Tooltip iconos
+	'ICONO_LOGIN' : 'Login',
+	'ICONO_REGISTRAR': 'Registrar',
+	'ICONO_ENTRAR' : 'Entrar',
+	'ICONO_RECUPERAR_PASS': 'Recuperar contraseña',
+	'ICONO_CERRAR': 'Cerrar',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
@@ -31,8 +38,8 @@ arrayES={
 	'LOGIN_MAYOR_QUE_45' : 'El login de usuario tiene más de 45 caracteres',
 	'PASS_MAYOR_QUE_45' : 'La contraseña de usuario tiene más de 45 caracteres',
 	'EMAIL_MAYOR_QUE_48' : 'El email de usuario tiene más de 48 caracteres',
-	'LOGIN_ALFANUMERICO_INCORRECTO' : 'El login de usuario solo puede contener números y letras',
-	'PASS_ALFANUMERICO_INCORRECTO' : 'La contraseña de usuario solo puede contener números y letras',
+	'LOGIN_ALFANUMERICO_INCORRECTO' : 'El login de usuario sólo puede contener números y letras',
+	'PASS_ALFANUMERICO_INCORRECTO' : 'La contraseña de usuario sólo puede contener números y letras',
 	'EMAIL_ALFANUMERICO_INCORRECTO' : 'El email de usuario debe seguir el siguiente formato ejemplo@ejemplo.com',
 	'LOGIN_VACIO': 'El nombre de usuario y la contraseña están vacíos',
 

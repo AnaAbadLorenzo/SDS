@@ -22,6 +22,10 @@ body {
   background-color: #EDE7F6;
 }
 
+.modal {
+	z-index:2050;
+}
+
 .row::after {
   content: "";
   clear: both;
@@ -35,7 +39,11 @@ body {
   background-color: rgba(1, 1, 1, 0.95); /*Color de fondo, incluye opacidad del 90%*/
   top:0; /*Position superior*/
   left:0; /*Posición lateral*/
-  z-index:1001; /*Evitamos que algún elemento del blog sobreponga la ventana modal*/
+  z-index:2050;
+}
+
+#modal-dialog {
+	top: 30%;
 }
 
 #mensajeError{
@@ -45,7 +53,22 @@ body {
 }
 
 #modal-title{
-  color: #4527A0;
+  position: absolute;
+  left: 12%;
+  top: 12%;
+  width: 100%;
+}
+
+.imagenAviso {
+	width: 8% !important;
+}
+
+#cerrar {
+	left: 85%;
+}
+
+.iconCerrar {
+	width: 8% !important;
 }
 
 .btn-primary{
@@ -489,4 +512,109 @@ form button[type="button"]:hover {
 
 .footer a {
   color: #EDE7F6;
+}
+
+/*********** TOOLTIPS ICONOS ***************/
+.tooltip, .tooltip2, .tooltip3, .tooltip4 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 94%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip2 .tooltiptext2 {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 5%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip3 .tooltiptext3 {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 52%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip4 .tooltiptext4 {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 52%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after, .tooltip2 .tooltiptext2::after,
+.tooltip3 .tooltiptext3::after, .tooltip4 .tooltiptext4::after  {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4527A0 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext, .tooltip2:hover .tooltiptext2,
+.tooltip3:hover .tooltiptext3, .tooltip4:hover .tooltiptext4 {
+  visibility: visible;
+  opacity: 1;
 }

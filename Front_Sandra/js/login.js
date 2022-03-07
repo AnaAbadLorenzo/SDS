@@ -68,9 +68,11 @@ async function login() {
     })
     
     .catch((res) => {
-        $('#login-modal').modal('toggle'); 
+        $("#login-modal").modal('toggle'); 
         $("#modal-title").removeClass();
         $("#modal-title").addClass("ERROR");
+		document.getElementById("modal-title").style.color = "#a50707";
+        $(".imagenAviso").attr('src', 'images/failed.png');
         $("#mensajeError").removeClass();
         $("#mensajeError").addClass(res.code);
 
@@ -84,26 +86,31 @@ async function login() {
 async function recuperarPass(){
   await recuperarPassAjaxPromesa()
   .then((res) => {
-      $('#recuperarcontrasena-modal').modal('toggle');
-      $('#login-modal').modal('toggle'); 
-      $("#modal-title").removeClass();
-      $("#modal-title").addClass("CONTRASEÑA_REC_OK");
-      $("#mensajeError").removeClass();
-      $("#mensajeError").addClass(res.code);
-
-      let idElementoList = ["userRecuperarPass", "emailUser"];
-      resetearFormulario("formularioRecuperarPass", idElementoList);
-      setLang(getCookie('lang'));
-      document.getElementById("modal").style.display = "block";
+      	$("#recuperarcontrasena-modal").modal('toggle');
+      	$("#login-modal").modal('toggle'); 
+	  	$(".imagenAviso").attr('src', 'images/ok.png');
+		document.getElementById("modal-title").style.color = "#238f2a";
+		document.getElementById("modal-title").style.top = "3%";
+	    $("#modal-title").removeClass();
+	    $("#modal-title").addClass("CONTRASEÑA_REC_OK");
+	    $("#mensajeError").removeClass();
+	    $("#mensajeError").addClass(res.code);
+	
+	    let idElementoList = ["userRecuperarPass", "emailUser"];
+	    resetearFormulario("formularioRecuperarPass", idElementoList);
+	    setLang(getCookie('lang'));
+	    document.getElementById("modal").style.display = "block";
 
 
     })
     
     .catch((res) => {
-        $('#recuperarcontrasena-modal').modal('toggle'); 
-        $('#login-modal').modal('toggle');
-        $("#modal-title").removeClass();
-        $("#modal-title").addClass("ERROR"); 
+        $("#recuperarcontrasena-modal").modal('toggle'); 
+        $("#login-modal").modal('toggle');
+		$("#modal-title").removeClass();
+        $("#modal-title").addClass("ERROR");
+		document.getElementById("modal-title").style.color = "#a50707";
+        $(".imagenAviso").attr('src', 'images/failed.png');
         $("#mensajeError").removeClass();
         $("#mensajeError").addClass(res.code);
         let idElementoList = ["userRecuperarPass", "emailUser"];
