@@ -51,7 +51,6 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 	var codigo = "";
 
   	var valor = document.getElementById(idElemento).value;
-  	var nombre = document.getElementById(idElemento).name;
   	var longitud = document.getElementById(idElemento).value.length;
 
   	if ((valor == null) || (longitud == 0)) { 		
@@ -81,8 +80,6 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 	var codigo = "";
 
-	var valor = document.getElementById(idElemento).value;
-  	var nombre = document.getElementById(idElemento).name;
   	var longitud = document.getElementById(idElemento).value.length;
 
   	if (longitud < sizeMin) {
@@ -111,8 +108,6 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 	var codigo = "";
 
-	var valor = document.getElementById(idElemento).value;
-  	var nombre = document.getElementById(idElemento).name;
   	var longitud = document.getElementById(idElemento).value.length;
 
   	if (longitud > sizeMax) {
@@ -143,8 +138,6 @@ function comprobarLetrasNumeros(idElemento, idElementoError, campo) {
 	var codigo = "";
 
 	var valor = document.getElementById(idElemento).value;
-  	var nombre = document.getElementById(idElemento).name;
-  	var longitud = document.getElementById(idElemento).value.length;
  
  	var patron = /^[a-zA-Z0-9\u00f1\u00d1]+$/;
 		
@@ -199,8 +192,6 @@ function comprobarFormatoEmail(idElemento, idElementoError, campo) {
 	var codigo = "";
 
 	var valor = document.getElementById(idElemento).value;
-  	var nombre = document.getElementById(idElemento).name;
-  	var longitud = document.getElementById(idElemento).value.length;
       
 	var patron = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/; // establecemos un patron para un email
 	if (!patron.test(valor)) {

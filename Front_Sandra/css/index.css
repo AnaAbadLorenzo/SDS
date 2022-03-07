@@ -154,6 +154,11 @@ body {
 }
 
 /****** LOGIN Y REGISTRO MODAL ******/
+
+.login{
+	margin-left: 50%;
+}
+
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;

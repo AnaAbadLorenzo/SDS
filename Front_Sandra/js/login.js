@@ -119,4 +119,22 @@ async function recuperarPass(){
         document.getElementById("modal").style.display = "block";
     });
 }
+
+$(document).ready(function(){
+    $("#login-modal").on('hidden.bs.modal', function () {
+		let idElementoErrorList = ["errorFormatoUser", "errorFormatoPass"];
+		let idElementoList = ["userLogin","passLogin"];
+		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
+		setLang(getCookie('lang'));
+    });
+
+	$("#recuperarcontrasena-modal").on('hidden.bs.modal', function () {
+		let idElementoErrorList = ["errorFormatoUserPass", "errorFormatoEmail"];
+		let idElementoList = ["userRecuperarPass","emailUser"];
+		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
+		setLang(getCookie('lang'));
+    });
+
+});
+
         

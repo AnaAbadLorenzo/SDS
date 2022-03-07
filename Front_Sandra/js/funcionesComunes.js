@@ -205,14 +205,32 @@ function resetearFormulario(idFormulario, idElementoList) {
 
 }
 
-function cerrarModal(){
-	document.getElementById("modal").style.display = "none";
+/**Función para cerrar las ventanas modales*/
+function cerrarModal(idElement){
+	document.getElementById(idElement).style.display = "none";
 }       
 
+/**Función para desconectar la aplicación */
 function desconectar(){
 	setCookie('tokenUsuario', '');
 	setCookie('usuario', '');
 	setCookie('rolUsuario', '');
 	setCookie('lang', '');
+}
+
+/**Función para eliminar los mensajes de validación de error*/
+function eliminarMensajesValidacionError(idElementoErrorList, idElementoList){
+	
+	idElementoErrorList.forEach( function (idElementoError) {
+		$("#"+idElementoError).removeClass();
+		$("#"+idElementoError).html('');
+		$("#"+idElementoError).css("display", "none");
+	});	
+	
+	idElementoList.forEach( function (idElemento){
+		$("#"+idElemento).removeAttr("style");
+		$("#"+idElemento).css("border", "1px solid #D1C4E9");
+		$("#"+idElemento).css("borderTop",  "2px solid #B39DDB");
+	});
 }
 
