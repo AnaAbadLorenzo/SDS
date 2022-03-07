@@ -55,6 +55,23 @@ public class Constantes {
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";
 
+	// Contantes para el mensaje de email por idioma
+	public static final String FECHA_ES = "Ourense, %s de %s de %s";
+	public static final String FECHA_GA = "Ourense, %s de %s de %s";
+	public static final String FECHA_EN = "Ourense, the %s of %s, %s";
+	public static final String SALUDO_ES = "Estimado/a usuario/a,";
+	public static final String SALUDO_GA = "Estimado/a usuario/a,";
+	public static final String SALUDO_EN = "Dear user,";
+	public static final String CUERPO_ES = "Su contraseña temporal es %s para cambiarlo acceda a la aplicación con él y modifique sus datos.";
+	public static final String CUERPO_GA = "O seu contrasinal temporal é %s para cambialo acceda á aplicación con él e modifique os seus datos.";
+	public static final String CUERPO_EN = "Your temporary password is %s to change it access the application with it and modify your data.";
+	public static final String DESPEDIDA_ES = "Atententamente,";
+	public static final String DESPEDIDA_GA = "Atententamente,";
+	public static final String DESPEDIDA_EN = "Sincerely,";
+	public static final String FIRMA_ES = "El administador de Sustanaile Development Society";
+	public static final String FIRMA_GA = "O administador de Sustanaile Development Society";
+	public static final String FIRMA_EN = "The Sustanaile Development Society Administrator";
+
 	// Constantes para las acciones
 	public static final String AÑADIR = "Añadir";
 	public static final String BUSCAR = "Buscar";
@@ -401,4 +418,11 @@ public class Constantes {
 	public static final String NUMERICO = "^[0-9]+$";
 	public static final String FORMATO_FECHAS = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}";
 	public static final String FORMATO_EMAIL = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+
+	// Constantes caracteres
+	public static final String COMA = ",";
+	public static final String SALTO_LINEA = "\n";
+	public static final String TABULACION_FECHA = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+	public static final String TABULACION_DESPEDIDA = "\t\t\t\t\t\t\t\t\t\t\t";
+	public static final String TABULACION_FIRMA = "\t\t\t\t\t\t\t\t\t\t\t\t";
 }

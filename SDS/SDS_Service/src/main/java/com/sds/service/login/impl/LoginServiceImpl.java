@@ -1,5 +1,9 @@
 package com.sds.service.login.impl;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.TextStyle;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Random;
 
@@ -124,9 +128,26 @@ public class LoginServiceImpl implements LoginService {
 
 					if (persona.isPresent()) {
 						if (persona.get().getEmailP().equals(emailUsuario)) {
+
 							passwdTemp = generarPasswdAleatoria();
+
+							final String dia = Integer.toString(LocalDate.now().getDayOfMonth());
+							final Month mes = LocalDate.now().getMonth();
+							// TODO esto es provisional, cuando tengamos el idioma tenemos que pasarlo como
+							// parámetro para que nos de el mes en el idioma correcto
+							final String mesNombreES = mes.getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
+							final String annio = Integer.toString(LocalDate.now().getYear());
+							// TODO esto es provisional, cuando tengamos el idioma tenemos que el elegir el
+							// mensaje de fecha correspondiente al idioma
+							final String fechaEmail = String.format(Constantes.FECHA_ES, dia, mesNombreES, annio);
+							// TODO esto es provisional, debemos adatar el mensaje que se emvía según el
+							// idioma
+
+							final String mensajeEmail = String.format(Constantes.CUERPO_ES, passwdTemp);
+							final String contenidoEmail = generateContenidoEmail(fechaEmail, mensajeEmail);
+
 							final Mail email = new Mail(Constantes.EMISOR_EMAIL, emailUsuario,
-									Constantes.ASUNTO_EMAIL_RECU, passwdTemp, Constantes.TIPO_CONTENIDO, null);
+									Constantes.ASUNTO_EMAIL_RECU, contenidoEmail, Constantes.TIPO_CONTENIDO, null);
 
 							final String result = mailServiceImpl.enviarCorreo(email);
 
@@ -290,4 +311,10 @@ public class LoginServiceImpl implements LoginService {
 		return passwdTemporal;
 	}
 
+	private String generateContenidoEmail(final String fechaEmail, final String mensajeEmail) {
+		return Constantes.TABULACION_FECHA + fechaEmail + Constantes.SALTO_LINEA + Constantes.SALUDO_ES
+				+ Constantes.SALTO_LINEA + mensajeEmail + Constantes.SALTO_LINEA + Constantes.SALTO_LINEA
+				+ Constantes.TABULACION_DESPEDIDA + Constantes.DESPEDIDA_ES + Constantes.SALTO_LINEA
+				+ Constantes.TABULACION_FIRMA + Constantes.FIRMA_ES;
+	}
 }
