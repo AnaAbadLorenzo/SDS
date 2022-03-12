@@ -1,6 +1,9 @@
 package com.sds.controller.empresa;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +55,14 @@ public class EmpresaController {
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<EmpresaEntity> resultado = empresaService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.EMPRESAS_LISTADAS, resultado);
+	}
+
+	@GetMapping(value = "/listarEmpresasSinP")
+	@ResponseBody
+	public RespEntity buscarTodos() {
+		final List<EmpresaEntity> resultado = empresaService.buscarTodos();
 
 		return new RespEntity(RespCode.EMPRESAS_LISTADAS, resultado);
 	}
@@ -162,6 +173,19 @@ public class EmpresaController {
 			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, empresa);
 		}
 
+	}
+
+	@PostMapping(value = "/borrarEmpresa")
+	@ResponseBody
+	public RespEntity borrarEmpresa(@RequestBody final EmpresaEntity empresa) {
+		try {
+			empresaService.deleteEmpresa(empresa);
+			return new RespEntity(RespCode.EMPRESA_BORRADA, empresa);
+		} catch (final EmpresaNoEncontradaException e) {
+			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, empresa);
+		} catch (final EmpresaAsociadaPersonasException e) {
+			return new RespEntity(RespCode.EMPRESA_ASOCIADA_PERSONAS_EXCEPTION, empresa);
+		}
 	}
 
 }

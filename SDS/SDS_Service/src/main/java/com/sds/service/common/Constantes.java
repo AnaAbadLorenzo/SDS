@@ -35,6 +35,7 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_ACCION = "Modificar acción";
 	public static final String ACCION_ELIMINAR_ACCION = "Eliminar acción";
 	public static final String ACCION_REACTIVAR_ACCION = "Reactivar acción";
+	public static final String ACCION_ASIGNAR_ACCION = "Asignar acción";
 
 	public static final String ACCION_AÑADIR_FUNCIONALIDAD = "Añadir funcionalidad";
 	public static final String ACCION_MODIFICAR_FUNCIONALIDAD = "Modificar funcionalidad";
@@ -58,7 +59,7 @@ public class Constantes {
 	// Contantes para el mensaje de email por idioma
 	public static final String FECHA_ES = "Ourense, %s de %s de %s";
 	public static final String FECHA_GA = "Ourense, %s de %s de %s";
-	public static final String FECHA_EN = "Ourense, the %s of %s, %s";
+	public static final String FECHA_EN = "Ourense, %s  %s, %s";
 	public static final String SALUDO_ES = "Estimado/a usuario/a,";
 	public static final String SALUDO_GA = "Estimado/a usuario/a,";
 	public static final String SALUDO_EN = "Dear user,";
@@ -190,6 +191,7 @@ public class Constantes {
 	public static final String MODIFICAR_ACCION = "modificarAccion";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "eliminarAccionAsociadaRolFuncionalidad";
 	public static final String REACTIVAR_ACCION_CORRECTO = "reactivarAccionCorrecto";
+	public static final String ASIGNAR_ACCION_CORRECTO = "asignarAccionCorrecto";
 
 	public static final String BUSCAR_FUNCIONALIDAD = "buscarFuncionalidadCorrecto";
 	public static final String FUNCIONALIDAD_NO_EXISTE = "funcionalidadNoExiste";
@@ -425,4 +427,5 @@ public class Constantes {
 	public static final String TABULACION_FECHA = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	public static final String TABULACION_DESPEDIDA = "\t\t\t\t\t\t\t\t\t\t\t";
 	public static final String TABULACION_FIRMA = "\t\t\t\t\t\t\t\t\t\t\t\t";
+
 }

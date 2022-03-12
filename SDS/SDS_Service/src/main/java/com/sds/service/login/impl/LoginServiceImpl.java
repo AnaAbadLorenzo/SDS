@@ -109,7 +109,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String recuperarPasswdUsuario(final String usuario, final String emailUsuario)
+	public String recuperarPasswdUsuario(final String usuario, final String emailUsuario, final String idioma)
 			throws UsuarioNoEncontradoException, MessagingException, LogExcepcionesNoGuardadoException,
 			PersonaNoExisteException, EmailNoEncontradoException, LogAccionesNoGuardadoException,
 			MailNoEnviadoException {
@@ -131,20 +131,9 @@ public class LoginServiceImpl implements LoginService {
 
 							passwdTemp = generarPasswdAleatoria();
 
-							final String dia = Integer.toString(LocalDate.now().getDayOfMonth());
-							final Month mes = LocalDate.now().getMonth();
-							// TODO esto es provisional, cuando tengamos el idioma tenemos que pasarlo como
-							// parámetro para que nos de el mes en el idioma correcto
-							final String mesNombreES = mes.getDisplayName(TextStyle.FULL, new Locale("es", "ES"));
-							final String annio = Integer.toString(LocalDate.now().getYear());
-							// TODO esto es provisional, cuando tengamos el idioma tenemos que el elegir el
-							// mensaje de fecha correspondiente al idioma
-							final String fechaEmail = String.format(Constantes.FECHA_ES, dia, mesNombreES, annio);
-							// TODO esto es provisional, debemos adatar el mensaje que se emvía según el
-							// idioma
-
-							final String mensajeEmail = String.format(Constantes.CUERPO_ES, passwdTemp);
-							final String contenidoEmail = generateContenidoEmail(fechaEmail, mensajeEmail);
+							final String fechaEmail = generateFechaEmail(idioma);
+							final String mensajeEmail = generateMensajeEmail(idioma, passwdTemp);
+							final String contenidoEmail = generateContenidoEmail(fechaEmail, mensajeEmail, idioma);
 
 							final Mail email = new Mail(Constantes.EMISOR_EMAIL, emailUsuario,
 									Constantes.ASUNTO_EMAIL_RECU, contenidoEmail, Constantes.TIPO_CONTENIDO, null);
@@ -311,10 +300,75 @@ public class LoginServiceImpl implements LoginService {
 		return passwdTemporal;
 	}
 
-	private String generateContenidoEmail(final String fechaEmail, final String mensajeEmail) {
-		return Constantes.TABULACION_FECHA + fechaEmail + Constantes.SALTO_LINEA + Constantes.SALUDO_ES
-				+ Constantes.SALTO_LINEA + mensajeEmail + Constantes.SALTO_LINEA + Constantes.SALTO_LINEA
-				+ Constantes.TABULACION_DESPEDIDA + Constantes.DESPEDIDA_ES + Constantes.SALTO_LINEA
-				+ Constantes.TABULACION_FIRMA + Constantes.FIRMA_ES;
+	private String generateContenidoEmail(final String fechaEmail, final String mensajeEmail, final String idioma) {
+		String mensaje = StringUtils.EMPTY;
+
+		switch (idioma) {
+		case "ES":
+			mensaje = Constantes.TABULACION_FECHA + fechaEmail + Constantes.SALTO_LINEA + Constantes.SALUDO_ES
+					+ Constantes.SALTO_LINEA + mensajeEmail + Constantes.SALTO_LINEA + Constantes.SALTO_LINEA
+					+ Constantes.TABULACION_DESPEDIDA + Constantes.DESPEDIDA_ES + Constantes.SALTO_LINEA
+					+ Constantes.TABULACION_FIRMA + Constantes.FIRMA_ES;
+			break;
+		case "EN":
+			mensaje = Constantes.TABULACION_FECHA + fechaEmail + Constantes.SALTO_LINEA + Constantes.SALUDO_EN
+					+ Constantes.SALTO_LINEA + mensajeEmail + Constantes.SALTO_LINEA + Constantes.SALTO_LINEA
+					+ Constantes.TABULACION_DESPEDIDA + Constantes.DESPEDIDA_EN + Constantes.SALTO_LINEA
+					+ Constantes.TABULACION_FIRMA + Constantes.FIRMA_EN;
+			break;
+		case "GA":
+			mensaje = Constantes.TABULACION_FECHA + fechaEmail + Constantes.SALTO_LINEA + Constantes.SALUDO_GA
+					+ Constantes.SALTO_LINEA + mensajeEmail + Constantes.SALTO_LINEA + Constantes.SALTO_LINEA
+					+ Constantes.TABULACION_DESPEDIDA + Constantes.DESPEDIDA_GA + Constantes.SALTO_LINEA
+					+ Constantes.TABULACION_FIRMA + Constantes.FIRMA_GA;
+			break;
+		}
+
+		return mensaje;
+	}
+
+	private String generateFechaEmail(final String idioma) {
+		final String dia = Integer.toString(LocalDate.now().getDayOfMonth());
+		final Month mes = LocalDate.now().getMonth();
+		final String annio = Integer.toString(LocalDate.now().getYear());
+		String mesNombre = StringUtils.EMPTY;
+		String fechaEmail = StringUtils.EMPTY;
+
+		switch (idioma) {
+		case "ES":
+			mesNombre = mes.getDisplayName(TextStyle.FULL, new Locale(idioma, "ES"));
+			fechaEmail = String.format(Constantes.FECHA_ES, dia, mesNombre, annio);
+			break;
+		case "EN":
+			mesNombre = mes.getDisplayName(TextStyle.FULL, new Locale(idioma, "GB"));
+			fechaEmail = String.format(Constantes.FECHA_EN, dia, mesNombre, annio);
+			break;
+		case "GA":
+			mesNombre = mes.getDisplayName(TextStyle.FULL, new Locale("gl", "ES"));
+			fechaEmail = String.format(Constantes.FECHA_GA, dia, mesNombre, annio);
+			break;
+		default:
+			break;
+		}
+
+		return fechaEmail;
+	}
+
+	private String generateMensajeEmail(final String idioma, final String passwdTemp) {
+		String mensajeEmail = StringUtils.EMPTY;
+
+		switch (idioma) {
+		case "ES":
+			mensajeEmail = String.format(Constantes.CUERPO_ES, passwdTemp);
+			break;
+		case "EN":
+			mensajeEmail = String.format(Constantes.CUERPO_EN, passwdTemp);
+			break;
+		case "GA":
+			mensajeEmail = String.format(Constantes.CUERPO_GA, passwdTemp);
+			break;
+		}
+
+		return mensajeEmail;
 	}
 }

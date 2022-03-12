@@ -169,4 +169,15 @@ public class FuncionalidadController {
 
 	}
 
+	@PostMapping(value = "/borrarFuncionalidad")
+	@ResponseBody
+	public RespEntity borrarFuncionalidad(@RequestBody final FuncionalidadEntity funcionalidad) {
+		try {
+			funcionalidadService.deleteFuncionalidad(funcionalidad);
+			return new RespEntity(RespCode.FUNCIONALIDAD_BORRADA, funcionalidad);
+		} catch (final FuncionalidadNoExisteException e) {
+			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, funcionalidad);
+		}
+	}
+
 }

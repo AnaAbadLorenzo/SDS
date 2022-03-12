@@ -44,6 +44,15 @@
 		"borradoUsuario": 0
 	},
 	
+	"reactivarUsuarioCorrecto":{
+		"user": "ana",
+		
+		"dniUsuario": "47859623K",
+		"usuario": "pepe",
+		"passwdUsuario": "pepe",
+		"borradoUsuario": 0
+	},
+	
 	"usuarioNoExiste":{
 		"user": "ana",
 		

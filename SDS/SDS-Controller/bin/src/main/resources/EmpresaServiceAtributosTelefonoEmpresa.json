@@ -1,0 +1,79 @@
+{
+	"telefonoEmpresaVacio": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": ""
+	},
+	"telefonoEmpresaAlfanumericoEnhe": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "9882121ññ"
+	},
+	"telefonoEmpresaNumericoAcentos": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "98821212é"
+	},
+	"telefonoEmpresaNumericoCaracteresEspeciales": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988243@@@"
+	},
+	
+	"telefonoEmpresaNumericoEspacios":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "9882 12121"
+	},
+	
+	"telefonoEmpresaNumericoMenor9":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988"
+	},
+	
+	"telefonoEmpresaNumericoMayor9":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "98821212178965"
+	},
+	
+	"telefonoEmpresaAlfabetico":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "aaaaaaaaa"
+	},
+	"telefonoEmpresaAlfanumerico":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212bbb"
+	},
+	
+	"telefonoEmpresaNumerico":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	}
+	
+	
+}

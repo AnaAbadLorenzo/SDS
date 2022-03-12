@@ -1,0 +1,46 @@
+{
+	"nombreEmpresaVacio": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	"nombreEmpresaAlfanumericoCaracteresEspeciales": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe********@",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	"nombreEmpresaAlfanumericoMenor3": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "Em",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	"nombreEmpresaAlfanumericoMayor56": {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"nombreEmpresaAlfabetico":{
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "Empresas",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	
+	"nombreEmpresaNumerico" : {
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "12345",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	}
+}

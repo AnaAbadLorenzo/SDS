@@ -1,5 +1,6 @@
 package com.sds.controller.accion;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,14 +13,17 @@ import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
+import com.sds.service.accion.model.AccionAsignar;
 import com.sds.service.accion.model.AccionBuscar;
 import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
+import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -142,6 +146,30 @@ public class AccionController {
 
 	}
 
+	@PostMapping(value = "/asignarAccion")
+	@ResponseBody
+	public RespEntity asignarAccion(@RequestBody final AccionAsignar accion) {
+
+		try {
+			String resultado = StringUtils.EMPTY;
+			try {
+				resultado = accionService.asignarAccciones(accion);
+				return new RespEntity(RespCode.ACCION_ASIGNADA, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, accion);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, accion);
+			}
+		} catch (final AccionNoExisteException accionNoExists) {
+			return new RespEntity(RespCode.ACCION_NO_EXISTE_EXCEPTION, accion);
+		} catch (final FuncionalidadNoExisteException funcionalidadNoExiste) {
+			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, accion);
+		} catch (final RolNoExisteException rolNoExiste) {
+			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, accion);
+		}
+
+	}
+
 	@PostMapping(value = "/eliminarAccion")
 	@ResponseBody
 	public RespEntity eliminarAccion(@RequestBody final Accion accion) {
@@ -162,6 +190,17 @@ public class AccionController {
 			return new RespEntity(RespCode.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION, accion);
 		}
 
+	}
+
+	@PostMapping(value = "/borrarAccion")
+	@ResponseBody
+	public RespEntity borrarAccion(@RequestBody final AccionEntity accion) {
+		try {
+			accionService.deleteAccion(accion);
+			return new RespEntity(RespCode.ACCION_BORRADA, accion);
+		} catch (final AccionNoExisteException e) {
+			return new RespEntity(RespCode.ACCION_NO_EXISTE_EXCEPTION, accion);
+		}
 	}
 
 }

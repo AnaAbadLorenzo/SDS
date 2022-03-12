@@ -65,7 +65,7 @@
 	"eliminarRol":{
 		"usuario": "aicuna",
 		
-		"idRol":"4",
+		"idRol":"",
 		"rolName":"Nuevo rol",
 		"rolDescription":"Esta es una prueba de rol",
 		"borradoRol":1
@@ -83,9 +83,9 @@
 	"eliminarRolAsociadoUsuario":{
 		"usuario": "aicuna",
 		
-		"idRol":"2",
-		"rolName":"usuario",
-		"rolDescription": "Contendra a todos los usuarios registrados de la aplicacion",
+		"idRol":"1",
+		"rolName":"admin",
+		"rolDescription": "admin",
 		"borradoRol":0
 		
 	},
@@ -102,7 +102,7 @@
 	"modificarRol":{
 		"usuario": "aicuna",
 		
-		"idRol":4,
+		"idRol":"",
 		"rolName": "Nuevo rol",
 		"rolDescription": "Prueba",
 		"borradoRol":1

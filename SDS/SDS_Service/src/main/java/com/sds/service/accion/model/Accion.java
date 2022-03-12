@@ -11,6 +11,12 @@ public class Accion {
 
 	}
 
+	public Accion(final String usuario, final AccionEntity accion) {
+		super();
+		this.usuario = usuario;
+		this.accion = accion;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

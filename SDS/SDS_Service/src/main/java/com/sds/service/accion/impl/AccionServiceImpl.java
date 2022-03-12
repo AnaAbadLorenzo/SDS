@@ -12,20 +12,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sds.model.AccionEntity;
+import com.sds.model.FuncionalidadEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.RolAccionFuncionalidadEntity;
+import com.sds.model.RolEntity;
 import com.sds.repository.AccionRepository;
+import com.sds.repository.FuncionalidadRepository;
 import com.sds.repository.RolAccionFuncionalidadRepository;
+import com.sds.repository.RolRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
+import com.sds.service.accion.model.AccionAsignar;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
 import com.sds.service.exception.AccionYaExisteException;
+import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
@@ -39,6 +46,12 @@ public class AccionServiceImpl implements AccionService {
 
 	@Autowired
 	AccionRepository accionRepository;
+
+	@Autowired
+	RolRepository rolRepository;
+
+	@Autowired
+	FuncionalidadRepository funcionalidadRepository;
 
 	@Autowired
 	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
@@ -331,6 +344,93 @@ public class AccionServiceImpl implements AccionService {
 			resultado = modificarAccion(accion);
 		}
 
+		return resultado;
+	}
+
+	@Override
+	public String asignarAccciones(final AccionAsignar accion)
+			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException,
+			FuncionalidadNoExisteException, RolNoExisteException {
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		final Optional<AccionEntity> accionBD = accionRepository.findById(accion.getAccion().getIdAccion());
+
+		if (accionBD.isPresent() && accionBD.get().getBorradoAccion() == 0) {
+			final Optional<RolEntity> rolBD = rolRepository.findById(accion.getRol().getIdRol());
+
+			if (rolBD.isPresent() && rolBD.get().getBorradoRol() == 0) {
+				final Optional<FuncionalidadEntity> funcionalidadBD = funcionalidadRepository
+						.findById(accion.getFuncionalidad().getIdFuncionalidad());
+
+				if (funcionalidadBD.isPresent() && funcionalidadBD.get().getBorradoFuncionalidad() == 0) {
+					final RolAccionFuncionalidadEntity rolAccionFuncionalidad = new RolAccionFuncionalidadEntity(
+							accion.getAccion().getIdAccion(), accion.getFuncionalidad().getIdFuncionalidad(),
+							accion.getRol().getIdRol());
+					rolAccionFuncionalidadRepository.saveAndFlush(rolAccionFuncionalidad);
+
+					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(accion.getUsuario(),
+							Constantes.ACCION_ASIGNAR_ACCION, accion.toString());
+
+					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+					}
+
+					resultado = Constantes.OK;
+				} else {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()),
+							CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo());
+
+					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new FuncionalidadNoExisteException(
+							CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()));
+				}
+			} else {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
+			}
+
+		} else {
+			final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
+		}
 		return resultado;
 	}
 

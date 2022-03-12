@@ -142,4 +142,15 @@ public class UsuarioController {
 		}
 		return new RespEntity(RespCode.USUARIO_MODIFICAR_VACIO, usuarioModificar);
 	}
+
+	@PostMapping(value = "/borrarRol")
+	@ResponseBody
+	public RespEntity borrarRol(@RequestBody final UsuarioEntity usuario) {
+		try {
+			usuarioService.deleteUsuario(usuario);
+			return new RespEntity(RespCode.USUARIO_BORRADO, usuario);
+		} catch (final UsuarioNoEncontradoException e) {
+			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, usuario);
+		}
+	}
 }

@@ -77,7 +77,7 @@ public class LoginController {
 			try {
 				String resultado;
 				resultado = loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(),
-						recuperarPass.getEmailUsuario());
+						recuperarPass.getEmailUsuario(), recuperarPass.getIdioma());
 				if (CodeMessageErrors.EMAIL_VACIO.name().equals(resultado)) {
 					return new RespEntity(RespCode.EMAIL_VACIO, recuperarPass);
 				}

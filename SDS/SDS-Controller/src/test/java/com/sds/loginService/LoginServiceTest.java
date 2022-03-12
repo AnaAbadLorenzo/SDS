@@ -153,7 +153,7 @@ public class LoginServiceTest {
 				Constantes.EMAIL_NO_ENCONTRADO);
 
 		try {
-			loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(), recuperarPass.getEmailUsuario());
+			loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(), recuperarPass.getEmailUsuario(), "ES");
 		} catch (final EmailNoEncontradoException exception) {
 			throw new EmailNoEncontradoException(CodeMessageErrors.EMAIL_NO_ENCONTRADO_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.EMAIL_NO_ENCONTRADO_EXCEPTION.getCodigo()));
@@ -192,7 +192,7 @@ public class LoginServiceTest {
 				Constantes.USUARIO_NO_EXISTE);
 
 		try {
-			loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(), recuperarPass.getEmailUsuario());
+			loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(), recuperarPass.getEmailUsuario(), "ES");
 		} catch (final UsuarioNoEncontradoException exception) {
 			throw new UsuarioNoEncontradoException(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
 					CodeMessageErrors
@@ -231,7 +231,7 @@ public class LoginServiceTest {
 				Constantes.RECUPERAR_PASS_CORRECTO);
 
 		final String respuesta = loginService.recuperarPasswdUsuario(recuperarPass.getUsuario(),
-				recuperarPass.getEmailUsuario());
+				recuperarPass.getEmailUsuario(), "ES");
 
 		assertNotNull(respuesta);
 

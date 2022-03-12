@@ -18,6 +18,7 @@ import com.sds.repository.PersonaRepository;
 import com.sds.repository.RolRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.exception.EmpresaNoEncontradaException;
 import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -57,9 +58,9 @@ public class RegistroServiceImpl implements RegistroService {
 	}
 
 	@Override
-	public String registrar(final Registro registro)
-			throws UsuarioYaExisteException, PersonaYaExisteException, EmpresaYaExisteException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ParseException {
+	public String registrar(final Registro registro) throws UsuarioYaExisteException, PersonaYaExisteException,
+			EmpresaYaExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ParseException,
+			EmpresaNoEncontradaException {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
@@ -70,50 +71,84 @@ public class RegistroServiceImpl implements RegistroService {
 
 		if (registroValido) {
 			if (!existeRegistro(registro)) {
+				if (registro.getDatosEmpresa() != null) {
+					if (registro.getDatosEmpresa().getIdEmpresa() == null) {
+						if (validaciones.comprobarEmpresaBlank(registro.getDatosEmpresa())) {
+							final EmpresaEntity empresa = empresaRepository
+									.findByCif(registro.getDatosEmpresa().getCifEmpresa());
 
-				if (registro.getDatosEmpresa().getIdEmpresa() == null) {
-					final EmpresaEntity empresa = empresaRepository
-							.findByCif(registro.getDatosEmpresa().getCifEmpresa());
+							if (empresa != null) {
+								final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+										Constantes.USUARIO_GENERICO,
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()),
+										CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo());
 
-					if (empresa == null) {
-						registro.getDatosEmpresa().setBorradoEmpresa(0);
-						empresaRepository.saveAndFlush(registro.getDatosEmpresa());
+								resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-						logAcciones = util.generarDatosLogAcciones(Constantes.USUARIO_GENERICO, Constantes.REGISTRAR,
-								registro.getDatosEmpresa().toString());
+								if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+									throw new LogExcepcionesNoGuardadoException(
+											CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+											CodeMessageErrors.getTipoNameByCodigo(
+													CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+								}
 
-						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+								throw new EmpresaYaExisteException(
+										CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
+							} else {
 
-						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-									CodeMessageErrors
-											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+								registro.getDatosEmpresa().setBorradoEmpresa(0);
+								empresaRepository.saveAndFlush(registro.getDatosEmpresa());
+								logAcciones = util.generarDatosLogAcciones(Constantes.USUARIO_GENERICO,
+										Constantes.REGISTRAR, registro.getDatosPersona().toString());
+
+								resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+								if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+									throw new LogAccionesNoGuardadoException(
+											CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+											CodeMessageErrors.getTipoNameByCodigo(
+													CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+								}
+
+								registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
+							}
 						}
+
 					} else {
-						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-								Constantes.USUARIO_GENERICO,
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()),
-								CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo());
+						final Optional<EmpresaEntity> empresa = empresaRepository
+								.findById(registro.getDatosEmpresa().getIdEmpresa());
 
-						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+						if (empresa.isPresent()) {
+							registro.setDatosEmpresa(empresa.get());
+							registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
+						} else {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									Constantes.USUARIO_GENERICO,
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+									CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
 
-						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-							throw new LogExcepcionesNoGuardadoException(
-									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
-											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new EmpresaNoEncontradaException(
+									CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()));
 						}
-
-						throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
-								CodeMessageErrors.getTipoNameByCodigo(
-										CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
 					}
-
 				}
 
-				registro.getDatosEmpresa().setBorradoEmpresa(0);
 				registro.getDatosPersona().setBorradoP(0);
-				registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 				personaRepository.saveAndFlush(registro.getDatosPersona());
 
 				logAcciones = util.generarDatosLogAcciones(Constantes.USUARIO_GENERICO, Constantes.REGISTRAR,

@@ -14,8 +14,7 @@ import com.sds.rolService.RolServiceTest;
 import com.sds.usuarioService.UsuarioServiceTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ AccionServiceTest.class, EmpresaServiceTest.class, FuncionalidadServiceTest.class,
-		LoginServiceTest.class, PersonaServiceTest.class, RegistroServiceTest.class, RolServiceTest.class,
-		UsuarioServiceTest.class })
+@SuiteClasses({ RegistroServiceTest.class, LoginServiceTest.class, AccionServiceTest.class, EmpresaServiceTest.class,
+		FuncionalidadServiceTest.class, PersonaServiceTest.class, RolServiceTest.class, UsuarioServiceTest.class })
 public class TestSuite {
 }

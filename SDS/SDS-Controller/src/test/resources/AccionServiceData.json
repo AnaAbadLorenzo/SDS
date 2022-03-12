@@ -27,7 +27,7 @@
 		"descripAccion": "accion",
 		"borradoAccion": 0
 	},
-	"accionDescriptionVacio":{
+	"accionDescriptionVacio": {
 		"usuario": "ana",
 		"idAccion": "",
 		"nombreAccion": "Accion",
@@ -41,14 +41,13 @@
 		"descripAccion": "",
 		"borradoAccion": 0
 	},
-	"reactivarAccionCorrecto":{
+	"reactivarAccionCorrecto": {
 		"usuario": "ana",
 		"idAccion": "",
 		"nombreAccion": "accion",
 		"descripAccion": "Reactivar esta accion",
 		"borradoAccion": 1
 	},
-	
 	"accionYaExiste": {
 		"usuario": "ana",
 		"idAccion": 1,
@@ -56,7 +55,6 @@
 		"descripAccion": "añadir",
 		"borradoAccion": 0
 	},
-	
 	"eliminarAccionNoExiste": {
 		"usuario": "ana",
 		"idAccion": "",
@@ -64,12 +62,26 @@
 		"descripAccion": "accion",
 		"borradoAccion": 0
 	},
-	
-	"eliminarAccionAsociadaRolFuncionalidad":{
+	"eliminarAccionAsociadaRolFuncionalidad": {
 		"usuario": "ana",
 		"idAccion": 2,
 		"nombreAccion": "login",
 		"descripAccion": "login",
 		"borradoAccion": 0
+	},
+	"asignarAccionCorrecto": {
+		"idAccion": "",
+		"nombreAccion": "accionPrueba",
+		"descripAccion": "Descripcion",
+		"borradoAccion": 0,
+		"idRol": "",
+		"rolName": "nombreRol",
+		"rolDescription": "descripRol",
+		"borradoRol": 0,
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "nombreFuncionalidad",
+		"descripFuncionalidad": "descripcionFuncionalidad",
+		"borradoFuncionalidad": 0,
+		"usuario": "ana"
 	}
 }
