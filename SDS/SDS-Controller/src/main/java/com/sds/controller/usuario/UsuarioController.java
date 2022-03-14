@@ -143,9 +143,9 @@ public class UsuarioController {
 		return new RespEntity(RespCode.USUARIO_MODIFICAR_VACIO, usuarioModificar);
 	}
 
-	@PostMapping(value = "/borrarRol")
+	@PostMapping(value = "/borrarUsuario")
 	@ResponseBody
-	public RespEntity borrarRol(@RequestBody final UsuarioEntity usuario) {
+	public RespEntity borrarUsuario(@RequestBody final UsuarioEntity usuario) {
 		try {
 			usuarioService.deleteUsuario(usuario);
 			return new RespEntity(RespCode.USUARIO_BORRADO, usuario);

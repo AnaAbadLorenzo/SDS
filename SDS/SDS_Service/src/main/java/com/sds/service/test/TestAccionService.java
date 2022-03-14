@@ -36,4 +36,7 @@ public interface TestAccionService {
 
 	List<DatosPruebaAcciones> getPruebasAccionesAccionReactivar()
 			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesAccionAsignarAcciones()
+			throws IOException, ParseException, java.text.ParseException;
 }

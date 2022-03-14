@@ -388,8 +388,6 @@ public class AccionServiceTest {
 		final AccionAsignar accionAsignar = generateAccionAsignar(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ASIGNAR_ACCION_CORRECTO);
 
-		final String respuesta = StringUtils.EMPTY;
-
 		rolService.guardarRol(new Rol(accionAsignar.getUsuario(), accionAsignar.getRol()));
 		funcionalidadService
 				.anadirFuncionalidad(new Funcionalidad(accionAsignar.getUsuario(), accionAsignar.getFuncionalidad()));
@@ -425,8 +423,6 @@ public class AccionServiceTest {
 		final AccionAsignar accionAsignar = generateAccionAsignar(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ASIGNAR_ACCION_CORRECTO);
 
-		final String respuesta = StringUtils.EMPTY;
-
 		accionService.anadirAccion(new Accion(accionAsignar.getUsuario(), accionAsignar.getAccion()));
 		funcionalidadService
 				.anadirFuncionalidad(new Funcionalidad(accionAsignar.getUsuario(), accionAsignar.getFuncionalidad()));
@@ -461,8 +457,6 @@ public class AccionServiceTest {
 
 		final AccionAsignar accionAsignar = generateAccionAsignar(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ASIGNAR_ACCION_CORRECTO);
-
-		final String respuesta = StringUtils.EMPTY;
 
 		accionService.anadirAccion(new Accion(accionAsignar.getUsuario(), accionAsignar.getAccion()));
 		rolService.guardarRol(new Rol(accionAsignar.getUsuario(), accionAsignar.getRol()));
