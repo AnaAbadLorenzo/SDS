@@ -113,6 +113,7 @@ public class Mensajes {
 	public static final String ELIMINAR_ACCION_CORRECTO = "La accion se ha eliminado correctamente";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La accion no se puede eliminar porque tiene un rol y una funcionalidad asociadas";
 	public static final String ACCION_REACTIVADA_CORRECTAMENTE = "La acción se ha reactivado correctamente";
+	public static final String ACCION_ASIGNADA_CORRECTAMENTE = "La acción ha sido asignada al rol correctamente";
 
 	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad no pueden ser vacios";
 	public static final String FUNCIONALIDAD_NO_EXISTE = "La funcionalidad que busca no existe";
