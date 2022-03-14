@@ -60,29 +60,12 @@ function includeTopMenu() {
 				'<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
 				'<img id="imagenHome" src="images/home.png"/>' +
 				'<div class="home">Menú</div>' +
-				'</a>' +
-				'<div class="dropdown-menu">' +
-				'<a class="dropdown-item" href="#">Gestión Usuarios</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Gestión Personas</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Gestión Empresas</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Gestión Roles</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Gestión Acciones</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Gestión Funcionalidades</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Test</a>' +
-				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="Index.html">Logs</a>' +
-				'</div>' +
+				'</a>' + funcionalidadesUsuario() +
 				'</li>' +
 				'<li class="nav-item dropdown">' +
 				'<a class="nav-link dropdown-toggle" href="#" id="navbardrop2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
 				'<img id="imagenUsuario" src="images/usuario.png"/>' +
-				'<div class="usuarioConectado">admin</div>' +
+				'<div class="usuarioConectado">' + getCookie('usuario') + '</div>' +
 				'</a>' +
 				'<div class="dropdown-menu">' +
 				'<a class="dropdown-item" href="#">Cambiar Contraseña</a>' +
@@ -208,7 +191,13 @@ function resetearFormulario(idFormulario, idElementoList) {
 /**Función para cerrar las ventanas modales*/
 function cerrarModal(idElement){
 	document.getElementById(idElement).style.display = "none";
-}       
+}
+
+/**Función para cerrar las ventanas modales*/
+function cerrarModalNoToken(idElement){
+	document.getElementById(idElement).style.display = "none";
+	window.location.href = "index.html";
+}        
 
 /**Función para desconectar la aplicación */
 function desconectar(){
@@ -234,3 +223,70 @@ function eliminarMensajesValidacionError(idElementoErrorList, idElementoList){
 	});
 }
 
+/**Función para encriptar la pass en md5*/
+function encriptar(idElemento){
+	document.getElementById(idElemento).value = hex_md5(document.getElementById(idElemento).value);
+  	return true;
+
+}
+
+/**Función que va a rellena los select **/
+function rellenaSelect(select, datos){
+
+	var lista = datos;
+
+	for(var i = 0; i<lista.length; i++){
+		var option = document.createElement("option");
+		option.setAttribute("value", datos[i].idEmpresa);
+		option.setAttribute("label", datos[i].nombreEmpresa);
+
+		select.append(option);
+	}
+
+	var option = document.createElement("option");
+	option.setAttribute("value", "default");
+	option.setAttribute("label", " --- Añadir nueva empresa --- ");
+
+	select.append(option);
+
+}
+
+/**Función que va a eliminar los options de los select **/
+function limpiaSelect(select){
+
+	select.empty();
+}
+
+function comprobarTokenUsuario(){
+	var token = getCookie('tokenUsuario');
+	var idioma = getCookie('lang');
+
+	if(token === null || token === ""){
+		errorAutenticado("ERROR_AUTENTICACION", idioma);
+	}else{
+		return true;
+		
+	}
+}
+
+/*Función que muestra el error de acceso por no estar autenticado**/
+function errorAutenticado(codigoResponse, idioma){
+	$("#modal-title").removeClass();
+    $("#modal-title").addClass("STOP");
+	document.getElementById("modal-title").style.color = "#a50707";
+	$("#mensajeError").removeClass();
+    $("#mensajeError").addClass(codigoResponse);   
+    $(".imagenAviso").attr('src', "images/stop.png");   
+    setLang(idioma);
+    document.getElementById("modal").style.display = "block";
+}
+
+$(document).ready(function(){
+  $('.iconCerrar').on('click', function(){
+    if($("#modal-title").attr('class') === "STOP" ){
+    	cerrarModalNoToken('modal');
+    }else{
+    	cerrarModal('modal');
+    }
+  })
+})

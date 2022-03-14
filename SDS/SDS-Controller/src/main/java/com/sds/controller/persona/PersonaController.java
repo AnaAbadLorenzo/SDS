@@ -18,6 +18,7 @@ import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.PersonaYaExisteException;
+import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
@@ -156,6 +157,21 @@ public class PersonaController {
 		}
 
 		return new RespEntity(RespCode.PERSONA_VACIA, persona);
+	}
+
+	@PostMapping(value = "/borrarPersona")
+	@ResponseBody
+	public RespEntity borrarPersona(@RequestBody final PersonaEntity persona) {
+		try {
+			personaService.deletePersona(persona);
+			return new RespEntity(RespCode.PERSONA_BORRADA, persona);
+		} catch (final PersonaNoExisteException e) {
+			return new RespEntity(RespCode.PERSONA_NO_EXISTE, persona);
+		} catch (final UsuarioAsociadoPersonaException e) {
+			return new RespEntity(RespCode.USUARIO_ASOCIADO_PERSONA_EXCEPTION, persona);
+		} catch (final ParseException e) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
+		}
 	}
 
 }

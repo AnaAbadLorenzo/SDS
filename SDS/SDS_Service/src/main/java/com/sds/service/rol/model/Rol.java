@@ -11,6 +11,12 @@ public class Rol {
 
 	}
 
+	public Rol(final String usuario, final RolEntity rol) {
+		super();
+		this.usuario = usuario;
+		this.rol = rol;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

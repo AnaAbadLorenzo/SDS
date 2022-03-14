@@ -33,7 +33,8 @@ function recuperarPassAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var data = {
       usuario : $('#userRecuperarPass').val(),
-      emailUsuario : $('#emailUser').val()
+      emailUsuario : $('#emailUser').val(),
+      idioma: getCookie('lang')
     }
     
     $.ajax({
@@ -63,7 +64,8 @@ async function login() {
     .then((res) => {
         setCookie('tokenUsuario',res.data.tokenUsuario);
         setCookie('rolUsuario', res.data.rolUsuario);
-        setCookie('usuario', usuario);
+        setCookie('usuario', res.data.usuario);
+
         window.location.href = "menu.html";
     })
     
@@ -71,7 +73,7 @@ async function login() {
         $("#login-modal").modal('toggle'); 
         $("#modal-title").removeClass();
         $("#modal-title").addClass("ERROR");
-		document.getElementById("modal-title").style.color = "#a50707";
+		    document.getElementById("modal-title").style.color = "#a50707";
         $(".imagenAviso").attr('src', 'images/failed.png');
         $("#mensajeError").removeClass();
         $("#mensajeError").addClass(res.code);
@@ -88,18 +90,18 @@ async function recuperarPass(){
   .then((res) => {
       	$("#recuperarcontrasena-modal").modal('toggle');
       	$("#login-modal").modal('toggle'); 
-	  	$(".imagenAviso").attr('src', 'images/ok.png');
-		document.getElementById("modal-title").style.color = "#238f2a";
-		document.getElementById("modal-title").style.top = "3%";
-	    $("#modal-title").removeClass();
-	    $("#modal-title").addClass("CONTRASEÑA_REC_OK");
-	    $("#mensajeError").removeClass();
-	    $("#mensajeError").addClass(res.code);
+	  	  $(".imagenAviso").attr('src', 'images/ok.png');
+		    document.getElementById("modal-title").style.color = "#238f2a";
+		    document.getElementById("modal-title").style.top = "3%";
+	      $("#modal-title").removeClass();
+	      $("#modal-title").addClass("CONTRASEÑA_REC_OK");
+	      $("#mensajeError").removeClass();
+	      $("#mensajeError").addClass(res.code);
 	
-	    let idElementoList = ["userRecuperarPass", "emailUser"];
-	    resetearFormulario("formularioRecuperarPass", idElementoList);
-	    setLang(getCookie('lang'));
-	    document.getElementById("modal").style.display = "block";
+  	    let idElementoList = ["userRecuperarPass", "emailUser"];
+  	    resetearFormulario("formularioRecuperarPass", idElementoList);
+  	    setLang(getCookie('lang'));
+  	    document.getElementById("modal").style.display = "block";
 
 
     })
@@ -107,9 +109,9 @@ async function recuperarPass(){
     .catch((res) => {
         $("#recuperarcontrasena-modal").modal('toggle'); 
         $("#login-modal").modal('toggle');
-		$("#modal-title").removeClass();
+		    $("#modal-title").removeClass();
         $("#modal-title").addClass("ERROR");
-		document.getElementById("modal-title").style.color = "#a50707";
+		    document.getElementById("modal-title").style.color = "#a50707";
         $(".imagenAviso").attr('src', 'images/failed.png');
         $("#mensajeError").removeClass();
         $("#mensajeError").addClass(res.code);

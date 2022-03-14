@@ -58,7 +58,7 @@ public class RegistroServiceTest {
 	@Test
 	public void RegistroService_registroPersonaUsuarioEmpresaVacio() throws IOException, ParseException,
 			UsuarioYaExisteException, PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA,
 				Constantes.REGISTRO_PERSONA_USUARIO_EMPRESA_VACIOS_DATA);
@@ -71,7 +71,7 @@ public class RegistroServiceTest {
 	@Test
 	public void RegistroService_registroPersonaVacio() throws IOException, ParseException, UsuarioYaExisteException,
 			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.PERSONA_VACIO_DATA);
 
@@ -83,7 +83,7 @@ public class RegistroServiceTest {
 	@Test
 	public void RegistroService_registroUsuarioVacio() throws IOException, ParseException, UsuarioYaExisteException,
 			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.USUARIO_VACIO_DATA);
 
@@ -95,7 +95,7 @@ public class RegistroServiceTest {
 	@Test(expected = PersonaYaExisteException.class)
 	public void RegistroService_registroPersonaYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
 			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.PERSONA_YA_EXISTE);
 
@@ -105,7 +105,7 @@ public class RegistroServiceTest {
 	@Test(expected = EmpresaYaExisteException.class)
 	public void RegistroService_registroEmpresaYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
 			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.EMPRESA_YA_EXISTE);
 
@@ -115,7 +115,7 @@ public class RegistroServiceTest {
 	@Test(expected = UsuarioYaExisteException.class)
 	public void RegistroService_registroUsuarioYaExiste() throws IOException, ParseException, UsuarioYaExisteException,
 			PersonaYaExisteException, EmpresaYaExisteException, java.text.ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, EmpresaNoEncontradaException {
 
 		final Registro registro = generateRegistro(Constantes.URL_JSON_REGISTRAR_DATA, Constantes.USUARIO_YA_EXISTE);
 

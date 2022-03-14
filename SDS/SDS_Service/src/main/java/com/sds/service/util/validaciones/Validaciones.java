@@ -32,10 +32,13 @@ public class Validaciones {
 		if (!comprobarPersonaBlank(registro.getDatosPersona()) || !comprobarUsuarioBlank(registro.getDatosUsuario())) {
 			return false;
 		} else {
-			if (registro.getDatosEmpresa().getIdEmpresa() == null) {
-				if (!comprobarEmpresaBlank(registro.getDatosEmpresa())) {
-					return false;
+			if (registro.getDatosEmpresa() != null) {
+				if (registro.getDatosEmpresa().getIdEmpresa() == null) {
+					if (!comprobarEmpresaBlank(registro.getDatosEmpresa())) {
+						return true;
+					}
 				}
+
 			}
 		}
 		return true;

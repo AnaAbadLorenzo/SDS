@@ -3,6 +3,14 @@ arrayEN={
 	'LOGIN_USUARIO' : 'User Name',
 	'PASS_USUARIO' : 'User Password',
 	'EMAIL_USUARIO' : 'User email',
+	'DNI' : 'Personal ID',
+	'NOMBRE_PERSONA' : 'Name',
+	'APELLIDOS_PERSONA' : 'Surname',
+	'DIRECCION_PERSONA' : 'Address',
+	'CIF' : 'Enterprise ID',
+	'NOMBRE_EMPRESA': 'Name',
+	'DIRECCION_EMPRESA': 'Address',
+
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
 	'INGLES' : 'English',
@@ -24,6 +32,17 @@ arrayEN={
 	'PASSWORD_INCORRECTO' : 'The password is incorrect. Please try again',
 	'EMAIL_NO_ENCONTRADO' : 'The email doesn`t exist',
 	'PERSONA_NO_EXISTE' : 'The person doesn`t exist',
+	'ERROR_LISTAR_EMPRESAS' : "An error occurred while listing the available enterprises",
+	'USUARIO_YA_EXISTE' : 'User already exist',
+	'PERSONA_YA_EXISTE' : 'Person already exist',
+	'EMPRESA_YA_EXISTE' : 'Enterprise already exist',
+	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'Enterprise don´t exist',
+	'ERROR_AUTENTICACION' : 'You are not allow. Try again',
+	'ERROR_LISTAR_FUNCIONALIDADES_MENU' : 'An error ocurred while listing the funcionalities of the user',
+	'STOP' : 'STOP',
+	
+
+
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',
@@ -40,12 +59,60 @@ arrayEN={
 	'PASS_ALFANUMERICO_INCORRECTO' : 'User password can only contain numbers and letters',
 	'EMAIL_ALFANUMERICO_INCORRECTO' : 'User email must have the format example@example.com',
 	'LOGIN_VACIO': 'The user login and the password are empty',
+	'DNI_PERSONA_VACIO' : 'Personal ID is empty',
+	'DNI_PERSONA_MENOR_QUE_9' : 'Personal ID size is menor than 9 characteres',
+	'DNI_PERSONA_MAYOR_QUE_9' : 'Personal ID size is bigger than 9 characteres',
+	'DNI_PERSONA_INCORRECTO' : 'Personal ID must only have letters and numbers',
+	'NOMBRE_VACIO' : 'Person name empty',
+	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'Person name can only contain letters',
+	'NOMBRE_MENOR_QUE_3' : 'Person name size minor than 3 characteres',
+	'NOMBRE_MAYOR_QUE_56' : 'Person name size bigger than 56 characteres',
+	'NOMBRE_MAYOR_QUE_48' : 'Enterprise name size bigger than 48 characteres',
+	'APELLIDOS_PERSONA_VACIO': 'Person surname empty',
+	'APELLIDOS_PERSONA_MENOR_QUE_3': 'Person surname size is minor than 3 characteres',
+	'APELLIDOS_PERSONA_MAYOR_QUE_128': 'Person surname size bigger thna 128 characteres',
+	'APELLIDOS_PERSONA_LETRAS_ACENTOS_INCORRECTO': 'Person surname can only contain letters',
+	'FECHA_NACIMIENTO_VACIA' : 'Date of birth empty',
+	'FECHA_NACIMIENTO_MENOR_QUE_8' : 'Date of birth size is minor than 8',
+	'FECHA_NACIMIENTO_MAYOR_QUE_8' : 'Date of birth size is bigger than 8',
+	'FECHA_NACIMIENTO_NUMERICA_INCORRECTA' : 'Date of birth format is incorrect',
+	'DIRECCION_VACIO': 'Person address empty',
+	'DIRECCION_MENOR_QUE_3': 'Person address size is minor than 3 characteres',
+	'DIRECCION_MAYOR_QUE_128' : 'Person address size is bigger than 128 characteres',
+	'DIRECCION_FORMATO_INCORRECTO': 'Person address can only contains lettes, numbers and º ª / -',
+	'TELEFONO_VACIO' : 'Person phone empty',
+	'TELEFONO_MENOR_QUE_9' : 'Person phone size is minor than 9 numbers',
+	'TELEFONO_MAYOR_QUE_9' : 'Person phone size is bigger than 9 numbers',
+	'TELEFONO_NUMERICO_INCORRECTO' : 'Person phone can only contain numbers',
+	'CIF_EMPRESA_VACIO' : 'Enterprise CIF empty',
+	'CIF_EMPRESA_MENOR_QUE_9' : 'Enterprise CIF size is minor than 9 characteres',
+	'CIF_EMPRESA_MAYOR_QUE_9' : 'Enterprise CIF size is bigger than 9 characteres',
+	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'Enterprise ID must only have letters and numbers',
+
+
+
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
 	'RELLENAR_FORM_PASS' : 'Fill the form to recover it',
 	'RECUPERAR_PASS' : 'Recovery password',
 	'ACCEDER_CUENTA' : 'Access with you account',
+	'MENSAJE_BIENVENIDA' : 'Welcome to SDS',
+	'DATOS_PERSONALES' : 'Personal information',
+	'DATOS_USUARIO' : 'User information',
+	'DATOS_EMPRESA' : 'Enterprise information',
+	'CONFIRMAR_PASS_USUARIO' : 'Confirm password',
+	'CONTRASEÑAS_NO_COINCIDEN' : 'Passwords do not match',
+	'ASOCIARTE_EMPRESA': 'Do you want to partner a company?',
+	'SELECCIONAR_EMPRESA': 'Do you want to select a company from those available?',
+	'EMPRESAS_DISPONIBLES' : 'Available enterprises',
+	'SI' : 'Yes',
+	'NO' : 'No',
+	'FORMATO_TELF' : 'Format: 123456789',
+	'FORMAT_EMAIL' : 'Format: example@example.com',
+	'FORMATO_DNI' : 'Format: 12345678A',
+	'FORMATO_CIF' : 'Format: A12345678',
+	'REGISTRO_USUARIOS' : 'New users register',
 
 
 	//Acciones

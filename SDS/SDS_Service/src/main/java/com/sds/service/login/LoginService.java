@@ -17,7 +17,8 @@ public interface LoginService {
 	LoginRol loginUser(final Login login) throws UsuarioNoEncontradoException, PasswordIncorrectoException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
 
-	String recuperarPasswdUsuario(final String usuario, final String emailUsuario) throws UsuarioNoEncontradoException,
-			MessagingException, LogExcepcionesNoGuardadoException, PersonaNoExisteException, EmailNoEncontradoException,
-			LogAccionesNoGuardadoException, MailNoEnviadoException;
+	String recuperarPasswdUsuario(final String usuario, final String emailUsuario, final String idioma)
+			throws UsuarioNoEncontradoException, MessagingException, LogExcepcionesNoGuardadoException,
+			PersonaNoExisteException, EmailNoEncontradoException, LogAccionesNoGuardadoException,
+			MailNoEnviadoException;
 }

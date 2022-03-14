@@ -487,7 +487,7 @@ public class TestController {
 
 	@GetMapping(value = "/usuario/atributos/modificarRol")
 	@ResponseBody
-	public RespEntity TestUsuarioAtributosAccionModificar() {
+	public RespEntity TestUsuarioAtributosAccionModificarRol() {
 
 		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
 

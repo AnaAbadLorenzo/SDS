@@ -113,6 +113,26 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	public List<EmpresaEntity> buscarTodos() {
+		final List<EmpresaEntity> toret = new ArrayList<>();
+
+		final List<EmpresaEntity> empresaBD = empresaRepository.findAll();
+
+		if (!empresaBD.isEmpty()) {
+			for (final EmpresaEntity empresa : empresaBD) {
+				final EmpresaEntity empresaToret = new EmpresaEntity(empresa.getIdEmpresa(), empresa.getCifEmpresa(),
+						empresa.getNombreEmpresa(), empresa.getDireccionEmpresa(), empresa.getTelefonoEmpresa(),
+						empresa.getBorradoEmpresa());
+
+				toret.add(empresaToret);
+
+			}
+		}
+
+		return toret;
+	}
+
+	@Override
 	public ReturnBusquedas<EmpresaEntity> buscarEmpresasEliminadas(final int inicio, final int tamanhoPagina) {
 
 		final List<EmpresaEntity> toret = new ArrayList<>();

@@ -1,5 +1,7 @@
 package com.sds.service.empresa;
 
+import java.util.List;
+
 import com.sds.model.EmpresaEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.empresa.model.Empresa;
@@ -15,6 +17,8 @@ public interface EmpresaService {
 			final String direccionEmpresa, final String telefonoEmpresa, final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<EmpresaEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+
+	List<EmpresaEntity> buscarTodos();
 
 	ReturnBusquedas<EmpresaEntity> buscarEmpresasEliminadas(final int inicio, final int tamanhoPagina);
 

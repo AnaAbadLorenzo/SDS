@@ -147,4 +147,16 @@ public class RolController {
 
 	}
 
+	@PostMapping(value = "/borradoRol")
+	@ResponseBody
+	public RespEntity borrarRol(@RequestBody final Rol rol) {
+		try {
+			rolService.deleteRol(rol);
+			return new RespEntity(RespCode.ROL_BORRADO, rol);
+		} catch (final RolNoExisteException e) {
+			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
+		}
+
+	}
+
 }

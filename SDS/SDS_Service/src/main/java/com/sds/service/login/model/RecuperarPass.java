@@ -4,15 +4,17 @@ public class RecuperarPass {
 
 	private String usuario;
 	private String emailUsuario;
+	private String idioma;
 
 	public RecuperarPass() {
 
 	}
 
-	public RecuperarPass(final String usuario, final String emailUsuario) {
+	public RecuperarPass(final String usuario, final String emailUsuario, final String idioma) {
 		super();
 		this.usuario = usuario;
 		this.emailUsuario = emailUsuario;
+		this.idioma = idioma;
 	}
 
 	public String getUsuario() {
@@ -31,9 +33,17 @@ public class RecuperarPass {
 		this.emailUsuario = emailUsuario;
 	}
 
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(final String idioma) {
+		this.idioma = idioma;
+	}
+
 	@Override
 	public String toString() {
-		return "RecuperarPass [usuario=" + usuario + ", emailUsuario=" + emailUsuario + "]";
+		return "RecuperarPass [usuario=" + usuario + ", emailUsuario=" + emailUsuario + ", idioma=" + idioma + "]";
 	}
 
 }

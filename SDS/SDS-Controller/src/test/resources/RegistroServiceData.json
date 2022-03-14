@@ -173,7 +173,7 @@
 			"passwdUsuario" : "jorgito",
 			"idRol" : 2,
 	
-			"idEmpresa" : 4,
+			"idEmpresa" : "",
 			"cifEmpresa" : "R56797544",
 			"nombreEmpresa" : "EmpresasPepe",
 			"direccionEmpresa" : "Prueba",

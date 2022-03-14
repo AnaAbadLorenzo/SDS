@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.exception.EmpresaNoEncontradaException;
 import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -58,8 +59,10 @@ public class RegistroController {
 			return new RespEntity(RespCode.PERSONA_YA_EXISTE, registro);
 		} catch (final EmpresaYaExisteException empresaAlreadyExists) {
 			return new RespEntity(RespCode.EMPRESA_YA_EXISTE, registro);
+		} catch (final EmpresaNoEncontradaException empresaNoEncontrada) {
+			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, registro);
 		} catch (final java.text.ParseException ex) {
-			return new RespEntity(RespCode.REGISTRO_VACIO, registro);
+			return new RespEntity(RespCode.PARSE_EXCEPTION, registro);
 		}
 
 		return new RespEntity(RespCode.REGISTRO_VACIO, registro);

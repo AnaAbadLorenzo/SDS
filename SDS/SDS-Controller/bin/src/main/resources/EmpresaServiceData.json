@@ -1,0 +1,135 @@
+{
+	"buscarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":1,
+		"cifEmpresa":"J26903286",
+		"nombreEmpresa":"Prueba",
+		"direccionEmpresa":"Prueba",
+		"telefonoEmpresa":"988212121",
+		"borradoEmpresa":0
+	},
+	
+	"cifEmpresaVacio": {
+		"usuario":"ana",
+		
+		"idEmpresa":1,
+		"cifEmpresa":"",
+		"nombreEmpresa":"Prueba",
+		"direccionEmpresa":"Prueba",
+		"telefonoEmpresa":"988212121",
+		"borradoEmpresa":0
+	}, 
+	"nombreEmpresaVacio": {
+		"usuario":"ana",
+		
+		"idEmpresa":1,
+		"cifEmpresa":"J26903286",
+		"nombreEmpresa":"",
+		"direccionEmpresa":"Prueba",
+		"telefonoEmpresa":"988212121",
+		"borradoEmpresa":0
+	},
+	"direccionEmpresaVacio": {
+		"usuario":"ana",
+		
+		"idEmpresa":1,
+		"cifEmpresa":"J26903286",
+		"nombreEmpresa":"Prueba",
+		"direccionEmpresa":"",
+		"telefonoEmpresa":"988212121",
+		"borradoEmpresa":0
+	},
+	"telefonoEmpresaVacio": {
+		"usuario":"ana",
+		
+		"idEmpresa":1,
+		"cifEmpresa":"J26903286",
+		"nombreEmpresa":"Prueba",
+		"direccionEmpresa":"Prueba",
+		"telefonoEmpresa":"",
+		"borradoEmpresa":0
+	},
+	
+	"parametrosEmpresaVacios":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"",
+		"nombreEmpresa":"",
+		"direccionEmpresa":"",
+		"telefonoEmpresa":"",
+		"borradoEmpresa":""
+	},
+	
+	"empresaYaExiste":{
+		"usuario":"ana",
+		
+		"idEmpresa":1,
+		"cifEmpresa":"J26903286",
+		"nombreEmpresa":"Prueba",
+		"direccionEmpresa":"Prueba",
+		"telefonoEmpresa":"988212121",
+		"borradoEmpresa":0
+	},
+	"guardarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E32589671",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":0
+	},
+	"modificarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E32589671",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":0
+	},
+	"empresaNoExiste":{
+		"usuario":"ana",
+		
+		"idEmpresa":3,
+		"cifEmpresa":"E98745148",
+		"nombreEmpresa":"Emp",
+		"direccionEmpresa":"Direccion",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":0
+	},
+	"eliminarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E32589671",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":0
+	},
+	"eliminarEmpresaAsociadaPersonas":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E22222222",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":0
+	},
+	"reactivarEmpresaCorrecto":{
+		"usuario":"ana",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"E32589671",
+		"nombreEmpresa":"Empresa",
+		"direccionEmpresa":"Empresa",
+		"telefonoEmpresa":"988232323",
+		"borradoEmpresa":1
+	}
+}

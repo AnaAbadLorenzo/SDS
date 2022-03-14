@@ -49,8 +49,8 @@ public class PersonaEntity {
 	@Column(name = "borrado_persona")
 	private Integer borradoP;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
+	@ManyToOne(optional = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa", nullable = true)
 	private EmpresaEntity empresa;
 
 	@OneToOne
