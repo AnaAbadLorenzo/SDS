@@ -26,7 +26,13 @@
     <script type="text/javascript" src="Locale/Lang_GA.js"></script>	
 </head>
 
-<body onload="includeTopMenu();cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario()">  
+<body onload="
+  (async ()=>{
+  	await includeTopMenu();
+    await funcionalidadesUsuario();
+	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario()
+  })();
+">
 	
 	<div id="topMenu"></div>
 
