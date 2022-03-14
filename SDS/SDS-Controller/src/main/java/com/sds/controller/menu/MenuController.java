@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,7 @@ public class MenuController {
 
 	@GetMapping(value = "/funcionalidadesUsuario")
 	@ResponseBody
-	public RespEntity funcionalidadesUsuario(@RequestBody final String usuario) {
+	public RespEntity funcionalidadesUsuario(final String usuario) {
 		Menu menu = new Menu();
 		menu = aclService.funcionesUsuario(usuario);
 

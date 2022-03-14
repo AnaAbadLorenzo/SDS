@@ -20,6 +20,7 @@ async function funcionalidadesUsuario() {
 function funcionalidadesUsuarioAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var nombreUsuario = getCookie('usuario');
+    var token = getCookie('tokenUsuario');
     
     var usuario = nombreUsuario;
   
@@ -27,27 +28,33 @@ function funcionalidadesUsuarioAjaxPromesa(){
       method: "GET",
       url: urlPeticionAjaxFuncionalidadesUsuario,
       contentType : "application/json",
-      data: usuario,  
+      data: { usuario : usuario},  
       dataType : 'json',
+      headers: {'Authorization': token},
       }).done(res => {
-          if (res.code != 'MENU_USUARIO_OK') {
-            reject(res);
-          }
-          resolve(res);
-    }).fail(errorGenerico());
+        if (res.code != 'MENU_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+    }).fail( function( jqXHR, textStatus, errorThrown ) {
+        alert( 'Error!!' );
+      });
   });
 }
 
+/**Función que carga las funcionalidades asociadas al usuario**/
 function cargarFuncionalidadesUsuario(datos){
   var i;
 
-  var htmlMenu = '<div class="dropdown-menu">';
+  $("#listadoFuncionalidades").html("");
+
+  var htmlMenu = '';
 
   for(i = 0; i<(datos.funcionalidades.length) - 1; i++){
-    htmlMenu.append('<a class="dropdown-item" href="#">' + datos.funcionalidades[i]);
-    htmlMenu.append('<div class="dropdown-divider"></div>');
+    htmlMenu = htmlMenu + '<a class="dropdown-item" href="#">' + datos.funcionalidades[i] + '</a> <div class="dropdown-divider"></div>';
   }
 
-  htmlMenu.append('<a class="dropdown-item" href="#">' + datos.funcionalidades[i] + '</div>');
+  htmlMenu = htmlMenu + '<a class="dropdown-item" href="#">' + datos.funcionalidades[i] + '</a>';
 
+  $("#listadoFuncionalidades").append(htmlMenu);
 }

@@ -60,9 +60,11 @@ function includeTopMenu() {
 				'<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
 				'<img id="imagenHome" src="images/home.png"/>' +
 				'<div class="home">Menú</div>' +
-				'</a>' + funcionalidadesUsuario() +
-				'</li>' +
-				'<li class="nav-item dropdown">' +
+				'</a>' + 
+				'<div class="dropdown-menu" id="listadoFuncionalidades">' +
+				'</div>' +
+				'</li>' +	
+				'<li class="nav-item dropdown">' +					
 				'<a class="nav-link dropdown-toggle" href="#" id="navbardrop2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
 				'<img id="imagenUsuario" src="images/usuario.png"/>' +
 				'<div class="usuarioConectado">' + getCookie('usuario') + '</div>' +
@@ -102,7 +104,6 @@ function sortTable(n , idTable) {
       		x = rows[i].getElementsByTagName("TD")[n];
       		y = rows[i + 1].getElementsByTagName("TD")[n];
       
-
       		if (dir == "asc") {
         		if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           		
@@ -148,7 +149,6 @@ function setCookie(name, value, days) {
     }
 
     document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-
 }
 
 /*Función para obtener el valor de la cookie*/
@@ -257,6 +257,7 @@ function limpiaSelect(select){
 	select.empty();
 }
 
+/**Función para comprobar que el token del usuario se encuentra en las cookies**/
 function comprobarTokenUsuario(){
 	var token = getCookie('tokenUsuario');
 	var idioma = getCookie('lang');

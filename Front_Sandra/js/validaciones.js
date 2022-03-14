@@ -601,11 +601,8 @@ function comprobarFormatoEmail(idElemento, idElementoError, campo) {
 		return false;
 	}
 
-      return true;
-
+    return true;
 }
-
-
 
 function validacionOK(idElemento, idElementoError) {
 
