@@ -90,7 +90,7 @@ public class UsuarioController {
 			String resultado;
 			try {
 				resultado = usuarioService.reactivarUsuario(usuario);
-				return new RespEntity(RespCode.USUARIO_ELIMINADO, resultado);
+				return new RespEntity(RespCode.USUARIO_REACTIVADO, resultado);
 			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuario);
 			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
