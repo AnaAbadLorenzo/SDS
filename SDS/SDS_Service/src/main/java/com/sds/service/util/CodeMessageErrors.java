@@ -39,6 +39,7 @@ public enum CodeMessageErrors {
 	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("La funcionalidad que busca ya existe"), //
 	FUNCIONALIDAD_NO_EXISTE_EXCEPTION("La funcionalidad que busca no existe"), //
 	FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION("La funcionalidad está asociada a un rol y a una funcionalidad"), //
+	PERMISO_NO_EXISTE_EXCEPTION("El permiso no existe"), //
 	LOG_EXCEPCIONES_VACIO("LogExcepciones vacío"), //
 	LOG_ACCIONES_VACIO("LogAcciones vacío");
 

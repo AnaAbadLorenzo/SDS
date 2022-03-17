@@ -72,7 +72,8 @@ public class RegistroServiceImpl implements RegistroService {
 		if (registroValido) {
 			if (!existeRegistro(registro)) {
 				if (registro.getDatosEmpresa() != null) {
-					if (registro.getDatosEmpresa().getIdEmpresa() == null) {
+					if (registro.getDatosEmpresa().getIdEmpresa() == null
+							&& registro.getSeleccionarEmpresa().equals("No")) {
 						if (validaciones.comprobarEmpresaBlank(registro.getDatosEmpresa())) {
 							final EmpresaEntity empresa = empresaRepository
 									.findByCif(registro.getDatosEmpresa().getCifEmpresa());
@@ -115,6 +116,8 @@ public class RegistroServiceImpl implements RegistroService {
 
 								registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 							}
+						} else {
+							resultado = CodeMessageErrors.REGISTRO_VACIO.name();
 						}
 
 					} else {

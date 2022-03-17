@@ -83,11 +83,20 @@
 	},
 	
 	"eliminarRolAsociadoAccionFuncionalidad":{
-		"usuario": "aicuna",
+		"usuario": "ana",
 		
 		"idRol":"3",
 		"rolName":"superadministrador",
 		"rolDescription": "Contendrá a todos los superadministradores de la aplicacion",
+		"borradoRol":0
+	},
+	
+	"reactivarRolCorrecto":{
+		"usuario": "ana",
+		
+		"idRol":"",
+		"rolName":"Rol para reactivar",
+		"rolDescription": "Rol para reactivar",
 		"borradoRol":0
 	}
 }

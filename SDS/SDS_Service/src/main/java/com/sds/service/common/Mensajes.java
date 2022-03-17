@@ -103,6 +103,7 @@ public class Mensajes {
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol a eliminar tiene un usuario asociado";
 	public static final String ELIMINAR_ROL_ASOCIADA_ACCION_FUNCIONALIDAD = "El rol tiene asociado una accion y una funcionalidad";
 	public static final String MODIFICAR_ROL = "El rol se ha modificado correctamente";
+	public static final String REACTIVAR_ROL_CORRECTAMENTE = "El rol se ha reactivado correctamente";
 
 	public static final String ACCION_VACIA = "El nombre y descripción de la accion no pueden ser vacios";
 	public static final String ACCION_NO_EXISTE = "La accion que busca no existe";

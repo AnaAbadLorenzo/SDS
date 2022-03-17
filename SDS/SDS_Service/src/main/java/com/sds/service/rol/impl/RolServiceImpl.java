@@ -65,6 +65,7 @@ public class RolServiceImpl implements RolService {
 		RolEntity rolUser = new RolEntity();
 		List<RolEntity> rolesBD = new ArrayList<>();
 		final List<RolEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		rolesBD = entityManager.createNamedQuery("RolEntity.findRol").setParameter("rolName", rolName)
 				.setParameter("rolDescription", rolDescription).setFirstResult(inicio).setMaxResults(tamanhoPagina)
@@ -80,9 +81,11 @@ public class RolServiceImpl implements RolService {
 			}
 
 		}
+		datosBusqueda.add("rolName: " + rolName);
+		datosBusqueda.add("rolDescription: " + rolDescription);
 
-		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
-				toret.size());
+		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, datosBusqueda,
+				numberTotalResults, toret.size());
 		return result;
 
 	}
@@ -321,6 +324,39 @@ public class RolServiceImpl implements RolService {
 			}
 		} else {
 			resultado = CodeMessageErrors.ROL_VACIO.name();
+		}
+
+		return resultado;
+	}
+
+	@Override
+	public String reactivarRol(final Rol rol)
+			throws LogExcepcionesNoGuardadoException, RolNoExisteException, LogAccionesNoGuardadoException {
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+		final RolEntity rolEntity = rol.getRol();
+
+		final Optional<RolEntity> rolBD = rolRepository.findById(rolEntity.getIdRol());
+
+		if (!rolBD.isPresent()) {
+			final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(rol.getUsuario(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
+
+		} else {
+			rolEntity.setBorradoRol(0);
+			rol.setRol(rolEntity);
+			resultado = modificarRol(rol);
 		}
 
 		return resultado;

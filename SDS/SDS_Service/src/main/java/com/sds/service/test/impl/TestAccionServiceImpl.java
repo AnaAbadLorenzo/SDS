@@ -298,13 +298,28 @@ public class TestAccionServiceImpl implements TestAccionService {
 			throws IOException, ParseException, java.text.ParseException {
 		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
-		final AccionEntity datosEntradaReactivarAccionCorrecto = generarJSON
-				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.REACTIVAR_ACCION_CORRECTO);
-		final AccionEntity datosEntradaReactivarAccionNoExiste = generarJSON
-				.generarAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_NO_EXISTE);
+		final RolEntity datosEntradaRolCorrecto = generarJSON.generarRol(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ROL_ASIGNAR_CORRECTO);
+		final AccionEntity datosEntradaAccionCorrecto = generarJSON.generarAccion(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ASIGNAR_ACCION_CORRECTO);
+		final FuncionalidadEntity datosEntradaFuncionalidadCorrecto = generarJSON
+				.generarFuncionalidad(Constantes.URL_JSON_ACCION_DATA, Constantes.ASIGNAR_FUNCIONALIDAD_CORRECTO);
 
-		datosPruebaAcciones.add(getTestReactivarAccionCorrecto(datosEntradaReactivarAccionCorrecto));
-		datosPruebaAcciones.add(getTestReactivarAccionNoExiste(datosEntradaReactivarAccionNoExiste));
+		final AccionEntity datosEntradaAccionNoExiste = generarJSON.generarAccion(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ACCION_NO_EXISTE);
+		final RolEntity datosEntradaRolNoExiste = generarJSON.generarRol(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ROL_NO_EXISTE);
+		final FuncionalidadEntity datosEntradaFuncionalidadNoExiste = generarJSON
+				.generarFuncionalidad(Constantes.URL_JSON_ACCION_DATA, Constantes.FUNCIONALIDAD_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestAsignarAccion(datosEntradaAccionCorrecto, datosEntradaRolCorrecto,
+				datosEntradaFuncionalidadCorrecto));
+		datosPruebaAcciones.add(getTestAsignarAccionAccionNoExiste(datosEntradaAccionNoExiste, datosEntradaRolCorrecto,
+				datosEntradaFuncionalidadCorrecto));
+		datosPruebaAcciones.add(getTestAsignarAccionRolNoExiste(datosEntradaAccionNoExiste, datosEntradaRolNoExiste,
+				datosEntradaFuncionalidadCorrecto));
+		datosPruebaAcciones.add(getTestAsignarAccionFuncionalidadNoExiste(datosEntradaAccionNoExiste,
+				datosEntradaRolCorrecto, datosEntradaFuncionalidadNoExiste));
 
 		return datosPruebaAcciones;
 	}
@@ -525,6 +540,63 @@ public class TestAccionServiceImpl implements TestAccionService {
 
 	}
 
+	private DatosPruebaAcciones getTestAsignarAccion(final AccionEntity datosEntradaAccion,
+			final RolEntity datosEntradaRol, final FuncionalidadEntity datosEntradaFuncionalidad) {
+
+		final String resultadoObtenido = asignarAccion(datosEntradaAccion, datosEntradaRol, datosEntradaFuncionalidad);
+
+		final String resultadoEsperado = CodigosMensajes.ASIGNAR_ACCION_CORRECTO + " - "
+				+ Mensajes.ACCION_ASIGNADA_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.ASIGNAR_ACCION_CORRECTO, Constantes.EXITO,
+				getValorAccionAsignar(datosEntradaAccion, datosEntradaRol, datosEntradaFuncionalidad));
+
+	}
+
+	private DatosPruebaAcciones getTestAsignarAccionAccionNoExiste(final AccionEntity datosEntradaAccion,
+			final RolEntity datosEntradaRol, final FuncionalidadEntity datosEntradaFuncionalidad) {
+
+		final String resultadoObtenido = asignarAccionNoExiste(datosEntradaAccion, datosEntradaRol,
+				datosEntradaFuncionalidad);
+
+		final String resultadoEsperado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.ACCION_NO_EXISTE, Constantes.ERROR,
+				getValorAccionAsignar(datosEntradaAccion, datosEntradaRol, datosEntradaFuncionalidad));
+
+	}
+
+	private DatosPruebaAcciones getTestAsignarAccionRolNoExiste(final AccionEntity datosEntradaAccion,
+			final RolEntity datosEntradaRol, final FuncionalidadEntity datosEntradaFuncionalidad) {
+
+		final String resultadoObtenido = asignarAccionRolNoExiste(datosEntradaAccion, datosEntradaRol,
+				datosEntradaFuncionalidad);
+
+		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.ROL_NO_EXISTE, Constantes.ERROR,
+				getValorAccionAsignar(datosEntradaAccion, datosEntradaRol, datosEntradaFuncionalidad));
+
+	}
+
+	private DatosPruebaAcciones getTestAsignarAccionFuncionalidadNoExiste(final AccionEntity datosEntradaAccion,
+			final RolEntity datosEntradaRol, final FuncionalidadEntity datosEntradaFuncionalidad) {
+
+		final String resultadoObtenido = asignarAccionFuncionalidadNoExiste(datosEntradaAccion, datosEntradaRol,
+				datosEntradaFuncionalidad);
+
+		final String resultadoEsperado = CodigosMensajes.FUNCIONALIDAD_NO_EXISTE + " - "
+				+ Mensajes.FUNCIONALIDAD_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.FUNCIONALIDAD_NO_EXISTE, Constantes.ERROR,
+				getValorAccionAsignar(datosEntradaAccion, datosEntradaRol, datosEntradaFuncionalidad));
+
+	}
+
 	private String buscarAccion(final AccionEntity accion) {
 		String resultado = StringUtils.EMPTY;
 
@@ -709,23 +781,22 @@ public class TestAccionServiceImpl implements TestAccionService {
 		rolRepository.saveAndFlush(rol);
 		funcionalidadRepository.saveAndFlush(funcionalidad);
 
-		List<FuncionalidadEntity> funcionalidadBuscar = new ArrayList<>();
-		List<RolEntity> rolBuscar = new ArrayList<>();
+		FuncionalidadEntity funcionalidadBuscar = new FuncionalidadEntity();
+		RolEntity rolBuscar = new RolEntity();
 
-		final List<AccionEntity> accionBuscar = accionRepository.findAccion(accion.getNombreAccion(),
-				accion.getDescripAccion());
+		final AccionEntity accionBuscar = accionRepository.findAccionByName(accion.getNombreAccion());
 
-		if (accionBuscar.get(0) != null && accionBuscar.get(0).getBorradoAccion() == 0) {
-			rolBuscar = rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
+		if (accionBuscar != null && accionBuscar.getBorradoAccion() == 0) {
+			rolBuscar = rolRepository.findByRolName(rol.getRolName());
 
-			if (rolBuscar.get(0) != null && rolBuscar.get(0).getBorradoRol() == 0) {
-				funcionalidadBuscar = funcionalidadRepository.findFuncionality(funcionalidad.getNombreFuncionalidad(),
-						funcionalidad.getDescripFuncionalidad());
+			if (rolBuscar != null && rolBuscar.getBorradoRol() == 0) {
+				funcionalidadBuscar = funcionalidadRepository
+						.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
 
-				if (funcionalidadBuscar.get(0) != null && funcionalidadBuscar.get(0).getBorradoFuncionalidad() == 0) {
+				if (funcionalidadBuscar != null && funcionalidadBuscar.getBorradoFuncionalidad() == 0) {
 					rolAccionFuncionalidadRepository
-							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.get(0).getIdAccion(),
-									funcionalidadBuscar.get(0).getIdFuncionalidad(), rolBuscar.get(0).getIdRol()));
+							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.getIdAccion(),
+									funcionalidadBuscar.getIdFuncionalidad(), rolBuscar.getIdRol()));
 
 					resultado = CodigosMensajes.ASIGNAR_ACCION_CORRECTO + " - "
 							+ Mensajes.ACCION_ASIGNADA_CORRECTAMENTE;
@@ -734,11 +805,11 @@ public class TestAccionServiceImpl implements TestAccionService {
 			}
 		}
 
-		rolAccionFuncionalidadRepository.delete(new RolAccionFuncionalidadEntity(accionBuscar.get(0).getIdAccion(),
-				funcionalidadBuscar.get(0).getIdFuncionalidad(), rolBuscar.get(0).getIdRol()));
-		accionRepository.deleteAccion(accionBuscar.get(0).getIdAccion());
-		funcionalidadRepository.delete(funcionalidadBuscar.get(0));
-		rolRepository.delete(rolBuscar.get(0));
+		rolAccionFuncionalidadRepository.delete(new RolAccionFuncionalidadEntity(accionBuscar.getIdAccion(),
+				funcionalidadBuscar.getIdFuncionalidad(), rolBuscar.getIdRol()));
+		accionRepository.deleteAccion(accionBuscar.getIdAccion());
+		funcionalidadRepository.delete(funcionalidadBuscar);
+		rolRepository.delete(rolBuscar);
 
 		return resultado;
 	}
@@ -750,23 +821,22 @@ public class TestAccionServiceImpl implements TestAccionService {
 		rolRepository.saveAndFlush(rol);
 		funcionalidadRepository.saveAndFlush(funcionalidad);
 
-		List<FuncionalidadEntity> funcionalidadBuscar = new ArrayList<>();
-		List<RolEntity> rolBuscar = new ArrayList<>();
+		FuncionalidadEntity funcionalidadBuscar = new FuncionalidadEntity();
+		RolEntity rolBuscar = new RolEntity();
 
-		final List<AccionEntity> accionBuscar = accionRepository.findAccion(accion.getNombreAccion(),
-				accion.getDescripAccion());
+		final AccionEntity accionBuscar = accionRepository.findAccionByName(accion.getNombreAccion());
 
-		if (!accionBuscar.isEmpty()) {
-			rolBuscar = rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
+		if (accionBuscar != null && accionBuscar.getBorradoAccion() == 0) {
+			rolBuscar = rolRepository.findByRolName(rol.getRolName());
 
-			if (rolBuscar.get(0) != null && rolBuscar.get(0).getBorradoRol() == 0) {
-				funcionalidadBuscar = funcionalidadRepository.findFuncionality(funcionalidad.getNombreFuncionalidad(),
-						funcionalidad.getDescripFuncionalidad());
+			if (rolBuscar != null && rolBuscar.getBorradoRol() == 0) {
+				funcionalidadBuscar = funcionalidadRepository
+						.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
 
-				if (funcionalidadBuscar.get(0) != null && funcionalidadBuscar.get(0).getBorradoFuncionalidad() == 0) {
+				if (funcionalidadBuscar != null && funcionalidadBuscar.getBorradoFuncionalidad() == 0) {
 					rolAccionFuncionalidadRepository
-							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.get(0).getIdAccion(),
-									funcionalidadBuscar.get(0).getIdFuncionalidad(), rolBuscar.get(0).getIdRol()));
+							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.getIdAccion(),
+									funcionalidadBuscar.getIdFuncionalidad(), rolBuscar.getIdRol()));
 
 					resultado = CodigosMensajes.ASIGNAR_ACCION_CORRECTO + " - "
 							+ Mensajes.ACCION_ASIGNADA_CORRECTAMENTE;
@@ -777,8 +847,11 @@ public class TestAccionServiceImpl implements TestAccionService {
 			resultado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
 		}
 
-		funcionalidadRepository.delete(funcionalidadBuscar.get(0));
-		rolRepository.delete(rolBuscar.get(0));
+		funcionalidadBuscar = funcionalidadRepository.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+		rolBuscar = rolRepository.findByRolName(rol.getRolName());
+
+		funcionalidadRepository.delete(funcionalidadBuscar);
+		rolRepository.delete(rolBuscar);
 
 		return resultado;
 	}
@@ -790,23 +863,22 @@ public class TestAccionServiceImpl implements TestAccionService {
 		accionRepository.saveAndFlush(accion);
 		funcionalidadRepository.saveAndFlush(funcionalidad);
 
-		List<FuncionalidadEntity> funcionalidadBuscar = new ArrayList<>();
-		List<RolEntity> rolBuscar = new ArrayList<>();
+		FuncionalidadEntity funcionalidadBuscar = new FuncionalidadEntity();
+		RolEntity rolBuscar = new RolEntity();
 
-		final List<AccionEntity> accionBuscar = accionRepository.findAccion(accion.getNombreAccion(),
-				accion.getDescripAccion());
+		final AccionEntity accionBuscar = accionRepository.findAccionByName(accion.getNombreAccion());
 
-		if (accionBuscar.get(0) != null && accionBuscar.get(0).getBorradoAccion() == 0) {
-			rolBuscar = rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
+		if (accionBuscar != null && accionBuscar.getBorradoAccion() == 0) {
+			rolBuscar = rolRepository.findByRolName(rol.getRolName());
 
-			if (!rolBuscar.isEmpty()) {
-				funcionalidadBuscar = funcionalidadRepository.findFuncionality(funcionalidad.getNombreFuncionalidad(),
-						funcionalidad.getDescripFuncionalidad());
+			if (rolBuscar != null && rolBuscar.getBorradoRol() == 0) {
+				funcionalidadBuscar = funcionalidadRepository
+						.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
 
-				if (funcionalidadBuscar.get(0) != null && funcionalidadBuscar.get(0).getBorradoFuncionalidad() == 0) {
+				if (funcionalidadBuscar != null && funcionalidadBuscar.getBorradoFuncionalidad() == 0) {
 					rolAccionFuncionalidadRepository
-							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.get(0).getIdAccion(),
-									funcionalidadBuscar.get(0).getIdFuncionalidad(), rolBuscar.get(0).getIdRol()));
+							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.getIdAccion(),
+									funcionalidadBuscar.getIdFuncionalidad(), rolBuscar.getIdRol()));
 
 					resultado = CodigosMensajes.ASIGNAR_ACCION_CORRECTO + " - "
 							+ Mensajes.ACCION_ASIGNADA_CORRECTAMENTE;
@@ -817,8 +889,10 @@ public class TestAccionServiceImpl implements TestAccionService {
 			}
 		}
 
-		accionRepository.deleteAccion(accionBuscar.get(0).getIdAccion());
-		funcionalidadRepository.delete(funcionalidadBuscar.get(0));
+		funcionalidadBuscar = funcionalidadRepository.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+
+		accionRepository.deleteAccion(accionBuscar.getIdAccion());
+		funcionalidadRepository.delete(funcionalidadBuscar);
 
 		return resultado;
 	}
@@ -830,35 +904,34 @@ public class TestAccionServiceImpl implements TestAccionService {
 		accionRepository.saveAndFlush(accion);
 		rolRepository.saveAndFlush(rol);
 
-		List<FuncionalidadEntity> funcionalidadBuscar = new ArrayList<>();
-		List<RolEntity> rolBuscar = new ArrayList<>();
+		FuncionalidadEntity funcionalidadBuscar = new FuncionalidadEntity();
+		RolEntity rolBuscar = new RolEntity();
 
-		final List<AccionEntity> accionBuscar = accionRepository.findAccion(accion.getNombreAccion(),
-				accion.getDescripAccion());
+		final AccionEntity accionBuscar = accionRepository.findAccionByName(accion.getNombreAccion());
 
-		if (accionBuscar.get(0) != null && accionBuscar.get(0).getBorradoAccion() == 0) {
-			rolBuscar = rolRepository.findRol(rol.getRolName(), rol.getRolDescription());
+		if (accionBuscar != null && accionBuscar.getBorradoAccion() == 0) {
+			rolBuscar = rolRepository.findByRolName(rol.getRolName());
 
-			if (rolBuscar.get(0) != null && rolBuscar.get(0).getBorradoRol() == 0) {
-				funcionalidadBuscar = funcionalidadRepository.findFuncionality(funcionalidad.getNombreFuncionalidad(),
-						funcionalidad.getDescripFuncionalidad());
+			if (rolBuscar != null && rolBuscar.getBorradoRol() == 0) {
+				funcionalidadBuscar = funcionalidadRepository
+						.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
 
-				if (funcionalidadBuscar.get(0) != null && funcionalidadBuscar.get(0).getBorradoFuncionalidad() == 0) {
+				if (funcionalidadBuscar != null && funcionalidadBuscar.getBorradoFuncionalidad() == 0) {
 					rolAccionFuncionalidadRepository
-							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.get(0).getIdAccion(),
-									funcionalidadBuscar.get(0).getIdFuncionalidad(), rolBuscar.get(0).getIdRol()));
+							.saveAndFlush(new RolAccionFuncionalidadEntity(accionBuscar.getIdAccion(),
+									funcionalidadBuscar.getIdFuncionalidad(), rolBuscar.getIdRol()));
 
 					resultado = CodigosMensajes.ASIGNAR_ACCION_CORRECTO + " - "
 							+ Mensajes.ACCION_ASIGNADA_CORRECTAMENTE;
 
 				} else {
-					resultado = Constantes.FUNCIONALIDAD_NO_EXISTE + " - " + Mensajes.FUNCIONALIDAD_NO_EXISTE;
+					resultado = CodigosMensajes.FUNCIONALIDAD_NO_EXISTE + " - " + Mensajes.FUNCIONALIDAD_NO_EXISTE;
 				}
 			}
 		}
 
-		accionRepository.deleteAccion(accionBuscar.get(0).getIdAccion());
-		rolRepository.delete(rolBuscar.get(0));
+		accionRepository.deleteAccion(accionBuscar.getIdAccion());
+		rolRepository.delete(rolBuscar);
 
 		return resultado;
 	}

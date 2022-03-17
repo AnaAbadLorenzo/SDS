@@ -17,11 +17,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.sds.app.SDSApplication;
 import com.sds.model.AccionEntity;
 import com.sds.model.FuncionalidadEntity;
+import com.sds.model.RolAccionFuncionalidadEntity;
 import com.sds.model.RolEntity;
 import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
+import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -32,6 +34,7 @@ import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.FuncionalidadYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PermisoNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
 import com.sds.service.funcionalidad.FuncionalidadService;
@@ -379,6 +382,95 @@ public class AccionServiceTest {
 
 	}
 
+	@Test
+	public void AccionService_DesasignarAccion()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			AccionYaExisteException, AccionNoExisteException, RolYaExisteException, FuncionalidadYaExisteException,
+			FuncionalidadNoExisteException, RolNoExisteException, PermisoNoExisteException {
+
+		final AccionAsignar accionAsignar = generateAccionAsignar(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ASIGNAR_ACCION_CORRECTO);
+
+		String respuesta = StringUtils.EMPTY;
+
+		accionService.anadirAccion(new Accion(accionAsignar.getUsuario(), accionAsignar.getAccion()));
+		rolService.guardarRol(new Rol(accionAsignar.getUsuario(), accionAsignar.getRol()));
+		funcionalidadService
+				.anadirFuncionalidad(new Funcionalidad(accionAsignar.getUsuario(), accionAsignar.getFuncionalidad()));
+
+		final ReturnBusquedas<AccionEntity> accionBD = accionService.buscarAccion(
+				accionAsignar.getAccion().getNombreAccion(), accionAsignar.getAccion().getDescripAccion(), 0, 1);
+
+		final ReturnBusquedas<RolEntity> rolBD = rolService.buscarRol(accionAsignar.getRol().getRolName(),
+				accionAsignar.getRol().getRolDescription(), 0, 1);
+
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadBD = funcionalidadService.buscarFuncionalidad(
+				accionAsignar.getFuncionalidad().getNombreFuncionalidad(),
+				accionAsignar.getFuncionalidad().getDescripFuncionalidad(), 0, 1);
+
+		final RolAccionFuncionalidadEntity rolAccionFuncionalidad = new RolAccionFuncionalidadEntity(
+				accionBD.getListaBusquedas().get(0).getIdAccion(),
+				funcionalidadBD.getListaBusquedas().get(0).getIdFuncionalidad(),
+				rolBD.getListaBusquedas().get(0).getIdRol());
+
+		rolAccionFuncionalidadRepository.save(rolAccionFuncionalidad);
+
+		respuesta = accionService
+				.desasignarAccion(new RolAccionFuncionalidad(rolAccionFuncionalidad, accionAsignar.getUsuario()));
+
+		assertEquals(Constantes.OK, respuesta);
+
+		accionService.deleteAccion(accionBD.getListaBusquedas().get(0));
+		rolService.deleteRol(new Rol(accionAsignar.getUsuario(), rolBD.getListaBusquedas().get(0)));
+		funcionalidadService.deleteFuncionalidad(funcionalidadBD.getListaBusquedas().get(0));
+
+	}
+
+	@Test(expected = PermisoNoExisteException.class)
+	public void AccionService_DesasignarAccionPermisoNoExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			AccionYaExisteException, AccionNoExisteException, RolYaExisteException, FuncionalidadYaExisteException,
+			FuncionalidadNoExisteException, RolNoExisteException, PermisoNoExisteException {
+
+		final AccionAsignar accionAsignar = generateAccionAsignar(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ASIGNAR_ACCION_CORRECTO);
+
+		final String respuesta = StringUtils.EMPTY;
+
+		accionService.anadirAccion(new Accion(accionAsignar.getUsuario(), accionAsignar.getAccion()));
+		rolService.guardarRol(new Rol(accionAsignar.getUsuario(), accionAsignar.getRol()));
+		funcionalidadService
+				.anadirFuncionalidad(new Funcionalidad(accionAsignar.getUsuario(), accionAsignar.getFuncionalidad()));
+
+		final ReturnBusquedas<AccionEntity> accionBD = accionService.buscarAccion(
+				accionAsignar.getAccion().getNombreAccion(), accionAsignar.getAccion().getDescripAccion(), 0, 1);
+
+		final ReturnBusquedas<RolEntity> rolBD = rolService.buscarRol(accionAsignar.getRol().getRolName(),
+				accionAsignar.getRol().getRolDescription(), 0, 1);
+
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadBD = funcionalidadService.buscarFuncionalidad(
+				accionAsignar.getFuncionalidad().getNombreFuncionalidad(),
+				accionAsignar.getFuncionalidad().getDescripFuncionalidad(), 0, 1);
+
+		final RolAccionFuncionalidadEntity rolAccionFuncionalidad = new RolAccionFuncionalidadEntity(
+				accionBD.getListaBusquedas().get(0).getIdAccion(),
+				funcionalidadBD.getListaBusquedas().get(0).getIdFuncionalidad(),
+				rolBD.getListaBusquedas().get(0).getIdRol());
+
+		try {
+			accionService
+					.desasignarAccion(new RolAccionFuncionalidad(rolAccionFuncionalidad, accionAsignar.getUsuario()));
+		} catch (final PermisoNoExisteException permisoNoExiste) {
+			throw new PermisoNoExisteException(CodeMessageErrors.PERMISO_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERMISO_NO_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+			accionService.deleteAccion(accionBD.getListaBusquedas().get(0));
+			rolService.deleteRol(new Rol(accionAsignar.getUsuario(), rolBD.getListaBusquedas().get(0)));
+			funcionalidadService.deleteFuncionalidad(funcionalidadBD.getListaBusquedas().get(0));
+		}
+
+	}
+
 	@Test(expected = AccionNoExisteException.class)
 	public void AccionService_asignarAccionNoExiste()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
@@ -574,6 +666,36 @@ public class AccionServiceTest {
 		accion.setFuncionalidad(funcionalidadEntity);
 
 		return accion;
+
+	}
+
+	private RolAccionFuncionalidad generateRolAccionFuncionalidad(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonRolAccionFuncionalidad = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final RolAccionFuncionalidad rolAccionFuncionalidad = new RolAccionFuncionalidad();
+		final RolAccionFuncionalidadEntity rolAccionFuncionalidadEntity = new RolAccionFuncionalidadEntity();
+
+		final String idAccion = CommonUtilities
+				.coalesce(jsonRolAccionFuncionalidad.get(Constantes.ACCION_ID).toString(), StringUtils.EMPTY);
+
+		final String idRol = CommonUtilities.coalesce(jsonRolAccionFuncionalidad.get(Constantes.ROL_ID).toString(),
+				StringUtils.EMPTY);
+
+		final String idFuncionalidad = CommonUtilities
+				.coalesce(jsonRolAccionFuncionalidad.get(Constantes.FUNCIONALIDAD_ID).toString(), StringUtils.EMPTY);
+
+		rolAccionFuncionalidadEntity.setIdAccion(Integer.parseInt(idAccion));
+		rolAccionFuncionalidadEntity.setIdFuncionalidad(Integer.parseInt(idFuncionalidad));
+		rolAccionFuncionalidadEntity.setIdRol(Integer.parseInt(idRol));
+
+		rolAccionFuncionalidad.setUsuario(CommonUtilities
+				.coalesce(jsonRolAccionFuncionalidad.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
+
+		rolAccionFuncionalidad.setRolAccionFuncionalidad(rolAccionFuncionalidadEntity);
+
+		return rolAccionFuncionalidad;
 
 	}
 }

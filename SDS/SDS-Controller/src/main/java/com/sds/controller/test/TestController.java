@@ -903,6 +903,28 @@ public class TestController {
 
 	}
 
+	@GetMapping(value = "/accion/accion/asignar")
+	@ResponseBody
+	public RespEntity TestAccionAccionAsignarAcciones() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionAsignarAcciones();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ASIGNAR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
+	}
+
 	@GetMapping(value = "/rol/accion/guardar")
 	@ResponseBody
 	public RespEntity TestRolAccionGuardar() {
@@ -982,6 +1004,27 @@ public class TestController {
 
 		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
 		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_ROL);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/rol/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestRolAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testRolService.getPruebasAccionesRolReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ROL_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ROLES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_ROL);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_ROL_OK, respuestaTestAcciones);

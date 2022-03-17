@@ -271,6 +271,22 @@ public class TestRolServiceImpl implements TestRolService {
 		return datosPruebaAcciones;
 	}
 
+	@Override
+	public List<DatosPruebaAcciones> getPruebasAccionesRolReactivar()
+			throws IOException, ParseException, java.text.ParseException {
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		final RolEntity datosEntradaReactivarRolCorrecto = generarJSON.generarRol(Constantes.URL_JSON_ROL_DATA,
+				Constantes.REACTIVAR_ROL);
+		final RolEntity datosEntradaReactivarRolNoExiste = generarJSON.generarRol(Constantes.URL_JSON_ACCION_DATA,
+				Constantes.ROL_NO_EXISTE);
+
+		datosPruebaAcciones.add(getTestReactivarRolCorrecto(datosEntradaReactivarRolCorrecto));
+		datosPruebaAcciones.add(getTestReactivarRolNoExiste(datosEntradaReactivarRolNoExiste));
+
+		return datosPruebaAcciones;
+	}
+
 	private DatosPruebaAcciones getTestBuscarRol(final RolEntity datosEntradaRolbuscarRol) {
 
 		final String resultadoObtenido = buscarRol(datosEntradaRolbuscarRol);
@@ -443,6 +459,30 @@ public class TestRolServiceImpl implements TestRolService {
 				getValorRol(datosEntradaRolModificarRolNameDescriptionVacio));
 	}
 
+	private DatosPruebaAcciones getTestReactivarRolCorrecto(final RolEntity datosEntradaAccionReactivarRolCorrecto) {
+
+		final String resultadoObtenido = reactivarRol(datosEntradaAccionReactivarRolCorrecto);
+
+		final String resultadoEsperado = CodigosMensajes.REACTIVAR_ROL_CORRECTO + " - "
+				+ Mensajes.REACTIVAR_ROL_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.REACTIVAR_ROL_CORRECTO, Constantes.EXITO,
+				getValorRol(datosEntradaAccionReactivarRolCorrecto));
+
+	}
+
+	private DatosPruebaAcciones getTestReactivarRolNoExiste(final RolEntity datosEntradaAccionReactivarRolNoExiste) {
+
+		final String resultadoObtenido = reactivarRolNoExiste(datosEntradaAccionReactivarRolNoExiste);
+
+		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.ROL_NO_EXISTE, Constantes.EXITO, getValorRol(datosEntradaAccionReactivarRolNoExiste));
+
+	}
+
 	private String buscarRol(final RolEntity rol) {
 		String resultado = StringUtils.EMPTY;
 
@@ -535,6 +575,33 @@ public class TestRolServiceImpl implements TestRolService {
 				resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 			}
 
+		}
+
+		return resultado;
+	}
+
+	private String reactivarRol(final RolEntity rol) {
+		String resultado = StringUtils.EMPTY;
+
+		rolRepository.saveAndFlush(rol);
+
+		final RolEntity rolBuscar = rolRepository.findByRolName(rol.getRolName());
+		rolBuscar.setBorradoRol(0);
+		rolRepository.saveAndFlush(rolBuscar);
+
+		resultado = CodigosMensajes.REACTIVAR_ROL_CORRECTO + " - " + Mensajes.REACTIVAR_ROL_CORRECTAMENTE;
+		rolRepository.delete(rolBuscar);
+
+		return resultado;
+	}
+
+	private String reactivarRolNoExiste(final RolEntity rol) {
+		String resultado = StringUtils.EMPTY;
+
+		final RolEntity rolBuscar = rolRepository.findByRolName(rol.getRolName());
+
+		if (rolBuscar == null) {
+			resultado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 		}
 
 		return resultado;

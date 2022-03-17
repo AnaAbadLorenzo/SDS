@@ -112,6 +112,7 @@ public class CodigosMensajes {
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "ELIMINAR_ROL_ASOCIADO_USUARIO";
 	public static final String ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD = "ELIMINAR_ROL_ASOCIAO_ACCION_FUNCIONALIDAD";
 	public static final String MODIFICAR_ROL = "MODIFICAR_ROL";
+	public static final String REACTIVAR_ROL_CORRECTO = "REACTIVAR_ROL_CORRECTO";
 
 	public static final String ACCION_NO_EXISTE = "ACCION_NO_EXISTE";
 	public static final String BUSCAR_ACCION_CORRECTO = "BUSCAR_ACCION_CORRECTO";

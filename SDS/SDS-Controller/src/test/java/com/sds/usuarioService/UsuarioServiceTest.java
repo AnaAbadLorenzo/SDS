@@ -225,7 +225,7 @@ public class UsuarioServiceTest {
 
 		final String passwdUsuario = "JYU45sda";
 
-		final String respuesta = usuarioService.cambiarContraseña(usuario, passwdUsuario);
+		final String respuesta = usuarioService.cambiarContraseña(usuario.getUsuario(), passwdUsuario);
 
 		assertEquals(respuesta, Constantes.OK);
 
@@ -244,7 +244,7 @@ public class UsuarioServiceTest {
 
 		final String passwdUsuario = "JYU45sda";
 
-		usuarioService.cambiarContraseña(usuario, passwdUsuario);
+		usuarioService.cambiarContraseña(usuario.getUsuario(), passwdUsuario);
 
 	}
 

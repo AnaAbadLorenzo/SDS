@@ -15,16 +15,28 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
+import com.sds.model.AccionEntity;
+import com.sds.model.FuncionalidadEntity;
+import com.sds.model.RolAccionFuncionalidadEntity;
 import com.sds.model.RolEntity;
+import com.sds.repository.RolAccionFuncionalidadRepository;
+import com.sds.service.accion.AccionService;
+import com.sds.service.accion.model.Accion;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
+import com.sds.service.exception.AccionNoExisteException;
+import com.sds.service.exception.AccionYaExisteException;
+import com.sds.service.exception.FuncionalidadNoExisteException;
+import com.sds.service.exception.FuncionalidadYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.RolAsociadoAccionFuncionalidadException;
 import com.sds.service.exception.RolAsociadoUsuarioException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.RolYaExisteException;
+import com.sds.service.funcionalidad.FuncionalidadService;
+import com.sds.service.funcionalidad.model.Funcionalidad;
 import com.sds.service.rol.RolService;
 import com.sds.service.rol.model.Rol;
 import com.sds.service.util.CodeMessageErrors;
@@ -36,6 +48,15 @@ public class RolServiceTest {
 
 	@Autowired
 	RolService rolService;
+
+	@Autowired
+	AccionService accionService;
+
+	@Autowired
+	FuncionalidadService funcionalidadService;
+
+	@Autowired
+	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
 
 	@Test
 	public void RolService_buscarRol() throws IOException, ParseException {
@@ -272,14 +293,45 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolAsociadoAccionFuncionalidadException.class)
-	public void RolService_eliminarRolAsociadoAccionFuncionalidad()
-			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException {
+	public void RolService_eliminarRolAsociadoAccionFuncionalidad() throws RolNoExisteException,
+			RolAsociadoUsuarioException, IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException, AccionYaExisteException,
+			FuncionalidadYaExisteException, AccionNoExisteException, FuncionalidadNoExisteException {
 
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD);
 
-		rolService.eliminarRol(rol);
+		final AccionEntity accionEntity = new AccionEntity(0, "nombreAccion", "descripcionAccion", 0);
+		final FuncionalidadEntity funcionalidadEntity = new FuncionalidadEntity(0, "nombreFuncionalidad",
+				"descripFuncionalidad", 0);
+
+		accionService.anadirAccion(new Accion("ana", accionEntity));
+		funcionalidadService.anadirFuncionalidad(new Funcionalidad("ana", funcionalidadEntity));
+
+		final ReturnBusquedas<AccionEntity> accionBuscar = accionService.buscarAccion(accionEntity.getNombreAccion(),
+				accionEntity.getDescripAccion(), 0, 1);
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadBuscar = funcionalidadService.buscarFuncionalidad(
+				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad(), 0, 1);
+
+		final RolAccionFuncionalidadEntity rolAccionFuncionalidad = new RolAccionFuncionalidadEntity(
+				accionBuscar.getListaBusquedas().get(0).getIdAccion(),
+				funcionalidadBuscar.getListaBusquedas().get(0).getIdFuncionalidad(), rol.getRol().getIdRol());
+
+		rolAccionFuncionalidadRepository.saveAndFlush(rolAccionFuncionalidad);
+
+		try {
+			rolService.eliminarRol(rol);
+		} catch (final RolAsociadoAccionFuncionalidadException exception) {
+			throw new RolAsociadoAccionFuncionalidadException(
+					CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo()));
+		} finally {
+			rolAccionFuncionalidadRepository.delete(rolAccionFuncionalidad);
+			accionService.deleteAccion(accionBuscar.getListaBusquedas().get(0));
+			funcionalidadService.deleteFuncionalidad(funcionalidadBuscar.getListaBusquedas().get(0));
+
+		}
 
 	}
 
@@ -289,6 +341,41 @@ public class RolServiceTest {
 		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRolesEliminados(0, 5);
 
 		assertNotNull(rolEncontrado.getListaBusquedas());
+	}
+
+	@Test
+	public void RolService_reactivarRol() throws IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, RolNoExisteException, RolYaExisteException {
+
+		final Rol rolGuardar = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.REACTIVAR_ROL);
+
+		String respuesta = StringUtils.EMPTY;
+
+		rolService.guardarRol(rolGuardar);
+
+		final ReturnBusquedas<RolEntity> rolModificar = rolService.buscarRol(rolGuardar.getRol().getRolName(),
+				rolGuardar.getRol().getRolDescription(), 0, 1);
+
+		rolModificar.getListaBusquedas().get(0).setBorradoRol(0);
+
+		rolGuardar.setRol(rolModificar.getListaBusquedas().get(0));
+
+		respuesta = rolService.reactivarRol(rolGuardar);
+
+		assertEquals(Constantes.OK, respuesta);
+
+		rolService.deleteRol(rolGuardar);
+
+	}
+
+	@Test(expected = RolNoExisteException.class)
+	public void RolService_reactivarRolNoExiste() throws RolNoExisteException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolNoExisteException {
+
+		final Rol rolGuardar = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_NO_EXISTE);
+
+		rolService.reactivarRol(rolGuardar);
+
 	}
 
 	private Rol generateRol(final String fichero, final String nombrePrueba) throws IOException, ParseException {

@@ -58,6 +58,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 			final String descripFuncionalidad, final int inicio, final int tamanhoPagina) {
 
 		final List<FuncionalidadEntity> funcionalidadToret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<FuncionalidadEntity> funcionalidades = entityManager
 				.createNamedQuery("FuncionalidadEntity.findFuncionality")
@@ -78,8 +79,11 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 			}
 		}
 
+		datosBusqueda.add("nombreFuncionalidad: " + nombreFuncionalidad);
+		datosBusqueda.add("descripFuncionalidad: " + descripFuncionalidad);
+
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(funcionalidadToret,
-				numberTotalResults, funcionalidadToret.size());
+				datosBusqueda, numberTotalResults, funcionalidadToret.size());
 
 		return result;
 	}
@@ -129,6 +133,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 				funcionalidadesToret.add(func);
 			}
 		}
+
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
 				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());
 
@@ -144,10 +149,10 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		String resultadoLog = StringUtils.EMPTY;
 
 		if (funcionalidadValida) {
-			final Optional<FuncionalidadEntity> funcionalidadBD = funcionalidadRepository
-					.findById(funcionalidadEntity.getIdFuncionalidad());
+			final FuncionalidadEntity funcionalidadBD = funcionalidadRepository
+					.findFuncionalityByName(funcionalidadEntity.getNombreFuncionalidad());
 
-			if (funcionalidadBD.isPresent()) {
+			if (funcionalidadBD != null) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(funcionalidad.getUsuario(),
 						CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.FUNCIONALIDAD_YA_EXISTE_EXCEPTION.getCodigo()),
@@ -164,6 +169,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 						CodeMessageErrors.FUNCIONALIDAD_YA_EXISTE_EXCEPTION.getCodigo(), CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.FUNCIONALIDAD_YA_EXISTE_EXCEPTION.getCodigo()));
 			} else {
+				funcionalidadEntity.setBorradoFuncionalidad(0);
 				funcionalidadRepository.saveAndFlush(funcionalidadEntity);
 
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(funcionalidad.getUsuario(),

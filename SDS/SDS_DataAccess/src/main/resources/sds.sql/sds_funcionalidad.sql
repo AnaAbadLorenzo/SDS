@@ -29,7 +29,8 @@ CREATE TABLE `funcionalidad` (
   `nombre_funcionalidad` varchar(48) NOT NULL,
   `descrip_funcionalidad` text NOT NULL,
   `borrado_funcionalidad` int NOT NULL,
-  PRIMARY KEY (`id_funcionalidad`)
+  PRIMARY KEY (`id_funcionalidad`),
+   UNIQUE KEY `nombre_funcionalidad_UNIQUE` (`nombre_funcionalidad`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,9 +40,14 @@ CREATE TABLE `funcionalidad` (
 
 LOCK TABLES `funcionalidad` WRITE;
 /*!40000 ALTER TABLE `funcionalidad` DISABLE KEYS */;
-INSERT INTO `funcionalidad` VALUES (1,'usuario','usuario',0);
-INSERT INTO `funcionalidad` VALUES (2,'login','login',0);
-INSERT INTO `funcionalidad` VALUES (3,'registrar','registrar',0);
+INSERT INTO `funcionalidad` VALUES (1,'Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (2,'Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (3,'Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (4,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (5,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (6,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (7,'Gestión de permisos','Permite modificar los permisos de la aplicación',0);
+
 /*!40000 ALTER TABLE `funcionalidad` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -33,4 +33,7 @@ public interface TestRolService {
 	List<DatosPruebaAcciones> getPruebasAccionesRolModificar()
 			throws IOException, ParseException, java.text.ParseException;
 
+	List<DatosPruebaAcciones> getPruebasAccionesRolReactivar()
+			throws IOException, ParseException, java.text.ParseException;
+
 }

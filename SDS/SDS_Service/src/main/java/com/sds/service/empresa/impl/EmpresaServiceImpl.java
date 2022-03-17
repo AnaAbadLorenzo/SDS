@@ -58,6 +58,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 			final String direccionEmpresa, final String telefonoEmpresa, final int inicio, final int tamanhoPagina) {
 
 		final List<EmpresaEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresa")
 				.setParameter("cifEmpresa", cifEmpresa).setParameter("nombreEmpresa", nombreEmpresa)
@@ -78,8 +79,13 @@ public class EmpresaServiceImpl implements EmpresaService {
 			}
 		}
 
-		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
-				toret.size());
+		datosBusqueda.add("cifEmpresa: " + cifEmpresa);
+		datosBusqueda.add("nombreEmpresa: " + nombreEmpresa);
+		datosBusqueda.add("direccionEmpresa: " + direccionEmpresa);
+		datosBusqueda.add("telefonoEmpresa: " + telefonoEmpresa);
+
+		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, datosBusqueda,
+				numberTotalResults, toret.size());
 
 		return result;
 	}

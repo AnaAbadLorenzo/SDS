@@ -82,11 +82,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 			for (final UsuarioEntity usuario : usuarios) {
 				final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
 						usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
+				final Optional<PersonaEntity> persona = personaRepository.findById(usuario.getDniUsuario());
+				final PersonaEntity personaEntity = new PersonaEntity(persona.get().getDniP(),
+						persona.get().getNombreP(), persona.get().getApellidosP(), persona.get().getFechaNacP(),
+						persona.get().getDireccionP(), persona.get().getTelefonoP(), persona.get().getEmailP(),
+						persona.get().getBorradoP());
+
 				final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
-						usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
+						usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario, personaEntity);
 
 				usuariosToret.add(user);
-
 			}
 		}
 
@@ -100,6 +105,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario,
 			final RolEntity rol, final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario")
 				.setParameter("dniUsuario", dniUsuario).setParameter("usuario", usuario).setParameter("rol", rol)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
@@ -111,15 +117,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 				final RolEntity rolUsuario = new RolEntity(usuarioBuscar.getRol().getIdRol(),
 						usuarioBuscar.getRol().getRolName(), usuarioBuscar.getRol().getRolDescription(),
 						usuarioBuscar.getRol().getBorradoRol());
+				final Optional<PersonaEntity> persona = personaRepository.findById(usuarioBuscar.getDniUsuario());
+				final PersonaEntity personaEntity = new PersonaEntity(persona.get().getDniP(),
+						persona.get().getNombreP(), persona.get().getApellidosP(), persona.get().getFechaNacP(),
+						persona.get().getDireccionP(), persona.get().getTelefonoP(), persona.get().getEmailP(),
+						persona.get().getBorradoP());
+
 				final UsuarioEntity user = new UsuarioEntity(usuarioBuscar.getDniUsuario(), usuarioBuscar.getUsuario(),
-						usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario);
+						usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario, personaEntity);
 
 				toret.add(user);
-
 			}
 		}
-		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, numberTotalResults,
-				toret.size());
+
+		datosBusqueda.add("dniUsuario: " + dniUsuario);
+		datosBusqueda.add("usuario: " + usuario);
+		datosBusqueda.add("rol: " + rol.toString());
+
+		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, datosBusqueda,
+				numberTotalResults, toret.size());
 
 		return result;
 	}
@@ -376,22 +392,21 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public String cambiarContraseña(final Usuario usuario, final String passwdUsuario)
+	public String cambiarContraseña(final String usuario, final String passwdUsuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 		String resultadoLog2 = StringUtils.EMPTY;
 
-		final UsuarioEntity user = usuario.getUsuarioEntity();
-		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(user);
+		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(usuario);
 		final Boolean passWdUsuarioValido = validaciones.comprobarPasswdUsuarioBlank(passwdUsuario);
 
 		if (usuarioValido) {
 			if (passWdUsuarioValido) {
-				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
+				final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario);
 
-				if (!usuarioBD.isPresent()) {
-					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario.getUsuario(),
+				if (usuarioBD == null) {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario,
 							CodeMessageErrors
 									.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
 							CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
@@ -409,17 +424,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 							CodeMessageErrors.getTipoNameByCodigo(
 									CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 				} else {
-					user.setPasswdUsuario(passwdUsuario);
-					usuario.setUsuarioEntity(user);
-					usuarioRepository.saveAndFlush(user);
+					usuarioBD.setPasswdUsuario(passwdUsuario);
+					usuarioRepository.saveAndFlush(usuarioBD);
 
-					final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
-							Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+					final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario,
+							Constantes.ACCION_MODIFICAR_USUARIO, usuario);
 
 					resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
 
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario.getUsuario(),
-							Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
+					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario,
+							Constantes.ACCION_MODIFICAR_USUARIO, usuario);
 
 					resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
 

@@ -28,6 +28,9 @@ public interface RolService {
 	String modificarRol(final Rol rol)
 			throws RolNoExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
 
+	String reactivarRol(final Rol rol)
+			throws LogExcepcionesNoGuardadoException, RolNoExisteException, LogAccionesNoGuardadoException;
+
 	void deleteRol(final Rol rol) throws RolNoExisteException;
 
 }

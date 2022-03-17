@@ -20,6 +20,7 @@ import com.sds.service.exception.PersonaNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.usuario.UsuarioService;
+import com.sds.service.usuario.model.CambiarContrasena;
 import com.sds.service.usuario.model.Usuario;
 import com.sds.service.usuario.model.UsuarioBuscar;
 import com.sds.service.usuario.model.UsuarioModificar;
@@ -141,6 +142,23 @@ public class UsuarioController {
 			return new RespEntity(RespCode.PARSE_EXCEPTION, usuarioModificar);
 		}
 		return new RespEntity(RespCode.USUARIO_MODIFICAR_VACIO, usuarioModificar);
+	}
+
+	@PostMapping(value = "/cambiarContrasenaUsuario")
+	@ResponseBody
+	public RespEntity cambiarContrasenaUsuario(@RequestBody final CambiarContrasena cambiarContrasena) {
+		String resultado;
+		try {
+			resultado = usuarioService.cambiarContraseña(cambiarContrasena.getUsuario(),
+					cambiarContrasena.getPasswdUsuario());
+			return new RespEntity(RespCode.PASSWORD_CAMBIADA, resultado);
+		} catch (final UsuarioNoEncontradoException e) {
+			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, cambiarContrasena);
+		} catch (final LogExcepcionesNoGuardadoException e) {
+			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, cambiarContrasena);
+		} catch (final LogAccionesNoGuardadoException e) {
+			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, cambiarContrasena);
+		}
 	}
 
 	@PostMapping(value = "/borrarUsuario")

@@ -59,12 +59,14 @@ public class DefinicionPruebas {
 	public static final String ROL_NAME_VACIO = "El nombre del rol es vacío";
 	public static final String ROL_DESCRIPTION_VACIO = "La descripción del rol es vacía";
 	public static final String ROL_VACIO = "El rol está vacío";
+	public static final String ROL_NO_EXISTE = "El rol no existe";
 	public static final String ELIMINAR_ROL_CORRECTO = "El rol se ha eliminado correctamente";
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "El rol no ha podido eliminarse porque tiene un usuario asociado";
 	public static final String ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD = "El rol no ha podido eliminarse porque tienen un rol y una funcionalidad asociado";
 	public static final String ELIMINAR_ROL_NO_EXISTE = "El rol no ha podido eliminarse porque no existe";
 	public static final String MODIFICAR_ROL = "EL rol se ha modificado correctamente";
 	public static final String MODIFICAR_ROL_NO_EXISTE = "EL rol que desa modificar no existe";
+	public static final String REACTIVAR_ROL_CORRECTO = "El rol se ha reactivado correctamente";
 	public static final String ACCION_NAME_VACIO = "El nombre de la accion es vacio";
 	public static final String ACCION_NO_EXISTE = "La acción que busca no existe";
 	public static final String GUARDAR_ACCION_CORRECTO = "La acción se ha guardado correctamente";
@@ -73,6 +75,7 @@ public class DefinicionPruebas {
 	public static final String ELIMINAR_ACCION_CORRECTO = "La acción se ha eliminado correctamente";
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La acción tiene asociada un rol y una funcionalidad";
 	public static final String REACTIVAR_ACCION_CORRECTO = "La acción se ha reactivado correctamente";
+	public static final String ASIGNAR_ACCION_CORRECTO = "La asignación de la acción, el rol y la funcionalidad se ha realizado correctamente";
 	public static final String ACCION_DESCRIPTION_VACIO = "La descripción de la acción es vacia";
 	public static final String ACCION_VACIA = "El nombre y descripción de la acción son vacios";
 	public static final String FUNCIONALIDAD_NAME_VACIO = "El nombre de la funcionalidad es vacio";

@@ -17,6 +17,7 @@ import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.RolAccionFuncionalidadEntity;
 import com.sds.model.RolEntity;
+import com.sds.model.compositekey.RolAccionFuncionalidadKey;
 import com.sds.repository.AccionRepository;
 import com.sds.repository.FuncionalidadRepository;
 import com.sds.repository.RolAccionFuncionalidadRepository;
@@ -24,6 +25,7 @@ import com.sds.repository.RolRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
+import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
@@ -32,6 +34,7 @@ import com.sds.service.exception.AccionYaExisteException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PermisoNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
@@ -71,6 +74,7 @@ public class AccionServiceImpl implements AccionService {
 	public ReturnBusquedas<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion,
 			final int inicio, final int tamanhoPagina) {
 		final List<AccionEntity> accionToret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccion")
 				.setParameter("nombreAccion", nombreAccion).setParameter("descripAccion", descripAccion)
@@ -87,8 +91,11 @@ public class AccionServiceImpl implements AccionService {
 			}
 		}
 
-		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(accionToret, numberTotalResults,
-				accionToret.size());
+		datosBusqueda.add("nombreAccion: " + nombreAccion);
+		datosBusqueda.add("descripAccion: " + descripAccion);
+
+		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(accionToret, datosBusqueda,
+				numberTotalResults, accionToret.size());
 
 		return result;
 
@@ -150,9 +157,9 @@ public class AccionServiceImpl implements AccionService {
 		String resultadoLog = StringUtils.EMPTY;
 
 		if (accionValida) {
-			final Optional<AccionEntity> accionBD = accionRepository.findById(accionEntity.getIdAccion());
+			final AccionEntity accionBD = accionRepository.findAccionByName(accionEntity.getNombreAccion());
 
-			if (accionBD.isPresent()) {
+			if (accionBD != null) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(accion.getUsuario(),
 						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo()),
 						CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo());
@@ -168,6 +175,7 @@ public class AccionServiceImpl implements AccionService {
 						CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo()));
 			} else {
+				accionEntity.setBorradoAccion(0);
 				accionRepository.saveAndFlush(accionEntity);
 
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(accion.getUsuario(),
@@ -430,6 +438,50 @@ public class AccionServiceImpl implements AccionService {
 
 			throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
+		}
+		return resultado;
+	}
+
+	@Override
+	public String desasignarAccion(final RolAccionFuncionalidad rolAccionFuncionalidad)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PermisoNoExisteException {
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+		final Optional<RolAccionFuncionalidadEntity> rolAccionFuncionalidadBD = rolAccionFuncionalidadRepository
+				.findById(new RolAccionFuncionalidadKey(rolAccionFuncionalidad.getRolAccionFuncionalidad().getIdRol(),
+						rolAccionFuncionalidad.getRolAccionFuncionalidad().getIdAccion(),
+						rolAccionFuncionalidad.getRolAccionFuncionalidad().getIdFuncionalidad()));
+
+		if (!rolAccionFuncionalidadBD.isPresent()) {
+			final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+					rolAccionFuncionalidad.getUsuario(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERMISO_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.PERMISO_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new PermisoNoExisteException(CodeMessageErrors.PERMISO_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERMISO_NO_EXISTE_EXCEPTION.getCodigo()));
+
+		} else {
+			rolAccionFuncionalidadRepository.delete(rolAccionFuncionalidad.getRolAccionFuncionalidad());
+
+			final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(rolAccionFuncionalidad.getUsuario(),
+					Constantes.ACCION_REVOCAR_ACCION, rolAccionFuncionalidad.toString());
+
+			resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+			if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+			}
+
+			resultado = Constantes.OK;
 		}
 		return resultado;
 	}

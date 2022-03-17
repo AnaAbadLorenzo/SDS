@@ -7,12 +7,14 @@ public enum RespCode {
 	LOGIN_VACIO("LOGIN_VACIO", "Los datos de usuario y contraseña no pueden ser vacíos"), //
 	USUARIO_NO_ENCONTRADO("USUARIO_NO_EXISTE", "El usuario no existe"), //
 	PASSWORD_INCORRECTO("PASSWORD_INCORRECTO", "La contraseña no coincide con el usuario"), //
+	PASSWORD_CAMBIADA("PASSWORD_CAMBIADA", "La contraseña ha sido cambiada correctamente"), //
 	LOGIN_OK("LOGIN_OK", "Usuario logeado correctamente"), //
 	ROL_VACIO("ROL_VACIO", "El nombre del rol y/o la descripcion no pueden ser vacios"), //
 	ROL_MODIFICADO("ROL_MODIFICADO", "El rol se ha modificado correctamente"), //
 	ROL_ELIMINADO("ROL_ELIMINADO", "El rol se ha eliminado correctamente"), //
 	ROL_GUARDADO("ROL_GUARDADO", "El rol se ha guadado correctamente"), //
 	ROL_BORRADO("ROL_BORRADO", "El rol se ha borrado correctamente"), //
+	ROL_REACTIVADO("ROL_REACTIVADO", "El rol se ha reactivado correctamente"), //
 	ROLES_LISTADOS("ROLES_LISTADOS", "Los roles se han listado correctamente"), //
 	ROLES_ELIMINADOS_LISTADOS("ROLES_ELIMINADOS_LISTADOS", "Los roles eliminados se han listado correctamente"), //
 	REGISTRO_VACIO("REGISTRO_VACIO", "Los datos de persona y usuario no pueden ser vacíos."), //
@@ -76,6 +78,7 @@ public enum RespCode {
 	ACCION_YA_EXISTE_EXCEPTION("ACCION_YA_EXISTE", "La acción ya existe"), //
 	ACCION_NO_EXISTE_EXCEPTION("ACCION_NO_EXISTE_EXCEPTION", "La accion que busca no existe"), //
 	ACCION_REACTIVADA("ACCION_REACTIVADA", "La accion se ha reactivado correctamente"), //
+	ACCION_REVOCADA("ACCION_REVOCADA", "La acción se ha revocado para el rol y la funcionalidad seleccionados"), //
 	ACCION_BORRADA("ACCION_BORRADA", "La accion se ha borrado correctamente"), //
 	FUNCIONALIDAD_VACIA("FUNCIONALIDAD_VACIA", "La funcionalidad está vacía"), //
 	FUNCIONALIDAD_ENCONTRADA("FUNCIONALIDAD_ENCONTRADA", "La funcionalidad se ha encontrado correctamente"), //
@@ -91,6 +94,8 @@ public enum RespCode {
 	FUNCIONALIDAD_GUARDADA("FUNCIONALIDAD_GUARDADA", "La funcionalidad se ha guardado correctamente"), //
 	FUNCIONALIDAD_REACTIVADA("FUNCIONALIDAD_REACTIVADA", "La funcionalidad se ha reactivado correctamente"), //
 	FUNCIONALIDAD_BORRADA("FUNCIONALIDAD_BORRADA", "La funcionalidad se ha borrado correctamente"), //
+	PERMISO_NO_EXISTE_EXCEPTION("PERMISO_NO_EXISTE",
+			"El rol no tiene permisos para realizar esa acción sobre esa funcionalidad"), //
 	USUARIOS_LISTADOS("USUARIOS_LISTADOS", "Los usuarios se han listado correctamente"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
 	ROL_USUARIO_MODIFICADO_OK("ROL_USUARIO_MODIFICADO_OK", "El rol del usuario se ha modificado correctamente"), //

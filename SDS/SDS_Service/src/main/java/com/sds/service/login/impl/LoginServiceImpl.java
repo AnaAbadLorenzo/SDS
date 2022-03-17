@@ -164,7 +164,7 @@ public class LoginServiceImpl implements LoginService {
 
 								user.setPasswdUsuario(passEncrypt);
 								final Usuario usuarioM = new Usuario(usuario, user);
-								usuarioServiceImpl.cambiarContraseña(usuarioM, passEncrypt);
+								usuarioServiceImpl.cambiarContraseña(usuarioM.getUsuario(), passEncrypt);
 								resultado = Constantes.OK;
 							}
 

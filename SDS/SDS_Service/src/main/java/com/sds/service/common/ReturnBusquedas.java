@@ -7,6 +7,7 @@ import java.util.List;
 public class ReturnBusquedas<T> {
 
 	private List<T> listaBusquedas = new ArrayList<T>();
+	private List<String> datosBusqueda = new ArrayList<>();
 	private int tamanhoTotal;
 	private int numResultados;
 
@@ -21,12 +22,29 @@ public class ReturnBusquedas<T> {
 		this.numResultados = numResultados;
 	}
 
+	public ReturnBusquedas(final List<T> listaBusquedas, final List<String> datosBusqueda, final int tamanhoTotal,
+			final int numResultados) {
+		super();
+		this.listaBusquedas = listaBusquedas;
+		this.datosBusqueda = datosBusqueda;
+		this.tamanhoTotal = tamanhoTotal;
+		this.numResultados = numResultados;
+	}
+
 	public List<T> getListaBusquedas() {
 		return listaBusquedas;
 	}
 
 	public void setListaBusquedas(final List<T> listaBusquedas) {
 		this.listaBusquedas = listaBusquedas;
+	}
+
+	public List<String> getDatosBusqueda() {
+		return datosBusqueda;
+	}
+
+	public void setDatosBusqueda(final List<String> datosBusqueda) {
+		this.datosBusqueda = datosBusqueda;
 	}
 
 	public int getTamanhoTotal() {

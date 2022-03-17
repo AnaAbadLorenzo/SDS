@@ -55,7 +55,6 @@ INDEX VERSION 1.131+F:\Universidad\TFG\SDS_Definitivo\SDS\.metadata\.plugins\org
 3043461435.index
 886507276.index
 2939585818.index
-1077685748.index
 1285534892.index
 1628818195.index
 1921297501.index

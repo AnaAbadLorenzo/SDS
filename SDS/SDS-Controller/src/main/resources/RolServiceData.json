@@ -106,5 +106,13 @@
 		"rolName": "Nuevo rol",
 		"rolDescription": "Prueba",
 		"borradoRol":1
+	},
+	"reactivarRolCorrecto":{
+		"usuario": "ana",
+		
+		"idRol":"",
+		"rolName":"Rol para reactivar",
+		"rolDescription": "Rol para reactivar",
+		"borradoRol":0
 	}
 }

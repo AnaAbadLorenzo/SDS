@@ -75,5 +75,43 @@
 		"nombreAccion": "accion",
 		"descripAccion": "Reactivar esta accion",
 		"borradoAccion": 1
+	},
+	"asignarAccionCorrecto": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "nuevaAccion",
+		"descripAccion": "Descripcion",
+		"borradoAccion": 0
+	},
+	"asignarAccionRolCorrecto":{
+		"usuario": "ana",
+		
+		"idRol":"",
+		"rolName":"Rol",
+		"rolDescription": "Descripcion",
+		"borradoRol":0
+		
+	},
+	"asignarAccionFuncionalidadCorrecto": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "funcionalidad",
+		"descripFuncionalidad": "funcionalidad",
+		"borradoFuncionalidad": 0
+	},
+	"rolNoExiste":{
+		"usuario": "aicuna",
+		
+		"idRol":"",
+		"rolName":"rolDePrueba",
+		"rolDescription": "prueba",
+		"borradoRol": 0
+	},
+	"funcionalidadNoExiste": {
+		"usuario": "ana",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "funcionalidad",
+		"descripFuncionalidad": "funcionalidad",
+		"borradoFuncionalidad": 0
 	}
 }

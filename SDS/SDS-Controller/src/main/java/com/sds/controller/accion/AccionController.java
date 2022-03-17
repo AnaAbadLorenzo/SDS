@@ -15,6 +15,7 @@ import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
 import com.sds.service.accion.model.AccionBuscar;
+import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
@@ -23,6 +24,7 @@ import com.sds.service.exception.AccionYaExisteException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PermisoNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
@@ -166,6 +168,26 @@ public class AccionController {
 			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, accion);
 		} catch (final RolNoExisteException rolNoExiste) {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, accion);
+		}
+
+	}
+
+	@PostMapping(value = "/desasignarAccion")
+	@ResponseBody
+	public RespEntity desasignarAccion(@RequestBody final RolAccionFuncionalidad rolAccionFuncionalidad) {
+
+		try {
+			String resultado;
+			try {
+				resultado = accionService.desasignarAccion(rolAccionFuncionalidad);
+				return new RespEntity(RespCode.ACCION_REVOCADA, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, rolAccionFuncionalidad);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, rolAccionFuncionalidad);
+			}
+		} catch (final PermisoNoExisteException permisoNoExiste) {
+			return new RespEntity(RespCode.PERMISO_NO_EXISTE_EXCEPTION, rolAccionFuncionalidad);
 		}
 
 	}

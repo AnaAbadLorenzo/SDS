@@ -9,6 +9,7 @@ public class Registro {
 	private PersonaEntity datosPersona;
 	private UsuarioEntity datosUsuario;
 	private EmpresaEntity datosEmpresa;
+	private String seleccionarEmpresa;
 
 	public Registro() {
 
@@ -38,6 +39,14 @@ public class Registro {
 		this.datosEmpresa = empresa;
 	}
 
+	public String getSeleccionarEmpresa() {
+		return seleccionarEmpresa;
+	}
+
+	public void setSeleccionarEmpresa(final String seleccionarEmpresa) {
+		this.seleccionarEmpresa = seleccionarEmpresa;
+	}
+
 	@Override
 	public String toString() {
 		return "Registro [datosPersona_Nombre=" + datosPersona.getNombreP() + ", datosPersona_Apellidos="
@@ -49,7 +58,7 @@ public class Registro {
 				+ ", datosEmpresa_CIF=" + datosEmpresa.getCifEmpresa() + ", datosEmpresa_Direccion="
 				+ datosEmpresa.getDireccionEmpresa() + ", datosEmpresa_Nombre=" + datosEmpresa.getNombreEmpresa()
 				+ ", datosEmpresa_Nombre=" + datosEmpresa.getNombreEmpresa() + ", datosEmpresa_Telefono="
-				+ datosEmpresa.getTelefonoEmpresa() + "]";
+				+ datosEmpresa.getTelefonoEmpresa() + " seleccionarEmpresa=" + getSeleccionarEmpresa() + "]";
 	}
 
 }

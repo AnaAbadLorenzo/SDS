@@ -17,6 +17,7 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
 	public static final String ACCION_ELIMINAR_ROL = "Eliminar rol";
 	public static final String ACCION_BUSCAR_ROL = "Buscar rol";
+	public static final String ACCION_REACTIVAR_ROL = "Reactivar rol";
 
 	public static final String ACCION_AÑADIR_USUARIO = "Añadir usuario";
 	public static final String ACCION_MODIFICAR_USUARIO = "Modificar usuario";
@@ -36,6 +37,7 @@ public class Constantes {
 	public static final String ACCION_ELIMINAR_ACCION = "Eliminar acción";
 	public static final String ACCION_REACTIVAR_ACCION = "Reactivar acción";
 	public static final String ACCION_ASIGNAR_ACCION = "Asignar acción";
+	public static final String ACCION_REVOCAR_ACCION = "Revocar acción";
 
 	public static final String ACCION_AÑADIR_FUNCIONALIDAD = "Añadir funcionalidad";
 	public static final String ACCION_MODIFICAR_FUNCIONALIDAD = "Modificar funcionalidad";
@@ -180,6 +182,8 @@ public class Constantes {
 	public static final String ELIMINAR_ROL_ASOCIADO_USUARIO = "eliminarRolAsociadoUsuario";
 	public static final String ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD = "eliminarRolAsociadoAccionFuncionalidad";
 	public static final String MODIFICAR_ROL = "modificarRol";
+	public static final String ROL_ASIGNAR_CORRECTO = "asignarAccionRolCorrecto";
+	public static final String REACTIVAR_ROL = "reactivarRolCorrecto";
 
 	public static final String BUSCAR_ACCION = "buscarAccionCorrecto";
 	public static final String ACCION_NO_EXISTE = "accionNoExiste";
@@ -203,6 +207,7 @@ public class Constantes {
 	public static final String MODIFICAR_FUNCIONALIDAD = "modificarFuncionalidad";
 	public static final String ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION = "eliminarFuncionalidadAsociadaRolAccion";
 	public static final String REACTIVAR_FUNCIONALIDAD_CORRECTO = "reactivarFuncionalidadCorrecto";
+	public static final String ASIGNAR_FUNCIONALIDAD_CORRECTO = "asignarAccionFuncionalidadCorrecto";
 
 	public static final String BUSCAR_USUARIO = "buscarUsuarioCorrecto";
 	public static final String USUARIO_DNI_NOMBRE_VACIOS = "usuarioDniNombreVacios";
@@ -401,6 +406,7 @@ public class Constantes {
 
 	public static final String EMAIL_NO_ENCONTRADO = "emailNoEncontrado";
 	public static final String RECUPERAR_PASS_CORRECTO = "recuperarPassCorrecto";
+	public static final String PERMISO_NO_EXISTE = "permisoNoExiste";
 
 	public static final String OK = "OK";
 

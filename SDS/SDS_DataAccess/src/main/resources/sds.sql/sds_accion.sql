@@ -29,7 +29,8 @@ CREATE TABLE `accion` (
   `nombre_accion` varchar(48) NOT NULL,
   `descrip_accion` text NOT NULL,
   `borrado_accion` int NOT NULL,
-  PRIMARY KEY (`id_accion`)
+  PRIMARY KEY (`id_accion`),
+  UNIQUE KEY `nombre_accion_UNIQUE` (`nombre_accion`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,9 +40,14 @@ CREATE TABLE `accion` (
 
 LOCK TABLES `accion` WRITE;
 /*!40000 ALTER TABLE `accion` DISABLE KEYS */;
-INSERT INTO `accion` VALUES (1,'add','añadir',0);
-INSERT INTO `accion` VALUES (2,'login','login',0);
-INSERT INTO `accion` VALUES (3,'registro','registro',0);
+INSERT INTO `accion` VALUES ('1', 'Añadir', 'Permite añadir nuevos datos a la aplicación', '0');
+INSERT INTO `accion` VALUES ('2', 'Modificar', 'Permite modificar datos de la aplicación', '0');
+INSERT INTO `accion` VALUES ('3', 'Eliminar', 'Permite eliminar datos de la aplicación', '0');
+INSERT INTO `accion` VALUES ('4', 'Listar', 'Permite visualizar los datos de la aplicación en forma de listado', '0');
+INSERT INTO `accion` VALUES ('5', 'Visualizar', 'Permite ver en detalle los datos de la aplicación', '0');
+INSERT INTO `accion` VALUES ('6', 'Reactivar', 'Permite reactivar los datos eliminados de la aplicación', '0');
+
+
 /*!40000 ALTER TABLE `accion` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

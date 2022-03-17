@@ -17,6 +17,7 @@ import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.PersonaEntity;
+import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.PersonaRepository;
 import com.sds.repository.UsuarioRepository;
@@ -70,17 +71,37 @@ public class PersonaServiceImpl implements PersonaService {
 
 		if (!personas.isEmpty()) {
 			for (final PersonaEntity persona : personas) {
+				if (persona.getEmpresa() == null) {
+					final Optional<UsuarioEntity> usuario = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(usuario.get().getRol().getIdRol(),
+							usuario.get().getRol().getRolName(), usuario.get().getRol().getRolDescription(),
+							usuario.get().getRol().getBorradoRol());
+					final UsuarioEntity user = new UsuarioEntity(usuario.get().getDniUsuario(),
+							usuario.get().getUsuario(), usuario.get().getPasswdUsuario(),
+							usuario.get().getBorradoUsuario(), rol);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), null, user);
 
-				final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
-						persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
-						persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
-						persona.getEmpresa().getBorradoEmpresa());
+					toret.add(person);
+				} else {
+					final Optional<UsuarioEntity> usuario = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(usuario.get().getRol().getIdRol(),
+							usuario.get().getRol().getRolName(), usuario.get().getRol().getRolDescription(),
+							usuario.get().getRol().getBorradoRol());
+					final UsuarioEntity user = new UsuarioEntity(usuario.get().getDniUsuario(),
+							usuario.get().getUsuario(), usuario.get().getPasswdUsuario(),
+							usuario.get().getBorradoUsuario(), rol);
+					final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+							persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+							persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+							persona.getEmpresa().getBorradoEmpresa());
 
-				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
-						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa);
-
-				toret.add(person);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa, user);
+					toret.add(person);
+				}
 			}
 		}
 
@@ -102,16 +123,36 @@ public class PersonaServiceImpl implements PersonaService {
 
 		if (!personas.isEmpty()) {
 			for (final PersonaEntity persona : personas) {
-				final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
-						persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
-						persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
-						persona.getEmpresa().getBorradoEmpresa());
+				if (persona.getEmpresa() == null) {
+					final Optional<UsuarioEntity> usuario = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(usuario.get().getRol().getIdRol(),
+							usuario.get().getRol().getRolName(), usuario.get().getRol().getRolDescription(),
+							usuario.get().getRol().getBorradoRol());
+					final UsuarioEntity user = new UsuarioEntity(usuario.get().getDniUsuario(),
+							usuario.get().getUsuario(), usuario.get().getPasswdUsuario(),
+							usuario.get().getBorradoUsuario(), rol);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), null, user);
+					toret.add(person);
+				} else {
+					final Optional<UsuarioEntity> usuario = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(usuario.get().getRol().getIdRol(),
+							usuario.get().getRol().getRolName(), usuario.get().getRol().getRolDescription(),
+							usuario.get().getRol().getBorradoRol());
+					final UsuarioEntity user = new UsuarioEntity(usuario.get().getDniUsuario(),
+							usuario.get().getUsuario(), usuario.get().getPasswdUsuario(),
+							usuario.get().getBorradoUsuario(), rol);
+					final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+							persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+							persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+							persona.getEmpresa().getBorradoEmpresa());
 
-				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
-						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa);
-
-				toret.add(person);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa, user);
+					toret.add(person);
+				}
 			}
 		}
 
@@ -129,6 +170,7 @@ public class PersonaServiceImpl implements PersonaService {
 		final List<PersonaEntity> toret = new ArrayList<>();
 		List<PersonaEntity> personasToret = new ArrayList<>();
 		String fecha = StringUtils.EMPTY;
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		if (fechaNacP != null) {
 			java.sql.Date fechaSql;
@@ -149,22 +191,50 @@ public class PersonaServiceImpl implements PersonaService {
 
 		if (!personasToret.isEmpty()) {
 			for (final PersonaEntity persona : personasToret) {
-				final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
-						persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
-						persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
-						persona.getEmpresa().getBorradoEmpresa());
+				if (persona.getEmpresa() == null) {
+					final Optional<UsuarioEntity> usuario = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(usuario.get().getRol().getIdRol(),
+							usuario.get().getRol().getRolName(), usuario.get().getRol().getRolDescription(),
+							usuario.get().getRol().getBorradoRol());
+					final UsuarioEntity user = new UsuarioEntity(usuario.get().getDniUsuario(),
+							usuario.get().getUsuario(), usuario.get().getPasswdUsuario(),
+							usuario.get().getBorradoUsuario(), rol);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), null, user);
+					toret.add(person);
+				} else {
+					final Optional<UsuarioEntity> usuario = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(usuario.get().getRol().getIdRol(),
+							usuario.get().getRol().getRolName(), usuario.get().getRol().getRolDescription(),
+							usuario.get().getRol().getBorradoRol());
+					final UsuarioEntity user = new UsuarioEntity(usuario.get().getDniUsuario(),
+							usuario.get().getUsuario(), usuario.get().getPasswdUsuario(),
+							usuario.get().getBorradoUsuario(), rol);
+					final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+							persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+							persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+							persona.getEmpresa().getBorradoEmpresa());
 
-				final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
-						persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-						persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa);
-
-				toret.add(person);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa, user);
+					toret.add(person);
+				}
 			}
 
 		}
 
-		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, numberTotalResults,
-				toret.size());
+		datosBusqueda.add("dniP: " + dniP);
+		datosBusqueda.add("nombreP: " + nombreP);
+		datosBusqueda.add("apellidosP: " + apellidosP);
+		datosBusqueda.add("fechaNacP: " + fechaNacP);
+		datosBusqueda.add("direccionP: " + direccionP);
+		datosBusqueda.add("telefonoP: " + telefonoP);
+		datosBusqueda.add("emailP: " + emailP);
+
+		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, datosBusqueda,
+				numberTotalResults, toret.size());
 
 		return ret;
 	}

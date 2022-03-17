@@ -3,6 +3,7 @@ package com.sds.service.accion;
 import com.sds.model.AccionEntity;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
+import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
 import com.sds.service.exception.AccionNoExisteException;
@@ -10,6 +11,7 @@ import com.sds.service.exception.AccionYaExisteException;
 import com.sds.service.exception.FuncionalidadNoExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.PermisoNoExisteException;
 import com.sds.service.exception.RolNoExisteException;
 
 public interface AccionService {
@@ -36,6 +38,9 @@ public interface AccionService {
 	String asignarAccciones(final AccionAsignar accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException,
 			FuncionalidadNoExisteException, RolNoExisteException;
+
+	String desasignarAccion(final RolAccionFuncionalidad rolAccionFuncionalidad)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PermisoNoExisteException;
 
 	void deleteAccion(final AccionEntity accion) throws AccionNoExisteException;
 

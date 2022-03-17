@@ -29,7 +29,7 @@ public interface UsuarioService {
 	String eliminarUsuario(final Usuario usuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 
-	String cambiarContraseña(final Usuario usuario, String passwdUsuario)
+	String cambiarContraseña(final String usuario, String passwdUsuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 
 	String reactivarUsuario(final Usuario usuario) throws UsuarioNoEncontradoException,

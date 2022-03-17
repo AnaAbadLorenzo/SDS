@@ -2,8 +2,8 @@
 	"buscarAccionCorrecto": {
 		"usuario": "ana",
 		"idAccion": 1,
-		"nombreAccion": "add",
-		"descripAccion": "añadir",
+		"nombreAccion": "Añadir",
+		"descripAccion": "Añadir",
 		"borradoAccion": 0
 	},
 	"accionNameVacio": {
@@ -51,8 +51,8 @@
 	"accionYaExiste": {
 		"usuario": "ana",
 		"idAccion": 1,
-		"nombreAccion": "add",
-		"descripAccion": "añadir",
+		"nombreAccion": "Añadir",
+		"descripAccion": "Añadir",
 		"borradoAccion": 0
 	},
 	"eliminarAccionNoExiste": {
@@ -64,9 +64,9 @@
 	},
 	"eliminarAccionAsociadaRolFuncionalidad": {
 		"usuario": "ana",
-		"idAccion": 2,
-		"nombreAccion": "login",
-		"descripAccion": "login",
+		"idAccion": 1,
+		"nombreAccion": "Añadir",
+		"descripAccion": "Añadir",
 		"borradoAccion": 0
 	},
 	"asignarAccionCorrecto": {

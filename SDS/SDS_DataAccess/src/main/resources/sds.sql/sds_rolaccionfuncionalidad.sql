@@ -47,11 +47,15 @@ CREATE TABLE `rolaccionfuncionalidad` (
 
 LOCK TABLES `rolaccionfuncionalidad` WRITE;
 /*!40000 ALTER TABLE `rolaccionfuncionalidad` DISABLE KEYS */;
-INSERT INTO `rolaccionfuncionalidad` VALUES (1,1,1);
-INSERT INTO `rolaccionfuncionalidad` VALUES (1,2,2);
-INSERT INTO `rolaccionfuncionalidad` VALUES (1,3,3);
-INSERT INTO `rolaccionfuncionalidad` VALUES (2,2,2);
-INSERT INTO `rolaccionfuncionalidad` VALUES (3,3,3);
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '1');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '2');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '3');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '4');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '5');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '6');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '7');
+
+
 /*!40000 ALTER TABLE `rolaccionfuncionalidad` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

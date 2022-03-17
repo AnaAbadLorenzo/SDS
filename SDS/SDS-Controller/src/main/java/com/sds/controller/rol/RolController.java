@@ -147,6 +147,26 @@ public class RolController {
 
 	}
 
+	@PostMapping(value = "/reactivarRol")
+	@ResponseBody
+	public RespEntity reactivarRol(@RequestBody final Rol rol) {
+
+		try {
+			String resultado;
+			try {
+				resultado = rolService.reactivarRol(rol);
+				return new RespEntity(RespCode.ROL_REACTIVADO, resultado);
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, rol);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, rol);
+			}
+		} catch (final RolNoExisteException accionNoExists) {
+			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
+		}
+
+	}
+
 	@PostMapping(value = "/borradoRol")
 	@ResponseBody
 	public RespEntity borrarRol(@RequestBody final Rol rol) {

@@ -10,6 +10,17 @@ public class RolAccionFuncionalidadKey implements Serializable {
 	private Integer idAccion;
 	private Integer idFuncionalidad;
 
+	public RolAccionFuncionalidadKey() {
+
+	}
+
+	public RolAccionFuncionalidadKey(final Integer idRol, final Integer idAccion, final Integer idFuncionalidad) {
+		super();
+		this.idRol = idRol;
+		this.idAccion = idAccion;
+		this.idFuncionalidad = idFuncionalidad;
+	}
+
 	public Integer getIdRol() {
 		return idRol;
 	}
