@@ -16,8 +16,8 @@ public interface UsuarioService {
 
 	ReturnBusquedas<UsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
-	ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario, final RolEntity rol,
-			final int inicio, final int tamanhoPagina);
+	ReturnBusquedas<UsuarioEntity> buscarUsuario(final String usuario, final RolEntity rol, final int inicio,
+			final int tamanhoPagina);
 
 	ReturnBusquedas<UsuarioEntity> buscarUsuariosEliminados(final int inicio, final int tamanhoPagina);
 

@@ -132,11 +132,12 @@ public class LoginServiceImpl implements LoginService {
 							passwdTemp = generarPasswdAleatoria();
 
 							final String fechaEmail = generateFechaEmail(idioma);
+							final String asuntoEmail = generateAsuntoEmail(idioma);
 							final String mensajeEmail = generateMensajeEmail(idioma, passwdTemp);
 							final String contenidoEmail = generateContenidoEmail(fechaEmail, mensajeEmail, idioma);
 
-							final Mail email = new Mail(Constantes.EMISOR_EMAIL, emailUsuario,
-									Constantes.ASUNTO_EMAIL_RECU, contenidoEmail, Constantes.TIPO_CONTENIDO, null);
+							final Mail email = new Mail(Constantes.EMISOR_EMAIL, emailUsuario, asuntoEmail,
+									contenidoEmail, Constantes.TIPO_CONTENIDO, null);
 
 							final String result = mailServiceImpl.enviarCorreo(email);
 
@@ -238,9 +239,10 @@ public class LoginServiceImpl implements LoginService {
 	private boolean existeUsuario(final Login login)
 			throws UsuarioNoEncontradoException, PasswordIncorrectoException, LogExcepcionesNoGuardadoException {
 
-		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
 		String resultadoLog = StringUtils.EMPTY;
+
+		final UsuarioEntity usuario = usuarioRepository.findByUsuario(login.getUsuario());
 
 		if (usuario == null) {
 
@@ -352,6 +354,24 @@ public class LoginServiceImpl implements LoginService {
 		}
 
 		return fechaEmail;
+	}
+
+	private String generateAsuntoEmail(final String idioma) {
+		String asuntoEmail = StringUtils.EMPTY;
+
+		switch (idioma) {
+		case "ES":
+			asuntoEmail = Constantes.ASUNTO_ES;
+			break;
+		case "EN":
+			asuntoEmail = Constantes.ASUNTO_EN;
+			break;
+		case "GA":
+			asuntoEmail = Constantes.ASUNTO_GA;
+			break;
+		}
+
+		return asuntoEmail;
 	}
 
 	private String generateMensajeEmail(final String idioma, final String passwdTemp) {

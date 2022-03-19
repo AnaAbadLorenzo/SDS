@@ -52,6 +52,7 @@ public class DefinicionPruebas {
 	public static final String EMPRESA_VACIA = "Los datos de empresa no pueden ser vacíos";
 	public static final String REGISTRO_CORRECTO = "Registro correcto";
 	public static final String BUSCAR_CORRECTO = "Buscar correcto";
+
 	public static final String BUSCAR_ROL_NAME_VACIO = "Buscar nombre de rol vacio";
 	public static final String BUSCAR_ROL_NO_EXISTE = "Buscar un rol que no existe";
 	public static final String GUARDAR_ROL_CORRECTO = "El rol se ha guardado correctamente";
@@ -67,6 +68,7 @@ public class DefinicionPruebas {
 	public static final String MODIFICAR_ROL = "EL rol se ha modificado correctamente";
 	public static final String MODIFICAR_ROL_NO_EXISTE = "EL rol que desa modificar no existe";
 	public static final String REACTIVAR_ROL_CORRECTO = "El rol se ha reactivado correctamente";
+
 	public static final String ACCION_NAME_VACIO = "El nombre de la accion es vacio";
 	public static final String ACCION_NO_EXISTE = "La acción que busca no existe";
 	public static final String GUARDAR_ACCION_CORRECTO = "La acción se ha guardado correctamente";
@@ -78,6 +80,9 @@ public class DefinicionPruebas {
 	public static final String ASIGNAR_ACCION_CORRECTO = "La asignación de la acción, el rol y la funcionalidad se ha realizado correctamente";
 	public static final String ACCION_DESCRIPTION_VACIO = "La descripción de la acción es vacia";
 	public static final String ACCION_VACIA = "El nombre y descripción de la acción son vacios";
+	public static final String REVOCAR_ACCION_CORRECTO = "La acción se ha eliminado para el rol y la funcionalidad seleccionados";
+	public static final String PERMISO_NO_EXISTE = "La acción no existe para el rol y la funcionalidad seleccionados";
+
 	public static final String FUNCIONALIDAD_NAME_VACIO = "El nombre de la funcionalidad es vacio";
 	public static final String FUNCIONALIDAD_NO_EXISTE = "La funcionalidad que busca no existe";
 	public static final String FUNCIONALIDAD_ACCION_CORRECTO = "La funcionalidad se ha guardado correctamente";
@@ -89,6 +94,7 @@ public class DefinicionPruebas {
 	public static final String REACTIVAR_FUNCIONALIDAD_CORRECTO = "La funcionalidad se ha reactivado correctamente";
 	public static final String FUNCIONALIDAD_DESCRIPTION_VACIO = "La descripción de la funcionalidad es vacia";
 	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad son vacios";
+
 	public static final String ELIMINAR_USUARIO_CORRECTO = "El usuario se ha eliminado correctamente";
 	public static final String ELIMINAR_USUARIO_NO_EXISTE = "El usuario que desea eliminar no existe";
 	public static final String REACTIVAR_USUARIO_CORRECTO = "El usuario se ha reactivado correctamente";
@@ -112,4 +118,5 @@ public class DefinicionPruebas {
 	public static final String ELIMINAR_EMPRESA_CORRECTO = "La empresa se ha eliminado correctamente";
 	public static final String EMPRESA_ASOCIADA_PERSONAS = "La empresa tiene personas asociadas";
 	public static final String REACTIVAR_EMPRESA_CORRECTO = "La empresa se ha reactivado correctamente";
+
 }

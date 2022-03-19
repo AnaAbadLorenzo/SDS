@@ -51,8 +51,8 @@ public class UsuarioController {
 	@PostMapping(value = "/listarUsuario")
 	@ResponseBody
 	public RespEntity buscarUsuario(@RequestBody final UsuarioBuscar usuario) {
-		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuario(usuario.getDniUsuario(),
-				usuario.getUsuario(), usuario.getRol(), usuario.getInicio(), usuario.getTamanhoPagina());
+		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuario(usuario.getUsuario(),
+				usuario.getRol(), usuario.getInicio(), usuario.getTamanhoPagina());
 
 		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
 	}

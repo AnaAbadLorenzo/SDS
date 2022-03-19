@@ -115,6 +115,7 @@ public class Mensajes {
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "La accion no se puede eliminar porque tiene un rol y una funcionalidad asociadas";
 	public static final String ACCION_REACTIVADA_CORRECTAMENTE = "La acción se ha reactivado correctamente";
 	public static final String ACCION_ASIGNADA_CORRECTAMENTE = "La acción ha sido asignada al rol correctamente";
+	public static final String ACCION_REVOCADA_CORRECTAMENTE = "La acción se ha revocada para el rol y la funcionalidad seleccionados";
 
 	public static final String FUNCIONALIDAD_VACIA = "El nombre y descripción de la funcionalidad no pueden ser vacios";
 	public static final String FUNCIONALIDAD_NO_EXISTE = "La funcionalidad que busca no existe";
@@ -157,5 +158,7 @@ public class Mensajes {
 	public static final String ERROR_AL_ENVIAR_MAIL = "Ha ocurrido un error al enviar el email con la nueva password";
 	public static final String CONTRASEÑA_RECUPERADA_CORRECTAMENTE = "La contraseña ha sido recuperada correctamente";
 	public static final String MAIL_NO_ENCONTRADO_CORRECTAMENTE = "El email del usuario no se ha encontrado";
+
+	public static final String PERMISO_NO_EXISTE = "La acción no existe para el rol y la funcionalidad seleccionados";
 
 }

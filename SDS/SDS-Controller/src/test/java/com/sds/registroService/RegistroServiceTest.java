@@ -193,6 +193,8 @@ public class RegistroServiceTest {
 		registro.setDatosPersona(persona);
 		registro.setDatosUsuario(usuario);
 		registro.setDatosEmpresa(empresa);
+		registro.setSeleccionarEmpresa(CommonUtilities
+				.coalesce(jsonCargaDatos.get(Constantes.SELECCIONAR_EMPRESA).toString(), StringUtils.EMPTY));
 
 		return registro;
 

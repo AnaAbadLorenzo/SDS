@@ -253,7 +253,7 @@ public class FuncionalidadServiceTest {
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			FuncionalidadYaExisteException, FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException {
 		final Funcionalidad funcionalidad = generateFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
-				Constantes.GUARDAR_FUNCIONALIDAD);
+				Constantes.ELIMINAR_FUNCIONALIDAD);
 
 		funcionalidadService.anadirFuncionalidad(funcionalidad);
 

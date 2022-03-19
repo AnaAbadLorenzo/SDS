@@ -39,4 +39,7 @@ public interface TestAccionService {
 
 	List<DatosPruebaAcciones> getPruebasAccionesAccionAsignarAcciones()
 			throws IOException, ParseException, java.text.ParseException;
+
+	List<DatosPruebaAcciones> getPruebasAccionesAccionDesasignarAcciones()
+			throws IOException, ParseException, java.text.ParseException;
 }

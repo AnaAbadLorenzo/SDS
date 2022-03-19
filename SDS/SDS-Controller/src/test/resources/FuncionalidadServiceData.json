@@ -2,21 +2,21 @@
 	"buscarFuncionalidadCorrecto": {
 		"usuario": "ana",
 		"idFuncionalidad": 2,
-		"nombreFuncionalidad": "login",
-		"descripFuncionalidad": "login",
+		"nombreFuncionalidad": "Gestión de usuarios",
+		"descripFuncionalidad": "Permite realizar acciones sobre los usuarios de la aplicación",
 		"borradoFuncionalidad": 0
 	},
 	"funcionalidadNameVacio": {
 		"usuario": "ana",
 		"idFuncionalidad": 2,
 		"nombreFuncionalidad": "",
-		"descripFuncionalidad": "login",
+		"descripFuncionalidad": "Permite realizar acciones sobre los usuarios de la aplicación",
 		"borradoFuncionalidad": 0
 	},
 	"funcionalidadDescriptionVacio": {
 		"usuario": "ana",
 		"idFuncionalidad": 2,
-		"nombreFuncionalidad": "login",
+		"nombreFuncionalidad": "Gestión de usuarios",
 		"descripFuncionalidad": "",
 		"borradoFuncionalidad": 0
 	},
@@ -30,57 +30,57 @@
 	"funcionalidadNoExiste": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "funcionalidad",
-		"descripFuncionalidad": "funcionalidad",
+		"nombreFuncionalidad": "Nueva",
+		"descripFuncionalidad": "Nueva",
 		"borradoFuncionalidad": 0
 	},
 	"guardarFuncionalidadCorrecto": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Funcionalidad",
-		"descripFuncionalidad": "Funcionalidad",
+		"nombreFuncionalidad": "Nueva",
+		"descripFuncionalidad": "Nueva",
 		"borradoFuncionalidad": 0
 	},
 	"funcionalidadYaExiste": {
 		"usuario": "ana",
-		"idFuncionalidad": 2,
-		"nombreFuncionalidad": "login",
-		"descripFuncionalidad": "login",
+		"idFuncionalidad": "",
+		"nombreFuncionalidad": "Gestión de usuarios",
+		"descripFuncionalidad": "Permite realizar acciones sobre los usuarios de la aplicación",
 		"borradoFuncionalidad": 0
 	},
 	"modificarFuncionalidad": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Funcionalidad",
-		"descripFuncionalidad": "Funcionalidad",
+		"nombreFuncionalidad": "Nueva",
+		"descripFuncionalidad": "Nueva",
 		"borradoFuncionalidad": 0
 	},
 	"eliminarFuncionalidad": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Funcionalidad",
-		"descripFuncionalidad": "Funcionalidad",
+		"nombreFuncionalidad": "Nueva",
+		"descripFuncionalidad": "Nueva",
 		"borradoFuncionalidad": 0
 	},
 	"eliminarFuncionalidadNoExiste": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Funcionalidad",
-		"descripFuncionalidad": "Funcionalidad",
+		"nombreFuncionalidad": "Nueva",
+		"descripFuncionalidad": "Nueva",
 		"borradoFuncionalidad": 0
 	},
 	"eliminarFuncionalidadAsociadaRolAccion":{
 		"usuario": "ana",
 		"idFuncionalidad": 2,
-		"nombreFuncionalidad": "login",
-		"descripFuncionalidad": "login",
+		"nombreFuncionalidad": "Gestión de usuarios",
+		"descripFuncionalidad": "Permite realizar acciones sobre los usuarios de la aplicación",
 		"borradoFuncionalidad": 0
 	},
 	"reactivarFuncionalidadCorrecto": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Funcionalidad",
-		"descripFuncionalidad": "Funcionalidad",
+		"nombreFuncionalidad": "Nueva",
+		"descripFuncionalidad": "Nueva",
 		"borradoFuncionalidad": 1
 	}
 }

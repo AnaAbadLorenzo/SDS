@@ -44,8 +44,8 @@
 	"accionYaExiste": {
 		"usuario": "ana",
 		"idAccion": 1,
-		"nombreAccion": "add",
-		"descripAccion": "añadir",
+		"nombreAccion": "Añadir",
+		"descripAccion": "Añadir",
 		"borradoAccion": 0
 	},
 	"modificarAccion": {

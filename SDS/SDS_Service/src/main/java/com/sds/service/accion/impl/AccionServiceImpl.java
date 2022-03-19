@@ -356,7 +356,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
-	public String asignarAccciones(final AccionAsignar accion)
+	public String asignarAcciones(final AccionAsignar accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException,
 			FuncionalidadNoExisteException, RolNoExisteException {
 		String resultado = StringUtils.EMPTY;

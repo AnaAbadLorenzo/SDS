@@ -136,6 +136,12 @@ public class GenerarJSON {
 		registro.setDatosUsuario(usuario);
 		registro.setDatosEmpresa(empresa);
 
+		if (fichero.equals(Constantes.URL_JSON_REGISTRAR_ACCIONES)
+				|| fichero.equals(Constantes.URL_JSON_REGISTRAR_DATA)) {
+			registro.setSeleccionarEmpresa(CommonUtilities
+					.coalesce(jsonRegistroVacios.get(Constantes.SELECCIONAR_EMPRESA).toString(), StringUtils.EMPTY));
+		}
+
 		return registro;
 	}
 

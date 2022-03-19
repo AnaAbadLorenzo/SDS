@@ -925,6 +925,28 @@ public class TestController {
 
 	}
 
+	@GetMapping(value = "/accion/accion/revocar")
+	@ResponseBody
+	public RespEntity TestAccionAccionRevocarAcciones() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testAccionService.getPruebasAccionesAccionDesasignarAcciones();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_ACCION_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_ACCIONES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REVOCAR_ACCION);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_ACCION_OK, respuestaTestAcciones);
+
+	}
+
 	@GetMapping(value = "/rol/accion/guardar")
 	@ResponseBody
 	public RespEntity TestRolAccionGuardar() {

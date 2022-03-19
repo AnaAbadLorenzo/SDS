@@ -683,6 +683,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ACCIONES, Constantes.PERSONA_VACIO_DATA);
 		final Registro datosEntradaRegistroUsuarioVacio = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ACCIONES, Constantes.USUARIO_VACIO_DATA);
+		final Registro datosEntradaRegistroEmpresaVacio = generarJSON
+				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ACCIONES, Constantes.EMPRESA_VACIO_DATA);
 
 		final Registro datosEntradaRegistroCorrecto = generarJSON
 				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ACCIONES, Constantes.REGISTRO_CORRECTO);
@@ -692,6 +694,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 		datosPruebaAcciones.add(getTestRegistroEmpresaYaExiste(datosEntradaRegistroEmpresaExiste));
 		datosPruebaAcciones.add(getTestRegistroPersonaVacia(datosEntradaRegistroPersonaVacia));
 		datosPruebaAcciones.add(getTestRegistroUsuarioVacio(datosEntradaRegistroUsuarioVacio));
+		datosPruebaAcciones.add(getTestRegistroEmpresaVacia(datosEntradaRegistroEmpresaVacio));
 
 		datosPruebaAcciones.add(getTestRegistroCorrecto(datosEntradaRegistroCorrecto));
 
@@ -762,6 +765,18 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				DefinicionPruebas.USUARIO_VACIO, Constantes.ERROR, getValorRegistro(datosEntradaRegistroUsuarioVacio));
 	}
 
+	private DatosPruebaAcciones getTestRegistroEmpresaVacia(final Registro datosEntradaRegistroPersonaVacia)
+			throws java.text.ParseException {
+
+		final String resultadoObtenido = existeRegistro(datosEntradaRegistroPersonaVacia);
+
+		final String resultadoEsperado = CodigosMensajes.REGISTRO_EMPRESA_VACIA + " - "
+				+ Mensajes.REGISTRO_EMPRESA_VACIA;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.EMPRESA_VACIA, Constantes.ERROR, getValorRegistro(datosEntradaRegistroPersonaVacia));
+	}
+
 	private DatosPruebaAcciones getTestRegistroCorrecto(final Registro datosEntradaRegistroCorrecto)
 			throws java.text.ParseException {
 
@@ -787,7 +802,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 
 				if (usuario == null) {
 					if (registro.getDatosEmpresa() != null) {
-						if (registro.getDatosEmpresa().getIdEmpresa() == null) {
+						if (registro.getDatosEmpresa().getIdEmpresa() == null
+								&& registro.getSeleccionarEmpresa().equals(Constantes.NO)) {
 							if (validaciones.comprobarEmpresaBlank(registro.getDatosEmpresa())) {
 								final EmpresaEntity empresa = empresaRepository
 										.findByCif(registro.getDatosEmpresa().getCifEmpresa());
@@ -800,13 +816,15 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 									empresaRepository.saveAndFlush(registro.getDatosEmpresa());
 									registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 								}
+							} else {
+								return CodigosMensajes.REGISTRO_EMPRESA_VACIA + " - " + Mensajes.REGISTRO_EMPRESA_VACIA;
 							}
 						} else {
-							final Optional<EmpresaEntity> empresa = empresaRepository
-									.findById(registro.getDatosEmpresa().getIdEmpresa());
+							final EmpresaEntity empresa = empresaRepository
+									.findByCif(registro.getDatosEmpresa().getCifEmpresa());
 
-							if (empresa.isPresent()) {
-								registro.setDatosEmpresa(empresa.get());
+							if (empresa != null) {
+								registro.setDatosEmpresa(empresa);
 								registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 							} else {
 								return CodigosMensajes.EMPRESA_NO_EXISTE + " - " + Mensajes.EMPRESA_NO_EXISTE;
@@ -856,6 +874,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 		valor.put(Constantes.NOMBRE_EMPRESA, registro.getDatosEmpresa().getNombreEmpresa());
 		valor.put(Constantes.DIRECCION_EMPRESA, registro.getDatosEmpresa().getDireccionEmpresa());
 		valor.put(Constantes.TELEFONO_EMPRESA, registro.getDatosEmpresa().getTelefonoEmpresa());
+		valor.put(Constantes.SELECCIONAR_EMPRESA, registro.getSeleccionarEmpresa());
 
 		return valor;
 	}

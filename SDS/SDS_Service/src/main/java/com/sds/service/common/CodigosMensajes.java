@@ -123,6 +123,7 @@ public class CodigosMensajes {
 	public static final String ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD = "ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD";
 	public static final String REACTIVAR_ACCION_CORRECTO = "REACTIVAR_ACCION_CORRECTO";
 	public static final String ASIGNAR_ACCION_CORRECTO = "ASIGNAR_ACCION_CORRECTO";
+	public static final String ACCION_REVOCADA_CORRECTO = "ACCION_REVOCADA_CORRECTO";
 
 	public static final String FUNCIONALIDAD_NO_EXISTE = "FUNCIONALIDAD_NO_EXISTE";
 	public static final String BUSCAR_FUNCIONALIDAD_CORRECTO = "BUSCAR_FUNCIONALIDAD_CORRECTO";
@@ -161,5 +162,7 @@ public class CodigosMensajes {
 	public static final String MAIL_NO_ENVIADO = "MAIL_NO_ENVIADO";
 	public static final String RECUPERAR_CONTRASEÑA_CORRECTO = "RECUPERAR_CONTRASEÑA_CORRECTO";
 	public static final String MAIL_NO_ENCONTRADO = "MAIL_NO_ENCONTRADO";
+
+	public static final String PERMISO_NO_EXISTE = "PERMISO_NO_EXISTE";
 
 }

@@ -68,19 +68,7 @@ public class UsuarioServiceTest {
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
 		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
-
-		assertNotNull(usuarioEncontrado.getListaBusquedas());
-	}
-
-	@Test
-	public void UsuarioService_buscarDniUsuarioVacio() throws IOException, ParseException {
-
-		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.DNIP_VACIO_DATA);
-		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
-
-		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
+				.buscarUsuario(usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
 		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
@@ -92,19 +80,19 @@ public class UsuarioServiceTest {
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
 		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
+				.buscarUsuario(usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
 		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
 
 	@Test
-	public void UsuarioService_buscarDniNombreUsuarioVacios() throws IOException, ParseException {
+	public void UsuarioService_buscarRolVacio() throws IOException, ParseException {
 
-		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_DNI_NOMBRE_VACIOS);
+		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_ROL_VACIO);
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
 		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
+				.buscarUsuario(usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
 		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
@@ -225,7 +213,8 @@ public class UsuarioServiceTest {
 
 		final String passwdUsuario = "JYU45sda";
 
-		final String respuesta = usuarioService.cambiarContraseña(usuario.getUsuario(), passwdUsuario);
+		final String respuesta = usuarioService.cambiarContraseña(usuario.getUsuarioEntity().getUsuario(),
+				passwdUsuario);
 
 		assertEquals(respuesta, Constantes.OK);
 

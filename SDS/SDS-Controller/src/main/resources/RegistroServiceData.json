@@ -21,7 +21,9 @@
 			"cifEmpresa" : "",
 			"nombreEmpresa" : "",
 			"direccionEmpresa" : "",
-			"telefonoEmpresa" : ""
+			"telefonoEmpresa" : "",
+			
+			"seleccionarEmpresa" : "No"
 	},
 	
 	"personaVacia" : {
@@ -38,11 +40,13 @@
 			"passwdUsuario" : "ana",
 			"idRol" : 2,
 	
-			"idEmpresa" : 1,
+			"idEmpresa" : "",
 			"cifEmpresa" : "E45678765",
 			"nombreEmpresa" : "Empresa",
 			"direccionEmpresa" : "C/Prueba N12",
-			"telefonoEmpresa" : "999999999"
+			"telefonoEmpresa" : "999999999",
+			
+			"seleccionarEmpresa" : "Si"
 			
 		
 	},
@@ -60,11 +64,13 @@
 			"passwdUsuario" : "",
 			"idRol" : "",
 			
-			"idEmpresa" : 1,
+			"idEmpresa" : "",
 			"cifEmpresa" : "E45678765",
 			"nombreEmpresa" : "Empresa",
 			"direccionEmpresa" : "C/Prueba N12",
-			"telefonoEmpresa" : "999999999"
+			"telefonoEmpresa" : "999999999",
+			
+			"seleccionarEmpresa" : "Si"
 		
 		
 	},
@@ -82,11 +88,13 @@
 			"passwdUsuario" : "alexandra",
 			"idRol" : 2,
 		
-			"idEmpresa" : 1,
+			"idEmpresa" : "",
 			"cifEmpresa" : "E45678765",
 			"nombreEmpresa" : "Empresa",
 			"direccionEmpresa" : "C/Prueba N12",
-			"telefonoEmpresa" : "999999999"
+			"telefonoEmpresa" : "999999999",
+			
+			"seleccionarEmpresa" : "Si"
 			
 		
 	},
@@ -105,11 +113,13 @@
 			"passwdUsuario" : "aicuna",
 			"idRol" : 2,
 			
-			"idEmpresa" : 1,
+			"idEmpresa" : "",
 			"cifEmpresa" : "E45678765",
 			"nombreEmpresa" : "Empresa",
 			"direccionEmpresa" : "C/Prueba N12",
-			"telefonoEmpresa" : "999999999"
+			"telefonoEmpresa" : "999999999",
+			
+			"seleccionarEmpresa" : "Si"
 			
 		
 	},
@@ -131,7 +141,9 @@
 			"cifEmpresa" : "J26903286",
 			"nombreEmpresa" : "Prueba",
 			"direccionEmpresa" : "Prueba",
-			"telefonoEmpresa" : "988212121"
+			"telefonoEmpresa" : "988212121",
+			
+			"seleccionarEmpresa" : "No"
 			
 		
 	},
@@ -150,10 +162,12 @@
 			"passwdUsuario" : "jorgito",
 			"idRol" : 2,
 	
-			"idEmpresa" : 4,
+			"idEmpresa" : "",
 			"cifEmpresa" : "R56797544",
 			"nombreEmpresa" : "EmpresasPepe",
 			"direccionEmpresa" : "Prueba",
-			"telefonoEmpresa" : "988212121"
+			"telefonoEmpresa" : "988212121",
+			
+			"seleccionarEmpresa":""
 	}
 }

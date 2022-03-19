@@ -2,6 +2,10 @@ package com.sds.service.common;
 
 public class Constantes {
 
+	// Constantes generales
+	public static final String SI = "Si";
+	public static final String NO = "No";
+
 	// Constantes para las funcionalidades
 	public static final String LOGIN = "Login";
 	public static final String REGISTRAR = "Registrar";
@@ -59,6 +63,9 @@ public class Constantes {
 	public static final String TIPO_CONTENIDO = "text/plain";
 
 	// Contantes para el mensaje de email por idioma
+	public static final String ASUNTO_ES = "Recuperación de contraseña";
+	public static final String ASUNTO_GA = "Recuperación de contrasinal";
+	public static final String ASUNTO_EN = "Password recovery";
 	public static final String FECHA_ES = "Ourense, %s de %s de %s";
 	public static final String FECHA_GA = "Ourense, %s de %s de %s";
 	public static final String FECHA_EN = "Ourense, %s  %s, %s";
@@ -97,6 +104,7 @@ public class Constantes {
 	public static final String NOMBRE_EMPRESA = "nombreEmpresa";
 	public static final String DIRECCION_EMPRESA = "direccionEmpresa";
 	public static final String TELEFONO_EMPRESA = "telefonoEmpresa";
+	public static final String SELECCIONAR_EMPRESA = "seleccionarEmpresa";
 
 	public static final String ROL_ID = "idRol";
 	public static final String ROL_NAME = "rolName";
@@ -256,6 +264,7 @@ public class Constantes {
 	public static final String PARAMETROS_PERSONA_VACIOS_DATA = "parametrosPersonaVacios";
 	public static final String PARAMETROS_USUARIO_VACIOS = "parametrosUsuarioVacios";
 	public static final String PARAMETROS_EMPRESA_VACIOS = "parametrosEmpresaVacios";
+	public static final String USUARIO_ROL_VACIO = "usuarioRolVacio";
 
 	public static final String USUARIO_ALFANUMERICO_ENHE_DATA = "usuarioAlfanumericoEnhe";
 	public static final String CONTRASENA_ALFANUMERICA_ENHE_DATA = "contrasenaAlfanumericaEnhe";

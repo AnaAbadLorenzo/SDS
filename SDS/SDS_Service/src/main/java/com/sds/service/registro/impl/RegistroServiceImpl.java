@@ -73,7 +73,7 @@ public class RegistroServiceImpl implements RegistroService {
 			if (!existeRegistro(registro)) {
 				if (registro.getDatosEmpresa() != null) {
 					if (registro.getDatosEmpresa().getIdEmpresa() == null
-							&& registro.getSeleccionarEmpresa().equals("No")) {
+							&& registro.getSeleccionarEmpresa().equals(Constantes.NO)) {
 						if (validaciones.comprobarEmpresaBlank(registro.getDatosEmpresa())) {
 							final EmpresaEntity empresa = empresaRepository
 									.findByCif(registro.getDatosEmpresa().getCifEmpresa());
@@ -121,11 +121,11 @@ public class RegistroServiceImpl implements RegistroService {
 						}
 
 					} else {
-						final Optional<EmpresaEntity> empresa = empresaRepository
-								.findById(registro.getDatosEmpresa().getIdEmpresa());
+						final EmpresaEntity empresa = empresaRepository
+								.findByCif(registro.getDatosEmpresa().getCifEmpresa());
 
-						if (empresa.isPresent()) {
-							registro.setDatosEmpresa(empresa.get());
+						if (empresa != null) {
+							registro.setDatosEmpresa(empresa);
 							registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 						} else {
 							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
@@ -193,9 +193,10 @@ public class RegistroServiceImpl implements RegistroService {
 
 	public boolean existeRegistro(final Registro registro) throws UsuarioYaExisteException, PersonaYaExisteException,
 			EmpresaYaExisteException, LogExcepcionesNoGuardadoException {
-		final Optional<PersonaEntity> persona = personaRepository.findById(registro.getDatosPersona().getDniP());
 		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
 		String resultadoLog = StringUtils.EMPTY;
+
+		final Optional<PersonaEntity> persona = personaRepository.findById(registro.getDatosPersona().getDniP());
 
 		if (!persona.isPresent()) {
 			final UsuarioEntity usuario = usuarioRepository.findByUsuario(registro.getDatosUsuario().getUsuario());

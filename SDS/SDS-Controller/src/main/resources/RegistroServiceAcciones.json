@@ -10,11 +10,13 @@
 		"usuario": "alba",
 		"passwdUsuario": "albita",
 		"idRol": 2,
-		"idEmpresa": 4,
+		"idEmpresa": "",
 		"cifEmpresa": "P56565756",
 		"nombreEmpresa": "EmpresasPepe",
 		"direccionEmpresa": "Prueba",
-		"telefonoEmpresa": "988212121"
+		"telefonoEmpresa": "988212121",
+		
+		"seleccionarEmpresa" : "No"
 	},
 	
 	"usuarioYaExiste":{
@@ -28,29 +30,60 @@
 		"usuario": "aicuna",
 		"passwdUsuario": "aicuna",
 		"idRol": 1,
-		"idEmpresa": 4,
+		"idEmpresa": "",
 		"cifEmpresa": "B12345678",
 		"nombreEmpresa": "EmpresasCB",
 		"direccionEmpresa": "Prueba",
-		"telefonoEmpresa": "988212121"
+		"telefonoEmpresa": "988212121",
+		
+		"seleccionarEmpresa" : "No"
+	},
+	
+	"empresaVacia" : {
+		
+			"dniP" : "41236589K",
+			"nombreP": "Fatima",
+			"apellidosP" : "Abad",
+			"fechaNacP" : "1997-10-12",
+			"direccionP" : "Avenida Flores N12 1º",
+			"emailP" : "fatima@gmail.com",
+			"telefonoP" : "987441252",
+		
+			"usuario" : "fatima",
+			"passwdUsuario" : "fatima",
+			"idRol" : 2,
+	
+			"idEmpresa" : "",
+			"cifEmpresa" : "",
+			"nombreEmpresa" : "",
+			"direccionEmpresa" : "",
+			"telefonoEmpresa" : "",
+			
+			"seleccionarEmpresa" : "No"
+			
+		
 	},
 	
 	"empresaYaExiste":{
-		"dniP": "47851236P" ,
-		"nombreP": "Pedro",
-		"apellidosP": "González",
-		"fechaNacP": "1989-05-31",
-		"direccionP": "Calle Pedrito N13",
-		"emailP": "pedrito@pedro.es",
-		"telefonoP": "652417896",
-		"usuario": "pedro",
-		"passwdUsuario": "pedro",
-		"idRol": 2,
-		"idEmpresa": 1,
-		"cifEmpresa": "J26903286",
-		"nombreEmpresa": "Prueba",
-		"direccionEmpresa": "Prueba",
-		"telefonoEmpresa": "988212121"
+			"dniP" : "55555555M",
+			"nombreP": "Pablo",
+			"apellidosP" : "A",
+			"fechaNacP" : "1989-05-31",
+			"direccionP" : "Prueba",
+			"emailP" : "pablo@pablo.es",
+			"telefonoP" : "777777777",
+			
+        	"usuario" : "pabloa",
+        	"passwdUsuario" : "pablo",
+			"idRol" : 2,
+			
+			"idEmpresa" : 1,
+			"cifEmpresa" : "J26903286",
+			"nombreEmpresa" : "Prueba",
+			"direccionEmpresa" : "Prueba",
+			"telefonoEmpresa" : "988212121",
+			
+			"seleccionarEmpresa" : "No"
 	},
 	
 	"personaVacia" : {
@@ -68,7 +101,9 @@
 		"cifEmpresa": "A12345636",
 		"nombreEmpresa": "Probar",
 		"direccionEmpresa": "Prueba",
-		"telefonoEmpresa": "988212121"
+		"telefonoEmpresa": "988212121",
+		
+		"seleccionarEmpresa" : "No"
 	},
 	
 	"empresaVacio":{
@@ -87,7 +122,9 @@
 		"cifEmpresa": "",
 		"nombreEmpresa": "",
 		"direccionEmpresa": "",
-		"telefonoEmpresa": ""
+		"telefonoEmpresa": "",
+		
+		"seleccionarEmpresa" : "No"
 		
 	},
 	
@@ -102,11 +139,13 @@
 		"usuario": "",
 		"passwdUsuario": "",
 		"idRol": "",
-		"idEmpresa": 4,
+		"idEmpresa": "",
 		"cifEmpresa": "C12345678",
 		"nombreEmpresa": "Empresita",
 		"direccionEmpresa": "Prueba",
-		"telefonoEmpresa": "988212121"
+		"telefonoEmpresa": "988212121",
+		
+		"seleccionarEmpresa" : "No"
 	},
 	
 	"registroCorrecto":{
@@ -120,9 +159,12 @@
 		"usuario": "andrea",
 		"passwdUsuario": "andrea",
 		"idRol": 2,
+		"idEmpresa" : "",
 		"cifEmpresa": "C12345678",
 		"nombreEmpresa": "Prueba",
 		"direccionEmpresa": "Prueba",
-		"telefonoEmpresa": "988212121"
+		"telefonoEmpresa": "988212121",
+		
+		"seleccionarEmpresa" : "No"
 	}
 }

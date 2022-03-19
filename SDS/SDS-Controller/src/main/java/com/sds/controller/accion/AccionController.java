@@ -155,7 +155,7 @@ public class AccionController {
 		try {
 			String resultado = StringUtils.EMPTY;
 			try {
-				resultado = accionService.asignarAccciones(accion);
+				resultado = accionService.asignarAcciones(accion);
 				return new RespEntity(RespCode.ACCION_ASIGNADA, resultado);
 			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, accion);

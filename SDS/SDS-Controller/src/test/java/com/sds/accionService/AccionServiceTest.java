@@ -370,7 +370,7 @@ public class AccionServiceTest {
 				rolBD.getListaBusquedas().get(0), funcionalidadBD.getListaBusquedas().get(0),
 				accionAsignar.getUsuario());
 
-		respuesta = accionService.asignarAccciones(accionAsignarFinal);
+		respuesta = accionService.asignarAcciones(accionAsignarFinal);
 
 		assertEquals(Constantes.OK, respuesta);
 
@@ -435,8 +435,6 @@ public class AccionServiceTest {
 		final AccionAsignar accionAsignar = generateAccionAsignar(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ASIGNAR_ACCION_CORRECTO);
 
-		final String respuesta = StringUtils.EMPTY;
-
 		accionService.anadirAccion(new Accion(accionAsignar.getUsuario(), accionAsignar.getAccion()));
 		rolService.guardarRol(new Rol(accionAsignar.getUsuario(), accionAsignar.getRol()));
 		funcionalidadService
@@ -496,7 +494,7 @@ public class AccionServiceTest {
 				accionAsignar.getUsuario());
 
 		try {
-			accionService.asignarAccciones(accionAsignarFinal);
+			accionService.asignarAcciones(accionAsignarFinal);
 		} catch (final AccionNoExisteException accion) {
 			throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
@@ -530,7 +528,7 @@ public class AccionServiceTest {
 				accionAsignar.getRol(), funcionalidadBD.getListaBusquedas().get(0), accionAsignar.getUsuario());
 
 		try {
-			accionService.asignarAccciones(accionAsignarFinal);
+			accionService.asignarAcciones(accionAsignarFinal);
 		} catch (final RolNoExisteException accion) {
 			throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
@@ -562,7 +560,7 @@ public class AccionServiceTest {
 		final AccionAsignar accionAsignarFinal = new AccionAsignar(accionBD.getListaBusquedas().get(0),
 				rolBD.getListaBusquedas().get(0), accionAsignar.getFuncionalidad(), accionAsignar.getUsuario());
 		try {
-			accionService.asignarAccciones(accionAsignarFinal);
+			accionService.asignarAcciones(accionAsignarFinal);
 		} catch (final FuncionalidadNoExisteException accion) {
 			throw new FuncionalidadNoExisteException(CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo(),
 					CodeMessageErrors
@@ -669,33 +667,4 @@ public class AccionServiceTest {
 
 	}
 
-	private RolAccionFuncionalidad generateRolAccionFuncionalidad(final String fichero, final String nombrePrueba)
-			throws IOException, ParseException {
-
-		final JSONObject jsonRolAccionFuncionalidad = new Util().getDatosJson(fichero, nombrePrueba);
-
-		final RolAccionFuncionalidad rolAccionFuncionalidad = new RolAccionFuncionalidad();
-		final RolAccionFuncionalidadEntity rolAccionFuncionalidadEntity = new RolAccionFuncionalidadEntity();
-
-		final String idAccion = CommonUtilities
-				.coalesce(jsonRolAccionFuncionalidad.get(Constantes.ACCION_ID).toString(), StringUtils.EMPTY);
-
-		final String idRol = CommonUtilities.coalesce(jsonRolAccionFuncionalidad.get(Constantes.ROL_ID).toString(),
-				StringUtils.EMPTY);
-
-		final String idFuncionalidad = CommonUtilities
-				.coalesce(jsonRolAccionFuncionalidad.get(Constantes.FUNCIONALIDAD_ID).toString(), StringUtils.EMPTY);
-
-		rolAccionFuncionalidadEntity.setIdAccion(Integer.parseInt(idAccion));
-		rolAccionFuncionalidadEntity.setIdFuncionalidad(Integer.parseInt(idFuncionalidad));
-		rolAccionFuncionalidadEntity.setIdRol(Integer.parseInt(idRol));
-
-		rolAccionFuncionalidad.setUsuario(CommonUtilities
-				.coalesce(jsonRolAccionFuncionalidad.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
-
-		rolAccionFuncionalidad.setRolAccionFuncionalidad(rolAccionFuncionalidadEntity);
-
-		return rolAccionFuncionalidad;
-
-	}
 }

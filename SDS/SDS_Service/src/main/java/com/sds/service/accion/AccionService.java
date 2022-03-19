@@ -35,7 +35,7 @@ public interface AccionService {
 	String reactivarAccion(final Accion accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException;
 
-	String asignarAccciones(final AccionAsignar accion)
+	String asignarAcciones(final AccionAsignar accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException,
 			FuncionalidadNoExisteException, RolNoExisteException;
 

@@ -8,6 +8,21 @@
 		
 	},
 	
+	"usuarioRolVacio":{
+		"user": "ana",
+		"dniUsuario": "44460662Y",
+		"usuario": "aicuna",
+		"passwdUsuario": "aicuna",
+		"rol":{
+			"idRol":-1,
+			"rolName":"",
+			"rolDescription":"",
+			"borradoRol":0
+		},
+		"borradoUsuario": 0
+		
+	},
+	
 	"usuarioVacio": {
 		"user": "ana",
 		"dniUsuario": "44460662Y",

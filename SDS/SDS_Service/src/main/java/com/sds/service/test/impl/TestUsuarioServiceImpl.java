@@ -548,7 +548,11 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 	private String buscarUsuario(final UsuarioEntity usuario) {
 		String resultado = StringUtils.EMPTY;
 
-		usuarioRepository.findUsuario(usuario.getDniUsuario(), usuario.getUsuario(), usuario.getRol());
+		if (usuario.getRol().getIdRol() == -1) {
+			usuarioRepository.findUsuario(usuario.getUsuario(), new RolEntity());
+		} else {
+			usuarioRepository.findUsuario(usuario.getUsuario(), usuario.getRol());
+		}
 
 		resultado = CodigosMensajes.BUSCAR_USUARIO_CORRECTO + " - " + Mensajes.BUSCAR_USUARIO_CORRECTO;
 
@@ -577,7 +581,6 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 			personaRepository.deletePersona(usuario.getDniUsuario());
 			empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
-			rolRepository.deleteRol(usuario.getRol().getIdRol());
 
 		}
 

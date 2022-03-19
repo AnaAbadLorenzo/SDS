@@ -102,15 +102,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario,
-			final RolEntity rol, final int inicio, final int tamanhoPagina) {
+	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String usuario, final RolEntity rol, final int inicio,
+			final int tamanhoPagina) {
 		final List<UsuarioEntity> toret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
-		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario")
-				.setParameter("dniUsuario", dniUsuario).setParameter("usuario", usuario).setParameter("rol", rol)
-				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+		List<UsuarioEntity> usuarios = new ArrayList<>();
+		Integer numberTotalResults = 0;
 
-		final Integer numberTotalResults = usuarioRepository.numberFindUsuario(dniUsuario, usuario, rol);
+		if (rol.getIdRol() == -1) {
+			usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario").setParameter("usuario", usuario)
+					.setParameter("rol", "").setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+			numberTotalResults = usuarioRepository.numberFindUsuario(usuario);
+
+		} else {
+			usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario").setParameter("usuario", usuario)
+					.setParameter("rol", rol).setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+			numberTotalResults = usuarioRepository.numberFindUsuarioWithRol(usuario, rol);
+		}
 
 		if (!usuarios.isEmpty()) {
 			for (final UsuarioEntity usuarioBuscar : usuarios) {
@@ -130,7 +140,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 		}
 
-		datosBusqueda.add("dniUsuario: " + dniUsuario);
 		datosBusqueda.add("usuario: " + usuario);
 		datosBusqueda.add("rol: " + rol.toString());
 
