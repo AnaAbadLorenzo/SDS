@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
@@ -58,6 +60,7 @@ public class RegistroServiceImpl implements RegistroService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String registrar(final Registro registro) throws UsuarioYaExisteException, PersonaYaExisteException,
 			EmpresaYaExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ParseException,
 			EmpresaNoEncontradaException {

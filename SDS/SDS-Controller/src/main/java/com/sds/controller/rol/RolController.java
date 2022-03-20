@@ -161,7 +161,7 @@ public class RolController {
 			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, rol);
 			}
-		} catch (final RolNoExisteException accionNoExists) {
+		} catch (final RolNoExisteException rolNoExists) {
 			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rol);
 		}
 

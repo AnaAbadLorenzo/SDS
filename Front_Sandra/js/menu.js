@@ -15,6 +15,7 @@ async function changePass() {
       resetearFormulario("formularioChangePass", idElementoList);
       setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
+      
       }).catch((res) => {
         $("#changePass-modal").modal('toggle');
         $("#modal-title").removeClass();
@@ -25,6 +26,7 @@ async function changePass() {
         $("#mensajeError").addClass(res.code);
 
         let idElementoList = ["passChangePass1", "passChangePass2"];
+        limpiarFormulario(idElementoList);
         resetearFormulario("formularioChangePass", idElementoList);
         setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
@@ -135,14 +137,28 @@ function cargarFuncionalidadesUsuario(datos){
 
   var htmlMenu = '';
 
-  for(i = 0; i<(datos.funcionalidades.length) - 1; i++){
-    var href = cargarHref(datos.funcionalidades[i]);
-    htmlMenu = htmlMenu + '<a class="dropdown-item" href="' + href + '">' + datos.funcionalidades[i] + '</a> <div class="dropdown-divider"></div>';
+  for(i = 0; i<(datos.funcionalidades.length) - 1; i++) {
+    htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i]) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a> <div class="dropdown-divider"></div>';
   }
 
   htmlMenu = htmlMenu + '<a class="dropdown-item" href="#">' + datos.funcionalidades[i] + '</a>';
+
 
   $("#listadoFuncionalidades").append(htmlMenu);
 
 
 }
+
+$(document).ready(function() {
+  $("#changePass-modal").on('hidden.bs.modal', function() {
+    
+    let idElementoErrorList = ["errorFormatoChangePass1", "errorFormatoChangePass2", "bloqueoMayusculasChangePass"];
+    
+    let idElementoList = ["passChangePass1", "passChangePass2"];
+
+    limpiarFormulario(idElementoList);
+    eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
+    setLang(getCookie('lang'));
+  });
+
+});

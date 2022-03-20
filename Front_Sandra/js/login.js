@@ -126,6 +126,7 @@ $(document).ready(function(){
   $("#login-modal").on('hidden.bs.modal', function () {
   	let idElementoErrorList = ["errorFormatoUser", "errorFormatoPass"];
   	let idElementoList = ["userLogin","passLogin"];
+    limpiarFormulario(idElementoList);
   	eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
   	setLang(getCookie('lang'));
   });
@@ -133,6 +134,7 @@ $(document).ready(function(){
 	$("#recuperarcontrasena-modal").on('hidden.bs.modal', function () {
 		let idElementoErrorList = ["errorFormatoUserPass", "errorFormatoEmail"];
 		let idElementoList = ["userRecuperarPass","emailUser"];
+    limpiarFormulario(idElementoList);
 		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
 		setLang(getCookie('lang'));
     });

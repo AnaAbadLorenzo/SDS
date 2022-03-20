@@ -12,6 +12,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
@@ -240,6 +242,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException,
 			PersonaNoExisteException, ParseException, LogAccionesNoGuardadoException {
 		final PersonaEntity personaEntity = persona.getPersona();
@@ -290,6 +293,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String añadirPersona(final PersonaAnadir personaAñadir)
 			throws PersonaYaExisteException, UsuarioYaExisteException, ParseException,
 			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
@@ -384,6 +388,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException,
 			PersonaNoExisteException, ParseException, LogAccionesNoGuardadoException {
 		final PersonaEntity personaEntity = persona.getPersona();
@@ -455,6 +460,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String reactivarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException,
 			PersonaNoExisteException, ParseException, LogAccionesNoGuardadoException {
 		final PersonaEntity personaEntity = persona.getPersona();
@@ -495,6 +501,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public void deletePersona(final PersonaEntity persona)
 			throws PersonaNoExisteException, ParseException, UsuarioAsociadoPersonaException {
 		final Boolean personaValida = validaciones.comprobarPersonaBlank(persona);

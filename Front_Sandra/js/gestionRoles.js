@@ -33,7 +33,7 @@ async function cargarRoles(){
 	  	var totalResults = res.data.tamanhoTotal + '';
 	  	var textPaginacion = "1 - " + numResults  + " de " + totalResults 
 	   	$("#datosRol").html("");
-	   	$("#ckeckboxColumnas").html("");
+	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
     		for (var i = 0; i < res.data.listaBusquedas.length; i++){
     			var tr = construyeFila('ROL', res.data.listaBusquedas[i]);
@@ -41,10 +41,10 @@ async function cargarRoles(){
     		}
     	
     	var div = createHideShowColumnsWindow({ROL_NAME_COLUMN:1, ROL_DESCRIPTION_COLUMN:2});
-        $("#ckeckboxColumnas").append(div);
-        $("#paginacion").append(textPaginacion);
-
-        setLang(idioma);
+      $("#checkboxColumnas").append(div);
+      $("#paginacion").append(textPaginacion);
+      setLang(getCookie('lang'));
+	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
 	    $("#modal-title").addClass("ERROR");

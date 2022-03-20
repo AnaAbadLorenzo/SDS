@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.AccionEntity;
 import com.sds.model.FuncionalidadEntity;
@@ -149,6 +151,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String anadirAccion(final Accion accion)
 			throws AccionYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		final AccionEntity accionEntity = accion.getAccion();
@@ -200,6 +203,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarAccion(final Accion accion) throws LogExcepcionesNoGuardadoException,
 			LogAccionesNoGuardadoException, AccionNoExisteException, AccionAsociadaRolFuncionalidadException {
 		final AccionEntity accionEntity = accion.getAccion();
@@ -261,6 +265,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarAccion(final Accion accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException {
 		final AccionEntity accionEntity = accion.getAccion();
@@ -323,6 +328,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String reactivarAccion(final Accion accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
@@ -356,6 +362,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String asignarAcciones(final AccionAsignar accion)
 			throws LogExcepcionesNoGuardadoException, AccionNoExisteException, LogAccionesNoGuardadoException,
 			FuncionalidadNoExisteException, RolNoExisteException {
@@ -443,6 +450,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String desasignarAccion(final RolAccionFuncionalidad rolAccionFuncionalidad)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PermisoNoExisteException {
 		String resultado = StringUtils.EMPTY;
@@ -487,6 +495,7 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public void deleteAccion(final AccionEntity accion) throws AccionNoExisteException {
 
 		final Boolean accionValida = validaciones.comprobarAccionBlank(accion);

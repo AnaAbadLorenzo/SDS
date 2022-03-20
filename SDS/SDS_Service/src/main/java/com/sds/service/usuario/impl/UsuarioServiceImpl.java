@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
@@ -159,11 +161,18 @@ public class UsuarioServiceImpl implements UsuarioService {
 		final Integer numberTotalResults = usuarioRepository.numberFindUsuariosEliminados();
 
 		if (!usuarios.isEmpty()) {
-			for (final UsuarioEntity usuario : usuarios) {
-				final RolEntity rolUsuario = new RolEntity(usuario.getRol().getIdRol(), usuario.getRol().getRolName(),
-						usuario.getRol().getRolDescription(), usuario.getRol().getBorradoRol());
-				final UsuarioEntity user = new UsuarioEntity(usuario.getDniUsuario(), usuario.getUsuario(),
-						usuario.getPasswdUsuario(), usuario.getBorradoUsuario(), rolUsuario);
+			for (final UsuarioEntity usuarioBuscar : usuarios) {
+				final RolEntity rolUsuario = new RolEntity(usuarioBuscar.getRol().getIdRol(),
+						usuarioBuscar.getRol().getRolName(), usuarioBuscar.getRol().getRolDescription(),
+						usuarioBuscar.getRol().getBorradoRol());
+				final Optional<PersonaEntity> persona = personaRepository.findById(usuarioBuscar.getDniUsuario());
+				final PersonaEntity personaEntity = new PersonaEntity(persona.get().getDniP(),
+						persona.get().getNombreP(), persona.get().getApellidosP(), persona.get().getFechaNacP(),
+						persona.get().getDireccionP(), persona.get().getTelefonoP(), persona.get().getEmailP(),
+						persona.get().getBorradoP());
+
+				final UsuarioEntity user = new UsuarioEntity(usuarioBuscar.getDniUsuario(), usuarioBuscar.getUsuario(),
+						usuarioBuscar.getPasswdUsuario(), usuarioBuscar.getBorradoUsuario(), rolUsuario, personaEntity);
 
 				usuariosToret.add(user);
 			}
@@ -175,6 +184,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarUsuario(final Usuario usuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 
@@ -204,9 +214,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 					CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 		} else {
-			user.setBorradoUsuario(1);
-			usuario.setUsuarioEntity(user);
-			usuarioRepository.saveAndFlush(user);
+			usuarioBD.get().setBorradoUsuario(1);
+			usuario.setUsuarioEntity(usuarioBD.get());
+			usuarioRepository.saveAndFlush(usuarioBD.get());
 
 			final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
 					Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());
@@ -231,6 +241,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String reactivarUsuario(final Usuario usuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			PersonaNoExisteException, ParseException {
@@ -261,9 +272,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 					CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 		} else {
-			user.setBorradoUsuario(0);
-			usuario.setUsuarioEntity(user);
-			usuarioRepository.saveAndFlush(user);
+			usuarioBD.get().setBorradoUsuario(0);
+			usuario.setUsuarioEntity(usuarioBD.get());
+			usuarioRepository.saveAndFlush(usuarioBD.get());
 
 			final Optional<PersonaEntity> persona = personaRepository.findById(user.getDniUsuario());
 
@@ -311,6 +322,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarRolUsuario(final RolEntity rol, final Usuario usuario)
 			throws LogExcepcionesNoGuardadoException, UsuarioNoEncontradoException, LogAccionesNoGuardadoException,
 			RolNoExisteException {
@@ -322,7 +334,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		final Boolean rolValido = validaciones.comprobarRolBlank(rol);
 
 		if (rolValido) {
-			final Boolean userValido = validaciones.comprobarUsuarioBlank(user);
+			final Boolean userValido = validaciones.comprobarUsuarioBlank(user.getUsuario());
 			if (userValido) {
 				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(user.getDniUsuario());
 
@@ -401,6 +413,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String cambiarContraseña(final String usuario, final String passwdUsuario)
 			throws UsuarioNoEncontradoException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
@@ -467,6 +480,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public void deleteUsuario(final UsuarioEntity user) throws UsuarioNoEncontradoException {
 		final Boolean usuarioValido = validaciones.comprobarUsuarioBlank(user);
 

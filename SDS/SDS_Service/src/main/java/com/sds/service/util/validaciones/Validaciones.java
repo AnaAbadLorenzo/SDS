@@ -296,7 +296,7 @@ public class Validaciones {
 	}
 
 	public boolean comprobarUsuarioModificarBlank(final UsuarioModificar usuarioModificar) throws ParseException {
-		if (!comprobarUsuarioBlank(usuarioModificar.getUsuario().getUsuarioEntity())
+		if (!comprobarUsuarioBlank(usuarioModificar.getUsuario().getUsuario())
 				|| !comprobarRolBlank(usuarioModificar.getRolEntity())) {
 			return false;
 		}

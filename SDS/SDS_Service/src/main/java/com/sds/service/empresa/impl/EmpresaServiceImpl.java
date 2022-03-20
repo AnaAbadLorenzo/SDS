@@ -9,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.EmpresaEntity;
 import com.sds.model.LogAccionesEntity;
@@ -166,6 +168,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarEmpresa(final Empresa empresa) throws LogExcepcionesNoGuardadoException,
 			EmpresaNoEncontradaException, EmpresaAsociadaPersonasException, LogAccionesNoGuardadoException {
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
@@ -234,6 +237,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String añadirEmpresa(final Empresa empresa)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, EmpresaYaExisteException {
 		String resultado = StringUtils.EMPTY;
@@ -286,6 +290,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarEmpresa(final Empresa empresa)
 			throws EmpresaNoEncontradaException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 		final EmpresaEntity empresaEntity = empresa.getEmpresa();
@@ -357,6 +362,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String reactivarEmpresa(final Empresa empresa)
 			throws EmpresaNoEncontradaException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
@@ -396,6 +402,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public void deleteEmpresa(final EmpresaEntity empresa)
 			throws EmpresaNoEncontradaException, EmpresaAsociadaPersonasException {
 		final EmpresaEntity empre = empresaRepository.findByCif(empresa.getCifEmpresa());

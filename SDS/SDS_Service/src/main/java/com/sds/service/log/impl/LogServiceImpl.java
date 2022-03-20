@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
@@ -62,6 +64,7 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String guardarLogExcepciones(final LogExcepcionesEntity logExcepciones) {
 		final Boolean logValido = validaciones.comprobarLogExcepcionesBlank(logExcepciones);
 		String resultado = StringUtils.EMPTY;
@@ -137,6 +140,7 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String guardarLogAcciones(final LogAccionesEntity logAcciones) {
 		final Boolean logValido = validaciones.comprobarLogAccionesBlank(logAcciones);
 		String resultado = StringUtils.EMPTY;

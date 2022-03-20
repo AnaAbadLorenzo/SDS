@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.LogAccionesEntity;
@@ -141,6 +143,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String anadirFuncionalidad(final Funcionalidad funcionalidad)
 			throws FuncionalidadYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
@@ -192,6 +195,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarFuncionalidad(final Funcionalidad funcionalidad) throws LogExcepcionesNoGuardadoException,
 			LogAccionesNoGuardadoException, FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException {
 
@@ -255,6 +259,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarFuncionalidad(final Funcionalidad funcionalidad)
 			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, LogAccionesNoGuardadoException {
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
@@ -310,6 +315,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String reactivarFuncionalidad(final Funcionalidad funcionalidad)
 			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, LogAccionesNoGuardadoException {
 		final FuncionalidadEntity funcionalidadEntity = funcionalidad.getFuncionalidadEntity();
@@ -348,6 +354,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public void deleteFuncionalidad(final FuncionalidadEntity funcionalidad) throws FuncionalidadNoExisteException {
 		final Boolean funcionalidadValida = validaciones.comprobarFuncionalidadBlank(funcionalidad);
 

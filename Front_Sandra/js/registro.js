@@ -251,6 +251,8 @@ $(document).ready(function() {
 		let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
 			"nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
 
+
+		limpiarFormulario(idElementoList);
 		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
 		setLang(getCookie('lang'));
 	});

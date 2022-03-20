@@ -92,10 +92,10 @@ function modalCambioPass(){
 			'<div class="changePassmodal-container">' +
 				'<h1 class="CAMBIAR_CONTRASEÑA"></h1><br>' +
 				'<form name="formularioChangePass" id="formularioChangePass" action="javascript:changePass()" onsubmit="return comprobarChangePass()">' +
-					'<input type="password" name="PASS_USUARIO_NUEVA" class="PASS_USUARIO_NUEVA" maxlength="45" size="45" id="passChangePass1" placeholder="Usuario" placeholder="Contraseña" onKeyPress="capLock(event);" onblur="return comprobarPass(\'passChangePass1\', \'errorFormatoChangePass1\', \'passwordChange\')";>' +
+					'<input type="password" name="PASS_USUARIO_NUEVA" class="PASS_USUARIO_NUEVA" maxlength="45" size="45" id="passChangePass1" placeholder="Usuario" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPass(\'passChangePass1\', \'errorFormatoChangePass1\', \'passwordChange\')";>' +
 					'<div style="display:none" id="errorFormatoChangePass1"></div>' +
-					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event);" onblur="return comprobarPass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')">' +
-					'<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculas"></div>' +  
+					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')">' +
+					'<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculasChangePass"></div>' +  
           			'<div style="display:none" id="errorFormatoChangePass2" class="alert alert-danger ocultar"></div>' +  
 					'<div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>' +
 					'<button type="submit" name="btnChangePass" value="Cambiar contraseña" class="btnChangePass tooltip3">' +
@@ -198,13 +198,13 @@ function getCookie(name) {
 
 }
  
-function capLock(e){
+function capLock(e, idElemento){
     kc=e.keyCode?e.keyCode:e.which;
     sk=e.shiftKey?e.shiftKey:((kc==16)?true:false);
     if(((kc>=65&&kc<=90)&&!sk)||((kc>=97&&kc<=122)&&sk )){
-        document.getElementById("bloqueoMayusculas").style.display = "block";
+        document.getElementById(idElemento).style.display = "block";
     } else {
-        document.getElementById("bloqueoMayusculas").style.display = "none";
+        document.getElementById(idElemento).style.display = "none";
     }
 }
 
@@ -251,6 +251,14 @@ function eliminarMensajesValidacionError(idElementoErrorList, idElementoList){
 		$("#"+idElemento).removeAttr("style");
 		$("#"+idElemento).css("border", "1px solid #D1C4E9");
 		$("#"+idElemento).css("borderTop",  "2px solid #B39DDB");
+	});
+}
+
+/**Función para limpiar los campos de un formulario*/
+function limpiarFormulario(idElementoList){
+	
+	idElementoList.forEach( function (idElemento){
+		$("#"+idElemento).val('');
 	});
 }
 
@@ -319,11 +327,11 @@ function construyeFila(entidad, fila) {
 	var filaTabla = "";
 
 	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle" src="images/detail3.png" onclick="showDetalleUsuario(' + atributosFunciones + 
-                               ')" alt="Detalle Usuario"/><span class="tooltiptext iconDetailUser">Detalle Usuario</span></div>';
+                               ')" alt="Detalle Usuario"/><span class="tooltiptext iconDetailUser">Detalle</span></div>';
     var celdaAccionesEditar = '<div class="tooltip"><img class="editar" src="images/edit3.png" onclick="showEditarUsuario(' + atributosFunciones + 
-                               ')" alt="Editar Usuario"/><span class="tooltiptext iconEditUser">Editar Usuario</span></div>';
+                               ')" alt="Editar Usuario"/><span class="tooltiptext iconEditUser">Editar</span></div>';
     var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar" src="images/delete3.png" onclick="showEliminarUsuario(' + atributosFunciones + 
-                               ')" alt="Eliminar Usuario"/><span class="tooltiptext iconDeleteUser">Eliminar Usuario</span></div>';
+                               ')" alt="Eliminar Usuario"/><span class="tooltiptext iconDeleteUser">Eliminar</span></div>';
 
 
 	var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
@@ -365,6 +373,20 @@ function cargarHref(dato){
 	}
 
 	return href;
+}
+
+/**Función para cargar los class de cada pagina **/
+
+function cargarClass(dato){
+	var clase=""
+
+	switch(dato){
+		case 'Gestión de roles':
+			clase="GESTION_ROLES";
+		break;
+	}
+
+	return clase;
 }
 
 

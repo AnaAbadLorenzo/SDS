@@ -10,6 +10,8 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
@@ -137,6 +139,7 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String guardarRol(final Rol rol)
 			throws RolYaExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 
@@ -192,6 +195,7 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarRol(final Rol rol) throws RolNoExisteException, RolAsociadoUsuarioException,
 			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, RolAsociadoAccionFuncionalidadException {
 		final RolEntity rolEntity = rol.getRol();
@@ -273,6 +277,7 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarRol(final Rol rol)
 			throws RolNoExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		final RolEntity rolEntity = rol.getRol();
@@ -330,6 +335,7 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String reactivarRol(final Rol rol)
 			throws LogExcepcionesNoGuardadoException, RolNoExisteException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
@@ -363,6 +369,7 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public void deleteRol(final Rol rol) throws RolNoExisteException {
 		final Boolean rolValido = validaciones.comprobarRolBlank(rol.getRol());
 
