@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="js/registro.js"></script>		
 	<script type="text/javascript" src="js/funcionesComunes.js"></script>
 	<script type="text/javascript" src="js/configURLs.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
@@ -30,30 +31,35 @@
   (async ()=>{
   	await includeTopMenu();
     await funcionalidadesUsuario();
+    modalCambioPass();
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario()
-  })();
-">
+  })();">
 	
 	<div id="topMenu"></div>
 
-	 <div class="bienvenida MENSAJE_BIENVENIDA">Bienvenido a SDS</div>
+	<div class="bienvenida MENSAJE_BIENVENIDA">Bienvenido a SDS</div>
 
-	 <div id="modal" tabindex="-1" role="dialog" style="display:none">
-	  <div class="modal-dialog" role="document" id="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <img src="" name="aviso" class="imagenAviso"/>
-	        <h3 id="modal-title" class="modal-title"></h3>
+
+	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	</div>
+
+
+	<div id="modal" tabindex="-1" role="dialog" style="display:none">
+		<div class="modal-dialog" role="document" id="modal-dialog">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <img src="" name="aviso" class="imagenAviso"/>
+		      <h3 id="modal-title" class="modal-title"></h3>
+		    </div>
+		    <div id='mensajeError' class="modal-body"></div>
+		  	<div class="modal-footer">
+	        	<a id="cerrar" href="#"  class="tooltip5">
+	        		<img class="iconCerrar" alt="Cerrar" src="images/close.png"/>
+	                <span class="tooltiptext5 ICONO_CERRAR"></span>
+	        	</a>
 	      </div>
-	      <div id='mensajeError' class="modal-body"></div>
-	      <div class="modal-footer">
-        	<a id="cerrar" href="#"  class="tooltip5">
-        		<img class="iconCerrar" alt="Cerrar" src="images/close.png"/>
-                <span class="tooltiptext5 ICONO_CERRAR"></span>
-        	</a>
-      	  </div>
-	    </div>
-	  </div>
+		  </div>
+		</div>
 	</div>
 
 	<div id="footer"></div>

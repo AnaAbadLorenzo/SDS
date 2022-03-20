@@ -31,7 +31,10 @@ body {
   clear: both;
   display: table;
 }
-
+.imgTabError{
+   width: 5px; 
+  height: 5px;
+}
 #modal {
   width:100%; /*Toma el 100% del ancho de la página*/
   height:100%; /*Toma el 100% del alto de la página*/
@@ -56,7 +59,8 @@ body {
   position: absolute;
   left: 12%;
   top: 12%;
-  width: 100%;
+  width: auto !important;
+  display: inline-block;
 }
 
 .imagenAviso {

@@ -1,3 +1,13 @@
+/** Función que valida el formulario de cambio de contraseña **/
+function comprobarChangePass(){
+	if(comprobarPass('passChangePass1', 'errorFormatoChangePass1', 'passwordChange') && comprobarPass('passChangePass2', 'errorFormatoChangePass2', 'passwordChange')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+
 /** Función que valida el formulario de registro **/
 function comprobarRegistro(){
 	if(comprobarDNI('dniP', 'errorFormatoDni', 'dniPersona') && 
@@ -10,9 +20,10 @@ function comprobarRegistro(){
 		comprobarUser('usuario', 'errorFormatoUserRegistro', 'loginUsuario') && 
 		comprobarPass('passwdUsuario1', 'errorFormatoPassRegistro', 'passwdUsuarioRegistro')  && 
 		comprobarPass('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro')){
-
+	
 		if($('#formRegistroEmpresa').is(':hidden')){
 			return true;
+		
 		}else{
 			if(comprobarCIF('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro') && 
 				comprobarNombreEmpresa('nombreEmpresa', 'errorFormatoNombreEmpresa', 'nombreEmpresaRegistro') && 
@@ -20,6 +31,7 @@ function comprobarRegistro(){
 				comprobarTelefono('telefono', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro')){
 				return true;
 			}else{
+				
 				return false;
 			}
 		}
@@ -80,6 +92,21 @@ function comprobarPass(idElemento, idElementoError, campo) {
 	}
 
 }
+/**Función que valida la password de usuario*/
+function comprobarPassChanguePassword() {
+
+	document.getElementById('passCambiarPass1').style.borderWidth = "2px";
+		
+	if (validaNoVacio('passCambiarPass1', 'errorFormatoPassCambiarRegistro', 'passwordChange') && comprobarLetrasNumeros('passCambiarPass1', 'errorFormatoPassCambiarRegistro', 'passwordChange') && 
+		comprobarTamañoMinimo('passCambiarPass1',3, 'errorFormatoPassCambiarRegistro', 'passwordChange') && comprobarTamañoMaximo('passCambiarPass1', 45, 'errorFormatoPassCambiarRegistro', 'passwordChange') && comprobarEnhe('passCambiarPass1', 'errorFormatoPassCambiarRegistro', 'passwordChange')) {
+		validacionOK('passCambiarPass1', 'errorFormatoPassCambiarRegistro');
+		return true;
+	} else {
+		validacionKO('passCambiarPass1', 'errorFormatoPassCambiarRegistro');		
+		return false;
+	}
+
+}
 
 /**Función que valida el email*/
 function comprobarEmail(idElemento, idElementoError, campo) {
@@ -103,7 +130,7 @@ function comprobarEmail(idElemento, idElementoError, campo) {
 function comprobarDNI(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarLetrasNumeros(idElemento, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 9, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 9,  idElementoError, campo)) {
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarFormatoDNI(idElemento, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 9, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 9,  idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError);
         return true;
 	} else{
@@ -183,7 +210,7 @@ function comprobarTelefono(idElemento, idElementoError, campo){
 function comprobarCIF(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarLetrasNumeros(idElemento, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 9, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 9,  idElementoError, campo)) {
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarFormatoCIF(idElemento, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 9, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 9,  idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError);
         return true;
 	} else{
@@ -264,6 +291,9 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			case 'passwdUsuarioRegistro':
 				codigo = "PASS_USUARIO_VACIO";
 			break;
+			case 'passwordChange':
+				codigo="PASS_USUARIO_VACIO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
 	    return false;
@@ -327,6 +357,9 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 		  		codigo = "TELEFONO_MENOR_QUE_9";
 			break;
 			case 'passwdUsuarioRegistro':
+				codigo = "PASS_MENOR_QUE_3";
+			break;
+			case 'passwordChange' :
 				codigo = "PASS_MENOR_QUE_3";
 			break;
 
@@ -394,6 +427,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			case 'passwdUsuarioRegistro':
 				codigo = "PASS_MAYOR_QUE_45";
 			break;
+			case 'passwordChange':
+				codigo = "PASS_MAYOR_QUE_45";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -422,13 +458,10 @@ function comprobarLetrasNumeros(idElemento, idElementoError, campo) {
 			case 'loginUsuarioRecPass' :
 				codigo = "LOGIN_ALFANUMERICO_INCORRECTO";
 			break;
-			case 'dniPersona' :
-				codigo = "DNI_PERSONA_INCORRECTO";
-			break;
-			case 'cifEmpresaRegistro' :
-				codigo = "CIF_EMPRESA_ALFANUMERICO_INCORRECTO";
-			break;
 			case 'passwdUsuarioRegistro':
+				codigo = "PASS_ALFANUMERICO_INCORRECTO";
+			break;
+			case 'passwordChange':
 				codigo = "PASS_ALFANUMERICO_INCORRECTO";
 			break;
 
@@ -447,7 +480,7 @@ function comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo) {
 
 	var valor = document.getElementById(idElemento).value;
  
- 	var patron = /^[a-zA-Z0-9\u00f1\u00d1\u00AA\u00BA///-\s]+$/;
+ 	var patron = /^[a-zA-Z0-9À-ÿ\u00f1\u00d1\u00AA\u00BA///-\s]+$/;
 		
 	if (!patron.test(valor)) { 
     	switch(campo) {
@@ -515,6 +548,9 @@ function comprobarEnhe(idElemento, idElementoError,campo){
 			break;
 			case 'passwdUsuarioRegistro':
 				codigo = "PASS_ALFANUMERICO_INCORRECTO";
+			break;
+			case 'passwordChange' :
+				codigo = "PASS_ALFANUMERICO_INCORRECTO"
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -595,6 +631,49 @@ function comprobarFormatoEmail(idElemento, idElementoError, campo) {
 			break;
 			case 'emailPersonaRegistro' :
 				codigo = "EMAIL_ALFANUMERICO_INCORRECTO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+		return false;
+	}
+
+    return true;
+}
+
+/**Función para comprobar el formato del DNI **/
+function comprobarFormatoDNI(idElemento, idElementoError, campo) {
+	
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+      
+	var patron = /^[0-9]{8}[A-Z]{1}$/; // establecemos un patron para un email
+	if (!patron.test(valor)) {
+		switch(campo) {
+	    	case 'dniPersona' :
+				codigo = "DNI_PERSONA_INCORRECTO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+		return false;
+	}
+
+    return true;
+}
+
+
+/**Función para comprobar el formato del CIF **/
+function comprobarFormatoCIF(idElemento, idElementoError, campo) {
+	
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+      
+	var patron = /^[A-Z]{1}[0-9]{8}$/; // establecemos un patron para un email
+	if (!patron.test(valor)) {
+		switch(campo) {
+	    	case 'cifEmpresaRegistro' :
+				codigo = "CIF_EMPRESA_ALFANUMERICO_INCORRECTO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

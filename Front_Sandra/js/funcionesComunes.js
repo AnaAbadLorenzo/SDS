@@ -70,7 +70,7 @@ function includeTopMenu() {
 				'<div class="usuarioConectado">' + getCookie('usuario') + '</div>' +
 				'</a>' +
 				'<div class="dropdown-menu">' +
-				'<a class="dropdown-item" href="#">Cambiar Contraseña</a>' +
+				'<a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePass-modal" onclik="javascript:modalCambioPass()">Cambiar Contraseña</a>' +
 				'<div class="dropdown-divider"></div>' +
 				'<a class="dropdown-item" href="index.html" onclick="javascript:desconectar()">Desconectar</a>' +
 				'</div>' +
@@ -80,6 +80,37 @@ function includeTopMenu() {
 				'</nav>';
 
 	$("#topMenu").append(topMenu);
+
+}
+
+function modalCambioPass(){
+	
+	$("#changePass-modal").html("");
+
+	var contenidoModal = 
+    	'<div class="modal-dialog">' +
+			'<div class="changePassmodal-container">' +
+				'<h1 class="CAMBIAR_CONTRASEÑA"></h1><br>' +
+				'<form name="formularioChangePass" id="formularioChangePass" action="javascript:changePass()" onsubmit="return comprobarChangePass()">' +
+					'<input type="password" name="PASS_USUARIO_NUEVA" class="PASS_USUARIO_NUEVA" maxlength="45" size="45" id="passChangePass1" placeholder="Usuario" placeholder="Contraseña" onKeyPress="capLock(event);" onblur="return comprobarPass(\'passChangePass1\', \'errorFormatoChangePass1\', \'passwordChange\')";>' +
+					'<div style="display:none" id="errorFormatoChangePass1"></div>' +
+					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event);" onblur="return comprobarPass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')">' +
+					'<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculas"></div>' +  
+          			'<div style="display:none" id="errorFormatoChangePass2" class="alert alert-danger ocultar"></div>' +  
+					'<div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>' +
+					'<button type="submit" name="btnChangePass" value="Cambiar contraseña" class="btnChangePass tooltip3">' +
+                        '<img class=iconoResetPass iconResetPass" src="images/resetPass.png" alt="CAMBIAR_CONTRASEÑA" />' +
+                        '<span class="tooltiptext3 ICONO_RESET_PASS"></span>' +
+                	'</button>' +
+
+				'</form>' +	
+
+			'</div>' +
+		'</div>';
+
+
+    $("#changePass-modal").append(contenidoModal);
+
 }
 
 /**Función para ordenar una tabla por columna*/
@@ -281,6 +312,61 @@ function errorAutenticado(codigoResponse, idioma){
     setLang(idioma);
     document.getElementById("modal").style.display = "block";
 }
+
+/**Función que construye cada línea que se va a rellenar en la tabla*/
+function construyeFila(entidad, fila) {
+	let atributosFunciones="";
+	var filaTabla = "";
+
+	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle" src="images/detail3.png" onclick="showDetalleUsuario(' + atributosFunciones + 
+                               ')" alt="Detalle Usuario"/><span class="tooltiptext iconDetailUser">Detalle Usuario</span></div>';
+    var celdaAccionesEditar = '<div class="tooltip"><img class="editar" src="images/edit3.png" onclick="showEditarUsuario(' + atributosFunciones + 
+                               ')" alt="Editar Usuario"/><span class="tooltiptext iconEditUser">Editar Usuario</span></div>';
+    var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar" src="images/delete3.png" onclick="showEliminarUsuario(' + atributosFunciones + 
+                               ')" alt="Eliminar Usuario"/><span class="tooltiptext iconDeleteUser">Eliminar Usuario</span></div>';
+
+
+	var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
+
+	switch(entidad){
+		case 'ROL':
+			atributosFunciones = ["'" + fila.rolName + "'", "'" + fila.rolDescription + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.rolName + 
+                '</td> <td>' + fila.rolDescription + 
+                '</td> <td class="acciones">' + celdaAcciones +  
+                '</td> </tr>';
+        break;
+	}
+
+    return filaTabla;
+}
+
+/**Función que crea según las columnas que le pasemos un div con checkbox para marcar y así ocultar las columnas*/
+function createHideShowColumnsWindow(arrayColumnas) {
+    var checkbox = "";
+
+    for (var clave in arrayColumnas){
+        checkbox = checkbox + "<input type='checkbox' id='" + clave + 
+        "' name='" + clave + "' value='" + clave + "' onclick='hideShow(" + clave + ", " + arrayColumnas[clave] + 
+        ")'><label for='" + clave.replace('_COLUMN', '') + "'></label><br>";
+    }
+    return checkbox;
+ 
+}
+
+/**Función para cargar los HREF de cada pagina*/
+function cargarHref(dato){
+	var href=""
+
+	switch(dato){
+		case 'Gestión de roles':
+			href="GestionDeRoles.html";
+		break;
+	}
+
+	return href;
+}
+
 
 $(document).ready(function(){
   $('.iconCerrar').on('click', function(){

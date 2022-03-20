@@ -10,6 +10,11 @@ arrayEN={
 	'CIF' : 'Enterprise ID',
 	'NOMBRE_EMPRESA': 'Name',
 	'DIRECCION_EMPRESA': 'Address',
+	'PASS_USUARIO_NUEVA' : 'New user password',
+	'ROL_NAME' : 'Rol name',
+	'ROL_DESCRIPTION' : 'Rol description',
+	'ORDENAR' : 'Order',
+	'ACCIONES' : 'Actions',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -25,6 +30,11 @@ arrayEN={
 	'ICONO_ENTRAR' : 'Enter',
 	'ICONO_RECUPERAR_PASS': 'Recover password',
 	'ICONO_CERRAR': 'Close',
+	'ICONO_RESET_PASS' : 'Change password',
+	'ICONO_ADD_ROLE' : 'Add role',
+	'ICONO_SEARCH_ROLE' : 'Search role',
+	'ICON_REFRECH_TABLE' : 'Refresh table',
+	'ICON_SHOW_HIDE_COLUMNS' : 'Hide/show columns',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
@@ -62,7 +72,7 @@ arrayEN={
 	'DNI_PERSONA_VACIO' : 'Personal ID is empty',
 	'DNI_PERSONA_MENOR_QUE_9' : 'Personal ID size is menor than 9 characteres',
 	'DNI_PERSONA_MAYOR_QUE_9' : 'Personal ID size is bigger than 9 characteres',
-	'DNI_PERSONA_INCORRECTO' : 'Personal ID must only have letters and numbers',
+	'DNI_PERSONA_INCORRECTO' : 'Personal ID must only have letters and numbers and has the format 12345678A',
 	'NOMBRE_VACIO' : 'Person name empty',
 	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'Person name can only contain letters',
 	'NOMBRE_MENOR_QUE_3' : 'Person name size minor than 3 characteres',
@@ -87,7 +97,7 @@ arrayEN={
 	'CIF_EMPRESA_VACIO' : 'Enterprise CIF empty',
 	'CIF_EMPRESA_MENOR_QUE_9' : 'Enterprise CIF size is minor than 9 characteres',
 	'CIF_EMPRESA_MAYOR_QUE_9' : 'Enterprise CIF size is bigger than 9 characteres',
-	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'Enterprise ID must only have letters and numbers',
+	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'Enterprise ID must only have letters and numbers and has the format A12345678',
 
 
 
@@ -113,12 +123,18 @@ arrayEN={
 	'FORMATO_DNI' : 'Format: 12345678A',
 	'FORMATO_CIF' : 'Format: A12345678',
 	'REGISTRO_USUARIOS' : 'New users register',
+	'CAMBIAR_CONTRASEÑA' : 'CHANGE PASSWORD',
+	'GESTION_ROLES' : 'Role management',
 
 
 	//Acciones
 	'CERRARMODAL': 'Close',
 	'CONTRASEÑA_REC_OK' : 'PASSWORD REGENERATED CORRECTLY',
-	'RECUPERAR_PASS_OK': 'The password has been regenerated correctly. Please check your email to view the new password'
+	'RECUPERAR_PASS_OK': 'The password has been regenerated correctly. Please check your email to view the new password',
+	'CONTRASEÑA_CHANGE_OK' : 'PASSWORD CHANGED CORRECTLY',
+	'PASSWORD_CAMBIADA' : 'User password has been successfully changed',
+	'REGISTRO_CORRECTO' : 'REGISTER SUCCESSFUL',
+	'REGISTRO_OK' : 'User has been register correctly'
 
 
 

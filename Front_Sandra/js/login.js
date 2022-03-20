@@ -38,6 +38,12 @@ function recuperarPassAjaxPromesa(){
       emailUsuario : $('#emailUser').val(),
       idioma: getCookie('lang')
     }
+
+    $("#modal-title").removeClass();
+    $(".imagenAviso").attr('src', 'images/carga.gif');
+    $("#mensajeError").removeClass();
+    $("#mensajeError").addClass('CARGANDO');
+    document.getElementById("modal").style.display = "block";
     
     $.ajax({
       method: "POST",

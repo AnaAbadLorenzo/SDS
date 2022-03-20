@@ -79,9 +79,9 @@ function registroAjaxPromesa() {
 			};
 
 			var asociarEmpresa = $('input[name=asociarEmpresa]:checked').val();
-			var seleccionarEmpresa = $('input[name=seleccionarEmpresa]:checked').val();
+			var seleccionarEmpresaPregunta = $('input[name=seleccionarEmpresa]:checked').val();
 
-			if (asociarEmpresa === 'si' && seleccionarEmpresa === 'si') {
+			if (asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'si') {
 
 				var datosEmpresa = {
 					idEmpresa: $('#empresasDisponibles option:selected').val(),
@@ -92,7 +92,23 @@ function registroAjaxPromesa() {
 					borradoEmpresa: ""
 				};
 
-			} else if (asociarEmpresa === 'si' && seleccionarEmpresa === 'no') {
+				var seleccionarEmpresa = "Si";
+
+			}
+
+			if(asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'si' && $('#empresasDisponibles option:selected').val() === "default"){
+				var datosEmpresa = {
+					idEmpresa: "",
+					cifEmpresa: $('#cifEmpresa').val(),
+					nombreEmpresa: $('#nombreEmpresa').val(),
+					direccionEmpresa: $('#direccionEmpresa').val(),
+					telefonoEmpresa: $('#telefonoEmpresa').val(),
+					borradoEmpresa: ""
+				};
+
+				var seleccionarEmpresa = "No";
+			
+			}else if (asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'no') {
 
 				var datosEmpresa = {
 					idEmpresa: "",
@@ -100,18 +116,22 @@ function registroAjaxPromesa() {
 					nombreEmpresa: $('#nombreEmpresa').val(),
 					direccionEmpresa: $('#direccionEmpresa').val(),
 					telefonoEmpresa: $('#telefonoEmpresa').val(),
-					borradoEmpresa: 0
+					borradoEmpresa: ""
 				};
+
+				var seleccionarEmpresa = "No";
 
 			} else {
 
 				var datosEmpresa = null;
+				var seleccionarEmpresa = "";
 			}
 
 			var registro = {
 				datosPersona: datosPersona,
 				datosUsuario: datosUsuario,
-				datosEmpresa: datosEmpresa
+				datosEmpresa: datosEmpresa,
+				seleccionarEmpresa : seleccionarEmpresa
 			}
 
 			$.ajax({
@@ -157,7 +177,16 @@ function obtenerEmpresasAjaxPromesa() {
 async function registro() {
 	await registroAjaxPromesa()
 	.then((res) => {
-		window.location.href = "menu.html";
+		$("#registro-modal").modal('toggle');
+	  	$(".imagenAviso").attr('src', 'images/ok.png');
+    	document.getElementById("modal-title").style.color = "#238f2a";
+    	document.getElementById("modal-title").style.top = "3%";
+    	$("#modal-title").removeClass();
+    	$("#modal-title").addClass("REGISTRO_CORRECTO");
+    	$("#mensajeError").removeClass();
+    	$("#mensajeError").addClass(res.code);
+    	setLang(getCookie('lang'));
+		document.getElementById("modal").style.display = "block";
 	})
 
 	.catch((res) => {
@@ -170,7 +199,7 @@ async function registro() {
 		$("#mensajeError").addClass(res.code);
 
 		let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
-			"nombreEmpresa", "direccionEmpresa", "telefono"];
+		"nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
 		resetearFormulario("formularioRegistro", idElementoList);
 		setLang(getCookie('lang'));
 		document.getElementById("modal").style.display = "block";
@@ -202,32 +231,28 @@ function verificarPasswd() {
 	passwdUsuario2 = $('#passwdUsuario2').val();
 
 	if (passwdUsuario1 != passwdUsuario2) {
-		document.getElementById("error").classList.add("mostrar");
+		addCodeError('error', 'CONTRASEÑAS_NO_COINCIDEN');
 		return false;
 
 	} else {
-		document.getElementById("error").classList.remove("mostrar");
+		$("#error").removeClass();
+		$("#error").html('');
+		$("#error").css("display", "none");
 		return true;
 	}
 };
 
 $(document).ready(function() {
 	$("#registro-modal").on('hidden.bs.modal', function() {
+		
 		let idElementoErrorList = ["errorFormatoDni", "errorFormatoNombrePersona", "errorFormatoApellidosP", "errorFormatoFecha", "errorFormatoDireccion", "errorFormatoTelefono",
 			"errorFormatoEmail", "errorFormatoUserRegistro", "errorFormatoPassRegistro", "errorFormatoPassRegistro2", "errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", "errorFormatoTelefonoEmpresa"];
+		
 		let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
-			"nombreEmpresa", "direccionEmpresa", "telefono"];
+			"nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
 
 		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
 		setLang(getCookie('lang'));
 	});
-});
 
-$(document).on('change', '#empresasDisponibles', function(event) {
-  if($("#empresasDisponibles option:selected").val() === "default"){
-    $('#formRegistroEmpresa').removeAttr('hidden');
-     $('#empresasDisponibles').prop("disabled", true);
-  }else{
-    $('#formRegistroEmpresa').prop("hidden", true);
-  }
 });

@@ -10,6 +10,11 @@ arrayGA={
 	'CIF' : 'CIF',
 	'NOMBRE_EMPRESA': 'Nome',
 	'DIRECCION_EMPRESA': 'Dirección',
+	'PASS_USUARIO_NUEVA' : 'Nova contrasinal de usuario',
+	'ROL_NAME' : 'Nome rol',
+	'ROL_DESCRIPTION' : 'Descripción rol',
+	'ORDENAR' : 'Ordear',
+	'ACCIONES' : 'Accións',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -25,6 +30,11 @@ arrayGA={
 	'ICONO_ENTRAR' : 'Entrar',
 	'ICONO_RECUPERAR_PASS': 'Recuperar contrasinal',
 	'ICONO_CERRAR': 'Pechar',
+	'ICONO_RESET_PASS' : 'Cambiar contrasinal',
+	'ICONO_ADD_ROLE' : 'Engadir role',
+	'ICONO_SEARCH_ROLE' : 'Buscar Rol',
+	'ICON_REFRECH_TABLE' : 'Refrescar tabla',
+	'ICON_SHOW_HIDE_COLUMNS' : 'Ocultar/mostrar columnas',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
@@ -60,7 +70,7 @@ arrayGA={
 	'DNI_PERSONA_VACIO' : 'O dni da persoa é vacío',
 	'DNI_PERSONA_MENOR_QUE_9' : 'O dni da persoa ten menos que 9 caracteres',
 	'DNI_PERSONA_MAYOR_QUE_9' : 'O dni da persoa ten máis de 9 caracteres',
-	'DNI_PERSONA_INCORRECTO' : 'O dni da persoa solo pode conter números e letras',
+	'DNI_PERSONA_INCORRECTO' : 'O dni da persoa solo pode conter números e letras e ter o formato 12345678A',
 	'NOMBRE_VACIO' : 'Nome Persoa vacío',
 	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'O nome da persoa só pode conter letras',
 	'NOMBRE_MENOR_QUE_3' : 'O nome da persoa é menor  que 3 caracteres',
@@ -84,7 +94,7 @@ arrayGA={
 	'CIF_EMPRESA_VACIO' : 'CIF de empresa vacío',
 	'CIF_EMPRESA_MENOR_QUE_9' : 'CIF de empresa ten menos de 9 caracteres',
 	'CIF_EMPRESA_MAYOR_QUE_9' : 'CIF de empresa ten máis de 9 caracteres',
-	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'CIF de empresa só pode conter letras e números',
+	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'CIF de empresa só pode conter letras e números e ter o formato A12345678',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -107,10 +117,16 @@ arrayGA={
 	'FORMAT_EMAIL' : 'Format: exemplo@exemplo.com',
 	'FORMATO_CIF' : 'Formato: A12345678',
 	'REGISTRO_USUARIOS' : 'Rexistro de novos usuarios',
+	'CAMBIAR_CONTRASEÑA' : 'CAMBIAR CONTRASINAL',
+	'GESTION_ROLES' : 'Xestión de roles',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
 	'CONTRASEÑA_REC_OK' : 'CONTRASINAL RECUPERADA CORRECTAMENTE',
-	'RECUPERAR_PASS_OK': 'O contrasinal foi recuperado correctamente. Por favor, revisa o teu correo para ver o novo contrasinal'
+	'RECUPERAR_PASS_OK': 'O contrasinal foi recuperado correctamente. Por favor, revisa o teu correo para ver o novo contrasinal',
+	'CONTRASEÑA_CHANGE_OK' : 'CONTRASINAL MODIFICADA CORRECTAMENTE',
+	'PASSWORD_CAMBIADA' : 'O contrasinal de usuario modificouse correctamente',
+	'REGISTRO_CORRECTO' : 'REXISTRO CORRECTO',
+	'REGISTRO_OK' : 'O usuario rexistrouse correctamente',
 	
 }

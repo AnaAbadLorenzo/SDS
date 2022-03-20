@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="Expires" content="0">
+  <meta http-equiv="Expires" content="0">
 	<meta http-equiv="Last-Modified" content="0">
 	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
@@ -20,9 +20,9 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
-    <script type="text/javascript" src="Locale/Lang_EN.js"></script>
-    <script type="text/javascript" src="Locale/Lang_ES.js"></script>
-    <script type="text/javascript" src="Locale/Lang_GA.js"></script>	
+  <script type="text/javascript" src="Locale/Lang_EN.js"></script>
+  <script type="text/javascript" src="Locale/Lang_ES.js"></script>
+  <script type="text/javascript" src="Locale/Lang_GA.js"></script>	
 </head>
 
 <body onload="cargarIdioma();includeFooter();setLang('')">  
@@ -145,14 +145,19 @@
 					      	<input type="text" name="user" id="usuario" placeholder="Usuario" class="LOGIN_USUARIO"  maxlength="45" size="45" onblur="return comprobarUser('usuario', 'errorFormatoUserRegistro', 'loginUsuario');" >
 					      	<div style="display:none" id="errorFormatoUserRegistro"></div>
 
-							<input type="password" name="pass" id="passwdUsuario1" placeholder="Contraseña" class="PASS_USUARIO" maxlength="45" size="45" onKeyPress="capLock(event);" onblur="return comprobarPass('passwdUsuario1', 'errorFormatoPassRegistro', 'passwdUsuarioRegistro');">
-							<div style="display:none" id="errorFormatoPassRegistro"></div>
+									<input type="password" name="pass" id="passwdUsuario1" placeholder="Contraseña" class="PASS_USUARIO" maxlength="45" size="45" onKeyPress="capLock(event);" onblur="return comprobarPass('passwdUsuario1', 'errorFormatoPassRegistro', 'passwdUsuarioRegistro');">
+									
+									<div style="display:none" id="errorFormatoPassRegistro"></div>
 
-							<input type="password" name="confirmarPass" id="passwdUsuario2" placeholder="ConfirmarContraseña" class="CONFIRMAR_PASS_USUARIO" maxlength="45" size="45" maxlength="45" size="45" 	onKeyPress="capLock(event);" onblur="return comprobarPass('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro');">
-							<div style="display:none" id="errorFormatoPassRegistro2"></div>	
-					    </div>
-					    
-					    <div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN">
+									<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculas"></div>
+
+									<input type="password" name="confirmarPass" id="passwdUsuario2" placeholder="ConfirmarContraseña" class="CONFIRMAR_PASS_USUARIO" maxlength="45" size="45" maxlength="45" size="45" 	onKeyPress="capLock(event);" onblur="return comprobarPass('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro');">
+									
+									<div style="display:none" id="errorFormatoPassRegistro2"></div>	
+									
+									<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculas"></div>
+
+									<div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>
 					    </div>
 
 					    <div id="datosEmpresa" class="container tab-pane fade"><br>
@@ -160,12 +165,14 @@
 								<label class="ASOCIARTE_EMPRESA"></label>
 								<div class="form-check-inline">
 									<label class="form-check-label" for="radio3">
-								    	<input type="radio" class="form-check-input" id="asociarEmpresaSi" name="asociarEmpresa" value="si">Sí
+								    	<input type="radio" class="form-check-input" id="asociarEmpresaSi" name="asociarEmpresa" value="si">
+								    	<label class="SI"></label>
 								  	</label>
 								</div>
 								<div class="form-check-inline">
 								  	<label class="form-check-label" for="radio4">
-								    	<input type="radio" class="form-check-input NO" id="asociarEmpresaNo" name="asociarEmpresa" value="no">No
+								    	<input type="radio" class="form-check-input NO" id="asociarEmpresaNo" name="asociarEmpresa" value="no">
+								    	<label class="NO"></label>
 								  	</label>
 								</div>
 							</div>
@@ -173,12 +180,14 @@
 							<label class="SELECCIONAR_EMPRESA"></label>
 							<div class="form-check-inline">
 								<label class="form-check-label" for="radio5">
-							    	<input type="radio" class="form-check-input" id="seleccionarEmpresaSi" name="seleccionarEmpresa" value="si" >Sí
+							    	<input type="radio" class="form-check-input" id="seleccionarEmpresaSi" name="seleccionarEmpresa" value="si" >
+							    	<label class="SI"></label>
 							  	</label>
 							</div>
 							<div class="form-check-inline">
 							  	<label class="form-check-label" for="radio6">
-							    	<input type="radio" class="form-check-input" id="seleccionarEmpresaNo" name="seleccionarEmpresa" value="no">No
+							    	<input type="radio" class="form-check-input" id="seleccionarEmpresaNo" name="seleccionarEmpresa" value="no">
+							    	<label class="NO"></label>
 							  	</label>
 							</div>
 						</div>
@@ -199,7 +208,7 @@
 								<input type="text" name="direccion" id="direccionEmpresa" placeholder="Direccion" class="DIRECCION_EMPRESA" maxlength="128" size="128" onblur="return comprobarDireccion('direccionEmpresa', 'errorFormatoDireccionEmpresa', 'direccionEmpresaRegistro');">
 								<div style="display:none" id="errorFormatoDireccionEmpresa"></div>
 
-								<input type="tel" name="telefono" id="telefonoEmpresa" placeholder="988212121" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefono', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
+								<input type="tel" name="telefono" id="telefonoEmpresa" placeholder="988212121" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
 								<small class="FORMATO_TELF"></small>
 								<div style="display:none" id="errorFormatoTelefonoEmpresa"></div>
 							</div>
@@ -230,9 +239,9 @@
 					<small>Formato: ejemplo@ejemplo.es</small>
 					
 					<button type="submit" name="btnResetPass" value="Recuperar Contraseña" class="btnResetPass tooltip4">
-                        <img class="iconoResetPass iconResetPass" src="images/resetPass.png" alt="Entrar" />
-                        <span class="tooltiptext4 ICONO_RECUPERAR_PASS"></span>
-                	</button>
+              <img class="iconoResetPass iconResetPass" src="images/resetPass.png" alt="Entrar" />
+              <span class="tooltiptext4 ICONO_RECUPERAR_PASS"></span>
+          </button>
 				</form>
 			</div>
 		</div>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Last-Modified" content="0">
+	<meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript" src="js/registro.js"></script>		
+	<script type="text/javascript" src="js/funcionesComunes.js"></script>
+	<script type="text/javascript" src="js/configURLs.js"></script>
+	<script type="text/javascript" src="js/md5.js"></script>
+	<script type="text/javascript" src="js/validaciones.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript" src="js/gestionRoles.js"></script>
+	<script type="text/javascript" src="Locale/idioma.js"></script>
+    	<script type="text/javascript" src="Locale/Lang_EN.js"></script>
+    	<script type="text/javascript" src="Locale/Lang_ES.js"></script>
+    	<script type="text/javascript" src="Locale/Lang_GA.js"></script>	
+</head>
+<body onload="(async ()=>{
+  	await includeTopMenu();
+    await funcionalidadesUsuario();
+    modalCambioPass();
+		cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+		await cargarRoles();
+  })();">  
+	<div id="topMenu"></div>
+
+	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	</div>
+
+	<h1 class="gestion GESTION_ROLES"></h1>
+
+	<div class="cabecera">
+		<div name="btnAddUser" value="Añadir" class="tooltip addIcon">
+        <img class="iconoAdd iconAddRole" src="images/add3.png" alt="Añadir Rol" />
+        <span class="tooltiptext iconAddRole ICONO_ADD_ROLE"></span>
+    </div>      
+
+    <div name="btnSearchUser" value="Buscar" onclick=";" class="tooltip searchIcon">
+        <img class="iconoSearch iconSearchUser" src="images/search3.png" alt="Buscar Rol" />
+        <span class="tooltiptext iconSearchUser ICONO_SEARCH_ROLE"></span>
+    </div>
+
+    <div name="btnRefresh" value="Buscar" onclick="" class="tooltip refreshIcon">
+        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
+        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
+    </div>
+
+    <div name="btnHideShowColumns" value="Buscar" onclick=";" class="tooltip hideShowIcon">
+        <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
+        <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
+    </div>     
+	</div>
+
+	<div id="tablaDatos">
+		<table class="table table-bordered" id="tablaRoles">
+			<thead>
+		    	<tr>
+			      <th scope="col" class="colFirst ROL_NAME_COLUMN">
+			      	<div class="rolNameColumn ROL_NAME"></div>
+                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaRoles')" class="tooltip ordenarIconUser">
+                      <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                      <span class="tooltiptext iconOrdenar ORDENAR"></span>
+              </div>
+						</th>
+			      	
+					  <th scope="col" class="ROL_DESCRIPTION_COLUMN">
+					      <div class="ROL_DESCRIPTION"></div>
+		                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaRoles')" class="tooltip ordenarIconName">
+		                        <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+		                        <span class="tooltiptext iconOrdenar ORDENAR"></span>
+		                  </div>
+					  </th>
+			  		
+			  		<th scope="col" class="colLast ACCIONES">
+			  		</th>
+		    	
+		    	</tr>
+		  	</thead>
+
+		  	<tbody id="datosRol" class="bodyGestionRoles"></tbody>
+
+		</table>
+	</div>
+
+	<div class="filasTabla">
+			<div id="paginacion"></div>
+	</div>
+
+	<div id="showHideColumns" style="display: none;">
+      <div id='checkboxColumnas'>
+      </div>
+  </div>
+
+	<div class="paginacion">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+		    <li class="page-item disabled tooltip">
+		      <a class="page-link" href="#" aria-label="Previous">
+		        	<span aria-hidden="true">&laquo;</span>
+		        	<span class="sr-only">Previous</span>
+		        	<span class="tooltiptext"> Anterior</span>
+		      </a>
+		    </li>
+		    	<li class="page-item active"><a class="page-link" href="#">1</a></li>
+		    	<li class="page-item"><a class="page-link" href="#">2</a></li>
+		    	<li class="page-item"><a class="page-link" href="#">3</a></li>
+		    	<li class="page-item navegacion tooltip">
+		      		<a class="page-link" href="#" aria-label="Next">
+		        		<span aria-hidden="true">&raquo;</span>
+		        		<span class="sr-only">Next</span>
+		        		<span class="tooltiptext"> Siguiente</span>
+		      		</a>
+		    	</li>
+		  	</ul>
+		</nav>
+	</div>
+
+	<div class="volver">
+		<div name="btnBack" value="Volver" class="tooltip backIcon">
+        <img class="iconoBack iconBack" src="images/back3.png" alt="Volver" />
+        <span class="tooltiptext iconBack">Volver</span>
+    </div>   
+	</div>
+
+	<div id="modal" tabindex="-1" role="dialog" style="display:none">
+		<div class="modal-dialog" role="document" id="modal-dialog">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <img src="" name="aviso" class="imagenAviso"/>
+		      <h3 id="modal-title" class="modal-title"></h3>
+		    </div>
+			<div id='mensajeError' class="modal-body"></div>
+		  		<div class="modal-footer">
+	        		<a id="cerrar" href="#"  class="tooltip5">
+	        			<img class="iconCerrar" alt="Cerrar" src="images/close.png"/>
+	                <span class="tooltiptext5 ICONO_CERRAR"></span>
+	        			</a>
+	      			</div>
+		  	</div>
+		</div>
+	</div>
+
+	<div id="footer"></div>
+</body>
+</html>

@@ -11,6 +11,12 @@ arrayES={
 	'CIF' : 'CIF',
 	'NOMBRE_EMPRESA': 'Nombre',
 	'DIRECCION_EMPRESA': 'Dirección',
+	'PASS_USUARIO_NUEVA' : 'Nueva contraseña de usuario',
+	'ROL_NAME' : 'Nombre rol',
+	'ROL_DESCRIPTION' : 'Descripción rol',
+	'ORDENAR' : 'Ordenar',
+	'ACCIONES' : 'Acciones',
+
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -26,6 +32,11 @@ arrayES={
 	'ICONO_ENTRAR' : 'Entrar',
 	'ICONO_RECUPERAR_PASS': 'Recuperar contraseña',
 	'ICONO_CERRAR': 'Cerrar',
+	'ICONO_RESET_PASS' : 'Cambiar contraseña',
+	'ICONO_ADD_ROLE' : 'Añadir Rol',
+	'ICONO_SEARCH_ROLE' : 'Buscar Rol',
+	'ICON_REFRECH_TABLE' : 'Refrescar tabla',
+	'ICON_SHOW_HIDE_COLUMNS' : 'Ocultar/mostrar columnas',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
@@ -60,7 +71,7 @@ arrayES={
 	'DNI_PERSONA_VACIO' : 'El dni de la persona es vacío',
 	'DNI_PERSONA_MENOR_QUE_9' : 'El dni de la persona tiene menos que 9 caracteres',
 	'DNI_PERSONA_MAYOR_QUE_9' : 'El dni de la persona tiene más que 9 caracteres',
-	'DNI_PERSONA_INCORRECTO' : 'El dni de la persona solo puede contener números y letras',
+	'DNI_PERSONA_INCORRECTO' : 'El dni de la persona solo puede contener números y letras y tener el formato 12345678A',
 	'NOMBRE_VACIO' : 'Nombre Persona vacío',
 	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'El nombre de la persona solo puede contener letras',
 	'NOMBRE_MENOR_QUE_3' : 'El nombre de la persona es menor que 3 caraceteres',
@@ -85,7 +96,7 @@ arrayES={
 	'CIF_EMPRESA_VACIO' : 'CIF de empresa vacío',
 	'CIF_EMPRESA_MENOR_QUE_9' : 'CIF de empresa tiene menos de 9 caracteres',
 	'CIF_EMPRESA_MAYOR_QUE_9' : 'CIF de empresa tiene más de 9 caracteres',
-	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'CIF de empresa sólo puede tener letras y números',
+	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'CIF de empresa sólo puede tener letras y números y tener el formato A12345678',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -108,10 +119,18 @@ arrayES={
 	'FORMAT_EMAIL' : 'Format: ejemplo@ejemplo.com',
 	'FORMATO_CIF' : 'Formato: A12345678',
 	'REGISTRO_USUARIOS' : 'Registro de nuevos usuarios',
+	'CAMBIAR_CONTRASEÑA' : 'CAMBIAR CONTRASEÑA',
+	'GESTION_ROLES' : 'Gestión de roles',
+	
+
 
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
 	'CONTRASEÑA_REC_OK' : 'CONTRASEÑA RECUPERADA CORRECTAMENTE',
-	'RECUPERAR_PASS_OK': 'La contraseña ha sido recuperada correctamente. Por favor revisa tu correo para ver la nueva contraseña'
+	'RECUPERAR_PASS_OK': 'La contraseña ha sido recuperada correctamente. Por favor revisa tu correo para ver la nueva contraseña',
+	'CONTRASEÑA_CHANGE_OK' : 'CONTRASEÑA MODIFICADA CORRECTAMENTE',
+	'PASSWORD_CAMBIADA' : 'La contraseña de usuario se ha modificado correctamente',
+	'REGISTRO_CORRECTO' : 'REGISTRO CORRECTO',
+	'REGISTRO_OK' : 'El usuario ha sido registrado correctamente',
 }
