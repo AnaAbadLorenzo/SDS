@@ -75,7 +75,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public ReturnBusquedas<UsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
 
-		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findAllUsuarios")
+		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = usuarioRepository.numberFindAllUsuarios();
@@ -112,14 +112,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 		Integer numberTotalResults = 0;
 
 		if (rol.getIdRol() == -1) {
-			usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario").setParameter("usuario", usuario)
-					.setParameter("rol", "").setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+			usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDUSUARIO)
+					.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.ROL, "").setFirstResult(inicio)
+					.setMaxResults(tamanhoPagina).getResultList();
 
 			numberTotalResults = usuarioRepository.numberFindUsuario(usuario);
 
 		} else {
-			usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuario").setParameter("usuario", usuario)
-					.setParameter("rol", rol).setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+			usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDUSUARIO)
+					.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.ROL, rol).setFirstResult(inicio)
+					.setMaxResults(tamanhoPagina).getResultList();
 
 			numberTotalResults = usuarioRepository.numberFindUsuarioWithRol(usuario, rol);
 		}
@@ -142,8 +144,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 		}
 
-		datosBusqueda.add("usuario: " + usuario);
-		datosBusqueda.add("rol: " + rol.toString());
+		datosBusqueda.add(Constantes.USUARIO + ": " + usuario);
+		datosBusqueda.add(Constantes.ROL + ": " + rol.toString());
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());
@@ -155,7 +157,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	public ReturnBusquedas<UsuarioEntity> buscarUsuariosEliminados(final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> usuariosToret = new ArrayList<>();
 
-		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery("UsuarioEntity.findUsuariosEliminados")
+		final List<UsuarioEntity> usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDELIMINADAS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = usuarioRepository.numberFindUsuariosEliminados();

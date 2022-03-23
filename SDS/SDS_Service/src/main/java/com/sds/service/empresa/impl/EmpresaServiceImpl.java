@@ -62,10 +62,11 @@ public class EmpresaServiceImpl implements EmpresaService {
 		final List<EmpresaEntity> toret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 
-		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresa")
-				.setParameter("cifEmpresa", cifEmpresa).setParameter("nombreEmpresa", nombreEmpresa)
-				.setParameter("direccionEmpresa", direccionEmpresa).setParameter("telefonoEmpresa", telefonoEmpresa)
-				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery(Constantes.EMPRESA_QUERY_FINDEMPRESA)
+				.setParameter(Constantes.CIF_EMPRESA, cifEmpresa).setParameter(Constantes.NOMBRE_EMPRESA, nombreEmpresa)
+				.setParameter(Constantes.DIRECCION_EMPRESA, direccionEmpresa)
+				.setParameter(Constantes.TELEFONO_EMPRESA, telefonoEmpresa).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = empresaRepository.numberFindEmpresa(cifEmpresa, nombreEmpresa,
 				direccionEmpresa, telefonoEmpresa);
@@ -81,10 +82,10 @@ public class EmpresaServiceImpl implements EmpresaService {
 			}
 		}
 
-		datosBusqueda.add("cifEmpresa: " + cifEmpresa);
-		datosBusqueda.add("nombreEmpresa: " + nombreEmpresa);
-		datosBusqueda.add("direccionEmpresa: " + direccionEmpresa);
-		datosBusqueda.add("telefonoEmpresa: " + telefonoEmpresa);
+		datosBusqueda.add(Constantes.CIF_EMPRESA + ": " + cifEmpresa);
+		datosBusqueda.add(Constantes.NOMBRE_EMPRESA + ": " + nombreEmpresa);
+		datosBusqueda.add(Constantes.DIRECCION_EMPRESA + ": " + direccionEmpresa);
+		datosBusqueda.add(Constantes.TELEFONO_EMPRESA + ": " + telefonoEmpresa);
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());
@@ -97,7 +98,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 		final List<EmpresaEntity> toret = new ArrayList<>();
 
-		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findAllEmpresas")
+		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery(Constantes.EMPRESA_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = empresaRepository.numberFindAllEmpresas();
@@ -145,7 +146,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 		final List<EmpresaEntity> toret = new ArrayList<>();
 
-		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery("EmpresaEntity.findEmpresasEliminadas")
+		final List<EmpresaEntity> empresaBD = entityManager.createNamedQuery(Constantes.EMPRESA_QUERY_FINDELIMINADAS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = empresaRepository.numberFindEmpresasEliminadas();

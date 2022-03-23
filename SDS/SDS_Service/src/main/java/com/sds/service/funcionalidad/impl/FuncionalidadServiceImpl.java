@@ -63,9 +63,9 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<FuncionalidadEntity> funcionalidades = entityManager
-				.createNamedQuery("FuncionalidadEntity.findFuncionality")
-				.setParameter("nombreFuncionalidad", nombreFuncionalidad)
-				.setParameter("descripFuncionalidad", descripFuncionalidad).setFirstResult(inicio)
+				.createNamedQuery(Constantes.FUNCIONALIDAD_QUERY_FINDFUNCIONALIDAD)
+				.setParameter(Constantes.FUNCIONALIDAD_NAME, nombreFuncionalidad)
+				.setParameter(Constantes.FUNCIONALIDAD_DESCRIPTION, descripFuncionalidad).setFirstResult(inicio)
 				.setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = funcionalidadRepository.numberFindFuncionality(nombreFuncionalidad,
@@ -81,8 +81,8 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 			}
 		}
 
-		datosBusqueda.add("nombreFuncionalidad: " + nombreFuncionalidad);
-		datosBusqueda.add("descripFuncionalidad: " + descripFuncionalidad);
+		datosBusqueda.add(Constantes.FUNCIONALIDAD_NAME + ": " + nombreFuncionalidad);
+		datosBusqueda.add(Constantes.FUNCIONALIDAD_DESCRIPTION + ": " + descripFuncionalidad);
 
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(funcionalidadToret,
 				datosBusqueda, numberTotalResults, funcionalidadToret.size());
@@ -95,7 +95,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
 
 		final List<FuncionalidadEntity> funcionalidades = entityManager
-				.createNamedQuery("FuncionalidadEntity.findAllFuncionalities").setFirstResult(inicio)
+				.createNamedQuery(Constantes.FUNCIONALIDAD_QUERY_FINDALL).setFirstResult(inicio)
 				.setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = funcionalidadRepository.numberFindAllFuncionalities();
@@ -121,7 +121,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
 
 		final List<FuncionalidadEntity> funcionalidades = entityManager
-				.createNamedQuery("FuncionalidadEntity.findFuncionalidadesEliminadas").setFirstResult(inicio)
+				.createNamedQuery(Constantes.FUNCIONALIDAD_QUERY_FINDELIMINADAS).setFirstResult(inicio)
 				.setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = funcionalidadRepository.numberFindFuncionalidadesEliminadas();

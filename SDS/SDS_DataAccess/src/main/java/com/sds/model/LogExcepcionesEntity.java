@@ -14,7 +14,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "logexcepciones")
 @NamedQueries({
-		@NamedQuery(name = "LogExcepcionesEntity.findByUsuario", query = "SELECT l FROM LogExcepcionesEntity l WHERE l.usuario =: usuario") })
+		@NamedQuery(name = "LogExcepcionesEntity.findByUsuario", query = "SELECT l FROM LogExcepcionesEntity l WHERE l.usuario =: usuario"),
+		@NamedQuery(name = "LogExcepcionesEntity.findLogExcepciones", query = "SELECT l FROM LogExcepcionesEntity l WHERE l.usuario LIKE CONCAT('%', :usuario, '%') AND ((:fechaInicio IS NOT NULL AND :fechaFin IS NOT NULL AND l.fecha BETWEEN :fechaInicio AND :fechaFin) OR (:fechaInicio IS NOT NULL AND :fechaFin IS NULL AND l.fecha >=fechaInicio) OR (:fechaInicio IS NULL AND :fechaFin IS NOT NULL AND l.fecha <= :fechaFin))"),
+		@NamedQuery(name = "LogExcepcionesEntity.numberFindLogExcepciones", query = "SELECT COUNT(l) FROM LogExcepcionesEntity l WHERE l.usuario LIKE CONCAT('%', :usuario, '%') AND ((:fechaInicio IS NOT NULL AND :fechaFin IS NOT NULL AND l.fecha BETWEEN :fechaInicio AND :fechaFin) OR (:fechaInicio IS NOT NULL AND :fechaFin IS NULL AND l.fecha >=fechaInicio) OR (:fechaInicio IS NULL AND :fechaFin IS NOT NULL AND l.fecha <= :fechaFin))") })
 public class LogExcepcionesEntity {
 
 	@Id

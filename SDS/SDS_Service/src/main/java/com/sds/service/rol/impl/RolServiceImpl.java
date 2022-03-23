@@ -69,9 +69,9 @@ public class RolServiceImpl implements RolService {
 		final List<RolEntity> toret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 
-		rolesBD = entityManager.createNamedQuery("RolEntity.findRol").setParameter("rolName", rolName)
-				.setParameter("rolDescription", rolDescription).setFirstResult(inicio).setMaxResults(tamanhoPagina)
-				.getResultList();
+		rolesBD = entityManager.createNamedQuery(Constantes.ROL_QUERY_FINDROL)
+				.setParameter(Constantes.ROL_NAME, rolName).setParameter(Constantes.ROL_DESCRIPTION, rolDescription)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = rolRepository.numberFindRol(rolName, rolDescription);
 
@@ -83,8 +83,8 @@ public class RolServiceImpl implements RolService {
 			}
 
 		}
-		datosBusqueda.add("rolName: " + rolName);
-		datosBusqueda.add("rolDescription: " + rolDescription);
+		datosBusqueda.add(Constantes.ROL_NAME + ": " + rolName);
+		datosBusqueda.add(Constantes.ROL_DESCRIPTION + ": " + rolDescription);
 
 		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());
@@ -96,8 +96,8 @@ public class RolServiceImpl implements RolService {
 	public ReturnBusquedas<RolEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
 
-		final List<RolEntity> roles = entityManager.createNamedQuery("RolEntity.findAllRol").setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
+		final List<RolEntity> roles = entityManager.createNamedQuery(Constantes.ROL_QUERY_FINDALL)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = rolRepository.numberFindAllRol();
 
@@ -118,7 +118,7 @@ public class RolServiceImpl implements RolService {
 	public ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
 
-		final List<RolEntity> rolesEliminados = entityManager.createNamedQuery("RolEntity.findDeleteRol")
+		final List<RolEntity> rolesEliminados = entityManager.createNamedQuery(Constantes.ROL_QUERY_FINDELIMINADAS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = rolRepository.numberFindDeleteRol();

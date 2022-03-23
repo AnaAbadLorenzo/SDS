@@ -78,9 +78,10 @@ public class AccionServiceImpl implements AccionService {
 		final List<AccionEntity> accionToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 
-		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccion")
-				.setParameter("nombreAccion", nombreAccion).setParameter("descripAccion", descripAccion)
-				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+		final List<AccionEntity> acciones = entityManager.createNamedQuery(Constantes.ACCION_QUERY_FINDACCION)
+				.setParameter(Constantes.ACCION_NAME, nombreAccion)
+				.setParameter(Constantes.ACCION_DESCRIPTION, descripAccion).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = accionRepository.numberFindAccion(nombreAccion, descripAccion);
 
@@ -93,8 +94,8 @@ public class AccionServiceImpl implements AccionService {
 			}
 		}
 
-		datosBusqueda.add("nombreAccion: " + nombreAccion);
-		datosBusqueda.add("descripAccion: " + descripAccion);
+		datosBusqueda.add(Constantes.ACCION_NAME + ": " + nombreAccion);
+		datosBusqueda.add(Constantes.ACCION_DESCRIPTION + ": " + descripAccion);
 
 		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(accionToret, datosBusqueda,
 				numberTotalResults, accionToret.size());
@@ -108,7 +109,7 @@ public class AccionServiceImpl implements AccionService {
 
 		final List<AccionEntity> toret = new ArrayList<>();
 
-		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAllAccion")
+		final List<AccionEntity> acciones = entityManager.createNamedQuery(Constantes.ACCION_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = accionRepository.numberFindAllAccion();
@@ -132,7 +133,7 @@ public class AccionServiceImpl implements AccionService {
 	public ReturnBusquedas<AccionEntity> buscarAccionesEliminadas(final int inicio, final int tamanhoPagina) {
 		final List<AccionEntity> toret = new ArrayList<>();
 
-		final List<AccionEntity> acciones = entityManager.createNamedQuery("AccionEntity.findAccionesEliminadas")
+		final List<AccionEntity> acciones = entityManager.createNamedQuery(Constantes.ACCION_QUERY_FINDELIMINADAS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = accionRepository.numberFindAccionesEliminadas();

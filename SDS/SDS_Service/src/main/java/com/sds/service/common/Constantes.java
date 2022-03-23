@@ -120,8 +120,11 @@ public class Constantes {
 
 	public static final String USUARIO_DNI = "dniUsuario";
 	public static final String USER = "user";
+	public static final String ROL = "rol";
 
 	public static final String ID_EMPRESA = "idEmpresa";
+	public static final String FECHA_INICIO = "fechaInicio";
+	public static final String FECHA_FIN = "fechaFin";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -442,5 +445,32 @@ public class Constantes {
 	public static final String TABULACION_FECHA = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	public static final String TABULACION_DESPEDIDA = "\t\t\t\t\t\t\t\t\t\t\t";
 	public static final String TABULACION_FIRMA = "\t\t\t\t\t\t\t\t\t\t\t\t";
+
+	// Constantes queries
+	public static final String EMPRESA_QUERY_FINDALL = "EmpresaEntity.findAllEmpresas";
+	public static final String EMPRESA_QUERY_FINDEMPRESA = "EmpresaEntity.findEmpresa";
+	public static final String EMPRESA_QUERY_FINDELIMINADAS = "EmpresaEntity.findEmpresasEliminadas";
+
+	public static final String ACCION_QUERY_FINDALL = "AccionEntity.findAllAccion";
+	public static final String ACCION_QUERY_FINDACCION = "AccionEntity.findAccion";
+	public static final String ACCION_QUERY_FINDELIMINADAS = "AccionEntity.findAccionesEliminadas";
+
+	public static final String FUNCIONALIDAD_QUERY_FINDALL = "FuncionalidadEntity.findAllFuncionalities";
+	public static final String FUNCIONALIDAD_QUERY_FINDFUNCIONALIDAD = "FuncionalidadEntity.findFuncionality";
+	public static final String FUNCIONALIDAD_QUERY_FINDELIMINADAS = "FuncionalidadEntity.findFuncionalidadesEliminadas";
+
+	public static final String PERSONA_QUERY_FINDALL = "PersonaEntity.findAllPerson";
+	public static final String PERSONA_QUERY_FINDPERSONA = "PersonaEntity.findPersona";
+	public static final String PERSONA_QUERY_FINDELIMINADAS = "PersonaEntity.findPersonasEliminadas";
+
+	public static final String ROL_QUERY_FINDALL = "RolEntity.findAllRol";
+	public static final String ROL_QUERY_FINDROL = "RolEntity.findRol";
+	public static final String ROL_QUERY_FINDELIMINADAS = "RolEntity.findDeleteRol";
+
+	public static final String USUARIO_QUERY_FINDALL = "UsuarioEntity.findAllUsuarios";
+	public static final String USUARIO_QUERY_FINDUSUARIO = "UsuarioEntity.findUsuario";
+	public static final String USUARIO_QUERY_FINDELIMINADAS = "UsuarioEntity.findUsuariosEliminados";
+
+	public static final String LOGEXCEPCIONES_QUERY_FINDLOG = "LogExcepcionesEntity.findLogExcepciones";
 
 }

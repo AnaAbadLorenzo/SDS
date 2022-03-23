@@ -65,7 +65,7 @@ public class PersonaServiceImpl implements PersonaService {
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 
-		final List<PersonaEntity> personas = entityManager.createNamedQuery("PersonaEntity.findAllPerson")
+		final List<PersonaEntity> personas = entityManager.createNamedQuery(Constantes.PERSONA_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 		final List<PersonaEntity> toret = new ArrayList<>();
 
@@ -116,7 +116,7 @@ public class PersonaServiceImpl implements PersonaService {
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(final int inicio, final int tamanhoPagina) {
 
-		final List<PersonaEntity> personas = entityManager.createNamedQuery("PersonaEntity.findPersonasEliminadas")
+		final List<PersonaEntity> personas = entityManager.createNamedQuery(Constantes.PERSONA_QUERY_FINDELIMINADAS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final List<PersonaEntity> toret = new ArrayList<>();
@@ -182,11 +182,12 @@ public class PersonaServiceImpl implements PersonaService {
 			fecha = StringUtils.EMPTY;
 		}
 
-		personasToret = entityManager.createNamedQuery("PersonaEntity.findPersona").setParameter("dniP", dniP)
-				.setParameter("nombreP", nombreP).setParameter("apellidosP", apellidosP)
-				.setParameter("fechaNacP", fecha).setParameter("direccionP", direccionP)
-				.setParameter("telefonoP", telefonoP).setParameter("emailP", emailP).setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
+		personasToret = entityManager.createNamedQuery(Constantes.PERSONA_QUERY_FINDPERSONA)
+				.setParameter(Constantes.DNIP, dniP).setParameter(Constantes.NOMBREP, nombreP)
+				.setParameter(Constantes.APELLIDOSP, apellidosP).setParameter(Constantes.FECHANACP, fecha)
+				.setParameter(Constantes.DIRECCIONP, direccionP).setParameter(Constantes.TELEFONOP, telefonoP)
+				.setParameter(Constantes.EMAILP, emailP).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+				.getResultList();
 
 		final Integer numberTotalResults = personaRepository.numberFindPersona(dniP, nombreP, apellidosP, fecha,
 				direccionP, telefonoP, emailP);
@@ -227,13 +228,13 @@ public class PersonaServiceImpl implements PersonaService {
 
 		}
 
-		datosBusqueda.add("dniP: " + dniP);
-		datosBusqueda.add("nombreP: " + nombreP);
-		datosBusqueda.add("apellidosP: " + apellidosP);
-		datosBusqueda.add("fechaNacP: " + fechaNacP);
-		datosBusqueda.add("direccionP: " + direccionP);
-		datosBusqueda.add("telefonoP: " + telefonoP);
-		datosBusqueda.add("emailP: " + emailP);
+		datosBusqueda.add(Constantes.DNIP + ": " + dniP);
+		datosBusqueda.add(Constantes.NOMBREP + ": " + nombreP);
+		datosBusqueda.add(Constantes.APELLIDOSP + ": " + apellidosP);
+		datosBusqueda.add(Constantes.FECHANACP + ": " + fechaNacP);
+		datosBusqueda.add(Constantes.DIRECCIONP + ": " + direccionP);
+		datosBusqueda.add(Constantes.TELEFONOP + ": " + telefonoP);
+		datosBusqueda.add(Constantes.EMAILP + ": " + emailP);
 
 		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());

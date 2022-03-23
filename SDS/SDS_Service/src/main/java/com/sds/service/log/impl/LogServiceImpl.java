@@ -1,7 +1,11 @@
 package com.sds.service.log.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +18,16 @@ import com.sds.model.LogExcepcionesEntity;
 import com.sds.repository.LogAccionesRepository;
 import com.sds.repository.LogExcepcionesRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
 @Service
 public class LogServiceImpl implements LogService {
+
+	@PersistenceContext
+	EntityManager entityManager;
 
 	@Autowired
 	LogExcepcionesRepository logExcepcionesRepository;
@@ -61,6 +69,37 @@ public class LogServiceImpl implements LogService {
 		}
 
 		return toret;
+	}
+
+	@Override
+	public ReturnBusquedas<LogExcepcionesEntity> buscarPorUsuarioYFechaLogExcepciones(final String usuario,
+			final Date fechaInicio, final Date fechaFin, final int inicio, final int tamanhoPagina) {
+		final List<LogExcepcionesEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
+
+		final List<LogExcepcionesEntity> logExcepciones = entityManager
+				.createNamedQuery(Constantes.LOGEXCEPCIONES_QUERY_FINDLOG).setParameter(Constantes.USUARIO, usuario)
+				.setParameter(Constantes.FECHA_INICIO, fechaInicio).setParameter(Constantes.FECHA_FIN, fechaFin)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = logExcepcionesRepository.numberFindLogExcepciones(usuario, fechaInicio,
+				fechaFin);
+
+		for (int i = 0; i < logExcepciones.size(); i++) {
+			final LogExcepcionesEntity log = new LogExcepcionesEntity(logExcepciones.get(i).getIdLogExcepciones(),
+					logExcepciones.get(i).getUsuario(), logExcepciones.get(i).getTipoExcepcion(),
+					logExcepciones.get(i).getDescripcionExcepcion(), logExcepciones.get(i).getFecha());
+			toret.add(log);
+		}
+
+		datosBusqueda.add(Constantes.USUARIO + ": " + usuario);
+		datosBusqueda.add(Constantes.FECHA_INICIO + ": " + fechaInicio);
+		datosBusqueda.add(Constantes.FECHA_FIN + ": " + fechaFin);
+
+		final ReturnBusquedas<LogExcepcionesEntity> busqueda = new ReturnBusquedas<>(logExcepciones, datosBusqueda,
+				numberTotalResults, logExcepciones.size());
+
+		return busqueda;
 	}
 
 	@Override

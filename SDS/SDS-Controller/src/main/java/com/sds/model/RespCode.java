@@ -98,6 +98,7 @@ public enum RespCode {
 			"El rol no tiene permisos para realizar esa acción sobre esa funcionalidad"), //
 	USUARIOS_LISTADOS("USUARIOS_LISTADOS", "Los usuarios se han listado correctamente"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
+	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADO", "Los logs de excepciones se han listao correctamente"), //
 	ROL_USUARIO_MODIFICADO_OK("ROL_USUARIO_MODIFICADO_OK", "El rol del usuario se ha modificado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de acciones en la base de datos"), //
