@@ -124,7 +124,7 @@ async function recuperarPass(){
 
 $(document).ready(function(){
   $("#login-modal").on('hidden.bs.modal', function () {
-  	let idElementoErrorList = ["errorFormatoUser", "errorFormatoPass"];
+  	let idElementoErrorList = ["errorFormatoUser", "errorFormatoPass", "bloqueoMayusculas"];
   	let idElementoList = ["userLogin","passLogin"];
     limpiarFormulario(idElementoList);
   	eliminarMensajesValidacionError(idElementoErrorList, idElementoList);

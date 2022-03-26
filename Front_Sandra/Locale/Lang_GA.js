@@ -13,6 +13,8 @@ arrayGA={
 	'PASS_USUARIO_NUEVA' : 'Nova contrasinal de usuario',
 	'ROL_NAME' : 'Nome rol',
 	'ROL_DESCRIPTION' : 'Descripción rol',
+	'FUNCIONALIDAD_NAME' : 'Nome funcionalidade',
+	'FUNCIONALIDAD_DESCRIPTION' : 'Descripción funcionalidade',
 	'ORDENAR' : 'Ordear',
 	'ACCIONES' : 'Accións',
 	
@@ -31,10 +33,12 @@ arrayGA={
 	'ICONO_RECUPERAR_PASS': 'Recuperar contrasinal',
 	'ICONO_CERRAR': 'Pechar',
 	'ICONO_RESET_PASS' : 'Cambiar contrasinal',
-	'ICONO_ADD_ROLE' : 'Engadir role',
-	'ICONO_SEARCH_ROLE' : 'Buscar Rol',
+	'ICONO_ADD' : 'Engadir',
+	'ICONO_SEARCH' : 'Buscar',
 	'ICON_REFRECH_TABLE' : 'Refrescar tabla',
 	'ICON_SHOW_HIDE_COLUMNS' : 'Ocultar/mostrar columnas',
+	'ICONO_EDIT' : 'Editar',
+	'ICONO_ELIMINAR' : 'Eliminar',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
@@ -50,6 +54,8 @@ arrayGA={
 	'ERROR_AUTENTICACION' : 'Non tes permiso para acceder. Volve a intentalo',
 	'ERROR_LISTAR_FUNCIONALIDADES_MENU' : 'Ocurriu un erro ao listar as funcionalidades do usuario',
 	'STOP' : 'PROHIBIDO O PASO',
+	'ROL_YA_EXISTE' : 'O rol ya existe',
+	'ROL_NO_EXISTE' : 'O rol non existe',
 
 
 	//Error formato
@@ -95,6 +101,13 @@ arrayGA={
 	'CIF_EMPRESA_MENOR_QUE_9' : 'CIF de empresa ten menos de 9 caracteres',
 	'CIF_EMPRESA_MAYOR_QUE_9' : 'CIF de empresa ten máis de 9 caracteres',
 	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'CIF de empresa só pode conter letras e números e ter o formato A12345678',
+	'ROL_NAME_VACIO': 'O nome do rol está vacío',
+	'ROL_NAME_ALFABETICO_INCORRECTO' : 'O nome do rol tan só pode conter letras',
+	'ROL_NAME_MAYOR_QUE_32' :  'O nome do rol ten máis de 32 caracteres',
+	'ROL_DESCRIPTION_VACIO': 'A descripción do rol está vacía',
+	'ROL_DESCRIPTION_ALFABETICO_INCORRECTO' : 'A descripción do rol tan só pode conter letras',
+	'ROL_NAME_MENOR_QUE_3' : 'O nome do rol ten menos de 3 caracteres',
+	'ROL_VACIO' : 'O nome do rol e/ou a descripción están vacíos',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -118,7 +131,17 @@ arrayGA={
 	'FORMATO_CIF' : 'Formato: A12345678',
 	'REGISTRO_USUARIOS' : 'Rexistro de novos usuarios',
 	'CAMBIAR_CONTRASEÑA' : 'CAMBIAR CONTRASINAL',
+	'CAMBIAR_CONTRASEÑA_MENU' : 'Cambiar contrasinal',
 	'GESTION_ROLES' : 'Xestión de roles',
+	'MENU' : 'Menú',
+	'SEARCH_ROL' : 'BUSCAR ROL',
+	'ADD_ROL' : 'ENGADIR ROL',
+	'EDIT_ROLE' : 'EDITAR ROL',
+	'DELETE_ROLE' : 'ELIMINAR ROL',
+	'DESCONECTAR' : 'Desconectar',
+	'SEGURO_ELIMINAR' : 'Está seguro que desea eliminar este rol?',
+	'DETAIL_ROLE' : 'DETALLE ROL',
+	'GESTION_FUNCIONALIDADES' : 'Xestión de funcionalidades',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -128,5 +151,12 @@ arrayGA={
 	'PASSWORD_CAMBIADA' : 'O contrasinal de usuario modificouse correctamente',
 	'REGISTRO_CORRECTO' : 'REXISTRO CORRECTO',
 	'REGISTRO_OK' : 'O usuario rexistrouse correctamente',
+	'ROL_ENCONTRADO' : 'O rol encontrouse correctamente',
+	'ROL_GUARDADO_OK' : 'ROL GARDADO CORRECTAMENTE',
+	'ROL_GUARDADO' : 'O rol gardouse correctamente',
+	'ROL_EDITADO_OK' : 'ROL EDITADO CORRECTAMENTE',
+	'ROL_MODIFICADO' : 'O rol modificouse correctamente',
+	'ROL_ELIMINADO_OK' : 'ROL ELIMINADO CORRECTAMENTE',
+	'ROL_ELIMINADO' : 'O rol eliminouse correctamente'
 	
 }

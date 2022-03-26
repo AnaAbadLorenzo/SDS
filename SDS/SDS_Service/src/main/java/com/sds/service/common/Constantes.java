@@ -472,5 +472,6 @@ public class Constantes {
 	public static final String USUARIO_QUERY_FINDELIMINADAS = "UsuarioEntity.findUsuariosEliminados";
 
 	public static final String LOGEXCEPCIONES_QUERY_FINDLOG = "LogExcepcionesEntity.findLogExcepciones";
+	public static final String LOGACCIONES_QUERY_FINDLOG = "LogAccionesEntity.findLogAcciones";
 
 }

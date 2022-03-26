@@ -7,6 +7,24 @@ function comprobarChangePass(){
 	}
 }
 
+/** Función que valida el formulario add rol **/
+function comprobarAddRol(){
+	if(comprobarNombreRol('nombreRol', 'errorFormatoNombreRol', 'nombreRol') && comprobarDescripcionRol('descripcionRol','errorFormatoDescripcionRol', 'descripcionRol')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/** Función que valida el formulario add rol **/
+function comprobarEditRol(){
+	if(comprobarNombreRol('nombreRol', 'errorFormatoNombreRol', 'nombreRol') && comprobarDescripcionRol('descripcionRol','errorFormatoDescripcionRol', 'descripcionRol')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 /** Función que valida el formulario de registro **/
 function comprobarRegistro(){
@@ -31,13 +49,14 @@ function comprobarRegistro(){
 				comprobarTelefono('telefono', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro')){
 				return true;
 			}else{
-				
+				comprobarErroresTabs();
 				return false;
 			}
 		}
 
 		
 	}else{
+		comprobarErroresTabs();
 		return false;
 	}
 }
@@ -152,6 +171,32 @@ function comprobarNombre(idElemento, idElementoError, campo){
 	}
 }
 
+/** Funcion que valida el formato del Nombre del rol **/
+function comprobarNombreRol(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 32,  idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la descripcion del rol **/
+function comprobarDescripcionRol(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
 /** Funcion que valida el formato de los apellidos **/
 function comprobarApellidos(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
@@ -232,6 +277,54 @@ function comprobarNombreEmpresa(idElemento, idElementoError, campo){
 	}
 }
 
+ /**Función que valida el nombre del rol en el buscar*/
+function comprobarNombreRolSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la descripcion del rol en el buscar*/
+function comprobarDescripcionRolSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
 
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
@@ -293,6 +386,12 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			break;
 			case 'passwordChange':
 				codigo="PASS_USUARIO_VACIO";
+			break;
+			case 'nombreRol':
+				codigo="ROL_NAME_VACIO";
+			break;
+			case 'descripcionRol':
+				codigo="ROL_DESCRIPTION_VACIO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -362,6 +461,9 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			case 'passwordChange' :
 				codigo = "PASS_MENOR_QUE_3";
 			break;
+			case 'nombreRol' : 
+				codigo = "ROL_NAME_MENOR_QUE_3";
+			break;
 
 		}
 		addCodeError(idElementoError, codigo);
@@ -429,6 +531,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			break;
 			case 'passwordChange':
 				codigo = "PASS_MAYOR_QUE_45";
+			break;
+			case 'nombreRol':
+				codigo="ROL_NAME_MAYOR_QUE_32";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -582,6 +687,12 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			case 'nombreEmpresaRegistro' : 
 		  		codigo = "NOMBRE_LETRAS_ACENTOS_INCORRECTO";
 			break;
+			case 'nombreRol':
+				codigo="ROL_NAME_ALFABETICO_INCORRECTO";
+			break;
+			case 'descripcionRol':
+				codigo="ROL_DESCRIPTION_ALFABETICO_INCORRECTO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
         return false;
@@ -590,6 +701,66 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
     return true;
 
 }
+
+/**Función que valida la longitud del texto y que esté compuesto por letras**/
+function comprobarSoloLetras(idElemento, idElementoError, campo) {
+
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+  	var nombre = document.getElementById(idElemento).name;
+  	var longitud = document.getElementById(idElemento).value.length;
+
+    var patron = /^[a-zA-ZÀ-ÿ\u00f1\u00d1\s]+$/g;
+      
+    if (!patron.test(valor)) { 
+    	switch(campo) {
+	    	case 'nombrePersonaRegistro' : 
+		  		codigo = "NOMBRE_LETRAS_ACENTOS_INCORRECTO";
+			break;
+			case 'apellidosPersonaRegistro' : 
+		  		codigo = "APELLIDOS_PERSONA_LETRAS_ACENTOS_INCORRECTO";
+			break;
+			case 'nombreEmpresaRegistro' : 
+		  		codigo = "NOMBRE_LETRAS_ACENTOS_INCORRECTO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+        return false;
+    }
+
+    return true;
+
+}
+
+/**Función que valida la longitud del texto y que esté compuesto por letras**/
+function comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) {
+
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+  	var nombre = document.getElementById(idElemento).name;
+  	var longitud = document.getElementById(idElemento).value.length;
+
+    var patron = /^[a-zA-ZÀ-ÿ\u00f1\u00d1]+$/g;
+      
+    if (!patron.test(valor)) { 
+    	switch(campo) {
+			case 'nombreRol':
+				codigo="ROL_NAME_ALFABETICO_INCORRECTO";
+			break;
+			case 'descripcionRol':
+				codigo="ROL_DESCRIPTION_ALFABETICO_INCORRECTO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+        return false;
+    }
+
+    return true;
+
+}
+
 
 /**Función que valida las fechas **/
 function comprobarFormatoFechas(idElemento, idElementoError, campo) {

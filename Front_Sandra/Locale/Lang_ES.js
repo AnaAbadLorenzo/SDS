@@ -14,6 +14,8 @@ arrayES={
 	'PASS_USUARIO_NUEVA' : 'Nueva contraseña de usuario',
 	'ROL_NAME' : 'Nombre rol',
 	'ROL_DESCRIPTION' : 'Descripción rol',
+	'FUNCIONALIDAD_NAME' : 'Nombre funcionalidad',
+	'FUNCIONALIDAD_DESCRIPTION' : 'Descripción funcionalidad',
 	'ORDENAR' : 'Ordenar',
 	'ACCIONES' : 'Acciones',
 
@@ -33,10 +35,12 @@ arrayES={
 	'ICONO_RECUPERAR_PASS': 'Recuperar contraseña',
 	'ICONO_CERRAR': 'Cerrar',
 	'ICONO_RESET_PASS' : 'Cambiar contraseña',
-	'ICONO_ADD_ROLE' : 'Añadir Rol',
-	'ICONO_SEARCH_ROLE' : 'Buscar Rol',
+	'ICONO_ADD' : 'Añadir',
+	'ICONO_SEARCH' : 'Buscar',
 	'ICON_REFRECH_TABLE' : 'Refrescar tabla',
 	'ICON_SHOW_HIDE_COLUMNS' : 'Ocultar/mostrar columnas',
+	'ICONO_EDIT' : 'Editar',
+	'ICONO_ELIMINAR' : 'Eliminar',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
@@ -52,6 +56,8 @@ arrayES={
 	'ERROR_AUTENTICACION' : 'No tienes permiso para acceder. Vuelve  intentarlo',
 	'ERROR_LISTAR_FUNCIONALIDADES_MENU' : 'Ha ocurrido un error al listar las funcionalidades del usuario',
 	'STOP' : 'PROHIBIDO EL PASO',
+	'ROL_YA_EXISTE' : 'El rol ya existe',
+	'ROL_NO_EXISTE' : 'El rol no existe',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -97,6 +103,13 @@ arrayES={
 	'CIF_EMPRESA_MENOR_QUE_9' : 'CIF de empresa tiene menos de 9 caracteres',
 	'CIF_EMPRESA_MAYOR_QUE_9' : 'CIF de empresa tiene más de 9 caracteres',
 	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'CIF de empresa sólo puede tener letras y números y tener el formato A12345678',
+	'ROL_NAME_VACIO': 'El nombre del rol está vacío',
+	'ROL_NAME_ALFABETICO_INCORRECTO' : 'El nombre del rol sólo puede contener letras',
+	'ROL_NAME_MAYOR_QUE_32' :  'El nombre del rol tiene más de 32 caracteres',
+	'ROL_DESCRIPTION_VACIO': 'La descripción del rol está vacía',
+	'ROL_DESCRIPTION_ALFABETICO_INCORRECTO' : 'La desripción del rol sólo puede contener letras',
+	'ROL_NAME_MENOR_QUE_3' : 'El nombre del rol tiene menos de 3 caracteres',
+	'ROL_VACIO' : 'El nombre del rol y/o la descripción están vacíos',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -120,10 +133,18 @@ arrayES={
 	'FORMATO_CIF' : 'Formato: A12345678',
 	'REGISTRO_USUARIOS' : 'Registro de nuevos usuarios',
 	'CAMBIAR_CONTRASEÑA' : 'CAMBIAR CONTRASEÑA',
+	'CAMBIAR_CONTRASEÑA_MENU' : 'Cambiar contraseña',
 	'GESTION_ROLES' : 'Gestión de roles',
+	'MENU' : 'Menú',
+	'SEARCH_ROL' : 'BUSCAR ROL',
+	'ADD_ROL' : 'AÑADIR ROL',
+	'EDIT_ROLE' : 'EDITAR ROL',
+	'DELETE_ROLE' : 'ELIMINAR ROL',
+	'DESCONECTAR' : 'Desconectar',
+	'SEGURO_ELIMINAR' : '¿Está seguro que desea eliminar este rol?',
+	'DETAIL_ROLE' : 'DETALLE ROL',
+	'GESTION_FUNCIONALIDADES' : 'Gestión de funcionalidades',
 	
-
-
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -133,4 +154,11 @@ arrayES={
 	'PASSWORD_CAMBIADA' : 'La contraseña de usuario se ha modificado correctamente',
 	'REGISTRO_CORRECTO' : 'REGISTRO CORRECTO',
 	'REGISTRO_OK' : 'El usuario ha sido registrado correctamente',
+	'ROL_ENCONTRADO' : 'El rol se ha encontrado correctamente',
+	'ROL_GUARDADO_OK' : 'ROL GUARDADO CORRECTAMENTE',
+	'ROL_GUARDADO' : 'El rol se ha guardado correctamente',
+	'ROL_EDITADO_OK' : 'ROL EDITADO CORRECTAMENTE',
+	'ROL_MODIFICADO' : 'El rol se ha modificado correctamente',
+	'ROL_ELIMINADO_OK' : 'ROL ELIMINADO CORRECTAMENTE',
+	'ROL_ELIMINADO' : 'El rol ha sido eliminado correctamente'
 }

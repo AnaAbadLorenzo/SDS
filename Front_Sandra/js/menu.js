@@ -62,6 +62,8 @@ function changePassUsuarioAjaxPromesa(){
     }).fail( function( jqXHR, textStatus, errorThrown ) {
         alert( 'Error!!' );
       });
+  }else{
+    document.getElementById("error").setAttribute('style', "");
   }
   });
     
@@ -152,7 +154,7 @@ function cargarFuncionalidadesUsuario(datos){
 $(document).ready(function() {
   $("#changePass-modal").on('hidden.bs.modal', function() {
     
-    let idElementoErrorList = ["errorFormatoChangePass1", "errorFormatoChangePass2", "bloqueoMayusculasChangePass"];
+    let idElementoErrorList = ["errorFormatoChangePass1", "errorFormatoChangePass2", "bloqueoMayusculasChangePass", "error"];
     
     let idElementoList = ["passChangePass1", "passChangePass2"];
 

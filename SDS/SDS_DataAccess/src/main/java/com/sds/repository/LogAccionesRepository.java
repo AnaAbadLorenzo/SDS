@@ -15,4 +15,5 @@ public interface LogAccionesRepository extends JpaRepository<LogAccionesEntity, 
 	List<LogAccionesEntity> findByAccion(String accion);
 
 	List<LogAccionesEntity> findByUsuarioAccion(String usuario, String accion);
+
 }

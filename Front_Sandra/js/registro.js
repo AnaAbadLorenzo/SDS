@@ -54,6 +54,19 @@ $(function() {
 	});
 });
 
+/** Habilitar form para añadir empresa desde el select de empresas**/
+$(function() {
+	$("#empresasDisponibles").change(function() {
+		if ($("#empresasDisponibles :selected").val() === "default") {
+
+					$('#formRegistroEmpresa').removeAttr('hidden');
+
+				} else {
+					$('#formRegistroEmpresa').prop("hidden", true);
+				}
+			});
+});
+
 
 /**Función ajax con promesas para el registro*/
 function registroAjaxPromesa() {
@@ -251,8 +264,12 @@ $(document).ready(function() {
 		let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
 			"nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
 
+		let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
 
 		limpiarFormulario(idElementoList);
+		limpiaRadioButton(idElementosRadioButtons);
+		$('#formRegistroEmpresa').prop("hidden", true);
+		$('#selectEmpresas').prop('hidden', true);
 		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
 		setLang(getCookie('lang'));
 	});

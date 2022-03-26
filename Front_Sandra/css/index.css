@@ -31,9 +31,9 @@ body {
   clear: both;
   display: table;
 }
-.imgTabError{
-   width: 5px; 
-  height: 5px;
+.iconTab{
+  width: 20px; 
+  height: 20px;
 }
 #modal {
   width:100%; /*Toma el 100% del ancho de la página*/
@@ -71,7 +71,7 @@ body {
 	left: 85%;
 }
 
-.iconCerrar {
+.iconCerrar, .iconEliminar {
 	width: 8% !important;
 }
 
@@ -397,7 +397,7 @@ form button[type="button"]:hover {
   background-color: #673AB7;
 }
 
-.iconoEntrar, .iconoResetPass, .iconoRegistrar {
+.iconoEntrar, .iconoResetPass, .iconoRegistrar{
   position: relative;
   width: 30px;
 }

@@ -13,6 +13,8 @@ arrayEN={
 	'PASS_USUARIO_NUEVA' : 'New user password',
 	'ROL_NAME' : 'Rol name',
 	'ROL_DESCRIPTION' : 'Rol description',
+	'FUNCIONALIDAD_NAME' : 'Funcionality name',
+	'FUNCIONALIDAD_DESCRIPTION' : 'Funcionality description',
 	'ORDENAR' : 'Order',
 	'ACCIONES' : 'Actions',
 
@@ -31,10 +33,13 @@ arrayEN={
 	'ICONO_RECUPERAR_PASS': 'Recover password',
 	'ICONO_CERRAR': 'Close',
 	'ICONO_RESET_PASS' : 'Change password',
-	'ICONO_ADD_ROLE' : 'Add role',
-	'ICONO_SEARCH_ROLE' : 'Search role',
+	'ICONO_ADD' : 'Add',
+	'ICONO_SEARCH' : 'Search',
 	'ICON_REFRECH_TABLE' : 'Refresh table',
 	'ICON_SHOW_HIDE_COLUMNS' : 'Hide/show columns',
+	'ICONO_EDIT' : 'Edit',
+	'ICONO_ELIMINAR' : 'Delete',
+
 
 	//Mensajes error
 	'ERROR': 'WARNING',
@@ -50,6 +55,8 @@ arrayEN={
 	'ERROR_AUTENTICACION' : 'You are not allow. Try again',
 	'ERROR_LISTAR_FUNCIONALIDADES_MENU' : 'An error ocurred while listing the funcionalities of the user',
 	'STOP' : 'STOP',
+	'ROL_YA_EXISTE' : 'The role already exists',
+	'ROL_NO_EXISTE' : 'The role doesn´t exists',
 	
 
 
@@ -98,7 +105,13 @@ arrayEN={
 	'CIF_EMPRESA_MENOR_QUE_9' : 'Enterprise CIF size is minor than 9 characteres',
 	'CIF_EMPRESA_MAYOR_QUE_9' : 'Enterprise CIF size is bigger than 9 characteres',
 	'CIF_EMPRESA_ALFANUMERICO_INCORRECTO' : 'Enterprise ID must only have letters and numbers and has the format A12345678',
-
+	'ROL_NAME_VACIO': 'Rol name is empty',
+	'ROL_NAME_ALFABETICO_INCORRECTO' : 'Rol name can only contain letters',
+	'ROL_NAME_MAYOR_QUE_32' :  'Rol name size is bigger than 32 characteres',
+	'ROL_DESCRIPTION_VACIO': 'Rol description is empty',
+	'ROL_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Rol description can only contain letters',
+	'ROL_NAME_MENOR_QUE_3' : 'Rol name size is minor than 3 characteres',
+	'ROL_VACIO' : 'Rol name and/or rol description are empty',
 
 
 
@@ -124,7 +137,17 @@ arrayEN={
 	'FORMATO_CIF' : 'Format: A12345678',
 	'REGISTRO_USUARIOS' : 'New users register',
 	'CAMBIAR_CONTRASEÑA' : 'CHANGE PASSWORD',
+	'CAMBIAR_CONTRASEÑA_MENU' : 'Change password',
 	'GESTION_ROLES' : 'Role management',
+	'MENU' : 'Home',
+	'SEARCH_ROL' : 'SEARCH_ROL',
+	'ADD_ROL' : 'ADD ROLE',
+	'EDIT_ROLE' : 'EDIT ROLE',
+	'DELETE_ROLE' : 'DELETE ROLE',
+	'DESCONECTAR' : 'Log out',
+	'SEGURO_ELIMINAR' : 'Are you sure that you want to delete this role?',
+	'DETAIL_ROLE' : 'ROLE DETAIL',
+	'GESTION_FUNCIONALIDADES' : 'Funcionalities management',
 
 
 	//Acciones
@@ -134,7 +157,14 @@ arrayEN={
 	'CONTRASEÑA_CHANGE_OK' : 'PASSWORD CHANGED CORRECTLY',
 	'PASSWORD_CAMBIADA' : 'User password has been successfully changed',
 	'REGISTRO_CORRECTO' : 'REGISTER SUCCESSFUL',
-	'REGISTRO_OK' : 'User has been register correctly'
+	'REGISTRO_OK' : 'User has been register correctly',
+	'ROL_ENCONTRADO' : 'The role has been searched correctly',
+	'ROL_GUARDADO_OK' : 'ROLE SAVED CORRECTLY',
+	'ROL_GUARDADO' : 'The role has been saved correctly',
+	'ROL_EDITADO_OK' : 'ROL MODIFIED CORRECTLY',
+	'ROL_MODIFICADO' : 'The role has been modified correctly',
+	'ROL_ELIMINADO_OK' : 'ROLE DELETED CORRECTLY',
+	'ROL_ELIMINADO' : 'The role has been deleted correctly'
 
 
 

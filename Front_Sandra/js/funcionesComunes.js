@@ -59,7 +59,7 @@ function includeTopMenu() {
 				'<li class="nav-item dropdown">' +
 				'<a class="nav-link dropdown-toggle" href="#" id="navbardrop3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
 				'<img id="imagenHome" src="images/home.png"/>' +
-				'<div class="home">Menú</div>' +
+				'<div class="home MENU">Menú</div>' +
 				'</a>' + 
 				'<div class="dropdown-menu" id="listadoFuncionalidades">' +
 				'</div>' +
@@ -70,9 +70,9 @@ function includeTopMenu() {
 				'<div class="usuarioConectado">' + getCookie('usuario') + '</div>' +
 				'</a>' +
 				'<div class="dropdown-menu">' +
-				'<a class="dropdown-item" href="#" data-toggle="modal" data-target="#changePass-modal" onclik="javascript:modalCambioPass()">Cambiar Contraseña</a>' +
+				'<a class="dropdown-item CAMBIAR_CONTRASEÑA_MENU" href="#" data-toggle="modal" data-target="#changePass-modal" onclik="javascript:modalCambioPass()">Cambiar Contraseña</a>' +
 				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="index.html" onclick="javascript:desconectar()">Desconectar</a>' +
+				'<a class="dropdown-item DESCONECTAR" href="index.html" onclick="javascript:desconectar()">Desconectar</a>' +
 				'</div>' +
 				'</li>' +
 				'</ul>' +
@@ -296,6 +296,13 @@ function limpiaSelect(select){
 	select.empty();
 }
 
+/*Funcion para limpiar los radio button */
+function limpiaRadioButton(idElementos){
+	idElementos.forEach( function (idElemento){
+		$("#"+idElemento).prop('checked', false);
+	});
+}
+
 /**Función para comprobar que el token del usuario se encuentra en las cookies**/
 function comprobarTokenUsuario(){
 	var token = getCookie('tokenUsuario');
@@ -326,25 +333,33 @@ function construyeFila(entidad, fila) {
 	let atributosFunciones="";
 	var filaTabla = "";
 
-	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle" src="images/detail3.png" onclick="showDetalleUsuario(' + atributosFunciones + 
-                               ')" alt="Detalle Usuario"/><span class="tooltiptext iconDetailUser">Detalle</span></div>';
-    var celdaAccionesEditar = '<div class="tooltip"><img class="editar" src="images/edit3.png" onclick="showEditarUsuario(' + atributosFunciones + 
-                               ')" alt="Editar Usuario"/><span class="tooltiptext iconEditUser">Editar</span></div>';
-    var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar" src="images/delete3.png" onclick="showEliminarUsuario(' + atributosFunciones + 
-                               ')" alt="Eliminar Usuario"/><span class="tooltiptext iconDeleteUser">Eliminar</span></div>';
+	switch(entidad){
+		case 'ROL':
+			atributosFunciones = ["'" + fila.rolName + "'", "'" + fila.rolDescription + "'", "'" + fila.idRol + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.rolName + 
+                '</td> <td>' + fila.rolDescription;
+        break;
+
+        case 'FUNCIONALIDAD':
+			atributosFunciones = ["'" + fila.nombreFuncionalidad + "'", "'" + fila.descripFuncionalidad + "'", "'" + fila.idFuncionalidad + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreFuncionalidad + 
+                '</td> <td>' + fila.descripFuncionalidad;
+        break;
+	};
+
+	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle" src="images/detail3.png" data-toggle="modal" data-target="#form-modal" onclick="showDetalle(' + atributosFunciones + 
+                               ')" alt="Detalle"/><span class="tooltiptext iconDetailUser">Detalle</span></div>';
+    var celdaAccionesEditar = '<div class="tooltip"><img class="editar" src="images/edit3.png" data-toggle="modal" data-target="#form-modal" onclick="showEditar(' + atributosFunciones + 
+                               ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
+    var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar" src="images/delete3.png" data-toggle="modal" data-target="#form-modal" onclick="showEliminar(' + atributosFunciones + 
+                               ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
 
 
 	var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
 
-	switch(entidad){
-		case 'ROL':
-			atributosFunciones = ["'" + fila.rolName + "'", "'" + fila.rolDescription + "'"];
-			filaTabla = '<tr class="impar"> <td>' + fila.rolName + 
-                '</td> <td>' + fila.rolDescription + 
+	filaTabla = filaTabla + 
                 '</td> <td class="acciones">' + celdaAcciones +  
                 '</td> </tr>';
-        break;
-	}
 
     return filaTabla;
 }
@@ -362,6 +377,27 @@ function createHideShowColumnsWindow(arrayColumnas) {
  
 }
 
+/**Función que muestra la ventana con las columnas a ocultar o mostrar*/
+function hideShowColumnsWindow() {
+
+    var estado = $('#showHideColumns').css('display');
+
+    if (estado == 'none') {
+        $('#showHideColumns').attr('style', 'display: block');
+    } else {
+        $('#showHideColumns').attr('style', 'display: none');
+    }
+    
+}
+
+/**Función que oculta o muestra las columnas de una tabla*/
+function hideShow(classElement, posElement) {
+
+    $("." + classElement.name).toggle();
+    $('td:nth-child(' + posElement + ')').toggle();
+
+}
+
 /**Función para cargar los HREF de cada pagina*/
 function cargarHref(dato){
 	var href=""
@@ -370,10 +406,15 @@ function cargarHref(dato){
 		case 'Gestión de roles':
 			href="GestionDeRoles.html";
 		break;
+
+		case 'Gestión de funcionalidades':
+			href="GestionDeFuncionalidades.html";
+		break;
 	}
 
 	return href;
 }
+
 
 /**Función para cargar los class de cada pagina **/
 
@@ -384,11 +425,86 @@ function cargarClass(dato){
 		case 'Gestión de roles':
 			clase="GESTION_ROLES";
 		break;
+
+		case 'Gestión de funcionalidades':
+			clase="GESTION_FUNCIONALIDADES";
+		break;
 	}
 
 	return clase;
 }
 
+/* Función para comprobar errrores en los tabs de registro */
+function comprobarErroresTabs(){
+	if($('#errorFormatoDni').attr("style") == "" || $('#errorFormatoNombrePersona').attr("style") == "" || $('#errorFormatoApellidosP').attr("style") == "" ||
+		$('#errorFormatoFecha').attr("style") == "" || $('#errorFormatoDireccion').attr("style") == "" || $('#errorFormatoTelefono').attr("style") == "" ||
+		$('#errorFormatoEmail').attr("style") == ""){
+		$('#iconoTabDatosPersonales').prop('hidden', false);
+	}
+
+	if($('#errorFormatoUserRegistro').attr("style") == "" || $('#errorFormatoPassRegistro').attr("style") == "" || $('#errorFormatoPassRegistro2').attr("style") == ""){
+		$('#iconoTabDatosUsuario').prop('hidden', false);
+	}
+
+	if($('#errorFormatoCifEmpresa').attr("style") == "" || $('#errorFormatoNombreEmpresa').attr("style") == "" || $('#errorFormatoDireccionEmpresa').attr("style") == ""
+		|| $('#errorFormatoTelefonoEmpresa').attr("style") == "" ){
+		$('#iconoTabDatosEmpresa').prop('hidden', false);
+	}
+}
+
+/**Función para cambiar valores del formulario*/
+function cambiarFormulario(tituloForm, action, onsubmit) {
+
+	$("#tituloForms").removeClass();
+    $("#tituloForms").addClass(tituloForm);
+
+    if (action != '') {
+        $("#formularioGenerico").attr('action', action);
+    }
+
+    if (onsubmit != '') {
+        $("#formularioGenerico").attr('onsubmit', onsubmit);
+    }
+    
+}
+
+/**Función para cambiar valores del icono **/
+function cambiarIcono(ruta, nombreIcono, estiloIcono, valorIcono) {
+
+    $("#iconoAcciones").attr('src', ruta);
+    $("#iconoAcciones").addClass(nombreIcono);
+    $("#iconoAcciones").addClass(estiloIcono);
+    $("#spanAcciones").addClass(nombreIcono);
+    $("#btnAcciones").attr('value', valorIcono);
+}
+
+/**Función para volver al menu **/
+function volver(){
+	window.location.href = "menu.html";
+}
+
+/**Función para insertar campos en el formulario a mayores*/
+function insertacampo(form, name, value){
+	
+	formulario = form;
+	var input = document.createElement('input');
+	input.type = 'hidden';
+	input.name = name;
+	input.value = value;
+	input.className = name;
+	input.id
+	formulario.appendChild(input);
+
+}
+
+/**Función que deshabilita los campos de un formulario*/
+function deshabilitaCampos(idElementoList) {
+
+	idElementoList.forEach( function (idElemento) {
+		$("#"+ idElemento).attr("disabled", true); 
+	});	
+
+}
 
 $(document).ready(function(){
   $('.iconCerrar').on('click', function(){

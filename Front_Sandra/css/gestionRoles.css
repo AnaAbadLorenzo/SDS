@@ -1,0 +1,192 @@
+.formmodal-container {
+  padding: 15px;
+  max-width: 600px;
+  width: 100% !important;
+  background-color: #EDE7F6;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.formmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+  color: #311B92;
+}
+
+.formmodal-container p, .labelForm {
+  font-family: roboto;
+  color: #311B92;
+}
+
+.formmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+
+.formmodal-container input[type=text]{
+  height: 30px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formmodal-container select {
+  height: 30px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formmodal-container input[type=date], input[type=tel] {
+  height: 30px;
+  font-size: 14px;
+  width: 36%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formmodal-container input[type=email] {
+  height: 30px;
+  font-size: 14px;
+  width: 59%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formmodal-container input[type=email] {
+  height: 44px;
+  font-size: 16px;
+  width: 59%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.formmodal-container input[type=text]:hover, input[type=password]:hover, 
+input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:hover{
+  border: 1px solid #9575CD;
+  border-top: 2px solid #5E35B1;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.registro-submit, .recuperarcontrasena-submit {
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4527A0;
+  padding: 17px 0px;
+  font-family: roboto;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.registro-submit:hover, .recuperarcontrasena-submit:hover {
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #673AB7;
+}
+
+.formmodal-container a {
+  text-decoration: none;
+  color: #673AB7;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+
+.modal-dialog{
+  pointer-events: visible !important;
+}
+
+form fieldset {
+  width: 100%;
+  border: 2px solid #311B92;
+  color: #311B92;
+  font-family: roboto;
+  display: inline;
+  padding: 0.5em;
+}
+
+form legend {
+  width: 165px;
+  margin-left: 10px;
+  font-size: 15pt;
+  font-family: roboto;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+form button[type="submit"],
+form button[type="button"] {
+  background: #4527A0; 
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+form button[type="submit"]:hover,
+form button[type="button"]:hover {
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #673AB7;
+}
+
+
+/********* ICONOS ***********/
+
+.iconoSearchRol, .iconoAddRol, .iconoEditarRol, .iconoEliminar, .iconoCerrar {
+  position: relative;
+  width: 30px;
+  display:block;
+  margin:auto;
+}
