@@ -62,6 +62,7 @@ arrayES={
 	'STOP' : 'PROHIBIDO EL PASO',
 	'ROL_YA_EXISTE' : 'El rol ya existe',
 	'ROL_NO_EXISTE' : 'El rol no existe',
+	'TEST_ATRIBUTOS_LOGIN_KO' : 'Se ha producido un error al ejecutar los tests de atributos para el login',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',

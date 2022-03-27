@@ -353,6 +353,7 @@ form button[type="button"]:hover {
   display: inline;
 }
 
+
 /******** TOOLTIPS ********************/
 
 .tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5 {
@@ -479,3 +480,30 @@ form button[type="button"]:hover {
   visibility: visible;
   opacity: 1;
 }
+
+
+/********** TESTING ************/
+.card-header a {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.card-header {
+   background-color: #4527A0;
+}
+
+.card-body {
+  background-color: #EDE7F6;
+}
+
+.card-body tbody tr {
+  background-color: #ffffff;
+}
+
+.cabeceraTablasTest {
+  background-color: #4527A0;
+  color:  #ffffff;
+  text-align: center;
+  border: 2px solid #4527A0 !important;
+}
+

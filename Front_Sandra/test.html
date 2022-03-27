@@ -17,7 +17,8 @@
 	<script type="text/javascript" src="js/funcionesComunes.js"></script>
 	<script type="text/javascript" src="js/configURLs.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/validaciones.js"></script>
+	<script type="text/javascript" src="js/estructurasTest.js"></script>
+	<script type="text/javascript" src="js/test.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
@@ -39,7 +40,47 @@
 
 	<div class="test MENSAJE_TEST">Tests</div> 
 
-	
+	<div id="accordion">
+		<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseLogin" onclick="javascript:cargarTestLogin()">
+	        Login
+	      </a>
+	    </div>
+
+	    <div id="collapseLogin" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testLogin">
+      	</div>
+    	</div>
+  	</div>
+
+	  <div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRegistrar" onclick="javascript:cargarTestRegistrar()">
+	        Registrar
+	      </a>
+	    </div>
+
+	    <div id="collapseRegistrar" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testRegistrar">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRol" onclick="javascript:cargarTestGestionRoles()">
+	        Gestión de Roles
+	      </a>
+	    </div>
+
+	    <div id="collapseRol" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testRol">
+      	</div>
+    	</div>
+  	</div>
+
+	</div>
 
 	<div id="modal" tabindex="-1" role="dialog" style="display:none">
 		<div class="modal-dialog" role="document" id="modal-dialog">

@@ -61,6 +61,7 @@ arrayGA={
 	'STOP' : 'PROHIBIDO O PASO',
 	'ROL_YA_EXISTE' : 'O rol ya existe',
 	'ROL_NO_EXISTE' : 'O rol non existe',
+	'TEST_ATRIBUTOS_LOGIN_KO' : 'Produciuse un erro ó executar os tests de atributos para o login',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
