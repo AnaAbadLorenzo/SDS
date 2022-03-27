@@ -17,7 +17,8 @@
 	<script type="text/javascript" src="js/funcionesComunes.js"></script>
 	<script type="text/javascript" src="js/configURLs.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
-	<script type="text/javascript" src="js/validaciones.js"></script>
+	<script type="text/javascript" src="js/estructurasTest.js"></script>
+	<script type="text/javascript" src="js/test.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
@@ -40,122 +41,46 @@
 	<div class="test MENSAJE_TEST">Tests</div> 
 
 	<div id="accordion">
+		<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseLogin" onclick="javascript:cargarTestLogin()">
+	        Login
+	      </a>
+	    </div>
 
-  <div class="card">
-    <div class="card-header">
-      <a class="card-link" data-toggle="collapse" href="#collapseOne">
-        Login
-      </a>
-    </div>
-    <div id="collapseOne" class="collapse show" data-parent="#accordion2">
-      <div class="card-body">
-        	
-        	<div id="accordion">
-	      		<div class="card">
-					    <div class="card-header">
-					      <a class="collapsed card-link" data-toggle="collapse" href="#collapseOneOne">
-					        Atributos
-					      </a>
-					    </div>
-					    <div id="collapseOneOne" class="collapse" data-parent="#accordion2">
-					      <div class="card-body">
-					        <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Age</th>
-          <th>City</th>
-          <th>Country</th>
-          <th>Sex</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-          <th>Example</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Anna</td>
-          <td>Pitt</td>
-          <td>35</td>
-          <td>New York</td>
-          <td>USA</td>
-          <td>Female</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-          <td>Yes</td>
-        </tr>
-      </tbody>
-    </table>
-					      </div>
-					    </div>
-					  </div>
+	    <div id="collapseLogin" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testLogin">
+      	</div>
+    	</div>
+  	</div>
 
-					  <div class="card-header">
-					      <a class="collapsed card-link" data-toggle="collapse" href="#collapseOneTwo">
-					        Acciones
-					      </a>
-					    </div>
-					    <div id="collapseOneTwo" class="collapse" data-parent="#accordion2">
-					      <div class="card-body">
-					        Lorem ipsum..
-					      </div>
-					    </div>
-					  </div>
-					</div>
+	  <div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRegistrar" onclick="javascript:cargarTestRegistrar()">
+	        Registrar
+	      </a>
+	    </div>
 
-      </div>
-    </div>
-  </div>
+	    <div id="collapseRegistrar" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testRegistrar">
+      	</div>
+    	</div>
+  	</div>
 
-  <div class="card">
-    <div class="card-header">
-      <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-        Collapsible Group Item #2
-      </a>
-    </div>
-    <div id="collapseTwo" class="collapse" data-parent="#accordion">
-      <div class="card-body">
-        Lorem ipsum..
-      </div>
-    </div>
-  </div>
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRol" onclick="javascript:cargarTestGestionRoles()">
+	        Gestión de Roles
+	      </a>
+	    </div>
 
-  <div class="card">
-    <div class="card-header">
-      <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree">
-        Collapsible Group Item #3
-      </a>
-    </div>
-    <div id="collapseThree" class="collapse" data-parent="#accordion">
-      <div class="card-body">
-        Lorem ipsum..
-      </div>
-    </div>
-  </div>
+	    <div id="collapseRol" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testRol">
+      	</div>
+    	</div>
+  	</div>
 
-</div>
+	</div>
 
 	<div id="modal" tabindex="-1" role="dialog" style="display:none">
 		<div class="modal-dialog" role="document" id="modal-dialog">

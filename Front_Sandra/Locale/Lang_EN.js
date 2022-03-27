@@ -61,6 +61,7 @@ arrayEN={
 	'STOP' : 'STOP',
 	'ROL_YA_EXISTE' : 'The role already exists',
 	'ROL_NO_EXISTE' : 'The role doesn´t exists',
+	'TEST_ATRIBUTOS_LOGIN_KO' : 'An error occurred when running the attribute tests for login',
 	
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',
