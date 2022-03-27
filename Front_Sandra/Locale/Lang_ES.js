@@ -19,7 +19,6 @@ arrayES={
 	'ORDENAR' : 'Ordenar',
 	'ACCIONES' : 'Acciones',
 
-
 	//Idiomas
 	'ESPAÑOL' : 'Español',
 	'INGLES' : 'Inglés',
@@ -149,7 +148,7 @@ arrayES={
 	'SEGURO_ELIMINAR' : '¿Está seguro que desea eliminar este rol?',
 	'DETAIL_ROLE' : 'DETALLE ROL',
 	'GESTION_FUNCIONALIDADES' : 'Gestión de funcionalidades',
-	
+	'MENSAJE_TEST' : 'Tests',	
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

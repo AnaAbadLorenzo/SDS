@@ -410,6 +410,10 @@ function cargarHref(dato){
 		case 'Gestión de funcionalidades':
 			href="GestionDeFuncionalidades.html";
 		break;
+
+		case 'Test':
+			href="test.html";
+		break;
 	}
 
 	return href;
@@ -428,6 +432,10 @@ function cargarClass(dato){
 
 		case 'Gestión de funcionalidades':
 			clase="GESTION_FUNCIONALIDADES";
+		break;
+
+		case 'Test':
+			clase="TEST";
 		break;
 	}
 

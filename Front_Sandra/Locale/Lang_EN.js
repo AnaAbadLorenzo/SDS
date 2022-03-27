@@ -62,9 +62,6 @@ arrayEN={
 	'ROL_YA_EXISTE' : 'The role already exists',
 	'ROL_NO_EXISTE' : 'The role doesn´t exists',
 	
-
-
-
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',
 	'PASS_USUARIO_VACIO' : 'User password empty',
@@ -117,8 +114,6 @@ arrayEN={
 	'ROL_NAME_MENOR_QUE_3' : 'Rol name size is minor than 3 characteres',
 	'ROL_VACIO' : 'Rol name and/or rol description are empty',
 
-
-
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
 	'RELLENAR_FORM_PASS' : 'Fill the form to recover it',
@@ -152,7 +147,7 @@ arrayEN={
 	'SEGURO_ELIMINAR' : 'Are you sure that you want to delete this role?',
 	'DETAIL_ROLE' : 'ROLE DETAIL',
 	'GESTION_FUNCIONALIDADES' : 'Funcionalities management',
-
+	'MENSAJE_TEST' : 'Tests',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -169,9 +164,5 @@ arrayEN={
 	'ROL_MODIFICADO' : 'The role has been modified correctly',
 	'ROL_ELIMINADO_OK' : 'ROLE DELETED CORRECTLY',
 	'ROL_ELIMINADO' : 'The role has been deleted correctly'
-
-
-
-
 
 }

@@ -62,7 +62,6 @@ arrayGA={
 	'ROL_YA_EXISTE' : 'O rol ya existe',
 	'ROL_NO_EXISTE' : 'O rol non existe',
 
-
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
 	'PASS_USUARIO_VACIO' : 'Contrasinal de usuario vacía',
@@ -147,6 +146,7 @@ arrayGA={
 	'SEGURO_ELIMINAR' : 'Está seguro que desea eliminar este rol?',
 	'DETAIL_ROLE' : 'DETALLE ROL',
 	'GESTION_FUNCIONALIDADES' : 'Xestión de funcionalidades',
+	'MENSAJE_TEST' : 'Tests',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
