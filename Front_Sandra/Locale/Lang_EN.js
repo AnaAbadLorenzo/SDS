@@ -25,6 +25,9 @@ arrayEN={
 
 	//Warnings
 	'BLOQUEO_MAYUSCULAS' : 'Caps Lock enabled',
+
+	//Tooltip campos obligatorios
+	'CAMPO_OBLIGATORIO' : 'Required Field',
 	
 	//Tooltip iconos
 	'ICONO_LOGIN' : 'Login',
@@ -35,11 +38,12 @@ arrayEN={
 	'ICONO_RESET_PASS' : 'Change password',
 	'ICONO_ADD' : 'Add',
 	'ICONO_SEARCH' : 'Search',
+	'ICONO_SEARCH_DELETE' : 'Search Deleted',
 	'ICON_REFRECH_TABLE' : 'Refresh table',
 	'ICON_SHOW_HIDE_COLUMNS' : 'Hide/show columns',
 	'ICONO_EDIT' : 'Edit',
 	'ICONO_ELIMINAR' : 'Delete',
-
+	'ICONO_VOLVER' : 'Home',
 
 	//Mensajes error
 	'ERROR': 'WARNING',

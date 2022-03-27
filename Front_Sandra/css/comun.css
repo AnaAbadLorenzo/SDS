@@ -1,0 +1,353 @@
+
+.row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.ocultar {
+    display: none;
+}
+ 
+.mostrar {
+    display: block;
+}
+
+body {
+  background-color: #EDE7F6;
+}
+
+.modal {
+  z-index:2050;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.iconTab{
+  width: 20px; 
+  height: 20px;
+}
+#modal {
+  width:100%; /*Toma el 100% del ancho de la página*/
+  height:100%; /*Toma el 100% del alto de la página*/
+  position:fixed; /*Con este código hacemos que el contenedor se mantenga en la pantalla y para que tome las dimensiones del body y no de la entrada*/
+  background-color: rgba(1, 1, 1, 0.95); /*Color de fondo, incluye opacidad del 90%*/
+  top:0; /*Position superior*/
+  left:0; /*Posición lateral*/
+  z-index:2050;
+}
+
+#modal-dialog {
+  top: 30%;
+}
+
+#mensajeError{
+  text-align: center;
+  font-size: 20px;
+  
+}
+
+#modal-title{
+  position: absolute;
+  left: 12%;
+  top: 12%;
+  width: auto !important;
+  display: inline-block;
+}
+
+.imagenAviso {
+  width: 8% !important;
+}
+
+#cerrar {
+  left: 85%;
+}
+
+.iconCerrar, .iconEliminar {
+  width: 8% !important;
+}
+
+.btn-primary{
+  background-color: #4527A0;
+  border-color: #4527A0;
+  color: #FFFFFF ;
+}
+
+/********* CAMBIAR CONTRASEÑA MODAL *********/
+
+.changePassmodal-container {
+  padding: 15px;
+  max-width: 600px;
+  width: 100% !important;
+  background-color: #EDE7F6;
+  margin: 0 auto;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  font-family: roboto;
+}
+
+.changePassmodal-container h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+  color: #311B92;
+}
+
+
+.changePassmodal-container input[type=submit] {
+  width: 100%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.changePassmodal-container input[type=password] {
+  height: 30px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
+.changePassmodal-container input[type=password]:hover {
+  border: 1px solid #9575CD;
+  border-top: 2px solid #5E35B1;
+  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+
+.changePassmodal-container a{
+  text-decoration: none;
+  color: #673AB7;
+  font-weight: 400;
+  text-align: center;
+  display: inline-block;
+  opacity: 0.6;
+  transition: opacity ease 0.5s;
+} 
+
+
+.modal-dialog{
+  pointer-events: visible !important;
+}
+
+form fieldset {
+  width: 100%;
+  border: 2px solid #311B92;
+  color: #311B92;
+  font-family: roboto;
+  display: inline;
+  padding: 0.5em;
+}
+
+form legend {
+  width: 165px;
+  margin-left: 10px;
+  font-size: 15pt;
+  font-family: roboto;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+
+form button[type="submit"],
+form button[type="button"] {
+  background: #4527A0; 
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+form button[type="submit"]:hover,
+form button[type="button"]:hover {
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #673AB7;
+}
+
+.iconoResetPass{
+  position: relative;
+  width: 30px;
+}
+
+/********* TABS REGISTRO ***********/
+.nav-tabs .nav-link.active {
+    color: #4527A0 !important;
+}
+
+#datosPersonales, #datosUsuario, #datosEmpresa {
+  color: #4527A0;
+}
+
+/********* DESPLEGABLE IDIOMAS Y MENU USUARIO *********/
+.imagenLogo {
+  width: 40px;
+}
+
+#imagenIdioma {
+  display: inline;
+  width: 50px;
+  margin-top: -7px;
+  margin-left: -5px;
+}
+
+#imagenUsuario {
+  display: inline;
+  width: 35px;
+  margin-top: -1px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#imagenHome {
+  display: inline;
+  width: 35px;
+  margin-top: -1px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.usuarioConectado {
+	display: inline;
+	color: #D1C4E9;
+}
+
+.home {
+  display: inline;
+  color: #D1C4E9;
+}
+
+.navbar-nav {
+  margin-top: 1px;
+  border-radius: 5px;
+  border: 2px solid #4527A0;
+}
+
+.navbar-nav .nav-link {
+  padding-right: 1rem; 
+  padding-left: 1rem;
+}
+
+#navbardrop, #navbardrop2, #navbardrop3 {
+  background-color: #4527A0 !important;
+  height: 50px;
+}
+
+.dropdown-menu {
+  top: 71% !important;
+  left: 94% !important;
+  text-align: center !important;
+  background-color: #D1C4E9 !important;
+  min-width: 5rem !important;
+  margin: -0.125rem 0 0;
+}
+
+.dropdown-item {
+  height: 30px !important;
+  color: #4527a0 !important;
+}
+
+.dropdown-item:hover {
+  background-color: #B39DDB !important;
+  cursor: pointer !important;
+  color: #ffffff !important;
+}
+
+#btnEspanol {
+  background-color: transparent;
+  background-image:url(../images/Spain2.png);
+  height:27px;
+  width:33px;
+  background-position:center;
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+  margin-top: -1px;
+  cursor: pointer;
+}
+
+#btnEspanol:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#btnIngles {
+  background-color: transparent;
+  background-image:url(../images/United-Kingdom2.png);
+  height:27px;
+  width:33px;
+  background-position:center;
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+  margin-top: -1px;
+  cursor: pointer;
+}
+
+#btnIngles:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#btnGallego {
+  background-color: transparent;
+  background-image:url(../images/Galicia2.png);
+  height:27px;
+  width:33px;
+  background-position:center;
+  background-repeat: no-repeat;
+  border: 1px solid transparent;
+  margin-top: -1px;
+  cursor: pointer;
+}
+
+#btnGallego:hover {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.menuIdioma {
+  background-color: #4527A0;
+  height: 60px;
+}
+
+/********** FOOTER ************/
+.footer {
+  background-color: #4527A0;
+  height: 60px;
+}
+
+.footer div {
+  color: #EDE7F6;
+}
+
+.footer a {
+  color: #EDE7F6;
+}
+
+/********** CAMPO OBLIGATORIO ************/
+.obligatorio {
+  color: #ff6a00; 
+  font-size: 15pt;
+  font-family: 'Times New Roman';
+  font-weight: bold;
+  cursor: pointer;
+  display: inline;
+}

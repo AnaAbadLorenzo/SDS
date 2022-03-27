@@ -25,6 +25,9 @@ arrayGA={
 
 	//Warnings bloqueo mayúsculas
 	'BLOQUEO_MAYUSCULAS' : 'Bloqueo de Maiúsculas activado',
+
+	//Tooltip campos obligatorios
+	'CAMPO_OBLIGATORIO' : 'Campo Obligatorio',
 	
 	//Tooltip iconos
 	'ICONO_LOGIN' : 'Login',
@@ -35,10 +38,12 @@ arrayGA={
 	'ICONO_RESET_PASS' : 'Cambiar contrasinal',
 	'ICONO_ADD' : 'Engadir',
 	'ICONO_SEARCH' : 'Buscar',
+	'ICONO_SEARCH_DELETE' : 'Buscar Eliminados',
 	'ICON_REFRECH_TABLE' : 'Refrescar tabla',
 	'ICON_SHOW_HIDE_COLUMNS' : 'Ocultar/mostrar columnas',
 	'ICONO_EDIT' : 'Editar',
 	'ICONO_ELIMINAR' : 'Eliminar',
+	'ICONO_VOLVER' : 'Menú',
 
 	//Mensajes error
 	'ERROR': 'ERRO',

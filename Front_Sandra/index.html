@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -118,8 +119,10 @@
 					</ul>
 					<div class="tab-content">
 					    <div id="datosPersonales" class="container tab-pane active"><br>
-					      	
 					      	<input type="text" name="dni" placeholder="DNI" id="dniP" class="dni DNI" maxlength="9" size="9" onblur="return comprobarDNI('dniP', 'errorFormatoDni', 'dniPersona')">
+					      	<div class="obligatorio tooltip2" id="obligatorioDNI">*
+                  	<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                  </div>
 							<small class="FORMATO_DNI"></small>
 							<div style="display:none" id="errorFormatoDni"></div>
 							

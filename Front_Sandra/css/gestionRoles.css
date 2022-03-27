@@ -190,3 +190,278 @@ form button[type="button"]:hover {
   display:block;
   margin:auto;
 }
+
+/*********** TITULO GESTION **************/
+.gestion {
+  top: 80px;
+  left: 41%;
+  position: absolute;
+  color: #4527A0;
+}
+
+/*********** TABLA DATOS *****************/
+
+.table {
+  width: 98.7%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+#tablaDatos {
+  position: absolute;
+  top: 200px;
+  left: 130px;
+  width: 85%;
+  height: 60%;
+  overflow-y: scroll;
+}
+
+.impar {
+  background-color: #D1C4E9;
+  font-weight: bold;
+  border: 2px solid #4527A0 !important;
+}
+
+.impar:hover {
+  background-color: #B39DDB;
+  font-weight: bold;
+  color:  #ffffff;
+}
+
+.table-bordered {
+    border: 2px solid #4527A0 !important;
+}
+
+.table thead .colFirst {
+  border-left: 2px solid #4527A0 !important;
+}
+
+.table thead .colLast {
+  border-right: 2px solid #4527A0 !important;
+}
+
+thead {
+  background-color: #4527A0;
+  color:  #ffffff;
+  text-align: center;
+  border: 2px solid #4527A0 !important;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #4527A0 !important;
+}
+
+.table-bordered th {
+    border-left: 2px solid #D1C4E9 !important;
+    border-top: 2px solid #4527A0 !important;
+}
+
+.table-bordered td {
+    border: 2px solid #4527A0 !important;
+}
+
+.acciones {
+  text-align: center;
+  width: 170px;
+}
+
+.detalle, .editar, .eliminar {
+  display: inline;
+  width: 37px;
+  margin-top: -10px;
+  margin-left: 5px;
+  margin-bottom: -5px;
+}
+
+.filasTabla {
+  position: fixed;
+  bottom: 16%;
+  left: 86%;
+  z-index: 1000;
+  font-weight: bold;
+  color: #4527A0;
+}
+
+/*********** TOOLTIPS CABECERA ***************/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 900;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4527A0 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.cabecera {
+  position:  fixed;
+  top: 12%;
+  left: 8%;
+  width: 100%;
+}
+
+.volver {
+  position: fixed;
+  bottom: 10%;
+  left: 1%;
+  width: 100%;
+}
+
+.iconoAdd, .iconoBack {
+  width: 4em; 
+  height: 4em; 
+  cursor: pointer;
+}
+
+.iconoSearch, .iconoRefresh, .iconoSearchDelete {
+  width: 3em; 
+  height: 3em; 
+  cursor: pointer;
+}
+
+.iconoHideShow {
+  width: 2.5em; 
+  height: 2.5em; 
+  cursor: pointer;
+}
+
+.addIcon {
+  margin-left: 1.5%;
+  margin-top: 1%;
+}
+
+.searchIcon {
+  margin-left: 1%;
+}
+
+.searchDeleteIcon {
+  margin-left: 1%;
+}
+
+.hideShowIcon {
+  margin-left: 1%;
+}
+
+.refreshIcon {
+  margin-left: 62%;
+}
+
+.backIcon {
+  margin-left: 1.5%;
+  margin-top: 1%;
+}
+
+#showHideColumns {
+  z-index: 1010;
+  position: absolute;
+  margin-left: 77%;
+  margin-top: 10.6%;
+  background: #4527A0;
+  color: #ffffff;
+  width: 15.5%;
+  font-size: 1.2em;
+  border: 1px solid #ffffff;
+  border-radius: 0.5em;
+  height: 19%;
+}
+
+#showHideColumns label {
+  margin-left: 4%;
+}
+
+.rolNameColumn, .rolDescriptionColumn, .rolIdColumn {
+  display: inline;
+}
+
+.ordenarIconRolName, .ordenarIconRolDescription, .ordenarIconRolId {
+  margin-left: 2%;
+  cursor:  pointer;
+}
+
+.iconoOrdenar {
+  width: 1.3em;
+}
+
+
+/******************** PAGINACION *********/
+.paginacion {
+  position: absolute;
+  bottom: 11%;
+  left: 45%;
+  z-index: 1000;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #4527A0;
+  border-color: #4527A0;
+}
+
+.page-item.navegacion .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #7E57C2;
+  border-color: #7E57C2;
+}
+
+.page-item.navegacion .page-link:hover {
+  z-index: 1;
+  color: #fff;
+  background-color: #B39DDB;
+  border-color: #ffffff;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #4527A0;
+  background-color: #D1C4E9;
+  border: 1px solid #4527A0;
+}
+
+.page-link:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #B39DDB;
+  border-color: #ffffff;
+}

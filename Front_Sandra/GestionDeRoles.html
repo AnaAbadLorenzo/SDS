@@ -9,8 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
-	<link rel="stylesheet" type="text/css" href="css/index.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="css/menu.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="css/gestionRoles.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -46,12 +45,17 @@
 	<div class="cabecera">
 		<div name="btnAdd" value="Añadir" data-toggle="modal" data-target="#form-modal" onclick="javascript:showAddRol()" class="tooltip addIcon">
         <img class="iconoAdd" src="images/add3.png" alt="Añadir" />
-        <span class="tooltiptext iconAddRole ICONO_ADD"></span>
+        <span class="tooltiptext iconAdd ICONO_ADD"></span>
     </div>      
 
     <div name="btnSearchUser" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarRol()" class="tooltip searchIcon">
-        <img class="iconoSearch iconSearchUser" src="images/search3.png" alt="Buscar Rol" />
-        <span class="tooltiptext iconSearchUser ICONO_SEARCH"></span>
+        <img class="iconoSearch iconSearch" src="images/search3.png" alt="Buscar Rol" />
+        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
+    </div>
+
+    <div name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
+        <img class="iconoSearchDelete iconSearchDelete" src="images/searchDelete.png" alt="Buscar Roles Eliminados" />
+        <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
 
     <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla()" class="tooltip refreshIcon">
@@ -71,23 +75,23 @@
 		    	<tr>
 			      <th scope="col" class="colFirst ROL_NAME_COLUMN">
 			      	<div class="rolNameColumn ROL_NAME"></div>
-                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaRoles')" class="tooltip ordenarIconUser">
+                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaRoles')" class="tooltip ordenarIconRolName">
                       <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                       <span class="tooltiptext iconOrdenar ORDENAR"></span>
               		</div>
 						</th>
 			      	
 					  <th scope="col" class="ROL_DESCRIPTION_COLUMN">
-					    <div class="ROL_DESCRIPTION"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaRoles')" class="tooltip ordenarIconName">
+					    <div class="ROL_DESCRIPTION rolDescriptionColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaRoles')" class="tooltip ordenarIconRolDescription">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
 					  </th>
 
 					  <th scope="col" class="ROL_ID_COLUMN" hidden>
-					    <div class="ROL_ID"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaRoles')" class="tooltip ordenarIconName">
+					    <div class="ROL_ID rolIdColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaRoles')" class="tooltip ordenarIconRolId">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
@@ -165,8 +169,8 @@
 
 	<div class="volver">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
-        <img class="iconoBack iconBack" src="images/back3.png" alt="Volver" />
-        <span class="tooltiptext iconBack">Volver</span>
+        <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
+        <span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>
     </div>   
 	</div>
 
