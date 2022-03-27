@@ -113,8 +113,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 		if (rol.getIdRol() == -1) {
 			usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDUSUARIO)
-					.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.ROL, "").setFirstResult(inicio)
-					.setMaxResults(tamanhoPagina).getResultList();
+					.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.ROL, StringUtils.EMPTY)
+					.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 			numberTotalResults = usuarioRepository.numberFindUsuario(usuario);
 
@@ -144,8 +144,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 		}
 
-		datosBusqueda.add(Constantes.USUARIO + ": " + usuario);
-		datosBusqueda.add(Constantes.ROL + ": " + rol.toString());
+		datosBusqueda.add(Constantes.USUARIO + Constantes.DOS_PUNTOS + usuario);
+		datosBusqueda.add(Constantes.ROL + Constantes.DOS_PUNTOS + rol.toString());
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());

@@ -441,6 +441,7 @@ public class Constantes {
 
 	// Constantes caracteres
 	public static final String COMA = ",";
+	public static final String DOS_PUNTOS = ": ";
 	public static final String SALTO_LINEA = "\n";
 	public static final String TABULACION_FECHA = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
 	public static final String TABULACION_DESPEDIDA = "\t\t\t\t\t\t\t\t\t\t\t";

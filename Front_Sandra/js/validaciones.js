@@ -40,6 +40,7 @@ function comprobarRegistro(){
 		comprobarPass('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro')){
 	
 		if($('#formRegistroEmpresa').is(':hidden')){
+			comprobarErroresTabs();
 			return true;
 		
 		}else{
@@ -322,6 +323,16 @@ function comprobarDescripcionRolSearch(idElemento, idElementoError, campo) {
 	else {
 		validacionOK(idElemento, idElementoError);
 		return true;
+	}
+}
+
+/*Función que verifica el formulario de buscar de rol*/
+function comprobarBuscarRol(){
+	if(comprobarNombreRolSearch('nombreRol', 'errorFormatoNombreRol', 'nombreRol') &&
+		comprobarDescripcionRolSearch('descripcionRol', 'errorFormatoDescripcionRol', 'descripcionRol')){
+		return true;
+	}else{
+		return false;
 	}
 }
 

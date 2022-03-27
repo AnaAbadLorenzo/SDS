@@ -228,13 +228,13 @@ public class PersonaServiceImpl implements PersonaService {
 
 		}
 
-		datosBusqueda.add(Constantes.DNIP + ": " + dniP);
-		datosBusqueda.add(Constantes.NOMBREP + ": " + nombreP);
-		datosBusqueda.add(Constantes.APELLIDOSP + ": " + apellidosP);
-		datosBusqueda.add(Constantes.FECHANACP + ": " + fechaNacP);
-		datosBusqueda.add(Constantes.DIRECCIONP + ": " + direccionP);
-		datosBusqueda.add(Constantes.TELEFONOP + ": " + telefonoP);
-		datosBusqueda.add(Constantes.EMAILP + ": " + emailP);
+		datosBusqueda.add(Constantes.DNIP + Constantes.DOS_PUNTOS + dniP);
+		datosBusqueda.add(Constantes.NOMBREP + Constantes.DOS_PUNTOS + nombreP);
+		datosBusqueda.add(Constantes.APELLIDOSP + Constantes.DOS_PUNTOS + apellidosP);
+		datosBusqueda.add(Constantes.FECHANACP + Constantes.DOS_PUNTOS + fechaNacP);
+		datosBusqueda.add(Constantes.DIRECCIONP + Constantes.DOS_PUNTOS + direccionP);
+		datosBusqueda.add(Constantes.TELEFONOP + Constantes.DOS_PUNTOS + telefonoP);
+		datosBusqueda.add(Constantes.EMAILP + Constantes.DOS_PUNTOS + emailP);
 
 		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());

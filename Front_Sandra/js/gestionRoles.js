@@ -262,6 +262,7 @@ async function refrescarTabla(){
 async function buscarRol(){
 	await buscarRolAjaxPromesa()
 	  .then((res) => {
+      $("#form-modal").modal('toggle');
 	  	var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
 	  	var textPaginacion = "1 - " + numResults  + " de " + totalResults
@@ -296,6 +297,14 @@ async function addRol(){
 	await anadirRolAjaxPromesa()
 	.then((res) => {
 		$("#form-modal").modal('toggle');
+
+    $(".imagenAviso").attr('src', 'images/ok.png');
+    document.getElementById("modal-title").style.color = "#238f2a";
+    document.getElementById("modal-title").style.top = "3%";
+    $("#modal-title").removeClass();
+    $("#modal-title").addClass("ROL_GUARDADO_OK");
+    $("#mensajeError").removeClass();
+    $("#mensajeError").addClass(res.code);
 
     let idElementoList = ["nombreRol", "descripcionRol"];
     resetearFormulario("formularioGenerico", idElementoList);
@@ -443,6 +452,11 @@ function showBuscarRol() {
 	$('#labelRolName').attr('hidden', true);
 	$('#labelRolDescription').attr('hidden', true);
 
+  let campos = ["nombreRol", "descripcionRol"];
+  let obligatorios = ["obligatorioRolName", "obligatorioRolDescription"];
+  ocultarObligatorios(obligatorios);
+  habilitaCampos(campos);
+
 }
 
 /** Funcion para añadir un rol **/
@@ -457,6 +471,11 @@ function showAddRol() {
 	$('#subtitulo').attr('hidden', true);
 	$('#labelRolName').attr('hidden', true);
 	$('#labelRolDescription').attr('hidden', true);
+
+  let campos = ["nombreRol", "descripcionRol"];
+  let obligatorios = ["obligatorioRolName", "obligatorioRolDescription"];
+  mostrarObligatorios(obligatorios);
+  habilitaCampos(campos);
 
 }
 
@@ -478,6 +497,11 @@ function showEditar(rolName, rolDescription, idRol) {
     rellenarFormulario(rolName, rolDescription);
     insertacampo(document.formularioGenerico,'idRol', idRol);
 
+    let campos = ["nombreRol", "descripcionRol"];
+    let obligatorios = ["obligatorioRolName", "obligatorioRolDescription"];
+    mostrarObligatorios(obligatorios);
+    habilitaCampos(campos);
+
 }
 
 /** Función para eliminar un rol **/
@@ -498,6 +522,8 @@ function showEliminar(rolName, rolDescription, idRol) {
     insertacampo(document.formularioGenerico,'idRol', idRol);
 
     let campos = ["nombreRol", "descripcionRol"];
+    let obligatorios = ["obligatorioRolName", "obligatorioRolDescription"];
+    ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
 
 }
@@ -519,6 +545,8 @@ function showDetalle(rolName, rolDescription) {
     rellenarFormulario(rolName, rolDescription);
 
     let campos = ["nombreRol", "descripcionRol"];
+    let obligatorios = ["obligatorioRolName", "obligatorioRolDescription"];
+    ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
 
 }

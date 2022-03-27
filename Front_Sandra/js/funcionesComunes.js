@@ -444,13 +444,16 @@ function cargarClass(dato){
 
 /* Función para comprobar errrores en los tabs de registro */
 function comprobarErroresTabs(){
+	var contrasenasNoCoinciden = $('#passwdUsuario1').val() != $('#passwdUsuario2').val();
+
 	if($('#errorFormatoDni').attr("style") == "" || $('#errorFormatoNombrePersona').attr("style") == "" || $('#errorFormatoApellidosP').attr("style") == "" ||
 		$('#errorFormatoFecha').attr("style") == "" || $('#errorFormatoDireccion').attr("style") == "" || $('#errorFormatoTelefono').attr("style") == "" ||
 		$('#errorFormatoEmail').attr("style") == ""){
 		$('#iconoTabDatosPersonales').prop('hidden', false);
 	}
 
-	if($('#errorFormatoUserRegistro').attr("style") == "" || $('#errorFormatoPassRegistro').attr("style") == "" || $('#errorFormatoPassRegistro2').attr("style") == ""){
+	if($('#errorFormatoUserRegistro').attr("style") == "" || $('#errorFormatoPassRegistro').attr("style") == "" || $('#errorFormatoPassRegistro2').attr("style") == ""
+		|| (contrasenasNoCoinciden === true)){
 		$('#iconoTabDatosUsuario').prop('hidden', false);
 	}
 
@@ -480,8 +483,11 @@ function cambiarFormulario(tituloForm, action, onsubmit) {
 function cambiarIcono(ruta, nombreIcono, estiloIcono, valorIcono) {
 
     $("#iconoAcciones").attr('src', ruta);
+    $("#iconoAcciones").removeClass();
     $("#iconoAcciones").addClass(nombreIcono);
     $("#iconoAcciones").addClass(estiloIcono);
+    $("#spanAcciones").removeClass();
+    $("#spanAcciones").addClass('tooltiptext');
     $("#spanAcciones").addClass(nombreIcono);
     $("#btnAcciones").attr('value', valorIcono);
 }
@@ -512,6 +518,29 @@ function deshabilitaCampos(idElementoList) {
 		$("#"+ idElemento).attr("disabled", true); 
 	});	
 
+}
+
+/**Función que habilita los campos de un formulario*/
+function habilitaCampos(idElementoList) {
+
+	idElementoList.forEach( function (idElemento) {
+		$("#"+ idElemento).attr("disabled", false); 
+	});	
+
+}
+
+/** Función para ocultar el símbolo obligatorio **/
+function ocultarObligatorios(idElementoList) {
+	idElementoList.forEach( function (idElemento) {
+		$("#"+ idElemento).attr('style', 'display: none');
+	});	
+}
+
+/** Función para mostrar el símbolo obligatorio **/
+function mostrarObligatorios(idElementoList) {
+	idElementoList.forEach( function (idElemento) {
+		$("#"+ idElemento).attr('style', '');
+	});	
 }
 
 $(document).ready(function(){

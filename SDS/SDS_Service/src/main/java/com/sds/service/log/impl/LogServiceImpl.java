@@ -92,9 +92,9 @@ public class LogServiceImpl implements LogService {
 			toret.add(log);
 		}
 
-		datosBusqueda.add(Constantes.USUARIO + ": " + usuario);
-		datosBusqueda.add(Constantes.FECHA_INICIO + ": " + fechaInicio);
-		datosBusqueda.add(Constantes.FECHA_FIN + ": " + fechaFin);
+		datosBusqueda.add(Constantes.USUARIO + Constantes.DOS_PUNTOS + usuario);
+		datosBusqueda.add(Constantes.FECHA_INICIO + Constantes.DOS_PUNTOS + fechaInicio);
+		datosBusqueda.add(Constantes.FECHA_FIN + Constantes.DOS_PUNTOS + fechaFin);
 
 		final ReturnBusquedas<LogExcepcionesEntity> busqueda = new ReturnBusquedas<>(logExcepciones, datosBusqueda,
 				numberTotalResults, logExcepciones.size());

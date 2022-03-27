@@ -259,7 +259,8 @@ $(document).ready(function() {
 	$("#registro-modal").on('hidden.bs.modal', function() {
 		
 		let idElementoErrorList = ["errorFormatoDni", "errorFormatoNombrePersona", "errorFormatoApellidosP", "errorFormatoFecha", "errorFormatoDireccion", "errorFormatoTelefono",
-			"errorFormatoEmail", "errorFormatoUserRegistro", "errorFormatoPassRegistro", "errorFormatoPassRegistro2", "errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", "errorFormatoTelefonoEmpresa"];
+			"errorFormatoEmail", "errorFormatoUserRegistro", "errorFormatoPassRegistro", "errorFormatoPassRegistro2", "errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", "errorFormatoTelefonoEmpresa",
+			"bloqueoMayusculasRegistro"];
 		
 		let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
 			"nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
@@ -270,6 +271,14 @@ $(document).ready(function() {
 		limpiaRadioButton(idElementosRadioButtons);
 		$('#formRegistroEmpresa').prop("hidden", true);
 		$('#selectEmpresas').prop('hidden', true);
+		$('#error').removeClass();
+		$("#error").html('');
+		$("#error").css("display", "none");
+		
+		$('#iconoTabDatosPersonales').attr('hidden',true);
+		$('#iconoTabDatosUsuario').attr('hidden',true);
+		$('#iconoTabDatosEmpresa').attr('hidden',true);
+
 		eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
 		setLang(getCookie('lang'));
 	});

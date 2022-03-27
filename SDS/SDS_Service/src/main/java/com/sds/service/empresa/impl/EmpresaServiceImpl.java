@@ -82,10 +82,10 @@ public class EmpresaServiceImpl implements EmpresaService {
 			}
 		}
 
-		datosBusqueda.add(Constantes.CIF_EMPRESA + ": " + cifEmpresa);
-		datosBusqueda.add(Constantes.NOMBRE_EMPRESA + ": " + nombreEmpresa);
-		datosBusqueda.add(Constantes.DIRECCION_EMPRESA + ": " + direccionEmpresa);
-		datosBusqueda.add(Constantes.TELEFONO_EMPRESA + ": " + telefonoEmpresa);
+		datosBusqueda.add(Constantes.CIF_EMPRESA + Constantes.DOS_PUNTOS + cifEmpresa);
+		datosBusqueda.add(Constantes.NOMBRE_EMPRESA + Constantes.DOS_PUNTOS + nombreEmpresa);
+		datosBusqueda.add(Constantes.DIRECCION_EMPRESA + Constantes.DOS_PUNTOS + direccionEmpresa);
+		datosBusqueda.add(Constantes.TELEFONO_EMPRESA + Constantes.DOS_PUNTOS + telefonoEmpresa);
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size());

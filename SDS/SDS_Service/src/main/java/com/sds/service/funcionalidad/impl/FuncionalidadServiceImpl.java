@@ -81,8 +81,8 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 			}
 		}
 
-		datosBusqueda.add(Constantes.FUNCIONALIDAD_NAME + ": " + nombreFuncionalidad);
-		datosBusqueda.add(Constantes.FUNCIONALIDAD_DESCRIPTION + ": " + descripFuncionalidad);
+		datosBusqueda.add(Constantes.FUNCIONALIDAD_NAME + Constantes.DOS_PUNTOS + nombreFuncionalidad);
+		datosBusqueda.add(Constantes.FUNCIONALIDAD_DESCRIPTION + Constantes.DOS_PUNTOS + descripFuncionalidad);
 
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(funcionalidadToret,
 				datosBusqueda, numberTotalResults, funcionalidadToret.size());
