@@ -89,4 +89,25 @@ body {
 
 #accordion {
   margin-top:  8%;
+  margin-bottom: 7%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.volver {
+  position: fixed;
+  bottom: 7%;
+  left: 1%;
+  width: 100%;
+}
+
+.iconoBack {
+  width: 4em; 
+  height: 4em; 
+  cursor: pointer;
+}
+
+.backIcon {
+  margin-left: 1.5%;
+  margin-top: 1%;
 }

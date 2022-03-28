@@ -159,7 +159,7 @@ function registroAjaxPromesa() {
 				}
 				resolve(res);
 			}).fail( function( jqXHR, textStatus, errorThrown ) {
-			  alert( 'Error!!' );
+			  errorFailAjax(jqXHR.status);
 			});
 		}
 	});
@@ -180,7 +180,7 @@ function obtenerEmpresasAjaxPromesa() {
 			}
 			resolve(res);
 		}).fail( function( jqXHR, textStatus, errorThrown ) {
-			  alert( 'Error!!' );
+			  errorFailAjax(jqXHR.status);
 			});
 
 	});

@@ -60,7 +60,7 @@ function changePassUsuarioAjaxPromesa(){
         }
         resolve(res);
     }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   }else{
     document.getElementById("error").setAttribute('style', "");
@@ -126,7 +126,7 @@ function funcionalidadesUsuarioAjaxPromesa(){
         }
         resolve(res);
     }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }

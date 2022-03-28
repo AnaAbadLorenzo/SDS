@@ -46,7 +46,10 @@ INSERT INTO `funcionalidad` VALUES (3,'Gestión de roles','Permite realizar acci
 INSERT INTO `funcionalidad` VALUES (4,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0);
 INSERT INTO `funcionalidad` VALUES (5,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0);
 INSERT INTO `funcionalidad` VALUES (6,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0);
-INSERT INTO `funcionalidad` VALUES (7,'Gestión de permisos','Permite modificar los permisos de la aplicación',0);
+INSERT INTO `funcionalidad` VALUES (7,'Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0);
+INSERT INTO `funcionalidad` VALUES (8,'Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0);
+INSERT INTO `funcionalidad` VALUES (9,'Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0);
+
 
 /*!40000 ALTER TABLE `funcionalidad` ENABLE KEYS */;
 UNLOCK TABLES;

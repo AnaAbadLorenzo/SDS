@@ -328,6 +328,18 @@ function errorAutenticado(codigoResponse, idioma){
     document.getElementById("modal").style.display = "block";
 }
 
+/**Función que muestra el error de fallo interno de la aplicación*/
+function errorInternal(codigoResponse, idioma){
+	$("#modal-title").removeClass();
+    $("#modal-title").addClass("ERROR_INTERNO");
+	document.getElementById("modal-title").style.color = "#a50707";
+	$("#mensajeError").removeClass();
+    $("#mensajeError").addClass(codigoResponse);   
+    $(".imagenAviso").attr('src', "images/caution.png");   
+    setLang(idioma);
+    document.getElementById("modal").style.display = "block";
+}
+
 /**Función que construye cada línea que se va a rellenar en la tabla*/
 function construyeFila(entidad, fila) {
 	let atributosFunciones="";
@@ -543,9 +555,22 @@ function mostrarObligatorios(idElementoList) {
 	});	
 }
 
+/**Función para mostrar mensaje de error cuando fallan las peticiones ajax*/
+function errorFailAjax(status){
+	var idioma = getCookie('lang');
+
+	if (status === 500) {
+		errorInternal("MENSAJE_ERROR_INTERNO", idioma);
+	} else if (status === 403) {
+		errorAutenticado("ERROR_AUTENTICACION", idioma);
+	} else if (status === 0){
+		errorInternal("ERR_CONNECTION_REFUSED", idioma);
+	}
+}
+
 $(document).ready(function(){
   $('.iconCerrar').on('click', function(){
-    if($("#modal-title").attr('class') === "STOP" ){
+    if($("#modal-title").attr('class') === "STOP" || $("#modal-title").attr('class') === "ERROR_INTERNO" ){
     	cerrarModalNoToken('modal');
     }else{
     	cerrarModal('modal');

@@ -54,7 +54,8 @@ INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '4');
 INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '5');
 INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '6');
 INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '7');
-
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '8');
+INSERT INTO `rolaccionfuncionalidad` VALUES ('1', '1', '9');
 
 /*!40000 ALTER TABLE `rolaccionfuncionalidad` ENABLE KEYS */;
 UNLOCK TABLES;

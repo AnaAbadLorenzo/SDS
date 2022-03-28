@@ -25,7 +25,7 @@ function loginAjaxPromesa(){
         }
         resolve(res);
     }).fail( function( jqXHR, textStatus, errorThrown ) {
-      alert( 'Error!!' );
+      errorFailAjax(jqXHR.status);
     });
   });
 }
@@ -57,7 +57,7 @@ function recuperarPassAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }

@@ -21,7 +21,7 @@ function cargarFuncionalidadesAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }

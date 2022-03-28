@@ -21,7 +21,7 @@ function cargarRolesAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }
@@ -54,7 +54,7 @@ function buscarRolAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }
@@ -89,7 +89,7 @@ function anadirRolAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }
@@ -124,7 +124,7 @@ function editarRolAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }
@@ -159,7 +159,7 @@ function eliminarRolAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }
@@ -189,7 +189,7 @@ function detalleRolAjaxPromesa(){
         }
         resolve(res);
       }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
+        errorFailAjax(jqXHR.status);
       });
   });
 }

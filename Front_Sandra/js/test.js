@@ -1,146 +1,3 @@
-/**Función para recuperar los test de atributo de login con ajax y promesas*/
-function testLoginAtributos(){
-  return new Promise(function(resolve, reject) {
-  	var token = getCookie('tokenUsuario');
-    
-    $.ajax({
-      method: "GET",
-      url: urlPeticionAjaxTestLoginAtributos,
-      contentType : "application/json",
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(res => {
-        if (res.code != 'TEST_ATRIBUTOS_LOGIN_OK') {
-          reject(res);
-        }
-        resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
-      });
-  });
-}
-
-/**Función para recuperar los test de atributo de recuperar pass con ajax y promesas*/
-function testRecuperarPassAtributos(){
-  return new Promise(function(resolve, reject) {
-  	var token = getCookie('tokenUsuario');
-    
-    $.ajax({
-      method: "GET",
-      url: urlPeticionAjaxTestRecuperarPassAtributos,
-      contentType : "application/json",
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(res => {
-        if (res.code != 'TEST_ATRIBUTOS_RECUPERARPASS_OK') {
-          reject(res);
-        }
-        resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
-      });
-  });
-}
-
-/**Función para recuperar los test de acciones de login con ajax y promesas*/
-function testLoginAcciones(){
-  return new Promise(function(resolve, reject) {
-  	var token = getCookie('tokenUsuario');
-    
-    $.ajax({
-      method: "GET",
-      url: urlPeticionAjaxTestLoginAcciones,
-      contentType : "application/json",
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(res => {
-        if (res.code != 'TEST_ACCIONES_LOGIN_OK') {
-          reject(res);
-        }
-        resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
-        alert( 'Error!!' );
-      });
-  });
-}
-
-/*Función que obtiene los test de atributos de Login */
-async function testAtributosLogin(){
-	await testLoginAtributos()
-	.then((res) => {
-		$("#cabeceraAtributosLogin").html("");
-		$("#cuerpoAtributosLogin").html("");
-	  	var trCabecera = cabeceraTablaAtributosTest();
-	  	$("#cabeceraAtributosLogin").append(trCabecera);
-	  	for (var i = 0; i < res.data.datosPruebaAtributos.length; i++){
-			var tr = cuerpoTablaAtributosTest(res.data.datosPruebaAtributos[i]);
-			$("#cuerpoAtributosLogin").append(tr);
-		}    	
-
-	  }).catch((res) => {
-	    $("#modal-title").removeClass();
-	    $("#modal-title").addClass("ERROR");
-	    document.getElementById("modal-title").style.color = "#a50707";
-	    $(".imagenAviso").attr('src', 'images/failed.png');
-	    $("#mensajeError").removeClass();
-	    $("#mensajeError").addClass(res.code);
-	    setLang(getCookie('lang'));
-	    document.getElementById("modal").style.display = "block";
-	});
-}
-
-/*Función que obtiene los test de atributos de Recuperar Pass */
-async function testAtributosRecuperarPass(){
-	await testRecuperarPassAtributos()
-	.then((res) => {
-		$("#cabeceraAtributosRecuperarPass").html("");
-		$("#cuerpoAtributosRecuperarPass").html("");
-	  	var trCabecera = cabeceraTablaAtributosTest();
-	  	$("#cabeceraAtributosRecuperarPass").append(trCabecera);
-	  	for (var i = 0; i < res.data.datosPruebaAtributos.length; i++){
-			var tr = cuerpoTablaAtributosTest(res.data.datosPruebaAtributos[i]);
-			$("#cuerpoAtributosRecuperarPass").append(tr);
-		}    	
-
-	  }).catch((res) => {
-	    $("#modal-title").removeClass();
-	    $("#modal-title").addClass("ERROR");
-	    document.getElementById("modal-title").style.color = "#a50707";
-	    $(".imagenAviso").attr('src', 'images/failed.png');
-	    $("#mensajeError").removeClass();
-	    $("#mensajeError").addClass(res.code);
-	    setLang(getCookie('lang'));
-	    document.getElementById("modal").style.display = "block";
-	});
-}
-
-/*Función que obtiene los test de acciones de Login */
-async function testAccionesLogin(){
-	await testLoginAcciones()
-	.then((res) => {
-		$("#cabeceraAccionesLogin").html("");
-		$("#cuerpoAccionesLogin").html("");
-	  	var trCabecera = cabeceraTablaAccionesTest();
-	  	$("#cabeceraAccionesLogin").append(trCabecera);
-	  	let atributosValor = ["usuario", "passwdUsuario"];
-	  	for (var i = 0; i < res.data.datosPruebaAcciones.length; i++){
-			var tr = cuerpoTablaAccionesTest(res.data.datosPruebaAcciones[i], atributosValor, "Login");
-			$("#cuerpoAccionesLogin").append(tr);
-		}    	
-
-	  }).catch((res) => {
-	    $("#modal-title").removeClass();
-	    $("#modal-title").addClass("ERROR");
-	    document.getElementById("modal-title").style.color = "#a50707";
-	    $(".imagenAviso").attr('src', 'images/failed.png');
-	    $("#mensajeError").removeClass();
-	    $("#mensajeError").addClass(res.code);
-	    setLang(getCookie('lang'));
-	    document.getElementById("modal").style.display = "block";
-	});
-}
-
-
 /*Función para añadir la cabecera de la tabla de atributos*/
 function cabeceraTablaAtributosTest(){
 
@@ -212,12 +69,113 @@ function obtenerValor(valor, atributos, entidad){
 
 	var resultadoValor = "";
 
-	switch(entidad){
-		case 'Login':
-			resultadoValor = '"' + atributos[0] + '" : "' + valor.usuario +  '", "' + atributos[1] + '" : "' + valor.passwdUsuario +  '"';
+	if (valor != null){
+
+		switch(entidad){
+			case 'Login':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.usuario + '", "' + atributos[1] + '" : "' + valor.passwdUsuario +  '"';
+			break;
+			case 'RecuperarPass':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.emailP + '", "' + atributos[1] + '" : "' + valor.usuario +  '"';
+			break;
+			case 'Registrar':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombreP + '", "' + atributos[1] + '" : "' + valor.apellidosP + '", "' + atributos[2] + '" : "' + valor.fechaNacP  
+							+ '", "' + atributos[3] + '" : "' + valor.telefonoEmpresa + '", "' + atributos[4] + '" : "' + valor.nombreEmpresa + '", "' + atributos[5] + '" : "' + valor.direccionP 
+							+ '", "' + atributos[6] + '" : "' + valor.emailP + '", "' + atributos[7] + '" : "' + valor.cifEmpresa + '", "' + atributos[8] + '" : "' + valor.direccionEmpresa
+							+ '", "' + atributos[9] + '" : "' + valor.seleccionarEmpresa + '", "' + atributos[10] + '" : "' + valor.telefonoP + '", "' + atributos[11] + '" : "' + valor.usuario
+							+ '", "' + atributos[12] + '" : "' + valor.dniP + '", "' + atributos[13] + '" : "' + valor.passwdUsuario
+							+ '"';
+			break;
+			case 'Rol':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.rolDescription + '", "' + atributos[1] + '" : "' + valor.rolName +  '"';
+			break;
+		}
+
+	} else {
+		resultadoValor = null;
+	}
+
+	return resultadoValor;
+}
+
+/*Función para cargar las tablas de test*/
+function cargarTablasTest(datos, idCabecera, idCuerpo, tipoTest, atributosValor, entidad){
+
+	$("#" + idCabecera).html("");
+	$("#" + idCuerpo).html("");
+	var trCabecera = "";
+
+	switch(tipoTest){
+		case 'acciones':
+			trCabecera = cabeceraTablaAccionesTest();
+
+			for (var i = 0; i < datos.length; i++){
+				var tr = cuerpoTablaAccionesTest(datos[i], atributosValor, entidad);
+				$("#" + idCuerpo).append(tr);
+			}    
+		break;
+		case 'atributos':
+			trCabecera = cabeceraTablaAtributosTest();
+
+			for (var i = 0; i < datos.length; i++){
+				var tr = cuerpoTablaAtributosTest(datos[i]);
+				$("#" + idCuerpo).append(tr);
+			} 
 		break;
 	}
 
+	$("#" + idCabecera).append(trCabecera);
+	  			
+}
 
-	return resultadoValor;
+/*Función para cargar los errores en la modal si falla la petición de los test*/
+function cargarModalErroresTest(code){
+	$("#modal-title").removeClass();
+    $("#modal-title").addClass("ERROR");
+    document.getElementById("modal-title").style.color = "#a50707";
+    $(".imagenAviso").attr('src', 'images/failed.png');
+    $("#mensajeError").removeClass();
+    $("#mensajeError").addClass(code);
+    setLang(getCookie('lang'));
+    document.getElementById("modal").style.display = "block";
+}
+
+/**Función que valida que no tengamos pruebas de test con valores nulos, en el caso de que los haya muestra un icono de error al lado del tipo de test*/
+function validarDatosTabla(datos, idElementoList, tipoTest){
+
+	for (var i = 0; i < datos.length; i++){
+
+		switch(tipoTest){
+			case 'acciones':
+				if (datos[i].prueba === null || datos[i].valor === null || datos[i].resultadoEsperado === null || 
+					datos[i].resultadoObtenido === null || datos[i].tipoPrueba === null ) {
+					idElementoList.forEach( function (idElemento) {
+						$("#"+ idElemento).prop('hidden', false);
+					});	
+					break;
+				} else {
+					idElementoList.forEach( function (idElemento) {
+						$("#"+ idElemento).prop('hidden', true);
+					});
+					break;
+				}
+			break;
+			case 'atributos':	
+				if (datos[i].campo === null || datos[i].prueba === null || datos[i].valor === null || 
+					datos[i].resultadoEsperado === null || datos[i].resultadoObtenido === null || datos[i].tipoPrueba === null ) {
+					idElementoList.forEach( function (idElemento) {
+						$("#"+ idElemento).prop('hidden', false);
+					});	
+					break;
+				} else {
+					idElementoList.forEach( function (idElemento) {
+						$("#"+ idElemento).prop('hidden', true);
+					});
+					break;
+				}
+			break;
+		}
+	}
+
+	
 }

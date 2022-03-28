@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/estructurasTest.js"></script>
 	<script type="text/javascript" src="js/test.js"></script>
+	<script type="text/javascript" src="js/peticionesAjaxTest.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
@@ -44,8 +45,9 @@
 		<div class="card">
 	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseLogin" onclick="javascript:cargarTestLogin()">
-	        Login
+	         Login 
 	      </a>
+	      <img class="iconTab" id="iconoTestLogin" src="images/failed.png" hidden>
 	    </div>
 
 	    <div id="collapseLogin" class="collapse" data-parent="#accordion">
@@ -57,8 +59,9 @@
 	  <div class="card">
 	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRegistrar" onclick="javascript:cargarTestRegistrar()">
-	        Registrar
+	         Registrar 
 	      </a>
+	      <img class="iconTab" id="iconoTestRegistrar" src="images/failed.png" hidden>
 	    </div>
 
 	    <div id="collapseRegistrar" class="collapse" data-parent="#accordion">
@@ -70,8 +73,9 @@
   	<div class="card">
 	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRol" onclick="javascript:cargarTestGestionRoles()">
-	        Gestión de Roles
+	         Gestión de Roles 
 	      </a>
+	      <img class="iconTab" id="iconoTestRol" src="images/failed.png" hidden>
 	    </div>
 
 	    <div id="collapseRol" class="collapse" data-parent="#accordion">
@@ -80,6 +84,83 @@
     	</div>
   	</div>
 
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidad" onclick="javascript:cargarTestGestionFuncionalidades()">
+	         Gestión de Funcionalidades 
+	      </a>
+	      <img class="iconTab" id="iconoTestFuncionalidad" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseFuncionalidad" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testFuncionalidad">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseAccion" onclick="javascript:cargarTestGestionAcciones()">
+	         Gestión de Acciones 
+	      </a>
+	      <img class="iconTab" id="iconoTestAccion" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseAccion" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testAccion">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuario" onclick="javascript:cargarTestGestionUsuarios()">
+	         Gestión de Usuarios
+	      </a>
+	      <img class="iconTab" id="iconoTestUsuario" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseUsuario" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testUsuario">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapsePersona" onclick="javascript:cargarTestGestionPersonas()">
+	         Gestión de Personas 
+	      </a>
+	      <img class="iconTab" id="iconoTestPersona" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapsePersona" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testPersona">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseEmpresa" onclick="javascript:cargarTestGestionEmpresas()">
+	         Gestión de Empresas 
+	      </a>
+	      <img class="iconTab" id="iconoTestEmpresa" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseEmpresa" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testEmpresa">
+      	</div>
+    	</div>
+  	</div>
+
+	</div>
+
+	<div class="volver">
+		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
+        <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
+        <span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>
+    </div>   
 	</div>
 
 	<div id="modal" tabindex="-1" role="dialog" style="display:none">
