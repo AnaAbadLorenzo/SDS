@@ -43,7 +43,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"usuario\" : \"aicuna\",\r\n    \"passwdUsuario\" : \"aicuna\"\r\n}",
+									"raw": "{\r\n    \"usuario\" : \"aicuna\",\r\n    \"passwdUsuario\" : \"43c73508499069fa09afaa010c6ef2f6\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -236,6 +236,60 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Test Recuperar Pass Acciones",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Body has funcionalidad\"] = responseBody.has(\"funcionalidad\");\r",
+											"tests[\"Funcionalidad: \" + json.data.funcionalidad] = json.data.funcionalidad === \"Login\";\r",
+											"\r",
+											"tests[\"Body has accion\"] = responseBody.has(\"accion\");\r",
+											"tests[\"Acción: \" + json.data.accion] = json.data.accion === \"Login\";\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"TEST_ACCIONES_LOGIN_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El test de acciones para el login se ha ejecutado correctamente\";\r",
+											"\r",
+											"tests[\"Body has datosPruebaAcciones\"] = responseBody.has(\"datosPruebaAcciones\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.datosPruebaAcciones.length] = json.data.datosPruebaAcciones.length > 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.datosPruebaAcciones.length; i++) {\r",
+											"    tests[\"Validación prueba: \" + json.data.datosPruebaAcciones[i].prueba + \", valor: \" + json.data.datosPruebaAcciones[i].valor + \", resultado esperado: \" + json.data.datosPruebaAcciones[i].resultadoEsperado + \", resultado obtenido: \" + json.data.datosPruebaAcciones[i].resultadoObtenido + \" y tipo de prueba: \" + json.data.datosPruebaAcciones[i].tipoPrueba] = json.data.datosPruebaAcciones[i].campo !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{urlTest}}/recuperarPass/acciones",
+									"host": [
+										"{{urlTest}}"
+									],
+									"path": [
+										"recuperarPass",
+										"acciones"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -256,18 +310,18 @@
 									"var json = JSON.parse(responseBody);\r",
 									"\r",
 									"tests[\"Body has funcionalidades\"] = responseBody.has(\"funcionalidades\");\r",
-									"tests[\"Funcionalidades: \" + json.funcionalidades] = json.funcionalidades !== null;\r",
+									"tests[\"Funcionalidades: \" + json.data.funcionalidades] = json.data.funcionalidades !== null;\r",
 									"\r",
 									"tests[\"Body has usuario\"] = responseBody.has(\"usuario\");\r",
-									"tests[\"Usuario: \" + json.usuario] = json.usuario !== null && json.usuario === postman.getEnvironmentVariable('usuario');\r",
+									"tests[\"Usuario: \" + json.data.usuario] = json.data.usuario !== null && json.data.usuario === postman.getEnvironmentVariable('usuario');\r",
 									"\r",
-									"tests[\"Tamaño: \" + json.funcionalidades.length] = json.funcionalidades.length > 0;\r",
+									"tests[\"Tamaño: \" + json.data.funcionalidades.length] = json.data.funcionalidades.length > 0;\r",
 									"\r",
-									"for (i = 0; i < json.funcionalidades.length; i++) {\r",
-									"    tests[\"Funcionalidad: \" + json.funcionalidades[i]] = json.funcionalidades[i] !== null;\r",
+									"for (i = 0; i < json.data.funcionalidades.length; i++) {\r",
+									"    tests[\"Funcionalidad: \" + json.data.funcionalidades[i]] = json.data.funcionalidades[i] !== null;\r",
 									"}\r",
 									"\r",
-									"postman.setEnvironmentVariable(\"funcionalidad\", json.funcionalidades[0]);"
+									"postman.setEnvironmentVariable(\"funcionalidad\", json.data.funcionalidades[0]);"
 								],
 								"type": "text/javascript"
 							}
@@ -366,6 +420,22 @@
 					"item": [
 						{
 							"name": "Registrar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"REGISTRO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Registro realizado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"method": "POST",
 								"header": [
@@ -377,7 +447,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"datosPersona\" : {\r\n        \"dniP\" : \"44460663F\",\r\n        \"nombreP\": \"Daniel\",\r\n        \"apellidosP\" : \"Iglesias Cuña\",\r\n        \"fechaNacP\" : \"1990-02-06\",\r\n        \"direccionP\" : \"Plaza 1000\",\r\n        \"emailP\" : \"shinchan@gmail.com\",\r\n        \"telefonoP\" : \"666363654\"\r\n    },\r\n\r\n    \"datosUsuario\" : {\r\n        \"usuario\" : \"shinchan\",\r\n        \"passwdUsuario\" : \"shinchan\"\r\n    },\r\n\r\n    \"datosEmpresa\" : {\r\n        \"idEmpresa\" : \"\",\r\n        \"cifEmpresa\" : \"\",\r\n        \"nombreEmpresa\" : \"\",\r\n        \"direccionEmpresa\" : \"\",\r\n        \"telefonoEmpresa\" : \"\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"datosPersona\" : {\r\n        \"dniP\" : \"44460663F\",\r\n        \"nombreP\": \"Daniel\",\r\n        \"apellidosP\" : \"Iglesias Cuña\",\r\n        \"fechaNacP\" : \"1990-02-06\",\r\n        \"direccionP\" : \"Plaza 1000\",\r\n        \"emailP\" : \"shinchan@gmail.com\",\r\n        \"telefonoP\" : \"666363654\"\r\n    },\r\n\r\n    \"datosUsuario\" : {\r\n        \"usuario\" : \"shinchan\",\r\n        \"passwdUsuario\" : \"3c12f8a2fd7d6875b45994f23676c7bd\"\r\n\r\n    },\r\n\r\n    \"datosEmpresa\" : null,\r\n    \"seleccionarEmpresa\" : \"\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -391,6 +461,115 @@
 									],
 									"path": [
 										"registrar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Usuario Registrado Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIO_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El usuario se ha borrado correctamente\";\r",
+											"\r",
+											"tests[\"DNI Usuario: \" + json.data.dniUsuario] = json.data.dniUsuario === \"44460663F\";\r",
+											"tests[\"Usuario: \" + json.data.usuario] = json.data.usuario === \"shinchan\";\r",
+											"tests[\"Pass: \" + json.data.passwdUsuario] = json.data.passwdUsuario === \"3c12f8a2fd7d6875b45994f23676c7bd\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dniUsuario\" : \"44460663F\",\r\n    \"usuario\" : \"shinchan\",\r\n    \"passwdUsuario\" : \"3c12f8a2fd7d6875b45994f23676c7bd\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/borrarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"borrarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Persona Registrada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONA_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La persona se ha borrado correctamente\";\r",
+											"\r",
+											"tests[\"DNI Persona: \" + json.data.dniP] = json.data.dniP === \"44460663F\";\r",
+											"tests[\"Nombre: \" + json.data.nombreP] = json.data.nombreP === \"Daniel\";\r",
+											"tests[\"Apellidos: \" + json.data.apellidosP] = json.data.apellidosP === \"Iglesias Cuña\";\r",
+											"tests[\"Dirección: \" + json.data.direccionP] = json.data.direccionP === \"Plaza 1000\";\r",
+											"tests[\"Teléfono: \" + json.data.telefonoP] = json.data.telefonoP === \"666363654\";\r",
+											"tests[\"Email: \" + json.data.emailP] = json.data.emailP === \"shinchan@gmail.com\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dniP\" : \"44460663F\",\r\n    \"nombreP\": \"Daniel\",\r\n    \"apellidosP\" : \"Iglesias Cuña\",\r\n    \"fechaNacP\" : \"1990-02-06\",\r\n    \"direccionP\" : \"Plaza 1000\",\r\n    \"emailP\" : \"shinchan@gmail.com\",\r\n    \"telefonoP\" : \"666363654\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/borrarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"borrarPersona"
 									]
 								}
 							},
@@ -521,6 +700,670 @@
 		{
 			"name": "Gestión de Roles",
 			"item": [
+				{
+					"name": "Rol",
+					"item": [
+						{
+							"name": "Listar Rol Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha encontrado con éxito\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rolName\":\"ad\",\r\n    \"rolDescription\": \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Roles Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROLES_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los roles se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRoles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRoles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Roles Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROLES_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los roles eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRolesEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRolesEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_GUARDADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha guadado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"rol\" : {\r\n        \"rolName\":\"rolDePrueba\",\r\n\t\t\"rolDescription\": \"prueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/rol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"rol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Rol Guardado Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha encontrado con éxito\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"\r",
+											"    postman.setEnvironmentVariable(\"idRol\", json.data.listaBusquedas[0].idRol); \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rolName\":\"rolDePrueba\",\r\n    \"rolDescription\": \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_MODIFICADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"rol\" : {\r\n        \"idRol\" : {{idRol}},\r\n        \"rolName\":\"rol De Prueba\",\r\n\t\t\"rolDescription\": \"prueba para modificar el rol rolDePrueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/modificarRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"modificarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Rol Modificado Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha encontrado con éxito\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"\r",
+											"    tests[\"rolName: \" + json.data.listaBusquedas[0].rolName] = json.data.listaBusquedas[0].rolName === \"rol De Prueba\";\r",
+											"    tests[\"rolDescription: \" + json.data.listaBusquedas[0].rolDescription] = json.data.listaBusquedas[0].rolDescription === \"prueba para modificar el rol rolDePrueba\";    \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"rolName\":\"rol De Prueba\",\r\n    \"rolDescription\": \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_ELIMINADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"rol\" : {\r\n        \"idRol\" : {{idRol}},\r\n        \"rolName\":\"rol De Prueba\",\r\n\t\t\"rolDescription\": \"prueba para modificar el rol rolDePrueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/eliminarRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"eliminarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Roles Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROLES_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los roles eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"    tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRolesEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRolesEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_REACTIVADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"rol\" : {\r\n        \"idRol\" : {{idRol}},\r\n        \"rolName\":\"rol De Prueba\",\r\n\t\t\"rolDescription\": \"prueba para modificar el rol rolDePrueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/reactivarRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"reactivarRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"rol\" : {\r\n        \"idRol\" : {{idRol}},\r\n        \"rolName\":\"rol De Prueba\",\r\n\t\t\"rolDescription\": \"prueba para modificar el rol rolDePrueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/borradoRol",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"borradoRol"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Roles Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROLES_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los roles se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"    tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/rol/listarRoles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"rol",
+										"listarRoles"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Atributos",
 					"item": [
@@ -921,6 +1764,829 @@
 		{
 			"name": "Gestión de Acciones",
 			"item": [
+				{
+					"name": "Acción",
+					"item": [
+						{
+							"name": "Listar Acción Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_ECONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción que busca se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idAccion: \" + json.data.listaBusquedas[i].idAccion + \", nombreeAccion: \" + json.data.listaBusquedas[i].nombreAccion + \", descripAccion: \" + json.data.listaBusquedas[i].descripAccion ] = json.data.listaBusquedas[i].idAccion !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAccion\":\"añ\",\r\n    \"descripAccion\": \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Acciones Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCIONES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las acciones se han listdo correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"    tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAcciones",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAcciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Acciones Eliminadas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCIONES_ELIMINADAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las acciones eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAccionesEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAccionesEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Acción",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_GUARDADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción se ha guadado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"accion\" : {\r\n        \"nombreAccion\":\"accionDePrueba\",\r\n\t\t\"descripAccion\": \"prueba\",\r\n        \"borradoAccion\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/accion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"accion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Acción Guardada Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_ECONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción que busca se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idAccion: \" + json.data.listaBusquedas[i].idAccion + \", nombreAccion: \" + json.data.listaBusquedas[i].nombreAccion + \", descripAccion: \" + json.data.listaBusquedas[i].descripAccion ] = json.data.listaBusquedas[i].idAccion !== null;\r",
+											"    }\r",
+											"\r",
+											"    postman.setEnvironmentVariable(\"idAccion\", json.data.listaBusquedas[0].idAccion); \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAccion\":\"accionDePrueba\",\r\n    \"descripAccion\": \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Acción",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_MODIFICADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"accion\" : {\r\n        \"idAccion\" : {{idAccion}},\r\n        \"nombreAccion\":\"accion De Prueba\",\r\n\t\t\"descripAccion\": \"prueba para modificar la accion accionDePrueba\",\r\n        \"borradoAccion\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/modificarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"modificarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Acción Modificada Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_ECONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción que busca se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idAccion: \" + json.data.listaBusquedas[i].idAccion + \", nombreAccion: \" + json.data.listaBusquedas[i].nombreAccion + \", descripAccion: \" + json.data.listaBusquedas[i].descripAccion ] = json.data.listaBusquedas[i].idAccion !== null;\r",
+											"    }\r",
+											"\r",
+											"    tests[\"nombreAccion: \" + json.data.listaBusquedas[0].nombreAccion] = json.data.listaBusquedas[0].nombreAccion === \"accion De Prueba\";\r",
+											"    tests[\"descripAccion: \" + json.data.listaBusquedas[0].descripAccion] = json.data.listaBusquedas[0].descripAccion === \"prueba para modificar la accion accionDePrueba\";   \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreAccion\":\"accion De Prueba\",\r\n    \"descripAccion\": \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Asignar Acción a una Funcionalidad por Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_ASIGNADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción se ha asignado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"accion\" : {\r\n        \"idAccion\" : 2\r\n    },\r\n    \"rol\" : {\r\n        \"idRol\" : 1\r\n    },\r\n    \"funcionalidad\" : {\r\n        \"idFuncionalidad\" : 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/asignarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"asignarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Desasignar Acción a una Funcionalidad por Rol",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_REVOCADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción se ha revocado para el rol y la funcionalidad seleccionados\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"rolAccionFuncionalidad\" : {\r\n        \"idAccion\" : 2,\r\n        \"idRol\" : 1,\r\n        \"idFuncionalidad\" : 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/desasignarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"desasignarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Acción",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_ELIMINADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La acción se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"accion\" : {\r\n        \"idAccion\" : {{idAccion}},\r\n        \"nombreAccion\":\"accion De Prueba\",\r\n\t\t\"descripAccion\": \"prueba para modificar la accion accionDePrueba\",\r\n        \"borradoAccion\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/eliminarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"eliminarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Acciones Eliminadas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCIONES_ELIMINADAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las acciones eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAccionesEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAccionesEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Acción",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_REACTIVADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La accion se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"accion\" : {\r\n        \"idAccion\" : {{idAccion}},\r\n        \"nombreAccion\":\"accion De Prueba\",\r\n\t\t\"descripAccion\": \"prueba para modificar la accion accionDePrueba\",\r\n        \"borradoAccion\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/reactivarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"reactivarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Acciones Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCIONES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las acciones se han listdo correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAcciones",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAcciones"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Acción",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCION_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La accion se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idAccion\" : {{idAccion}},\r\n    \"nombreAccion\":\"accion De Prueba\",\r\n    \"descripAccion\": \"prueba para modificar la accion accionDePrueba\",\r\n    \"borradoAccion\": 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/borrarAccion",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"borrarAccion"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Acciones Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ACCIONES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las acciones se han listdo correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/accion/listarAcciones",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"accion",
+										"listarAcciones"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Atributos",
 					"item": [
@@ -1379,6 +3045,729 @@
 		{
 			"name": "Gestión de Funcionalidades",
 			"item": [
+				{
+					"name": "Funcionalidad",
+					"item": [
+						{
+							"name": "Listar Funcionalidad Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idFuncionalidad: \" + json.data.listaBusquedas[i].idFuncionalidad + \", nombreFuncionalidad: \" + json.data.listaBusquedas[i].nombreFuncionalidad + \", descripFuncionalidad: \" + json.data.listaBusquedas[i].descripFuncionalidad ] = json.data.listaBusquedas[i].idFuncionalidad !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreFuncionalidad\":\"personas\",\r\n    \"descripFuncionalidad\":\"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Funcionalidades Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDADES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las funcionalidades se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idFuncionalidad: \" + json.data.listaBusquedas[i].idFuncionalidad + \", nombreFuncionalidad: \" + json.data.listaBusquedas[i].nombreFuncionalidad + \", descripFuncionalidad: \" + json.data.listaBusquedas[i].descripFuncionalidad ] = json.data.listaBusquedas[i].idFuncionalidad !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidades",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Funcionalidades Eliminadas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDADES_ELIMINADAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las funcionalidades eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidadesEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidadesEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Funcionalidad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_GUARDADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"funcionalidadEntity\" : {\r\n        \"nombreFuncionalidad\":\"funcionalidadDePrueba\",\r\n\t\t\"descripFuncionalidad\": \"prueba\",\r\n        \"borradoFuncionalidad\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/funcionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"funcionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Funcionalidad Guardada Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idFuncionalidad: \" + json.data.listaBusquedas[i].idFuncionalidad + \", nombreFuncionalidad: \" + json.data.listaBusquedas[i].nombreFuncionalidad + \", descripFuncionalidad: \" + json.data.listaBusquedas[i].descripFuncionalidad ] = json.data.listaBusquedas[i].idFuncionalidad !== null\r",
+											"    }\r",
+											"\r",
+											"    postman.setEnvironmentVariable(\"idFuncionalidad\", json.data.listaBusquedas[0].idFuncionalidad); \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreFuncionalidad\":\"funcionalidadDePrueba\",\r\n    \"descripFuncionalidad\":\"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Funcionalidad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_MODIFICADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"funcionalidadEntity\" : {\r\n        \"idFuncionalidad\": {{idFuncionalidad}},\r\n        \"nombreFuncionalidad\":\"funcionalidad De Prueba\",\r\n\t\t\"descripFuncionalidad\": \"prueba mopdificación funcionalidad funcionalidadDePrueba\",\r\n        \"borradoFuncionalidad\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/modificarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"modificarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Funcionalidad Modificada Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idFuncionalidad: \" + json.data.listaBusquedas[i].idFuncionalidad + \", nombreFuncionalidad: \" + json.data.listaBusquedas[i].nombreFuncionalidad + \", descripFuncionalidad: \" + json.data.listaBusquedas[i].descripFuncionalidad ] = json.data.listaBusquedas[i].idFuncionalidad !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"nombreFuncionalidad: \" + json.data.listaBusquedas[0].nombreFuncionalidad] = json.data.listaBusquedas[0].nombreFuncionalidad === \"funcionalidad De Prueba\";\r",
+											"    tests[\"descripFuncionalidad: \" + json.data.listaBusquedas[0].descripFuncionalidad] = json.data.listaBusquedas[0].descripFuncionalidad === \"prueba mopdificación funcionalidad funcionalidadDePrueba\";   \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreFuncionalidad\":\"funcionalidad De Prueba\",\r\n    \"descripFuncionalidad\":\"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Funcionalidad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_ELIMINADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"funcionalidadEntity\" : {\r\n        \"idFuncionalidad\": {{idFuncionalidad}},\r\n        \"nombreFuncionalidad\":\"funcionalidad De Prueba\",\r\n\t\t\"descripFuncionalidad\": \"prueba mopdificación funcionalidad funcionalidadDePrueba\",\r\n        \"borradoFuncionalidad\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/eliminarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"eliminarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Funcionalidades Eliminadas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDADES_ELIMINADAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las funcionalidades eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidadesEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidadesEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Funcionalidad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_REACTIVADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"funcionalidadEntity\" : {\r\n        \"idFuncionalidad\": {{idFuncionalidad}},\r\n        \"nombreFuncionalidad\":\"funcionalidad De Prueba\",\r\n\t\t\"descripFuncionalidad\": \"prueba mopdificación funcionalidad funcionalidadDePrueba\",\r\n        \"borradoFuncionalidad\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/reactivarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"reactivarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Funcionalidades Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDADES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las funcionalidades se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"    tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidades",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidades"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Funcionalidad",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDAD_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La funcionalidad se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idFuncionalidad\": {{idFuncionalidad}},\r\n    \"nombreFuncionalidad\":\"funcionalidad De Prueba\",\r\n    \"descripFuncionalidad\": \"prueba mopdificación funcionalidad funcionalidadDePrueba\",\r\n    \"borradoFuncionalidad\": 0\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/borrarFuncionalidad",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"borrarFuncionalidad"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Funcionalidades Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"FUNCIONALIDADES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las funcionalidades se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"    tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/funcionalidad/listarFuncionalidades",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"funcionalidad",
+										"listarFuncionalidades"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Atributos",
 					"item": [
@@ -1841,6 +4230,734 @@
 			"name": "Gestión de Usuarios",
 			"item": [
 				{
+					"name": "Usuario",
+					"item": [
+						{
+							"name": "Listar Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniUsuario: \" + json.data.listaBusquedas[i].dniUsuario + \", usuario: \" + json.data.listaBusquedas[i].usuario + \", passwdUsuario: \" + json.data.listaBusquedas[i].passwdUsuario ] = json.data.listaBusquedas[i].usuario !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\":\"aicuna\",\r\n    \"dniUsuario\" : \"\",\r\n    \"rol\" : {\r\n        \"idRol\": 1,\r\n        \"rolName\":\"\",\r\n        \"rolDescription\":\"\",\r\n        \"borradoRol\": 0\r\n    },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Usuarios Tamaño de Página 2 Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuarios",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todaos los Usuarios Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuariosEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuariosEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Registrar",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"REGISTRO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Registro realizado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"datosPersona\" : {\r\n        \"dniP\" : \"44460663F\",\r\n        \"nombreP\": \"Daniel\",\r\n        \"apellidosP\" : \"Iglesias Cuña\",\r\n        \"fechaNacP\" : \"1990-02-06\",\r\n        \"direccionP\" : \"Plaza 1000\",\r\n        \"emailP\" : \"shinchan@gmail.com\",\r\n        \"telefonoP\" : \"666363654\"\r\n    },\r\n\r\n    \"datosUsuario\" : {\r\n        \"usuario\" : \"shinchan\",\r\n        \"passwdUsuario\" : \"3c12f8a2fd7d6875b45994f23676c7bd\"\r\n    },\r\n\r\n    \"datosEmpresa\" : {\r\n        \"idEmpresa\" : \"\",\r\n        \"cifEmpresa\" : \"\",\r\n        \"nombreEmpresa\" : \"\",\r\n        \"direccionEmpresa\" : \"\",\r\n        \"telefonoEmpresa\" : \"\"\r\n    },\r\n    \"seleccionarEmpresa\" : \"No\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/registrar",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"registrar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Usuario Guardado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniUsuario: \" + json.data.listaBusquedas[i].dniUsuario + \", usuario: \" + json.data.listaBusquedas[i].usuario + \", passwdUsuario: \" + json.data.listaBusquedas[i].passwdUsuario ] = json.data.listaBusquedas[i].usuario !== null\r",
+											"    }\r",
+											"\r",
+											"    postman.setEnvironmentVariable(\"usuario\", json.data.listaBusquedas[0].usuario); \r",
+											"    postman.setEnvironmentVariable(\"dniUsuario\", json.data.listaBusquedas[0].dniUsuario); \r",
+											"    postman.setEnvironmentVariable(\"passwdUsuario\", json.data.listaBusquedas[0].passwdUsuario); \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\":\"shinchan\",\r\n    \"dniUsuario\" : \"\",\r\n    \"rol\" : {\r\n        \"idRol\": -1,\r\n        \"rolName\":\"\",\r\n        \"rolDescription\":\"\",\r\n        \"borradoRol\": 0\r\n    },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Rol Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"ROL_USUARIO_MODIFICADO_OK\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El rol del usuario se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\" : {\r\n        \"usuario\": \"aicuna\",\r\n        \"usuarioEntity\" :{\r\n            \"dniUsuario\": \"{{dniUsuario}}\",\r\n            \"usuario\":\"{{usuario}}\",\r\n            \"passwdUsuario\": \"{{passwdUsuario}}\",\r\n            \"borradoUsuario\": 0\r\n        }\r\n    },        \r\n    \"rolEntity\" : {\r\n        \"idRol\":\"2\",\r\n        \"rolName\":\"Prueba\",\r\n        \"rolDescription\":\"Esta es una prueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/modificarRolUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"modificarRolUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Usuario Modificado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniUsuario: \" + json.data.listaBusquedas[i].dniUsuario + \", usuario: \" + json.data.listaBusquedas[i].usuario + \", passwdUsuario: \" + json.data.listaBusquedas[i].passwdUsuario ] = json.data.listaBusquedas[i].usuario !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"idRol: \" + json.data.listaBusquedas[0].rol.idRol] = json.data.listaBusquedas[0].rol.idRol === 2;\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\":\"shinchan\",\r\n    \"dniUsuario\" : \"\",\r\n    \"rol\" : {\r\n        \"idRol\": -1,\r\n        \"rolName\":\"\",\r\n        \"rolDescription\":\"\",\r\n        \"borradoRol\": 0\r\n    },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIO_ELIMINADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El usuario se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"usuarioEntity\" : {\r\n        \"dniUsuario\": \"{{dniUsuario}}\",\r\n        \"usuario\":\"{{usuario}}\",\r\n        \"passwdUsuario\": \"{{passwdUsuario}}\",\r\n        \"borradoUsuario\": 0,\r\n        \"rol\" : {\r\n            \"idRol\":\"2\",\r\n            \"rolName\":\"Prueba\",\r\n            \"rolDescription\":\"Esta es una prueba\",\r\n            \"borradoRol\": 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/eliminarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"eliminarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Usuarios Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuarios",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIO_REACTIVADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El usuario se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"usuarioEntity\" : {\r\n        \"dniUsuario\": \"{{dniUsuario}}\",\r\n        \"usuario\":\"{{usuario}}\",\r\n        \"passwdUsuario\": \"{{passwdUsuario}}\",\r\n        \"borradoUsuario\": 0,\r\n        \"rol\" : {\r\n            \"idRol\":\"2\",\r\n            \"rolName\":\"Prueba\",\r\n            \"rolDescription\":\"Esta es una prueba\",\r\n            \"borradoRol\": 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/reactivarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"reactivarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Usuarios Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los usuarios se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/listarUsuarios",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"listarUsuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Usuario Registrado Copy 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIO_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El usuario se ha borrado correctamente\";\r",
+											"\r",
+											"tests[\"DNI Usuario: \" + json.data.dniUsuario] = json.data.dniUsuario === \"44460663F\";\r",
+											"tests[\"Usuario: \" + json.data.usuario] = json.data.usuario === \"shinchan\";\r",
+											"tests[\"Pass: \" + json.data.passwdUsuario] = json.data.passwdUsuario === \"3c12f8a2fd7d6875b45994f23676c7bd\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dniUsuario\": \"{{dniUsuario}}\",\r\n    \"usuario\":\"{{usuario}}\",\r\n    \"passwdUsuario\": \"{{passwdUsuario}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/borrarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"borrarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Eliminar Persona Registrada Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONA_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La persona se ha borrado correctamente\";\r",
+											"\r",
+											"tests[\"DNI Persona: \" + json.data.dniP] = json.data.dniP === \"44460663F\";\r",
+											"tests[\"Nombre: \" + json.data.nombreP] = json.data.nombreP === \"Daniel\";\r",
+											"tests[\"Apellidos: \" + json.data.apellidosP] = json.data.apellidosP === \"Iglesias Cuña\";\r",
+											"tests[\"Dirección: \" + json.data.direccionP] = json.data.direccionP === \"Plaza 1000\";\r",
+											"tests[\"Teléfono: \" + json.data.telefonoP] = json.data.telefonoP === \"666363654\";\r",
+											"tests[\"Email: \" + json.data.emailP] = json.data.emailP === \"shinchan@gmail.com\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dniP\" : \"44460663F\",\r\n    \"nombreP\": \"Daniel\",\r\n    \"apellidosP\" : \"Iglesias Cuña\",\r\n    \"fechaNacP\" : \"1990-02-06\",\r\n    \"direccionP\" : \"Plaza 1000\",\r\n    \"emailP\" : \"shinchan@gmail.com\",\r\n    \"telefonoP\" : \"666363654\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/borrarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"borrarPersona"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Atributos",
 					"item": [
 						{
@@ -2185,6 +5302,615 @@
 		{
 			"name": "Gestuión de Personas",
 			"item": [
+				{
+					"name": "Persona",
+					"item": [
+						{
+							"name": "Listar Persona",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las personas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniP: \" + json.data.listaBusquedas[i].dniP + \", nombreP: \" + json.data.listaBusquedas[i].nombreP + \", apellidosP: \" + json.data.listaBusquedas[i].apellidosP ] = json.data.listaBusquedas[i].dniP !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"dniP\" : \"44460662Y\",\r\n    \"nombreP\": \"\",\r\n    \"apellidosP\" : \"\",\r\n    \"fechaNacP\" : \"\",\r\n    \"direccionP\" : \"\",\r\n    \"emailP\" : \"\",\r\n    \"telefonoP\" : \"\",\r\n    \"borradoP\" : 0,\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/listarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"listarPersona"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Personas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las personas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniP: \" + json.data.listaBusquedas[i].dniP + \", nombreP: \" + json.data.listaBusquedas[i].nombreP + \", apellidosP: \" + json.data.listaBusquedas[i].apellidosP ] = json.data.listaBusquedas[i].dniP !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/listarPersonas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"listarPersonas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Personas Eliminadas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las personas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/listarPersonasEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"listarPersonasEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Persona",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONA_GUARDADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La persona se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"personaEntity\" : {\r\n        \"dniP\" : \"44460663F\",\r\n        \"nombreP\": \"Daniel\",\r\n        \"apellidosP\" : \"Iglesias Cuña\",\r\n        \"fechaNacP\" : \"1990-02-06\",\r\n        \"direccionP\" : \"Plaza 1000\",\r\n        \"emailP\" : \"shinchan@gmail.com\",\r\n        \"telefonoP\" : \"666363654\",\r\n        \"borradoP\" : 0\r\n    },\r\n    \"usuarioEntity\" : {\r\n        \"dniUsuario\" : \"44460663F\",\r\n        \"usuario\" : \"shinchan\",\r\n        \"passwdUsuario\" : \"3c12f8a2fd7d6875b45994f23676c7bd\",\r\n        \"borradoUsuario\" : 0,\r\n        \"rol\" : {\r\n            \"idRol\":\"2\",\r\n            \"rolName\":\"Prueba\",\r\n            \"rolDescription\":\"Esta es una prueba\",\r\n            \"borradoRol\": 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/anadirPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"anadirPersona"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Persona Guardada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las personas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniP: \" + json.data.listaBusquedas[i].dniP + \", nombreP: \" + json.data.listaBusquedas[i].nombreP + \", apellidosP: \" + json.data.listaBusquedas[i].apellidosP ] = json.data.listaBusquedas[i].dniP !== null\r",
+											"    }\r",
+											"\r",
+											"    postman.setEnvironmentVariable(\"dniP\", json.data.listaBusquedas[0].dniP); \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"dniP\" : \"44460663F\",\r\n    \"nombreP\": \"\",\r\n    \"apellidosP\" : \"\",\r\n    \"fechaNacP\" : \"\",\r\n    \"direccionP\" : \"\",\r\n    \"emailP\" : \"\",\r\n    \"telefonoP\" : \"\",\r\n    \"borradoP\" : 0,\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/listarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"listarPersona"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Persona",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONA_MODIFICADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La persona se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\", \r\n    \"persona\" : {\r\n        \"dniP\" : \"{{dniP}}\",\r\n        \"nombreP\": \"Daniel\",\r\n        \"apellidosP\" : \"Iglesias Puga\",\r\n        \"fechaNacP\" : \"1990-02-06\",\r\n        \"direccionP\" : \"Plaza 2000\",\r\n        \"emailP\" : \"shinchan@gmail.com\",\r\n        \"telefonoP\" : \"666363654\",\r\n        \"borradoP\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/modificarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"modificarPersona"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Persona Modificada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las personas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniP: \" + json.data.listaBusquedas[i].dniP + \", nombreP: \" + json.data.listaBusquedas[i].nombreP + \", apellidosP: \" + json.data.listaBusquedas[i].apellidosP ] = json.data.listaBusquedas[i].dniP !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"apellidosP: \" + json.data.listaBusquedas[0].apellidosP] = json.data.listaBusquedas[0].apellidosP === \"Iglesias Puga\";\r",
+											"    tests[\"direccionP: \" + json.data.listaBusquedas[0].direccionP] = json.data.listaBusquedas[0].direccionP === \"Plaza 2000\";\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n    \"dniP\" : \"44460663F\",\r\n    \"nombreP\": \"\",\r\n    \"apellidosP\" : \"\",\r\n    \"fechaNacP\" : \"\",\r\n    \"direccionP\" : \"\",\r\n    \"emailP\" : \"\",\r\n    \"telefonoP\" : \"\",\r\n    \"borradoP\" : 0,\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/listarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"listarPersona"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Persona",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONA_ELIMINADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La persona se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\", \r\n    \"persona\" : {\r\n        \"dniP\" : \"{{dniP}}\",\r\n        \"nombreP\": \"Daniel\",\r\n        \"apellidosP\" : \"Iglesias Cuña\",\r\n        \"fechaNacP\" : \"1990-02-06\",\r\n        \"direccionP\" : \"Plaza 1000\",\r\n        \"emailP\" : \"shinchan@gmail.com\",\r\n        \"telefonoP\" : \"666363654\",\r\n        \"borradoP\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/eliminarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"eliminarPersona"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Personas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las personas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación dniP: \" + json.data.listaBusquedas[i].dniP + \", nombreP: \" + json.data.listaBusquedas[i].nombreP + \", apellidosP: \" + json.data.listaBusquedas[i].apellidosP ] = json.data.listaBusquedas[i].dniP !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/listarPersonas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"listarPersonas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"USUARIO_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El usuario se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dniUsuario\": \"{{dniUsuario}}\",\r\n    \"usuario\":\"{{usuario}}\",\r\n    \"passwdUsuario\": \"{{passwdUsuario}}\",\r\n    \"borradoUsuario\": 0,\r\n    \"rol\" : {\r\n        \"idRol\": -1,\r\n        \"rolName\":\"Prueba\",\r\n        \"rolDescription\":\"Esta es una prueba\",\r\n        \"borradoRol\": 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/usuario/borrarUsuario",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"usuario",
+										"borrarUsuario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Persona",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PERSONA_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La persona se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dniP\" : \"{{dniP}}\",\r\n    \"nombreP\": \"Daniel\",\r\n    \"apellidosP\" : \"Iglesias Cuña\",\r\n    \"fechaNacP\" : \"1990-02-06\",\r\n    \"direccionP\" : \"Plaza 1000\",\r\n    \"emailP\" : \"shinchan@gmail.com\",\r\n    \"telefonoP\" : \"666363654\",\r\n    \"borradoP\" : 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persona/borrarPersona",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persona",
+										"borrarPersona"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Atributos",
 					"item": [
@@ -2588,6 +6314,674 @@
 		{
 			"name": "Gestión de Empresas",
 			"item": [
+				{
+					"name": "Empresa",
+					"item": [
+						{
+							"name": "Listar Empresa",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha encontrado perfectamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación cifEmpresa: \" + json.data.listaBusquedas[i].cifEmpresa + \", nombreEmpresa: \" + json.data.listaBusquedas[i].nombreEmpresa + \", direccionEmpresa: \" + json.data.listaBusquedas[i].direccionEmpresa ] = json.data.listaBusquedas[i].cifEmpresa !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cifEmpresa\":\"J26903286\",\r\n    \"nombreEmpresa\":\"\",\r\n    \"direccionEmpresa\":\"\",\r\n    \"telefonoEmpresa\":\"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Empresas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las empresas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Empresas Eliminadas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESAS_LISTADAS_ELIMINADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las empresas eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0) {\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresasEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresasEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Empresa",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_GUARDADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"empresa\" : {\r\n        \"cifEmpresa\":\"J22562586\",\r\n\t\t\"nombreEmpresa\":\"Empresa prueba\",\r\n\t\t\"direccionEmpresa\":\"Prueba\",\r\n\t\t\"telefonoEmpresa\":\"988212121\",\r\n\t\t\"borradoEmpresa\":0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/empresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"empresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Empresa Guardada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha encontrado perfectamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación cifEmpresa: \" + json.data.listaBusquedas[i].cifEmpresa + \", nombreEmpresa: \" + json.data.listaBusquedas[i].nombreEmpresa + \", direccionEmpresa: \" + json.data.listaBusquedas[i].direccionEmpresa ] = json.data.listaBusquedas[i].cifEmpresa !== null\r",
+											"    }\r",
+											"\r",
+											"    postman.setEnvironmentVariable(\"cifEmpresa\", json.data.listaBusquedas[0].cifEmpresa); \r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cifEmpresa\":\"J22562586\",\r\n    \"nombreEmpresa\":\"\",\r\n    \"direccionEmpresa\":\"\",\r\n    \"telefonoEmpresa\":\"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Empresa",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_MODIFICADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\", \r\n    \"empresa\" : {\r\n        \"cifEmpresa\":\"{{cifEmpresa}}\",\r\n\t\t\"nombreEmpresa\":\"Empresa Pruebasss\",\r\n\t\t\"direccionEmpresa\":\"Pruebassss\",\r\n\t\t\"telefonoEmpresa\":\"988212121\",\r\n\t\t\"borradoEmpresa\":0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/modificarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"modificarEmpresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Empresa Modificada",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha encontrado perfectamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación cifEmpresa: \" + json.data.listaBusquedas[i].cifEmpresa + \", nombreEmpresa: \" + json.data.listaBusquedas[i].nombreEmpresa + \", direccionEmpresa: \" + json.data.listaBusquedas[i].direccionEmpresa ] = json.data.listaBusquedas[i].cifEmpresa !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"nombreEmpresa: \" + json.data.listaBusquedas[0].nombreEmpresa] = json.data.listaBusquedas[0].nombreEmpresa === \"Empresa Pruebasss\";\r",
+											"    tests[\"direccionEmpresa: \" + json.data.listaBusquedas[0].direccionEmpresa] = json.data.listaBusquedas[0].direccionEmpresa === \"Pruebassss\";\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cifEmpresa\":\"{{cifEmpresa}}\",\r\n    \"nombreEmpresa\":\"\",\r\n    \"direccionEmpresa\":\"\",\r\n    \"telefonoEmpresa\":\"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2   \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Empresa",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_ELIMINADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\", \r\n    \"empresa\" : {\r\n        \"cifEmpresa\":\"{{cifEmpresa}}\",\r\n\t\t\"nombreEmpresa\":\"\",\r\n\t\t\"direccionEmpresa\":\"\",\r\n\t\t\"telefonoEmpresa\":\"\",\r\n\t\t\"borradoEmpresa\":0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/eliminarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"eliminarEmpresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Empresas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las empresas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Empresa",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_REACTIVADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"empresa\" : {\r\n        \"cifEmpresa\":\"{{cifEmpresa}}\",\r\n\t\t\"nombreEmpresa\":\"Empresa prueba\",\r\n\t\t\"direccionEmpresa\":\"Prueba\",\r\n\t\t\"telefonoEmpresa\":\"988212121\",\r\n\t\t\"borradoEmpresa\":0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/reactivarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"reactivarEmpresa"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Empresas Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las empresas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRol: \" + json.data.listaBusquedas[i].idRol + \", rolName: \" + json.data.listaBusquedas[i].rolName + \", rolDescription: \" + json.data.listaBusquedas[i].rolDescription ] = json.data.listaBusquedas[i].idRol !== null;\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/listarEmpresas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"listarEmpresas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Empresa",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"EMPRESA_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La empresa se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cifEmpresa\":\"{{cifEmpresa}}\",\r\n    \"nombreEmpresa\":\"Empresa prueba\",\r\n    \"direccionEmpresa\":\"Prueba\",\r\n    \"telefonoEmpresa\":\"988212121\",\r\n    \"borradoEmpresa\":0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/empresa/borrarEmpresa",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"empresa",
+										"borrarEmpresa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
 				{
 					"name": "Atributos",
 					"item": [
