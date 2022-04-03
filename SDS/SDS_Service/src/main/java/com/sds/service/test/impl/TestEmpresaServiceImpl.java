@@ -78,12 +78,8 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_MENOR_9_DATA);
 		final EmpresaEntity datosEntradaCifEmpresaAlfanumericoMayor9 = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_MAYOR_9_DATA);
-		final EmpresaEntity datosEntradaCifEmpresaAlfabetico = generarJSON.generateEmpresa(
-				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFABETICO_DATA);
 		final EmpresaEntity datosEntradaCifEmpresaAlfanumerico = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_DATA);
-		final EmpresaEntity datosEntradaCifEmpresaNumerico = generarJSON
-				.generateEmpresa(Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_NUMERICO_DATA);
 
 		datosPruebaAtributos.add(testAtributoCifEmpresa.getTestCifEmpresaVacio(datosEntradaCifEmpresaVacio));
 		datosPruebaAtributos
@@ -99,11 +95,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		datosPruebaAtributos.add(
 				testAtributoCifEmpresa.getTestCifEmpresaAlfanumericoMayor9(datosEntradaCifEmpresaAlfanumericoMayor9));
 		datosPruebaAtributos
-				.add(testAtributoCifEmpresa.getTestCifEmpresaCorrectoAlfanumerico(datosEntradaCifEmpresaAlfabetico));
-		datosPruebaAtributos
 				.add(testAtributoCifEmpresa.getTestCifEmpresaCorrectoAlfanumerico(datosEntradaCifEmpresaAlfanumerico));
-		datosPruebaAtributos
-				.add(testAtributoCifEmpresa.getTestCifEmpresaCorrectoAlfanumerico(datosEntradaCifEmpresaNumerico));
 
 		return datosPruebaAtributos;
 	}
@@ -124,12 +116,8 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_ESPACIOS_DATA);
 		final EmpresaEntity datosEntradaCifEmpresaAlfanumericoMayor9 = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_MAYOR_9_DATA);
-		final EmpresaEntity datosEntradaCifEmpresaAlfabetico = generarJSON.generateEmpresa(
-				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFABETICO_DATA);
 		final EmpresaEntity datosEntradaCifEmpresaAlfanumerico = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_DATA);
-		final EmpresaEntity datosEntradaCifEmpresaNumerico = generarJSON
-				.generateEmpresa(Constantes.URL_JSON_EMPRESA_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_NUMERICO_DATA);
 
 		datosPruebaAtributos
 				.add(testAtributoCifEmpresa.getTestCifEmpresaAlfanumericoEnhe(datosEntradaCifEmpresaAlfanumericoEnhe));
@@ -142,11 +130,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		datosPruebaAtributos.add(
 				testAtributoCifEmpresa.getTestCifEmpresaAlfanumericoMayor9(datosEntradaCifEmpresaAlfanumericoMayor9));
 		datosPruebaAtributos
-				.add(testAtributoCifEmpresa.getTestCifEmpresaCorrectoAlfanumerico(datosEntradaCifEmpresaAlfabetico));
-		datosPruebaAtributos
 				.add(testAtributoCifEmpresa.getTestCifEmpresaCorrectoAlfanumerico(datosEntradaCifEmpresaAlfanumerico));
-		datosPruebaAtributos
-				.add(testAtributoCifEmpresa.getTestCifEmpresaCorrectoAlfanumerico(datosEntradaCifEmpresaNumerico));
 
 		return datosPruebaAtributos;
 	}

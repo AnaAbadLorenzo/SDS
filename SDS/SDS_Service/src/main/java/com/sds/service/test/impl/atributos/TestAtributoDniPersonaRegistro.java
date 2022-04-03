@@ -14,7 +14,7 @@ import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosAcentos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoDNI;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEnhe;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEspacios;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
@@ -29,7 +29,7 @@ public class TestAtributoDniPersonaRegistro {
 	private final ValidacionesAtributosEspacios validacionesAtributosEspacios;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosCorrectoDNI validacionesAtributosCorrectoDNI;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoDniPersonaRegistro() {
@@ -40,7 +40,7 @@ public class TestAtributoDniPersonaRegistro {
 		validacionesAtributosEspacios = new ValidacionesAtributosEspacios();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosCorrectoDNI = new ValidacionesAtributosCorrectoDNI();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
@@ -154,8 +154,8 @@ public class TestAtributoDniPersonaRegistro {
 
 	public DatosPruebaAtributos getTestRegistroDniPCorrectoAlfanumerico(final Registro datosEntradaRegistroDniP) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaRegistroDniP.getDatosPersona().getDniP());
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoCorrectoDNI(datosEntradaRegistroDniP.getDatosPersona().getDniP());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 

@@ -32,10 +32,11 @@ public class MenuController {
 
 	@GetMapping(value = "/accionesFuncionalidad")
 	@ResponseBody
-	public List<String> accionesFuncionalidad(final String usuario, final String funcionalidad) {
+	public RespEntity accionesFuncionalidad(final String usuario, final String funcionalidad) {
 
-		return aclService.accionesUsuarioFuncionalidad(usuario, funcionalidad);
+		final List<String> acciones = aclService.accionesUsuarioFuncionalidad(usuario, funcionalidad);
 
+		return new RespEntity(RespCode.ACCIONES_USUARIO_OK, acciones);
 	}
 
 }

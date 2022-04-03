@@ -191,25 +191,16 @@ async function registro() {
 	await registroAjaxPromesa()
 	.then((res) => {
 		$("#registro-modal").modal('toggle');
-	  	$(".imagenAviso").attr('src', 'images/ok.png');
-    	document.getElementById("modal-title").style.color = "#238f2a";
-    	document.getElementById("modal-title").style.top = "3%";
-    	$("#modal-title").removeClass();
-    	$("#modal-title").addClass("REGISTRO_CORRECTO");
-    	$("#mensajeError").removeClass();
-    	$("#mensajeError").addClass(res.code);
+
+		respuestaAjaxOK("REGISTRO_CORRECTO", res.code);
+	  	
     	setLang(getCookie('lang'));
 		document.getElementById("modal").style.display = "block";
 	})
 
 	.catch((res) => {
 		$("#registro-modal").modal('toggle');
-		$("#modal-title").removeClass();
-		$("#modal-title").addClass("ERROR");
-		document.getElementById("modal-title").style.color = "#a50707";
-		$(".imagenAviso").attr('src', 'images/failed.png');
-		$("#mensajeError").removeClass();
-		$("#mensajeError").addClass(res.code);
+		respuestaAjaxKO(res.code);
 
 		let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
 		"nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
@@ -228,12 +219,7 @@ async function obtenerEmpresas() {
 	})
 
 	.catch((res) => {
-		$("#modal-title").removeClass();
-    $("#modal-title").addClass("ERROR");
-    document.getElementById("modal-title").style.color = "#a50707";
-    $(".imagenAviso").attr('src', 'images/failed.png');
-    $("#mensajeError").removeClass();
-    $("#mensajeError").addClass('ERROR_LISTAR_EMPRESAS');
+		respuestaAjaxKO('ERROR_LISTAR_EMPRESAS');
 
 	});
 }

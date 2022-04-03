@@ -164,6 +164,14 @@
   -moz-box-sizing: border-box;
 }
 
+.registromodal-container input[name='dni'], .registromodal-container input[name='user']{
+  margin-top: 20px;
+}
+
+.registromodal-container input[type='email'], .registromodal-container input[name='confirmarPass']{
+  margin-bottom: 20px !important;
+}
+
 .registromodal-container select {
   height: 30px;
   font-size: 14px;
@@ -296,6 +304,10 @@ form legend {
 
 .preguntasEmpresa {
     font-size: 14px !important;
+}
+
+.asociarteEmpresa{
+  margin-top: 20px !important;
 }
 
 #imagenEnterLogin{

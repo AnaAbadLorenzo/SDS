@@ -14,7 +14,7 @@ import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosAcentos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoCIF;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEnhe;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEspacios;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
@@ -29,7 +29,7 @@ public class TestAtributoCifEmpresa {
 	private final ValidacionesAtributosEspacios validacionesAtributosEspacios;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosCorrectoCIF validacionesAtributosCorrectoCIF;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoCifEmpresa() {
@@ -40,7 +40,7 @@ public class TestAtributoCifEmpresa {
 		validacionesAtributosEspacios = new ValidacionesAtributosEspacios();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosCorrectoCIF = new ValidacionesAtributosCorrectoCIF();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
@@ -153,8 +153,8 @@ public class TestAtributoCifEmpresa {
 
 	public DatosPruebaAtributos getTestCifEmpresaCorrectoAlfanumerico(final EmpresaEntity datosEntradaCifEmpresa) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaCifEmpresa.getCifEmpresa());
+		final String resultadoObtenido = validacionesAtributosCorrectoCIF
+				.comprobarAtributoCorrectoCIF(datosEntradaCifEmpresa.getCifEmpresa());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 

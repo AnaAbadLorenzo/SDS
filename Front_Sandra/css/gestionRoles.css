@@ -73,6 +73,11 @@
   .img-xl-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
 }
 
+#subtitulo {
+  font-family: roboto;
+  color: #311B92;
+}
+
 .formmodal-container {
   padding: 15px;
   max-width: 600px;
@@ -256,10 +261,14 @@ form button[type="button"]:hover {
   background-color: #673AB7;
 }
 
+/********* CURSORES **********/
+#btnAddRol, .detallePermiso, .editarPermiso, .eliminarPermiso, .reactivarPermiso {
+  cursor : not-allowed;
+}
 
 /********* ICONOS ***********/
 
-.iconoSearchRol, .iconoAddRol, .iconoEditarRol, .iconoEliminar, .iconoCerrar {
+.iconoSearchRol, .iconoAddRol, .iconoEditarRol, .iconoEliminar, .iconoCerrar, .iconoReactivar {
   position: relative;
   width: 30px;
   display:block;
@@ -342,7 +351,7 @@ thead {
   width: 170px;
 }
 
-.detalle, .editar, .eliminar {
+.detalle, .editar, .eliminar, .reactivar {
   display: inline;
   width: 37px;
   margin-top: -10px;
@@ -359,6 +368,12 @@ thead {
   color: #4527A0;
 }
 
+.btn-reactivar{
+  background-color: #4527A0;
+  color:  #ffffff;
+  text-align: center;
+  border: 2px solid #4527A0 !important;
+}
 /*********** TOOLTIPS CABECERA ***************/
 .tooltip {
     position: relative;

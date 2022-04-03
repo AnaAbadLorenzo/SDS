@@ -134,8 +134,8 @@ function cargarModalErroresTest(code){
     $("#modal-title").addClass("ERROR");
     document.getElementById("modal-title").style.color = "#a50707";
     $(".imagenAviso").attr('src', 'images/failed.png');
-    $("#mensajeError").removeClass();
-    $("#mensajeError").addClass(code);
+    $("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass(code);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
 }

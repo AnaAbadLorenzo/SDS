@@ -45,7 +45,7 @@ public class EmpresaEntity {
 	private Integer borradoEmpresa;
 
 	@OneToMany(mappedBy = "empresa")
-	private final Set<PersonaEntity> personas = new HashSet();
+	private final Set<PersonaEntity> personas = new HashSet<>();
 
 	public EmpresaEntity() {
 		super();

@@ -3,27 +3,19 @@ async function changePass() {
   await changePassUsuarioAjaxPromesa()
     .then((res) => {
       $("#changePass-modal").modal('toggle');
-      $(".imagenAviso").attr('src', 'images/ok.png');
-      document.getElementById("modal-title").style.color = "#238f2a";
-      document.getElementById("modal-title").style.top = "3%";
-      $("#modal-title").removeClass();
-      $("#modal-title").addClass("CONTRASEÑA_CHANGE_OK");
-      $("#mensajeError").removeClass();
-      $("#mensajeError").addClass(res.code);
 
+      respuestaAjaxOK("CONTRASEÑA_CHANGE_OK", res.code);
+    
       let idElementoList = ["passChangePass1", "passChangePass2"];
       resetearFormulario("formularioChangePass", idElementoList);
       setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
       
       }).catch((res) => {
+        
         $("#changePass-modal").modal('toggle');
-        $("#modal-title").removeClass();
-        $("#modal-title").addClass("ERROR");
-        document.getElementById("modal-title").style.color = "#a50707";
-        $(".imagenAviso").attr('src', 'images/failed.png');
-        $("#mensajeError").removeClass();
-        $("#mensajeError").addClass(res.code);
+        
+        respuestaAjaxKO(res.code);
 
         let idElementoList = ["passChangePass1", "passChangePass2"];
         limpiarFormulario(idElementoList);
@@ -95,12 +87,7 @@ async function funcionalidadesUsuario() {
     })
     .catch((res) => {
         $("#login-modal").modal('toggle'); 
-        $("#modal-title").removeClass();
-        $("#modal-title").addClass("ERROR");
-		    document.getElementById("modal-title").style.color = "#a50707";
-        $(".imagenAviso").attr('src', 'images/failed.png');
-        $("#mensajeError").removeClass();
-        $("#mensajeError").addClass('ERROR_LISTAR_FUNCIONALIDADES_MENU');
+       respuestaAjaxKO('ERROR_LISTAR_FUNCIONALIDADES_MENU');
 
   });
 }
@@ -143,7 +130,7 @@ function cargarFuncionalidadesUsuario(datos){
     htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i]) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a> <div class="dropdown-divider"></div>';
   }
 
-  htmlMenu = htmlMenu + '<a class="dropdown-item" href="#">' + datos.funcionalidades[i] + '</a>';
+  htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i]) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a>';
 
 
   $("#listadoFuncionalidades").append(htmlMenu);

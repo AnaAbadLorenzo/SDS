@@ -88,12 +88,8 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIP_ALFANUMERICO_MENOR_9_DATA);
 		final UsuarioEntity datosEntradaDniUsuarioAlfanumericoMayor9 = generarJSON.generateUsuario(
 				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIP_ALFANUMERICO_MAYOR_9_DATA);
-		final UsuarioEntity datosEntradaDniUsuarioAlfabetico = generarJSON.generateUsuario(
-				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_ALFABETICO_DATA);
 		final UsuarioEntity datosEntradaDniUsuarioAlfanumerico = generarJSON.generateUsuario(
 				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
-		final UsuarioEntity datosEntradaDniUsuarioNumerico = generarJSON
-				.generateUsuario(Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_NUMERICO_DATA);
 
 		datosPruebaAtributos.add(testAtributoDniUsuario.getTestDniUsuarioVacio(datosEntradaDniUsuarioVacio));
 		datosPruebaAtributos
@@ -111,11 +107,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 		datosPruebaAtributos.add(
 				testAtributoDniUsuario.getTestDniUsuarioAlfanumericoMayor9(datosEntradaDniUsuarioAlfanumericoMayor9));
 		datosPruebaAtributos
-				.add(testAtributoDniUsuario.getTestDniUsuarioCorrectoAlfanumerico(datosEntradaDniUsuarioAlfabetico));
-		datosPruebaAtributos
 				.add(testAtributoDniUsuario.getTestDniUsuarioCorrectoAlfanumerico(datosEntradaDniUsuarioAlfanumerico));
-		datosPruebaAtributos
-				.add(testAtributoDniUsuario.getTestDniUsuarioCorrectoAlfanumerico(datosEntradaDniUsuarioNumerico));
 
 		return datosPruebaAtributos;
 	}
@@ -136,12 +128,8 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_ALFANUMERICO_ESPACIOS_DATA);
 		final UsuarioEntity datosEntradaDniUsuarioAlfanumericoMayor9 = generarJSON.generateUsuario(
 				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIP_ALFANUMERICO_MAYOR_9_DATA);
-		final UsuarioEntity datosEntradaDniUsuarioAlfabetico = generarJSON.generateUsuario(
-				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_ALFABETICO_DATA);
 		final UsuarioEntity datosEntradaDniUsuarioAlfanumerico = generarJSON.generateUsuario(
 				Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
-		final UsuarioEntity datosEntradaDniUsuarioNumerico = generarJSON
-				.generateUsuario(Constantes.URL_JSON_USUARIO_ATRIBUTOS_DNIUSUARIO, Constantes.DNIPERSONA_NUMERICO_DATA);
 
 		datosPruebaAtributos
 				.add(testAtributoDniUsuario.getTestDniUsuarioAlfanumericoEnhe(datosEntradaDniUsuarioAlfanumericoEnhe));
@@ -157,11 +145,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 		datosPruebaAtributos.add(
 				testAtributoDniUsuario.getTestDniUsuarioAlfanumericoMayor9(datosEntradaDniUsuarioAlfanumericoMayor9));
 		datosPruebaAtributos
-				.add(testAtributoDniUsuario.getTestDniUsuarioCorrectoAlfanumerico(datosEntradaDniUsuarioAlfabetico));
-		datosPruebaAtributos
 				.add(testAtributoDniUsuario.getTestDniUsuarioCorrectoAlfanumerico(datosEntradaDniUsuarioAlfanumerico));
-		datosPruebaAtributos
-				.add(testAtributoDniUsuario.getTestDniUsuarioCorrectoAlfanumerico(datosEntradaDniUsuarioNumerico));
 
 		return datosPruebaAtributos;
 	}

@@ -94,7 +94,7 @@ function modalCambioPass(){
 				'<form name="formularioChangePass" id="formularioChangePass" action="javascript:changePass()" onsubmit="return comprobarChangePass()">' +
 					'<input type="password" name="PASS_USUARIO_NUEVA" class="PASS_USUARIO_NUEVA" maxlength="45" size="45" id="passChangePass1" placeholder="Usuario" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPass(\'passChangePass1\', \'errorFormatoChangePass1\', \'passwordChange\')";>' +
 					'<div style="display:none" id="errorFormatoChangePass1"></div>' +
-					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')">' +
+					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPassConfirmChangePass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')">' +
 					'<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculasChangePass"></div>' +  
           			'<div style="display:none" id="errorFormatoChangePass2" class="alert alert-danger ocultar"></div>' +  
 					'<div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>' +
@@ -321,8 +321,8 @@ function errorAutenticado(codigoResponse, idioma){
 	$("#modal-title").removeClass();
     $("#modal-title").addClass("STOP");
 	document.getElementById("modal-title").style.color = "#a50707";
-	$("#mensajeError").removeClass();
-    $("#mensajeError").addClass(codigoResponse);   
+	$("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass(codigoResponse);   
     $(".imagenAviso").attr('src', "images/stop.png");   
     setLang(idioma);
     document.getElementById("modal").style.display = "block";
@@ -333,8 +333,8 @@ function errorInternal(codigoResponse, idioma){
 	$("#modal-title").removeClass();
     $("#modal-title").addClass("ERROR_INTERNO");
 	document.getElementById("modal-title").style.color = "#a50707";
-	$("#mensajeError").removeClass();
-    $("#mensajeError").addClass(codigoResponse);   
+	$("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass(codigoResponse);   
     $(".imagenAviso").attr('src', "images/caution.png");   
     setLang(idioma);
     document.getElementById("modal").style.display = "block";
@@ -359,11 +359,11 @@ function construyeFila(entidad, fila) {
         break;
 	};
 
-	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle" src="images/detail3.png" data-toggle="modal" data-target="#form-modal" onclick="showDetalle(' + atributosFunciones + 
+	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
                                ')" alt="Detalle"/><span class="tooltiptext iconDetailUser">Detalle</span></div>';
-    var celdaAccionesEditar = '<div class="tooltip"><img class="editar" src="images/edit3.png" data-toggle="modal" data-target="#form-modal" onclick="showEditar(' + atributosFunciones + 
+    var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
                                ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
-    var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar" src="images/delete3.png" data-toggle="modal" data-target="#form-modal" onclick="showEliminar(' + atributosFunciones + 
+    var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar eliminarPermiso" src="images/delete.png" data-toggle="" data-target="" onclick="showEliminar(' + atributosFunciones + 
                                ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
 
 
@@ -375,6 +375,35 @@ function construyeFila(entidad, fila) {
 
     return filaTabla;
 }
+
+/**Función que construye cada línea de los elementos eliminados con los que se va a rellenar en la tabla*/
+function construyeFilaEliminados(entidad, fila) {
+	let atributosFunciones="";
+	var filaTabla = "";
+
+	switch(entidad){
+		case 'ROL':
+			atributosFunciones = ["'" + fila.rolName + "'", "'" + fila.rolDescription + "'", "'" + fila.idRol + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.rolName + 
+                '</td> <td>' + fila.rolDescription;
+        break;
+
+        case 'FUNCIONALIDAD':
+			atributosFunciones = ["'" + fila.nombreFuncionalidad + "'", "'" + fila.descripFuncionalidad + "'", "'" + fila.idFuncionalidad + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreFuncionalidad + 
+                '</td> <td>' + fila.descripFuncionalidad;
+        break;
+	};
+
+	var reactivar = '<div class="tooltip"><img class="reactivar reactivarPermiso" src="images/reactivar2.png" data-toggle="" data-target="" onclick="showReactivar(' + atributosFunciones + 
+                               ')" alt="Reactivar"/><span class="tooltiptext iconReactivar ICONO_REACTIVAR">Reactivar</span></div>';
+	filaTabla = filaTabla + 
+                '</td> <td class="acciones">' + reactivar +  
+                '</td> </tr>';
+
+    return filaTabla;
+}
+
 
 /**Función que crea según las columnas que le pasemos un div con checkbox para marcar y así ocultar las columnas*/
 function createHideShowColumnsWindow(arrayColumnas) {
@@ -507,6 +536,13 @@ function cambiarIcono(ruta, nombreIcono, estiloIcono, valorIcono) {
 /**Función para volver al menu **/
 function volver(){
 	window.location.href = "menu.html";
+	limpiaCookiesBusquedas();
+}
+
+/** Función que limpia las cookies de las busquedas **/
+function limpiaCookiesBusquedas(){
+	setCookie('nombreRol', '');
+	setCookie('descripcionRol', '');
 }
 
 /**Función para insertar campos en el formulario a mayores*/
@@ -555,6 +591,28 @@ function mostrarObligatorios(idElementoList) {
 	});	
 }
 
+/** Función para anadir propiedad readonly **/
+function anadirReadonly(idElementoList) {
+	idElementoList.forEach( function (idElemento) {
+		$("#"+ idElemento).prop('readonly', true);
+	});	
+}
+
+/** Función para eliminar propiedad readonly **/
+function eliminarReadonly(idElementoList) {
+	idElementoList.forEach( function (idElemento) {
+		$("#"+ idElemento).prop('readonly', false);
+	});	
+}
+
+
+/** Función para guardar los parámetros de las búsquedas **/
+function guardarParametrosBusqueda(idElementoList){
+	idElementoList.forEach( function (idElemento) {
+		var datosBusqueda = idElemento.split(': ');
+		setCookie(datosBusqueda[0], datosBusqueda[1]);
+	});	
+}
 /**Función para mostrar mensaje de error cuando fallan las peticiones ajax*/
 function errorFailAjax(status){
 	var idioma = getCookie('lang');
@@ -566,6 +624,27 @@ function errorFailAjax(status){
 	} else if (status === 0){
 		errorInternal("ERR_CONNECTION_REFUSED", idioma);
 	}
+}
+
+/** Función para formar las modales de éxito **/
+function respuestaAjaxOK(clase, codigo){
+    $(".imagenAviso").attr('src', 'images/ok.png');
+    document.getElementById("modal-title").style.color = "#238f2a";
+    document.getElementById("modal-title").style.top = "3%";
+    $("#modal-title").removeClass();
+    $("#modal-title").addClass(clase);
+    $("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass(codigo);
+}
+
+/** Función para mostrar las modales de error **/
+function respuestaAjaxKO(codigo){
+	$("#modal-title").removeClass();
+    $("#modal-title").addClass("ERROR");
+    document.getElementById("modal-title").style.color = "#a50707";
+    $(".imagenAviso").attr('src', 'images/failed.png');
+    $("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass(codigo);
 }
 
 $(document).ready(function(){

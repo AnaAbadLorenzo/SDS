@@ -14,7 +14,7 @@ import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosAcentos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoDNI;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEnhe;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEspacios;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
@@ -29,7 +29,7 @@ public class TestAtributoDniUsuario {
 	private final ValidacionesAtributosEspacios validacionesAtributosEspacios;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosCorrectoDNI validacionesAtributosCorrectoDNI;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoDniUsuario() {
@@ -40,7 +40,7 @@ public class TestAtributoDniUsuario {
 		validacionesAtributosEspacios = new ValidacionesAtributosEspacios();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosCorrectoDNI = new ValidacionesAtributosCorrectoDNI();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
@@ -153,8 +153,8 @@ public class TestAtributoDniUsuario {
 
 	public DatosPruebaAtributos getTestDniUsuarioCorrectoAlfanumerico(final UsuarioEntity datosEntradaDniUsuario) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaDniUsuario.getDniUsuario());
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoCorrectoDNI(datosEntradaDniUsuario.getDniUsuario());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 

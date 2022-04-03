@@ -22,6 +22,7 @@
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="js/gestionRoles.js"></script>
+	<script type="text/javascript" src="js/paginacion.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
     <script type="text/javascript" src="Locale/Lang_ES.js"></script>
@@ -33,6 +34,7 @@
     modalCambioPass();
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
 	await cargarRoles();
+	await cargarPermisosFuncRol();
 
   })();">  
 	<div id="topMenu"></div>
@@ -43,17 +45,17 @@
 	<h1 class="gestion GESTION_ROLES"></h1>
 
 	<div class="cabecera">
-		<div name="btnAdd" value="Añadir" data-toggle="modal" data-target="#form-modal" onclick="javascript:showAddRol()" class="tooltip addIcon">
-        <img class="iconoAdd" src="images/add3.png" alt="Añadir" />
+		<div id="divAddRol" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddRol()" class="tooltip addIcon">
+        <img id="btnAddRol" class="iconoAdd" src="images/add.png" alt="Añadir" />
         <span class="tooltiptext iconAdd ICONO_ADD"></span>
     </div>      
 
-    <div name="btnSearchUser" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarRol()" class="tooltip searchIcon">
-        <img class="iconoSearch iconSearch" src="images/search3.png" alt="Buscar Rol" />
+    <div id ="divListarRol" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarRol()" class="tooltip searchIcon">
+        <img id="btnListarRol" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Rol" />
         <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
     </div>
 
-    <div name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
+    <div name="btnSearchDelete" value="Buscar Eliminados" onclick="javascript:buscarEliminados()" class="tooltip searchDeleteIcon">
         <img class="iconoSearchDelete iconSearchDelete" src="images/searchDelete3.png" alt="Buscar Roles Eliminados" />
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
@@ -105,15 +107,6 @@
 		</table>
 	</div>
 
-	<div class="filasTabla">
-			<div id="paginacion"></div>
-	</div>
-
-	<div id="showHideColumns" style="display: none;">
-    <div id='checkboxColumnas'>
-    </div>
-  </div>
-
 	<div class="paginacion">
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
@@ -138,6 +131,18 @@
 		</nav>
 	</div>
 
+	<div id="showHideColumns" style="display: none;">
+    <div id='checkboxColumnas'>
+    </div>
+  </div>
+
+	<div class="paginacion">
+		<nav aria-label="Page navigation example">
+			<ul class="pagination">
+		  	</ul>
+		</nav>
+	</div>
+
 	<div class="modal modal2 fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
 			<div class="formmodal-container">
@@ -145,7 +150,7 @@
       			<div id="contenidoForm">
               			<div class="formularioComun">
               				<h1 id="tituloForms" class="datos"></h1>
-              				<p id="subtitulo" class="SEGURO_ELIMINAR" hidden></p>
+              				<p id="subtitulo" class="SEGURO_ELIMINAR_ROL" hidden></p>
                     	<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
                     	  <label class="labelForm ROL_NAME" id="labelRolName" hidden></label>                            
                           <input type="text" maxlength="32" size="32" placeholder="ROL_NAME" name="ROL_NAME" id="nombreRol" class="ROL_NAME" onblur=""/>
@@ -187,9 +192,9 @@
 		      <img src="" name="aviso" class="imagenAviso"/>
 		      <h3 id="modal-title" class="modal-title"></h3>
 		    </div>
-			<div id='mensajeError' class="modal-body"></div>
+			<div id='modal-mensaje' class="modal-body"></div>
 		  		<div id="modalFooter" class="modal-footer">
-        			<a id="cerrar" href="#" class="tooltip5">
+        			<a id="cerrar" href="#" onclick="cerrarModal('modal')" class="tooltip5">
         				<img class="iconCerrar" alt="Cerrar" src="images/close.png"/>
                 		<span class="tooltiptext5 ICONO_CERRAR"></span>
         			</a>

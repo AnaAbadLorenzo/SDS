@@ -115,12 +115,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIP_ALFANUMERICO_MENOR_9_DATA);
 		final Registro datosEntradaRegistroDniPersonaAlfanumericoMayor9 = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIP_ALFANUMERICO_MAYOR_9_DATA);
-		final Registro datosEntradaRegistroDniPersonaAlfabetico = generarJSON
-				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFABETICO_DATA);
 		final Registro datosEntradaRegistroDniPersonaAlfanumerico = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
-		final Registro datosEntradaRegistroDniPersonaNumerico = generarJSON
-				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_NUMERICO_DATA);
 
 		datosPruebaAtributos.add(
 				testAtributoDniPersonaRegistro.getTestRegistroDniPersonaVacio(datosEntradaRegistroDniPersonaVacio));
@@ -137,11 +133,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 		datosPruebaAtributos.add(testAtributoDniPersonaRegistro
 				.getTestRegistroDniPAlfanumericoMayor9(datosEntradaRegistroDniPersonaAlfanumericoMayor9));
 		datosPruebaAtributos.add(testAtributoDniPersonaRegistro
-				.getTestRegistroDniPCorrectoAlfanumerico(datosEntradaRegistroDniPersonaAlfabetico));
-		datosPruebaAtributos.add(testAtributoDniPersonaRegistro
 				.getTestRegistroDniPCorrectoAlfanumerico(datosEntradaRegistroDniPersonaAlfanumerico));
-		datosPruebaAtributos.add(testAtributoDniPersonaRegistro
-				.getTestRegistroDniPCorrectoAlfanumerico(datosEntradaRegistroDniPersonaNumerico));
 
 		return datosPruebaAtributos;
 	}
@@ -507,12 +499,8 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_MENOR_9_DATA);
 		final Registro datosEntradaRegistroCifEmpresaAlfanumericoMayor9 = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_MAYOR_9_DATA);
-		final Registro datosEntradaRegistroCifEmpresaAlfabetico = generarJSON.generateRegistro(
-				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFABETICO_DATA);
 		final Registro datosEntradaRegistroCifEmpresaAlfanumerico = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_ALFANUMERICO_DATA);
-		final Registro datosEntradaRegistroCifEmpresaNumerico = generarJSON.generateRegistro(
-				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_CIFEMPRESA, Constantes.CIFEMPRESA_NUMERICO_DATA);
 
 		datosPruebaAtributos.add(
 				testAtributoCifEmpresaRegistro.getTestRegistroCifEmpresaVacio(datosEntradaRegistroCifEmpresaVacio));
@@ -530,11 +518,7 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 		datosPruebaAtributos.add(testAtributoCifEmpresaRegistro
 				.getTestRegistroCifEmpresaAlfanumericoMayor9(datosEntradaRegistroCifEmpresaAlfanumericoMayor9));
 		datosPruebaAtributos.add(testAtributoCifEmpresaRegistro
-				.getTestRegistroCifEmpresaCorrectoAlfanumerico(datosEntradaRegistroCifEmpresaAlfabetico));
-		datosPruebaAtributos.add(testAtributoCifEmpresaRegistro
 				.getTestRegistroCifEmpresaCorrectoAlfanumerico(datosEntradaRegistroCifEmpresaAlfanumerico));
-		datosPruebaAtributos.add(testAtributoCifEmpresaRegistro
-				.getTestRegistroCifEmpresaCorrectoAlfanumerico(datosEntradaRegistroCifEmpresaNumerico));
 
 		return datosPruebaAtributos;
 	}

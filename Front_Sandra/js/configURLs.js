@@ -3,13 +3,22 @@ var urlPeticionAjaxRegistro = "http://localhost:8090/registrar";
 var urlPeticionAjaxRecuperarPass = "http://localhost:8090/login/recuperarPass";
 var urlPeticionAjaxListadoEmpresas = "http://localhost:8090/empresa/listarEmpresasSinP";
 var urlPeticionAjaxFuncionalidadesUsuario = "http://localhost:8090/menu/funcionalidadesUsuario?";
+var urlPeticionAjaxAccionesUsuario = "http://localhost:8090/menu/accionesFuncionalidad?";
 var urlPeticionAjaxCambiarContrasenaUsuario = "http://localhost:8090/usuario/cambiarContrasenaUsuario";
 var urlPeticionAjaxListadoRoles = "http://localhost:8090/rol/listarRoles";
+var urlPeticionAjaxListadoRolesEliminados = "http://localhost:8090/rol/listarRolesEliminados";
 var urlPeticionAjaxListarRol = "http://localhost:8090/rol/listarRol";
 var urlPeticionAjaxAddRol = "http://localhost:8090/rol/rol";
 var urlPeticionAjaxEditRol = "http://localhost:8090/rol/modificarRol";
 var urlPeticionAjaxDeleteRol = "http://localhost:8090/rol/eliminarRol";
+var urlPeticionAjaxReactivarRol = "http://localhost:8090/rol/reactivarRol";
 var urlPeticionAjaxListadoFuncionalidades = "http://localhost:8090/funcionalidad/listarFuncionalidades";
+var urlPeticionAjaxAddFuncionalidad = "http://localhost:8090/funcionalidad/funcionalidad";
+var urlPeticionAjaxListarFuncionalidad = "http://localhost:8090/funcionalidad/listarFuncionalidad";
+var urlPeticionAjaxListadoFuncionalidadesEliminadas = "http://localhost:8090/funcionalidad/listarFuncionalidadesEliminadas";
+var urlPeticionAjaxEditFuncionalidad = "http://localhost:8090/funcionalidad/modificarFuncionalidad";
+var urlPeticionAjaxDeleteFuncionalidad = "http://localhost:8090/funcionalidad/eliminarFuncionalidad";
+var urlPeticionAjaxReactivarFuncionalidad = "http://localhost:8090/funcionalidad/reactivarFuncionalidad";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = "http://localhost:8090/test/login/atributos";

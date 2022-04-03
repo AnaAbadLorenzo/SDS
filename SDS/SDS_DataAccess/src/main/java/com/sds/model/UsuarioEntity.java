@@ -52,6 +52,18 @@ public class UsuarioEntity {
 	}
 
 	public UsuarioEntity(final String dniUsuario, final String usuario, final String passwdUsuario,
+			final Integer borradoUsuario, final RolEntity rol, final PersonaEntity persona,
+			final ProcedimientoUsuarioEntity procedimientoUsuario) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.usuario = usuario;
+		this.passwdUsuario = passwdUsuario;
+		this.borradoUsuario = borradoUsuario;
+		this.rol = rol;
+		this.persona = persona;
+	}
+
+	public UsuarioEntity(final String dniUsuario, final String usuario, final String passwdUsuario,
 			final Integer borradoUsuario, final RolEntity rol, final PersonaEntity persona) {
 		super();
 		this.dniUsuario = dniUsuario;
@@ -131,6 +143,7 @@ public class UsuarioEntity {
 	@Override
 	public String toString() {
 		return "UsuarioEntity [dniUsuario=" + dniUsuario + ", usuario=" + usuario + ", passwdUsuario=" + passwdUsuario
-				+ ", borradoUsuario=" + borradoUsuario + "]";
+				+ ", borradoUsuario=" + borradoUsuario + ", rol=" + rol + ", persona=" + persona + "]";
 	}
+
 }

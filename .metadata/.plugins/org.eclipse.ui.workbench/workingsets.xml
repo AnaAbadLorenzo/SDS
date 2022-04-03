@@ -2,7 +2,14 @@
 <workingSetManager>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1633625028706_0" label="Java Main Sources" name="Java Main Sources"/>
 <workingSet editPageId="org.eclipse.jdt.internal.ui.DynamicSourcesWorkingSet" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1633625028762_1" label="Java Test Sources" name="Java Test Sources"/>
+<workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1648568492829_5" label="SDS" name="SDS">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SDS" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SDS-Controller" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SDS-DataAccess" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/SDS-Service" type="4"/>
+</workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1633625035790_2" label="Window Working Set" name="Aggregate for window 1633625035790"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1633676756032_3" label="Window Working Set" name="Aggregate for window 1633676756032"/>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1633688319402_4" label="Window Working Set" name="Aggregate for window 1633688319402"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1648578847550_6" label="Window Working Set" name="Aggregate for window 1648578847550"/>
 </workingSetManager>

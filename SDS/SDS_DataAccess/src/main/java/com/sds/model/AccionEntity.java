@@ -41,10 +41,10 @@ public class AccionEntity {
 	private Integer borradoAccion;
 
 	@ManyToMany(mappedBy = "acciones")
-	private final Set<RolEntity> roles = new HashSet();
+	private final Set<RolEntity> roles = new HashSet<>();
 
 	@ManyToMany(mappedBy = "acciones")
-	private final Set<FuncionalidadEntity> funcionalidades = new HashSet();
+	private final Set<FuncionalidadEntity> funcionalidades = new HashSet<>();
 
 	public AccionEntity() {
 		super();

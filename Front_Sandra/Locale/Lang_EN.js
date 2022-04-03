@@ -44,6 +44,7 @@ arrayEN={
 	'ICONO_EDIT' : 'Edit',
 	'ICONO_ELIMINAR' : 'Delete',
 	'ICONO_VOLVER' : 'Home',
+	'ICONO_REACTIVAR': 'Reactivate',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
@@ -62,9 +63,13 @@ arrayEN={
 	'ERROR_INTERNO' : 'INTERNAL SERVER ERROR',
 	'MENSAJE_ERROR_INTERNO' : 'Internal server error. Contact the administrator or try to log in in a few minutes.',
 	'ERR_CONNECTION_REFUSED' : 'Internal server error. Connection refused. Contact the administrator or try to log in in a few minutes.',
-	'ROL_YA_EXISTE' : 'The role already exists',
-	'ROL_NO_EXISTE' : 'The role doesn´t exists',
+	'ROL_YA_EXISTE' : 'Role already exists. Check also the table of deleted roles',
+	'ROL_NO_EXISTE' : 'Role doesn´t exists',
 	'TEST_ATRIBUTOS_LOGIN_KO' : 'An error occurred when running the attribute tests for login',
+	'FUNCIONALIDAD_VACIA' : 'The name and/or description of the funcionality are empty',
+	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'Funcionality already exists. Check also the table of deleted funcionalities',
+	'FUNCIONALIDAD_NO_EXISTE_EXCEPTION' : 'Funcionality doesn´t exists',
+	'FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION' : 'Funcionality is associated with a role and an action',
 	
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',
@@ -117,6 +122,14 @@ arrayEN={
 	'ROL_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Rol description can only contain letters',
 	'ROL_NAME_MENOR_QUE_3' : 'Rol name size is minor than 3 characteres',
 	'ROL_VACIO' : 'Rol name and/or rol description are empty',
+	'FUNCIONALIDAD_NAME_VACIA' : 'Funcionality name is empty',
+	'FUNCIONALIDAD_NAME_ALFABETICO_INCORRECTO' : 'Funcionality name can only contain letters and spaces',
+	'FUNCIONALIDAD_NAME_MENOR_QUE_3' : 'Funcionality name size is minor than 3 characteres',
+	'FUNCIONALIDAD_NAME_MAYOR_QUE_48' : 'Funcionality name size is bigger than 48 characteres',
+	'FUNCIONALIDAD_DESCRIPTION_VACIA' : 'Funcionality description is empty',
+	'FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Funcionality description can only contain letters and spaces',
+	'FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3' : 'Funcionality description size is minor than 3 characteres',
+
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -148,10 +161,20 @@ arrayEN={
 	'EDIT_ROLE' : 'EDIT ROLE',
 	'DELETE_ROLE' : 'DELETE ROLE',
 	'DESCONECTAR' : 'Log out',
-	'SEGURO_ELIMINAR' : 'Are you sure that you want to delete this role?',
+	'SEGURO_ELIMINAR_ROL' : 'Are you sure that you want to delete this role?',
 	'DETAIL_ROLE' : 'ROLE DETAIL',
 	'GESTION_FUNCIONALIDADES' : 'Funcionalities management',
 	'MENSAJE_TEST' : 'Tests',
+	'REACTIVATE_ROLE' : 'REACTIVATE ROLE',
+	'SEGURO_REACTIVAR_ROL' : 'Are you sure that you want to reactivate this role?',
+	'ADD_FUNCIONALIDAD' : 'ADD FUNCIONALITY',
+	'SEARCH_FUNCIONALIDAD' : 'SEARCH FUNCIONALITY',
+	'DETAIL_FUNCIONALITY' : 'FUNCIONALITY DETAIL',
+	'SEGURO_ELIMINAR_FUNC' : 'Are you sure that you want to delete this funcionality?',
+	'SEGURO_REACTIVAR_FUNC' : 'Are you sure that you want to reactivate this funcionality?',
+	'EDIT_FUNCIONALITY' : 'EDIT FUNCIONALITY',
+	'DELETE_FUNCIONALITY' : 'DELETE FUNCIONALITY',
+	'REACTIVATE_FUNC' : 'REACTIVATE FUNCIONALITY',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -167,6 +190,17 @@ arrayEN={
 	'ROL_EDITADO_OK' : 'ROL MODIFIED CORRECTLY',
 	'ROL_MODIFICADO' : 'The role has been modified correctly',
 	'ROL_ELIMINADO_OK' : 'ROLE DELETED CORRECTLY',
-	'ROL_ELIMINADO' : 'The role has been deleted correctly'
+	'ROL_ELIMINADO' : 'The role has been deleted correctly',
+	'ROL_REACTIVADO_OK' : 'ROLE REACTIVATED CORRECTLY',
+	'ROL_REACTIVADO' : 'The role has been reactivated correctly',
+	'FUNCIONALIDAD_GUARDADA_OK' : 'FUNCIONALITY SAVED CORRECTLY',
+	'FUNCIONALIDAD_GUARDADA' : 'The funcionality has been saved correctly',
+	'FUNCIONALIDAD_ENCONTRADA' : 'The funcionality has been found correctly',
+	'FUNCIONALIDAD_EDITADA_OK' : 'FUNCIONALITY MODIFIED CORRECTLY',
+	'FUNCIONALIDAD_MODIFICADA' : 'The funcionality has been modified correctly',
+	'FUNCIONALIDAD_ELIMINADA_OK' : 'FUNCIONALITY DELETED CORRECTLY',
+	'FUNCIONALIDAD_ELIMINADA' : 'Funcionality has been deleted correctly',
+	'FUNCIONALIDAD_REACTIVADA_OK' : 'FUNCIONALITY REACTIVATED CORRECTLY',
+	'FUNCIONALIDAD_REACTIVADA' : 'Funcionality has been reactivated correctly'
 
 }

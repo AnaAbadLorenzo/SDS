@@ -438,6 +438,8 @@ public class Constantes {
 	public static final String NUMERICO = "^[0-9]+$";
 	public static final String FORMATO_FECHAS = "^[0-9]{4}(-)[0-9]{2}(-)[0-9]{2}";
 	public static final String FORMATO_EMAIL = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+	public static final String FORMATO_DNI = "^[0-9]{8}[A-Z]{1}$";
+	public static final String FORMATO_CIF = "^[A-Z]{1}[0-9]{8}$";
 
 	// Constantes caracteres
 	public static final String COMA = ",";

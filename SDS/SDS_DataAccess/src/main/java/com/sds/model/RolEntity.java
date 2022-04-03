@@ -46,15 +46,15 @@ public class RolEntity {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "rolaccionfuncionalidad", joinColumns = { @JoinColumn(name = "id_rol") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_accion") })
-	private final Set<AccionEntity> acciones = new HashSet();
+	private final Set<AccionEntity> acciones = new HashSet<>();
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "rolaccionfuncionalidad", joinColumns = { @JoinColumn(name = "id_rol") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_funcionalidad") })
-	private final Set<FuncionalidadEntity> funcionalidades = new HashSet();
+	private final Set<FuncionalidadEntity> funcionalidades = new HashSet<>();
 
 	@OneToMany(mappedBy = "rol")
-	private final Set<UsuarioEntity> usuarios = new HashSet();
+	private final Set<UsuarioEntity> usuarios = new HashSet<>();
 
 	public RolEntity() {
 		super();

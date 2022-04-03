@@ -44,6 +44,7 @@ arrayGA={
 	'ICONO_EDIT' : 'Editar',
 	'ICONO_ELIMINAR' : 'Eliminar',
 	'ICONO_VOLVER' : 'Menú',
+	'ICONO_REACTIVAR': 'Reactivar',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
@@ -62,9 +63,13 @@ arrayGA={
 	'ERROR_INTERNO' : 'ERRO INTERNO',
 	'MENSAJE_ERROR_INTERNO' : 'Erro interno da aplicación. Contacte co administrador ou intente acceder nuns minutos.',
 	'ERR_CONNECTION_REFUSED' : 'Erro interno da aplicación. Conexión denegada. Contacte co administrador ou intente acceder nuns minutos.',
-	'ROL_YA_EXISTE' : 'O rol ya existe',
+	'ROL_YA_EXISTE' : 'O rol ya existe. Comproba tamén a táboa de roles eliminados',
 	'ROL_NO_EXISTE' : 'O rol non existe',
 	'TEST_ATRIBUTOS_LOGIN_KO' : 'Produciuse un erro ó executar os tests de atributos para o login',
+	'FUNCIONALIDAD_VACIA' : 'O nome e/ou a descripción da funcionalidade están vacíos',
+	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'A funcionalidade xa existe. Comproba tamén a táboa de funcionalidades eliminadas',
+	'FUNCIONALIDAD_NO_EXISTE_EXCEPTION' : 'A funcionalidade non existe',
+	'FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION' : 'A funcionalidade está asociada a un rol e a unha acción',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -116,6 +121,13 @@ arrayGA={
 	'ROL_DESCRIPTION_ALFABETICO_INCORRECTO' : 'A descripción do rol tan só pode conter letras',
 	'ROL_NAME_MENOR_QUE_3' : 'O nome do rol ten menos de 3 caracteres',
 	'ROL_VACIO' : 'O nome do rol e/ou a descripción están vacíos',
+	'FUNCIONALIDAD_NAME_VACIA' : 'Nome funcionalidade vacío',
+	'FUNCIONALIDAD_NAME_ALFABETICO_INCORRECTO' : 'O nome da funcionalidade tan só pode conter letras e espazos',
+	'FUNCIONALIDAD_NAME_MENOR_QUE_3' : 'O nome da funcionalidade ten menos de 3 caracteres',
+	'FUNCIONALIDAD_NAME_MAYOR_QUE_48' : 'O nome da funcionalidad ten máis de 48 caracteres',
+	'FUNCIONALIDAD_DESCRIPTION_VACIA' : 'Descripción funcionalidade vacío',
+	'FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO' : 'A descripción da funcionalidade tan só pode conter letras e espazos',
+	'FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3' : 'A descripción da funcionalidade ten menos de 3 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -147,10 +159,20 @@ arrayGA={
 	'EDIT_ROLE' : 'EDITAR ROL',
 	'DELETE_ROLE' : 'ELIMINAR ROL',
 	'DESCONECTAR' : 'Desconectar',
-	'SEGURO_ELIMINAR' : 'Está seguro que desea eliminar este rol?',
+	'SEGURO_ELIMINAR_ROL' : 'Está seguro que desea eliminar este rol?',
 	'DETAIL_ROLE' : 'DETALLE ROL',
 	'GESTION_FUNCIONALIDADES' : 'Xestión de funcionalidades',
 	'MENSAJE_TEST' : 'Tests',
+	'REACTIVATE_ROLE' : 'REACTIVAR ROL',
+	'SEGURO_REACTIVAR_ROL' : 'Está seguro de que quere reactivar este rol?',
+	'ADD_FUNCIONALIDAD' : 'ENGADIR FUNCIONALIDADE',
+	'SEARCH_FUNCIONALIDAD' : 'BUSCAR FUNCIONALIDADE',
+	'DETAIL_FUNCIONALITY' : 'DETALLE FUNCIONALIDAD',
+	'SEGURO_ELIMINAR_FUNC' : 'Está seguro que desea eliminar esta funcionalidade?',
+	'SEGURO_REACTIVAR_FUNC' : 'Está seguro de que quere reactivar esta funcionalidade?',
+	'EDIT_FUNCIONALITY' : 'EDITAR FUNCIONALIDADE',
+	'DELETE_FUNCIONALITY' : 'ELIMINAR FUNCIONALIDADE',
+	'REACTIVATE_FUNC' : 'REACTIVAR FUNCIONALIDADE',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -166,6 +188,17 @@ arrayGA={
 	'ROL_EDITADO_OK' : 'ROL EDITADO CORRECTAMENTE',
 	'ROL_MODIFICADO' : 'O rol modificouse correctamente',
 	'ROL_ELIMINADO_OK' : 'ROL ELIMINADO CORRECTAMENTE',
-	'ROL_ELIMINADO' : 'O rol eliminouse correctamente'
+	'ROL_ELIMINADO' : 'O rol eliminouse correctamente',
+	'ROL_REACTIVADO_OK' : 'ROL REACTIVADO CORRECTAMENTE',
+	'ROL_REACTIVADO' : 'O rol reactivouse correctamente',
+	'FUNCIONALIDAD_GUARDADA_OK' : 'FUNCIONALIDADE GARDADA CORRECTAMENTE',
+	'FUNCIONALIDAD_GUARDADA' : 'A funcionalidade gardouse correctamente',
+	'FUNCIONALIDAD_ENCONTRADA' : 'A funcionalidade encontrouse correctamente',
+	'FUNCIONALIDAD_EDITADA_OK' : 'FUNCIONALIDADE EDITADA CORRECTAMENTE',
+	'FUNCIONALIDAD_MODIFICADA' : 'A funcionalidade modificouse correctamente',
+	'FUNCIONALIDAD_ELIMINADA_OK' : 'FUNCIONALIDADE ELIMINADA CORRECTAMENTE',
+	'FUNCIONALIDAD_ELIMINADA' : 'La funcionalidad eliminouse correctamente',
+	'FUNCIONALIDAD_REACTIVADA_OK' : 'FUNCIONALIDADE REACTIVADA CORRECTAMENTE',
+	'FUNCIONALIDAD_REACTIVADA' : 'A funcionalidade reactivouse correctamente'
 	
 }

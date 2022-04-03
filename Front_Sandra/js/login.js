@@ -41,8 +41,8 @@ function recuperarPassAjaxPromesa(){
 
     $("#modal-title").removeClass();
     $(".imagenAviso").attr('src', 'images/carga.gif');
-    $("#mensajeError").removeClass();
-    $("#mensajeError").addClass('CARGANDO');
+    $("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass('CARGANDO');
     document.getElementById("modal").style.display = "block";
     
     $.ajax({
@@ -73,12 +73,7 @@ async function login() {
   })
   .catch((res) => {
     $("#login-modal").modal('toggle'); 
-    $("#modal-title").removeClass();
-    $("#modal-title").addClass("ERROR");
-    document.getElementById("modal-title").style.color = "#a50707";
-    $(".imagenAviso").attr('src', 'images/failed.png');
-    $("#mensajeError").removeClass();
-    $("#mensajeError").addClass(res.code);
+    respuestaAjaxKO(res.code);
 
     let idElementoList = ["userLogin", "passLogin"];
     resetearFormulario("formularioLogin", idElementoList);
@@ -92,13 +87,8 @@ async function recuperarPass(){
   .then((res) => {
   	$("#recuperarcontrasena-modal").modal('toggle');
   	$("#login-modal").modal('toggle'); 
-	  $(".imagenAviso").attr('src', 'images/ok.png');
-    document.getElementById("modal-title").style.color = "#238f2a";
-    document.getElementById("modal-title").style.top = "3%";
-    $("#modal-title").removeClass();
-    $("#modal-title").addClass("CONTRASEÑA_REC_OK");
-    $("#mensajeError").removeClass();
-    $("#mensajeError").addClass(res.code);
+
+    respuestaAjaxOK("CONTRASEÑA_REC_OK", res.code);
 
     let idElementoList = ["userRecuperarPass", "emailUser"];
     resetearFormulario("formularioRecuperarPass", idElementoList);
@@ -109,12 +99,7 @@ async function recuperarPass(){
   .catch((res) => {
     $("#recuperarcontrasena-modal").modal('toggle'); 
     $("#login-modal").modal('toggle');
-    $("#modal-title").removeClass();
-    $("#modal-title").addClass("ERROR");
-    document.getElementById("modal-title").style.color = "#a50707";
-    $(".imagenAviso").attr('src', 'images/failed.png');
-    $("#mensajeError").removeClass();
-    $("#mensajeError").addClass(res.code);
+    respuestaAjaxKO(res.code);
     let idElementoList = ["userRecuperarPass", "emailUser"];
     resetearFormulario("formularioRecuperarPass", idElementoList);
     setLang(getCookie('lang'));

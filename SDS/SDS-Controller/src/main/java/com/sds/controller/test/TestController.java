@@ -142,13 +142,13 @@ public class TestController {
 					.getPruebasAccionesRecuperarPass();
 			datosPruebaAcciones.addAll(pruebaAtributoAcciones);
 		} catch (IOException | ParseException | java.text.ParseException | MessagingException e) {
-			return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_KO, StringUtils.EMPTY);
+			return new RespEntity(RespCode.TEST_ACCIONES_RECUPERARPASS_KO, StringUtils.EMPTY);
 		}
 		respuestaTestAcciones.setFuncionalidad(Constantes.LOGIN);
 		respuestaTestAcciones.setAccion(Constantes.RECUPERAR_PASS);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_RECUPERARPASS_OK, respuestaTestAcciones);
+		return new RespEntity(RespCode.TEST_ACCIONES_RECUPERARPASS_OK, respuestaTestAcciones);
 	}
 
 	@GetMapping(value = "/registrar/atributos")

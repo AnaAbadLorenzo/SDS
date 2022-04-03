@@ -374,7 +374,7 @@ public class TestRolServiceImpl implements TestRolService {
 				+ Mensajes.ELIMINAR_ROL_ASOCIADO_USUARIO;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ELIMINAR_ROL_ASOCIADO_USUARIO, Constantes.EXITO,
+				DefinicionPruebas.ELIMINAR_ROL_ASOCIADO_USUARIO, Constantes.ERROR,
 				getValorRol(datosEntradaRolEliminarRolAsociadoUsuario));
 	}
 
@@ -385,7 +385,7 @@ public class TestRolServiceImpl implements TestRolService {
 		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ELIMINAR_ROL_NO_EXISTE, Constantes.EXITO,
+				DefinicionPruebas.ELIMINAR_ROL_NO_EXISTE, Constantes.ERROR,
 				getValorRol(datosEntradaRolEliminarRolNoExiste));
 	}
 
@@ -399,7 +399,7 @@ public class TestRolServiceImpl implements TestRolService {
 				+ Mensajes.ELIMINAR_ROL_ASOCIADA_ACCION_FUNCIONALIDAD;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD, Constantes.EXITO,
+				DefinicionPruebas.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD, Constantes.ERROR,
 				getValorRol(datosEntradaRolEliminarRolAsociadoAccionFuncionalidad));
 	}
 

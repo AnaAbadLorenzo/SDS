@@ -42,7 +42,11 @@ public class ACLServiceImpl implements ACLService {
 
 		for (final Integer funcion : id_funcionalidades) {
 			final FuncionalidadEntity funcionalidad = funcionalidadRepository.findByIdFuncionalidad(funcion);
-			funcionalidadesMenu.add(funcionalidad.getNombreFuncionalidad());
+
+			if (!funcionalidadesMenu.contains(funcionalidad.getNombreFuncionalidad())) {
+				funcionalidadesMenu.add(funcionalidad.getNombreFuncionalidad());
+			}
+
 		}
 
 		menu.setUsuario(usuario);

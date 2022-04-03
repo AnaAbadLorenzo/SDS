@@ -80,6 +80,7 @@ public enum RespCode {
 	ACCION_REACTIVADA("ACCION_REACTIVADA", "La accion se ha reactivado correctamente"), //
 	ACCION_REVOCADA("ACCION_REVOCADA", "La acción se ha revocado para el rol y la funcionalidad seleccionados"), //
 	ACCION_BORRADA("ACCION_BORRADA", "La accion se ha borrado correctamente"), //
+	ACCIONES_USUARIO_OK("ACCIONES_USUARIO_OK", "Las acciones del usuario se han recuperado correctamente"), //
 	FUNCIONALIDAD_VACIA("FUNCIONALIDAD_VACIA", "La funcionalidad está vacía"), //
 	FUNCIONALIDAD_ENCONTRADA("FUNCIONALIDAD_ENCONTRADA", "La funcionalidad se ha encontrado correctamente"), //
 	FUNCIONALIDADES_LISTADAS("FUNCIONALIDADES_LISTADAS", "Las funcionalidades se han listado correctamente"), //
@@ -88,7 +89,7 @@ public enum RespCode {
 	FUNCIONALIDAD_MODIFICADA("FUNCIONALIDAD_MODIFICADA", "La funcionalidad se ha modificado correctamente"), //
 	FUNCIONALIDAD_ELIMINADA("FUNCIONALIDAD_ELIMINADA", "La funcionalidad se ha eliminado correctamente"), //
 	FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION("FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION",
-			"La funcionalidad está asociada a un rol y una funcionalidad"), //
+			"La funcionalidad está asociada a un rol y una accion"), //
 	FUNCIONALIDAD_NO_EXISTE_EXCEPTION("FUNCIONALIDAD_NO_EXISTE_EXCEPTION", "La funcionalidad que busca no existe"), //
 	FUNCIONALIDAD_YA_EXISTE_EXCEPTION("FUNCIONALIDAD_YA_EXISTE_EXCEPTION", "La funcionalidad que busca ya existe"), //
 	FUNCIONALIDAD_GUARDADA("FUNCIONALIDAD_GUARDADA", "La funcionalidad se ha guardado correctamente"), //
