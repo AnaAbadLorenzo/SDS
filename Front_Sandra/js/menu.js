@@ -86,7 +86,9 @@ async function funcionalidadesUsuario() {
         cargarFuncionalidadesUsuario(res.data);
     })
     .catch((res) => {
-        $("#login-modal").modal('toggle'); 
+       if($('#login-modal').is(':visible')) {
+         $("#login-modal").modal('toggle'); 
+      };
        respuestaAjaxKO('ERROR_LISTAR_FUNCIONALIDADES_MENU');
 
   });

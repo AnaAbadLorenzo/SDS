@@ -23,7 +23,6 @@
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="js/gestionRoles.js"></script>
-	<script type="text/javascript" src="js/gestionFuncionalidades.js"></script>
 	<script type="text/javascript" src="js/paginacion.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
@@ -37,7 +36,7 @@
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
 	await cargarRoles(0,tamanhoPaginaRol);
 	await cargarPermisosFuncRol();
-	ejecutaFuncion(compruebaFuncionalidadesPermisos(),20000);
+	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('ROL')},10000);
 
   })();">  
 	<div id="topMenu"></div>
@@ -59,11 +58,11 @@
     </div>
 
     <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
-        <img class="iconoSearchDelete iconSearchDelete" src="images/searchDelete3.png" alt="Buscar Roles Eliminados" />
+        <img id="btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Roles Eliminados" />
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
 
-    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla()" class="tooltip refreshIcon">
+    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaRol)" class="tooltip refreshIcon">
         <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
         <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
     </div>

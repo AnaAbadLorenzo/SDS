@@ -456,6 +456,7 @@ thead {
 .addIcon, .volverAtrasIcon {
   margin-left: 1.5%;
   margin-top: 1%;
+  cursor: pointer;
 }
 
 .searchIcon {

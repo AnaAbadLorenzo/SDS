@@ -666,10 +666,15 @@ function ejecutaFuncion(funcion, tiempo){
 }
 
 /** Función que comprueba las funcionalidades y permisos del usuario **/
-function compruebaFuncionalidadesPermisos(){
+function compruebaFuncionalidadesPermisos(entidad){
 	funcionalidadesUsuario();
-	cargarPermisosFuncRol();
-	cargarPermisosFuncFuncionalidad()
+
+	if(entidad == 'ROL'){
+		cargarPermisosFuncRol();
+	}else if(entidad == 'FUNCIONALIDAD'){
+		cargarPermisosFuncFuncionalidad();
+	}
+	
 }
 
 

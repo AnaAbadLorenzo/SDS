@@ -1,1 +1,2 @@
-var tamanhoPaginaRol = 1;
+var tamanhoPaginaRol = 2;
+var tamanhoPaginaFuncionalidad = 2;

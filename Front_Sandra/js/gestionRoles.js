@@ -27,12 +27,12 @@ function cargarRolesAjaxPromesa(numeroPagina, tamanhoPagina){
 }
 
 /**Función para recuperar los roles eliminados con ajax y promesas*/
-function buscarEliminadosAjaxPromesa(){
+function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
     var data = {
-      inicio : 0,
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaRol),
       tamanhoPagina : tamanhoPaginaRol,
     }
     
@@ -55,17 +55,28 @@ function buscarEliminadosAjaxPromesa(){
 }
 
 /**Función para recuperar un rol en base a parámetros con ajax y promesas*/
-function buscarRolAjaxPromesa(){
+function buscarRolAjaxPromesa(numeroPagina, tamanhoPagina, accion){
   return new Promise(function(resolve, reject) {
   	var token = getCookie('tokenUsuario');
 
-    var data = {
-      rolName : $('#nombreRol').val(),
-      rolDescription : $('#descripcionRol').val(),
-      inicio:0,
-      tamanhoPagina: tamanhoPaginaRol
+    if(accion == "buscarModal"){
+        var data = {
+          rolName : $('#nombreRol').val(),
+          rolDescription : $('#descripcionRol').val(),
+          inicio: calculaInicio(numeroPagina, tamanhoPaginaRol),
+          tamanhoPagina: tamanhoPaginaRol
+        }
     }
-    
+
+    if(accion == "buscarPaginacion"){
+       var data = {
+          rolName : getCookie('rolName'),
+          rolDescription : getCookie('rolDescription'),
+          inicio: calculaInicio(numeroPagina, tamanhoPaginaRol),
+          tamanhoPagina: tamanhoPaginaRol
+        }
+    }
+
     $.ajax({
       method: "POST",
       url: urlPeticionAjaxListarRol,
@@ -275,7 +286,12 @@ async function cargarRoles(numeroPagina, tamanhoPagina){
       setLang(getCookie('lang'));
 
       paginadorRol(totalResults, 'cargarRoles');
-      $('#' + numeroPagina).addClass("active");
+      
+      if(numeroPagina == 0){
+        $('#' + (numeroPagina+1)).addClass("active");
+      }else{
+        $('#' + numeroPagina).addClass("active");
+      }
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -287,7 +303,7 @@ async function cargarRoles(numeroPagina, tamanhoPagina){
 
 /*Función que refresca la tabla por si hay algún cambio en BD */
 async function refrescarTabla(numeroPagina, tamanhoPagina){
-	await cargarRolesAjaxPromesa(numeroPagina, tamahoPagina)
+	await cargarRolesAjaxPromesa(numeroPagina, tamanhoPagina)
 	.then((res) => {
       cargarPermisosFuncRol();
       setCookie('nombreRol', '');
@@ -315,9 +331,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
+        var numPagCookie = numeroPagina + 1 ;
       }else{
         $('#' + numeroPagina).addClass("active");
+         var numPagCookie = numeroPagina;
       }
+
+      setCookie('numeroPagina', numPagCookie);
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -332,11 +352,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 }
 
 /** Función que buscar un rol **/
-async function buscarRol(){
-	await buscarRolAjaxPromesa()
+async function buscarRol(numeroPagina, tamanhoPagina, accion){
+	await buscarRolAjaxPromesa(numeroPagina, tamanhoPagina, accion)
 	  .then((res) => {
       cargarPermisosFuncRol();
-      $("#form-modal").modal('toggle');
+      if($('#form-modal').is(':visible')) {
+         $("#form-modal").modal('toggle');
+      };
       guardarParametrosBusqueda(res.data.datosBusqueda);
 	  	var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
@@ -357,11 +379,14 @@ async function buscarRol(){
 
       paginadorRol(totalResults, 'buscarRol');
       
-      /*if(numeroPagina == 0){
+      if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
+        var numPagCookie = numeroPagina+1;
       }else{
         $('#' + numeroPagina).addClass("active");
-      }*/
+        var numPagCookie = numeroPagina;
+      }
+      setCookie('numeroPagina', numPagCookie);
 	  
 	  }).catch((res) => {
       cargarPermisosFuncRol();
@@ -391,7 +416,7 @@ async function addRol(){
     
     $('#nombreRol').val(getCookie('rolName'));
     $('#descripcionRol').val(getCookie('rolDescription'));
-    buscarRol();
+    buscarRol(getCookie('numeroPagina'), tamanhoPaginaRol, 'buscarPaginacion');
 
   }).catch((res) => {
 	    $("#form-modal").modal('toggle');
@@ -423,7 +448,7 @@ async function editRol(){
     document.getElementById("modal").style.display = "block";
     $('#nombreRol').val(getCookie('rolName'));
     $('#descripcionRol').val(getCookie('rolDescription'));
-    buscarRol();
+    buscarRol(getCookie('numeroPagina'), tamanhoPaginaRol, 'buscarPaginacion');
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -454,7 +479,7 @@ async function deleteRol(){
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
-    refrescarTabla();
+    refrescarTabla(0, tamanhoPaginaRol);
 
   }).catch((res) => {
 	   
@@ -500,8 +525,8 @@ async function detalleRol(){
 }
 
 /*Función que busca los eliminados de la tabla de rol*/
-async function buscarEliminados(){
-  await buscarEliminadosAjaxPromesa()
+async function buscarEliminados(numeroPagina, tamanhoPagina){
+  await buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
       cargarPermisosFuncRol();
       var numResults = res.data.numResultados + '';
@@ -525,7 +550,7 @@ async function buscarEliminados(){
       setCookie('rolName', '');
       setCookie('rolDescription', '');
 
-      paginadorRol(totalResults);
+      paginadorRol(totalResults, 'buscarEliminadosRol');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -555,7 +580,7 @@ async function reactivarRol(){
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
-    buscarEliminados();
+    buscarEliminados(0, tamanhoPaginaRol);
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -569,7 +594,6 @@ async function reactivarRol(){
 async function cargarPermisosFuncRol(){
   await cargarPermisosFuncRolAjaxPromesa()
   .then((res) => {
-
     gestionarPermisosRol(res.data);
     
     }).catch((res) => {
@@ -583,7 +607,7 @@ async function cargarPermisosFuncRol(){
 function showBuscarRol() {
 	var idioma = getCookie('lang');
 
-	cambiarFormulario('SEARCH_ROL', 'javascript:buscarRol();', 'return comprobarBuscarRol();');
+	cambiarFormulario('SEARCH_ROL', 'javascript:buscarRol(0,' + tamanhoPaginaRol + ', \'buscarModal\'' + ');', 'return comprobarBuscarRol();');
 	cambiarOnBlurCampos('return comprobarNombreRolSearch(\'nombreRol\', \'errorFormatoNombreRol\', \'nombreRol\')', 
 	'return comprobarDescripcionRolSearch(\'descripcionRol\', \'errorFormatoDescripcionRol\', \'descripcionRol\')');
 	cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchRol', 'Buscar');
@@ -804,11 +828,13 @@ function gestionarPermisosRol(idElementoList) {
 
       case 'Listar' :
         $('#btnListarRol').attr('src', 'images/search3.png');
+        $('#btnSearchDelete').attr('src', 'images/searchDelete3.png');
         $('#btnListarRol').css("cursor", "pointer");
         $('.iconoSearchDelete').css("cursor", "pointer");
         $('#divListarRol').attr("data-toggle", "modal");
-        $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados()");
+        $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0, \'tamanhoPaginaRol\')");
         $('#divListarRol').attr("data-target", "#form-modal");
+      break;
 
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');

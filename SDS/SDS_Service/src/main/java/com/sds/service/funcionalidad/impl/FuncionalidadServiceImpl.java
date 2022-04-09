@@ -289,11 +289,11 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 						CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo(), CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()));
 			} else {
-				funcionalidadEntity.setNombreFuncionalidad(funcionalidadEntity.getNombreFuncionalidad());
-				funcionalidadEntity.setDescripFuncionalidad(funcionalidadEntity.getDescripFuncionalidad());
-				funcionalidadEntity.setBorradoFuncionalidad(funcionalidadEntity.getBorradoFuncionalidad());
+				funcionalidadBD.get().setNombreFuncionalidad(funcionalidadEntity.getNombreFuncionalidad());
+				funcionalidadBD.get().setDescripFuncionalidad(funcionalidadEntity.getDescripFuncionalidad());
+				funcionalidadBD.get().setBorradoFuncionalidad(funcionalidadEntity.getBorradoFuncionalidad());
 
-				funcionalidadRepository.saveAndFlush(funcionalidadEntity);
+				funcionalidadRepository.saveAndFlush(funcionalidadBD.get());
 
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(funcionalidad.getUsuario(),
 						Constantes.ACCION_MODIFICAR_FUNCIONALIDAD, funcionalidad.getFuncionalidadEntity().toString());

@@ -35,9 +35,9 @@
     await funcionalidadesUsuario();
     modalCambioPass();
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
-	await cargarFuncionalidades();
+	await cargarFuncionalidades(0, tamanhoPaginaFuncionalidad);
 	await cargarPermisosFuncFuncionalidad();
-	ejecutaFuncion(compruebaFuncionalidadesPermisos(),20000);
+	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('FUNCIONALIDAD')},10000);
 
   })();">  
 	<div id="topMenu"></div>
@@ -59,7 +59,7 @@
     </div>
 
     <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
-        <img class="iconoSearchDelete iconSearchDelete" src="images/searchDelete3.png" alt="Buscar Funcionalidades Eliminadas" />
+        <img id = "btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Funcionalidades Eliminadas" />
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
 
@@ -126,26 +126,9 @@
     </div>
   </div>
 
-	<div class="paginacion">
+	<div id="itemPaginacion" class="paginacion">
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
-		    <li class="page-item disabled tooltip">
-		      <a class="page-link" href="#" aria-label="Previous">
-		        	<span aria-hidden="true">&laquo;</span>
-		        	<span class="sr-only">Previous</span>
-		        	<span class="tooltiptext"> Anterior</span>
-		      </a>
-		    </li>
-		    	<li class="page-item active"><a class="page-link" href="#">1</a></li>
-		    	<li class="page-item"><a class="page-link" href="#">2</a></li>
-		    	<li class="page-item"><a class="page-link" href="#">3</a></li>
-		    	<li class="page-item navegacion tooltip">
-		      		<a class="page-link" href="#" aria-label="Next">
-		        		<span aria-hidden="true">&raquo;</span>
-		        		<span class="sr-only">Next</span>
-		        		<span class="tooltiptext"> Siguiente</span>
-		      		</a>
-		    	</li>
 		  	</ul>
 		</nav>
 	</div>
