@@ -20,6 +20,7 @@ public class CodigosMensajes {
 	public static final String DNI_PERSONA_ALFANUMERICO_INCORRECTO = "DNI_PERSONA_INCORRECTO";
 	public static final String DNI_PERSONA_MENOR_QUE_9 = "DNI_PERSONA_MENOR_QUE_9";
 	public static final String DNI_PERSONA_MAYOR_QUE_9 = "DNI_PERSONA_MAYOR_QUE_9";
+	public static final String DNI_PERSONA_NO_VALIDO = "DNI_PERSONA_NO_VALIDO";
 
 	public static final String NOMBRE_VACIO = "NOMBRE_VACIO";
 	public static final String NOMBRE_LETRAS_ACENTOS_INCORRECTO = "NOMBRE_LETRAS_ACENTOS_INCORRECTO";

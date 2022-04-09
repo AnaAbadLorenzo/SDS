@@ -98,7 +98,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(usuariosToret,
-				numberTotalResults, usuariosToret.size());
+				numberTotalResults, usuariosToret.size(), inicio);
 
 		return result;
 	}
@@ -148,7 +148,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		datosBusqueda.add(Constantes.ROL + Constantes.DOS_PUNTOS + rol.toString());
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, datosBusqueda,
-				numberTotalResults, toret.size());
+				numberTotalResults, toret.size(), inicio);
 
 		return result;
 	}
@@ -180,7 +180,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 		}
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(usuariosToret,
-				numberTotalResults, usuariosToret.size());
+				numberTotalResults, usuariosToret.size(), inicio);
 
 		return result;
 	}

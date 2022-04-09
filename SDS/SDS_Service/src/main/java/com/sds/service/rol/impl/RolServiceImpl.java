@@ -87,7 +87,7 @@ public class RolServiceImpl implements RolService {
 		datosBusqueda.add(Constantes.ROL_DESCRIPTION + Constantes.DOS_PUNTOS + rolDescription);
 
 		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, datosBusqueda,
-				numberTotalResults, toret.size());
+				numberTotalResults, toret.size(), inicio);
 		return result;
 
 	}
@@ -110,7 +110,7 @@ public class RolServiceImpl implements RolService {
 		}
 
 		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 		return result;
 	}
 
@@ -133,7 +133,7 @@ public class RolServiceImpl implements RolService {
 		}
 
 		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 		return result;
 
 	}
@@ -304,10 +304,10 @@ public class RolServiceImpl implements RolService {
 				throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
 						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
 			} else {
-				rolEntity.setRolName(rolEntity.getRolName());
-				rolEntity.setRolDescription(rolEntity.getRolDescription());
-				rolEntity.setBorradoRol(rolEntity.getBorradoRol());
-				rolRepository.saveAndFlush(rolEntity);
+				rolUsuario.get().setRolName(rolEntity.getRolName());
+				rolUsuario.get().setRolDescription(rolEntity.getRolDescription());
+				rolUsuario.get().setBorradoRol(rolEntity.getBorradoRol());
+				rolRepository.saveAndFlush(rolUsuario.get());
 
 				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(rol.getUsuario(),
 						Constantes.ACCION_BUSCAR_ROL, rolUsuario.toString());

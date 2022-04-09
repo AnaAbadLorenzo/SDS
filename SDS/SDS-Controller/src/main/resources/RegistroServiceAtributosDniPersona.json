@@ -173,6 +173,41 @@
 		"nombreEmpresa": "EmpresasPepe",
 		"direccionEmpresa": "Prueba",
 		"telefonoEmpresa": "988212121"
+	},
+	
+	"dniValido":{
+		"dniP": "45146321N",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512",
+		"usuario": "alba",
+		"passwdUsuario": "albita",
+		"idRol": 2,
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
+	},
+	"dniNoValido":{
+		"dniP": "45146321X",
+		"nombreP": "Alba",
+		"apellidosP": "Cid",
+		"fechaNacP": "1964-05-09",
+		"direccionP": "Avenida de Portugal N144",
+		"emailP": "alba@alba.com",
+		"telefonoP": "654789512",
+		"usuario": "alba",
+		"passwdUsuario": "albita",
+		"idRol": 2,
+		"idEmpresa": 4,
+		"cifEmpresa": "R56797544",
+		"nombreEmpresa": "EmpresasPepe",
+		"direccionEmpresa": "Prueba",
+		"telefonoEmpresa": "988212121"
 	}
 	
 	

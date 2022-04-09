@@ -163,4 +163,29 @@ public class TestAtributoDniUsuario {
 				Constantes.DNI_USUARIO);
 
 	}
+
+	public DatosPruebaAtributos getTestDniUsuarioCorrectoValido(final UsuarioEntity datosEntradaDniUsuario) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoDNIValido(datosEntradaDniUsuario.getDniUsuario());
+
+		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.IDENTIFICADOR_CORRECTO, Constantes.EXITO, datosEntradaDniUsuario.getDniUsuario(),
+				Constantes.DNI_USUARIO);
+
+	}
+
+	public DatosPruebaAtributos getTestDniUsuarioCorrectoNoValido(final UsuarioEntity datosEntradaDniUsuario) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoDNIValido(datosEntradaDniUsuario.getDniUsuario());
+
+		final String resultadoEsperado = CodigosMensajes.DNI_PERSONA_NO_VALIDO + " - " + Mensajes.DNI_NO_ES_VALIDO;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.IDENTIFICADOR_INCORRECTO, Constantes.ERROR, datosEntradaDniUsuario.getDniUsuario(),
+				Constantes.DNI_USUARIO);
+	}
 }

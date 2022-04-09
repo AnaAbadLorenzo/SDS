@@ -89,6 +89,10 @@ function obtenerValor(valor, atributos, entidad){
 			case 'Rol':
 				resultadoValor = '"' + atributos[0] + '" : "' + valor.rolDescription + '", "' + atributos[1] + '" : "' + valor.rolName +  '"';
 			break;
+
+			case 'Funcionalidad':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.descripFuncionalidad + '", "' + atributos[1] + '" : "' + valor.nombreFuncionalidad +  '"';
+			break;
 		}
 
 	} else {

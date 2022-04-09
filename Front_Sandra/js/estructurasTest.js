@@ -342,6 +342,27 @@ function cargarTestGestionRoles(){
 										    '</div>' +
 								      	'</div>' +
 
+								      	'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseRolAccionesReactivar" onclick="javascript:testAccionesRolReactivar()">' +
+												        ' Reactivar Rol ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestRolAccionesReactivar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseRolAccionesReactivar" class="collapse" data-parent="#accordion8">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesRolReactivar"></thead>' +
+															   '<tbody id="cuerpoAccionesRolReactivar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
 							    	'</div>' +
 								'</div>' +
 					 		' </div>' +
@@ -349,3 +370,208 @@ function cargarTestGestionRoles(){
 
 	$("#testRol").append(contenidoTest);
 }
+
+
+/*Función para cargar las opciones de Tests de Funcionalidades*/
+function cargarTestGestionFuncionalidades(){
+
+	$("#testFuncionalidad").html("");
+
+	var contenidoTest = '<div id="accordion9">' +
+	      					'<div class="card">' +
+							    '<div class="card-header">' +
+							    	'<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAtributos">' +
+							        	' Atributos ' +
+							      	'</a>' +
+							      	'<img class="iconTab" id="iconoTestFuncionalidadAtributos" src="images/failed.png" hidden>' +
+							    '</div>' +
+
+							    '<div id="collapseFuncionalidadAtributos" class="collapse" data-parent="#accordion9">' +
+							    	'<div class="card-body">' +
+							        
+								      	'<div id="accordion10">' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAtributosGuardar" onclick="javascript:testAtributosFuncionalidadGuardar()">' +
+												        ' Añadir Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAtributosGuardar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAtributosGuardar" class="collapse" data-parent="#accordion10">' +
+												    '<div class="card-body">' +
+												        '<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															    '<thead class="cabeceraTablasTest" id="cabeceraAtributosFuncionalidadGuardar"></thead>' +
+															    '<tbody id="cuerpoAtributosFuncionalidadGuardar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+											'</div>' +
+
+											'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAtributoBuscar" onclick="javascript:testAtributosFuncionalidadBuscar()">' +
+												        ' Buscar Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAtributosBuscar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAtributoBuscar" class="collapse" data-parent="#accordion10">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAtributosFuncionalidadBuscar"></thead>' +
+															   '<tbody id="cuerpoAtributosFuncionalidadBuscar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAtributoModificar" onclick="javascript:testAtributosFuncionalidadModificar()">' +
+												        ' Modificar Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAtributosModificar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAtributoModificar" class="collapse" data-parent="#accordion10">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAtributosFuncionalidadModificar"></thead>' +
+															   '<tbody id="cuerpoAtributosFuncionalidadModificar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
+							    	'</div>' +
+								'</div>' +
+
+					  			'<div class="card-header">' +
+					      			'<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAcciones">' +
+					        			' Acciones ' +
+					      			'</a>' +
+					      			'<img class="iconTab" id="iconoTestFuncionalidadAcciones" src="images/failed.png" hidden>' +
+					    		'</div>' +
+
+					    		'<div id="collapseFuncionalidadAcciones" class="collapse" data-parent="#accordion9">' +
+							    	'<div class="card-body">' +
+							        
+								      	'<div id="accordion11">' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAccionesGuardar" onclick="javascript:testAccionesFuncionalidadGuardar()">' +
+												        ' Añadir Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAccionesGuardar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAccionesGuardar" class="collapse" data-parent="#accordion11">' +
+												    '<div class="card-body">' +
+												        '<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															    '<thead class="cabeceraTablasTest" id="cabeceraAccionesFuncionalidadGuardar"></thead>' +
+															    '<tbody id="cuerpoAccionesFuncionalidadGuardar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+											'</div>' +
+
+											'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAccionesEliminar" onclick="javascript:testAccionesFuncionalidadEliminar()">' +
+												        ' Eliminar Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAccionesEliminar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAccionesEliminar" class="collapse" data-parent="#accordion11">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesFuncionalidadEliminar"></thead>' +
+															   '<tbody id="cuerpoAccionesFuncionalidadEliminar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAccionesModificar" onclick="javascript:testAccionesFuncionalidadModificar()">' +
+												        ' Modificar Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAccionesModificar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAccionesModificar" class="collapse" data-parent="#accordion11">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesFuncionalidadModificar"></thead>' +
+															   '<tbody id="cuerpoAccionesFuncionalidadModificar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAccionesBuscar" onclick="javascript:testAccionesFuncionalidadBuscar()">' +
+												        ' Buscar Funcionalidad ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestFuncionalidadAccionesBuscar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAccionesBuscar" class="collapse" data-parent="#accordion11">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesFuncionalidadBuscar"></thead>' +
+															   '<tbody id="cuerpoAccionesFuncionalidadBuscar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
+								      	'<div class="card">' +
+											'<div class="card-header">' +
+												'<a class="collapsed card-link" data-toggle="collapse" href="#collapseFuncionalidadAccionesReactivar" onclick="javascript:testAccionesFuncionalidadReactivar()">' +
+												    ' Reactivar Funcionalidad ' +
+												'</a>' +
+												'<img class="iconTab" id="iconoTestFuncionalidadAccionesReactivar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseFuncionalidadAccionesReactivar" class="collapse" data-parent="#accordion11">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesFuncionalidadReactivar"></thead>' +
+															   '<tbody id="cuerpoAccionesFuncionalidadReactivar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
+							    	'</div>' +
+								'</div>' +
+					 		' </div>' +
+						'</div>';
+
+	$("#testFuncionalidad").append(contenidoTest);
+}
+

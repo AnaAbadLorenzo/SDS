@@ -231,7 +231,9 @@ function comprobarEmail(idElemento, idElementoError, campo) {
 function comprobarDNI(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarFormatoDNI(idElemento, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 9, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 9,  idElementoError, campo)) {
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarFormatoDNI(idElemento, idElementoError, campo) 
+		&& comprobarEnhe(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 9, idElementoError, campo) 
+		&& comprobarTamañoMaximo(idElemento, 9,  idElementoError, campo) && comprobarDNICorrecto(idElemento, idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError);
         return true;
 	} else{
@@ -999,6 +1001,37 @@ function comprobarFormatoDNI(idElemento, idElementoError, campo) {
     return true;
 }
 
+/**Función para comprobar el DNI correcto **/
+function comprobarDNICorrecto(idElemento, idElementoError, campo) {
+	
+	var codigo = "";
+
+	var letrasDNI = "TRWAGMYFPDXBNJZSQVHLCKET";
+
+	var valor = document.getElementById(idElemento).value;
+      
+	var patron = /^[0-9]{8}[A-Z]{1}$/; // establecemos un patron para el DNI
+
+	if(patron.test(valor)){
+		var dniSinLetra = valor.substring(0, valor.length-1);
+		var letraIntroUsuario = valor.substring(valor.length-1, valor.length);
+		var posicion = dniSinLetra % 23;
+		var letra = letrasDNI.substring(posicion,posicion+1);
+
+		if(letra != letraIntroUsuario){
+			switch(campo) {
+				case 'dniPersona' :
+					codigo = "DNI_PERSONA_NO_VALIDO";
+				break;
+			}
+
+			addCodeError(idElementoError, codigo);
+			return false;
+		}
+	}
+
+    return true;
+}
 
 /**Función para comprobar el formato del CIF **/
 function comprobarFormatoCIF(idElemento, idElementoError, campo) {

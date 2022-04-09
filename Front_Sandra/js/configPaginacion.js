@@ -1,0 +1,1 @@
+var tamanhoPaginaRol = 1;

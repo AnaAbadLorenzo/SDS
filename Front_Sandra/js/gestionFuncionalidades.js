@@ -435,7 +435,6 @@ async function buscarEliminados(){
   await buscarEliminadosAjaxPromesa()
   .then((res) => {
       cargarPermisosFuncFuncionalidad();
-
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
       var textPaginacion = "1 - " + numResults  + " de " + totalResults 
@@ -757,41 +756,43 @@ function gestionarPermisosFuncionalidad(idElementoList) {
     switch(idElemento){
       case "Añadir":
         $('#btnAddFuncionalidad').attr('src', 'images/add3.png');
-        $('#btnAddFuncionalidad').css("cursor", "default");
+        $('#btnAddFuncionalidad').css("cursor", "pointer");
         $('#divAddFuncionalidad').attr("data-toggle", "modal");
         $('#divAddFuncionalidad').attr("data-target", "#form-modal");
       break;
 
       case "Modificar" : 
         $('.editarPermiso').attr('src', 'images/edit3.png');
-        $('.editarPermiso').css("cursor", "default");
+        $('.editarPermiso').css("cursor", "pointer");
         $('.editarPermiso').attr("data-toggle", "modal");
         $('.editarPermiso').attr("data-target", "#form-modal");
       break;
 
       case "Eliminar" :
         $('.eliminarPermiso').attr('src', 'images/delete3.png');
-        $('.eliminarPermiso').css("cursor", "default");
+        $('.eliminarPermiso').css("cursor", "pointer");
         $('.eliminarPermiso').attr("data-toggle", "modal");
         $('.eliminarPermiso').attr("data-target", "#form-modal");
       break;
 
       case 'Listar' :
         $('#btnListarFuncionalidades').attr('src', 'images/search3.png');
-        $('#btnListarFuncionalidades').css("cursor", "default");
+        $('#btnListarFuncionalidades').css("cursor", "pointer");
+        $('.iconoSearchDelete').css("cursor", "pointer");
+        $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados()");
         $('#divListarFuncionalidades').attr("data-toggle", "modal");
         $('#divListarFuncionalidades').attr("data-target", "#form-modal");
 
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');
-        $('.detallePermiso').css("cursor", "default");
+        $('.detallePermiso').css("cursor", "pointer");
         $('.detallePermiso').attr("data-toggle", "modal");
         $('.detallePermiso').attr("data-target", "#form-modal");
       break;
 
       case "Reactivar" : 
         $('.reactivarPermiso').attr('src', 'images/reactivar.png');
-        $('.reactivarPermiso').css("cursor", "default");
+        $('.reactivarPermiso').css("cursor", "pointer");
         $('.reactivarPermiso').attr("data-toggle", "modal");
         $('.reactivarPermiso').attr("data-target", "#form-modal");
       break;

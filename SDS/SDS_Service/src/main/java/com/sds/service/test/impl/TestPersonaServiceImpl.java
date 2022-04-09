@@ -105,8 +105,10 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFABETICO_DATA);
 		final PersonaEntity datosEntradaDniPersonaAlfanumerico = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
-		final PersonaEntity datosEntradaDniPersonaNumerico = generarJSON
-				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_NUMERICO_DATA);
+		final PersonaEntity datosEntradaDniPersonaValido = generarJSON
+				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNI_VALIDO);
+		final PersonaEntity datosEntradaDniPersonaNoValido = generarJSON
+				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNI_NO_VALIDO);
 
 		datosPruebaAtributos.add(testAtributoDniPersona.getTestDniPersonaVacio(datosEntradaDniPersonaVacio));
 
@@ -122,12 +124,9 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				.add(testAtributoDniPersona.getTestDniPAlfanumericoMenor9(datosEntradaDniPersonaAlfanumericoMenor9));
 		datosPruebaAtributos
 				.add(testAtributoDniPersona.getTestDniPAlfanumericoMayor9(datosEntradaDniPersonaAlfanumericoMayor9));
-		datosPruebaAtributos
-				.add(testAtributoDniPersona.getTestDniPCorrectoAlfanumerico(datosEntradaDniPersonaAlfabetico));
-		datosPruebaAtributos
-				.add(testAtributoDniPersona.getTestDniPCorrectoAlfanumerico(datosEntradaDniPersonaAlfanumerico));
-		datosPruebaAtributos
-				.add(testAtributoDniPersona.getTestDniPCorrectoAlfanumerico(datosEntradaDniPersonaNumerico));
+		datosPruebaAtributos.add(testAtributoDniPersona.getTestDniPCorrecto(datosEntradaDniPersonaAlfanumerico));
+		datosPruebaAtributos.add(testAtributoDniPersona.getTestDniPCorrectoValido(datosEntradaDniPersonaValido));
+		datosPruebaAtributos.add(testAtributoDniPersona.getTestDniPCorrectoNoValido(datosEntradaDniPersonaNoValido));
 
 		return datosPruebaAtributos;
 	}
@@ -149,12 +148,8 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFANUMERICO_ESPACIOS_DATA);
 		final PersonaEntity datosEntradaDniPersonaAlfanumericoMayor9 = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIP_ALFANUMERICO_MAYOR_9_DATA);
-		final PersonaEntity datosEntradaDniPersonaAlfabetico = generarJSON
-				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFABETICO_DATA);
 		final PersonaEntity datosEntradaDniPersonaAlfanumerico = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
-		final PersonaEntity datosEntradaDniPersonaNumerico = generarJSON
-				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_NUMERICO_DATA);
 
 		datosPruebaAtributos
 				.add(testAtributoDniPersona.getTestDniPersonaAlfanumericoEnhe(datosEntradaDniPersonaAlfanumericoEnhe));
@@ -168,12 +163,7 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 
 		datosPruebaAtributos
 				.add(testAtributoDniPersona.getTestDniPAlfanumericoMayor9(datosEntradaDniPersonaAlfanumericoMayor9));
-		datosPruebaAtributos
-				.add(testAtributoDniPersona.getTestDniPCorrectoAlfanumerico(datosEntradaDniPersonaAlfabetico));
-		datosPruebaAtributos
-				.add(testAtributoDniPersona.getTestDniPCorrectoAlfanumerico(datosEntradaDniPersonaAlfanumerico));
-		datosPruebaAtributos
-				.add(testAtributoDniPersona.getTestDniPCorrectoAlfanumerico(datosEntradaDniPersonaNumerico));
+		datosPruebaAtributos.add(testAtributoDniPersona.getTestDniPCorrecto(datosEntradaDniPersonaAlfanumerico));
 
 		return datosPruebaAtributos;
 	}

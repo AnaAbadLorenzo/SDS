@@ -256,10 +256,6 @@ form button[type="button"]:hover {
   background-color: #673AB7;
 }
 
-/********* CURSORES **********/
-#btnAddFuncionalidad, .detallePermiso, .editarPermiso, .eliminarPermiso, .reactivarPermiso {
-  cursor : not-allowed;
-}
 
 /********* ICONOS ***********/
 
@@ -408,7 +404,7 @@ thead {
   opacity: 1;
 }
 
-.cabecera {
+.cabecera, .cabeceraEliminados {
   position:  fixed;
   top: 12%;
   left: 8%;
@@ -428,6 +424,12 @@ thead {
   cursor: pointer;
 }
 
+.iconoVolverAtras {
+  width: 3em; 
+  height: 3em; 
+  cursor: pointer;
+}
+
 .iconoSearch, .iconoRefresh, .iconoSearchDelete {
   width: 3em; 
   height: 3em; 
@@ -440,7 +442,7 @@ thead {
   cursor: pointer;
 }
 
-.addIcon {
+.addIcon, .volverAtrasIcon {
   margin-left: 1.5%;
   margin-top: 1%;
 }
@@ -484,11 +486,11 @@ thead {
   margin-left: 4%;
 }
 
-.rolNameColumn, .rolDescriptionColumn, .rolIdColumn {
+.nombreFuncionalidadColumn, .descripFuncionalidadColumn, .idFuncionalidadColumn {
   display: inline;
 }
 
-.ordenarIconRolName, .ordenarIconRolDescription, .ordenarIconRolId {
+.ordenarIconFuncionalidadName, .ordenarIconFuncionalidadDescrip, .ordenarIconIdFuncionalidad {
   margin-left: 2%;
   cursor:  pointer;
 }
@@ -497,6 +499,10 @@ thead {
   width: 1.3em;
 }
 
+/********* CURSORES **********/
+.iconoAdd, .iconoSearch, .iconoSearchDelete, .detallePermiso, .editarPermiso, .eliminarPermiso, .reactivarPermiso {
+  cursor : not-allowed;
+}
 
 /******************** PAGINACION *********/
 .paginacion {

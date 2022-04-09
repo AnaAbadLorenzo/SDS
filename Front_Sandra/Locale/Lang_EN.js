@@ -45,6 +45,7 @@ arrayEN={
 	'ICONO_ELIMINAR' : 'Delete',
 	'ICONO_VOLVER' : 'Home',
 	'ICONO_REACTIVAR': 'Reactivate',
+	'ICONO_BACK' : 'Back',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
@@ -90,6 +91,7 @@ arrayEN={
 	'DNI_PERSONA_MENOR_QUE_9' : 'Personal ID size is menor than 9 characteres',
 	'DNI_PERSONA_MAYOR_QUE_9' : 'Personal ID size is bigger than 9 characteres',
 	'DNI_PERSONA_INCORRECTO' : 'Personal ID must only have letters and numbers and has the format 12345678A',
+	'DNI_PERSONA_NO_VALIDO' : 'Personal ID is not valid',
 	'NOMBRE_VACIO' : 'Person name empty',
 	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'Person name can only contain letters',
 	'NOMBRE_MENOR_QUE_3' : 'Person name size minor than 3 characteres',
@@ -156,7 +158,7 @@ arrayEN={
 	'CAMBIAR_CONTRASEÑA_MENU' : 'Change password',
 	'GESTION_ROLES' : 'Role management',
 	'MENU' : 'Home',
-	'SEARCH_ROL' : 'SEARCH_ROL',
+	'SEARCH_ROL' : 'SEARCH ROLE',
 	'ADD_ROL' : 'ADD ROLE',
 	'EDIT_ROLE' : 'EDIT ROLE',
 	'DELETE_ROLE' : 'DELETE ROLE',

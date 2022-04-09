@@ -18,6 +18,8 @@
 	<script type="text/javascript" src="js/registro.js"></script>		
 	<script type="text/javascript" src="js/funcionesComunes.js"></script>
 	<script type="text/javascript" src="js/configURLs.js"></script>
+	<script type="text/javascript" src="js/configPaginacion.js"></script>
+	<script type="text/javascript" src="js/paginacion.js"></script>
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
@@ -35,6 +37,7 @@
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
 	await cargarFuncionalidades();
 	await cargarPermisosFuncFuncionalidad();
+	ejecutaFuncion(compruebaFuncionalidadesPermisos(),20000);
 
   })();">  
 	<div id="topMenu"></div>
@@ -55,7 +58,7 @@
         <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
     </div>
 
-    <div name="btnSearchDelete" value="Buscar Eliminados" onclick="javascript:buscarEliminados()" class="tooltip searchDeleteIcon">
+    <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
         <img class="iconoSearchDelete iconSearchDelete" src="images/searchDelete3.png" alt="Buscar Funcionalidades Eliminadas" />
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
@@ -70,6 +73,13 @@
         <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
     </div>     
 	</div>
+
+	<div class = "cabeceraEliminados" hidden>
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla()" class="tooltip volverAtrasIcon">
+        	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
+        	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
+    	</div> 
+    </div>    
 
 	<div class="table-responsive" id="tablaDatos">
 		<table class="table table-bordered" id="tablaFuncionalidades">

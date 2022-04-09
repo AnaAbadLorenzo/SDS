@@ -88,7 +88,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 		datosBusqueda.add(Constantes.TELEFONO_EMPRESA + Constantes.DOS_PUNTOS + telefonoEmpresa);
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, datosBusqueda,
-				numberTotalResults, toret.size());
+				numberTotalResults, toret.size(), inicio);
 
 		return result;
 	}
@@ -115,7 +115,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 		}
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 
 		return result;
 
@@ -162,7 +162,7 @@ public class EmpresaServiceImpl implements EmpresaService {
 		}
 
 		final ReturnBusquedas<EmpresaEntity> result = new ReturnBusquedas<EmpresaEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 
 		return result;
 

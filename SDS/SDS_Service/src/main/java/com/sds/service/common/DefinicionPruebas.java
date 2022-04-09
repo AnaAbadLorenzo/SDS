@@ -27,6 +27,7 @@ public class DefinicionPruebas {
 	public static final String ALFANUMERICO_CORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño mayor que 3 y menor que 45";
 	public static final String DIRECCION_CORRECTO = "Alfanumerico que puede contener acentos, ñ, caracteres especiales, tamaño mayor que 3 y menor que 128";
 	public static final String IDENTIFICADOR_CORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño 9";
+	public static final String IDENTIFICADOR_INCORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño 9 pero no válido";
 
 	public static final String NUMERICO = "Numerico";
 	public static final String NUMERICO_ENHE = "Numérico con ñ";

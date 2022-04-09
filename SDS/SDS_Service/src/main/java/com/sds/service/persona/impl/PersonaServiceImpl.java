@@ -108,7 +108,7 @@ public class PersonaServiceImpl implements PersonaService {
 		}
 
 		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 
 		return ret;
 	}
@@ -159,7 +159,7 @@ public class PersonaServiceImpl implements PersonaService {
 		}
 
 		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 
 		return ret;
 	}
@@ -237,7 +237,7 @@ public class PersonaServiceImpl implements PersonaService {
 		datosBusqueda.add(Constantes.EMAILP + Constantes.DOS_PUNTOS + emailP);
 
 		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, datosBusqueda,
-				numberTotalResults, toret.size());
+				numberTotalResults, toret.size(), inicio);
 
 		return ret;
 	}

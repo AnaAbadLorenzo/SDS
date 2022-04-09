@@ -27,6 +27,9 @@ var urlPeticionAjaxTestRegistrarAtributos = "http://localhost:8090/test/registra
 var urlPeticionAjaxTestRolAtributosAccionGuardar = "http://localhost:8090/test/rol/atributos/guardar";
 var urlPeticionAjaxTestRolAtributosAccionBuscar = "http://localhost:8090/test/rol/atributos/buscar";
 var urlPeticionAjaxTestRolAtributosAccionModificar = "http://localhost:8090/test/rol/atributos/modificar";
+var urlPeticionAjaxTestFuncionalidadAtributosAccionGuardar = "http://localhost:8090/test/funcionalidad/atributos/guardar";
+var urlPeticionAjaxTestFuncionalidadAtributosAccionBuscar = "http://localhost:8090/test/funcionalidad/atributos/buscar";
+var urlPeticionAjaxTestFuncionalidadAtributosAccionModificar = "http://localhost:8090/test/funcionalidad/atributos/modificar";
 
 
 /**Urls de las peticiones Ajax de test de acciones*/
@@ -37,3 +40,9 @@ var urlPeticionAjaxTestRolAccionGuardar = "http://localhost:8090/test/rol/accion
 var urlPeticionAjaxTestRolAccionEliminar = "http://localhost:8090/test/rol/accion/eliminar";
 var urlPeticionAjaxTestRolAccionBuscar = "http://localhost:8090/test/rol/accion/buscar";
 var urlPeticionAjaxTestRolAccionModificar = "http://localhost:8090/test/rol/accion/modificar";
+var urlPeticionAjaxTestRolAccionReactivar = "http://localhost:8090/test/rol/accion/reactivar";
+var urlPeticionAjaxTestFuncionalidadAccionGuardar = "http://localhost:8090/test/funcionalidad/accion/guardar";
+var urlPeticionAjaxTestFuncionalidadAccionEliminar = "http://localhost:8090/test/funcionalidad/accion/eliminar";
+var urlPeticionAjaxTestFuncionalidadAccionBuscar = "http://localhost:8090/test/funcionalidad/accion/buscar";
+var urlPeticionAjaxTestFuncionalidadAccionModificar = "http://localhost:8090/test/funcionalidad/accion/modificar";
+var urlPeticionAjaxTestFuncionalidadAccionReactivar = "http://localhost:8090/test/funcionalidad/accion/reactivar";

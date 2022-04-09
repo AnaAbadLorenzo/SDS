@@ -1,11 +1,11 @@
 /**Función para recuperar los roles con ajax y promesas*/
-function cargarRolesAjaxPromesa(){
+function cargarRolesAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
   	var token = getCookie('tokenUsuario');
 
     var data = {
-      inicio : 0,
-      tamanhoPagina : 16,
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaRol),
+      tamanhoPagina : tamanhoPaginaRol,
     }
     
     $.ajax({
@@ -33,7 +33,7 @@ function buscarEliminadosAjaxPromesa(){
 
     var data = {
       inicio : 0,
-      tamanhoPagina : 16,
+      tamanhoPagina : tamanhoPaginaRol,
     }
     
     $.ajax({
@@ -63,7 +63,7 @@ function buscarRolAjaxPromesa(){
       rolName : $('#nombreRol').val(),
       rolDescription : $('#descripcionRol').val(),
       inicio:0,
-      tamanhoPagina:16
+      tamanhoPagina: tamanhoPaginaRol
     }
     
     $.ajax({
@@ -255,8 +255,8 @@ function reactivarRolesAjaxPromesa(){
 }
 
 /* Función para obtener los roles del sistema */
-async function cargarRoles(){
-	await cargarRolesAjaxPromesa()
+async function cargarRoles(numeroPagina, tamanhoPagina){
+	await cargarRolesAjaxPromesa(numeroPagina, tamanhoPagina)
 	  .then((res) => {
 	  	var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
@@ -273,6 +273,9 @@ async function cargarRoles(){
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
+
+      paginadorRol(totalResults, 'cargarRoles');
+      $('#' + numeroPagina).addClass("active");
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -283,8 +286,8 @@ async function cargarRoles(){
 }
 
 /*Función que refresca la tabla por si hay algún cambio en BD */
-async function refrescarTabla(){
-	await cargarRolesAjaxPromesa()
+async function refrescarTabla(numeroPagina, tamanhoPagina){
+	await cargarRolesAjaxPromesa(numeroPagina, tamahoPagina)
 	.then((res) => {
       cargarPermisosFuncRol();
       setCookie('nombreRol', '');
@@ -307,6 +310,14 @@ async function refrescarTabla(){
 
       setCookie('rolName', '');
       setCookie('rolDescription', '');
+
+      paginadorRol(totalResults, 'cargarRoles');
+
+      if(numeroPagina == 0){
+        $('#' + (numeroPagina+1)).addClass("active");
+      }else{
+        $('#' + numeroPagina).addClass("active");
+      }
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -343,6 +354,14 @@ async function buscarRol(){
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
+
+      paginadorRol(totalResults, 'buscarRol');
+      
+      /*if(numeroPagina == 0){
+        $('#' + (numeroPagina+1)).addClass("active");
+      }else{
+        $('#' + numeroPagina).addClass("active");
+      }*/
 	  
 	  }).catch((res) => {
       cargarPermisosFuncRol();
@@ -505,6 +524,15 @@ async function buscarEliminados(){
 
       setCookie('rolName', '');
       setCookie('rolDescription', '');
+
+      paginadorRol(totalResults);
+
+      if(numeroPagina == 0){
+        $('#' + (numeroPagina+1)).addClass("active");
+      }else{
+        $('#' + numeroPagina).addClass("active");
+      }
+      
     
     }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -689,7 +717,7 @@ function showReactivar(rolName, rolDescription, idRol) {
     $('#subtitulo').removeAttr('class');
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_REACTIVAR_ROL');
-     $('#subtitulo').attr('hidden', false);
+    $('#subtitulo').removeAttr('hidden');
     
 
     rellenarFormulario(rolName, rolDescription);
@@ -776,8 +804,10 @@ function gestionarPermisosRol(idElementoList) {
 
       case 'Listar' :
         $('#btnListarRol').attr('src', 'images/search3.png');
-        $('#btnListarRol').css("cursor", "default");
+        $('#btnListarRol').css("cursor", "pointer");
+        $('.iconoSearchDelete').css("cursor", "pointer");
         $('#divListarRol').attr("data-toggle", "modal");
+        $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados()");
         $('#divListarRol').attr("data-target", "#form-modal");
 
       case "Visualizar" :

@@ -98,7 +98,7 @@ public class AccionServiceImpl implements AccionService {
 		datosBusqueda.add(Constantes.ACCION_DESCRIPTION + Constantes.DOS_PUNTOS + descripAccion);
 
 		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(accionToret, datosBusqueda,
-				numberTotalResults, accionToret.size());
+				numberTotalResults, accionToret.size(), inicio);
 
 		return result;
 
@@ -124,7 +124,7 @@ public class AccionServiceImpl implements AccionService {
 		}
 
 		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 
 		return result;
 	}
@@ -146,7 +146,7 @@ public class AccionServiceImpl implements AccionService {
 		}
 
 		final ReturnBusquedas<AccionEntity> result = new ReturnBusquedas<AccionEntity>(toret, numberTotalResults,
-				toret.size());
+				toret.size(), inicio);
 
 		return result;
 	}

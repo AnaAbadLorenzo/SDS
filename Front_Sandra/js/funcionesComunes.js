@@ -345,6 +345,9 @@ function construyeFila(entidad, fila) {
 	let atributosFunciones="";
 	var filaTabla = "";
 
+	$('.cabecera').attr('hidden', false);
+	$('.cabeceraEliminados').attr('hidden', true);
+
 	switch(entidad){
 		case 'ROL':
 			atributosFunciones = ["'" + fila.rolName + "'", "'" + fila.rolDescription + "'", "'" + fila.idRol + "'"];
@@ -380,6 +383,9 @@ function construyeFila(entidad, fila) {
 function construyeFilaEliminados(entidad, fila) {
 	let atributosFunciones="";
 	var filaTabla = "";
+
+	$('.cabecera').attr('hidden', true);
+	$('.cabeceraEliminados').attr('hidden', false);
 
 	switch(entidad){
 		case 'ROL':
@@ -549,13 +555,20 @@ function limpiaCookiesBusquedas(){
 function insertacampo(form, name, value){
 	
 	formulario = form;
-	var input = document.createElement('input');
-	input.type = 'hidden';
-	input.name = name;
-	input.value = value;
-	input.className = name;
-	input.id
-	formulario.appendChild(input);
+	var element = document.getElementById(name);
+
+	if(element == '' || element == null){
+		var input = document.createElement('input');
+		input.type = 'hidden';
+		input.name = name;
+		input.value = value;
+		input.className = name;
+		input.id = name;
+		formulario.appendChild(input);
+	}else{
+		element.value = value;
+	}
+	
 
 }
 
@@ -646,6 +659,19 @@ function respuestaAjaxKO(codigo){
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
 }
+
+/** Función que ejecuta la comprobacion de una fucnion cada cierto tiempo **/
+function ejecutaFuncion(funcion, tiempo){
+	return setInterval(funcion, tiempo);
+}
+
+/** Función que comprueba las funcionalidades y permisos del usuario **/
+function compruebaFuncionalidadesPermisos(){
+	funcionalidadesUsuario();
+	cargarPermisosFuncRol();
+	cargarPermisosFuncFuncionalidad()
+}
+
 
 $(document).ready(function(){
   $('.iconCerrar').on('click', function(){

@@ -126,6 +126,9 @@ public class Constantes {
 	public static final String FECHA_INICIO = "fechaInicio";
 	public static final String FECHA_FIN = "fechaFin";
 
+	public static final String DNI_NO_VALIDO = "dniNoValido";
+	public static final String DNI_VALIDO = "dniValido";
+
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";

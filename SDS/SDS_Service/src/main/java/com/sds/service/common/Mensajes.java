@@ -23,6 +23,7 @@ public class Mensajes {
 	public static final String DNI_PERSONA_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_NUMEROS = "El dni de la persona no puede contener más que letras y números";
 	public static final String DNI_NO_PUEDE_SER_MENOR_QUE_9 = "El dni de la persona no puede ser menor que 9";
 	public static final String DNI_NO_PUEDE_SER_MAYOR_QUE_9 = "El dni de la persona no puede ser mayor que 9";
+	public static final String DNI_NO_ES_VALIDO = "El dni de la persona no es válido";
 
 	public static final String NOMBRE_NO_PUEDE_SER_VACIO = "El nombre no puede ser vacío";
 	public static final String NOMBRE_NO_PUEDE_CONTENER_MAS_QUE_LETRAS_Y_ACENTOS = "El nombre de la persona no puede contener más que letras y acentos";

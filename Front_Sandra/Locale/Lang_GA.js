@@ -45,6 +45,7 @@ arrayGA={
 	'ICONO_ELIMINAR' : 'Eliminar',
 	'ICONO_VOLVER' : 'Menú',
 	'ICONO_REACTIVAR': 'Reactivar',
+	'ICONO_BACK' : 'Volver',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
@@ -86,10 +87,11 @@ arrayGA={
 	'PASS_ALFANUMERICO_INCORRECTO' : 'O contrasinal de usuario só pode conter números e letras',
 	'EMAIL_ALFANUMERICO_INCORRECTO' : 'O email de usuario debe seguir o seguinte formato ejemplo@ejemplo.com',
 	'LOGIN_VACIO': 'O nome de usuario e o contrasinal están vacíos',
-	'DNI_PERSONA_VACIO' : 'O dni da persoa é vacío',
-	'DNI_PERSONA_MENOR_QUE_9' : 'O dni da persoa ten menos que 9 caracteres',
-	'DNI_PERSONA_MAYOR_QUE_9' : 'O dni da persoa ten máis de 9 caracteres',
-	'DNI_PERSONA_INCORRECTO' : 'O dni da persoa solo pode conter números e letras e ter o formato 12345678A',
+	'DNI_PERSONA_VACIO' : 'O DNI da persoa é vacío',
+	'DNI_PERSONA_MENOR_QUE_9' : 'O DNI da persoa ten menos que 9 caracteres',
+	'DNI_PERSONA_MAYOR_QUE_9' : 'O DNI da persoa ten máis de 9 caracteres',
+	'DNI_PERSONA_INCORRECTO' : 'O DNI da persoa solo pode conter números e letras e ter o formato 12345678A',
+	'DNI_PERSONA_NO_VALIDO' : 'O DNI da persoa non é válido',
 	'NOMBRE_VACIO' : 'Nome Persoa vacío',
 	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'O nome da persoa só pode conter letras',
 	'NOMBRE_MENOR_QUE_3' : 'O nome da persoa é menor  que 3 caracteres',

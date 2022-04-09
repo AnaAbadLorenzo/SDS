@@ -85,7 +85,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		datosBusqueda.add(Constantes.FUNCIONALIDAD_DESCRIPTION + Constantes.DOS_PUNTOS + descripFuncionalidad);
 
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(funcionalidadToret,
-				datosBusqueda, numberTotalResults, funcionalidadToret.size());
+				datosBusqueda, numberTotalResults, funcionalidadToret.size(), inicio);
 
 		return result;
 	}
@@ -110,7 +110,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 			}
 		}
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
-				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());
+				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size(), inicio);
 
 		return result;
 	}
@@ -137,7 +137,7 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 		}
 
 		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
-				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size());
+				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size(), inicio);
 
 		return result;
 	}

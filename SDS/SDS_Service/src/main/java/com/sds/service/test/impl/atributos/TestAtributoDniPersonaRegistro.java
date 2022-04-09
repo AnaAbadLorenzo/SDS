@@ -164,4 +164,29 @@ public class TestAtributoDniPersonaRegistro {
 				datosEntradaRegistroDniP.getDatosPersona().getDniP(), Constantes.DNIP);
 
 	}
+
+	public DatosPruebaAtributos getTestRegistroDniPCorrectoValido(final Registro datosEntradaRegistroDniP) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoDNIValido(datosEntradaRegistroDniP.getDatosPersona().getDniP());
+
+		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.IDENTIFICADOR_CORRECTO, Constantes.EXITO,
+				datosEntradaRegistroDniP.getDatosPersona().getDniP(), Constantes.DNIP);
+
+	}
+
+	public DatosPruebaAtributos getTestRegistroDniPCorrectoNoValido(final Registro datosEntradaRegistroDniP) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoDNIValido(datosEntradaRegistroDniP.getDatosPersona().getDniP());
+
+		final String resultadoEsperado = CodigosMensajes.DNI_PERSONA_NO_VALIDO + " - " + Mensajes.DNI_NO_ES_VALIDO;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.IDENTIFICADOR_INCORRECTO, Constantes.ERROR,
+				datosEntradaRegistroDniP.getDatosPersona().getDniP(), Constantes.DNIP);
+	}
 }

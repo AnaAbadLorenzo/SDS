@@ -57,7 +57,20 @@
 		"usuario": "alba",
 		"passwdUsuario": "albita"
 		
-	}
+	},
 	
+	"dniValido":{
+		"dniUsuario": "45146321N",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+		
+	},
+	
+	"dniNoValido":{
+		"dniUsuario": "45146321X",
+		"usuario": "alba",
+		"passwdUsuario": "albita"
+		
+	}
 	
 }

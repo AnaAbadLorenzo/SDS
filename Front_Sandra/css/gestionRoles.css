@@ -261,10 +261,6 @@ form button[type="button"]:hover {
   background-color: #673AB7;
 }
 
-/********* CURSORES **********/
-#btnAddRol, .detallePermiso, .editarPermiso, .eliminarPermiso, .reactivarPermiso {
-  cursor : not-allowed;
-}
 
 /********* ICONOS ***********/
 
@@ -419,7 +415,7 @@ thead {
   opacity: 1;
 }
 
-.cabecera {
+.cabecera, .cabeceraEliminados {
   position:  fixed;
   top: 12%;
   left: 8%;
@@ -433,9 +429,15 @@ thead {
   width: 100%;
 }
 
-.iconoAdd, .iconoBack {
+.iconoAdd, .iconoBack{
   width: 4em; 
   height: 4em; 
+  cursor: pointer;
+}
+
+.iconoVolverAtras {
+  width: 3em; 
+  height: 3em; 
   cursor: pointer;
 }
 
@@ -451,7 +453,7 @@ thead {
   cursor: pointer;
 }
 
-.addIcon {
+.addIcon, .volverAtrasIcon {
   margin-left: 1.5%;
   margin-top: 1%;
 }
@@ -506,6 +508,11 @@ thead {
 
 .iconoOrdenar {
   width: 1.3em;
+}
+
+/********* CURSORES **********/
+.iconoAdd, .iconoSearch, .iconoSearchDelete, .detallePermiso, .editarPermiso, .eliminarPermiso, .reactivarPermiso {
+  cursor : not-allowed;
 }
 
 

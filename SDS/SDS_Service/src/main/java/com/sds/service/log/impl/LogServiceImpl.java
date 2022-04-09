@@ -97,7 +97,7 @@ public class LogServiceImpl implements LogService {
 		datosBusqueda.add(Constantes.FECHA_FIN + Constantes.DOS_PUNTOS + fechaFin);
 
 		final ReturnBusquedas<LogExcepcionesEntity> busqueda = new ReturnBusquedas<>(logExcepciones, datosBusqueda,
-				numberTotalResults, logExcepciones.size());
+				numberTotalResults, logExcepciones.size(), inicio);
 
 		return busqueda;
 	}

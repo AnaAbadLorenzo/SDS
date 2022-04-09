@@ -46,6 +46,7 @@ arrayES={
 	'ICONO_ELIMINAR' : 'Eliminar',
 	'ICONO_VOLVER' : 'Menú',
 	'ICONO_REACTIVAR': 'Reactivar',
+	'ICONO_BACK' : 'Volver',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
@@ -87,10 +88,11 @@ arrayES={
 	'PASS_ALFANUMERICO_INCORRECTO' : 'La contraseña de usuario sólo puede contener números y letras',
 	'EMAIL_ALFANUMERICO_INCORRECTO' : 'El email de usuario debe seguir el siguiente formato ejemplo@ejemplo.com',
 	'LOGIN_VACIO': 'El nombre de usuario y la contraseña están vacíos',
-	'DNI_PERSONA_VACIO' : 'El dni de la persona es vacío',
-	'DNI_PERSONA_MENOR_QUE_9' : 'El dni de la persona tiene menos que 9 caracteres',
-	'DNI_PERSONA_MAYOR_QUE_9' : 'El dni de la persona tiene más que 9 caracteres',
-	'DNI_PERSONA_INCORRECTO' : 'El dni de la persona solo puede contener números y letras y tener el formato 12345678A',
+	'DNI_PERSONA_VACIO' : 'El DNI de la persona es vacío',
+	'DNI_PERSONA_MENOR_QUE_9' : 'El DNI de la persona tiene menos que 9 caracteres',
+	'DNI_PERSONA_MAYOR_QUE_9' : 'El DNI de la persona tiene más que 9 caracteres',
+	'DNI_PERSONA_INCORRECTO' : 'El DNI de la persona solo puede contener números y letras y tener el formato 12345678A',
+	'DNI_PERSONA_NO_VALIDO' : 'El DNI de la persona no es válido',
 	'NOMBRE_VACIO' : 'Nombre Persona vacío',
 	'NOMBRE_LETRAS_ACENTOS_INCORRECTO' : 'El nombre de la persona solo puede contener letras',
 	'NOMBRE_MENOR_QUE_3' : 'El nombre de la persona es menor que 3 caraceteres',

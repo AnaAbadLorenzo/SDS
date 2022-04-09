@@ -14,7 +14,7 @@ import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosAcentos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoDNI;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEnhe;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosEspacios;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
@@ -29,7 +29,7 @@ public class TestAtributoPersonaDni {
 	private final ValidacionesAtributosEspacios validacionesAtributosEspacios;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosCorrectoDNI validacionesAtributosCorrectoDNI;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoPersonaDni() {
@@ -40,7 +40,7 @@ public class TestAtributoPersonaDni {
 		validacionesAtributosEspacios = new ValidacionesAtributosEspacios();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosCorrectoDNI = new ValidacionesAtributosCorrectoDNI();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
@@ -145,10 +145,10 @@ public class TestAtributoPersonaDni {
 				Constantes.DNIP);
 	}
 
-	public DatosPruebaAtributos getTestDniPCorrectoAlfanumerico(final PersonaEntity datosEntradaDniP) {
+	public DatosPruebaAtributos getTestDniPCorrecto(final PersonaEntity datosEntradaDniP) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaDniP.getDniP());
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoCorrectoDNI(datosEntradaDniP.getDniP());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
@@ -156,5 +156,30 @@ public class TestAtributoPersonaDni {
 				DefinicionPruebas.IDENTIFICADOR_CORRECTO, Constantes.EXITO, datosEntradaDniP.getDniP(),
 				Constantes.DNIP);
 
+	}
+
+	public DatosPruebaAtributos getTestDniPCorrectoValido(final PersonaEntity datosEntradaDniP) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoDNIValido(datosEntradaDniP.getDniP());
+
+		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.IDENTIFICADOR_CORRECTO, Constantes.EXITO, datosEntradaDniP.getDniP(),
+				Constantes.DNIP);
+
+	}
+
+	public DatosPruebaAtributos getTestDniPCorrectoNoValido(final PersonaEntity datosEntradaDniP) {
+
+		final String resultadoObtenido = validacionesAtributosCorrectoDNI
+				.comprobarAtributoDNIValido(datosEntradaDniP.getDniP());
+
+		final String resultadoEsperado = CodigosMensajes.DNI_PERSONA_NO_VALIDO + " - " + Mensajes.DNI_NO_ES_VALIDO;
+
+		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.IDENTIFICADOR_INCORRECTO, Constantes.ERROR, datosEntradaDniP.getDniP(),
+				Constantes.DNIP);
 	}
 }

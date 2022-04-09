@@ -117,6 +117,10 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIP_ALFANUMERICO_MAYOR_9_DATA);
 		final Registro datosEntradaRegistroDniPersonaAlfanumerico = generarJSON.generateRegistro(
 				Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
+		final Registro datosEntradaRegistroDniPersonaValido = generarJSON
+				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNI_VALIDO);
+		final Registro datosEntradaRegistroDniPersonaNoValido = generarJSON
+				.generateRegistro(Constantes.URL_JSON_REGISTRAR_ATRIBUTOS_DNIP, Constantes.DNI_NO_VALIDO);
 
 		datosPruebaAtributos.add(
 				testAtributoDniPersonaRegistro.getTestRegistroDniPersonaVacio(datosEntradaRegistroDniPersonaVacio));
@@ -134,6 +138,10 @@ public class TestRegistrarServiceImpl implements TestRegistrarService {
 				.getTestRegistroDniPAlfanumericoMayor9(datosEntradaRegistroDniPersonaAlfanumericoMayor9));
 		datosPruebaAtributos.add(testAtributoDniPersonaRegistro
 				.getTestRegistroDniPCorrectoAlfanumerico(datosEntradaRegistroDniPersonaAlfanumerico));
+		datosPruebaAtributos.add(
+				testAtributoDniPersonaRegistro.getTestRegistroDniPCorrectoValido(datosEntradaRegistroDniPersonaValido));
+		datosPruebaAtributos.add(testAtributoDniPersonaRegistro
+				.getTestRegistroDniPCorrectoNoValido(datosEntradaRegistroDniPersonaNoValido));
 
 		return datosPruebaAtributos;
 	}
