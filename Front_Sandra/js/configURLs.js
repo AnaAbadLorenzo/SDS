@@ -19,6 +19,11 @@ var urlPeticionAjaxListadoFuncionalidadesEliminadas = "http://localhost:8090/fun
 var urlPeticionAjaxEditFuncionalidad = "http://localhost:8090/funcionalidad/modificarFuncionalidad";
 var urlPeticionAjaxDeleteFuncionalidad = "http://localhost:8090/funcionalidad/eliminarFuncionalidad";
 var urlPeticionAjaxReactivarFuncionalidad = "http://localhost:8090/funcionalidad/reactivarFuncionalidad";
+var urlPeticionAjaxAccionGuardar = "http://localhost:8090/accion/accion";
+var urlPeticionAjaxListarAccion = "http://localhost:8090/accion/listarAccion";
+var urlPeticionAjaxEditAccion = "http://localhost:8090/accion/modificarAccion";
+var urlPeticionAjaxDeleteAccion = "http://localhost:8090/accion/eliminarAccion";
+var urlPeticionAjaxListadoAcciones = "http://localhost:8090/accion/listarAcciones";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = "http://localhost:8090/test/login/atributos";
