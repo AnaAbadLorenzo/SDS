@@ -158,7 +158,7 @@ function registroAjaxPromesa() {
 					reject(res);
 				}
 				resolve(res);
-			}).fail( function( jqXHR, textStatus, errorThrown ) {
+			}).fail( function( jqXHR ) {
 			  errorFailAjax(jqXHR.status);
 			});
 		}
@@ -179,7 +179,7 @@ function obtenerEmpresasAjaxPromesa() {
 				reject(res);
 			}
 			resolve(res);
-		}).fail( function( jqXHR, textStatus, errorThrown ) {
+		}).fail( function( jqXHR ) {
 			  errorFailAjax(jqXHR.status);
 			});
 

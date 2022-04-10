@@ -20,7 +20,7 @@ function cargarRolesAjaxPromesa(numeroPagina, tamanhoPagina){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -48,7 +48,7 @@ function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -89,7 +89,7 @@ function buscarRolAjaxPromesa(numeroPagina, tamanhoPagina, accion){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -124,7 +124,7 @@ function anadirRolAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -159,7 +159,7 @@ function editarRolAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -194,7 +194,7 @@ function eliminarRolAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -224,7 +224,7 @@ function detalleRolAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -259,7 +259,7 @@ function reactivarRolesAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });

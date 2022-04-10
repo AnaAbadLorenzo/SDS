@@ -27,7 +27,7 @@ function anadirFuncionalidadAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -68,7 +68,7 @@ function buscarFuncionalidadAjaxPromesa(numeroPagina, tamanhoPagina, accion){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -94,7 +94,7 @@ function cargarPermisosFuncFuncionalidadAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-    }).fail( function( jqXHR, textStatus, errorThrown ) {
+    }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -129,7 +129,7 @@ function editarFuncionalidadAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -164,7 +164,7 @@ function eliminarFuncionalidadAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -205,7 +205,7 @@ function cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -233,7 +233,7 @@ function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -263,7 +263,7 @@ function detalleFuncionalidadAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -299,7 +299,7 @@ function reactivarFuncionalidadesAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
