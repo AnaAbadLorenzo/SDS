@@ -15,6 +15,8 @@ arrayEN={
 	'ROL_DESCRIPTION' : 'Rol description',
 	'FUNCIONALIDAD_NAME' : 'Funcionality name',
 	'FUNCIONALIDAD_DESCRIPTION' : 'Funcionality description',
+	'ACCION_NAME' : 'Action name',
+	'ACCION_DESCRIPTION' : 'Action description',
 	'ORDENAR' : 'Order',
 	'ACCIONES' : 'Actions',
 
@@ -131,6 +133,13 @@ arrayEN={
 	'FUNCIONALIDAD_DESCRIPTION_VACIA' : 'Funcionality description is empty',
 	'FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Funcionality description can only contain letters and spaces',
 	'FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3' : 'Funcionality description size is minor than 3 characteres',
+	'ACCION_NAME_VACIO' : 'Action name empty',
+	'ACCION_NAME_ALFABETICO_INCORRECTO' : 'Action name can only contain letters',
+	'ACCION_NAME_MENOR_QUE_3' : 'Action name size is minor than 3 characteres',
+	'ACCION_NAME_MAYOR_QUE_48' : 'Action name size is bigger than 48 characteres',
+	'ACCION_DESCRIPTION_VACIO' : 'Action description empty',
+	'ACCION_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Action description can only contain letters and spaces',
+	'ACCION_DESCRIPTION_MENOR_QUE_3' : 'Action description size is minor than 3 characteres',
 
 
 	//Mensajes
@@ -180,6 +189,14 @@ arrayEN={
 	'GESTION_ACCIONES' : 'Action management',
 	'GESTION_USUARIOS' : 'Users management',
 	'GESTION_PERSONAS' : 'Persons management',
+	'ADD_ACCION' : 'ADD ACTION',
+	'SEARCH_ACCION' : 'SEARCH ACTION',
+	'DETAIL_ACTION' : 'ACTION DETAIL',
+	'REACTIVATE_ACCION' : 'REACTIVATE ACTION',
+	'SEGURO_REACTIVAR_ACCION' : 'Are you sure that you want to reactivate this action?',
+	'DELETE_ACCION' : 'DELETE ACTION',
+	'SEGURO_ELIMINAR_ACCION': 'Are you sure that you want to delete this action?',
+	'EDIT_ACCION' : 'EDIT ACTION',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -206,6 +223,10 @@ arrayEN={
 	'FUNCIONALIDAD_ELIMINADA_OK' : 'FUNCIONALITY DELETED CORRECTLY',
 	'FUNCIONALIDAD_ELIMINADA' : 'Funcionality has been deleted correctly',
 	'FUNCIONALIDAD_REACTIVADA_OK' : 'FUNCIONALITY REACTIVATED CORRECTLY',
-	'FUNCIONALIDAD_REACTIVADA' : 'Funcionality has been reactivated correctly'
+	'FUNCIONALIDAD_REACTIVADA' : 'Funcionality has been reactivated correctly',
+	'ACCION_GUARDADA_OK' : 'ACTION CORRECTLY',
+	'ACCION_EDITADA_OK' : 'ACTION MODIFIED CORRECTLY',
+	'ACCION_ELIMINADA_OK' : 'ACTION DELETED CORRECTLY',
+	'ACCION_REACTIVADA_OK' : 'ACTION REACTIVATED CORRECTLY',
 
 }

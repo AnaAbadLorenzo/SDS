@@ -25,6 +25,8 @@ function comprobarEditRol(){
 	}
 }
 
+
+
 /** Función que valida el formulario add funcionalidad **/
 function comprobarAddFuncionalidad(){
 	if(comprobarNombreFuncionalidad('nombreFuncionalidad', 'errorFormatoNombreFuncionalidad', 'nombreFuncionalidad') && 
@@ -44,6 +46,27 @@ function comprobarEditFuncionalidad(){
 		return false;
 	}
 }
+
+/** Función que valida el formulario add accion **/
+function comprobarAddAccion(){
+	if(comprobarNombreAccion('nombreAccion', 'errorFormatoNombreAccion', 'nombreAccion') && 
+		comprobarDescripcionAccion('descripcionAccion','errorFormatoDescripcionAccion', 'descripcionAccion')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/** Función que valida el formulario edit acción **/
+function comprobarEditAccion(){
+	if(comprobarNombreAccion('nombreAccion', 'errorFormatoNombreAccion', 'nombreAccion') && 
+		comprobarDescripcionFuncionalidad('descripcionAccion','errorFormatoDescripcionAccion', 'descripcionAccion')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 /** Función que valida el formulario de registro **/
 function comprobarRegistro(){
@@ -307,6 +330,32 @@ function comprobarDescripcionFuncionalidad(idElemento, idElementoError, campo){
 	}
 }
 
+/** Funcion que valida el formato del Nombre de la accion **/
+function comprobarNombreAccion(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la descripcion de la funcionalidad **/
+function comprobarDescripcionAccion(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
 /** Funcion que valida el formato de los apellidos **/
 function comprobarApellidos(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
@@ -483,6 +532,54 @@ function comprobarDescripcionFuncionalidadSearch(idElemento, idElementoError, ca
 	}
 }
 
+/**Función que valida el nombre de la accion en el buscar*/
+function comprobarNombreAccionSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la descripcion de la accion en el buscar*/
+function comprobarDescripcionAccionSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
 
 /*Función que verifica el formulario de buscar de rol*/
 function comprobarBuscarRol(){
@@ -498,6 +595,16 @@ function comprobarBuscarRol(){
 function comprobarBuscarFuncionalidad(){
 	if(comprobarNombreFuncionalidadSearch('nombreFuncionalidad', 'errorFormatoNombreFuncionalidad', 'nombreFuncionalidad') &&
 		comprobarDescripcionFuncionalidadSearch('descripcionFuncionalidad', 'errorFormatoDescripcionFuncionalidad', 'descripcionFuncionalidad')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/*Función que verifica el formulario de buscar de la accion*/
+function comprobarBuscarAccion(){
+	if(comprobarNombreAccionSearch('nombreAccion', 'errorFormatoNombreAccion', 'nombreAccion') &&
+		comprobarDescripcionAccionSearch('descripcionAccion', 'errorFormatoDescripcionAccion', 'descripcionAccion')){
 		return true;
 	}else{
 		return false;
@@ -577,6 +684,12 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			break;
 			case 'descripcionFuncionalidad':
 				codigo = "FUNCIONALIDAD_DESCRIPTION_VACIA";
+			break;
+			case 'nombreAccion':
+				codigo = "ACCION_NAME_VACIO";
+			break;
+			case 'descripcionAccion':
+				codigo = "ACCION_DESCRIPTION_VACIO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -658,6 +771,12 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			case 'descripcionFuncionalidad' : 
 				codigo = "FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3";
 			break;
+			case 'nombreAccion' : 
+				codigo = "ACCION_NAME_MENOR_QUE_3";
+			break;
+			case 'descripcionAccion' : 
+				codigo = "ACCION_DESCRIPTION_MENOR_QUE_3";
+			break;
 
 		}
 		addCodeError(idElementoError, codigo);
@@ -731,6 +850,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			break;
 			case 'nombreFuncionalidad':
 				codigo="FUNCIONALIDAD_NAME_MAYOR_QUE_48";
+			break;
+			case 'nombreAccion' : 
+				codigo = "ACCION_NAME_MAYOR_QUE_48";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -893,6 +1015,9 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			case 'descripcionFuncionalidad':
 				codigo="FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO";
 			break;
+			case 'descripcionAccion' : 
+				codigo = "ACCION_DESCRIPTION_ALFABETICO_INCORRECTO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
         return false;
@@ -918,8 +1043,8 @@ function comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) {
 			case 'nombreRol':
 				codigo="ROL_NAME_ALFABETICO_INCORRECTO";
 			break;
-			case 'descripcionRol':
-				codigo="ROL_DESCRIPTION_ALFABETICO_INCORRECTO";
+			case 'nombreAccion' : 
+				codigo = "ACCION_NAME_ALFABETICO_INCORRECTO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

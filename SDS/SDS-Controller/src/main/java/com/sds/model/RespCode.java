@@ -65,7 +65,7 @@ public enum RespCode {
 	NO_HAY_ROLES_EXCEPTION("NO_HAY_ROLES", "No existe ningún rol registrado"), //
 	ROL_ASOCIADO_USUARIO_EXCEPTION("ROL_ASOCIADO_USUARIO", "Hay un usuario que tiene asociado el rol a eliminar"), //
 	ACCION_VACIA("ACCION_VACIA", "El nombre y/o la descripción de la acción están vacíos"), //
-	ACCION_ENCONTRADA("ACCION_ECONTRADA", "La acción que busca se ha encontrado correctamente"), //
+	ACCION_ENCONTRADA("ACCION_ENCONTRADA", "La acción que busca se ha encontrado correctamente"), //
 	ACCIONES_LISTADAS("ACCIONES_LISTADAS", "Las acciones se han listdo correctamente"), //
 	ACCIONES_ELIMINADAS_LISTADAS("ACCIONES_ELIMINADAS_LISTADAS",
 			"Las acciones eliminadas se han listado correctamente"), //

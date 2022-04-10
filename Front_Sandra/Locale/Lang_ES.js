@@ -16,6 +16,8 @@ arrayES={
 	'ROL_DESCRIPTION' : 'Descripción rol',
 	'FUNCIONALIDAD_NAME' : 'Nombre funcionalidad',
 	'FUNCIONALIDAD_DESCRIPTION' : 'Descripción funcionalidad',
+	'ACCION_NAME' : 'Nombre acción',
+	'ACCION_DESCRIPTION' : 'Descripción acción',
 	'ORDENAR' : 'Ordenar',
 	'ACCIONES' : 'Acciones',
 
@@ -132,6 +134,13 @@ arrayES={
 	'FUNCIONALIDAD_DESCRIPTION_VACIA' : 'Descripción funcionalidad vacío',
 	'FUNCIONALIDAD_DESCRIPTION_ALFABETICO_INCORRECTO' : 'La descripción de la funcionalidad sólo puede contener letras y espacios',
 	'FUNCIONALIDAD_DESCRIPTION_MENOR_QUE_3' : 'La descripción de la funcionalidad tiene menos de 3 caracteres',
+	'ACCION_NAME_VACIO' : 'Nombre acción vacío',
+	'ACCION_NAME_ALFABETICO_INCORRECTO' : 'El nombre de la acción sólo puede contener letras',
+	'ACCION_NAME_MENOR_QUE_3' : 'El nombre de la acción tiene menos de 3 caracteres',
+	'ACCION_NAME_MAYOR_QUE_48' : 'El nombre de la acción tiene más de 48 caracteres',
+	'ACCION_DESCRIPTION_VACIO' : 'Descripción de la acción vacía',
+	'ACCION_DESCRIPTION_ALFABETICO_INCORRECTO' : 'La descripción de la acción solo puede contener letras y espacios',
+	'ACCION_DESCRIPTION_MENOR_QUE_3' : 'La descripción de la acción tiene menos de 3 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -180,6 +189,14 @@ arrayES={
 	'GESTION_ACCIONES' : 'Gestión de acciones',
 	'GESTION_USUARIOS' : 'Gestión de usuarios',
 	'GESTION_PERSONAS' : 'Gestión de personas',
+	'ADD_ACCION' : 'AÑADIR ACCIÓN',
+	'SEARCH_ACCION' : 'BUSCAR ACCIÓN',
+	'DETAIL_ACTION' : 'DETALLE ACCIÓN',
+	'REACTIVATE_ACCION' : 'REACTIVAR ACCIÓN',
+	'SEGURO_REACTIVAR_ACCION' : '¿Está seguro de que quiere reactivar esta acción?',
+	'DELETE_ACCION' : 'ELIMINAR ACCIÓN',
+	'SEGURO_ELIMINAR_ACCION': '¿Está seguro que desea eliminar esta acción?',
+	'EDIT_ACCION' : 'EDITAR ACCIÓN',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -206,5 +223,9 @@ arrayES={
 	'FUNCIONALIDAD_ELIMINADA_OK' : 'FUNCIONALIDAD ELIMINADA CORRECTAMENTE',
 	'FUNCIONALIDAD_ELIMINADA' : 'La funcionalidad ha sido eliminada correctamente',
 	'FUNCIONALIDAD_REACTIVADA_OK' : 'FUNCIONALIDAD REACTIVADA CORRECTAMENTE',
-	'FUNCIONALIDAD_REACTIVADA' : 'La funcionalidad ha sido reactivada correctamente'
+	'FUNCIONALIDAD_REACTIVADA' : 'La funcionalidad ha sido reactivada correctamente',
+	'ACCION_GUARDADA_OK' : 'ACCIÓN GUARDADA CORRECTAMENTE',
+	'ACCION_EDITADA_OK' : 'ACCIÓN EDITADA CORRECTAMENTE',
+	'ACCION_ELIMINADA_OK' : 'ACCIÓN ELIMINADA CORRECTAMENTE',
+	'ACCION_REACTIVADA_OK' : 'ACCIÓN REACTIVADA CORRECTAMENTE',
 }

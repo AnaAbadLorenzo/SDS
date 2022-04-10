@@ -37,7 +37,7 @@
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
 	await cargarFuncionalidades(0, tamanhoPaginaFuncionalidad);
 	await cargarPermisosFuncFuncionalidad();
-	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('FUNCIONALIDAD')},10000);
+	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('FUNCIONALIDAD')},30000);
   })();">  
 	<div id="topMenu"></div>
 
@@ -62,7 +62,7 @@
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
 
-    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla()" class="tooltip refreshIcon">
+    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaFuncionalidad)" class="tooltip refreshIcon">
         <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
         <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
     </div>
@@ -74,7 +74,7 @@
 	</div>
 
 	<div class = "cabeceraEliminados" hidden>
-		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla()" class="tooltip volverAtrasIcon">
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaFuncionalidad)" class="tooltip volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 
@@ -85,7 +85,7 @@
 			<thead>
 		    	<tr>
 			      <th scope="col" class="colFirst FUNCIONALIDAD_NAME_COLUMN">
-			      	<div class="rolNameColumn FUNCIONALIDAD_NAME nombreFuncionalidadColumn"></div>
+			      	<div class="FUNCIONALIDAD_NAME nombreFuncionalidadColumn"></div>
                   <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaFuncionalidades')" class="tooltip ordenarIconFuncionalidadName">
                       <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                       <span class="tooltiptext iconOrdenar ORDENAR"></span>

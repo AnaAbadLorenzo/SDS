@@ -360,6 +360,12 @@ function construyeFila(entidad, fila) {
 			filaTabla = '<tr class="impar"> <td>' + fila.nombreFuncionalidad + 
                 '</td> <td>' + fila.descripFuncionalidad;
         break;
+
+        case 'ACCION':
+			atributosFunciones = ["'" + fila.nombreAccion + "'", "'" + fila.descripAccion + "'", "'" + fila.idAccion + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreAccion + 
+                '</td> <td>' + fila.descripAccion;
+        break;
 	};
 
 	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
@@ -398,6 +404,12 @@ function construyeFilaEliminados(entidad, fila) {
 			atributosFunciones = ["'" + fila.nombreFuncionalidad + "'", "'" + fila.descripFuncionalidad + "'", "'" + fila.idFuncionalidad + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.nombreFuncionalidad + 
                 '</td> <td>' + fila.descripFuncionalidad;
+        break;
+
+        case 'ACCION':
+			atributosFunciones = ["'" + fila.nombreAccion + "'", "'" + fila.descripAccion + "'", "'" + fila.idAccion + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreAccion + 
+                '</td> <td>' + fila.descripAccion;
         break;
 	};
 
@@ -469,6 +481,10 @@ function cargarHref(dato){
 		case 'Gestión de personas':
 			href="GestionDePersonas.html";
 		break;
+
+		case 'Gestión de acciones':
+			href="GestionDeAcciones.html";
+		break;
 	}
 
 	return href;
@@ -499,6 +515,10 @@ function cargarClass(dato){
 
 		case 'Gestión de personas':
 			clase="GESTION_PERSONAS";
+		break; 
+
+		case 'Gestión de acciones':
+			clase="GESTION_ACCIONES";
 		break; 
 	}
 
@@ -685,10 +705,18 @@ function ejecutaFuncion(funcion, tiempo){
 function compruebaFuncionalidadesPermisos(entidad){
 	funcionalidadesUsuario();
 
-	if(entidad == 'ROL'){
-		cargarPermisosFuncRol();
-	}else if(entidad == 'FUNCIONALIDAD'){
-		cargarPermisosFuncFuncionalidad();
+	switch(entidad){
+		case 'ROL':
+			cargarPermisosFuncRol();
+		break;
+
+		case 'FUNCIONALIDAD':
+			cargarPermisosFuncFuncionalidad();
+		break;
+
+		case 'ACCION':
+			cargarPermisosFuncAccion();
+		break;
 	}
 	
 }

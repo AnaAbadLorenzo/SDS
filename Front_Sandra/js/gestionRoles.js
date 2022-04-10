@@ -69,9 +69,21 @@ function buscarRolAjaxPromesa(numeroPagina, tamanhoPagina, accion){
     }
 
     if(accion == "buscarPaginacion"){
+      if(getCookie('rolName') == null || getCookie('rolName') == ""){
+        var nombreRol = "";
+      }else{
+        var nombreRol = getCookie('rolName');
+      }
+
+      if(getCookie('rolDescription') == null || getCookie('rolDescription') == ""){
+        var descripRol = "";
+      }else{
+        var descripRol = getCookie('rolDescription');
+      }
+
        var data = {
-          rolName : getCookie('rolName'),
-          rolDescription : getCookie('rolDescription'),
+          rolName : nombreRol,
+          rolDescription : descripRol,
           inicio: calculaInicio(numeroPagina, tamanhoPaginaRol),
           tamanhoPagina: tamanhoPaginaRol
         }

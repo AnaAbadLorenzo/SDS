@@ -36,7 +36,7 @@
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
 	await cargarRoles(0,tamanhoPaginaRol);
 	await cargarPermisosFuncRol();
-	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('ROL')},10000);
+	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('ROL')},30000);
   })();">  
 	<div id="topMenu"></div>
 
@@ -73,7 +73,7 @@
 	</div>
 
 	<div class = "cabeceraEliminados" hidden>
-		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla()" class="tooltip volverAtrasIcon">
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaRol)" class="tooltip volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 

@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="css/gestionFuncionalidades.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/gestionAcciones.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -23,7 +23,7 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
-	<script type="text/javascript" src="js/gestionFuncionalidades.js"></script>
+	<script type="text/javascript" src="js/gestionAcciones.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
     <script type="text/javascript" src="Locale/Lang_ES.js"></script>
@@ -35,9 +35,9 @@
     await funcionalidadesUsuario();
     modalCambioPass();
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
-	await cargarFuncionalidades(0, tamanhoPaginaFuncionalidad);
-	await cargarPermisosFuncFuncionalidad();
-	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('FUNCIONALIDAD')},10000);
+	await cargarAcciones(0, tamanhoPaginaAccion);
+	await cargarPermisosFuncAccion();
+	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('ACCION')},30000);
 
   })();">  
 	<div id="topMenu"></div>
@@ -63,7 +63,7 @@
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
 
-    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla()" class="tooltip refreshIcon">
+    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaAccion)" class="tooltip refreshIcon">
         <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
         <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
     </div>
@@ -75,7 +75,7 @@
 	</div>
 
 	<div class = "cabeceraEliminados" hidden>
-		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla()" class="tooltip volverAtrasIcon">
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaAccion)" class="tooltip volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 
@@ -147,7 +147,7 @@
                            <div class="obligatorio tooltip2" id="obligatorioAccionName">*
                   			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               			  </div>
-                          <div style="display:none" id="errorFormatoAccionFuncionalidad"></div>
+                          <div style="display:none" id="errorFormatoNombreAccion"></div>
                           
                           <label class="labelForm ACCION_DESCRIPTION" id="labelAccionDescription" hidden></label>
 	                      <input type="text" placeholder="ACCION_DESCRIPTION" name="ACCION_DESCRIPTION" id="descripcionAccion" class="ACCION_DESCRIPTION" onblur=""/>

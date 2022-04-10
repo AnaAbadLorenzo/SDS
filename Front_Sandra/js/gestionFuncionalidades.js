@@ -48,9 +48,21 @@ function buscarFuncionalidadAjaxPromesa(numeroPagina, tamanhoPagina, accion){
     }
 
     if(accion == "buscarPaginacion"){
+      if(getCookie('nombreFuncionalidad') == null || getCookie('nombreFuncionalidad') == ""){
+        var nombreFunc = "";
+      }else{
+        var nombreFunc = getCookie('nombreFuncionalidad');
+      }
+
+      if(getCookie('descripFuncionalidad') == null || getCookie('descripFuncionalidad') == ""){
+        var descripFunc = "";
+      }else{
+        var descripFunc = getCookie('descripFuncionalidad');
+      }
+
       var data = {
-        nombreFuncionalidad : getCookie('nombreFuncionalidad'),
-        descripFuncionalidad : getCookie('descripFuncionalidad'),
+        nombreFuncionalidad : nombreFunc,
+        descripFuncionalidad : descripFunc,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaFuncionalidad),
         tamanhoPagina : tamanhoPaginaFuncionalidad 
       }
@@ -183,7 +195,7 @@ async function cargarPermisosFuncFuncionalidad(){
 }
 
 
-/** Función para recuperar los roles con ajax y promesas **/
+/** Función para recuperar las funcionalidades con ajax y promesas **/
 function cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
   	var token = getCookie('tokenUsuario');
@@ -332,9 +344,13 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina){
 
         if(numeroPagina == 0){
           $('#' + (numeroPagina+1)).addClass("active");
+          var numPagCookie = numeroPagina+1;
         }else{
           $('#' + numeroPagina).addClass("active");
+           var numPagCookie = numeroPagina;
         }
+
+        setCookie('numeroPagina', numPagCookie);
 	  
 		}).catch((res) => {
 		    respuestaAjaxKO(res.code);
@@ -642,7 +658,7 @@ function showAddFuncionalidades() {
   $('#labelFuncionalidadName').attr('hidden', true);
   $('#labelFuncionalidadDescription').attr('hidden', true);
 
-  let campos = ["nombreFuncionaldiad", "descripcionFuncionalidad"];
+  let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
   let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
@@ -701,8 +717,8 @@ function showEditar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad) 
   var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_FUNCIONALITY', 'javascript:editFuncionalidad();', 'return comprobarEditFuncionalidad();');
-    cambiarOnBlurCampos('return comprobarNombreFuncionalidadSearch(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
-      'return comprobarDescripcionFuncionalidadSearch(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
+    cambiarOnBlurCampos('return comprobarNombreFuncionalidad(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
+      'return comprobarDescripcionFuncionalidad(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarFuncionalidad', 'Editar');
    
     setLang(idioma);

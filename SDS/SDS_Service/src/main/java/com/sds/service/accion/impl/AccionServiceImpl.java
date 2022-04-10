@@ -296,11 +296,11 @@ public class AccionServiceImpl implements AccionService {
 								.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
 
 			} else {
-				accionEntity.setNombreAccion(accionEntity.getNombreAccion());
-				accionEntity.setDescripAccion(accionEntity.getDescripAccion());
-				accionEntity.setBorradoAccion(accionEntity.getBorradoAccion());
+				accionBD.get().setNombreAccion(accionEntity.getNombreAccion());
+				accionBD.get().setDescripAccion(accionEntity.getDescripAccion());
+				accionBD.get().setBorradoAccion(accionEntity.getBorradoAccion());
 				accion.setAccion(accionEntity);
-				accionRepository.saveAndFlush(accionEntity);
+				accionRepository.saveAndFlush(accionBD.get());
 
 				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(accion.getUsuario(),
 						Constantes.ACCION_BUSCAR_ACCION, accionBD.toString());

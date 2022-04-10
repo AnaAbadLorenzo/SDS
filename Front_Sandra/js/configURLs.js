@@ -24,6 +24,8 @@ var urlPeticionAjaxListarAccion = "http://localhost:8090/accion/listarAccion";
 var urlPeticionAjaxEditAccion = "http://localhost:8090/accion/modificarAccion";
 var urlPeticionAjaxDeleteAccion = "http://localhost:8090/accion/eliminarAccion";
 var urlPeticionAjaxListadoAcciones = "http://localhost:8090/accion/listarAcciones";
+var urlPeticionAjaxListadoAccionesEliminadas = "http://localhost:8090/accion/listarAccionesEliminadas";
+var urlPeticionAjaxReactivarAccion = "http://localhost:8090/accion/reactivarAccion";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = "http://localhost:8090/test/login/atributos";
