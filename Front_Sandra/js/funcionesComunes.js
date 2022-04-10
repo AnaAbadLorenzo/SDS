@@ -31,7 +31,7 @@ function includeTopMenu() {
 
 	var topMenu = '<nav class="fixed-top navbar navbar-expand-md navbar-dark menuIdioma">' + 
 				'<a class="navbar-brand" href="#">' +
-    			'<img src="images/iconoIndex.png" alt="Logo" class="imagenLogo">' +
+    			'<img src="images/iconoIndex2.png" alt="Logo" class="imagenLogo">' +
   				'</a>' +
 				'<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">' + 
 				'<span class="navbar-toggler-icon"></span>' +
@@ -461,6 +461,14 @@ function cargarHref(dato){
 		case 'Test':
 			href="test.html";
 		break;
+
+		case 'Gestión de usuarios':
+			href="GestionDeUsuarios.html";
+		break;
+
+		case 'Gestión de personas':
+			href="GestionDePersonas.html";
+		break;
 	}
 
 	return href;
@@ -484,6 +492,14 @@ function cargarClass(dato){
 		case 'Test':
 			clase="TEST";
 		break;
+
+		case 'Gestión de usuarios':
+			clase="GESTION_USUARIOS";
+		break;
+
+		case 'Gestión de personas':
+			clase="GESTION_PERSONAS";
+		break; 
 	}
 
 	return clase;

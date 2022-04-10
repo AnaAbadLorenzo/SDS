@@ -178,6 +178,8 @@ arrayES={
 	'DELETE_FUNCIONALITY' : 'ELIMINAR FUNCIONALIDAD',
 	'REACTIVATE_FUNC' : 'REACTIVAR FUNCIONALIDAD',
 	'GESTION_ACCIONES' : 'Gestión de acciones',
+	'GESTION_USUARIOS' : 'Gestión de usuarios',
+	'GESTION_PERSONAS' : 'Gestión de personas',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

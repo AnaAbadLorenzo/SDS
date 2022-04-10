@@ -79,10 +79,49 @@ body {
 .bienvenida {
   text-align: center;
   position: fixed;
-  top: 30%;
+  top: 5%;
   left:  25%;
   font-size: 5em;
   width: 50%;
   font-family: Roboto;
   color:  #4527A0;
+}
+
+.noticias {
+  width: 97%;
+  height: 75%;
+  position: fixed;
+  top: 18%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  bottom: 5%;
+  margin-left: 2%;
+}
+
+.noticias .card {
+  background-color: #4527a0d1;
+}
+
+.card-img-top {
+  width: 15%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+  margin-left: 45%;
+}
+
+.card-body-news {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  background-color: #e2d1fb;
+}
+
+.card-title {
+  font-family: Roboto;
+  color:  #4527A0;
+}
+
+.card-footer {
+  background-color: #e2d1fbe8;
 }

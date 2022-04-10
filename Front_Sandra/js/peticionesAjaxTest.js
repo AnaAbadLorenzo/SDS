@@ -14,7 +14,7 @@ function testLoginAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -36,7 +36,7 @@ function testRecuperarPassAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -58,7 +58,7 @@ function testRegistrarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -80,7 +80,7 @@ function testRolGuardarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -102,7 +102,7 @@ function testRolBuscarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -124,7 +124,7 @@ function testRolModificarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -146,7 +146,7 @@ function testFuncionalidadGuardarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -168,7 +168,7 @@ function testFuncionalidadBuscarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -190,7 +190,7 @@ function testFuncionalidadModificarAtributos(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -212,7 +212,7 @@ function testLoginAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -234,7 +234,7 @@ function testRecuperarPassAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -256,7 +256,7 @@ function testRegistrarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -278,7 +278,7 @@ function testRolGuardarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -300,7 +300,7 @@ function testRolEliminarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -322,7 +322,7 @@ function testRolModificarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -344,7 +344,7 @@ function testRolBuscarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -366,7 +366,7 @@ function testRolReactivarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -388,7 +388,7 @@ function testFuncionalidadGuardarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -410,7 +410,7 @@ function testFuncionalidadEliminarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -432,7 +432,7 @@ function testFuncionalidadModificarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -454,7 +454,7 @@ function testFuncionalidadBuscarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });
@@ -476,7 +476,7 @@ function testFuncionalidadReactivarAcciones(){
           reject(res);
         }
         resolve(res);
-      }).fail( function( jqXHR, textStatus, errorThrown ) {
+      }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });

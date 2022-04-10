@@ -51,7 +51,7 @@ function changePassUsuarioAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-    }).fail( function( jqXHR, textStatus, errorThrown ) {
+    }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   }else{
@@ -114,7 +114,7 @@ function funcionalidadesUsuarioAjaxPromesa(){
           reject(res);
         }
         resolve(res);
-    }).fail( function( jqXHR, textStatus, errorThrown ) {
+    }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
   });

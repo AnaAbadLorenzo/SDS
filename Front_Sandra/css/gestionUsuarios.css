@@ -1,0 +1,111 @@
+/*********** TITULO GESTION **************/
+.gestion {
+  top: 80px;
+  left: 41%;
+  position: absolute;
+  color: #4527A0;
+}
+
+.volver {
+  position: fixed;
+  bottom: 10%;
+  left: 1%;
+  width: 100%;
+}
+
+.backIcon {
+  margin-left: 1.5%;
+  margin-top: 1%;
+}
+
+.iconoBack {
+  width: 4em;
+  height: 4em;
+  cursor: pointer;
+}
+
+/*********** TOOLTIPS CABECERA ***************/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 900;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4527A0 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.card-user {
+  width: 400px;
+  position: fixed;
+  top: 15%;
+  left: 39%;
+  border: 1px solid #4527A0;
+}
+
+.card-user .card-img-top{
+  border: 1px solid #4527A0;
+}
+
+.card-user .card-body {
+  border: 1px solid #4527A0;
+  background-color: #e2d1fb;
+}
+
+.userImg {
+  width: 10%;
+  margin-right: 5%;
+}
+
+.dniImg, .rolImg {
+  width: 9%;
+  margin-right: 5%;
+}
+
+.passImg {
+  width: 8%;
+  display: inline;
+  margin-right: 5%;
+}
+
+.user, .dni, .pass, .rol {
+  display: inline;
+}
+
+.userInfo, .dniInfo, .passInfo, .rolInfo {
+  margin-bottom: 5%;
+}

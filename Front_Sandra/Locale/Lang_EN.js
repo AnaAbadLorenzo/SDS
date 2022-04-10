@@ -178,6 +178,8 @@ arrayEN={
 	'DELETE_FUNCIONALITY' : 'DELETE FUNCIONALITY',
 	'REACTIVATE_FUNC' : 'REACTIVATE FUNCIONALITY',
 	'GESTION_ACCIONES' : 'Action management',
+	'GESTION_USUARIOS' : 'Users management',
+	'GESTION_PERSONAS' : 'Persons management',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
