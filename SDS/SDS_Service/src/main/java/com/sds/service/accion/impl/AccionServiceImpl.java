@@ -27,6 +27,7 @@ import com.sds.repository.RolRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
+import com.sds.service.accion.model.Permiso;
 import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -493,6 +494,98 @@ public class AccionServiceImpl implements AccionService {
 			resultado = Constantes.OK;
 		}
 		return resultado;
+	}
+
+	@Override
+	public List<Permiso> obtenerPermisos(final int inicio, final int tamanhoPagina)
+			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, RolNoExisteException,
+			AccionNoExisteException {
+		final List<Permiso> permisosToret = new ArrayList<>();
+
+		final List<RolAccionFuncionalidadEntity> permisos = entityManager
+				.createNamedQuery(Constantes.ROLACCIONFUNCIONALIDAD_QUERY_FINDALL).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = rolAccionFuncionalidadRepository.numberFindAllPermissions();
+
+		if (!permisos.isEmpty()) {
+			for (final RolAccionFuncionalidadEntity permisosLista : permisos) {
+				final Optional<AccionEntity> accion = accionRepository.findById(permisosLista.getIdAccion());
+				final Optional<RolEntity> rol = rolRepository.findById(permisosLista.getIdRol());
+				final Optional<FuncionalidadEntity> funcionalidad = funcionalidadRepository
+						.findById(permisosLista.getIdFuncionalidad());
+
+				if (!accion.isPresent()) {
+					if (!rol.isPresent()) {
+						if (!funcionalidad.isPresent()) {
+							final Permiso permiso = new Permiso(rol.get().getRolName(), accion.get().getNombreAccion(),
+									funcionalidad.get().getNombreFuncionalidad());
+							permisosToret.add(permiso);
+						} else {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									Constantes.USUARIO_GENERICO,
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()),
+									CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo());
+
+							final String resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new FuncionalidadNoExisteException(
+									CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()));
+						}
+					} else {
+						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+								Constantes.USUARIO_GENERICO,
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()),
+								CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo());
+
+						final String resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
+
+						throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
+					}
+				} else {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+							Constantes.USUARIO_GENERICO,
+							CodeMessageErrors
+									.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()),
+							CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo());
+
+					final String resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
+							CodeMessageErrors
+									.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
+				}
+			}
+
+		}
+
+		return permisosToret;
+
 	}
 
 	@Override

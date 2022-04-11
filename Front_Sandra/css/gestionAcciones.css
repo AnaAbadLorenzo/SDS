@@ -430,7 +430,7 @@ thead {
   cursor: pointer;
 }
 
-.iconoSearch, .iconoRefresh, .iconoSearchDelete {
+.iconoSearch, .iconoRefresh, .iconoSearchDelete, .iconoPermisos {
   width: 3em; 
   height: 3em; 
   cursor: pointer;
@@ -461,6 +461,11 @@ thead {
 
 .refreshIcon {
   margin-left: 62%;
+
+}
+
+.permisosIcon {
+  margin-left: 1%;
 }
 
 .backIcon {

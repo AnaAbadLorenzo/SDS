@@ -48,6 +48,7 @@ arrayEN={
 	'ICONO_VOLVER' : 'Home',
 	'ICONO_REACTIVAR': 'Reactivate',
 	'ICONO_BACK' : 'Back',
+	'ICON_PERMISOS' : 'Permissions management',
 
 	//Mensajes error
 	'ERROR': 'WARNING',

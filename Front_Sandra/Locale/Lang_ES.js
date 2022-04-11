@@ -49,6 +49,7 @@ arrayES={
 	'ICONO_VOLVER' : 'Menú',
 	'ICONO_REACTIVAR': 'Reactivar',
 	'ICONO_BACK' : 'Volver',
+	'ICON_PERMISOS' : 'Gestión de permisos',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
