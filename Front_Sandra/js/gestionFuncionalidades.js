@@ -340,7 +340,7 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina){
       	$("#paginacion").append(textPaginacion);
       	setLang(getCookie('lang'));
 
-        paginadorFuncionalidad(totalResults, 'cargarFuncionalidades');
+        paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
 
         if(numeroPagina == 0){
           $('#' + (numeroPagina+1)).addClass("active");
@@ -417,7 +417,7 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion){
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      paginadorFuncionalidad(totalResults, 'buscarFuncionalidad');
+      paginador(totalResults, 'buscarFuncionalidad', 'FUNCIONALIDAD');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -469,7 +469,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('nombreFuncionalidad', '');
       setCookie('descripFuncionalidad', '');
 
-      paginadorFuncionalidad(totalResults, 'cargarFuncionalidades');
+      paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -515,7 +515,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina){
       setCookie('nombreFuncionalidad', '');
       setCookie('descripFuncionalidad', '');
 
-      paginadorFuncionalidad(totalResults, 'buscarEliminadosFuncionalidad');
+      paginador(totalResults, 'buscarEliminadosFuncionalidad', 'FUNCIONALIDAD');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");

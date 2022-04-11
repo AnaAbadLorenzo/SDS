@@ -77,7 +77,7 @@ arrayEN={
 	'ACCION_YA_EXISTE' : 'The action already exists',
 	'ACCION_VACIA' : 'The action is empty',
 	'ACCION_MODIFICADA' : 'The action has been modified correctly',
-	'ACCION_NO_EXISTE_EXCEPTION' : 'The action doesn´t exists'
+	'ACCION_NO_EXISTE_EXCEPTION' : 'The action doesn´t exists',
 	
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',

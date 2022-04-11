@@ -297,7 +297,7 @@ async function cargarRoles(numeroPagina, tamanhoPagina){
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      paginadorRol(totalResults, 'cargarRoles');
+      paginador(totalResults, 'cargarRoles', 'ROL');
       
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -339,7 +339,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('rolName', '');
       setCookie('rolDescription', '');
 
-      paginadorRol(totalResults, 'cargarRoles');
+      paginador(totalResults, 'cargarRoles', 'ROL');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -389,7 +389,7 @@ async function buscarRol(numeroPagina, tamanhoPagina, accion){
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      paginadorRol(totalResults, 'buscarRol');
+      paginador(totalResults, 'buscarRol', 'ROL');
       
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -562,7 +562,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina){
       setCookie('rolName', '');
       setCookie('rolDescription', '');
 
-      paginadorRol(totalResults, 'buscarEliminadosRol');
+      paginador(totalResults, 'buscarEliminadosRol', 'ROL');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");

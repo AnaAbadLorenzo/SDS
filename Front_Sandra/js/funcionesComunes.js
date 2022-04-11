@@ -721,6 +721,23 @@ function compruebaFuncionalidadesPermisos(entidad){
 	
 }
 
+/** Función cargar permisos segun funcionalidad **/
+function cargarPermisosSegunEntidad(entidad){
+	switch(entidad){
+		case 'ROL':
+			cargarPermisosFuncRol();
+		break;
+
+		case 'FUNCIONALIDAD':
+			cargarPermisosFuncFuncionalidad();
+		break;
+
+		case 'ACCION':
+			cargarPermisosFuncAccion();
+		break;
+	}
+}
+
 
 $(document).ready(function(){
   $('.iconCerrar').on('click', function(){
