@@ -74,6 +74,10 @@ arrayEN={
 	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'Funcionality already exists. Check also the table of deleted funcionalities',
 	'FUNCIONALIDAD_NO_EXISTE_EXCEPTION' : 'Funcionality doesn´t exists',
 	'FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION' : 'Funcionality is associated with a role and an action',
+	'ACCION_YA_EXISTE' : 'The action already exists',
+	'ACCION_VACIA' : 'The action is empty',
+	'ACCION_MODIFICADA' : 'The action has been modified correctly',
+	'ACCION_NO_EXISTE_EXCEPTION' : 'The action doesn´t exists'
 	
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',
@@ -229,5 +233,8 @@ arrayEN={
 	'ACCION_EDITADA_OK' : 'ACTION MODIFIED CORRECTLY',
 	'ACCION_ELIMINADA_OK' : 'ACTION DELETED CORRECTLY',
 	'ACCION_REACTIVADA_OK' : 'ACTION REACTIVATED CORRECTLY',
+	'ACCION_ENCONTRADA' : 'The action has been found correctly',
+	'ACCIONES_LISTADAS' : 'Te actions has been found correctly',
+	'ACCIONES_ELIMINADAS_LISTADAS' : 'The deleted actions has been ound correctly'
 
 }
