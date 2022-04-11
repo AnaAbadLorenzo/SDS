@@ -4,6 +4,14 @@ function paginadorRol(totalResults, funcionalidad){
 
     var numeroPaginas = totalResults / tamanhoPaginaRol ;
 
+    var arrayPaginas = [];
+
+    for(var i = 0; i<numeroPaginas; i++){
+        var elementArray = ["(" + (i+1), calculaInicio((i+1), tamanhoPaginaRol),tamanhoPaginaRol + ")"];
+        arrayPaginas.push(elementArray);
+    }
+
+
     $('#itemPaginacion').html('');
 
     var paginacionPrevio = '<nav aria-label= "Page navigation example">' +
@@ -66,6 +74,8 @@ function paginadorRol(totalResults, funcionalidad){
     cargarPermisosFuncRol();
 
 	$('#itemPaginacion').append(pag);
+
+    setCookie('arrayPaginas', arrayPaginas);
 }
 
 /** Función para saber el número de páginas necesarias para FUNCIONALIDAD **/
@@ -73,6 +83,13 @@ function paginadorFuncionalidad(totalResults, funcionalidad){
     var paginas="";
 
     var numeroPaginas = totalResults / tamanhoPaginaFuncionalidad ;
+
+     var arrayPaginas = [];
+
+    for(var i = 0; i<numeroPaginas; i++){
+        var elementArray = ["(" + (i+1), calculaInicio((i+1), tamanhoPaginaFuncionalidad),tamanhoPaginaFuncionalidad + ")"];
+        arrayPaginas.push(elementArray);
+    }
 
     $('#itemPaginacion').html('');
 
@@ -136,6 +153,8 @@ function paginadorFuncionalidad(totalResults, funcionalidad){
     cargarPermisosFuncFuncionalidad();
 
     $('#itemPaginacion').append(pag);
+
+    setCookie('arrayPaginas', arrayPaginas);
 }
 
 /** Función para saber el número de páginas necesarias para FUNCIONALIDAD **/
@@ -143,6 +162,15 @@ function paginadorAccion(totalResults, funcionalidad){
     var paginas="";
 
     var numeroPaginas = totalResults / tamanhoPaginaFuncionalidad ;
+
+    var arrayPaginas = [];
+
+    for(var i = 0; i<numeroPaginas; i++){
+        var elementArray = ["(" + (i+1), calculaInicio((i+1), tamanhoPaginaAccion),tamanhoPaginaAccion + ")"];
+        arrayPaginas.push(elementArray);
+    }
+
+    setCookie('arrayPaginas', arrayPaginas);
 
     $('#itemPaginacion').html('');
 

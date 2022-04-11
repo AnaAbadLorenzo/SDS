@@ -40,8 +40,10 @@ function recuperarPassAjaxPromesa(){
     }
 
     $("#modal-title").removeClass();
+    $("#modal-title").html('');
     $(".imagenAviso").attr('src', 'images/carga.gif');
     $("#modal-mensaje").removeClass();
+    $("#modal-mensaje").html('');
     $("#modal-mensaje").addClass('CARGANDO');
     document.getElementById("modal").style.display = "block";
     
