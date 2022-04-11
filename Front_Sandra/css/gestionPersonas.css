@@ -77,6 +77,14 @@
   border: 1px solid #4527A0;
 }
 
+.card-person {
+  width: 16%;
+  position: fixed;
+  top: 21%;
+  left: 24%;
+  border: 1px solid #4527A0;
+}
+
 .card-user .card-img-top{
   width: 75%;
   margin-left: 14%;
@@ -84,17 +92,28 @@
   margin-bottom: 5%;
 }
 
-.card-user .card-body {
+.card-enterprise {
+  width: 16%;
+  position: fixed;
+  top: 21%;
+  left: 60%;
+  border: 1px solid #4527A0;
+}
+
+.card-user .card-body, .card-person .card-body,
+.card-enterprise .card-body {
   border: 1px solid #4527A0;
   background-color: #e2d1fb;
 }
 
-.userImg {
+.userImg, .nombreApellidosImg, .nombreEImg {
   width: 10%;
   margin-right: 5%;
 }
 
-.dniImg, .rolImg {
+.dniImg, .rolImg, .dniPImg, .fechaNacimientoImg,
+.direccionImg, .telefonoImg, .emailImg,
+.cifImg, .direccionEImg, .telefonoEImg{
   width: 9%;
   margin-right: 5%;
 }
@@ -105,10 +124,17 @@
   margin-right: 5%;
 }
 
-.user, .dni, .pass, .rol {
+.user, .dni, .pass, .rol,
+.nombreApellidos, .dniP, .fechaNacimiento, 
+.direccion, .telefono, .email,
+.nombreE, .cif, .direccionE, .telefonoE {
   display: inline;
 }
 
-.userInfo, .dniInfo, .passInfo, .rolInfo {
+.userInfo, .dniInfo, .passInfo, .rolInfo,
+.nombreApellidosInfo, .dniPInfo, .fechaNacimientoInfo,
+.direccionInfo, .telefonoInfo, .emailInfo,
+.nombreEInfo, .cifInfo, .direccionEInfo,
+.telefonoEInfo {
   margin-bottom: 5%;
 }
