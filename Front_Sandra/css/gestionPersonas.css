@@ -46,8 +46,8 @@
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  bottom: 125%;
-  left: 50%;
+  bottom: 160%;
+  left: 93%;
   margin-left: -66px;
   opacity: 0;
   transition: opacity 1s;
@@ -75,6 +75,7 @@
   top: 21%;
   left: 42%;
   border: 1px solid #4527A0;
+  z-index: 1000;
 }
 
 .card-person {
@@ -83,6 +84,7 @@
   top: 21%;
   left: 24%;
   border: 1px solid #4527A0;
+  z-index: 1000;
 }
 
 .card-user .card-img-top{
@@ -98,6 +100,7 @@
   top: 21%;
   left: 60%;
   border: 1px solid #4527A0;
+  z-index: 1000;
 }
 
 .card-user .card-body, .card-person .card-body,
@@ -138,3 +141,16 @@
 .telefonoEInfo {
   margin-bottom: 5%;
 }
+
+.editar {
+  display: inline;
+  width: 37px;
+  margin-top: -10px;
+  margin-left: 230px;
+}
+
+/********* CURSORES **********/
+.editarPermiso {
+  cursor : not-allowed;
+}
+

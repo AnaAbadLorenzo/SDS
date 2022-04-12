@@ -88,14 +88,14 @@ body {
 }
 
 .noticias {
-  width: 97%;
-  height: 75%;
+  width: 50%;
+  height: 73%;
   position: fixed;
   top: 18%;
   overflow-x: hidden;
   overflow-y: auto;
   bottom: 5%;
-  margin-left: 2%;
+  margin-left: 25%;
 }
 
 .noticias .card {
