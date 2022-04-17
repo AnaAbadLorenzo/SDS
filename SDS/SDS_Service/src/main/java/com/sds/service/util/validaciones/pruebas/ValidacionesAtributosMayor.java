@@ -33,6 +33,21 @@ public class ValidacionesAtributosMayor {
 
 		}
 
+		if (atr.equals(Atributo.FECHA_NOTICIA)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NOTICIA_MAYOR_QUE_8 + " - "
+						+ Mensajes.FECHA_NOTICIA_NO_PUEDE_SER_MAYOR_QUE_8;
+
+			}
+
+		}
+
 		if (atributo.length() > tamanhoMiaximo) {
 			switch (funcionalidad) {
 			case LOGIN:
@@ -211,6 +226,15 @@ public class ValidacionesAtributosMayor {
 					break;
 				}
 				break;
+			case GESTION_NOTICIAS:
+				switch (atr) {
+				case TITULO_NOTICIA:
+					resultado = CodigosMensajes.TITULO_NOTICIA_MAYOR_QUE_256 + " - "
+							+ Mensajes.TITULO_NOTICIA_NO_PUEDE_SER_MAYOR_QUE_256;
+					break;
+				default:
+					break;
+				}
 			default:
 				break;
 			}

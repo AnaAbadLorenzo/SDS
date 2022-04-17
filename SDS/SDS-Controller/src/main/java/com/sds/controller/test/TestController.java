@@ -23,6 +23,7 @@ import com.sds.service.test.TestAccionService;
 import com.sds.service.test.TestEmpresaService;
 import com.sds.service.test.TestFuncionalidadService;
 import com.sds.service.test.TestLoginService;
+import com.sds.service.test.TestNoticiaService;
 import com.sds.service.test.TestPersonaService;
 import com.sds.service.test.TestRecuperarPassService;
 import com.sds.service.test.TestRegistrarService;
@@ -61,6 +62,9 @@ public class TestController {
 
 	@Autowired
 	TestEmpresaService testEmpresaService;
+
+	@Autowired
+	TestNoticiaService testNoticiaService;
 
 	@GetMapping(value = "/login/atributos")
 	@ResponseBody
@@ -1450,4 +1454,177 @@ public class TestController {
 
 		return new RespEntity(RespCode.TEST_ACCIONES_EMPRESA_OK, respuestaTestAcciones);
 	}
+
+	@GetMapping(value = "/noticia/atributos/guardar")
+	@ResponseBody
+	public RespEntity TestNoticiaAtributosAccionGuardar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoTituloNoticia = testNoticiaService
+					.getPruebasAtributoTituloNoticia();
+			final List<DatosPruebaAtributos> pruebaAtributoTextoNoticia = testNoticiaService
+					.getPruebasAtributoTextoNoticia();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoTituloNoticia);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTextoNoticia);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_NOTICIA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_NOTICIA_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/noticia/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestNoticiaAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoTituloNoticia = testNoticiaService
+					.getPruebasAtributoTituloNoticia();
+			final List<DatosPruebaAtributos> pruebaAtributoTextoNoticia = testNoticiaService
+					.getPruebasAtributoTextoNoticia();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoTituloNoticia);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTextoNoticia);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_NOTICIA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_NOTICIA_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/noticia/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestNoticiaAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoTituloNoticia = testNoticiaService
+					.getPruebasAtributoTituloNoticiaBuscar();
+
+			final List<DatosPruebaAtributos> pruebaAtributoTextoNoticia = testNoticiaService
+					.getPruebasAtributoTextoNoticiaBuscar();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoTituloNoticia);
+			resultadoPruebasAtributos.addAll(pruebaAtributoTextoNoticia);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_NOTICIA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_NOTICIA_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/noticia/accion/buscar")
+	@ResponseBody
+	public RespEntity TestNoticiaAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testNoticiaService.getPruebasNoticiasAccionBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_NOTICIA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/noticia/accion/guardar")
+	@ResponseBody
+	public RespEntity TestNoticiaAccionGuardar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testNoticiaService.getPruebasNoticiasAccionAñadir();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_NOTICIA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/noticia/accion/modificar")
+	@ResponseBody
+	public RespEntity TestNoticiaAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testNoticiaService.getPruebasNoticiasAccionModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_NOTICIA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/noticia/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestNoticiaAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testNoticiaService.getPruebasNoticiasAccionEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_NOTICIAS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_NOTICIA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_OK, respuestaTestAcciones);
+	}
+
 }

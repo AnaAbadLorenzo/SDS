@@ -42,9 +42,14 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public List<LogExcepcionesEntity> buscarTodosLogExcepciones() {
-		final List<LogExcepcionesEntity> logExcepciones = logExcepcionesRepository.findAll();
+	public ReturnBusquedas<LogExcepcionesEntity> buscarTodosLogExcepciones(final int inicio, final int tamanhoPagina) {
+
 		final List<LogExcepcionesEntity> toret = new ArrayList<>();
+		final List<LogExcepcionesEntity> logExcepciones = entityManager
+				.createNamedQuery(Constantes.LOGEXCEPCIONES_QUERY_FINDALL).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = logExcepcionesRepository.numberFindAllLogExcepciones();
 
 		for (int i = 0; i < logExcepciones.size(); i++) {
 			final LogExcepcionesEntity log = new LogExcepcionesEntity(logExcepciones.get(i).getIdLogExcepciones(),
@@ -53,7 +58,9 @@ public class LogServiceImpl implements LogService {
 			toret.add(log);
 		}
 
-		return toret;
+		final ReturnBusquedas<LogExcepcionesEntity> result = new ReturnBusquedas<LogExcepcionesEntity>(toret,
+				numberTotalResults, toret.size(), inicio);
+		return result;
 	}
 
 	@Override
@@ -92,7 +99,7 @@ public class LogServiceImpl implements LogService {
 			toret.add(log);
 		}
 
-		datosBusqueda.add(Constantes.USUARIO + Constantes.DOS_PUNTOS + usuario);
+		datosBusqueda.add(Constantes.USUARIO_LOG + Constantes.DOS_PUNTOS + usuario);
 		datosBusqueda.add(Constantes.FECHA_INICIO + Constantes.DOS_PUNTOS + fechaInicio);
 		datosBusqueda.add(Constantes.FECHA_FIN + Constantes.DOS_PUNTOS + fechaFin);
 

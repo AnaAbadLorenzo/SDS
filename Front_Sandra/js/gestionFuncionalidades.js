@@ -318,13 +318,13 @@ function reactivarFuncionalidadesAjaxPromesa(){
 }
 
 /* Función para obtener las funcionalidades del sistema */
-async function cargarFuncionalidades(numeroPagina, tamanhoPagina){
+async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCreado){
 	await cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina)
 	  .then((res) => {
 	  	
       var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = "1 - " + numResults  + " de " + totalResults 
+	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
 	   	
       $("#datosFuncionalidad").html("");
 	   	$("#checkboxColumnas").html("");
@@ -340,8 +340,10 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina){
       	$("#paginacion").append(textPaginacion);
       	setLang(getCookie('lang'));
 
-        paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
-
+        if(paginadorCreado != 'PaginadorCreado'){
+          paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
+        }
+        
         if(numeroPagina == 0){
           $('#' + (numeroPagina+1)).addClass("active");
           var numPagCookie = numeroPagina+1;
@@ -373,7 +375,7 @@ async function addFuncionalidad(){
     
     $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
     $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
-    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion');
+    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorNo');
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -391,7 +393,7 @@ async function addFuncionalidad(){
 
 
 /** Funcion buscar funcionalidad **/
-async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion){
+async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginadorCreado){
   await buscarFuncionalidadAjaxPromesa(numeroPagina, tamanhoPagina,accion)
   .then((res) => {
       cargarPermisosFuncFuncionalidad();
@@ -401,7 +403,7 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion){
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = "1 - " + numResults  + " de " + totalResults;
+      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -417,7 +419,9 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion){
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      paginador(totalResults, 'buscarFuncionalidad', 'FUNCIONALIDAD');
+      if(paginadorCreado != 'PaginadorCreado'){
+          paginador(totalResults, 'buscarFuncionalidad', 'FUNCIONALIDAD');
+      }
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -448,10 +452,10 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
   .then((res) => {
       cargarPermisosFuncFuncionalidad();
       setCookie('nombreFuncionalidad', '');
-      setCookie('descripcionFuncionalidad', '');
+      setCookie('descripFuncionalidad', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = "1 - " + numResults  + " de " + totalResults 
+      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -490,13 +494,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 }
 
 /*Función que busca los eliminados de la tabla de rol*/
-async function buscarEliminados(numeroPagina, tamanhoPagina){
+async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
   await buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
       cargarPermisosFuncFuncionalidad();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = "1 - " + numResults  + " de " + totalResults 
+      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
 
       $("#datosFuncionalidad").html("");
@@ -515,7 +519,10 @@ async function buscarEliminados(numeroPagina, tamanhoPagina){
       setCookie('nombreFuncionalidad', '');
       setCookie('descripFuncionalidad', '');
 
-      paginador(totalResults, 'buscarEliminadosFuncionalidad', 'FUNCIONALIDAD');
+      if(paginadorCreado != 'PaginadorCreado'){
+         paginador(totalResults, 'buscarEliminadosFuncionalidad', 'FUNCIONALIDAD');
+      }
+     
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -572,7 +579,7 @@ async function editFuncionalidad(){
     document.getElementById("modal").style.display = "block";
     $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
     $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
-    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion');
+    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorCreado');
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -635,7 +642,7 @@ async function reactivarFuncionalidad(){
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
-    buscarEliminados(0, tamanhoPaginaFuncionalidad);
+    buscarEliminados(0, tamanhoPaginaFuncionalidad, 'PaginadorNo');
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -670,7 +677,7 @@ function showAddFuncionalidades() {
 function showBuscarFuncionalidad() {
   var idioma = getCookie('lang');
 
-  cambiarFormulario('SEARCH_FUNCIONALIDAD', 'javascript:buscarFuncionalidad(0,' + tamanhoPaginaFuncionalidad + ', \'buscarModal\'' + ');', 'return comprobarBuscarFuncionalidad();');
+  cambiarFormulario('SEARCH_FUNCIONALIDAD', 'javascript:buscarFuncionalidad(0,' + tamanhoPaginaFuncionalidad + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarFuncionalidad();');
   cambiarOnBlurCampos('return comprobarNombreFuncionalidadSearch(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
   'return comprobarDescripcionFuncionalidadSearch(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchFuncionalidad', 'Buscar');
@@ -847,7 +854,7 @@ function gestionarPermisosFuncionalidad(idElementoList) {
         $('#btnSearchDelete').attr('src', 'images/searchDelete3.png');
         $('#btnListarFuncionalidades').css("cursor", "pointer");
         $('.iconoSearchDelete').css("cursor", "pointer");
-        $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaFuncionalidad\')");
+        $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaFuncionalidad\', \'PaginadorNo\')");
         $('#divListarFuncionalidades').attr("data-toggle", "modal");
         $('#divListarFuncionalidades').attr("data-target", "#form-modal");
 

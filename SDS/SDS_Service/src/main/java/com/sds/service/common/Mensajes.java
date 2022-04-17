@@ -162,4 +162,27 @@ public class Mensajes {
 
 	public static final String PERMISO_NO_EXISTE = "La acción no existe para el rol y la funcionalidad seleccionados";
 
+	public static final String TITULO_NOTICIA_NO_PUEDE_SER_VACIO = "El título de la noticia no puede ser vacío";
+	public static final String TITULO_NOTICIA_SOLO_PUEDE_CONTENER_LETRAS = "El título de la noticia solo puede contener letras";
+	public static final String TITULO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3 = "El título de la noticia no puede ser menor que 3";
+	public static final String TITULO_NOTICIA_NO_PUEDE_SER_MAYOR_QUE_256 = "El título de la noticia no puede ser mayor que 256";
+
+	public static final String TEXTO_NOTICIA_NO_PUEDE_SER_VACIO = "El texto de la noticia no puede ser vacío";
+	public static final String TEXTO_NOTICIA_SOLO_PUEDE_CONTENER_LETRAS = "El texto de la noticia solo puede contener letras";
+	public static final String TEXTO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3 = "El texto de la noticia no puede ser menor que 3";
+
+	public static final String FECHA_NOTICIA_NO_PUEDE_SER_VACIA = "La fecha de noticia no puede ser vacía";
+	public static final String FECHA_NOTICIA_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS = "La fecha de la noticia solo puede contener numeros";
+	public static final String FECHA_NOTICIA_NO_PUEDE_SER_MENOR_QUE_8 = "La fecha de noticia no puede ser menor que 8";
+	public static final String FECHA_NOTICIA_NO_PUEDE_SER_MAYOR_QUE_8 = "La fecha de noticia no puede ser mayor que 8";
+
+	public static final String NOTICIA_NO_PUEDE_SER_VACIA = "El titulo y/o el texto de la noticia no pueden ser vacíos";
+
+	public static final String NOTICIA_BUSCADA_CORRECTAMENTE = "La noticia se ha encontrado correctamente";
+	public static final String NOTICIA_YA_EXISTE = "La noticia ya existe";
+	public static final String NOTICIA_NO_EXISTE = "La noticia no existe";
+	public static final String NOTICIA_GUARDADA_CORRECTAMENTE = "La noticia se ha guardado correctamente";
+	public static final String NOTICIA_MODIFICADA_CORRECTAMENTE = "La noticia se ha modificado correctamente";
+	public static final String NOTICIA_ELIMINADA_CORRECTAMENTE = "La noticia se ha eliminado correctamente";
+
 }

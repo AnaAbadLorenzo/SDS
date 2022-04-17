@@ -31,6 +31,19 @@ public class ValidacionesAtributosMenor {
 			}
 		}
 
+		if (atr.equals(Atributo.FECHA_NOTICIA)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_NOTICIA_MENOR_QUE_8 + " - "
+						+ Mensajes.FECHA_NOTICIA_NO_PUEDE_SER_MENOR_QUE_8;
+
+			}
+		}
+
 		if (atributo.length() < tamanhoMinimo) {
 			switch (funcionalidad) {
 			case LOGIN:
@@ -215,6 +228,18 @@ public class ValidacionesAtributosMenor {
 							+ Mensajes.DIRECCION_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
 				default:
+					break;
+				}
+				break;
+			case GESTION_NOTICIAS:
+				switch (atr) {
+				case TITULO_NOTICIA:
+					resultado = CodigosMensajes.TITULO_NOTICIA_MENOR_QUE_3 + " - "
+							+ Mensajes.TITULO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case TEXTO_NOTICIA:
+					resultado = CodigosMensajes.TEXTO_NOTICIA_MENOR_QUE_3 + " - "
+							+ Mensajes.TEXTO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
 				}
 				break;

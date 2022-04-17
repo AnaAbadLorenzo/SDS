@@ -13,6 +13,7 @@ import org.json.simple.parser.ParseException;
 import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
 import com.sds.model.FuncionalidadEntity;
+import com.sds.model.NoticiasEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -318,6 +319,67 @@ public class GenerarJSON {
 		empresa.setBorradoEmpresa(0);
 
 		return empresa;
+
+	}
+
+	public NoticiasEntity generarNoticia(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException, java.text.ParseException {
+
+		Boolean acentos = Boolean.FALSE;
+		Boolean caracEspeciales = Boolean.FALSE;
+
+		final JSONObject jsonNoticiaVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final NoticiasEntity noticia = new NoticiasEntity();
+
+		if (jsonNoticiaVacio.get(Constantes.NOTICIA_ID).toString().equals(StringUtils.EMPTY)) {
+			noticia.setIdNoticia(0);
+		} else {
+			noticia.setIdNoticia(Integer.parseInt(CommonUtilities
+					.coalesce(jsonNoticiaVacio.get(Constantes.NOTICIA_ID).toString(), StringUtils.EMPTY)));
+		}
+		noticia.setTituloNoticia(CommonUtilities.coalesce(jsonNoticiaVacio.get(Constantes.TITULO_NOTICIA).toString(),
+				StringUtils.EMPTY));
+		noticia.setTextoNoticia(
+				CommonUtilities.coalesce(jsonNoticiaVacio.get(Constantes.TEXTO_NOTICIA).toString(), StringUtils.EMPTY));
+
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String date = CommonUtilities.coalesce(jsonNoticiaVacio.get(Constantes.FECHA_NOTICIA).toString(),
+				StringUtils.EMPTY);
+		Date fecha = null;
+		java.sql.Date fechaSql = null;
+
+		for (int i = 0; i < date.length(); i++) {
+
+			final String letra = date.charAt(i) + "";
+
+			final Pattern patronAcentos = Pattern.compile(Constantes.PATRON_ACENTOS);
+			final Matcher comprobacionAcentos = patronAcentos.matcher(letra);
+			final Pattern patronEspeciales = Pattern.compile(Constantes.PATRON_CARACTERES_ESPECIALES);
+			final Matcher comprobacionEspeciales = patronEspeciales.matcher(letra);
+
+			if (comprobacionAcentos.matches()) {
+				acentos = true;
+			}
+
+			if (comprobacionEspeciales.matches()) {
+				caracEspeciales = true;
+			}
+		}
+
+		if (date.equals("") || date.contains(Constantes.ENHE) || acentos || caracEspeciales
+				|| date.contains(Constantes.ESPACIO) || date.length() < 8 || date.length() > 10) {
+			fecha = sdf.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+		} else {
+			fecha = sdf.parse(date);
+			fechaSql = new java.sql.Date(fecha.getTime());
+
+		}
+
+		noticia.setFechaNoticia(fechaSql);
+
+		return noticia;
 
 	}
 

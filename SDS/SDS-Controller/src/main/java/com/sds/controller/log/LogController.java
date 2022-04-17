@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.log.LogService;
 import com.sds.service.log.model.Log;
@@ -20,6 +21,17 @@ public class LogController {
 
 	@Autowired
 	LogService logServiceImpl;
+
+	@PostMapping(value = "/listarTodosLogsExcepciones")
+	@ResponseBody
+	public RespEntity buscarTodosLogExcepciones(@RequestBody final Paginacion paginacion) {
+
+		final ReturnBusquedas<LogExcepcionesEntity> resultado = logServiceImpl
+				.buscarTodosLogExcepciones(paginacion.getInicio(), paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.LOG_EXCEPCIONES_LISTADOS, resultado);
+
+	}
 
 	@PostMapping(value = "/listarLogsExcepcionesUsuarioFecha")
 	@ResponseBody

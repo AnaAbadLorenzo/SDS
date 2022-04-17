@@ -1,0 +1,84 @@
+{
+	"tituloNoticiaVacio":{
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"",
+		"textoNoticia": "Os damos la bienvenida a SDS, una web donde podréis certificaros con los objetivos de la ONU 2030",
+		"fechaNoticia": "2022-04-15"
+	},
+		
+	"textoNoticiaVacio":{
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Bienvenidos a SDS",
+		"textoNoticia": "",
+		"fechaNoticia": "2022-04-15"
+	},
+	
+	"fechaNoticiaVacia":{
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Bienvenidos a SDS",
+		"textoNoticia": "Os damos la bienvenida a SDS, una web donde podréis certificaros con los objetivos de la ONU 2030",
+		"fechaNoticia": ""
+	},
+	
+	"datosNoticiaVacios":{
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"",
+		"textoNoticia": "",
+		"fechaNoticia": ""
+	},
+	
+	"buscarNoticia" : {
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Bienvenidos a SDS",
+		"textoNoticia": "Os damos la bienvenida a SDS, una web donde podréis certificaros con los objetivos de la ONU 2030",
+		"fechaNoticia": "2022-04-15"
+	},
+	
+	"guardarNoticia" : {
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Primera noticia",
+		"textoNoticia": "Esta es la primera noticia",
+		"fechaNoticia": "2022-04-15"
+	},
+	
+	"noticiaYaExiste" : {
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Bienvenidos a SDS",
+		"textoNoticia": "Os damos la bienvenida a SDS, una web donde podréis certificaros con los objetivos de la ONU 2030",
+		"fechaNoticia": "2022-04-15"
+	},
+	
+	"modificarNoticia": {
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Noticia modificar",
+		"textoNoticia": "Esta es una noticia para modificar",
+		"fechaNoticia": "2022-04-15"
+	},
+	
+	"noticiaNoExiste": {
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Noticia no existe",
+		"textoNoticia": "Esta es una noticia para probar que no existe",
+		"fechaNoticia": "2022-04-15"
+	
+	},
+	
+	"eliminarNoticia": {
+		"usuario": "ana",
+		"idNoticia":"",
+		"tituloNoticia":"Eliminar noticia",
+		"textoNoticia": "Esta es una noticia para eliminar",
+		"fechaNoticia": "2022-04-15"
+	
+	}
+
+}

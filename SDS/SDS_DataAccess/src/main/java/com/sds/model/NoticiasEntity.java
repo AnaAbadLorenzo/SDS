@@ -7,11 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "noticias")
-public class NoticiaEntity {
+@NamedQueries({ @NamedQuery(name = "NoticiasEntity.findAllNoticias", query = "SELECT n FROM NoticiasEntity n"),
+		@NamedQuery(name = "NoticiasEntity.numberFindAllNoticias", query = "SELECT COUNT(n) FROM NoticiasEntity n"),
+		@NamedQuery(name = "NoticiasEntity.findNoticia", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%') AND n.fechaNoticia LIKE :fechaNoticia"),
+		@NamedQuery(name = "NoticiasEntity.numberFindNoticia", query = "SELECT COUNT(n) FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%') AND n.fechaNoticia LIKE :fechaNoticia"),
+		@NamedQuery(name = "NoticiasEntity.findByTituloNoticia", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia = :tituloNoticia"),
+		@NamedQuery(name = "NoticiasEntity.findNoticiaWithoutDate", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%')"),
+		@NamedQuery(name = "NoticiasEntity.numberFindNoticiaWithoutDate", query = "SELECT COUNT(n) FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%')"), })
+public class NoticiasEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +36,11 @@ public class NoticiaEntity {
 	@Column(name = "fecha_noticia")
 	private Date fechaNoticia;
 
-	public NoticiaEntity() {
+	public NoticiasEntity() {
 		super();
 	}
 
-	public NoticiaEntity(final Integer idNoticia, final String tituloNoticia, final String textoNoticia,
+	public NoticiasEntity(final Integer idNoticia, final String tituloNoticia, final String textoNoticia,
 			final Date fechaNoticia) {
 		super();
 		this.idNoticia = idNoticia;

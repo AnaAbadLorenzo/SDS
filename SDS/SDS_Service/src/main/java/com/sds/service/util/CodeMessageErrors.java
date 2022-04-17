@@ -41,7 +41,10 @@ public enum CodeMessageErrors {
 	FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION("La funcionalidad está asociada a un rol y a una funcionalidad"), //
 	PERMISO_NO_EXISTE_EXCEPTION("El permiso no existe"), //
 	LOG_EXCEPCIONES_VACIO("LogExcepciones vacío"), //
-	LOG_ACCIONES_VACIO("LogAcciones vacío");
+	LOG_ACCIONES_VACIO("LogAcciones vacío"), //
+	NOTICIA_YA_EXISTE_EXCEPTION("La noticia ya existe"), //
+	NOTICIA_NO_EXISTE_EXCEPTION("La noticia no existe"), //
+	NOTICIA_VACIA("El título y/o el texto de la noticia están vacíos");
 
 	private String codigo;
 

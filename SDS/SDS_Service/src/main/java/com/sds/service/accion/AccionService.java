@@ -45,8 +45,8 @@ public interface AccionService {
 	String desasignarAccion(final RolAccionFuncionalidad rolAccionFuncionalidad)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PermisoNoExisteException;
 
-	List<Permiso> obtenerPermisos(final int inicio, final int tamanhoPagina) throws LogExcepcionesNoGuardadoException,
-			FuncionalidadNoExisteException, RolNoExisteException, AccionNoExisteException;
+	List<Permiso> obtenerPermisos() throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException,
+			RolNoExisteException, AccionNoExisteException;
 
 	void deleteAccion(final AccionEntity accion) throws AccionNoExisteException;
 

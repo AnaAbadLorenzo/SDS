@@ -11,6 +11,7 @@ import com.sds.model.EmpresaEntity;
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.NoticiasEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -302,5 +303,29 @@ public class Validaciones {
 		}
 
 		return true;
+	}
+
+	public boolean comprobarNoticiaBlank(final NoticiasEntity noticia) {
+		if (StringUtils.isBlank(noticia.getTituloNoticia()) || StringUtils.isBlank(noticia.getTextoNoticia())) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarTituloNoticiaBlank(final String tituloNoticia) {
+		if (StringUtils.isBlank(tituloNoticia)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarTextoNoticiaBlank(final String textoNoticia) {
+		if (StringUtils.isBlank(textoNoticia)) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

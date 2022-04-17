@@ -19,6 +19,11 @@ arrayGA={
 	'ACCION_DESCRIPTION' : 'Descripción acción',
 	'ORDENAR' : 'Ordear',
 	'ACCIONES' : 'Accións',
+	'TYPE_EXCEPTION' : 'Tipo excepción',
+	'DESCRIPTION_EXCEPTION' : 'Descripción excepción',
+	'DATE' : 'Data',
+	'DATE_INICIO': 'Data inicio',
+	'DATE_FIN' : 'Data fin',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -74,6 +79,11 @@ arrayGA={
 	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'A funcionalidade xa existe. Comproba tamén a táboa de funcionalidades eliminadas',
 	'FUNCIONALIDAD_NO_EXISTE_EXCEPTION' : 'A funcionalidade non existe',
 	'FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION' : 'A funcionalidade está asociada a un rol e a unha acción',
+	'ACCION_YA_EXISTE' : 'A acción xa existe',
+	'ACCION_VACIA' : 'A acción é vacía',
+	'ACCION_NO_EXISTE_EXCEPTION' : 'A acción non existe',
+	'PERMISO_NO_EXISTE' : 'O permiso non existe',
+	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'A acción está asociada a un rol e a unha funcionalidade',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -196,6 +206,9 @@ arrayGA={
 	'DELETE_ACCION' : 'ELIMINAR ACCIÓN',
 	'SEGURO_ELIMINAR_ACCION': 'Está seguro que desea eliminar esta acción?',
 	'EDIT_ACCION' : 'EDITAR ACCIÓN',
+	'GESTION_LOG_EXCEPCIONES' : 'Xestión Logs excepcións',
+	'SEARCH_LOG_EXCEPCIONES' : 'BUSCAR LOG EXCEPCIONES',
+	'DETAIL_LOG_EXCEPCIONES' : 'DETALLE LOG EXCEPCIÓN',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -227,5 +240,15 @@ arrayGA={
 	'ACCION_EDITADA_OK' : 'ACCIÓN EDITADA CORRECTAMENTE',
 	'ACCION_ELIMINADA_OK' : 'ACCIÓN ELIMINADA CORRECTAMENTE',
 	'ACCION_REACTIVADA_OK' : 'ACCIÓN REACTIVADA CORRECTAMENTE',
+	'ACCION_ENCONTRADA' : 'A acción encontrouse correctamente',
+	'ACCIONES_LISTADAS' : 'As accións listáronse correctamente',
+	'ACCIONES_ELIMINADAS_LISTADAS' : 'As accións eliminadas listáronse correctamente',
+	'ACCION_GUARDADA' : 'A acción gardouse correctamente',
+	'ACCION_REACTIVADA' : 'A acción reactiouse correctamente',
+	'ACCION_ASIGNADA' : 'A acción asignouse correctamente',
+	'ACCION_REVOCADA' : 'A acción revocouse correctamente',
+	'ACCION_ELIMINADA' : 'A acción elinouse correctamente',
+	'ACCION_BORRADA' : 'A acción borrouse correctamente',
+	'ACCION_MODIFICADA' : 'A acción modificouse correctamente'
 	
 }

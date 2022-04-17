@@ -99,8 +99,17 @@ public enum RespCode {
 			"El rol no tiene permisos para realizar esa acción sobre esa funcionalidad"), //
 	USUARIOS_LISTADOS("USUARIOS_LISTADOS", "Los usuarios se han listado correctamente"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
-	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADO", "Los logs de excepciones se han listao correctamente"), //
+	PERMISOS_OBTENIDOS("PERMISOS_OBTENIDOS", "Los permisos se han obtenido correctamente"), //
 	ROL_USUARIO_MODIFICADO_OK("ROL_USUARIO_MODIFICADO_OK", "El rol del usuario se ha modificado correctamente"), //
+	NOTICIAS_LISTADAS("NOTICIAS_LISTADAS", "Las noticias se han listado correctamente"), //
+	NOTICIA_ENCONTRADA("NOTICIA_ENCONTRADA", "La noticia se ha encontrado correctamnete"), //
+	NOTICIA_GUARDADA("NOTICIA_GUARDADA", "La noticia se ha guardado correctamente"), //
+	NOTICIA_MODIFICADA("NOTICIA_MODIFICADA", "La noticia se ha modificado correctamente"), //
+	NOTICIA_BORRADA("NOTICIA_BORRADA", "La noticia se ha borrado correctamente"), //
+	NOTICIA_VACIA("NOTICIA_VACIA", "El titulo y/o el texto de la noticia son vacíos"), //
+	NOTICIA_YA_EXISTE_EXCEPTION("NOTICIA_YA_EXISTE", "La noticia ya existe"), //
+	NOTICIA_NO_EXISTE_EXCEPTION("NOTICIA_NO_EXISTE", "La noticia no existe"), //
+	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listao correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de acciones en la base de datos"), //
 	LOG_EXCEPCIONES_NO_GUARDADO("LOG_EXCEPCIONES_NO_GUARDADO",
@@ -172,7 +181,15 @@ public enum RespCode {
 	TEST_ATRIBUTOS_EMPRESA_KO("TEST_ATRIBUTOS_EMPRESA_KO",
 			"Se ha producido un error al ejecutar los test de atributos para empresa"), //
 	TEST_ATRIBUTOS_EMPRESA_OK("TEST_ATRIBUTOS_EMPRESA_OK",
-			"Los test de atributo para la empresa se han ejecutado correctamente");
+			"Los test de atributo para la empresa se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_NOTICIA_OK("TEST_ATRIBUTOS_NOTICIA_OK",
+			"Los test de atributo para las noticias se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_NOTICIA_KO("TEST_ATRIBUTOS_NOTICIA_KO",
+			"Se ha producido un error al ejecutar los test de atributos para la noticia"), //
+	TEST_ACCIONES_NOTICIA_KO("TEST_ACCIONES_NOTICIA_KO",
+			"Se ha producido un error al ejecutar los test de acciones para la noticia"), //
+	TEST_ACCIONES_NOTICIA_OK("TEST_ACCIONES_EMPRESA_OK",
+			"Los test de acciones para la noticia se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

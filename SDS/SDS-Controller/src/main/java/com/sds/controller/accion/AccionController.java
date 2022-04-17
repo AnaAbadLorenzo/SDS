@@ -1,7 +1,10 @@
 package com.sds.controller.accion;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +18,7 @@ import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
 import com.sds.service.accion.model.AccionBuscar;
+import com.sds.service.accion.model.Permiso;
 import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
@@ -40,6 +44,24 @@ public class AccionController {
 
 	public AccionController() {
 		this.validaciones = new Validaciones();
+	}
+
+	@GetMapping(value = "/obtenerPermisos")
+	@ResponseBody
+	public RespEntity obtenerPermisos() {
+		try {
+			final List<Permiso> permisos = accionService.obtenerPermisos();
+			return new RespEntity(RespCode.PERMISOS_OBTENIDOS, permisos);
+		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, logExcepcionesNoGuardado);
+		} catch (final FuncionalidadNoExisteException funcionalidadNoExiste) {
+			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, funcionalidadNoExiste);
+		} catch (final RolNoExisteException rolNoExiste) {
+			return new RespEntity(RespCode.ROL_NO_EXISTE_EXCEPTION, rolNoExiste);
+		} catch (final AccionNoExisteException accionNoExiste) {
+			return new RespEntity(RespCode.ACCION_NO_EXISTE_EXCEPTION, accionNoExiste);
+		}
+
 	}
 
 	@PostMapping(value = "/listarAccion")

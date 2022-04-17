@@ -1,0 +1,44 @@
+{
+
+		"tituloNoticiaVacio":{
+			"idNoticia":"",
+			"tituloNoticia":"",
+			"textoNoticia": "Este es el texto de la noticia",
+			"fechaNoticia": "15/04/2022"
+		},
+		
+		"tituloNoticiaCaracteresEspeciales":{
+			"idNoticia":"",
+			"tituloNoticia":"*@@@@",
+			"textoNoticia": "Este es el texto de la noticia",
+			"fechaNoticia": "15/04/2022"
+		},
+		
+		"tituloNoticiaMenor3":{
+			"idNoticia":"",
+			"tituloNoticia":"ti",
+			"textoNoticia": "Este es el texto de la noticia",
+			"fechaNoticia": "15/04/2022"
+		},
+		
+		"tituloNoticiaMayor256":{
+			"idNoticia":"",
+			"tituloNoticia":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssss",
+			"textoNoticia": "Este es el texto de la noticia",
+			"fechaNoticia": "15/04/2022"
+		},
+		
+		"tituloNoticiaNumerico":{
+			"idNoticia":"",
+			"tituloNoticia":"12345",
+			"textoNoticia": "Este es el texto de la noticia",
+			"fechaNoticia": "15/04/2022"
+		},
+		
+		"tituloNoticiaAlfabeticoCorrecto":{
+			"idNoticia":"",
+			"tituloNoticia":"Titulo",
+			"textoNoticia": "Este es el texto de la noticia",
+			"fechaNoticia": "15/04/2022"
+		}
+}

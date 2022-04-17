@@ -196,6 +196,73 @@ function testFuncionalidadModificarAtributos(){
   });
 }
 
+/**Función para recuperar los test de atributo de añadir accion con ajax y promesas*/
+function testAccionGuardarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAtributosAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de buscar accion con ajax y promesas*/
+function testAccionBuscarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAtributosAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de modificar accion con ajax y promesas*/
+function testAccionModificarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAtributosAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+
 /**Función para recuperar los test de acciones de login con ajax y promesas*/
 function testLoginAcciones(){
   return new Promise(function(resolve, reject) {
@@ -482,6 +549,160 @@ function testFuncionalidadReactivarAcciones(){
   });
 }
 
+/**Función para recuperar los test de acciones de añadir acción con ajax y promesas*/
+function testAccionGuardarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de modificar acción con ajax y promesas*/
+function testAccionModificarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de eliminar acción con ajax y promesas*/
+function testAccionEliminarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionEliminar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de buscar acción con ajax y promesas*/
+function testAccionBuscarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de reactivar acción con ajax y promesas*/
+function testAccionReactivarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionReactivar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de asignar acción con ajax y promesas*/
+function testAccionAsignarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionAsignar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de revocar acción con ajax y promesas*/
+function testAccionRevocarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestAccionAccionRevocar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCION_ACCION_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /*Función que obtiene los test de atributos de Login */
 async function testAtributosLogin(){
 	await testLoginAtributos()
@@ -584,6 +805,42 @@ async function testAtributosFuncionalidadModificar(){
   .then((res) => {
     cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosFuncionalidadGuardar", "cuerpoAtributosFuncionalidadModificar", "atributos", "", "");
     let idElementoList = ["iconoTestFuncionalidad", "iconoTestFuncionalidadAtributos", "iconoTestFuncionalidadAtributosModificar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de guardar acción de Registrar */
+async function testAtributosAccionGuardar(){
+  await testAccionGuardarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosAccionGuardar", "cuerpoAtributosAccionGuardar", "atributos", "", "");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAtributos", "iconoTestAccionAtributosGuardar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de buscar funcionalidad de Registrar */
+async function testAtributosAccionBuscar(){
+  await testAccionBuscarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosAccionBuscar", "cuerpoAtributosAccionBuscar", "atributos", "", "");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAtributos", "iconoTestAccionAtributosBuscar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de modificar rol de Registrar */
+async function testAtributosAccionModificar(){
+  await testAccionModificarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosAccionModificar", "cuerpoAtributosAccionModificar", "atributos", "", "");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAtributos", "iconoTestAccionAtributosModificar"];
     validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
     }).catch((res) => {
       cargarModalErroresTest(res.code);
@@ -753,6 +1010,97 @@ async function testAccionesFuncionalidadReactivar(){
      let atributosValor = ["descripFuncionalidad", "nombreFuncionalidad"];
     cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesFuncionalidadReactivar", "cuerpoAccionesFuncionalidadReactivar", "acciones", atributosValor, "Funcionalidad");
     let idElementoList = ["iconoTestFuncionalidad", "iconoTestFuncionalidadAcciones", "iconoTestFuncionalidadAccionesReactivar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Guardar Accion */
+async function testAccionesAccionGuardar(){
+  await testAccionGuardarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionGuardar", "cuerpoAccionesAccionGuardar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesGuardar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Modificar Accion */
+async function testAccionesAccionModificar(){
+  await testAccionModificarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionModificar", "cuerpoAccionesAccionModificar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesModificar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Eliminar Accion */
+async function testAccionesAccionEliminar(){
+  await testAccionEliminarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionEliminar", "cuerpoAccionesAccionEliminar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesEliminar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Buscar Accion */
+async function testAccionesAccionBuscar(){
+  await testAccionBuscarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionBuscar", "cuerpoAccionesAccionBuscar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesBuscar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Reactivar Accion */
+async function testAccionesAccionReactivar(){
+  await testAccionReactivarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionReactivar", "cuerpoAccionesAccionReactivar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesReactivar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Asignar Accion */
+async function testAccionesAccionAsignar(){
+  await testAccionAsignarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionAsignar", "cuerpoAccionesAccionAsignar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesAsignar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Asignar Accion */
+async function testAccionesAccionRevocar(){
+  await testAccionRevocarAcciones()
+  .then((res) => {
+     let atributosValor = ["descripAccion", "nombreAccion"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesAccionRevocar", "cuerpoAccionesAccionRevocar", "acciones", atributosValor, "Accion");
+    let idElementoList = ["iconoTestAccion", "iconoTestAccionAcciones", "iconoTestAccionAccionesRevocar"];
     validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
     }).catch((res) => {
       cargarModalErroresTest(res.code);

@@ -296,7 +296,7 @@ function reactivarAccionesAjaxPromesa(){
 
     var data = {
       usuario: getCookie('usuario'),
-      accion : funcionalidadEntity
+      accion : accionEntity
     }
 
       $.ajax({
@@ -318,13 +318,13 @@ function reactivarAccionesAjaxPromesa(){
 }
 
 /* Función para obtener las acciones del sistema */
-async function cargarAcciones(numeroPagina, tamanhoPagina){
+async function cargarAcciones(numeroPagina, tamanhoPagina, paginadorCreado){
 	await cargarAccionesAjaxPromesa(numeroPagina, tamanhoPagina)
 	  .then((res) => {
 	  	
       var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = "1 - " + numResults  + " de " + totalResults 
+	  	var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
 	   	
       $("#datosAccion").html("");
 	   	$("#checkboxColumnas").html("");
@@ -340,7 +340,9 @@ async function cargarAcciones(numeroPagina, tamanhoPagina){
       	$("#paginacion").append(textPaginacion);
       	setLang(getCookie('lang'));
 
-        paginador(totalResults, 'cargarAcciones', 'ACCION');
+        if(paginadorCreado != 'PaginadorCreado'){
+            paginador(totalResults, 'cargarAcciones', 'ACCION');
+        }
 
         if(numeroPagina == 0){
           $('#' + (numeroPagina+1)).addClass("active");
@@ -373,7 +375,7 @@ async function addAccion(){
     
     $('#nombreAccion').val(getCookie('nombreAccion'));
     $('#descripcionAccion').val(getCookie('descripAccion'));
-    buscarAccion(getCookie('numeroPagina'), tamanhoPaginaAccion, 'buscarPaginacion');
+    buscarAccion(getCookie('numeroPagina'), tamanhoPaginaAccion, 'buscarPaginacion', 'PaginadorNo');
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -391,7 +393,7 @@ async function addAccion(){
 
 
 /** Funcion buscar accion **/
-async function buscarAccion(numeroPagina, tamanhoPagina, accion){
+async function buscarAccion(numeroPagina, tamanhoPagina, accion, paginadorCreado){
   await buscarAccionAjaxPromesa(numeroPagina, tamanhoPagina,accion)
   .then((res) => {
       cargarPermisosFuncAccion();
@@ -401,7 +403,7 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion){
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = "1 - " + numResults  + " de " + totalResults;
+      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 
       $("#datosAccion").html("");
       $("#checkboxColumnas").html("");
@@ -417,7 +419,9 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion){
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      paginador(totalResults, 'buscarAccion', 'ACCION');
+      if(paginadorCreado != 'PaginadorCreado'){
+        paginador(totalResults, 'buscarAccion', 'ACCION');
+      }
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -451,7 +455,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('descripcionAccion', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = "1 - " + numResults  + " de " + totalResults 
+      var textPaginacion = parseInt(res.data.inicio)+1 + " - " +  (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
       $("#datosAccion").html("");
       $("#checkboxColumnas").html("");
@@ -490,13 +494,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 }
 
 /*Función que busca los eliminados de la tabla de rol*/
-async function buscarEliminados(numeroPagina, tamanhoPagina){
+async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
   await buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
       cargarPermisosFuncAccion();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = "1 - " + numResults  + " de " + totalResults 
+      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
 
       $("#datosAccion").html("");
@@ -515,7 +519,9 @@ async function buscarEliminados(numeroPagina, tamanhoPagina){
       setCookie('nombreAccion', '');
       setCookie('descripAccion', '');
 
-      paginador(totalResults, 'buscarEliminadosAccion', 'ACCION');
+      if(paginadorCreado != 'PaginadorCreado'){
+        paginador(totalResults, 'buscarEliminadosAccion', 'ACCION');
+      }
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -572,7 +578,7 @@ async function editAccion(){
     document.getElementById("modal").style.display = "block";
     $('#nombreAccion').val(getCookie('nombreAccion'));
     $('#descripcionAccion').val(getCookie('descripAccion'));
-    buscarAccion(getCookie('numeroPagina'), tamanhoPaginaAccion, 'buscarPaginacion');
+    buscarAccion(getCookie('numeroPagina'), tamanhoPaginaAccion, 'buscarPaginacion', 'PaginadorCreado');
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -635,7 +641,7 @@ async function reactivarAccion(){
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
-    buscarEliminados(0, tamanhoPaginaAccion);
+    buscarEliminados(0, tamanhoPaginaAccion, 'PaginadorNo');
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -670,7 +676,7 @@ function showAddAcciones() {
 function showBuscarAccion() {
   var idioma = getCookie('lang');
 
-  cambiarFormulario('SEARCH_ACCION', 'javascript:buscarAccion(0,' + tamanhoPaginaAccion + ', \'buscarModal\'' + ');', 'return comprobarBuscarAccion();');
+  cambiarFormulario('SEARCH_ACCION', 'javascript:buscarAccion(0,' + tamanhoPaginaAccion + ', \'buscarModal\'' + ', \'PaginadorNo\');', 'return comprobarBuscarAccion();');
   cambiarOnBlurCampos('return comprobarNombreAccionSearch(\'nombreAccion\', \'errorFormatoNombreAccion\', \'nombreAccion\')', 
   'return comprobarDescripcionAccionSearch(\'descripcionAccion\', \'errorFormatoDescripcionAccion\', \'descripcionAccion\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchAccion', 'Buscar');
@@ -850,7 +856,7 @@ function gestionarPermisosAccion(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaAccion\')");
         $('#divListarAcciones').attr("data-toggle", "modal");
         $('#divListarAcciones').attr("data-target", "#form-modal");
-
+      break;
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');
         $('.detallePermiso').css("cursor", "pointer");
@@ -867,6 +873,99 @@ function gestionarPermisosAccion(idElementoList) {
 
     } 
     }); 
+}
+
+function permisosUsuarios(){
+
+  var funcionalidades = [];
+  var acciones = [];
+
+  $('#tablaDatos').html('');
+
+  $('#itemPaginacion').attr('hidden', true);
+
+  var tabla = '<table class="table table-bordered" id="tablaPermisosAcciones">' + 
+                '<thead id ="encabezadoPermisos">' + 
+                '</thead>' + 
+                '<tbody id="cuerpoPermisos">' +
+                '</tbody>' + 
+              '</table>';
+
+  $('#encabezadoPermisos').html('');
+  $('#cuerpoPermisos').html('');
+
+  var data={
+    inicio : 0,
+    tamanhoPagina: 100
+  }
+
+  var token = getCookie('tokenUsuario');
+
+  $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListadoRoles,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(function( response ) {       
+        if (response.code == 'ROLES_LISTADOS') {
+          $('#encabezadoPermisos').append('<th></th>');
+          for (var i = 0; i < response.data.listaBusquedas.length; i++){
+            var th = response.data.listaBusquedas[i].rolName;
+            $('#encabezadoPermisos').append('<th>' + th + '</th>');
+          }
+        } else { 
+            respuestaAjaxKO(response.code);    
+        }              
+        
+      });
+
+  $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListadoFuncionalidades,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(function( response ) {     
+        for(var i = 0; i<response.data.listaBusquedas.length; i++){
+          funcionalidades.push(response.data.listaBusquedas[i].nombreFuncionalidad);
+        }  
+      });
+
+  $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListadoAcciones,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+  }).done(function( response ) {       
+        for(var i = 0; i<response.data.listaBusquedas.length; i++){
+          acciones.push(response.data.listaBusquedas[i].nombreAccion);
+        } 
+        var elementosConcatenados = []; 
+        for(var i=0; i<funcionalidades.length; i++){
+          for(var j = 0; j<acciones.length; j++){
+            var concatenado = funcionalidades[i] + "/" + acciones[j];
+          }
+        }
+
+        $('#cuerpoPermisos').append('<tr><th>')
+
+        for(var i = 0; i<elementosConcatenados.length; i++){
+
+        }
+
+  });
+
+
+
+$('#tablaDatos').append(tabla);
+
+
+
 }
 
 $(document).ready(function() {

@@ -19,6 +19,11 @@ arrayEN={
 	'ACCION_DESCRIPTION' : 'Action description',
 	'ORDENAR' : 'Order',
 	'ACCIONES' : 'Actions',
+	'TYPE_EXCEPTION' : 'Exception type',
+	'DESCRIPTION_EXCEPTION' : 'Exception description',
+	'DATE' : 'Date',
+	'DATE_INICIO': 'Start date',
+	'DATE_FIN' : 'End Date',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -76,8 +81,10 @@ arrayEN={
 	'FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION' : 'Funcionality is associated with a role and an action',
 	'ACCION_YA_EXISTE' : 'The action already exists',
 	'ACCION_VACIA' : 'The action is empty',
-	'ACCION_MODIFICADA' : 'The action has been modified correctly',
 	'ACCION_NO_EXISTE_EXCEPTION' : 'The action doesn´t exists',
+	'PERMISO_NO_EXISTE' : 'The permission doesn´t exists',
+	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'The action is associated with an action and functionality',
+
 	
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'User login empty',
@@ -202,6 +209,8 @@ arrayEN={
 	'DELETE_ACCION' : 'DELETE ACTION',
 	'SEGURO_ELIMINAR_ACCION': 'Are you sure that you want to delete this action?',
 	'EDIT_ACCION' : 'EDIT ACTION',
+	'GESTION_LOG_EXCEPCIONES' : 'Exception Logs management',
+	'SEARCH_LOG_EXCEPCIONES' : 'SEARCH EXCEPTION LOG',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -229,12 +238,19 @@ arrayEN={
 	'FUNCIONALIDAD_ELIMINADA' : 'Funcionality has been deleted correctly',
 	'FUNCIONALIDAD_REACTIVADA_OK' : 'FUNCIONALITY REACTIVATED CORRECTLY',
 	'FUNCIONALIDAD_REACTIVADA' : 'Funcionality has been reactivated correctly',
-	'ACCION_GUARDADA_OK' : 'ACTION CORRECTLY',
+	'ACCION_GUARDADA_OK' : 'ACTION SAVED CORRECTLY',
 	'ACCION_EDITADA_OK' : 'ACTION MODIFIED CORRECTLY',
 	'ACCION_ELIMINADA_OK' : 'ACTION DELETED CORRECTLY',
 	'ACCION_REACTIVADA_OK' : 'ACTION REACTIVATED CORRECTLY',
 	'ACCION_ENCONTRADA' : 'The action has been found correctly',
-	'ACCIONES_LISTADAS' : 'Te actions has been found correctly',
-	'ACCIONES_ELIMINADAS_LISTADAS' : 'The deleted actions has been ound correctly'
+	'ACCIONES_LISTADAS' : 'The actions has been found correctly',
+	'ACCIONES_ELIMINADAS_LISTADAS' : 'The deleted actions has been ound correctly',
+	'ACCION_GUARDADA' : 'Te action has been saved correctly',
+	'ACCION_REACTIVADA' : 'The action has been reactivated correctly',
+	'ACCION_ASIGNADA' : 'The action has been assigned correctly',
+	'ACCION_REVOCADA' : 'The action has been revoked correctly',
+	'ACCION_ELIMINADA' : 'The action has been deleted correctly',
+	'ACCION_BORRADA' : 'Te action has been deteled correctly',
+	'ACCION_MODIFICADA' : 'The action has been modified correctly'
 
 }

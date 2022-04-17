@@ -139,6 +139,34 @@ function comprobarUser(idElemento, idElementoError, campo) {
 
 }
 
+/**Función que valida el login de usuario en el buscar*/
+function comprobarUserSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+	
+
+}
+
 /**Función que valida la password de usuario*/
 function comprobarPass(idElemento, idElementoError, campo) {
 
@@ -379,6 +407,67 @@ function comprobarFechaNacimiento(idElemento, idElementoError, campo){
 	} else{
 		validacionKO(idElemento, idElementoError);
         return false;
+	}
+}
+
+/** Funcion que valida el formato de la fecha de nacimiento **/
+function comprobarFechaInicioSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/** Funcion que valida el formato de la fecha de nacimiento **/
+function comprobarFechaFinSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Funcion para comprobar el buscar de los logs de excepciones **/
+function comprobarBuscarLogExcepciones(){
+	if(comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario') && comprobarFechaInicioSearch('fechaInicio', 'errorFormatoFechaInicio', 'fecha')
+		&& comprobarFechaFinSearch('fechaFin', 'errorFormatoFechaFin', 'fecha')){
+        return true;
+	} else{
+        return false;
+	
 	}
 }
 
@@ -691,6 +780,9 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			case 'descripcionAccion':
 				codigo = "ACCION_DESCRIPTION_VACIO";
 			break;
+			case 'fecha':
+				codigo = "FECHA_NACIMIENTO_VACIA";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
 	    return false;
@@ -853,6 +945,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			break;
 			case 'nombreAccion' : 
 				codigo = "ACCION_NAME_MAYOR_QUE_48";
+			break;
+			case 'fecha' : 
+				codigo = "FECHA_NACIMIENTO_MAYOR_QUE_8";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -1070,6 +1165,9 @@ function comprobarFormatoFechas(idElemento, idElementoError, campo) {
     if (!patron.test(valor)) { 
     	switch(campo) {
 	    	case 'fechaPersonaRegistro' : 
+		  		codigo = "FECHA_NACIMIENTO_NUMERICA_INCORRECTA";
+			break;
+			case 'fecha' : 
 		  		codigo = "FECHA_NACIMIENTO_NUMERICA_INCORRECTA";
 			break;
 		}

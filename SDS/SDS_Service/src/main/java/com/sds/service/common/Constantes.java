@@ -16,6 +16,7 @@ public class Constantes {
 	public static final String GESTION_USUARIOS = "Gestión de usuarios";
 	public static final String GESTION_PERSONAS = "Gestión de personas";
 	public static final String GESTION_EMPRESAS = "Gestión de empresas";
+	public static final String GESTION_NOTICIAS = "Gestión de noticias";
 
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
@@ -57,6 +58,11 @@ public class Constantes {
 
 	public static final String ACCION_MODIFICAR_ROL_USUARIO = "Modificar rol de usuario";
 	public static final String ACCION_MODIFICAR_PASSWD_USUARIO = "Modificar contraseña de usuario";
+
+	public static final String ACCION_AÑADIR_NOTICIA = "Añadir noticia";
+	public static final String ACCION_BUSCAR_NOTICIA = "Buscar noticia";
+	public static final String ACCION_MODIFICAR_NOTICIA = "Modificar noticia";
+	public static final String ACCION_ELIMINAR_NOTICIA = "Eliminar noticia";
 
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
@@ -125,9 +131,15 @@ public class Constantes {
 	public static final String ID_EMPRESA = "idEmpresa";
 	public static final String FECHA_INICIO = "fechaInicio";
 	public static final String FECHA_FIN = "fechaFin";
+	public static final String USUARIO_LOG = "usuarioLog";
 
 	public static final String DNI_NO_VALIDO = "dniNoValido";
 	public static final String DNI_VALIDO = "dniValido";
+
+	public static final String NOTICIA_ID = "idNoticia";
+	public static final String TITULO_NOTICIA = "tituloNoticia";
+	public static final String TEXTO_NOTICIA = "textoNoticia";
+	public static final String FECHA_NOTICIA = "fechaNoticia";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -180,6 +192,9 @@ public class Constantes {
 	public static final String URL_JSON_EMPRESA_ATRIBUTOS_DIRECCIONEMPRESA = "classpath:EmpresaServiceAtributosDireccionEmpresa.json";
 	public static final String URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA = "classpath:EmpresaServiceAtributosTelefonoEmpresa.json";
 	public static final String URL_JSON_EMPRESA_DATA = "classpath:EmpresaServiceData.json";
+	public static final String URL_JSON_NOTICIA_ATRIBUTOS_TITULONOTICIA = "classpath:NoticiasServiceAtributosTituloNoticia.json";
+	public static final String URL_JSON_NOTICIA_ATRIBUTOS_TEXTONOTICIA = "classpath:NoticiasServiceAtributosTextoNoticia.json";
+	public static final String URL_JSON_NOTICIA_DATA = "classpath:NoticiasServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -423,6 +438,29 @@ public class Constantes {
 	public static final String RECUPERAR_PASS_CORRECTO = "recuperarPassCorrecto";
 	public static final String PERMISO_NO_EXISTE = "permisoNoExiste";
 
+	public static final String TITULO_NOTICIA_VACIO = "tituloNoticiaVacio";
+	public static final String TITULO_NOTICIA_CARACTERESESPECIALES = "tituloNoticiaCaracteresEspeciales";
+	public static final String TITULO_NOTICIA_MENOR_3 = "tituloNoticiaMenor3";
+	public static final String TITULO_NOTICIA_MAYOR_256 = "tituloNoticiaMayor256";
+	public static final String TITULO_NOTICIA_NUMERICO = "tituloNoticiaNumerico";
+	public static final String TITULO_NOTICIA_CORRECTO = "tituloNoticiaAlfabeticoCorrecto";
+
+	public static final String TEXTO_NOTICIA_VACIO = "textoNoticiaVacio";
+	public static final String TEXTO_NOTICIA_CARACTERESESPECIALES = "textoNoticiaCaracteresEspeciales";
+	public static final String TEXTO_NOTICIA_MENOR_3 = "textoNoticiaMenor3";
+	public static final String TEXTO_NOTICIA_NUMERICO = "textoNoticiaNumerico";
+	public static final String TEXTO_NOTICIA_CORRECTO = "textoNoticiaAlfabeticoCorrecto";
+
+	public static final String FECHA_NOTICIA_VACIA = "fechaNoticiaVacia";
+	public static final String DATOS_NOTICIA_VACIOS = "datosNoticiaVacios";
+
+	public static final String BUSCAR_NOTICIA = "buscarNoticia";
+	public static final String GUARDAR_NOTICIA = "guardarNoticia";
+	public static final String NOTICIA_YA_EXISTE = "noticiaYaExiste";
+	public static final String MODIFICAR_NOTICIA = "modificarNoticia";
+	public static final String NOTICIA_NO_EXISTE = "noticiaNoExiste";
+	public static final String ELIMINAR_NOTICIA = "eliminarNoticia";
+
 	public static final String OK = "OK";
 
 	public static final String USUARIO_GENERICO = "usuario_generico";
@@ -478,8 +516,13 @@ public class Constantes {
 	public static final String USUARIO_QUERY_FINDELIMINADAS = "UsuarioEntity.findUsuariosEliminados";
 
 	public static final String LOGEXCEPCIONES_QUERY_FINDLOG = "LogExcepcionesEntity.findLogExcepciones";
+	public static final String LOGEXCEPCIONES_QUERY_FINDALL = "LogExcepcionesEntity.findAllLogExcepciones";
 	public static final String LOGACCIONES_QUERY_FINDLOG = "LogAccionesEntity.findLogAcciones";
 
 	public static final String ROLACCIONFUNCIONALIDAD_QUERY_FINDALL = "RolAccionFuncionalidadEntity.findAllPermissions";
+
+	public static final String NOTICIA_FINDALL_QUERY = "NoticiasEntity.findAllNoticias";
+	public static final String NOTICIA_FINDNOTICIA_QUERY = "NoticiasEntity.findNoticia";
+	public static final String NOTICIA_FINDNOTICIA_WITHOUTDATE_QUERY = "NoticiasEntity.findNoticiaWithoutDate";
 
 }

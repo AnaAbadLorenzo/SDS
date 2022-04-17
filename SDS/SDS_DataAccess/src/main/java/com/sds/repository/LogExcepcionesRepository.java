@@ -13,6 +13,10 @@ public interface LogExcepcionesRepository extends JpaRepository<LogExcepcionesEn
 
 	List<LogExcepcionesEntity> findByUsuario(String usuario);
 
+	List<LogExcepcionesEntity> findAllLogExcepciones();
+
+	Integer numberFindAllLogExcepciones();
+
 	List<LogExcepcionesEntity> findLogExcepciones(String usuario, Date fechaInicio, Date fechaFin);
 
 	Integer numberFindLogExcepciones(String usuario, Date fechaInicio, Date fechaFin);

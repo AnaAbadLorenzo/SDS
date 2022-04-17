@@ -93,6 +93,10 @@ function obtenerValor(valor, atributos, entidad){
 			case 'Funcionalidad':
 				resultadoValor = '"' + atributos[0] + '" : "' + valor.descripFuncionalidad + '", "' + atributos[1] + '" : "' + valor.nombreFuncionalidad +  '"';
 			break;
+
+			case 'Accion':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.descripAccion + '", "' + atributos[1] + '" : "' + valor.nombreAccion +  '"';
+			break;
 		}
 
 	} else {

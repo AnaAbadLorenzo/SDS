@@ -366,7 +366,16 @@ function construyeFila(entidad, fila) {
 			filaTabla = '<tr class="impar"> <td>' + fila.nombreAccion + 
                 '</td> <td>' + fila.descripAccion;
         break;
+
+        case 'LOG_EXCEPCIONES':
+			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.tipoExcepcion + "'", "'" + fila.descripcionExcepcion + "'", "'" + fila.fecha + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
+                '</td> <td>' + fila.tipoExcepcion + 
+                '</td> <td>' + fila.descripcionExcepcion +
+                '</td> <td>' + fila.fecha;
+        break;
 	};
+
 
 	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
                                ')" alt="Detalle"/><span class="tooltiptext iconDetailUser">Detalle</span></div>';
@@ -376,11 +385,15 @@ function construyeFila(entidad, fila) {
                                ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
 
 
-	var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
+    if(entidad == 'LOG_EXCEPCIONES'){
+    	var celdaAcciones = "";
+    }else{
+    	var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
 
-	filaTabla = filaTabla + 
+    	filaTabla = filaTabla + 
                 '</td> <td class="acciones">' + celdaAcciones +  
                 '</td> </tr>';
+    }
 
     return filaTabla;
 }
@@ -457,6 +470,14 @@ function hideShow(classElement, posElement) {
 
 }
 
+/**Función que oculta o muestra las columnas de una tabla*/
+function hideShowRevert(clase, posElement) {
+
+    $("." + clase).toggle();
+    $('td:nth-child(' + posElement + ')').toggle();
+
+}
+
 /**Función para cargar los HREF de cada pagina*/
 function cargarHref(dato){
 	var href=""
@@ -484,6 +505,10 @@ function cargarHref(dato){
 
 		case 'Gestión de acciones':
 			href="GestionDeAcciones.html";
+		break;
+
+		case 'Log de excepciones':
+			href="GestionLogExcepciones.html";
 		break;
 	}
 
@@ -520,6 +545,10 @@ function cargarClass(dato){
 		case 'Gestión de acciones':
 			clase="GESTION_ACCIONES";
 		break; 
+
+		case 'Log de excepciones':
+			href="GESTION_LOG_EXCEPCIONES";
+		break;
 	}
 
 	return clase;
@@ -717,6 +746,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'ACCION':
 			cargarPermisosFuncAccion();
 		break;
+
+		case 'LOG_EXCEPCIONES':
+			cargarPermisosFuncLogExcepciones();
+		break;
 	}
 	
 }
@@ -736,6 +769,27 @@ function cargarPermisosSegunEntidad(entidad){
 			cargarPermisosFuncAccion();
 		break;
 	}
+}
+
+/** Funcion para convertir a tipo Date **/
+function convert(str) {
+  var mnths = {
+      Jan: "01",
+      Feb: "02",
+      Mar: "03",
+      Apr: "04",
+      May: "05",
+      Jun: "06",
+      Jul: "07",
+      Aug: "08",
+      Sep: "09",
+      Oct: "10",
+      Nov: "11",
+      Dec: "12"
+    },
+    date = str.split(" ");
+
+  return [date[5], mnths[date[1]], date[2]].join("-");
 }
 
 

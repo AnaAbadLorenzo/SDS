@@ -37,7 +37,7 @@
     await funcionalidadesUsuario();
     modalCambioPass();
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
-	await cargarFuncionalidades(0, tamanhoPaginaFuncionalidad);
+	await cargarFuncionalidades(0, tamanhoPaginaFuncionalidad, 'PaginadorNo');
 	await cargarPermisosFuncFuncionalidad();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('FUNCIONALIDAD')},30000);
   })();">  

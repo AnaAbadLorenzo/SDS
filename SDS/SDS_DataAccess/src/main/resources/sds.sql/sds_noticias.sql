@@ -32,4 +32,9 @@ CREATE TABLE `noticias` (
   PRIMARY KEY (`id_noticia`),
   UNIQUE KEY `titulo_noticia_UNIQUE` (`titulo_noticia`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `noticias` WRITE;
+INSERT INTO `noticias` (`id_noticia`, `titulo_noticia`, `texto_noticia`, `fecha_noticia`) VALUES ('1', 'Bienvenidos a SDS', 'Os damos la bienvenida a SDS, una web donde podréis certificaros con los objetivos de la ONU 2030', '2022-04-15');
+UNLOCK TABLES;
+
 /*!40101 SET character_set_client = @saved_cs_client */;

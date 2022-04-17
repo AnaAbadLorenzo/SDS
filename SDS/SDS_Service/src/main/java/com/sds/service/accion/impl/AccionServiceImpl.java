@@ -497,16 +497,12 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
-	public List<Permiso> obtenerPermisos(final int inicio, final int tamanhoPagina)
-			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, RolNoExisteException,
-			AccionNoExisteException {
+	public List<Permiso> obtenerPermisos() throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException,
+			RolNoExisteException, AccionNoExisteException {
 		final List<Permiso> permisosToret = new ArrayList<>();
 
 		final List<RolAccionFuncionalidadEntity> permisos = entityManager
-				.createNamedQuery(Constantes.ROLACCIONFUNCIONALIDAD_QUERY_FINDALL).setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
-
-		final Integer numberTotalResults = rolAccionFuncionalidadRepository.numberFindAllPermissions();
+				.createNamedQuery(Constantes.ROLACCIONFUNCIONALIDAD_QUERY_FINDALL).getResultList();
 
 		if (!permisos.isEmpty()) {
 			for (final RolAccionFuncionalidadEntity permisosLista : permisos) {

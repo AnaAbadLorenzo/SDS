@@ -558,7 +558,7 @@ public class TestAccionServiceImpl implements TestAccionService {
 		final String resultadoEsperado = CodigosMensajes.ACCION_NO_EXISTE + " - " + Mensajes.ACCION_NO_EXISTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ACCION_NO_EXISTE, Constantes.EXITO,
+				DefinicionPruebas.ACCION_NO_EXISTE, Constantes.ERROR,
 				getValorAccion(datosEntradaAccionReactivarAccionNoExiste));
 
 	}

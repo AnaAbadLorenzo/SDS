@@ -9,7 +9,7 @@ import com.sds.service.common.ReturnBusquedas;
 
 public interface LogService {
 
-	List<LogExcepcionesEntity> buscarTodosLogExcepciones();
+	ReturnBusquedas<LogExcepcionesEntity> buscarTodosLogExcepciones(final int inicio, final int tamanhoPagina);
 
 	List<LogExcepcionesEntity> buscarPorUsuarioLogExcepciones(String usuario);
 

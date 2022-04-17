@@ -22,6 +22,7 @@ public class DefinicionPruebas {
 	public static final String ALFABETICO_MAYOR_128 = "Alfabético mayor de 128 caracteres";
 	public static final String ALFABETICO_MAYOR_32 = "Alfabético mayor de 32 caracteres";
 	public static final String ALFABETICO_MAYOR_48 = "Alfabético mayor de 48 caracteres";
+	public static final String ALFABETICO_MAYOR_256 = "Alfabético mayor de 256 caracteres";
 	public static final String ALFABETICO_CORRECTO = "Alfabético sin caracateres especiales, tamaño mayor que 3";
 	public static final String NOMBRE_ALFABETICO_CORRECTO = "Alfabético sin caracateres especiales, tamaño mayor que 3 y menor que 56";
 	public static final String ALFANUMERICO_CORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño mayor que 3 y menor que 45";
@@ -119,5 +120,11 @@ public class DefinicionPruebas {
 	public static final String ELIMINAR_EMPRESA_CORRECTO = "La empresa se ha eliminado correctamente";
 	public static final String EMPRESA_ASOCIADA_PERSONAS = "La empresa tiene personas asociadas";
 	public static final String REACTIVAR_EMPRESA_CORRECTO = "La empresa se ha reactivado correctamente";
+
+	public static final String GUARDAR_NOTICIA_CORRECTO = "La noticia se ha guardado correctamente";
+	public static final String MODIFICAR_NOTICIA_CORRECTO = "La noticia se ha modificado correctamente";
+	public static final String NOTICIA_YA_EXISTE = "La noticia ya existe";
+	public static final String NOTICIA_NO_EXISTE = "La noticia no existe";
+	public static final String ELIMINAR_NOTICIA_CORRECTO = "La noticia se ha eliminado correctamente";
 
 }

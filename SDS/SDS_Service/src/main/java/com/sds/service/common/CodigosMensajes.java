@@ -166,4 +166,27 @@ public class CodigosMensajes {
 
 	public static final String PERMISO_NO_EXISTE = "PERMISO_NO_EXISTE";
 
+	public static final String TITULO_NOTICIA_VACIO = "TITULO_NOTICIA_VACIO";
+	public static final String TITULO_NOTICIA_ALFABETICO_INCORRECTO = "TITULO_NOTICIA_ALFABETICO_INCORRECTO";
+	public static final String TITULO_NOTICIA_MENOR_QUE_3 = "TITULO_NOTICIA_MENOR_QUE_3";
+	public static final String TITULO_NOTICIA_MAYOR_QUE_256 = "TITULO_NOTICIA_MAYOR_QUE_256";
+
+	public static final String TEXTO_NOTICIA_VACIO = "TEXTO_NOTICIA_VACIO";
+	public static final String TEXTO_NOTICIA_ALFABETICO_INCORRECTO = "TEXTO_NOTICIA_ALFABETICO_INCORRECTO";
+	public static final String TEXTO_NOTICIA_MENOR_QUE_3 = "TEXTO_NOTICIA_MENOR_QUE_3";
+
+	public static final String FECHA_NOTICIA_VACIA = "FECHA_NOTICIA_VACIA";
+	public static final String FECHA_NOTICIA_NUMERICA_INCORRECTA = "FECHA_NOTICIA_NUMERICA_INCORRECTA";
+	public static final String FECHA_NOTICIA_MENOR_QUE_8 = "FECHA_NOTICIA_MENOR_QUE_8";
+	public static final String FECHA_NOTICIA_MAYOR_QUE_8 = "FECHA_NOTICIA_MAYOR_QUE_8";
+
+	public static final String NOTICIA_VACIA = "noticiaVacia";
+
+	public static final String BUSCAR_NOTICIA_CORRECTO = "BUSCAR_NOTICIA_CORRECTO";
+	public static final String NOTICIA_YA_EXISTE = "NOTICIA_YA_EXISTE";
+	public static final String NOTICIA_NO_EXISTE = "NOTICIA_NO_EXISTE";
+	public static final String GUARDAR_NOTICIA_CORRECTO = "GUARDAR_NOTICIA_CORRECTO";
+	public static final String MODIFICAR_NOTICIA_CORRECTO = "MODIFICAR_NOTICIA_CORRECTO";
+	public static final String ELIMINAR_NOTICIA_CORRECTO = "ELIMINAR_NOTICIA_CORRECTO";
+
 }

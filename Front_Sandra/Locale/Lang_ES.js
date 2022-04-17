@@ -20,6 +20,11 @@ arrayES={
 	'ACCION_DESCRIPTION' : 'Descripción acción',
 	'ORDENAR' : 'Ordenar',
 	'ACCIONES' : 'Acciones',
+	'TYPE_EXCEPTION' : 'Tipo excepción',
+	'DESCRIPTION_EXCEPTION' : 'Descripción excepción',
+	'DATE' : 'Fecha',
+	'DATE_INICIO': 'Fecha inicio',
+	'DATE_FIN' : 'Fecha fin',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -75,6 +80,11 @@ arrayES={
 	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'La funcionalidad ya existe. Comprueba también la tabla de funcionalidades eliminadas',
 	'FUNCIONALIDAD_NO_EXISTE_EXCEPTION' : 'La funcionalidad no existe',
 	'FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION' : 'La funcionalidad está asociada a un rol y a una acción',
+	'ACCION_YA_EXISTE' : 'La acción ya existe',
+	'ACCION_VACIA' : 'La acción es vacía',
+	'ACCION_NO_EXISTE_EXCEPTION' : 'La acción no existe',
+	'PERMISO_NO_EXISTE' : 'El permiso no existe',
+	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'La acción está asociado a un rol y a una funcionalidad',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -198,6 +208,9 @@ arrayES={
 	'DELETE_ACCION' : 'ELIMINAR ACCIÓN',
 	'SEGURO_ELIMINAR_ACCION': '¿Está seguro que desea eliminar esta acción?',
 	'EDIT_ACCION' : 'EDITAR ACCIÓN',
+	'GESTION_LOG_EXCEPCIONES' : 'Gestión Logs excepciones',
+	'SEARCH_LOG_EXCEPCIONES' : 'BUSCAR LOG EXCEPCIONES',
+	'DETAIL_LOG_EXCEPCIONES' : 'DETALLE LOG EXCEPCIÓN',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -229,4 +242,14 @@ arrayES={
 	'ACCION_EDITADA_OK' : 'ACCIÓN EDITADA CORRECTAMENTE',
 	'ACCION_ELIMINADA_OK' : 'ACCIÓN ELIMINADA CORRECTAMENTE',
 	'ACCION_REACTIVADA_OK' : 'ACCIÓN REACTIVADA CORRECTAMENTE',
+	'ACCION_ENCONTRADA' : 'La acción se ha encontrado correctamente',
+	'ACCIONES_LISTADAS' : 'Las acciones se han listado correctamente',
+	'ACCIONES_ELIMINADAS_LISTADAS' : 'Las acciones eliminadas se han listado correctamente',
+	'ACCION_GUARDADA' : 'La acción se ha guardado correctamente',
+	'ACCION_REACTIVADA' : 'La acción se ha reactivado correctamente',
+	'ACCION_ASIGNADA' : 'La acción se ha asignado correctamente',
+	'ACCION_REVOCADA' : 'La acción se ha revocado correctamente',
+	'ACCION_ELIMINADA' : 'La acción se ha eliminado correctamente',
+	'ACCION_BORRADA' : 'La acción se ha borrado correctamente',
+	'ACCION_MODIFICADA' : 'La acción se ha modificado correctamente'
 }
