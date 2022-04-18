@@ -511,9 +511,9 @@ public class AccionServiceImpl implements AccionService {
 				final Optional<FuncionalidadEntity> funcionalidad = funcionalidadRepository
 						.findById(permisosLista.getIdFuncionalidad());
 
-				if (!accion.isPresent()) {
-					if (!rol.isPresent()) {
-						if (!funcionalidad.isPresent()) {
+				if (accion.isPresent()) {
+					if (rol.isPresent()) {
+						if (funcionalidad.isPresent()) {
 							final Permiso permiso = new Permiso(rol.get().getRolName(), accion.get().getNombreAccion(),
 									funcionalidad.get().getNombreFuncionalidad());
 							permisosToret.add(permiso);
