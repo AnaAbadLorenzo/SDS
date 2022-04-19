@@ -46,7 +46,7 @@ function paginador(totalResults, funcionalidad, entidad){
     var paginacionPrevio = '<nav aria-label= "Page navigation example">' +
     					'<ul class="pagination">' +
     						'<li id="anterior" class="page-item disabled tooltip">' +
-    							'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'ANTERIOR\')" aria-label="Previous">' +
+    							'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'ANTERIOR\', \'' + entidad + '\')" aria-label="Previous">' +
     								'<span aria-hidden="true">&laquo;</span>' +
     								'<span class="sr-only">Previous</span>' +
     								'<span class="tooltiptext"> Anterior</span>' +
@@ -56,7 +56,7 @@ function paginador(totalResults, funcionalidad, entidad){
     paginas = escogeEntidadPaginacion(entidad, funcionalidad);
 
    	var paginacionSiguiente = '<li id="siguiente" class="page-item navegacion tooltip">' +
-	   								'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'SIGUIENTE\')" aria-label="Next">' + 
+	   								'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'SIGUIENTE\', \'' + entidad + '\')" aria-label="Next">' + 
 	   									'<span aria-hidden="true">&raquo;</span>' + 
 	   									'<span class="sr-only">Next</span>' +
 	   									'<span class="tooltiptext">Siguiente</span>' + 
@@ -74,7 +74,13 @@ function paginador(totalResults, funcionalidad, entidad){
 
     ocultarBloques(numeroPaginas);
 
-    setCookie('arrayPaginas', JSON.stringify(arrayPaginas));
+    if(entidad == "LOG_EXCEPCIONES" || entidad == "LOG_ACCIONES"){
+        $("#arrayPaginacion").html('');
+        $("#arrayPaginacion").append(JSON.stringify(arrayPaginas));
+
+    }else{
+        setCookie('arrayPaginas', JSON.stringify(arrayPaginas));
+    }
     setCookie('posActual', posActual);
     setCookie('numPosicionesArray', arrayPaginas.length); 
     setCookie('elementoActivo', 1);
@@ -273,12 +279,16 @@ function comprobarOcultos(){
             });
 }
 
-function cargarPosicion(posicionArray, boton){
+function cargarPosicion(posicionArray, boton, entidad){
 
     var posicionActual = 0;
     switch(boton){
         case 'SIGUIENTE':
-            var arrayPaginacion = $.parseJSON(getCookie('arrayPaginas'));
+            if(entidad == "LOG_EXCEPCIONES" || entidad == "LOG_ACCIONES"){
+                var arrayPaginacion = $.parseJSON($('#arrayPaginacion').text());
+            }else{
+                var arrayPaginacion = $.parseJSON(getCookie('arrayPaginas'));
+            }
             var posActual = parseInt(getCookie('posActual'));
             var posicionesAnteriores = arrayPaginacion[posActual-1];
             var idsAnteriores=[];
@@ -353,7 +363,11 @@ function cargarPosicion(posicionArray, boton){
             var elementoDos = document.getElementsByClassName('page-item boton3')[0];
             elementoDos.style.display = "block";
 
-            var arrayPaginacion = $.parseJSON(getCookie('arrayPaginas'));
+            if(entidad == "LOG_EXCEPCIONES" || entidad == "LOG_ACCIONES"){
+                var arrayPaginacion = $.parseJSON($('#arrayPaginacion').text());
+            }else{
+                var arrayPaginacion = $.parseJSON(getCookie('arrayPaginas'));
+            }
             var posActual = parseInt(getCookie('posActual'));
             var posicionesAnteriores = arrayPaginacion[posActual-1];
             var idsAnteriores=[];
