@@ -126,9 +126,13 @@ public class LogServiceImpl implements LogService {
 	}
 
 	@Override
-	public List<LogAccionesEntity> buscarTodosLogAcciones() {
-		final List<LogAccionesEntity> logAcciones = logAccionesRepository.findAll();
+	public ReturnBusquedas<LogAccionesEntity> buscarTodosLogAcciones(final int inicio, final int tamanhoPagina) {
+
 		final List<LogAccionesEntity> toret = new ArrayList<>();
+		final List<LogAccionesEntity> logAcciones = entityManager.createNamedQuery(Constantes.LOGACCIONES_QUERY_FINDALL)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = logAccionesRepository.numberFindAllLogAcciones();
 
 		for (int i = 0; i < logAcciones.size(); i++) {
 			final LogAccionesEntity log = new LogAccionesEntity(logAcciones.get(i).getIdLogAcciones(),
@@ -137,7 +141,10 @@ public class LogServiceImpl implements LogService {
 			toret.add(log);
 		}
 
-		return toret;
+		final ReturnBusquedas<LogAccionesEntity> result = new ReturnBusquedas<LogAccionesEntity>(toret,
+				numberTotalResults, toret.size(), inicio);
+
+		return result;
 	}
 
 	@Override
@@ -199,6 +206,36 @@ public class LogServiceImpl implements LogService {
 		}
 
 		return resultado;
+	}
+
+	@Override
+	public ReturnBusquedas<LogAccionesEntity> buscarPorUsuarioYFechaLogAcciones(final String usuario,
+			final Date fechaInicio, final Date fechaFin, final int inicio, final int tamanhoPagina) {
+		final List<LogAccionesEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
+
+		final List<LogAccionesEntity> logAcciones = entityManager.createNamedQuery(Constantes.LOGACCIONES_QUERY_FINDLOG)
+				.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.FECHA_INICIO, fechaInicio)
+				.setParameter(Constantes.FECHA_FIN, fechaFin).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+				.getResultList();
+
+		final Integer numberTotalResults = logAccionesRepository.numberFindLogAcciones(usuario, fechaInicio, fechaFin);
+
+		for (int i = 0; i < logAcciones.size(); i++) {
+			final LogAccionesEntity log = new LogAccionesEntity(logAcciones.get(i).getIdLogAcciones(),
+					logAcciones.get(i).getUsuario(), logAcciones.get(i).getAccion(), logAcciones.get(i).getDatos(),
+					logAcciones.get(i).getFecha());
+			toret.add(log);
+		}
+
+		datosBusqueda.add(Constantes.USUARIO_LOG + Constantes.DOS_PUNTOS + usuario);
+		datosBusqueda.add(Constantes.FECHA_INICIO + Constantes.DOS_PUNTOS + fechaInicio);
+		datosBusqueda.add(Constantes.FECHA_FIN + Constantes.DOS_PUNTOS + fechaFin);
+
+		final ReturnBusquedas<LogAccionesEntity> busqueda = new ReturnBusquedas<>(logAcciones, datosBusqueda,
+				numberTotalResults, logAcciones.size(), inicio);
+
+		return busqueda;
 	}
 
 }

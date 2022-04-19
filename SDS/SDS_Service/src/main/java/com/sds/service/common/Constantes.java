@@ -518,6 +518,7 @@ public class Constantes {
 	public static final String LOGEXCEPCIONES_QUERY_FINDLOG = "LogExcepcionesEntity.findLogExcepciones";
 	public static final String LOGEXCEPCIONES_QUERY_FINDALL = "LogExcepcionesEntity.findAllLogExcepciones";
 	public static final String LOGACCIONES_QUERY_FINDLOG = "LogAccionesEntity.findLogAcciones";
+	public static final String LOGACCIONES_QUERY_FINDALL = "LogAccionesEntity.findAllLogAcciones";
 
 	public static final String ROLACCIONFUNCIONALIDAD_QUERY_FINDALL = "RolAccionFuncionalidadEntity.findAllPermissions";
 

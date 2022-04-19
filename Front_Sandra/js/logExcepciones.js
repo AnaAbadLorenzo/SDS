@@ -1,4 +1,4 @@
-/** Función para recuperar las acciones con ajax y promesas **/
+/** Función para recuperar los logs de excepciones con ajax y promesas **/
 function cargarLogExcepcionesAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
   	var token = getCookie('tokenUsuario');

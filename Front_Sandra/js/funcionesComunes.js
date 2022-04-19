@@ -369,10 +369,20 @@ function construyeFila(entidad, fila) {
 
         case 'LOG_EXCEPCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.tipoExcepcion + "'", "'" + fila.descripcionExcepcion + "'", "'" + fila.fecha + "'"];
+			var fecha = (fila.fecha).split('T');
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.tipoExcepcion + 
                 '</td> <td>' + fila.descripcionExcepcion +
-                '</td> <td>' + fila.fecha;
+                '</td> <td>' + fecha[0];
+        break;
+
+        case 'LOG_ACCIONES':
+			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.accion + "'", "'" + fila.datos + "'", "'" + fila.fecha + "'"];
+			var fecha = (fila.fecha).split('T');
+			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
+                '</td> <td>' + fila.accion + 
+                '</td> <td>' + fila.datos +
+                '</td> <td>' + fecha[0];
         break;
 	};
 
@@ -385,7 +395,7 @@ function construyeFila(entidad, fila) {
                                ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
 
 
-    if(entidad == 'LOG_EXCEPCIONES'){
+    if(entidad == 'LOG_EXCEPCIONES' || entidad == 'LOG_ACCIONES'){
     	var celdaAcciones = "";
     }else{
     	var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
@@ -509,6 +519,10 @@ function cargarHref(dato){
 
 		case 'Log de excepciones':
 			href="GestionLogExcepciones.html";
+		break;
+
+		case 'Log de acciones':
+			href="GestionLogAcciones.html";
 		break;
 	}
 

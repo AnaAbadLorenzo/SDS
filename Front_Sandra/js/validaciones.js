@@ -471,6 +471,17 @@ function comprobarBuscarLogExcepciones(){
 	}
 }
 
+/**Funcion para comprobar el buscar de los logs de acciones **/
+function comprobarBuscarLogAcciones(){
+	if(comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario') && comprobarFechaInicioSearch('fechaInicio', 'errorFormatoFechaInicio', 'fecha')
+		&& comprobarFechaFinSearch('fechaFin', 'errorFormatoFechaFin', 'fecha')){
+        return true;
+	} else{
+        return false;
+	
+	}
+}
+
 /** Funcion que valida el formato de la fecha de nacimiento **/
 function comprobarDireccion(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";

@@ -1,5 +1,6 @@
 package com.sds.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,5 +16,13 @@ public interface LogAccionesRepository extends JpaRepository<LogAccionesEntity, 
 	List<LogAccionesEntity> findByAccion(String accion);
 
 	List<LogAccionesEntity> findByUsuarioAccion(String usuario, String accion);
+
+	List<LogAccionesEntity> findAllLogAcciones();
+
+	Integer numberFindAllLogAcciones();
+
+	List<LogAccionesEntity> findLogAcciones(String usuario, Date fechaInicio, Date fechaFin);
+
+	Integer numberFindLogAcciones(String usuario, Date fechaInicio, Date fechaFin);
 
 }

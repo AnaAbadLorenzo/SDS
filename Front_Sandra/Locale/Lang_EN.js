@@ -24,6 +24,8 @@ arrayEN={
 	'DATE' : 'Date',
 	'DATE_INICIO': 'Start date',
 	'DATE_FIN' : 'End Date',
+	'ACTION' : 'Action',
+	'DATA' : 'Data',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -209,8 +211,10 @@ arrayEN={
 	'DELETE_ACCION' : 'DELETE ACTION',
 	'SEGURO_ELIMINAR_ACCION': 'Are you sure that you want to delete this action?',
 	'EDIT_ACCION' : 'EDIT ACTION',
-	'GESTION_LOG_EXCEPCIONES' : 'Exception Logs management',
+	'GESTION_LOG_EXCEPCIONES' : 'Exception logs management',
 	'SEARCH_LOG_EXCEPCIONES' : 'SEARCH EXCEPTION LOG',
+	'GESTION_LOG_ACCIONES' : 'Action logs management',
+	'SEARCH_LOG_ACCIONES' : 'SEARCH ACTION LOG',
 
 	//Acciones
 	'CERRARMODAL': 'Close',

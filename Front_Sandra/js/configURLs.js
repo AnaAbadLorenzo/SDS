@@ -28,6 +28,8 @@ var urlPeticionAjaxListadoAccionesEliminadas = "http://localhost:8090/accion/lis
 var urlPeticionAjaxReactivarAccion = "http://localhost:8090/accion/reactivarAccion";
 var urlPeticionAjaxListarTodosLogExcepciones = "http://localhost:8090/log/listarTodosLogsExcepciones";
 var urlPeticionAjaxListarLogExcepciones = "http://localhost:8090/log/listarLogsExcepcionesUsuarioFecha";
+var urlPeticionAjaxListarTodosLogAcciones = "http://localhost:8090/log/listarTodosLogsAcciones";
+var urlPeticionAjaxListarLogAcciones = "http://localhost:8090/log/listarLogsAccionesUsuarioFecha";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = "http://localhost:8090/test/login/atributos";

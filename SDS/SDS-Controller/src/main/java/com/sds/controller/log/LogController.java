@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
@@ -44,4 +45,25 @@ public class LogController {
 
 	}
 
+	@PostMapping(value = "/listarTodosLogsAcciones")
+	@ResponseBody
+	public RespEntity buscarTodosLogAcciones(@RequestBody final Paginacion paginacion) {
+
+		final ReturnBusquedas<LogAccionesEntity> resultado = logServiceImpl
+				.buscarTodosLogAcciones(paginacion.getInicio(), paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.LOG_ACCIONES_LISTADOS, resultado);
+
+	}
+
+	@PostMapping(value = "/listarLogsAccionesUsuarioFecha")
+	@ResponseBody
+	public RespEntity buscarLogAcciones(@RequestBody final Log log) {
+
+		final ReturnBusquedas<LogAccionesEntity> resultado = logServiceImpl.buscarPorUsuarioYFechaLogAcciones(
+				log.getUsuario(), log.getFechaInicio(), log.getFechaFin(), log.getInicio(), log.getTamanhoPagina());
+
+		return new RespEntity(RespCode.LOG_ACCIONES_LISTADOS, resultado);
+
+	}
 }

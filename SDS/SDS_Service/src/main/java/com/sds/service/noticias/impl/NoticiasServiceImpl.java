@@ -223,6 +223,8 @@ public class NoticiasServiceImpl implements NoticiasService {
 			} else {
 				noticiaBD.get().setTituloNoticia(noticiaEntity.getTituloNoticia());
 				noticiaBD.get().setTextoNoticia(noticiaEntity.getTextoNoticia());
+				final java.util.Date fechaModificacion = new Date();
+				noticiaBD.get().setFechaNoticia(fechaModificacion);
 				noticiasRepository.saveAndFlush(noticiaBD.get());
 
 				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(noticia.getUsuario(),

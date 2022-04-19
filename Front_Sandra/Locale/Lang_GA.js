@@ -24,6 +24,8 @@ arrayGA={
 	'DATE' : 'Data',
 	'DATE_INICIO': 'Data inicio',
 	'DATE_FIN' : 'Data fin',
+	'ACTION' : 'Acción',
+	'DATA' : 'Datos',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -206,9 +208,11 @@ arrayGA={
 	'DELETE_ACCION' : 'ELIMINAR ACCIÓN',
 	'SEGURO_ELIMINAR_ACCION': 'Está seguro que desea eliminar esta acción?',
 	'EDIT_ACCION' : 'EDITAR ACCIÓN',
-	'GESTION_LOG_EXCEPCIONES' : 'Xestión Logs excepcións',
+	'GESTION_LOG_EXCEPCIONES' : 'Xestión logs excepcións',
 	'SEARCH_LOG_EXCEPCIONES' : 'BUSCAR LOG EXCEPCIONES',
 	'DETAIL_LOG_EXCEPCIONES' : 'DETALLE LOG EXCEPCIÓN',
+	'GESTION_LOG_ACCIONES' : 'Xestións logs accións',
+	'SEARCH_LOG_ACCIONES' : 'BUSCAR LOG ACCIONES',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

@@ -25,7 +25,7 @@ function paginador(totalResults, funcionalidad, entidad){
                 arrayPaginas.push(arrayElementos);
             }
 
-            else if((i+1) == parseInt(numeroPaginas,10)){
+            else if(numeroPaginas % 1 == 0 && (i+1) == parseInt(numeroPaginas,10)){
                 arrayPaginas.push(arrayElementos);
 
                 if(arrayElementos.length == 3){
@@ -102,6 +102,9 @@ function escogeTamanho(entidad){
         break;
         case 'LOG_EXCEPCIONES':
             tamanho = tamanhoPaginaLogExcepciones;
+        break;
+        case 'LOG_ACCIONES':
+            tamanho = tamanhoPaginaLogAcciones;
         break;
     }
 
@@ -223,6 +226,24 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarLogExcepciones(' 
                             + (i+1) + ',' + tamanhoPaginaLogExcepciones + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+            }
+        break;
+
+        case 'LOG_ACCIONES':
+            switch(funcionalidad){
+                case 'cargarLogAcciones': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarLogAcciones(' 
+                            + (i+1) + ',' + tamanhoPaginaLogAcciones + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+
+                case 'buscarLogAcciones' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarLogAcciones(' 
+                            + (i+1) + ',' + tamanhoPaginaLogAcciones + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
             }

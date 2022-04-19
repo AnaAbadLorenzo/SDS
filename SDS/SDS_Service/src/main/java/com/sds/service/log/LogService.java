@@ -18,13 +18,16 @@ public interface LogService {
 
 	String guardarLogExcepciones(LogExcepcionesEntity logExcepciones);
 
-	List<LogAccionesEntity> buscarTodosLogAcciones();
+	ReturnBusquedas<LogAccionesEntity> buscarTodosLogAcciones(final int inicio, final int tamanhoPagina);
 
 	List<LogAccionesEntity> buscarPorUsuarioLogAcciones(String usuario);
 
 	List<LogAccionesEntity> buscarPorAccionLogAcciones(String accion);
 
 	List<LogAccionesEntity> buscarPorUsuarioAccionLogAcciones(String usuario, String accion);
+
+	ReturnBusquedas<LogAccionesEntity> buscarPorUsuarioYFechaLogAcciones(String usuario, Date fechaInicio,
+			Date fechaFin, final int inicio, final int tamanhoPagina);
 
 	String guardarLogAcciones(LogAccionesEntity logAcciones);
 

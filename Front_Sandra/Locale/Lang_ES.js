@@ -25,6 +25,8 @@ arrayES={
 	'DATE' : 'Fecha',
 	'DATE_INICIO': 'Fecha inicio',
 	'DATE_FIN' : 'Fecha fin',
+	'ACTION' : 'Acción',
+	'DATA' : 'Datos',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -211,6 +213,8 @@ arrayES={
 	'GESTION_LOG_EXCEPCIONES' : 'Gestión Logs excepciones',
 	'SEARCH_LOG_EXCEPCIONES' : 'BUSCAR LOG EXCEPCIONES',
 	'DETAIL_LOG_EXCEPCIONES' : 'DETALLE LOG EXCEPCIÓN',
+	'GESTION_LOG_ACCIONES' : 'Gestión Logs acciones',
+	'SEARCH_LOG_ACCIONES' : 'BUSCAR LOG ACCIONES',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
