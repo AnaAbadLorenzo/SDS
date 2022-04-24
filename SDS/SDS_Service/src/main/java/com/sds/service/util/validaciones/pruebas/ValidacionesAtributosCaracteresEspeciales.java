@@ -241,6 +241,19 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+					break;
+
+				case GESTION_OBJETIVOS:
+					switch (atr) {
+					case NOMBRE_OBJETIVO:
+						resultado = CodigosMensajes.OBJETIVO_NAME_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.NOMBRE_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_Y_ESPACIOS;
+						break;
+					case DESCRIPCION_OBJETIVO:
+						resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS;
+						break;
+					}
 
 				default:
 					break;

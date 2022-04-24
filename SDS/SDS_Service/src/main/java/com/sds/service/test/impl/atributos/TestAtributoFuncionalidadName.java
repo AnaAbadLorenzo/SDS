@@ -16,7 +16,6 @@ import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteres
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfabetico;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMayor;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosNumerico;
 
 public class TestAtributoFuncionalidadName {
 
@@ -24,7 +23,6 @@ public class TestAtributoFuncionalidadName {
 	private final ValidacionesAtributosCaracteresEspeciales validacionesAtributosCaracteresEspeciales;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
 	private final ValidacionesAtributosMayor validacionesAtributosMayor;
-	private final ValidacionesAtributosNumerico validacionesAtributosNumerico;
 	private final ValidacionesAtributosCorrectoAlfabetico validacionesAtributosCorrectoAlfabetico;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
@@ -33,7 +31,6 @@ public class TestAtributoFuncionalidadName {
 		validacionesAtributosCaracteresEspeciales = new ValidacionesAtributosCaracteresEspeciales();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
 		validacionesAtributosMayor = new ValidacionesAtributosMayor();
-		validacionesAtributosNumerico = new ValidacionesAtributosNumerico();
 		validacionesAtributosCorrectoAlfabetico = new ValidacionesAtributosCorrectoAlfabetico();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
@@ -99,21 +96,6 @@ public class TestAtributoFuncionalidadName {
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFABETICO_MAYOR_48, Constantes.ERROR,
 				datosEntradaFuncionalidadNameAlfabeticoMayor48.getNombreFuncionalidad(), Constantes.FUNCIONALIDAD_NAME);
-	}
-
-	public DatosPruebaAtributos getTestFuncionalidadNameNumerico(
-			final FuncionalidadEntity datosEntradaFuncionalidadNameNumerico) throws ParseException {
-
-		final String resultadoObtenido = validacionesAtributosNumerico.comprobarAtributoNumerico(
-				datosEntradaFuncionalidadNameNumerico.getNombreFuncionalidad(), Funcionalidad.GESTION_FUNCIONALIDADES,
-				Atributo.FUNCIONALIDAD_NAME);
-
-		final String resultadoEsperado = CodigosMensajes.FUNCIONALIDAD_NAME_ALFABETICO_INCORRECTO + " - "
-				+ Mensajes.FUNCIONALIDAD_NAME_SOLO_PUEDE_CONTENER_LETRAS_Y_ACENTOS;
-
-		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.NUMERICO, Constantes.ERROR,
-				datosEntradaFuncionalidadNameNumerico.getNombreFuncionalidad(), Constantes.FUNCIONALIDAD_NAME);
 	}
 
 	public DatosPruebaAtributos getTestFuncionalidadNameCorrectoAlfabetico(

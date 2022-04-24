@@ -112,6 +112,9 @@ function escogeTamanho(entidad){
         case 'LOG_ACCIONES':
             tamanho = tamanhoPaginaLogAcciones;
         break;
+        case 'USUARIO':
+            tamanho = tamanhoPaginaUsuario;
+        break;
     }
 
     return tamanho;
@@ -252,6 +255,30 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                             + (i+1) + ',' + tamanhoPaginaLogAcciones + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
+            }
+        break;
+
+        case 'USUARIO':
+            switch(funcionalidad){
+                case 'cargarUsuarios': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarUsuarios(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarUsuario' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarUsuario(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosUsuario' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+
             }
         break;
 
@@ -489,6 +516,10 @@ function cargarPosicion(posicionArray, boton, entidad){
 }
 
 function ocultarBloques(numeroIdCrear){
+    if(numeroIdCrear % 1 != 0){
+        var numero = parseInt(numeroIdCrear,10);
+        numeroIdCrear = numero+1;
+    }
 
     if(numeroIdCrear == 1){
         var elemento = document.getElementsByClassName('page-item boton2')[0];

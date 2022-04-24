@@ -24,6 +24,7 @@ import com.sds.service.test.TestEmpresaService;
 import com.sds.service.test.TestFuncionalidadService;
 import com.sds.service.test.TestLoginService;
 import com.sds.service.test.TestNoticiaService;
+import com.sds.service.test.TestObjetivoService;
 import com.sds.service.test.TestPersonaService;
 import com.sds.service.test.TestRecuperarPassService;
 import com.sds.service.test.TestRegistrarService;
@@ -65,6 +66,9 @@ public class TestController {
 
 	@Autowired
 	TestNoticiaService testNoticiaService;
+
+	@Autowired
+	TestObjetivoService testObjetivoService;
 
 	@GetMapping(value = "/login/atributos")
 	@ResponseBody
@@ -1625,6 +1629,198 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_NOTICIA_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/objetivo/atributos/guardar")
+	@ResponseBody
+	public RespEntity TestObjetivoAtributosAccionGuardar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombreObjetivo = testObjetivoService
+					.getPruebasAtributoNombreObjetivo();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripcionObjetivo = testObjetivoService
+					.getPruebasAtributoDescripObjetivo();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreObjetivo);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripcionObjetivo);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_OBJETIVO);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_OBJETIVO_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/objetivo/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestObjetivoAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombreObjetivo = testObjetivoService
+					.getPruebasAtributoNombreObjetivo();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripcionObjetivo = testObjetivoService
+					.getPruebasAtributoDescripObjetivo();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreObjetivo);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripcionObjetivo);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_OBJETIVO);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_OBJETIVO_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/objetivo/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestObjetivoAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombreObjetivo = testObjetivoService
+					.getPruebasAtributoNombreObjetivoBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripcionObjetivo = testObjetivoService
+					.getPruebasAtributoDescripObjetivoBuscar();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreObjetivo);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripcionObjetivo);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_OBJETIVO);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_OBJETIVO_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/objetivo/accion/buscar")
+	@ResponseBody
+	public RespEntity TestObjetivoAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testObjetivoService.getPruebasAccionesObjetivoBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_OBJETIVO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/objetivo/accion/guardar")
+	@ResponseBody
+	public RespEntity TestObjetivoAccionGuardar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testObjetivoService.getPruebasAccionesObjetivoGuardar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_OBJETIVO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/objetivo/accion/modificar")
+	@ResponseBody
+	public RespEntity TestObjetivoAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testObjetivoService.getPruebasAccionesObjetivoModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_OBJETIVO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/objetivo/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestObjetivoAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testObjetivoService.getPruebasAccionesObjetivoEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_OBJETIVO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/objetivo/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestObjetivoAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testObjetivoService.getPruebasAccionesObjetivoReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_OBJETIVOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_OBJETIVO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_OK, respuestaTestAcciones);
 	}
 
 }

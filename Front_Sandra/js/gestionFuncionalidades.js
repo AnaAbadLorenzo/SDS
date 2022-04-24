@@ -743,6 +743,7 @@ function showEditar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad) 
     mostrarObligatorios(obligatorios);
     habilitaCampos(campos);
     deshabilitaCampos(["nombreFuncionalidad"]);
+    anadirReadonly(["nombreFuncionalidad"]);
 
 }
 
@@ -769,7 +770,7 @@ function showEliminar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad
 
     let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
     let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
-    eliminarReadonly(campos);
+    anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
 

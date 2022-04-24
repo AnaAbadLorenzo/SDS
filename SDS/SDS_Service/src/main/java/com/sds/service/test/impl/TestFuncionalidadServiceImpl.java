@@ -68,9 +68,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 		final FuncionalidadEntity datosEntradaFuncionalidadNameAlfabeticoMayor48 = generarJSON.generarFuncionalidad(
 				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
 				Constantes.FUNCIONALIDADNAME_ALFABETICO_MAYOR_48_DATA);
-		final FuncionalidadEntity datosEntradaFuncionalidadNameNumerico = generarJSON.generarFuncionalidad(
-				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
-				Constantes.FUNCIONALIDADNAME_NUMERICO_DATA);
 		final FuncionalidadEntity datosEntradaFuncionalidadNameAlfabetico = generarJSON.generarFuncionalidad(
 				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
 				Constantes.FUNCIONALIDADNAME_ALFABETICO_DATA);
@@ -83,8 +80,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 				.getTestFuncionalidadNameAlfabeticoMenor3(datosEntradaFuncionalidadNameAlfabeticoMenor3));
 		datosPruebaAtributos.add(testAtributoFuncionalidadName
 				.getTestFuncionalidadNameAlfabeticoMayor48(datosEntradaFuncionalidadNameAlfabeticoMayor48));
-		datosPruebaAtributos.add(
-				testAtributoFuncionalidadName.getTestFuncionalidadNameNumerico(datosEntradaFuncionalidadNameNumerico));
 		datosPruebaAtributos.add(testAtributoFuncionalidadName
 				.getTestFuncionalidadNameCorrectoAlfabetico(datosEntradaFuncionalidadNameAlfabetico));
 
@@ -103,9 +98,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 		final FuncionalidadEntity datosEntradaFuncionalidadNameAlfabeticoMayor48 = generarJSON.generarFuncionalidad(
 				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
 				Constantes.FUNCIONALIDADNAME_ALFABETICO_MAYOR_48_DATA);
-		final FuncionalidadEntity datosEntradaFuncionalidadNameNumerico = generarJSON.generarFuncionalidad(
-				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
-				Constantes.FUNCIONALIDADNAME_NUMERICO_DATA);
 		final FuncionalidadEntity datosEntradaFuncionalidadNameAlfabetico = generarJSON.generarFuncionalidad(
 				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADNAME,
 				Constantes.FUNCIONALIDADNAME_ALFABETICO_DATA);
@@ -114,8 +106,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 				datosEntradaFuncionalidadNameCaracteresEspeciales));
 		datosPruebaAtributos.add(testAtributoFuncionalidadName
 				.getTestFuncionalidadNameAlfabeticoMayor48(datosEntradaFuncionalidadNameAlfabeticoMayor48));
-		datosPruebaAtributos.add(
-				testAtributoFuncionalidadName.getTestFuncionalidadNameNumerico(datosEntradaFuncionalidadNameNumerico));
 		datosPruebaAtributos.add(testAtributoFuncionalidadName
 				.getTestFuncionalidadNameCorrectoAlfabetico(datosEntradaFuncionalidadNameAlfabetico));
 
@@ -140,9 +130,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionAlfabetico = generarJSON.generarFuncionalidad(
 				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
 				Constantes.FUNCIONALIDADDESCRIPTION_ALFABETICO_DATA);
-		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionNumerico = generarJSON.generarFuncionalidad(
-				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
-				Constantes.FUNCIONALIDADDESCRIPTION_NUMERICO_DATA);
 
 		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
 				.getTestFuncionalidadDescriptionVacio(datosEntradaFuncionalidadDescriptionVacio));
@@ -151,8 +138,6 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 						datosEntradaFuncionalidadDescriptionCaracteresEspeciales));
 		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
 				.getTestFuncionalidadDescriptionAlfabeticoMenor3(datosEntradaFuncionalidadDescriptionAlfabeticoMenor3));
-		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
-				.getTestFuncionalidadDescriptionNumerico(datosEntradaFuncionalidadDescriptionNumerico));
 		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
 				.getTestFuncionalidadDescriptionAlfabeticoCorrecto(datosEntradaFuncionalidadDescriptionAlfabetico));
 
@@ -170,16 +155,10 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionAlfabetico = generarJSON.generarFuncionalidad(
 				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
 				Constantes.FUNCIONALIDADDESCRIPTION_ALFABETICO_DATA);
-		final FuncionalidadEntity datosEntradaFuncionalidadDescriptionNumerico = generarJSON.generarFuncionalidad(
-				Constantes.URL_JSON_FUNCIONALIDAD_ATRIBUTOS_FUNCIONALIDADDESCRIPTION,
-				Constantes.FUNCIONALIDADDESCRIPTION_NUMERICO_DATA);
 
 		datosPruebaAtributos
 				.add(testAtributoFuncionalidadDescription.getTestFuncionalidadDescriptionAlfabeticoCaracteresEspeciales(
 						datosEntradaFuncionalidadDescriptionCaracteresEspeciales));
-
-		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
-				.getTestFuncionalidadDescriptionNumerico(datosEntradaFuncionalidadDescriptionNumerico));
 		datosPruebaAtributos.add(testAtributoFuncionalidadDescription
 				.getTestFuncionalidadDescriptionAlfabeticoCorrecto(datosEntradaFuncionalidadDescriptionAlfabetico));
 

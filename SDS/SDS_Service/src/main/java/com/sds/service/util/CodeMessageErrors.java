@@ -44,7 +44,10 @@ public enum CodeMessageErrors {
 	LOG_ACCIONES_VACIO("LogAcciones vacío"), //
 	NOTICIA_YA_EXISTE_EXCEPTION("La noticia ya existe"), //
 	NOTICIA_NO_EXISTE_EXCEPTION("La noticia no existe"), //
-	NOTICIA_VACIA("El título y/o el texto de la noticia están vacíos");
+	NOTICIA_VACIA("El título y/o el texto de la noticia están vacíos"), //
+	OBJETIVO_YA_EXISTE_EXCEPTION("El objetivo ya existe"), //
+	OBJETIVO_NO_EXISTE_EXCEPTION("El objetivo no existe"), //
+	OBJETIVO_VACIO("El nombre y/o la descripción del objetivo están vacíos");
 
 	private String codigo;
 

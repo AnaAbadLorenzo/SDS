@@ -26,6 +26,8 @@ arrayGA={
 	'DATE_FIN' : 'Data fin',
 	'ACTION' : 'Acción',
 	'DATA' : 'Datos',
+	'ACTIVO' : 'Activo',
+	'ROL' : 'Rol',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -86,6 +88,10 @@ arrayGA={
 	'ACCION_NO_EXISTE_EXCEPTION' : 'A acción non existe',
 	'PERMISO_NO_EXISTE' : 'O permiso non existe',
 	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'A acción está asociada a un rol e a unha funcionalidade',
+	'PERSONA_NO_EXISTE' : 'A persoa non existe',
+	'PARSE_EXCEPTION' : 'Erro interno de parseado da mensaxe',
+	'USUARIO_VACIO' : 'O usuario é vacío',
+	'USUARIO_MODIFICAR_VACIO' : 'O usuario é vacío',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -213,6 +219,13 @@ arrayGA={
 	'DETAIL_LOG_EXCEPCIONES' : 'DETALLE LOG EXCEPCIÓN',
 	'GESTION_LOG_ACCIONES' : 'Xestións logs accións',
 	'SEARCH_LOG_ACCIONES' : 'BUSCAR LOG ACCIONES',
+	'OPCION_DEFECTO_ROL' : 'Por favor, seleccione un rol',
+	'SEARCH_USUARIO' : 'BUSCAR USUARIO',
+	'EDIT_ROL_USER' : 'EDITAR ROL USUARIO',
+	'DELETE_USER' : 'ELIMINAR USUARIO',
+	'SEGURO_ELIMINAR_USUARIO' : 'Está seguro que desea eliminar este usuario?',
+	'REACTIVATE_USUARIO': 'REACTIVAR USUARIO',
+	'SEGURO_REACTIVAR_USUARIO' : 'Está seguro que desea reactivar este usuario?',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -253,6 +266,12 @@ arrayGA={
 	'ACCION_REVOCADA' : 'A acción revocouse correctamente',
 	'ACCION_ELIMINADA' : 'A acción elinouse correctamente',
 	'ACCION_BORRADA' : 'A acción borrouse correctamente',
-	'ACCION_MODIFICADA' : 'A acción modificouse correctamente'
+	'ACCION_MODIFICADA' : 'A acción modificouse correctamente',
+	'ROL_USUARIO_EDITADO_OK' : 'ROL DE USUARIO MODIFICADO CORRECTAMENTE',
+	'ROL_USUARIO_MODIFICADO_OK' : 'O rol do usuario modificouse correctamente',
+	'USER_ELIMINADO_OK' : 'USUARIO ELIMINADO CORRECTAMENTE',
+	'USUARIO_ELIMINADO' : 'O usuario eliminouse correctamente',
+	'USUARIO_REACTIVADO_OK' : 'USUARIO REACTIVADO CORRECTAMENTE',
+	'USUARIO_REACTIVADO' : 'O usuario reactivouse correctamente'
 	
 }

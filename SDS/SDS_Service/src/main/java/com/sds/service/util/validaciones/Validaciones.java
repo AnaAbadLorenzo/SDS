@@ -12,6 +12,7 @@ import com.sds.model.FuncionalidadEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.NoticiasEntity;
+import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -323,6 +324,31 @@ public class Validaciones {
 
 	public boolean comprobarTextoNoticiaBlank(final String textoNoticia) {
 		if (StringUtils.isBlank(textoNoticia)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarObjetivoBlank(final ObjetivoEntity objetivoEntity) {
+		if (StringUtils.isBlank(objetivoEntity.getNombreObjetivo())
+				|| StringUtils.isBlank(objetivoEntity.getDescripObjetivo())) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarNombreObjetivoBlank(final String nombreObjetivo) {
+		if (StringUtils.isBlank(nombreObjetivo)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarDescripcionObjetivoBlank(final String descripcionObjetivo) {
+		if (StringUtils.isBlank(descripcionObjetivo)) {
 			return false;
 		} else {
 			return true;

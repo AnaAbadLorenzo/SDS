@@ -175,7 +175,7 @@ public class FuncionalidadController {
 		try {
 			funcionalidadService.deleteFuncionalidad(funcionalidad);
 			return new RespEntity(RespCode.FUNCIONALIDAD_BORRADA, funcionalidad);
-		} catch (final FuncionalidadNoExisteException e) {
+		} catch (final FuncionalidadNoExisteException funcionalidadNoExiste) {
 			return new RespEntity(RespCode.FUNCIONALIDAD_NO_EXISTE_EXCEPTION, funcionalidad);
 		}
 	}

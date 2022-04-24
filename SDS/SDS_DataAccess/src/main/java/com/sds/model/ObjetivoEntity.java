@@ -5,12 +5,21 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "objetivo")
+@NamedQueries({
+		@NamedQuery(name = "ObjetivoEntity.findIdObjetivoByName", query = "SELECT o.idObjetivo FROM ObjetivoEntity o WHERE o.nombreObjetivo =: nombreObjetivo"),
+		@NamedQuery(name = "ObjetivoEntity.findObjetivoByName", query = "SELECT o FROM ObjetivoEntity o WHERE o.nombreObjetivo =: nombreObjetivo"),
+		@NamedQuery(name = "ObjetivoEntity.findAllObjetivos", query = "SELECT o FROM ObjetivoEntity o WHERE o.borradoObjetivo = 0"),
+		@NamedQuery(name = "ObjetivoEntity.numberFindAllObjetivos", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE o.borradoObjetivo = 0"),
+		@NamedQuery(name = "ObjetivoEntity.findObjetivo", query = "SELECT o FROM ObjetivoEntity o WHERE o.nombreObjetivo LIKE CONCAT('%', :nombreObjetivo, '%') AND o.descripObjetivo LIKE CONCAT('%', :descripObjetivo, '%') AND o.borradoObjetivo=0"),
+		@NamedQuery(name = "ObjetivoEntity.numberFindObjetivo", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE o.nombreObjetivo LIKE CONCAT('%', :nombreObjetivo, '%') AND o.descripObjetivo LIKE CONCAT('%', :descripObjetivo, '%') AND o.borradoObjetivo=0"),
+		@NamedQuery(name = "ObjetivoEntity.findObjetivosEliminados", query = "SELECT o FROM ObjetivoEntity o WHERE o.borradoObjetivo = 1"),
+		@NamedQuery(name = "ObjetivoEntity.numberFindObjetivosEliminados", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE o.borradoObjetivo = 1") })
 public class ObjetivoEntity {
 
 	@Id
@@ -27,9 +36,11 @@ public class ObjetivoEntity {
 	@Column(name = "borrado_objetivo")
 	private Integer borradoObjetivo;
 
-	@OneToOne
-	@JoinColumn(name = "id_plan")
-	private PlanEntity plan;
+	/*
+	 * @OneToOne
+	 * 
+	 * @JoinColumn(name = "id_plan") private PlanEntity plan;
+	 */
 
 	public ObjetivoEntity() {
 		super();
@@ -76,13 +87,11 @@ public class ObjetivoEntity {
 		this.borradoObjetivo = borradoObjetivo;
 	}
 
-	public PlanEntity getPlan() {
-		return plan;
-	}
-
-	public void setPlan(final PlanEntity plan) {
-		this.plan = plan;
-	}
+	/*
+	 * public PlanEntity getPlan() { return plan; }
+	 * 
+	 * public void setPlan(final PlanEntity plan) { this.plan = plan; }
+	 */
 
 	@Override
 	public String toString() {

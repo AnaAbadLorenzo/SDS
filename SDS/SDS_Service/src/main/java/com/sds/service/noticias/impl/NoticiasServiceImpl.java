@@ -52,14 +52,12 @@ public class NoticiasServiceImpl implements NoticiasService {
 	}
 
 	@Override
-	public ReturnBusquedas<NoticiasEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
+	public ReturnBusquedas<NoticiasEntity> buscarTodos() {
 
 		final List<NoticiasEntity> toret = new ArrayList<>();
 
 		final List<NoticiasEntity> noticias = entityManager.createNamedQuery(Constantes.NOTICIA_FINDALL_QUERY)
-				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
-
-		final Integer numberTotalResults = noticiasRepository.numberFindAllNoticias();
+				.getResultList();
 
 		if (!noticias.isEmpty()) {
 			for (final NoticiasEntity noticia : noticias) {
@@ -70,8 +68,7 @@ public class NoticiasServiceImpl implements NoticiasService {
 			}
 		}
 
-		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, numberTotalResults,
-				toret.size(), inicio);
+		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, 0, toret.size(), 0);
 
 		return result;
 	}

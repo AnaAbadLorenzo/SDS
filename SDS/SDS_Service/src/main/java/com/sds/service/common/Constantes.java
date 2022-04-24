@@ -17,6 +17,7 @@ public class Constantes {
 	public static final String GESTION_PERSONAS = "Gestión de personas";
 	public static final String GESTION_EMPRESAS = "Gestión de empresas";
 	public static final String GESTION_NOTICIAS = "Gestión de noticias";
+	public static final String GESTION_OBJETIVOS = "Gestión de objetivos";
 
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
@@ -63,6 +64,12 @@ public class Constantes {
 	public static final String ACCION_BUSCAR_NOTICIA = "Buscar noticia";
 	public static final String ACCION_MODIFICAR_NOTICIA = "Modificar noticia";
 	public static final String ACCION_ELIMINAR_NOTICIA = "Eliminar noticia";
+
+	public static final String ACCION_AÑADIR_OBJETIVO = "Añadir objetivo";
+	public static final String ACCION_MODIFICAR_OBJETIVO = "Modificar objetivo";
+	public static final String ACCION_BUSCAR_OBJETIVO = "Buscar objetivo";
+	public static final String ACCION_ELIMINAR_OBJETIVO = "Eliminar objetivo";
+	public static final String ACCION_REACTIVAR_OBJETIVO = "Reactivar objetivo";
 
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
@@ -111,6 +118,7 @@ public class Constantes {
 	public static final String DIRECCION_EMPRESA = "direccionEmpresa";
 	public static final String TELEFONO_EMPRESA = "telefonoEmpresa";
 	public static final String SELECCIONAR_EMPRESA = "seleccionarEmpresa";
+	public static final String USUARIOBUSCAR = "usuarioBuscar";
 
 	public static final String ROL_ID = "idRol";
 	public static final String ROL_NAME = "rolName";
@@ -140,6 +148,10 @@ public class Constantes {
 	public static final String TITULO_NOTICIA = "tituloNoticia";
 	public static final String TEXTO_NOTICIA = "textoNoticia";
 	public static final String FECHA_NOTICIA = "fechaNoticia";
+
+	public static final String OBJETIVO_ID = "idObjetivo";
+	public static final String NOMBRE_OBJETIVO = "nombreObjetivo";
+	public static final String DESCRIPCION_OBJETIVO = "descripObjetivo";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -195,6 +207,9 @@ public class Constantes {
 	public static final String URL_JSON_NOTICIA_ATRIBUTOS_TITULONOTICIA = "classpath:NoticiasServiceAtributosTituloNoticia.json";
 	public static final String URL_JSON_NOTICIA_ATRIBUTOS_TEXTONOTICIA = "classpath:NoticiasServiceAtributosTextoNoticia.json";
 	public static final String URL_JSON_NOTICIA_DATA = "classpath:NoticiasServiceData.json";
+	public static final String URL_JSON_OBJETIVO_ATRIBUTOS_NOMBREOBJETIVO = "classpath:ObjetivoServiceAtributosNombreObjetivo.json";
+	public static final String URL_JSON_OBJETIVO_ATRIBUTOS_DESCRIPCIONOBJETIVO = "classpath:ObjetivoServiceAtributosDescripcionObjetivo.json";
+	public static final String URL_JSON_OBJETIVO_DATA = "classpath:ObjetivoServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -461,6 +476,29 @@ public class Constantes {
 	public static final String NOTICIA_NO_EXISTE = "noticiaNoExiste";
 	public static final String ELIMINAR_NOTICIA = "eliminarNoticia";
 
+	public static final String NOMBRE_OBJETIVO_VACIO = "nombreObjetivoVacio";
+	public static final String NOMBRE_OBJETIVO_CARACTERESESPECIALES = "nombreObjetivoCaracteresEspeciales";
+	public static final String NOMBRE_OBJETIVO_MENOR_3 = "nombreObjetivoMenor3";
+	public static final String NOMBRE_OBJETIVO_MAYOR_48 = "nombreObjetivoMayor48";
+	public static final String NOMBRE_OBJETIVO_NUMERICO = "nombreObjetivoNumerico";
+	public static final String NOMBRE_OBJETIVO_CORRECTO = "nombreObjetivoCorrecto";
+
+	public static final String DESCRIPCION_OBJETIVO_VACIO = "descripcionObjetivoVacio";
+	public static final String DESCRIPCION_OBJETIVO_CARACTERESESPECIALES = "descripcionObjetivoCaracteresEspeciales";
+	public static final String DESCRIPCION_OBJETIVO_MENOR_3 = "descripcionObjetivoMenor3";
+	public static final String DESCRIPCION_OBJETIVO_NUMERICO = "descripcionObjetivoNumerico";
+	public static final String DESCRIPCION_OBJETIVO_CORRECTO = "descripcionObjetivoAlfabeticoCorrecto";
+
+	public static final String DATOS_OBJETIVO_VACIOS = "datosObjetivoVacios";
+
+	public static final String BUSCAR_OBJETIVO = "buscarObjetivo";
+	public static final String GUARDAR_OBJETIVO = "guardarObjetivo";
+	public static final String MODIFICAR_OBJETIVO = "modificarObjetivo";
+	public static final String OBJETIVO_YA_EXISTE = "objetivoYaExiste";
+	public static final String OBJETIVO_NO_EXISTE = "objetivoNoExiste";
+	public static final String ELIMINAR_OBJETIVO = "eliminarObjetivo";
+	public static final String REACTIVAR_OBJETIVO = "reactivarObjetivo";
+
 	public static final String OK = "OK";
 
 	public static final String USUARIO_GENERICO = "usuario_generico";
@@ -526,4 +564,23 @@ public class Constantes {
 	public static final String NOTICIA_FINDNOTICIA_QUERY = "NoticiasEntity.findNoticia";
 	public static final String NOTICIA_FINDNOTICIA_WITHOUTDATE_QUERY = "NoticiasEntity.findNoticiaWithoutDate";
 
+	public static final String OBJETIVO_QUERY_FINDALL = "ObjetivoEntity.findAllObjetivos";
+	public static final String OBJETIVO_QUERY_FINDOBJETIVO = "ObjetivoEntity.findObjetivo";
+	public static final String OBJETIVO_QUERY_FINDELIMINADOS = "ObjetivoEntity.findObjetivosEliminados";
+
+	// Constantes funcionalidad-accion
+	public static final String TEST_AÑADIR = "Test-Añadir";
+	public static final String TEST_MODIFICAR = "Test-Modificar";
+	public static final String TEST_ELIMINAR = "Test-Eliminar";
+	public static final String TEST_REACTIVAR = "Test-Reactivar";
+
+	public static final String LOGEXCEPCIONES_AÑADIR = "Log de excepciones-Añadir";
+	public static final String LOGEXCEPCIONES_MODIFICAR = "Log de excepciones-Modificar";
+	public static final String LOGEXCEPCIONES_ELIMINAR = "Log de excepciones-Eliminar";
+	public static final String LOGEXCEPCIONES_REACTIVAR = "Log de excepciones-Reactivar";
+
+	public static final String LOGACCIONES_AÑADIR = "Log de acciones-Añadir";
+	public static final String LOGACCIONES_MODIFICAR = "Log de acciones-Modificar";
+	public static final String LOGACCIONES_ELIMINAR = "Log de acciones-Eliminar";
+	public static final String LOGACCIONES_REACTIVAR = "Log de acciones-Reactivar";
 }

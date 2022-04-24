@@ -35,6 +35,7 @@
     await funcionalidadesUsuario();
     modalCambioPass();
 		cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario()
+		await cargarNoticias();
   })();">
 	
 	<div id="topMenu"></div>
@@ -45,71 +46,7 @@
 	</div>
 
 	<div class="noticias overflow-auto">
-		<div class="row">
-  		<div class="col-md-4 col-lg-6 col-xl-6 mb-4">
-				<div class="card">
-					<img src="images/news.png" class="card-img-top" alt="Noticias">
-				  <div class="card-body-news">
-				    <h4 class="card-title">Título noticia 1</h4>
-				    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				  </div>
-				  <div class="card-footer">
-			    	<small class="text-muted">10/04/2022 12:09</small>
-			    </div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4">
-				<div class="card">
-					<img src="images/news.png" class="card-img-top" alt="Noticias">
-				  <div class="card-body-news">
-				    <h4 class="card-title">Título noticia 2</h4>
-				    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				  </div>
-				  <div class="card-footer">
-				    <small class="text-muted">09/04/2022 15:29</small>
-				  </div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4">
-				<div class="card">
-					<img src="images/news.png" class="card-img-top" alt="Noticias">
-				  <div class="card-body-news">
-				    <h4 class="card-title">Título noticia 3</h4>
-				    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-				  </div>
-				  <div class="card-footer">
-			   		<small class="text-muted">08/04/2022 05:49</small>
-			   	</div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4">
-				<div class="card">
-					<img src="images/news.png" class="card-img-top" alt="Noticias">
-				  <div class="card-body-news">
-				    <h4 class="card-title">Título noticia 4</h4>
-				    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				  </div>
-				  <div class="card-footer">
-				    <small class="text-muted">07/04/2022 18:59</small>
-				  </div>
-				</div>
-			</div>
-
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4">
-				<div class="card">
-					<img src="images/news.png" class="card-img-top" alt="Noticias">
-				  <div class="card-body-news">
-				    <h4 class="card-title">Título noticia 5</h4>
-				    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer. This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				  </div>
-				  <div class="card-footer">
-				    <small class="text-muted">06/04/2022 18:59</small>
-				  </div>
-				</div>
-			</div>
+		<div id="noticias" class="row">
 		</div>
 	</div>
 

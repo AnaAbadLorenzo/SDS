@@ -1,0 +1,30 @@
+{
+	"descripcionObjetivoVacio":{
+		"idObjetivo":"",
+		"nombreObjetivo":"Nombre objetivo",
+		"descripObjetivo":"",
+		"borradoObjetivo": 0
+	},
+	
+	"descripcionObjetivoCaracteresEspeciales":{
+		"idObjetivo":"",
+		"nombreObjetivo":"Nombre objetivo",
+		"descripObjetivo":"//*@@@**",
+		"borradoObjetivo": 0
+	},
+	
+	"descripcionObjetivoMenor3":{
+		"idObjetivo":"",
+		"nombreObjetivo":"Nombre objetivo",
+		"descripObjetivo":"De",
+		"borradoObjetivo": 0
+	},
+
+	"descripcionObjetivoAlfabeticoCorrecto": {
+		"idObjetivo":"",
+		"nombreObjetivo":"Nombre objetivo",
+		"descripObjetivo":"Objetivo",
+		"borradoObjetivo": 0
+	}
+	
+}

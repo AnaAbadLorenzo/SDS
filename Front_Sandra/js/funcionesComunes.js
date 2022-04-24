@@ -384,6 +384,21 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + fila.datos +
                 '</td> <td>' + fecha[0];
         break;
+
+        case 'USUARIO':
+			atributosFunciones = ["'" + fila.dniUsuario + "'", "'" + fila.usuario + "'", "'" + fila.borradoUsuario + "'", "'" + fila.rol.rolName + "'"];
+			var usuarioActivo = "";
+			if(fila.borradoUsuario == 0){
+				usuarioActivo = "Sí";
+			}else{
+				usuarioActivo = "No";
+			}
+
+			filaTabla = '<tr class="impar"> <td>' + fila.dniUsuario + 
+                '</td> <td>' + fila.usuario + 
+                '</td> <td>' + usuarioActivo +
+                '</td> <td>' + fila.rol.rolName;
+        break;
 	};
 
 
@@ -433,6 +448,21 @@ function construyeFilaEliminados(entidad, fila) {
 			atributosFunciones = ["'" + fila.nombreAccion + "'", "'" + fila.descripAccion + "'", "'" + fila.idAccion + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.nombreAccion + 
                 '</td> <td>' + fila.descripAccion;
+        break;
+
+         case 'USUARIO':
+			atributosFunciones = ["'" + fila.dniUsuario + "'", "'" + fila.usuario + "'", "'" + fila.borradoUsuario + "'", "'" + fila.rol.rolName + "'"];
+			var usuarioActivo = "";
+			if(fila.borradoUsuario == 0){
+				usuarioActivo = "Sí";
+			}else{
+				usuarioActivo = "No";
+			}
+
+			filaTabla = '<tr class="impar"> <td>' + fila.dniUsuario + 
+                '</td> <td>' + fila.usuario + 
+                '</td> <td>' + usuarioActivo +
+                '</td> <td>' + fila.rol.rolName;
         break;
 	};
 
@@ -764,6 +794,14 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'LOG_EXCEPCIONES':
 			cargarPermisosFuncLogExcepciones();
 		break;
+
+		case 'LOG_ACCIONES':
+			cargarPermisosFuncLogAcciones();
+		break;
+
+		case 'USUARIO':
+			cargarPermisosFuncUsuario();
+		break;
 	}
 	
 }
@@ -804,6 +842,18 @@ function convert(str) {
     date = str.split(" ");
 
   return [date[5], mnths[date[1]], date[2]].join("-");
+}
+
+/** Funcion para sustituir lo caracteres por asteriscos **/
+function convertirPass(passwd){
+
+	var passAsterisco = "";
+
+	for(var i = 0; i<passwd.length; i++){
+		passAsterisco +='*';
+	}
+
+	return passAsterisco;
 }
 
 

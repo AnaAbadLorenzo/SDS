@@ -115,6 +115,23 @@ public class RolServiceImpl implements RolService {
 	}
 
 	@Override
+	public List<RolEntity> obtenerTodos() {
+		final List<RolEntity> toret = new ArrayList<>();
+
+		final List<RolEntity> roles = entityManager.createNamedQuery(Constantes.ROL_QUERY_FINDALL).getResultList();
+
+		if (!roles.isEmpty()) {
+			for (int i = 0; i < roles.size(); i++) {
+				final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
+						roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
+				toret.add(rol);
+			}
+		}
+
+		return toret;
+	}
+
+	@Override
 	public ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina) {
 		final List<RolEntity> toret = new ArrayList<>();
 

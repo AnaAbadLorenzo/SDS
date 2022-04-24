@@ -18,7 +18,7 @@ import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
 import com.sds.service.accion.model.AccionBuscar;
-import com.sds.service.accion.model.Permiso;
+import com.sds.service.accion.model.PermisosFuncionalidadAccion;
 import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
@@ -50,7 +50,7 @@ public class AccionController {
 	@ResponseBody
 	public RespEntity obtenerPermisos() {
 		try {
-			final List<Permiso> permisos = accionService.obtenerPermisos();
+			final List<PermisosFuncionalidadAccion> permisos = accionService.obtenerPermisos();
 			return new RespEntity(RespCode.PERMISOS_OBTENIDOS, permisos);
 		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
 			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, logExcepcionesNoGuardado);

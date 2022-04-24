@@ -235,6 +235,15 @@ public class ValidacionesAtributosMayor {
 				default:
 					break;
 				}
+			case GESTION_OBJETIVOS:
+				switch (atr) {
+				case NOMBRE_OBJETIVO:
+					resultado = CodigosMensajes.OBJETIVO_NAME_MAYOR_QUE_48 + " - "
+							+ Mensajes.NOMBRE_OBJETIVO_NO_PUEDE_SER_MAYOR_QUE_48;
+					break;
+				default:
+					break;
+				}
 			default:
 				break;
 			}

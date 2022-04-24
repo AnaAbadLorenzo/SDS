@@ -25,12 +25,5 @@
 		"nombreFuncionalidad" : "Login",
 		"descripFuncionalidad" : "Login",
 		"borradoFuncionalidad" : 0
-	},
-	
-	"funcionalidadDescriptionNumerico":{
-		"idFuncionalidad": "",
-		"nombreFuncionalidad" : "Login",
-		"descripFuncionalidad" : "12345",
-		"borradoFuncionalidad" : 0
 	}
 }

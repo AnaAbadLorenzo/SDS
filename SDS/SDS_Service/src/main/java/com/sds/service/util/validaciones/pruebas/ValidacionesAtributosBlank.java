@@ -228,12 +228,24 @@ public class ValidacionesAtributosBlank {
 					break;
 				case TEXTO_NOTICIA:
 					resultado = CodigosMensajes.TEXTO_NOTICIA_VACIO + " - " + Mensajes.TEXTO_NOTICIA_NO_PUEDE_SER_VACIO;
+				default:
+					break;
 				}
-			default:
 				break;
+
+			case GESTION_OBJETIVOS:
+				switch (atr) {
+				case NOMBRE_OBJETIVO:
+					resultado = CodigosMensajes.OBJETIVO_NAME_VACIO + " - "
+							+ Mensajes.NOMBRE_OBJETIVO_NO_PUEDE_SER_VACIO;
+					break;
+				case DESCRIPCION_OBJETIVO:
+					resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_VACIO + " - "
+							+ Mensajes.DESCRIPCION_OBJETIVO_NO_PUEDE_SER_VACIO;
+					break;
+				}
 			}
 		}
 		return resultado;
 	}
-
 }

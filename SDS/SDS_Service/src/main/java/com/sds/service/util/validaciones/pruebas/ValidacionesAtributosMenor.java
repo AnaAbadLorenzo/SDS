@@ -243,6 +243,17 @@ public class ValidacionesAtributosMenor {
 					break;
 				}
 				break;
+			case GESTION_OBJETIVOS:
+				switch (atr) {
+				case NOMBRE_OBJETIVO:
+					resultado = CodigosMensajes.OBJETIVO_NAME_MENOR_QUE_3 + " - "
+							+ Mensajes.NOMBRE_OBJETIVO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case DESCRIPCION_OBJETIVO:
+					resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_MENOR_QUE_3 + " - "
+							+ Mensajes.DESCRIPCION_OBJETIVO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				}
 			default:
 				break;
 			}

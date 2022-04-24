@@ -1,6 +1,9 @@
 package com.sds.controller.rol;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -64,6 +67,15 @@ public class RolController {
 				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.ROLES_ELIMINADOS_LISTADOS, resultado);
+
+	}
+
+	@GetMapping(value = "/obtenerTodos")
+	@ResponseBody
+	public RespEntity obtenerTodos() {
+		final List<RolEntity> resultado = rolService.obtenerTodos();
+
+		return new RespEntity(RespCode.ROLES_LISTADOS, resultado);
 
 	}
 

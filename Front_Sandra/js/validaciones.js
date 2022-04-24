@@ -139,6 +139,22 @@ function comprobarUser(idElemento, idElementoError, campo) {
 
 }
 
+/**Función que valida el login de usuario*/
+function comprobarUserLog(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo) && comprobarUserLog(idElemento, idElementoError, campo) && 
+		comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 45, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	} else {
+		validacionKO(idElemento, idElementoError);		
+		return false;
+	}
+
+}
+
 /**Función que valida el login de usuario en el buscar*/
 function comprobarUserSearch(idElemento, idElementoError, campo) {
 
@@ -146,6 +162,32 @@ function comprobarUserSearch(idElemento, idElementoError, campo) {
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida el login de usuario en el buscar*/
+function comprobarUserLogSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarUserLog(idElemento, idElementoError, campo)) {
 			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
@@ -462,7 +504,7 @@ function comprobarFechaFinSearch(idElemento, idElementoError, campo){
 
 /**Funcion para comprobar el buscar de los logs de excepciones **/
 function comprobarBuscarLogExcepciones(){
-	if(comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario') && comprobarFechaInicioSearch('fechaInicio', 'errorFormatoFechaInicio', 'fecha')
+	if(comprobarUserLogSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario') && comprobarFechaInicioSearch('fechaInicio', 'errorFormatoFechaInicio', 'fecha')
 		&& comprobarFechaFinSearch('fechaFin', 'errorFormatoFechaFin', 'fecha')){
         return true;
 	} else{
@@ -709,6 +751,36 @@ function comprobarBuscarAccion(){
 	}else{
 		return false;
 	}
+}
+
+/** Función que verifica el formulario de buscar usuario **/
+function comprobarBuscarUsuario(){
+	if(comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Funcion que verifica que el select de los roles está cubierto **/
+function comprobarRolUser(idElemento, idElementoError, campo){
+	if(idElemento.val == 0){
+		addCodeError(idElementoError, 'OPCION_DEFECTO_ROL');
+		validacionKO(idElemento, idElementoError);
+		return false;
+	}else{
+		return true;
+	}
+}
+
+/** Funcion que valida el formulario de editar un rol de un usuario **/
+function comprobarEditRolUsuario(){
+	if(comprobarUser('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario') &&
+		comprobarRolUser('selectRoles', 'errorFormatoRol', 'rolUsuario')){
+			return true;
+		}else{
+			return false;
+		}	
 }
 
 
@@ -1003,6 +1075,28 @@ function comprobarLetrasNumeros(idElemento, idElementoError, campo) {
   	}	
 }
 
+/**Función que valida que un campo esté compuesto por letras y números**/
+function comprobarUserLog(idElemento, idElementoError, campo) {
+
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+ 
+ 	var patron = /^[a-zA-Z0-9_\u00f1\u00d1]+$/;
+		
+	if (!patron.test(valor)) { 
+    	switch(campo) {
+	    	case 'loginUsuario' : 
+		  		codigo = "LOGIN_ALFANUMERICO_INCORRECTO";
+			break;
+
+		}
+		addCodeError(idElementoError, codigo);
+    	return false;
+  	}else{
+  		return true;  
+  	}	
+}
 /**Función que valida que un campo esté compuesto por letras y números**/
 function comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo) {
 

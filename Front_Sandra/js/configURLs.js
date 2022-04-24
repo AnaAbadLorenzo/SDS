@@ -7,6 +7,7 @@ var urlPeticionAjaxAccionesUsuario = "http://localhost:8090/menu/accionesFuncion
 var urlPeticionAjaxCambiarContrasenaUsuario = "http://localhost:8090/usuario/cambiarContrasenaUsuario";
 var urlPeticionAjaxListadoRoles = "http://localhost:8090/rol/listarRoles";
 var urlPeticionAjaxListadoRolesEliminados = "http://localhost:8090/rol/listarRolesEliminados";
+var urlPeticionAjaxObtenerTodos = "http://localhost:8090/rol/obtenerTodos";
 var urlPeticionAjaxListarRol = "http://localhost:8090/rol/listarRol";
 var urlPeticionAjaxAddRol = "http://localhost:8090/rol/rol";
 var urlPeticionAjaxEditRol = "http://localhost:8090/rol/modificarRol";
@@ -30,6 +31,14 @@ var urlPeticionAjaxListarTodosLogExcepciones = "http://localhost:8090/log/listar
 var urlPeticionAjaxListarLogExcepciones = "http://localhost:8090/log/listarLogsExcepcionesUsuarioFecha";
 var urlPeticionAjaxListarTodosLogAcciones = "http://localhost:8090/log/listarTodosLogsAcciones";
 var urlPeticionAjaxListarLogAcciones = "http://localhost:8090/log/listarLogsAccionesUsuarioFecha";
+var urlPeticionAjaxListarTodasNoticias = "http://localhost:8090/noticia/listarNoticias";
+var urlPeticionAjaxListarUsuario = "http://localhost:8090/usuario/listarUsuario";
+var urlPeticionAjaxListarTodosUsuarios = "http://localhost:8090/usuario/listarUsuarios";
+var urlPeticionAjaxListarTodosUsuariosEliminados = "http://localhost:8090/usuario/listarUsuariosEliminados";
+var urlPeticionAjaxEditarRolUsuario = "http://localhost:8090/usuario/modificarRolUsuario";
+var urlPeticionAjaxEliminarUsuario = "http://localhost:8090/usuario/eliminarUsuario";
+var urlPeticionAjaxReactivarUsuario = "http://localhost:8090/usuario/reactivarUsuario";
+
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = "http://localhost:8090/test/login/atributos";

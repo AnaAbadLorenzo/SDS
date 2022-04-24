@@ -26,6 +26,8 @@ arrayEN={
 	'DATE_FIN' : 'End Date',
 	'ACTION' : 'Action',
 	'DATA' : 'Data',
+	'ACTIVO' : 'Active',
+	'ROL' : 'Role',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -86,6 +88,10 @@ arrayEN={
 	'ACCION_NO_EXISTE_EXCEPTION' : 'The action doesn´t exists',
 	'PERMISO_NO_EXISTE' : 'The permission doesn´t exists',
 	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'The action is associated with an action and functionality',
+	'PERSONA_NO_EXISTE' : 'The person doesn`t exists',
+	'PARSE_EXCEPTION' : 'Internal error while parsing the message',
+	'USUARIO_VACIO' : 'O usuario está vacío',
+	'USUARIO_MODIFICAR_VACIO' : 'O usuario está vacío',
 
 	
 	//Error formato
@@ -215,6 +221,13 @@ arrayEN={
 	'SEARCH_LOG_EXCEPCIONES' : 'SEARCH EXCEPTION LOG',
 	'GESTION_LOG_ACCIONES' : 'Action logs management',
 	'SEARCH_LOG_ACCIONES' : 'SEARCH ACTION LOG',
+	'OPCION_DEFECTO_ROL' : 'Please, select the role',
+	'SEARCH_USUARIO' : 'SEARCH USER',
+	'EDIT_ROL_USER' : 'EDIT ROLE USER',
+	'DELETE_USER' : 'DELETE USER',
+	'SEGURO_ELIMINAR_USUARIO' : 'Are you sure that you want to delete this user?',
+	'REACTIVATE_USUARIO': 'REACTIVATE USER',
+	'SEGURO_REACTIVAR_USUARIO' : 'Are you sure that you want to reactivate this user?',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -255,6 +268,12 @@ arrayEN={
 	'ACCION_REVOCADA' : 'The action has been revoked correctly',
 	'ACCION_ELIMINADA' : 'The action has been deleted correctly',
 	'ACCION_BORRADA' : 'Te action has been deteled correctly',
-	'ACCION_MODIFICADA' : 'The action has been modified correctly'
+	'ACCION_MODIFICADA' : 'The action has been modified correctly',
+	'ROL_USUARIO_EDITADO_OK' : 'USER ROLE MODIFIED CORRECTLY',
+	'ROL_USUARIO_MODIFICADO_OK' : 'User`s role has been modified correctly',
+	'USER_ELIMINADO_OK' : 'USER DELETED CORRECTLY',
+	'USUARIO_ELIMINADO' : 'User has been deleted correctly',
+	'USUARIO_REACTIVADO_OK' : 'USER REACTIVATED CORRECTLY',
+	'USUARIO_REACTIVADO' : 'User has been reactivated correctly'
 
 }

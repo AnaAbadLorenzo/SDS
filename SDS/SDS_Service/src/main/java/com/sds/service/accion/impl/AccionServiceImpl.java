@@ -27,7 +27,7 @@ import com.sds.repository.RolRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
-import com.sds.service.accion.model.Permiso;
+import com.sds.service.accion.model.PermisosFuncionalidadAccion;
 import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -497,87 +497,76 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
-	public List<Permiso> obtenerPermisos() throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException,
-			RolNoExisteException, AccionNoExisteException {
-		final List<Permiso> permisosToret = new ArrayList<>();
+	public List<PermisosFuncionalidadAccion> obtenerPermisos() throws LogExcepcionesNoGuardadoException,
+			FuncionalidadNoExisteException, RolNoExisteException, AccionNoExisteException {
+		final List<PermisosFuncionalidadAccion> permisosToret = new ArrayList<>();
+		final List<String> funcionalidadesAcciones = new ArrayList<>();
 
 		final List<RolAccionFuncionalidadEntity> permisos = entityManager
 				.createNamedQuery(Constantes.ROLACCIONFUNCIONALIDAD_QUERY_FINDALL).getResultList();
 
-		if (!permisos.isEmpty()) {
-			for (final RolAccionFuncionalidadEntity permisosLista : permisos) {
-				final Optional<AccionEntity> accion = accionRepository.findById(permisosLista.getIdAccion());
-				final Optional<RolEntity> rol = rolRepository.findById(permisosLista.getIdRol());
-				final Optional<FuncionalidadEntity> funcionalidad = funcionalidadRepository
-						.findById(permisosLista.getIdFuncionalidad());
+		final List<RolEntity> roles = rolRepository.findAll();
+		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findAll();
+		final List<AccionEntity> acciones = accionRepository.findAll();
 
-				if (accion.isPresent()) {
-					if (rol.isPresent()) {
-						if (funcionalidad.isPresent()) {
-							final Permiso permiso = new Permiso(rol.get().getRolName(), accion.get().getNombreAccion(),
-									funcionalidad.get().getNombreFuncionalidad());
-							permisosToret.add(permiso);
-						} else {
-							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-									Constantes.USUARIO_GENERICO,
-									CodeMessageErrors.getTipoNameByCodigo(
-											CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()),
-									CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo());
-
-							final String resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-								throw new LogExcepcionesNoGuardadoException(
-										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-										CodeMessageErrors.getTipoNameByCodigo(
-												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-							}
-
-							throw new FuncionalidadNoExisteException(
-									CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo(),
-									CodeMessageErrors.getTipoNameByCodigo(
-											CodeMessageErrors.FUNCIONALIDAD_NO_EXISTE_EXCEPTION.getCodigo()));
-						}
-					} else {
-						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-								Constantes.USUARIO_GENERICO,
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()),
-								CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo());
-
-						final String resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-							throw new LogExcepcionesNoGuardadoException(
-									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
-											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-						}
-
-						throw new RolNoExisteException(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.ROL_NO_EXISTE_EXCEPTION.getCodigo()));
-					}
-				} else {
-					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-							Constantes.USUARIO_GENERICO,
-							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()),
-							CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo());
-
-					final String resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
-
-					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-					}
-
-					throw new AccionNoExisteException(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo(),
-							CodeMessageErrors
-									.getTipoNameByCodigo(CodeMessageErrors.ACCION_NO_EXISTE_EXCEPTION.getCodigo()));
-				}
+		for (int i = 0; i < funcionalidades.size(); i++) {
+			for (int j = 0; j < acciones.size(); j++) {
+				final String funcionalidadAccion = funcionalidades.get(i).getNombreFuncionalidad() + "-"
+						+ acciones.get(j).getNombreAccion();
+				funcionalidadesAcciones.add(funcionalidadAccion);
 			}
+		}
 
+		for (int i = 0; i < roles.size(); i++) {
+			for (int j = 0; j < funcionalidadesAcciones.size(); j++) {
+				String tienePermiso = "";
+				final String funcionalidad = funcionalidadesAcciones.get(j).split("-")[0];
+				final String accion = funcionalidadesAcciones.get(j).split("-")[1];
+
+				final FuncionalidadEntity idFuncionalidad = funcionalidadRepository
+						.findFuncionalityByName(funcionalidad);
+				final AccionEntity idAccion = accionRepository.findAccionByName(accion);
+				final RolEntity idRol = rolRepository.findByRolName(roles.get(i).getRolName());
+
+				for (int k = 0; k < permisos.size(); k++) {
+					if (permisos.get(k).getIdFuncionalidad() == idFuncionalidad.getIdFuncionalidad()
+							&& permisos.get(k).getIdAccion() == idAccion.getIdAccion()
+							&& permisos.get(k).getIdRol() == idRol.getIdRol()) {
+						tienePermiso = Constantes.SI;
+						final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
+								roles.get(i).getRolName(), funcionalidadesAcciones.get(j), tienePermiso);
+						permisosToret.add(permisosFuncionalidadAccion);
+						break;
+					} else {
+						tienePermiso = Constantes.NO;
+					}
+				}
+
+				if (tienePermiso.equals(Constantes.NO)) {
+					final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
+							roles.get(i).getRolName(), funcionalidadesAcciones.get(j), tienePermiso);
+					permisosToret.add(permisosFuncionalidadAccion);
+				}
+
+			}
+		}
+
+		for (int m = 0; m < permisosToret.size(); m++) {
+			final String funcionalidadAccion = permisosToret.get(m).getFuncionalidadAccion();
+			if (funcionalidadAccion.equals(Constantes.TEST_AÑADIR)
+					|| funcionalidadAccion.equals(Constantes.TEST_ELIMINAR)
+					|| funcionalidadAccion.equals(Constantes.TEST_MODIFICAR)
+					|| funcionalidadAccion.equals(Constantes.TEST_REACTIVAR)
+					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_AÑADIR)
+					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_ELIMINAR)
+					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_MODIFICAR)
+					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_REACTIVAR)
+					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_AÑADIR)
+					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_ELIMINAR)
+					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_MODIFICAR)
+					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_REACTIVAR)) {
+				permisosToret.remove(m);
+			}
 		}
 
 		return permisosToret;

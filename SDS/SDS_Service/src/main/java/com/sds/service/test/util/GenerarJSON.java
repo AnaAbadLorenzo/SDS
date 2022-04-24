@@ -14,6 +14,7 @@ import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.NoticiasEntity;
+import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -380,6 +381,29 @@ public class GenerarJSON {
 		noticia.setFechaNoticia(fechaSql);
 
 		return noticia;
+
+	}
+
+	public ObjetivoEntity generarObjetivo(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException {
+
+		final JSONObject jsonObjetivoVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final ObjetivoEntity objetivo = new ObjetivoEntity();
+
+		if (jsonObjetivoVacio.get(Constantes.OBJETIVO_ID).toString().equals(StringUtils.EMPTY)) {
+			objetivo.setIdObjetivo(0);
+		} else {
+			objetivo.setIdObjetivo(Integer.parseInt(jsonObjetivoVacio.get(Constantes.OBJETIVO_ID).toString()));
+		}
+		objetivo.setNombreObjetivo(CommonUtilities
+				.coalesce(jsonObjetivoVacio.get(Constantes.NOMBRE_OBJETIVO).toString(), StringUtils.EMPTY));
+		objetivo.setDescripObjetivo(CommonUtilities
+				.coalesce(jsonObjetivoVacio.get(Constantes.DESCRIPCION_OBJETIVO).toString(), StringUtils.EMPTY));
+
+		objetivo.setBorradoObjetivo(0);
+
+		return objetivo;
 
 	}
 

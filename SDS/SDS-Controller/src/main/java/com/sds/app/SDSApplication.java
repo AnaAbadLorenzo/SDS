@@ -56,6 +56,8 @@ public class SDSApplication {
 					.antMatchers(HttpMethod.GET, "/funcionalidad/*").permitAll()
 					.antMatchers(HttpMethod.POST, "/funcionalidad").permitAll()
 					.antMatchers(HttpMethod.POST, "/funcionalidad/*").permitAll()
+					.antMatchers(HttpMethod.GET, "/objetivo/*").permitAll().antMatchers(HttpMethod.POST, "/objetivo")
+					.permitAll().antMatchers(HttpMethod.POST, "/objetivo/*").permitAll()
 					.antMatchers(HttpMethod.GET, "/noticia/*").permitAll().antMatchers(HttpMethod.POST, "/noticia")
 					.permitAll().antMatchers(HttpMethod.POST, "/noticia/*").permitAll()
 					.antMatchers(HttpMethod.POST, "/persona").permitAll().antMatchers(HttpMethod.GET, "/test/*")

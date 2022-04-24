@@ -63,7 +63,7 @@ public class UsuarioController {
 		final ReturnBusquedas<UsuarioEntity> resultado = usuarioService.buscarUsuariosEliminados(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
 
-		return new RespEntity(RespCode.USUARIOS_LISTADOS, resultado);
+		return new RespEntity(RespCode.USUARIOS_ELIMINADOS_LISTADOS, resultado);
 	}
 
 	@PostMapping(value = "/eliminarUsuario")
@@ -125,7 +125,8 @@ public class UsuarioController {
 						return new RespEntity(RespCode.USUARIO_VACIO, usuarioModificar);
 					}
 
-					return new RespEntity(RespCode.ROL_USUARIO_MODIFICADO_OK, resultado);
+					return new RespEntity(RespCode.ROL_USUARIO_MODIFICADO_OK,
+							usuarioModificar.getRolEntity().getRolName());
 
 				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
 					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, usuarioModificar);

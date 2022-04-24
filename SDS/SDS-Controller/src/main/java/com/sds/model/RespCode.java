@@ -98,6 +98,8 @@ public enum RespCode {
 	PERMISO_NO_EXISTE_EXCEPTION("PERMISO_NO_EXISTE",
 			"El rol no tiene permisos para realizar esa acción sobre esa funcionalidad"), //
 	USUARIOS_LISTADOS("USUARIOS_LISTADOS", "Los usuarios se han listado correctamente"), //
+	USUARIOS_ELIMINADOS_LISTADOS("USUARIOS_ELIMINADOS_LISTADOS",
+			"Los usuarios eliminados se han listado correctamente"), //
 	REGISTRO_OK("REGISTRO_OK", "Registro realizado correctamente"), //
 	PERMISOS_OBTENIDOS("PERMISOS_OBTENIDOS", "Los permisos se han obtenido correctamente"), //
 	ROL_USUARIO_MODIFICADO_OK("ROL_USUARIO_MODIFICADO_OK", "El rol del usuario se ha modificado correctamente"), //
@@ -108,6 +110,18 @@ public enum RespCode {
 	NOTICIA_BORRADA("NOTICIA_BORRADA", "La noticia se ha borrado correctamente"), //
 	NOTICIA_VACIA("NOTICIA_VACIA", "El titulo y/o el texto de la noticia son vacíos"), //
 	NOTICIA_YA_EXISTE_EXCEPTION("NOTICIA_YA_EXISTE", "La noticia ya existe"), //
+	OBJETIVOS_LISTADOS("OBJETIVOS_LISTADOS", "Los objetivos se han listado correctamente"), //
+	OBJETIVO_ENCONTRADO("OBJETIVO_ENCONTRADO", "El objetivo se ha encontrado correctamente"), //
+	OBJETIVOS_ELIMINADOS_LISTADOS("OBJETIVOS_ELIMINADOS_LISTADOS",
+			"Los objetivos eliminados se han listado correctamente"), //
+	OBJETIVO_GUARDADO("OBJETIVO_GUARDADO", "El objetivo se ha guardado correctamente"), //
+	OBJETIVO_MODIFICADO("OBJETIVO_MODIFICADO", "El objetivo se ha modificado correctamente"), //
+	OBJETIVO_ELIMINADO("OBJETIVO_ELIMINADO", "El objetivo se ha eliminado correctamente"), //
+	OBJETIVO_REACTIVADO("OBJETIVO_REACTIVADO", "El objetivo se ha reactivado correctamente"), //
+	OBJETIVO_BORRADO("OBJETIVO_BORRADO", "El objetivose ha borrado correctamente"), //
+	OBJETIVO_VACIO("OBJETIVO_VACIO", "El objetivo está vacía"), //
+	OBJETIVO_YA_EXISTE_EXCEPTION("OBJETIVO_YA_EXISTE_EXCEPTION", "El objetivo ya existe"), //
+	OBJETIVO_NO_EXISTE_EXCEPTION("OBJETIVO_NO_EXISTE_EXCEPTION", "El objetivo no existe"), //
 	NOTICIA_NO_EXISTE_EXCEPTION("NOTICIA_NO_EXISTE", "La noticia no existe"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
@@ -189,8 +203,16 @@ public enum RespCode {
 			"Se ha producido un error al ejecutar los test de atributos para la noticia"), //
 	TEST_ACCIONES_NOTICIA_KO("TEST_ACCIONES_NOTICIA_KO",
 			"Se ha producido un error al ejecutar los test de acciones para la noticia"), //
-	TEST_ACCIONES_NOTICIA_OK("TEST_ACCIONES_EMPRESA_OK",
-			"Los test de acciones para la noticia se han ejecutado correctamente");
+	TEST_ACCIONES_NOTICIA_OK("TEST_ACCIONES_NOTICIA_OK",
+			"Los test de acciones para la noticia se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_OBJETIVO_OK("TEST_ATRIBUTOS_OBJETIVO_OK",
+			"Los test de atributo para los objetivos se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_OBJETIVO_KO("TEST_ATRIBUTOS_OBJETIVO_KO",
+			"Se ha producido un error al ejecutar los test de atributos para los objetivos"), //
+	TEST_ACCIONES_OBJETIVO_KO("TEST_ACCIONES_OBJETIVO_KO",
+			"Se ha producido un error al ejecutar los test de acciones para los objetivos"), //
+	TEST_ACCIONES_OBJETIVO_OK("TEST_ACCIONES_OBJETIVO_OK",
+			"Los test de acciones para el objetivo se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

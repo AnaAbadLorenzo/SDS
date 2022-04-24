@@ -25,6 +25,27 @@ async function changePass() {
       });
 }
 
+/** Funcion para cargar las noticias de BD **/
+async function cargarNoticias(){
+  await cargarNoticiasAjaxPromesa()
+  .then((res) => {
+      
+      $('#noticias').html('');
+
+      for(var i = 0; i<res.data.listaBusquedas.length; i++){
+        var noticia = construyeNoticia(res.data.listaBusquedas[i]);
+        $('#noticias').append(noticia);
+      }
+    
+      
+      }).catch((res) => {
+    
+        respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
+        document.getElementById("modal").style.display = "block";
+      });
+}
+
 /* Función para cambiar la contraseña con ajax y promesas */
 function changePassUsuarioAjaxPromesa(){
   return new Promise(function(resolve, reject) {
@@ -120,6 +141,29 @@ function funcionalidadesUsuarioAjaxPromesa(){
   });
 }
 
+/** Función para obtener de back las noticias con ajax y promesas**/
+function cargarNoticiasAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+  
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxListarTodasNoticias,
+      contentType : "application/json", 
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'NOTICIAS_LISTADAS') {
+          reject(res);
+        }
+        resolve(res);
+    }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /**Función que carga las funcionalidades asociadas al usuario**/
 function cargarFuncionalidadesUsuario(datos){
   var i;
@@ -137,6 +181,30 @@ function cargarFuncionalidadesUsuario(datos){
 
   $("#listadoFuncionalidades").append(htmlMenu);
 
+
+}
+
+/** Funcion para construir las noticias **/
+function construyeNoticia(noticia){
+    var noticiaHTML = "";
+
+    var fechaNoticia = (noticia.fechaNoticia).split('T');
+    var horaNoticia = (fechaNoticia[1]).split('.');
+
+    noticiaHTML = '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' + 
+                    '<div class="card">' + 
+                      '<img src="images/news.png" class="card-img-top" alt="Noticias">' + 
+                        '<div class="card-body-news">' + 
+                          '<h4 class="card-title">' + noticia.tituloNoticia + '</h4>' + 
+                          '<p class="card-text">' + noticia.textoNoticia + '</p>' + 
+                        '</div>' + 
+                        '<div class="card-footer">' + 
+                          '<small class="text-muted">' + fechaNoticia [0] + " " + horaNoticia[0] + '</small>' + 
+                        '</div>' + 
+                    '</div>' + 
+                  '</div>';
+
+  return noticiaHTML;
 
 }
 

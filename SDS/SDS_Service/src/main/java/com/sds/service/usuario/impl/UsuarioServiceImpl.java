@@ -144,8 +144,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 			}
 		}
 
-		datosBusqueda.add(Constantes.USUARIO + Constantes.DOS_PUNTOS + usuario);
-		datosBusqueda.add(Constantes.ROL + Constantes.DOS_PUNTOS + rol.toString());
+		datosBusqueda.add(Constantes.USUARIOBUSCAR + Constantes.DOS_PUNTOS + usuario);
+		datosBusqueda.add(Constantes.ROL + Constantes.DOS_PUNTOS + rol.getRolName());
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size(), inicio);
@@ -344,9 +344,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 					final Optional<RolEntity> rolUser = rolRepository.findById(rol.getIdRol());
 
 					if (rolUser.isPresent()) {
-						user.setRol(rol);
-						usuario.setUsuarioEntity(user);
-						usuarioRepository.saveAndFlush(user);
+						usuarioBD.get().setRol(rol);
+						usuario.setUsuarioEntity(usuarioBD.get());
+						usuarioRepository.saveAndFlush(usuarioBD.get());
 
 						final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(usuario.getUsuario(),
 								Constantes.ACCION_MODIFICAR_USUARIO, usuario.getUsuarioEntity().toString());

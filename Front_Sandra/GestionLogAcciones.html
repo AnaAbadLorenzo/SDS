@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="css/gestionLogExcepciones.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/gestionLogAcciones.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -51,7 +51,7 @@
 
 	<div class="cabecera">
 
-	    <div id="divListarLogAcciones" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarLogAcciones()" class="tooltip searchIcon">
+	    <div id="divListarLogAcciones" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarLogAcciones()" class="tooltip searchIcon">
 	        <img id="btnListarLogAcciones" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Log Acciones" />
 	        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
 	    </div>
@@ -81,7 +81,7 @@
 			      	
 					  <th scope="col" class="ACTION_COLUMN">
 					    <div class="ACTION actionColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaLogAcciones')" class="tooltip ordenarIconDescriptionException">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaLogAcciones')" class="tooltip ordenarIconAction">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
@@ -89,7 +89,7 @@
 
 					  <th scope="col" class="DATA_COLUMN">
 					    <div class="DATA dataColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaLogAcciones')" class="tooltip ordenarIconDescriptionException">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaLogAcciones')" class="tooltip ordenarIconData">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>

@@ -5,7 +5,7 @@ import java.util.List;
 import com.sds.model.AccionEntity;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.accion.model.AccionAsignar;
-import com.sds.service.accion.model.Permiso;
+import com.sds.service.accion.model.PermisosFuncionalidadAccion;
 import com.sds.service.accion.model.RolAccionFuncionalidad;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.AccionAsociadaRolFuncionalidadException;
@@ -45,8 +45,8 @@ public interface AccionService {
 	String desasignarAccion(final RolAccionFuncionalidad rolAccionFuncionalidad)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PermisoNoExisteException;
 
-	List<Permiso> obtenerPermisos() throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException,
-			RolNoExisteException, AccionNoExisteException;
+	List<PermisosFuncionalidadAccion> obtenerPermisos() throws LogExcepcionesNoGuardadoException,
+			FuncionalidadNoExisteException, RolNoExisteException, AccionNoExisteException;
 
 	void deleteAccion(final AccionEntity accion) throws AccionNoExisteException;
 

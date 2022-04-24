@@ -1,0 +1,91 @@
+{
+	"buscarObjetivo":{
+		"usuario": "ana",
+		
+		"idObjetivo":1,
+		"nombreObjetivo":"Fin de la pobreza",
+		"descripObjetivo":"Objetivo de la ONU 2030 número 1",
+		"borradoObjetivo": 0
+	},
+	
+	"nombreObjetivoVacio":{
+		"usuario": "ana",
+		
+		"idObjetivo":1,
+		"nombreObjetivo":"",
+		"descripObjetivo":"Objetivo de la ONU 2030 número 1",
+		"borradoObjetivo": 0
+	},
+	
+	"descripcionObjetivoVacio":{
+		"usuario": "ana",
+		
+		"idObjetivo":1,
+		"nombreObjetivo":"Fin de la pobreza",
+		"descripObjetivo":"",
+		"borradoObjetivo": 0
+	},
+	
+	"datosObjetivoVacios":{
+		"usuario": "ana",
+		
+		"idObjetivo":1,
+		"nombreObjetivo":"",
+		"descripObjetivo":"",
+		"borradoObjetivo": 0
+	},
+	
+	"guardarObjetivo":{
+		"usuario": "ana",
+		
+		"idObjetivo":"",
+		"nombreObjetivo":"Objetivo",
+		"descripObjetivo":"Esta es la descripción del objetivo guardado",
+		"borradoObjetivo": 0
+	},
+	
+	"objetivoYaExiste":{
+		"usuario": "ana",
+		
+		"idObjetivo":"",
+		"nombreObjetivo":"Fin de la pobreza",
+		"descripObjetivo":"Objetivo de la ONU 2030 número 1",
+		"borradoObjetivo": 0
+	},
+	
+	"modificarObjetivo":{
+		"usuario": "ana",
+		
+		"idObjetivo":"",
+		"nombreObjetivo":"Modificar objetivo",
+		"descripObjetivo":"Esta es la descripción del objetivo modificado",
+		"borradoObjetivo": 0
+	},
+	
+	"objetivoNoExiste":{
+		"usuario": "ana",
+		
+		"idObjetivo":"",
+		"nombreObjetivo":"Objetivo no existe",
+		"descripObjetivo":"Esta es la descripción del objetivo",
+		"borradoObjetivo": 0
+	},
+	
+	"eliminarObjetivo": {
+		"usuario": "ana",
+		
+		"idObjetivo":"",
+		"nombreObjetivo":"Eliminar objetivo",
+		"descripObjetivo":"Esta es la descripción del objetivo eliminado",
+		"borradoObjetivo": 0
+	},
+	
+	"reactivarObjetivo": {
+		"usuario": "ana",
+		
+		"idObjetivo":"",
+		"nombreObjetivo":"Reactivar objetivo",
+		"descripObjetivo":"Esta es la descripción del objetivo raectivado",
+		"borradoObjetivo": 0
+	}
+}

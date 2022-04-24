@@ -27,6 +27,8 @@ arrayES={
 	'DATE_FIN' : 'Fecha fin',
 	'ACTION' : 'Acción',
 	'DATA' : 'Datos',
+	'ACTIVO' : 'Activo',
+	'ROL' : 'Rol',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -87,6 +89,10 @@ arrayES={
 	'ACCION_NO_EXISTE_EXCEPTION' : 'La acción no existe',
 	'PERMISO_NO_EXISTE' : 'El permiso no existe',
 	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'La acción está asociado a un rol y a una funcionalidad',
+	'PERSONA_NO_EXISTE' : 'La persona no existe',
+	'PARSE_EXCEPTION' : 'Error interno de parseado del mensaje',
+	'USUARIO_VACIO' : 'El usuario está vacío',
+	'USUARIO_MODIFICAR_VACIO' : 'El usuario está vacío',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -215,6 +221,13 @@ arrayES={
 	'DETAIL_LOG_EXCEPCIONES' : 'DETALLE LOG EXCEPCIÓN',
 	'GESTION_LOG_ACCIONES' : 'Gestión Logs acciones',
 	'SEARCH_LOG_ACCIONES' : 'BUSCAR LOG ACCIONES',
+	'OPCION_DEFECTO_ROL' : 'Por favor, seleccione un rol',
+	'SEARCH_USUARIO' : 'BUSCAR USUARIO',
+	'EDIT_ROL_USER' : 'EDITAR ROL USUARIO',
+	'DELETE_USER' : 'ELIMINAR USUARIO',
+	'SEGURO_ELIMINAR_USUARIO' : '¿Está seguro que desea eliminar este usuario?',
+	'REACTIVATE_USUARIO': 'REACTIVAR USUARIO',
+	'SEGURO_REACTIVAR_USUARIO' : '¿Está seguro que desea reactivar este usuario?',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -255,5 +268,12 @@ arrayES={
 	'ACCION_REVOCADA' : 'La acción se ha revocado correctamente',
 	'ACCION_ELIMINADA' : 'La acción se ha eliminado correctamente',
 	'ACCION_BORRADA' : 'La acción se ha borrado correctamente',
-	'ACCION_MODIFICADA' : 'La acción se ha modificado correctamente'
+	'ACCION_MODIFICADA' : 'La acción se ha modificado correctamente',
+	'ROL_USUARIO_EDITADO_OK' : 'ROL DE USUARIO MODIFICADO CORRECTAMENTE',
+	'ROL_USUARIO_MODIFICADO_OK' : 'El rol del usuario ha sido modificado correctamente',
+	'USER_ELIMINADO_OK' : 'USUARIO ELIMINADO CORRECTAMENTE',
+	'USUARIO_ELIMINADO' : 'El usuario se ha eliminado correctamente',
+	'USUARIO_REACTIVADO_OK' : 'USUARIO REACTIVADO CORRECTAMENTE',
+	'USUARIO_REACTIVADO' : 'El usuario se ha reactivado correctamente'
+
 }

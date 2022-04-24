@@ -129,7 +129,7 @@ function showBuscarLogExcepciones() {
   var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_LOG_EXCEPCIONES', 'javascript:buscarLogExcepciones(0,' + tamanhoPaginaLogExcepciones+ ', \'buscarModal\'' + ', \'PaginadorNo\');', 'return comprobarBuscarLogExcepciones();');
-  cambiarOnBlurCampos('return comprobarNombreAccionSearch(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')', 
+  cambiarOnBlurCampos('return comprobarUserLogSearch(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')', 
   'return comprobarFechaInicioSearch(\'fechaInicio\', \'errorFormatoFechaInicio\', \'fecha\')',
   'return comprobarFechaFinSearch(\'fechaFin\', \'errorFormatoFechaFin\', \'fecha\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchLogExcepciones', 'Buscar');

@@ -15,7 +15,7 @@ public interface NoticiasService {
 	ReturnBusquedas<NoticiasEntity> buscarNoticia(final String tituloNoticia, final String textoNoticia,
 			final Date fechaNoticia, final int inicio, final int tamanhoPagina);
 
-	ReturnBusquedas<NoticiasEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+	ReturnBusquedas<NoticiasEntity> buscarTodos();
 
 	ReturnBusquedas<NoticiasEntity> buscarNoticiaSinFecha(final String tituloNoticia, final String textoNoticia,
 			final int inicio, final int tamanhoPagina);

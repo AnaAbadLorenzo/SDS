@@ -1,6 +1,7 @@
 package com.sds.controller.noticia;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.NoticiasEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
-import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -35,11 +35,10 @@ public class NoticiaController {
 		this.validaciones = new Validaciones();
 	}
 
-	@PostMapping(value = "/listarNoticias")
+	@GetMapping(value = "/listarNoticias")
 	@ResponseBody
-	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
-		final ReturnBusquedas<NoticiasEntity> resultado = noticiasService.buscarTodos(paginacion.getInicio(),
-				paginacion.getTamanhoPagina());
+	public RespEntity buscarTodos() {
+		final ReturnBusquedas<NoticiasEntity> resultado = noticiasService.buscarTodos();
 
 		return new RespEntity(RespCode.NOTICIAS_LISTADAS, resultado);
 	}

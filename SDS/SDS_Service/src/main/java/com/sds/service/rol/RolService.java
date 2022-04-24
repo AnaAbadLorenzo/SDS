@@ -1,5 +1,7 @@
 package com.sds.service.rol;
 
+import java.util.List;
+
 import com.sds.model.RolEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
@@ -16,6 +18,8 @@ public interface RolService {
 			final int tamanhoPagina);
 
 	ReturnBusquedas<RolEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+
+	List<RolEntity> obtenerTodos();
 
 	ReturnBusquedas<RolEntity> buscarRolesEliminados(final int inicio, final int tamanhoPagina);
 

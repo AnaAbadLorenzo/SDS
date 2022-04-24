@@ -32,7 +32,7 @@ public class PlanEntity {
 	@Column(name = "borrado_plan")
 	private Integer borradoPlan;
 
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "plan")
+	@OneToOne(cascade = CascadeType.ALL)
 	private ObjetivoEntity objetivo;
 
 	public PlanEntity() {

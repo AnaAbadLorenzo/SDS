@@ -112,7 +112,7 @@ function cargarPermisosFuncAccionAjaxPromesa(){
   });
 }
 
-/**Función para editar una accion con ajax y promesas*/
+/** Función para editar una accion con ajax y promesas **/
 function editarAccionAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');

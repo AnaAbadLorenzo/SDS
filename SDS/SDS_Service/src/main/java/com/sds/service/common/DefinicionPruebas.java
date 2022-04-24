@@ -127,4 +127,11 @@ public class DefinicionPruebas {
 	public static final String NOTICIA_NO_EXISTE = "La noticia no existe";
 	public static final String ELIMINAR_NOTICIA_CORRECTO = "La noticia se ha eliminado correctamente";
 
+	public static final String GUARDAR_OBJETIVO_CORRECTO = "El objetivo se ha guardado correctamente";
+	public static final String MODIFICAR_OBJETIVO_CORRECTO = "El objetivo se ha modificado correctamente";
+	public static final String OBJETIVO_YA_EXISTE = "El objetivo ya existe";
+	public static final String OBJETIVO_NO_EXISTE = "El objetivo no existe";
+	public static final String ELIMINAR_OBJETIVO_CORRECTO = "El objetivo se ha eliminado correctamente";
+	public static final String REACTIVAR_OBJETIVO_CORRECTO = "El obejtivo se ha reactivado correctamente";
+
 }

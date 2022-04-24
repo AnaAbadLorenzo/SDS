@@ -32,4 +32,12 @@ CREATE TABLE `objetivo` (
   PRIMARY KEY (`id_objetivo`),
   UNIQUE KEY `nombre_objetivo_UNIQUE` (`nombre_objetivo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+LOCK TABLES `objetivo` WRITE;
+/*!40000 ALTER TABLE `objetivo` DISABLE KEYS */;
+INSERT INTO `objetivo` (`id_objetivo`, `nombre_objetivo`, `descripcion_objetivo`, `borrado_objetivo`) VALUES ('1', 'Fin de la pobreza', 'Objetivo de la ONU 2030 número 1', '0');
+/*!40000 ALTER TABLE `objetivo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 /*!40101 SET character_set_client = @saved_cs_client */;

@@ -129,7 +129,7 @@ function showBuscarLogAcciones() {
   var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_LOG_ACCIONES', 'javascript:buscarLogAcciones(0,' + tamanhoPaginaLogAcciones+ ', \'buscarModal\'' + ', \'PaginadorNo\');', 'return comprobarBuscarLogAcciones();');
-  cambiarOnBlurCampos('return comprobarNombreAccionSearch(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')', 
+  cambiarOnBlurCampos('return comprobarUserLogSearch(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')', 
   'return comprobarFechaInicioSearch(\'fechaInicio\', \'errorFormatoFechaInicio\', \'fecha\')',
   'return comprobarFechaFinSearch(\'fechaFin\', \'errorFormatoFechaFin\', \'fecha\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchLogAcciones', 'Buscar');
@@ -259,7 +259,7 @@ async function cargarPermisosFuncLogAcciones(){
 async function refrescarTabla(numeroPagina, tamanhoPagina){
   await cargarLogAccionesAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
-      cargarPermisosFuncLogExcepciones();
+      cargarPermisosFuncLogAcciones();
       setCookie('usuarioLog', '');
       setCookie('fechaInicio', '');
       setCookie('fechaFin', '');
