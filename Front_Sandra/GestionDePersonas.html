@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="js/paginacion.js"></script>
+  <script type="text/javascript" src="js/gestionPersonas.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
     <script type="text/javascript" src="Locale/Lang_ES.js"></script>
@@ -35,6 +36,7 @@
     await funcionalidadesUsuario();
     modalCambioPass();
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+  await cargarDatos();
   })();">  
 	<div id="topMenu"></div>
 
@@ -43,97 +45,221 @@
 
 	<h1 class="gestion GESTION_PERSONAS"></h1>
 
-	<div class="card card-person">
-		<img class="card-img-top" src="images/users.png" alt="Card image" style="width:100%">
-    	<div class="card-body">
-    		<div class="nombreApellidosInfo">
-    			<img class="nombreApellidosImg" src="images/users.png" alt="nombreApellidos">
-      			<h4 class="card-title nombreApellidos">Alexandra Iglesias</h4>
-      		</div>
-      		<div class="dniPInfo">
-      			<img class="dniPImg" src="images/dni.png" alt="dniP">
-      			<p class="card-text dniP">44460662Y</p>
-      		</div>
-      		<div class="fechaNacimientoInfo">
-      			<img class="fechaNacimientoImg" src="images/cumpleanhos.png" alt="fechaNacimiento">
-      			<p class="card-text fechaNacimiento">09/03/1987</p>
-      		</div>
-      		<div class="direccionInfo">
-      			<img class="direccionImg" src="images/direccion.png" alt="direccion">
-      			<p class="card-text direccion">Prueba</p>
-      		</div>
-      		<div class="telefonoInfo">
-      			<img class="telefonoImg" src="images/telefono.png" alt="telefono">
-      			<p class="card-text telefono">988222222</p>
-      		</div>
-      		<div class="emailInfo">
-      			<img class="emailImg" src="images/email.png" alt="email">
-      			<p class="card-text email">a@a.com</p>
-      		</div>
-      		<div class="tooltip">
-      			<img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="" alt="Editar"/>
-      			<span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span>
-      		</div>      		
-    	</div>
-	</div>
-	<br>
+  <div id="personaInfoParaUsuario">
+    	<div id = "cardPersona" class="card card-person"></div>
+    	<br>
+    	<div id="cardUsuario" class="card card-user"></div>
+      <br>
+      <div id="cardEmpresa" class="card card-enterprise"></div>
+      <br>
+  </div>
 
-	<div class="card card-user">
-		<img class="card-img-top" src="images/user.png" alt="Card image">
-    	<div class="card-body">
-    		<div class="userInfo">
-    			<img class="userImg" src="images/user.png" alt="usuario">
-      			<h4 class="card-title user">aicuna</h4>
-      		</div>
-      		<div class="dniInfo">
-      			<img class="dniImg" src="images/dni.png" alt="dni">
-      			<p class="card-text dni">44460662Y</p>
-      		</div>
-      		<div class="passInfo">
-      			<img class="passImg" src="images/pass.png" alt="pass">
-      			<p class="card-text pass">************</p>
-      		</div>
-      		<div class="rolInfo">
-      			<img class="rolImg" src="images/rol.png" alt="rol">
-      			<p class="card-text rol">admin</p>
-      		</div>
-    	</div>
-	</div>
-  	<br>
+  <div id="personaInfoParaAdmin">
+      <div class="cabecera">
+        <div id="divAddPersona" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddPersonas()" 
+          class=" tooltip addIcon">
+            <img id="btnAddPersona" class="iconoAdd" src="images/add.png" alt="Añadir" />
+            <span class="tooltiptext iconAddPersona ICONO_ADD"></span>
+        </div>      
 
-  	<div class="card card-enterprise">
-		<img class="card-img-top" src="images/empresa2.png" alt="Card image">
-    	<div class="card-body">
-    		<div class="nombreEInfo">
-    			<img class="nombreEImg" src="images/empresa2.png" alt="nombreE">
-      			<h4 class="card-title nombreE">Prueba</h4>
-      		</div>
-      		<div class="cifInfo">
-      			<img class="cifImg" src="images/cif.png" alt="cif">
-      			<p class="card-text cif">J26903286</p>
-      		</div>
-      		<div class="direccionEInfo">
-      			<img class="direccionEImg" src="images/direccion.png" alt="direccionE">
-      			<p class="card-text direccionE">Prueba</p>
-      		</div>
-      		<div class="telefonoEInfo">
-      			<img class="telefonoEImg" src="images/telefono.png" alt="telefonoE">
-      			<p class="card-text telefonoE">-</p>
-      		</div>
-      		<div class="tooltip">
-      			<img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="" alt="Editar"/>
-      			<span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span>
-      		</div>   
-    	</div>
-	</div>
-  	<br>
+        <div id="divListarPersonas" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" 
+          onclick="javascript:showBuscarPersona()" class="tooltip searchIcon">
+            <img id="btnListarPersonas" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Persona" />
+            <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
+        </div>
 
+        <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
+            <img id = "btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Personas Eliminadas" />
+            <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
+        </div>
+
+        <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip refreshIcon">
+            <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
+            <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
+        </div>
+
+        <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip hideShowIcon">
+            <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
+            <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
+        </div>     
+      </div>
+
+      <div class = "cabeceraEliminados" hidden>
+        <div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip volverAtrasIcon">
+              <img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
+              <span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
+          </div> 
+        </div>    
+
+      <div class="table-responsive" id="tablaDatos">
+        <table class="table table-bordered" id="tablaPersonas">
+          <thead>
+              <tr>
+                <th scope="col" class="colFirst DNI_COLUMN">
+                  <div class="DNI dniColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaPersonas')" 
+                        class="tooltip ordenarIconDNI">
+                          <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                          <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+                  
+                <th scope="col" class="NOMBRE_PERSONA_COLUMN">
+                  <div class="NOMBRE_PERSONA nombrePersonaColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaPersonas')" 
+                        class="tooltip ordenarIconNombrePersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                <th scope="col" class="APELLIDOS_PERSONA_COLUMN">
+                  <div class="APELLIDOS_PERSONA apellidosPersonaColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaPersonas')" 
+                        class="tooltip ordenarIconApellidosPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                <th scope="col" class="DIRECCION_PERSONA_COLUMN">
+                  <div class="DIRECCION_PERSONA direccionPersonaColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaPersonas')" 
+                        class="tooltip ordenarIconDireccionPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                <th scope="col" class="FECHA_NACIMIENTO_PERSONA_COLUMN">
+                  <div class="FECHA_NACIMIENTO_PERSONA fechaNacimientoPersonaColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaPersonas')" 
+                        class="tooltip ordenarIconFechaNacimientoPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                 <th scope="col" class="TELEFONO_COLUMN">
+                  <div class="TELEFONO telefonoColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(5, 'tablaPersonas')" 
+                        class="tooltip ordenarIconTelefonoPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                <th scope="col" class="EMAIL_COLUMN">
+                  <div class="EMAIL emailColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(6, 'tablaPersonas')" 
+                        class="tooltip ordenarIconEmailPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                <th scope="col" class="LOGIN_USUARIO_COLUMN">
+                  <div class="LOGIN_USUARIO loginUsuarioColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(7, 'tablaPersonas')" 
+                        class="tooltip ordenarIconLoginUsuarioPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                <th scope="col" class="NOMBRE_EMPRESA_COLUMN">
+                  <div class="NOMBRE_EMPRESA nombreEmpresaColumn"></div>
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(8, 'tablaPersonas')" 
+                        class="tooltip ordenarIconNombreEmpresaPersona">
+                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
+                      </div>
+                </th>
+
+                
+                <th scope="col" class="colLast ACCIONES"></th>
+              
+              </tr>
+          </thead>
+          <tbody id="datosFuncionalidad" class="bodyGestionFuncionalidades"></tbody>
+        </table>
+      </div>
+
+      <div class="filasTabla">
+          <div id="paginacion"></div>
+      </div>
+
+      <div id="showHideColumns" style="display: none;">
+        <div id='checkboxColumnas'>
+        </div>
+      </div>
+
+      <div id="itemPaginacion" class="paginacion">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            </ul>
+        </nav>
+      </div>
+
+      <div class="modal modal2 fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+          <div class="formmodal-container">
+            <div id="formularioAcciones">
+                <div id="contenidoForm">
+                        <div class="formularioComun">
+                          <h1 id="tituloForms" class="datos"></h1>
+                          <p id = "subtitulo" class="SEGURO_ELIMINAR_FUNC" hidden></p>
+                          <form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
+                            <label class="labelForm FUNCIONALIDAD_NAME" id="labelFuncionalidadName" hidden></label>                            
+                              <input type="text" maxlength="48" size="48" placeholder="FUNCIONALIDAD_NAME" name="FUNCIONALIDAD_NAME" id="nombreFuncionalidad" class="FUNCIONALIDAD_NAME" onblur=""/>
+                               <div class="obligatorio tooltip2" id="obligatorioFuncionalidadName">*
+                            <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                          </div>
+                              <div style="display:none" id="errorFormatoNombreFuncionalidad"></div>
+                              
+                              <label class="labelForm FUNCIONALIDAD_DESCRIPTION" id="labelFuncionalidadDescription" hidden></label>
+                            <input type="text" placeholder="FUNCIONALIDAD_DESCRIPTION" name="FUNCIONALIDAD_DESCRIPTION" id="descripcionFuncionalidad" class="FUNCIONALIDAD_DESCRIPTION" onblur=""/>
+                             <div class="obligatorio tooltip2" id="obligatorioFuncionalidadDescription">*
+                            <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                          </div>
+                            <div style="display:none" id="errorFormatoDescripcionFuncionalidad"></div>
+
+                              <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
+                                  <img class="" src="" alt="" id="iconoAcciones" />
+                                  <span class="tooltiptext" id="spanAcciones"></span>
+                              </button>
+                          </form>
+                        </div>
+                </div>
+            </div>
+          </div>
+        </div>
+  </div>
+
+  </div>
 	<div class="volver">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
         		<img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         		<span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>
     		</div>   
 	</div>
+
+  <div id="modal" tabindex="-1" role="dialog" style="display:none">
+    <div class="modal-dialog" role="document" id="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="" name="aviso" class="imagenAviso"/>
+          <h3 id="modal-title" class="modal-title"></h3>
+        </div>
+      <div id='modal-mensaje' class="modal-body"></div>
+          <div id="modalFooter" class="modal-footer">
+              <a id="cerrar" href="#" onclick="cerrarModal('modal')" class="tooltip5">
+                <img class="iconCerrar" alt="Cerrar" src="images/close.png"/>
+                    <span class="tooltiptext5 ICONO_CERRAR"></span>
+            </a>
+        </div>
+    </div>
+  </div>
 
 	<div id="footer"></div>
 </body>

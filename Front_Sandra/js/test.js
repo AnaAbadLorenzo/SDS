@@ -97,14 +97,6 @@ function obtenerValor(valor, atributos, entidad){
 			case 'Accion':
 				resultadoValor = '"' + atributos[0] + '" : "' + valor.descripAccion + '", "' + atributos[1] + '" : "' + valor.nombreAccion +  '"';
 			break;
-
-			case 'Usuario':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.dniUsuario + '", "' + atributos[1] + '" : "' + valor.usuario +  '"' + '", "' + atributos[2] + '" : "' + valor.passwdUsuario +  '"';
-			break;
-
-			case 'Noticia':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.tituloNoticia + '", "' + atributos[1] + '" : "' + valor.textoNoticia +  '"';
-			break;
 		}
 
 	} else {

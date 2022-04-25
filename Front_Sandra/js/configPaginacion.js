@@ -4,3 +4,4 @@ var tamanhoPaginaAccion = 2;
 var tamanhoPaginaLogExcepciones = 10;
 var tamanhoPaginaLogAcciones = 10;
 var tamanhoPaginaUsuario = 2;
+var tamanhoPaginaPersona = 2;
