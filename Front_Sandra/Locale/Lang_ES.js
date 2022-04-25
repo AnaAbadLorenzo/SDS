@@ -5,6 +5,7 @@ arrayES={
 	'PASS_USUARIO' : 'Contraseña de Usuario',
 	'EMAIL_USUARIO' : 'Email usuario',
 	'DNI' : 'DNI',
+	'DNI_USUARIO' : 'DNI',
 	'NOMBRE_PERSONA' : 'Nombre',
 	'APELLIDOS_PERSONA' : 'Apellidos',
 	'DIRECCION_PERSONA' : 'Dirección',
@@ -28,6 +29,7 @@ arrayES={
 	'ACTION' : 'Acción',
 	'DATA' : 'Datos',
 	'ACTIVO' : 'Activo',
+	'USUARIOACTIVO' : 'Activo',
 	'ROL' : 'Rol',
 
 	//Idiomas

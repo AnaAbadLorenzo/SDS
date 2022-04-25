@@ -243,6 +243,59 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
+	public ReturnBusquedas<PersonaEntity> buscarPersonaByUsuario(final String usuario, final int inicio,
+			final int tamanhoPagina) {
+
+		final List<PersonaEntity> toret = new ArrayList<>();
+		List<PersonaEntity> personasToret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
+
+		personasToret = entityManager.createNamedQuery(Constantes.PERSONA_QUERY_FINDPERSONABYUSUARIO)
+				.setParameter(Constantes.USUARIO, usuario).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+				.getResultList();
+
+		if (!personasToret.isEmpty()) {
+			for (final PersonaEntity persona : personasToret) {
+				if (persona.getEmpresa() == null) {
+					final Optional<UsuarioEntity> user = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(user.get().getRol().getIdRol(),
+							user.get().getRol().getRolName(), user.get().getRol().getRolDescription(),
+							user.get().getRol().getBorradoRol());
+					final UsuarioEntity usu = new UsuarioEntity(user.get().getDniUsuario(), user.get().getUsuario(),
+							user.get().getPasswdUsuario(), user.get().getBorradoUsuario(), rol);
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), null, usu);
+					toret.add(person);
+				} else {
+					final Optional<UsuarioEntity> user = usuarioRepository.findById(persona.getDniP());
+					final RolEntity rol = new RolEntity(user.get().getRol().getIdRol(),
+							user.get().getRol().getRolName(), user.get().getRol().getRolDescription(),
+							user.get().getRol().getBorradoRol());
+					final UsuarioEntity usu = new UsuarioEntity(user.get().getDniUsuario(), user.get().getUsuario(),
+							user.get().getPasswdUsuario(), user.get().getBorradoUsuario(), rol);
+					final EmpresaEntity empresa = new EmpresaEntity(persona.getEmpresa().getIdEmpresa(),
+							persona.getEmpresa().getCifEmpresa(), persona.getEmpresa().getNombreEmpresa(),
+							persona.getEmpresa().getDireccionEmpresa(), persona.getEmpresa().getTelefonoEmpresa(),
+							persona.getEmpresa().getBorradoEmpresa());
+
+					final PersonaEntity person = new PersonaEntity(persona.getDniP(), persona.getNombreP(),
+							persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+							persona.getTelefonoP(), persona.getEmailP(), persona.getBorradoP(), empresa, usu);
+					toret.add(person);
+				}
+			}
+
+		}
+		datosBusqueda.add(Constantes.USUARIO + Constantes.DOS_PUNTOS + usuario);
+
+		final ReturnBusquedas<PersonaEntity> ret = new ReturnBusquedas<PersonaEntity>(toret, datosBusqueda, 1,
+				toret.size(), inicio);
+
+		return ret;
+	}
+
+	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException,
 			PersonaNoExisteException, ParseException, LogAccionesNoGuardadoException {

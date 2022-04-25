@@ -539,12 +539,9 @@ public class TestController {
 		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
 
 		try {
-			final List<DatosPruebaAtributos> pruebaAtributoDniUsuario = testUsuarioService
-					.getPruebasAtributoUsuarioDniUsuarioBuscar();
 			final List<DatosPruebaAtributos> pruebaAtributoNombreUsuario = testUsuarioService
 					.getPruebasAtributoUsuarioNombreUsuarioBuscar();
 
-			resultadoPruebasAtributos.addAll(pruebaAtributoDniUsuario);
 			resultadoPruebasAtributos.addAll(pruebaAtributoNombreUsuario);
 
 		} catch (IOException | ParseException | java.text.ParseException exc) {

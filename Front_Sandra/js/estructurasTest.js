@@ -817,3 +817,346 @@ function cargarTestGestionAcciones(){
 
 	$("#testAccion").append(contenidoTest);
 }
+
+/*Función para cargar las opciones de Tests de Usuario*/
+function cargarTestGestionUsuarios(){
+
+	$("#testUsuario").html("");
+
+	var contenidoTest = '<div id="accordion15">' +
+	      					'<div class="card">' +
+							    '<div class="card-header">' +
+							    	'<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAtributos">' +
+							        	' Atributos ' +
+							      	'</a>' +
+							      	'<img class="iconTab" id="iconoTestUsuarioAtributos" src="images/failed.png" hidden>' +
+							    '</div>' +
+
+							    '<div id="collapseUsuarioAtributos" class="collapse" data-parent="#accordion15">' +
+							    	'<div class="card-body">' +
+							        
+								      	'<div id="accordion16">' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAtributosModificarRolUsuario" onclick="javascript:testAtributosUsuarioModificarRolUsuario()">' +
+												        ' Modificar Rol Usuario ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestUsuarioAtributosModificarRolUsuario" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAtributosModificarRolUsuario" class="collapse" data-parent="#accordion16">' +
+												    '<div class="card-body">' +
+												        '<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															    '<thead class="cabeceraTablasTest" id="cabeceraAtributosUsuarioModificarRolUsuario"></thead>' +
+															    '<tbody id="cuerpoAtributosUsuarioModificarRolUsuario"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+											'</div>' +
+
+											'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAtributoBuscar" onclick="javascript:testAtributosUsuarioBuscar()">' +
+												        ' Buscar Usuario ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestUsuarioAtributosBuscar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAtributoBuscar" class="collapse" data-parent="#accordion16">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAtributosUsuarioBuscar"></thead>' +
+															   '<tbody id="cuerpoAtributosUsuarioBuscar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+										'</div>' +
+							    	'</div>' +
+								'</div>' +
+
+					  			'<div class="card-header">' +
+					      			'<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAcciones">' +
+					        			' Acciones ' +
+					      			'</a>' +
+					      			'<img class="iconTab" id="iconoTestUsuarioAcciones" src="images/failed.png" hidden>' +
+					    		'</div>' +
+
+					    		'<div id="collapseUsuarioAcciones" class="collapse" data-parent="#accordion15">' +
+							    	'<div class="card-body">' +
+							        
+								      	'<div id="accordion17">' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAccionesBuscar" onclick="javascript:testAccionesUsuarioBuscar()">' +
+												        ' Buscar Usuario ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestUsuarioAccionesBuscar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAccionesBuscar" class="collapse" data-parent="#accordion17">' +
+												    '<div class="card-body">' +
+												        '<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															    '<thead class="cabeceraTablasTest" id="cabeceraAccionesUsuarioBuscar"></thead>' +
+															    '<tbody id="cuerpoAccionesUsuarioBuscar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+											'</div>' +
+
+											'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAccionesEliminar" onclick="javascript:testAccionesUsuarioEliminar()">' +
+												        ' Eliminar Usuario ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestUsuarioAccionesEliminar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAccionesEliminar" class="collapse" data-parent="#accordion17">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesUsuarioEliminar"></thead>' +
+															   '<tbody id="cuerpoAccionesUsuarioEliminar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAccionesModificarRolUsuario" onclick="javascript:testAccionesUsuarioModificarRolUsuario()">' +
+												        ' Modificar Rol Usuario ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestUsuarioAccionesModificarRolUsuario" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAccionesModificarRolUsuario" class="collapse" data-parent="#accordion17">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesUsuarioModificarRolUsuario"></thead>' +
+															   '<tbody id="cuerpoAccionesUsuarioModificarRolUsuario"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAccionesModificarPasswdUsuario" onclick="javascript:testAccionesUsuarioModificarPasswdUsuario()">' +
+												        ' Modificar Contraseña Usuario ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestUsuarioAccionesModificarPasswdUsuario" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAccionesModificarPasswdUsuario" class="collapse" data-parent="#accordion17">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesUsuarioModificarPasswdUsuario"></thead>' +
+															   '<tbody id="cuerpoAccionesUsuarioModificarPasswdUsuario"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
+								      	'<div class="card">' +
+											'<div class="card-header">' +
+												'<a class="collapsed card-link" data-toggle="collapse" href="#collapseUsuarioAccionesReactivar" onclick="javascript:testAccionesUsuarioReactivar()">' +
+												    ' Reactivar Usuario ' +
+												'</a>' +
+												'<img class="iconTab" id="iconoTestUsuarioAccionesReactivar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseUsuarioAccionesReactivar" class="collapse" data-parent="#accordion17">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesUsuarioReactivar"></thead>' +
+															   '<tbody id="cuerpoAccionesUsuarioReactivar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
+							    	'</div>' +
+								'</div>' +
+					 		' </div>' +
+						'</div>';
+
+	$("#testUsuario").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de Noticias*/
+function cargarTestGestionNoticias(){
+
+	$("#testNoticia").html("");
+
+	var contenidoTest = '<div id="accordion18">' +
+	      					'<div class="card">' +
+							    '<div class="card-header">' +
+							    	'<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAtributos">' +
+							        	' Atributos ' +
+							      	'</a>' +
+							      	'<img class="iconTab" id="iconoTestNoticiaAtributos" src="images/failed.png" hidden>' +
+							    '</div>' +
+
+							    '<div id="collapseNoticiaAtributos" class="collapse" data-parent="#accordion18">' +
+							    	'<div class="card-body">' +
+							        
+								      	'<div id="accordion19">' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAtributosGuardar" onclick="javascript:testAtributosNoticiaGuardar()">' +
+												        ' Añadir Noticia ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestNoticiaAtributosGuardar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseNoticiaAtributosGuardar" class="collapse" data-parent="#accordion19">' +
+												    '<div class="card-body">' +
+												        '<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															    '<thead class="cabeceraTablasTest" id="cabeceraAtributosNoticiaGuardar"></thead>' +
+															    '<tbody id="cuerpoAtributosNoticiaGuardar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+											'</div>' +
+
+											'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAtributoBuscar" onclick="javascript:testAtributosNoticiaBuscar()">' +
+												        ' Buscar Noticia ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestNoticiaAtributosBuscar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseNoticiaAtributoBuscar" class="collapse" data-parent="#accordion19">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAtributosNoticiaBuscar"></thead>' +
+															   '<tbody id="cuerpoAtributosNoticiaBuscar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAtributoModificar" onclick="javascript:testAtributosNoticiaModificar()">' +
+												        ' Modificar Noticia ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestNoticiaAtributosModificar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseNoticiaAtributoModificar" class="collapse" data-parent="#accordion19">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAtributosNoticiaModificar"></thead>' +
+															   '<tbody id="cuerpoAtributosNoticiaModificar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+								      	'</div>' +
+
+							    	'</div>' +
+								'</div>' +
+
+					  			'<div class="card-header">' +
+					      			'<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAcciones">' +
+					        			' Acciones ' +
+					      			'</a>' +
+					      			'<img class="iconTab" id="iconoTestNoticiaAcciones" src="images/failed.png" hidden>' +
+					    		'</div>' +
+
+					    		'<div id="collapseNoticiaAcciones" class="collapse" data-parent="#accordion19">' +
+							    	'<div class="card-body">' +
+							        
+								      	'<div id="accordion20">' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAccionesGuardar" onclick="javascript:testAccionesNoticiaGuardar()">' +
+												        ' Añadir Noticia ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestNoticiaAccionesGuardar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseNoticiaAccionesGuardar" class="collapse" data-parent="#accordion20">' +
+												    '<div class="card-body">' +
+												        '<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															    '<thead class="cabeceraTablasTest" id="cabeceraAccionesNoticiaGuardar"></thead>' +
+															    '<tbody id="cuerpoAccionesNoticiaGuardar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+											'</div>' +
+
+											'<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAccionesEliminar" onclick="javascript:testAccionesNoticiaEliminar()">' +
+												        ' Eliminar Noticia ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestNoticiaAccionesEliminar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseNoticiaAccionesEliminar" class="collapse" data-parent="#accordion20">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesNoticiaEliminar"></thead>' +
+															   '<tbody id="cuerpoAccionesNoticiaEliminar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+										    '<div class="card">' +
+												'<div class="card-header">' +
+												    '<a class="collapsed card-link" data-toggle="collapse" href="#collapseNoticiaAccionesModificar" onclick="javascript:testAccionesNoticiaModificar()">' +
+												        ' Modificar Noticia ' +
+												    '</a>' +
+												    '<img class="iconTab" id="iconoTestNoticiaAccionesModificar" src="images/failed.png" hidden>' +
+												'</div>' +
+
+												'<div id="collapseNoticiaAccionesModificar" class="collapse" data-parent="#accordion20">' +
+													'<div class="card-body">' +
+												      	'<div class="table-responsive">' +
+															'<table class="table table-bordered">' +
+															   '<thead class="cabeceraTablasTest" id="cabeceraAccionesNoticiaModificar"></thead>' +
+															   '<tbody id="cuerpoAccionesNoticiaModificar"></tbody>' +
+															'</table>' +
+								      					'</div>' +
+												    '</div>' +
+												'</div>' +
+										    '</div>' +
+
+							    	'</div>' +
+								'</div>' +
+					 		' </div>' +
+						'</div>';
+
+	$("#testNoticia").append(contenidoTest);
+}

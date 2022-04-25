@@ -4,6 +4,7 @@ arrayEN={
 	'PASS_USUARIO' : 'User Password',
 	'EMAIL_USUARIO' : 'User email',
 	'DNI' : 'Personal ID',
+	'DNI_USUARIO' : 'Personal ID',
 	'NOMBRE_PERSONA' : 'Name',
 	'APELLIDOS_PERSONA' : 'Surname',
 	'DIRECCION_PERSONA' : 'Address',
@@ -27,6 +28,7 @@ arrayEN={
 	'ACTION' : 'Action',
 	'DATA' : 'Data',
 	'ACTIVO' : 'Active',
+	'USUARIOACTIVO' : 'Active',
 	'ROL' : 'Role',
 
 	//Idiomas

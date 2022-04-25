@@ -24,6 +24,7 @@ import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
 import com.sds.service.persona.model.PersonaAnadir;
 import com.sds.service.persona.model.PersonaBuscar;
+import com.sds.service.persona.model.PersonaUsuarioBuscar;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -57,6 +58,16 @@ public class PersonaController {
 		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersona(persona.getDniP(),
 				persona.getNombreP(), persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
 				persona.getTelefonoP(), persona.getEmailP(), persona.getInicio(), persona.getTamanhoPagina());
+
+		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+	}
+
+	@PostMapping(value = "/listarPersonaPorUsuario")
+	@ResponseBody
+	public RespEntity buscarPersonaByUsuario(@RequestBody final PersonaUsuarioBuscar personaUsuario) {
+
+		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersonaByUsuario(
+				personaUsuario.getUsuario(), personaUsuario.getInicio(), personaUsuario.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
 	}

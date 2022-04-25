@@ -53,6 +53,12 @@ var urlPeticionAjaxTestFuncionalidadAtributosAccionModificar = "http://localhost
 var urlPeticionAjaxTestAccionAtributosAccionGuardar = "http://localhost:8090/test/accion/atributos/guardar";
 var urlPeticionAjaxTestAccionAtributosAccionBuscar = "http://localhost:8090/test/accion/atributos/buscar";
 var urlPeticionAjaxTestAccionAtributosAccionModificar = "http://localhost:8090/test/accion/atributos/modificar";
+var urlPeticionAjaxTestUsuarioAtributosAccionModificarRolUsuario = "http://localhost:8090/test/usuario/atributos/modificarRol";
+var urlPeticionAjaxTestUsuarioAtributosAccionBuscar = "http://localhost:8090/test/usuario/atributos/buscar";
+var urlPeticionAjaxTestNoticiaAtributosAccionGuardar = "http://localhost:8090/test/noticia/atributos/guardar";
+var urlPeticionAjaxTestNoticiaAtributosAccionBuscar = "http://localhost:8090/test/noticia/atributos/buscar";
+var urlPeticionAjaxTestNoticiaAtributosAccionModificar = "http://localhost:8090/test/noticia/atributos/modificar";
+
 
 
 /**Urls de las peticiones Ajax de test de acciones*/
@@ -76,3 +82,9 @@ var urlPeticionAjaxTestAccionAccionBuscar = "http://localhost:8090/test/accion/a
 var urlPeticionAjaxTestAccionAccionReactivar = "http://localhost:8090/test/accion/accion/reactivar";
 var urlPeticionAjaxTestAccionAccionAsignar = "http://localhost:8090/test/accion/accion/asignar";
 var urlPeticionAjaxTestAccionAccionRevocar = "http://localhost:8090/test/accion/accion/revocar";
+var urlPeticionAjaxTestUsuarioAccionBuscar = "http://localhost:8090/test/usuario/accion/buscar";
+var urlPeticionAjaxTestUsuarioAccionEliminar = "http://localhost:8090/test/usuario/accion/eliminar";
+var urlPeticionAjaxTestUsuarioAccionModificarRolUsuario = "http://localhost:8090/test/usuario/accion/modificarRolUsuario";
+var urlPeticionAjaxTestUsuarioAccionModificarPasswdUsuario = "http://localhost:8090/test/usuario/accion/modificarPasswdUsuario";
+var urlPeticionAjaxTestUsuarioAccionReactivar = "http://localhost:8090/test/usuario/accion/reactivar";
+var urlPeticionAjaxTestNoticiaAccionGuardar = "http://localhost:8090/test/usuario/accion/reactivar";

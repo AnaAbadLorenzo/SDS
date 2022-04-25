@@ -83,7 +83,6 @@ function paginador(totalResults, funcionalidad, entidad){
     }
     setCookie('posActual', posActual);
     setCookie('numPosicionesArray', arrayPaginas.length); 
-    setCookie('elementoActivo', 1);
     setCookie('entidad', entidad);
 
     if(getCookie('numPosicionesArray') == getCookie('posActual')){

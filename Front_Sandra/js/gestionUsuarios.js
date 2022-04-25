@@ -30,7 +30,15 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
 
 			var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+
+	  	var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
 	   	
       $("#datosUsuarios").html("");
 	   	$("#checkboxColumnas").html("");
@@ -72,9 +80,16 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
   await buscarEliminadosUsuarioAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
       cargarPermisosFuncUsuario();
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
 
       $("#datosUsuarios").html("");
@@ -84,6 +99,12 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
           var tr = construyeFilaEliminados('USUARIO', res.data.listaBusquedas[i]);
           $("#datosUsuarios").append(tr);
         }
+
+        if(res.data.listaBusquedas.length == 0){
+          $('.cabecera').attr('hidden', true);
+          $('.cabeceraEliminados').attr('hidden', false);
+        }
+
       
       var div = createHideShowColumnsWindow({DNI_USUARIO_COLUMN:1,USUARIOACTIVO_COLUMN:3,ROL_COLUMN:4});
       $("#checkboxColumnas").append(div);
@@ -120,9 +141,15 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
       cargarPermisosFuncUsuario();
       setCookie('usuarioBuscar', '');
       setCookie('rol', '');
+       var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " +  (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var textPaginacion = inicio + " - " +  (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -387,10 +414,17 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
       if($('#form-modal').is(':visible')) {
          $("#form-modal").modal('toggle');
       };
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");

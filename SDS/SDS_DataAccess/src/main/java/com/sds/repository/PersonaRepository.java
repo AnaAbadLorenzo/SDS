@@ -27,6 +27,8 @@ public interface PersonaRepository extends JpaRepository<PersonaEntity, String> 
 
 	List<PersonaEntity> findPersonasEliminadas();
 
+	List<PersonaEntity> findPersonaByUsuario(String usuario);
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM PersonaEntity p WHERE p.dniP = ?1")

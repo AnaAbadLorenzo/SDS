@@ -544,6 +544,7 @@ public class Constantes {
 	public static final String PERSONA_QUERY_FINDALL = "PersonaEntity.findAllPerson";
 	public static final String PERSONA_QUERY_FINDPERSONA = "PersonaEntity.findPersona";
 	public static final String PERSONA_QUERY_FINDELIMINADAS = "PersonaEntity.findPersonasEliminadas";
+	public static final String PERSONA_QUERY_FINDPERSONABYUSUARIO = "PersonaEntity.findPersonaByUsuario";
 
 	public static final String ROL_QUERY_FINDALL = "RolEntity.findAllRol";
 	public static final String ROL_QUERY_FINDROL = "RolEntity.findRol";
