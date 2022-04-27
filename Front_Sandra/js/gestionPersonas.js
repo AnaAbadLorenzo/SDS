@@ -1,5 +1,5 @@
 /** Función para cargar los datos de persona **/
-async function cargarDatos(){
+async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
 	if(getCookie('rolUsuario') == "usuario"){
 		await cargarDatosPersonaAjaxPromesa()
 		  .then((res) => {
@@ -17,23 +17,113 @@ async function cargarDatos(){
 		      document.getElementById("modal").style.display = "block";
 		  });
 	}else if(getCookie('rolUsuario') == "admin"){
-		await cargarPersonasAjaxPromesa()
+		await cargarPersonasAjaxPromesa(numeroPagina, tamanhoPagina)
 			.then((res) => {
-			 $('#personaInfoParaAdmin').attr('hidden', false);
-		  	 $('#personaInfoParaUsuario').atrr('hidden', true);
-		     cargaDatosPersona(res.data.listaBusquedas);
-		     cargaDatosUsuario(res.data.listaBusquedas);
-		     cargaDatosEmpresa(res.data.listaBusquedas);
-		  
-		}).catch((res) => {
-		      respuestaAjaxKO(res.code);
+                $('#personaInfoParaAdmin').attr('hidden', false);
+                $('#personaInfoParaUsuario').atrr('hidden', true);
+			    var numResults = res.data.numResultados + '';
+                var totalResults = res.data.tamanhoTotal + '';
+                var inicio = 0;
+                if(res.data.listaBusquedas.length == 0){
+                    inicio = 0;
+                }else{
+                    inicio = parseInt(res.data.inicio)+1;
+                }
+                var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+        
+                $("#datosPersona").html("");
+                $("#checkboxColumnas").html("");
+                $("#paginacion").html("");
+            
+                for (var i = 0; i < res.data.listaBusquedas.length; i++){
+                    var tr = construyeFila('PERSONA', res.data.listaBusquedas[i]);
+                    $("#datosPersona").append(tr);
+                }
+        
+                var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, DIRECCION_PERSONA_COLUMN: 4,
+                                                    FECHA_NACIMIENTO_PERSONA_COLUMN: 5, TELEFONO_COLUMN: 6, EMAIL_COLUMN: 7, ACTIVO_COLUMN: 8,
+                                                    LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+                $("#checkboxColumnas").append(div);
+                $("#paginacion").append(textPaginacion);
+                setLang(getCookie('lang'));
 
-		      setLang(getCookie('lang'));
+                if(paginadorCreado != 'PaginadorCreado'){
+                  paginador(totalResults, 'cargarPersonas', 'PERSONA');
+                }
+        
+                if(numeroPagina == 0){
+                  $('#' + (numeroPagina+1)).addClass("active");
+                  var numPagCookie = numeroPagina+1;
+                }else{
+                  $('#' + numeroPagina).addClass("active");
+                   var numPagCookie = numeroPagina;
+                }
 
-		      document.getElementById("modal").style.display = "block";
-		});
+                setCookie('numeroPagina', numPagCookie);
+      
+            }).catch((res) => {
+                respuestaAjaxKO(res.code);
+                document.getElementById("modal").style.display = "block";
+            });
 	}
   
+}
+
+/* Función para obtener los datos de la persona desde BD con ajax y promesa */
+function cargarDatosPersonaAjaxPromesa(){
+    return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var data = {
+      usuario : getCookie('usuario'),
+      inicio : 0,
+      tamanhoPagina : 1
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarPersonaPorUsuario,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PERSONAS_LISTADAS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/** Función para obtener todos los datos de la personas de la BD **/
+function cargarPersonasAjaxPromesa(numeroPagina, tamanhoPagina){
+    return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var data = {
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaPersona),
+      tamanhoPagina : tamanhoPaginaPersona
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarTodasPersonas,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PERSONAS_LISTADAS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
 }
 
 
@@ -135,34 +225,6 @@ function cargaDatosEmpresa(datos){
      $('#cardEmpresa').append(cardEmpresa);
 }
 
-/* Función para obtener los datos de la persona desde BD con ajax y promesa */
-function cargarDatosPersonaAjaxPromesa(){
-	return new Promise(function(resolve, reject) {
-  	var token = getCookie('tokenUsuario');
-
-    var data = {
-      usuario : getCookie('usuario'),
-      inicio : 0,
-      tamanhoPagina : 1
-    }
-    
-    $.ajax({
-      method: "POST",
-      url: urlPeticionAjaxListarPersonaPorUsuario,
-      contentType : "application/json",
-      data: JSON.stringify(data),  
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(res => {
-        if (res.code != 'PERSONAS_LISTADAS') {
-          reject(res);
-        }
-        resolve(res);
-      }).fail( function( jqXHR ) {
-        errorFailAjax(jqXHR.status);
-      });
-  });
-}
 
 
 

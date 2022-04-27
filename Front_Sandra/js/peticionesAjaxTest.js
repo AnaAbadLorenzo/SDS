@@ -262,6 +262,49 @@ function testAccionModificarAtributos(){
   });
 }
 
+/**Función para recuperar los test de atributo de modificar rol usuario con ajax y promesas*/
+function testUsuarioModificarRolUsuarioAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAtributosAccionModificarRolUsuario,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de buscar usuario con ajax y promesas*/
+function testUsuarioBuscarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAtributosAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
 
 /**Función para recuperar los test de acciones de login con ajax y promesas*/
 function testLoginAcciones(){
@@ -703,6 +746,116 @@ function testAccionRevocarAcciones(){
   });
 }
 
+/**Función para recuperar los test de acciones de buscar usuario con ajax y promesas*/
+function testUsuarioBuscarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de eliminar usuario con ajax y promesas*/
+function testUsuarioEliminarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAccionEliminar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de modificar rol usuario con ajax y promesas*/
+function testUsuarioModificarRolUsuarioAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAccionModificarRolUsuario,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de modificar password usuario con ajax y promesas*/
+function testUsuarioModificarPasswdUsuarioAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAccionModificarPasswdUsuario,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de reactivar usuario con ajax y promesas*/
+function testUsuarioReactivarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestUsuarioAccionReactivar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /*Función que obtiene los test de atributos de Login */
 async function testAtributosLogin(){
 	await testLoginAtributos()
@@ -841,6 +994,30 @@ async function testAtributosAccionModificar(){
   .then((res) => {
     cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosAccionModificar", "cuerpoAtributosAccionModificar", "atributos", "", "");
     let idElementoList = ["iconoTestAccion", "iconoTestAccionAtributos", "iconoTestAccionAtributosModificar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de modificar rol usuario */
+async function testAtributosUsuarioModificarRolUsuario(){
+  await testUsuarioModificarRolUsuarioAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosUsuarioModificarRolUsuario", "cuerpoAtributosUsuarioModificarRolUsuario", "atributos", "", "");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAtributos", "iconoTestUsuarioAtributosModificarRolUsuario"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de buscar usuario */
+async function testAtributosUsuarioBuscar(){
+  await testUsuarioBuscarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosUsuarioBuscar", "cuerpoAtributosUsuarioBuscar", "atributos", "", "");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAtributos", "iconoTestUsuarioAtributosBuscar"];
     validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
     }).catch((res) => {
       cargarModalErroresTest(res.code);
@@ -1106,3 +1283,67 @@ async function testAccionesAccionRevocar(){
       cargarModalErroresTest(res.code);
   });
 }
+
+/*Función que obtiene los test de acciones de Buscar Usuario */
+async function testAccionesUsuarioBuscar(){
+  await testUsuarioBuscarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniUsuario", "usuario", "passwdUsuario"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesUsuarioBuscar", "cuerpoAccionesUsuarioBuscar", "acciones", atributosValor, "Usuario");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAcciones", "iconoTestUsuarioAccionesBuscar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Eliminar Usuario */
+async function testAccionesUsuarioEliminar(){
+  await testUsuarioEliminarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniUsuario", "usuario", "passwdUsuario"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesUsuarioEliminar", "cuerpoAccionesUsuarioEliminar", "acciones", atributosValor, "Usuario");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAcciones", "iconoTestUsuarioAccionesEliminar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Modificar Rol Usuario */
+async function testAccionesUsuarioModificarRolUsuario(){
+  await testUsuarioModificarRolUsuarioAcciones()
+  .then((res) => {
+    let atributosValor = ["dniUsuario", "usuario", "passwdUsuario"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesUsuarioModificarRolUsuario", "cuerpoAccionesUsuarioModificarRolUsuario", "acciones", atributosValor, "Usuario");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAcciones", "iconoTestUsuarioAccionesModificarRolUsuario"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Modificar Passwd Usuario */
+async function testAccionesUsuarioModificarPasswdUsuario(){
+  await testUsuarioModificarPasswdUsuarioAcciones()
+  .then((res) => {
+    let atributosValor = ["dniUsuario", "usuario", "passwdUsuario"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesUsuarioModificarPasswdUsuario", "cuerpoAccionesUsuarioModificarPasswdUsuario", "acciones", atributosValor, "Usuario");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAcciones", "iconoTestUsuarioAccionesModificarPasswdUsuario"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Reactivar Usuario */
+async function testAccionesUsuarioReactivar(){
+  await testUsuarioReactivarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniUsuario", "usuario", "passwdUsuario"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesUsuarioReactivar", "cuerpoAccionesUsuarioReactivar", "acciones", atributosValor, "Usuario");
+    let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAcciones", "iconoTestUsuarioAccionesReactivar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });

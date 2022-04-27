@@ -324,7 +324,13 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCread
 	  	
       var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+        var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 	   	
       $("#datosFuncionalidad").html("");
 	   	$("#checkboxColumnas").html("");
@@ -403,7 +409,13 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+        var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -455,7 +467,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('descripFuncionalidad', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
       
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -500,8 +518,18 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       cargarPermisosFuncFuncionalidad();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
       
+      if(res.data.listaBusquedas.length == 0){
+          $('.cabecera').attr('hidden', true);
+          $('.cabeceraEliminados').attr('hidden', false);
+      }
 
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");

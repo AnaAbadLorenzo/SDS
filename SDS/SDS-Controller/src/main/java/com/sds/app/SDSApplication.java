@@ -5,6 +5,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -23,7 +25,7 @@ import com.sds.config.JWTAuthorizationFilter;
 @ComponentScan({ "com.sds.controller", "com.sds.service" })
 @EntityScan("com.sds.model")
 @EnableJpaRepositories("com.sds.repository")
-public class SDSApplication {
+public class SDSApplication extends SpringBootServletInitializer {
 
 	public static void main(final String[] args) {
 		SpringApplication.run(SDSApplication.class, args);
@@ -35,6 +37,7 @@ public class SDSApplication {
 
 		@Override
 		protected void configure(final HttpSecurity http) throws Exception {
+
 			http.cors().configurationSource(new CorsConfigurationSource() {
 				@Override
 				public CorsConfiguration getCorsConfiguration(final HttpServletRequest request) {
@@ -64,6 +67,11 @@ public class SDSApplication {
 					.permitAll().antMatchers(HttpMethod.POST, "/registrar").permitAll().anyRequest().authenticated();
 
 		}
+	}
+
+	@Override
+	protected SpringApplicationBuilder configure(final SpringApplicationBuilder application) {
+		return application.sources(SDSApplication.class);
 	}
 
 }

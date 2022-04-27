@@ -283,7 +283,13 @@ async function cargarRoles(numeroPagina, tamanhoPagina, paginadorCreado){
 	  .then((res) => {
 	  	var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+	    var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -324,7 +330,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('descripcionRol', '');
 	  	var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+	  	var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -376,7 +388,13 @@ async function buscarRol(numeroPagina, tamanhoPagina, accion, paginadorCreado){
       guardarParametrosBusqueda(res.data.datosBusqueda);
 	  	var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+	  	var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
@@ -547,7 +565,13 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       cargarPermisosFuncRol();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
       
 
       $("#datosRol").html("");
@@ -556,6 +580,11 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
           var tr = construyeFilaEliminados('ROL', res.data.listaBusquedas[i]);
           $("#datosRol").append(tr);
+        }
+
+        if(res.data.listaBusquedas.length == 0){
+          $('.cabecera').attr('hidden', true);
+          $('.cabeceraEliminados').attr('hidden', false);
         }
       
       var div = createHideShowColumnsWindow({ROL_DESCRIPTION_COLUMN:2});

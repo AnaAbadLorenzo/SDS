@@ -4,10 +4,11 @@ arrayEN={
 	'PASS_USUARIO' : 'User Password',
 	'EMAIL_USUARIO' : 'User email',
 	'DNI' : 'Personal ID',
+	'DNI_USUARIO' : 'Personal ID',
 	'NOMBRE_PERSONA' : 'Name',
 	'APELLIDOS_PERSONA' : 'Surname',
 	'DIRECCION_PERSONA' : 'Address',
-	'FECHA_NACIMIENTO_PERSONA' : 'Person`s birth date',
+	'FECHA_NACIMIENTO_PERSONA' : 'Birth date',
 	'TELEFONO' : 'Phone number',
 	'EMAIL' : 'Email',
 	'CIF' : 'Enterprise ID',
@@ -30,6 +31,7 @@ arrayEN={
 	'ACTION' : 'Action',
 	'DATA' : 'Data',
 	'ACTIVO' : 'Active',
+	'USUARIOACTIVO' : 'Active',
 	'ROL' : 'Role',
 
 	//Idiomas

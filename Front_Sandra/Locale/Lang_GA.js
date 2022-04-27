@@ -4,10 +4,11 @@ arrayGA={
 	'PASS_USUARIO' : 'Contrasinal de Usuario',
 	'EMAIL_USUARIO' : 'Email usuario',
 	'DNI' : 'DNI',
+	'DNI_USUARIO' : 'DNI',
 	'NOMBRE_PERSONA' : 'Nome',
 	'APELLIDOS_PERSONA' : 'Apelidos',
 	'DIRECCION_PERSONA' : 'Dirección',
-	'FECHA_NACIMIENTO_PERSONA' : 'Data de nacemento persoa',
+	'FECHA_NACIMIENTO_PERSONA' : 'Data de nacemento',
 	'TELEFONO' : 'Teléfono',
 	'EMAIL' : 'Email',
 	'CIF' : 'CIF',
@@ -30,6 +31,7 @@ arrayGA={
 	'ACTION' : 'Acción',
 	'DATA' : 'Datos',
 	'ACTIVO' : 'Activo',
+	'USUARIOACTIVO' : 'Activo',
 	'ROL' : 'Rol',
 	
 	//Idiomas

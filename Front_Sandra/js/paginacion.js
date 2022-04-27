@@ -82,8 +82,7 @@ function paginador(totalResults, funcionalidad, entidad){
         setCookie('arrayPaginas', JSON.stringify(arrayPaginas));
     }
     setCookie('posActual', posActual);
-    setCookie('numPosicionesArray', arrayPaginas.length); 
-    setCookie('elementoActivo', 1);
+    setCookie('numPosicionesArray', arrayPaginas.length);
     setCookie('entidad', entidad);
 
     if(getCookie('numPosicionesArray') == getCookie('posActual')){
@@ -114,6 +113,9 @@ function escogeTamanho(entidad){
         break;
         case 'USUARIO':
             tamanho = tamanhoPaginaUsuario;
+        break;
+        case 'PERSONA' :
+            tamanho = tamanhoPaginaPersona;
         break;
     }
 
@@ -273,6 +275,30 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                     }
                 break;
                 case 'buscarEliminadosUsuario' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+
+            }
+        break;
+
+        case 'PERSONA':
+            switch(funcionalidad){
+                case 'cargarPersonas': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarPersonas(' 
+                            + (i+1) + ',' + tamanhoPaginaPersona + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarPersona' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarPersona(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosPersona' :
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
                             + (i+1) + ',' + tamanhoPaginaUsuario + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';

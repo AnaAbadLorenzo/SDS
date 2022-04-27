@@ -403,6 +403,13 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion, paginadorCreado
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
+       var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
       var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
 
       $("#datosAccion").html("");
@@ -455,6 +462,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('descripcionAccion', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
       var textPaginacion = parseInt(res.data.inicio)+1 + " - " +  (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
       $("#datosAccion").html("");
@@ -500,6 +514,13 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       cargarPermisosFuncAccion();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
       var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
       
 
@@ -509,6 +530,11 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
           var tr = construyeFilaEliminados('ACCION', res.data.listaBusquedas[i]);
           $("#datosAccion").append(tr);
+        }
+
+        if(res.data.listaBusquedas.length == 0){
+          $('.cabecera').attr('hidden', true);
+          $('.cabeceraEliminados').attr('hidden', false);
         }
       
       var div = createHideShowColumnsWindow({ACCION_DESCRIPTION_COLUMN:2});

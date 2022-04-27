@@ -5,10 +5,11 @@ arrayES={
 	'PASS_USUARIO' : 'Contraseña de Usuario',
 	'EMAIL_USUARIO' : 'Email usuario',
 	'DNI' : 'DNI',
+	'DNI_USUARIO' : 'DNI',
 	'NOMBRE_PERSONA' : 'Nombre',
 	'APELLIDOS_PERSONA' : 'Apellidos',
 	'DIRECCION_PERSONA' : 'Dirección',
-	'FECHA_NACIMIENTO_PERSONA' : 'Fecha de nacimiento persona',
+	'FECHA_NACIMIENTO_PERSONA' : 'Fecha de nacimiento',
 	'TELEFONO' : 'Teléfono',
 	'EMAIL' : 'Email',
 	'CIF' : 'CIF',
@@ -31,6 +32,7 @@ arrayES={
 	'ACTION' : 'Acción',
 	'DATA' : 'Datos',
 	'ACTIVO' : 'Activo',
+	'USUARIOACTIVO' : 'Activo',
 	'ROL' : 'Rol',
 
 	//Idiomas

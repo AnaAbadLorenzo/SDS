@@ -30,8 +30,13 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
 
 			var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
-	   	
+	    var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+	   	var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
       $("#datosUsuarios").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -74,9 +79,14 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
       cargarPermisosFuncUsuario();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
       
-
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -85,7 +95,12 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
           $("#datosUsuarios").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({DNI_USUARIO_COLUMN:1,USUARIOACTIVO_COLUMN:3,ROL_COLUMN:4});
+         if(res.data.listaBusquedas.length == 0){
+          $('.cabecera').attr('hidden', true);
+          $('.cabeceraEliminados').attr('hidden', false);
+        }
+
+      var div = createHideShowColumnsWindow({DNI_COLUMN:1,ACTIVO_COLUMN:3,ROL_COLUMN:4});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
@@ -122,7 +137,13 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
       setCookie('rol', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " +  (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -132,7 +153,7 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
           $("#datosUsuarios").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({DNI_USUARIO_COLUMN:1,USUARIOACTIVO_COLUMN:3,ROL_COLUMN:4});
+      var div = createHideShowColumnsWindow({DNI_COLUMN:1,ACTIVO_COLUMN:3,ROL_COLUMN:4});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
@@ -390,7 +411,13 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
 
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -400,7 +427,7 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
           $("#datosUsuarios").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({DNI_USUARIO_COLUMN:1,USUARIOACTIVO_COLUMN:3,ROL_COLUMN:4});
+      var div = createHideShowColumnsWindow({DNI_COLUMN:1,ACTIVO_COLUMN:3,ROL_COLUMN:4});
       
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);

@@ -153,7 +153,13 @@ async function cargarLogExcepciones(numeroPagina, tamanhoPagina, paginadorCreado
 	  	
       var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+	  	var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
 	   	
       $("#datosLogExcepciones").html("");
 	   	$("#checkboxColumnas").html("");
@@ -200,7 +206,13 @@ async function buscarLogExcepciones(numeroPagina, tamanhoPagina, accion, paginad
       guardarParametrosBusqueda(res.data.datosBusqueda);
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
 
       $("#datosLogExcepciones").html("");
       $("#checkboxColumnas").html("");
@@ -265,7 +277,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('fechaFin', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
-      var textPaginacion = parseInt(res.data.inicio)+1 + " - " +  (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults 
+      var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
       
       $("#datosLogExcepciones").html("");
       $("#checkboxColumnas").html("");

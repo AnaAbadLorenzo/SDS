@@ -399,6 +399,31 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + usuarioActivo +
                 '</td> <td>' + fila.rol.rolName;
         break;
+
+        case 'PERSONA':
+        	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + fila.direccionP + "'"
+        	+ "'", "'" + fila.fechaNacP + "'" + "'", "'" + fila.telefonoP + "'", "'", "'" + fila.emailP + "'" + "'", "'" + fila.borradoP + "'",
+        	+ "'", "'" + fila.usuario.usuario + "'", + "'", "'" + fila.empresa.nombreEmpresa + "'"];
+			var personaActiva = "";
+			if(fila.personaActiva == 0){
+				personaActiva = "Sí";
+			}else{
+				personaActiva = "No";
+			}
+			var fechaNacimiento = (fila.fechaNacP).split('T');
+
+			filaTabla = '<tr class="impar"> <td>' + fila.dniP+ 
+                '</td> <td>' + fila.nombreP + 
+                '</td> <td>' + fila.apellidosP +
+                '</td> <td>' + fila.direccionP +
+                '</td> <td>' + fechaNacimiento[0] +
+                '</td> <td>' + fila.telefonoP +
+                '</td> <td>' + fila.emailP + 
+                '</td> <td>' + personaActiva + 
+                '</td> <td>' + fila.usuario.usuario + 
+                '</td> <td>' + fila.empresa.nombreEmpresa;
+        break;
+
 	};
 
 
