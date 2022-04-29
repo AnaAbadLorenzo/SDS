@@ -1,6 +1,7 @@
 package com.sds.model.compositekey;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class NivelKey implements Serializable {
 
@@ -38,6 +39,23 @@ public class NivelKey implements Serializable {
 	@Override
 	public String toString() {
 		return "NivelKey [idObjetivo=" + idObjetivo + ", idProceso=" + idProceso + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idObjetivo, idProceso);
+	}
+
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final NivelKey other = (NivelKey) obj;
+		return Objects.equals(idObjetivo, other.idObjetivo) && Objects.equals(idProceso, other.idProceso);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.sds.model.compositekey;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class RolAccionFuncionalidadKey implements Serializable {
 
@@ -43,6 +44,24 @@ public class RolAccionFuncionalidadKey implements Serializable {
 
 	public void setIdFuncionalidad(final Integer idFuncionalidad) {
 		this.idFuncionalidad = idFuncionalidad;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idAccion, idFuncionalidad, idRol);
+	}
+
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final RolAccionFuncionalidadKey other = (RolAccionFuncionalidadKey) obj;
+		return Objects.equals(idAccion, other.idAccion) && Objects.equals(idFuncionalidad, other.idFuncionalidad)
+				&& Objects.equals(idRol, other.idRol);
 	}
 
 }

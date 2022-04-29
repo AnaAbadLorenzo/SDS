@@ -253,6 +253,8 @@ public class ValidacionesAtributosCaracteresEspeciales {
 						resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
 								+ Mensajes.DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS;
 						break;
+					default:
+						break;
 					}
 
 				default:

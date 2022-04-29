@@ -101,8 +101,6 @@ public class TestPersonaServiceImpl implements TestPersonaService {
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIP_ALFANUMERICO_MENOR_9_DATA);
 		final PersonaEntity datosEntradaDniPersonaAlfanumericoMayor9 = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIP_ALFANUMERICO_MAYOR_9_DATA);
-		final PersonaEntity datosEntradaDniPersonaAlfabetico = generarJSON
-				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFABETICO_DATA);
 		final PersonaEntity datosEntradaDniPersonaAlfanumerico = generarJSON
 				.generatePersona(Constantes.URL_JSON_PERSONA_ATRIBUTOS_DNIP, Constantes.DNIPERSONA_ALFANUMERICO_DATA);
 		final PersonaEntity datosEntradaDniPersonaValido = generarJSON

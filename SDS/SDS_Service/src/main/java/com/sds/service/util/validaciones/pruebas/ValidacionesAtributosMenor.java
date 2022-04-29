@@ -241,6 +241,8 @@ public class ValidacionesAtributosMenor {
 					resultado = CodigosMensajes.TEXTO_NOTICIA_MENOR_QUE_3 + " - "
 							+ Mensajes.TEXTO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3;
 					break;
+				default:
+					break;
 				}
 				break;
 			case GESTION_OBJETIVOS:
@@ -252,6 +254,8 @@ public class ValidacionesAtributosMenor {
 				case DESCRIPCION_OBJETIVO:
 					resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_MENOR_QUE_3 + " - "
 							+ Mensajes.DESCRIPCION_OBJETIVO_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				default:
 					break;
 				}
 			default:

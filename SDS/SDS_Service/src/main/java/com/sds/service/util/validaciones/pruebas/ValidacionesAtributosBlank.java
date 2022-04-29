@@ -243,6 +243,8 @@ public class ValidacionesAtributosBlank {
 					resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_VACIO + " - "
 							+ Mensajes.DESCRIPCION_OBJETIVO_NO_PUEDE_SER_VACIO;
 					break;
+				default:
+					break;
 				}
 			}
 		}
