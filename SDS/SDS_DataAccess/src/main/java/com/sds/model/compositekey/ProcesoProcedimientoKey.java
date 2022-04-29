@@ -1,6 +1,7 @@
 package com.sds.model.compositekey;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class ProcesoProcedimientoKey implements Serializable {
 
@@ -38,6 +39,23 @@ public class ProcesoProcedimientoKey implements Serializable {
 	@Override
 	public String toString() {
 		return "ProcesoProcedimientoKey [idProceso=" + idProceso + ", idProcedimiento=" + idProcedimiento + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(idProcedimiento, idProceso);
+	}
+
+	@Override
+	public boolean equals(final Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final ProcesoProcedimientoKey other = (ProcesoProcedimientoKey) obj;
+		return Objects.equals(idProcedimiento, other.idProcedimiento) && Objects.equals(idProceso, other.idProceso);
 	}
 
 }
