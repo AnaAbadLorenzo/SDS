@@ -46,7 +46,7 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
     			$("#datosUsuarios").append(tr);
     		}
     	
-    	var div = createHideShowColumnsWindow({DNI_USUARIO_COLUMN:1,USUARIOACTIVO_COLUMN:3,ROL_COLUMN:4});
+    	var div = createHideShowColumnsWindow({DNI_COLUMN:1,ACTIVO_COLUMN:3,ROL_COLUMN:4});
       	$("#checkboxColumnas").append(div);
       	$("#paginacion").append(textPaginacion);
       	setLang(getCookie('lang'));

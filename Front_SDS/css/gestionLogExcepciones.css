@@ -472,24 +472,6 @@ thead {
   margin-top: 1%;
 }
 
-#showHideColumns {
-  z-index: 1010;
-  position: absolute;
-  margin-left: 77%;
-  margin-top: 10.6%;
-  background: #4527A0;
-  color: #ffffff;
-  width: 15.5%;
-  font-size: 1.2em;
-  border: 1px solid #ffffff;
-  border-radius: 0.5em;
-  height: 19%;
-}
-
-#showHideColumns label {
-  margin-left: 4%;
-}
-
 .loginUsuarioColumn, .typeExcepcionColumn, .descriptionExceptionColumn, .dateColumn {
   display: inline;
 }
