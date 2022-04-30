@@ -160,20 +160,6 @@
   -moz-box-sizing: border-box;
 }
 
-.formmodal-container input[type=email] {
-  height: 44px;
-  font-size: 16px;
-  width: 59%;
-  margin-bottom: 10px;
-  -webkit-appearance: none;
-  background: #fff;
-  border: 1px solid #D1C4E9;
-  border-top: 2px solid #B39DDB;
-  padding: 0 8px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-
 .formmodal-container input[type=text]:hover, input[type=password]:hover, 
 input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:hover{
   border: 1px solid #9575CD;
@@ -181,6 +167,14 @@ input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:h
   -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.formmodal-container input[name='dni'] {
+  margin-top: 20px;
+}
+
+.dni {
+  width: 36% !important;
 }
 
 .registro-submit, .recuperarcontrasena-submit {
@@ -486,8 +480,8 @@ thead {
   margin-left: 4%;
 }
 
-.nombrePersonaColumn, .apellidosPersonaColumn, .direccionPersonaColumn, .fechaNacimientoPersonaColumn, 
-.telefonoColumn, .emailColumn, .loginUsuarioColumn, .nombreEmpresaColumn {
+.dniColumn, .nombrePersonaColumn, .apellidosPersonaColumn, .direccionPersonaColumn, .fechaNacimientoPersonaColumn, 
+.telefonoColumn, .emailColumn, .activoColumn, .loginUsuarioColumn, .nombreEmpresaColumn {
   display: inline;
 }
 
