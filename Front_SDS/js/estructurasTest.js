@@ -748,12 +748,12 @@ function cargarTestGestionAcciones(){
 												'</div>' +
 										    '</div>' +
 
-								      	'<div class="card">' +
-											'<div class="card-header">' +
-												'<a class="collapsed card-link" data-toggle="collapse" href="#collapseAccionAccionesReactivar" onclick="javascript:testAccionesAccionReactivar()">' +
-												    ' Reactivar Acción ' +
-												'</a>' +
-												'<img class="iconTab" id="iconoTestAccionAccionesReactivar" src="images/failed.png" hidden>' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+													'<a class="collapsed card-link" data-toggle="collapse" href="#collapseAccionAccionesReactivar" onclick="javascript:testAccionesAccionReactivar()">' +
+													    ' Reactivar Acción ' +
+													'</a>' +
+													'<img class="iconTab" id="iconoTestAccionAccionesReactivar" src="images/failed.png" hidden>' +
 												'</div>' +
 
 												'<div id="collapseAccionAccionesReactivar" class="collapse" data-parent="#accordion14">' +
@@ -767,14 +767,13 @@ function cargarTestGestionAcciones(){
 												    '</div>' +
 												'</div>' +
 										    '</div>' +
-								      	'</div>' +
 
-								      	'<div class="card">' +
-											'<div class="card-header">' +
-												'<a class="collapsed card-link" data-toggle="collapse" href="#collapseAccionAccionesAsignar" onclick="javascript:testAccionesAccionAsignar()">' +
-												    ' Asignar Acción ' +
-												'</a>' +
-												'<img class="iconTab" id="iconoTestAccionAccionesAsignar" src="images/failed.png" hidden>' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+													'<a class="collapsed card-link" data-toggle="collapse" href="#collapseAccionAccionesAsignar" onclick="javascript:testAccionesAccionAsignar()">' +
+													    ' Asignar Acción ' +
+													'</a>' +
+													'<img class="iconTab" id="iconoTestAccionAccionesAsignar" src="images/failed.png" hidden>' +
 												'</div>' +
 
 												'<div id="collapseAccionAccionesAsignar" class="collapse" data-parent="#accordion14">' +
@@ -789,12 +788,12 @@ function cargarTestGestionAcciones(){
 												'</div>' +
 										    '</div>' +
 
-								      	'<div class="card">' +
-											'<div class="card-header">' +
-												'<a class="collapsed card-link" data-toggle="collapse" href="#collapseAccionAccionesRevocar" onclick="javascript:testAccionesAccionRevocar()">' +
-												    ' Revocar Acción ' +
-												'</a>' +
-												'<img class="iconTab" id="iconoTestAccionAccionesRevocar" src="images/failed.png" hidden>' +
+								      		'<div class="card">' +
+												'<div class="card-header">' +
+													'<a class="collapsed card-link" data-toggle="collapse" href="#collapseAccionAccionesRevocar" onclick="javascript:testAccionesAccionRevocar()">' +
+													    ' Revocar Acción ' +
+													'</a>' +
+													'<img class="iconTab" id="iconoTestAccionAccionesRevocar" src="images/failed.png" hidden>' +
 												'</div>' +
 
 												'<div id="collapseAccionAccionesRevocar" class="collapse" data-parent="#accordion14">' +

@@ -78,10 +78,10 @@
 				<h1 class="ACCEDER_CUENTA"></h1><br>
 				<form name="formularioLogin" id="formularioLogin" action="javascript:login()" onsubmit="return comprobarLogin()">
 					
-					<input type="text" name="LOGIN_USUARIO" class="LOGIN_USUARIO" maxlength="45" size="45" id="userLogin" placeholder="Usuario" onblur="return comprobarUser('userLogin', 'errorFormatoUser', 'loginUsuario');">
+					<input type="text" name="LOGIN_USUARIO" class="LOGIN_USUARIO" maxlength="45" size="45" id="userLogin" placeholder="Usuario" onblur="return comprobarUser('userLogin', 'errorFormatoUser', 'loginUsuario');" autocomplete="username">
 					<div style="display:none" id="errorFormatoUser"></div>
 					
-					<input type="password" name="PASS_USUARIO" class="PASS_USUARIO" id="passLogin" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event, 'bloqueoMayusculas');" onblur="return comprobarPass('passLogin', 'errorFormatoPass', 'passwdUsuarioLogin');">
+					<input type="password" name="PASS_USUARIO" class="PASS_USUARIO" id="passLogin" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event, 'bloqueoMayusculas');" onblur="return comprobarPass('passLogin', 'errorFormatoPass', 'passwdUsuarioLogin');" autocomplete="current-password">
 					
 					<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculas"></div>  
           <div style="display:none" id="errorFormatoPass" class="alert alert-danger ocultar"></div>  
@@ -168,19 +168,19 @@
 					    </div>
 					    
 					    <div id="datosUsuario" class="container tab-pane fade"><br>
-					      	<input type="text" name="user" id="usuario" placeholder="Usuario" class="LOGIN_USUARIO"  maxlength="45" size="45" onblur="return comprobarUser('usuario', 'errorFormatoUserRegistro', 'loginUsuario');" >
+					      	<input type="text" name="user" id="usuario" placeholder="Usuario" class="LOGIN_USUARIO"  maxlength="45" size="45" onblur="return comprobarUser('usuario', 'errorFormatoUserRegistro', 'loginUsuario');" autocomplete="username">
 					      	<div class="obligatorio tooltip2" id="obligatorioUsuario">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 					      	<div style="display:none" id="errorFormatoUserRegistro"></div>
 
-							<input type="password" name="pass" id="passwdUsuario1" placeholder="Contraseña" class="PASS_USUARIO" maxlength="45" size="45" onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur="return comprobarPass('passwdUsuario1', 'errorFormatoPassRegistro', 'passwdUsuarioRegistro');">
+							<input type="password" name="pass" id="passwdUsuario1" placeholder="Contraseña" class="PASS_USUARIO" maxlength="45" size="45" onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur="return comprobarPass('passwdUsuario1', 'errorFormatoPassRegistro', 'passwdUsuarioRegistro');" autocomplete="new-password">
 							<div class="obligatorio tooltip2" id="obligatorioPass1">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoPassRegistro"></div>
 
-							<input type="password" name="confirmarPass" id="passwdUsuario2" placeholder="ConfirmarContraseña" class="CONFIRMAR_PASS_USUARIO" maxlength="45" size="45" maxlength="45" size="45" 	onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur="return comprobarPassRepetida('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro');">
+							<input type="password" name="confirmarPass" id="passwdUsuario2" placeholder="ConfirmarContraseña" class="CONFIRMAR_PASS_USUARIO" maxlength="45" size="45" maxlength="45" size="45" 	onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur="return comprobarPassRepetida('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro');" autocomplete="new-password">
 							<div class="obligatorio tooltip2" id="obligatorioPass2">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>

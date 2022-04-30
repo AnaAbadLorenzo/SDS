@@ -1,96 +1,148 @@
-var urlPeticionAjaxLogin = "http://localhost:8090/login/login";
-var urlPeticionAjaxRegistro = "http://localhost:8090/registrar";
-var urlPeticionAjaxRecuperarPass = "http://localhost:8090/login/recuperarPass";
-var urlPeticionAjaxListadoEmpresas = "http://localhost:8090/empresa/listarEmpresasSinP";
-var urlPeticionAjaxFuncionalidadesUsuario = "http://localhost:8090/menu/funcionalidadesUsuario?";
-var urlPeticionAjaxAccionesUsuario = "http://localhost:8090/menu/accionesFuncionalidad?";
-var urlPeticionAjaxCambiarContrasenaUsuario = "http://localhost:8090/usuario/cambiarContrasenaUsuario";
-var urlPeticionAjaxListadoRoles = "http://localhost:8090/rol/listarRoles";
-var urlPeticionAjaxListadoRolesEliminados = "http://localhost:8090/rol/listarRolesEliminados";
-var urlPeticionAjaxObtenerTodos = "http://localhost:8090/rol/obtenerTodos";
-var urlPeticionAjaxListarRol = "http://localhost:8090/rol/listarRol";
-var urlPeticionAjaxAddRol = "http://localhost:8090/rol/rol";
-var urlPeticionAjaxEditRol = "http://localhost:8090/rol/modificarRol";
-var urlPeticionAjaxDeleteRol = "http://localhost:8090/rol/eliminarRol";
-var urlPeticionAjaxReactivarRol = "http://localhost:8090/rol/reactivarRol";
-var urlPeticionAjaxListadoFuncionalidades = "http://localhost:8090/funcionalidad/listarFuncionalidades";
-var urlPeticionAjaxAddFuncionalidad = "http://localhost:8090/funcionalidad/funcionalidad";
-var urlPeticionAjaxListarFuncionalidad = "http://localhost:8090/funcionalidad/listarFuncionalidad";
-var urlPeticionAjaxListadoFuncionalidadesEliminadas = "http://localhost:8090/funcionalidad/listarFuncionalidadesEliminadas";
-var urlPeticionAjaxEditFuncionalidad = "http://localhost:8090/funcionalidad/modificarFuncionalidad";
-var urlPeticionAjaxDeleteFuncionalidad = "http://localhost:8090/funcionalidad/eliminarFuncionalidad";
-var urlPeticionAjaxReactivarFuncionalidad = "http://localhost:8090/funcionalidad/reactivarFuncionalidad";
-var urlPeticionAjaxAccionGuardar = "http://localhost:8090/accion/accion";
-var urlPeticionAjaxListarAccion = "http://localhost:8090/accion/listarAccion";
-var urlPeticionAjaxEditAccion = "http://localhost:8090/accion/modificarAccion";
-var urlPeticionAjaxDeleteAccion = "http://localhost:8090/accion/eliminarAccion";
-var urlPeticionAjaxListadoAcciones = "http://localhost:8090/accion/listarAcciones";
-var urlPeticionAjaxListadoAccionesEliminadas = "http://localhost:8090/accion/listarAccionesEliminadas";
-var urlPeticionAjaxReactivarAccion = "http://localhost:8090/accion/reactivarAccion";
-var urlPeticionAjaxListarTodosLogExcepciones = "http://localhost:8090/log/listarTodosLogsExcepciones";
-var urlPeticionAjaxListarLogExcepciones = "http://localhost:8090/log/listarLogsExcepcionesUsuarioFecha";
-var urlPeticionAjaxListarTodosLogAcciones = "http://localhost:8090/log/listarTodosLogsAcciones";
-var urlPeticionAjaxListarLogAcciones = "http://localhost:8090/log/listarLogsAccionesUsuarioFecha";
-var urlPeticionAjaxListarTodasNoticias = "http://localhost:8090/noticia/listarNoticias";
-var urlPeticionAjaxListarUsuario = "http://localhost:8090/usuario/listarUsuario";
-var urlPeticionAjaxListarTodosUsuarios = "http://localhost:8090/usuario/listarUsuarios";
-var urlPeticionAjaxListarTodosUsuariosEliminados = "http://localhost:8090/usuario/listarUsuariosEliminados";
-var urlPeticionAjaxEditarRolUsuario = "http://localhost:8090/usuario/modificarRolUsuario";
-var urlPeticionAjaxEliminarUsuario = "http://localhost:8090/usuario/eliminarUsuario";
-var urlPeticionAjaxReactivarUsuario = "http://localhost:8090/usuario/reactivarUsuario";
-var urlPeticionAjaxListarPersonaPorUsuario = "http://localhost:8090/persona/listarPersonaPorUsuario";
-var urlPeticionAjaxListarPersona = "http://localhost:8090/persona/listarPersona";
-var urlPeticionAjaxListarTodasPersonas = "http://localhost:8090/persona/listarPersonas";
-var urlPeticionAjaxListarPersonasEliminadas = "http://localhost:8090/persona/listarPersonasEliminadas";
-var urlPeticionAjaxPersonaGuardar = "http://localhost:8090/persona/anadirPersona";
-var urlPeticionAjaxEditPersona = "http://localhost:8090/persona/modificarPersona";
-var urlPeticionAjaxDeletePersona = "http://localhost:8090/persona/eliminarPersona";
+/**Url común a todas*/
+var urlComun = "http://localhost:8090/SDS";
+//var urlComun = "http://localhost:8090";
 
+/**Urls específicas por funcionalidad*/
+var urlLogin = "/login";
+var urlRecuperarPass = "/recuperarPass";
+var urlRegistrar = "/registrar";
+var urlEmpresa = "/empresa";
+var urlMenu = "/menu";
+var urlUsuario = "/usuario";
+var urlRol = "/rol";
+var urlFuncionalidad = "/funcionalidad";
+var urlAccion = "/accion";
+var urlLog = "/log";
+var urlNoticia = "/noticia";
+var urlPersona = "/persona";
+var urlTest = "/test";
+var urlAtributos = "/atributos";
+var urlAcciones = "/acciones";
+var urlGuardar = "/guardar";
+var urlBuscar = "/buscar";
+var urlModificar ="/modificar";
+var urlEliminar = "/eliminar";
+var urlReactivar = "/reactivar";
+
+/**Urls Login*/
+var urlPeticionAjaxLogin = urlComun + urlLogin + urlLogin;
+var urlPeticionAjaxRegistro = urlComun + urlRegistrar;
+var urlPeticionAjaxRecuperarPass = urlComun + urlLogin + urlRecuperarPass;
+var urlPeticionAjaxListadoEmpresas = urlComun + urlEmpresa + "/listarEmpresasSinP";
+
+/**Urls Menu*/
+var urlPeticionAjaxFuncionalidadesUsuario = urlComun + urlMenu + "/funcionalidadesUsuario?";
+var urlPeticionAjaxAccionesUsuario = urlComun + urlMenu + "/accionesFuncionalidad?";
+var urlPeticionAjaxCambiarContrasenaUsuario = urlComun + urlUsuario + "/cambiarContrasenaUsuario";
+
+/**Urls roles*/
+var urlPeticionAjaxListadoRoles = urlComun + urlRol + "/listarRoles";
+var urlPeticionAjaxListadoRolesEliminados = urlComun + urlRol + "/listarRolesEliminados";
+var urlPeticionAjaxObtenerTodos = urlComun + urlRol + "/obtenerTodos";
+var urlPeticionAjaxListarRol = urlComun + urlRol + "/listarRol";
+var urlPeticionAjaxAddRol = urlComun + urlRol + urlRol;
+var urlPeticionAjaxEditRol = urlComun + urlRol + "/modificarRol";
+var urlPeticionAjaxDeleteRol = urlComun + urlRol + "/eliminarRol";
+var urlPeticionAjaxReactivarRol = urlComun + urlRol + "/reactivarRol";
+
+/**Urls funcionalidades*/
+var urlPeticionAjaxListadoFuncionalidades = urlComun + urlFuncionalidad + "/listarFuncionalidades";
+var urlPeticionAjaxAddFuncionalidad = urlComun + urlFuncionalidad + urlFuncionalidad;
+var urlPeticionAjaxListarFuncionalidad = urlComun + urlFuncionalidad + "/listarFuncionalidad";
+var urlPeticionAjaxListadoFuncionalidadesEliminadas = urlComun + urlFuncionalidad + "/listarFuncionalidadesEliminadas";
+var urlPeticionAjaxEditFuncionalidad = urlComun + urlFuncionalidad + "/modificarFuncionalidad";
+var urlPeticionAjaxDeleteFuncionalidad = urlComun + urlFuncionalidad + "/eliminarFuncionalidad";
+var urlPeticionAjaxReactivarFuncionalidad = urlComun + urlFuncionalidad + "/reactivarFuncionalidad";
+
+/**Urls acciones*/
+var urlPeticionAjaxAccionGuardar = urlComun + urlAccion + urlAccion;
+var urlPeticionAjaxListarAccion = urlComun + urlAccion + "/listarAccion";
+var urlPeticionAjaxEditAccion = urlComun + urlAccion + "/modificarAccion";
+var urlPeticionAjaxDeleteAccion = urlComun + urlAccion + "/eliminarAccion";
+var urlPeticionAjaxListadoAcciones = urlComun + urlAccion + "/listarAcciones";
+var urlPeticionAjaxListadoAccionesEliminadas = urlComun + urlAccion + "/listarAccionesEliminadas";
+var urlPeticionAjaxReactivarAccion = urlComun + urlAccion + "/reactivarAccion";
+
+/**Urls logs*/
+var urlPeticionAjaxListarTodosLogExcepciones = urlComun + urlLog + "/listarTodosLogsExcepciones";
+var urlPeticionAjaxListarLogExcepciones = urlComun + urlLog + "/listarLogsExcepcionesUsuarioFecha";
+var urlPeticionAjaxListarTodosLogAcciones = urlComun + urlLog + "/listarTodosLogsAcciones";
+var urlPeticionAjaxListarLogAcciones = urlComun + urlLog + "/listarLogsAccionesUsuarioFecha";
+
+/**Urls noticias*/
+var urlPeticionAjaxListarTodasNoticias = urlComun + urlNoticia +"/listarNoticias";
+
+/**Urls usuarios*/
+var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";
+var urlPeticionAjaxListarTodosUsuarios = urlComun + urlUsuario + "/listarUsuarios";
+var urlPeticionAjaxListarTodosUsuariosEliminados = urlComun + urlUsuario + "/listarUsuariosEliminados";
+var urlPeticionAjaxEditarRolUsuario = urlComun + urlUsuario + "/modificarRolUsuario";
+var urlPeticionAjaxEliminarUsuario = urlComun + urlUsuario + "/eliminarUsuario";
+var urlPeticionAjaxReactivarUsuario = urlComun + urlUsuario + "/reactivarUsuario";
+
+/**Urls personas*/
+var urlPeticionAjaxListarPersonaPorUsuario = urlComun + urlPersona + "/listarPersonaPorUsuario";
+var urlPeticionAjaxListarPersona = urlComun + urlPersona + "/listarPersona";
+var urlPeticionAjaxListarTodasPersonas = urlComun + urlPersona + "/listarPersonas";
+var urlPeticionAjaxListarPersonasEliminadas = urlComun + urlPersona + "/listarPersonasEliminadas";
+var urlPeticionAjaxPersonaGuardar = urlComun + urlPersona + "/anadirPersona";
+var urlPeticionAjaxEditPersona = urlComun + urlPersona + "/modificarPersona";
+var urlPeticionAjaxDeletePersona = urlComun + urlPersona + "/eliminarPersona";
 
 /**Urls de las peticiones Ajax de test de atributos*/
-var urlPeticionAjaxTestLoginAtributos = "http://localhost:8090/test/login/atributos";
-var urlPeticionAjaxTestRecuperarPassAtributos = "http://localhost:8090/test/recuperarPass/atributos";
-var urlPeticionAjaxTestRegistrarAtributos = "http://localhost:8090/test/registrar/atributos";
-var urlPeticionAjaxTestRolAtributosAccionGuardar = "http://localhost:8090/test/rol/atributos/guardar";
-var urlPeticionAjaxTestRolAtributosAccionBuscar = "http://localhost:8090/test/rol/atributos/buscar";
-var urlPeticionAjaxTestRolAtributosAccionModificar = "http://localhost:8090/test/rol/atributos/modificar";
-var urlPeticionAjaxTestFuncionalidadAtributosAccionGuardar = "http://localhost:8090/test/funcionalidad/atributos/guardar";
-var urlPeticionAjaxTestFuncionalidadAtributosAccionBuscar = "http://localhost:8090/test/funcionalidad/atributos/buscar";
-var urlPeticionAjaxTestFuncionalidadAtributosAccionModificar = "http://localhost:8090/test/funcionalidad/atributos/modificar";
-var urlPeticionAjaxTestAccionAtributosAccionGuardar = "http://localhost:8090/test/accion/atributos/guardar";
-var urlPeticionAjaxTestAccionAtributosAccionBuscar = "http://localhost:8090/test/accion/atributos/buscar";
-var urlPeticionAjaxTestAccionAtributosAccionModificar = "http://localhost:8090/test/accion/atributos/modificar";
-var urlPeticionAjaxTestUsuarioAtributosAccionModificarRolUsuario = "http://localhost:8090/test/usuario/atributos/modificarRol";
-var urlPeticionAjaxTestUsuarioAtributosAccionBuscar = "http://localhost:8090/test/usuario/atributos/buscar";
-var urlPeticionAjaxTestNoticiaAtributosAccionGuardar = "http://localhost:8090/test/noticia/atributos/guardar";
-var urlPeticionAjaxTestNoticiaAtributosAccionBuscar = "http://localhost:8090/test/noticia/atributos/buscar";
-var urlPeticionAjaxTestNoticiaAtributosAccionModificar = "http://localhost:8090/test/noticia/atributos/modificar";
+var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;
+var urlPeticionAjaxTestRecuperarPassAtributos =  urlComun + urlTest + urlRecuperarPass + urlAtributos;
+var urlPeticionAjaxTestRegistrarAtributos = urlComun + urlTest + urlRegistrar + urlAtributos;
+
+var urlPeticionAjaxTestRolAtributosAccionGuardar =  urlComun + urlTest + urlRol + urlAtributos + urlGuardar;
+var urlPeticionAjaxTestRolAtributosAccionBuscar = urlComun + urlTest + urlRol + urlAtributos + urlBuscar;
+var urlPeticionAjaxTestRolAtributosAccionModificar = urlComun + urlTest + urlRol + urlAtributos + urlModificar;
+
+var urlPeticionAjaxTestFuncionalidadAtributosAccionGuardar = urlComun + urlTest + urlFuncionalidad + urlAtributos + urlGuardar;
+var urlPeticionAjaxTestFuncionalidadAtributosAccionBuscar = urlComun + urlTest + urlFuncionalidad + urlAtributos + urlBuscar;
+var urlPeticionAjaxTestFuncionalidadAtributosAccionModificar = urlComun + urlTest + urlFuncionalidad + urlAtributos + urlModificar;
+
+var urlPeticionAjaxTestAccionAtributosAccionGuardar = urlComun + urlTest + urlAccion + urlAtributos + urlGuardar;
+var urlPeticionAjaxTestAccionAtributosAccionBuscar = urlComun + urlTest + urlAccion + urlAtributos + urlBuscar;
+var urlPeticionAjaxTestAccionAtributosAccionModificar = urlComun + urlTest + urlAccion + urlAtributos + urlModificar;
+
+var urlPeticionAjaxTestUsuarioAtributosAccionModificarRolUsuario = urlComun + urlTest + urlUsuario + urlAtributos + "/modificarRol";
+var urlPeticionAjaxTestUsuarioAtributosAccionBuscar = urlComun + urlTest + urlUsuario + urlAtributos + urlBuscar;
+
+var urlPeticionAjaxTestNoticiaAtributosAccionGuardar = urlComun + urlTest + urlNoticia + urlAtributos + urlGuardar;
+var urlPeticionAjaxTestNoticiaAtributosAccionBuscar = urlComun + urlTest + urlNoticia + urlAtributos + urlBuscar;
+var urlPeticionAjaxTestNoticiaAtributosAccionModificar = urlComun + urlTest + urlNoticia + urlAtributos + urlModificar;
 
 
 /**Urls de las peticiones Ajax de test de acciones*/
-var urlPeticionAjaxTestLoginAcciones = "http://localhost:8090/test/login/acciones";
-var urlPeticionAjaxTestRecuperarPassAcciones = "http://localhost:8090/test/recuperarPass/acciones";
-var urlPeticionAjaxTestRegistrarAcciones = "http://localhost:8090/test/registrar/acciones";
-var urlPeticionAjaxTestRolAccionGuardar = "http://localhost:8090/test/rol/accion/guardar";
-var urlPeticionAjaxTestRolAccionEliminar = "http://localhost:8090/test/rol/accion/eliminar";
-var urlPeticionAjaxTestRolAccionBuscar = "http://localhost:8090/test/rol/accion/buscar";
-var urlPeticionAjaxTestRolAccionModificar = "http://localhost:8090/test/rol/accion/modificar";
-var urlPeticionAjaxTestRolAccionReactivar = "http://localhost:8090/test/rol/accion/reactivar";
-var urlPeticionAjaxTestFuncionalidadAccionGuardar = "http://localhost:8090/test/funcionalidad/accion/guardar";
-var urlPeticionAjaxTestFuncionalidadAccionEliminar = "http://localhost:8090/test/funcionalidad/accion/eliminar";
-var urlPeticionAjaxTestFuncionalidadAccionBuscar = "http://localhost:8090/test/funcionalidad/accion/buscar";
-var urlPeticionAjaxTestFuncionalidadAccionModificar = "http://localhost:8090/test/funcionalidad/accion/modificar";
-var urlPeticionAjaxTestFuncionalidadAccionReactivar = "http://localhost:8090/test/funcionalidad/accion/reactivar";
-var urlPeticionAjaxTestAccionAccionGuardar = "http://localhost:8090/test/accion/accion/guardar";
-var urlPeticionAjaxTestAccionAccionModificar = "http://localhost:8090/test/accion/accion/modificar";
-var urlPeticionAjaxTestAccionAccionEliminar = "http://localhost:8090/test/accion/accion/eliminar";
-var urlPeticionAjaxTestAccionAccionBuscar = "http://localhost:8090/test/accion/accion/buscar";
-var urlPeticionAjaxTestAccionAccionReactivar = "http://localhost:8090/test/accion/accion/reactivar";
-var urlPeticionAjaxTestAccionAccionAsignar = "http://localhost:8090/test/accion/accion/asignar";
-var urlPeticionAjaxTestAccionAccionRevocar = "http://localhost:8090/test/accion/accion/revocar";
-var urlPeticionAjaxTestUsuarioAccionBuscar = "http://localhost:8090/test/usuario/accion/buscar";
-var urlPeticionAjaxTestUsuarioAccionEliminar = "http://localhost:8090/test/usuario/accion/eliminar";
-var urlPeticionAjaxTestUsuarioAccionModificarRolUsuario = "http://localhost:8090/test/usuario/accion/modificarRolUsuario";
-var urlPeticionAjaxTestUsuarioAccionModificarPasswdUsuario = "http://localhost:8090/test/usuario/accion/modificarPasswdUsuario";
-var urlPeticionAjaxTestUsuarioAccionReactivar = "http://localhost:8090/test/usuario/accion/reactivar";
-var urlPeticionAjaxTestNoticiaAccionGuardar = "http://localhost:8090/test/usuario/accion/reactivar"
+var urlPeticionAjaxTestLoginAcciones = urlComun + urlTest + urlLogin + urlAcciones;
+var urlPeticionAjaxTestRecuperarPassAcciones = urlComun + urlTest + urlRecuperarPass + urlAcciones;
+var urlPeticionAjaxTestRegistrarAcciones = urlComun + urlTest + urlRegistrar + urlAcciones;
+
+var urlPeticionAjaxTestRolAccionGuardar = urlComun + urlTest + urlRol + urlAccion + urlGuardar;
+var urlPeticionAjaxTestRolAccionEliminar = urlComun + urlTest + urlRol + urlAccion + urlEliminar;
+var urlPeticionAjaxTestRolAccionBuscar = urlComun + urlTest + urlRol + urlAccion + urlBuscar;
+var urlPeticionAjaxTestRolAccionModificar = urlComun + urlTest + urlRol + urlAccion + urlModificar;
+var urlPeticionAjaxTestRolAccionReactivar = urlComun + urlTest + urlRol + urlAccion + urlReactivar;
+
+var urlPeticionAjaxTestFuncionalidadAccionGuardar = urlComun + urlTest + urlFuncionalidad + urlAccion + urlGuardar;
+var urlPeticionAjaxTestFuncionalidadAccionEliminar = urlComun + urlTest + urlFuncionalidad + urlAccion + urlEliminar;
+var urlPeticionAjaxTestFuncionalidadAccionBuscar = urlComun + urlTest + urlFuncionalidad + urlAccion + urlBuscar;
+var urlPeticionAjaxTestFuncionalidadAccionModificar = urlComun + urlTest + urlFuncionalidad + urlAccion + urlModificar;
+var urlPeticionAjaxTestFuncionalidadAccionReactivar = urlComun + urlTest + urlFuncionalidad + urlAccion + urlReactivar;
+
+var urlPeticionAjaxTestAccionAccionGuardar = urlComun + urlTest + urlAccion + urlAccion + urlGuardar;
+var urlPeticionAjaxTestAccionAccionModificar = urlComun + urlTest + urlAccion + urlAccion + urlModificar;
+var urlPeticionAjaxTestAccionAccionEliminar = urlComun + urlTest + urlAccion + urlAccion + urlEliminar;
+var urlPeticionAjaxTestAccionAccionBuscar = urlComun + urlTest + urlAccion + urlAccion + urlBuscar;
+var urlPeticionAjaxTestAccionAccionReactivar = urlComun + urlTest + urlAccion + urlAccion + urlReactivar;
+var urlPeticionAjaxTestAccionAccionAsignar = urlComun + urlTest + urlAccion + urlAccion + "/asignar";
+var urlPeticionAjaxTestAccionAccionRevocar = urlComun + urlTest + urlAccion + urlAccion + "/revocar";
+
+var urlPeticionAjaxTestUsuarioAccionBuscar = urlComun + urlTest + urlUsuario + urlAccion + urlBuscar;
+var urlPeticionAjaxTestUsuarioAccionEliminar = urlComun + urlTest + urlUsuario + urlAccion + urlEliminar;
+var urlPeticionAjaxTestUsuarioAccionModificarRolUsuario = urlComun + urlTest + urlUsuario + urlAccion + "/modificarRolUsuario";
+var urlPeticionAjaxTestUsuarioAccionModificarPasswdUsuario = urlComun + urlTest + urlUsuario + urlAccion + "/modificarPasswdUsuario";
+var urlPeticionAjaxTestUsuarioAccionReactivar = urlComun + urlTest + urlUsuario + urlAccion + urlReactivar;
+
+var urlPeticionAjaxTestNoticiaAccionGuardar = urlComun + urlTest + urlNoticia + urlAccion + urlGuardar;

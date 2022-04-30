@@ -92,9 +92,9 @@ function modalCambioPass(){
 			'<div class="changePassmodal-container">' +
 				'<h1 class="CAMBIAR_CONTRASEÑA"></h1><br>' +
 				'<form name="formularioChangePass" id="formularioChangePass" action="javascript:changePass()" onsubmit="return comprobarChangePass()">' +
-					'<input type="password" name="PASS_USUARIO_NUEVA" class="PASS_USUARIO_NUEVA" maxlength="45" size="45" id="passChangePass1" placeholder="Usuario" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPass(\'passChangePass1\', \'errorFormatoChangePass1\', \'passwordChange\')";>' +
+					'<input type="password" name="PASS_USUARIO_NUEVA" class="PASS_USUARIO_NUEVA" maxlength="45" size="45" id="passChangePass1" placeholder="Usuario" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPass(\'passChangePass1\', \'errorFormatoChangePass1\', \'passwordChange\')"; autocomplete="new-password">' +
 					'<div style="display:none" id="errorFormatoChangePass1"></div>' +
-					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPassConfirmChangePass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')">' +
+					'<input type="password" name="CONFIRMAR_PASS_USUARIO" class="CONFIRMAR_PASS_USUARIO" id="passChangePass2" maxlength="45" size="45" placeholder="Contraseña" onKeyPress="capLock(event,\'bloqueoMayusculasChangePass\');" onblur="return comprobarPassConfirmChangePass(\'passChangePass2\', \'errorFormatoChangePass2\', \'passwordChange\')" autocomplete="new-password">' +
 					'<div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculasChangePass"></div>' +  
           			'<div style="display:none" id="errorFormatoChangePass2" class="alert alert-danger ocultar"></div>' +  
 					'<div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>' +
