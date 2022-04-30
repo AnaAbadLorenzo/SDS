@@ -63,6 +63,7 @@ arrayEN={
 	'ICONO_REACTIVAR': 'Reactivate',
 	'ICONO_BACK' : 'Back',
 	'ICON_PERMISOS' : 'Permissions management',
+	'ICONO_DETALLE' : 'Detail',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
