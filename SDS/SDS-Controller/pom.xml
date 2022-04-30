@@ -116,6 +116,5 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<finalName>${parent.artifactId}</finalName>
 	</build>
 </project>
