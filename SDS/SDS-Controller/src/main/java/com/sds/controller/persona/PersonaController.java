@@ -14,6 +14,8 @@ import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
 import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
+import com.sds.service.exception.EmpresaNoEncontradaException;
+import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -165,6 +167,10 @@ public class PersonaController {
 			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, persona);
 		} catch (final ParseException parseException) {
 			return new RespEntity(RespCode.PARSE_EXCEPTION, persona);
+		} catch (final EmpresaNoEncontradaException empresaNoEncontrada) {
+			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, empresaNoEncontrada);
+		} catch (final EmpresaYaExisteException empresaYaExiste) {
+			return new RespEntity(RespCode.EMPRESA_YA_EXISTE_EXCEPTION, empresaYaExiste);
 		}
 
 		return new RespEntity(RespCode.PERSONA_VACIA, persona);

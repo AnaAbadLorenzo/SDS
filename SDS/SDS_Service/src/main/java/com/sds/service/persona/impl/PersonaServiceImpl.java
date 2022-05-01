@@ -21,10 +21,13 @@ import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
+import com.sds.repository.EmpresaRepository;
 import com.sds.repository.PersonaRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
+import com.sds.service.exception.EmpresaNoEncontradaException;
+import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -50,6 +53,9 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
+
+	@Autowired
+	EmpresaRepository empresaRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -348,14 +354,16 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String añadirPersona(final PersonaAnadir personaAñadir)
-			throws PersonaYaExisteException, UsuarioYaExisteException, ParseException,
-			LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+	public String añadirPersona(final PersonaAnadir personaAñadir) throws PersonaYaExisteException,
+			UsuarioYaExisteException, ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			EmpresaNoEncontradaException, EmpresaYaExisteException {
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 		String resultadoLog2 = StringUtils.EMPTY;
+		LogAccionesEntity logAcciones = new LogAccionesEntity();
 		final PersonaEntity personaEntity = personaAñadir.getPersonaEntity();
 		final UsuarioEntity usuarioEntity = personaAñadir.getUsuarioEntity();
+		final EmpresaEntity empresaEntity = personaAñadir.getEmpresaEntity();
 
 		final Boolean personaValida = validaciones.comprobarPersonaBlank(personaEntity);
 
@@ -368,12 +376,93 @@ public class PersonaServiceImpl implements PersonaService {
 					final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuarioEntity.getDniUsuario());
 
 					if (!usuarioBD.isPresent()) {
+						if (empresaEntity != null) {
+							if (empresaEntity.getIdEmpresa() == null
+									&& personaAñadir.getSeleccionarEmpresa().equals(Constantes.NO)) {
+								if (validaciones.comprobarEmpresaBlank(empresaEntity)) {
+									final EmpresaEntity empresa = empresaRepository
+											.findByCif(empresaEntity.getCifEmpresa());
+
+									if (empresa != null) {
+										final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+												personaAñadir.getUsuario(),
+												CodeMessageErrors.getTipoNameByCodigo(
+														CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()),
+												CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo());
+
+										resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+										if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+											throw new LogExcepcionesNoGuardadoException(
+													CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+													CodeMessageErrors.getTipoNameByCodigo(
+															CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+										}
+
+										throw new EmpresaYaExisteException(
+												CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
+												CodeMessageErrors.getTipoNameByCodigo(
+														CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
+
+									} else {
+
+										empresaEntity.setBorradoEmpresa(0);
+										empresaRepository.saveAndFlush(empresaEntity);
+										logAcciones = util.generarDatosLogAcciones(personaAñadir.getUsuario(),
+												Constantes.ACCION_AÑADIR_EMPRESA, empresaEntity.toString());
+
+										resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+										if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+											throw new LogAccionesNoGuardadoException(
+													CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+													CodeMessageErrors.getTipoNameByCodigo(
+															CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+										}
+
+										personaAñadir.getPersonaEntity().setEmpresa(empresaEntity);
+									}
+								} else {
+									resultado = CodeMessageErrors.PERSONA_VACIO.name();
+								}
+
+							} else {
+								final Optional<EmpresaEntity> empresa = empresaRepository
+										.findById(personaAñadir.getEmpresaEntity().getIdEmpresa());
+
+								if (empresa.isPresent()) {
+									personaAñadir.setEmpresaEntity(empresa.get());
+									personaAñadir.getPersonaEntity().setEmpresa(personaAñadir.getEmpresaEntity());
+								} else {
+									final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+											personaAñadir.getUsuario(),
+											CodeMessageErrors.getTipoNameByCodigo(
+													CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+											CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+
+									resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+									if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+										throw new LogExcepcionesNoGuardadoException(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+												CodeMessageErrors.getTipoNameByCodigo(
+														CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+									}
+
+									throw new EmpresaNoEncontradaException(
+											CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo(),
+											CodeMessageErrors.getTipoNameByCodigo(
+													CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()));
+								}
+							}
+						}
+
 						personaRepository.saveAndFlush(personaEntity);
 						usuarioRepository.saveAndFlush(usuarioEntity);
 
 						resultado = Constantes.OK;
 
-						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(personaAñadir.getUsuario(),
+						logAcciones = util.generarDatosLogAcciones(personaAñadir.getUsuario(),
 								Constantes.ACCION_AÑADIR_PERSONA, personaAñadir.getPersonaEntity().toString());
 
 						final LogAccionesEntity logAcciones2 = util.generarDatosLogAcciones(personaAñadir.getUsuario(),

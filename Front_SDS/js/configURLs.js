@@ -1,6 +1,6 @@
 /**Url común a todas*/
-var urlComun = "http://localhost:8090/SDS";
-//var urlComun = "http://localhost:8090";
+//var urlComun = "http://localhost:8090/SDS";
+var urlComun = "http://localhost:8090";
 
 /**Urls específicas por funcionalidad*/
 var urlLogin = "/login";

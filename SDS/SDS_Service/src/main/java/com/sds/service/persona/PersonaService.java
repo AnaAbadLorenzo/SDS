@@ -5,6 +5,8 @@ import java.util.Date;
 
 import com.sds.model.PersonaEntity;
 import com.sds.service.common.ReturnBusquedas;
+import com.sds.service.exception.EmpresaNoEncontradaException;
+import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -26,7 +28,8 @@ public interface PersonaService {
 	ReturnBusquedas<PersonaEntity> buscarPersonaByUsuario(String usuario, int inicio, int tamanhoPagina);
 
 	String añadirPersona(final PersonaAnadir personaAñadir) throws PersonaYaExisteException, UsuarioYaExisteException,
-			ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
+			ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			EmpresaNoEncontradaException, EmpresaYaExisteException;
 
 	void deletePersona(final PersonaEntity persona)
 			throws PersonaNoExisteException, UsuarioAsociadoPersonaException, ParseException;

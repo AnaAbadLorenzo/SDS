@@ -24,6 +24,8 @@ import com.sds.model.UsuarioEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
+import com.sds.service.exception.EmpresaNoEncontradaException;
+import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PersonaNoExisteException;
@@ -185,10 +187,10 @@ public class PersonaServiceTest {
 	}
 
 	@Test
-	public void PersonaService_guardarPersona()
-			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			UsuarioNoEncontradoException, PersonaNoExisteException, UsuarioAsociadoPersonaException {
+	public void PersonaService_guardarPersona() throws IOException, ParseException, java.text.ParseException,
+			PersonaYaExisteException, UsuarioYaExisteException, LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, UsuarioNoEncontradoException, PersonaNoExisteException,
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.GUARDAR_PERSONA);
 
@@ -212,9 +214,9 @@ public class PersonaServiceTest {
 	}
 
 	@Test
-	public void PersonaService_guardarPersonaVacia()
-			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+	public void PersonaService_guardarPersonaVacia() throws IOException, ParseException, java.text.ParseException,
+			PersonaYaExisteException, UsuarioYaExisteException, LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.PARAMETROS_PERSONA_VACIOS_DATA);
@@ -226,9 +228,9 @@ public class PersonaServiceTest {
 	}
 
 	@Test(expected = PersonaYaExisteException.class)
-	public void PersonaService_guardarPersonaYaExiste()
-			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+	public void PersonaService_guardarPersonaYaExiste() throws IOException, ParseException, java.text.ParseException,
+			PersonaYaExisteException, UsuarioYaExisteException, LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.PERSONA_YA_EXISTE);
@@ -240,7 +242,8 @@ public class PersonaServiceTest {
 	@Test(expected = UsuarioYaExisteException.class)
 	public void PersonaService_guardarPersonaUsuarioNoExiste()
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
+			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.USUARIO_YA_EXISTE);
@@ -250,10 +253,10 @@ public class PersonaServiceTest {
 	}
 
 	@Test
-	public void PersonaService_eliminarPersonaCorrecto()
-			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			PersonaNoExisteException, UsuarioAsociadoPersonaException, UsuarioNoEncontradoException {
+	public void PersonaService_eliminarPersonaCorrecto() throws IOException, ParseException, java.text.ParseException,
+			PersonaYaExisteException, UsuarioYaExisteException, LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, PersonaNoExisteException, UsuarioAsociadoPersonaException,
+			UsuarioNoEncontradoException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		UsuarioEntity user = new UsuarioEntity();
 
@@ -292,10 +295,10 @@ public class PersonaServiceTest {
 	}
 
 	@Test
-	public void PersonaService_modificarPersonaCorrecto()
-			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			PersonaNoExisteException, UsuarioNoEncontradoException, UsuarioAsociadoPersonaException {
+	public void PersonaService_modificarPersonaCorrecto() throws IOException, ParseException, java.text.ParseException,
+			PersonaYaExisteException, UsuarioYaExisteException, LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, PersonaNoExisteException, UsuarioNoEncontradoException,
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		final PersonaAnadir persona = generatePersonaAñadir(Constantes.URL_JSON_PERSONA_DATA,
 				Constantes.GUARDAR_PERSONA);

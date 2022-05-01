@@ -36,7 +36,7 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-	   	var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+	   	var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
       $("#datosUsuarios").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -82,10 +82,12 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        $('#itemPaginacion').attr('hidden', false);
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -143,7 +145,7 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -342,7 +344,7 @@ function cargarUsuariosAjaxPromesa(numeroPagina, tamanhoPagina){
     var token = getCookie('tokenUsuario');
     
     var data = {
-        inicio: calculaInicio(numeroPagina),
+        inicio: calculaInicio(numeroPagina, tamanhoPaginaUsuario),
         tamanhoPagina : tamanhoPaginaUsuario
     }
     
@@ -417,7 +419,7 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
 
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -579,6 +581,76 @@ async function cargarPermisosFuncUsuario(){
   });
 }
 
+/** Función que visualiza un usuario **/
+async function detalleUsuario(){
+  await detalleUsuarioAjaxPromesa()
+  .then((res) => {
+    $("#form-modal").modal('toggle');
+
+    let idElementoList = ["dniUsuario", "loginUsuario", "esActivo"];
+    resetearFormulario("formularioGenerico", idElementoList);
+    setLang(getCookie('lang'));
+    $('#loginUsuario').val(getCookie('usuario'));
+    
+    var options = document.getElementById('selectRoles').options;
+
+    for(var i = 0; i<options.length; i++){
+      var text = options[i].text;
+      if(options[i].text == getCookie('rolName')){
+        options[i].selected = true;
+      }else{
+        options[i].selected = false;
+      }
+    }
+
+  }).catch((res) => {
+      $("#form-modal").modal('toggle');
+
+      respuestaAjaxKO(res.code);
+
+      let idElementoList = ["dniUsuario", "loginUsuario", "esActivo"];
+      resetearFormulario("formularioGenerico", idElementoList);
+
+      setLang(getCookie('lang'));
+
+      document.getElementById("modal").style.display = "block";
+
+  });
+}
+
+/** Función para ver el detalle de un usuario con ajax y promesa **/
+function detalleUsuarioAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    var rol = escogeRol($('#selectRoles: selected').val());
+   
+    var data = {
+          usuario : $('#loginUsuario').val(),
+          rol : rol,
+          inicio : 0,
+          tamanhoPagina : 1
+    }
+    
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarUsuario,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'USUARIOS_LISTADOS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /** Función para recuperar los permisos de un usuario sobre el usuario **/
 function cargarPermisosFuncUsuarioAjaxPromesa(){
   return new Promise(function(resolve, reject) {
@@ -686,12 +758,14 @@ function showEditar(dniUsuario,usuario,borrado,rol) {
     $('#labelActivo').attr('hidden', true);
     $('#esActivo').attr('hidden', true);
     $('#labelRolName').attr('hidden', true);
+    $('#selectRoles').removeAttr('readonly');
 
     rellenarFormulario(dniUsuario,usuario,borrado,rol);
 
     let campos = ["dniUsuario", "loginUsuario", "esActivo"]
     anadirReadonly(campos);
     deshabilitaCampos(["loginUsuario"]);
+    habilitaCampos(["selectRoles"]);
 
 }
 
@@ -747,6 +821,37 @@ function showReactivar(dniUsuario, usuario,borrado,rol) {
     $('#labelActivo').removeAttr('hidden');
     $('#esActivo').removeAttr('hidden');
     
+
+    rellenarFormulario(dniUsuario, usuario,borrado,rol);
+
+    let campos = ["dniUsuario", "loginUsuario", "esActivo", "selectRoles"]
+    let obligatorios = ["obligatorioRolName"];
+    anadirReadonly(campos);
+    ocultarObligatorios(obligatorios);
+    deshabilitaCampos(campos);
+
+}
+
+/** Función para ver el detalle de  un rol **/
+function showDetalle(dniUsuario, usuario,borrado,rol) {
+  
+    var idioma = getCookie('lang');
+
+    cambiarFormulario('DETAIL_USER', 'javascript:detalleUsuario();', '');
+    cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
+   
+    setLang(idioma);
+    
+    $('#subtitulo').removeAttr('class');
+    $('#subtitulo').empty();
+    $('#subtitulo').attr('class', 'SEGURO_ELIMINAR_USUARIO');
+    $('#subtitulo').removeAttr('hidden');
+    $('#labelLoginUsuario').removeAttr('hidden');
+    $('#labelDNI').attr('hidden', true);
+    $('#dniUsuario').attr('hidden', true);
+    $('#labelRolName').removeAttr('hidden');
+    $('#labelActivo').attr('hidden', true);
+    $('#esActivo').attr('hidden', true);
 
     rellenarFormulario(dniUsuario, usuario,borrado,rol);
 

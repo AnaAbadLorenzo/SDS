@@ -159,7 +159,7 @@ async function cargarLogAcciones(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
 	   	
       	$("#datosLogAcciones").html("");
 	   	  $("#checkboxColumnas").html("");
@@ -209,10 +209,12 @@ async function buscarLogAcciones(numeroPagina, tamanhoPagina, accion, paginadorC
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        $('#itemPaginacion').attr('hidden', true);
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
 
       $("#datosLogAcciones").html("");
       $("#checkboxColumnas").html("");
@@ -283,7 +285,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults; 
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
       
       $("#datosLogAcciones").html("");
       $("#checkboxColumnas").html("");

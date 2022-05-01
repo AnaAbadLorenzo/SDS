@@ -195,7 +195,7 @@ public class UsuarioServiceTest {
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			UsuarioNoEncontradoException, PersonaNoExisteException, UsuarioAsociadoPersonaException,
-			EmpresaNoEncontradaException, EmpresaAsociadaPersonasException {
+			EmpresaNoEncontradaException, EmpresaAsociadaPersonasException, EmpresaYaExisteException {
 
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.GUARDAR_USUARIO);
 
@@ -242,7 +242,8 @@ public class UsuarioServiceTest {
 			throws IOException, ParseException, java.text.ParseException, PersonaYaExisteException,
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			RolYaExisteException, UsuarioNoEncontradoException, RolNoExisteException, PersonaNoExisteException,
-			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaAsociadaPersonasException {
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaAsociadaPersonasException,
+			EmpresaYaExisteException {
 
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.GUARDAR_USUARIO);
 
@@ -311,7 +312,7 @@ public class UsuarioServiceTest {
 			UsuarioYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, UsuarioNoEncontradoException,
 			PersonaNoExisteException, UsuarioAsociadoPersonaException, EmpresaNoEncontradaException,
-			EmpresaAsociadaPersonasException, RolNoExisteException {
+			EmpresaAsociadaPersonasException, RolNoExisteException, EmpresaYaExisteException {
 
 		final Usuario usuario = generateUsuario(Constantes.URL_JSON_USUARIO_DATA, Constantes.USUARIO_NO_EXISTE);
 

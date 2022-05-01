@@ -330,7 +330,7 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCread
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 	   	
       $("#datosFuncionalidad").html("");
 	   	$("#checkboxColumnas").html("");
@@ -415,7 +415,7 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -473,7 +473,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
       
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -521,10 +521,12 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        $('#itemPaginacion').attr('hidden', true);
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
       
       if(res.data.listaBusquedas.length == 0){
           $('.cabecera').attr('hidden', true);

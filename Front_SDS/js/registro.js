@@ -109,7 +109,7 @@ function registroAjaxPromesa() {
 
 			}
 
-			if(asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'si' && $('#empresasDisponibles option:selected').val() === "default"){
+			else if(asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'si' && $('#empresasDisponibles option:selected').val() === "default"){
 				var datosEmpresa = {
 					idEmpresa: "",
 					cifEmpresa: $('#cifEmpresa').val(),
