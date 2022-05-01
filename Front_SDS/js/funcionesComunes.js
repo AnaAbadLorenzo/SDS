@@ -402,32 +402,31 @@ function construyeFila(entidad, fila) {
 
         case 'PERSONA':
         	if(fila.empresa == null){
+        		var filaEmpresaCif = " - ";
+        		var filaEmpresaNombre = " - ";
+        		var filaEmpresaDireccion = " - ";
+        		var filaEmpresaTelefono = " - ";
         		var filaEmpresa = " - ";
         	}else{
-        		var filaEmpresa = fila.empresa.nombreEmpresa;
+        		var filaEmpresaCif = fila.empresa.cifEmpresa;
+        		var filaEmpresaNombre = fila.empresa.nombreEmpresa;
+        		var filaEmpresaDireccion = fila.empresa.direccionEmpresa;
+        		var filaEmpresaTelefono = fila.empresa.telefonoEmpresa;
         	}
-        	var fechaNacimiento = (fila.fechaNacP).split('T');
 
+        	var fechaNacimiento = (fila.fechaNacP).split('T');
         	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + fechaNacimiento[0] + "'"
         	, "'" + fila.direccionP + "'", "'" + fila.telefonoP + "'", "'" + fila.emailP + "'", "'" + fila.borradoP + "'",
-        	"'" + fila.usuario.usuario + "'", "'" + filaEmpresa + "'"];
-			var personaActiva = "";
-			if(fila.borradoP == 0){
-				personaActiva = "Sí";
-			}else{
-				personaActiva = "No";
-			}
+        	"'" + fila.usuario.usuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
+        	, "'" + filaEmpresaTelefono + "'"];
+			
 
-			filaTabla = '<tr class="impar"> <td>' + fila.dniP+ 
+			filaTabla = '<tr class="impar"> <td>' + fila.dniP + 
                 '</td> <td>' + fila.nombreP + 
-                '</td> <td>' + fila.apellidosP +
-                '</td> <td>' + fila.direccionP +
-                '</td> <td>' + fechaNacimiento[0] +
-                '</td> <td>' + fila.telefonoP +
+                '</td> <td>' + fila.apellidosP  + 
                 '</td> <td>' + fila.emailP + 
-                '</td> <td>' + personaActiva + 
                 '</td> <td>' + fila.usuario.usuario + 
-                '</td> <td>' + filaEmpresa;
+                '</td> <td>' + filaEmpresaNombre;
         break;
 
 	};
@@ -892,6 +891,23 @@ function cargarPermisosSegunEntidad(entidad){
 		case 'ACCION':
 			cargarPermisosFuncAccion();
 		break;
+
+		case 'LOG_EXCEPCIONES':
+			cargarPermisosFuncLogExcepciones();
+		break;
+
+		case 'LOG_ACCIONES':
+			cargarPermisosFuncLogAcciones();
+		break;
+
+		case 'USUARIO':
+			cargarPermisosFuncUsuario();
+		break;
+
+		case 'PERSONA':
+			cargarPermisosFuncPersona();
+		break;
+
 	}
 }
 
@@ -933,6 +949,20 @@ function ocultarIconoErroresTabs(iconos){
 	iconos.forEach(function(icono){
 		$('#' + icono).attr('hidden', true);
 	})
+}
+
+/**Funcion para ocultar los mensajes de ayuda en las ventanas de add **/
+function ocultaFormatos(idFormato){
+	idFormato.forEach(function(id){
+		$('#' + id).attr('hidden', true);
+	});
+}
+
+/**Funcion para ocultar los mensajes de ayuda en las ventanas de add **/
+function muestraFormatos(idFormato){
+	idFormato.forEach(function(id){
+		$('#' + id).attr('hidden', false);
+	});
 }
 
 

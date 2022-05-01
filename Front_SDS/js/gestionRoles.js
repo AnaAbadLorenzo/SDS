@@ -289,7 +289,7 @@ async function cargarRoles(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -336,7 +336,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -394,7 +394,7 @@ async function buscarRol(numeroPagina, tamanhoPagina, accion, paginadorCreado){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
@@ -568,11 +568,12 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        $('#itemPaginacion').attr('hidden', false);
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
-      
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       $("#datosRol").html("");
       $("#checkboxColumnas").html("");

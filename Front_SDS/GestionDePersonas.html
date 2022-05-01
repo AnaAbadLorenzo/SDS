@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="js/paginacion.js"></script>
+  <script type="text/javascript" src="js/registro.js"></script>
   <script type="text/javascript" src="js/gestionPersonas.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
@@ -124,7 +125,7 @@
                       </div>
                 </th>
 
-                <th scope="col" class="DIRECCION_PERSONA_COLUMN">
+                <th scope="col" class="DIRECCION_PERSONA_COLUMN" hidden>
                   <div class="DIRECCION_PERSONA direccionPersonaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaPersonas')" 
                         class="tooltip ordenarIconDireccionPersona">
@@ -133,7 +134,7 @@
                       </div>
                 </th>
 
-                <th scope="col" class="FECHA_NACIMIENTO_PERSONA_COLUMN">
+                <th scope="col" class="FECHA_NACIMIENTO_PERSONA_COLUMN" hidden>
                   <div class="FECHA_NACIMIENTO_PERSONA fechaNacimientoPersonaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaPersonas')" 
                         class="tooltip ordenarIconFechaNacimientoPersona">
@@ -142,7 +143,7 @@
                       </div>
                 </th>
 
-                 <th scope="col" class="TELEFONO_COLUMN">
+                 <th scope="col" class="TELEFONO_COLUMN" hidden>
                   <div class="TELEFONO telefonoColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(5, 'tablaPersonas')" 
                         class="tooltip ordenarIconTelefonoPersona">
@@ -160,7 +161,7 @@
                       </div>
                 </th>
 
-                <th scope="col" class="ACTIVO_COLUMN">
+                <th scope="col" class="ACTIVO_COLUMN" hidden>
                   <div class="ACTIVO activoColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(7, 'tablaPersonas')" 
                         class="tooltip ordenarIconActivo">
@@ -235,6 +236,10 @@
                     <a id="datosUser"class="nav-link DATOS_USUARIO" data-toggle="tab" href="#datosUsuario"></a>
                     <img class="iconTab" id="iconoTabDatosUsuario" src="images/failed.png" hidden>
                   </li>
+                    <li class="nav-item">
+                    <a id ="datosEmp" class="nav-link DATOS_EMPRESA" data-toggle="tab" href="#datosEmpresa" onclick="obtenerEmpresas()"></a>
+                    <img class="iconTab" id="iconoTabDatosEmpresa" src="images/failed.png" hidden>
+                 </li> 
                 </ul>
                 <div class="tab-content">
                   <div id="datosPersonales" class="container tab-pane active overflow-auto"><br>
@@ -243,7 +248,7 @@
                     <div class="obligatorio tooltip2" id="obligatorioDNI">*
                       <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     </div>
-                    <small class="FORMATO_DNI"></small>
+                    <small id = "formatoDNI" class="FORMATO_DNI"></small>
                     <div style="display:none" id="errorFormatoDni"></div>
 
                     <label class="labelForm NOMBRE_PERSONA" id="labelNombrePersona" hidden></label>
@@ -279,7 +284,7 @@
                     <div class="obligatorio tooltip2" id="obligatorioTelefono">*
                       <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     </div>
-                    <small class="FORMATO_TELF"></small>
+                    <small id = "formatoTelf" class="FORMATO_TELF"></small>
                     <div style="display:none" id="errorFormatoTelefono"></div>
 
                     <label class="labelForm EMAIL" id="labelEmail" hidden></label>
@@ -287,7 +292,7 @@
                     <div class="obligatorio tooltip2" id="obligatorioEmail">*
                       <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     </div>
-                    <small class="FORMAT_EMAIL"></small>
+                    <small id = "formatoEmail" class="FORMAT_EMAIL"></small>
                     <div style="display:none" id="errorFormatoEmail"></div>
                   </div>
 
@@ -315,7 +320,84 @@
                     <div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculasRegistro"></div>
                     <div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>
                   </div>
+                  <div id="datosEmpresa" class="container tab-pane fade"><br>
+                    <div class="preguntasEmpresa" id="asociarEmpresa">
+                      <label class="ASOCIARTE_EMPRESA asociarteEmpresa"></label>
+                      <div class="obligatorio tooltip2" id="obligatorioPreg1Em">*
+                          <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                      </div>
+                      <div class="form-check-inline">
+                      <label class="form-check-label" for="radio3">
+                          <input type="radio" class="form-check-input" id="asociarEmpresaSi" name="asociarEmpresa" value="si">
+                          <label class="SI"></label>
+                      </label>
+                     </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio4">
+                          <input type="radio" class="form-check-input NO" id="asociarEmpresaNo" name="asociarEmpresa" value="no">
+                          <label class="NO"></label>
+                      </label>
+                    </div>
+                   </div>
+                  <div class="preguntasEmpresa" id="selectEmpresas" hidden>
+                    <label class="SELECCIONAR_EMPRESA"></label>
+                    <div class="obligatorio tooltip2" id="obligatorioPreg2Em">*
+                        <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                  <div class="form-check-inline">
+                    <label class="form-check-label" for="radio5">
+                      <input type="radio" class="form-check-input" id="seleccionarEmpresaSi" name="seleccionarEmpresa" value="si" >
+                      <label class="SI"></label>
+                    </label>
+                  </div>
+                  <div class="form-check-inline">
+                    <label class="form-check-label" for="radio6">
+                      <input type="radio" class="form-check-input" id="seleccionarEmpresaNo" name="seleccionarEmpresa" value="no">
+                      <label class="NO"></label>
+                    </label>
+                  </div>
                 </div>
+                <div class="preguntasEmpresa">
+                  <div id="selectEmpresasDisponibles" hidden>
+                    <label class="EMPRESAS_DISPONIBLES"></label>
+                    <div class="obligatorio tooltip2" id="obligatorioSelectEmpresas">*
+                        <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                    <select class="form-control" id="empresasDisponibles" disabled></select>
+                  </div>
+                </div>
+                <div id="formRegistroEmpresa" hidden>
+                    <label class="labelForm CIF" id="labelCifEmpresa" hidden></label>
+                    <input type="text" name="cif" placeholder="CIF" id="cifEmpresa" class="cif CIF" maxlength="9" size="9" onblur="return comprobarCIF('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro')">
+                    <div class="obligatorio tooltip2" id="obligatorioCifEmpresa">*
+                        <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                      <small id = "formatoCIF" class="FORMATO_CIF"></small>
+                    <div style="display:none" id="errorFormatoCifEmpresa"></div>  
+
+                    <label class="labelForm NOMBRE_EMPRESA" id="labelNombreEmpresa" hidden></label>
+                    <input type="text" name="nombre" id="nombreEmpresa" placeholder="Nombre" class="NOMBRE_EMPRESA"  maxlength="48" size="48" onblur="return comprobarNombreEmpresa('nombreEmpresa', 'errorFormatoNombreEmpresa', 'nombreEmpresaRegistro')">
+                    <div class="obligatorio tooltip2" id="obligatorioNombreEmpresa">*
+                        <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                    <div style="display:none" id="errorFormatoNombreEmpresa"></div>
+
+                    <label class="labelForm DIRECCION_EMPRESA" id="labelDireccionEmpresa" hidden></label>
+                    <input type="text" name="direccion" id="direccionEmpresa" placeholder="Direccion" class="DIRECCION_EMPRESA" maxlength="128" size="128" onblur="return comprobarDireccion('direccionEmpresa', 'errorFormatoDireccionEmpresa', 'direccionEmpresaRegistro');">
+                        <div class="obligatorio tooltip2" id="obligatorioDireccionEmpresa">*
+                           <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                        </div>
+                        <div style="display:none" id="errorFormatoDireccionEmpresa"></div>
+
+                    <label class="labelForm TELEFONO" id="labelTelefonoEmpresa" hidden></label>
+                    <input type="tel" name="telefono" id="telefonoEmpresa" placeholder="988212121" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
+                          <div class="obligatorio tooltip2" id="obligatorioTelefonoEmp">*
+                            <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                        </div>
+                        <small id = "formatoTelfEmpresa" class="FORMATO_TELF"></small>
+                        <div style="display:none" id="errorFormatoTelefonoEmpresa"></div>
+                </div>
+              </div>
 
                 <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
                   <img class="" src="" alt="" id="iconoAcciones" />

@@ -95,6 +95,7 @@
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;
+  display:  block;
 }
 
 .formmodal-container input[type=submit] {
@@ -169,11 +170,8 @@ input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:h
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 
-.formmodal-container input[name='dni'] {
-  margin-top: 20px;
-}
 
-.dni {
+.dni, .cif {
   width: 36% !important;
 }
 

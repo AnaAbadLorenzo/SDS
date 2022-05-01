@@ -1,3 +1,65 @@
+/** Habilitar segunda pregunta y en funcion de respuesta de la primera**/
+$(function() {
+  $("input[name=asociarEmpresa]").change(function() {
+    if ($(this).val() === "si") {
+      $("#selectEmpresas").removeAttr('hidden')
+    } else {
+      $('#selectEmpresasDisponibles').prop('hidden', true);
+      $("#selectEmpresas").prop('hidden', true);
+      $('#formRegistroEmpresa').prop("hidden", true);
+    }
+  });
+});
+
+
+/**Habilitar o deshabilitar el select para seleccionar la empresa**/
+$(function() {
+  $("input[name=seleccionarEmpresa]").change(function() {
+    if ($(this).val() === "si") {
+      $('#selectEmpresasDisponibles').removeAttr('hidden');
+      $("#empresasDisponibles").removeAttr('disabled')
+    } else {
+      $('#selectEmpresasDisponibles').prop('hidden', true);
+      $("#empresasDisponibles").prop('disabled', true);
+      $('#formRegistroEmpresa').prop("hidden", true);
+    }
+  });
+});
+
+/** Habilitar form para añadir empresa **/
+$(function() {
+  $("input[name=asociarEmpresa]").change(function() {
+    if ($(this).val() === "si") {
+
+      $("input[name=seleccionarEmpresa").change(function() {
+
+        if ($(this).val() == "no") {
+          $('#formRegistroEmpresa').removeAttr('hidden');
+
+        } else {
+          $('#formRegistroEmpresa').prop("hidden", true);
+        }
+      });
+
+    } else {
+      $("#empresasDisponibles").prop('disabled', true);
+    }
+  });
+});
+
+/** Habilitar form para añadir empresa desde el select de empresas**/
+$(function() {
+  $("#empresasDisponibles").change(function() {
+    if ($("#empresasDisponibles :selected").val() === "default") {
+
+          $('#formRegistroEmpresa').removeAttr('hidden');
+
+        } else {
+          $('#formRegistroEmpresa').prop("hidden", true);
+        }
+      });
+});
+
 /** Función para cargar los datos de persona **/
 async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
 	if(getCookie('rolUsuario') == "usuario"){
@@ -34,7 +96,7 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
                 }else{
                     inicio = parseInt(res.data.inicio)+1;
                 }
-                var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+                var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
         
                 $("#datosPersona").html("");
                 $("#checkboxColumnas").html("");
@@ -45,9 +107,8 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
                     $("#datosPersona").append(tr);
                 }
         
-                var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, DIRECCION_PERSONA_COLUMN: 4,
-                                                    FECHA_NACIMIENTO_PERSONA_COLUMN: 5, TELEFONO_COLUMN: 6, EMAIL_COLUMN: 7, ACTIVO_COLUMN: 8,
-                                                    LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+                var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3,
+                                                        EMAIL_COLUMN: 7,LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
                 $("#checkboxColumnas").append(div);
                 $("#paginacion").append(textPaginacion);
                 setLang(getCookie('lang'));
@@ -78,15 +139,18 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
 async function addPersona(){
   await anadirPersonaAjaxPromesa()
   .then((res) => {
-    
     $("#form-modal").modal('toggle');
     respuestaAjaxOK("PERSONA_GUARDADA_OK", res.code);
-
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
-    "usuario", "passwdUsuario1", "passwdUsuario2"];
-    resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
+
+    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+    "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
+    resetearFormulario("formularioGenerico", idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
+  
     
     $('#dniP').val(getCookie('dniP'));
     $('#nombreP').val(getCookie('nombreP'));
@@ -97,6 +161,10 @@ async function addPersona(){
     $('#emailP').val(getCookie('emailP'));
     $('#direccionP').val(getCookie('direccionP'));
     $('#usuario').val(getCookie('usuario'));
+    $('#cifEmpresa').val(getCookie('cifEmpresa'));
+    $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
+    $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
+    $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
     
     buscarPersona(getCookie('numeroPagina'), tamanhoPaginaPersona, 'buscarPaginacion', 'PaginadorNo');
 
@@ -106,8 +174,11 @@ async function addPersona(){
       respuestaAjaxKO(res.code);
 
       let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
-        "usuario", "passwdUsuario1", "passwdUsuario2"];
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
       resetearFormulario("formularioGenerico", idElementoList);
+      limpiaRadioButton(idElementosRadioButtons);
 
       setLang(getCookie('lang'));
 
@@ -123,8 +194,13 @@ async function editPersona(){
 
     respuestaAjaxOK("PERSONA_EDITADA_OK", res.code);
 
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
     resetearFormulario("formularioGenerico", idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
+
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     $('#dniP').val(getCookie('dniP'));
@@ -135,6 +211,12 @@ async function editPersona(){
     $('#telefonoP').val(getCookie('telefonoP'));
     $('#emailP').val(getCookie('emailP'));
     $('#direccionP').val(getCookie('direccionP'));
+    $('#usuario').val(getCookie('usuario'));
+    $('#cifEmpresa').val(getCookie('cifEmpresa'));
+    $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
+    $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
+    $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
+
     buscarPersona(getCookie('numeroPagina'), tamanhoPaginaPersona, 'buscarPaginacion', 'PaginadorCreado');
 
   }).catch((res) => {
@@ -142,8 +224,12 @@ async function editPersona(){
 
     respuestaAjaxKO(res.code);
 
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
     resetearFormulario("formularioGenerico", idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
 
     setLang(getCookie('lang'));
 
@@ -161,8 +247,12 @@ async function deletePersona(){
 
     respuestaAjaxOK("PERSONA_ELIMINADA_OK", res.code);
 
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
     resetearFormulario("formularioGenerico", idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
@@ -173,8 +263,12 @@ async function deletePersona(){
      $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
 
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
-    resetearFormulario("formularioGenerico", idElementoList);
+      let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+        "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
+      resetearFormulario("formularioGenerico", idElementoList);
+      limpiaRadioButton(idElementosRadioButtons);
 
       setLang(getCookie('lang'));
 
@@ -190,9 +284,14 @@ async function detallePersona(){
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+        "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
     resetearFormulario("formularioGenerico", idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
     setLang(getCookie('lang'));
+    
     $('#dniP').val(getCookie('dniP'));
     $('#nombreP').val(getCookie('nombreP'));
     $('#apellidosP').val(getCookie('apellidosP'));
@@ -201,14 +300,23 @@ async function detallePersona(){
     $('#telefonoP').val(getCookie('telefonoP'));
     $('#emailP').val(getCookie('emailP'));
     $('#direccionP').val(getCookie('direccionP'));
+    $('#usuario').val(getCookie('usuario'));
+    $('#cifEmpresa').val(getCookie('cifEmpresa'));
+    $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
+    $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
+    $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
 
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+      let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+        "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
       resetearFormulario("formularioGenerico", idElementoList);
+      limpiaRadioButton(idElementosRadioButtons);
       
       setLang(getCookie('lang'));
 
@@ -233,7 +341,7 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       $("#datosPersona").html("");
       $("#checkboxColumnas").html("");
@@ -243,9 +351,8 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
           $("#datosPersona").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, DIRECCION_PERSONA_COLUMN: 4,
-                                                    FECHA_NACIMIENTO_PERSONA_COLUMN: 5, TELEFONO_COLUMN: 6, EMAIL_COLUMN: 7, ACTIVO_COLUMN: 8,
-                                                    LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3,EMAIL_COLUMN: 7,
+                                              LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
       
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
@@ -269,8 +376,12 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
       cargarPermisosFuncPersona();
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+      let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+        "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
       resetearFormulario("formularioGenerico", idElementoList);
+      limpiaRadioButton(idElementosRadioButtons);
 
       setLang(getCookie('lang'));
 
@@ -290,6 +401,10 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       setCookie('direccionP', '');
       setCookie('telefonoP', '');
       setCookie('emailP', '');
+      setCookie('cifEmpresa', '');
+      setCookie('nombreEmpresa', '');
+      setCookie('direccionEmpresa', '');
+      setCookie('telefonoEmpresa', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
       var inicio = 0;
@@ -298,7 +413,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
       
       $("#datosPersona").html("");
       $("#checkboxColumnas").html("");
@@ -308,20 +423,11 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
           $("#datosPersona").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, DIRECCION_PERSONA_COLUMN: 4,
-                                                    FECHA_NACIMIENTO_PERSONA_COLUMN: 5, TELEFONO_COLUMN: 6, EMAIL_COLUMN: 7, ACTIVO_COLUMN: 8,
+      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, EMAIL_COLUMN: 7,
                                                     LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
-
-      setCookie('dniP', '');
-      setCookie('nombreP', '');
-      setCookie('apellidosP', '');
-      setCookie('fechaNacP', '');
-      setCookie('direccionP', '');
-      setCookie('telefonoP', '');
-      setCookie('emailP', '');
 
       paginador(totalResults, 'cargarPersonas', 'PERSONA');
 
@@ -353,10 +459,12 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        $('#itemPaginacion').attr('hidden', false);
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " de " + totalResults;
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
       
       if(res.data.listaBusquedas.length == 0){
           $('.cabecera').attr('hidden', true);
@@ -371,8 +479,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
           $("#datosPersona").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, DIRECCION_PERSONA_COLUMN: 4,
-                                                    FECHA_NACIMIENTO_PERSONA_COLUMN: 5, TELEFONO_COLUMN: 6, EMAIL_COLUMN: 7, ACTIVO_COLUMN: 8,
+     var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, EMAIL_COLUMN: 7,
                                                     LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
@@ -385,6 +492,10 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       setCookie('direccionP', '');
       setCookie('telefonoP', '');
       setCookie('emailP', '');
+      setCookie('cifEmpresa', '');
+      setCookie('nombreEmpresa', '');
+      setCookie('direccionEmpresa', '');
+      setCookie('telefonoEmpresa', '');
 
       if(paginadorCreado != 'PaginadorCreado'){
          paginador(totalResults, 'buscarEliminadosPersona', 'PERSONA');
@@ -496,10 +607,61 @@ function anadirPersonaAjaxPromesa(){
           }
         }
 
+      var asociarEmpresa = $('input[name=asociarEmpresa]:checked').val();
+      var seleccionarEmpresaPregunta = $('input[name=seleccionarEmpresa]:checked').val();
+
+      if (asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'si') {
+
+        var empresaEntity = {
+          idEmpresa: $('#empresasDisponibles option:selected').val(),
+          cifEmpresa: "",
+          nombreEmpresa: "",
+          direccionEmpresa: "",
+          telefonoEmpresa: "",
+          borradoEmpresa: ""
+        };
+
+        var seleccionarEmpresa = "Si";
+
+      }
+
+      else if(asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'si' && $('#empresasDisponibles option:selected').val() === "default"){
+        var empresaEntity = {
+          idEmpresa: "",
+          cifEmpresa: $('#cifEmpresa').val(),
+          nombreEmpresa: $('#nombreEmpresa').val(),
+          direccionEmpresa: $('#direccionEmpresa').val(),
+          telefonoEmpresa: $('#telefonoEmpresa').val(),
+          borradoEmpresa: ""
+        };
+
+        var seleccionarEmpresa = "No";
+      
+      }else if (asociarEmpresa === 'si' && seleccionarEmpresaPregunta === 'no') {
+
+        var empresaEntity = {
+          idEmpresa: "",
+          cifEmpresa: $('#cifEmpresa').val(),
+          nombreEmpresa: $('#nombreEmpresa').val(),
+          direccionEmpresa: $('#direccionEmpresa').val(),
+          telefonoEmpresa: $('#telefonoEmpresa').val(),
+          borradoEmpresa: ""
+        };
+
+        var seleccionarEmpresa = "No";
+
+      } else {
+
+        var empresaEntity = null;
+        var seleccionarEmpresa = "";
+      }
+
         var data = {
           usuario : getCookie('usuario'),
           personaEntity : personaEntity,
-          usuarioEntity : usuarioEntity
+          usuarioEntity : usuarioEntity,
+          empresaEntity: empresaEntity,
+          seleccionarEmpresa : seleccionarEmpresa
         }
         
         $.ajax({
@@ -770,7 +932,11 @@ function showAddPersonas() {
     'return comprobarEmail(\'emailP\', \'errorFormatoEmail\', \'emailPersonaRegistro\');',
     'return comprobarUser(\'usuario\', \'errorFormatoUserRegistro\', \'loginUsuario\');',
     'return comprobarPass(\'passwdUsuario1\', \'errorFormatoPassRegistro\', \'passwdUsuarioRegistro\');',
-    'return comprobarPassRepetida(\'passwdUsuario2\', \'errorFormatoPassRegistro2\', \'passwdUsuarioRegistro\');');
+    'return comprobarPassRepetida(\'passwdUsuario2\', \'errorFormatoPassRegistro2\', \'passwdUsuarioRegistro\');',
+    'return comprobarCIF(\'cifEmpresa\', \'errorFormatoCifEmpresa\', \'cifEmpresaRegistro\')',
+    'return comprobarNombreEmpresa(\'nombreEmpresa\', \'errorFormatoNombreEmpresa\', \'nombreEmpresaRegistro\')',
+    'return comprobarDireccion(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
+    'return comprobarTelefono(\'telefono\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddPersona', 'Añadir');
   setLang(idioma);
 
@@ -779,26 +945,34 @@ function showAddPersonas() {
   $('#labelNombrePersona').attr('hidden', true);
   $('#labelApellidosPersona').attr('hidden', true);
   $('#labelFechaNacimiento').attr('hidden', true);
-  $('#labelDireccion').attr('hidden', true);
+  $('#labelDireccionPersona').attr('hidden', true);
   $('#labelTelefono').attr('hidden', true);
   $('#labelEmail').attr('hidden', true);
   $('#labelLoginUsuario').attr('hidden', true);
   $('#labelPassUsuario').attr('hidden', true);
   $('#labelPassUsuarioRepe').attr('hidden', true);
+  $('#labelCifEmpresa').attr('hidden', true);
+  $('#labelNombreEmpresa').attr('hidden', true);
+  $('#labelDireccionEmpresa').attr('hidden', true);
+  $('#labelTelefonoEmpresa').attr('hidden', true);
   $('#datosUser').attr('hidden', false);
+  $('#datosEmp').attr('hidden', false);
+  $('#asociarEmpresa').attr('hidden', false);
 
   let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
-    "usuario", "passwdUsuario1", "passwdUsuario2"];
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
   let obligatorios = ["obligatorioDNI", "obligatorioNombre", "obligatorioApellidos", "obligatorioFechaNac", 
-  "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail", "obligatorioUsuario", "obligatorioPass1", "obligatorioPass2"];
+  "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail", "obligatorioUsuario", "obligatorioPass1", "obligatorioPass2", "obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmp"];
+  let formatos = ["formatoDNI", "formatoEmail", "formatoTelf"];
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  muestraFormatos(formatos);
 
 }
 
 /** Funcion para editar una persona **/
-function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP) {
+function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
   var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_PERSONA', 'javascript:editPersona();', 'return comprobarEditPersona();');
@@ -808,7 +982,11 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     'return comprobarFechaNacimiento(\'fechaNacP\', \'errorFormatoFecha\', \'fechaPersonaRegistro\');',
     'return comprobarDireccion(\'direccionP\', \'errorFormatoDireccion\', \'direccionPersonaRegistro\');',
     'return comprobarTelefono(\'telefonoP\', \'errorFormatoTelefono\', \'telefonoPersonaRegistro\');',
-    'return comprobarEmail(\'emailP\', \'errorFormatoEmail\', \'emailPersonaRegistro\');');
+    'return comprobarEmail(\'emailP\', \'errorFormatoEmail\', \'emailPersonaRegistro\');',
+    'return comprobarCIF(\'cifEmpresa\', \'errorFormatoCifEmpresa\', \'cifEmpresaRegistro\')',
+    'return comprobarNombreEmpresa(\'nombreEmpresa\', \'errorFormatoNombreEmpresa\', \'nombreEmpresaRegistro\')',
+    'return comprobarDireccion(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
+    'return comprobarTelefono(\'telefono\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarPersona', 'Editar');
    
     setLang(idioma);
@@ -825,23 +1003,27 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     $('#labelPassUsuario').attr('hidden', true);
     $('#labelPassUsuarioRepe').attr('hidden', true);
     $('#datosUser').attr('hidden', true);
+    $('#datosEmp').attr('hidden', true);
 
-    rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP);
+    rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
 
-    let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     let obligatorios = ["obligatorioDNI", "obligatorioNombre", "obligatorioApellidos", "obligatorioFechaNac", 
-    "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail"];
+      "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail", "obligatorioUsuario", "obligatorioPass1", "obligatorioPass2", "obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmp"];
+    let formatos = ["formatoDNI", "formatoEmail", "formatoTelf"];
 
     eliminarReadonly(campos);
     mostrarObligatorios(obligatorios);
     habilitaCampos(campos);
     deshabilitaCampos(["dniP"]);
     anadirReadonly(["dniP"]);
+    muestraFormatos(formatos);
 
 }
 
 /** Función para eliminar una persona **/
-function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP) {
+function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
   
     var idioma = getCookie('lang');
 
@@ -855,30 +1037,34 @@ function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP
     $('#labelNombrePersona').attr('hidden', false);
     $('#labelApellidosPersona').attr('hidden', false);
     $('#labelFechaNacimiento').attr('hidden', false);
-    $('#labelDireccion').attr('hidden', false);
+    $('#labelDireccionPersona').attr('hidden', false);
     $('#labelTelefono').attr('hidden', false);
     $('#labelEmail').attr('hidden', false);
     $('#labelLoginUsuario').attr('hidden', true);
     $('#labelPassUsuario').attr('hidden', true);
     $('#labelPassUsuarioRepe').attr('hidden', true);
     $('#datosUser').attr('hidden', true);
+    $('#datosEmp').attr('hidden', true);
     
 
-    rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP);
+   rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
     
 
-    let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     let obligatorios = ["obligatorioDNI", "obligatorioNombre", "obligatorioApellidos", "obligatorioFechaNac", 
-    "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail"];
+      "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail", "obligatorioUsuario", "obligatorioPass1", "obligatorioPass2", "obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmp"];
+    let formatos = ["formatoDNI", "formatoEmail", "formatoTelf"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
     anadirReadonly(campos);
+    ocultaFormatos(formatos);
 
 }
 
 /** Funcion para visualizar una persona **/
-function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP) {
+function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
   
     var idioma = getCookie('lang');
 
@@ -892,23 +1078,35 @@ function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP,
     $('#labelNombrePersona').attr('hidden', false);
     $('#labelApellidosPersona').attr('hidden', false);
     $('#labelFechaNacimiento').attr('hidden', false);
-    $('#labelDireccion').attr('hidden', false);
+    $('#labelDireccionPersona').attr('hidden', false);
     $('#labelTelefono').attr('hidden', false);
     $('#labelEmail').attr('hidden', false);
-    $('#labelLoginUsuario').attr('hidden', true);
-    $('#labelPassUsuario').attr('hidden', true);
-    $('#labelPassUsuarioRepe').attr('hidden', true);
-    $('#datosUser').attr('hidden', true);
+    $('#labelLoginUsuario').attr('hidden', false);
+    $('#labelPassUsuario').attr('hidden', false);
+    $('#labelPassUsuarioRepe').attr('hidden', false);
+    $('#labelCifEmpresa').attr('hidden', false);
+    $('#labelNombreEmpresa').attr('hidden', false);
+    $('#labelDireccionEmpresa').attr('hidden', false);
+    $('#labelTelefonoEmpresa').attr('hidden', false);
+    $('#datosUser').attr('hidden', false);
+    $('#selectEmpresas').attr('hidden', true);
+    $('#asociarEmpresa').attr('hidden', true);
+    $('#selectEmpresasDisponibles').attr('hidden', true);
+    $('#formRegistroEmpresa').attr('hidden', false);
 
-    rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP);
+    rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
 
-    let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
+    let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+      "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     let obligatorios = ["obligatorioDNI", "obligatorioNombre", "obligatorioApellidos", "obligatorioFechaNac", 
-    "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail"];
+      "obligatorioDireccion", "obligatorioTelefono", "obligatorioEmail", "obligatorioUsuario", "obligatorioPass1", "obligatorioPass2", "obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmp"];
+    let formatos = ["formatoDNI", "formatoEmail", "formatoTelf", "formatoCIF", "formatoTelfEmpresa"];
+
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
     anadirReadonly(campos);
+    ocultaFormatos(formatos);
 
 }
 
@@ -939,6 +1137,7 @@ function showBuscarPersona() {
     $('#labelPassUsuario').attr('hidden', true);
     $('#labelPassUsuarioRepe').attr('hidden', true);
     $('#datosUser').attr('hidden', true);
+    $('#datosEmp').attr('hidden', true);
 
   let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP"];
     let obligatorios = ["obligatorioDNI", "obligatorioNombre", "obligatorioApellidos", "obligatorioFechaNac", 
@@ -1043,7 +1242,7 @@ function gestionarPermisosPersona(idElementoList) {
 }
 
 /**Función que rellenado los datos del formulario*/
-function rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP) {
+function rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
 
     $("#dniP").val(dniP);
     $("#nombreP").val(nombreP);
@@ -1052,12 +1251,20 @@ function rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, te
     $("#direccionP").val(direccionP);  
     $("#telefonoP").val(telefonoP); 
     $("#emailP").val(emailP); 
+    $('#usuario').val(usuario);
+    $('#passwdUsuario1').val('pass');
+    $('#passwdUsuario2').val('pass');
+    $('#cifEmpresa').val(cifEmpresa);
+    $('#nombreEmpresa').val(nombreEmpresa);
+    $('#direccionEmpresa').val(direccionEmpresa);
+    $('#telefonoEmpresa').val(telefonoEmpresa);
+
 
 }
 
 /**Función para cambiar onBlur de los campos*/
 function cambiarOnBlurCampos(onBlurDNI, onBlurNombrePersona, onBlurApellidosPersona, onBlurFechaNacimiento, onBlurDireccion, 
-                              onBlurTelefono, onBlurEmail, onBlurUser, onBlurPass, onBlurPassRepetida) {
+                              onBlurTelefono, onBlurEmail, onBlurUser, onBlurPass, onBlurPassRepetida, onBlurCifEmpresa, onBlurNombreEmpresa, onBlurDireccionEmpresa, onBlurTelefonoEmpresa) {
     
     if (onBlurDNI != ''){
         $("#dniP").attr('onblur', onBlurDNI);
@@ -1098,6 +1305,23 @@ function cambiarOnBlurCampos(onBlurDNI, onBlurNombrePersona, onBlurApellidosPers
     if(onBlurPassRepetida!= ''){
         $("#passwdUsuario2").attr('onblur', onBlurPassRepetida);
     }
+
+    if(onBlurCifEmpresa!= ''){
+        $("#cifEmpresa").attr('onblur', onBlurCifEmpresa);
+    }
+
+    if(onBlurNombreEmpresa!= ''){
+        $("#nombreEmpresa").attr('onblur', onBlurNombreEmpresa);
+    }
+
+    if(onBlurDireccionEmpresa!= ''){
+        $("#direccionEmpresa").attr('onblur', onBlurDireccionEmpresa);
+    }
+
+    if(onBlurTelefonoEmpresa!= ''){
+        $("#telefonoEmpresa").attr('onblur', onBlurTelefonoEmpresa);
+    }
+
 
 }
 
@@ -1216,17 +1440,32 @@ $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {
     
     let idElementoErrorList = ["errorFormatoDni", "errorFormatoNombrePersona", "errorFormatoApellidosP", "errorFormatoFecha", "errorFormatoDireccion", "errorFormatoTelefono",
-      "errorFormatoEmail", "errorFormatoUserRegistro", "errorFormatoPassRegistro", "errorFormatoPassRegistro2", "bloqueoMayusculasRegistro"];
+      "errorFormatoEmail", "errorFormatoUserRegistro", "errorFormatoPassRegistro", "errorFormatoPassRegistro2", "errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", "errorFormatoTelefonoEmpresa",
+      "bloqueoMayusculasRegistro"];
+    
+    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa",
+      "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
 
-    let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
-    "usuario", "passwdUsuario1", "passwdUsuario2"];
+    let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
 
     let iconos = ["iconoTabDatosPersonales", "iconoTabDatosUsuario"];
-    
-    ocultarIconoErroresTabs(iconos);
+
     limpiarFormulario(idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
+    $('#formRegistroEmpresa').prop("hidden", true);
+    $('#selectEmpresas').prop('hidden', true);
+    $('#error').removeClass();
+    $("#error").html('');
+    $("#error").css("display", "none");
+    
+    $('#iconoTabDatosPersonales').attr('hidden',true);
+    $('#iconoTabDatosUsuario').attr('hidden',true);
+    $('#iconoTabDatosEmpresa').attr('hidden',true);
+
     eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
+    ocultarIconoErroresTabs(iconos);
     setLang(getCookie('lang'));
+   
   });
 
 });

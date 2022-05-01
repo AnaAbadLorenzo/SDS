@@ -26,6 +26,8 @@ import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.Constantes;
 import com.sds.service.exception.EmailNoEncontradoException;
+import com.sds.service.exception.EmpresaNoEncontradaException;
+import com.sds.service.exception.EmpresaYaExisteException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.MailNoEnviadoException;
@@ -126,11 +128,11 @@ public class LoginServiceTest {
 	}
 
 	@Test(expected = EmailNoEncontradoException.class)
-	public void LoginService_recuperarPassEmailNoEncontrado()
-			throws IOException, ParseException, UsuarioNoEncontradoException, MessagingException,
-			LogExcepcionesNoGuardadoException, PersonaNoExisteException, EmailNoEncontradoException,
-			LogAccionesNoGuardadoException, MailNoEnviadoException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, UsuarioAsociadoPersonaException {
+	public void LoginService_recuperarPassEmailNoEncontrado() throws IOException, ParseException,
+			UsuarioNoEncontradoException, MessagingException, LogExcepcionesNoGuardadoException,
+			PersonaNoExisteException, EmailNoEncontradoException, LogAccionesNoGuardadoException,
+			MailNoEnviadoException, java.text.ParseException, PersonaYaExisteException, UsuarioYaExisteException,
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null;
@@ -165,11 +167,11 @@ public class LoginServiceTest {
 	}
 
 	@Test(expected = UsuarioNoEncontradoException.class)
-	public void LoginService_recuperarPassUsuarioNoEncontrado()
-			throws IOException, ParseException, UsuarioNoEncontradoException, MessagingException,
-			LogExcepcionesNoGuardadoException, PersonaNoExisteException, EmailNoEncontradoException,
-			LogAccionesNoGuardadoException, MailNoEnviadoException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, UsuarioAsociadoPersonaException {
+	public void LoginService_recuperarPassUsuarioNoEncontrado() throws IOException, ParseException,
+			UsuarioNoEncontradoException, MessagingException, LogExcepcionesNoGuardadoException,
+			PersonaNoExisteException, EmailNoEncontradoException, LogAccionesNoGuardadoException,
+			MailNoEnviadoException, java.text.ParseException, PersonaYaExisteException, UsuarioYaExisteException,
+			UsuarioAsociadoPersonaException, EmpresaNoEncontradaException, EmpresaYaExisteException {
 
 		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null;
@@ -208,7 +210,8 @@ public class LoginServiceTest {
 	public void LoginService_recuperarPassCorrecto() throws IOException, ParseException, UsuarioNoEncontradoException,
 			MessagingException, LogExcepcionesNoGuardadoException, PersonaNoExisteException, EmailNoEncontradoException,
 			LogAccionesNoGuardadoException, MailNoEnviadoException, java.text.ParseException, PersonaYaExisteException,
-			UsuarioYaExisteException, UsuarioAsociadoPersonaException {
+			UsuarioYaExisteException, UsuarioAsociadoPersonaException, EmpresaNoEncontradaException,
+			EmpresaYaExisteException {
 
 		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = null;

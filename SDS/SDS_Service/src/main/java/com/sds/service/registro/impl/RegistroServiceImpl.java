@@ -124,11 +124,11 @@ public class RegistroServiceImpl implements RegistroService {
 						}
 
 					} else {
-						final EmpresaEntity empresa = empresaRepository
-								.findByCif(registro.getDatosEmpresa().getCifEmpresa());
+						final Optional<EmpresaEntity> empresa = empresaRepository
+								.findById(registro.getDatosEmpresa().getIdEmpresa());
 
-						if (empresa != null) {
-							registro.setDatosEmpresa(empresa);
+						if (empresa.isPresent()) {
+							registro.setDatosEmpresa(empresa.get());
 							registro.getDatosPersona().setEmpresa(registro.getDatosEmpresa());
 						} else {
 							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
