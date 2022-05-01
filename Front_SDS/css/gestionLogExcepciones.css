@@ -350,15 +350,6 @@ thead {
   margin-bottom: -5px;
 }
 
-.filasTabla {
-  position: fixed;
-  bottom: 16%;
-  left: 86%;
-  z-index: 1000;
-  font-weight: bold;
-  color: #4527A0;
-}
-
 /*********** TOOLTIPS CABECERA ***************/
 .tooltip {
     position: relative;
@@ -406,7 +397,7 @@ thead {
 
 .cabecera, .cabeceraEliminados {
   position:  fixed;
-  top: 12%;
+  top: 15%;
   left: 8%;
   width: 100%;
 }
@@ -460,7 +451,7 @@ thead {
 }
 
 .refreshIcon {
-  margin-left: 62%;
+  margin-left: 71%;
 }
 
 .permisosIcon {

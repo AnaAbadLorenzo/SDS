@@ -350,15 +350,6 @@ thead {
   margin-bottom: -5px;
 }
 
-.filasTabla {
-  position: fixed;
-  bottom: 16%;
-  left: 86%;
-  z-index: 1000;
-  font-weight: bold;
-  color: #4527A0;
-}
-
 /*********** TOOLTIPS CABECERA ***************/
 .tooltip {
     position: relative;
