@@ -154,20 +154,35 @@
 	              				<h1 id="tituloForms" class="datos"></h1>
 	              				<p id = "subtitulo" class="SEGURO_ELIMINAR_USUARIO" hidden></p>
 	                    		<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
-	                    			<label class="labelForm DNI" id="labelDNI" hidden></label><br>
-	                    				<input type="text" maxlength="9" size="9" placeholder="DNI" name="DNI" id="dniUsuario" class="DNI" hidden></input>
+	                    			
+	                    			<label class="labelForm DNI" id="labelDNI" hidden></label>
+                    				<input type="text" name="dni" placeholder="DNI" id="dniUsuario" class="dni DNI" maxlength="9" size="9" onblur="">
+                    				<div class="obligatorio tooltip2" id="obligatorioDNI">*
+                      					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    				</div>
+                    				<small id = "formatoDNI" class="FORMATO_DNI" hidden></small>
+                    				<div style="display:none" id="errorFormatoDni"></div>
+	                    			
 	                    	  		<label class="labelForm LOGIN_USUARIO" id="labelLoginUsuario" hidden></label>                            
-	                          			<input type="text" maxlength="45" size="45" placeholder="LOGIN_USUARIO" name="LOGIN_USUARIO" id="loginUsuario" class="LOGIN_USUARIO" onblur=""/>
+	                          		<input type="text" maxlength="45" size="45" placeholder="LOGIN_USUARIO" name="LOGIN_USUARIO" id="loginUsuario" class="LOGIN_USUARIO" onblur=""/>
                           			<div style="display:none" id="errorFormatoLoginUsuario"></div>
-		                      		<label class="labelForm ROL_NAME" id="labelRolName" hidden></label><br>
-		                      		<select id="selectRoles" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-  									</select>
+                          			<div class="obligatorio tooltip2" id="obligatorioLoginUsuario">*
+                      					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    				</div>
+
+		                      		<label class="labelForm ROL_NAME" id="labelRolName" hidden></label>
+		                      		<select id="selectRoles" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"></select>
   									<div class="obligatorio tooltip2" id="obligatorioRolName">*
-                  					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
-              			  			</div><br>
+                  						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  			</div>
   									<div style="display:none" id="errorFormatoRol"></div>
-  									<label class="labelForm ACTIVO" id="labelActivo" hidden></label><br>
-	                    				<input type="text" maxlength="2" size="2" placeholder="ACTIVO" name="ACTIVO" id="esActivo" class="ACTIVO" hidden></input>
+
+  									<label class="labelForm ACTIVO" id="labelActivo" hidden></label>
+	                    			<input type="text" maxlength="2" size="2" placeholder="ACTIVO" name="ACTIVO" id="esActivo" class="ACTIVO" hidden></input>
+	                          		<div class="obligatorio tooltip2" id="obligatorioActivoUsuario">*
+                  						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  			</div>
+
 	                          		<button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
 	                              		<img class="" src="" alt="" id="iconoAcciones" />
 	                              		<span class="tooltiptext" id="spanAcciones"></span>

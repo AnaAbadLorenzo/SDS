@@ -37,6 +37,13 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
         inicio = parseInt(res.data.inicio)+1;
       }
 	   	var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+
       $("#datosUsuarios").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -88,6 +95,12 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
         $('#itemPaginacion').attr('hidden', false);
       }
       var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -146,6 +159,12 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -189,7 +208,7 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
     var token = getCookie('tokenUsuario');
 
      if(accion == "buscarModal"){
-     	rol = escogeRol($("#selectRoles :selected").val());
+     	rol = escogeRol($("#selectRoles").val());
      	
         var data = {
           usuario : $('#loginUsuario').val(),
@@ -218,7 +237,7 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       }
 
       var data = {
-          usuario : getCookie('usuario'),
+          usuario : usuarioBuscar,
         	rol : rol,
         	inicio : calculaInicio(numeroPagina, tamanhoPaginaUsuario),
         	tamanhoPagina : tamanhoPaginaUsuario
@@ -421,6 +440,12 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
       }
       var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
 
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -470,7 +495,9 @@ async function editRolUsuario(){
 
     respuestaAjaxOK("ROL_USUARIO_EDITADO_OK", res.code);
 
-    let idElementoList = ["loginUsuario"];
+    var loginUsuario = $('#loginUsuario').val();
+
+    let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
@@ -479,7 +506,9 @@ async function editRolUsuario(){
 
     var rolAntiguo = getCookie('rolUsuario');
 
-    setCookie('rolUsuario', res.data);
+    if(loginUsuario == getCookie('usuario')){
+      setCookie('rolUsuario', res.data);
+    }
 
    var options = document.getElementById('selectRoles').options;
 
@@ -492,8 +521,9 @@ async function editRolUsuario(){
       }
     }
 
-    if(rolAntiguo == "admin" && getCookie('rolUsuario') == "usuario"){
-      window.location.href = window.location.href;
+    if(rolAntiguo == "admin" && getCookie('rolUsuario') == "usuario" && loginUsuario == getCookie('usuario')){
+      window.location.reload(true);
+
     }else{
        buscarUsuario(getCookie('numeroPagina'), tamanhoPaginaUsuario, 'buscarPaginacion', 'PaginadorCreado');
     }
@@ -623,7 +653,7 @@ function detalleUsuarioAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
     
-    var rol = escogeRol($('#selectRoles: selected').val());
+    var rol = escogeRol($('#selectRoles').val());
    
     var data = {
           usuario : $('#loginUsuario').val(),
@@ -731,8 +761,9 @@ function showBuscarUsuario() {
   $('#esActivo').attr('hidden', true);
 
 
-  let campos = ["loginUsuario", "selectRoles"];
-  let obligatorios = ["obligatorioRolName"];
+  let campos = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
+  let obligatorios = ["obligatorioDNI", "obligatorioLoginUsuario", "obligatorioRolName", "obligatorioActivoUsuario"];
+  
   ocultarObligatorios(obligatorios);
   eliminarReadonly(campos);
   habilitaCampos(campos);
@@ -745,7 +776,8 @@ function showEditar(dniUsuario,usuario,borrado,rol) {
     var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_ROL_USER', 'javascript:editRolUsuario();', 'return comprobarEditRolUsuario();');
-    cambiarOnBlurCampos('return comprobarUser(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')',
+    cambiarOnBlurCampos('return comprobarDNI(\'dniUsuario\', \'errorFormatoDni\', \'dniPersona\');', 
+      'return comprobarUser(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')',
       'return comprobarRolUser(\'selectRoles\', \'errorFormatoRol\', \'rolUsuario\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarRolUsuario', 'Editar');
    
@@ -754,17 +786,19 @@ function showEditar(dniUsuario,usuario,borrado,rol) {
     $('#subtitulo').attr('hidden', true);
     $('#labelLoginUsuario').attr('hidden', true);
     $('#labelDNI').attr('hidden', true);
-    $('#dniUsuario').attr('hidden', true);
+    $('#dniUsuario').attr('hidden', false);
     $('#labelActivo').attr('hidden', true);
-    $('#esActivo').attr('hidden', true);
+    $('#esActivo').attr('hidden', false);
     $('#labelRolName').attr('hidden', true);
     $('#selectRoles').removeAttr('readonly');
 
     rellenarFormulario(dniUsuario,usuario,borrado,rol);
 
-    let campos = ["dniUsuario", "loginUsuario", "esActivo"]
+    let campos = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
+    let obligatorios = ["obligatorioDNI", "obligatorioLoginUsuario", "obligatorioRolName", "obligatorioActivoUsuario"];
+    
     anadirReadonly(campos);
-    deshabilitaCampos(["loginUsuario"]);
+    deshabilitaCampos(["dniUsuario", "loginUsuario", "esActivo"]);
     habilitaCampos(["selectRoles"]);
 
 }
@@ -783,17 +817,17 @@ function showEliminar(dniUsuario, usuario,borrado,rol) {
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_ELIMINAR_USUARIO');
     $('#subtitulo').removeAttr('hidden');
-    $('#labelLoginUsuario').removeAttr('hidden');
-    $('#labelDNI').removeAttr('hidden');
-    $('#dniUsuario').removeAttr('hidden');
-    $('#labelRolName').removeAttr('hidden');
-    $('#labelActivo').removeAttr('hidden');
-    $('#esActivo').removeAttr('hidden');
+    $('#labelLoginUsuario').attr('hidden', false);
+    $('#labelDNI').attr('hidden', false);
+    $('#dniUsuario').attr('hidden', false);
+    $('#labelActivo').attr('hidden', false);
+    $('#esActivo').attr('hidden', false);
+    $('#labelRolName').attr('hidden', false);
 
     rellenarFormulario(dniUsuario, usuario,borrado,rol);
 
-    let campos = ["dniUsuario", "loginUsuario", "esActivo", "selectRoles"]
-    let obligatorios = ["obligatorioRolName"];
+    let campos = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
+    let obligatorios = ["obligatorioDNI", "obligatorioLoginUsuario", "obligatorioRolName", "obligatorioActivoUsuario"];
     ocultarObligatorios(obligatorios);
     anadirReadonly(campos);
     deshabilitaCampos(campos);
@@ -814,18 +848,18 @@ function showReactivar(dniUsuario, usuario,borrado,rol) {
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_REACTIVAR_USUARIO');
     $('#subtitulo').removeAttr('hidden');
-    $('#labelLoginUsuario').removeAttr('hidden');
-    $('#labelDNI').removeAttr('hidden');
-    $('#dniUsuario').removeAttr('hidden');
-    $('#labelRolName').removeAttr('hidden');
-    $('#labelActivo').removeAttr('hidden');
-    $('#esActivo').removeAttr('hidden');
+    $('#labelLoginUsuario').attr('hidden', false);
+    $('#labelDNI').attr('hidden', false);
+    $('#dniUsuario').attr('hidden', false);
+    $('#labelActivo').attr('hidden', false);
+    $('#esActivo').attr('hidden', false);
+    $('#labelRolName').attr('hidden', false);
     
 
     rellenarFormulario(dniUsuario, usuario,borrado,rol);
 
-    let campos = ["dniUsuario", "loginUsuario", "esActivo", "selectRoles"]
-    let obligatorios = ["obligatorioRolName"];
+    let campos = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
+    let obligatorios = ["obligatorioDNI", "obligatorioLoginUsuario", "obligatorioRolName", "obligatorioActivoUsuario"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
@@ -846,17 +880,17 @@ function showDetalle(dniUsuario, usuario,borrado,rol) {
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_ELIMINAR_USUARIO');
     $('#subtitulo').removeAttr('hidden');
-    $('#labelLoginUsuario').removeAttr('hidden');
-    $('#labelDNI').attr('hidden', true);
-    $('#dniUsuario').attr('hidden', true);
-    $('#labelRolName').removeAttr('hidden');
-    $('#labelActivo').attr('hidden', true);
-    $('#esActivo').attr('hidden', true);
+    $('#labelLoginUsuario').attr('hidden', false);
+    $('#labelDNI').attr('hidden', false);
+    $('#dniUsuario').attr('hidden', false);
+    $('#labelActivo').attr('hidden', false);
+    $('#esActivo').attr('hidden', false);
+    $('#labelRolName').attr('hidden', false);
 
     rellenarFormulario(dniUsuario, usuario,borrado,rol);
 
-    let campos = ["dniUsuario", "loginUsuario", "esActivo", "selectRoles"]
-    let obligatorios = ["obligatorioRolName"];
+     let campos = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
+    let obligatorios = ["obligatorioDNI", "obligatorioLoginUsuario", "obligatorioRolName", "obligatorioActivoUsuario"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);

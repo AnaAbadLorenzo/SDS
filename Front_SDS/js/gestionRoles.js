@@ -290,6 +290,13 @@ async function cargarRoles(numeroPagina, tamanhoPagina, paginadorCreado){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+      
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -337,6 +344,13 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+      
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
@@ -395,6 +409,12 @@ async function buscarRol(numeroPagina, tamanhoPagina, accion, paginadorCreado){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
 
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
@@ -574,6 +594,12 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         $('#itemPaginacion').attr('hidden', false);
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
 
       $("#datosRol").html("");
       $("#checkboxColumnas").html("");

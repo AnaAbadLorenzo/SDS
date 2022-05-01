@@ -320,6 +320,7 @@
                     <div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculasRegistro"></div>
                     <div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>
                   </div>
+                  
                   <div id="datosEmpresa" class="container tab-pane fade"><br>
                     <div class="preguntasEmpresa" id="asociarEmpresa">
                       <label class="ASOCIARTE_EMPRESA asociarteEmpresa"></label>
@@ -339,6 +340,7 @@
                       </label>
                     </div>
                    </div>
+
                   <div class="preguntasEmpresa" id="selectEmpresas" hidden>
                     <label class="SELECCIONAR_EMPRESA"></label>
                     <div class="obligatorio tooltip2" id="obligatorioPreg2Em">*
@@ -357,6 +359,7 @@
                     </label>
                   </div>
                 </div>
+
                 <div class="preguntasEmpresa">
                   <div id="selectEmpresasDisponibles" hidden>
                     <label class="EMPRESAS_DISPONIBLES"></label>
@@ -366,6 +369,7 @@
                     <select class="form-control" id="empresasDisponibles" disabled></select>
                   </div>
                 </div>
+
                 <div id="formRegistroEmpresa" hidden>
                     <label class="labelForm CIF" id="labelCifEmpresa" hidden></label>
                     <input type="text" name="cif" placeholder="CIF" id="cifEmpresa" class="cif CIF" maxlength="9" size="9" onblur="return comprobarCIF('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro')">
@@ -396,20 +400,43 @@
                         </div>
                         <small id = "formatoTelfEmpresa" class="FORMATO_TELF"></small>
                         <div style="display:none" id="errorFormatoTelefonoEmpresa"></div>
+                    </div>
+                  </div>
+                    <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
+                      <img class="" src="" alt="" id="iconoAcciones" />
+                      <span class="tooltiptext" id="spanAcciones"></span>
+                    </button>
                 </div>
-              </div>
-
-                <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
-                  <img class="" src="" alt="" id="iconoAcciones" />
-                    <span class="tooltiptext" id="spanAcciones"></span>
-                </button>
-              </form>
-            </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+  <div class="modal modal2 fade" id="modalSeleccionEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="formmodal-container">
+        <div id="formularioAccionesSelectEmpresa">
+          <div id="contenidoFormSelectEmpresa">
+            <div class="formularioComun">
+              <h1 id="tituloFormsModal3" class="datos"></h1>
+              <form name="formularioGenerico" id="formularioGenericoModal3" action="" onsubmit="">
+                <select class="form-control" id="select"></select>
+                 <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAccionesSelectEmpresas">
+                    <img class="" src="" alt="" id="iconoAccionesSelectEmpresas" />
+                    <span class="tooltiptext" id="spanAccionesSelectEmpresa"></span>
+                    </button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 	<div class="volver">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">

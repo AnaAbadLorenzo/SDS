@@ -15,6 +15,7 @@ import com.sds.service.exception.UsuarioAsociadoPersonaException;
 import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.model.Persona;
 import com.sds.service.persona.model.PersonaAnadir;
+import com.sds.service.persona.model.PersonaAsociarEmpresa;
 
 public interface PersonaService {
 
@@ -42,5 +43,8 @@ public interface PersonaService {
 
 	String reactivarPersona(final Persona persona) throws LogExcepcionesNoGuardadoException, PersonaNoExisteException,
 			ParseException, LogAccionesNoGuardadoException;
+
+	String asociarEmpresaPersona(final PersonaAsociarEmpresa personaEmpresa) throws LogExcepcionesNoGuardadoException,
+			PersonaNoExisteException, ParseException, LogAccionesNoGuardadoException, EmpresaNoEncontradaException;
 
 }

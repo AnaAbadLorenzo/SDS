@@ -38,6 +38,7 @@ import com.sds.service.log.LogService;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
 import com.sds.service.persona.model.PersonaAnadir;
+import com.sds.service.persona.model.PersonaAsociarEmpresa;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -636,6 +637,68 @@ public class PersonaServiceImpl implements PersonaService {
 			persona.setPersona(personaEntity);
 
 			resultado = modificarPersona(persona);
+
+		}
+
+		return resultado;
+
+	}
+
+	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
+	public String asociarEmpresaPersona(final PersonaAsociarEmpresa personaEmpresa)
+			throws LogExcepcionesNoGuardadoException, PersonaNoExisteException, ParseException,
+			LogAccionesNoGuardadoException, EmpresaNoEncontradaException {
+		final PersonaEntity personaEntity = personaEmpresa.getPersona();
+		final EmpresaEntity empresaEntity = personaEmpresa.getEmpresa();
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		LogExcepcionesEntity logExcepciones = new LogExcepcionesEntity();
+
+		final Optional<PersonaEntity> person = personaRepository.findById(personaEntity.getDniP());
+
+		if (!person.isPresent()) {
+			logExcepciones = util.generarDatosLogExcepciones(personaEmpresa.getUsuario(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+
+			resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+			if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+				throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+			}
+
+			throw new PersonaNoExisteException(
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
+					CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
+		} else {
+			final Optional<EmpresaEntity> empresaBD = empresaRepository.findById(empresaEntity.getIdEmpresa());
+
+			if (!empresaBD.isPresent()) {
+				logExcepciones = util.generarDatosLogExcepciones(personaEmpresa.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+						CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new EmpresaNoEncontradaException(
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+						CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+			} else {
+				person.get().setEmpresa(empresaBD.get());
+				personaRepository.saveAndFlush(person.get());
+
+				resultado = Constantes.OK;
+			}
 
 		}
 

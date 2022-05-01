@@ -331,6 +331,12 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCread
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
 	   	
       $("#datosFuncionalidad").html("");
 	   	$("#checkboxColumnas").html("");
@@ -417,6 +423,12 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -474,6 +486,12 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
       
       $("#datosFuncionalidad").html("");
       $("#checkboxColumnas").html("");
@@ -527,6 +545,12 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         $('#itemPaginacion').attr('hidden', true);
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
       
       if(res.data.listaBusquedas.length == 0){
           $('.cabecera').attr('hidden', true);

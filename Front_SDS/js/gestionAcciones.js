@@ -289,7 +289,13 @@ async function cargarAcciones(numeroPagina, tamanhoPagina, paginadorCreado){
 	  	
       var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
-	  	var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults 
+	  	var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
 	   	
       $("#datosAccion").html("");
 	   	$("#checkboxColumnas").html("");
@@ -376,6 +382,12 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion, paginadorCreado
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+
       $("#datosAccion").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -433,6 +445,12 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
       
       $("#datosAccion").html("");
       $("#checkboxColumnas").html("");

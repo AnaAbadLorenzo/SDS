@@ -88,6 +88,7 @@ var urlPeticionAjaxListarPersonasEliminadas = urlComun + urlPersona + "/listarPe
 var urlPeticionAjaxPersonaGuardar = urlComun + urlPersona + "/anadirPersona";
 var urlPeticionAjaxEditPersona = urlComun + urlPersona + "/modificarPersona";
 var urlPeticionAjaxDeletePersona = urlComun + urlPersona + "/eliminarPersona";
+var urlPeticionAjaxAsociarPersonaEmpresa = urlComun + urlPersona + "/asociarPersonaEmpresa";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;

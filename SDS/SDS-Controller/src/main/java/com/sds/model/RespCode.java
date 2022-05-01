@@ -30,6 +30,7 @@ public enum RespCode {
 	PERSONA_MODIFICADA("PERSONA_MODIFICADA", "La persona se ha modificado correctamente"), //
 	PERSONA_REACTIVADA("PERSONA_REACTIVADA", "La persona se ha reactivado correctamente"), //
 	PERSONA_BORRADA("PERSONA_BORRADA", "La persona se ha borrado correctamente"), //
+	PERSONA_ASOCIADA_EMPRESA("PERSONA_ASOCIADA_EMPRESA", "La persona se ha asociada a la empresa"), //
 	USUARIO_ASOCIADO_PERSONA_EXCEPTION("USUARIO_ASOCIADO_PERSONA_EXCEPTION", "La persona tiene un usuario asociado"), //
 	ENVIO_EMAIL_EXCEPTION("ENVIO_EMAIL_EXCEPTION", "Ha ocurrido un errror al enviar el email"), //
 	EMPRESA_YA_EXISTE("EMPRESA_YA_EXISTE", "La empresa ya existe"), //

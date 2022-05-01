@@ -95,6 +95,7 @@
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;
+  display:  block;
 }
 
 .formmodal-container input[type=submit] {

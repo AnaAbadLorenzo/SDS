@@ -150,7 +150,7 @@ CREATE TABLE `logacciones` (
 
 LOCK TABLES `logacciones` WRITE;
 /*!40000 ALTER TABLE `logacciones` DISABLE KEYS */;
-INSERT INTO `logacciones` VALUES (1,'aicuna','Login','com.sds.service.login.model.Login@1180aee','0000-00-00 00:00:00'),(2,'aicuna','Login','Login [usuario=aicuna, passwdUsuario=aicuna]','0000-00-00 00:00:00');
+INSERT INTO `logacciones` VALUES (1,'aicuna','Login','com.sds.service.login.model.Login@1180aee','2022-01-15 00:00:00'),(2,'aicuna','Login','Login [usuario=aicuna, passwdUsuario=aicuna]','2022-01-15 00:00:00');
 /*!40000 ALTER TABLE `logacciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,7 +177,7 @@ CREATE TABLE `logexcepciones` (
 
 LOCK TABLES `logexcepciones` WRITE;
 /*!40000 ALTER TABLE `logexcepciones` DISABLE KEYS */;
-INSERT INTO `logexcepciones` VALUES (1,'usuario_generico','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','0000-00-00 00:00:00'),(2,'aicuna','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','0000-00-00 00:00:00'),(3,'pepito','USUARIO_NO_ENCONTRADO_EXCEPTION','No se ha encontrado el usuario','0000-00-00 00:00:00'),(4,'aicuna','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','0000-00-00 00:00:00'),(5,'pepito','USUARIO_NO_ENCONTRADO_EXCEPTION','No se ha encontrado el usuario','0000-00-00 00:00:00');
+INSERT INTO `logexcepciones` VALUES (1,'usuario_generico','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','2022-01-15 00:00:00'),(2,'aicuna','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','2022-01-15 00:00:00'),(3,'pepito','USUARIO_NO_ENCONTRADO_EXCEPTION','No se ha encontrado el usuario','0000-00-00 00:00:00'),(4,'aicuna','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','0000-00-00 00:00:00'),(5,'pepito','USUARIO_NO_ENCONTRADO_EXCEPTION','No se ha encontrado el usuario','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `logexcepciones` ENABLE KEYS */;
 UNLOCK TABLES;
 

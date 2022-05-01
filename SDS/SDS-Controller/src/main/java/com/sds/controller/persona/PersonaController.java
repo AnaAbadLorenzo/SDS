@@ -2,6 +2,7 @@ package com.sds.controller.persona;
 
 import java.text.ParseException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +26,7 @@ import com.sds.service.exception.UsuarioYaExisteException;
 import com.sds.service.persona.PersonaService;
 import com.sds.service.persona.model.Persona;
 import com.sds.service.persona.model.PersonaAnadir;
+import com.sds.service.persona.model.PersonaAsociarEmpresa;
 import com.sds.service.persona.model.PersonaBuscar;
 import com.sds.service.persona.model.PersonaUsuarioBuscar;
 import com.sds.service.util.CodeMessageErrors;
@@ -174,6 +176,28 @@ public class PersonaController {
 		}
 
 		return new RespEntity(RespCode.PERSONA_VACIA, persona);
+	}
+
+	@PostMapping(value = "/asociarPersonaEmpresa")
+	@ResponseBody
+	public RespEntity asociarPersonaEmpresa(@RequestBody final PersonaAsociarEmpresa personaAsociarEmpresa) {
+		String resultado = StringUtils.EMPTY;
+
+		try {
+			resultado = personaService.asociarEmpresaPersona(personaAsociarEmpresa);
+			return new RespEntity(RespCode.PERSONA_ASOCIADA_EMPRESA, resultado);
+
+		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, personaAsociarEmpresa);
+		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
+			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, personaAsociarEmpresa);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, personaAsociarEmpresa);
+		} catch (final EmpresaNoEncontradaException empresaNoEncontrada) {
+			return new RespEntity(RespCode.EMPRESA_NO_ENCONTRADA_EXCEPTION, personaAsociarEmpresa);
+		} catch (final PersonaNoExisteException personaNoExiste) {
+			return new RespEntity(RespCode.PERSONA_NO_EXISTE, personaAsociarEmpresa);
+		}
 	}
 
 	@PostMapping(value = "/borrarPersona")
