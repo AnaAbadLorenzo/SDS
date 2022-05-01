@@ -810,9 +810,9 @@ function errorFailAjax(status){
 		errorInternal("MENSAJE_ERROR_INTERNO", idioma);
 	} else if (status === 403) {
 		errorAutenticado("ERROR_AUTENTICACION", idioma);
-	} else if (status === 0){
+	} else if (status === 0 || status === 404){
 		errorInternal("ERR_CONNECTION_REFUSED", idioma);
-	}
+	} 
 }
 
 /** Función para formar las modales de éxito **/
