@@ -40,7 +40,7 @@ public class UsuarioEntity {
 	@Column(name = "borrado_usuario")
 	private Integer borradoUsuario;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_rol", referencedColumnName = "id_rol")
 	private RolEntity rol;
 
