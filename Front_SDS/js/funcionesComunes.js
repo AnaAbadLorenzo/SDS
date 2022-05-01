@@ -433,7 +433,7 @@ function construyeFila(entidad, fila) {
 
 
 	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
-                               ')" alt="Detalle"/><span class="tooltiptext iconDetailUser">Detalle</span></div>';
+                               ')" alt="Detalle"/><span class="tooltiptext iconDetailUser ICONO_DETALLE">Detalle</span></div>';
     var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
                                ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
     var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar eliminarPermiso" src="images/delete.png" data-toggle="" data-target="" onclick="showEliminar(' + atributosFunciones + 

@@ -63,6 +63,7 @@ arrayGA={
 	'ICONO_REACTIVAR': 'Reactivar',
 	'ICONO_BACK' : 'Volver',
 	'ICON_PERMISOS' : 'Gestión de permisos',
+	'ICONO_DETALLE' : 'Detalle',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
