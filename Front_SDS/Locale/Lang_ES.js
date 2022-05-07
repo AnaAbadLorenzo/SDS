@@ -68,6 +68,8 @@ arrayES={
 	'ICONO_BACK' : 'Volver',
 	'ICON_PERMISOS' : 'Gestión de permisos',
 	'ICONO_DETALLE' : 'Detalle',
+	'QUITAR_PERMISO' : 'Quitar permiso',
+	'DAR_PERMISO': 'Dar permiso',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
