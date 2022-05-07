@@ -48,7 +48,7 @@
 
 	<h1 class="gestion GESTION_PERSONAS"></h1>
 
-  <div id="personaInfoParaUsuario">
+  <div id="personaInfoParaUsuario" hidden>
     	<div id = "cardPersona" class="card card-person"></div>
     	<br>
     	<div id="cardUsuario" class="card card-user"></div>
@@ -57,7 +57,7 @@
       <br>
   </div>
 
-  <div id="personaInfoParaAdmin">
+  <div id="personaInfoParaAdmin" hidden>
       <div class="cabecera">
         <div id="divAddPersona" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddPersonas()" 
           class=" tooltip addIcon">
@@ -319,6 +319,13 @@
                     <div style="display:none" id="errorFormatoPassRegistro2"></div> 
                     <div style="display:none" class="BLOQUEO_MAYUSCULAS alert alert-warning" id="bloqueoMayusculasRegistro"></div>
                     <div id="error" class="alert alert-danger ocultar" role="alert" class="CONTRASEÑAS_NO_COINCIDEN"></div>
+
+                    <label class="labelForm ROL_NAME" id="labelRolUsuario" hidden></label>
+                    <input type="text" name="rolUsuario" id="rolUser" maxlength="32" size="32" placeholder="ROL_NAME" class="ROL_NAME"/>
+
+                    <label class="labelForm ACTIVO" id="labelActivo" hidden></label>
+                    <input type="text" maxlength="2" size="2" placeholder="ACTIVO" name="ACTIVO" id="esActivo" class="ACTIVO" hidden></input>
+
                   </div>
                   
                   <div id="datosEmpresa" class="container tab-pane fade"><br>
@@ -360,6 +367,24 @@
                   </div>
                 </div>
 
+                <div class="preguntasEmpresa" id="quitarEmpresaId1" hidden>
+                  <label class="QUITAR_EMPRESA quitarEmpresa"></label>
+                    <div class="obligatorio tooltip2" id="obligatorioPreg4Em">*
+                      <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio5">
+                        <input type="radio" class="form-check-input " id="quitarEmpresaSi1" name="quitarEmpresa" value="si">
+                        <label class="SI"></label>
+                      </label>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio6">
+                        <input type="radio" class="form-check-input" id="quitarEmpresaNo2" name="quitarEmpresa" value="no">
+                        <label class="NO"></label>
+                      </label>
+                    </div>
+                </div>
                 <div class="preguntasEmpresa">
                   <div id="selectEmpresasDisponibles" hidden>
                     <label class="EMPRESAS_DISPONIBLES"></label>
@@ -394,7 +419,7 @@
                         <div style="display:none" id="errorFormatoDireccionEmpresa"></div>
 
                     <label class="labelForm TELEFONO" id="labelTelefonoEmpresa" hidden></label>
-                    <input type="tel" name="telefono" id="telefonoEmpresa" placeholder="988212121" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
+                    <input type="tel" name="telefono" id="telefonoEmpresa" placeholder="TELEFONO" class ="TELEFONO" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
                           <div class="obligatorio tooltip2" id="obligatorioTelefonoEmp">*
                             <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                         </div>
@@ -423,11 +448,30 @@
             <div class="formularioComun">
               <h1 id="tituloFormsModal3" class="datos"></h1>
               <form name="formularioGenerico" id="formularioGenericoModal3" action="" onsubmit="">
-                <select class="form-control" id="select"></select>
-                 <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAccionesSelectEmpresas">
-                    <img class="" src="" alt="" id="iconoAccionesSelectEmpresas" />
-                    <span class="tooltiptext" id="spanAccionesSelectEmpresa"></span>
-                    </button>
+                <div class="preguntasEmpresa" id="quitarEmpresaId">
+                  <label class="QUITAR_EMPRESA quitarEmpresa"></label>
+                    <div class="obligatorio tooltip2" id="obligatorioPreg4Em">*
+                      <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio5">
+                        <input type="radio" class="form-check-input " id="quitarEmpresaSi" name="quitarEmpresa" value="si">
+                        <label class="SI"></label>
+                      </label>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio6">
+                        <input type="radio" class="form-check-input" id="quitarEmpresaNo" name="quitarEmpresa" value="no">
+                        <label class="NO"></label>
+                      </label>
+                    </div>
+                </div>
+                <label id="labelSelectEmpresa" class="EMPRESAS_DISPONIBLES labelForm" hidden></label>
+                <select class="form-control" id="select" hidden></select>
+                <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAccionesSelectEmpresas">
+                  <img class="" src="" alt="" id="iconoAccionesSelectEmpresas" />
+                  <span class="tooltiptext" id="spanAccionesSelectEmpresa"></span>
+                </button>
               </form>
           </div>
         </div>
@@ -461,7 +505,7 @@
         </div>
     </div>
   </div>
-
+</div>
 	<div id="footer"></div>
 </body>
 </html>

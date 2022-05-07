@@ -4,6 +4,7 @@ import com.sds.model.RolEntity;
 
 public class UsuarioBuscar {
 
+	private String dniUsuario;
 	private String usuario;
 	private RolEntity rol;
 	private int inicio;
@@ -11,6 +12,16 @@ public class UsuarioBuscar {
 
 	public UsuarioBuscar() {
 
+	}
+
+	public UsuarioBuscar(final String dniUsuario, final String usuario, final RolEntity rol, final int inicio,
+			final int tamanhoPagina) {
+		super();
+		this.dniUsuario = dniUsuario;
+		this.usuario = usuario;
+		this.rol = rol;
+		this.inicio = inicio;
+		this.tamanhoPagina = tamanhoPagina;
 	}
 
 	public UsuarioBuscar(final String usuario, final RolEntity rol, final int inicio, final int tamanhoPagina) {
@@ -25,6 +36,14 @@ public class UsuarioBuscar {
 		super();
 		this.usuario = usuario;
 		this.rol = rol;
+	}
+
+	public String getDniUsuario() {
+		return dniUsuario;
+	}
+
+	public void setDniUsuario(final String dniUsuario) {
+		this.dniUsuario = dniUsuario;
 	}
 
 	public String getUsuario() {
@@ -61,8 +80,8 @@ public class UsuarioBuscar {
 
 	@Override
 	public String toString() {
-		return "UsuarioBuscar [usuario=" + usuario + ", rol=" + rol + ", inicio=" + inicio + ", tamanhoPagina="
-				+ tamanhoPagina + "]";
+		return "UsuarioBuscar [dniUsuario=" + dniUsuario + ", usuario=" + usuario + ", rol=" + rol + ", inicio="
+				+ inicio + ", tamanhoPagina=" + tamanhoPagina + "]";
 	}
 
 }

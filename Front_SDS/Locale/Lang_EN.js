@@ -33,6 +33,9 @@ arrayEN={
 	'ACTIVO' : 'Active',
 	'USUARIOACTIVO' : 'Active',
 	'ROL' : 'Role',
+	'TITULO_NOTICIA' : 'New title',
+	'TEXTO_NOTICIA' : 'New text',
+	'FECHA_NOTICIA' : 'New date',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -166,7 +169,13 @@ arrayEN={
 	'ACCION_DESCRIPTION_VACIO' : 'Action description empty',
 	'ACCION_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Action description can only contain letters and spaces',
 	'ACCION_DESCRIPTION_MENOR_QUE_3' : 'Action description size is minor than 3 characteres',
-
+	'TITULO_NOTICIA_VACIO' : 'New title is empty',
+	'TITULO_NOTICIA_ALFABETICO_INCORRECTO' : 'New title can only contain letters and spaces',
+	'TITULO_NOTICIA_MENOR_QUE_3' : 'New title size is minor than 3 characteres',
+	'TITULO_NOTICIA_MAYOR_QUE_256' : 'New title size is bigger than 256 characteres',
+	'TEXTO_NOTICIA_VACIO' : 'New text is empty',
+	'TEXTO_NOTICIA_ALFABETICO_INCORRECTO' : 'New text can only contain letters and spaces',
+	'TEXTO_NOTICIA_MENOR_QUE_3' : 'New text size is minor than 3 characteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -241,6 +250,15 @@ arrayEN={
 	'SEARCH_PERSONA' : 'SEARCH PERSON',
 	'DETAIL_USER' : 'DETAIL USER',
 	'SELECT_EMPRESA' : 'SELECT ENTERPRISE',
+	'GESTION_NOTICIAS' : 'News management',
+	'SEGURO_ELIMINAR_NOT' : 'Are you sure that you want to delete this new?',
+	'DELETE_NEW' : 'DELETE NEW',
+	'EDIT_NEW' : 'EDIT NEW',
+	'DETAIL_NEW' : 'DETAIL NEW',
+	'SEARCH_NOTICIA' : 'SEARCH NEW',
+	'ADD_NOTICIA' : 'ADD NEW',
+	'QUITAR_EMPRESA' : 'Do you want to disassociate yourself from a company?',
+	'GESTION_EMPRESAS' : 'Enterprises management',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -293,6 +311,13 @@ arrayEN={
 	'PERSONA_EDITADA_OK': 'PERSON MODIFIED CORRECTLY',
 	'PERSONA_MODIFICADA' : 'The person has been modified correctly',
 	'PERSONA_ELIMINADA_OK' : 'PERSON DELETED CORRECTLY',
-	'PERSONA_ELIMINADA' : 'The person has been deleted correctly'
+	'PERSONA_ELIMINADA' : 'The person has been deleted correctly',
+	'NOTICIA_ELIMINADA_OK' : 'NEW DELETED CORRECTLY',
+	'NOTICIA_EDITADA_OK' : 'NEW MODIFIED CORRECTLY',
+	'NOTICIA_GUARDADA_OK' : 'NEW SAVED CORRECTLY',
+	'NOTICIA_ENCONTRADA' : 'The new has been found correctly',
+	'NOTICIA_BORRADA' : 'The new has been deleted correctly',
+	'NOTICIA_MODIFICADA' : 'The new has been modified correctly',
+	'NOTICIA_GUARDADA' : 'The new has been saved correctly'
 
 }

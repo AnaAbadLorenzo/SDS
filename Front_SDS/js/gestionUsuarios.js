@@ -210,22 +210,40 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
      if(accion == "buscarModal"){
      	rol = escogeRol($("#selectRoles").val());
      	
-        var data = {
+      if(rol == ""){
+         var rolUser = {
+          idRol : 0,
+          rolName : "",
+          rolDescription : "",
+          borradoRol : ""
+        };
+      }else{
+        rolUser = rol;
+      }
+
+      var data = {
+          dniUsuario : $('#dniUsuario').val(),
           usuario : $('#loginUsuario').val(),
-        	rol : rol,
+        	rol : rolUser,
         	inicio : calculaInicio(numeroPagina, tamanhoPaginaUsuario),
         	tamanhoPagina : tamanhoPaginaUsuario
         }
     
     }else if(accion == "buscarPaginacion"){
-    	 if(getCookie('usuarioBuscar') == null || getCookie('usuarioBuscar') == ""){
+      if(getCookie('dniUsuario') == null || getCookie('dniUsuario') == ""){
+        var dniU = "";
+      }else{
+        var dniU = getCookie('dniUsuario');
+      }
+    	
+      if(getCookie('usuarioBuscar') == null || getCookie('usuarioBuscar') == ""){
         var usuarioBuscar = "";
       }else{
         var usuarioBuscar = getCookie('usuarioBuscar');
       }
 
       if(getCookie('rol') == null || getCookie('rol') == ""){
-        var rol = {
+        var rolUser = {
           idRol : 0,
           rolName : "",
           rolDescription : "",
@@ -237,8 +255,9 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       }
 
       var data = {
+          dniUsuario : dniU,
           usuario : usuarioBuscar,
-        	rol : rol,
+        	rol : rolUser,
         	inicio : calculaInicio(numeroPagina, tamanhoPaginaUsuario),
         	tamanhoPagina : tamanhoPaginaUsuario
         }
@@ -262,6 +281,7 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
 		    }
 
 	    var data = {
+          dniUsuario : getCookie('dniUsuario'),
 	        usuario : getCookie('usuario'),
 	        rol : rol,
 	        inicio : 0,
@@ -478,7 +498,7 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
       cargarPermisosFuncUsuario();
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["loginUsuario"];
+      let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
       resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
@@ -533,7 +553,7 @@ async function editRolUsuario(){
 
      respuestaAjaxKO(res.code);
 
-    let idElementoList = ["loginUsuario"];
+    let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
     resetearFormulario("formularioGenerico", idElementoList);
 
     setLang(getCookie('lang'));
@@ -552,7 +572,7 @@ async function deleteUser(){
 
     respuestaAjaxOK("USER_ELIMINADO_OK", res.code);
 
-    let idElementoList = ["dniUsuario", "loginUsuario", "esActivo"];
+   let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
@@ -564,7 +584,7 @@ async function deleteUser(){
      $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["dniUsuario", "loginUsuario", "esActivo"];
+     let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
       resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
@@ -617,7 +637,7 @@ async function detalleUsuario(){
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    let idElementoList = ["dniUsuario", "loginUsuario", "esActivo"];
+    let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     $('#loginUsuario').val(getCookie('usuario'));
@@ -638,7 +658,7 @@ async function detalleUsuario(){
 
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["dniUsuario", "loginUsuario", "esActivo"];
+      let idElementoList = ["dniUsuario", "loginUsuario", "selectRoles", "esActivo"];
       resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
@@ -749,14 +769,15 @@ function showBuscarUsuario() {
   var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_USUARIO', 'javascript:buscarUsuario(0,' + tamanhoPaginaUsuario + ', \'buscarModal\'' + ', \'PaginadorNo\');', 'return comprobarBuscarUsuario();');
-  cambiarOnBlurCampos('return comprobarUserSearch(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')', '');
+  cambiarOnBlurCampos('return comprobarDNISearch(\'dniUsuario\', \'errorFormatoDni\', \'dniPersona\')',
+    'return comprobarUserSearch(\'loginUsuario\', \'errorFormatoLoginUsuario\', \'loginUsuario\')', '');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchUsuario', 'Buscar');
   setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelLoginUsuario').attr('hidden', true);
   $('#labelDNI').attr('hidden', true);
-  $('#dniUsuario').attr('hidden', true);
+  $('#dniUsuario').attr('hidden', false);
   $('#labelActivo').attr('hidden', true);
   $('#esActivo').attr('hidden', true);
 

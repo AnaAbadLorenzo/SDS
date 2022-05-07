@@ -282,8 +282,10 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        $('#itemPaginacion').attr('hidden', false);
       }
       var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
       

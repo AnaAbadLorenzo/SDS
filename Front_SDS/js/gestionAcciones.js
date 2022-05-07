@@ -147,6 +147,41 @@ function eliminarAccionAjaxPromesa(){
   });
 }
 
+/** Función para editar una accion con ajax y promesa **/
+function editarAccionAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var accionEntity = {
+      idAccion : $("input[name=idAccion]").val(),
+      nombreAccion : $("#nombreAccion").val(),
+      descripAccion : $("#descripcionAccion").val(),
+      borradoAccion : 0
+    }
+    
+    var data = {
+      usuario : getCookie('usuario'),
+      accion : accionEntity
+    }
+
+      $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxEditAccion,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'ACCION_MODIFICADA') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /*Función que comprueba los permisos del usuario sobre la accion*/
 async function cargarPermisosFuncAccion(){
   await cargarPermisosFuncAccionAjaxPromesa()
@@ -750,8 +785,8 @@ function showEditar(nombreAccion, descripAccion, idAccion) {
     eliminarReadonly(campos);
     mostrarObligatorios(obligatorios);
     habilitaCampos(campos);
-    deshabilitaCampos(["nombreFuncionalidad"]);
-
+    deshabilitaCampos(["nombreAccion"]);
+    anadirReadonly(["nombreAccion"]);
 }
 
 /** Función para eliminar una accion **/

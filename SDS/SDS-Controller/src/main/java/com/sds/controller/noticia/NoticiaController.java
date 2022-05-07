@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.NoticiasEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -39,6 +40,15 @@ public class NoticiaController {
 	@ResponseBody
 	public RespEntity buscarTodos() {
 		final ReturnBusquedas<NoticiasEntity> resultado = noticiasService.buscarTodos();
+
+		return new RespEntity(RespCode.NOTICIAS_LISTADAS, resultado);
+	}
+
+	@PostMapping(value = "/listarNoticiasPaginacion")
+	@ResponseBody
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<NoticiasEntity> resultado = noticiasService.buscarTodosPaginacion(paginacion.getInicio(),
+				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.NOTICIAS_LISTADAS, resultado);
 	}
@@ -112,12 +122,16 @@ public class NoticiaController {
 
 	@PostMapping(value = "/borrarNoticia")
 	@ResponseBody
-	public RespEntity borrarNoticia(@RequestBody final NoticiasEntity noticia) {
+	public RespEntity borrarNoticia(@RequestBody final Noticia noticia) {
 		try {
 			noticiasService.deleteNoticia(noticia);
 			return new RespEntity(RespCode.NOTICIA_BORRADA, noticia);
 		} catch (final NoticiaNoExisteException e) {
 			return new RespEntity(RespCode.NOTICIA_NO_EXISTE_EXCEPTION, noticia);
+		} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+			return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, noticia);
+		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, noticia);
 		}
 	}
 

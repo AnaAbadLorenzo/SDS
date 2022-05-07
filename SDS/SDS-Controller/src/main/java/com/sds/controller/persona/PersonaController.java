@@ -48,42 +48,54 @@ public class PersonaController {
 	@PostMapping(value = "/listarPersonas")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		try {
+			final ReturnBusquedas<PersonaEntity> personas = personaService.buscarTodos(paginacion.getInicio(),
+					paginacion.getTamanhoPagina());
 
-		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarTodos(paginacion.getInicio(),
-				paginacion.getTamanhoPagina());
-
-		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+			return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, parseException);
+		}
 	}
 
 	@PostMapping(value = "/listarPersona")
 	@ResponseBody
 	public RespEntity buscarPersona(@RequestBody final PersonaBuscar persona) {
+		try {
+			final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersona(persona.getDniP(),
+					persona.getNombreP(), persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
+					persona.getTelefonoP(), persona.getEmailP(), persona.getInicio(), persona.getTamanhoPagina());
 
-		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersona(persona.getDniP(),
-				persona.getNombreP(), persona.getApellidosP(), persona.getFechaNacP(), persona.getDireccionP(),
-				persona.getTelefonoP(), persona.getEmailP(), persona.getInicio(), persona.getTamanhoPagina());
-
-		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+			return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, parseException);
+		}
 	}
 
 	@PostMapping(value = "/listarPersonaPorUsuario")
 	@ResponseBody
 	public RespEntity buscarPersonaByUsuario(@RequestBody final PersonaUsuarioBuscar personaUsuario) {
+		try {
+			final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersonaByUsuario(
+					personaUsuario.getUsuario(), personaUsuario.getInicio(), personaUsuario.getTamanhoPagina());
 
-		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersonaByUsuario(
-				personaUsuario.getUsuario(), personaUsuario.getInicio(), personaUsuario.getTamanhoPagina());
-
-		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+			return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, parseException);
+		}
 	}
 
 	@PostMapping(value = "/listarPersonasEliminadas")
 	@ResponseBody
 	public RespEntity buscarPersonasEliminadas(@RequestBody final Paginacion paginacion) {
+		try {
+			final ReturnBusquedas<PersonaEntity> personas = personaService
+					.buscarPersonasEliminadas(paginacion.getInicio(), paginacion.getTamanhoPagina());
 
-		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarPersonasEliminadas(paginacion.getInicio(),
-				paginacion.getTamanhoPagina());
-
-		return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+			return new RespEntity(RespCode.PERSONAS_LISTADAS, personas);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, parseException);
+		}
 	}
 
 	@PostMapping(value = "/eliminarPersona")

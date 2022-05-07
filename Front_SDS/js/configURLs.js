@@ -71,6 +71,12 @@ var urlPeticionAjaxListarLogAcciones = urlComun + urlLog + "/listarLogsAccionesU
 
 /**Urls noticias*/
 var urlPeticionAjaxListarTodasNoticias = urlComun + urlNoticia +"/listarNoticias";
+var urlPeticionAjaxListarTodasNoticiasPaginacion = urlComun + urlNoticia +"/listarNoticiasPaginacion";
+var urlPeticionAjaxListarNoticia = urlComun + urlNoticia + "/listarNoticia";
+var urlPeticionAjaxBorrarNoticia = urlComun + urlNoticia + "/borrarNoticia";
+var urlPeticionAjaxEditarNoticia = urlComun + urlNoticia + "/modificarNoticia";
+var urlPeticionAjaxAddNoticia = urlComun + urlNoticia + "/noticia";
+
 
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";

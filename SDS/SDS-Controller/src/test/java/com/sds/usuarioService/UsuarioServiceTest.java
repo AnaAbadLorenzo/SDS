@@ -68,7 +68,7 @@ public class UsuarioServiceTest {
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
 		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
 		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
@@ -80,7 +80,7 @@ public class UsuarioServiceTest {
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
 		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
 		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}
@@ -92,7 +92,7 @@ public class UsuarioServiceTest {
 		final UsuarioEntity usuarioEntity = usuario.getUsuarioEntity();
 
 		final ReturnBusquedas<UsuarioEntity> usuarioEncontrado = usuarioService
-				.buscarUsuario(usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
+				.buscarUsuario(usuarioEntity.getDniUsuario(), usuarioEntity.getUsuario(), usuarioEntity.getRol(), 0, 1);
 
 		assertNotNull(usuarioEncontrado.getListaBusquedas());
 	}

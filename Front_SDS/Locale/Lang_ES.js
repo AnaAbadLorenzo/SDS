@@ -34,6 +34,9 @@ arrayES={
 	'ACTIVO' : 'Activo',
 	'USUARIOACTIVO' : 'Activo',
 	'ROL' : 'Rol',
+	'TITULO_NOTICIA' : 'Título noticia',
+	'TEXTO_NOTICIA' : 'Texto noticia',
+	'FECHA_NOTICIA' : 'Fecha noticia',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -166,6 +169,13 @@ arrayES={
 	'ACCION_DESCRIPTION_VACIO' : 'Descripción de la acción vacía',
 	'ACCION_DESCRIPTION_ALFABETICO_INCORRECTO' : 'La descripción de la acción solo puede contener letras y espacios',
 	'ACCION_DESCRIPTION_MENOR_QUE_3' : 'La descripción de la acción tiene menos de 3 caracteres',
+	'TITULO_NOTICIA_VACIO' : 'Título noticia vacío',
+	'TITULO_NOTICIA_ALFABETICO_INCORRECTO' : 'El título de la noticia sólo puede contener letras y espacios',
+	'TITULO_NOTICIA_MENOR_QUE_3' : 'El título de la noticia tiene menos de 3 caracteres',
+	'TITULO_NOTICIA_MAYOR_QUE_256' : 'El título de la noticia tiene más de 256 caracteres',
+	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
+	'TEXTO_NOTICIA_ALFABETICO_INCORRECTO' : 'El texto de la noticia sólo puede contener letras y espacios',
+	'TEXTO_NOTICIA_MENOR_QUE_3' : 'El texto de la noticia tiene menos de 3 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -241,6 +251,15 @@ arrayES={
 	'SEARCH_PERSONA' : 'BUSCAR PERSONA',
 	'DETAIL_USER' : 'DETALLE USUARIO',
 	'SELECT_EMPRESA' : 'SELECCIONA EMPRESA',
+	'GESTION_NOTICIAS' : 'Gestión de noticias',
+	'SEGURO_ELIMINAR_NOT' : '¿Estás seguro de que quieres eliminar esta noticia?',
+	'DELETE_NEW' : 'ELIMINAR NOTICIA',
+	'EDIT_NEW' : 'EDITAR NOTICIA',
+	'DETAIL_NEW' : 'DETALLE NOTICIA',
+	'SEARCH_NOTICIA' : 'BUSCAR NOTICIA',
+	'ADD_NOTICIA' : 'AÑADIR NOTICIA',
+	'QUITAR_EMPRESA' : '¿Quieres desasociarte de una empresa?',
+
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -293,6 +312,12 @@ arrayES={
 	'PERSONA_EDITADA_OK': 'PERSONA MODIFICADA CORRECTAMENTE',
 	'PERSONA_MODIFICADA' : 'La persona se ha modificado correctamente',
 	'PERSONA_ELIMINADA_OK' : 'PERSONA ELIMINADA CORRECTAMENTE',
-	'PERSONA_ELIMINADA' : 'La persona ha sido eliminada correctamente'
-
+	'PERSONA_ELIMINADA' : 'La persona ha sido eliminada correctamente',
+	'NOTICIA_ELIMINADA_OK' : 'NOTICIA ELIMINADA CORRECTAMENTE',
+	'NOTICIA_EDITADA_OK' : 'NOTICIA EDITADA CORRECTAMENTE',
+	'NOTICIA_GUARDADA_OK' : 'NOTICIA GUARDADA CORRECTAMENTE',
+	'NOTICIA_ENCONTRADA' : 'La noticia se ha encontrado correctamente',
+	'NOTICIA_BORRADA' : 'La noticia se ha borrado correctamente',
+	'NOTICIA_MODIFICADA' : 'La noticia se ha editado correctamente',
+	'NOTICIA_GUARDADA' : 'La noticia se ha guardado correctamente'
 }

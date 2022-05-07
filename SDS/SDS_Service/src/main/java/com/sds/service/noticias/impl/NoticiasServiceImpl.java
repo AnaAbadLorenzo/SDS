@@ -68,7 +68,33 @@ public class NoticiasServiceImpl implements NoticiasService {
 			}
 		}
 
-		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, 0, toret.size(), 0);
+		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, toret.size(),
+				noticias.size(), 0);
+
+		return result;
+	}
+
+	@Override
+	public ReturnBusquedas<NoticiasEntity> buscarTodosPaginacion(final int inicio, final int tamanhoPagina) {
+
+		final List<NoticiasEntity> toret = new ArrayList<>();
+
+		final List<NoticiasEntity> noticias = entityManager.createNamedQuery(Constantes.NOTICIA_FINDALL_QUERY)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = noticiasRepository.numberFindAllNoticias();
+
+		if (!noticias.isEmpty()) {
+			for (final NoticiasEntity noticia : noticias) {
+				final NoticiasEntity noticiaToret = new NoticiasEntity(noticia.getIdNoticia(),
+						noticia.getTituloNoticia(), noticia.getTextoNoticia(), noticia.getFechaNoticia());
+
+				toret.add(noticiaToret);
+			}
+		}
+
+		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, numberTotalResults,
+				toret.size(), inicio);
 
 		return result;
 	}
@@ -78,6 +104,7 @@ public class NoticiasServiceImpl implements NoticiasService {
 			final Date fechaNoticia, final int inicio, final int tamanhoPagina) {
 
 		final List<NoticiasEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<NoticiasEntity> noticias = entityManager.createNamedQuery(Constantes.NOTICIA_FINDNOTICIA_QUERY)
 				.setParameter(Constantes.TITULO_NOTICIA, tituloNoticia)
@@ -97,8 +124,12 @@ public class NoticiasServiceImpl implements NoticiasService {
 			}
 		}
 
-		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, numberTotalResults,
-				toret.size(), inicio);
+		datosBusqueda.add(Constantes.TITULO_NOTICIA + Constantes.DOS_PUNTOS + tituloNoticia);
+		datosBusqueda.add(Constantes.TEXTO_NOTICIA + Constantes.DOS_PUNTOS + textoNoticia);
+		datosBusqueda.add(Constantes.FECHA_NOTICIA + Constantes.DOS_PUNTOS + fechaNoticia);
+
+		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, datosBusqueda,
+				numberTotalResults, toret.size(), inicio);
 
 		return result;
 	}
@@ -108,6 +139,7 @@ public class NoticiasServiceImpl implements NoticiasService {
 			final int inicio, final int tamanhoPagina) {
 
 		final List<NoticiasEntity> toret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<NoticiasEntity> noticias = entityManager
 				.createNamedQuery(Constantes.NOTICIA_FINDNOTICIA_WITHOUTDATE_QUERY)
@@ -126,8 +158,11 @@ public class NoticiasServiceImpl implements NoticiasService {
 			}
 		}
 
-		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, numberTotalResults,
-				toret.size(), inicio);
+		datosBusqueda.add(Constantes.TITULO_NOTICIA + Constantes.DOS_PUNTOS + tituloNoticia);
+		datosBusqueda.add(Constantes.TEXTO_NOTICIA + Constantes.DOS_PUNTOS + textoNoticia);
+
+		final ReturnBusquedas<NoticiasEntity> result = new ReturnBusquedas<NoticiasEntity>(toret, datosBusqueda,
+				numberTotalResults, toret.size(), inicio);
 
 		return result;
 	}
@@ -251,20 +286,54 @@ public class NoticiasServiceImpl implements NoticiasService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String deleteNoticia(final NoticiasEntity noticia) throws NoticiaNoExisteException {
+	public String deleteNoticia(final Noticia noticia)
+			throws NoticiaNoExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
-		final Boolean noticiaValida = validaciones.comprobarNoticiaBlank(noticia);
+		String resultadoLog = StringUtils.EMPTY;
+		String resultadoLog2 = StringUtils.EMPTY;
+		final Boolean noticiaValida = validaciones.comprobarNoticiaBlank(noticia.getNoticiaEntity());
 
 		if (noticiaValida) {
-			final Optional<NoticiasEntity> noticiaBD = noticiasRepository.findById(noticia.getIdNoticia());
+			final Optional<NoticiasEntity> noticiaBD = noticiasRepository
+					.findById(noticia.getNoticiaEntity().getIdNoticia());
 
 			if (!noticiaBD.isPresent()) {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(noticia.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.NOTICIA_NO_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.NOTICIA_NO_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
 				throw new NoticiaNoExisteException(CodeMessageErrors.NOTICIA_NO_EXISTE_EXCEPTION.getCodigo(),
 						CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.NOTICIA_NO_EXISTE_EXCEPTION.getCodigo()));
 			} else {
-				noticiasRepository.deleteNoticia(noticia.getIdNoticia());
+				noticiasRepository.deleteNoticia(noticia.getNoticiaEntity().getIdNoticia());
 				noticiasRepository.flush();
+				resultado = Constantes.OK;
+
+				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(noticia.getUsuario(),
+						Constantes.ACCION_ELIMINAR_NOTICIA, noticiaBD.toString());
+
+				resultadoLog = logServiceImpl.guardarLogAcciones(logAccionesBuscar);
+
+				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(noticia.getUsuario(),
+						Constantes.ACCION_ELIMINAR_NOTICIA, noticia.getNoticiaEntity().toString());
+
+				resultadoLog2 = logServiceImpl.guardarLogAcciones(logAcciones);
+
+				if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)
+						|| CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog2)) {
+					throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+				}
+
 				resultado = Constantes.OK;
 			}
 		}

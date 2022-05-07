@@ -175,7 +175,7 @@ input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:h
   width: 36% !important;
 }
 
-.registro-submit, .recuperarcontrasena-submit {
+.formmodal-container-submit {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
@@ -186,7 +186,7 @@ input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:h
   cursor: pointer;
 }
 
-.registro-submit:hover, .recuperarcontrasena-submit:hover {
+.formmodal-container-submit:hover {
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
   background-color: #673AB7;
@@ -202,9 +202,29 @@ input[type=date]:hover, input[type=tel]:hover, input[type=email]:hover, select:h
   transition: opacity ease 0.5s;
 } 
 
+.formmodal-container p, .labelForm {
+  font-family: Roboto;
+  color: #311B92;
+  display:  block;
+}
+
 
 .modal-dialog{
   pointer-events: visible !important;
+}
+
+.form-check-label {
+    font-size: 14px !important;
+}
+
+.preguntasEmpresa {
+    font-size: 14px !important;
+}
+
+.quitarEmpresa {
+  margin-top: 20px !important;
+  color:  #4527A0;
+  font-family: Roboto;
 }
 
 form fieldset {

@@ -14,11 +14,11 @@ import com.sds.model.UsuarioEntity;
 @Component
 public interface UsuarioRepository extends JpaRepository<UsuarioEntity, String> {
 
-	List<UsuarioEntity> findUsuario(final String usuario, final RolEntity rol);
+	List<UsuarioEntity> findUsuario(final String dniUsuario, final String usuario, final RolEntity rol);
 
-	Integer numberFindUsuarioWithRol(String usuario, RolEntity rol);
+	Integer numberFindUsuarioWithRol(final String dniUsuario, final String usuario, final RolEntity rol);
 
-	Integer numberFindUsuario(final String usuario);
+	Integer numberFindUsuario(final String dniUsuario, final String usuario);
 
 	List<UsuarioEntity> findUsuariosEliminados();
 

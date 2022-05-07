@@ -33,6 +33,9 @@ arrayGA={
 	'ACTIVO' : 'Activo',
 	'USUARIOACTIVO' : 'Activo',
 	'ROL' : 'Rol',
+	'TITULO_NOTICIA' : 'Título noticia',
+	'TEXTO_NOTICIA' : 'Texto noticia',
+	'FECHA_NOTICIA' : 'Data noticia',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -164,6 +167,13 @@ arrayGA={
 	'ACCION_DESCRIPTION_VACIO' : 'Descripción da acción vacía',
 	'ACCION_DESCRIPTION_ALFABETICO_INCORRECTO' : 'A descripción da acción só pode conter letras e espacios',
 	'ACCION_DESCRIPTION_MENOR_QUE_3' : 'A descripción da acción ten menos de 3 caracteres',
+	'TITULO_NOTICIA_VACIO' : 'Título noticia vacío',
+	'TITULO_NOTICIA_ALFABETICO_INCORRECTO' : 'O título da noticia só pode conter letras e espacios',
+	'TITULO_NOTICIA_MENOR_QUE_3' : 'O título da noticia ten menos de 3 caracteres',
+	'TITULO_NOTICIA_MAYOR_QUE_256' : 'O título da noticia ten máis de 256 caracteres',
+	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
+	'TEXTO_NOTICIA_ALFABETICO_INCORRECTO' : 'O texto da noticia só pode conter letras e espacios',
+	'TEXTO_NOTICIA_MENOR_QUE_3' : 'O texto da noticia ten menos de 3 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -239,6 +249,14 @@ arrayGA={
 	'SEARCH_PERSONA' : 'BUSCAR PERSOA',
 	'DETAIL_USER' : 'DETALLE USUARIO',
 	'SELECT_EMPRESA' : 'SELECCIONA EMPRESA',
+	'GESTION_NOTICIAS' : 'Xestión de noticias',
+	'SEGURO_ELIMINAR_NOT' : 'Estás seguro de que queres eliminar esta noticia?',
+	'DELETE_NEW' : 'ELIMINAR NOTICIA',
+	'EDIT_NEW' : 'EDITAR NOTICIA',
+	'DETAIL_NEW' : 'DETALLE NOTICIA',
+	'SEARCH_NOTICIA' : 'BUSCAR NOTICIA',
+	'ADD_NOTICIA' : 'ENGADIR NOTICIA',
+	'QUITAR_EMPRESA' : 'Queres desasociarte de unha empresa?',
 
 
 	//Acciones
@@ -292,6 +310,13 @@ arrayGA={
 	'PERSONA_EDITADA_OK': 'PERSOA EDITADA CORRECTAMENTE',
 	'PERSONA_MODIFICADA' : 'A persoa modificouse correctamente',
 	'PERSONA_ELIMINADA_OK' : 'PERSOA ELIMINADA CORRECTAMENTE',
-	'PERSONA_ELIMINADA' : 'A persoa eliminouse correctamente'
+	'PERSONA_ELIMINADA' : 'A persoa eliminouse correctamente',
+	'NOTICIA_ELIMINADA_OK' : 'NOTICIA ELIMINADA CORRECTAMENTE',
+	'NOTICIA_EDITADA_OK' : 'NOTICIA EDITADA CORRECTAMENTE',
+	'NOTICIA_GUARDADA_OK' : 'NOTICIA GARDADA CORRECTAMENTE',
+	'NOTICIA_ENCONTRADA' : 'A noticia encontrouse correctamente',
+	'NOTICIA_BORRADA' : 'A noticia borrouse correctamente',
+	'NOTICIA_MODIFICADA' : 'A noticia editouse correctamente',
+	'NOTICIA_GUARDADA' : 'A noticia gardouse correctamente'
 	
 }

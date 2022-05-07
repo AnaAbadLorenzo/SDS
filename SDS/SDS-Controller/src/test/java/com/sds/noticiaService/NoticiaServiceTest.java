@@ -104,7 +104,7 @@ public class NoticiaServiceTest {
 		final ReturnBusquedas<NoticiasEntity> noticiaEliminar = noticiasService.buscarNoticiaSinFecha(
 				noticia.getNoticiaEntity().getTituloNoticia(), noticia.getNoticiaEntity().getTextoNoticia(), 0, 1);
 
-		noticiasService.deleteNoticia(noticiaEliminar.getListaBusquedas().get(0));
+		noticiasService.deleteNoticia(new Noticia(noticia.getUsuario(), noticiaEliminar.getListaBusquedas().get(0)));
 	}
 
 	@Test
@@ -173,7 +173,7 @@ public class NoticiaServiceTest {
 
 		assertEquals(Constantes.OK, respuesta);
 
-		noticiasService.deleteNoticia(noticiaGuardar.getNoticiaEntity());
+		noticiasService.deleteNoticia(new Noticia(noticiaGuardar.getUsuario(), noticiaGuardar.getNoticiaEntity()));
 
 	}
 
@@ -240,7 +240,8 @@ public class NoticiaServiceTest {
 				noticiaGuardar.getNoticiaEntity().getTituloNoticia(),
 				noticiaGuardar.getNoticiaEntity().getTextoNoticia(), 0, 1);
 
-		final String respuesta = noticiasService.deleteNoticia(noticiaEliminar.getListaBusquedas().get(0));
+		final String respuesta = noticiasService
+				.deleteNoticia(new Noticia(noticiaGuardar.getUsuario(), noticiaEliminar.getListaBusquedas().get(0)));
 
 		assertEquals(Constantes.OK, respuesta);
 
@@ -253,7 +254,7 @@ public class NoticiaServiceTest {
 
 		final Noticia noticiaGuardar = generateNoticia(Constantes.URL_JSON_NOTICIA_DATA, Constantes.NOTICIA_NO_EXISTE);
 
-		noticiasService.deleteNoticia(noticiaGuardar.getNoticiaEntity());
+		noticiasService.deleteNoticia(new Noticia(noticiaGuardar.getUsuario(), noticiaGuardar.getNoticiaEntity()));
 
 	}
 

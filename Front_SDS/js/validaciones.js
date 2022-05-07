@@ -162,7 +162,7 @@ function comprobarUserSearch(idElemento, idElementoError, campo) {
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarLetrasNumeros(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 45, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -188,7 +188,7 @@ function comprobarUserLogSearch(idElemento, idElementoError, campo) {
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarUserLog(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 45, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -391,7 +391,7 @@ function comprobarEmailSearch(idElemento, idElementoError, campo) {
         
    if (validaNoVacio(idElemento, idElementoError, campo)) {
 			if (comprobarFormatoEmail(idElemento, idElementoError, campo)) {
-				if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
 					validacionKO(idElemento, idElementoError);
 					return false;
 				}else{
@@ -433,8 +433,8 @@ function comprobarDNISearch(idElemento, idElementoError, campo) {
 	document.getElementById(idElemento).style.borderWidth = "2px";
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (comprobarFormatoDNI(idElemento, idElementoError, campo) && comprobarEnhe(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+		if (comprobarEnhe(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -477,7 +477,7 @@ function comprobarNombreSearch(idElemento, idElementoError, campo){
 
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 56, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -596,7 +596,7 @@ function comprobarApellidosSearch(idElemento, idElementoError, campo) {
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 128, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -636,7 +636,7 @@ function comprobarFechaInicioSearch(idElemento, idElementoError, campo){
 
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 8, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -661,7 +661,7 @@ function comprobarFechaFinSearch(idElemento, idElementoError, campo){
 
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 8, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -721,7 +721,7 @@ function comprobarDireccionSearch(idElemento, idElementoError, campo){
 
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarLetrasNumerosCaracteres(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 128, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -761,7 +761,7 @@ function comporbarTelefonoSearch(idElemento, idElementoError, campo){
 
 		if (validaNoVacio(idElemento, idElementoError, campo)) {
 			if (comprobarSoloNumeros(idElemento, idElementoError, campo)) {
-				if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+				if(!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)){
 					validacionKO(idElemento, idElementoError);
 					return false;
 				}else{
@@ -814,7 +814,7 @@ function comprobarNombreRolSearch(idElemento, idElementoError, campo) {
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 32, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -862,7 +862,7 @@ function comprobarNombreFuncionalidadSearch(idElemento, idElementoError, campo) 
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -910,7 +910,7 @@ function comprobarNombreAccionSearch(idElemento, idElementoError, campo) {
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -984,7 +984,8 @@ function comprobarBuscarAccion(){
 
 /** Función que verifica el formulario de buscar usuario **/
 function comprobarBuscarUsuario(){
-	if(comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario')){
+	if(comprobarDNISearch('dniUsuario', 'errorFormatoDni', 'dniPersona') && 
+		comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario')){
 		return true;
 	}else{
 		return false;
@@ -1010,6 +1011,109 @@ function comprobarEditRolUsuario(){
 		}else{
 			return false;
 		}	
+}
+
+/** Función que valida el título de la noticia **/
+function comprobarTituloNoticia(idElemento, idElementoError, campo){
+	if(validaNoVacio(idElemento, idElementoError, campo) && 
+		comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) 
+		&& comprobarTamañoMaximo(idElemento, 255, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Función que valida el texto de la noticia **/
+function comprobarTextoNoticia(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && 
+		comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Función que valida el añadir de la noticia **/
+function comprobarAddNoticia(){
+	if(comprobarTituloNoticia('tituloNoticia', 'errorFormatoTituloNoticia', 'tituloNoticia') &&
+		comprobarTextoNoticia('textoNoticia', 'errorFormatoTextoNoticia', 'textoNoticia')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/** Función que valida el editar de la noticia **/
+function comprobarEditNoticia(){
+	if(comprobarTituloNoticia('tituloNoticia', 'errorFormatoTituloNoticia', 'tituloNoticia') &&
+		comprobarTextoNoticia('textoNoticia', 'errorFormatoTextoNoticia', 'textoNoticia')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/** Función que valida el titulo de la noticia al buscar **/
+function comprobarTituloNoticiaSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 256, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/** Función que valida el texto de la noticia al buscar **/
+function comprobarTextoNoticiaSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true
+	}
+}
+
+/** Función que valida el buscar de la noticia **/
+function comprobarBuscarNoticia(){
+	if(comprobarTituloNoticiaSearch('tituloNoticia', 'errorFormatoTituloNoticia', 'tituloNoticia') &&
+		comprobarTextoNoticiaSearch('textoNoticia', 'errorFormatoTextoNoticia', 'textoNoticia')){
+		return true;
+	}else{
+		return false;
+	}
 }
 
 
@@ -1095,6 +1199,12 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			case 'fecha':
 				codigo = "FECHA_NACIMIENTO_VACIA";
 			break;
+			case 'tituloNoticia':
+				codigo = "TITULO_NOTICIA_VACIO";
+			break;
+			case 'textoNoticia':
+				codigo = "TEXTO_NOTICIA_VACIO";
+			break;  
 		}
 		addCodeError(idElementoError, codigo);
 	    return false;
@@ -1181,6 +1291,12 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			case 'descripcionAccion' : 
 				codigo = "ACCION_DESCRIPTION_MENOR_QUE_3";
 			break;
+			case 'tituloNoticia' :
+				codigo = "TITULO_NOTICIA_MENOR_QUE_3";
+			break;
+			case "textoNoticia" :
+				codigo = "TEXTO_NOTICIA_MENOR_QUE_3";
+			break;
 
 		}
 		addCodeError(idElementoError, codigo);
@@ -1260,6 +1376,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			break;
 			case 'fecha' : 
 				codigo = "FECHA_NACIMIENTO_MAYOR_QUE_8";
+			break;
+			case 'tituloNoticia' :
+				codigo = "TITULO_NOTICIA_MAYOR_QUE_256";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -1446,6 +1565,12 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			break;
 			case 'descripcionAccion' : 
 				codigo = "ACCION_DESCRIPTION_ALFABETICO_INCORRECTO";
+			break;
+			case 'tituloNoticia' :
+				codigo = "TITULO_NOTICIA_ALFABETICO_INCORRECTO";
+			break;
+			case 'textoNoticia' :
+				codigo = "TEXTO_NOTICIA_ALFABETICO_INCORRECTO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

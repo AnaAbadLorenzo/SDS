@@ -70,7 +70,7 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public ReturnBusquedas<PersonaEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
+	public ReturnBusquedas<PersonaEntity> buscarTodos(final int inicio, final int tamanhoPagina) throws ParseException {
 
 		final List<PersonaEntity> personas = entityManager.createNamedQuery(Constantes.PERSONA_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
@@ -121,7 +121,8 @@ public class PersonaServiceImpl implements PersonaService {
 	}
 
 	@Override
-	public ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(final int inicio, final int tamanhoPagina) {
+	public ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(final int inicio, final int tamanhoPagina)
+			throws ParseException {
 
 		final List<PersonaEntity> personas = entityManager.createNamedQuery(Constantes.PERSONA_QUERY_FINDELIMINADAS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
@@ -174,7 +175,7 @@ public class PersonaServiceImpl implements PersonaService {
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarPersona(final String dniP, final String nombreP,
 			final String apellidosP, final Date fechaNacP, final String direccionP, final String telefonoP,
-			final String emailP, final int inicio, final int tamanhoPagina) {
+			final String emailP, final int inicio, final int tamanhoPagina) throws ParseException {
 
 		final List<PersonaEntity> toret = new ArrayList<>();
 		List<PersonaEntity> personasToret = new ArrayList<>();
@@ -251,7 +252,7 @@ public class PersonaServiceImpl implements PersonaService {
 
 	@Override
 	public ReturnBusquedas<PersonaEntity> buscarPersonaByUsuario(final String usuario, final int inicio,
-			final int tamanhoPagina) {
+			final int tamanhoPagina) throws ParseException {
 
 		final List<PersonaEntity> toret = new ArrayList<>();
 		List<PersonaEntity> personasToret = new ArrayList<>();
@@ -573,6 +574,14 @@ public class PersonaServiceImpl implements PersonaService {
 				personaEntity.setFechaNacP(personaEntity.getFechaNacP());
 				personaEntity.setTelefonoP(personaEntity.getTelefonoP());
 
+				if (persona.getEmpresa() != null) {
+					final Optional<EmpresaEntity> empresaBD = empresaRepository
+							.findById(persona.getEmpresa().getIdEmpresa());
+					personaEntity.setEmpresa(empresaBD.get());
+				} else {
+					personaEntity.setEmpresa(null);
+				}
+
 				persona.setPersona(personaEntity);
 
 				personaRepository.saveAndFlush(personaEntity);
@@ -633,9 +642,7 @@ public class PersonaServiceImpl implements PersonaService {
 		} else {
 
 			personaEntity.setBorradoP(0);
-
 			persona.setPersona(personaEntity);
-
 			resultado = modificarPersona(persona);
 
 		}
@@ -674,29 +681,36 @@ public class PersonaServiceImpl implements PersonaService {
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
 					CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
 		} else {
-			final Optional<EmpresaEntity> empresaBD = empresaRepository.findById(empresaEntity.getIdEmpresa());
+			if (personaEmpresa.getEmpresa() != null) {
+				final Optional<EmpresaEntity> empresaBD = empresaRepository.findById(empresaEntity.getIdEmpresa());
 
-			if (!empresaBD.isPresent()) {
-				logExcepciones = util.generarDatosLogExcepciones(personaEmpresa.getUsuario(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
-						CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+				if (!empresaBD.isPresent()) {
+					logExcepciones = util.generarDatosLogExcepciones(personaEmpresa.getUsuario(),
+							CodeMessageErrors
+									.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+							CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
 
-				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new EmpresaNoEncontradaException(
+							CodeMessageErrors
+									.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
+							CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
+				} else {
+					person.get().setEmpresa(empresaBD.get());
+					personaRepository.saveAndFlush(person.get());
+
+					resultado = Constantes.OK;
 				}
-
-				throw new EmpresaNoEncontradaException(
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo()),
-						CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
 			} else {
-				person.get().setEmpresa(empresaBD.get());
+				person.get().setEmpresa(null);
 				personaRepository.saveAndFlush(person.get());
-
 				resultado = Constantes.OK;
 			}
 

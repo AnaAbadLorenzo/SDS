@@ -17,6 +17,8 @@ public interface NoticiasService {
 
 	ReturnBusquedas<NoticiasEntity> buscarTodos();
 
+	ReturnBusquedas<NoticiasEntity> buscarTodosPaginacion(final int inicio, final int tamanhoPagina);
+
 	ReturnBusquedas<NoticiasEntity> buscarNoticiaSinFecha(final String tituloNoticia, final String textoNoticia,
 			final int inicio, final int tamanhoPagina);
 
@@ -26,5 +28,6 @@ public interface NoticiasService {
 	String modificarNoticia(final Noticia noticia)
 			throws LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, NoticiaNoExisteException;
 
-	String deleteNoticia(final NoticiasEntity noticia) throws NoticiaNoExisteException;
+	String deleteNoticia(final Noticia noticia)
+			throws NoticiaNoExisteException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException;
 }

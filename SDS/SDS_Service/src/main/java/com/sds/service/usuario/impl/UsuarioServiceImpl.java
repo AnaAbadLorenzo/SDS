@@ -104,26 +104,28 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String usuario, final RolEntity rol, final int inicio,
-			final int tamanhoPagina) {
+	public ReturnBusquedas<UsuarioEntity> buscarUsuario(final String dniUsuario, final String usuario,
+			final RolEntity rol, final int inicio, final int tamanhoPagina) {
 		final List<UsuarioEntity> toret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 		List<UsuarioEntity> usuarios = new ArrayList<>();
 		Integer numberTotalResults = 0;
 
-		if (rol.getIdRol() == 0) {
+		if (rol == null) {
 			usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDUSUARIO)
-					.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.ROL, StringUtils.EMPTY)
-					.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+					.setParameter(Constantes.DNI_USUARIO, dniUsuario).setParameter(Constantes.USUARIO, usuario)
+					.setParameter(Constantes.ROL, StringUtils.EMPTY).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+					.getResultList();
 
-			numberTotalResults = usuarioRepository.numberFindUsuario(usuario);
+			numberTotalResults = usuarioRepository.numberFindUsuario(dniUsuario, usuario);
 
 		} else {
 			usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDUSUARIO)
-					.setParameter(Constantes.USUARIO, usuario).setParameter(Constantes.ROL, rol).setFirstResult(inicio)
-					.setMaxResults(tamanhoPagina).getResultList();
+					.setParameter(Constantes.DNI_USUARIO, dniUsuario).setParameter(Constantes.USUARIO, usuario)
+					.setParameter(Constantes.ROL, rol).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+					.getResultList();
 
-			numberTotalResults = usuarioRepository.numberFindUsuarioWithRol(usuario, rol);
+			numberTotalResults = usuarioRepository.numberFindUsuarioWithRol(dniUsuario, usuario, rol);
 		}
 
 		if (!usuarios.isEmpty()) {
@@ -145,7 +147,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}
 
 		datosBusqueda.add(Constantes.USUARIOBUSCAR + Constantes.DOS_PUNTOS + usuario);
-		datosBusqueda.add(Constantes.ROL + Constantes.DOS_PUNTOS + rol.getRolName());
+		if (rol != null) {
+			datosBusqueda.add(Constantes.ROL + Constantes.DOS_PUNTOS + rol.getRolName());
+		}
 
 		final ReturnBusquedas<UsuarioEntity> result = new ReturnBusquedas<UsuarioEntity>(toret, datosBusqueda,
 				numberTotalResults, toret.size(), inicio);

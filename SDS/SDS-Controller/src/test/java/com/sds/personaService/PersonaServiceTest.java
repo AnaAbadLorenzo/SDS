@@ -179,7 +179,7 @@ public class PersonaServiceTest {
 	}
 
 	@Test
-	public void PersonaService_buscarTodos() throws IOException, ParseException {
+	public void PersonaService_buscarTodos() throws IOException, ParseException, java.text.ParseException {
 
 		final ReturnBusquedas<PersonaEntity> personas = personaService.buscarTodos(0, 3);
 
@@ -206,8 +206,9 @@ public class PersonaServiceTest {
 				persona.getPersonaEntity().getDireccionP(), persona.getPersonaEntity().getTelefonoP(),
 				persona.getPersonaEntity().getEmailP(), 0, 1);
 
-		final ReturnBusquedas<UsuarioEntity> usuarioBD = usuarioService
-				.buscarUsuario(persona.getUsuarioEntity().getUsuario(), persona.getUsuarioEntity().getRol(), 0, 1);
+		final ReturnBusquedas<UsuarioEntity> usuarioBD = usuarioService.buscarUsuario(
+				persona.getUsuarioEntity().getDniUsuario(), persona.getUsuarioEntity().getUsuario(),
+				persona.getUsuarioEntity().getRol(), 0, 1);
 
 		usuarioService.deleteUsuario(usuarioBD.getListaBusquedas().get(0));
 		personaService.deletePersona(personaBD.getListaBusquedas().get(0));
@@ -312,8 +313,9 @@ public class PersonaServiceTest {
 
 		assertEquals(respuesta, Constantes.OK);
 
-		final ReturnBusquedas<UsuarioEntity> usuario = usuarioService
-				.buscarUsuario(persona.getUsuarioEntity().getUsuario(), persona.getUsuarioEntity().getRol(), 0, 1);
+		final ReturnBusquedas<UsuarioEntity> usuario = usuarioService.buscarUsuario(
+				persona.getUsuarioEntity().getDniUsuario(), persona.getUsuarioEntity().getUsuario(),
+				persona.getUsuarioEntity().getRol(), 0, 1);
 
 		usuarioService.deleteUsuario(usuario.getListaBusquedas().get(0));
 		personaService.deletePersona(persona.getPersonaEntity());
@@ -331,7 +333,7 @@ public class PersonaServiceTest {
 	}
 
 	@Test
-	public void PersonaService_buscarTodosEliminados() throws IOException, ParseException {
+	public void PersonaService_buscarTodosEliminados() throws IOException, ParseException, java.text.ParseException {
 		final ReturnBusquedas<PersonaEntity> personasEliminadas = personaService.buscarPersonasEliminadas(0, 3);
 
 		assertNotNull(personasEliminadas.getListaBusquedas());

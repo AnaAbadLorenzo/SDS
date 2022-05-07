@@ -26,10 +26,10 @@
 	<script type="text/javascript" src="js/gestionRoles.js"></script>
 	<script type="text/javascript" src="js/gestionUsuarios.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
-    	<script type="text/javascript" src="Locale/Lang_EN.js"></script>
-    	<script type="text/javascript" src="Locale/Lang_ES.js"></script>
-    	<script type="text/javascript" src="Locale/Lang_GA.js"></script>	
-    	<link rel="shortcut icon" type="image/png" href="images/iconoIndex2.png">
+    <script type="text/javascript" src="Locale/Lang_EN.js"></script>
+    <script type="text/javascript" src="Locale/Lang_ES.js"></script>
+    <script type="text/javascript" src="Locale/Lang_GA.js"></script>	
+    <link rel="shortcut icon" type="image/png" href="images/iconoIndex2.png">
     <title>Sustainable Development Society</title>
 </head>
 <body onload="(async ()=>{
@@ -49,10 +49,10 @@
 
 	<h1 class="gestion GESTION_USUARIOS"></h1>
 
-	<div id="cardUsuario" class="card card-user">
+	<div id="cardUsuario" class="card card-user" hidden>
 	</div>
   	
-  	<div id="infoAdmin">
+  	<div id="infoAdmin" hidden>
   		<div class="cabecera">      
 		    <div id="divListarUsuario" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarUsuario()" class="tooltip searchIcon">
 		        <img id="btnListarUsuarios" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Usuario" />
@@ -219,7 +219,7 @@
 		  	</div>
 		</div>
 	</div>
-
+</div>
 	<div id="footer"></div>
 </body>
 </html>

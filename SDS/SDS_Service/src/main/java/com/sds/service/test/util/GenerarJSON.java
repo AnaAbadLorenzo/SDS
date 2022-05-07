@@ -32,8 +32,10 @@ public class GenerarJSON {
 		final JSONObject jsonUsuarioContrasenaVacios = new Util().getDatosJson(fichero, nombrePrueba);
 
 		final Login login = new Login();
-		login.setPasswdUsuario(jsonUsuarioContrasenaVacios.get(Constantes.PASSWD_USUARIO).toString());
-		login.setUsuario(jsonUsuarioContrasenaVacios.get(Constantes.USUARIO).toString());
+		login.setPasswdUsuario(
+				new String((jsonUsuarioContrasenaVacios.get(Constantes.PASSWD_USUARIO).toString()).getBytes("UTF-8")));
+		login.setUsuario(
+				new String((jsonUsuarioContrasenaVacios.get(Constantes.USUARIO).toString()).getBytes("UTF-8")));
 
 		return login;
 
@@ -45,8 +47,9 @@ public class GenerarJSON {
 		final JSONObject jsonRecuperarPass = new Util().getDatosJson(fichero, nombrePrueba);
 
 		final RecuperarPass recuperarPass = new RecuperarPass();
-		recuperarPass.setUsuario(jsonRecuperarPass.get(Constantes.USUARIO).toString());
-		recuperarPass.setEmailUsuario(jsonRecuperarPass.get(Constantes.EMAILP).toString());
+		recuperarPass.setUsuario(new String((jsonRecuperarPass.get(Constantes.USUARIO).toString()).getBytes("UTF-8")));
+		recuperarPass
+				.setEmailUsuario(new String((jsonRecuperarPass.get(Constantes.EMAILP).toString()).getBytes("UTF-8")));
 
 		return recuperarPass;
 
@@ -65,7 +68,8 @@ public class GenerarJSON {
 		boolean caracEspeciales = false;
 
 		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		final String date = CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.FECHANACP).toString(),
+		final String date = CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.FECHANACP).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY);
 		Date fecha = null;
 		java.sql.Date fechaSql = null;
@@ -98,25 +102,32 @@ public class GenerarJSON {
 
 		}
 
-		persona.setDniP(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.DNIP).toString(), StringUtils.EMPTY));
-		persona.setNombreP(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.NOMBREP).toString(), StringUtils.EMPTY));
-		persona.setApellidosP(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.APELLIDOSP).toString(), StringUtils.EMPTY));
+		persona.setDniP(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.DNIP).toString()).getBytes("UTF-8")), StringUtils.EMPTY));
+		persona.setNombreP(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.NOMBREP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		persona.setApellidosP(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.APELLIDOSP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 		persona.setFechaNacP(fechaSql);
-		persona.setDireccionP(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.DIRECCIONP).toString(), StringUtils.EMPTY));
-		persona.setEmailP(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.EMAILP).toString(), StringUtils.EMPTY));
-		persona.setTelefonoP(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.TELEFONOP).toString(), StringUtils.EMPTY));
+		persona.setDireccionP(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.DIRECCIONP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		persona.setEmailP(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.EMAILP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		persona.setTelefonoP(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.TELEFONOP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 
-		usuario.setDniUsuario(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.DNIP).toString(), StringUtils.EMPTY));
-		usuario.setUsuario(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
-		usuario.setPasswdUsuario(CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.PASSWD_USUARIO).toString(),
+		usuario.setDniUsuario(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.DNIP).toString()).getBytes("UTF-8")), StringUtils.EMPTY));
+		usuario.setUsuario(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.USUARIO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		usuario.setPasswdUsuario(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.PASSWD_USUARIO).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
 
 		final RolEntity rol = new RolEntity(2, "usuario", "Contendra a todos los usuarios registrados de la aplicacion",
@@ -125,14 +136,17 @@ public class GenerarJSON {
 		usuario.setRol(rol);
 		persona.setUsuario(usuario);
 
-		empresa.setCifEmpresa(
-				CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.CIF_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setCifEmpresa(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.CIF_EMPRESA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 		empresa.setNombreEmpresa(CommonUtilities.coalesce(jsonRegistroVacios.get(Constantes.NOMBRE_EMPRESA).toString(),
 				StringUtils.EMPTY));
-		empresa.setDireccionEmpresa(CommonUtilities
-				.coalesce(jsonRegistroVacios.get(Constantes.DIRECCION_EMPRESA).toString(), StringUtils.EMPTY));
-		empresa.setTelefonoEmpresa(CommonUtilities
-				.coalesce(jsonRegistroVacios.get(Constantes.TELEFONO_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setDireccionEmpresa(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.DIRECCION_EMPRESA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		empresa.setTelefonoEmpresa(CommonUtilities.coalesce(
+				new String((jsonRegistroVacios.get(Constantes.TELEFONO_EMPRESA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 
 		registro.setDatosPersona(persona);
 		registro.setDatosUsuario(usuario);
@@ -140,8 +154,9 @@ public class GenerarJSON {
 
 		if (fichero.equals(Constantes.URL_JSON_REGISTRAR_ACCIONES)
 				|| fichero.equals(Constantes.URL_JSON_REGISTRAR_DATA)) {
-			registro.setSeleccionarEmpresa(CommonUtilities
-					.coalesce(jsonRegistroVacios.get(Constantes.SELECCIONAR_EMPRESA).toString(), StringUtils.EMPTY));
+			registro.setSeleccionarEmpresa(CommonUtilities.coalesce(
+					new String((jsonRegistroVacios.get(Constantes.SELECCIONAR_EMPRESA).toString()).getBytes("UTF-8")),
+					StringUtils.EMPTY));
 		}
 
 		return registro;
@@ -153,14 +168,17 @@ public class GenerarJSON {
 
 		final RolEntity rol = new RolEntity();
 
-		if (jsonRolVacio.get(Constantes.ROL_ID).toString().equals(StringUtils.EMPTY)) {
+		if (new String((jsonRolVacio.get(Constantes.ROL_ID).toString()).getBytes("UTF-8")).equals(StringUtils.EMPTY)) {
 			rol.setIdRol(0);
 		} else {
-			rol.setIdRol(Integer.parseInt(jsonRolVacio.get(Constantes.ROL_ID).toString()));
+			rol.setIdRol(
+					Integer.parseInt(new String((jsonRolVacio.get(Constantes.ROL_ID).toString()).getBytes("UTF-8"))));
 		}
-		rol.setRolName(CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ROL_NAME).toString(), StringUtils.EMPTY));
-		rol.setRolDescription(
-				CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ROL_DESCRIPTION).toString(), StringUtils.EMPTY));
+		rol.setRolName(CommonUtilities.coalesce(
+				new String((jsonRolVacio.get(Constantes.ROL_NAME).toString()).getBytes("UTF-8")), StringUtils.EMPTY));
+		rol.setRolDescription(CommonUtilities.coalesce(
+				new String((jsonRolVacio.get(Constantes.ROL_DESCRIPTION).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 
 		rol.setBorradoRol(0);
 
@@ -175,14 +193,18 @@ public class GenerarJSON {
 
 		final AccionEntity accion = new AccionEntity();
 
-		if (jsonRolVacio.get(Constantes.ACCION_ID).toString().equals(StringUtils.EMPTY)) {
+		if (new String((jsonRolVacio.get(Constantes.ACCION_ID).toString()).getBytes("UTF-8"))
+				.equals(StringUtils.EMPTY)) {
 			accion.setIdAccion(0);
 		} else {
-			accion.setIdAccion(Integer.parseInt(jsonRolVacio.get(Constantes.ACCION_ID).toString()));
+			accion.setIdAccion(Integer
+					.parseInt(new String((jsonRolVacio.get(Constantes.ACCION_ID).toString()).getBytes("UTF-8"))));
 		}
-		accion.setNombreAccion(
-				CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ACCION_NAME).toString(), StringUtils.EMPTY));
-		accion.setDescripAccion(CommonUtilities.coalesce(jsonRolVacio.get(Constantes.ACCION_DESCRIPTION).toString(),
+		accion.setNombreAccion(CommonUtilities.coalesce(
+				new String((jsonRolVacio.get(Constantes.ACCION_NAME).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		accion.setDescripAccion(CommonUtilities.coalesce(
+				new String((jsonRolVacio.get(Constantes.ACCION_DESCRIPTION).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
 
 		accion.setBorradoAccion(0);
@@ -198,16 +220,19 @@ public class GenerarJSON {
 
 		final FuncionalidadEntity funcionalidad = new FuncionalidadEntity();
 
-		if (jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString().equals(StringUtils.EMPTY)) {
+		if (new String((jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString()).getBytes("UTF-8"))
+				.equals(StringUtils.EMPTY)) {
 			funcionalidad.setIdFuncionalidad(0);
 		} else {
-			funcionalidad.setIdFuncionalidad(
-					Integer.parseInt(jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString()));
+			funcionalidad.setIdFuncionalidad(Integer.parseInt(new String(
+					(jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_ID).toString()).getBytes("UTF-8"))));
 		}
-		funcionalidad.setNombreFuncionalidad(CommonUtilities
-				.coalesce(jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_NAME).toString(), StringUtils.EMPTY));
-		funcionalidad.setDescripFuncionalidad(CommonUtilities.coalesce(
-				jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_DESCRIPTION).toString(), StringUtils.EMPTY));
+		funcionalidad.setNombreFuncionalidad(CommonUtilities.coalesce(
+				new String((jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_NAME).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		funcionalidad.setDescripFuncionalidad(CommonUtilities.coalesce(new String(
+				(jsonFuncionalidadVacio.get(Constantes.FUNCIONALIDAD_DESCRIPTION).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 
 		funcionalidad.setBorradoFuncionalidad(0);
 
@@ -222,11 +247,14 @@ public class GenerarJSON {
 
 		final UsuarioEntity usuario = new UsuarioEntity();
 
-		usuario.setDniUsuario(
-				CommonUtilities.coalesce(jsonUsuarioVacio.get(Constantes.USUARIO_DNI).toString(), StringUtils.EMPTY));
-		usuario.setUsuario(
-				CommonUtilities.coalesce(jsonUsuarioVacio.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
-		usuario.setPasswdUsuario(CommonUtilities.coalesce(jsonUsuarioVacio.get(Constantes.PASSWD_USUARIO).toString(),
+		usuario.setDniUsuario(CommonUtilities.coalesce(
+				new String((jsonUsuarioVacio.get(Constantes.USUARIO_DNI).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		usuario.setUsuario(CommonUtilities.coalesce(
+				new String((jsonUsuarioVacio.get(Constantes.USUARIO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		usuario.setPasswdUsuario(CommonUtilities.coalesce(
+				new String((jsonUsuarioVacio.get(Constantes.PASSWD_USUARIO).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
 
 		usuario.setBorradoUsuario(0);
@@ -251,7 +279,8 @@ public class GenerarJSON {
 		boolean caracEspeciales = false;
 
 		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		final String date = CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.FECHANACP).toString(),
+		final String date = CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.FECHANACP).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY);
 		Date fecha = null;
 		java.sql.Date fechaSql = null;
@@ -284,18 +313,24 @@ public class GenerarJSON {
 
 		}
 
-		persona.setDniP(CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.DNIP).toString(), StringUtils.EMPTY));
-		persona.setNombreP(
-				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.NOMBREP).toString(), StringUtils.EMPTY));
-		persona.setApellidosP(
-				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.APELLIDOSP).toString(), StringUtils.EMPTY));
+		persona.setDniP(CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.DNIP).toString()).getBytes("UTF-8")), StringUtils.EMPTY));
+		persona.setNombreP(CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.NOMBREP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		persona.setApellidosP(CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.APELLIDOSP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 		persona.setFechaNacP(fechaSql);
-		persona.setDireccionP(
-				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.DIRECCIONP).toString(), StringUtils.EMPTY));
-		persona.setEmailP(
-				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.EMAILP).toString(), StringUtils.EMPTY));
-		persona.setTelefonoP(
-				CommonUtilities.coalesce(jsonPersonaVacios.get(Constantes.TELEFONOP).toString(), StringUtils.EMPTY));
+		persona.setDireccionP(CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.DIRECCIONP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		persona.setEmailP(CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.EMAILP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		persona.setTelefonoP(CommonUtilities.coalesce(
+				new String((jsonPersonaVacios.get(Constantes.TELEFONOP).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 		persona.setBorradoP(0);
 		persona.setEmpresa(empresa);
 
@@ -309,14 +344,18 @@ public class GenerarJSON {
 
 		final EmpresaEntity empresa = new EmpresaEntity();
 
-		empresa.setCifEmpresa(
-				CommonUtilities.coalesce(jsonEmpresaVacio.get(Constantes.CIF_EMPRESA).toString(), StringUtils.EMPTY));
-		empresa.setNombreEmpresa(CommonUtilities.coalesce(jsonEmpresaVacio.get(Constantes.NOMBRE_EMPRESA).toString(),
+		empresa.setCifEmpresa(CommonUtilities.coalesce(
+				new String((jsonEmpresaVacio.get(Constantes.CIF_EMPRESA).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
-		empresa.setDireccionEmpresa(CommonUtilities
-				.coalesce(jsonEmpresaVacio.get(Constantes.DIRECCION_EMPRESA).toString(), StringUtils.EMPTY));
-		empresa.setTelefonoEmpresa(CommonUtilities
-				.coalesce(jsonEmpresaVacio.get(Constantes.TELEFONO_EMPRESA).toString(), StringUtils.EMPTY));
+		empresa.setNombreEmpresa(CommonUtilities.coalesce(
+				new String((jsonEmpresaVacio.get(Constantes.NOMBRE_EMPRESA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		empresa.setDireccionEmpresa(CommonUtilities.coalesce(
+				new String((jsonEmpresaVacio.get(Constantes.DIRECCION_EMPRESA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		empresa.setTelefonoEmpresa(CommonUtilities.coalesce(
+				new String((jsonEmpresaVacio.get(Constantes.TELEFONO_EMPRESA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 		empresa.setBorradoEmpresa(0);
 
 		return empresa;
@@ -333,19 +372,24 @@ public class GenerarJSON {
 
 		final NoticiasEntity noticia = new NoticiasEntity();
 
-		if (jsonNoticiaVacio.get(Constantes.NOTICIA_ID).toString().equals(StringUtils.EMPTY)) {
+		if (new String((jsonNoticiaVacio.get(Constantes.NOTICIA_ID).toString()).getBytes("UTF-8"))
+				.equals(StringUtils.EMPTY)) {
 			noticia.setIdNoticia(0);
 		} else {
-			noticia.setIdNoticia(Integer.parseInt(CommonUtilities
-					.coalesce(jsonNoticiaVacio.get(Constantes.NOTICIA_ID).toString(), StringUtils.EMPTY)));
+			noticia.setIdNoticia(Integer.parseInt(CommonUtilities.coalesce(
+					new String((jsonNoticiaVacio.get(Constantes.NOTICIA_ID).toString()).getBytes("UTF-8")),
+					StringUtils.EMPTY)));
 		}
-		noticia.setTituloNoticia(CommonUtilities.coalesce(jsonNoticiaVacio.get(Constantes.TITULO_NOTICIA).toString(),
+		noticia.setTituloNoticia(CommonUtilities.coalesce(
+				new String((jsonNoticiaVacio.get(Constantes.TITULO_NOTICIA).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
-		noticia.setTextoNoticia(
-				CommonUtilities.coalesce(jsonNoticiaVacio.get(Constantes.TEXTO_NOTICIA).toString(), StringUtils.EMPTY));
+		noticia.setTextoNoticia(CommonUtilities.coalesce(
+				new String((jsonNoticiaVacio.get(Constantes.TEXTO_NOTICIA).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 
 		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		final String date = CommonUtilities.coalesce(jsonNoticiaVacio.get(Constantes.FECHA_NOTICIA).toString(),
+		final String date = CommonUtilities.coalesce(
+				new String((jsonNoticiaVacio.get(Constantes.FECHA_NOTICIA).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY);
 		Date fecha = null;
 		java.sql.Date fechaSql = null;
@@ -391,15 +435,19 @@ public class GenerarJSON {
 
 		final ObjetivoEntity objetivo = new ObjetivoEntity();
 
-		if (jsonObjetivoVacio.get(Constantes.OBJETIVO_ID).toString().equals(StringUtils.EMPTY)) {
+		if (new String((jsonObjetivoVacio.get(Constantes.OBJETIVO_ID).toString()).getBytes("UTF-8"))
+				.equals(StringUtils.EMPTY)) {
 			objetivo.setIdObjetivo(0);
 		} else {
-			objetivo.setIdObjetivo(Integer.parseInt(jsonObjetivoVacio.get(Constantes.OBJETIVO_ID).toString()));
+			objetivo.setIdObjetivo(Integer.parseInt(
+					new String((jsonObjetivoVacio.get(Constantes.OBJETIVO_ID).toString()).getBytes("UTF-8"))));
 		}
-		objetivo.setNombreObjetivo(CommonUtilities
-				.coalesce(jsonObjetivoVacio.get(Constantes.NOMBRE_OBJETIVO).toString(), StringUtils.EMPTY));
-		objetivo.setDescripObjetivo(CommonUtilities
-				.coalesce(jsonObjetivoVacio.get(Constantes.DESCRIPCION_OBJETIVO).toString(), StringUtils.EMPTY));
+		objetivo.setNombreObjetivo(CommonUtilities.coalesce(
+				new String((jsonObjetivoVacio.get(Constantes.NOMBRE_OBJETIVO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		objetivo.setDescripObjetivo(CommonUtilities.coalesce(
+				new String((jsonObjetivoVacio.get(Constantes.DESCRIPCION_OBJETIVO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
 
 		objetivo.setBorradoObjetivo(0);
 

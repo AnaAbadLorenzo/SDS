@@ -19,14 +19,15 @@ import com.sds.service.persona.model.PersonaAsociarEmpresa;
 
 public interface PersonaService {
 
-	ReturnBusquedas<PersonaEntity> buscarTodos(int inicio, int tamanhoPagina);
+	ReturnBusquedas<PersonaEntity> buscarTodos(int inicio, int tamanhoPagina) throws ParseException;
 
-	ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(int inicio, int tamanhoPagina);
+	ReturnBusquedas<PersonaEntity> buscarPersonasEliminadas(int inicio, int tamanhoPagina) throws ParseException;
 
 	ReturnBusquedas<PersonaEntity> buscarPersona(String dniP, String nombreP, String apellidosP, Date fechaNacP,
-			String direccionP, String telefonoP, String emailP, int inicio, int tamanhoPagina);
+			String direccionP, String telefonoP, String emailP, int inicio, int tamanhoPagina) throws ParseException;
 
-	ReturnBusquedas<PersonaEntity> buscarPersonaByUsuario(String usuario, int inicio, int tamanhoPagina);
+	ReturnBusquedas<PersonaEntity> buscarPersonaByUsuario(String usuario, int inicio, int tamanhoPagina)
+			throws ParseException;
 
 	String añadirPersona(final PersonaAnadir personaAñadir) throws PersonaYaExisteException, UsuarioYaExisteException,
 			ParseException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,

@@ -402,11 +402,11 @@ function construyeFila(entidad, fila) {
 
         case 'PERSONA':
         	if(fila.empresa == null){
-        		var filaEmpresaCif = " - ";
-        		var filaEmpresaNombre = " - ";
-        		var filaEmpresaDireccion = " - ";
-        		var filaEmpresaTelefono = " - ";
-        		var filaEmpresa = " - ";
+        		var filaEmpresaCif = "";
+        		var filaEmpresaNombre = "";
+        		var filaEmpresaDireccion = "";
+        		var filaEmpresaTelefono = "";
+        		var filaEmpresa = "";
         	}else{
         		var filaEmpresaCif = fila.empresa.cifEmpresa;
         		var filaEmpresaNombre = fila.empresa.nombreEmpresa;
@@ -417,25 +417,42 @@ function construyeFila(entidad, fila) {
         	var fechaNacimiento = (fila.fechaNacP).split('T');
         	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + fechaNacimiento[0] + "'"
         	, "'" + fila.direccionP + "'", "'" + fila.telefonoP + "'", "'" + fila.emailP + "'", "'" + fila.borradoP + "'",
-        	"'" + fila.usuario.usuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
+        	"'" + fila.usuario.usuario + "'", "'" + fila.usuario.rol.rolName + "'", "'" + fila.usuario.borradoUsuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
         	, "'" + filaEmpresaTelefono + "'"];
 			
-
+        	if(filaEmpresaNombre == ""){
+        		var filaEmpresaNombreTabla = " - ";
+        	}else{
+        		var filaEmpresaNombreTabla = fila.empresa.nombreEmpresa;
+        	}
 			filaTabla = '<tr class="impar"> <td>' + fila.dniP + 
                 '</td> <td>' + fila.nombreP + 
                 '</td> <td>' + fila.apellidosP  + 
                 '</td> <td>' + fila.emailP + 
                 '</td> <td>' + fila.usuario.usuario + 
-                '</td> <td>' + filaEmpresaNombre;
+                '</td> <td>' + filaEmpresaNombreTabla;
+        break;
+
+        case 'NOTICIA':
+        var fechaNoticia = (fila.fechaNoticia).split('T');
+			atributosFunciones = ["'" + fila.tituloNoticia + "'", "'" + fila.textoNoticia + "'", "'" + fechaNoticia[0] + "'", "'" + fila.idNoticia + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.tituloNoticia + 
+                '</td> <td>' + fila.textoNoticia +
+                '</td> <td>' + fechaNoticia[0];
         break;
 
 	};
 
+	if(entidad == 'PERSONA'){
+		var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
+                               ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
+	}else{
+		var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
+                               ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
+	}
 
 	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
                                ')" alt="Detalle"/><span class="tooltiptext iconDetailUser ICONO_DETALLE">Detalle</span></div>';
-    var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
-                               ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
     var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar eliminarPermiso" src="images/delete.png" data-toggle="" data-target="" onclick="showEliminar(' + atributosFunciones + 
                                ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
 
@@ -497,32 +514,31 @@ function construyeFilaEliminados(entidad, fila) {
 
         case 'PERSONA':
         	if(fila.empresa == null){
+        		var filaEmpresaCif = " - ";
+        		var filaEmpresaNombre = " - ";
+        		var filaEmpresaDireccion = " - ";
+        		var filaEmpresaTelefono = " - ";
         		var filaEmpresa = " - ";
         	}else{
-        		var filaEmpresa = fila.empresa.nombreEmpresa;
+        		var filaEmpresaCif = fila.empresa.cifEmpresa;
+        		var filaEmpresaNombre = fila.empresa.nombreEmpresa;
+        		var filaEmpresaDireccion = fila.empresa.direccionEmpresa;
+        		var filaEmpresaTelefono = fila.empresa.telefonoEmpresa;
         	}
-        	var fechaNacimiento = (fila.fechaNacP).split('T');
 
+        	var fechaNacimiento = (fila.fechaNacP).split('T');
         	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + fechaNacimiento[0] + "'"
         	, "'" + fila.direccionP + "'", "'" + fila.telefonoP + "'", "'" + fila.emailP + "'", "'" + fila.borradoP + "'",
-        	"'" + fila.usuario.usuario + "'", "'" + filaEmpresa + "'"];
-			var personaActiva = "";
-			if(fila.borradoP == 0){
-				personaActiva = "Sí";
-			}else{
-				personaActiva = "No";
-			}
+        	"'" + fila.usuario.usuario + "'", "'" + fila.usuario.rol.rolName + "'", "'" + fila.usuario.borradoUsuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
+        	, "'" + filaEmpresaTelefono + "'"];
+			
 
-			filaTabla = '<tr class="impar"> <td>' + fila.dniP+ 
+			filaTabla = '<tr class="impar"> <td>' + fila.dniP + 
                 '</td> <td>' + fila.nombreP + 
-                '</td> <td>' + fila.apellidosP +
-                '</td> <td>' + fila.direccionP +
-                '</td> <td>' + fechaNacimiento[0] +
-                '</td> <td>' + fila.telefonoP +
+                '</td> <td>' + fila.apellidosP  + 
                 '</td> <td>' + fila.emailP + 
-                '</td> <td>' + personaActiva + 
                 '</td> <td>' + fila.usuario.usuario + 
-                '</td> <td>' + filaEmpresa;
+                '</td> <td>' + filaEmpresaNombre;
         break;
 
 	};
@@ -621,6 +637,10 @@ function cargarHref(dato){
 		case 'Log de acciones':
 			href="GestionLogAcciones.html";
 		break;
+
+		case 'Gestión de noticias':
+			href="GestionDeNoticias.html";
+		break;
 	}
 
 	return href;
@@ -659,6 +679,10 @@ function cargarClass(dato){
 
 		case 'Log de excepciones':
 			href="GESTION_LOG_EXCEPCIONES";
+		break;
+
+		case 'Gestión de noticias':
+			href = "GESTION_NOTICIAS";
 		break;
 	}
 
@@ -873,6 +897,14 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'PERSONA':
 			cargarPermisosFuncPersona();
 		break;
+		
+		case 'NOTICIA':
+			cargarPermisosFuncNoticia();
+		break;
+
+		case 'EMPRESA':
+			cargarPermisosFuncEmpresa();
+		break;
 	}
 	
 }
@@ -906,6 +938,10 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'PERSONA':
 			cargarPermisosFuncPersona();
+		break;
+
+		case 'NOTICIA':
+			cargarPermisosFuncNoticia();
 		break;
 
 	}
@@ -965,6 +1001,19 @@ function muestraFormatos(idFormato){
 	});
 }
 
+/** Función que oculta los datos de la empresa en el formulario **/
+function ocultarDatos(idsElementos){
+	idsElementos.forEach(function(idElemento){
+		$('#' + idElemento).attr('hidden', true);
+	});
+}
+
+/** Función que muestra los datos de la empresa en el formulario **/
+function mostrarDatos(idsElementos){
+	idsElementos.forEach(function(idElemento){
+		$('#' + idElemento).attr('hidden', true);
+	})
+}
 
 $(document).ready(function(){
   $('.iconCerrar').on('click', function(){

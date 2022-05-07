@@ -540,9 +540,9 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 		String resultado = StringUtils.EMPTY;
 
 		if (usuario.getRol().getIdRol() == -1) {
-			usuarioRepository.findUsuario(usuario.getUsuario(), new RolEntity());
+			usuarioRepository.findUsuario(usuario.getDniUsuario(), usuario.getUsuario(), new RolEntity());
 		} else {
-			usuarioRepository.findUsuario(usuario.getUsuario(), usuario.getRol());
+			usuarioRepository.findUsuario(usuario.getDniUsuario(), usuario.getUsuario(), usuario.getRol());
 		}
 
 		resultado = CodigosMensajes.BUSCAR_USUARIO_CORRECTO + " - " + Mensajes.BUSCAR_USUARIO_CORRECTO;
@@ -553,7 +553,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 	private String eliminarUsuario(final UsuarioEntity usuario) throws java.text.ParseException {
 		final UsuarioEntity usuarioBD = usuarioRepository.findByDni(usuario.getDniUsuario());
 		String resultado = StringUtils.EMPTY;
-		final SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 		if (usuarioBD == null) {
 			final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
@@ -608,7 +608,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			final UsuarioEntity usuarioBD = usuarioRepository.findByDni(usuario.getDniUsuario());
 
 			if (usuarioBD == null) {
-				final SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 				final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
 
@@ -709,7 +709,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			final UsuarioEntity usuarioBD = usuarioRepository.findByDni(usuario.getDniUsuario());
 
 			if (usuarioBD == null) {
-				final SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 				final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
 
@@ -759,7 +759,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 	private String reactivarUsuario(final UsuarioEntity usuario) throws java.text.ParseException {
 		final UsuarioEntity usuarioBD = usuarioRepository.findByDni(usuario.getDniUsuario());
 		String resultado = StringUtils.EMPTY;
-		final SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 		if (usuarioBD == null) {
 			final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
