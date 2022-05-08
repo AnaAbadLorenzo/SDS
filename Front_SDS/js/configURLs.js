@@ -47,6 +47,7 @@ var urlPeticionAjaxReactivarRol = urlComun + urlRol + "/reactivarRol";
 
 /**Urls funcionalidades*/
 var urlPeticionAjaxListadoFuncionalidades = urlComun + urlFuncionalidad + "/listarFuncionalidades";
+var urlPeticionAjaxListadoFuncionalidadesSinP = urlComun + urlFuncionalidad + "/listarFuncionalidadesSinP";
 var urlPeticionAjaxAddFuncionalidad = urlComun + urlFuncionalidad + urlFuncionalidad;
 var urlPeticionAjaxListarFuncionalidad = urlComun + urlFuncionalidad + "/listarFuncionalidad";
 var urlPeticionAjaxListadoFuncionalidadesEliminadas = urlComun + urlFuncionalidad + "/listarFuncionalidadesEliminadas";
@@ -62,6 +63,9 @@ var urlPeticionAjaxDeleteAccion = urlComun + urlAccion + "/eliminarAccion";
 var urlPeticionAjaxListadoAcciones = urlComun + urlAccion + "/listarAcciones";
 var urlPeticionAjaxListadoAccionesEliminadas = urlComun + urlAccion + "/listarAccionesEliminadas";
 var urlPeticionAjaxReactivarAccion = urlComun + urlAccion + "/reactivarAccion";
+var urlPeticionAjaxCargarPermiso = urlComun + urlAccion + "/obtenerPermisos";
+var urlPeticionAjarAsignarAccion = urlComun + urlAccion + "/asignarAccion";
+var urlPeticionAjarDesasignarAccion = urlComun + urlAccion + "/desasignarAccion";
 
 /**Urls logs*/
 var urlPeticionAjaxListarTodosLogExcepciones = urlComun + urlLog + "/listarTodosLogsExcepciones";

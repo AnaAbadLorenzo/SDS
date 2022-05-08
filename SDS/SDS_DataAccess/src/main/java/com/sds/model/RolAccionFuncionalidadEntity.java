@@ -18,7 +18,8 @@ import com.sds.model.compositekey.RolAccionFuncionalidadKey;
 		@NamedQuery(name = "RolAccionFuncionalidadEntity.findAccionByIdFuncionality", query = "SELECT r.idAccion FROM RolAccionFuncionalidadEntity r WHERE r.idFuncionalidad =: idFuncionalidad"),
 		@NamedQuery(name = "RolAccionFuncionalidadEntity.findByAccionId", query = "SELECT r FROM RolAccionFuncionalidadEntity r WHERE r.idAccion =: idAccion"),
 		@NamedQuery(name = "RolAccionFuncionalidadEntity.findAllPermissions", query = "SELECT r FROM RolAccionFuncionalidadEntity r"),
-		@NamedQuery(name = "RolAccionFuncionalidadEntity.numberFindAllPermissions", query = "SELECT COUNT(r) FROM RolAccionFuncionalidadEntity r") })
+		@NamedQuery(name = "RolAccionFuncionalidadEntity.numberFindAllPermissions", query = "SELECT COUNT(r) FROM RolAccionFuncionalidadEntity r"),
+		@NamedQuery(name = "RolAccionFuncionalidadEntity.findByFuncionalityId", query = "SELECT r FROM RolAccionFuncionalidadEntity r WHERE r.idFuncionalidad =:idFuncionalidad") })
 public class RolAccionFuncionalidadEntity {
 	@Id
 	@Column(name = "id_rol")

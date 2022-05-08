@@ -1,36 +1,51 @@
 package com.sds.service.accion.model;
 
+import com.sds.model.AccionEntity;
+import com.sds.model.FuncionalidadEntity;
+import com.sds.model.RolEntity;
+
 public class PermisosFuncionalidadAccion {
 
-	private String rol;
-	private String funcionalidadAccion;
+	private RolEntity rol;
+	private FuncionalidadEntity funcionalidad;
+	private AccionEntity accion;
 	private String tienePermiso;
 
 	public PermisosFuncionalidadAccion() {
 		super();
 	}
 
-	public PermisosFuncionalidadAccion(final String rol, final String funcionalidadAccion, final String tienePermiso) {
+	public PermisosFuncionalidadAccion(final RolEntity rol, final FuncionalidadEntity funcionalidad,
+			final AccionEntity accion, final String tienePermiso) {
 		super();
 		this.rol = rol;
-		this.funcionalidadAccion = funcionalidadAccion;
+		this.funcionalidad = funcionalidad;
+		this.accion = accion;
 		this.tienePermiso = tienePermiso;
 	}
 
-	public String getRol() {
+	public RolEntity getRol() {
 		return rol;
 	}
 
-	public void setRol(final String rol) {
+	public void setRol(final RolEntity rol) {
 		this.rol = rol;
 	}
 
-	public String getFuncionalidadAccion() {
-		return funcionalidadAccion;
+	public FuncionalidadEntity getFuncionalidad() {
+		return funcionalidad;
 	}
 
-	public void setFuncionalidadAccion(final String funcionalidadAccion) {
-		this.funcionalidadAccion = funcionalidadAccion;
+	public void setFuncionalidad(final FuncionalidadEntity funcionalidad) {
+		this.funcionalidad = funcionalidad;
+	}
+
+	public AccionEntity getAccion() {
+		return accion;
+	}
+
+	public void setAccion(final AccionEntity accion) {
+		this.accion = accion;
 	}
 
 	public String getTienePermiso() {
@@ -43,7 +58,7 @@ public class PermisosFuncionalidadAccion {
 
 	@Override
 	public String toString() {
-		return "PermisosFuncionalidadAccion [rol=" + rol + ", funcionalidadAccion=" + funcionalidadAccion
+		return "PermisosFuncionalidadAccion [rol=" + rol + ", funcionalidad=" + funcionalidad + ", accion=" + accion
 				+ ", tienePermiso=" + tienePermiso + "]";
 	}
 

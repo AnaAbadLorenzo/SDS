@@ -18,6 +18,9 @@ public class Constantes {
 	public static final String GESTION_EMPRESAS = "Gestión de empresas";
 	public static final String GESTION_NOTICIAS = "Gestión de noticias";
 	public static final String GESTION_OBJETIVOS = "Gestión de objetivos";
+	public static final String TEST = "Test";
+	public static final String LOG_ACCIONES = "Log de acciones";
+	public static final String LOG_EXCEPCIONES = "Log de excepciones";
 
 	public static final String ACCION_AÑADIR_ROL = "Añadir rol";
 	public static final String ACCION_MODIFICAR_ROL = "Modificar rol";
@@ -99,6 +102,9 @@ public class Constantes {
 	public static final String AÑADIR = "Añadir";
 	public static final String BUSCAR = "Buscar";
 	public static final String MODIFICAR = "Modificar";
+	public static final String ELIMINAR = "Eliminar";
+	public static final String VISUALIZAR = "Visualizar";
+	public static final String REACTIVAR = "Reactivar";
 
 	// Contantes para nombres de atributos de base de datos
 	public static final String PASSWD_USUARIO = "passwdUsuario";
@@ -540,6 +546,7 @@ public class Constantes {
 	public static final String FUNCIONALIDAD_QUERY_FINDALL = "FuncionalidadEntity.findAllFuncionalities";
 	public static final String FUNCIONALIDAD_QUERY_FINDFUNCIONALIDAD = "FuncionalidadEntity.findFuncionality";
 	public static final String FUNCIONALIDAD_QUERY_FINDELIMINADAS = "FuncionalidadEntity.findFuncionalidadesEliminadas";
+	public static final String FUNCIONALIDAD_QUERY_FINDFUNCIONALITYBYNAME = "FuncionalidadEntity.findFuncionalidadByName";
 
 	public static final String PERSONA_QUERY_FINDALL = "PersonaEntity.findAllPerson";
 	public static final String PERSONA_QUERY_FINDPERSONA = "PersonaEntity.findPersona";

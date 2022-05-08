@@ -317,6 +317,10 @@ arrayGA={
 	'NOTICIA_ENCONTRADA' : 'A noticia encontrouse correctamente',
 	'NOTICIA_BORRADA' : 'A noticia borrouse correctamente',
 	'NOTICIA_MODIFICADA' : 'A noticia editouse correctamente',
-	'NOTICIA_GUARDADA' : 'A noticia gardouse correctamente'
+	'NOTICIA_GUARDADA' : 'A noticia gardouse correctamente',
+	'ACCION_ASIGNADA_OK' : 'PERMISO ASIGNADO CORRECTAMENTE',
+	'ACCION_ASIGNADA' : 'O permiso asignouse correctamente',
+	'ACCION_REVOCADA_OK' : 'PERMISO REVOCADO CORRECTAMENTE',
+	'ACCION_REVOCADA' : 'O permiso revocouse correctamente'
 	
 }

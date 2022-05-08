@@ -23,6 +23,8 @@ public interface RolAccionFuncionalidadRepository
 
 	Integer numberFindAllPermissions();
 
+	List<RolAccionFuncionalidadEntity> findByFuncionalityId(Integer idFuncionalidad);
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM RolAccionFuncionalidadEntity a WHERE a.idAccion = ?1 AND a.idRol =?2 AND a.idFuncionalidad = ?3")

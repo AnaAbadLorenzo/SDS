@@ -14,6 +14,8 @@ public interface FuncionalidadService {
 	ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidad(final String nombreFuncionalidad,
 			final String descripFuncionalidad, final int inicio, final int tamanhoPagina);
 
+	ReturnBusquedas<FuncionalidadEntity> buscarTodosSinP();
+
 	ReturnBusquedas<FuncionalidadEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidadesEliminadas(final int inicio, final int tamanhoPagina);

@@ -317,11 +317,34 @@ function reactivarAccionesAjaxPromesa(){
   });
 }
 
+/** Función para cargar las funcionalidades de BD ***/
+function cargarFuncionalidadesAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+      $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxListadoFuncionalidadesSinP,
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'FUNCIONALIDADES_LISTADAS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /* Función para obtener las acciones del sistema */
 async function cargarAcciones(numeroPagina, tamanhoPagina, paginadorCreado){
 	await cargarAccionesAjaxPromesa(numeroPagina, tamanhoPagina)
 	  .then((res) => {
-	  	
+	  	$('#tablaDatos').removeAttr('hidden');
+      $('#permisos').css('display', 'none');
+      $('#paginacion').attr('hidden', false);
       var numResults = res.data.numResultados + '';
 	  	var totalResults = res.data.tamanhoTotal + '';
 	  	var textPaginacion = parseInt(res.data.inicio)+1 + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
@@ -468,6 +491,9 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion, paginadorCreado
 async function refrescarTabla(numeroPagina, tamanhoPagina){
   await cargarAccionesAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
+      $('#tablaDatos').removeAttr('hidden');
+      $('#permisos').css('display', 'none');
+      $('#paginacion').attr('hidden', false);
       cargarPermisosFuncAccion();
       setCookie('nombreAccion', '');
       setCookie('descripcionAccion', '');
@@ -919,97 +945,374 @@ function gestionarPermisosAccion(idElementoList) {
     }); 
 }
 
-function permisosUsuarios(){
+async function permisosUsuarios(){
+  await cargarFuncionalidadesAjaxPromesa()
+  .then((res) => {
+      cargarTablaPermisos(res.data.listaBusquedas);
+    }).catch((res) => {
+        respuestaAjaxKO(res.code);
+        document.getElementById("modal").style.display = "block";
+    });
+}
 
-  var funcionalidades = [];
-  var acciones = [];
+function cargaPermisos(funcionalidad){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
 
-  $('#tablaDatos').html('');
+    var data = {
+      nombreFuncionalidad: funcionalidad
+    }
 
-  $('#itemPaginacion').attr('hidden', true);
-
-  var tabla = '<table class="table table-bordered" id="tablaPermisosAcciones">' + 
-                '<thead id ="encabezadoPermisos">' + 
-                '</thead>' + 
-                '<tbody id="cuerpoPermisos">' +
-                '</tbody>' + 
-              '</table>';
-
-  $('#encabezadoPermisos').html('');
-  $('#cuerpoPermisos').html('');
-
-  var data={
-    inicio : 0,
-    tamanhoPagina: 100
-  }
-
-  var token = getCookie('tokenUsuario');
-
-  $.ajax({
-      method: "POST",
-      url: urlPeticionAjaxListadoRoles,
-      contentType : "application/json",
-      data: JSON.stringify(data),  
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxCargarPermiso,
+      data: {nombreFuncionalidad : funcionalidad},  
       dataType : 'json',
       headers: {'Authorization': token},
-      }).done(function( response ) {       
-        if (response.code == 'ROLES_LISTADOS') {
-          $('#encabezadoPermisos').append('<th></th>');
-          for (var i = 0; i < response.data.listaBusquedas.length; i++){
-            var th = response.data.listaBusquedas[i].rolName;
-            $('#encabezadoPermisos').append('<th>' + th + '</th>');
-          }
-        } else { 
-            respuestaAjaxKO(response.code);    
-        }              
-        
-      });
-
-  $.ajax({
-      method: "POST",
-      url: urlPeticionAjaxListadoFuncionalidades,
-      contentType : "application/json",
-      data: JSON.stringify(data),  
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(function( response ) {     
-        for(var i = 0; i<response.data.listaBusquedas.length; i++){
-          funcionalidades.push(response.data.listaBusquedas[i].nombreFuncionalidad);
-        }  
-      });
-
-  $.ajax({
-      method: "POST",
-      url: urlPeticionAjaxListadoAcciones,
-      contentType : "application/json",
-      data: JSON.stringify(data),  
-      dataType : 'json',
-      headers: {'Authorization': token},
-  }).done(function( response ) {       
-        for(var i = 0; i<response.data.listaBusquedas.length; i++){
-          acciones.push(response.data.listaBusquedas[i].nombreAccion);
-        } 
-        var elementosConcatenados = []; 
-        for(var i=0; i<funcionalidades.length; i++){
-          for(var j = 0; j<acciones.length; j++){
-            var concatenado = funcionalidades[i] + "/" + acciones[j];
-          }
+      }).done(res => {
+        if (res.code != 'PERMISOS_OBTENIDOS') {
+          reject(res);
         }
-
-        $('#cuerpoPermisos').append('<tr><th>')
-
-        for(var i = 0; i<elementosConcatenados.length; i++){
-
-        }
-
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
   });
+}
 
+async function cargarInfoPermiso(funcionalidad){
+ await cargaPermisos(funcionalidad)
+    .then((res) => {
+      var nombre = (funcionalidad).split(" ");
+      if(funcionalidad == "Log de acciones"){
+       var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      }else{
+      var nombreCollapse = nombre[1] + nombre[2];
+      }
+      var rolesListos = [];
+      var yaIntroducido = false;
 
+      $('#cabeceraPermisosGest' +nombreCollapse).html('');
 
-$('#tablaDatos').append(tabla);
+      var rolesDisponibles = '<tr>' + 
+                              '<th class = "colFirst"></th>'; 
 
+      for(var i = 0; i<res.data.length; i++){
+        for(var x = 0; x<rolesListos.length; x++){
+          if(res.data[i].rol.rolName == rolesListos[x]){
+            var yaIntroducido = true;
+          }else{
+            var yaIntroducido = false;
+          }
+        }
 
+        if(!yaIntroducido){
+          rolesDisponibles = rolesDisponibles + '<th class="' + res.data[i].rol.rolName + '">' + res.data[i].rol.rolName + '</th>';
+          rolesListos.push(res.data[i].rol.rolName);
+        }
 
+        if(i == (res.data.length - 1)){
+          rolesDisponibles = rolesDisponibles + '</tr>';
+        }
+
+      }
+
+      $('#cabeceraPermisosGest' +nombreCollapse).append(rolesDisponibles);
+
+      cargarAccionesPermisos(funcionalidad,res.data);
+
+    }).catch((res) => {
+        respuestaAjaxKO(res.code);
+        document.getElementById("modal").style.display = "block";
+    });
+}
+
+function cargarAccionesPermisos(funcionalidad,acciones){
+      var nombre = (funcionalidad).split(" ");
+      if(funcionalidad == "Log de acciones"){
+       var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      }else{
+      var nombreCollapse = nombre[1] + nombre[2];
+      }
+      var className = "";
+      var accionesListas = [];
+      var yaIntroducido = false;
+      var atributos = [];
+
+      $('#cuerpoPermisosGest' + nombreCollapse).html('');
+
+      var accionesDisponibles = '<tr>';
+
+      var cabecera = $('#cabeceraPermisosGest' +nombreCollapse + ' tr th');
+
+      for(var i = 0; i<acciones.length; i++){
+        accionesDisponibles = "";
+        var rol = acciones[i].rol.rolName;
+        var accion = acciones[i].accion.nombreAccion;
+
+        for(var z= 0; z<accionesListas.length; z++){
+          if(accion == accionesListas[z]){
+            yaIntroducido = true;
+            break;
+          }else{
+            yaIntroducido = false;
+          }
+        }
+
+        if(!yaIntroducido){
+           accionesDisponibles = '<tr><td class="columnaAcciones">' + acciones[i].accion.nombreAccion +' </td>';
+                                          
+        for(var x= 0; x<cabecera.length; x++){
+           var classCabecera = cabecera[x].className;
+           var tienePermiso = acciones[i].tienePermiso;
+            if(rol == classCabecera){
+              atributosFunc = ["'" + acciones[i].accion.idAccion + "'", "'" + acciones[i].accion.nombreAccion + "'", "'" + acciones[i].accion.descripAccion + "'", "'" + acciones[i].accion.borradoAccion + "'"
+                , "'" + acciones[i].rol.idRol + "'", "'" + acciones[i].rol.rolName + "'", "'" + acciones[i].rol.rolDescription + "'", "'" + acciones[i].rol.borradoRol + "'"
+                , "'" + acciones[i].funcionalidad.idFuncionalidad + "'", "'" + acciones[i].funcionalidad.nombreFuncionalidad + "'", "'" + acciones[i].funcionalidad.descripFuncionalidad + "'", "'" + acciones[i].funcionalidad.borradoFuncionalidad + "'"];
+              if(tienePermiso == "Si"){
+    
+                accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
+                                                                  '<div class="tooltip">' + 
+                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="asignarPermiso('+atributosFunc+')" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                    '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
+                                                                  '</div>' + 
+                                                                  '<div class="tooltip">' + 
+                                                                    '<img class="permisos quitarPermiso" src="images/error.png" data-toggle="" data-target="" onclick="desasignarPermiso('+atributosFunc+')" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                    '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
+                                                                  '</div>' + 
+                                                                '</td>';
+              }else if(tienePermiso == "No"){
+                var ac = JSON.stringify(acciones[i]);
+                accionesDisponibles = accionesDisponibles + '<td class="accionesPermisos">' + 
+                                                                '<div class="tooltip">' + 
+                                                                  '<img class="permisos darPermiso" src="images/ok3.png" data-toggle="" data-target="" onclick="asignarPermiso('+atributosFunc+')" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                  '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
+                                                                '</div>' + 
+                                                                '<div class="tooltip">' + 
+                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="desasignarPermiso('+atributosFunc+')" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                  '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
+                                                                '</div>' + 
+                                                              '</td>';
+              }
+           }else if(rol !=classCabecera && classCabecera != 'colFirst'){
+              for(var z= 0; z<accionesListas.length; z++){
+                if(accion == accionesListas[z]){
+                  yaIntroducido = true;
+                }else{
+                  yaIntroducido = false;
+                }   
+              }
+
+              if(!yaIntroducido){
+                  for(var t = 0; t<acciones.length; t++){
+                    tienePermiso = acciones[t].tienePermiso;
+                    if(acciones[t].rol.rolName == classCabecera && acciones[t].accion.nombreAccion == acciones[i].accion.nombreAccion){
+                       atributosFunc = ["'" + acciones[t].accion.idAccion + "'", "'" + acciones[t].accion.nombreAccion + "'", "'" + acciones[t].accion.descripAccion + "'", "'" + acciones[t].accion.borradoAccion + "'"
+                        , "'" + acciones[t].rol.idRol + "'", "'" + acciones[t].rol.rolName + "'", "'" + acciones[t].rol.rolDescription + "'", "'" + acciones[t].rol.borradoRol + "'"
+                        , "'" + acciones[t].funcionalidad.idFuncionalidad + "'", "'" + acciones[t].funcionalidad.nombreFuncionalidad + "'", "'" + acciones[t].funcionalidad.descripFuncionalidad + "'", "'" + acciones[t].funcionalidad.borradoFuncionalidad + "'"];
+                      if(tienePermiso == "Si"){
+                        accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
+                                                                      '<div class="tooltip">' + 
+                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="asignarPermiso(' +  atributosFunc + ')" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                        '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
+                                                                      '</div>' + 
+                                                                      '<div class="tooltip">' + 
+                                                                        '<img class="permisos quitarPermiso" src="images/error.png" data-toggle="" data-target="" onclick="desasignarPermiso('+  atributosFunc +')" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                        '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
+                                                                      '</div>' + 
+                                                                    '</td>';
+                     }else if(tienePermiso == "No"){
+                    
+                      accionesDisponibles = accionesDisponibles + '<td class="accionesPermisos">' + 
+                                                                    '<div class="tooltip">' + 
+                                                                      '<img class="permisos darPermiso" src="images/ok3.png" data-toggle="" data-target="" onclick="asignarPermiso('+  atributosFunc +')" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                      '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
+                                                                    '</div>' + 
+                                                                    '<div class="tooltip">' + 
+                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="desasignarPermiso('+  atributosFunc +')" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                      '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
+                                                                    '</div>' + 
+                                                                  '</td>';
+                      }
+                    }
+                  }
+                }
+              }
+           className = classCabecera;
+        }
+
+        if(className != 'colFirst'){
+          accionesDisponibles = accionesDisponibles + '</tr>';
+          $('#cuerpoPermisosGest' + nombreCollapse).append(accionesDisponibles);
+          accionesListas.push(acciones[i].accion.nombreAccion);
+        }
+
+        }
+        
+      }
+
+}
+
+async function asignarPermiso(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
+  await asignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad)
+  .then((res) => {
+      respuestaAjaxOK("ACCION_ASIGNADA_OK", res.code);
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+      permisosUsuarios();
+  }).catch((res) => {
+      respuestaAjaxKO(res.code);
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+  });
+}
+
+function asignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
+  return new Promise(function(resolve, reject) {
+
+    
+    var token = getCookie('tokenUsuario');
+
+    var accion = {
+      idAccion : idAccion,
+      nombreAccion : nombreAccion,
+      descripAccion : descripAccion,
+      borradoAccion : borradoAccion
+    }
+
+    var rol = {
+      idRol : idRol,
+      rolName : rolName,
+      rolDescription : rolDescription,
+      borradoRol : borradoRol
+    }
+
+    var funcionalidad = {
+      idFuncionalidad : idFuncionalidad,
+      nombreFuncionalidad : nombreFuncionalidad,
+      descripFuncionalidad : descripFuncionalidad,
+      borradoFuncionalidad : borradoFuncionalidad
+    }
+  
+    var data = {
+      accion : accion,
+      rol : rol,
+      funcionalidad : funcionalidad,
+      usuario : getCookie('usuario')
+     
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjarAsignarAccion,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'ACCION_ASIGNADA') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+async function desasignarPermiso(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
+  await desasignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad)
+  .then((res) => {
+      respuestaAjaxOK("ACCION_REVOCADA_OK", res.code);
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+      permisosUsuarios();
+  }).catch((res) => {
+      respuestaAjaxKO(res.code);
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+  });
+}
+
+function desasignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
+  return new Promise(function(resolve, reject) {
+
+    
+    var token = getCookie('tokenUsuario');
+
+    var rolAccionFuncionalidad = {
+      idRol : idRol,
+      idAccion: idAccion,
+      idFuncionalidad : idFuncionalidad
+    }
+    
+    var data = {
+      rolAccionFuncionalidad : rolAccionFuncionalidad,
+      usuario : getCookie('usuario')
+     
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjarDesasignarAccion,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'ACCION_REVOCADA') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+function cargarTablaPermisos(datos){
+  $('#tablaDatos').attr('hidden', true);
+  $('#permisos').css('display', 'block');
+  $('#permisos').html('');
+  $('#itemPaginacion').attr('hidden', true);
+  $('#paginacion').attr('hidden', true);
+  $('.cabecera').attr('hidden', true);
+  $('.cabeceraEliminados').attr('hidden', false);
+
+  for(var i = 0; i<datos.length; i++){
+    var numeroAccordion = (i+1);
+    var nombre = (datos[i].nombreFuncionalidad).split(" ");
+    if((datos[i].nombreFuncionalidad) == "Log de acciones"){
+       var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+    }else{
+      var nombreCollapse = nombre[1] + nombre[2];
+    }
+    
+    var permisos = '<div id="accordion' + numeroAccordion + '">' + 
+                  '<div class="card">' + 
+                    '<div class="card-header">' + 
+                      '<a class="collapsed card-link" data-toggle="collapse" href="#collapseGest' + nombreCollapse +'"onclick="javascript:cargarInfoPermiso(\''+datos[i].nombreFuncionalidad+'\')">' + 
+                          datos[i].nombreFuncionalidad + 
+                      '</a>' + 
+                      '<img class="iconTab" id="iconoTestGest' + nombreCollapse + '" src="images/failed.png" hidden>' +
+                    '</div>' + 
+                    '<div id="collapseGest' + nombreCollapse +'" class="collapse" data-parent="#accordion' +numeroAccordion +'">' + 
+                      '<div class="card-body" id="testGest' + nombreCollapse + '">' +
+                        '<div class="table-responsive">' + 
+                           '<table class="table table-bordered" id="tablaGest' + nombreCollapse + '">' + 
+                              '<thead class="cabeceraTablasTest" id="cabeceraPermisosGest' + nombreCollapse+ '">' + 
+                              '</thead>' + 
+                              '<tbody id="cuerpoPermisosGest' + nombreCollapse + '">' + 
+                              '<tbody>' + 
+                            '</table>' + 
+                        '</div>' + 
+                      '</div>' + 
+                    '</div>' + 
+                  '</div>' + 
+                '</div>';
+
+    $('#permisos').append(permisos);             
+  }
 }
 
 $(document).ready(function() {

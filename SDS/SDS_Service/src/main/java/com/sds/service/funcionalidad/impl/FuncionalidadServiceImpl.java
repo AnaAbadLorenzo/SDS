@@ -116,6 +116,30 @@ public class FuncionalidadServiceImpl implements FuncionalidadService {
 	}
 
 	@Override
+	public ReturnBusquedas<FuncionalidadEntity> buscarTodosSinP() {
+		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();
+
+		final List<FuncionalidadEntity> funcionalidades = entityManager
+				.createNamedQuery(Constantes.FUNCIONALIDAD_QUERY_FINDALL).getResultList();
+
+		final Integer numberTotalResults = funcionalidadRepository.numberFindAllFuncionalities();
+
+		if (!funcionalidades.isEmpty()) {
+			for (final FuncionalidadEntity funcionalidad : funcionalidades) {
+				final FuncionalidadEntity func = new FuncionalidadEntity(funcionalidad.getIdFuncionalidad(),
+						funcionalidad.getNombreFuncionalidad(), funcionalidad.getDescripFuncionalidad(),
+						funcionalidad.getBorradoFuncionalidad());
+
+				funcionalidadesToret.add(func);
+			}
+		}
+		final ReturnBusquedas<FuncionalidadEntity> result = new ReturnBusquedas<FuncionalidadEntity>(
+				funcionalidadesToret, numberTotalResults, funcionalidadesToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
 	public ReturnBusquedas<FuncionalidadEntity> buscarFuncionalidadesEliminadas(final int inicio,
 			final int tamanhoPagina) {
 		final List<FuncionalidadEntity> funcionalidadesToret = new ArrayList<>();

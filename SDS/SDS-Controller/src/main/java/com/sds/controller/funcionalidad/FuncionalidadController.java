@@ -1,6 +1,7 @@
 package com.sds.controller.funcionalidad;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -53,6 +54,14 @@ public class FuncionalidadController {
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.FUNCIONALIDADES_LISTADAS, resultado);
+	}
+
+	@GetMapping(value = "/listarFuncionalidadesSinP")
+	@ResponseBody
+	public RespEntity buscarTodos() {
+		final ReturnBusquedas<FuncionalidadEntity> resultado = funcionalidadService.buscarTodosSinP();
 
 		return new RespEntity(RespCode.FUNCIONALIDADES_LISTADAS, resultado);
 	}

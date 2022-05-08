@@ -321,5 +321,10 @@ arrayES={
 	'NOTICIA_ENCONTRADA' : 'La noticia se ha encontrado correctamente',
 	'NOTICIA_BORRADA' : 'La noticia se ha borrado correctamente',
 	'NOTICIA_MODIFICADA' : 'La noticia se ha editado correctamente',
-	'NOTICIA_GUARDADA' : 'La noticia se ha guardado correctamente'
+	'NOTICIA_GUARDADA' : 'La noticia se ha guardado correctamente',
+	'ACCION_ASIGNADA_OK' : 'PERMISO ASIGNADO CORRECTAMENTE',
+	'ACCION_ASIGNADA' : 'El permiso se ha asignado correctamente',
+	'ACCION_REVOCADA_OK' : 'PERMISO REVOCADO CORRECTAMENTE',
+	'ACCION_REVOCADA' : 'El permiso se ha revocado correctamente'
+
 }

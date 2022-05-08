@@ -497,78 +497,108 @@ public class AccionServiceImpl implements AccionService {
 	}
 
 	@Override
-	public List<PermisosFuncionalidadAccion> obtenerPermisos() throws LogExcepcionesNoGuardadoException,
-			FuncionalidadNoExisteException, RolNoExisteException, AccionNoExisteException {
+	public List<PermisosFuncionalidadAccion> obtenerPermisos(final String nombreFuncionalidad)
+			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, RolNoExisteException,
+			AccionNoExisteException {
 		final List<PermisosFuncionalidadAccion> permisosToret = new ArrayList<>();
-		final List<String> funcionalidadesAcciones = new ArrayList<>();
 
-		final List<RolAccionFuncionalidadEntity> permisos = entityManager
-				.createNamedQuery(Constantes.ROLACCIONFUNCIONALIDAD_QUERY_FINDALL).getResultList();
+		final FuncionalidadEntity funcionalidad = funcionalidadRepository.findFuncionalityByName(nombreFuncionalidad);
+		final List<RolAccionFuncionalidadEntity> permisosFuncionalidad = rolAccionFuncionalidadRepository
+				.findByFuncionalityId(funcionalidad.getIdFuncionalidad());
 
-		final List<RolEntity> roles = rolRepository.findAll();
-		final List<FuncionalidadEntity> funcionalidades = funcionalidadRepository.findAll();
-		final List<AccionEntity> acciones = accionRepository.findAll();
+		if (funcionalidad != null) {
+			final List<RolEntity> roles = rolRepository.findAllRol();
+			final List<AccionEntity> acciones = accionRepository.findAllAccion();
 
-		for (int i = 0; i < funcionalidades.size(); i++) {
-			for (int j = 0; j < acciones.size(); j++) {
-				final String funcionalidadAccion = funcionalidades.get(i).getNombreFuncionalidad() + "-"
-						+ acciones.get(j).getNombreAccion();
-				funcionalidadesAcciones.add(funcionalidadAccion);
-			}
-		}
-
-		for (int i = 0; i < roles.size(); i++) {
-			for (int j = 0; j < funcionalidadesAcciones.size(); j++) {
-				String tienePermiso = "";
-				final String funcionalidad = funcionalidadesAcciones.get(j).split("-")[0];
-				final String accion = funcionalidadesAcciones.get(j).split("-")[1];
-
-				final FuncionalidadEntity idFuncionalidad = funcionalidadRepository
-						.findFuncionalityByName(funcionalidad);
-				final AccionEntity idAccion = accionRepository.findAccionByName(accion);
-				final RolEntity idRol = rolRepository.findByRolName(roles.get(i).getRolName());
-
-				for (int k = 0; k < permisos.size(); k++) {
-					if (permisos.get(k).getIdFuncionalidad() == idFuncionalidad.getIdFuncionalidad()
-							&& permisos.get(k).getIdAccion() == idAccion.getIdAccion()
-							&& permisos.get(k).getIdRol() == idRol.getIdRol()) {
-						tienePermiso = Constantes.SI;
-						final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
-								roles.get(i).getRolName(), funcionalidadesAcciones.get(j), tienePermiso);
-						permisosToret.add(permisosFuncionalidadAccion);
-						break;
-					} else {
-						tienePermiso = Constantes.NO;
+			for (int i = 0; i < roles.size(); i++) {
+				for (int j = 0; j < acciones.size(); j++) {
+					String tienePermiso = "";
+					for (int k = 0; k < permisosFuncionalidad.size(); k++) {
+						if (permisosFuncionalidad.get(k).getIdFuncionalidad() == funcionalidad.getIdFuncionalidad()
+								&& permisosFuncionalidad.get(k).getIdAccion() == acciones.get(j).getIdAccion()
+								&& permisosFuncionalidad.get(k).getIdRol() == roles.get(i).getIdRol()) {
+							tienePermiso = Constantes.SI;
+							final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
+									roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
+							final AccionEntity accion = new AccionEntity(acciones.get(j).getIdAccion(),
+									acciones.get(j).getNombreAccion(), acciones.get(j).getDescripAccion(),
+									acciones.get(j).getBorradoAccion());
+							final FuncionalidadEntity funcionalidadEntity = new FuncionalidadEntity(
+									funcionalidad.getIdFuncionalidad(), funcionalidad.getNombreFuncionalidad(),
+									funcionalidad.getDescripFuncionalidad(), funcionalidad.getBorradoFuncionalidad());
+							final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
+									rol, funcionalidadEntity, accion, tienePermiso);
+							permisosToret.add(permisosFuncionalidadAccion);
+							break;
+						} else {
+							tienePermiso = Constantes.NO;
+						}
 					}
-				}
 
-				if (tienePermiso.equals(Constantes.NO)) {
-					final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
-							roles.get(i).getRolName(), funcionalidadesAcciones.get(j), tienePermiso);
-					permisosToret.add(permisosFuncionalidadAccion);
-				}
+					if (tienePermiso.equals(Constantes.NO)) {
+						final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
+								roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
+						final AccionEntity accion = new AccionEntity(acciones.get(j).getIdAccion(),
+								acciones.get(j).getNombreAccion(), acciones.get(j).getDescripAccion(),
+								acciones.get(j).getBorradoAccion());
+						final FuncionalidadEntity funcionalidadEntity = new FuncionalidadEntity(
+								funcionalidad.getIdFuncionalidad(), funcionalidad.getNombreFuncionalidad(),
+								funcionalidad.getDescripFuncionalidad(), funcionalidad.getBorradoFuncionalidad());
+						final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
+								rol, funcionalidadEntity, accion, tienePermiso);
+						permisosToret.add(permisosFuncionalidadAccion);
+					}
 
+				}
 			}
+
 		}
 
-		for (int m = 0; m < permisosToret.size(); m++) {
-			final String funcionalidadAccion = permisosToret.get(m).getFuncionalidadAccion();
-			if (funcionalidadAccion.equals(Constantes.TEST_AÑADIR)
-					|| funcionalidadAccion.equals(Constantes.TEST_ELIMINAR)
-					|| funcionalidadAccion.equals(Constantes.TEST_MODIFICAR)
-					|| funcionalidadAccion.equals(Constantes.TEST_REACTIVAR)
-					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_AÑADIR)
-					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_ELIMINAR)
-					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_MODIFICAR)
-					|| funcionalidadAccion.equals(Constantes.LOGEXCEPCIONES_REACTIVAR)
-					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_AÑADIR)
-					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_ELIMINAR)
-					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_MODIFICAR)
-					|| funcionalidadAccion.equals(Constantes.LOGACCIONES_REACTIVAR)) {
-				permisosToret.remove(m);
+		switch (nombreFuncionalidad) {
+		case Constantes.GESTION_PERSONAS:
+			for (int i = 0; i < permisosToret.size(); i++) {
+				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					permisosToret.remove(i);
+				}
 			}
-		}
 
+			break;
+		case Constantes.LOG_ACCIONES:
+			for (int i = 0; i < permisosToret.size(); i++) {
+				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					permisosToret.remove(i);
+				}
+			}
+			break;
+
+		case Constantes.LOG_EXCEPCIONES:
+			for (int i = 0; i < permisosToret.size(); i++) {
+				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					permisosToret.remove(i);
+				}
+			}
+			break;
+
+		case Constantes.TEST:
+			for (int i = 0; i < permisosToret.size(); i++) {
+				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.VISUALIZAR)
+						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					permisosToret.remove(i);
+				}
+			}
+			break;
+		default:
+			break;
+		}
 		return permisosToret;
 
 	}

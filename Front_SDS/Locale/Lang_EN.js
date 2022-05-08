@@ -318,6 +318,10 @@ arrayEN={
 	'NOTICIA_ENCONTRADA' : 'The new has been found correctly',
 	'NOTICIA_BORRADA' : 'The new has been deleted correctly',
 	'NOTICIA_MODIFICADA' : 'The new has been modified correctly',
-	'NOTICIA_GUARDADA' : 'The new has been saved correctly'
+	'NOTICIA_GUARDADA' : 'The new has been saved correctly',
+	'ACCION_ASIGNADA_OK' : 'PERMISSION ASSIGNED CORRECTLY',
+	'ACCION_ASIGNADA' : 'The permission has been assigned correctly',
+	'ACCION_REVOCADA_OK' : 'PERMISSION REVOKED CORRECTLY',
+	'ACCION_REVOCADA' : 'The permission has been revoked correctly'
 
 }

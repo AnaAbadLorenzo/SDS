@@ -48,9 +48,9 @@ public class AccionController {
 
 	@GetMapping(value = "/obtenerPermisos")
 	@ResponseBody
-	public RespEntity obtenerPermisos() {
+	public RespEntity obtenerPermisos(final String nombreFuncionalidad) {
 		try {
-			final List<PermisosFuncionalidadAccion> permisos = accionService.obtenerPermisos();
+			final List<PermisosFuncionalidadAccion> permisos = accionService.obtenerPermisos(nombreFuncionalidad);
 			return new RespEntity(RespCode.PERMISOS_OBTENIDOS, permisos);
 		} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardado) {
 			return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, logExcepcionesNoGuardado);
