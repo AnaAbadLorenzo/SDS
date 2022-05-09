@@ -513,11 +513,33 @@ public class AccionServiceImpl implements AccionService {
 			for (int i = 0; i < roles.size(); i++) {
 				for (int j = 0; j < acciones.size(); j++) {
 					String tienePermiso = "";
-					for (int k = 0; k < permisosFuncionalidad.size(); k++) {
-						if (permisosFuncionalidad.get(k).getIdFuncionalidad() == funcionalidad.getIdFuncionalidad()
-								&& permisosFuncionalidad.get(k).getIdAccion() == acciones.get(j).getIdAccion()
-								&& permisosFuncionalidad.get(k).getIdRol() == roles.get(i).getIdRol()) {
-							tienePermiso = Constantes.SI;
+					if (permisosFuncionalidad.size() != 0) {
+						for (int k = 0; k < permisosFuncionalidad.size(); k++) {
+							final int funcPermiso = permisosFuncionalidad.get(k).getIdFuncionalidad();
+							final int funcId = funcionalidad.getIdFuncionalidad();
+							if (funcPermiso == funcId
+									&& permisosFuncionalidad.get(k).getIdAccion() == acciones.get(j).getIdAccion()
+									&& permisosFuncionalidad.get(k).getIdRol() == roles.get(i).getIdRol()) {
+								tienePermiso = Constantes.SI;
+								final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
+										roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
+								final AccionEntity accion = new AccionEntity(acciones.get(j).getIdAccion(),
+										acciones.get(j).getNombreAccion(), acciones.get(j).getDescripAccion(),
+										acciones.get(j).getBorradoAccion());
+								final FuncionalidadEntity funcionalidadEntity = new FuncionalidadEntity(
+										funcionalidad.getIdFuncionalidad(), funcionalidad.getNombreFuncionalidad(),
+										funcionalidad.getDescripFuncionalidad(),
+										funcionalidad.getBorradoFuncionalidad());
+								final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
+										rol, funcionalidadEntity, accion, tienePermiso);
+								permisosToret.add(permisosFuncionalidadAccion);
+								break;
+							} else {
+								tienePermiso = Constantes.NO;
+							}
+						}
+
+						if (tienePermiso.equals(Constantes.NO)) {
 							final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
 									roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
 							final AccionEntity accion = new AccionEntity(acciones.get(j).getIdAccion(),
@@ -529,13 +551,9 @@ public class AccionServiceImpl implements AccionService {
 							final PermisosFuncionalidadAccion permisosFuncionalidadAccion = new PermisosFuncionalidadAccion(
 									rol, funcionalidadEntity, accion, tienePermiso);
 							permisosToret.add(permisosFuncionalidadAccion);
-							break;
-						} else {
-							tienePermiso = Constantes.NO;
 						}
-					}
-
-					if (tienePermiso.equals(Constantes.NO)) {
+					} else {
+						tienePermiso = Constantes.NO;
 						final RolEntity rol = new RolEntity(roles.get(i).getIdRol(), roles.get(i).getRolName(),
 								roles.get(i).getRolDescription(), roles.get(i).getBorradoRol());
 						final AccionEntity accion = new AccionEntity(acciones.get(j).getIdAccion(),

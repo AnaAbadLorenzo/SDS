@@ -983,12 +983,17 @@ function cargaPermisos(funcionalidad){
 async function cargarInfoPermiso(funcionalidad){
  await cargaPermisos(funcionalidad)
     .then((res) => {
-      var nombre = (funcionalidad).split(" ");
-      if(funcionalidad == "Log de acciones"){
-       var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      if(funcionalidad.includes(" ")){
+        var nombre = (funcionalidad).split(" ");
+        if(funcionalidad == "Log de acciones"){
+         var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+        }else{
+        var nombreCollapse = nombre[1] + nombre[2];
+        }
       }else{
-      var nombreCollapse = nombre[1] + nombre[2];
+        var nombreCollapse = funcionalidad;
       }
+      
       var rolesListos = [];
       var yaIntroducido = false;
 
@@ -1028,12 +1033,17 @@ async function cargarInfoPermiso(funcionalidad){
 }
 
 function cargarAccionesPermisos(funcionalidad,acciones){
-      var nombre = (funcionalidad).split(" ");
-      if(funcionalidad == "Log de acciones"){
-       var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      if(funcionalidad.includes(" ")){
+        var nombre = (funcionalidad).split(" ");
+        if(funcionalidad == "Log de acciones"){
+         var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+        }else{
+        var nombreCollapse = nombre[1] + nombre[2];
+        }
       }else{
-      var nombreCollapse = nombre[1] + nombre[2];
+        var nombreCollapse = funcionalidad;
       }
+
       var className = "";
       var accionesListas = [];
       var yaIntroducido = false;
@@ -1073,7 +1083,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
     
                 accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
                                                                   '<div class="tooltip">' + 
-                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="asignarPermiso('+atributosFunc+')" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: pointer;">' + 
                                                                     '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                   '</div>' + 
                                                                   '<div class="tooltip">' + 
@@ -1089,7 +1099,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                                                                   '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                 '</div>' + 
                                                                 '<div class="tooltip">' + 
-                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="desasignarPermiso('+atributosFunc+')" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: pointer;">' + 
                                                                   '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                 '</div>' + 
                                                               '</td>';
@@ -1113,7 +1123,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                       if(tienePermiso == "Si"){
                         accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
                                                                       '<div class="tooltip">' + 
-                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="asignarPermiso(' +  atributosFunc + ')" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: pointer;">' + 
                                                                         '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                       '</div>' + 
                                                                       '<div class="tooltip">' + 
@@ -1129,7 +1139,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                                                                       '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                     '</div>' + 
                                                                     '<div class="tooltip">' + 
-                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="desasignarPermiso('+  atributosFunc +')" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: pointer;">' + 
                                                                       '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                     '</div>' + 
                                                                   '</td>';
@@ -1280,11 +1290,15 @@ function cargarTablaPermisos(datos){
   $('.cabeceraEliminados').attr('hidden', false);
 
   for(var i = 0; i<datos.length; i++){
-    var nombre = (datos[i].nombreFuncionalidad).split(" ");
-    if((datos[i].nombreFuncionalidad) == "Log de acciones"){
-       var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+    if((datos[i].nombreFuncionalidad).includes(" ")){
+      var nombre = (datos[i].nombreFuncionalidad).split(" ");
+      if((datos[i].nombreFuncionalidad) == "Log de acciones"){
+         var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      }else{
+        var nombreCollapse = nombre[1] + nombre[2];
+      }
     }else{
-      var nombreCollapse = nombre[1] + nombre[2];
+      var nombreCollapse = datos[i].nombreFuncionalidad;
     }
     
     var permisos = '<div class="card">' + 
