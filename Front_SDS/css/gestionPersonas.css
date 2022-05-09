@@ -89,6 +89,10 @@
   font-family: Roboto;
 }
 
+.container {
+    max-height: 350px;
+}
+
 /********* ICONOS ***********/
 
 .cabecera, .cabeceraEliminados {

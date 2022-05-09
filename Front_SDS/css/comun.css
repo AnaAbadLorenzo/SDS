@@ -347,6 +347,8 @@ form button[type="button"]:hover {
 
 #datosPersonales, #datosUsuario, #datosEmpresa {
   color: #4527A0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /********* DESPLEGABLE IDIOMAS Y MENU USUARIO *********/
