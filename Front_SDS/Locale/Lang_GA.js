@@ -257,7 +257,7 @@ arrayGA={
 	'SEARCH_NOTICIA' : 'BUSCAR NOTICIA',
 	'ADD_NOTICIA' : 'ENGADIR NOTICIA',
 	'QUITAR_EMPRESA' : 'Queres desasociarte de unha empresa?',
-
+	'GESTION_EMPRESAS' : 'Xestión de empresas',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

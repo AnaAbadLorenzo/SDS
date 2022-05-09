@@ -1273,14 +1273,13 @@ function desasignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, bor
 function cargarTablaPermisos(datos){
   $('#tablaDatos').attr('hidden', true);
   $('#permisos').css('display', 'block');
-  $('#permisos').html('');
+  $('#accordion').html('');
   $('#itemPaginacion').attr('hidden', true);
   $('#paginacion').attr('hidden', true);
   $('.cabecera').attr('hidden', true);
   $('.cabeceraEliminados').attr('hidden', false);
 
   for(var i = 0; i<datos.length; i++){
-    var numeroAccordion = (i+1);
     var nombre = (datos[i].nombreFuncionalidad).split(" ");
     if((datos[i].nombreFuncionalidad) == "Log de acciones"){
        var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
@@ -1288,15 +1287,14 @@ function cargarTablaPermisos(datos){
       var nombreCollapse = nombre[1] + nombre[2];
     }
     
-    var permisos = '<div id="accordion' + numeroAccordion + '">' + 
-                  '<div class="card">' + 
+    var permisos = '<div class="card">' + 
                     '<div class="card-header">' + 
                       '<a class="collapsed card-link" data-toggle="collapse" href="#collapseGest' + nombreCollapse +'"onclick="javascript:cargarInfoPermiso(\''+datos[i].nombreFuncionalidad+'\')">' + 
                           datos[i].nombreFuncionalidad + 
                       '</a>' + 
                       '<img class="iconTab" id="iconoTestGest' + nombreCollapse + '" src="images/failed.png" hidden>' +
                     '</div>' + 
-                    '<div id="collapseGest' + nombreCollapse +'" class="collapse" data-parent="#accordion' +numeroAccordion +'">' + 
+                    '<div id="collapseGest' + nombreCollapse +'" class="collapse" data-parent="#accordion">' + 
                       '<div class="card-body" id="testGest' + nombreCollapse + '">' +
                         '<div class="table-responsive">' + 
                            '<table class="table table-bordered" id="tablaGest' + nombreCollapse + '">' + 
@@ -1308,10 +1306,9 @@ function cargarTablaPermisos(datos){
                         '</div>' + 
                       '</div>' + 
                     '</div>' + 
-                  '</div>' + 
-                '</div>';
+                  '</div>';
 
-    $('#permisos').append(permisos);             
+    $('#accordion').append(permisos);             
   }
 }
 

@@ -92,6 +92,8 @@ body {
   margin-bottom: 7%;
   margin-left: 2%;
   margin-right: 2%;
+  height: 610px;
+  overflow-y: scroll;
 }
 
 .volver {

@@ -54,29 +54,29 @@
   	
   	<div id="infoAdmin" hidden>
   		<div class="cabecera">      
-		    <div id="divListarUsuario" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarUsuario()" class="tooltip searchIcon">
+		    <div id="divListarUsuario" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarUsuario()" class="tooltip6 searchIcon">
 		        <img id="btnListarUsuarios" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Usuario" />
 		        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
 		    </div>
 
-		    <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
+		    <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip6 searchDeleteIcon">
 		        <img id = "btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Usuarios Eliminados" />
 		        <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
 		    </div>
 
-		    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTablaUsuario(0, tamanhoPaginaUsuario)" class="tooltip refreshIcon">
+		    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTablaUsuario(0, tamanhoPaginaUsuario)" class="tooltip6 refreshIcon">
 		        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
 		        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
 		    </div>
 
-		    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip hideShowIcon">
+		    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
 		        <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
 		        <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
 		    </div>     
 		</div>
 
 		<div class = "cabeceraEliminados" hidden>
-			<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTablaUsuario(0, tamanhoPaginaUsuario)" class="tooltip volverAtrasIcon">
+			<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTablaUsuario(0, tamanhoPaginaUsuario)" class="tooltip6 volverAtrasIcon">
 	        	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
 	        	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
 	    	</div> 
@@ -88,7 +88,7 @@
 			    	<tr>
 				      <th scope="col" class="colFirst DNI_COLUMN">
 				      	<div class="DNI dniUsuarioColumn"></div>
-	                  	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaUsuarios')" class="tooltip ordenarIconDniUsuario">
+	                  	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaUsuarios')" class="tooltip7 ordenarIconDniUsuario">
 	                      <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 	                      <span class="tooltiptext iconOrdenar ORDENAR"></span>
 	              		</div>
@@ -96,7 +96,7 @@
 				      	
 						  <th scope="col" class="USUARIO_COLUMN">
 						    <div class="LOGIN_USUARIO loginUsuarioColumn"></div>
-			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaUsuarios')" class="tooltip ordenarIconLoginUsuario">
+			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaUsuarios')" class="tooltip7 ordenarIconLoginUsuario">
 			                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 			                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 			              </div>
@@ -104,7 +104,7 @@
 
 						  <th scope="col" class="ACTIVO_COLUMN">
 						    <div class="ACTIVO usuarioActivoColumn"></div>
-			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaUsuarios')" class="tooltip ordenarIconActivo">
+			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaUsuarios')" class="tooltip7 ordenarIconActivo">
 			                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 			                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 			              </div>
@@ -112,7 +112,7 @@
 
 						  <th scope="col" class="ROL_COLUMN">
 						    <div class="ROL rolColumn"></div>
-			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaUsuarios')" class="tooltip ordenarIconRol">
+			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaUsuarios')" class="tooltip7 ordenarIconRol">
 			                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 			                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 			              </div>
@@ -183,7 +183,7 @@
                   						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               			  			</div>
 
-	                          		<button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
+	                          		<button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
 	                              		<img class="" src="" alt="" id="iconoAcciones" />
 	                              		<span class="tooltiptext" id="spanAcciones"></span>
 	                          		</button>
@@ -197,7 +197,7 @@
   	</div>
 
 	<div class="volver">
-		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
+		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         		<img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         		<span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>
     		</div>   

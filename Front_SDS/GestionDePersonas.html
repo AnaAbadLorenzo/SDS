@@ -60,35 +60,35 @@
   <div id="personaInfoParaAdmin" hidden>
       <div class="cabecera">
         <div id="divAddPersona" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddPersonas()" 
-          class=" tooltip addIcon">
+          class=" tooltip6 addIcon">
             <img id="btnAddPersona" class="iconoAdd" src="images/add.png" alt="Añadir" />
             <span class="tooltiptext iconAddPersona ICONO_ADD"></span>
         </div>      
 
         <div id="divListarPersonas" name="btnSearch" value="Buscar" data-toggle="" data-target="" 
-          onclick="" class="tooltip searchIcon">
+          onclick="" class="tooltip6 searchIcon">
             <img id="btnListarPersona" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Persona" />
             <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
         </div>
 
-        <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
+        <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip6 searchDeleteIcon">
             <img id = "btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Personas Eliminadas" />
             <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
         </div>
 
-        <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip refreshIcon">
+        <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip6 refreshIcon">
             <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
             <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
         </div>
 
-        <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip hideShowIcon">
+        <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
             <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
             <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
         </div>     
       </div>
 
       <div class = "cabeceraEliminados" hidden>
-        <div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip volverAtrasIcon">
+        <div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip6 volverAtrasIcon">
               <img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
               <span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
           </div> 
@@ -101,7 +101,7 @@
                 <th scope="col" class="colFirst DNI_COLUMN">
                   <div class="DNI dniColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaPersonas')" 
-                        class="tooltip ordenarIconDNI">
+                        class="tooltip7 ordenarIconDNI">
                           <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                           <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -110,7 +110,7 @@
                 <th scope="col" class="NOMBRE_PERSONA_COLUMN">
                   <div class="NOMBRE_PERSONA nombrePersonaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaPersonas')" 
-                        class="tooltip ordenarIconNombrePersona">
+                        class="tooltip7 ordenarIconNombrePersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -119,7 +119,7 @@
                 <th scope="col" class="APELLIDOS_PERSONA_COLUMN">
                   <div class="APELLIDOS_PERSONA apellidosPersonaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaPersonas')" 
-                        class="tooltip ordenarIconApellidosPersona">
+                        class="tooltip7 ordenarIconApellidosPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -128,7 +128,7 @@
                 <th scope="col" class="DIRECCION_PERSONA_COLUMN" hidden>
                   <div class="DIRECCION_PERSONA direccionPersonaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaPersonas')" 
-                        class="tooltip ordenarIconDireccionPersona">
+                        class="tooltip7 ordenarIconDireccionPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -137,7 +137,7 @@
                 <th scope="col" class="FECHA_NACIMIENTO_PERSONA_COLUMN" hidden>
                   <div class="FECHA_NACIMIENTO_PERSONA fechaNacimientoPersonaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaPersonas')" 
-                        class="tooltip ordenarIconFechaNacimientoPersona">
+                        class="tooltip7 ordenarIconFechaNacimientoPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -146,7 +146,7 @@
                  <th scope="col" class="TELEFONO_COLUMN" hidden>
                   <div class="TELEFONO telefonoColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(5, 'tablaPersonas')" 
-                        class="tooltip ordenarIconTelefonoPersona">
+                        class="tooltip7 ordenarIconTelefonoPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -155,7 +155,7 @@
                 <th scope="col" class="EMAIL_COLUMN">
                   <div class="EMAIL emailColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(6, 'tablaPersonas')" 
-                        class="tooltip ordenarIconEmailPersona">
+                        class="tooltip7 ordenarIconEmailPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -164,7 +164,7 @@
                 <th scope="col" class="ACTIVO_COLUMN" hidden>
                   <div class="ACTIVO activoColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(7, 'tablaPersonas')" 
-                        class="tooltip ordenarIconActivo">
+                        class="tooltip7 ordenarIconActivo">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -173,7 +173,7 @@
                 <th scope="col" class="LOGIN_USUARIO_COLUMN">
                   <div class="LOGIN_USUARIO loginUsuarioColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(8, 'tablaPersonas')" 
-                        class="tooltip ordenarIconLoginUsuarioPersona">
+                        class="tooltip7 ordenarIconLoginUsuarioPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -182,7 +182,7 @@
                 <th scope="col" class="NOMBRE_EMPRESA_COLUMN">
                   <div class="NOMBRE_EMPRESA nombreEmpresaColumn"></div>
                       <div name="btnOrdenar" value="Ordenar" onclick="sortTable(9, 'tablaPersonas')" 
-                        class="tooltip ordenarIconNombreEmpresaPersona">
+                        class="tooltip7 ordenarIconNombreEmpresaPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
@@ -468,7 +468,7 @@
                 </div>
                 <label id="labelSelectEmpresa" class="EMPRESAS_DISPONIBLES labelForm" hidden></label>
                 <select class="form-control" id="select" hidden></select>
-                <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAccionesSelectEmpresas">
+                <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAccionesSelectEmpresas">
                   <img class="" src="" alt="" id="iconoAccionesSelectEmpresas" />
                   <span class="tooltiptext" id="spanAccionesSelectEmpresa"></span>
                 </button>
@@ -483,7 +483,7 @@
 
 
 	<div class="volver">
-		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
+		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         		<img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         		<span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>
     		</div>   

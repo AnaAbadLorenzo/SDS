@@ -50,39 +50,39 @@
 	<h1 class="gestion GESTION_ACCIONES"></h1>
 
 	<div class="cabecera">
-		<div id="divAddAccion" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddAcciones()" class="tooltip addIcon">
+		<div id="divAddAccion" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddAcciones()" class="tooltip6 addIcon">
         <img id="btnAddAccion" class="iconoAdd" src="images/add.png" alt="Añadir" />
         <span class="tooltiptext iconAddAccion ICONO_ADD"></span>
     </div>      
 
-    <div id="divListarAcciones" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarAccion()" class="tooltip searchIcon">
+    <div id="divListarAcciones" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarAccion()" class="tooltip6 searchIcon">
         <img id="btnListarAcciones" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Acción" />
         <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
     </div>
 
-    <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip searchDeleteIcon">
+    <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip6 searchDeleteIcon">
         <img id = "btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Acciones Eliminadas" />
         <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
     </div>
 
-     <div name="btnPermisos" value="Permisos" onclick="javascript:permisosUsuarios()" class="tooltip permisosIcon">
+     <div name="btnPermisos" value="Permisos" onclick="javascript:permisosUsuarios()" class="tooltip6 permisosIcon">
         <img class="iconoPermisos iconPermisos" src="images/permisos.png" alt="Gestión de permisos" />
         <span class="tooltiptext iconPermisos ICON_PERMISOS"></span>
     </div>
 
-    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaAccion)" class="tooltip refreshIcon">
+    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaAccion)" class="tooltip6 refreshIcon">
         <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
         <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
     </div>
 
-    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip hideShowIcon">
+    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
         <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
         <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
     </div>     
 	</div>
 
 	<div class = "cabeceraEliminados" hidden>
-		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaAccion)" class="tooltip volverAtrasIcon">
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaAccion)" class="tooltip6 volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 
@@ -94,7 +94,7 @@
 		    	<tr>
 			      <th scope="col" class="colFirst ACCION_NAME_COLUMN">
 			      	<div class="accionNameColumn ACCION_NAME nombreAccionColumn"></div>
-                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaAcciones')" class="tooltip ordenarIconAccionName">
+                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaAcciones')" class="tooltip7 ordenarIconAccionName">
                       <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                       <span class="tooltiptext iconOrdenar ORDENAR"></span>
               		</div>
@@ -102,7 +102,7 @@
 			      	
 					  <th scope="col" class="ACCION_DESCRIPTION_COLUMN">
 					    <div class="ACCION_DESCRIPTION descripAccionColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaAcciones')" class="tooltip ordenarIconAccionDescrip">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaAcciones')" class="tooltip7 ordenarIconAccionDescrip">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
@@ -110,7 +110,7 @@
 
 					  <th scope="col" class="ACCION_ID_COLUMN" hidden>
 					    <div class="ACCION_ID idAccionColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaAcciones')" class="tooltip ordenarIconIdAccion">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaAcciones')" class="tooltip7 ordenarIconIdAccion">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
@@ -145,6 +145,8 @@
 	</div>
 
 	<div id="permisos" style="display: none ;">
+		<div id="accordion">
+		</div>
 	</div>
 
 	<div class="modal modal2 fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -170,7 +172,7 @@
               			  </div>
 	                      <div style="display:none" id="errorFormatoDescripcionAccion"></div>
 
-                          <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
+                          <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
                               <img class="" src="" alt="" id="iconoAcciones" />
                               <span class="tooltiptext" id="spanAcciones"></span>
                           </button>
@@ -183,7 +185,7 @@
 	</div>
 
 	<div class="volver">
-		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
+		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         <span class="tooltiptext iconBack">Volver</span>
     </div>   

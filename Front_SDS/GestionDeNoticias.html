@@ -49,29 +49,29 @@
 	<h1 class="gestion GESTION_NOTICIAS"></h1>
 
 	<div class="cabecera">
-		<div id="divAddNoticia" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddNoticias()" class="tooltip addIcon">
+		<div id="divAddNoticia" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddNoticias()" class="tooltip6 addIcon">
         <img id="btnAddNoticia" class="iconoAdd" src="images/add.png" alt="Añadir" />
         <span class="tooltiptext iconAddNoticia ICONO_ADD"></span>
     </div>      
 
-    <div id="divListarNoticias" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarNoticia()" class="tooltip searchIcon">
+    <div id="divListarNoticias" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarNoticia()" class="tooltip6 searchIcon">
         <img id="btnListarNoticias" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Noticia" />
         <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
     </div>
 
-    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaNoticia)" class="tooltip refreshIcon">
+    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaNoticia)" class="tooltip6 refreshIcon">
         <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
         <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
     </div>
 
-    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip hideShowIcon">
+    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
         <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
         <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
     </div>     
 	</div>
 
 	<div class = "cabeceraEliminados" hidden>
-		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaNoticia)" class="tooltip volverAtrasIcon">
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaNoticia)" class="tooltip6 volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 
@@ -83,7 +83,7 @@
 		    	<tr>
 			      <th scope="col" class="colFirst TITULO_NOTICIA_COLUMN">
 			      	<div class="TITULO_NOTICIA tituloNoticiaColumn"></div>
-                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaNoticias')" class="tooltip ordenarIconTituloNoticia">
+                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaNoticias')" class="tooltip7 ordenarIconTituloNoticia">
                       <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                       <span class="tooltiptext ORDENAR"></span>
               		</div>
@@ -91,7 +91,7 @@
 			      	
 					  <th scope="col" class="TEXTO_NOTICIA_COLUMN">
 					    <div class="TEXTO_NOTICIA textoNoticiaColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaNoticias')" class="tooltip ordenarIconTextoNoticia">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaNoticias')" class="tooltip7 ordenarIconTextoNoticia">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext ORDENAR"></span>
 		              </div>
@@ -99,14 +99,14 @@
 
 					  <th scope="col" class="FECHA_NOTICIA_COLUMN">
 					    <div class="FECHA_NOTICIA fechaNoticiaColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaNoticias')" class="tooltip ordenarIconFechaNoticia">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaNoticias')" class="tooltip7 ordenarIconFechaNoticia">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext ORDENAR"></span>
 		              </div>
 
 					  <th scope="col" class="NOTICIA_ID_COLUMN" hidden>
 					    <div class="NOTICIA_ID idNoticiaColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaNoticias')" class="tooltip ordenarIconIdNoticia">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaNoticias')" class="tooltip7 ordenarIconIdNoticia">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext ORDENAR"></span>
 		              </div>
@@ -175,7 +175,7 @@
 	              			  		</div>
 		                      		<div style="display:none" id="errorFormatoFechaNoticia"></div>
 
-	                          		<button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
+	                          		<button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
 	                              		<img class="" src="" alt="" id="iconoAcciones" />
 	                              		<span class="tooltiptext" id="spanAcciones"></span>
 	                          		</button>
@@ -188,7 +188,7 @@
 	</div>
 
 	<div class="volver">
-		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
+		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         <span class="tooltiptext iconBack">Volver</span>
     </div>   

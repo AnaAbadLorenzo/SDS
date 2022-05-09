@@ -95,7 +95,7 @@ function creaCards(arrayDatos){
 
 							'<div id="' + array[0] + '" class="collapse" data-parent="#' + arrayDatos[0] + '">' +
 							    '<div class="card-body">' +
-							        '<div class="table-responsive">' +
+							        '<div class="table-responsive controlTamTabla">' +
 										'<table class="table table-bordered">' +
 										    '<thead class="cabeceraTablasTest" id="' + array[4] + '"></thead>' +
 										    '<tbody id="' + array[5] + '"></tbody>' +

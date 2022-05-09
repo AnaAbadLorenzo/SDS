@@ -444,16 +444,16 @@ function construyeFila(entidad, fila) {
 	};
 
 	if(entidad == 'PERSONA'){
-		var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
+		var celdaAccionesEditar = '<div class="tooltip6"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
                                ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
 	}else{
-		var celdaAccionesEditar = '<div class="tooltip"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
+		var celdaAccionesEditar = '<div class="tooltip6"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
                                ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
 	}
 
-	var celdaAccionesDetalle = '<div class="tooltip"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
+	var celdaAccionesDetalle = '<div class="tooltip6"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
                                ')" alt="Detalle"/><span class="tooltiptext iconDetailUser ICONO_DETALLE">Detalle</span></div>';
-    var celdaAccionesEliminar = '<div class="tooltip"><img class="eliminar eliminarPermiso" src="images/delete.png" data-toggle="" data-target="" onclick="showEliminar(' + atributosFunciones + 
+    var celdaAccionesEliminar = '<div class="tooltip6"><img class="eliminar eliminarPermiso" src="images/delete.png" data-toggle="" data-target="" onclick="showEliminar(' + atributosFunciones + 
                                ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
 
 
@@ -543,7 +543,7 @@ function construyeFilaEliminados(entidad, fila) {
 
 	};
 
-	var reactivar = '<div class="tooltip"><img class="reactivar reactivarPermiso" src="images/reactivar2.png" data-toggle="" data-target="" onclick="showReactivar(' + atributosFunciones + 
+	var reactivar = '<div class="tooltip6"><img class="reactivar reactivarPermiso" src="images/reactivar2.png" data-toggle="" data-target="" onclick="showReactivar(' + atributosFunciones + 
                                ')" alt="Reactivar"/><span class="tooltiptext iconReactivar ICONO_REACTIVAR">Reactivar</span></div>';
 
     if(entidad == 'PERSONA'){
@@ -641,6 +641,10 @@ function cargarHref(dato){
 		case 'Gestión de noticias':
 			href="GestionDeNoticias.html";
 		break;
+
+		case 'Gestión de empresas':
+			href="GestionDeEmpresas.html";
+		break;
 	}
 
 	return href;
@@ -683,6 +687,10 @@ function cargarClass(dato){
 
 		case 'Gestión de noticias':
 			href = "GESTION_NOTICIAS";
+		break;
+
+		case 'Gestión de empresas':
+			href = "GESTION_EMPRESAS";
 		break;
 	}
 

@@ -51,17 +51,17 @@
 
 	<div class="cabecera">
 
-	    <div id="divListarLogExcepciones" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarLogExcepciones()" class="tooltip searchIcon">
+	    <div id="divListarLogExcepciones" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarLogExcepciones()" class="tooltip6 searchIcon">
 	        <img id="btnListarLogExcepciones" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Log Excepciones" />
 	        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
 	    </div>
 
-	    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaLogExcepciones)" class="tooltip refreshIcon">
+	    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaLogExcepciones)" class="tooltip6 refreshIcon">
 	        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
 	        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
 	    </div>
 
-	    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip hideShowIcon">
+	    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
 	        <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
 	        <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
 	    </div>     
@@ -73,7 +73,7 @@
 		    	<tr>
 			      <th scope="col" class="colFirst LOGIN_USUARIO_COLUMN">
 			      	<div class="loginUsuarioColumn LOGIN_USUARIO loginUsuarioColumn"></div>
-                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaLogExcepciones')" class="tooltip ordenarIconLoginUsuario">
+                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaLogExcepciones')" class="tooltip7 ordenarIconLoginUsuario">
                       <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                       <span class="tooltiptext iconOrdenar ORDENAR"></span>
               		</div>
@@ -81,7 +81,7 @@
 			      	
 					  <th scope="col" class="TYPE_EXCEPTION_COLUMN">
 					    <div class="TYPE_EXCEPTION typeExcepcionColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaLogExcepciones')" class="tooltip ordenarIconDescriptionException">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaLogExcepciones')" class="tooltip7 ordenarIconDescriptionException">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
@@ -89,15 +89,15 @@
 
 					  <th scope="col" class="DESCRIPTION_EXCEPTION_COLUMN">
 					    <div class="DESCRIPTION_EXCEPTION descriptionExceptionColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaLogExcepciones')" class="tooltip ordenarIconDescriptionException">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaLogExcepciones')" class="tooltip7 ordenarIconDescriptionException">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
 					  </th>
 
-					  <th scope="col" class="DATE_COLUMN">
+					  <th scope="col" class="colLast DATE_COLUMN">
 					    <div class="DATE dateColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaLogExcepciones')" class="tooltip ordenarIconDate">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaLogExcepciones')" class="tooltip7 ordenarIconDate">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 		              </div>
@@ -151,7 +151,7 @@
 	                      <input type="date" name="fechaFin" id='fechaFin' value="1900-01-01" min="1900-01-01" max="3000-01-01" onblur="">
 	                      <div style="display:none" id="errorFormatoFechaFin"></div>
 
-                          <button type="submit" name="btnAcciones" value="" class="tooltip" id="btnAcciones">
+                          <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
                               <img class="" src="" alt="" id="iconoAcciones" />
                               <span class="tooltiptext" id="spanAcciones"></span>
                           </button>
@@ -164,7 +164,7 @@
 	</div>
 
 	<div class="volver">
-		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
+		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         <span class="tooltiptext iconBack">Volver</span>
     </div>   
