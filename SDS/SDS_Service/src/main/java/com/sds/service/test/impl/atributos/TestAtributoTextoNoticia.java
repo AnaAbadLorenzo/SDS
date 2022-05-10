@@ -13,22 +13,22 @@ import com.sds.service.test.model.DatosPruebaAtributos;
 import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosTextoSignosPuntuacion;
 
 public class TestAtributoTextoNoticia {
 
 	private final ValidacionesAtributosBlank validacionesAtributosBlank;
 	private final ValidacionesAtributosCaracteresEspeciales validacionesAtributosCaracteresEspeciales;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
-	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
+	private final ValidacionesAtributosTextoSignosPuntuacion validacionesAtributosTextoSignosPuntuacion;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoTextoNoticia() {
 		validacionesAtributosBlank = new ValidacionesAtributosBlank();
 		validacionesAtributosCaracteresEspeciales = new ValidacionesAtributosCaracteresEspeciales();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
-		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
+		validacionesAtributosTextoSignosPuntuacion = new ValidacionesAtributosTextoSignosPuntuacion();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
@@ -54,8 +54,8 @@ public class TestAtributoTextoNoticia {
 				.comprobarAtributoCaracteresEspeciales(datosEntradaTextoNoticiaCaracteresEspeciales.getTextoNoticia(),
 						Funcionalidad.GESTION_NOTICIAS, Atributo.TEXTO_NOTICIA);
 
-		final String resultadoEsperado = CodigosMensajes.TEXTO_NOTICIA_ALFABETICO_INCORRECTO + " - "
-				+ Mensajes.TEXTO_NOTICIA_SOLO_PUEDE_CONTENER_LETRAS;
+		final String resultadoEsperado = CodigosMensajes.TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO + " - "
+				+ Mensajes.TEXTO_NOTICIA_PUEDE_CONTENER_LETRAS_NUMEROS_SIGNOS_PUNTUACION;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFABETICO_CARACTERES_ESPECIALES, Constantes.ERROR,
@@ -77,17 +77,18 @@ public class TestAtributoTextoNoticia {
 				datosEntradaTextoNoticiaAlfabeticoMenor3.getTextoNoticia(), Constantes.TEXTO_NOTICIA);
 	}
 
-	public DatosPruebaAtributos getTestTextoNoticiaAlfabeticoCorrecto(
-			final NoticiasEntity datosEntradaTextoNoticiaAlfabeticoCorrecto) {
+	public DatosPruebaAtributos getTestTextoNoticiaAlfanumericoSignosPuntuacionCorrecto(
+			final NoticiasEntity datosEntradaTextoNoticiaAlfanumericoSignosPuntuacionCorrecto) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
-				.comprobarAtributoCorrectoAlfanumerico(datosEntradaTextoNoticiaAlfabeticoCorrecto.getTextoNoticia());
+		final String resultadoObtenido = validacionesAtributosTextoSignosPuntuacion.comprobarTextoSignosPuntuacion(
+				datosEntradaTextoNoticiaAlfanumericoSignosPuntuacionCorrecto.getTextoNoticia());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFABETICO_CORRECTO, Constantes.EXITO,
-				datosEntradaTextoNoticiaAlfabeticoCorrecto.getTextoNoticia(), Constantes.TEXTO_NOTICIA);
+				DefinicionPruebas.ALFANUMERICO_SIGNOS_PUNTUACION, Constantes.EXITO,
+				datosEntradaTextoNoticiaAlfanumericoSignosPuntuacionCorrecto.getTextoNoticia(),
+				Constantes.TEXTO_NOTICIA);
 
 	}
 

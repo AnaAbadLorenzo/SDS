@@ -118,8 +118,8 @@ public class TestNoticiaServiceImpl implements TestNoticiaService {
 				.getTestTextoNoticiaAlfabeticoCaracteresEspeciales(datosEntradaTextoNoticiaCaracteresEspeciales));
 		datosPruebaAtributos
 				.add(testAtributoTextoNoticia.getTestTextoNoticiaAlfabeticoMenor3(datosEntradaTextoNoticiaMenor3));
-		datosPruebaAtributos.add(
-				testAtributoTextoNoticia.getTestTextoNoticiaAlfabeticoCorrecto(datosEntradaTextoNoticiaAlfabetico));
+		datosPruebaAtributos.add(testAtributoTextoNoticia
+				.getTestTextoNoticiaAlfanumericoSignosPuntuacionCorrecto(datosEntradaTextoNoticiaAlfabetico));
 
 		return datosPruebaAtributos;
 	}
@@ -136,8 +136,8 @@ public class TestNoticiaServiceImpl implements TestNoticiaService {
 
 		datosPruebaAtributos.add(testAtributoTextoNoticia
 				.getTestTextoNoticiaAlfabeticoCaracteresEspeciales(datosEntradaTextoNoticiaCaracteresEspeciales));
-		datosPruebaAtributos.add(
-				testAtributoTextoNoticia.getTestTextoNoticiaAlfabeticoCorrecto(datosEntradaTextoNoticiaAlfabetico));
+		datosPruebaAtributos.add(testAtributoTextoNoticia
+				.getTestTextoNoticiaAlfanumericoSignosPuntuacionCorrecto(datosEntradaTextoNoticiaAlfabetico));
 
 		return datosPruebaAtributos;
 	}

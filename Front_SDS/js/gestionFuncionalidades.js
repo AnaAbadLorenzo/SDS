@@ -759,8 +759,8 @@ function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
    
     setLang(idioma);
     
-    $('#labelFuncionalityName').removeAttr('hidden');
-    $('#labelFuncionalityDescription').removeAttr('hidden');
+    $('#labelFuncionalidadName').removeAttr('hidden');
+    $('#labelFuncionalidadDescription').removeAttr('hidden');
     $('#subtitulo').attr('hidden', '');
 
     rellenarFormulario(nombreFuncionalidad, descripFuncionalidad);

@@ -125,7 +125,7 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
                 }
         
                 var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3,
-                                                        EMAIL_COLUMN: 7,LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+                                                        EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
                 $("#checkboxColumnas").append(div);
                 $("#paginacion").append(textPaginacion);
                 setLang(getCookie('lang'));
@@ -186,7 +186,7 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
         }
       
       var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3,
-                                                        EMAIL_COLUMN: 7,LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+                                                        EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
@@ -449,8 +449,8 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
           $("#datosPersona").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, EMAIL_COLUMN: 7,
-                                                    LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+      var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3,
+                                                        EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
@@ -505,8 +505,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
           $("#datosPersona").append(tr);
         }
       
-     var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3, EMAIL_COLUMN: 7,
-                                                    LOGIN_USUARIO_COLUMN:9, NOMBRE_EMPRESA_COLUMN: 10});
+     var div = createHideShowColumnsWindow({NOMBRE_PERSONA_COLUMN:2, APELLIDOS_PERSONA_COLUMN:3,
+                                                        EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
@@ -758,7 +758,7 @@ function editarPersonaAjaxPromesa(){
           var empresa = null;
         }else{
           var empresa = {
-          idEmpresa : "",
+          idEmpresa : '',
           cifEmpresa : $('#cifEmpresa').val(),
           nombreEmpresa : $('#nombreEmpresa').val(),
           direccionEmpresa : $('#direccionEmpresa').val(),
@@ -1495,11 +1495,29 @@ function rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, te
       $('#esActivo').val('No');
     }
 
-    $('#cifEmpresa').val(cifEmpresa);
-    $('#nombreEmpresa').val(nombreEmpresa);
-    $('#direccionEmpresa').val(direccionEmpresa);
-    $('#telefonoEmpresa').val(telefonoEmpresa);
+    if(cifEmpresa == ""){
+      $('#cifEmpresa').val('-');
+    }else{
+       $('#cifEmpresa').val(cifEmpresa);
+    }
 
+    if(nombreEmpresa == ""){
+      $('#nombreEmpresa').val('-');
+    }else{
+       $('#nombreEmpresa').val(nombreEmpresa);
+    }
+
+    if(direccionEmpresa == ""){
+      $('#direccionEmpresa').val('-');
+    }else{
+       $('#direccionEmpresa').val(direccionEmpresa);
+    }
+
+    if(telefonoEmpresa == ""){
+      $('#telefonoEmpresa').val('-');
+    }else{
+       $('#telefonoEmpresa').val(telefonoEmpresa);
+    }
 
 }
 
@@ -1568,8 +1586,18 @@ function cambiarOnBlurCampos(onBlurDNI, onBlurNombrePersona, onBlurApellidosPers
 
 function cargaDatosPersona(datos){
    var fechaNacimiento = (datos[0].fechaNacP).split('T');
-   var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + fechaNacimiento[0] + "'"
-          , "'" + datos[0].direccionP + "'", "'" + datos[0].telefonoP + "'", "'" + datos[0].emailP + "'"]; 
+
+   if(datos[0].empresa != null){
+    var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + fechaNacimiento[0] + "'",
+          "'" + datos[0].direccionP + "'", "'" + datos[0].telefonoP + "'", "'" + datos[0].emailP + "'", 
+          "'" + datos[0].borradoP + "'", "'" + datos[0].usuario.usuario + "'", "'" + datos[0].usuario.rol.rolName + "'", "'" + datos[0].usuario.borradoUsuario + "'",
+          "'" + datos[0].empresa.cifEmpresa + "'", "'" + datos[0].empresa.nombreEmpresa + "'", "'" + datos[0].empresa.direccionEmpresa + "'", "'" + datos[0].empresa.telefonoEmpresa + "'"]; 
+  }else{
+
+    var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + fechaNacimiento[0] + "'",
+          "'" + datos[0].direccionP + "'", "'" + datos[0].telefonoP + "'", "'" + datos[0].emailP + "'", 
+          "'" + datos[0].borradoP + "'", "'" + datos[0].usuario.usuario + "'", "'" + datos[0].usuario.rol.rolName + "'", "'" + datos[0].usuario.borradoUsuario + "'"]; 
+  }
 	
   $('#cardPersona').html('');
 

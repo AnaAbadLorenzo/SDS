@@ -20,10 +20,10 @@
 			"fechaNoticia": "15/04/2022"
 		},
 		
-		"textoNoticiaAlfabeticoCorrecto":{
+		"textoNoticiaAlfanumericoSignosPuntuacionCorrecto":{
 			"idNoticia":"",
 			"tituloNoticia":"Titulo",
-			"textoNoticia": "Texto",
+			"textoNoticia": "Bienvenidos,amigos.",
 			"fechaNoticia": "15/04/2022"
 		}
 }

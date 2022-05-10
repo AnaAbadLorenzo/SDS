@@ -575,9 +575,8 @@ public class PersonaServiceImpl implements PersonaService {
 				personaEntity.setTelefonoP(personaEntity.getTelefonoP());
 
 				if (persona.getEmpresa() != null) {
-					final Optional<EmpresaEntity> empresaBD = empresaRepository
-							.findById(persona.getEmpresa().getIdEmpresa());
-					personaEntity.setEmpresa(empresaBD.get());
+					final EmpresaEntity empresaBD = empresaRepository.findByCif(persona.getEmpresa().getCifEmpresa());
+					personaEntity.setEmpresa(empresaBD);
 				} else {
 					personaEntity.setEmpresa(null);
 				}

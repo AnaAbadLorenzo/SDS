@@ -174,7 +174,7 @@ arrayEN={
 	'TITULO_NOTICIA_MENOR_QUE_3' : 'New title size is minor than 3 characteres',
 	'TITULO_NOTICIA_MAYOR_QUE_256' : 'New title size is bigger than 256 characteres',
 	'TEXTO_NOTICIA_VACIO' : 'New text is empty',
-	'TEXTO_NOTICIA_ALFABETICO_INCORRECTO' : 'New text can only contain letters and spaces',
+	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'New text can only contain letters, numbers, spaces and punctuation marks',
 	'TEXTO_NOTICIA_MENOR_QUE_3' : 'New text size is minor than 3 characteres',
 
 	//Mensajes
@@ -259,6 +259,9 @@ arrayEN={
 	'ADD_NOTICIA' : 'ADD NEW',
 	'QUITAR_EMPRESA' : 'Do you want to disassociate yourself from a company?',
 	'GESTION_EMPRESAS' : 'Enterprises management',
+	'REACTIVATE_ENTERPRISE' : 'REACTIVATE ENTERPRISE',
+	'DELETE_EMPRESA' : 'DELETE ENTERPRISE',
+	'EDIT_ENTERPRISE' : 'EDIT ENTERPRISE',
 
 	//Acciones
 	'CERRARMODAL': 'Close',

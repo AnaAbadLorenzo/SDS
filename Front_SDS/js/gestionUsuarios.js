@@ -281,7 +281,7 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
 		    }
 
 	    var data = {
-          dniUsuario : getCookie('dniUsuario'),
+          dniUsuario : '',
 	        usuario : getCookie('usuario'),
 	        rol : rol,
 	        inicio : 0,

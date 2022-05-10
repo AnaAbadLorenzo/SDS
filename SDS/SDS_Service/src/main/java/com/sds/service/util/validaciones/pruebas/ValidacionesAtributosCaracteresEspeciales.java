@@ -235,8 +235,8 @@ public class ValidacionesAtributosCaracteresEspeciales {
 								+ Mensajes.TITULO_NOTICIA_SOLO_PUEDE_CONTENER_LETRAS;
 						break;
 					case TEXTO_NOTICIA:
-						resultado = CodigosMensajes.TEXTO_NOTICIA_ALFABETICO_INCORRECTO + " - "
-								+ Mensajes.TEXTO_NOTICIA_SOLO_PUEDE_CONTENER_LETRAS;
+						resultado = CodigosMensajes.TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO + " - "
+								+ Mensajes.TEXTO_NOTICIA_PUEDE_CONTENER_LETRAS_NUMEROS_SIGNOS_PUNTUACION;
 						break;
 					default:
 						break;

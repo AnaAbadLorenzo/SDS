@@ -370,19 +370,23 @@ function construyeFila(entidad, fila) {
         case 'LOG_EXCEPCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.tipoExcepcion + "'", "'" + fila.descripcionExcepcion + "'", "'" + fila.fecha + "'"];
 			var fecha = (fila.fecha).split('T');
+			var fech = fecha[0].split('-');
+			var fechaOrdenada = fech[2] + '-' + fech[1] + '-' + fech[0];
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.tipoExcepcion + 
                 '</td> <td>' + fila.descripcionExcepcion +
-                '</td> <td>' + fecha[0];
+                '</td> <td>' + fechaOrdenada;
         break;
 
         case 'LOG_ACCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.accion + "'", "'" + fila.datos + "'", "'" + fila.fecha + "'"];
 			var fecha = (fila.fecha).split('T');
+			var fech = fecha[0].split('-');
+			var fechaOrdenada = fech[2] + '-' + fech[1] + '-' + fech[0];
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.accion + 
                 '</td> <td>' + fila.datos +
-                '</td> <td>' + fecha[0];
+                '</td> <td>' + fechaOrdenada;
         break;
 
         case 'USUARIO':
@@ -435,10 +439,12 @@ function construyeFila(entidad, fila) {
 
         case 'NOTICIA':
         var fechaNoticia = (fila.fechaNoticia).split('T');
+        var fech = fechaNoticia[0].split('-');
+		var fechaOrdenada = fech[2] + '-' + fech[1] + '-' + fech[0];
 			atributosFunciones = ["'" + fila.tituloNoticia + "'", "'" + fila.textoNoticia + "'", "'" + fechaNoticia[0] + "'", "'" + fila.idNoticia + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.tituloNoticia + 
                 '</td> <td>' + fila.textoNoticia +
-                '</td> <td>' + fechaNoticia[0];
+                '</td> <td>' + fechaOrdenada;
         break;
 
 	};

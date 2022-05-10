@@ -125,54 +125,19 @@
                       </div>
                 </th>
 
-                <th scope="col" class="DIRECCION_PERSONA_COLUMN" hidden>
-                  <div class="DIRECCION_PERSONA direccionPersonaColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaPersonas')" 
-                        class="tooltip7 ordenarIconDireccionPersona">
-                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
-                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
-                      </div>
-                </th>
-
-                <th scope="col" class="FECHA_NACIMIENTO_PERSONA_COLUMN" hidden>
-                  <div class="FECHA_NACIMIENTO_PERSONA fechaNacimientoPersonaColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaPersonas')" 
-                        class="tooltip7 ordenarIconFechaNacimientoPersona">
-                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
-                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
-                      </div>
-                </th>
-
-                 <th scope="col" class="TELEFONO_COLUMN" hidden>
-                  <div class="TELEFONO telefonoColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(5, 'tablaPersonas')" 
-                        class="tooltip7 ordenarIconTelefonoPersona">
-                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
-                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
-                      </div>
-                </th>
-
                 <th scope="col" class="EMAIL_COLUMN">
                   <div class="EMAIL emailColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(6, 'tablaPersonas')" 
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaPersonas')" 
                         class="tooltip7 ordenarIconEmailPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
                       </div>
                 </th>
 
-                <th scope="col" class="ACTIVO_COLUMN" hidden>
-                  <div class="ACTIVO activoColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(7, 'tablaPersonas')" 
-                        class="tooltip7 ordenarIconActivo">
-                            <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
-                            <span class="tooltiptext iconOrdenar ORDENAR"></span>
-                      </div>
-                </th>
 
                 <th scope="col" class="LOGIN_USUARIO_COLUMN">
                   <div class="LOGIN_USUARIO loginUsuarioColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(8, 'tablaPersonas')" 
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaPersonas')" 
                         class="tooltip7 ordenarIconLoginUsuarioPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
@@ -181,7 +146,7 @@
 
                 <th scope="col" class="NOMBRE_EMPRESA_COLUMN">
                   <div class="NOMBRE_EMPRESA nombreEmpresaColumn"></div>
-                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(9, 'tablaPersonas')" 
+                      <div name="btnOrdenar" value="Ordenar" onclick="sortTable(5, 'tablaPersonas')" 
                         class="tooltip7 ordenarIconNombreEmpresaPersona">
                             <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
                             <span class="tooltiptext iconOrdenar ORDENAR"></span>
@@ -419,7 +384,7 @@
                         <div style="display:none" id="errorFormatoDireccionEmpresa"></div>
 
                     <label class="labelForm TELEFONO" id="labelTelefonoEmpresa" hidden></label>
-                    <input type="tel" name="telefono" id="telefonoEmpresa" placeholder="TELEFONO" class ="TELEFONO" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
+                    <input type="tel" name="telefonoEmpresa" id="telefonoEmpresa" placeholder="TELEFONO" class ="TELEFONO" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
                           <div class="obligatorio tooltip2" id="obligatorioTelefonoEmp">*
                             <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                         </div>

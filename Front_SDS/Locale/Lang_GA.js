@@ -172,7 +172,7 @@ arrayGA={
 	'TITULO_NOTICIA_MENOR_QUE_3' : 'O título da noticia ten menos de 3 caracteres',
 	'TITULO_NOTICIA_MAYOR_QUE_256' : 'O título da noticia ten máis de 256 caracteres',
 	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
-	'TEXTO_NOTICIA_ALFABETICO_INCORRECTO' : 'O texto da noticia só pode conter letras e espacios',
+	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da noticia só pode conter letras, números, espacios e sinais de puntuación',
 	'TEXTO_NOTICIA_MENOR_QUE_3' : 'O texto da noticia ten menos de 3 caracteres',
 
 	//Mensajes
@@ -258,6 +258,9 @@ arrayGA={
 	'ADD_NOTICIA' : 'ENGADIR NOTICIA',
 	'QUITAR_EMPRESA' : 'Queres desasociarte de unha empresa?',
 	'GESTION_EMPRESAS' : 'Xestión de empresas',
+	'REACTIVATE_ENTERPRISE' : 'REACTIVAR EMPRESA',
+	'DELETE_EMPRESA' : 'ELIMINAR EMPRESA',
+	'EDIT_ENTERPRISE' : 'EDITAR EMPRESA',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

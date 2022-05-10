@@ -24,6 +24,7 @@ public class DefinicionPruebas {
 	public static final String ALFABETICO_MAYOR_48 = "Alfabético mayor de 48 caracteres";
 	public static final String ALFABETICO_MAYOR_256 = "Alfabético mayor de 256 caracteres";
 	public static final String ALFABETICO_CORRECTO = "Alfabético sin caracateres especiales, tamaño mayor que 3";
+	public static final String ALFANUMERICO_SIGNOS_PUNTUACION = "Alfanumérico que puede contener signos de puntuación";
 	public static final String NOMBRE_ALFABETICO_CORRECTO = "Alfabético sin caracateres especiales, tamaño mayor que 3 y menor que 56";
 	public static final String ALFANUMERICO_CORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño mayor que 3 y menor que 45";
 	public static final String DIRECCION_CORRECTO = "Alfanumerico que puede contener acentos, ñ, caracteres especiales, tamaño mayor que 3 y menor que 128";

@@ -168,7 +168,7 @@ public class Mensajes {
 	public static final String TITULO_NOTICIA_NO_PUEDE_SER_MAYOR_QUE_256 = "El título de la noticia no puede ser mayor que 256";
 
 	public static final String TEXTO_NOTICIA_NO_PUEDE_SER_VACIO = "El texto de la noticia no puede ser vacío";
-	public static final String TEXTO_NOTICIA_SOLO_PUEDE_CONTENER_LETRAS = "El texto de la noticia solo puede contener letras";
+	public static final String TEXTO_NOTICIA_PUEDE_CONTENER_LETRAS_NUMEROS_SIGNOS_PUNTUACION = "El texto de la noticia solo puede contener letras, números y signos de puntuacion";
 	public static final String TEXTO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3 = "El texto de la noticia no puede ser menor que 3";
 
 	public static final String NOMBRE_OBJETIVO_NO_PUEDE_SER_VACIO = "El nombre del objetivo no puede ser vacío";

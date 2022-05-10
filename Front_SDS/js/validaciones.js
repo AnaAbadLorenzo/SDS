@@ -1030,7 +1030,7 @@ function comprobarTituloNoticia(idElemento, idElementoError, campo){
 function comprobarTextoNoticia(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && 
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo) && 
 		comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError);
         return true;
@@ -1090,7 +1090,7 @@ function comprobarTextoNoticiaSearch(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+		if (comprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo)) {
 			validacionOK(idElemento, idElementoError);
 			return true;
 		
@@ -1569,9 +1569,6 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			case 'tituloNoticia' :
 				codigo = "TITULO_NOTICIA_ALFABETICO_INCORRECTO";
 			break;
-			case 'textoNoticia' :
-				codigo = "TEXTO_NOTICIA_ALFABETICO_INCORRECTO";
-			break;
 		}
 		addCodeError(idElementoError, codigo);
         return false;
@@ -1599,6 +1596,31 @@ function comprobarSoloLetrasSinEspacios(idElemento, idElementoError, campo) {
 			break;
 			case 'nombreAccion' : 
 				codigo = "ACCION_NAME_ALFABETICO_INCORRECTO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+        return false;
+    }
+
+    return true;
+
+}
+
+/**Función que valida la longitud del texto y que esté compuesto por letras**/
+function comprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo) {
+
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+  	var nombre = document.getElementById(idElemento).name;
+  	var longitud = document.getElementById(idElemento).value.length;
+
+    var patron = /^[a-zA-ZÀ-ÿ0-9\u00f1\u00d1\u002E\u003B\u002C\s]+$/g;
+      
+    if (!patron.test(valor)) { 
+    	switch(campo) {
+			case 'textoNoticia' :
+				codigo = "TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

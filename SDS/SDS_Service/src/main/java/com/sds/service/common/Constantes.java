@@ -470,7 +470,7 @@ public class Constantes {
 	public static final String TEXTO_NOTICIA_CARACTERESESPECIALES = "textoNoticiaCaracteresEspeciales";
 	public static final String TEXTO_NOTICIA_MENOR_3 = "textoNoticiaMenor3";
 	public static final String TEXTO_NOTICIA_NUMERICO = "textoNoticiaNumerico";
-	public static final String TEXTO_NOTICIA_CORRECTO = "textoNoticiaAlfabeticoCorrecto";
+	public static final String TEXTO_NOTICIA_CORRECTO = "textoNoticiaAlfanumericoSignosPuntuacionCorrecto";
 
 	public static final String FECHA_NOTICIA_VACIA = "fechaNoticiaVacia";
 	public static final String DATOS_NOTICIA_VACIOS = "datosNoticiaVacios";
@@ -525,6 +525,7 @@ public class Constantes {
 	public static final String FORMATO_EMAIL = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 	public static final String FORMATO_DNI = "^[0-9]{8}[A-Z]{1}$";
 	public static final String FORMATO_CIF = "^[A-Z]{1}[0-9]{8}$";
+	public static final String FORMATO_TEXTO_SIGNOS_PUNTUACION = "[a-zA-Z0-9/./,/;]+";
 
 	// Constantes caracteres
 	public static final String COMA = ",";
