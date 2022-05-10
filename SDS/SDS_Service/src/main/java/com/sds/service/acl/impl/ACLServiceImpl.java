@@ -1,6 +1,7 @@
 package com.sds.service.acl.impl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class ACLServiceImpl implements ACLService {
 		}
 
 		menu.setUsuario(usuario);
+		funcionalidadesMenu.sort(Comparator.naturalOrder());
 		menu.setFuncionalidades(funcionalidadesMenu);
 
 		return menu;

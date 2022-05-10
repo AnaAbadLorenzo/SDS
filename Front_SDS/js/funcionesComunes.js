@@ -846,7 +846,7 @@ function errorFailAjax(status){
 
 	if (status === 500) {
 		errorInternal("MENSAJE_ERROR_INTERNO", idioma);
-	} else if (status === 403) {
+	} else if (status === 403 || status === 412) {
 		errorAutenticado("ERROR_AUTENTICACION", idioma);
 	} else if (status === 0 || status === 404){
 		errorInternal("ERR_CONNECTION_REFUSED", idioma);
