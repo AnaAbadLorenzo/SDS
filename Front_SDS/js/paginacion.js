@@ -45,7 +45,7 @@ function paginador(totalResults, funcionalidad, entidad){
 
     var paginacionPrevio = '<nav aria-label= "Page navigation example">' +
     					'<ul class="pagination">' +
-    						'<li id="anterior" class="page-item disabled tooltip6">' +
+    						'<li id="anterior" class="page-item disabled tooltip">' +
     							'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'ANTERIOR\', \'' + entidad + '\')" aria-label="Previous">' +
     								'<span aria-hidden="true">&laquo;</span>' +
     								'<span class="sr-only">Previous</span>' +
@@ -55,7 +55,7 @@ function paginador(totalResults, funcionalidad, entidad){
 
     paginas = escogeEntidadPaginacion(entidad, funcionalidad);
 
-   	var paginacionSiguiente = '<li id="siguiente" class="page-item navegacion tooltip6">' +
+   	var paginacionSiguiente = '<li id="siguiente" class="page-item navegacion tooltip">' +
 	   								'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'SIGUIENTE\', \'' + entidad + '\')" aria-label="Next">' + 
 	   									'<span aria-hidden="true">&raquo;</span>' + 
 	   									'<span class="sr-only">Next</span>' +
@@ -119,6 +119,9 @@ function escogeTamanho(entidad){
         break;
         case 'NOTICIA' : 
             tamanho = tamanhoPaginaNoticia;
+        break;
+         case 'EMPRESA' : 
+            tamanho = tamanhoPaginaEmpresa;
         break;
     }
 
@@ -326,6 +329,30 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                             + (i+1) + ',' + tamanhoPaginaRol + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
+            }
+        break;
+
+         case 'EMPRESA':
+            switch(funcionalidad){
+                case 'cargarEmpresas': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarEmpresas(' 
+                            + (i+1) + ',' + tamanhoPaginaEmpresa + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEmpresa' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEmpresa(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosEmpresa' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaUsuario + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+
             }
         break;
 

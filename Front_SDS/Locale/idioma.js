@@ -41,7 +41,6 @@ function setLang(lang =''){
         var inputs = document.getElementsByTagName('input');
         var imgs = document.getElementsByTagName('img');
         var options = document.getElementsByTagName('option');
-        var textAreas = document.getElementsByTagName('textarea');
 
         for (var elem in elementos) {
             elementos[elem].innerHTML = traduccion[clave];
@@ -74,15 +73,6 @@ function setLang(lang =''){
         for (var i = 0; i < options.length; i++) { 
             if (options[i].className == clave) {
                 options[i].label = traduccion[clave];
-            }
-        }
-
-        for (var i = 0; i < textAreas.length; i++) {
-            var list = textAreas[i].classList;
-            for (var j = 0; j < list.length; j++) {
-                if (list[j] == clave) {
-                    textAreas[i].placeholder = traduccion[clave];
-                }            
             }
         }
 	}

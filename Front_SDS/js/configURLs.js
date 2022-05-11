@@ -81,6 +81,14 @@ var urlPeticionAjaxBorrarNoticia = urlComun + urlNoticia + "/borrarNoticia";
 var urlPeticionAjaxEditarNoticia = urlComun + urlNoticia + "/modificarNoticia";
 var urlPeticionAjaxAddNoticia = urlComun + urlNoticia + "/noticia";
 
+/**Urls empresas**/
+var urlPeticionAjaxReactivarEmpresa = urlComun + urlEmpresa + "/reactivarEmpresa";
+var urlPeticionAjaxListarEmpresa = urlComun + urlEmpresa + "/listarEmpresa";
+var urlPeticionAjaxListarEmpresaEliminada = urlComun + urlEmpresa + "/listarEmpresasEliminadas";
+var urlPeticionAjaxListarTodasEmpresas = urlComun + urlEmpresa + "/listarEmpresas";
+var urlPeticionAjaxDeleteEmpresa = urlComun + urlEmpresa + "/eliminarEmpresa";
+var urlPeticionAjaxEditarEmpresa = urlComun + urlEmpresa + "/modificarEmpresa";
+var urlPeticionAjaxAnadirEmpresa = urlComun + urlEmpresa + "/empresa";
 
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";

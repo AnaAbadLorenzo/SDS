@@ -36,6 +36,8 @@ arrayEN={
 	'TITULO_NOTICIA' : 'New title',
 	'TEXTO_NOTICIA' : 'New text',
 	'FECHA_NOTICIA' : 'New date',
+	'NOMBRE_OBJETIVO' : 'Objective name',
+	'DESCRIPCION_OBJETIVO' : 'Objective description'
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -262,6 +264,10 @@ arrayEN={
 	'REACTIVATE_ENTERPRISE' : 'REACTIVATE ENTERPRISE',
 	'DELETE_EMPRESA' : 'DELETE ENTERPRISE',
 	'EDIT_ENTERPRISE' : 'EDIT ENTERPRISE',
+	'DETAIL_ENTERPRISE' : 'DETAIL ENTERPRISE',
+	'SEARCH_EMPRESA' : 'SEARCH ENTERPRISE',
+	'ADD_EMPRESA' : 'ADD ENTERPRISE',
+	'GESTION_OBJETIVOS' : 'Objectives management',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -325,6 +331,16 @@ arrayEN={
 	'ACCION_ASIGNADA_OK' : 'PERMISSION ASSIGNED CORRECTLY',
 	'ACCION_ASIGNADA' : 'The permission has been assigned correctly',
 	'ACCION_REVOCADA_OK' : 'PERMISSION REVOKED CORRECTLY',
-	'ACCION_REVOCADA' : 'The permission has been revoked correctly'
+	'ACCION_REVOCADA' : 'The permission has been revoked correctly',
+	'EMPRESA_REACTIVADA_OK' : 'ENTERPRISE REACTIVATED CORRECTLY',
+	'EMPRESA_ELIMINADA_OK' : 'ENTERPRISE DELETED CORRECTLY',
+	'EMPRESA_EDITADA_OK' : 'ENTERPRISE MODIFIED CORRECTLY',
+	'EMPRESA_GUARDADA_OK' : 'ENTERPRISE SAVED CORRECTLY',
+	'EMPRESA_REACTIVADA' : 'The enterprise has been reactivated correctly',
+	'EMPRESA_ENCONTRADA' : 'The enterprise has been found correctly',
+	'EMPRESAS_LISTADAS_ELIMINADAS' : 'The deleted enterprises has been found correctly',
+	'EMPRESA_ELIMINADA' : 'The enterprise whas been deleted correctly',
+	'EMPRESA_MODIFICADA' : 'The enterprise has been modified correctly',
+	'EMPRESA_GUARDADA' : 'The enterprise has been saved correctly'
 
 }

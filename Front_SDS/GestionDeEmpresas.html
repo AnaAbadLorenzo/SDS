@@ -10,7 +10,7 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="css/gestionUsuarios.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/gestionEmpresas.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -23,8 +23,7 @@
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script type="text/javascript" src="js/paginacion.js"></script>
-	<script type="text/javascript" src="js/gestionRoles.js"></script>
-	<script type="text/javascript" src="js/gestionUsuarios.js"></script>
+	<script type="text/javascript" src="js/gestionEmpresas.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
     <script type="text/javascript" src="Locale/Lang_ES.js"></script>
@@ -57,7 +56,7 @@
         		<img id="btnAddEmpresa" class="iconoAdd" src="images/add.png" alt="Añadir" />
         		<span class="tooltiptext iconAddEmpresa ICONO_ADD"></span>
     		</div>    
-		    <div id="divListarUsuario" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarEmpresa()" class="tooltip6 searchIcon">
+		    <div id="divListarEmpresa" name="btnSearch" value="Buscar" data-toggle="" data-target="" onclick="javascript:showBuscarEmpresa()" class="tooltip6 searchIcon">
 		        <img id="btnListarEmpresas" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Empresa" />
 		        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
 		    </div>
@@ -89,8 +88,8 @@
 			<table class="table table-bordered" id="tablaEmpresas">
 				<thead>
 			    	<tr>
-				      <th scope="col" class="colFirst CIF_EMPRESA_COLUMN">
-				      	<div class="CIF_EMPRESA cifEmpresaColumn"></div>
+				      <th scope="col" class="colFirst CIF_COLUMN">
+				      	<div class="CIF cifEmpresaColumn"></div>
 	                  	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaEmpresas')" class="tooltip7 ordenarIconCifEmpresa">
 	                      <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 	                      <span class="tooltiptext iconOrdenar ORDENAR"></span>
@@ -98,7 +97,7 @@
 						</th>
 				      	
 						  <th scope="col" class="NOMBRE_EMPRESA_COLUMN">
-						    <div class="NOMBRE_EMPPRESA nombreEmpresaColumn"></div>
+						    <div class="NOMBRE_EMPRESA nombreEmpresaColumn"></div>
 			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaEmpresas')" class="tooltip7 ordenarIconNombreEmpresa">
 			                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 			                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
@@ -107,15 +106,15 @@
 
 						  <th scope="col" class="DIRECCION_EMPRESA_COLUMN">
 						    <div class="DIRECCION_EMPRESA direccionEmpresaColumn"></div>
-			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaEmpresas')" class="tooltip7 ordenarIconActivo">
+			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaEmpresas')" class="tooltip7 ordenarIconDireccionEmpresa">
 			                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 			                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 			              </div>
 						  </th>
 
 						  <th scope="col" class="TELEFONO_COLUMN">
-						    <div class="ROL telefonoColumn"></div>
-			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaEmpresas')" class="tooltip7 ordenarIconRol">
+						    <div class="TELEFONO telefonoColumn"></div>
+			              	<div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaEmpresas')" class="tooltip7 ordenarIconTelefonoEmpresa">
 			                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 			                    <span class="tooltiptext iconOrdenar ORDENAR"></span>
 			              </div>
@@ -165,17 +164,17 @@
 	              				<p id = "subtitulo" class="SEGURO_ELIMINAR_EMPRESA" hidden></p>
 	                    		<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
 
-	                    			<label class="labelForm CIF_EMPPRESA" id="labelCifEmpresa" hidden></label>
-                    				<input type="text" name="cifEmpresa" placeholder="CIF_EMPRESA" id="cifEmpresa" class="CifEmpresa CIF_EMPRESA" maxlength="9" size="9" onblur="">
+	                    			<label class="labelForm CIF" id="labelCifEmpresa" hidden></label>
+                    				<input type="text" name="cifEmpresa" placeholder="CIF" id="cifEmpresa" class="CifEmpresa CIF" maxlength="9" size="9" onblur="">
                     				<div class="obligatorio tooltip2" id="obligatorioCifEmpresa">*
                       					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     				</div>
-                    				<small class="FORMATO_CIF"></small>
+                    				<small id="formatoCif" class="FORMATO_CIF"></small>
                     				<div style="display:none" id="errorFormatoCifEmpresa"></div>
 	                    			
-	                    			<label class="labelForm NOMBRE_EMPPRESA" id="labelNombreEmpresa" hidden></label>
+	                    			<label class="labelForm NOMBRE_EMPRESA" id="labelNombreEmpresa" hidden></label>
                     				<input type="text" name="nombreEmpresa" placeholder="NOMBRE_EMPRESA" id="nombreEmpresa" class="nombreEmpresa NOMBRE_EMPRESA" maxlength="48" size="48" onblur="">
-                    				<div class="obligatorio tooltip2" id="obligatorioNombreEmoresa">*
+                    				<div class="obligatorio tooltip2" id="obligatorioNombreEmpresa">*
                       					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     				</div>
                     				<div style="display:none" id="errorFormatoNombreEmpresa"></div>
@@ -192,8 +191,8 @@
                           			<div class="obligatorio tooltip2" id="obligatorioTelefonoEmpresa">*
                       					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     				</div>
-                    				<small class="FORMATO_TELF"></small>
-                    				<div style="display:none" id="errorFormatoDireccionEmpresa"></div>
+                    				<small id="formatoTelef" class="FORMATO_TELF"></small>
+                    				<div style="display:none" id="errorFormatoTelefonoEmpresa"></div>
 
 	                          		<button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
 	                              		<img class="" src="" alt="" id="iconoAcciones" />

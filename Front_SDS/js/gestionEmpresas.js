@@ -1,29 +1,31 @@
-/** Función para añadir funcionalidades con ajax y promesas **/
-function anadirFuncionalidadAjaxPromesa(){
+/** Función para añadir empresas con ajax y promesas **/
+function anadirEmpresaAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
-    var funcionalidadEntity = {
-      idFuncionalidad : "",
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 0
+     var empresa= {
+      idEmpresa : $("input[name=idEmpresa]").val(),
+      cifEmpresa : $('#cifEmpresa').val(),
+      nombreEmpresa : $('#nombreEmpresa').val(),
+      direccionEmpresa : $('#direccionEmpresa').val(),
+      telefonoEmpresa : $('#telefonoEmpresa').val(),
+      borradoEmpresa : 0
     }
 
     var data = {
       usuario : getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+      empresa : empresa
     }
     
     $.ajax({
       method: "POST",
-      url: urlPeticionAjaxAddFuncionalidad,
+      url: urlPeticionAjaxAnadirEmpresa,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_GUARDADA') {
+        if (res.code != 'EMPRESA_GUARDADA') {
           reject(res);
         }
         resolve(res);
@@ -33,61 +35,120 @@ function anadirFuncionalidadAjaxPromesa(){
   });
 }
 
-/** Función para añadir funcionalidades con ajax y promesas **/
-function buscarFuncionalidadAjaxPromesa(numeroPagina, tamanhoPagina, accion){
+/**Funcion para buscar una empresa **/
+function buscarEmpresaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
   return new Promise(function(resolve, reject) {
+    var rol ="";
     var token = getCookie('tokenUsuario');
 
-    if(accion == "buscarModal"){
+     if(accion == "buscarModal"){
+      
       var data = {
-        nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-        descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-        inicio : calculaInicio(numeroPagina, tamanhoPaginaFuncionalidad),
-        tamanhoPagina : tamanhoPaginaFuncionalidad 
-      }
-    }
-
-    if(accion == "buscarPaginacion"){
-      if(getCookie('nombreFuncionalidad') == null || getCookie('nombreFuncionalidad') == ""){
-        var nombreFunc = "";
-      }else{
-        var nombreFunc = getCookie('nombreFuncionalidad');
+        
+        cifEmpresa : $('#cifEmpresa').val(),
+        nombreEmpresa : $('#nombreEmpresa').val(),
+        direccionEmpresa : $('#direccionEmpresa').val(),
+        telefonoEmpresa : $('#telefonoEmpresa').val(),
+        inicio : calculaInicio(numeroPagina, tamanhoPaginaEmpresa),
+        tamanhoPagina : tamanhoPaginaEmpresa
       }
 
-      if(getCookie('descripFuncionalidad') == null || getCookie('descripFuncionalidad') == ""){
-        var descripFunc = "";
-      }else{
-        var descripFunc = getCookie('descripFuncionalidad');
-      }
-
-      var data = {
-        nombreFuncionalidad : nombreFunc,
-        descripFuncionalidad : descripFunc,
-        inicio : calculaInicio(numeroPagina, tamanhoPaginaFuncionalidad),
-        tamanhoPagina : tamanhoPaginaFuncionalidad 
-      }
-    }
-    
-    $.ajax({
+         $.ajax({
       method: "POST",
-      url: urlPeticionAjaxListarFuncionalidad,
+      url: urlPeticionAjaxListarEmpresa,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_ENCONTRADA') {
+        if (res.code != 'EMPRESA_ENCONTRADA') {
           reject(res);
         }
         resolve(res);
       }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
-  });
+    
+    }else if(accion == "buscarPaginacion"){
+      if(getCookie('cifEmpresa') == null || getCookie('cifEmpresa') == ""){
+        var cifEmpresa = "";
+      }else{
+        var cifEmpresa = getCookie('cifEmpresa');
+      }
+      
+      if(getCookie('nombreEmpresa') == null || getCookie('nombreEmpresa') == ""){
+        var nombreEmpresa = "";
+      }else{
+        var nombreEmpresa = getCookie('nombreEmpresa');
+      }
+
+      if(getCookie('direccionEmpresa') == null || getCookie('direccionEmpresa') == ""){
+        var direccionEmpresa = "";
+      }else{
+        var direccionEmpresa = getCookie('nombreEmpresa');
+      }
+
+      if(getCookie('telefonoEmpresa') == null || getCookie('telefonoEmpresa') == ""){
+        var telefonoEmpresa = "";
+      }else{
+        var telefonoEmpresa = getCookie('telefonoEmpresa');
+      }
+
+      var data = {
+          cifEmpresa : cifEmpresa,
+          nombreEmpresa : nombreEmpresa,
+          direccionEmpresa : direccionEmpresa,
+          telefonoEmpresa :telefonoEmpresa,
+          inicio : calculaInicio(numeroPagina, tamanhoPaginaEmpresa),
+          tamanhoPagina : tamanhoPaginaUsuario
+        }
+
+         $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarEmpresa,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'EMPRESA_ENCONTRADA') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+ 
+    }else if(accion == "buscarInfo"){
+       var data = {
+      usuario : getCookie('usuario'),
+      inicio : 0,
+      tamanhoPagina : 1
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarPersonaPorUsuario,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PERSONAS_LISTADAS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      }); 
+    }
+    
+     });
+   
 }
 
 /** Función para recuperar los permisos de un usuario sobre la funcionalidad **/
-function cargarPermisosFuncFuncionalidadAjaxPromesa(){
+function cargarPermisosFuncEmpresaAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var nombreUsuario = getCookie('usuario');
     var token = getCookie('tokenUsuario');
@@ -98,7 +159,7 @@ function cargarPermisosFuncFuncionalidadAjaxPromesa(){
       method: "GET",
       url: urlPeticionAjaxAccionesUsuario,
       contentType : "application/json",
-      data: { usuario : usuario, funcionalidad : 'Gestión de funcionalidades'},  
+      data: { usuario : usuario, funcionalidad : 'Gestión de empresas'},  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
@@ -112,32 +173,34 @@ function cargarPermisosFuncFuncionalidadAjaxPromesa(){
   });
 }
 
-/**Función para editar una funcionalidad con ajax y promesas*/
-function editarFuncionalidadAjaxPromesa(){
+/**Función para editar una empresa con ajax y promesas*/
+function editarEmpresaAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
-    var funcionalidadEntity = {
-      idFuncionalidad : $("input[name=idFuncionalidad]").val(),
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 0
+    var empresa= {
+      idEmpresa : $("input[name=idEmpresa]").val(),
+      cifEmpresa : $('#cifEmpresa').val(),
+      nombreEmpresa : $('#nombreEmpresa').val(),
+      direccionEmpresa : $('#direccionEmpresa').val(),
+      telefonoEmpresa : $('#telefonoEmpresa').val(),
+      borradoEmpresa : 0
     }
     
     var data = {
       usuario : getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+      empresa : empresa
     }
 
       $.ajax({
       method: "POST",
-      url: urlPeticionAjaxEditFuncionalidad,
+      url: urlPeticionAjaxEditarEmpresa,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_MODIFICADA') {
+        if (res.code != 'EMPRESA_MODIFICADA') {
           reject(res);
         }
         resolve(res);
@@ -147,32 +210,34 @@ function editarFuncionalidadAjaxPromesa(){
   });
 }
 
-/**Función para eliminar un rol un rol con ajax y promesas*/
-function eliminarFuncionalidadAjaxPromesa(){
+/**Función para eliminar una empresa con ajax y promesas*/
+function eliminarEmpresaAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
-    var funcionalidadEntity = {
-      idFuncionalidad : $("input[name=idFuncionalidad]").val(),
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 1
+     var empresa= {
+      idEmpresa : $("input[name=idEmpresa]").val(),
+      cifEmpresa : $('#cifEmpresa').val(),
+      nombreEmpresa : $('#nombreEmpresa').val(),
+      direccionEmpresa : $('#direccionEmpresa').val(),
+      telefonoEmpresa : $('#telefonoEmpresa').val(),
+      borradoEmpresa : 1
     }
     
     var data = {
       usuario : getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+      empresa : empresa
     }
 
       $.ajax({
       method: "POST",
-      url: urlPeticionAjaxDeleteFuncionalidad,
+      url: urlPeticionAjaxDeleteEmpresa,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_ELIMINADA') {
+        if (res.code != 'EMPRESA_ELIMINADA') {
           reject(res);
         }
         resolve(res);
@@ -183,10 +248,10 @@ function eliminarFuncionalidadAjaxPromesa(){
 }
 
 /*Función que comprueba los permisos del usuario sobre la funcionalidad*/
-async function cargarPermisosFuncFuncionalidad(){
-  await cargarPermisosFuncFuncionalidadAjaxPromesa()
+async function cargarPermisosFuncEmpresa(){
+  await cargarPermisosFuncEmpresaAjaxPromesa()
   .then((res) => {
-    gestionarPermisosFuncionalidad(res.data);
+    gestionarPermisosEmpresa(res.data);
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -195,25 +260,25 @@ async function cargarPermisosFuncFuncionalidad(){
 }
 
 
-/** Función para recuperar las funcionalidades con ajax y promesas **/
-function cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina){
+/** Función para recuperar las empresas con ajax y promesas **/
+function cargarEmpresasAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
   	var token = getCookie('tokenUsuario');
 
     var data = {
-      inicio : calculaInicio(numeroPagina, tamanhoPaginaFuncionalidad),
-      tamanhoPagina : tamanhoPaginaFuncionalidad
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaEmpresa),
+      tamanhoPagina : tamanhoPaginaEmpresa
     }
     
     $.ajax({
       method: "POST",
-      url: urlPeticionAjaxListadoFuncionalidades,
+      url: urlPeticionAjaxListarTodasEmpresas,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDADES_LISTADAS') {
+        if (res.code != 'EMPRESAS_LISTADAS') {
           reject(res);
         }
         resolve(res);
@@ -223,25 +288,25 @@ function cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina){
   });
 }
 
-/**Función para recuperar las funcionalidades eliminadas con ajax y promesas*/
+/**Función para recuperar las empresas eliminadas con ajax y promesas*/
 function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
     var data = {
-      inicio : calculaInicio(numeroPagina, tamanhoPaginaFuncionalidad),
-      tamanhoPagina : tamanhoPaginaFuncionalidad
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaEmpresa),
+      tamanhoPagina : tamanhoPaginaEmpresa
     }
     
     $.ajax({
       method: "POST",
-      url: urlPeticionAjaxListadoFuncionalidadesEliminadas,
+      url: urlPeticionAjaxListarEmpresaEliminada,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDADES_ELIMINADAS_LISTADAS') {
+        if (res.code != 'EMPRESAS_LISTADAS_ELIMINADAS') {
           reject(res);
         }
         resolve(res);
@@ -251,27 +316,29 @@ function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
   });
 }
 
-/**Función para ver en detalle una funcionalidad con ajax y promesas*/
-function detalleFuncionalidadAjaxPromesa(){
+/**Función para ver en detalle una empresa con ajax y promesas*/
+function detalleEmpresaAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
     
     var data = {
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripFuncionalidad').val(),
+      cifEmpresa : $('#cifEmpresa').val(),
+      nombreEmpresa : $('#nombreEmpresa').val(),
+      direccionEmpresa : $('#direccionEmpresa').val(),
+      telefonoEmpresa : $('#telefonoEmpresa').val(),
       inicio : 0,
       tamanhoPagina : 1
     }
 
       $.ajax({
       method: "POST",
-      url: urlPeticionAjaxListarFuncionalidad,
+      url: urlPeticionAjaxListarEmpresa,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_ENCONTRADA') {
+        if (res.code != 'EMPRESA_ENCONTRADA') {
           reject(res);
         }
         resolve(res);
@@ -282,32 +349,35 @@ function detalleFuncionalidadAjaxPromesa(){
 }
 
 
-/**Función para reactivar una funcionalidad con ajax y promesas*/
-function reactivarFuncionalidadesAjaxPromesa(){
+/**Función para reactivar una empresa con ajax y promesas*/
+function reactivarEmpresasAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
     
-    var funcionalidadEntity = {
-      idFuncionalidad : $("input[name=idFuncionalidad]").val(),
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 0
+    var empresa= {
+      idEmpresa : $("input[name=idEmpresa]").val(),
+      cifEmpresa : $('#cifEmpresa').val(),
+      nombreEmpresa : $('#nombreEmpresa').val(),
+      direccionEmpresa : $('#direccionEmpresa').val(),
+      telefonoEmpresa : $('#telefonoEmpresa').val(),
+      borradoEmpresa : 0
     }
+  
 
     var data = {
       usuario: getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+      empresa : empresa
     }
 
       $.ajax({
       method: "POST",
-      url: urlPeticionAjaxReactivarFuncionalidad,
+      url: urlPeticionAjaxReactivarEmpresa,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_REACTIVADA') {
+        if (res.code != 'EMPRESA_REACTIVADA') {
           reject(res);
         }
         resolve(res);
@@ -317,43 +387,66 @@ function reactivarFuncionalidadesAjaxPromesa(){
   });
 }
 
-/* Función para obtener las funcionalidades del sistema */
-async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCreado){
-	await cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina)
-	  .then((res) => {
-	  	
+/* Función para obtener los usuarios del sistema */
+async function cargarEmpresas(numeroPagina, tamanhoPagina, paginadorCreado){
+	if(getCookie('rolUsuario') == "usuario"){
+    await buscarEmpresaAjaxPromesa(numeroPagina, tamanhoPaginaEmpresa, "buscarInfo")
+    .then((res) => {
+    
+      $("#cardEmpresa").attr('hidden', false);
+      $('#infoAdmin').attr('hidden', true);
+
+      for(var i = 0; i<res.data.listaBusquedas.length; i++){
+        if(res.data.listaBusquedas[i].usuario.usuario == getCookie('usuario')){
+          cargaInformacionEmpresa(res.data.listaBusquedas[i]);
+        }
+      }
+   
+
+      }).catch((res) => {
+          respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
+
+    });
+  }else if(getCookie('rolUsuario') == "admin"){
+    await cargarEmpresasAjaxPromesa(numeroPagina, tamanhoPagina)
+    .then((res) => {
+    
+      $("#cardEmpresa").attr('hidden', true);
+      $('#infoAdmin').attr('hidden', false);
+
       var numResults = res.data.numResultados + '';
-	  	var totalResults = res.data.tamanhoTotal + '';
-        var inicio = 0;
+      var totalResults = res.data.tamanhoTotal + '';
+      var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
       }else{
         inicio = parseInt(res.data.inicio)+1;
       }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
 
       if(res.data.listaBusquedas.length == 0){
         $('#itemPaginacion').attr('hidden',true);
       }else{
         $('#itemPaginacion').attr('hidden',false);
       }
-	   	
-      $("#datosFuncionalidad").html("");
-	   	$("#checkboxColumnas").html("");
-	   	$("#paginacion").html("");
-    		
+
+      $("#datosEmpresas").html("");
+      $("#checkboxColumnas").html("");
+      $("#paginacion").html("");
+        
       for (var i = 0; i < res.data.listaBusquedas.length; i++){
-    			var tr = construyeFila('FUNCIONALIDAD', res.data.listaBusquedas[i]);
-    			$("#datosFuncionalidad").append(tr);
-    		}
-    	
-    	var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
-      	$("#checkboxColumnas").append(div);
-      	$("#paginacion").append(textPaginacion);
-      	setLang(getCookie('lang'));
+          var tr = construyeFila('EMPRESA', res.data.listaBusquedas[i]);
+          $("#datosEmpresas").append(tr);
+        }
+      
+      var div = createHideShowColumnsWindow({NOMBRE_EMPRESA_COLUMN:2,DIRECCION_EMPRESA_COLUMN:3,TELEFONO_COLUMN:4});
+        $("#checkboxColumnas").append(div);
+        $("#paginacion").append(textPaginacion);
+        setLang(getCookie('lang'));
 
         if(paginadorCreado != 'PaginadorCreado'){
-          paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
+          paginador(totalResults, 'cargarEmpresas', 'EMPRESA');
         }
         
         if(numeroPagina == 0){
@@ -365,36 +458,39 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCread
         }
 
         setCookie('numeroPagina', numPagCookie);
-	  
-		}).catch((res) => {
-		    respuestaAjaxKO(res.code);
-		    document.getElementById("modal").style.display = "block";
-		});
+    
+    }).catch((res) => {
+        respuestaAjaxKO(res.code);
+        document.getElementById("modal").style.display = "block";
+    });
+  }
 }
 
-/** Funcion añadir funcionalidad **/
-async function addFuncionalidad(){
-  await anadirFuncionalidadAjaxPromesa()
+/** Funcion añadir empresa **/
+async function addEmpresa(){
+  await anadirEmpresaAjaxPromesa()
   .then((res) => {
     
     $("#form-modal").modal('toggle');
-    respuestaAjaxOK("FUNCIONALIDAD_GUARDADA_OK", res.code);
+    respuestaAjaxOK("EMPRESA_GUARDADA_OK", res.code);
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+    let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     
-    $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
-    $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
-    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorNo');
+    $('#cifEmpresa').val(getCookie('cifEmpresa'));
+    $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
+    $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
+    $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
+    buscarEmpresa(getCookie('numeroPagina'), tamanhoPaginaEmpresa, 'buscarPaginacion', 'PaginadorNo');
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
 
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+      let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
       resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
@@ -404,11 +500,11 @@ async function addFuncionalidad(){
 }
 
 
-/** Funcion buscar funcionalidad **/
-async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginadorCreado){
-  await buscarFuncionalidadAjaxPromesa(numeroPagina, tamanhoPagina,accion)
+/** Funcion buscar empresa **/
+async function buscarEmpresa(numeroPagina, tamanhoPagina, accion, paginadorCreado){
+  await buscarEmpresaAjaxPromesa(numeroPagina, tamanhoPagina,accion)
   .then((res) => {
-      cargarPermisosFuncFuncionalidad();
+      cargarPermisosFuncEmpresa();
       if($('#form-modal').is(':visible')) {
          $("#form-modal").modal('toggle');
       };
@@ -429,22 +525,22 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
         $('#itemPaginacion').attr('hidden',false);
       }
 
-      $("#datosFuncionalidad").html("");
+      $("#datosEmpresas").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFila('FUNCIONALIDAD', res.data.listaBusquedas[i]);
-          $("#datosFuncionalidad").append(tr);
+          var tr = construyeFila('EMPRESA', res.data.listaBusquedas[i]);
+          $("#datosEmpresas").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
+      var div = createHideShowColumnsWindow({NOMBRE_EMPRESA_COLUMN:2, DIRECCION_EMPRESA_COLUMN:3, TELEFONO_COLUMN: 4});
       
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
       if(paginadorCreado != 'PaginadorCreado'){
-          paginador(totalResults, 'buscarFuncionalidad', 'FUNCIONALIDAD');
+          paginador(totalResults, 'buscarEmpresa', 'EMPRESA');
       }
 
       if(numeroPagina == 0){
@@ -461,7 +557,7 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
       cargarPermisosFuncFuncionalidad();
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+      let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
       resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
@@ -472,11 +568,13 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
 
 /*Función que refresca la tabla por si hay algún cambio en BD */
 async function refrescarTabla(numeroPagina, tamanhoPagina){
-  await cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina)
+  await cargarEmpresasAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
-      cargarPermisosFuncFuncionalidad();
-      setCookie('nombreFuncionalidad', '');
-      setCookie('descripFuncionalidad', '');
+      cargarPermisosFuncEmpresa();
+      setCookie('cifEmpresa', '');
+      setCookie('nombreEmpresa', '');
+      setCookie('direccionEmpresa', '');
+      setCookie('telefonoEmpresa', '');
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
       var inicio = 0;
@@ -493,23 +591,25 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         $('#itemPaginacion').attr('hidden',false);
       }
       
-      $("#datosFuncionalidad").html("");
+      $("#datosEmpresas").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFila('FUNCIONALIDAD', res.data.listaBusquedas[i]);
-          $("#datosFuncionalidad").append(tr);
+          var tr = construyeFila('EMPRESA', res.data.listaBusquedas[i]);
+          $("#datosEmpresas").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
+      var div = createHideShowColumnsWindow({NOMBRE_EMPRESA_COLUMN:2, DIRECCION_EMPRESA_COLUMN:3, TELEFONO_COLUMN: 4});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      setCookie('nombreFuncionalidad', '');
-      setCookie('descripFuncionalidad', '');
+     setCookie('cifEmpresa', '');
+      setCookie('nombreEmpresa', '');
+      setCookie('direccionEmpresa', '');
+      setCookie('telefonoEmpresa', '');
 
-      paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
+      paginador(totalResults, 'cargarEmpresas', 'EMPRESA');
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
@@ -529,11 +629,11 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
   });
 }
 
-/*Función que busca los eliminados de la tabla de rol*/
+/*Función que busca los eliminados de la tabla de empresa*/
 async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
   await buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina)
   .then((res) => {
-      cargarPermisosFuncFuncionalidad();
+      cargarPermisosFuncEmpresa();
       var numResults = res.data.numResultados + '';
       var totalResults = res.data.tamanhoTotal + '';
       var inicio = 0;
@@ -557,24 +657,26 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
           $('.cabeceraEliminados').attr('hidden', false);
       }
 
-      $("#datosFuncionalidad").html("");
+      $("#datosEmpresas").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFilaEliminados('FUNCIONALIDAD', res.data.listaBusquedas[i]);
-          $("#datosFuncionalidad").append(tr);
+          var tr = construyeFilaEliminados('EMPRESA', res.data.listaBusquedas[i]);
+          $("#datosEmpresas").append(tr);
         }
       
-      var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
+      var div = createHideShowColumnsWindow({NOMBRE_EMPRESA_COLUMN:2, DIRECCION_EMPRESA_COLUMN:3, TELEFONO_COLUMN: 4});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
 
-      setCookie('nombreFuncionalidad', '');
-      setCookie('descripFuncionalidad', '');
+      setCookie('cifEmpresa', '');
+      setCookie('nombreEmpresa', '');
+      setCookie('direccionEmpresa', '');
+      setCookie('telefonoEmpresa', '');
 
       if(paginadorCreado != 'PaginadorCreado'){
-         paginador(totalResults, 'buscarEliminadosFuncionalidad', 'FUNCIONALIDAD');
+         paginador(totalResults, 'buscarEliminadosEmpresa', 'EMPRESA');
       }
      
 
@@ -593,25 +695,27 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
   });
 }
 
-/** Función que visualiza una funcionalidad **/
-async function detalleFuncionalidad(){
-  await detalleFuncionalidadAjaxPromesa()
+/** Función que visualiza una empresa **/
+async function detalleEmpresa(){
+  await detalleEmpresaAjaxPromesa()
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+    let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
-    $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
-    $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
+    $('#cifEmpresa').val(getCookie('cifEmpresa'));
+    $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
+    $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
+    $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
 
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-      resetearFormulario("formularioGenerico", idElementoList);
+     let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+     resetearFormulario("formularioGenerico", idElementoList);
       
       setLang(getCookie('lang'));
 
@@ -619,60 +723,62 @@ async function detalleFuncionalidad(){
   });
 }
 
-/** Función que edita un rol **/
-async function editFuncionalidad(){
-  await editarFuncionalidadAjaxPromesa()
+/** Función que edita una empresa **/
+async function editEmpresa(){
+  await editarEmpresaAjaxPromesa()
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    respuestaAjaxOK("FUNCIONALIDAD_EDITADA_OK", res.code);
+    respuestaAjaxOK("EMPRESA_EDITADA_OK", res.code);
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+    let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
-    $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
-    $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
-    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorCreado');
+    $('#cifEmpresa').val(getCookie('cifEmpresa'));
+    $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
+    $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
+    $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
+    buscarEmpresa(getCookie('numeroPagina'), tamanhoPaginaEmpresa, 'buscarPaginacion', 'PaginadorCreado');
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
 
      respuestaAjaxKO(res.code);
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    resetearFormulario("formularioGenerico", idElementoList);
+     let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+     resetearFormulario("formularioGenerico", idElementoList);
 
-    setLang(getCookie('lang'));
+     setLang(getCookie('lang'));
 
-    document.getElementById("modal").style.display = "block";
+     document.getElementById("modal").style.display = "block";
 
 
   });
 }
 
-/** Función que elimina una funcionalidad **/
-async function deleteFuncionalidad(){
-  await eliminarFuncionalidadAjaxPromesa()
+/** Función que elimina una empresa **/
+async function deleteEmpresa(){
+  await eliminarEmpresaAjaxPromesa()
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    respuestaAjaxOK("FUNCIONALIDAD_ELIMINADA_OK", res.code);
+    respuestaAjaxOK("EMPRESA_ELIMINADA_OK", res.code);
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+    let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
-    refrescarTabla(0, tamanhoPaginaFuncionalidad);
+    refrescarTabla(0, tamanhoPaginaEmpresa);
 
   }).catch((res) => {
      
      $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-      resetearFormulario("formularioGenerico", idElementoList);
+      let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      resetearFormulario("formularioGenerico", idElementoList); 
 
       setLang(getCookie('lang'));
 
@@ -682,94 +788,112 @@ async function deleteFuncionalidad(){
   });
 }
 
-/*Función que reactiva los eliminados de la tabla de funcionalidades*/
-async function reactivarFuncionalidad(){
-  await reactivarFuncionalidadesAjaxPromesa()
+/*Función que reactiva los eliminados de la tabla de empresas*/
+async function reactivarEmpresa(){
+  await reactivarEmpresasAjaxPromesa()
   .then((res) => {
 
-    cargarPermisosFuncFuncionalidad();
+    cargarPermisosFuncEmpresa();
 
     $("#form-modal").modal('toggle');
 
-    respuestaAjaxOK("FUNCIONALIDAD_REACTIVADA_OK", res.code);
+    respuestaAjaxOK("EMPRESA_REACTIVADA_OK", res.code);
+
+    let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    resetearFormulario("formularioGenerico", idElementoList);    
 
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
-    buscarEliminados(0, tamanhoPaginaFuncionalidad, 'PaginadorNo');
+    buscarEliminados(0, tamanhoPaginaEmpresa, 'PaginadorNo');
+
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
+      let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      resetearFormulario("formularioGenerico", idElementoList);    
       setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
   });
 }
 
-/** Funcion para mostrar el formulario para añadir una funcionalidad **/
-function showAddFuncionalidades() {
+/** Funcion para mostrar el formulario para añadir una empresa **/
+function showAddEmpresa() {
   var idioma = getCookie('lang');
-  cambiarFormulario('ADD_FUNCIONALIDAD', 'javascript:addFuncionalidad();', 'return comprobarAddFuncionalidad();');
-  cambiarOnBlurCampos('return comprobarNombreFuncionalidad(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
-  'return comprobarDescripcionFuncionalidad(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
-  cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddFuncionalidad', 'Añadir');
+  cambiarFormulario('ADD_EMPRESA', 'javascript:addEmpresa();', 'return comprobarAddEmpresa();');
+  cambiarOnBlurCampos('return comprobarCIF(\'cifEmpresa\', \'errorFormatoCifEmpresa\', \'cifEmpresaRegistro\')',
+      'return comprobarNombreEmpresa(\'nombreEmpresa\', \'errorFormatoNombreEmpresa\', \'nombreEmpresaRegistro\')', 
+      'return comprobarDireccion(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
+      'return comprobarTelefono(\'telefonoEmpresa\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
+  cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddEmpresa', 'Añadir');
   setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
-  $('#labelFuncionalidadName').attr('hidden', true);
-  $('#labelFuncionalidadDescription').attr('hidden', true);
+  $('#labelCifEmpresa').attr('hidden', true);
+  $('#labelNombreEmpresa').attr('hidden', true);
+  $('#labelDireccionEmpresa').attr('hidden', true);
+  $('#labelTelefonoEmpresa').attr('hidden', true);
 
-  let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-  let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
+  let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];    
+  let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
 
 }
 
-/** Funcion para buscar una funcionalidad **/
-function showBuscarFuncionalidad() {
+/** Funcion para buscar una empresa **/
+function showBuscarEmpresa() {
   var idioma = getCookie('lang');
 
-  cambiarFormulario('SEARCH_FUNCIONALIDAD', 'javascript:buscarFuncionalidad(0,' + tamanhoPaginaFuncionalidad + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarFuncionalidad();');
-  cambiarOnBlurCampos('return comprobarNombreFuncionalidadSearch(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
-  'return comprobarDescripcionFuncionalidadSearch(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
-  cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchFuncionalidad', 'Buscar');
+  cambiarFormulario('SEARCH_EMPRESA', 'javascript:buscarEmpresa(0,' + tamanhoPaginaEmpresa + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarEmpresa();');
+  cambiarOnBlurCampos('return comprobarCifEmpresaSearch(\'cifEmpresa\', \'errorFormatoCifEmpresa\', \'cifEmpresaRegistro\')',
+      'return comprobarNombreEmpresaSearch(\'nombreEmpresa\', \'errorFormatoNombreEmpresa\', \'nombreEmpresaRegistro\')', 
+      'return comprobarDireccionSearch(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
+      'return comprobarTelefonoSearch(\'telefonoEmpresa\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
+  cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchEmpresa', 'Buscar');
   setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
-  $('#labelFuncionalidadName').attr('hidden', true);
-  $('#labelFuncionalidadDescription').attr('hidden', true);
+  $('#labelCifEmpresa').attr('hidden', true);
+  $('#labelNombreEmpresa').attr('hidden', true);
+  $('#labelDireccionEmpresa').attr('hidden', true);
+  $('#labelTelefonoEmpresa').attr('hidden', true);
 
-  let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-  let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
+  let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];    
+  let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
   eliminarReadonly(campos);
-  ocultarObligatorios(obligatorios);
+  mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
 
 }
 
-/** Funcion para visualizar una funcionalidad **/
-function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
+/** Funcion para visualizar una empresa **/
+function showDetalle(cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
   
     var idioma = getCookie('lang');
 
-    cambiarFormulario('DETAIL_FUNCIONALITY', 'javascript:detalleFuncionalidad();', '');
+    cambiarFormulario('DETAIL_ENTERPRISE', 'javascript:detalleEmpresa();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
    
     setLang(idioma);
     
-    $('#labelFuncionalidadName').removeAttr('hidden');
-    $('#labelFuncionalidadDescription').removeAttr('hidden');
-    $('#subtitulo').attr('hidden', '');
+    $('#subtitulo').attr('hidden', true);
+    $('#labelCifEmpresa').removeAttr('hidden');
+    $('#labelNombreEmpresa').removeAttr('hidden');
+    $('#labelDireccionEmpresa').removeAttr('hidden');
+    $('#labelTelefonoEmpresa').removeAttr('hidden');
 
-    rellenarFormulario(nombreFuncionalidad, descripFuncionalidad);
+    rellenarFormulario(cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
 
-    let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
+    let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];    
+    let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
+    let formatos = ["formatoCif", "formatoTelef"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    ocultaFormatos(formatos);
 
 }
 
@@ -777,27 +901,31 @@ function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
 function showEditar(cifEmpresa, nombreEmpresa , direccionEmpresa, telefonoEmpresa, idEmpresa) {
   var idioma = getCookie('lang');
 
-    cambiarFormulario('EDIT_ENTERPRISE', 'javascript:editEmpresa();', 'return comprobarEditEmpresa  ();');
-    cambiarOnBlurCampos('return comprobarNombreFuncionalidad(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
-      'return comprobarDescripcionFuncionalidad(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
-    cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarFuncionalidad', 'Editar');
+    cambiarFormulario('EDIT_ENTERPRISE', 'javascript:editEmpresa();', 'return comprobarEditEmpresa();');
+    cambiarOnBlurCampos('return comprobarCIF(\'cifEmpresa\', \'errorFormatoCifEmpresa\', \'cifEmpresaRegistro\')',
+      'return comprobarNombreEmpresa(\'nombreEmpresa\', \'errorFormatoNombreEmpresa\', \'nombreEmpresaRegistro\')', 
+      'return comprobarDireccion(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
+      'return comprobarTelefono(\'telefonoEmpresa\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
+    cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarEmpresa', 'Editar');
    
     setLang(idioma);
     
     $('#subtitulo').attr('hidden', true);
-    $('#labelFuncionalidadName').attr('hidden', true);
-    $('#labelFuncionalidadDescription').attr('hidden', true);
+    $('#labelCifEmpresa').attr('hidden', true);
+    $('#labelNombreEmpresa').attr('hidden', true);
+    $('#labelDireccionEmpresa').attr('hidden', true);
+    $('#labelTelefonoEmpresa').attr('hidden', true);
 
-    rellenarFormulario(nombreFuncionalidad, descripFuncionalidad);
-    insertacampo(document.formularioGenerico,'idFuncionalidad', idFuncionalidad);
+    rellenarFormulario(cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
+    insertacampo(document.formularioGenerico,'idEmpresa', idEmpresa);
 
-    let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
+    let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];    
+    let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
     eliminarReadonly(campos);
     mostrarObligatorios(obligatorios);
     habilitaCampos(campos);
-    deshabilitaCampos(["nombreFuncionalidad"]);
-    anadirReadonly(["nombreFuncionalidad"]);
+    deshabilitaCampos(["cifEmpresa"]);
+    anadirReadonly(["cifEmpresa"]);
 
 }
 
@@ -811,7 +939,7 @@ function showEliminar(cifEmpresa, nombreEmpresa , direccionEmpresa, telefonoEmpr
    
     setLang(idioma);
     
-     $('#labelCifEmpresa').removeAttr('hidden');
+    $('#labelCifEmpresa').removeAttr('hidden');
     $('#labelNombreEmpresa').removeAttr('hidden');
     $('#labelDireccionEmpresa').removeAttr('hidden');
     $('#labelTelefonoEmpresa').removeAttr('hidden');
@@ -824,11 +952,12 @@ function showEliminar(cifEmpresa, nombreEmpresa , direccionEmpresa, telefonoEmpr
     insertacampo(document.formularioGenerico,'idEmpresa', idEmpresa);
 
     let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
-    let obligatorios = ["errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", 
-                        "errorFormatoTelefonoEmpresa"];
+    let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
+    let formatos = ["formatoCif", "formatoTelef"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    ocultaFormatos(formatos);
 
 }
 
@@ -856,10 +985,12 @@ function showReactivar(cifEmpresa, nombreEmpresa , direccionEmpresa, telefonoEmp
     insertacampo(document.formularioGenerico,'idEmpresa', idEmpresa);
 
     let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
-    let obligatorios = ["errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", "errorFormatoTelefonoEmpresa"];
+    let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
+    let formatos = ["formatoCif", "formatoTelef"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    ocultaFormatos(formatos);
 
 }
 
@@ -924,8 +1055,8 @@ function gestionarPermisosEmpresa(idElementoList) {
         $('#btnListarEmpresas').css("cursor", "pointer");
         $('.iconoSearchDelete').css("cursor", "pointer");
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaEmpresa\', \'PaginadorNo\')");
-        $('#divListarEmpresas').attr("data-toggle", "modal");
-        $('#divListarEmpresas').attr("data-target", "#form-modal");
+        $('#divListarEmpresa').attr("data-toggle", "modal");
+        $('#divListarEmpresa').attr("data-target", "#form-modal");
 
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');
@@ -943,6 +1074,49 @@ function gestionarPermisosEmpresa(idElementoList) {
 
     } 
     }); 
+}
+
+/** Funcion para visualizar la información del usuario **/
+function cargaInformacionEmpresa(empresa){
+ 
+  if(empresa.empresa == null){
+      var nombreEmpresa = " - ";
+      var cifEmpresa = " - ";
+      var direccionEmpresa = " - ";
+      var telefonoEmpresa = " - ";
+    }else{
+      var nombreEmpresa = empresa.empresa.nombreEmpresa;
+      var cifEmpresa = empresa.empresa.cifEmpresa;
+      var direccionEmpresa = empresa.empresa.direccionEmpresa;
+      var telefonoEmpresa = empresa.empresa.telefonoEmpresa;
+    }
+
+    $('#cardEmpresa').html('');
+
+     var cardEm = '<img class="card-img-top" src="images/empresa2.png" alt="Card image">' + 
+                '<div class="card-body">' + 
+                  '<div class="nombreEInfo">' + 
+                    '<img class="nombreEImg" src="images/empresa2.png" alt="nombreE">' + 
+                    '<h4 class="card-title nombreE">' + nombreEmpresa + '</h4>' + 
+                  '</div>' + 
+                  '<div class="cifInfo">' + 
+                    '<img class="cifImg" src="images/cif.png" alt="cif">' + 
+                    '<p class="card-text cif">' + cifEmpresa + '</p>' + 
+                  '</div>' + 
+                  '<div class="direccionEInfo">' + 
+                    '<img class="direccionEImg" src="images/direccion.png" alt="direccionE">' + 
+                    '<p class="card-text direccionE">' + direccionEmpresa + '</p>' + 
+                  '</div>' +
+                  '<div class="telefonoEInfo">' +
+                    '<img class="telefonoEImg" src="images/telefono.png" alt="telefonoE">' + 
+                    '<p class="card-text telefonoE">' + telefonoEmpresa + '</p>' +
+                  '</div>' + 
+                '</div>';
+
+
+    $('#cardEmpresa').append(cardEm);
+
+
 }
 
 $(document).ready(function() {

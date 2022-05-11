@@ -203,26 +203,29 @@ public class EmpresaServiceImpl implements EmpresaService {
 			final List<PersonaEntity> personasEmpresa = personaRepository.findAll();
 
 			for (final PersonaEntity person : personasEmpresa) {
-				if (person.getEmpresa().getCifEmpresa().equals(empresa.getEmpresa().getCifEmpresa())) {
+				if (person.getEmpresa() != null) {
+					if (person.getEmpresa().getCifEmpresa().equals(empresa.getEmpresa().getCifEmpresa())) {
 
-					logExcepciones = util.generarDatosLogExcepciones(empresa.getUsuario(),
-							CodeMessageErrors.getTipoNameByCodigo(
-									CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
-							CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
+						logExcepciones = util.generarDatosLogExcepciones(empresa.getUsuario(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
+								CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
 
-					resultadoLog2 = logServiceImpl.guardarLogExcepciones(logExcepciones);
+						resultadoLog2 = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog2)) {
-						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog2)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
+
+						throw new EmpresaAsociadaPersonasException(
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
+
+								CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
 					}
 
-					throw new EmpresaAsociadaPersonasException(
-							CodeMessageErrors.getTipoNameByCodigo(
-									CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
-
-							CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
 				} else {
 					empresaEntity.setBorradoEmpresa(1);
 					empresa.setEmpresa(empresaEntity);
@@ -326,16 +329,15 @@ public class EmpresaServiceImpl implements EmpresaService {
 						CodeMessageErrors.EMPRESA_NO_ENCONTRADA_EXCEPTION.getCodigo());
 
 			} else {
-				empresaEntity.setIdEmpresa(empre.getIdEmpresa());
-				empresaEntity.setCifEmpresa(empresaEntity.getCifEmpresa());
-				empresaEntity.setNombreEmpresa(empresaEntity.getNombreEmpresa());
-				empresaEntity.setDireccionEmpresa(empresaEntity.getDireccionEmpresa());
-				empresaEntity.setTelefonoEmpresa(empresaEntity.getTelefonoEmpresa());
-				empresaEntity.setBorradoEmpresa(empresaEntity.getBorradoEmpresa());
+				empre.setCifEmpresa(empresaEntity.getCifEmpresa());
+				empre.setNombreEmpresa(empresaEntity.getNombreEmpresa());
+				empre.setDireccionEmpresa(empresaEntity.getDireccionEmpresa());
+				empre.setTelefonoEmpresa(empresaEntity.getTelefonoEmpresa());
+				empre.setBorradoEmpresa(empresaEntity.getBorradoEmpresa());
 
-				empresa.setEmpresa(empresaEntity);
+				empresa.setEmpresa(empre);
 
-				empresaRepository.saveAndFlush(empresaEntity);
+				empresaRepository.saveAndFlush(empre);
 
 				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(empresa.getUsuario(),
 						Constantes.ACCION_BUSCAR_EMPRESA, empresa.getUsuario());

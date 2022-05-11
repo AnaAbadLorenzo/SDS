@@ -265,6 +265,10 @@ arrayES={
 	'REACTIVATE_ENTERPRISE' : 'REACTIVAR EMPRESA',
 	'DELETE_EMPRESA' : 'ELIMINAR EMPRESA',
 	'EDIT_ENTERPRISE' : 'EDITAR EMPRESA',
+	'DETAIL_ENTERPRISE' : 'DETALLE EMPRESA',
+	'SEARCH_EMPRESA' : 'BUSCAR EMPRESA',
+	'ADD_EMPRESA' : 'AÑADIR EMPRESA',
+	'GESTION_OBJETIVOS' : 'Gestión de objetivos',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -328,6 +332,16 @@ arrayES={
 	'ACCION_ASIGNADA_OK' : 'PERMISO ASIGNADO CORRECTAMENTE',
 	'ACCION_ASIGNADA' : 'El permiso se ha asignado correctamente',
 	'ACCION_REVOCADA_OK' : 'PERMISO REVOCADO CORRECTAMENTE',
-	'ACCION_REVOCADA' : 'El permiso se ha revocado correctamente'
+	'ACCION_REVOCADA' : 'El permiso se ha revocado correctamente',
+	'EMPRESA_REACTIVADA_OK' : 'EMPRESA REACTIVADA CORRECTAMENTE',
+	'EMPRESA_ELIMINADA_OK' : 'EMPRESA ELIMINADA CORRECTAMENTE',
+	'EMPRESA_EDITADA_OK' : 'EMPRESA EDITADA CORRECTAMENTE',
+	'EMPRESA_GUARDADA_OK' : 'EMPRESA GUARDADA CORRECTAMENTE',
+	'EMPRESA_REACTIVADA' : 'La empresa se ha reactivado correctamente',
+	'EMPRESA_ENCONTRADA' : 'La empresa se ha encontrado correctamente',
+	'EMPRESAS_LISTADAS_ELIMINADAS' : 'Las empresas eliminadas se han encontrado correctamente',
+	'EMPRESA_ELIMINADA' : 'La empresa ha sido eliminada correctamente',
+	'EMPRESA_MODIFICADA' : 'La empresa se ha modificado correctamente',
+	'EMPRESA_GUARDADA' : 'La empresa se ha guardado correctamente'
 
 }

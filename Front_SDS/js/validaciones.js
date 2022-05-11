@@ -104,6 +104,16 @@ function comprobarRegistro(){
 	}
 }
 
+/** Función que valida el editar de una empresa **/
+function comprobarEditEmpresa(){
+	if(comprobarCIF('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro') && comprobarNombreEmpresa('nombreEmpresa', 'errorFormatoNombreEmpresa', 'nombreEmpresaRegistro') && 
+		comprobarDireccion('direccionEmpresa', 'errorFormatoDireccionEmpresa', 'direccionEmpresaRegistro') && comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 /** Función que valida el formulario de login **/
 function comprobarLogin(){
 	if(comprobarUser('userLogin', 'errorFormatoUser', 'loginUsuario') && comprobarPass('passLogin', 'errorFormatoPass', 'passwdUsuarioLogin')){
@@ -1115,6 +1125,85 @@ function comprobarBuscarNoticia(){
 		return false;
 	}
 }
+
+/** Funcion que valida el formato del CIF de la empresa **/
+function comprobarCifEmpresaSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarEnhe(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 9, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				if(comprobarFormatoCIF(idElemento, idElementoError, campo)){
+					validacionOK(idElemento, idElementoError);
+					return true;
+				}else{
+					validacionKO(idElemento, idElementoError);
+					return false;
+				}
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+
+/** Funcion que valida el formato del Nombre de la empresa **/
+function comprobarNombreEmpresaSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				
+					validacionOK(idElemento, idElementoError);
+					return true;
+				
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/** Funcion que valida el buscar de una empresa **/
+function comprobarBuscarEmpresa(){
+	if(comprobarCifEmpresaSearch('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro') && comprobarNombreEmpresaSearch('nombreEmpresa', 'errorFormatoNombreEmpresa', 'nombreEmpresaRegistro') &&
+		comprobarDireccionSearch('direccionEmpresa', 'errorFormatoDireccionEmpresa', 'direccionEmpresaRegistro') && comprobarTelefonoSearch('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/** Funcion que valida el añadir de una empresa **/
+function comprobarAddEmpresa(){
+	if(comprobarCIF('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro') && comprobarNombreEmpresa('nombreEmpresa', 'errorFormatoNombreEmpresa', 'nombreEmpresaRegistro') && 
+		comprobarDireccion('direccionEmpresa', 'errorFormatoDireccionEmpresa', 'direccionEmpresaRegistro') && comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 
 /**Función que valida si un campo está vacío*/

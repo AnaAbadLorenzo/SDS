@@ -447,6 +447,14 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + fechaOrdenada;
         break;
 
+        case 'EMPRESA':
+			atributosFunciones = ["'" + fila.cifEmpresa + "'", "'" + fila.nombreEmpresa + "'", "'" + fila.direccionEmpresa + "'", "'" + fila.telefonoEmpresa + "'", "'" + fila.idEmpresa + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.cifEmpresa + 
+                '</td> <td>' + fila.nombreEmpresa +
+                '</td> <td>' + fila.direccionEmpresa +
+                '</td> <td>' + fila.telefonoEmpresa;
+        break;
+
 	};
 
 	if(entidad == 'PERSONA'){
@@ -545,6 +553,14 @@ function construyeFilaEliminados(entidad, fila) {
                 '</td> <td>' + fila.emailP + 
                 '</td> <td>' + fila.usuario.usuario + 
                 '</td> <td>' + filaEmpresaNombre;
+        break;
+
+        case 'EMPRESA':
+			atributosFunciones = ["'" + fila.cifEmpresa + "'", "'" + fila.nombreEmpresa + "'", "'" + fila.direccionEmpresa + "'", "'" + fila.telefonoEmpresa + "'", "'" + fila.idEmpresa + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.cifEmpresa + 
+                '</td> <td>' + fila.nombreEmpresa +
+                '</td> <td>' + fila.direccionEmpresa +
+                '</td> <td>' + fila.telefonoEmpresa;
         break;
 
 	};
@@ -846,7 +862,7 @@ function errorFailAjax(status){
 
 	if (status === 500) {
 		errorInternal("MENSAJE_ERROR_INTERNO", idioma);
-	} else if (status === 403 || status === 412) {
+	} else if (status === 403) {
 		errorAutenticado("ERROR_AUTENTICACION", idioma);
 	} else if (status === 0 || status === 404){
 		errorInternal("ERR_CONNECTION_REFUSED", idioma);
@@ -957,6 +973,9 @@ function cargarPermisosSegunEntidad(entidad){
 		case 'NOTICIA':
 			cargarPermisosFuncNoticia();
 		break;
+
+		case 'EMPRESA':
+			cargarPermisosFuncEmpresa();
 
 	}
 }
