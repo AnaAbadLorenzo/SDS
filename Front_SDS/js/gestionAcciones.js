@@ -1082,11 +1082,11 @@ function cargarAccionesPermisos(funcionalidad,acciones){
               if(tienePermiso == "Si"){
     
                 accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
-                                                                  '<div class="tooltip">' + 
-                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                  '<div class="tooltip6">' + 
+                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: not-allowed;">' + 
                                                                     '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                   '</div>' + 
-                                                                  '<div class="tooltip">' + 
+                                                                  '<div class="tooltip6">' + 
                                                                     '<img class="permisos quitarPermiso" src="images/error.png" data-toggle="" data-target="" onclick="desasignarPermiso('+atributosFunc+')" alt="Quitar permiso" style="cursor: pointer;">' + 
                                                                     '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                   '</div>' + 
@@ -1094,12 +1094,12 @@ function cargarAccionesPermisos(funcionalidad,acciones){
               }else if(tienePermiso == "No"){
                 var ac = JSON.stringify(acciones[i]);
                 accionesDisponibles = accionesDisponibles + '<td class="accionesPermisos">' + 
-                                                                '<div class="tooltip">' + 
+                                                                '<div class="tooltip6">' + 
                                                                   '<img class="permisos darPermiso" src="images/ok3.png" data-toggle="" data-target="" onclick="asignarPermiso('+atributosFunc+')" alt="Dar permiso" style="cursor: pointer;">' + 
                                                                   '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                 '</div>' + 
-                                                                '<div class="tooltip">' + 
-                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                '<div class="tooltip6">' + 
+                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: not-allowed;">' + 
                                                                   '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                 '</div>' + 
                                                               '</td>';
@@ -1122,11 +1122,11 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                         , "'" + acciones[t].funcionalidad.idFuncionalidad + "'", "'" + acciones[t].funcionalidad.nombreFuncionalidad + "'", "'" + acciones[t].funcionalidad.descripFuncionalidad + "'", "'" + acciones[t].funcionalidad.borradoFuncionalidad + "'"];
                       if(tienePermiso == "Si"){
                         accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
-                                                                      '<div class="tooltip">' + 
-                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                      '<div class="tooltip6">' + 
+                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: not-allowed;">' + 
                                                                         '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                       '</div>' + 
-                                                                      '<div class="tooltip">' + 
+                                                                      '<div class="tooltip6">' + 
                                                                         '<img class="permisos quitarPermiso" src="images/error.png" data-toggle="" data-target="" onclick="desasignarPermiso('+  atributosFunc +')" alt="Quitar permiso" style="cursor: pointer;">' + 
                                                                         '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                       '</div>' + 
@@ -1134,12 +1134,12 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                      }else if(tienePermiso == "No"){
                     
                       accionesDisponibles = accionesDisponibles + '<td class="accionesPermisos">' + 
-                                                                    '<div class="tooltip">' + 
+                                                                    '<div class="tooltip6">' + 
                                                                       '<img class="permisos darPermiso" src="images/ok3.png" data-toggle="" data-target="" onclick="asignarPermiso('+  atributosFunc +')" alt="Dar permiso" style="cursor: pointer;">' + 
                                                                       '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                     '</div>' + 
-                                                                    '<div class="tooltip">' + 
-                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                    '<div class="tooltip6">' + 
+                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: not-allowed;">' + 
                                                                       '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                     '</div>' + 
                                                                   '</td>';
