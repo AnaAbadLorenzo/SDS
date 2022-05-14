@@ -7,4 +7,4 @@ var tamanhoPaginaUsuario = 2;
 var tamanhoPaginaPersona = 2;
 var tamanhoPaginaNoticia = 2;
 var tamanhoPaginaEmpresa = 2;
-var tamanhoPaginaObjetivo = 2;
+var tamanhoPaginaObjetivo = 2; 

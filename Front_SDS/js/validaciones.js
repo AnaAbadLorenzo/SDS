@@ -1299,7 +1299,7 @@ function comprobarDescripcionObjetivoSearch(idElemento, idElementoError, campo) 
 }
 
 /**Función que valida el buscar de un objetivo **/
-function comprobarBuscarObjetivo(){
+function comprobarEditObjetivo(){
 	if(comprobarNombreObjetivoSearch('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
 		comprobarDescripcionObjetivoSearch('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
 		return true;
@@ -1308,6 +1308,109 @@ function comprobarBuscarObjetivo(){
 	}
 }
 
+/** Funcion que valida el formato del Nombre del objetivo **/
+function comprobarNombreObjetivo(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la descripcion del objetivo **/
+function comprobarDescripcionObjetivo(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/**Función que valida el editar de un objetivo **/
+function comprobarEditObjetivo(){
+	if(comprobarNombreObjetivo('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
+		comprobarDescripcionObjetivo('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el añadir de un objetivo **/
+function comprobarAddObjetivo(){
+	if(comprobarNombreObjetivo('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
+		comprobarDescripcionObjetivo('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el nombre del objetivo en el buscar*/
+function comprobarNombreObjetivoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la descripcion del objetivo en el buscar*/
+function comprobarDescripcionObjetivoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida el buscar de un objetivo **/
+function comprobarBuscarObjetivo(){
+	if(comprobarNombreObjetivoSearch('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
+		comprobarDescripcionObjetivoSearch('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
+		return true;
+	}else{
+		return false;
+	}
+}
 
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
@@ -1694,7 +1797,6 @@ function comprobarSoloNumeros(idElemento, idElementoError, campo) {
 			case 'telefonoEmpresaRegistro' : 
 		  		codigo = "TELEFONO_NUMERICO_INCORRECTO";
 			break;
-
 		}
 		addCodeError(idElementoError, codigo);
     	return false;

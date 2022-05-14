@@ -14,7 +14,7 @@ function anadirObjetivoAjaxPromesa(){
       usuario : getCookie('usuario'),
       objetivo : objetivo
     }
-    
+
     $.ajax({
       method: "POST",
       url: urlPeticionAjaxAddObjetivo,
@@ -67,7 +67,7 @@ function buscarObjetivoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         tamanhoPagina : tamanhoPaginaObjetivo
       }
     }
-    
+
     $.ajax({
       method: "POST",
       url: urlPeticionAjaxListarObjetivo,
@@ -91,9 +91,9 @@ function cargarPermisosFuncObjetivoAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var nombreUsuario = getCookie('usuario');
     var token = getCookie('tokenUsuario');
-    
+
     var usuario = nombreUsuario;
-  
+
     $.ajax({
       method: "GET",
       url: urlPeticionAjaxAccionesUsuario,
@@ -123,7 +123,7 @@ function editarObjetivoAjaxPromesa(){
       descripObjetivo : $('#descripcionObjetivo').val(),
       borradoObjetivo : 0
     }
-    
+
     var data = {
       usuario : getCookie('usuario'),
       objetivo : objetivo
@@ -158,7 +158,7 @@ function eliminarObjetivoAjaxPromesa(){
       descripObjetivo : $('#descripcionObjetivo').val(),
       borradoObjetivo : 1
     }
-    
+
     var data = {
       usuario : getCookie('usuario'),
       objetivo : objetivo
@@ -198,13 +198,13 @@ async function cargarPermisosFuncObjetivo(){
 /** Función para recuperar los objetivos con ajax y promesas **/
 function cargarObjetivosAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
-  	var token = getCookie('tokenUsuario');
+    var token = getCookie('tokenUsuario');
 
     var data = {
       inicio : calculaInicio(numeroPagina, tamanhoPaginaObjetivo),
       tamanhoPagina : tamanhoPaginaObjetivo
     }
-    
+
     $.ajax({
       method: "POST",
       url: urlPeticionAjaxListadoObjetivos,
@@ -232,7 +232,7 @@ function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
       inicio : calculaInicio(numeroPagina, tamanhoPaginaObjetivo),
       tamanhoPagina : tamanhoPaginaObjetivo
     }
-    
+
     $.ajax({
       method: "POST",
       url: urlPeticionAjaxListarObjetivosEliminados,
@@ -255,7 +255,7 @@ function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
 function detalleObjetivoAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
-    
+
     var data = {
       nombreObjetivo : $('#nombreObjetivo').val(),
       descripObjetivo : $('#descripcionObjetivo').val(),
@@ -286,7 +286,7 @@ function detalleObjetivoAjaxPromesa(){
 function reactivarObjetivosAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
-    
+
     var objetivo = {
       idObjetivo : $("input[name=idObjetivo]").val(),
       nombreObjetivo : $('#nombreObjetivo').val(),
@@ -319,11 +319,11 @@ function reactivarObjetivosAjaxPromesa(){
 
 /* Función para obtener los objetivos del sistema */
 async function cargarObjetivos(numeroPagina, tamanhoPagina, paginadorCreado){
-	await cargarObjetivosAjaxPromesa(numeroPagina, tamanhoPagina)
-	  .then((res) => {
-	  	
+  await cargarObjetivosAjaxPromesa(numeroPagina, tamanhoPagina)
+    .then((res) => {
+
       var numResults = res.data.numResultados + '';
-	  	var totalResults = res.data.tamanhoTotal + '';
+      var totalResults = res.data.tamanhoTotal + '';
         var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
@@ -337,25 +337,25 @@ async function cargarObjetivos(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#itemPaginacion').attr('hidden',false);
       }
-	   	
+
       $("#datosObjetivo").html("");
-	   	$("#checkboxColumnas").html("");
-	   	$("#paginacion").html("");
-    		
+      $("#checkboxColumnas").html("");
+      $("#paginacion").html("");
+
       for (var i = 0; i < res.data.listaBusquedas.length; i++){
-    			var tr = construyeFila('OBJETIVO', res.data.listaBusquedas[i]);
-    			$("#datosObjetivo").append(tr);
-    		}
-    	
-    	var div = createHideShowColumnsWindow({DESCRIPCION_OBJETIVO_COLUMN:2});
-      	$("#checkboxColumnas").append(div);
-      	$("#paginacion").append(textPaginacion);
-      	setLang(getCookie('lang'));
+          var tr = construyeFila('OBJETIVO', res.data.listaBusquedas[i]);
+          $("#datosObjetivo").append(tr);
+        }
+
+      var div = createHideShowColumnsWindow({DESCRIPCION_OBJETIVO_COLUMN:2});
+        $("#checkboxColumnas").append(div);
+        $("#paginacion").append(textPaginacion);
+        setLang(getCookie('lang'));
 
         if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'cargarObjetivos', 'OBJETIVO');
         }
-        
+
         if(numeroPagina == 0){
           $('#' + (numeroPagina+1)).addClass("active");
           var numPagCookie = numeroPagina+1;
@@ -365,18 +365,18 @@ async function cargarObjetivos(numeroPagina, tamanhoPagina, paginadorCreado){
         }
 
         setCookie('numeroPagina', numPagCookie);
-	  
-		}).catch((res) => {
-		    respuestaAjaxKO(res.code);
-		    document.getElementById("modal").style.display = "block";
-		});
+
+    }).catch((res) => {
+        respuestaAjaxKO(res.code);
+        document.getElementById("modal").style.display = "block";
+    });
 }
 
 /** Funcion añadir objetivo **/
 async function addObjetivo(){
   await anadirObjetivoAjaxPromesa()
   .then((res) => {
-    
+
     $("#form-modal").modal('toggle');
     respuestaAjaxOK("OBJETIVO_GUARDADO_OK", res.code);
 
@@ -384,7 +384,7 @@ async function addObjetivo(){
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
-    
+
     $('#nombreObjetivo').val(getCookie('nombreObjetivo'));
     $('#descripcionObjetivo').val(getCookie('descripObjetivo'));
     buscarObjetivo(getCookie('numeroPagina'), tamanhoPaginaObjetivo, 'buscarPaginacion', 'PaginadorNo');
@@ -436,9 +436,9 @@ async function buscarObjetivo(numeroPagina, tamanhoPagina, accion, paginadorCrea
           var tr = construyeFila('OBJETIVO', res.data.listaBusquedas[i]);
           $("#datosObjetivo").append(tr);
         }
-      
+
       var div = createHideShowColumnsWindow({DESCRIPCION_OBJETIVO_COLUMN:2});
-      
+
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
       setLang(getCookie('lang'));
@@ -456,7 +456,7 @@ async function buscarObjetivo(numeroPagina, tamanhoPagina, accion, paginadorCrea
       }
       setCookie('numeroPagina', numPagCookie);
 
-  
+
   }).catch((res) => {
       cargarPermisosFuncObjetivo();
       respuestaAjaxKO(res.code);
@@ -492,7 +492,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }else{
         $('#itemPaginacion').attr('hidden',false);
       }
-      
+
       $("#datosObjetivo").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -500,7 +500,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
           var tr = construyeFila('OBJETIVO', res.data.listaBusquedas[i]);
           $("#datosObjetivo").append(tr);
         }
-      
+
       var div = createHideShowColumnsWindow({DESCRIPCION_OBJETIVO_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
@@ -520,9 +520,9 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }
 
       setCookie('numeroPagina', numPagCookie);
-    
+
     }).catch((res) => {
-      
+
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
@@ -551,7 +551,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#itemPaginacion').attr('hidden',false);
       }
-      
+
       if(res.data.listaBusquedas.length == 0){
           $('.cabecera').attr('hidden', true);
           $('.cabeceraEliminados').attr('hidden', false);
@@ -564,7 +564,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
           var tr = construyeFilaEliminados('OBJETIVO', res.data.listaBusquedas[i]);
           $("#datosObjetivo").append(tr);
         }
-      
+
       var div = createHideShowColumnsWindow({DESCRIPTION_OBJETIVO_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
@@ -576,20 +576,20 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       if(paginadorCreado != 'PaginadorCreado'){
          paginador(totalResults, 'buscarEliminadosObjetivo', 'OBJETIVO');
       }
-     
+
 
       if(numeroPagina == 0){
         $('#' + (numeroPagina+1)).addClass("active");
       }else{
         $('#' + numeroPagina).addClass("active");
       }
-    
+
     }).catch((res) => {
-      
+
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
-  
+
   });
 }
 
@@ -612,7 +612,7 @@ async function detalleObjetivo(){
 
       let idElementoList = ["nombreObjetivo", "descripcionObjetivo"];
       resetearFormulario("formularioGenerico", idElementoList);
-      
+
       setLang(getCookie('lang'));
 
       document.getElementById("modal").style.display = "block";
@@ -663,11 +663,11 @@ async function deleteObjetivo(){
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
-   
+
     refrescarTabla(0, tamanhoPaginaObjetivo);
 
   }).catch((res) => {
-     
+
      $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
 
@@ -697,9 +697,9 @@ async function reactivarObjetivo(){
 
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
-      
+
     buscarEliminados(0, tamanhoPaginaObjetivo, 'PaginadorNo');
-    
+
     }).catch((res) => {
 
       $("#form-modal").modal('toggle');
@@ -756,14 +756,14 @@ function showBuscarObjetivo() {
 
 /** Funcion para visualizar un objetivo **/
 function showDetalle(nombreObjetivo, descripcionObjetivo) {
-  
+
     var idioma = getCookie('lang');
 
     cambiarFormulario('DETAIL_OBJECTIVE', 'javascript:detalleObjetivo();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-   
+
     setLang(idioma);
-    
+
     $('#labelNombreObjetivo').removeAttr('hidden');
     $('#labelDescripcionObjetivo').removeAttr('hidden');
     $('#subtitulo').attr('hidden', '');
@@ -786,9 +786,9 @@ function showEditar(nombreObjetivo, descripcionObjetivo, idObjetivo) {
     cambiarOnBlurCampos('return comprobarNombreObjetivo(\'nombreObjetivo\', \'errorFormatoNombreObjetivo\', \'nombreObjetivo\')', 
       'return comprobarDescripcionObjetivo(\'descripcionObjetivo\', \'errorFormatoDescripcionObjetivo\', \'descripcionObjetivo\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarObjetivo', 'Editar');
-   
+
     setLang(idioma);
-    
+
     $('#subtitulo').attr('hidden', true);
     $('#labelNombreObjetivo').attr('hidden', true);
     $('#labelDescripcionObjetivo').attr('hidden', true);
@@ -808,21 +808,21 @@ function showEditar(nombreObjetivo, descripcionObjetivo, idObjetivo) {
 
 /** Función para eliminar un objetivo **/
 function showEliminar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
-  
+
     var idioma = getCookie('lang');
 
     cambiarFormulario('DELETE_OBJETIVO', 'javascript:deleteObjetivo();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-   
+
     setLang(idioma);
-    
+
     $('#labelNombreObjetivo').removeAttr('hidden');
     $('#labelDescripcionObjetivo').removeAttr('hidden');
     $('#subtitulo').removeAttr('class');
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_ELIMINAR_OBJ');
     $('#subtitulo').attr('hidden', false);
-    
+
 
     rellenarFormulario(nombreObjetivo, descripcionObjetivo);
     insertacampo(document.formularioGenerico,'idObjetivo', idObjetivo);
@@ -837,21 +837,21 @@ function showEliminar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
 
 /** Función para reactivar un objetivo **/
 function showReactivar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
-  
+
     var idioma = getCookie('lang');
 
     cambiarFormulario('REACTIVATE_OBJETIVO', 'javascript:reactivarObjetivo();', '');
     cambiarIcono('images/reactivar2.png', 'ICONO_REACTIVAR', 'iconoReactivar', 'Reactivar');
-   
+
     setLang(idioma);
-    
+
     $('#labelNombreObjetivo').removeAttr('hidden');
     $('#labelDescripcionObjetivo').removeAttr('hidden');
     $('#subtitulo').removeAttr('class');
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_REACTIVAR_OBJ');
     $('#subtitulo').attr('hidden', false);
-    
+
 
     rellenarFormulario(nombreObjetivo, descripcionObjetivo);
     insertacampo(document.formularioGenerico,'idObjetivo', idObjetivo);
@@ -866,7 +866,7 @@ function showReactivar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
 
 /**Función para cambiar onBlur de los campos*/
 function cambiarOnBlurCampos(onBlurNombreObjetivo, onBlurDescripcionObjetivo) {
-    
+
     if (onBlurNombreObjetivo != ''){
         $("#nombreObjetivo").attr('onblur', onBlurNombreObjetivo);
     }
@@ -938,9 +938,9 @@ function gestionarPermisosObjetivo(idElementoList) {
 
 $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {
-    
+
     let idElementoErrorList = ["errorFormatoNombreObjetivo", "errorFormatoDescripcionObjetivo"];
-    
+
     let idElementoList = ["nombreObjetivo", "descripcionObjetivo"];
 
     limpiarFormulario(idElementoList);
@@ -948,4 +948,4 @@ $(document).ready(function() {
     setLang(getCookie('lang'));
   });
 
-});
+}); 

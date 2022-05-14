@@ -877,7 +877,6 @@ function buscarPersonaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       }else{
         fechaNacP = $('#fechaNacP').val();
       }
-
       var data = {
         dniP : $('#dniP').val(),
         nombreP : $('#nombreP').val(),
@@ -1590,7 +1589,6 @@ function cambiarOnBlurCampos(onBlurDNI, onBlurNombrePersona, onBlurApellidosPers
 
 function cargaDatosPersona(datos){
    var fechaNacimiento = new Date(datos[0].fechaNacP);
-
 
    if(datos[0].empresa != null){
     var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + convertirFecha(fechaNacimiento.toString()) + "'",

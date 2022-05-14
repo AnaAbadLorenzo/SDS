@@ -38,7 +38,6 @@ arrayGA={
 	'FECHA_NOTICIA' : 'Data noticia',
 	'NOMBRE_OBJETIVO' : 'Nome obxectivo',
 	'DESCRIPCION_OBJETIVO' : 'Descripción obxectivo',
-
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -115,7 +114,6 @@ arrayGA={
 	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'A empresa non existe',
 	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'A empresa está asociada a algunhas persoas',
 
-
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
 	'PASS_USUARIO_VACIO' : 'Contrasinal de usuario vacía',
@@ -187,7 +185,6 @@ arrayGA={
 	'TITULO_NOTICIA_MAYOR_QUE_256' : 'O título da noticia ten máis de 256 caracteres',
 	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
 	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da noticia só pode conter letras, números, espacios e sinais de puntuación',
-	'TEXTO_NOTICIA_MENOR_QUE_3' : 'O texto da noticia ten menos de 3 caracteres',
 	'OBJETIVO_NAME_VACIO' : 'Nome obxectivo vacío',
 	'OBJETIVO_NAME_ALFABETICO_INCORRECTO' : 'O nome do obxectivo tan só pode conter letras e espacios',
 	'OBJETIVO_NAME_MENOR_QUE_3' : 'O nome do obxectivo ten menos de 3 caracteres',
@@ -198,7 +195,7 @@ arrayGA={
 	'FECHA_VACIA' : 'Data vacía',
 	'FECHA_MAYOR_QUE_8' : 'A data ten menos de 8 díxitos',
 	'FECHA_NUMERICA_INCORRECTA' : 'Formato de data incorrecto',
-	
+	'TEXTO_NOTICIA_MENOR_QUE_3' : 'O texto da noticia ten menos de 3 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -382,5 +379,5 @@ arrayGA={
 	'OBJETIVO_ELIMINADO' : 'O obxectivo eliminouse correctamente',
 	'OBJETIVO_MODIFICADO' : 'O obxectivo modificouse correctamente',
 	'OBJETIVO_GUARDADO' : 'O obxectivo gardouse correctamente'
-
+	
 }

@@ -45,7 +45,7 @@ function paginador(totalResults, funcionalidad, entidad){
 
     var paginacionPrevio = '<nav aria-label= "Page navigation example">' +
     					'<ul class="pagination">' +
-    						'<li id="anterior" class="page-item disabled tooltip">' +
+    						'<li id="anterior" class="page-item disabled tooltip6">' +
     							'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'ANTERIOR\', \'' + entidad + '\')" aria-label="Previous">' +
     								'<span aria-hidden="true">&laquo;</span>' +
     								'<span class="sr-only">Previous</span>' +
@@ -55,7 +55,7 @@ function paginador(totalResults, funcionalidad, entidad){
 
     paginas = escogeEntidadPaginacion(entidad, funcionalidad);
 
-   	var paginacionSiguiente = '<li id="siguiente" class="page-item navegacion tooltip">' +
+   	var paginacionSiguiente = '<li id="siguiente" class="page-item navegacion tooltip6">' +
 	   								'<a class="page-link" href="#" onclick="cargarPosicion(' + posActual + ', \'SIGUIENTE\', \'' + entidad + '\')" aria-label="Next">' + 
 	   									'<span aria-hidden="true">&raquo;</span>' + 
 	   									'<span class="sr-only">Next</span>' +
@@ -335,7 +335,7 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
             }
         break;
 
-        case 'EMPRESA':
+         case 'EMPRESA':
             switch(funcionalidad){
                 case 'cargarEmpresas': 
                     for(var i = 0; i< 3; i++){
@@ -358,7 +358,6 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
 
             }
         break;
-
         case 'OBJETIVO':
             switch(funcionalidad){
                 case 'cargarObjetivos': 
@@ -380,8 +379,6 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                     }
                 break;
 
-            }
-        break;
 
     }
 

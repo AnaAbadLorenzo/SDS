@@ -91,6 +91,16 @@ var urlPeticionAjaxDeleteEmpresa = urlComun + urlEmpresa + "/eliminarEmpresa";
 var urlPeticionAjaxEditarEmpresa = urlComun + urlEmpresa + "/modificarEmpresa";
 var urlPeticionAjaxAnadirEmpresa = urlComun + urlEmpresa + "/empresa";
 
+/**Urls objetivos*/
+var urlPeticionAjaxReactivarObjetivo = urlComun + urlObjetivo + "/reactivarObjetivo";
+var urlPeticionAjaxListarObjetivo = urlComun + urlObjetivo + "/listarObjetivo";
+var urlPeticionAjaxListarObjetivosEliminados = urlComun + urlObjetivo + "/listarObjetivosEliminados";
+var urlPeticionAjaxListadoObjetivos = urlComun + urlObjetivo  + "/listarObjetivos";
+var urlPeticionAjaxEditarObjetivo = urlComun + urlObjetivo  + "/modificarObjetivo";
+var urlPeticionAjaxAddObjetivo = urlComun + urlObjetivo  + "/objetivo";
+var urlPeticionAjaxDeleteObjetivo = urlComun + urlObjetivo  + "/eliminarObjetivo";
+
+
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";
 var urlPeticionAjaxListarTodosUsuarios = urlComun + urlUsuario + "/listarUsuarios";
@@ -108,16 +118,6 @@ var urlPeticionAjaxPersonaGuardar = urlComun + urlPersona + "/anadirPersona";
 var urlPeticionAjaxEditPersona = urlComun + urlPersona + "/modificarPersona";
 var urlPeticionAjaxDeletePersona = urlComun + urlPersona + "/eliminarPersona";
 var urlPeticionAjaxAsociarPersonaEmpresa = urlComun + urlPersona + "/asociarPersonaEmpresa";
-
-/**Urls objetivos*/
-var urlPeticionAjaxReactivarObjetivo = urlComun + urlObjetivo + "/reactivarObjetivo";
-var urlPeticionAjaxListarObjetivo = urlComun + urlObjetivo + "/listarObjetivo";
-var urlPeticionAjaxListarObjetivosEliminados = urlComun + urlObjetivo + "/listarObjetivosEliminados";
-var urlPeticionAjaxListadoObjetivos = urlComun + urlObjetivo  + "/listarObjetivos";
-var urlPeticionAjaxEditarObjetivo = urlComun + urlObjetivo  + "/modificarObjetivo";
-var urlPeticionAjaxAddObjetivo = urlComun + urlObjetivo  + "/objetivo";
-var urlPeticionAjaxDeleteObjetivo = urlComun + urlObjetivo  + "/eliminarObjetivo";
-
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;

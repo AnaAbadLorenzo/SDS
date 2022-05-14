@@ -40,7 +40,6 @@ arrayES={
 	'NOMBRE_OBJETIVO' : 'Nombre objetivo',
 	'DESCRIPCION_OBJETIVO' : 'Descripción objetivo',
 
-
 	//Idiomas
 	'ESPAÑOL' : 'Español',
 	'INGLES' : 'Inglés',
@@ -201,7 +200,6 @@ arrayES={
 	'FECHA_VACIA' : 'Fecha vacía',
 	'FECHA_MAYOR_QUE_8' : 'La fecha tiene más de 8 dígitos',
 	'FECHA_NUMERICA_INCORRECTA' : 'El formato de la fecha es incorrecto',
-	
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -386,5 +384,4 @@ arrayES={
 	'OBJETIVO_ELIMINADO' : 'Los objetivos se han eliminado correctamente',
 	'OBJETIVO_MODIFICADO' : 'Los objetivos se han modificado correctamente',
 	'OBJETIVO_GUARDADO' : 'Los objetivos se han guardado correctamente'
-
 }
