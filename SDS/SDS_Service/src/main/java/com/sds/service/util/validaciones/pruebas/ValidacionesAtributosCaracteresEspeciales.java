@@ -256,6 +256,17 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+					break;
+				case GESTION_RESPUESTA_POSIBLE:
+					switch (atr) {
+					case TEXTO_RESPUESTA_POSIBLE:
+						resultado = CodigosMensajes.TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO + " - "
+								+ Mensajes.TEXTO_RESPUESTA_SOLO_PUEDE_SER_ALFANUMERICO_CON_SIGNOS_PUNTUACION;
+						break;
+					default:
+						break;
+					}
+					break;
 
 				default:
 					break;

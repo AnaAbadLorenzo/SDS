@@ -120,8 +120,11 @@ function escogeTamanho(entidad){
         case 'NOTICIA' : 
             tamanho = tamanhoPaginaNoticia;
         break;
-         case 'EMPRESA' : 
+        case 'EMPRESA' : 
             tamanho = tamanhoPaginaEmpresa;
+        break;
+        case 'OBJETIVO' : 
+            tamanho = tamanhoPaginaObjetivo;
         break;
     }
 
@@ -301,13 +304,13 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                 case 'buscarPersona' : 
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarPersona(' 
-                            + (i+1) + ',' + tamanhoPaginaUsuario + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                            + (i+1) + ',' + tamanhoPaginaPersona + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
                 case 'buscarEliminadosPersona' :
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
-                            + (i+1) + ',' + tamanhoPaginaUsuario + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                            + (i+1) + ',' + tamanhoPaginaPersona + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
 
@@ -326,13 +329,13 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                 case 'buscarNoticia' : 
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarNoticia(' 
-                            + (i+1) + ',' + tamanhoPaginaRol + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                            + (i+1) + ',' + tamanhoPaginaNoticia + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
             }
         break;
 
-         case 'EMPRESA':
+        case 'EMPRESA':
             switch(funcionalidad){
                 case 'cargarEmpresas': 
                     for(var i = 0; i< 3; i++){
@@ -343,13 +346,37 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                 case 'buscarEmpresa' : 
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEmpresa(' 
-                            + (i+1) + ',' + tamanhoPaginaUsuario + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                            + (i+1) + ',' + tamanhoPaginaEmpresa + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
                 case 'buscarEliminadosEmpresa' :
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
-                            + (i+1) + ',' + tamanhoPaginaUsuario + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                            + (i+1) + ',' + tamanhoPaginaEmpresa + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+
+            }
+        break;
+
+        case 'OBJETIVO':
+            switch(funcionalidad){
+                case 'cargarObjetivos': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarObjetivos(' 
+                            + (i+1) + ',' + tamanhoPaginaObjetivo + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarObjetivo' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarObjetivo(' 
+                            + (i+1) + ',' + tamanhoPaginaObjetivo + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosObjetivo' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaObjetivo + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
 

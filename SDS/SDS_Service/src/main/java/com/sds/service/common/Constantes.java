@@ -18,6 +18,7 @@ public class Constantes {
 	public static final String GESTION_EMPRESAS = "Gestión de empresas";
 	public static final String GESTION_NOTICIAS = "Gestión de noticias";
 	public static final String GESTION_OBJETIVOS = "Gestión de objetivos";
+	public static final String GESTION_RESPUESTAS_POSIBLES = "Gestión de respuestas posibles";
 	public static final String TEST = "Test";
 	public static final String LOG_ACCIONES = "Log de acciones";
 	public static final String LOG_EXCEPCIONES = "Log de excepciones";
@@ -73,6 +74,12 @@ public class Constantes {
 	public static final String ACCION_BUSCAR_OBJETIVO = "Buscar objetivo";
 	public static final String ACCION_ELIMINAR_OBJETIVO = "Eliminar objetivo";
 	public static final String ACCION_REACTIVAR_OBJETIVO = "Reactivar objetivo";
+
+	public static final String ACCION_AÑADIR_RESPUESTA = "Añadir respuesta posible";
+	public static final String ACCION_MODIFICAR_RESPUESTA = "Modificar respuesta posible";
+	public static final String ACCION_BUSCAR_RESPUESTA = "Buscar respuesta posible";
+	public static final String ACCION_ELIMINAR_RESPUESTA = "Eliminar respuesta posible";
+	public static final String ACCION_REACTIVAR_RESPUESTA = "Reactivar respuesta posible";
 
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
@@ -159,6 +166,10 @@ public class Constantes {
 	public static final String NOMBRE_OBJETIVO = "nombreObjetivo";
 	public static final String DESCRIPCION_OBJETIVO = "descripObjetivo";
 
+	public static final String RESPUESTA_POSIBLE_ID = "idRespuesta";
+	public static final String TEXTO_RESPUESTA_POSIBLE = "textoRespuesta";
+	public static final String FECHA_RESPUESTA_POSIBLE = "fechaRespuesta";
+
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";
@@ -216,6 +227,8 @@ public class Constantes {
 	public static final String URL_JSON_OBJETIVO_ATRIBUTOS_NOMBREOBJETIVO = "classpath:ObjetivoServiceAtributosNombreObjetivo.json";
 	public static final String URL_JSON_OBJETIVO_ATRIBUTOS_DESCRIPCIONOBJETIVO = "classpath:ObjetivoServiceAtributosDescripcionObjetivo.json";
 	public static final String URL_JSON_OBJETIVO_DATA = "classpath:ObjetivoServiceData.json";
+	public static final String URL_JSON_RESPUESTA_POSIBLE_ATRIBUTOS_TEXTO_RESPUESTA = "classpath:RespuestaPosibleServiceAtributosTextoRespuesta.json";
+	public static final String URL_JSON_RESPUESTA_POSIBLE_DATA = "classpath:RespuestaPosibleServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -505,6 +518,25 @@ public class Constantes {
 	public static final String ELIMINAR_OBJETIVO = "eliminarObjetivo";
 	public static final String REACTIVAR_OBJETIVO = "reactivarObjetivo";
 
+	public static final String TEXTO_RESPUESTA_POSIBLE_VACIO = "textoRespuestaPosibleVacio";
+	public static final String TEXTO_RESPUESTA_POSIBLE_CARACTERESESPECIALES_SIN_SIGNOS_PUNTUACION = "textoRespuestaPosibleCaracteresEspecialesSinSignosPuntuacion";
+	public static final String TEXTO_RESPUESTA_POSIBLE_MENOR_2 = "textoRespuestaPosibleMenor2";
+	public static final String TEXTO_RESPUESTA_POSIBLE_NUMERICO = "textoRespuestaPosibleNumerico";
+	public static final String TEXTO_RESPUESTA_POSIBLE_CORRECTO = "textoRespuestaPosibleAlfanumericoCorrecto";
+
+	public static final String FECHA_RESPUESTA_POSIBLE_VACIA = "fechaRespuestaPosibleVacia";
+
+	public static final String RESPUESTA_POSIBLE_VACIA = "respuestaPosibleVacia";
+
+	public static final String BUSCAR_RESPUESTA_POSIBLE = "buscarRespuestaPosible";
+	public static final String GUARDAR_RESPUESTA_POSIBLE = "guardarRespuestaPosible";
+	public static final String MODIFICAR_RESPUESTA_POSIBLE = "modificarRespuestaPosible";
+	public static final String RESPUESTA_POSIBLE_YA_EXISTE = "respuestaPosibleYaExiste";
+	public static final String RESPUESTA_POSIBLE_NO_EXISTE = "respuestaPosibleNoExiste";
+	public static final String ELIMINAR_RESPUESTA_POSIBLE = "eliminarRespuestaPosible";
+	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "respuestaPosibleAsociadaProceso";
+	public static final String REACTIVAR_RESPUESTA_POSIBLE = "reactivarRespuestaPosible";
+
 	public static final String OK = "OK";
 
 	public static final String USUARIO_GENERICO = "usuario_generico";
@@ -517,6 +549,7 @@ public class Constantes {
 	public static final String ENHE = "ñ";
 	public static final String PATRON_ACENTOS = "[áéíóúÁÉÍÓÚ]";
 	public static final String PATRON_CARACTERES_ESPECIALES = "[/¡/!/¿/?/@/#/$/%/(/)/=/+/-/€/./,//]";
+	public static final String PATRON_CARACTERES_ESPECIALES_SIN_SIGNOS_PUNTUACION = "[/¡/!/¿/?/@/#/$/%/(/)/=/+/-/€//]";
 	public static final String ESPACIO = " ";
 	public static final String ALFANUMERICO = "^[a-zA-Z0-9]+$";
 	public static final String ALFABETICO = "^[a-zA-Z]+$";
@@ -525,7 +558,7 @@ public class Constantes {
 	public static final String FORMATO_EMAIL = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 	public static final String FORMATO_DNI = "^[0-9]{8}[A-Z]{1}$";
 	public static final String FORMATO_CIF = "^[A-Z]{1}[0-9]{8}$";
-	public static final String FORMATO_TEXTO_SIGNOS_PUNTUACION = "[a-zA-Z0-9/./,/;]+";
+	public static final String FORMATO_TEXTO_SIGNOS_PUNTUACION = "[a-zA-Z0-9/./,/; ]+";
 
 	// Constantes caracteres
 	public static final String COMA = ",";
@@ -576,6 +609,10 @@ public class Constantes {
 	public static final String OBJETIVO_QUERY_FINDALL = "ObjetivoEntity.findAllObjetivos";
 	public static final String OBJETIVO_QUERY_FINDOBJETIVO = "ObjetivoEntity.findObjetivo";
 	public static final String OBJETIVO_QUERY_FINDELIMINADOS = "ObjetivoEntity.findObjetivosEliminados";
+
+	public static final String RESPUESTA_POSIBLE_QUERY_FINDALL = "RespuestaPosibleEntity.findAllRespuestasPosibles";
+	public static final String RESPUESTA_POSIBLE_QUERY_FINDRESPUESTAPOSIBLE = "RespuestaPosibleEntity.findRespuestaPosible";
+	public static final String RESPUESTA_POSIBLE_QUERY_FINDELIMINADAS = "RespuestaPosibleEntity.findRespuestasPosiblesEliminadas";
 
 	// Constantes funcionalidad-accion
 	public static final String TEST_AÑADIR = "Test-Añadir";

@@ -682,7 +682,7 @@ form button[type="button"]:hover {
   color:  #ffffff;
   text-align: center;
   position: sticky;
-  top: -1px;
+  top: 0;
   z-index: 1000;
 }
 
@@ -726,7 +726,8 @@ form button[type="button"]:hover {
 .iconoAddAccion, .iconoSearchAccion, .iconoReactivar, .iconoCerrar, .iconoEditarAccion, .iconoEliminar,
 .iconoAddFuncionalidad, .iconoSearchFuncionalidad, .iconoEditarFuncionalidad, .iconoSearchLogAcciones, 
 .iconoSearchLogExcepciones, .iconoAddNoticia, .iconoSearchNoticia, .iconoEditarNoticia, 
-.iconoSearchRol, .iconoAddRol, .iconoEditarRol, .iconoSearchUsuario, .iconoEditarRolUsuario {
+.iconoSearchRol, .iconoAddRol, .iconoEditarRol, .iconoSearchUsuario, .iconoEditarRolUsuario, .iconoAddEmpresa,
+.iconoSearchEmpresa, .iconoEditarEmpresa, .iconoAddObjetivo, .iconoSearchObjetivo, .iconoEditarObjetivo {
   position: relative;
   width: 30px;
   display:block;

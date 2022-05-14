@@ -44,7 +44,7 @@ function buscarNoticiaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       if($('#fechaNoticia').val() == "1900-01-01"){
         var fecha = "";
       }else{
-         var fecha = $('#fechaNoticia').val();
+         var fecha = ($('#fechaNoticia').val()).toString();
       }
       var data = {
         tituloNoticia : $('#tituloNoticia').val(),
@@ -729,7 +729,9 @@ function rellenarFormulario(tituloNoticia, textoNoticia, fechaNoticia) {
 
     $("#tituloNoticia").val(tituloNoticia);
     $("#textoNoticia").val(textoNoticia); 
-    $('#fechaNoticia').val(fechaNoticia);
+    var fecha = fechaNoticia.split('-');
+    var fech = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
+    $('#fechaNoticia').val(fech);
 
 }
 

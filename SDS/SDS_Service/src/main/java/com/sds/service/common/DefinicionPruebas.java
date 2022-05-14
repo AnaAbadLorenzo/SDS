@@ -9,6 +9,7 @@ public class DefinicionPruebas {
 	public static final String ALFABETICO_CARACTERES_ESPECIALES = "Alfabético y caracteres especiales";
 	public static final String ALFABETICO_ESPACIOS = "Alfabético y espacios";
 	public static final String ALFANUMERICO_ESPACIOS = "Alfanumérico y espacios";
+	public static final String ALFANUMERICO_MENOR_2 = "Alfanumérico menor de 2 caracteres";
 	public static final String ALFANUMERICO_MENOR_3 = "Alfanumérico menor de 3 caracteres";
 	public static final String ALFABETICO_MENOR_3 = "Alfabético menor de 3 caracteres";
 	public static final String ALFANUMERICO_MENOR_9 = "Alfanumérico menor de 9 caracteres";
@@ -133,6 +134,13 @@ public class DefinicionPruebas {
 	public static final String OBJETIVO_YA_EXISTE = "El objetivo ya existe";
 	public static final String OBJETIVO_NO_EXISTE = "El objetivo no existe";
 	public static final String ELIMINAR_OBJETIVO_CORRECTO = "El objetivo se ha eliminado correctamente";
-	public static final String REACTIVAR_OBJETIVO_CORRECTO = "El obejtivo se ha reactivado correctamente";
+	public static final String REACTIVAR_OBJETIVO_CORRECTO = "El objetivo se ha reactivado correctamente";
+
+	public static final String GUARDAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha guardado correctamente";
+	public static final String MODIFICAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha modificado correctamente";
+	public static final String RESPUESTA_POSIBLE_YA_EXISTE = "La respuesta posible ya existe";
+	public static final String RESPUESTA_POSIBLE_NO_EXISTE = "La respuesta posible no existe";
+	public static final String ELIMINAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha eliminado correctamente";
+	public static final String REACTIVAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha reactivado correctamente";
 
 }

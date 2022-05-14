@@ -354,4 +354,12 @@ public class Validaciones {
 			return true;
 		}
 	}
+
+	public boolean comprobarTextoRespuestaPosibleBlank(final String textoRespuesta) {
+		if (StringUtils.isBlank(textoRespuesta)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 }

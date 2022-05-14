@@ -37,7 +37,7 @@ arrayEN={
 	'TEXTO_NOTICIA' : 'New text',
 	'FECHA_NOTICIA' : 'New date',
 	'NOMBRE_OBJETIVO' : 'Objective name',
-	'DESCRIPCION_OBJETIVO' : 'Objective description'
+	'DESCRIPCION_OBJETIVO' : 'Objective description',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -99,10 +99,21 @@ arrayEN={
 	'ACCION_NO_EXISTE_EXCEPTION' : 'The action doesn´t exists',
 	'PERMISO_NO_EXISTE' : 'The permission doesn´t exists',
 	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'The action is associated with an action and functionality',
+	'PERSONA_VACIA' : 'Some person data are empty',
+	'PERSONA_ASOCIADA_EMPRESA' : 'The person is associated with one enterprise',
+	'PERSONA_YA_EXISTE' : 'The person already exists',
 	'PERSONA_NO_EXISTE' : 'The person doesn`t exists',
 	'PARSE_EXCEPTION' : 'Internal error while parsing the message',
-	'USUARIO_VACIO' : 'O usuario está vacío',
-	'USUARIO_MODIFICAR_VACIO' : 'O usuario está vacío',
+	'USUARIO_VACIO' : 'Some user data are empty',
+	'USUARIO_MODIFICAR_VACIO' : 'Some user data are empty',
+	'OBJETIVO_VACIO' : 'The name and/or the description of the objective are empty',
+	'OBJETIVO_YA_EXISTE_EXCEPTION' : 'The objective already exists',
+	'OBJETIVO_NO_EXISTE_EXCEPTION' : 'The objective doesn`t exists',
+	'EMPRESA_VACIA' : 'Some data enterprises are empty',
+	'EMPRESA_YA_EXISTE' : 'The enterprise already exists',
+	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'The enterprise doesn`t exists',
+	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'The enterprise is associated with certain individuals',
+
 
 	
 	//Error formato
@@ -178,6 +189,16 @@ arrayEN={
 	'TEXTO_NOTICIA_VACIO' : 'New text is empty',
 	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'New text can only contain letters, numbers, spaces and punctuation marks',
 	'TEXTO_NOTICIA_MENOR_QUE_3' : 'New text size is minor than 3 characteres',
+	'OBJETIVO_NAME_VACIO' : 'Objective name empty',
+	'OBJETIVO_NAME_ALFABETICO_INCORRECTO' : 'Objective name can only contain letters and spaces',
+	'OBJETIVO_NAME_MENOR_QUE_3' : 'Objective name size is minor than 3 characteres',
+	'OBJETIVO_NAME_MAYOR_QUE_48' : 'Objective name size is bigger than 48 characteres',
+	'OBJETIVO_DESCRIPTION_VACIO' : 'Objective description empty',
+	'OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO' : 'Objective description can only contains letters and spaces',
+	'OBJETIVO_DESCRIPTION_MENOR_QUE_3' : 'Objective description size is minor than 3 characteres',
+	'FECHA_VACIA' : 'Date empty',
+	'FECHA_MAYOR_QUE_8' : 'Date size is bigger than 8 characteres',
+	'FECHA_NUMERICA_INCORRECTA' : 'Date format is incorrect',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -268,6 +289,14 @@ arrayEN={
 	'SEARCH_EMPRESA' : 'SEARCH ENTERPRISE',
 	'ADD_EMPRESA' : 'ADD ENTERPRISE',
 	'GESTION_OBJETIVOS' : 'Objectives management',
+	'REACTIVATE_OBJETIVO' : 'REACTIVATE OBJECTIVE',
+	'SEGURO_REACTIVAR_OBJ' : 'Are you sure that you want to reactivate the objective?',
+	'DELETE_OBJETIVO' : 'DELETE OBJECTIVE',
+	'SEGURO_ELIMINAR_OBJ' : 'Are you sure that you want to delete the objective?',
+	'EDIT_OBJETIVO' : 'EDIT OBJECTIVE',
+	'DETAIL_OBJECTIVE' : 'DETAIL OBJECTIVE',
+	'SEARCH_OBJETIVO' : 'SEARCH OBJECTIVE',
+	'ADD_OBJETIVO' : 'ADD OBJECTIVE',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -341,6 +370,17 @@ arrayEN={
 	'EMPRESAS_LISTADAS_ELIMINADAS' : 'The deleted enterprises has been found correctly',
 	'EMPRESA_ELIMINADA' : 'The enterprise whas been deleted correctly',
 	'EMPRESA_MODIFICADA' : 'The enterprise has been modified correctly',
-	'EMPRESA_GUARDADA' : 'The enterprise has been saved correctly'
+	'EMPRESA_GUARDADA' : 'The enterprise has been saved correctly',
+	'OBJETIVO_REACTIVADO_OK' : 'OBJECTIVE REACTIVATED CORRECTLY',
+	'OBJETIVO_ELIMINADO_OK' : 'OBJECTIVE DELETED CORRECTLY',
+	'OBJETIVO_EDITADO_OK' : 'OBJECTIVE MODIFIED CORRECTLY',
+	'OBJETIVO_GUARDADO_OK' : 'OBJECTIVE SAVED CORRECTLY',
+	'OBJETIVO_REACTIVADO' : 'The objective has been reactivated correctly',
+	'OBJETIVO_ENCONTRADO' : 'The objective has been found correctly',
+	'OBJETIVOS_ELIMINADOS_LISTADOS' : 'The deleted objectives has been found correctly',
+	'OBJETIVOS_LISTADOS' : 'The objectives has been found correctly',
+	'OBJETIVO_ELIMINADO' : 'The objective has been deleted correctly',
+	'OBJETIVO_MODIFICADO' : 'The objective has been modified correctly',
+	'OBJETIVO_GUARDADO' : 'The objective has been saved correctly'
 
 }

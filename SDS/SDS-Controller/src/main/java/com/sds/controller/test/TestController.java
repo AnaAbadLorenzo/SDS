@@ -28,6 +28,7 @@ import com.sds.service.test.TestObjetivoService;
 import com.sds.service.test.TestPersonaService;
 import com.sds.service.test.TestRecuperarPassService;
 import com.sds.service.test.TestRegistrarService;
+import com.sds.service.test.TestRespuestaPosibleService;
 import com.sds.service.test.TestRolService;
 import com.sds.service.test.TestUsuarioService;
 import com.sds.service.test.model.DatosPruebaAcciones;
@@ -69,6 +70,9 @@ public class TestController {
 
 	@Autowired
 	TestObjetivoService testObjetivoService;
+
+	@Autowired
+	TestRespuestaPosibleService testRespuestaPosibleService;
 
 	@GetMapping(value = "/login/atributos")
 	@ResponseBody
@@ -1818,6 +1822,189 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_OBJETIVO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/respuestaPosible/atributos/guardar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAtributosAccionGuardar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoTextoRespuestaPosible = testRespuestaPosibleService
+					.getPruebasAtributoTextoRespuestaPosible();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoTextoRespuestaPosible);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_RESPUESTA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_RESPUESTA_POSIBLE_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/respuestaPosible/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoTextoRespuestaPosible = testRespuestaPosibleService
+					.getPruebasAtributoTextoRespuestaPosibleBuscar();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoTextoRespuestaPosible);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_RESPUESTA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_RESPUESTA_POSIBLE_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/respuestaPosible/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoTextoRespuestaPosible = testRespuestaPosibleService
+					.getPruebasAtributoTextoRespuestaPosible();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoTextoRespuestaPosible);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_RESPUESTA);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_RESPUESTA_POSIBLE_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/respuestaPosible/accion/guardar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAccionGuardar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testRespuestaPosibleService.getPruebasAccionesRespuestaPosibleGuardar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_RESPUESTA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/respuestaPosible/accion/buscar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testRespuestaPosibleService.getPruebasAccionesRespuestaPosibleBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_RESPUESTA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/respuestaPosible/accion/modificar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testRespuestaPosibleService.getPruebasAccionesRespuestaPosibleModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_RESPUESTA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/respuestaPosible/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testRespuestaPosibleService.getPruebasAccionesRespuestaPosibleEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_RESPUESTA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/respuestaPosible/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestRespuestaPosibleAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testRespuestaPosibleService.getPruebasAccionesRespuestaPosibleReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_RESPUESTAS_POSIBLES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_RESPUESTA);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_OK, respuestaTestAcciones);
 	}
 
 }

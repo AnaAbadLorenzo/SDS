@@ -258,6 +258,16 @@ public class ValidacionesAtributosMenor {
 				default:
 					break;
 				}
+			case GESTION_RESPUESTA_POSIBLE:
+				switch (atr) {
+				case TEXTO_RESPUESTA_POSIBLE:
+					resultado = CodigosMensajes.TEXTO_RESPUESTA_MENOR_QUE_2 + " - "
+							+ Mensajes.TEXTO_RESPUESTA_NO_PUEDE_SER_MENOR_QUE_2;
+					break;
+				default:
+					break;
+				}
+				break;
 			default:
 				break;
 			}

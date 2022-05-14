@@ -246,6 +246,17 @@ public class ValidacionesAtributosBlank {
 				default:
 					break;
 				}
+				break;
+			case GESTION_RESPUESTA_POSIBLE:
+				switch (atr) {
+				case TEXTO_RESPUESTA_POSIBLE:
+					resultado = CodigosMensajes.TEXTO_RESPUESTA_VACIO + " - "
+							+ Mensajes.TEXTO_RESPUESTA_NO_PUEDE_SER_VACIO;
+					break;
+				default:
+					break;
+				}
+				break;
 			}
 		}
 		return resultado;

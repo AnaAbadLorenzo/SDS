@@ -55,7 +55,7 @@ public class ObjetivoController {
 		return new RespEntity(RespCode.OBJETIVOS_LISTADOS, resultado);
 	}
 
-	@PostMapping(value = "/listarObjetivosEliminadas")
+	@PostMapping(value = "/listarObjetivosEliminados")
 	@ResponseBody
 	public RespEntity buscarObjetivosEliminados(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<ObjetivoEntity> resultado = objetivoService

@@ -7,6 +7,7 @@ var urlLogin = "/login";
 var urlRecuperarPass = "/recuperarPass";
 var urlRegistrar = "/registrar";
 var urlEmpresa = "/empresa";
+var urlObjetivo = "/objetivo";
 var urlMenu = "/menu";
 var urlUsuario = "/usuario";
 var urlRol = "/rol";
@@ -107,6 +108,16 @@ var urlPeticionAjaxPersonaGuardar = urlComun + urlPersona + "/anadirPersona";
 var urlPeticionAjaxEditPersona = urlComun + urlPersona + "/modificarPersona";
 var urlPeticionAjaxDeletePersona = urlComun + urlPersona + "/eliminarPersona";
 var urlPeticionAjaxAsociarPersonaEmpresa = urlComun + urlPersona + "/asociarPersonaEmpresa";
+
+/**Urls objetivos*/
+var urlPeticionAjaxReactivarObjetivo = urlComun + urlObjetivo + "/reactivarObjetivo";
+var urlPeticionAjaxListarObjetivo = urlComun + urlObjetivo + "/listarObjetivo";
+var urlPeticionAjaxListarObjetivosEliminados = urlComun + urlObjetivo + "/listarObjetivosEliminados";
+var urlPeticionAjaxListadoObjetivos = urlComun + urlObjetivo  + "/listarObjetivos";
+var urlPeticionAjaxEditarObjetivo = urlComun + urlObjetivo  + "/modificarObjetivo";
+var urlPeticionAjaxAddObjetivo = urlComun + urlObjetivo  + "/objetivo";
+var urlPeticionAjaxDeleteObjetivo = urlComun + urlObjetivo  + "/eliminarObjetivo";
+
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;

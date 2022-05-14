@@ -204,4 +204,19 @@ public class Mensajes {
 	public static final String OBJETIVO_ELIMINADO_CORRECTAMENTE = "El objetivo se ha eliminado correctamente";
 	public static final String OBJETIVO_REACTIVADO_CORRECTAMENTE = "El objetivo se ha reactivado correctamente";
 
+	public static final String TEXTO_RESPUESTA_NO_PUEDE_SER_VACIO = "El texto de la respuesta no puede ser vacío";
+	public static final String TEXTO_RESPUESTA_SOLO_PUEDE_SER_ALFANUMERICO_CON_SIGNOS_PUNTUACION = "El texto de la respuesta sólo puede contener letras, números, espacios y signos de puntuación";
+	public static final String TEXTO_RESPUESTA_NO_PUEDE_SER_MENOR_QUE_2 = "El texto de la respuesta no puede ser menor que 2";
+
+	public static final String FECHA_RESPUESTA_NO_PUEDE_SER_VACIA = "La fecha de la respuesta no puede ser vacía";
+
+	public static final String RESPUESTA_POSIBLE_BUSCADA_CORRECTAMENTE = "La respuesta posible se ha encontrado correctamente";
+	public static final String RESPUESTA_POSIBLE_YA_EXISTE = "La respuesta posible ya existe";
+	public static final String RESPUESTA_POSIBLE_NO_EXISTE = "La respuesta posible no existe";
+	public static final String RESPUESTA_POSIBLE_GUARDADA_CORRECTAMENTE = "La respuesta posible se ha guardado correctamente";
+	public static final String RESPUESTA_POSIBLE_MODIFICADA_CORRECTAMENTE = "La respuesta posible se ha modificado correctamente";
+	public static final String RESPUESTA_POSIBLE_ELIMINADA_CORRECTAMENTE = "La respuesta posible se ha eliminado correctamente";
+	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "La respuesta posible no ha podido eliminarse porque está asociada a un proceso";
+	public static final String RESPUESTA_POSIBLE_REACTIVADA_CORRECTAMENTE = "La respuesta posible se ha reactivado correctamente";
+
 }

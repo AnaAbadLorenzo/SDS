@@ -534,6 +534,7 @@ CREATE TABLE `respuesta_posible` (
 
 LOCK TABLES `respuesta_posible` WRITE;
 /*!40000 ALTER TABLE `respuesta_posible` DISABLE KEYS */;
+INSERT INTO `respuesta_posible` (`id_respuesta`, `texto_respuesta`, `fecha_respuesta`, `borrado_respuesta`) VALUES ('1', 'Sí', '2022-05-14', '0');
 /*!40000 ALTER TABLE `respuesta_posible` ENABLE KEYS */;
 UNLOCK TABLES;
 

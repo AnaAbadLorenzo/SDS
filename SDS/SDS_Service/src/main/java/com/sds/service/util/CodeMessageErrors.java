@@ -47,7 +47,11 @@ public enum CodeMessageErrors {
 	NOTICIA_VACIA("El título y/o el texto de la noticia están vacíos"), //
 	OBJETIVO_YA_EXISTE_EXCEPTION("El objetivo ya existe"), //
 	OBJETIVO_NO_EXISTE_EXCEPTION("El objetivo no existe"), //
-	OBJETIVO_VACIO("El nombre y/o la descripción del objetivo están vacíos");
+	OBJETIVO_VACIO("El nombre y/o la descripción del objetivo están vacíos"), //
+	RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION("La respuesta posible ya existe"), //
+	RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION("La respuesta posible no existe"), //
+	RESPUESTA_POSIBLE_ASOCIADA_PROCESO("La respuesta no puede eliminarse porque está asociada a un proceso"), //
+	RESPUESTA_POSIBLE_VACIA("El texto y/o la fecha de la respuesta están vacíos");
 
 	private String codigo;
 

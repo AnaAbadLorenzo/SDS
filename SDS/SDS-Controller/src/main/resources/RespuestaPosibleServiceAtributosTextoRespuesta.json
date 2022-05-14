@@ -1,0 +1,30 @@
+{
+	"textoRespuestaPosibleVacio": {
+		"idRespuesta" : "",
+		"textoRespuesta" : "",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"textoRespuestaPosibleCaracteresEspecialesSinSignosPuntuacion" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "@@@***",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"textoRespuestaPosibleMenor2": {
+		"idRespuesta" : "",
+		"textoRespuesta" : "N",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"textoRespuestaPosibleAlfanumericoCorrecto":{
+		"idRespuesta" : "",
+		"textoRespuesta" : "No, ocasionalmente",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	}
+
+}

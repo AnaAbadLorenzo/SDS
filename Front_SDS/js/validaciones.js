@@ -646,7 +646,7 @@ function comprobarFechaInicioSearch(idElemento, idElementoError, campo){
 
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, 8, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 10, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -671,7 +671,7 @@ function comprobarFechaFinSearch(idElemento, idElementoError, campo){
 
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
 		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, 8, idElementoError, campo)){
+			if(!comprobarTamañoMaximo(idElemento, 10, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
 			}else{
@@ -1204,6 +1204,109 @@ function comprobarAddEmpresa(){
 	}
 }
 
+/** Funcion que valida el formato del Nombre del objetivo **/
+function comprobarNombreObjetivo(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la descripcion del objetivo **/
+function comprobarDescripcionObjetivo(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/**Función que valida el editar de un objetivo **/
+function comprobarEditObjetivo(){
+	if(comprobarNombreObjetivo('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
+		comprobarDescripcionObjetivo('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el añadir de un objetivo **/
+function comprobarAddObjetivo(){
+	if(comprobarNombreObjetivo('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
+		comprobarDescripcionObjetivo('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el nombre del objetivo en el buscar*/
+function comprobarNombreObjetivoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la descripcion del objetivo en el buscar*/
+function comprobarDescripcionObjetivoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida el buscar de un objetivo **/
+function comprobarBuscarObjetivo(){
+	if(comprobarNombreObjetivoSearch('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
+		comprobarDescripcionObjetivoSearch('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
+		return true;
+	}else{
+		return false;
+	}
+}
 
 
 /**Función que valida si un campo está vacío*/
@@ -1286,14 +1389,20 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 				codigo = "ACCION_DESCRIPTION_VACIO";
 			break;
 			case 'fecha':
-				codigo = "FECHA_NACIMIENTO_VACIA";
+				codigo = "FECHA_VACIA";
 			break;
 			case 'tituloNoticia':
 				codigo = "TITULO_NOTICIA_VACIO";
 			break;
 			case 'textoNoticia':
 				codigo = "TEXTO_NOTICIA_VACIO";
-			break;  
+			break; 
+			case 'nombreObjetivo':
+				codigo = "OBJETIVO_NAME_VACIO" ;
+			break;
+			case 'descripcionObjetivo':
+				codigo = "OBJETIVO_DESCRIPTION_VACIO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
 	    return false;
@@ -1386,6 +1495,12 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			case "textoNoticia" :
 				codigo = "TEXTO_NOTICIA_MENOR_QUE_3";
 			break;
+			case 'nombreObjetivo':
+				codigo = "OBJETIVO_NAME_MENOR_QUE_3" ;
+			break;
+			case 'descripcionObjetivo':
+				codigo = "OBJETIVO_DESCRIPTION_MENOR_QUE_3";
+			break;
 
 		}
 		addCodeError(idElementoError, codigo);
@@ -1464,10 +1579,13 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 				codigo = "ACCION_NAME_MAYOR_QUE_48";
 			break;
 			case 'fecha' : 
-				codigo = "FECHA_NACIMIENTO_MAYOR_QUE_8";
+				codigo = "FECHA_MAYOR_QUE_8";
 			break;
 			case 'tituloNoticia' :
 				codigo = "TITULO_NOTICIA_MAYOR_QUE_256";
+			break;
+			case 'nombreObjetivo':
+				codigo = "OBJETIVO_NAME_MAYOR_QUE_48" ;
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -1576,6 +1694,7 @@ function comprobarSoloNumeros(idElemento, idElementoError, campo) {
 			case 'telefonoEmpresaRegistro' : 
 		  		codigo = "TELEFONO_NUMERICO_INCORRECTO";
 			break;
+
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -1658,6 +1777,12 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			case 'tituloNoticia' :
 				codigo = "TITULO_NOTICIA_ALFABETICO_INCORRECTO";
 			break;
+			case 'nombreObjetivo' :
+				codigo = "OBJETIVO_NAME_ALFABETICO_INCORRECTO";
+			break;
+			case 'descripcionObjetivo':
+				codigo = "OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
         return false;
@@ -1738,7 +1863,7 @@ function comprobarFormatoFechas(idElemento, idElementoError, campo) {
 		  		codigo = "FECHA_NACIMIENTO_NUMERICA_INCORRECTA";
 			break;
 			case 'fecha' : 
-		  		codigo = "FECHA_NACIMIENTO_NUMERICA_INCORRECTA";
+		  		codigo = "FECHA_NUMERICA_INCORRECTA";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

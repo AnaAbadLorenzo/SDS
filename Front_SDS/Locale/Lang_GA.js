@@ -36,6 +36,9 @@ arrayGA={
 	'TITULO_NOTICIA' : 'Título noticia',
 	'TEXTO_NOTICIA' : 'Texto noticia',
 	'FECHA_NOTICIA' : 'Data noticia',
+	'NOMBRE_OBJETIVO' : 'Nome obxectivo',
+	'DESCRIPCION_OBJETIVO' : 'Descripción obxectivo',
+
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -97,10 +100,21 @@ arrayGA={
 	'ACCION_NO_EXISTE_EXCEPTION' : 'A acción non existe',
 	'PERMISO_NO_EXISTE' : 'O permiso non existe',
 	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'A acción está asociada a un rol e a unha funcionalidade',
+	'PERSONA_VACIA' : 'Algún dos datos da persoa é vacío',
+	'PERSONA_ASOCIADA_EMPRESA' : 'A persoa está asociada a unha empresa',
+	'PERSONA_YA_EXISTE' : 'A persoa xa existe',
 	'PERSONA_NO_EXISTE' : 'A persoa non existe',
 	'PARSE_EXCEPTION' : 'Erro interno de parseado da mensaxe',
 	'USUARIO_VACIO' : 'O usuario é vacío',
 	'USUARIO_MODIFICAR_VACIO' : 'O usuario é vacío',
+	'OBJETIVO_VACIO' : 'O nome e/ou a descripción do obxectivo son vacíos',
+	'OBJETIVO_YA_EXISTE_EXCEPTION' : 'O obxectivo xa existe',
+	'OBJETIVO_NO_EXISTE_EXCEPTION' : 'O obxectivo non existe',
+	'EMPRESA_VACIA' : 'Algúns dos datos da empresa son vacíos',
+	'EMPRESA_YA_EXISTE' : 'A empresa xa existe',
+	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'A empresa non existe',
+	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'A empresa está asociada a algunhas persoas',
+
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -174,6 +188,17 @@ arrayGA={
 	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
 	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da noticia só pode conter letras, números, espacios e sinais de puntuación',
 	'TEXTO_NOTICIA_MENOR_QUE_3' : 'O texto da noticia ten menos de 3 caracteres',
+	'OBJETIVO_NAME_VACIO' : 'Nome obxectivo vacío',
+	'OBJETIVO_NAME_ALFABETICO_INCORRECTO' : 'O nome do obxectivo tan só pode conter letras e espacios',
+	'OBJETIVO_NAME_MENOR_QUE_3' : 'O nome do obxectivo ten menos de 3 caracteres',
+	'OBJETIVO_NAME_MAYOR_QUE_48' : 'O nome do obxectivo ten máis de 48 caracteres',
+	'OBJETIVO_DESCRIPTION_VACIO' : 'Descripción obxectivo vacía',
+	'OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO' : 'A descripción do obxectivo tan só pode conter letras e espazos',
+	'OBJETIVO_DESCRIPTION_MENOR_QUE_3' : 'A descripciuón do obxectivo ten menos de 3 caracteres',
+	'FECHA_VACIA' : 'Data vacía',
+	'FECHA_MAYOR_QUE_8' : 'A data ten menos de 8 díxitos',
+	'FECHA_NUMERICA_INCORRECTA' : 'Formato de data incorrecto',
+	
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -265,6 +290,14 @@ arrayGA={
 	'SEARCH_EMPRESA' : 'BUSCAR EMPRESA',
 	'ADD_EMPRESA' : 'ENGADIR EMPRESA',
 	'GESTION_OBJETIVOS' : 'Xestión de obxectivos',
+	'REACTIVATE_OBJETIVO' : 'REACTIVAR OBXECTIVO',
+	'SEGURO_REACTIVAR_OBJ' : 'Estás seguro queres reactivar este obxectivo?',
+	'DELETE_OBJETIVO' : 'ELIMINAR OBXECTIVO',
+	'SEGURO_ELIMINAR_OBJ' : 'Está seguro de que quere eliminar este obxectivo?',
+	'EDIT_OBJETIVO' : 'EDITAR OBXECTIVO',
+	'DETAIL_OBJECTIVE' : 'DETALLE OBXECTIVO',
+	'SEARCH_OBJETIVO' : 'BUSCAR OBXECTIVO',
+	'ADD_OBJETIVO' : 'ENGADIR OBXECTIVO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -338,6 +371,16 @@ arrayGA={
 	'EMPRESAS_LISTADAS_ELIMINADAS' : 'As empresas eliminadas encontráronse correctamente',
 	'EMPRESA_ELIMINADA' : 'A empresa eliminouse correctamente',
 	'EMPRESA_MODIFICADA' : 'A empresa modificouse correctamente',
-	'EMPRESA_GUARDADA' : 'A empresa gardouse correctamente'
-	
+	'EMPRESA_GUARDADA' : 'A empresa gardouse correctamente',
+	'OBJETIVO_REACTIVADO_OK' : 'OBXECTIVO REACTIVADO CORRECTAMENTE',
+	'OBJETIVO_ELIMINADO_OK' : 'OBXECTIVO ELIMINADO CORRECTAMENTE',
+	'OBJETIVO_EDITADO_OK' : 'OBXECTIVO EDITADO CORRECTAMENTE',
+	'OBJETIVO_REACTIVADO' : 'O obxectivo reactivouse correctamente',
+	'OBJETIVO_ENCONTRADO' : 'O obxectivo encontrouse correctamente',
+	'OBJETIVOS_ELIMINADOS_LISTADOS': '0s obxectivos eliminados listáronse correctamente',
+	'OBJETIVOS_LISTADOS' : 'Os obxectivos listáronse correctamente',
+	'OBJETIVO_ELIMINADO' : 'O obxectivo eliminouse correctamente',
+	'OBJETIVO_MODIFICADO' : 'O obxectivo modificouse correctamente',
+	'OBJETIVO_GUARDADO' : 'O obxectivo gardouse correctamente'
+
 }

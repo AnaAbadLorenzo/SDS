@@ -124,6 +124,22 @@ public enum RespCode {
 	OBJETIVO_YA_EXISTE_EXCEPTION("OBJETIVO_YA_EXISTE_EXCEPTION", "El objetivo ya existe"), //
 	OBJETIVO_NO_EXISTE_EXCEPTION("OBJETIVO_NO_EXISTE_EXCEPTION", "El objetivo no existe"), //
 	NOTICIA_NO_EXISTE_EXCEPTION("NOTICIA_NO_EXISTE", "La noticia no existe"), //
+	RESPUESTA_POSIBLE_ECONTRADA("RESPUESTA_POSIBLE_ENCONTRADA",
+			"Las respuestas posibles se han encontrado correctamente"), //
+	RESPUESTAS_POSIBLES_LISTADAS("RESPUESTAS_POSIBLES_LISTADAS",
+			"Las respuestas posibles se han listado correctamente"), //
+	RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS("RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS",
+			"Las respuestas posibles eliminadas se han listado correctamente"), //
+	RESPUESTA_POSIBLE_GUARDADA("RESPUESTA_POSIBLE_GUARDADA", "La respuesta posible se ha guardado correctamente"), //
+	RESPUESTA_POSIBLE_MODIFICADA("RESPUESTA_POSIBLE_MODIFICADA", "La respuesta posible se ha modificado correctamente"), //
+	RESPUESTA_POSIBLE_ELIMINADA("RESPUESTA_POSIBLE_ELIMINADA", "La respuesta posible se ha eliminado correctamente"), //
+	RESPUESTA_POSIBLE_REACTIVADA("RESPUESTA_POSIBLE_REACTIVADA", "La respuesta posible se ha reactivado correctamente"), //
+	RESPUESTA_POSIBLE_BORRADA("RESPUESTA_POSIBLE_BORRADA", "La respuesta posible se ha borrado correctamente"), //
+	RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION("RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION", "La respuesta posible ya existe"), //
+	RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION("RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION", "La respuesta posible no existe"), //
+	RESPUESTA_ASOCIADA_PROCESO_EXCEPTION("RESPUESTA_ASOCIADA_PROCESO_EXCEPTION",
+			"La respuesta posible está asociada a un proceso"), //
+	RESPUESTA_POSIBLE_VACIA("RESPUESTA_POSIBLE_VACIA", "El texto y/o fecha de la noticia son vacios"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
@@ -213,7 +229,15 @@ public enum RespCode {
 	TEST_ACCIONES_OBJETIVO_KO("TEST_ACCIONES_OBJETIVO_KO",
 			"Se ha producido un error al ejecutar los test de acciones para los objetivos"), //
 	TEST_ACCIONES_OBJETIVO_OK("TEST_ACCIONES_OBJETIVO_OK",
-			"Los test de acciones para el objetivo se han ejecutado correctamente");
+			"Los test de acciones para el objetivo se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_RESPUESTA_POSIBLE_OK("TEST_ATRIBUTOS_RESPUESTA_POSIBLE_OK",
+			"Los test de atributo para las respuestas posibles se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_RESPUESTA_POSIBLE_KO("TEST_ATRIBUTOS_RESPUESTA_POSIBLE_KO",
+			"Se ha producido un error al ejecutar los test de atributos para las respuestas posibles"), //
+	TEST_ACCIONES_RESPUESTA_POSIBLE_KO("TEST_ACCIONES_RESPUESTA_POSIBLE_KO",
+			"Se ha producido un error al ejecutar los test de acciones para las respuestas posibles"), //
+	TEST_ACCIONES_RESPUESTA_POSIBLE_OK("TEST_ACCIONES_RESPUESTA_POSIBLE_OK",
+			"Los test de acciones para las respuestas posibles se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

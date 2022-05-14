@@ -874,6 +874,8 @@ function buscarPersonaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
     if(accion == "buscarModal"){
       if($('#fechaNacP').val() == '1900-01-01'){
         fechaNacP = "";
+      }else{
+        fechaNacP = $('#fechaNacP').val();
       }
 
       var data = {
@@ -1480,8 +1482,10 @@ function rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, te
 
     $("#dniP").val(dniP);
     $("#nombreP").val(nombreP);
-    $("#apellidosP").val(apellidosP); 
-    $("#fechaNacP").val(fechaNacP); 
+    $("#apellidosP").val(apellidosP);
+    var fecha = fechaNacP.split('-');
+    var fech = fecha[2] + "-" + fecha[1] + "-" + fecha[0]; 
+    $("#fechaNacP").val(fech); 
     $("#direccionP").val(direccionP);  
     $("#telefonoP").val(telefonoP); 
     $("#emailP").val(emailP); 
@@ -1585,23 +1589,24 @@ function cambiarOnBlurCampos(onBlurDNI, onBlurNombrePersona, onBlurApellidosPers
 }
 
 function cargaDatosPersona(datos){
-   var fechaNacimiento = (datos[0].fechaNacP).split('T');
+   var fechaNacimiento = new Date(datos[0].fechaNacP);
+
 
    if(datos[0].empresa != null){
-    var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + fechaNacimiento[0] + "'",
+    var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + convertirFecha(fechaNacimiento.toString()) + "'",
           "'" + datos[0].direccionP + "'", "'" + datos[0].telefonoP + "'", "'" + datos[0].emailP + "'", 
           "'" + datos[0].borradoP + "'", "'" + datos[0].usuario.usuario + "'", "'" + datos[0].usuario.rol.rolName + "'", "'" + datos[0].usuario.borradoUsuario + "'",
           "'" + datos[0].empresa.cifEmpresa + "'", "'" + datos[0].empresa.nombreEmpresa + "'", "'" + datos[0].empresa.direccionEmpresa + "'", "'" + datos[0].empresa.telefonoEmpresa + "'"]; 
   }else{
 
-    var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + fechaNacimiento[0] + "'",
+    var atributosFunciones = ["'" + datos[0].dniP + "'", "'" + datos[0].nombreP + "'", "'" + datos[0].apellidosP + "'", "'" + convertirFecha(fechaNacimiento.toString()) + "'",
           "'" + datos[0].direccionP + "'", "'" + datos[0].telefonoP + "'", "'" + datos[0].emailP + "'", 
           "'" + datos[0].borradoP + "'", "'" + datos[0].usuario.usuario + "'", "'" + datos[0].usuario.rol.rolName + "'", "'" + datos[0].usuario.borradoUsuario + "'"]; 
   }
 	
   $('#cardPersona').html('');
 
-     var fecha = (datos[0].fechaNacP).split('T');
+     var fecha = new Date(datos[0].fechaNacP);
 
      var cardPersona = '<img class="card-img-top" src="images/users.png" alt="Card image" style="width:100%">' + 
      						'<div class="card-body">' + 
@@ -1615,7 +1620,7 @@ function cargaDatosPersona(datos){
      							'</div>' + 
      							'<div class="fechaNacimientoInfo">' + 
      								'<img class="fechaNacimientoImg" src="images/cumpleanhos.png" alt="fechaNacimiento">' + 
-     								'<p class="card-text fechaNacimiento">'+ fecha[0] + '</p>' + 
+     								'<p class="card-text fechaNacimiento">'+ convertirFecha(fecha.toString()) + '</p>' + 
      							'</div>' + 
      							'<div class="direccionInfo">' + 
      								'<img class="direccionImg" src="images/direccion.png" alt="direccion">' + 

@@ -1,0 +1,78 @@
+{
+	"buscarRespuestaPosible":{
+		"idRespuesta" : 1,
+		"textoRespuesta" : "Sí",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"textoRespuestaPosibleVacio": {
+		"idRespuesta" : "",
+		"textoRespuesta" : "",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"fechaRespuestaPosibleVacia": {
+		"idRespuesta" : "",
+		"textoRespuesta" : "Sí",
+		"fechaRespuesta" : "",
+		"borradoRespuesta" : 0
+	},
+	
+	"respuestaPosibleVacia" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "",
+		"fechaRespuesta" : "",
+		"borradoRespuesta" : 0
+	},
+	
+	"guardarRespuestaPosible" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "No, sólo ocasionalmente",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"modificarRespuestaPosible" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "Tal vez",
+		"fechaRespuesta" : "2022-05-16",
+		"borradoRespuesta" : 0
+	},
+	
+	"respuestaPosibleYaExiste" : {
+		"idRespuesta" : 1,
+		"textoRespuesta" : "Sí",
+		"fechaRespuesta" : "2022-05-14",
+		"borradoRespuesta" : 0
+	},
+	
+	"respuestaPosibleNoExiste" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "Tal vez",
+		"fechaRespuesta" : "2022-05-16",
+		"borradoRespuesta" : 0
+	},
+	
+	"eliminarRespuestaPosible" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "Frecuentemente",
+		"fechaRespuesta" : "2022-05-18",
+		"borradoRespuesta" : 0
+	},
+	
+	"respuestaPosibleAsociadaProceso" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "Con mucha frecuencia",
+		"fechaRespuesta" : "2022-05-20",
+		"borradoRespuesta" : 0
+	},
+	
+	"reactivarRespuestaPosible" : {
+		"idRespuesta" : "",
+		"textoRespuesta" : "Cada 3 meses",
+		"fechaRespuesta" : "2022-05-22",
+		"borradoRespuesta" : 1
+	}
+}

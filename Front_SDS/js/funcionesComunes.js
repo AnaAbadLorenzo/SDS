@@ -320,9 +320,7 @@ function comprobarTokenUsuario(){
 function errorAutenticado(codigoResponse, idioma){
 	$("#modal-title").removeClass();
     $("#modal-title").addClass("STOP");
-	document.getElementById("modal-title").style.color = "#a50707";	
-    document.getElementById("modal-title").style.top = "13%";
-    document.getElementById("modal-title").style.fontSize = "23px";
+	document.getElementById("modal-title").style.color = "#a50707";
 	$("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigoResponse);   
     $(".imagenAviso").attr('src', "images/stop.png");   
@@ -334,9 +332,7 @@ function errorAutenticado(codigoResponse, idioma){
 function errorInternal(codigoResponse, idioma){
 	$("#modal-title").removeClass();
     $("#modal-title").addClass("ERROR_INTERNO");
-	document.getElementById("modal-title").style.color = "#a50707";	
-    document.getElementById("modal-title").style.top = "10%";
-    document.getElementById("modal-title").style.fontSize = "23px";
+	document.getElementById("modal-title").style.color = "#a50707";
 	$("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigoResponse);   
     $(".imagenAviso").attr('src', "images/caution.png");   
@@ -373,24 +369,20 @@ function construyeFila(entidad, fila) {
 
         case 'LOG_EXCEPCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.tipoExcepcion + "'", "'" + fila.descripcionExcepcion + "'", "'" + fila.fecha + "'"];
-			var fecha = (fila.fecha).split('T');
-			var fech = fecha[0].split('-');
-			var fechaOrdenada = fech[2] + '-' + fech[1] + '-' + fech[0];
+			var fecha = new Date(fila.fecha);
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.tipoExcepcion + 
                 '</td> <td>' + fila.descripcionExcepcion +
-                '</td> <td>' + fechaOrdenada;
+                '</td> <td>' + convertirFecha(fecha.toString());
         break;
 
         case 'LOG_ACCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.accion + "'", "'" + fila.datos + "'", "'" + fila.fecha + "'"];
-			var fecha = (fila.fecha).split('T');
-			var fech = fecha[0].split('-');
-			var fechaOrdenada = fech[2] + '-' + fech[1] + '-' + fech[0];
+			var fecha = new Date(fila.fecha);
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.accion + 
                 '</td> <td>' + fila.datos +
-                '</td> <td>' + fechaOrdenada;
+                '</td> <td>' + convertirFecha(fecha.toString());
         break;
 
         case 'USUARIO':
@@ -422,8 +414,8 @@ function construyeFila(entidad, fila) {
         		var filaEmpresaTelefono = fila.empresa.telefonoEmpresa;
         	}
 
-        	var fechaNacimiento = (fila.fechaNacP).split('T');
-        	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + fechaNacimiento[0] + "'"
+        	var fechaNacimiento = new Date(fila.fechaNacP);
+        	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + convertirFecha(fechaNacimiento.toString()) + "'"
         	, "'" + fila.direccionP + "'", "'" + fila.telefonoP + "'", "'" + fila.emailP + "'", "'" + fila.borradoP + "'",
         	"'" + fila.usuario.usuario + "'", "'" + fila.usuario.rol.rolName + "'", "'" + fila.usuario.borradoUsuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
         	, "'" + filaEmpresaTelefono + "'"];
@@ -442,13 +434,12 @@ function construyeFila(entidad, fila) {
         break;
 
         case 'NOTICIA':
-        var fechaNoticia = (fila.fechaNoticia).split('T');
-        var fech = fechaNoticia[0].split('-');
-		var fechaOrdenada = fech[2] + '-' + fech[1] + '-' + fech[0];
-			atributosFunciones = ["'" + fila.tituloNoticia + "'", "'" + fila.textoNoticia + "'", "'" + fechaNoticia[0] + "'", "'" + fila.idNoticia + "'"];
+        var fechaNoticia = new Date(fila.fechaNoticia);
+        
+		atributosFunciones = ["'" + fila.tituloNoticia + "'", "'" + fila.textoNoticia + "'", "'" + convertirFecha(fechaNoticia.toString()) + "'", "'" + fila.idNoticia + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.tituloNoticia + 
                 '</td> <td>' + fila.textoNoticia +
-                '</td> <td>' + fechaOrdenada;
+                '</td> <td>' + convertirFecha(fechaNoticia.toString());
         break;
 
         case 'EMPRESA':
@@ -457,6 +448,12 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + fila.nombreEmpresa +
                 '</td> <td>' + fila.direccionEmpresa +
                 '</td> <td>' + fila.telefonoEmpresa;
+        break;
+
+        case 'OBJETIVO':
+			atributosFunciones = ["'" + fila.nombreObjetivo + "'", "'" + fila.descripObjetivo + "'", "'" + fila.idObjetivo + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreObjetivo + 
+                '</td> <td>' + fila.descripObjetivo;
         break;
 
 	};
@@ -544,8 +541,8 @@ function construyeFilaEliminados(entidad, fila) {
         		var filaEmpresaTelefono = fila.empresa.telefonoEmpresa;
         	}
 
-        	var fechaNacimiento = (fila.fechaNacP).split('T');
-        	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + fechaNacimiento[0] + "'"
+        	var fechaNacimiento = new Date(fila.fechaNacP);
+        	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + convertirFecha(fechaNacimiento.toString()) + "'"
         	, "'" + fila.direccionP + "'", "'" + fila.telefonoP + "'", "'" + fila.emailP + "'", "'" + fila.borradoP + "'",
         	"'" + fila.usuario.usuario + "'", "'" + fila.usuario.rol.rolName + "'", "'" + fila.usuario.borradoUsuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
         	, "'" + filaEmpresaTelefono + "'"];
@@ -565,6 +562,12 @@ function construyeFilaEliminados(entidad, fila) {
                 '</td> <td>' + fila.nombreEmpresa +
                 '</td> <td>' + fila.direccionEmpresa +
                 '</td> <td>' + fila.telefonoEmpresa;
+        break;
+
+        case 'OBJETIVO':
+			atributosFunciones = ["'" + fila.nombreObjetivo + "'", "'" + fila.descripObjetivo + "'", "'" + fila.idObjetivo + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreObjetivo + 
+                '</td> <td>' + fila.descripObjetivo;
         break;
 
 	};
@@ -671,6 +674,10 @@ function cargarHref(dato){
 		case 'Gestión de empresas':
 			href="GestionDeEmpresas.html";
 		break;
+
+		case 'Gestión de objetivos':
+			href="GestionDeObjetivos.html";
+		break;
 	}
 
 	return href;
@@ -717,6 +724,10 @@ function cargarClass(dato){
 
 		case 'Gestión de empresas':
 			href = "GESTION_EMPRESAS";
+		break;
+
+		case 'Gestión de objetivos':
+			href = "GESTION_OBJETIVOS";
 		break;
 	}
 
@@ -877,8 +888,7 @@ function errorFailAjax(status){
 function respuestaAjaxOK(clase, codigo){
     $(".imagenAviso").attr('src', 'images/ok.png');
     document.getElementById("modal-title").style.color = "#238f2a";
-    document.getElementById("modal-title").style.top = "13%";
-    document.getElementById("modal-title").style.fontSize = "23px";
+    document.getElementById("modal-title").style.top = "3%";
     $("#modal-title").removeClass();
     $("#modal-title").addClass(clase);
     $("#modal-mensaje").removeClass();
@@ -889,9 +899,7 @@ function respuestaAjaxOK(clase, codigo){
 function respuestaAjaxKO(codigo){
 	$("#modal-title").removeClass();
     $("#modal-title").addClass("ERROR");
-    document.getElementById("modal-title").style.color = "#a50707";    
-    document.getElementById("modal-title").style.top = "13%";
-    document.getElementById("modal-title").style.fontSize = "23px";
+    document.getElementById("modal-title").style.color = "#a50707";
     $(".imagenAviso").attr('src', 'images/failed.png');
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
@@ -983,6 +991,11 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'EMPRESA':
 			cargarPermisosFuncEmpresa();
+		break;
+
+		case 'OBJETIVO' :
+			cargarPermisosFuncObjetivo();
+		break;
 
 	}
 }
@@ -1008,6 +1021,67 @@ function convert(str) {
   return [date[5], mnths[date[1]], date[2]].join("-");
 }
 
+/** Funcion para tratar las fechas **/
+function convertirFecha(fecha){
+	var fechaCorrecta = "";
+
+	var fechaSeparada = fecha.split(' ');
+
+	var mesLetras = fechaSeparada[1];
+
+	var mes = convierteMes(mesLetras);
+
+	fechaCorreta = fechaSeparada[2] + "-" + mes + "-" + fechaSeparada[3];
+
+	return fechaCorreta;
+}
+
+/**Función para convertir los meses de letras a números **/
+function convierteMes(mes){
+	var mesNumero = "";
+	
+	switch(mes){
+		case "Jan":
+			mesNumero = "01";
+		break;
+		case "Feb":
+			mesNumero = "02";
+		break;
+		case "Mar":
+			mesNumero = "03";
+		break;
+		case "Apr":
+			mesNumero = "04";
+		break;
+		case "May":
+			mesNumero = "05";
+		break;
+		case "Jun":
+			mesNumero = "06";
+		break;
+		case "Jul":
+			mesNumero = "07";
+		break;
+		case "Aug":
+			mesNumero = "08";
+		break;
+		case "Sep":
+			mesNumero = "09";
+		break;
+		case "Oct":
+			mesNumero = "10";
+		break;
+		case "Nov":
+			mesNumero = "11";
+		break;
+		case "Dec":
+			mesNumero = "12";
+		break;
+
+	}
+
+	return mesNumero;
+}
 /** Funcion para sustituir lo caracteres por asteriscos **/
 function convertirPass(passwd){
 

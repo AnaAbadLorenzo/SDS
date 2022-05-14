@@ -37,6 +37,9 @@ arrayES={
 	'TITULO_NOTICIA' : 'Título noticia',
 	'TEXTO_NOTICIA' : 'Texto noticia',
 	'FECHA_NOTICIA' : 'Fecha noticia',
+	'NOMBRE_OBJETIVO' : 'Nombre objetivo',
+	'DESCRIPCION_OBJETIVO' : 'Descripción objetivo',
+
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -100,10 +103,20 @@ arrayES={
 	'ACCION_NO_EXISTE_EXCEPTION' : 'La acción no existe',
 	'PERMISO_NO_EXISTE' : 'El permiso no existe',
 	'ACCION_ASOCIDADA_ROL_FUNCIONALIDAD' : 'La acción está asociado a un rol y a una funcionalidad',
+	'PERSONA_VACIA' : 'Alguno de los datos de la persona es vacío',
+	'PERSONA_ASOCIADA_EMPRESA' : 'La persona está asociada a una empresa',
+	'PERSONA_YA_EXISTE' : 'La persona ya existe',
 	'PERSONA_NO_EXISTE' : 'La persona no existe',
 	'PARSE_EXCEPTION' : 'Error interno de parseado del mensaje',
 	'USUARIO_VACIO' : 'El usuario está vacío',
 	'USUARIO_MODIFICAR_VACIO' : 'El usuario está vacío',
+	'OBJETIVO_VACIO' : 'El nombre y/o la descripción del objetivo son vacíos',
+	'OBJETIVO_YA_EXISTE_EXCEPTION' : 'El objetivo ya existe',
+	'OBJETIVO_NO_EXISTE_EXCEPTION' : 'El objetivo no existe',
+	'EMPRESA_VACIA' : 'Alguno de los datos de la empresa es vacío',
+	'EMPRESA_YA_EXISTE' : 'La empresa ya existe',
+	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'La empresa no existe',
+	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'La empresa está asociada a algunas personas',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -178,6 +191,17 @@ arrayES={
 	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
 	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'El texto de la noticia sólo puede contener letras, números, espacios y signos de puntuación',
 	'TEXTO_NOTICIA_MENOR_QUE_3' : 'El texto de la noticia tiene menos de 3 caracteres',
+	'OBJETIVO_NAME_VACIO' : 'Nombre objetivo vacío',
+	'OBJETIVO_NAME_ALFABETICO_INCORRECTO' : 'El nombre del objetivo sólo puede contener letras y espacios',
+	'OBJETIVO_NAME_MENOR_QUE_3' : 'El nombre del objetivo tiene menos de 3 caracteres',
+	'OBJETIVO_NAME_MAYOR_QUE_48' : 'El nombre del objetivo tiene más de 48 caracteres',
+	'OBJETIVO_DESCRIPTION_VACIO' : 'Descripción objetivo vacía',
+	'OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO' : 'La descripción del objetivo sólo puede contener letras y espacios',
+	'OBJETIVO_DESCRIPTION_MENOR_QUE_3' : 'La descripción del objetivo tiene menos de 3 caracteres',
+	'FECHA_VACIA' : 'Fecha vacía',
+	'FECHA_MAYOR_QUE_8' : 'La fecha tiene más de 8 dígitos',
+	'FECHA_NUMERICA_INCORRECTA' : 'El formato de la fecha es incorrecto',
+	
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -269,6 +293,14 @@ arrayES={
 	'SEARCH_EMPRESA' : 'BUSCAR EMPRESA',
 	'ADD_EMPRESA' : 'AÑADIR EMPRESA',
 	'GESTION_OBJETIVOS' : 'Gestión de objetivos',
+	'REACTIVATE_OBJETIVO' : 'REACTIVAR OBJETIVO',
+	'SEGURO_REACTIVAR_OBJ' : '¿Estás seguro de que quieres reactivar este objetivo?',
+	'DELETE_OBJETIVO' : 'ELIMINAR OBJETIVO',
+	'SEGURO_ELIMINAR_OBJ' : '¿Estás seguro de que quieres eliminar este objetivo?',
+	'EDIT_OBJETIVO' : 'EDITAR OBJETIVO',
+	'DETAIL_OBJECTIVE' : 'DETALLE OBJETIVO',
+	'SEARCH_OBJETIVO' : 'BUSCAR OBJETIVO',
+	'ADD_OBJETIVO' : 'AÑADIR OBJETIVO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -342,6 +374,17 @@ arrayES={
 	'EMPRESAS_LISTADAS_ELIMINADAS' : 'Las empresas eliminadas se han encontrado correctamente',
 	'EMPRESA_ELIMINADA' : 'La empresa ha sido eliminada correctamente',
 	'EMPRESA_MODIFICADA' : 'La empresa se ha modificado correctamente',
-	'EMPRESA_GUARDADA' : 'La empresa se ha guardado correctamente'
+	'EMPRESA_GUARDADA' : 'La empresa se ha guardado correctamente',
+	'OBJETIVO_REACTIVADO_OK' : 'OBJETIVO REACTIVADO CORRECTAMENTE',
+	'OBJETIVO_ELIMINADO_OK' : 'OBJETIVO ELIMINADO CORRECTAMENTE',
+	'OBJETIVO_EDITADO_OK' : 'OBJETIVO EDITADO CORRECTAMENTE',
+	'OBJETIVO_GUARDADO_OK' : 'OBJETIVO GUARDADO CORRECTAMENTE',
+	'OBJETIVO_REACTIVADO' : 'El objetivo se ha reactivado correctamente',
+	'OBJETIVO_ENCONTRADO' : 'El objetivo se ha encontrado correctamente',
+	'OBJETIVOS_ELIMINADOS_LISTADOS' : 'Los objetivos eliminados se han listado correctamente',
+	'OBJETIVOS_LISTADOS' : 'Los objetivos se han listado correctamente',
+	'OBJETIVO_ELIMINADO' : 'Los objetivos se han eliminado correctamente',
+	'OBJETIVO_MODIFICADO' : 'Los objetivos se han modificado correctamente',
+	'OBJETIVO_GUARDADO' : 'Los objetivos se han guardado correctamente'
 
 }
