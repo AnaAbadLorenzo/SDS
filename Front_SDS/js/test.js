@@ -105,6 +105,17 @@ function obtenerValor(valor, atributos, entidad){
 			case 'Noticia':
 				resultadoValor = '"' + atributos[0] + '" : "' + valor.tituloNoticia + '", "' + atributos[1] + '" : "' + valor.textoNoticia +  '"';
 			break;
+
+			case 'Persona':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.dniP + '", "' + atributos[1] + '" : "' + valor.nombreP +  '", "' + atributos[2] + '" : "' + valor.apellidosP +
+								'", "' + atributos[3] + '" : "' + valor.fechaNacP +  '", "' + atributos[4] + '" : "' + valor.direccionP +  '", "' + atributos[4] + '" : "' + valor.emailP + 
+								'", "' + atributos[5] + '" : "' + valor.telefonoP +  '"';
+			break;
+
+			case 'Empresa':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.cifEmpresa + '", "' + atributos[1] + '" : "' + valor.nombreEmpresa +  '", "' + atributos[2] + '" : "' + valor.direccionEmpresa +
+								'", "' + atributos[3] + '" : "' + valor.telefonoEmpresa + '"';
+			break;
 		}
 
 	} else {

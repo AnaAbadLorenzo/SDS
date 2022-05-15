@@ -567,23 +567,24 @@ public class PersonaServiceImpl implements PersonaService {
 								.getTipoNameByCodigo(CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo()),
 						CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
 			} else {
-				personaEntity.setNombreP(personaEntity.getNombreP());
-				personaEntity.setApellidosP(personaEntity.getApellidosP());
-				personaEntity.setDireccionP(personaEntity.getDireccionP());
-				personaEntity.setEmailP(personaEntity.getEmailP());
-				personaEntity.setFechaNacP(personaEntity.getFechaNacP());
-				personaEntity.setTelefonoP(personaEntity.getTelefonoP());
+				person.get().setNombreP(personaEntity.getNombreP());
+				person.get().setApellidosP(personaEntity.getApellidosP());
+				person.get().setDireccionP(personaEntity.getDireccionP());
+				person.get().setEmailP(personaEntity.getEmailP());
+				person.get().setFechaNacP(personaEntity.getFechaNacP());
+				person.get().setTelefonoP(personaEntity.getTelefonoP());
 
 				if (persona.getEmpresa() != null) {
-					final EmpresaEntity empresaBD = empresaRepository.findByCif(persona.getEmpresa().getCifEmpresa());
-					personaEntity.setEmpresa(empresaBD);
+					final Optional<EmpresaEntity> empresaBD = empresaRepository
+							.findById(persona.getEmpresa().getIdEmpresa());
+					person.get().setEmpresa(empresaBD.get());
 				} else {
-					personaEntity.setEmpresa(null);
+					person.get().setEmpresa(null);
 				}
 
-				persona.setPersona(personaEntity);
+				persona.setPersona(person.get());
 
-				personaRepository.saveAndFlush(personaEntity);
+				personaRepository.saveAndFlush(person.get());
 
 				final LogAccionesEntity logAccionesBuscar = util.generarDatosLogAcciones(persona.getUsuario(),
 						Constantes.ACCION_BUSCAR_PERSONA, persona.getUsuario());

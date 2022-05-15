@@ -306,6 +306,204 @@ function testUsuarioBuscarAtributos(){
   });
 }
 
+/**Función para recuperar los test de atributo de guardar noticia con ajax y promesas*/
+function testNoticiaGuardarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAtributosAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de buscar noticia con ajax y promesas*/
+function testNoticiaBuscarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAtributosAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de modificar noticia con ajax y promesas*/
+function testNoticiaModificarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAtributosAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de buscar persona con ajax y promesas*/
+function testPersonaBuscarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAtributosAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de guardar persona con ajax y promesas*/
+function testPersonaGuardarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAtributosAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de modificar persona con ajax y promesas*/
+function testPersonaModificarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAtributosAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de buscar empresa con ajax y promesas*/
+function testEmpresaBuscarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAtributosAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de guardar empresa con ajax y promesas*/
+function testEmpresaGuardarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAtributosAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de modificar empresa con ajax y promesas*/
+function testEmpresaModificarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAtributosAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /**Función para recuperar los test de acciones de login con ajax y promesas*/
 function testLoginAcciones(){
   return new Promise(function(resolve, reject) {
@@ -856,6 +1054,292 @@ function testUsuarioReactivarAcciones(){
   });
 }
 
+/**Función para recuperar los test de acciones de buscar noticia con ajax y promesas*/
+function testNoticiaBuscarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de guardar noticia con ajax y promesas*/
+function testNoticiaGuardarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de modificar noticia con ajax y promesas*/
+function testNoticiaModificarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de eliminar noticia con ajax y promesas*/
+function testNoticiaEliminarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestNoticiaAccionEliminar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_NOTICIA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de guardar persona con ajax y promesas*/
+function testPersonaGuardarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de buscar persona con ajax y promesas*/
+function testPersonaBuscarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de modificar persona con ajax y promesas*/
+function testPersonaModificarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de buscar persona con ajax y promesas*/
+function testPersonaEliminarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestPersonaAccionEliminar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_PERSONA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de buscar empresa con ajax y promesas*/
+function testEmpresaBuscarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de guardar empresa con ajax y promesas*/
+function testEmpresaGuardarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de reactivar empresa con ajax y promesas*/
+function testEmpresaModificarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de eliminar empresa con ajax y promesas*/
+function testEmpresaEliminarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAccionEliminar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de reactivar empresa con ajax y promesas*/
+function testEmpresaReactivarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestEmpresaAccionReactivar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_EMPRESA_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /*Función que obtiene los test de atributos de Login */
 async function testAtributosLogin(){
 	await testLoginAtributos()
@@ -1018,6 +1502,114 @@ async function testAtributosUsuarioBuscar(){
   .then((res) => {
     cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosUsuarioBuscar", "cuerpoAtributosUsuarioBuscar", "atributos", "", "");
     let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAtributos", "iconoTestUsuarioAtributosBuscar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de guardar noticia */
+async function testAtributosNoticiaGuardar(){
+  await testNoticiaGuardarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosNoticiaGuardar", "cuerpoAtributosNoticiaGuardar", "atributos", "", "");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAtributos", "iconoTestNoticiaAtributosGuardar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de buscar noticia */
+async function testAtributosNoticiaBuscar(){
+  await testNoticiaBuscarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosNoticiaBuscar", "cuerpoAtributosNoticiaBuscar", "atributos", "", "");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAtributos", "iconoTestNoticiaAtributosBuscar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de modificar noticia */
+async function testAtributosNoticiaModificar(){
+  await testNoticiaModificarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosNoticiaModificar", "cuerpoAtributosNoticiaModificar", "atributos", "", "");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAtributos", "iconoTestNoticiaAtributosModificar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de buscar persona */
+async function testAtributosPersonaBuscar(){
+  await testPersonaBuscarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosPersonaBuscar", "cuerpoAtributosPersonaBuscar", "atributos", "", "");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAtributos", "iconoTestPersonaAtributosBuscar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de guardar persona */
+async function testAtributosPersonaGuardar(){
+  await testPersonaGuardarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosPersonaGuardar", "cuerpoAtributosPersonaGuardar", "atributos", "", "");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAtributos", "iconoTestPersonaAtributosGuardar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de modificar persona */
+async function testAtributosPersonaModificar(){
+  await testPersonaModificarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosPersonaModificar", "cuerpoAtributosPersonaModificar", "atributos", "", "");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAtributos", "iconoTestPersonaAtributosModificar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de buscar empresa */
+async function testAtributosEmpresaBuscar(){
+  await testEmpresaBuscarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosEmpresaBuscar", "cuerpoAtributosEmpresaBuscar", "atributos", "", "");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaAtributosBuscar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de guardar empresa */
+async function testAtributosEmpresaGuardar(){
+  await testEmpresaGuardarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosEmpresaGuardar", "cuerpoAtributosEmpresaGuardar", "atributos", "", "");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaaAtributosGuardar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de modificar empresa */
+async function testAtributosEmpresaModificar(){
+  await testEmpresaModificarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosEmpresaModificar", "cuerpoAtributosEmpresaModificar", "atributos", "", "");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaaAtributosModificar"];
     validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
     }).catch((res) => {
       cargarModalErroresTest(res.code);
@@ -1343,6 +1935,175 @@ async function testAccionesUsuarioReactivar(){
     let atributosValor = ["dniUsuario", "usuario", "passwdUsuario"];
     cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesUsuarioReactivar", "cuerpoAccionesUsuarioReactivar", "acciones", atributosValor, "Usuario");
     let idElementoList = ["iconoTestUsuario", "iconoTestUsuarioAcciones", "iconoTestUsuarioAccionesReactivar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Buscar Noticia */
+async function testAccionesNoticiaBuscar(){
+  await testNoticiaBuscarAcciones()
+  .then((res) => {
+    let atributosValor = ["tituloNoticia", "textoNoticia", "fechaNoticia"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesNoticiaBuscar", "cuerpoAccionesNoticiaBuscar", "acciones", atributosValor, "Noticia");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAcciones", "iconoTestNoticiaAccionesBuscar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Guardar Noticia */
+async function testAccionesNoticiaGuardar(){
+  await testNoticiaGuardarAcciones()
+  .then((res) => {
+    let atributosValor = ["tituloNoticia", "textoNoticia", "fechaNoticia"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesNoticiaGuardar", "cuerpoAccionesNoticiaGuardar", "acciones", atributosValor, "Noticia");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAcciones", "iconoTestNoticiaAccionesGuardar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Modificar Noticia */
+async function testAccionesNoticiaModificar(){
+  await testNoticiaModificarAcciones()
+  .then((res) => {
+    let atributosValor = ["tituloNoticia", "textoNoticia", "fechaNoticia"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesNoticiaModificar", "cuerpoAccionesNoticiaModificar", "acciones", atributosValor, "Noticia");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAcciones", "iconoTestNoticiaAccionesModificar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Eliminar Noticia */
+async function testAccionesNoticiaEliminar(){
+  await testNoticiaEliminarAcciones()
+  .then((res) => {
+    let atributosValor = ["tituloNoticia", "textoNoticia", "fechaNoticia"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesNoticiaEliminar", "cuerpoAccionesNoticiaEliminar", "acciones", atributosValor, "Noticia");
+    let idElementoList = ["iconoTestNoticia", "iconoTestNoticiaAcciones", "iconoTestNoticiaAccionesEliminar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Buscar Persona */
+async function testAccionesPersonaBuscar(){
+  await testPersonaBuscarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "emailP", "telefonoP", "borradoPersona"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesPersonaBuscar", "cuerpoAccionesPersonaBuscar", "acciones", atributosValor, "Persona");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAcciones", "iconoTestPersonaAccionesBuscar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Guardar Persona */
+async function testAccionesPersonaGuardar(){
+  await testPersonaGuardarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "emailP", "telefonoP", "borradoPersona"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesPersonaGuardar", "cuerpoAccionesPersonaGuardar", "acciones", atributosValor, "Persona");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAcciones", "iconoTestPersonaAccionesGuardar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Eliminar Persona */
+async function testAccionesPersonaEliminar(){
+  await testPersonaEliminarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "emailP", "telefonoP", "borradoPersona"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesPersonaEliminar", "cuerpoAccionesPersonaEliminar", "acciones", atributosValor, "Persona");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAcciones", "iconoTestPersonaAccionesEliminar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de Modificar Persona */
+async function testAccionesPersonaModificar(){
+  await testPersonaModificarAcciones()
+  .then((res) => {
+    let atributosValor = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "emailP", "telefonoP", "borradoPersona"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesPersonaModificar", "cuerpoAccionesPersonaModificar", "acciones", atributosValor, "Persona");
+    let idElementoList = ["iconoTestPersona", "iconoTestPersonaAcciones", "iconoTestPersonaAccionesModificar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de buscar empresa */
+async function testAccionesEmpresaBuscar(){
+  await testEmpresaBuscarAcciones()
+  .then((res) => {
+    let atributosValor = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesEmpresaBuscar", "cuerpoAccionesEmpresaBuscar", "acciones", atributosValor, "Empresa");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAcciones", "iconoTestEmpresaAccionesBuscar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de guardar empresa */
+async function testAccionesEmpresaGuardar(){
+  await testEmpresaGuardarAcciones()
+  .then((res) => {
+    let atributosValor = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesEmpresaGuardar", "cuerpoAccionesEmpresaGuardar", "acciones", atributosValor, "Empresa");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAcciones", "iconoTestEmpresaAccionesGuardar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de modificar empresa */
+async function testAccionesEmpresaModificar(){
+  await testEmpresaModificarAcciones()
+  .then((res) => {
+    let atributosValor = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesEmpresaModificar", "cuerpoAccionesEmpresaModificar", "acciones", atributosValor, "Empresa");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAcciones", "iconoTestEmpresaAccionesModificar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de eliminar empresa */
+async function testAccionesEmpresaEliminar(){
+  await testEmpresaEliminarAcciones()
+  .then((res) => {
+    let atributosValor = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesEmpresaEliminar", "cuerpoAccionesEmpresaEliminar", "acciones", atributosValor, "Empresa");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAcciones", "iconoTestEmpresaAccionesEliminar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de reactivar empresa */
+async function testAccionesEmpresaReactivar(){
+  await testEmpresaReactivarAcciones()
+  .then((res) => {
+    let atributosValor = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesEmpresaReactivar", "cuerpoAccionesEmpresaReactivar", "acciones", atributosValor, "Empresa");
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAcciones", "iconoTestEmpresaAccionesReactivar"];
     validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
     }).catch((res) => {
       cargarModalErroresTest(res.code);

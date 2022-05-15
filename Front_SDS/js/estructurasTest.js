@@ -307,7 +307,9 @@ function cargarTestGestionNoticias(){
 								 "cabeceraAccionesNoticiaEliminar", "cuerpoAccionesNoticiaEliminar"];
 	let arraySubAccordionSeis = ["collapseNoticiaAccionesModificar", "javascript:testAccionesNoticiaModificar()", "Modificar Noticia", "iconoTestNoticiaAccionesModificar", 
 								"cabeceraAccionesNoticiaModificar", "cuerpoAccionesNoticiaModificar"];
-	let arrayAccordionDos = ["accordion20", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis];
+	let arraySubAccordionSiete = ["collapseNoticiaAccionesBuscar", "javascript:testAccionesNoticiaBuscar()", "Buscar Noticia", "iconoTestNoticiaAccionesBuscar", 
+								"cabeceraAccionesNoticiaBuscar", "cuerpoAccionesNoticiaBuscar"];
+	let arrayAccordionDos = ["accordion20", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete];
 
 	let arrayAccordionTres = ["accordion18", "collapseNoticiaAtributos", null, "Atributos", "iconoTestNoticiaAtributos", null, null, arrayAccordionUno, "collapseNoticiaAcciones", null, "Acciones", 
 							 "iconoTestNoticiaAcciones", null, null, arrayAccordionDos];
@@ -315,4 +317,68 @@ function cargarTestGestionNoticias(){
 	var contenidoTest = crearTest(arrayAccordionTres);
 
 	$("#testNoticia").append(contenidoTest);
+} 
+
+/*Función para cargar las opciones de Tests de Personas*/
+function cargarTestGestionPersonas(){
+
+	$("#testPersona").html("");
+
+	let arraySubAccordionUno = ["collapsePersonaAtributosGuardar", "javascript:testAtributosPersonaGuardar()", "Añadir Persona", "iconoTestPersonaAtributosGuardar", 
+							   "cabeceraAtributosPersonaGuardar", "cuerpoAtributosPersonaGuardar"];
+	let arraySubAccordionDos = ["collapsePersonaAtributosModificar", "javascript:testAtributosPersonaModificar()", "Modificar Persona", "iconoTestPersonaAtributosModificar", 
+							   "cabeceraAtributosPersonaModificar", "cuerpoAtributosPersonaModificar"];
+	let arraySubAccordionTres = ["collapsePersonaAtributosBuscar", "javascript:testAtributosPersonaBuscar()", "Buscar Persona", "iconoTestPersonaAtributosBuscar", 
+							    "cabeceraAtributosPersonaBuscar", "cuerpoAtributosPersonaBuscar"];
+	let arrayAccordionUno = ["accordion22", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
+
+	let arraySubAccordionCuatro = ["collapsePersonaAccionesBuscar", "javascript:testAccionesPersonaBuscar()", "Buscar Persona", "iconoTestPersonaAccionesBuscar", 
+								  "cabeceraAccionesPersonaBuscar", "cuerpoAccionesPersonaBuscar"];
+	let arraySubAccordionCinco = ["collapsePersonaAccionesGuardar", "javascript:testAccionesPersonaGuardar()", "Guardar Persona", "iconoTestPersonaAccionesGuardar", 
+								 "cabeceraAccionesPersonaGuardar", "cuerpoAccionesPersonaGuardar"];
+	let arraySubAccordionSeis = ["collapsePersonaAccionesEliminar", "javascript:testAccionesPersonaEliminar()", "Eliminar Persona", "iconoTestPersonaAccionesEliminar", 
+								"cabeceraAccionesPersonaEliminar", "cuerpoAccionesPersonaEliminar"];
+	let arraySubAccordionSiete = ["collapsePersonaAccionesModificar", "javascript:testAccionesPersonaModificar()", "Modificar Persona", "iconoTestPersonaAccionesModificar", 
+								"cabeceraAccionesPersonaModificar", "cuerpoAccionesPersonaModificar"];
+	let arrayAccordionDos = ["accordion23", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete];
+
+	let arrayAccordionTres = ["accordion21", "collapsePersonaAtributos", null, "Atributos", "iconoTestPersonaAtributos", null, null, arrayAccordionUno, "collapsePersonaAcciones", null, "Acciones", 
+							 "iconoTestPersonaAcciones", null, null, arrayAccordionDos];
+
+	var contenidoTest = crearTest(arrayAccordionTres);
+
+	$("#testPersona").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de Empresas*/
+function cargarTestGestionEmpresas(){
+
+	$("#testEmpresa").html("");
+
+	let arraySubAccordionUno = ["collapseEmpresaAtributosGuardar", "javascript:testAtributosEmpresaGuardar()", "Añadir Empresa", "iconoTestEmpresaaAtributosGuardar", 
+							   "cabeceraAtributosEmpresaGuardar", "cuerpoAtributosEmpresaGuardar"];
+	let arraySubAccordionDos = ["collapseEmpresaAtributosModificar", "javascript:testAtributosEmpresaModificar()", "Modificar Empresa", "iconoTestEmpresaAtributosModificar", 
+							   "cabeceraAtributosEmpresaModificar", "cuerpoAtributosEmpresaModificar"];
+	let arraySubAccordionTres = ["collapseEmpresaAtributosBuscar", "javascript:testAtributosEmpresaBuscar()", "Buscar Empresa", "iconoTestEmpresaAtributosBuscar", 
+							    "cabeceraAtributosEmpresaBuscar", "cuerpoAtributosEmpresaBuscar"];
+	let arrayAccordionUno = ["accordion25", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
+
+	let arraySubAccordionCuatro = ["collapseEmpresaAccionesBuscar", "javascript:testAccionesEmpresaBuscar()", "Buscar Empresa", "iconoTestEmpresaAccionesBuscar", 
+								  "cabeceraAccionesEmpresaBuscar", "cuerpoAccionesEmpresaBuscar"];
+	let arraySubAccordionCinco = ["collapseEmpresaAccionesGuardar", "javascript:testAccionesEmpresaGuardar()", "Guardar Empresa", "iconoTestEmpresaAccionesGuardar", 
+								 "cabeceraAccionesEmpresaGuardar", "cuerpoAccionesEmpresaGuardar"];
+	let arraySubAccordionSeis = ["collapseEmpresaAccionesEliminar", "javascript:testAccionesEmpresaEliminar()", "Eliminar Empresa", "iconoTestEmpresaAccionesEliminar", 
+								"cabeceraAccionesEmpresaEliminar", "cuerpoAccionesEmpresaEliminar"];
+	let arraySubAccordionSiete = ["collapseEmpresaAccionesModificar", "javascript:testAccionesEmpresaModificar()", "Modificar Empresa", "iconoTestEmpresaAccionesModificar", 
+								"cabeceraAccionesEmpresaModificar", "cuerpoAccionesEmpresaModificar"];
+	let arraySubAccordionOcho = ["collapseEmpresaAccionesReactivar", "javascript:testAccionesEmpresaReactivar()", "Reactivar Empresa", "iconoTestEmpresaAccionesReactivar", 
+								"cabeceraAccionesEmpresaReactivar", "cuerpoAccionesEmpresaReactivar"];
+	let arrayAccordionDos = ["accordion26", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
+
+	let arrayAccordionTres = ["accordion24", "collapseEmpresaAtributos", null, "Atributos", "iconoTestEmpresaAtributos", null, null, arrayAccordionUno, "collapseEmpresaAcciones", null, "Acciones", 
+							 "iconoTestEmpresaAcciones", null, null, arrayAccordionDos];
+
+	var contenidoTest = crearTest(arrayAccordionTres);
+
+	$("#testEmpresa").append(contenidoTest);
 } 

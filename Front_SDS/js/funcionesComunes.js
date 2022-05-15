@@ -334,7 +334,7 @@ function errorAutenticado(codigoResponse, idioma){
 function errorInternal(codigoResponse, idioma){
 	$("#modal-title").removeClass();
     $("#modal-title").addClass("ERROR_INTERNO");
-	ddocument.getElementById("modal-title").style.color = "#a50707";	
+	document.getElementById("modal-title").style.color = "#a50707";	
     document.getElementById("modal-title").style.top = "10%";
     document.getElementById("modal-title").style.fontSize = "23px";
 	$("#modal-mensaje").removeClass();
@@ -382,7 +382,7 @@ function construyeFila(entidad, fila) {
 
         case 'LOG_ACCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.accion + "'", "'" + fila.datos + "'", "'" + fila.fecha + "'"];
-			vvar fecha = new Date(fila.fecha);
+			var fecha = new Date(fila.fecha);
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.accion + 
                 '</td> <td>' + fila.datos +
@@ -438,13 +438,12 @@ function construyeFila(entidad, fila) {
         break;
 
         case 'NOTICIA':
-        var fechaNoticia = (fila.fechaNoticia).split('T');
         var fechaNoticia = new Date(fila.fechaNoticia);
 
 		atributosFunciones = ["'" + fila.tituloNoticia + "'", "'" + fila.textoNoticia + "'", "'" + convertirFecha(fechaNoticia.toString()) + "'", "'" + fila.idNoticia + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.tituloNoticia + 
                 '</td> <td>' + fila.textoNoticia +
-                '</td> <td>' + convertirFecha(fechaNacimiento.toString());
+                '</td> <td>' + convertirFecha(fechaNoticia.toString());
         break;
 
         case 'EMPRESA':

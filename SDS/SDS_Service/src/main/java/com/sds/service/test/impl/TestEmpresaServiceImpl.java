@@ -278,10 +278,6 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		final EmpresaEntity datosEntradaTelefonoEmpresaNumericoMayor9 = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA,
 				Constantes.TELEFONOEMPRESA_NUMERICO_MAYOR_9_DATA);
-		final EmpresaEntity datosEntradaTelefonoEmpresaAlfabetico = generarJSON.generateEmpresa(
-				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_ALFABETICO_DATA);
-		final EmpresaEntity datosEntradaTelefonoEmpresaAlfanumerico = generarJSON.generateEmpresa(
-				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_ALFANUMERICO_DATA);
 		final EmpresaEntity datosEntradaTelefonoEmpresaNumerico = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_NUMERICO_DATA);
 
@@ -299,10 +295,6 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 				.getTestTelefonoEmpresaNumericoMenor9(datosEntradaTelefonoEmpresaNumericoMenor9));
 		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
 				.getTestTelefonoEmpresaNumericoMayor9(datosEntradaTelefonoEmpresaNumericoMayor9));
-		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
-				.getTestTelefonoEmpresaCorrectoNumerico(datosEntradaTelefonoEmpresaAlfabetico));
-		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
-				.getTestTelefonoEmpresaCorrectoNumerico(datosEntradaTelefonoEmpresaAlfanumerico));
 		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
 				.getTestTelefonoEmpresaCorrectoNumerico(datosEntradaTelefonoEmpresaNumerico));
 
@@ -328,10 +320,6 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		final EmpresaEntity datosEntradaTelefonoEmpresaNumericoMayor9 = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA,
 				Constantes.TELEFONOEMPRESA_NUMERICO_MAYOR_9_DATA);
-		final EmpresaEntity datosEntradaTelefonoEmpresaAlfabetico = generarJSON.generateEmpresa(
-				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_ALFABETICO_DATA);
-		final EmpresaEntity datosEntradaTelefonoEmpresaAlfanumerico = generarJSON.generateEmpresa(
-				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_ALFANUMERICO_DATA);
 		final EmpresaEntity datosEntradaTelefonoEmpresaNumerico = generarJSON.generateEmpresa(
 				Constantes.URL_JSON_EMPRESA_ATRIBUTOS_TELEFONOEMPRESA, Constantes.TELEFONOEMPRESA_NUMERICO_DATA);
 
@@ -345,10 +333,6 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 				datosEntradaTelefonoEmpresaNumericoCaracteresEspeciales));
 		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
 				.getTestTelefonoEmpresaNumericoMayor9(datosEntradaTelefonoEmpresaNumericoMayor9));
-		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
-				.getTestTelefonoEmpresaCorrectoNumerico(datosEntradaTelefonoEmpresaAlfabetico));
-		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
-				.getTestTelefonoEmpresaCorrectoNumerico(datosEntradaTelefonoEmpresaAlfanumerico));
 		datosPruebaAtributos.add(testAtributoTelefonoEmpresa
 				.getTestTelefonoEmpresaCorrectoNumerico(datosEntradaTelefonoEmpresaNumerico));
 
@@ -896,7 +880,8 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 		if (empresaBD != null) {
 			final List<PersonaEntity> personas = personaRepository.findAll();
 			for (final PersonaEntity person : personas) {
-				if (person.getEmpresa().getCifEmpresa().equals(empresa.getCifEmpresa())) {
+				if (person.getEmpresa() != null
+						&& person.getEmpresa().getCifEmpresa().equals(empresa.getCifEmpresa())) {
 					resultado = CodigosMensajes.EMPRESA_ASOCIADA_PERSONAS + " - "
 							+ Mensajes.EMPRESA_TIENE_PERSONAS_ASOCIADAS;
 				}
