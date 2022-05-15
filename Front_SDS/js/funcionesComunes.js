@@ -382,7 +382,7 @@ function construyeFila(entidad, fila) {
 
         case 'LOG_ACCIONES':
 			atributosFunciones = ["'" + fila.usuario + "'", "'" + fila.accion + "'", "'" + fila.datos + "'", "'" + fila.fecha + "'"];
-			vvar fecha = new Date(fila.fecha);
+			var fecha = new Date(fila.fecha);
 			filaTabla = '<tr class="impar"> <td>' + fila.usuario + 
                 '</td> <td>' + fila.accion + 
                 '</td> <td>' + fila.datos +
