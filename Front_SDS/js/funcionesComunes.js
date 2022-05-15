@@ -438,13 +438,12 @@ function construyeFila(entidad, fila) {
         break;
 
         case 'NOTICIA':
-        var fechaNoticia = (fila.fechaNoticia).split('T');
         var fechaNoticia = new Date(fila.fechaNoticia);
 
 		atributosFunciones = ["'" + fila.tituloNoticia + "'", "'" + fila.textoNoticia + "'", "'" + convertirFecha(fechaNoticia.toString()) + "'", "'" + fila.idNoticia + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.tituloNoticia + 
                 '</td> <td>' + fila.textoNoticia +
-                '</td> <td>' + convertirFecha(fechaNacimiento.toString());
+                '</td> <td>' + convertirFecha(fechaNoticia.toString());
         break;
 
         case 'EMPRESA':
@@ -763,7 +762,7 @@ function comprobarErroresTabs(){
 /**Función para cambiar valores del formulario*/
 function cambiarFormulario(tituloForm, action, onsubmit) {
 
-	$("#tituloForms").removeClass();
+    $("#tituloForms").removeClass();
     $("#tituloForms").addClass(tituloForm);
 
     if (action != '') {
@@ -1003,6 +1002,11 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'EMPRESA':
 			cargarPermisosFuncEmpresa();
+		break;
+		
+		case 'OBJETIVO' :
+			cargarPermisosFuncObjetivo();
+		break;
 
 	}
 }
@@ -1144,5 +1148,5 @@ $(document).ready(function(){
     }else{
     	cerrarModal('modal');
     }
-  })
+  });
 })
