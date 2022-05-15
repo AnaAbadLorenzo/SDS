@@ -378,8 +378,12 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                             + (i+1) + ',' + tamanhoPaginaObjetivo + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
+<<<<<<< HEAD
         }
         break;
+=======
+	    }
+>>>>>>> 3f2c0f431ebf98212ed8e0a93c47c24ac947067e
 
 
     }

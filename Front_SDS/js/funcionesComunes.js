@@ -762,7 +762,7 @@ function comprobarErroresTabs(){
 /**Función para cambiar valores del formulario*/
 function cambiarFormulario(tituloForm, action, onsubmit) {
 
-	$("#tituloForms").removeClass();
+    $("#tituloForms").removeClass();
     $("#tituloForms").addClass(tituloForm);
 
     if (action != '') {
@@ -1002,6 +1002,11 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'EMPRESA':
 			cargarPermisosFuncEmpresa();
+		break;
+		
+		case 'OBJETIVO' :
+			cargarPermisosFuncObjetivo();
+		break;
 
 	}
 }
@@ -1143,5 +1148,5 @@ $(document).ready(function(){
     }else{
     	cerrarModal('modal');
     }
-  })
+  });
 })
