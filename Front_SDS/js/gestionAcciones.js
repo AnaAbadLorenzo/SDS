@@ -1083,7 +1083,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
     
                 accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
                                                                   '<div class="tooltip6">' + 
-                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                    '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: not-allowed;">' + 
                                                                     '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                   '</div>' + 
                                                                   '<div class="tooltip6">' + 
@@ -1099,7 +1099,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                                                                   '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                 '</div>' + 
                                                                 '<div class="tooltip6">' + 
-                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                  '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: not-allowed;">' + 
                                                                   '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                 '</div>' + 
                                                               '</td>';
@@ -1123,7 +1123,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                       if(tienePermiso == "Si"){
                         accionesDisponibles = accionesDisponibles +  '<td class="accionesPermisos">' + 
                                                                       '<div class="tooltip6">' + 
-                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: pointer;">' + 
+                                                                        '<img class="permisos darPermiso" src="images/ok2.png" data-toggle="" data-target="" onclick="" alt="Dar permiso" style="cursor: not-allowed;">' + 
                                                                         '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                       '</div>' + 
                                                                       '<div class="tooltip6">' + 
@@ -1139,7 +1139,7 @@ function cargarAccionesPermisos(funcionalidad,acciones){
                                                                       '<span class="tooltiptext iconDarPermiso DAR_PERMISO">Dar Permiso</span>' + 
                                                                     '</div>' + 
                                                                     '<div class="tooltip6">' + 
-                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: pointer;">' + 
+                                                                      '<img class="permisos quitarPermiso" src="images/error2.png" data-toggle="" data-target="" onclick="" alt="Quitar permiso" style="cursor: not-allowed;">' + 
                                                                       '<span class="tooltiptext iconQuitarPermiso QUITAR_PERMISO">Quitar Permiso</span>' + 
                                                                     '</div>' + 
                                                                   '</td>';

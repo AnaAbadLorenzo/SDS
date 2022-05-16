@@ -3,6 +3,21 @@
   color: #311B92;
 }
 
+.formmodal-container input[type=text]{
+  height: 30px;
+  font-size: 14px;
+  width: 90%;
+  margin-bottom: 10px;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 1px solid #D1C4E9;
+  border-top: 2px solid #B39DDB;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+
 /********* ICONOS ***********/
 
 .cabecera, .cabeceraEliminados {
