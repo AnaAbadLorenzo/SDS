@@ -504,6 +504,72 @@ function testEmpresaModificarAtributos(){
   });
 }
 
+/**Función para recuperar los test de atributo de buscar objetivo con ajax y promesas*/
+function testObjetivoBuscarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAtributosAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de guardar objetivo con ajax y promesas*/
+function testObjetivoGuardarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAtributosAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de atributo de modificar objetivo con ajax y promesas*/
+function testObjetivoModificarAtributos(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAtributosAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ATRIBUTOS_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /**Función para recuperar los test de acciones de login con ajax y promesas*/
 function testLoginAcciones(){
   return new Promise(function(resolve, reject) {
@@ -1340,6 +1406,116 @@ function testEmpresaReactivarAcciones(){
   });
 }
 
+/**Función para recuperar los test de acciones de buscar objetivo con ajax y promesas*/
+function testObjetivoBuscarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAccionBuscar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de guardar objetivo con ajax y promesas*/
+function testObjetivoGuardarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAccionGuardar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de modificar objetivo con ajax y promesas*/
+function testObjetivoModificarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAccionModificar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de eliminar objetivo con ajax y promesas*/
+function testObjetivoEliminarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAccionEliminar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los test de acciones de reactivar objetivo con ajax y promesas*/
+function testObjetivoReactivarAcciones(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxTestObjetivoAccionReactivar,
+      contentType : "application/json",
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'TEST_ACCIONES_OBJETIVO_OK') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /*Función que obtiene los test de atributos de Login */
 async function testAtributosLogin(){
 	await testLoginAtributos()
@@ -1597,7 +1773,7 @@ async function testAtributosEmpresaGuardar(){
   await testEmpresaGuardarAtributos()
   .then((res) => {
     cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosEmpresaGuardar", "cuerpoAtributosEmpresaGuardar", "atributos", "", "");
-    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaaAtributosGuardar"];
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaAtributosGuardar"];
     validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
     }).catch((res) => {
       cargarModalErroresTest(res.code);
@@ -1609,7 +1785,43 @@ async function testAtributosEmpresaModificar(){
   await testEmpresaModificarAtributos()
   .then((res) => {
     cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosEmpresaModificar", "cuerpoAtributosEmpresaModificar", "atributos", "", "");
-    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaaAtributosModificar"];
+    let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAtributos", "iconoTestEmpresaAtributosModificar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de buscar objetivo */
+async function testAtributosObjetivoBuscar(){
+  await testObjetivoBuscarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosObjetivoBuscar", "cuerpoAtributosObjetivoBuscar", "atributos", "", "");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAtributos", "iconoTestObjetivoAtributosModificar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de añadir objetivo */
+async function testAtributosObjetivoGuardar(){
+  await testObjetivoGuardarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosObjetivoGuardar", "cuerpoAtributosObjetivoGuardar", "atributos", "", "");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAtributos", "iconoTestObjetivoAtributosGuardar"];
+    validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de modificar objetivo */
+async function testAtributosObjetivoModificar(){
+  await testObjetivoModificarAtributos()
+  .then((res) => {
+    cargarTablasTest(res.data.datosPruebaAtributos, "cabeceraAtributosObjetivoModificar", "cuerpoAtributosObjetivoModificar", "atributos", "", "");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAtributos", "iconoTestObjetivoAtributosModificar"];
     validarDatosTabla(res.data.datosPruebaAtributos, idElementoList, "atributos");
     }).catch((res) => {
       cargarModalErroresTest(res.code);
@@ -2104,6 +2316,71 @@ async function testAccionesEmpresaReactivar(){
     let atributosValor = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesEmpresaReactivar", "cuerpoAccionesEmpresaReactivar", "acciones", atributosValor, "Empresa");
     let idElementoList = ["iconoTestEmpresa", "iconoTestEmpresaAcciones", "iconoTestEmpresaAccionesReactivar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de buscar objetivo */
+async function testAccionesObjetivoBuscar(){
+  await testObjetivoBuscarAcciones()
+  .then((res) => {
+    let atributosValor = ["nombreObjetivo", "descripObjetivo"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesObjetivoBuscar", "cuerpoAccionesObjetivoBuscar", "acciones", atributosValor, "Objetivo");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAcciones", "iconoTestObjetivoAccionesBuscar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de guardar objetivo */
+async function testAccionesObjetivoGuardar(){
+  await testObjetivoGuardarAcciones()
+  .then((res) => {
+    let atributosValor = ["nombreObjetivo", "descripObjetivo"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesObjetivoGuardar", "cuerpoAccionesObjetivoGuardar", "acciones", atributosValor, "Objetivo");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAcciones", "iconoTestObjetivoAccionesGuardar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de modificar objetivo */
+async function testAccionesObjetivoModificar(){
+  await testObjetivoModificarAcciones()
+  .then((res) => {
+    let atributosValor = ["nombreObjetivo", "descripObjetivo"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesObjetivoModificar", "cuerpoAccionesObjetivoModificar", "acciones", atributosValor, "Objetivo");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAcciones", "iconoTestObjetivoAccionesModificar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de eliminar objetivo */
+async function testAccionesObjetivoEliminar(){
+  await testObjetivoEliminarAcciones()
+  .then((res) => {
+    let atributosValor = ["nombreObjetivo", "descripObjetivo"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesObjetivoEliminar", "cuerpoAccionesObjetivoEliminar", "acciones", atributosValor, "Objetivo");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAcciones", "iconoTestObjetivoAccionesEliminar"];
+    validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test de acciones de reactivar objetivo */
+async function testAccionesObjetivoReactivar(){
+  await testObjetivoReactivarAcciones()
+  .then((res) => {
+    let atributosValor = ["nombreObjetivo", "descripObjetivo"];
+    cargarTablasTest(res.data.datosPruebaAcciones, "cabeceraAccionesObjetivoReactivar", "cuerpoAccionesObjetivoReactivar", "acciones", atributosValor, "Objetivo");
+    let idElementoList = ["iconoTestObjetivo", "iconoTestObjetivoAcciones", "iconoTestObjetivoAccionesReactivar"];
     validarDatosTabla(res.data.datosPruebaAcciones, idElementoList, "acciones");
     }).catch((res) => {
       cargarModalErroresTest(res.code);

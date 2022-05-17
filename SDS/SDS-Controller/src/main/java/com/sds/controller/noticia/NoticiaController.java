@@ -55,7 +55,7 @@ public class NoticiaController {
 
 	@PostMapping(value = "/listarNoticia")
 	@ResponseBody
-	public RespEntity buscarAccion(@RequestBody final NoticiaBuscar noticia) {
+	public RespEntity buscarNoticia(@RequestBody final NoticiaBuscar noticia) {
 
 		final ReturnBusquedas<NoticiasEntity> resultado = noticiasService.buscarNoticia(noticia.getTituloNoticia(),
 				noticia.getTextoNoticia(), noticia.getFechaNoticia(), noticia.getInicio(), noticia.getTamanhoPagina());

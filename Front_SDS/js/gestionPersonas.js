@@ -1172,6 +1172,7 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     }
 
     rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
+    insertacampo(document.formularioGenerico,'idEmpresa', idEmpresa);
 
     let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
       "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];

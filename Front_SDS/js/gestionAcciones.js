@@ -949,6 +949,12 @@ async function permisosUsuarios(){
   await cargarFuncionalidadesAjaxPromesa()
   .then((res) => {
       cargarTablaPermisos(res.data.listaBusquedas);
+      var cardAbierta = getCookie('cardPermiso');
+      if(cardAbierta != null && cardAbierta != ""){
+          $('#collapseGest' + cardAbierta).addClass('show');
+          cargarInfoPermiso(getCookie('nomFuncPermisos'));
+      }
+      setCookie('cardPermiso', '');
     }).catch((res) => {
         respuestaAjaxKO(res.code);
         document.getElementById("modal").style.display = "block";
@@ -1303,7 +1309,7 @@ function cargarTablaPermisos(datos){
     
     var permisos = '<div class="card">' + 
                     '<div class="card-header">' + 
-                      '<a class="collapsed card-link" data-toggle="collapse" href="#collapseGest' + nombreCollapse +'"onclick="javascript:cargarInfoPermiso(\''+datos[i].nombreFuncionalidad+'\')">' + 
+                      '<a class="collapsed card-link" data-toggle="collapse" href="#collapseGest' + nombreCollapse +'"onclick="javascript:cargarInfoPermiso(\''+datos[i].nombreFuncionalidad+'\'); cargarCardAbierta(\''+datos[i].nombreFuncionalidad+'\')">' + 
                           datos[i].nombreFuncionalidad + 
                       '</a>' + 
                       '<img class="iconTab" id="iconoTestGest' + nombreCollapse + '" src="images/failed.png" hidden>' +
@@ -1326,6 +1332,23 @@ function cargarTablaPermisos(datos){
   }
 }
 
+/** Función para guardar el card del permiso en el que nos encontramos **/
+function cargarCardAbierta(nombreFuncionalidad){
+  if((nombreFuncionalidad).includes(" ")){
+      var nombre = (nombreFuncionalidad).split(" ");
+      if((nombreFuncionalidad) == "Log de acciones"){
+         var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      }else{
+        var nombreCollapse = nombre[1] + nombre[2];
+      }
+    }else{
+      var nombreCollapse = nombreFuncionalidad;
+    }
+
+    setCookie('cardPermiso', nombreCollapse);
+    setCookie('nomFuncPermisos', nombreFuncionalidad);
+
+}
 $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {
     

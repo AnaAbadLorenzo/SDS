@@ -207,6 +207,46 @@
 		</div>
   	</div>
 
+  	 <div class="modal modal2 fade" id="modalSeleccionEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="formmodal-container">
+        <div id="formularioAccionesSelectEmpresa">
+          <div id="contenidoFormSelectEmpresa">
+            <div class="formularioComun">
+              <h1 id="tituloFormsModal3" class="datos"></h1>
+              <form name="formularioGenerico" id="formularioGenericoModal3" action="" onsubmit="">
+                <div class="preguntasEmpresa" id="quitarEmpresaId">
+                  <label class="QUITAR_EMPRESA quitarEmpresa"></label>
+                    <div class="obligatorio tooltip2" id="obligatorioPreg4Em">*
+                      <span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio5">
+                        <input type="radio" class="form-check-input " id="quitarEmpresaSi" name="quitarEmpresa" value="si">
+                        <label class="SI"></label>
+                      </label>
+                    </div>
+                    <div class="form-check-inline">
+                      <label class="form-check-label" for="radio6">
+                        <input type="radio" class="form-check-input" id="quitarEmpresaNo" name="quitarEmpresa" value="no">
+                        <label class="NO"></label>
+                      </label>
+                    </div>
+                </div>
+                <label id="labelSelectEmpresa" class="EMPRESAS_DISPONIBLES labelForm" hidden></label>
+                <select class="form-control" id="select" hidden></select>
+                <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAccionesSelectEmpresas">
+                  <img class="" src="" alt="" id="iconoAccionesSelectEmpresas" />
+                  <span class="tooltiptext" id="spanAccionesSelectEmpresa"></span>
+                </button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<div class="volver">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         		<img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />

@@ -21,7 +21,6 @@ import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
-import com.sds.service.exception.NoticiaNoExisteException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.exception.RolNoExisteException;
@@ -228,7 +227,7 @@ public class ObjetivoServiceTest {
 	@Test
 	public void ObjetivoService_eliminarObjetivoCorrecto()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			NoticiaNoExisteException, ObjetivoNoExisteException, ObjetivoYaExisteException {
+			ObjetivoNoExisteException, ObjetivoYaExisteException {
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
 
 		objetivoService.anadirObjetivo(objetivo);
@@ -260,7 +259,7 @@ public class ObjetivoServiceTest {
 	@Test
 	public void ObjetivoService_reactivarObjetivoCorrecto()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			NoticiaNoExisteException, ObjetivoNoExisteException, ObjetivoYaExisteException {
+			ObjetivoNoExisteException, ObjetivoYaExisteException {
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.REACTIVAR_OBJETIVO);
 
 		objetivo.getObjetivo().setBorradoObjetivo(1);

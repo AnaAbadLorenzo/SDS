@@ -501,6 +501,7 @@ public class AccionServiceImpl implements AccionService {
 			throws LogExcepcionesNoGuardadoException, FuncionalidadNoExisteException, RolNoExisteException,
 			AccionNoExisteException {
 		final List<PermisosFuncionalidadAccion> permisosToret = new ArrayList<>();
+		final List<PermisosFuncionalidadAccion> accionesNoEliminadas = new ArrayList<>();
 
 		final FuncionalidadEntity funcionalidad = funcionalidadRepository.findFuncionalityByName(nombreFuncionalidad);
 		final List<RolAccionFuncionalidadEntity> permisosFuncionalidad = rolAccionFuncionalidadRepository
@@ -575,49 +576,57 @@ public class AccionServiceImpl implements AccionService {
 		switch (nombreFuncionalidad) {
 		case Constantes.GESTION_PERSONAS:
 			for (int i = 0; i < permisosToret.size(); i++) {
-				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
-					permisosToret.remove(i);
+				if (!permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					accionesNoEliminadas.add(permisosToret.get(i));
 				}
 			}
 
 			break;
 		case Constantes.LOG_ACCIONES:
 			for (int i = 0; i < permisosToret.size(); i++) {
-				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
-					permisosToret.remove(i);
+				if (!permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					accionesNoEliminadas.add(permisosToret.get(i));
 				}
 			}
 			break;
 
 		case Constantes.LOG_EXCEPCIONES:
 			for (int i = 0; i < permisosToret.size(); i++) {
-				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
-					permisosToret.remove(i);
+				if (!permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					accionesNoEliminadas.add(permisosToret.get(i));
 				}
 			}
 			break;
 
 		case Constantes.TEST:
 			for (int i = 0; i < permisosToret.size(); i++) {
-				if (permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.VISUALIZAR)
-						|| permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
-					permisosToret.remove(i);
+				if (!permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.AÑADIR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.MODIFICAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.ELIMINAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.VISUALIZAR)
+						&& !permisosToret.get(i).getAccion().getNombreAccion().equals(Constantes.REACTIVAR)) {
+					accionesNoEliminadas.add(permisosToret.get(i));
 				}
 			}
 			break;
 		default:
 			break;
 		}
-		return permisosToret;
+
+		if (nombreFuncionalidad.equals(Constantes.GESTION_PERSONAS)
+				|| nombreFuncionalidad.equals(Constantes.LOG_ACCIONES)
+				|| nombreFuncionalidad.equals(Constantes.LOG_EXCEPCIONES)
+				|| nombreFuncionalidad.equals(Constantes.TEST)) {
+			return accionesNoEliminadas;
+		} else {
+			return permisosToret;
+		}
 
 	}
 

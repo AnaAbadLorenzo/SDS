@@ -408,8 +408,17 @@ public class TestNoticiaServiceImpl implements TestNoticiaService {
 	private String buscarNoticia(final NoticiasEntity noticia) {
 		String resultado = StringUtils.EMPTY;
 
-		noticiasRepository.findNoticia(noticia.getTituloNoticia(), noticia.getTextoNoticia(),
-				noticia.getFechaNoticia());
+		String fecha = StringUtils.EMPTY;
+
+		if (noticia.getFechaNoticia() != null) {
+			java.sql.Date fechaSql;
+			fechaSql = new java.sql.Date(noticia.getFechaNoticia().getTime());
+			fecha = fechaSql.toString();
+		} else {
+			fecha = StringUtils.EMPTY;
+		}
+
+		noticiasRepository.findNoticia(noticia.getTituloNoticia(), noticia.getTextoNoticia(), fecha);
 
 		resultado = CodigosMensajes.BUSCAR_NOTICIA_CORRECTO + " - " + Mensajes.NOTICIA_BUSCADA_CORRECTAMENTE;
 

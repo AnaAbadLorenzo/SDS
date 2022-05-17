@@ -526,7 +526,7 @@ public class Constantes {
 
 	public static final String FECHA_RESPUESTA_POSIBLE_VACIA = "fechaRespuestaPosibleVacia";
 
-	public static final String RESPUESTA_POSIBLE_VACIA = "respuestaPosibleVacia";
+	public static final String DATOS_RESPUESTA_POSIBLE_VACIA = "respuestaPosibleVacia";
 
 	public static final String BUSCAR_RESPUESTA_POSIBLE = "buscarRespuestaPosible";
 	public static final String GUARDAR_RESPUESTA_POSIBLE = "guardarRespuestaPosible";
@@ -605,6 +605,7 @@ public class Constantes {
 	public static final String NOTICIA_FINDALL_QUERY = "NoticiasEntity.findAllNoticias";
 	public static final String NOTICIA_FINDNOTICIA_QUERY = "NoticiasEntity.findNoticia";
 	public static final String NOTICIA_FINDNOTICIA_WITHOUTDATE_QUERY = "NoticiasEntity.findNoticiaWithoutDate";
+	public static final String NOTICIA_FINDNOTICIA_ORDER_BY_FECHA_LIMIT_20 = "NoticiasEntity.findAllNoticiasOrderByFecha";
 
 	public static final String OBJETIVO_QUERY_FINDALL = "ObjetivoEntity.findAllObjetivos";
 	public static final String OBJETIVO_QUERY_FINDOBJETIVO = "ObjetivoEntity.findObjetivo";

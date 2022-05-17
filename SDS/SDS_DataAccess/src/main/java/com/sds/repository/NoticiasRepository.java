@@ -1,6 +1,5 @@
 package com.sds.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,9 +17,11 @@ public interface NoticiasRepository extends JpaRepository<NoticiasEntity, Intege
 
 	Integer numberFindAllNoticias();
 
-	List<NoticiasEntity> findNoticia(final String tituloNoticia, final String textoNoticia, final Date fechaNoticia);
+	List<NoticiasEntity> findAllNoticiasOrderByFecha();
 
-	Integer numberFindNoticia(final String tituloNoticia, final String textoNoticia, final Date fechaNoticia);
+	List<NoticiasEntity> findNoticia(final String tituloNoticia, final String textoNoticia, final String fechaNoticia);
+
+	Integer numberFindNoticia(final String tituloNoticia, final String textoNoticia, final String fechaNoticia);
 
 	NoticiasEntity findByTituloNoticia(final String tituloNoticia);
 

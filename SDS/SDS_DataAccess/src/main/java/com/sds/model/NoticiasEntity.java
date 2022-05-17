@@ -15,8 +15,9 @@ import javax.persistence.Table;
 @Table(name = "noticias")
 @NamedQueries({ @NamedQuery(name = "NoticiasEntity.findAllNoticias", query = "SELECT n FROM NoticiasEntity n"),
 		@NamedQuery(name = "NoticiasEntity.numberFindAllNoticias", query = "SELECT COUNT(n) FROM NoticiasEntity n"),
-		@NamedQuery(name = "NoticiasEntity.findNoticia", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%') AND (:fechaNoticia IS NULL OR n.fechaNoticia =:fechaNoticia)"),
-		@NamedQuery(name = "NoticiasEntity.numberFindNoticia", query = "SELECT COUNT(n) FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%') AND (:fechaNoticia IS NULL OR n.fechaNoticia =:fechaNoticia)"),
+		@NamedQuery(name = "NoticiasEntity.findAllNoticiasOrderByFecha", query = "SELECT n FROM NoticiasEntity n ORDER BY n.fechaNoticia DESC"),
+		@NamedQuery(name = "NoticiasEntity.findNoticia", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%') AND n.fechaNoticia LIKE CONCAT('%',:fechaNoticia, '%')"),
+		@NamedQuery(name = "NoticiasEntity.numberFindNoticia", query = "SELECT COUNT(n) FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%') AND n.fechaNoticia LIKE CONCAT('%',:fechaNoticia, '%')"),
 		@NamedQuery(name = "NoticiasEntity.findByTituloNoticia", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia = :tituloNoticia"),
 		@NamedQuery(name = "NoticiasEntity.findNoticiaWithoutDate", query = "SELECT n FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%')"),
 		@NamedQuery(name = "NoticiasEntity.numberFindNoticiaWithoutDate", query = "SELECT COUNT(n) FROM NoticiasEntity n WHERE n.tituloNoticia LIKE CONCAT('%', :tituloNoticia, '%') AND n.textoNoticia LIKE CONCAT('%',:textoNoticia, '%')"), })

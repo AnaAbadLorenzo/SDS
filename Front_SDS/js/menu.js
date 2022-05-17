@@ -188,8 +188,7 @@ function cargarFuncionalidadesUsuario(datos){
 function construyeNoticia(noticia){
     var noticiaHTML = "";
 
-    var fechaNoticia = (noticia.fechaNoticia).split('T');
-    var horaNoticia = (fechaNoticia[1]).split('.');
+    var fechaNoticia = new Date(noticia.fechaNoticia);
 
     noticiaHTML = '<div class="col-md-4 col-lg-6 col-xl-6 mb-4">' + 
                     '<div class="card">' + 
@@ -199,7 +198,7 @@ function construyeNoticia(noticia){
                           '<p class="card-text">' + noticia.textoNoticia + '</p>' + 
                         '</div>' + 
                         '<div class="card-footer">' + 
-                          '<small class="text-muted">' + fechaNoticia [0] + " " + horaNoticia[0] + '</small>' + 
+                          '<small class="text-muted">' + convertirFecha(fechaNoticia.toString()) + '</small>' + 
                         '</div>' + 
                     '</div>' + 
                   '</div>';

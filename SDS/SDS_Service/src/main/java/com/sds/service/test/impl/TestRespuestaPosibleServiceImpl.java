@@ -116,7 +116,7 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 				Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA, Constantes.FECHA_RESPUESTA_POSIBLE_VACIA);
 		final RespuestaPosibleEntity datosEntradaBuscarRespuestaPosibleRespuestaVacia = generarJSON
 				.generarRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
-						Constantes.RESPUESTA_POSIBLE_VACIA);
+						Constantes.DATOS_RESPUESTA_POSIBLE_VACIA);
 
 		datosPruebaAcciones.add(getTestBuscarRespuestaPosible(datosEntradaBuscarRespuestaPosibleCorrecto));
 		datosPruebaAcciones.add(getTestBuscarRespuestaPosible(datosEntradaBuscarRespuestaPosibleTextoVacio));

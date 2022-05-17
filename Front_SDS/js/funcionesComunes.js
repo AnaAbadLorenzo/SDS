@@ -1046,6 +1046,18 @@ function convertirFecha(fecha){
 
 	return fechaCorreta;
 }
+/** Funcion para tratar las fechas en formato SAT MAY 01 HH:MM:SS CET YYYY **/
+function convierteFecha(fecha){
+	var fechaSeparada = fecha.split(' ');
+	
+	var mes = convierteMes(fechaSeparada[1]);
+	
+	var fechaCorrecta = "";
+
+	fechaCorrecta = fechaSeparada[5] + "-" + mes + "-" + fechaSeparada[2];
+
+	return fechaCorrecta;
+}
 
 /**Función para convertir los meses de letras a números **/
 function convierteMes(mes){

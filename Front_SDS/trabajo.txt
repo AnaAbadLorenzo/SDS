@@ -1,0 +1,18 @@
+-- Cargar objetivos
+-- Acción de listar en test sólo
+-- Revisar log de acciones y log de excepciones en permisos
+-- Meter cookie permiso en el que estamos y ponerle el show
+-- Revisar eliminar empresa
+-- Gestión de noticias --> Revisar el buscar por texto noticia cuando es vacío
+-- Permitir eliminar o añadir empresa desde gestion empresas --> usuario
+-- Gestion de personas (usuario) --> cambiar empresa
+-- Junit respuesta posible
+-- Gestión respuesta posible
+-- Back de plan (con test) y documentacion
+-- Back procedimiento
+-- Diagrama listar persona serie de filtros
+-- Diagrama listar usuario por dni --> añadir
+-- Ver en detalle el listado --> Buscar todo el listado
+-- Front quitar hora de las noticias
+-- Mostrar 20 ultimas noticias
+-- Parte de mejoras : programas noticias a futuro

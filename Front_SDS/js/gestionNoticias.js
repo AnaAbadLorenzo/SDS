@@ -44,11 +44,17 @@ function buscarNoticiaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       if($('#fechaNoticia').val() == "1900-01-01"){
         var fecha = "";
       }else{
-          var fecha = ($('#fechaNoticia').val()).toString();
+          var fecha = $('#fechaNoticia').val();
+      }
+
+      if($('#textoNoticia').val() == "Texto noticia"){
+        var textoNoticia = "";
+      }else{
+        var textoNoticia = $('#textoNoticia').val();
       }
       var data = {
         tituloNoticia : $('#tituloNoticia').val(),
-        textoNoticia : $('#textoNoticia').val(),
+        textoNoticia : textoNoticia,
         fechaNoticia : fecha,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaNoticia),
         tamanhoPagina : tamanhoPaginaNoticia
@@ -72,12 +78,12 @@ function buscarNoticiaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         var fecha = "";
       }else{
         var fecha = getCookie('fechaNoticia');
+        var fechaString = convierteFecha(fecha);
       }
-
       var data = {
         tituloNoticia : titulo,
         textoNoticia : texto,
-        fechaNoticia : fecha,
+        fechaNoticia : fechaString,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaNoticia),
         tamanhoPagina : tamanhoPaginaNoticia
       }

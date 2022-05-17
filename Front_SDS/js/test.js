@@ -116,6 +116,10 @@ function obtenerValor(valor, atributos, entidad){
 				resultadoValor = '"' + atributos[0] + '" : "' + valor.cifEmpresa + '", "' + atributos[1] + '" : "' + valor.nombreEmpresa +  '", "' + atributos[2] + '" : "' + valor.direccionEmpresa +
 								'", "' + atributos[3] + '" : "' + valor.telefonoEmpresa + '"';
 			break;
+
+			case 'Objetivo':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombreObjetivo + '", "' + atributos[1] + '" : "' + valor.descripObjetivo +  '"';
+			break;
 		}
 
 	} else {

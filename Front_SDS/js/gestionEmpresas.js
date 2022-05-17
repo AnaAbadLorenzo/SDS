@@ -1,3 +1,45 @@
+/** Habilitar form para añadir empresa **/
+$(function() {
+  $("input[name=quitarEmpresa]").change(function() {
+    if ($(this).val() === "si") {
+      $('#labelSelectEmpresa').attr('hidden', true);
+      $('#select').attr('hidden', true);
+      $('#selectEmpresasDisponibles').attr('hidden', true);
+    }else{
+      limpiaSelect($('#empresasDisponibles'));
+      cargarEmpresasSelect('select')
+      $('#labelSelectEmpresa').attr('hidden', false);
+      $('#selectEmpresasDisponibles').removeAttr('hidden');
+    
+    }
+  });
+});
+
+async function cargarEmpresasSelect(selector){
+  await cargarEmpresasSelectAjaxPromesa()
+  .then((res) => {
+
+    limpiaSelect($('#' + selector));
+    
+    var lista = res.data;
+
+    for(var i = 0; i<lista.length; i++){
+      var option = document.createElement("option");
+      option.setAttribute("value", lista[i].idEmpresa);
+      option.setAttribute("label", lista[i].nombreEmpresa);
+
+      $('#' + selector).append(option);
+    }
+
+    $('#' + selector).attr('hidden', false);
+
+    }).catch((res) => {
+      respuestaAjaxKO(res.code);
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+  });
+}
+
 /** Función para añadir empresas con ajax y promesas **/
 function anadirEmpresaAjaxPromesa(){
   return new Promise(function(resolve, reject) {
@@ -285,6 +327,26 @@ function cargarEmpresasAjaxPromesa(numeroPagina, tamanhoPagina){
       }).fail( function( jqXHR ) {
         errorFailAjax(jqXHR.status);
       });
+  });
+}
+
+/**Función para cargar las empresas en el select de la modal para asignar o quitar empresa **/
+function cargarEmpresasSelectAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxListadoEmpresas,
+      contentType: "application/json",
+    }).done(res => {
+      if (res.code != 'EMPRESAS_LISTADAS') {
+        reject(res);
+      }
+      resolve(res);
+    }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+
   });
 }
 
@@ -818,6 +880,88 @@ async function reactivarEmpresa(){
   });
 }
 
+function asociarPersonaEmpresaAjaxPromesa(dniPersona){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var select = $('#modalSeleccionEmpresa #formularioAccionesSelectEmpresa #contenidoFormSelectEmpresa #formularioGenericoModal3 #select').val();
+
+    var quitarEmpresa = $("input[name=quitarEmpresa]:checked").val();
+
+    if(quitarEmpresa == "si"){
+      var empresa = null;
+    }else{
+      var empresa = {
+        idEmpresa : select,
+        cifEmpresa : "",
+        nombreEmpresa : "",
+        direccionEmpresa : "",
+        telefonoEmpresa : ""
+      }
+    }
+
+    var persona = {
+      dniP : dniPersona,
+      nombreP : "",
+      apellidosP : "",
+      fechaNacP : "",
+      direccionP : "",
+      telefonoP : "",
+      emailP : ""
+    }
+
+
+    var data = {
+      usuario : getCookie('usuario'),
+      persona : persona,
+      empresa : empresa
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxAsociarPersonaEmpresa,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PERSONA_ASOCIADA_EMPRESA') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+/** Función que asocia a una persona con una empresa **/
+async function asociarPersonaEmpresa(dniPersona){
+  await asociarPersonaEmpresaAjaxPromesa(dniPersona)
+  .then((res) => {
+    $("#modalSeleccionEmpresa").modal('toggle');
+    setLang(getCookie('lang'));
+    location.reload();
+    
+
+  }).catch((res) => {
+      $("#modalSeleccionEmpresa").modal('toggle');
+
+      respuestaAjaxKO(res.code);
+
+      let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
+        "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+      let idElementosRadioButtons = ["asociarEmpresaSi", "asociarEmpresaNo", "seleccionarEmpresaSi", "seleccionarEmpresaNo"];
+    
+      resetearFormulario("formularioGenerico", idElementoList);
+      limpiaRadioButton(idElementosRadioButtons);
+      
+      setLang(getCookie('lang'));
+
+      document.getElementById("modal").style.display = "block";
+  });
+}
+
+
 /** Funcion para mostrar el formulario para añadir una empresa **/
 function showAddEmpresa() {
   var idioma = getCookie('lang');
@@ -994,6 +1138,24 @@ function showReactivar(cifEmpresa, nombreEmpresa , direccionEmpresa, telefonoEmp
 
 }
 
+function showAsociarEmpresaPersona(dniPersona){
+
+    $('#tituloFormsModal3').addClass('SELECT_EMPRESA');
+    $('#formularioGenericoModal3').attr('action', 'javascript:asociarPersonaEmpresa(' + "'" + dniPersona + "'" + ');');
+    $('#iconoAccionesSelectEmpresas').attr('src', 'images/edit.png');
+    $("#iconoAcciones").removeClass();
+    $('#iconoAccionesSelectEmpresas').addClass('ICONO_EDIT');
+    $('#iconoAccionesSelectEmpresas').addClass('iconoEditarPersona');
+    $('#iconoAccionesSelectEmpresas').attr('alt', 'Editar');
+    $('#spanAccionesSelectEmpresa').removeClass();
+    $('#spanAccionesSelectEmpresa').addClass('tooltiptext');
+    $('#spanAccionesSelectEmpresa').addClass('ICONO_EDIT');
+    $('#btnAccionesSelectEmpresas').attr('value', 'Editar');
+
+   
+    setLang(getCookie('lang'));
+}
+
 /**Función para cambiar onBlur de los campos*/
 function cambiarOnBlurCampos(onBlurCifEmpresa, onBlurNombreEmpresa, onBlurDireccionEmpresa, onBlurTelefonoEmpresa) {
     
@@ -1040,6 +1202,10 @@ function gestionarPermisosEmpresa(idElementoList) {
         $('.editarPermiso').css("cursor", "pointer");
         $('.editarPermiso').attr("data-toggle", "modal");
         $('.editarPermiso').attr("data-target", "#form-modal");
+        $('.editarPermisoEmpresa').attr('src', 'images/edit3.png');
+        $('.editarPermisoEmpresa').css("cursor", "default");
+        $('.editarPermisoEmpresa').attr("data-toggle", "modal");
+        $('.editarPermisoEmpresa').attr("data-target", "#modalSeleccionEmpresa");
       break;
 
       case "Eliminar" :
@@ -1111,6 +1277,10 @@ function cargaInformacionEmpresa(empresa){
                     '<img class="telefonoEImg" src="images/telefono.png" alt="telefonoE">' + 
                     '<p class="card-text telefonoE">' + telefonoEmpresa + '</p>' +
                   '</div>' + 
+                  '<div class="tooltip">' + 
+                    '<img class="editarCard editarPermisoEmpresa" src="images/edit.png" data-toggle="" data-target="" onclick="showAsociarEmpresaPersona(' + "'" +  empresa.dniP + "'" + ')" alt="Editar"/>' + 
+                    '<span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span>' + 
+                  '</div>' + 
                 '</div>';
 
 
@@ -1130,5 +1300,21 @@ $(document).ready(function() {
     eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
     setLang(getCookie('lang'));
   });
+
+  $("#modalSeleccionEmpresa").on('hidden.bs.modal', function() {
+
+    let idElementosRadioButtons = ["quitarEmpresaSi", "quitarEmpresaNo"];
+
+
+    limpiarFormulario(idElementoList);
+    limpiaRadioButton(idElementosRadioButtons);
+    
+    $('#labelSelectEmpresa').attr('hidden',true);
+    $('#select').attr('hidden',true);
+
+    setLang(getCookie('lang'));
+   
+  });
+
 
 });

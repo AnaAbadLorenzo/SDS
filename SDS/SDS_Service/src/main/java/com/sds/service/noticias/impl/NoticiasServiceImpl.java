@@ -56,7 +56,8 @@ public class NoticiasServiceImpl implements NoticiasService {
 
 		final List<NoticiasEntity> toret = new ArrayList<>();
 
-		final List<NoticiasEntity> noticias = entityManager.createNamedQuery(Constantes.NOTICIA_FINDALL_QUERY)
+		final List<NoticiasEntity> noticias = entityManager
+				.createNamedQuery(Constantes.NOTICIA_FINDNOTICIA_ORDER_BY_FECHA_LIMIT_20).setMaxResults(20)
 				.getResultList();
 
 		if (!noticias.isEmpty()) {
@@ -105,15 +106,22 @@ public class NoticiasServiceImpl implements NoticiasService {
 
 		final List<NoticiasEntity> toret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
+		String fecha = StringUtils.EMPTY;
+
+		if (fechaNoticia != null) {
+			java.sql.Date fechaSql;
+			fechaSql = new java.sql.Date(fechaNoticia.getTime());
+			fecha = fechaSql.toString();
+		} else {
+			fecha = StringUtils.EMPTY;
+		}
 
 		final List<NoticiasEntity> noticias = entityManager.createNamedQuery(Constantes.NOTICIA_FINDNOTICIA_QUERY)
 				.setParameter(Constantes.TITULO_NOTICIA, tituloNoticia)
-				.setParameter(Constantes.TEXTO_NOTICIA, textoNoticia)
-				.setParameter(Constantes.FECHA_NOTICIA, fechaNoticia).setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
+				.setParameter(Constantes.TEXTO_NOTICIA, textoNoticia).setParameter(Constantes.FECHA_NOTICIA, fecha)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
-		final Integer numberTotalResults = noticiasRepository.numberFindNoticia(tituloNoticia, textoNoticia,
-				fechaNoticia);
+		final Integer numberTotalResults = noticiasRepository.numberFindNoticia(tituloNoticia, textoNoticia, fecha);
 
 		if (!noticias.isEmpty()) {
 			for (final NoticiasEntity noticia : noticias) {
