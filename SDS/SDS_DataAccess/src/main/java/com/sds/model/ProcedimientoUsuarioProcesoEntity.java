@@ -31,28 +31,27 @@ public class ProcedimientoUsuarioProcesoEntity {
 	@Column(name = "borrado_procedimiento_usuario_proceso")
 	private Integer borradoProcedimientoUsuarioProceso;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "procedimientoUsuarioProceso")
-	private final Set<RespuestaPosibleEntity> respuestas = new HashSet<>();
-
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "procedimientoUsuarioProc")
-	private final Set<ProcesoEntity> procesos = new HashSet<>();
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_respuesta", referencedColumnName = "id_respuesta")
+	private RespuestaPosibleEntity respuestaPosible;
 
 	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_evidencia", referencedColumnName = "id_evidencia")
-	private EvidenciaEntity evidencia;
+	@JoinColumn(name = "id_proceso", referencedColumnName = "id_proceso")
+	private ProcesoEntity proceso;
+
+	@OneToMany(mappedBy = "procedimientosUsuarioProceso")
+	private final Set<EvidenciaEntity> evidencia = new HashSet<>();
 
 	public ProcedimientoUsuarioProcesoEntity() {
 		super();
 	}
 
 	public ProcedimientoUsuarioProcesoEntity(final Integer idProcedimientoUsuarioProceso,
-			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso,
-			final EvidenciaEntity evidencia) {
+			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso) {
 		super();
 		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
 		this.fechaProcedimientoUsuarioProceso = fechaProcedimientoUsuarioProceso;
 		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
-		this.evidencia = evidencia;
 	}
 
 	public Integer getIdProcedimientoUsuarioProceso() {
@@ -79,28 +78,31 @@ public class ProcedimientoUsuarioProcesoEntity {
 		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
 	}
 
-	public Set<RespuestaPosibleEntity> getRespuestas() {
-		return respuestas;
+	public RespuestaPosibleEntity getRespuestaPosible() {
+		return respuestaPosible;
 	}
 
-	public Set<ProcesoEntity> getProcesos() {
-		return procesos;
+	public void setRespuestaPosible(final RespuestaPosibleEntity respuestaPosible) {
+		this.respuestaPosible = respuestaPosible;
 	}
 
-	public EvidenciaEntity getEvidencia() {
+	public Set<EvidenciaEntity> getEvidencia() {
 		return evidencia;
 	}
 
-	public void setEvidencia(final EvidenciaEntity evidencia) {
-		this.evidencia = evidencia;
+	public ProcesoEntity getProceso() {
+		return proceso;
+	}
+
+	public void setProceso(final ProcesoEntity proceso) {
+		this.proceso = proceso;
 	}
 
 	@Override
 	public String toString() {
 		return "ProcedimientoUsuarioProcesoEntity [idProcedimientoUsuarioProceso=" + idProcedimientoUsuarioProceso
 				+ ", fechaProcedimientoUsuarioProceso=" + fechaProcedimientoUsuarioProceso
-				+ ", borradoProcedimientoUsuarioProceso=" + borradoProcedimientoUsuarioProceso + ", respuestas="
-				+ respuestas + ", procesos=" + procesos + ", evidencia=" + evidencia + "]";
+				+ ", borradoProcedimientoUsuarioProceso=" + borradoProcedimientoUsuarioProceso + "]";
 	}
 
 }

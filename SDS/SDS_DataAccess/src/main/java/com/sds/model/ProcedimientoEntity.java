@@ -35,7 +35,7 @@ public class ProcedimientoEntity {
 	@Column(name = "check_usuario")
 	private Boolean checkUsuario;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "procedimiento", cascade = CascadeType.ALL)
 	private PlanEntity plan;
 
 	public ProcedimientoEntity() {
@@ -115,7 +115,7 @@ public class ProcedimientoEntity {
 		return "ProcedimientoEntity [idProcedimiento=" + idProcedimiento + ", nombreProcedimiento="
 				+ nombreProcedimiento + ", descripProcedimiento=" + descripProcedimiento + ", fechaProcedimiento="
 				+ fechaProcedimiento + ", borradoProcedimiento=" + borradoProcedimiento + ", checkUsuario="
-				+ checkUsuario + ", plan=" + plan + "]";
+				+ checkUsuario + "]";
 	}
 
 }

@@ -1,18 +1,17 @@
 package com.sds.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,9 +40,8 @@ public class RespuestaPosibleEntity {
 	@Column(name = "borrado_respuesta")
 	private Integer borradoRespuesta;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_procedimiento_usuario_proceso", referencedColumnName = "id_procedimiento_usuario_proceso")
-	private ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso;
+	@OneToMany(mappedBy = "respuestaPosible")
+	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesos = new HashSet<>();
 
 	public RespuestaPosibleEntity() {
 		super();
@@ -56,16 +54,6 @@ public class RespuestaPosibleEntity {
 		this.textoRespuesta = textoRespuesta;
 		this.fechaRespuesta = fechaRespuesta;
 		this.borradoRespuesta = borradoRespuesta;
-	}
-
-	public RespuestaPosibleEntity(final Integer idRespuesta, final String textoRespuesta, final Date fechaRespuesta,
-			final Integer borradoRespuesta, final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso) {
-		super();
-		this.idRespuesta = idRespuesta;
-		this.textoRespuesta = textoRespuesta;
-		this.fechaRespuesta = fechaRespuesta;
-		this.borradoRespuesta = borradoRespuesta;
-		this.procedimientoUsuarioProceso = procedimientoUsuarioProceso;
 	}
 
 	public Integer getIdRespuesta() {
@@ -100,19 +88,14 @@ public class RespuestaPosibleEntity {
 		this.borradoRespuesta = borradoRespuesta;
 	}
 
-	public ProcedimientoUsuarioProcesoEntity getProcedimientoUsuarioProceso() {
-		return procedimientoUsuarioProceso;
-	}
-
-	public void setProcedimientoUsuarioProceso(final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso) {
-		this.procedimientoUsuarioProceso = procedimientoUsuarioProceso;
+	public Set<ProcedimientoUsuarioProcesoEntity> getProcedimientoUsuarioProcesos() {
+		return procedimientoUsuarioProcesos;
 	}
 
 	@Override
 	public String toString() {
 		return "RespuestaPosibleEntity [idRespuesta=" + idRespuesta + ", textoRespuesta=" + textoRespuesta
-				+ ", fechaRespuesta=" + fechaRespuesta + ", borradoRespuesta=" + borradoRespuesta
-				+ ", procedimientoUsuarioProceso=" + procedimientoUsuarioProceso + "]";
+				+ ", fechaRespuesta=" + fechaRespuesta + ", borradoRespuesta=" + borradoRespuesta + "]";
 	}
 
 }

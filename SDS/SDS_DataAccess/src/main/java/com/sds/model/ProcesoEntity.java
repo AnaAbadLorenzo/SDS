@@ -1,16 +1,16 @@
 package com.sds.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -38,17 +38,15 @@ public class ProcesoEntity {
 	@OneToOne(cascade = CascadeType.ALL)
 	private ProcedimientoEntity procedimiento;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_procedimiento_usuario_proceso", referencedColumnName = "id_procedimiento_usuario_proceso")
-	private ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProc;
+	@OneToMany(mappedBy = "proceso")
+	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesos = new HashSet<>();
 
 	public ProcesoEntity() {
 		super();
 	}
 
 	public ProcesoEntity(final Integer idProceso, final String nombreProceso, final String descripProceso,
-			final Date fechaProceso, final Integer borradoProceso, final ProcedimientoEntity procedimiento,
-			final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProc) {
+			final Date fechaProceso, final Integer borradoProceso, final ProcedimientoEntity procedimiento) {
 		super();
 		this.idProceso = idProceso;
 		this.nombreProceso = nombreProceso;
@@ -56,7 +54,6 @@ public class ProcesoEntity {
 		this.fechaProceso = fechaProceso;
 		this.borradoProceso = borradoProceso;
 		this.procedimiento = procedimiento;
-		this.procedimientoUsuarioProc = procedimientoUsuarioProc;
 	}
 
 	public Integer getIdProceso() {
@@ -107,19 +104,14 @@ public class ProcesoEntity {
 		this.procedimiento = procedimiento;
 	}
 
-	public ProcedimientoUsuarioProcesoEntity getProcedimientoUsuarioProc() {
-		return procedimientoUsuarioProc;
-	}
-
-	public void setProcedimientoUsuarioProc(final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProc) {
-		this.procedimientoUsuarioProc = procedimientoUsuarioProc;
+	public Set<ProcedimientoUsuarioProcesoEntity> getProcedimientoUsuarioProcesos() {
+		return procedimientoUsuarioProcesos;
 	}
 
 	@Override
 	public String toString() {
 		return "ProcesoEntity [idProceso=" + idProceso + ", nombreProceso=" + nombreProceso + ", descripProceso="
-				+ descripProceso + ", fechaProceso=" + fechaProceso + ", borradoProceso=" + borradoProceso
-				+ ", procedimiento=" + procedimiento + ", procedimientoUsuarioProc=" + procedimientoUsuarioProc + "]";
+				+ descripProceso + ", fechaProceso=" + fechaProceso + ", borradoProceso=" + borradoProceso + "]";
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.sds.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,11 +40,8 @@ public class ObjetivoEntity {
 	@Column(name = "borrado_objetivo")
 	private Integer borradoObjetivo;
 
-	/*
-	 * @OneToOne
-	 * 
-	 * @JoinColumn(name = "id_plan") private PlanEntity plan;
-	 */
+	@OneToMany(mappedBy = "objetivo")
+	private final Set<PlanEntity> planes = new HashSet<>();
 
 	public ObjetivoEntity() {
 		super();
@@ -87,11 +88,9 @@ public class ObjetivoEntity {
 		this.borradoObjetivo = borradoObjetivo;
 	}
 
-	/*
-	 * public PlanEntity getPlan() { return plan; }
-	 * 
-	 * public void setPlan(final PlanEntity plan) { this.plan = plan; }
-	 */
+	public Set<PlanEntity> getPlanes() {
+		return planes;
+	}
 
 	@Override
 	public String toString() {

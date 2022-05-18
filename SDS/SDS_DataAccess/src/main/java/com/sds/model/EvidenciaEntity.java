@@ -1,16 +1,16 @@
 package com.sds.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -28,8 +28,9 @@ public class EvidenciaEntity {
 	@Column(name = "borrado_evidencia")
 	private Integer borradoEvidencia;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "evidencia")
-	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientosUsuarioProcesos = new HashSet<>();
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_procedimiento_usuario_proceso", referencedColumnName = "id_procedimiento_usuario_proceso")
+	private ProcedimientoUsuarioProcesoEntity procedimientosUsuarioProceso;
 
 	public EvidenciaEntity() {
 		super();
@@ -66,15 +67,18 @@ public class EvidenciaEntity {
 		this.borradoEvidencia = borradoEvidencia;
 	}
 
-	public Set<ProcedimientoUsuarioProcesoEntity> getProcedimientosUsuarioProcesos() {
-		return procedimientosUsuarioProcesos;
+	public ProcedimientoUsuarioProcesoEntity getProcedimientosUsuarioProceso() {
+		return procedimientosUsuarioProceso;
+	}
+
+	public void setProcedimientosUsuarioProceso(final ProcedimientoUsuarioProcesoEntity procedimientosUsuarioProceso) {
+		this.procedimientosUsuarioProceso = procedimientosUsuarioProceso;
 	}
 
 	@Override
 	public String toString() {
 		return "EvidenciaEntity [idEvidencia=" + idEvidencia + ", fechaEvidencia=" + fechaEvidencia
-				+ ", borradoEvidencia=" + borradoEvidencia + ", procedimientosUsuarioProcesos="
-				+ procedimientosUsuarioProcesos + "]";
+				+ ", borradoEvidencia=" + borradoEvidencia + "]";
 	}
 
 }

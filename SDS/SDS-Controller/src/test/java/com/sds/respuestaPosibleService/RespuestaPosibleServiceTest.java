@@ -1,4 +1,4 @@
-package com.sds.respuestaposibleService;
+package com.sds.respuestaPosibleService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -17,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
-import com.sds.model.ProcesoRespuestaPosibleEntity;
 import com.sds.model.RespuestaPosibleEntity;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
@@ -242,9 +241,6 @@ public class RespuestaPosibleServiceTest {
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleAsociarProceso = respuestaPosibleService
 				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(),
 						respuestaPosible.getRespuestaPosibleEntity().getFechaRespuesta(), 0, 1);
-
-		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(1,
-				respuestaPosibleAsociarProceso.getListaBusquedas().get(0).getIdRespuesta());
 
 		respuestaPosibleService.eliminarRespuestaPosible(new RespuestaPosible(respuestaPosible.getUsuario(),
 				respuestaPosibleAsociarProceso.getListaBusquedas().get(0)));

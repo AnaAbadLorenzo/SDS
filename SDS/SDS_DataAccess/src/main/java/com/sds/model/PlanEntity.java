@@ -5,9 +5,12 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -17,7 +20,7 @@ public class PlanEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_objetivo")
+	@Column(name = "id_plan")
 	private Integer idPlan;
 
 	@Column(name = "nombre_plan")
@@ -32,8 +35,13 @@ public class PlanEntity {
 	@Column(name = "borrado_plan")
 	private Integer borradoPlan;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_objetivo", referencedColumnName = "id_objetivo")
 	private ObjetivoEntity objetivo;
+
+	@OneToOne
+	@JoinColumn(name = "id_plan", referencedColumnName = "id_plan", updatable = false)
+	private ProcedimientoEntity procedimiento;
 
 	public PlanEntity() {
 		super();
@@ -97,10 +105,18 @@ public class PlanEntity {
 		this.objetivo = objetivo;
 	}
 
+	public ProcedimientoEntity getProcedimiento() {
+		return procedimiento;
+	}
+
+	public void setProcedimiento(final ProcedimientoEntity procedimiento) {
+		this.procedimiento = procedimiento;
+	}
+
 	@Override
 	public String toString() {
-		return "Plan [idPlan=" + idPlan + ", nombrePlan=" + nombrePlan + ", descripPlan=" + descripPlan + ", fechaPlan="
-				+ fechaPlan + ", borradoPlan=" + borradoPlan + ", objetivo=" + objetivo + "]";
+		return "PlanEntity [idPlan=" + idPlan + ", nombrePlan=" + nombrePlan + ", descripPlan=" + descripPlan
+				+ ", fechaPlan=" + fechaPlan + ", borradoPlan=" + borradoPlan + "]";
 	}
 
 }
