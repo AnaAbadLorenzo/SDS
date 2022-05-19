@@ -4,14 +4,15 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,11 +33,16 @@ public class ProcedimientoUsuarioEntity {
 	@Column(name = "borrado_procedimiento_usuario")
 	private Integer borradoProcedimientoUsuario;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	private final Set<UsuarioEntity> usuarios = new HashSet<>();
-
-	@OneToOne(cascade = CascadeType.ALL)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_procedimiento", referencedColumnName = "id_procedimiento")
 	private ProcedimientoEntity procedimiento;
+
+	@OneToMany(mappedBy = "procedimientoUsuario")
+	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesos = new HashSet<>();
+
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "dni_usuario", referencedColumnName = "dni_usuario")
+	private UsuarioEntity usuario;
 
 	public ProcedimientoUsuarioEntity() {
 		super();
@@ -44,13 +50,12 @@ public class ProcedimientoUsuarioEntity {
 
 	public ProcedimientoUsuarioEntity(final Integer idProcedimientoUsuario,
 			final Integer puntuacionProcedimientoUsuario, final Date fechaProcedimientoUsuario,
-			final Integer borradoProcedimientoUsuario, final ProcedimientoEntity procedimiento) {
+			final Integer borradoProcedimientoUsuario) {
 		super();
 		this.idProcedimientoUsuario = idProcedimientoUsuario;
 		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
 		this.fechaProcedimientoUsuario = fechaProcedimientoUsuario;
 		this.borradoProcedimientoUsuario = borradoProcedimientoUsuario;
-		this.procedimiento = procedimiento;
 	}
 
 	public Integer getIdProcedimientoUsuario() {
@@ -93,15 +98,23 @@ public class ProcedimientoUsuarioEntity {
 		this.procedimiento = procedimiento;
 	}
 
-	public Set<UsuarioEntity> getUsuarios() {
-		return usuarios;
+	public UsuarioEntity getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(final UsuarioEntity usuario) {
+		this.usuario = usuario;
+	}
+
+	public Set<ProcedimientoUsuarioProcesoEntity> getProcedimientoUsuarioProcesos() {
+		return procedimientoUsuarioProcesos;
 	}
 
 	@Override
 	public String toString() {
 		return "ProcedimientoUsuarioEntity [idProcedimientoUsuario=" + idProcedimientoUsuario
 				+ ", puntuacionProcedimientoUsuario=" + puntuacionProcedimientoUsuario + ", fechaProcedimientoUsuario="
-				+ fechaProcedimientoUsuario + ", borradoProcedimientoUsuario=" + borradoProcedimientoUsuario
-				+ ", usuarios=" + usuarios + ", procedimiento=" + procedimiento + "]";
+				+ fechaProcedimientoUsuario + ", borradoProcedimientoUsuario=" + borradoProcedimientoUsuario + "]";
 	}
+
 }

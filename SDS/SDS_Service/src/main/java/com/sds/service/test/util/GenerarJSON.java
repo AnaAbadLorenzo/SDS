@@ -511,7 +511,6 @@ public class GenerarJSON {
 		respuestaPosible.setTextoRespuesta(CommonUtilities.coalesce(new String(
 				(jsonRespuestaPosibleVacia.get(Constantes.TEXTO_RESPUESTA_POSIBLE).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
-		respuestaPosible.setFechaRespuesta(fechaSql);
 
 		respuestaPosible.setBorradoRespuesta(0);
 

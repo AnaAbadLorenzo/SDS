@@ -21,14 +21,19 @@ public class ProcesoProcedimientoEntity {
 	@Column(name = "id_procedimiento")
 	private Integer idProcedimiento;
 
+	@Column(name = "orden_proceso")
+	private Integer ordenProceso;
+
 	public ProcesoProcedimientoEntity() {
 		super();
 	}
 
-	public ProcesoProcedimientoEntity(final Integer idProceso, final Integer idProcedimiento) {
+	public ProcesoProcedimientoEntity(final Integer idProceso, final Integer idProcedimiento,
+			final Integer ordenProceso) {
 		super();
 		this.idProceso = idProceso;
 		this.idProcedimiento = idProcedimiento;
+		this.ordenProceso = ordenProceso;
 	}
 
 	public Integer getIdProceso() {
@@ -47,9 +52,18 @@ public class ProcesoProcedimientoEntity {
 		this.idProcedimiento = idProcedimiento;
 	}
 
+	public Integer getOrdenProceso() {
+		return ordenProceso;
+	}
+
+	public void setOrdenProceso(final Integer ordenProceso) {
+		this.ordenProceso = ordenProceso;
+	}
+
 	@Override
 	public String toString() {
-		return "ProcesoProcedimientoEntity [idProceso=" + idProceso + ", idProcedimiento=" + idProcedimiento + "]";
+		return "ProcesoProcedimientoEntity [idProceso=" + idProceso + ", idProcedimiento=" + idProcedimiento
+				+ ", ordenProceso=" + ordenProceso + "]";
 	}
 
 }

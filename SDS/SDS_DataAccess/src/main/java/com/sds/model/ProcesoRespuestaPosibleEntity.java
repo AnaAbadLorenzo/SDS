@@ -1,5 +1,7 @@
 package com.sds.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,14 +27,19 @@ public class ProcesoRespuestaPosibleEntity {
 	@Column(name = "id_respuesta")
 	private Integer idRespuesta;
 
+	@Column(name = "fecha_respuesta")
+	private Date fechaRespuesta;
+
 	public ProcesoRespuestaPosibleEntity() {
 		super();
 	}
 
-	public ProcesoRespuestaPosibleEntity(final Integer idProceso, final Integer idRespuesta) {
+	public ProcesoRespuestaPosibleEntity(final Integer idProceso, final Integer idRespuesta,
+			final Date fechaRespuesta) {
 		super();
 		this.idProceso = idProceso;
 		this.idRespuesta = idRespuesta;
+		this.fechaRespuesta = fechaRespuesta;
 	}
 
 	public Integer getIdProceso() {
@@ -51,9 +58,18 @@ public class ProcesoRespuestaPosibleEntity {
 		this.idRespuesta = idRespuesta;
 	}
 
+	public Date getFechaRespuesta() {
+		return fechaRespuesta;
+	}
+
+	public void setFechaRespuesta(final Date fechaRespuesta) {
+		this.fechaRespuesta = fechaRespuesta;
+	}
+
 	@Override
 	public String toString() {
-		return "ProcesoRespuestaPosible [idProceso=" + idProceso + ", idRespuesta=" + idRespuesta + "]";
+		return "ProcesoRespuestaPosibleEntity [idProceso=" + idProceso + ", idRespuesta=" + idRespuesta
+				+ ", fechaRespuesta=" + fechaRespuesta + "]";
 	}
 
 }

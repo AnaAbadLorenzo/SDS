@@ -1,7 +1,5 @@
 package com.sds.service.respuestaposible;
 
-import java.util.Date;
-
 import com.sds.model.RespuestaPosibleEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
@@ -13,8 +11,8 @@ import com.sds.service.respuestaposible.model.RespuestaPosible;
 
 public interface RespuestaPosibleService {
 
-	ReturnBusquedas<RespuestaPosibleEntity> buscarRespuestaPosible(final String textoRespuesta,
-			final Date fechaRespuesta, final int inicio, final int tamanhoPagina);
+	ReturnBusquedas<RespuestaPosibleEntity> buscarRespuestaPosible(final String textoRespuesta, final int inicio,
+			final int tamanhoPagina);
 
 	ReturnBusquedas<RespuestaPosibleEntity> buscarTodas(final int inicio, final int tamanhoPagina);
 

@@ -13,11 +13,9 @@ public class RespuestaPosibleBuscar {
 		super();
 	}
 
-	public RespuestaPosibleBuscar(final String textoRespuesta, final Date fechaRespuesta, final int inicio,
-			final int tamanhoPagina) {
+	public RespuestaPosibleBuscar(final String textoRespuesta, final int inicio, final int tamanhoPagina) {
 		super();
 		this.textoRespuesta = textoRespuesta;
-		this.fechaRespuesta = fechaRespuesta;
 		this.inicio = inicio;
 		this.tamanhoPagina = tamanhoPagina;
 	}
@@ -28,14 +26,6 @@ public class RespuestaPosibleBuscar {
 
 	public void setTextoRespuesta(final String textoRespuesta) {
 		this.textoRespuesta = textoRespuesta;
-	}
-
-	public Date getFechaRespuesta() {
-		return fechaRespuesta;
-	}
-
-	public void setFechaRespuesta(final Date fechaRespuesta) {
-		this.fechaRespuesta = fechaRespuesta;
 	}
 
 	public int getInicio() {

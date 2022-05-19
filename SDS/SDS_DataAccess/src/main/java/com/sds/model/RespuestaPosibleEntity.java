@@ -1,6 +1,5 @@
 package com.sds.model;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,8 +18,8 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "RespuestaPosibleEntity.findAllRespuestasPosibles", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 0"),
 		@NamedQuery(name = "RespuestaPosibleEntity.numberFindAllRespuestasPosibles", query = "SELECT COUNT(r) FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 0"),
-		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosible", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%') AND (:fechaRespuesta IS NULL OR r.fechaRespuesta =: fechaRespuesta)"),
-		@NamedQuery(name = "RespuestaPosibleEntity.numberFindRespuestaPosible", query = "SELECT COUNT(r) FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%') AND (:fechaRespuesta IS NULL OR r.fechaRespuesta =: fechaRespuesta)"),
+		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosible", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%')"),
+		@NamedQuery(name = "RespuestaPosibleEntity.numberFindRespuestaPosible", query = "SELECT COUNT(r) FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%')"),
 		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestasPosiblesEliminadas", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 1"),
 		@NamedQuery(name = "RespuestaPosibleEntity.numberFindRespuestasPosiblesEliminadas", query = "SELECT  COUNT(r) FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 1"),
 		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosibleByText", query = " SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%')") })
@@ -34,9 +33,6 @@ public class RespuestaPosibleEntity {
 	@Column(name = "texto_respuesta")
 	private String textoRespuesta;
 
-	@Column(name = "fecha_respuesta")
-	private Date fechaRespuesta;
-
 	@Column(name = "borrado_respuesta")
 	private Integer borradoRespuesta;
 
@@ -47,12 +43,11 @@ public class RespuestaPosibleEntity {
 		super();
 	}
 
-	public RespuestaPosibleEntity(final Integer idRespuesta, final String textoRespuesta, final Date fechaRespuesta,
+	public RespuestaPosibleEntity(final Integer idRespuesta, final String textoRespuesta,
 			final Integer borradoRespuesta) {
 		super();
 		this.idRespuesta = idRespuesta;
 		this.textoRespuesta = textoRespuesta;
-		this.fechaRespuesta = fechaRespuesta;
 		this.borradoRespuesta = borradoRespuesta;
 	}
 
@@ -72,14 +67,6 @@ public class RespuestaPosibleEntity {
 		this.textoRespuesta = textoRespuesta;
 	}
 
-	public Date getFechaRespuesta() {
-		return fechaRespuesta;
-	}
-
-	public void setFechaRespuesta(final Date fechaRespuesta) {
-		this.fechaRespuesta = fechaRespuesta;
-	}
-
 	public Integer getBorradoRespuesta() {
 		return borradoRespuesta;
 	}
@@ -95,7 +82,7 @@ public class RespuestaPosibleEntity {
 	@Override
 	public String toString() {
 		return "RespuestaPosibleEntity [idRespuesta=" + idRespuesta + ", textoRespuesta=" + textoRespuesta
-				+ ", fechaRespuesta=" + fechaRespuesta + ", borradoRespuesta=" + borradoRespuesta + "]";
+				+ ", borradoRespuesta=" + borradoRespuesta + "]";
 	}
 
 }

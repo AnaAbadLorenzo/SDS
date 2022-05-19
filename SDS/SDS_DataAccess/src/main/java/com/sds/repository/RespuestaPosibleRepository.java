@@ -1,6 +1,5 @@
 package com.sds.repository;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,9 +19,9 @@ public interface RespuestaPosibleRepository extends JpaRepository<RespuestaPosib
 
 	Integer numberFindAllRespuestasPosibles();
 
-	List<RespuestaPosibleEntity> findRespuestaPosible(String textoRespuesta, Date fechaRespuesta);
+	List<RespuestaPosibleEntity> findRespuestaPosible(String textoRespuesta);
 
-	Integer numberFindRespuestaPosible(String textoRespuesta, Date fechaRespuesta);
+	Integer numberFindRespuestaPosible(String textoRespuesta);
 
 	List<RespuestaPosibleEntity> findRespuestasPosiblesEliminadas();
 

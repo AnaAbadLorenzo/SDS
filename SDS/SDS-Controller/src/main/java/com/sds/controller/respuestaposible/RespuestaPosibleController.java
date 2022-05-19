@@ -41,8 +41,8 @@ public class RespuestaPosibleController {
 	public RespEntity buscarRespuestaPosible(@RequestBody final RespuestaPosibleBuscar respuestaPosible) {
 
 		final ReturnBusquedas<RespuestaPosibleEntity> resultado = respuestaPosibleService.buscarRespuestaPosible(
-				respuestaPosible.getTextoRespuesta(), respuestaPosible.getFechaRespuesta(),
-				respuestaPosible.getInicio(), respuestaPosible.getTamanhoPagina());
+				respuestaPosible.getTextoRespuesta(), respuestaPosible.getInicio(),
+				respuestaPosible.getTamanhoPagina());
 
 		return new RespEntity(RespCode.RESPUESTA_POSIBLE_ECONTRADA, resultado);
 

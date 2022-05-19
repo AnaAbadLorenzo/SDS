@@ -1,29 +1,30 @@
 package com.sds.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.sds.model.compositekey.ProcedimientoUsuarioProcesoKey;
+
 @Entity
+@IdClass(ProcedimientoUsuarioProcesoKey.class)
 @Table(name = "procedimientousuarioproceso")
 public class ProcedimientoUsuarioProcesoEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_procedimiento_usuario_proceso")
-	private Integer idProcedimientoUsuarioProceso;
+	private Integer idProceso;
+
+	@Id
+	private Integer idProcedimientoUsuario;
 
 	@Column(name = "fecha_procedimiento_usuario_proceso")
 	private Date fechaProcedimientoUsuarioProceso;
@@ -39,27 +40,44 @@ public class ProcedimientoUsuarioProcesoEntity {
 	@JoinColumn(name = "id_proceso", referencedColumnName = "id_proceso")
 	private ProcesoEntity proceso;
 
-	@OneToMany(mappedBy = "procedimientosUsuarioProceso")
-	private final Set<EvidenciaEntity> evidencia = new HashSet<>();
+	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_procedimiento_usuario", referencedColumnName = "id_procedimiento_usuario")
+	private ProcedimientoUsuarioEntity procedimientoUsuario;
+
+	@OneToOne(mappedBy = "procedimientosUsuarioProceso", cascade = CascadeType.ALL)
+	private EvidenciaEntity evidencia;
 
 	public ProcedimientoUsuarioProcesoEntity() {
 		super();
 	}
 
-	public ProcedimientoUsuarioProcesoEntity(final Integer idProcedimientoUsuarioProceso,
+	public ProcedimientoUsuarioProcesoEntity(final Integer idProceso, final Integer idProcedimientoUsuario,
 			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso) {
 		super();
-		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
+		this.idProceso = idProceso;
+		this.idProcedimientoUsuario = idProcedimientoUsuario;
 		this.fechaProcedimientoUsuarioProceso = fechaProcedimientoUsuarioProceso;
 		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
 	}
 
-	public Integer getIdProcedimientoUsuarioProceso() {
-		return idProcedimientoUsuarioProceso;
+	public Integer getIdProceso() {
+		return idProceso;
 	}
 
-	public void setIdProcedimientoUsuarioProceso(final Integer idProcedimientoUsuarioProceso) {
-		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
+	public void setIdProceso(final Integer idProceso) {
+		this.idProceso = idProceso;
+	}
+
+	public Integer getIdProcedimientoUsuario() {
+		return idProcedimientoUsuario;
+	}
+
+	public void setIdProcedimientoUsuario(final Integer idProcedimientoUsuario) {
+		this.idProcedimientoUsuario = idProcedimientoUsuario;
+	}
+
+	public void setEvidencia(final EvidenciaEntity evidencia) {
+		this.evidencia = evidencia;
 	}
 
 	public Date getFechaProcedimientoUsuarioProceso() {
@@ -86,10 +104,6 @@ public class ProcedimientoUsuarioProcesoEntity {
 		this.respuestaPosible = respuestaPosible;
 	}
 
-	public Set<EvidenciaEntity> getEvidencia() {
-		return evidencia;
-	}
-
 	public ProcesoEntity getProceso() {
 		return proceso;
 	}
@@ -98,10 +112,22 @@ public class ProcedimientoUsuarioProcesoEntity {
 		this.proceso = proceso;
 	}
 
+	public ProcedimientoUsuarioEntity getProcedimientoUsuario() {
+		return procedimientoUsuario;
+	}
+
+	public void setProcedimientoUsuario(final ProcedimientoUsuarioEntity procedimientoUsuario) {
+		this.procedimientoUsuario = procedimientoUsuario;
+	}
+
+	public EvidenciaEntity getEvidencia() {
+		return evidencia;
+	}
+
 	@Override
 	public String toString() {
-		return "ProcedimientoUsuarioProcesoEntity [idProcedimientoUsuarioProceso=" + idProcedimientoUsuarioProceso
-				+ ", fechaProcedimientoUsuarioProceso=" + fechaProcedimientoUsuarioProceso
+		return "ProcedimientoUsuarioProcesoEntity [idProceso=" + idProceso + ", idProcedimientoUsuario="
+				+ idProcedimientoUsuario + ", fechaProcedimientoUsuarioProceso=" + fechaProcedimientoUsuarioProceso
 				+ ", borradoProcedimientoUsuarioProceso=" + borradoProcedimientoUsuarioProceso + "]";
 	}
 

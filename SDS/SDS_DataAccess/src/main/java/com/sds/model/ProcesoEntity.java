@@ -7,11 +7,14 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,8 +38,13 @@ public class ProcesoEntity {
 	@Column(name = "borrado_proceso")
 	private Integer borradoProceso;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private ProcedimientoEntity procedimiento;
+	@ManyToMany(mappedBy = "procesos")
+	private final Set<ProcedimientoEntity> procedimientos = new HashSet<>();
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "nivel", joinColumns = { @JoinColumn(name = "id_proceso") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_objetivo") })
+	private final Set<ObjetivoEntity> objetivos = new HashSet<>();
 
 	@OneToMany(mappedBy = "proceso")
 	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesos = new HashSet<>();
@@ -46,14 +54,13 @@ public class ProcesoEntity {
 	}
 
 	public ProcesoEntity(final Integer idProceso, final String nombreProceso, final String descripProceso,
-			final Date fechaProceso, final Integer borradoProceso, final ProcedimientoEntity procedimiento) {
+			final Date fechaProceso, final Integer borradoProceso) {
 		super();
 		this.idProceso = idProceso;
 		this.nombreProceso = nombreProceso;
 		this.descripProceso = descripProceso;
 		this.fechaProceso = fechaProceso;
 		this.borradoProceso = borradoProceso;
-		this.procedimiento = procedimiento;
 	}
 
 	public Integer getIdProceso() {
@@ -96,12 +103,12 @@ public class ProcesoEntity {
 		this.borradoProceso = borradoProceso;
 	}
 
-	public ProcedimientoEntity getProcedimiento() {
-		return procedimiento;
+	public Set<ProcedimientoEntity> getProcedimientos() {
+		return procedimientos;
 	}
 
-	public void setProcedimiento(final ProcedimientoEntity procedimiento) {
-		this.procedimiento = procedimiento;
+	public Set<ObjetivoEntity> getObjetivos() {
+		return objetivos;
 	}
 
 	public Set<ProcedimientoUsuarioProcesoEntity> getProcedimientoUsuarioProcesos() {

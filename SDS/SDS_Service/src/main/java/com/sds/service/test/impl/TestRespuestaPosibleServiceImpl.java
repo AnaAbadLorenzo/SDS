@@ -2,7 +2,6 @@ package com.sds.service.test.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -390,8 +389,7 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 
 		String resultado = StringUtils.EMPTY;
 
-		respuestaPosibleRepository.findRespuestaPosible(respuestaPosible.getTextoRespuesta(),
-				respuestaPosible.getFechaRespuesta());
+		respuestaPosibleRepository.findRespuestaPosible(respuestaPosible.getTextoRespuesta());
 
 		resultado = CodigosMensajes.BUSCAR_RESPUESTA_POSIBLE_CORRECTO + " - "
 				+ Mensajes.RESPUESTA_POSIBLE_BUSCADA_CORRECTAMENTE;
@@ -437,7 +435,6 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 			final RespuestaPosibleEntity respuestaPosibleBuscar = respuestaPosibleRepository
 					.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 			respuestaPosibleBuscar.setTextoRespuesta("Texto respuesta modificado");
-			respuestaPosibleBuscar.setFechaRespuesta(new Date());
 			respuestaPosibleRepository.saveAndFlush(respuestaPosible);
 			resultado = CodigosMensajes.MODIFICAR_RESPUESTA_POSIBLE_CORRECTO + " - "
 					+ Mensajes.RESPUESTA_POSIBLE_MODIFICADA_CORRECTAMENTE;
@@ -490,8 +487,10 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 		final RespuestaPosibleEntity respuestaPosibleBuscar = respuestaPosibleRepository
 				.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 
+		// TODO Revisar porque ahora tiene la fecha el objeto
+		// ProcesoRespuestaPosibleEntity
 		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(1,
-				respuestaPosibleBuscar.getIdRespuesta());
+				respuestaPosibleBuscar.getIdRespuesta(), null);
 		procesoRespuestaPosibleRepository.saveAndFlush(procesoRespuestaPosible);
 
 		if (respuestaPosibleBuscar != null) {
@@ -556,7 +555,6 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 		final Map<String, String> valor = new HashMap<>();
 
 		valor.put(Constantes.TEXTO_RESPUESTA_POSIBLE, respuestaPosible.getTextoRespuesta());
-		valor.put(Constantes.FECHA_RESPUESTA_POSIBLE, respuestaPosible.getFechaRespuesta().toString());
 
 		return valor;
 	}

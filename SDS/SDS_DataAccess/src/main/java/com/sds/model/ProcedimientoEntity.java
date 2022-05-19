@@ -1,14 +1,21 @@
 package com.sds.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,8 +42,17 @@ public class ProcedimientoEntity {
 	@Column(name = "check_usuario")
 	private Boolean checkUsuario;
 
-	@OneToOne(mappedBy = "procedimiento", cascade = CascadeType.ALL)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_plan", referencedColumnName = "id_plan")
 	private PlanEntity plan;
+
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "procesoprocedimiento", joinColumns = {
+			@JoinColumn(name = "id_procedimiento") }, inverseJoinColumns = { @JoinColumn(name = "id_proceso") })
+	private final Set<ProcesoEntity> procesos = new HashSet<>();
+
+	@OneToMany(mappedBy = "procedimiento")
+	private final Set<ProcedimientoUsuarioEntity> procedimientoUsuario = new HashSet<>();
 
 	public ProcedimientoEntity() {
 		super();
@@ -108,6 +124,14 @@ public class ProcedimientoEntity {
 
 	public void setPlan(final PlanEntity plan) {
 		this.plan = plan;
+	}
+
+	public Set<ProcesoEntity> getProcesos() {
+		return procesos;
+	}
+
+	public Set<ProcedimientoUsuarioEntity> getProcedimientoUsuario() {
+		return procedimientoUsuario;
 	}
 
 	@Override

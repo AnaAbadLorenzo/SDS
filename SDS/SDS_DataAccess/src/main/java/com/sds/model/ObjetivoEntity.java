@@ -3,14 +3,16 @@ package com.sds.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,8 +42,11 @@ public class ObjetivoEntity {
 	@Column(name = "borrado_objetivo")
 	private Integer borradoObjetivo;
 
-	@OneToMany(mappedBy = "objetivo")
-	private final Set<PlanEntity> planes = new HashSet<>();
+	@OneToOne(mappedBy = "objetivo", cascade = CascadeType.ALL)
+	private PlanEntity plan;
+
+	@ManyToMany(mappedBy = "objetivos")
+	private final Set<ProcesoEntity> procesos = new HashSet<>();
 
 	public ObjetivoEntity() {
 		super();
@@ -88,8 +93,16 @@ public class ObjetivoEntity {
 		this.borradoObjetivo = borradoObjetivo;
 	}
 
-	public Set<PlanEntity> getPlanes() {
-		return planes;
+	public PlanEntity getPlan() {
+		return plan;
+	}
+
+	public void setPlan(final PlanEntity plan) {
+		this.plan = plan;
+	}
+
+	public Set<ProcesoEntity> getProcesos() {
+		return procesos;
 	}
 
 	@Override

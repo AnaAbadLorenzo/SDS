@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -50,8 +48,7 @@ public class RespuestaPosibleServiceTest {
 		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(),
-						respuestaPosibleEntity.getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(), 0, 1);
 
 		assertNotNull(respuestaPosibleEncontrada.getListaBusquedas());
 	}
@@ -65,8 +62,7 @@ public class RespuestaPosibleServiceTest {
 		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(),
-						respuestaPosibleEntity.getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(), 0, 1);
 
 		assertNotNull(respuestaPosibleEncontrada.getListaBusquedas());
 	}
@@ -80,8 +76,7 @@ public class RespuestaPosibleServiceTest {
 		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(),
-						respuestaPosibleEntity.getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(), 0, 1);
 
 		assertNotNull(respuestaPosibleEncontrada.getListaBusquedas());
 	}
@@ -95,8 +90,7 @@ public class RespuestaPosibleServiceTest {
 		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(),
-						respuestaPosibleEntity.getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(), 0, 1);
 
 		assertNotNull(respuestaPosibleEncontrada.getListaBusquedas());
 	}
@@ -115,8 +109,7 @@ public class RespuestaPosibleServiceTest {
 		assertEquals(Constantes.OK, respuesta);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(),
-						respuestaPosible.getRespuestaPosibleEntity().getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
 		respuestaPosibleService.deleteRespuestaPosible(respuestaPosibleEncontrada.getListaBusquedas().get(0));
 	}
@@ -160,8 +153,7 @@ public class RespuestaPosibleServiceTest {
 		respuestaPosibleService.modificarRespuestaPosible(respuestaPosible);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleModificar = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(),
-						respuestaPosible.getRespuestaPosibleEntity().getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
 		respuestaPosibleModificar.getListaBusquedas().get(0).setTextoRespuesta("Texto respuesta");
 
@@ -213,8 +205,7 @@ public class RespuestaPosibleServiceTest {
 		respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEliminar = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(),
-						respuestaPosible.getRespuestaPosibleEntity().getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
 		respuestaPosibleEliminar.getListaBusquedas().get(0).setBorradoRespuesta(1);
 
@@ -239,8 +230,7 @@ public class RespuestaPosibleServiceTest {
 		respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleAsociarProceso = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(),
-						respuestaPosible.getRespuestaPosibleEntity().getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
 		respuestaPosibleService.eliminarRespuestaPosible(new RespuestaPosible(respuestaPosible.getUsuario(),
 				respuestaPosibleAsociarProceso.getListaBusquedas().get(0)));
@@ -271,8 +261,7 @@ public class RespuestaPosibleServiceTest {
 		respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleReactivar = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(),
-						respuestaPosible.getRespuestaPosibleEntity().getFechaRespuesta(), 0, 1);
+				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
 		respuestaPosibleReactivar.getListaBusquedas().get(0).setBorradoRespuesta(0);
 
@@ -313,19 +302,8 @@ public class RespuestaPosibleServiceTest {
 			respuestaPosibleEntity.setIdRespuesta(Integer.parseInt(idRespuestaPosible));
 		}
 
-		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
-		final Date date;
-		if (jsonRespuestaPosibleVacios.get(Constantes.FECHA_RESPUESTA_POSIBLE).toString().equals(StringUtils.EMPTY)) {
-			date = formato.parse("0000-00-00");
-		} else {
-			date = formato.parse(CommonUtilities.coalesce(
-					jsonRespuestaPosibleVacios.get(Constantes.FECHA_RESPUESTA_POSIBLE).toString(), StringUtils.EMPTY));
-		}
-
 		respuestaPosibleEntity.setTextoRespuesta(CommonUtilities.coalesce(
 				jsonRespuestaPosibleVacios.get(Constantes.TEXTO_RESPUESTA_POSIBLE).toString(), StringUtils.EMPTY));
-		respuestaPosibleEntity.setFechaRespuesta(date);
 		respuestaPosible.setUsuario(CommonUtilities
 				.coalesce(jsonRespuestaPosibleVacios.get(Constantes.USUARIO).toString(), StringUtils.EMPTY));
 		respuestaPosible.setRespuestaPosibleEntity(respuestaPosibleEntity);

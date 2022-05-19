@@ -1,5 +1,8 @@
 package com.sds.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -47,20 +51,11 @@ public class UsuarioEntity {
 	@OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
 	private PersonaEntity persona;
 
+	@OneToMany(mappedBy = "usuario")
+	private final Set<ProcedimientoUsuarioEntity> procedimientoUsuario = new HashSet<>();
+
 	public UsuarioEntity() {
 		super();
-	}
-
-	public UsuarioEntity(final String dniUsuario, final String usuario, final String passwdUsuario,
-			final Integer borradoUsuario, final RolEntity rol, final PersonaEntity persona,
-			final ProcedimientoUsuarioEntity procedimientoUsuario) {
-		super();
-		this.dniUsuario = dniUsuario;
-		this.usuario = usuario;
-		this.passwdUsuario = passwdUsuario;
-		this.borradoUsuario = borradoUsuario;
-		this.rol = rol;
-		this.persona = persona;
 	}
 
 	public UsuarioEntity(final String dniUsuario, final String usuario, final String passwdUsuario,
@@ -138,6 +133,10 @@ public class UsuarioEntity {
 
 	public void setPersona(final PersonaEntity persona) {
 		this.persona = persona;
+	}
+
+	public Set<ProcedimientoUsuarioEntity> getProcedimientoUsuario() {
+		return procedimientoUsuario;
 	}
 
 	@Override

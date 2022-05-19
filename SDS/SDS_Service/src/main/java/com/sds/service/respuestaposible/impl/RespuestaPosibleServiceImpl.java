@@ -1,7 +1,6 @@
 package com.sds.service.respuestaposible.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,25 +57,22 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 	}
 
 	@Override
-	public ReturnBusquedas<RespuestaPosibleEntity> buscarRespuestaPosible(final String textoRespuesta,
-			final Date fechaRespuesta, final int inicio, final int tamanhoPagina) {
+	public ReturnBusquedas<RespuestaPosibleEntity> buscarRespuestaPosible(final String textoRespuesta, final int inicio,
+			final int tamanhoPagina) {
 		final List<RespuestaPosibleEntity> respuestaPosibleToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 
 		final List<RespuestaPosibleEntity> respuestasPosibles = entityManager
 				.createNamedQuery(Constantes.RESPUESTA_POSIBLE_QUERY_FINDRESPUESTAPOSIBLE)
-				.setParameter(Constantes.TEXTO_RESPUESTA_POSIBLE, textoRespuesta)
-				.setParameter(Constantes.FECHA_RESPUESTA_POSIBLE, fechaRespuesta).setFirstResult(inicio)
+				.setParameter(Constantes.TEXTO_RESPUESTA_POSIBLE, textoRespuesta).setFirstResult(inicio)
 				.setMaxResults(tamanhoPagina).getResultList();
 
-		final Integer numberTotalResults = respuestaPosibleRepository.numberFindRespuestaPosible(textoRespuesta,
-				fechaRespuesta);
+		final Integer numberTotalResults = respuestaPosibleRepository.numberFindRespuestaPosible(textoRespuesta);
 
 		if (!respuestasPosibles.isEmpty()) {
 			for (final RespuestaPosibleEntity respuestaPosible : respuestasPosibles) {
 				final RespuestaPosibleEntity respuesta = new RespuestaPosibleEntity(respuestaPosible.getIdRespuesta(),
-						respuestaPosible.getTextoRespuesta(), respuestaPosible.getFechaRespuesta(),
-						respuestaPosible.getBorradoRespuesta());
+						respuestaPosible.getTextoRespuesta(), respuestaPosible.getBorradoRespuesta());
 
 				respuestaPosibleToret.add(respuesta);
 
@@ -84,7 +80,6 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 		}
 
 		datosBusqueda.add(Constantes.TEXTO_RESPUESTA_POSIBLE + Constantes.DOS_PUNTOS + textoRespuesta);
-		datosBusqueda.add(Constantes.FECHA_RESPUESTA_POSIBLE + Constantes.DOS_PUNTOS + fechaRespuesta);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> result = new ReturnBusquedas<>(respuestaPosibleToret,
 				datosBusqueda, numberTotalResults, respuestaPosibleToret.size(), inicio);
@@ -105,8 +100,7 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 		if (!respuestasPosibles.isEmpty()) {
 			for (final RespuestaPosibleEntity respuestaPosible : respuestasPosibles) {
 				final RespuestaPosibleEntity respuesta = new RespuestaPosibleEntity(respuestaPosible.getIdRespuesta(),
-						respuestaPosible.getTextoRespuesta(), respuestaPosible.getFechaRespuesta(),
-						respuestaPosible.getBorradoRespuesta());
+						respuestaPosible.getTextoRespuesta(), respuestaPosible.getBorradoRespuesta());
 
 				respuestasPosiblesToret.add(respuesta);
 			}
@@ -130,8 +124,7 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 		if (!respuestasPosibles.isEmpty()) {
 			for (final RespuestaPosibleEntity respuestaPosible : respuestasPosibles) {
 				final RespuestaPosibleEntity respuesta = new RespuestaPosibleEntity(respuestaPosible.getIdRespuesta(),
-						respuestaPosible.getTextoRespuesta(), respuestaPosible.getFechaRespuesta(),
-						respuestaPosible.getBorradoRespuesta());
+						respuestaPosible.getTextoRespuesta(), respuestaPosible.getBorradoRespuesta());
 
 				respuestasPosiblesToret.add(respuesta);
 			}
@@ -177,7 +170,6 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 								CodeMessageErrors.RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION.getCodigo()));
 			} else {
 				respuestaPosibleEntity.setBorradoRespuesta(0);
-				respuestaPosibleEntity.setFechaRespuesta(new Date());
 				respuestaPosibleRepository.saveAndFlush(respuestaPosibleEntity);
 
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(respuestaPosible.getUsuario(),
@@ -299,7 +291,6 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 								CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo()));
 			} else {
 				respuestaPosibleBD.get().setTextoRespuesta(respuestaPosibleEntity.getTextoRespuesta());
-				respuestaPosibleBD.get().setFechaRespuesta(new Date());
 				respuestaPosibleBD.get().setBorradoRespuesta(respuestaPosibleEntity.getBorradoRespuesta());
 
 				respuestaPosibleRepository.saveAndFlush(respuestaPosibleBD.get());
