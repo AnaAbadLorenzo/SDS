@@ -224,13 +224,13 @@ public class EmpresaServiceImpl implements EmpresaService {
 										CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo()),
 
 								CodeMessageErrors.EMPRESA_ASOCIADA_PERSONA_EXCEPTION.getCodigo());
+					} else {
+						empresaEntity.setBorradoEmpresa(1);
+						empresa.setEmpresa(empresaEntity);
+						modificarEmpresa(empresa);
+						resultado = Constantes.OK;
 					}
 
-				} else {
-					empresaEntity.setBorradoEmpresa(1);
-					empresa.setEmpresa(empresaEntity);
-					modificarEmpresa(empresa);
-					resultado = Constantes.OK;
 				}
 			}
 

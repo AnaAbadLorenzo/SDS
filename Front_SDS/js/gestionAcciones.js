@@ -895,6 +895,12 @@ function rellenarFormulario(nombreAccion, descripAccion) {
 
 /** Función para gestionar los iconos dependiendo de los permisos de los usuarios **/
 function gestionarPermisosAccion(idElementoList) {
+  if(getCookie('rolUsuario') == "admin"){
+    $('#btnPermisos').removeAttr('hidden');
+  }else{
+    $('#btnPermisos').attr('hidden', true);
+  }
+  
   idElementoList.forEach( function (idElemento) {
     switch(idElemento){
       case "Añadir":
@@ -954,7 +960,6 @@ async function permisosUsuarios(){
           $('#collapseGest' + cardAbierta).addClass('show');
           cargarInfoPermiso(getCookie('nomFuncPermisos'));
       }
-      setCookie('cardPermiso', '');
     }).catch((res) => {
         respuestaAjaxKO(res.code);
         document.getElementById("modal").style.display = "block";

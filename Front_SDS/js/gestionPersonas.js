@@ -1107,6 +1107,7 @@ function showAddPersonas() {
   $('#labelDireccionEmpresa').attr('hidden', true);
   $('#labelTelefonoEmpresa').attr('hidden', true);
   $('#datosUser').attr('hidden', false);
+  $('#rolUser').attr('hidden', true);
   $('#datosEmp').attr('hidden', false);
   $('#asociarEmpresa').attr('hidden', false);
   $('#quitarEmpresaId1').attr('hidden', true);
@@ -1159,6 +1160,7 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     $('#esActivo').attr('hidden', true);
     $('#rolUser').attr('hidden', true);
     $('#datosUser').attr('hidden', true);
+    $('#rolUser').attr('hidden', true);
     $('#asociarEmpresa').attr('hidden', true);
     $('#selectEmpresasDisponibles').attr('hidden', true);
     $('#empresasDisponibles').attr('hidden', true);
@@ -1221,6 +1223,7 @@ function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP
     $('#esActivo').attr('hidden', false);
     $('#rolUser').attr('hidden', false);
     $('#datosUser').attr('hidden', false);
+    $('#rolUser').attr('hidden', false);
     $('#datosEmp').attr('hidden', false);
     $('#datosPersonales').attr('hidden', false);
     $('#selectEmpresas').attr('hidden', true);
@@ -1277,6 +1280,7 @@ function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP,
     $('#esActivo').attr('hidden', false);
     $('#rolUser').attr('hidden', false);
     $('#datosUser').attr('hidden', false);
+    $('#rolUser').attr('hidden', false);
     $('#selectEmpresas').attr('hidden', true);
     $('#datosPersonales').addClass('show');
     $('#asociarEmpresa').attr('hidden', true);
@@ -1360,14 +1364,16 @@ async function cargarEmpresasSelect(selector){
     
     var lista = res.data;
 
-    for(var i = 0; i<lista.length; i++){
-      var option = document.createElement("option");
-      option.setAttribute("value", lista[i].idEmpresa);
-      option.setAttribute("label", lista[i].nombreEmpresa);
+   for(var i = 0; i<lista.length; i++){
+      if(lista[i].borradoEmpresa == 0){
+        var option = document.createElement("option");
+        option.setAttribute("value", lista[i].idEmpresa);
+        option.setAttribute("label", lista[i].nombreEmpresa);
 
-      $('#' + selector).append(option);
+        $('#' + selector).append(option);
+      }
+      
     }
-
     $('#' + selector).attr('hidden', false);
 
     }).catch((res) => {

@@ -337,14 +337,14 @@ public class PersonaServiceImpl implements PersonaService {
 			if (user.isPresent()) {
 				user.get().setBorradoUsuario(1);
 				usuarioRepository.saveAndFlush(user.get());
-				personaEntity.setBorradoP(1);
-				persona.setPersona(personaEntity);
+				person.get().setBorradoP(1);
+				persona.setPersona(person.get());
 				modificarPersona(persona);
 				resultado = Constantes.OK;
 
 			} else {
-				personaEntity.setBorradoP(1);
-				persona.setPersona(personaEntity);
+				person.get().setBorradoP(1);
+				persona.setPersona(person.get());
 				modificarPersona(persona);
 				resultado = Constantes.OK;
 			}

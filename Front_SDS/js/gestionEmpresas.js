@@ -24,11 +24,14 @@ async function cargarEmpresasSelect(selector){
     var lista = res.data;
 
     for(var i = 0; i<lista.length; i++){
-      var option = document.createElement("option");
-      option.setAttribute("value", lista[i].idEmpresa);
-      option.setAttribute("label", lista[i].nombreEmpresa);
+      if(lista[i].borradoEmpresa == 0){
+        var option = document.createElement("option");
+        option.setAttribute("value", lista[i].idEmpresa);
+        option.setAttribute("label", lista[i].nombreEmpresa);
 
-      $('#' + selector).append(option);
+        $('#' + selector).append(option);
+      }
+      
     }
 
     $('#' + selector).attr('hidden', false);
@@ -840,7 +843,7 @@ async function deleteEmpresa(){
       respuestaAjaxKO(res.code);
 
       let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
-      resetearFormulario("formularioGenerico", idElementoList); 
+      resetearFormulario("formularioGenerico", campos); 
 
       setLang(getCookie('lang'));
 
