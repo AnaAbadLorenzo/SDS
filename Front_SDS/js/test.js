@@ -129,6 +129,13 @@ function obtenerValor(valor, atributos, entidad){
 	return resultadoValor;
 }
 
+/*Función para la respuesta ok de los test*/
+function cargarRespuestaOkTest(datosPruebaAtributos, idCabecera, idCuerpo, atributosValor, entidad, idElementoList, tipoTest){
+  cargarTablasTest(datosPruebaAtributos, idCabecera, idCuerpo, tipoTest, atributosValor, entidad);    
+  validarDatosTabla(datosPruebaAtributos, idElementoList, tipoTest);
+}
+
+
 /*Función para cargar las tablas de test*/
 function cargarTablasTest(datos, idCabecera, idCuerpo, tipoTest, atributosValor, entidad){
 
@@ -190,7 +197,6 @@ function validarDatosTabla(datos, idElementoList, tipoTest){
 					});
 					break;
 				}
-			break;
 			case 'atributos':	
 				if (datos[i].campo === null || datos[i].prueba === null || datos[i].valor === null || 
 					datos[i].resultadoEsperado === null || datos[i].resultadoObtenido === null || datos[i].tipoPrueba === null ) {
@@ -204,7 +210,6 @@ function validarDatosTabla(datos, idElementoList, tipoTest){
 					});
 					break;
 				}
-			break;
 		}
 	}
 
