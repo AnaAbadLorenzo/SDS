@@ -278,18 +278,17 @@ public class ObjetivoServiceTest {
 		planRepository.saveAndFlush(plan);
 
 		try {
-			objetivoService.eliminaObjetivo(objetivo);
+			objetivoService
+					.eliminaObjetivo(new Objetivo(objetivo.getUsuario(), objetivoEliminar.getListaBusquedas().get(0)));
 		} catch (final ObjetivoAsociadoPlanException objetivoAsociadoPlanException) {
 			throw new ObjetivoAsociadoPlanException(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo(),
 					CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()));
 		} finally {
-			final ReturnBusquedas<ObjetivoEntity> objetivoDelete = objetivoService.buscarObjetivo(
-					objetivo.getObjetivo().getNombreObjetivo(), objetivo.getObjetivo().getDescripObjetivo(), 0, 1);
 			final PlanEntity planDelete = planRepository.findPlanByName(plan.getNombrePlan());
 
 			planRepository.deletePlan(planDelete.getIdPlan());
-			objetivoService.deleteObjetivo(objetivoDelete.getListaBusquedas().get(0));
+			objetivoService.deleteObjetivo(objetivoEliminar.getListaBusquedas().get(0));
 		}
 
 	}
