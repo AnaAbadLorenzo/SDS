@@ -19,6 +19,7 @@ public class Constantes {
 	public static final String GESTION_NOTICIAS = "Gestión de noticias";
 	public static final String GESTION_OBJETIVOS = "Gestión de objetivos";
 	public static final String GESTION_RESPUESTAS_POSIBLES = "Gestión de respuestas posibles";
+	public static final String GESTION_PLANES = "Gestión de planes";
 	public static final String TEST = "Test";
 	public static final String LOG_ACCIONES = "Log de acciones";
 	public static final String LOG_EXCEPCIONES = "Log de excepciones";
@@ -80,6 +81,12 @@ public class Constantes {
 	public static final String ACCION_BUSCAR_RESPUESTA = "Buscar respuesta posible";
 	public static final String ACCION_ELIMINAR_RESPUESTA = "Eliminar respuesta posible";
 	public static final String ACCION_REACTIVAR_RESPUESTA = "Reactivar respuesta posible";
+
+	public static final String ACCION_AÑADIR_PLAN = "Añadir plan";
+	public static final String ACCION_MODIFICAR_PLAN = "Modificar plan";
+	public static final String ACCION_BUSCAR_PLAN = "Buscar plan";
+	public static final String ACCION_ELIMINAR_PLAN = "Eliminar plan";
+	public static final String ACCION_REACTIVAR_PLAN = "Reactivar plan";
 
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
@@ -170,6 +177,11 @@ public class Constantes {
 	public static final String TEXTO_RESPUESTA_POSIBLE = "textoRespuesta";
 	public static final String FECHA_RESPUESTA_POSIBLE = "fechaRespuesta";
 
+	public static final String PLAN_ID = "idPlan";
+	public static final String NOMBRE_PLAN = "nombrePlan";
+	public static final String DESCRIPCION_PLAN = "descripPlan";
+	public static final String FECHA_PLAN = "fechaPlan";
+
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";
@@ -229,6 +241,10 @@ public class Constantes {
 	public static final String URL_JSON_OBJETIVO_DATA = "classpath:ObjetivoServiceData.json";
 	public static final String URL_JSON_RESPUESTA_POSIBLE_ATRIBUTOS_TEXTO_RESPUESTA = "classpath:RespuestaPosibleServiceAtributosTextoRespuesta.json";
 	public static final String URL_JSON_RESPUESTA_POSIBLE_DATA = "classpath:RespuestaPosibleServiceData.json";
+	public static final String URL_JSON_PLAN_ATRIBUTOS_NOMBRE_PLAN = "classpath:PlanServiceAtributosNombrePlan.json";
+	public static final String URL_JSON_PLAN_ATRIBUTOS_DESCRIPCION_PLAN = "classpath:PlanServiceAtributosDescripcionPlan.json";
+	public static final String URL_JSON_PLAN_ATRIBUTOS_FECHA_PLAN = "classpath:PlanServiceAtributosFechaPlan.json";
+	public static final String URL_JSON_PLAN_DATA = "classpath:PlanServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -537,6 +553,36 @@ public class Constantes {
 	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "respuestaPosibleAsociadaProceso";
 	public static final String REACTIVAR_RESPUESTA_POSIBLE = "reactivarRespuestaPosible";
 
+	public static final String NOMBRE_PLAN_VACIO = "nombrePlanVacio";
+	public static final String NOMBRE_PLAN_CARACTERESESPECIALES = "nombrePlanCaracteresEspeciales";
+	public static final String NOMBRE_PLAN_MENOR_3 = "nombrePlanMenor3";
+	public static final String NOMBRE_PLAN_MAYOR_48 = "nombrePlanMayor48";
+	public static final String NOMBRE_PLAN_CORRECTO = "nombrePlanCorrecto";
+
+	public static final String DESCRIPCION_PLAN_VACIO = "descripcionPlanVacio";
+	public static final String DESCRIPCION_PLAN_CARACTERESESPECIALES = "descripcionPlanCaracteresEspeciales";
+	public static final String DESCRIPCION_PLAN_MENOR_3 = "descripcionPlanMenor3";
+	public static final String DESCRIPCION_PLAN_CORRECTO = "descripcionPlanAlfabeticoCorrecto";
+
+	public static final String FECHA_PLAN_VACIA = "fechaPlanVacia";
+	public static final String FECHA_PLAN_ACENTOS = "fechaPlanAcentos";
+	public static final String FECHA_PLAN_ENHE = "fechaPlanEnhe";
+	public static final String FECHA_PLAN_CARACTERESESPECIALES = "fechaPlanCaracteresEspeciales";
+	public static final String FECHA_PLAN_MENOR_8 = "fechaPlanMenor8";
+	public static final String FECHA_PLAN_MAYOR_8 = "fechaPlanMayor8";
+	public static final String FECHA_PLAN_CORRECTO = "fechaPlanNumericoCorrecto";
+	public static final String FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL = "fechaIntroducidaAnteriorFechaActual";
+
+	public static final String DATOS_PLAN_VACIOS = "datosPlanVacios";
+
+	public static final String BUSCAR_PLAN = "buscarPlan";
+	public static final String GUARDAR_PLAN = "guardarPlan";
+	public static final String MODIFICAR_PLAN = "modificarPlan";
+	public static final String PLAN_YA_EXISTE = "planYaExiste";
+	public static final String PLAN_NO_EXISTE = "planNoExiste";
+	public static final String ELIMINAR_PLAN = "eliminarPlan";
+	public static final String REACTIVAR_PLAN = "reactivarPlan";
+
 	public static final String OK = "OK";
 
 	public static final String USUARIO_GENERICO = "usuario_generico";
@@ -615,19 +661,7 @@ public class Constantes {
 	public static final String RESPUESTA_POSIBLE_QUERY_FINDRESPUESTAPOSIBLE = "RespuestaPosibleEntity.findRespuestaPosible";
 	public static final String RESPUESTA_POSIBLE_QUERY_FINDELIMINADAS = "RespuestaPosibleEntity.findRespuestasPosiblesEliminadas";
 
-	// Constantes funcionalidad-accion
-	public static final String TEST_AÑADIR = "Test-Añadir";
-	public static final String TEST_MODIFICAR = "Test-Modificar";
-	public static final String TEST_ELIMINAR = "Test-Eliminar";
-	public static final String TEST_REACTIVAR = "Test-Reactivar";
-
-	public static final String LOGEXCEPCIONES_AÑADIR = "Log de excepciones-Añadir";
-	public static final String LOGEXCEPCIONES_MODIFICAR = "Log de excepciones-Modificar";
-	public static final String LOGEXCEPCIONES_ELIMINAR = "Log de excepciones-Eliminar";
-	public static final String LOGEXCEPCIONES_REACTIVAR = "Log de excepciones-Reactivar";
-
-	public static final String LOGACCIONES_AÑADIR = "Log de acciones-Añadir";
-	public static final String LOGACCIONES_MODIFICAR = "Log de acciones-Modificar";
-	public static final String LOGACCIONES_ELIMINAR = "Log de acciones-Eliminar";
-	public static final String LOGACCIONES_REACTIVAR = "Log de acciones-Reactivar";
+	public static final String PLAN_QUERY_FINDALL = "PlanEntity.findAllPlanes";
+	public static final String PLAN_QUERY_FINDPLAN = "PlanEntity.findPlan";
+	public static final String PLAN_QUERY_FINDELIMINADOS = "PlanEntity.findPlanesEliminados";
 }

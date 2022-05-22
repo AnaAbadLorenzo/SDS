@@ -58,7 +58,6 @@
 		
 		"idRespuesta" : 1,
 		"textoRespuesta" : "Sí",
-		"fechaRespuesta" : "2022-05-14",
 		"borradoRespuesta" : 0
 	},
 	
@@ -67,7 +66,6 @@
 		
 		"idRespuesta" : "",
 		"textoRespuesta" : "Tal vez",
-		"fechaRespuesta" : "2022-05-16",
 		"borradoRespuesta" : 0
 	},
 	
@@ -76,7 +74,6 @@
 		
 		"idRespuesta" : "",
 		"textoRespuesta" : "Frecuentemente",
-		"fechaRespuesta" : "2022-05-18",
 		"borradoRespuesta" : 0
 	},
 	
@@ -85,7 +82,6 @@
 		
 		"idRespuesta" : "",
 		"textoRespuesta" : "Con mucha frecuencia",
-		"fechaRespuesta" : "2022-05-20",
 		"borradoRespuesta" : 0
 	},
 	
@@ -94,7 +90,6 @@
 		
 		"idRespuesta" : "",
 		"textoRespuesta" : "Cada 3 meses",
-		"fechaRespuesta" : "2022-05-22",
 		"borradoRespuesta" : 1
 	}
 }

@@ -4,6 +4,7 @@ import com.sds.model.ObjetivoEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ObjetivoAsociadoPlanException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.objetivo.model.Objetivo;
@@ -20,8 +21,8 @@ public interface ObjetivoService {
 	String anadirObjetivo(final Objetivo objetivo)
 			throws ObjetivoYaExisteException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
 
-	String eliminaObjetivo(final Objetivo objetivo)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ObjetivoNoExisteException;
+	String eliminaObjetivo(final Objetivo objetivo) throws LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, ObjetivoNoExisteException, ObjetivoAsociadoPlanException;
 
 	String modificarObjetivo(final Objetivo objetivo)
 			throws LogExcepcionesNoGuardadoException, ObjetivoNoExisteException, LogAccionesNoGuardadoException;

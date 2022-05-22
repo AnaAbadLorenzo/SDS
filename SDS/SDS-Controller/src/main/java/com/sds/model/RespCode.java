@@ -3,6 +3,8 @@ package com.sds.model;
 public enum RespCode {
 
 	PARSE_EXCEPTION("PARSE_EXCEPTION", "Error al parsear los datos"), //
+	FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL("FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL",
+			"La fecha introducida por el usuario es anterior a la fecha actual"), //
 	MENU_USUARIO_OK("MENU_USUARIO_OK", "Las funcionalidades del usuario se han listado correctamente"), //
 	LOGIN_VACIO("LOGIN_VACIO", "Los datos de usuario y contraseña no pueden ser vacíos"), //
 	USUARIO_NO_ENCONTRADO("USUARIO_NO_EXISTE", "El usuario no existe"), //
@@ -123,6 +125,7 @@ public enum RespCode {
 	OBJETIVO_VACIO("OBJETIVO_VACIO", "El objetivo está vacía"), //
 	OBJETIVO_YA_EXISTE_EXCEPTION("OBJETIVO_YA_EXISTE_EXCEPTION", "El objetivo ya existe"), //
 	OBJETIVO_NO_EXISTE_EXCEPTION("OBJETIVO_NO_EXISTE_EXCEPTION", "El objetivo no existe"), //
+	OBJETIVO_ASOCIADO_PLAN_EXCEPTION("OBJETIVO_ASOCIADO_PLAN_EXCEPTION", "El objetivo se encuentra asociado a un plan"), //
 	NOTICIA_NO_EXISTE_EXCEPTION("NOTICIA_NO_EXISTE", "La noticia no existe"), //
 	RESPUESTA_POSIBLE_ECONTRADA("RESPUESTA_POSIBLE_ENCONTRADA",
 			"Las respuestas posibles se han encontrado correctamente"), //
@@ -140,6 +143,17 @@ public enum RespCode {
 	RESPUESTA_ASOCIADA_PROCESO_EXCEPTION("RESPUESTA_ASOCIADA_PROCESO_EXCEPTION",
 			"La respuesta posible está asociada a un proceso"), //
 	RESPUESTA_POSIBLE_VACIA("RESPUESTA_POSIBLE_VACIA", "El texto y/o fecha de la noticia son vacios"), //
+	PLAN_ENCONTRADO("PLAN_ENCONTRADO", "El plan se ha encontrado correctamente"), //
+	PLANES_LISTADOS("PLANES_LISTADOS", "Los planes se han listado correctamente"), //
+	PLANES_ELIMINADOS_LISTADOS("PLANES_ELIMINADOS_LISTADOS", "Los planes eliminados se han listado correctamente"), //
+	PLAN_GUARDADO("PLAN_GUARDADO", "El plan se ha guardado correctamente"), //
+	PLAN_MODIFICADO("PLAN_MODIFICADO", "El plan se ha modificado correctamente"), //
+	PLAN_ELIMINADO("PLAN_ELIMINADO", "El plan se ha eliminado correctamente"), //
+	PLAN_REACTIVADO("PLAN_REACTIVADO", "El plan se ha reactivado correctamente"), //
+	PLAN_BORRADO("PLAN_BORRADO", "El plan se ha borrado correctamente"), //
+	PLAN_YA_EXISTE_EXCEPTION("PLAN_YA_EXISTE_EXCEPTION", "El plan ya existe"), //
+	PLAN_NO_EXISTE_EXCEPTION("PLAN_NO_EXISTE_EXCEPTION", "El plan no existe"), //
+	PLAN_VACIO("PLAN_VACIO", "El nombre, la descripción y/o la fecha del plan están vacíos"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
@@ -237,7 +251,15 @@ public enum RespCode {
 	TEST_ACCIONES_RESPUESTA_POSIBLE_KO("TEST_ACCIONES_RESPUESTA_POSIBLE_KO",
 			"Se ha producido un error al ejecutar los test de acciones para las respuestas posibles"), //
 	TEST_ACCIONES_RESPUESTA_POSIBLE_OK("TEST_ACCIONES_RESPUESTA_POSIBLE_OK",
-			"Los test de acciones para las respuestas posibles se han ejecutado correctamente");
+			"Los test de acciones para las respuestas posibles se han ejecutado correctamente"),
+	TEST_ATRIBUTOS_PLAN_OK("TEST_ATRIBUTOS_PLAN_OK",
+			"Los test de atributo para los planes se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_PLAN_KO("TEST_ATRIBUTOS_PLAN_KO",
+			"Se ha producido un error al ejecutar los test de atributos para los planes"), //
+	TEST_ACCIONES_PLAN_KO("TEST_ACCIONES_PLAN_KO",
+			"Se ha producido un error al ejecutar los test de acciones para los planes"), //
+	TEST_ACCIONES_PLAN_OK("TEST_ACCIONES_PLAN_OK",
+			"Los test de acciones para los planes se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

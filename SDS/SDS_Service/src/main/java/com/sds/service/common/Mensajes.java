@@ -172,12 +172,12 @@ public class Mensajes {
 	public static final String TEXTO_NOTICIA_NO_PUEDE_SER_MENOR_QUE_3 = "El texto de la noticia no puede ser menor que 3";
 
 	public static final String NOMBRE_OBJETIVO_NO_PUEDE_SER_VACIO = "El nombre del objetivo no puede ser vacío";
-	public static final String NOMBRE_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_Y_ESPACIOS = "El nombre del objetivo solo puede contener letras y espacios";
+	public static final String NOMBRE_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS = "El nombre del objetivo solo puede contener letras, números y espacios";
 	public static final String NOMBRE_OBJETIVO_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre del objetivo no puede ser menor que 3";
 	public static final String NOMBRE_OBJETIVO_NO_PUEDE_SER_MAYOR_QUE_48 = "El nombre del objteivo no puede ser mayor que 48";
 
 	public static final String DESCRIPCION_OBJETIVO_NO_PUEDE_SER_VACIO = "La descripción del objetivo no puede ser vacío";
-	public static final String DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS = "La descripción del objetivo solo puede contener letras";
+	public static final String DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS = "La descripción del objetivo solo puede contener letras";
 	public static final String DESCRIPCION_OBJETIVO_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción del objetivo no puede ser menor que 3";
 
 	public static final String OBJETIVO_NO_PUEDE_SER_VACIO = "El nombre y/o la descripción del objetivo no pueden ser vacíos";
@@ -202,6 +202,7 @@ public class Mensajes {
 	public static final String OBJETIVO_GUARDADO_CORRECTAMENTE = "El objetivo se ha guardado correctamente";
 	public static final String OBJETIVO_MODIFICADO_CORRECTAMENTE = "El objetivo se ha modificado correctamente";
 	public static final String OBJETIVO_ELIMINADO_CORRECTAMENTE = "El objetivo se ha eliminado correctamente";
+	public static final String OBJETIVO_ASOCIADO_PLAN = "El objetivo está asociado a un plan";
 	public static final String OBJETIVO_REACTIVADO_CORRECTAMENTE = "El objetivo se ha reactivado correctamente";
 
 	public static final String TEXTO_RESPUESTA_NO_PUEDE_SER_VACIO = "El texto de la respuesta no puede ser vacío";
@@ -218,5 +219,31 @@ public class Mensajes {
 	public static final String RESPUESTA_POSIBLE_ELIMINADA_CORRECTAMENTE = "La respuesta posible se ha eliminado correctamente";
 	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "La respuesta posible no ha podido eliminarse porque está asociada a un proceso";
 	public static final String RESPUESTA_POSIBLE_REACTIVADA_CORRECTAMENTE = "La respuesta posible se ha reactivado correctamente";
+
+	public static final String NOMBRE_PLAN_NO_PUEDE_SER_VACIO = "El nombre del plan no puede ser vacío";
+	public static final String NOMBRE_PLAN_SOLO_PUEDE_CONTENER_LETRAS_Y_ESPACIOS = "El nombre del pla solo puede contener letras y espacios";
+	public static final String NOMBRE_PLAN_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre del plan no puede ser menor que 3";
+	public static final String NOMBRE_PLAN_NO_PUEDE_SER_MAYOR_QUE_48 = "El nombre del plan no puede ser mayor que 48";
+
+	public static final String DESCRIPCION_PLAN_NO_PUEDE_SER_VACIA = "La descripción del plan no puede ser vacía";
+	public static final String DESCRIPCION_PLAN_PUEDE_CONTENER_LETRAS_Y_ESPACIOS = "La descripción del plan sólo puede contener letras y espacios";
+	public static final String DESCRIPCION_PLAN_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción del plan no puede ser menor que 3";
+
+	public static final String FECHA_PLAN_NO_PUEDE_SER_VACIA = "La fecha del plan no puede ser vacía";
+	public static final String FECHA_PLAN_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS = "La fecha del plan solo puede contener numeros";
+	public static final String FECHA_PLAN_NO_PUEDE_SER_MENOR_QUE_8 = "La fecha del plan no puede ser menor que 8";
+	public static final String FECHA_PLAN_NO_PUEDE_SER_MAYOR_QUE_8 = "La fecha del plan no puede ser mayor que 8";
+
+	public static final String FECHA_INTRODUCIDA_NO_PUEDE_SER_MENOR_QUE_FECHA_ACTUAL = "La fecha introducida no puede ser menor que la fecha actual";
+
+	public static final String PLAN_NO_PUEDE_SER_VACIO = "El nombre, descripción y/o fecha del plan no pueden ser vacíos";
+
+	public static final String PLAN_BUSCADO_CORRECTAMENTE = "El plan se ha encontrado correctamente";
+	public static final String PLAN_YA_EXISTE = "El plan ya existe";
+	public static final String PLAN_NO_EXISTE = "El plan no existe";
+	public static final String PLAN_GUARDADO_CORRECTAMENTE = "El plan se ha guardado correctamente";
+	public static final String PLAN_MODIFICADO_CORRECTAMENTE = "El plan se ha modificado correctamente";
+	public static final String PLAN_ELIMINADO_CORRECTAMENTE = "El plan se ha eliminado correctamente";
+	public static final String PLAN_REACTIVADO_CORRECTAMENTE = "El plan se ha reactivado correctamente";
 
 }

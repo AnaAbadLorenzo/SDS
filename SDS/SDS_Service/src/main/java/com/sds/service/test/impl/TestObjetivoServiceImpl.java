@@ -2,6 +2,7 @@ package com.sds.service.test.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sds.model.ObjetivoEntity;
+import com.sds.model.PlanEntity;
 import com.sds.repository.ObjetivoRepository;
+import com.sds.repository.PlanRepository;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -37,6 +40,9 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	PlanRepository planRepository;
 
 	public TestObjetivoServiceImpl() {
 		testAtributoNombreObjetivo = new TestAtributoNombreObjetivo();
@@ -71,7 +77,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 		datosPruebaAtributos.add(testAtributoNombreObjetivo
 				.getTestNombreObjetivoAlfabeticoMayor48(datosEntradaNombreObjetivoAlfabeticoMayor48));
 		datosPruebaAtributos.add(testAtributoNombreObjetivo
-				.getTestNombreObjetivoCorrectoAlfabetico(datosEntradaNombreObjetivoAlfabetico));
+				.getTestNombreObjetivoCorrectoAlfanumerico(datosEntradaNombreObjetivoAlfabetico));
 
 		return datosPruebaAtributos;
 
@@ -94,7 +100,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 		datosPruebaAtributos.add(testAtributoNombreObjetivo
 				.getTestNombreObjetivoAlfabeticoMayor48(datosEntradaNombreObjetivoAlfabeticoMayor48));
 		datosPruebaAtributos.add(testAtributoNombreObjetivo
-				.getTestNombreObjetivoCorrectoAlfabetico(datosEntradaNombreObjetivoAlfabetico));
+				.getTestNombreObjetivoCorrectoAlfanumerico(datosEntradaNombreObjetivoAlfabetico));
 
 		return datosPruebaAtributos;
 	}
@@ -122,7 +128,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 		datosPruebaAtributos.add(testAtributoDescripcionObjetivo
 				.getTestDescripcionObjetivoAlfabeticoMenor3(datosEntradaDescripcionObjetivoAlfabeticoMenor3));
 		datosPruebaAtributos.add(testAtributoDescripcionObjetivo
-				.getTestDescripcionObjetivoAlfabeticoCorrecto(datosEntradaDescripcionObjetivoAlfabetico));
+				.getTestDescripcionObjetivoAlfanumericoCorrecto(datosEntradaDescripcionObjetivoAlfabetico));
 
 		return datosPruebaAtributos;
 
@@ -143,7 +149,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 				.add(testAtributoDescripcionObjetivo.getTestDescripcionObjetivoAlfabeticoCaracteresEspeciales(
 						datosEntradaDescripcionObjetivoCaracteresEspeciales));
 		datosPruebaAtributos.add(testAtributoDescripcionObjetivo
-				.getTestDescripcionObjetivoAlfabeticoCorrecto(datosEntradaDescripcionObjetivoAlfabetico));
+				.getTestDescripcionObjetivoAlfanumericoCorrecto(datosEntradaDescripcionObjetivoAlfabetico));
 
 		return datosPruebaAtributos;
 
@@ -206,9 +212,12 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 				.generarObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
 		final ObjetivoEntity datosEntradaEliminarObjetivoNoExiste = generarJSON
 				.generarObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.OBJETIVO_NO_EXISTE);
+		final ObjetivoEntity datosEntradaEliminarObjetivoAsociadoPlan = generarJSON
+				.generarObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
 
 		datosPruebaAcciones.add(getTestEliminarObjetivoCorrecto(datosEntradaEliminarObjetivoCorrecto));
 		datosPruebaAcciones.add(getTestEliminarObjetivoNoExiste(datosEntradaEliminarObjetivoNoExiste));
+		datosPruebaAcciones.add(getTestEliminarObjetivoAsociadoPlan(datosEntradaEliminarObjetivoAsociadoPlan));
 
 		return datosPruebaAcciones;
 	}
@@ -266,16 +275,6 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO,
 				getValorObjetivo(datosEntradaAccionBuscarObjetivo));
 
-	}
-
-	private String buscarObjetivo(final ObjetivoEntity objetivo) {
-		String resultado = StringUtils.EMPTY;
-
-		objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
-
-		resultado = CodigosMensajes.BUSCAR_OBJETIVO_CORRECTO + " - " + Mensajes.OBJETIVO_BUSCADO_CORRECTAMENTE;
-
-		return resultado;
 	}
 
 	private DatosPruebaAcciones getTestGuardarObjetivoCorrecto(final ObjetivoEntity datosEntradaAccionGuardarObjetivo) {
@@ -438,6 +437,20 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 
 	}
 
+	private DatosPruebaAcciones getTestEliminarObjetivoAsociadoPlan(
+			final ObjetivoEntity datosEntradaAccionEliminarObjetivoAsociadoPlan) {
+
+		final String resultadoObtenido = eliminarObjetivoAsociadoPlan(datosEntradaAccionEliminarObjetivoAsociadoPlan);
+
+		final String resultadoEsperado = CodigosMensajes.OBJETIVO_ASOCIADO_PLAN + " - "
+				+ Mensajes.OBJETIVO_ASOCIADO_PLAN;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.OBJETIVO_ASOCIADO_PLAN, Constantes.ERROR,
+				getValorObjetivo(datosEntradaAccionEliminarObjetivoAsociadoPlan));
+
+	}
+
 	private DatosPruebaAcciones getTestReactivarObjetivoCorrecto(
 			final ObjetivoEntity datosEntradaAccionEliminarObjetivo) {
 
@@ -463,6 +476,16 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 				DefinicionPruebas.OBJETIVO_NO_EXISTE, Constantes.ERROR,
 				getValorObjetivo(datosEntradaAccionReactivarObjetivoNoExiste));
 
+	}
+
+	private String buscarObjetivo(final ObjetivoEntity objetivo) {
+		String resultado = StringUtils.EMPTY;
+
+		objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
+
+		resultado = CodigosMensajes.BUSCAR_OBJETIVO_CORRECTO + " - " + Mensajes.OBJETIVO_BUSCADO_CORRECTAMENTE;
+
+		return resultado;
 	}
 
 	private String guardarObjetivo(final ObjetivoEntity objetivo) {
@@ -556,7 +579,6 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 		String resultado = StringUtils.EMPTY;
 
 		if (objetivoBD == null) {
-
 			objetivo.setBorradoObjetivo(0);
 			objetivoRepository.saveAndFlush(objetivo);
 
@@ -567,7 +589,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 
-			objetivoRepository.delete(objetivoBDNuevo);
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 
 			resultado = CodigosMensajes.ELIMINAR_OBJETIVO_CORRECTO + " - " + Mensajes.OBJETIVO_ELIMINADO_CORRECTAMENTE;
 
@@ -588,6 +610,57 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 		return resultado;
 	}
 
+	private String eliminarObjetivoAsociadoPlan(final ObjetivoEntity objetivo) {
+		final ObjetivoEntity objetivoBD = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+		String resultado = StringUtils.EMPTY;
+		Boolean eliminarObjetivo = Boolean.FALSE;
+
+		if (objetivoBD == null) {
+			objetivo.setBorradoObjetivo(0);
+			objetivoRepository.saveAndFlush(objetivo);
+			final ObjetivoEntity objetivoBuscar = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+			final PlanEntity plan = new PlanEntity("Nombre plan", "Plan de pruebas", new Date(), 0);
+			plan.setObjetivo(objetivoBuscar);
+			planRepository.saveAndFlush(plan);
+
+			final List<PlanEntity> planes = planRepository.findAll();
+
+			if (!planes.isEmpty()) {
+				for (final PlanEntity planEntity : planes) {
+					if (!planEntity.getObjetivo().getIdObjetivo().equals(objetivoBuscar.getIdObjetivo())) {
+						eliminarObjetivo = true;
+					} else {
+						eliminarObjetivo = false;
+						break;
+					}
+				}
+			}
+
+			if (Boolean.FALSE.equals(eliminarObjetivo)) {
+				resultado = CodigosMensajes.OBJETIVO_ASOCIADO_PLAN + " - " + Mensajes.OBJETIVO_ASOCIADO_PLAN;
+			} else {
+				final ObjetivoEntity objetivoBDBorrar = objetivoRepository
+						.findObjetivoByName(objetivo.getNombreObjetivo());
+
+				objetivoBDBorrar.setBorradoObjetivo(1);
+				objetivoRepository.saveAndFlush(objetivoBDBorrar);
+
+				final ObjetivoEntity objetivoBDNuevo = objetivoRepository
+						.findObjetivoByName(objetivo.getNombreObjetivo());
+				final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+
+				planRepository.deletePlan(planBDNuevo.getIdPlan());
+				objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
+
+				resultado = CodigosMensajes.ELIMINAR_OBJETIVO_CORRECTO + " - "
+						+ Mensajes.OBJETIVO_ELIMINADO_CORRECTAMENTE;
+			}
+
+		}
+
+		return resultado;
+	}
+
 	private String reactivarObjetivo(final ObjetivoEntity objetivo) {
 		final ObjetivoEntity objetivoBD = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 		String resultado = StringUtils.EMPTY;
@@ -600,7 +673,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 			final ObjetivoEntity objetivoBDReactivar = objetivoRepository
 					.findObjetivoByName(objetivo.getNombreObjetivo());
 
-			objetivoBDReactivar.setBorradoObjetivo(1);
+			objetivoBDReactivar.setBorradoObjetivo(0);
 			objetivoRepository.saveAndFlush(objetivoBDReactivar);
 
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());

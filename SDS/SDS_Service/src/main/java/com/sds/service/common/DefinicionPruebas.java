@@ -31,6 +31,7 @@ public class DefinicionPruebas {
 	public static final String DIRECCION_CORRECTO = "Alfanumerico que puede contener acentos, ñ, caracteres especiales, tamaño mayor que 3 y menor que 128";
 	public static final String IDENTIFICADOR_CORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño 9";
 	public static final String IDENTIFICADOR_INCORRECTO = "Alfanumérico sin acentos, ni ñ, ni caracteres especiales, tamaño 9 pero no válido";
+	public static final String FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL = "La fecha introducida por el usuario es anterior a la fecha actual";
 
 	public static final String NUMERICO = "Numerico";
 	public static final String NUMERICO_ENHE = "Numérico con ñ";
@@ -135,6 +136,7 @@ public class DefinicionPruebas {
 	public static final String OBJETIVO_NO_EXISTE = "El objetivo no existe";
 	public static final String ELIMINAR_OBJETIVO_CORRECTO = "El objetivo se ha eliminado correctamente";
 	public static final String REACTIVAR_OBJETIVO_CORRECTO = "El objetivo se ha reactivado correctamente";
+	public static final String OBJETIVO_ASOCIADO_PLAN = "El objetivo se encuentra asociado a un plan";
 
 	public static final String GUARDAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha guardado correctamente";
 	public static final String MODIFICAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha modificado correctamente";
@@ -142,5 +144,12 @@ public class DefinicionPruebas {
 	public static final String RESPUESTA_POSIBLE_NO_EXISTE = "La respuesta posible no existe";
 	public static final String ELIMINAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha eliminado correctamente";
 	public static final String REACTIVAR_RESPUESTA_POSIBLE_CORRECTO = "La respuesta posible se ha reactivado correctamente";
+
+	public static final String GUARDAR_PLAN_CORRECTO = "El plan se ha guardado correctamente";
+	public static final String MODIFICAR_PLAN_CORRECTO = "El plan se ha modificado correctamente";
+	public static final String PLAN_YA_EXISTE = "El plan ya existe";
+	public static final String PLAN_NO_EXISTE = "El plan no existe";
+	public static final String ELIMINAR_PLAN_CORRECTO = "El plan se ha eliminado correctamente";
+	public static final String REACTIVAR_PLAN_CORRECTO = "El plan se ha reactivado correctamente";
 
 }

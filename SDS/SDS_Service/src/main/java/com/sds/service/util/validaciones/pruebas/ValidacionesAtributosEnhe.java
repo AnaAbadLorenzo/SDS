@@ -49,6 +49,21 @@ public class ValidacionesAtributosEnhe {
 
 		}
 
+		if (atr.equals(Atributo.FECHA_PLAN)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_PLAN_NUMERICA_INCORRECTA + " - "
+						+ Mensajes.FECHA_PLAN_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+
+			}
+
+		}
+
 		if (atributo.contains(Constantes.ENHE)) {
 			switch (funcionalidad) {
 			case LOGIN:

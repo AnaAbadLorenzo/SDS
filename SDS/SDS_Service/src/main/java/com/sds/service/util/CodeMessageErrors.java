@@ -47,11 +47,16 @@ public enum CodeMessageErrors {
 	NOTICIA_VACIA("El título y/o el texto de la noticia están vacíos"), //
 	OBJETIVO_YA_EXISTE_EXCEPTION("El objetivo ya existe"), //
 	OBJETIVO_NO_EXISTE_EXCEPTION("El objetivo no existe"), //
+	OBJETIVO_ASOCIADO_PLAN_EXCEPTION("El objetivo se encuentra asociado a un plan"), //
 	OBJETIVO_VACIO("El nombre y/o la descripción del objetivo están vacíos"), //
 	RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION("La respuesta posible ya existe"), //
 	RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION("La respuesta posible no existe"), //
 	RESPUESTA_POSIBLE_ASOCIADA_PROCESO("La respuesta no puede eliminarse porque está asociada a un proceso"), //
-	RESPUESTA_POSIBLE_VACIA("El texto y/o la fecha de la respuesta están vacíos");
+	RESPUESTA_POSIBLE_VACIA("El texto y/o la fecha de la respuesta están vacíos"), //
+	PLAN_YA_EXISTE_EXCEPTION("El plan ya existe"), //
+	PLAN_NO_EXISTE_EXCEPTION("El plan no existe"), //
+	PLAN_VACIO("El nombre, la descripción y/o la fecha del plan son vacíos"),
+	FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL("La fecha introducida por el usuario es anterior a la fecha actual");
 
 	private String codigo;
 

@@ -44,6 +44,19 @@ public class ValidacionesAtributosMenor {
 			}
 		}
 
+		if (atr.equals(Atributo.FECHA_PLAN)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_PLAN_MENOR_QUE_8 + " - "
+						+ Mensajes.FECHA_PLAN_NO_PUEDE_SER_MENOR_QUE_8;
+
+			}
+		}
+
 		if (atributo.length() < tamanhoMinimo) {
 			switch (funcionalidad) {
 			case LOGIN:
@@ -268,6 +281,16 @@ public class ValidacionesAtributosMenor {
 					break;
 				}
 				break;
+			case GESTION_PLANES:
+				switch (atr) {
+				case NOMBRE_PLAN:
+					resultado = CodigosMensajes.NOMBRE_PLAN_MENOR_QUE_3 + " - "
+							+ Mensajes.NOMBRE_PLAN_NO_PUEDE_SER_MENOR_QUE_3;
+					break;
+				case DESCRIP_PLAN:
+					resultado = CodigosMensajes.DESCRIPCION_PLAN_MENOR_QUE_3 + " - "
+							+ Mensajes.DESCRIPCION_PLAN_NO_PUEDE_SER_MENOR_QUE_3;
+				}
 			default:
 				break;
 			}

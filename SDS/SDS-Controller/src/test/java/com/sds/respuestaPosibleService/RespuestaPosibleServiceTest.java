@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -15,7 +16,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
+import com.sds.model.ProcesoRespuestaPosibleEntity;
 import com.sds.model.RespuestaPosibleEntity;
+import com.sds.repository.ProcesoRespuestaPosibleRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -38,6 +41,9 @@ public class RespuestaPosibleServiceTest {
 
 	@Autowired
 	RespuestaPosibleService respuestaPosibleService;
+
+	@Autowired
+	ProcesoRespuestaPosibleRepository procesoRespuestaPosibleRepository;
 
 	@Test
 	public void RespuestaPosibleService_buscarRespuestaPosible()
@@ -143,14 +149,14 @@ public class RespuestaPosibleServiceTest {
 	@Test
 	public void RespuestaPosibleService_modificarRespuestaPosible()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			java.text.ParseException, RespuestaPosibleNoExisteException {
+			java.text.ParseException, RespuestaPosibleNoExisteException, RespuestaPosibleYaExisteException {
 
 		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
 				Constantes.MODIFICAR_RESPUESTA_POSIBLE);
 
 		String respuesta = StringUtils.EMPTY;
 
-		respuestaPosibleService.modificarRespuestaPosible(respuestaPosible);
+		respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleModificar = respuestaPosibleService
 				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
@@ -232,20 +238,29 @@ public class RespuestaPosibleServiceTest {
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleAsociarProceso = respuestaPosibleService
 				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
+		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(1,
+				respuestaPosibleAsociarProceso.getListaBusquedas().get(0).getIdRespuesta(), new Date());
+		procesoRespuestaPosibleRepository.saveAndFlush(procesoRespuestaPosible);
+
 		respuestaPosibleService.eliminarRespuestaPosible(new RespuestaPosible(respuestaPosible.getUsuario(),
 				respuestaPosibleAsociarProceso.getListaBusquedas().get(0)));
+
+		procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(procesoRespuestaPosible.getIdRespuesta(),
+				procesoRespuestaPosible.getIdProceso());
+
+		respuestaPosibleService.deleteRespuestaPosible(respuestaPosibleAsociarProceso.getListaBusquedas().get(0));
 
 	}
 
 	@Test(expected = RespuestaPosibleNoExisteException.class)
 	public void RespuestaPosibleService_eliminarRespuestaPosibleNoExiste()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			java.text.ParseException, RespuestaPosibleNoExisteException {
+			java.text.ParseException, RespuestaPosibleNoExisteException, RespuestaPosibleAsociadaProcesoException {
 
 		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
 				Constantes.RESPUESTA_POSIBLE_NO_EXISTE);
 
-		respuestaPosibleService.deleteRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity());
+		respuestaPosibleService.eliminarRespuestaPosible(respuestaPosible);
 
 	}
 

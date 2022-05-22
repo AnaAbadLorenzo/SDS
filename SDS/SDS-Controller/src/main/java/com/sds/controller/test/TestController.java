@@ -26,6 +26,7 @@ import com.sds.service.test.TestLoginService;
 import com.sds.service.test.TestNoticiaService;
 import com.sds.service.test.TestObjetivoService;
 import com.sds.service.test.TestPersonaService;
+import com.sds.service.test.TestPlanService;
 import com.sds.service.test.TestRecuperarPassService;
 import com.sds.service.test.TestRegistrarService;
 import com.sds.service.test.TestRespuestaPosibleService;
@@ -73,6 +74,9 @@ public class TestController {
 
 	@Autowired
 	TestRespuestaPosibleService testRespuestaPosibleService;
+
+	@Autowired
+	TestPlanService testPlanService;
 
 	@GetMapping(value = "/login/atributos")
 	@ResponseBody
@@ -2005,6 +2009,203 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_RESPUESTA_POSIBLE_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/plan/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestPlanAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombrePlan = testPlanService
+					.getPruebasAtributoNombrePlanBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripPlan = testPlanService
+					.getPruebasAtributoDescripPlanBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaPlan = testPlanService
+					.getPruebasAtributoFechaPlanBuscar();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombrePlan);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripPlan);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaPlan);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_PLAN);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PLAN_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/plan/atributos/guardar")
+	@ResponseBody
+	public RespEntity TestPlanAtributosAccionGuardar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombrePlan = testPlanService.getPruebasAtributoNombrePlan();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripPlan = testPlanService
+					.getPruebasAtributoDescripPlan();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaPlan = testPlanService.getPruebasAtributoFechaPlan();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombrePlan);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripPlan);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaPlan);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_PLAN);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PLAN_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/plan/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestPlanAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombrePlan = testPlanService.getPruebasAtributoNombrePlan();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripPlan = testPlanService
+					.getPruebasAtributoDescripPlan();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaPlan = testPlanService.getPruebasAtributoFechaPlan();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombrePlan);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripPlan);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaPlan);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_PLAN);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PLAN_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/plan/accion/buscar")
+	@ResponseBody
+	public RespEntity TestPlanAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testPlanService.getPruebasAccionesPlanBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_PLAN);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PLAN_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/plan/accion/guardar")
+	@ResponseBody
+	public RespEntity TestPlanAccionGuardar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testPlanService.getPruebasAccionesPlanGuardar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_PLAN);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PLAN_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/plan/accion/modificar")
+	@ResponseBody
+	public RespEntity TestPlanAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testPlanService.getPruebasAccionesPlanModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_PLAN);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PLAN_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/plan/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestPlanAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testPlanService.getPruebasAccionesPlanEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_PLAN);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PLAN_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/plan/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestPlanAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testPlanService.getPruebasAccionesPlanReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PLAN_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PLANES);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_PLAN);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PLAN_OK, respuestaTestAcciones);
 	}
 
 }

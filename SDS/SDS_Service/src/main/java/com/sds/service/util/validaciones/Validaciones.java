@@ -14,6 +14,7 @@ import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.NoticiasEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
+import com.sds.model.PlanEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
@@ -53,7 +54,7 @@ public class Validaciones {
 			return false;
 
 		} else {
-			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-mm-dd");
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 			Date date = null;
 			date = formato.parse("0000-00-00");
 			if (persona.getFechaNacP().equals(date)) {
@@ -357,6 +358,47 @@ public class Validaciones {
 
 	public boolean comprobarTextoRespuestaPosibleBlank(final String textoRespuesta) {
 		if (StringUtils.isBlank(textoRespuesta)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarPlanBlank(final PlanEntity planEntity) throws ParseException {
+		if (StringUtils.isBlank(planEntity.getNombrePlan()) || StringUtils.isBlank(planEntity.getDescripPlan())) {
+			return false;
+		} else {
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = formato.parse("0000-00-00");
+			if (planEntity.getFechaPlan().equals(date)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean comprobarNombrePlanBlank(final String nombrePlan) {
+		if (StringUtils.isBlank(nombrePlan)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarDescripPlanBlank(final String descripPlan) {
+		if (StringUtils.isBlank(descripPlan)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarFechaPlanBlank(final Date fechaPlan) throws ParseException {
+		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		date = formato.parse("0000-00-00");
+		if (fechaPlan.equals(date)) {
 			return false;
 		} else {
 			return true;

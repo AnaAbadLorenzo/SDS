@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
+import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -16,11 +17,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
 import com.sds.model.ObjetivoEntity;
+import com.sds.model.PlanEntity;
+import com.sds.repository.PlanRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ObjetivoAsociadoPlanException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.exception.RolNoExisteException;
@@ -35,6 +39,9 @@ public class ObjetivoServiceTest {
 
 	@Autowired
 	ObjetivoService objetivoService;
+
+	@Autowired
+	PlanRepository planRepository;
 
 	@Test
 	public void ObjetivoService_buscarObjetivo() throws IOException, ParseException {
@@ -227,7 +234,7 @@ public class ObjetivoServiceTest {
 	@Test
 	public void ObjetivoService_eliminarObjetivoCorrecto()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ObjetivoNoExisteException, ObjetivoYaExisteException {
+			ObjetivoNoExisteException, ObjetivoYaExisteException, ObjetivoAsociadoPlanException {
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
 
 		objetivoService.anadirObjetivo(objetivo);
@@ -253,6 +260,37 @@ public class ObjetivoServiceTest {
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.OBJETIVO_NO_EXISTE);
 
 		objetivoService.deleteObjetivo(objetivo.getObjetivo());
+
+	}
+
+	@Test(expected = ObjetivoAsociadoPlanException.class)
+	public void ObjetivoService_eliminarObjetivoAsociadoPlan()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ObjetivoNoExisteException, ObjetivoYaExisteException, ObjetivoAsociadoPlanException {
+
+		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
+		objetivoService.anadirObjetivo(objetivo);
+		final ReturnBusquedas<ObjetivoEntity> objetivoEliminar = objetivoService.buscarObjetivo(
+				objetivo.getObjetivo().getNombreObjetivo(), objetivo.getObjetivo().getDescripObjetivo(), 0, 1);
+
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Plan de pruebas", new Date(), 0);
+		plan.setObjetivo(objetivoEliminar.getListaBusquedas().get(0));
+		planRepository.saveAndFlush(plan);
+
+		try {
+			objetivoService.eliminaObjetivo(objetivo);
+		} catch (final ObjetivoAsociadoPlanException objetivoAsociadoPlanException) {
+			throw new ObjetivoAsociadoPlanException(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()));
+		} finally {
+			final ReturnBusquedas<ObjetivoEntity> objetivoDelete = objetivoService.buscarObjetivo(
+					objetivo.getObjetivo().getNombreObjetivo(), objetivo.getObjetivo().getDescripObjetivo(), 0, 1);
+			final PlanEntity planDelete = planRepository.findPlanByName(plan.getNombrePlan());
+
+			planRepository.deletePlan(planDelete.getIdPlan());
+			objetivoService.deleteObjetivo(objetivoDelete.getListaBusquedas().get(0));
+		}
 
 	}
 

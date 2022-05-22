@@ -1,0 +1,34 @@
+{
+	"descripcionPlanVacio": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"descripcionPlanCaracteresEspeciales": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "@@@**",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"descripcionPlanMenor3": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "E",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"descripcionPlanAlfabeticoCorrecto": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	}
+	
+}

@@ -13,7 +13,7 @@ import com.sds.service.test.model.DatosPruebaAtributos;
 import com.sds.service.test.util.CrearDatosPruebaAtributos;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosBlank;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCaracteresEspeciales;
-import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfabetico;
+import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosCorrectoAlfanumerico;
 import com.sds.service.util.validaciones.pruebas.ValidacionesAtributosMenor;
 
 public class TestAtributoDescripcionObjetivo {
@@ -21,14 +21,14 @@ public class TestAtributoDescripcionObjetivo {
 	private final ValidacionesAtributosBlank validacionesAtributosBlank;
 	private final ValidacionesAtributosCaracteresEspeciales validacionesAtributosCaracteresEspeciales;
 	private final ValidacionesAtributosMenor validacionesAtributosMenor;
-	private final ValidacionesAtributosCorrectoAlfabetico validacionesAtributosCorrectoAlfabetico;
+	private final ValidacionesAtributosCorrectoAlfanumerico validacionesAtributosCorrectoAlfanumerico;
 	private final CrearDatosPruebaAtributos crearDatosPruebaAtributos;
 
 	public TestAtributoDescripcionObjetivo() {
 		validacionesAtributosBlank = new ValidacionesAtributosBlank();
 		validacionesAtributosCaracteresEspeciales = new ValidacionesAtributosCaracteresEspeciales();
 		validacionesAtributosMenor = new ValidacionesAtributosMenor();
-		validacionesAtributosCorrectoAlfabetico = new ValidacionesAtributosCorrectoAlfabetico();
+		validacionesAtributosCorrectoAlfanumerico = new ValidacionesAtributosCorrectoAlfanumerico();
 		crearDatosPruebaAtributos = new CrearDatosPruebaAtributos();
 	}
 
@@ -55,8 +55,8 @@ public class TestAtributoDescripcionObjetivo {
 						datosEntradaDescripcionObjetivoCaracteresEspeciales.getDescripObjetivo(),
 						Funcionalidad.GESTION_OBJETIVOS, Atributo.DESCRIPCION_OBJETIVO);
 
-		final String resultadoEsperado = CodigosMensajes.OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
-				+ Mensajes.DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS;
+		final String resultadoEsperado = CodigosMensajes.OBJETIVO_DESCRIPTION_ALFANUMERICO_INCORRECTO + " - "
+				+ Mensajes.DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFABETICO_CARACTERES_ESPECIALES, Constantes.ERROR,
@@ -79,16 +79,16 @@ public class TestAtributoDescripcionObjetivo {
 				datosEntradaDescripcionObjetivoAlfabeticoMenor3.getDescripObjetivo(), Constantes.DESCRIPCION_OBJETIVO);
 	}
 
-	public DatosPruebaAtributos getTestDescripcionObjetivoAlfabeticoCorrecto(
+	public DatosPruebaAtributos getTestDescripcionObjetivoAlfanumericoCorrecto(
 			final ObjetivoEntity datosEntradaDescripcionObjetivo) {
 
-		final String resultadoObtenido = validacionesAtributosCorrectoAlfabetico
-				.comprobarAtributoCorrectoAlfabetico(datosEntradaDescripcionObjetivo.getDescripObjetivo());
+		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico
+				.comprobarAtributoCorrectoAlfanumerico(datosEntradaDescripcionObjetivo.getDescripObjetivo());
 
 		final String resultadoEsperado = Mensajes.AVANZAR_SIGUIENTE_CAMPO;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ALFABETICO_CORRECTO, Constantes.EXITO,
+				DefinicionPruebas.ALFANUMERICO_CORRECTO, Constantes.EXITO,
 				datosEntradaDescripcionObjetivo.getDescripObjetivo(), Constantes.DESCRIPCION_OBJETIVO);
 
 	}

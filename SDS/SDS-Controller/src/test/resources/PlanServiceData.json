@@ -1,0 +1,112 @@
+{
+	"buscarPlan": {
+		"usuario" : "ana",
+		
+		"idPlan" : "1",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Plan para verificar el objetivo fin de la pobreza",
+		"fechaPlan" : "2022-05-21",
+		"borradoPlan" : 0
+	},
+	
+	"guardarPlan": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Nuevo plan",
+		"descripPlan" : "Esta es la descripción del nuevo plan",
+		"fechaPlan" : "2022-05-21",
+		"borradoPlan" : 0
+	},
+	
+	"modificarPlan": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Plan a modificar",
+		"descripPlan" : "Esta es la descripción del plan a modificar",
+		"fechaPlan" : "2022-05-21",
+		"borradoPlan" : 0
+	},
+	
+	"planYaExiste": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Plan para verificar el objetivo fin de la pobreza",
+		"fechaPlan" : "2022-05-21",
+		"borradoPlan" : 0
+	},
+	
+	"planNoExiste": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Plan no existe",
+		"descripPlan" : "Esta es la descripción del plan que no existe",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"eliminarPlan": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Eliminar plan",
+		"descripPlan" : "Esta es la descripción del plan a eliminar",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	
+	"reactivarPlan": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Reactivar plan",
+		"descripPlan" : "Esta es la descripción del plan a reactivar",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"nombrePlanVacio": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"descripcionPlanVacio": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanVacia": {
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "",
+		"borradoPlan" : 0
+	},
+	
+	"fechaIntroducidaAnteriorFechaActual": {
+		"usuario" : "ana",
+		
+		"idPlan":"",
+		"nombrePlan": "Plan",
+		"descripPlan" : "Esta es la descripcion del plan con fecha anterior a la actual",
+		"fechaPlan" : "2021-05-20",
+		"borradoPlan": 0
+	}
+}

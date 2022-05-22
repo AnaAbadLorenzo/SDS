@@ -74,7 +74,8 @@ function buscarNoticiaAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         var texto = getCookie('textoNoticia');
       }
 
-      if(getCookie('fechaNoticia') == null || getCookie('fechaNoticia') == "" || getCookie('fechaNoticia') == "1900-01-01" ){
+
+      if(getCookie('fechaNoticia') == null || getCookie('fechaNoticia') == "null" || getCookie('fechaNoticia') == "" || getCookie('fechaNoticia') == "1900-01-01" ){
         var fecha = "";
       }else{
         var fecha = getCookie('fechaNoticia');

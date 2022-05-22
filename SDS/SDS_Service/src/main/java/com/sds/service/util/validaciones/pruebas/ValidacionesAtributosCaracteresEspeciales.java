@@ -51,6 +51,21 @@ public class ValidacionesAtributosCaracteresEspeciales {
 
 		}
 
+		if (atr.equals(Atributo.FECHA_PLAN)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_PLAN_NUMERICA_INCORRECTA + " - "
+						+ Mensajes.FECHA_PLAN_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+
+			}
+
+		}
+
 		for (int i = 0; i < atributo.length(); i++) {
 
 			final String letra = atributo.charAt(i) + "";
@@ -246,12 +261,12 @@ public class ValidacionesAtributosCaracteresEspeciales {
 				case GESTION_OBJETIVOS:
 					switch (atr) {
 					case NOMBRE_OBJETIVO:
-						resultado = CodigosMensajes.OBJETIVO_NAME_ALFABETICO_INCORRECTO + " - "
-								+ Mensajes.NOMBRE_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_Y_ESPACIOS;
+						resultado = CodigosMensajes.OBJETIVO_NAME_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.NOMBRE_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS;
 						break;
 					case DESCRIPCION_OBJETIVO:
-						resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO + " - "
-								+ Mensajes.DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS;
+						resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.DESCRIPCION_OBJETIVO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS;
 						break;
 					default:
 						break;
@@ -262,6 +277,20 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					case TEXTO_RESPUESTA_POSIBLE:
 						resultado = CodigosMensajes.TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO + " - "
 								+ Mensajes.TEXTO_RESPUESTA_SOLO_PUEDE_SER_ALFANUMERICO_CON_SIGNOS_PUNTUACION;
+						break;
+					default:
+						break;
+					}
+					break;
+				case GESTION_PLANES:
+					switch (atr) {
+					case NOMBRE_PLAN:
+						resultado = CodigosMensajes.NOMBRE_PLAN_ALFABETICO_INCORRECTO + " - "
+								+ Mensajes.NOMBRE_PLAN_SOLO_PUEDE_CONTENER_LETRAS_Y_ESPACIOS;
+						break;
+					case DESCRIP_PLAN:
+						resultado = CodigosMensajes.DESCRIPCION_PLAN_ALBAFETICO_INCORRECTO + " - "
+								+ Mensajes.DESCRIPCION_PLAN_PUEDE_CONTENER_LETRAS_Y_ESPACIOS;
 						break;
 					default:
 						break;

@@ -1,0 +1,42 @@
+{
+	"nombrePlanVacio": {
+		"idPlan" : "",
+		"nombrePlan" : "",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"nombrePlanCaracteresEspeciales": {
+		"idPlan" : "",
+		"nombrePlan" : "@@***",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"nombrePlanMenor3": {
+		"idPlan" : "",
+		"nombrePlan" : "Pl",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"nombrePlanMayor48": {
+		"idPlan" : "",
+		"nombrePlan" : "Plaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"nombrePlanCorrecto": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	}
+
+}

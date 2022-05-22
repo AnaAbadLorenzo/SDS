@@ -1208,7 +1208,7 @@ function comprobarAddEmpresa(){
 function comprobarNombreObjetivo(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError);
         return true;
 	} else{
@@ -1221,7 +1221,7 @@ function comprobarNombreObjetivo(idElemento, idElementoError, campo){
 function comprobarDescripcionObjetivo(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError);
         return true;
 	} else{
@@ -1256,7 +1256,7 @@ function comprobarNombreObjetivoSearch(idElemento, idElementoError, campo) {
 	document.getElementById(idElemento).style.borderWidth = "2px";
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+		if (comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo)) {
 			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
 				validacionKO(idElemento, idElementoError);
 				return false;
@@ -1282,114 +1282,10 @@ function comprobarDescripcionObjetivoSearch(idElemento, idElementoError, campo) 
 	document.getElementById(idElemento).style.borderWidth = "2px";
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+		if (comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo)) {
 			validacionOK(idElemento, idElementoError);
 			return true;
 		
-		}
-		else {
-			validacionKO(idElemento, idElementoError);
-			return false;
-		}
-	}
-	else {
-		validacionOK(idElemento, idElementoError);
-		return true;
-	}
-}
-
-/**Función que valida el buscar de un objetivo **/
-function comprobarEditObjetivo(){
-	if(comprobarNombreObjetivoSearch('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
-		comprobarDescripcionObjetivoSearch('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-/** Funcion que valida el formato del Nombre del objetivo **/
-function comprobarNombreObjetivo(idElemento, idElementoError, campo){
-	document.getElementById(idElemento).style.borderWidth = "2px";
-
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
-		validacionOK(idElemento, idElementoError);
-        return true;
-	} else{
-		validacionKO(idElemento, idElementoError);
-        return false;
-	}
-}
-
-/** Funcion que valida el formato de la descripcion del objetivo **/
-function comprobarDescripcionObjetivo(idElemento, idElementoError, campo){
-	document.getElementById(idElemento).style.borderWidth = "2px";
-
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
-		validacionOK(idElemento, idElementoError);
-        return true;
-	} else{
-		validacionKO(idElemento, idElementoError);
-        return false;
-	}
-}
-
-/**Función que valida el editar de un objetivo **/
-function comprobarEditObjetivo(){
-	if(comprobarNombreObjetivo('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
-		comprobarDescripcionObjetivo('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-/**Función que valida el añadir de un objetivo **/
-function comprobarAddObjetivo(){
-	if(comprobarNombreObjetivo('nombreObjetivo', 'errorFormatoNombreObjetivo', 'nombreObjetivo') &&
-		comprobarDescripcionObjetivo('descripcionObjetivo', 'errorFormatoDescripcionObjetivo', 'descripcionObjetivo')){
-		return true;
-	}else{
-		return false;
-	}
-}
-
-/**Función que valida el nombre del objetivo en el buscar*/
-function comprobarNombreObjetivoSearch(idElemento, idElementoError, campo) {
-
-	document.getElementById(idElemento).style.borderWidth = "2px";
-
-	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
-			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
-				validacionKO(idElemento, idElementoError);
-				return false;
-			}else{
-				validacionOK(idElemento, idElementoError);
-				return true;
-			}
-		}
-		else {
-			validacionKO(idElemento, idElementoError);
-			return false;
-		}
-	}
-	else {
-		validacionOK(idElemento, idElementoError);
-		return true;
-	}
-}
-
-/**Función que valida la descripcion del objetivo en el buscar*/
-function comprobarDescripcionObjetivoSearch(idElemento, idElementoError, campo) {
-
-	document.getElementById(idElemento).style.borderWidth = "2px";
-
-	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
-			validacionOK(idElemento, idElementoError);
-			return true;
-
 		}
 		else {
 			validacionKO(idElemento, idElementoError);
@@ -1734,6 +1630,33 @@ function comprobarLetrasNumeros(idElemento, idElementoError, campo) {
 }
 
 /**Función que valida que un campo esté compuesto por letras y números**/
+function comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) {
+
+	var codigo = "";
+
+	var valor = document.getElementById(idElemento).value;
+ 
+ 	var patron = /^[a-zA-Z0-9\u00f1\u00d1\s]+$/;
+		
+	if (!patron.test(valor)) { 
+    	switch(campo) {
+	    	case 'nombreObjetivo' :
+				codigo = "OBJETIVO_NAME_ALFANUMERICO_INCORRECTO";
+			break;
+			case 'descripcionObjetivo':
+				codigo = "OBJETIVO_DESCRIPTION_ALFANUMERICO_INCORRECTO";
+			break;
+			
+		}
+		addCodeError(idElementoError, codigo);
+    	return false;
+  	}else{
+  		return true;  
+  	}	
+}
+
+
+/**Función que valida que un campo esté compuesto por letras y números**/
 function comprobarUserLog(idElemento, idElementoError, campo) {
 
 	var codigo = "";
@@ -1878,12 +1801,6 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			break;
 			case 'tituloNoticia' :
 				codigo = "TITULO_NOTICIA_ALFABETICO_INCORRECTO";
-			break;
-			case 'nombreObjetivo' :
-				codigo = "OBJETIVO_NAME_ALFABETICO_INCORRECTO";
-			break;
-			case 'descripcionObjetivo':
-				codigo = "OBJETIVO_DESCRIPTION_ALFABETICO_INCORRECTO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

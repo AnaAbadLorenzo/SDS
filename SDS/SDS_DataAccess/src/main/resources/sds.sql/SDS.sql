@@ -325,6 +325,7 @@ CREATE TABLE `plan` (
 --
 
 LOCK TABLES `plan` WRITE;
+INSERT INTO `plan` (`id_plan`, `nombre_plan`, `descrip_plan`, `fecha_plan`, `borrado_plan`, `id_objetivo`) VALUES ('1', 'Plan', 'Plan para verificar el objetivo fin de la pobreza', '2022-05-20', '0', '1');
 UNLOCK TABLES;
 
 --

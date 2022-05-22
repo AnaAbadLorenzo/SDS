@@ -16,11 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.ObjetivoEntity;
+import com.sds.model.PlanEntity;
 import com.sds.repository.ObjetivoRepository;
+import com.sds.repository.PlanRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ObjetivoAsociadoPlanException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.log.LogService;
@@ -38,6 +41,9 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	PlanRepository planRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -75,7 +81,7 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 		datosBusqueda.add(Constantes.NOMBRE_OBJETIVO + Constantes.DOS_PUNTOS + nombreObjetivo);
 		datosBusqueda.add(Constantes.DESCRIPCION_OBJETIVO + Constantes.DOS_PUNTOS + descripObjetivo);
 
-		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<ObjetivoEntity>(objetivoToret, datosBusqueda,
+		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<>(objetivoToret, datosBusqueda,
 				numberTotalResults, objetivoToret.size(), inicio);
 
 		return result;
@@ -98,8 +104,8 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 			}
 		}
 
-		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<ObjetivoEntity>(objetivoToret,
-				numberTotalResults, objetivoToret.size(), inicio);
+		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<>(objetivoToret, numberTotalResults,
+				objetivoToret.size(), inicio);
 
 		return result;
 	}
@@ -121,8 +127,8 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 			}
 		}
 
-		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<ObjetivoEntity>(objetivoToret,
-				numberTotalResults, objetivoToret.size(), inicio);
+		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<>(objetivoToret, numberTotalResults,
+				objetivoToret.size(), inicio);
 
 		return result;
 	}
@@ -180,11 +186,12 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String eliminaObjetivo(final Objetivo objetivo)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ObjetivoNoExisteException {
+	public String eliminaObjetivo(final Objetivo objetivo) throws LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, ObjetivoNoExisteException, ObjetivoAsociadoPlanException {
 		final ObjetivoEntity objetivoEntity = objetivo.getObjetivo();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		Boolean eliminarObjetivo = Boolean.FALSE;
 
 		final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(objetivoEntity.getIdObjetivo());
 
@@ -204,11 +211,41 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
 
-			objetivoEntity.setBorradoObjetivo(1);
+			final List<PlanEntity> planes = planRepository.findAll();
 
-			objetivo.setObjetivo(objetivoEntity);
-			modificarObjetivo(objetivo);
-			resultado = Constantes.OK;
+			if (!planes.isEmpty()) {
+				for (final PlanEntity planEntity : planes) {
+					if (!planEntity.getObjetivo().getIdObjetivo().equals(objetivoEntity.getIdObjetivo())) {
+						eliminarObjetivo = true;
+					} else {
+						eliminarObjetivo = false;
+						break;
+					}
+				}
+			}
+
+			if (Boolean.TRUE.equals(eliminarObjetivo)) {
+				objetivoEntity.setBorradoObjetivo(1);
+				objetivo.setObjetivo(objetivoEntity);
+				modificarObjetivo(objetivo);
+				resultado = Constantes.OK;
+			} else {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(objetivo.getUsuario(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()),
+						CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new ObjetivoAsociadoPlanException(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo(),
+						CodeMessageErrors
+								.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()));
+			}
 		}
 
 		return resultado;
@@ -318,7 +355,7 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 						CodeMessageErrors
 								.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()));
 			} else {
-				objetivoRepository.deleteObjetivo(objetivo.getIdObjetivo());
+				objetivoRepository.deleteObjetivo(objetivoBD.get().getIdObjetivo());
 				objetivoRepository.flush();
 			}
 		}

@@ -52,6 +52,13 @@ public class ObjetivoEntity {
 		super();
 	}
 
+	public ObjetivoEntity(final String nombreObjetivo, final String descripObjetivo, final Integer borradoObjetivo) {
+		super();
+		this.nombreObjetivo = nombreObjetivo;
+		this.descripObjetivo = descripObjetivo;
+		this.borradoObjetivo = borradoObjetivo;
+	}
+
 	public ObjetivoEntity(final Integer idObjetivo, final String nombreObjetivo, final String descripObjetivo,
 			final Integer borradoObjetivo) {
 		super();

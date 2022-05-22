@@ -1,0 +1,66 @@
+{
+	"fechaPlanVacia": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanAcentos": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "ááá",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanEnhe": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "ññññ-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanCaracteresEspeciales": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "@@@@-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanMenor8": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanMayor8": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-200",
+		"borradoPlan" : 0
+	},
+	
+	"fechaPlanNumericoCorrecto": {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	},
+	
+	"fechaIntroducidaAnteriorFechaActual" : {
+		"idPlan" : "",
+		"nombrePlan" : "Plan",
+		"descripPlan" : "Esta es la descripción del plan",
+		"fechaPlan" : "2021-05-20",
+		"borradoPlan" : 0
+	
+	}
+}
