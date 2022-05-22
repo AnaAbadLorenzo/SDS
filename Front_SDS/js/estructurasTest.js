@@ -131,13 +131,13 @@ function cargarTestLogin(){
 
 	$("#testLogin").html("");
 
-	let arraySubAccordionUno = ["collapseLoginAtributosLogin", "javascript:testAtributosLogin()", "Login", "iconoTestLoginAtributosLogin", "cabeceraAtributosLogin", "cuerpoAtributosLogin"];
-	let arraySubAccordionDos = ["collapseLoginAtributosRecuperarPass", "javascript:testAtributosRecuperarPass()", "Recuperar Contraseña", "iconoTestLoginAtributosRecuperarPass",
+	let arraySubAccordionUno = ["collapseLoginAtributosLogin", "javascript:testLogin('Atributos')", "Login", "iconoTestLoginAtributosLogin", "cabeceraAtributosLogin", "cuerpoAtributosLogin"];
+	let arraySubAccordionDos = ["collapseLoginAtributosRecuperarPass", "javascript:testRecuperarPass('Atributos')", "Recuperar Contraseña", "iconoTestLoginAtributosRecuperarPass",
 							   "cabeceraAtributosRecuperarPass", "cuerpoAtributosRecuperarPass"];
 	let arrayAccordionUno = ["accordion3", arraySubAccordionUno, arraySubAccordionDos];
 
-	let arraySubAccordionTres = ["collapseLoginAccionesLogin", "javascript:testAccionesLogin()", "Login", "iconoTestLoginAccionesLogin", "cabeceraAccionesLogin", "cuerpoAccionesLogin"];
-	let arraySubAccordionCuatro = ["collapseLoginAccionesRecuperarPass", "javascript:testAccionesRecuperarPass()", "Recuperar Contraseña", "iconoTestLoginAccionesRecuperarPass", 
+	let arraySubAccordionTres = ["collapseLoginAccionesLogin", "javascript:testLogin('Acciones')", "Login", "iconoTestLoginAccionesLogin", "cabeceraAccionesLogin", "cuerpoAccionesLogin"];
+	let arraySubAccordionCuatro = ["collapseLoginAccionesRecuperarPass", "javascript:testRecuperarPass('Acciones')", "Recuperar Contraseña", "iconoTestLoginAccionesRecuperarPass", 
 							      "cabeceraAccionesRecuperarPass", "cuerpoAccionesRecuperarPass"];
 	let arrayAccordionDos = ["accordion4", arraySubAccordionTres, arraySubAccordionCuatro];
 
@@ -154,8 +154,8 @@ function cargarTestRegistrar(){
 
 	$("#testRegistrar").html("");
 
-	let arrayAccordion = ["accordion5", "collapseRegistrarAtributos", "javascript:testAtributosRegistrar()", "Atributos", "iconoTestRegistrarAtributos", "cabeceraAtributosRegistrar", 
-							  "cuerpoAtributosRegistrar", null, "collapseRegistrarAcciones", "javascript:testAccionesRegistrar()", "Acciones", "iconoTestRegistrarAcciones", 
+	let arrayAccordion = ["accordion5", "collapseRegistrarAtributos", "javascript:testRegistrar('Atributos')", "Atributos", "iconoTestRegistrarAtributos", "cabeceraAtributosRegistrar", 
+							  "cuerpoAtributosRegistrar", null, "collapseRegistrarAcciones", "javascript:testRegistrar('Acciones')", "Acciones", "iconoTestRegistrarAcciones", 
 							  "cabeceraAccionesRegistrar", "cuerpoAccionesRegistrar", null];
 
 	var contenidoTest = crearTest(arrayAccordion);	
@@ -168,16 +168,17 @@ function cargarTestGestionRoles(){
 
 	$("#testRol").html("");
 
-	let arraySubAccordionUno = ["collapseRolAtributosGuardar", "javascript:testAtributosRolGuardar()", "Añadir Rol", "iconoTestRolAtributosGuardar", "cabeceraAtributosRolGuardar", "cuerpoAtributosRolGuardar"];
-	let arraySubAccordionDos = ["collapseRolAtributoBuscar", "javascript:testAtributosRolBuscar()", "Buscar Rol", "iconoTestRolAtributosBuscar", "cabeceraAtributosRolBuscar", "cuerpoAtributosRolBuscar"];
-	let arraySubAccordionTres = ["collapseRolAtributoModificar", "javascript:testAtributosRolModificar()", "Modificar Rol", "iconoTestRolAtributosModificar", "cabeceraAtributosRolModificar", "cuerpoAtributosRolModificar"];
+	let arraySubAccordionUno = ["collapseRolAtributosGuardar", "javascript:testRol('Guardar', 'Atributos')", "Añadir Rol", "iconoTestRolAtributosGuardar", "cabeceraAtributosRolGuardar", "cuerpoAtributosRolGuardar"];
+	let arraySubAccordionDos = ["collapseRolAtributoBuscar", "javascript:testRol('Buscar', 'Atributos')", "Buscar Rol", "iconoTestRolAtributosBuscar", "cabeceraAtributosRolBuscar", "cuerpoAtributosRolBuscar"];
+	let arraySubAccordionTres = ["collapseRolAtributoModificar", "javascript:testRol('Modificar', 'Atributos')", "Modificar Rol", "iconoTestRolAtributosModificar", "cabeceraAtributosRolModificar", "cuerpoAtributosRolModificar"];
 	let arrayAccordionUno = ["accordion7", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapseRolAccionesGuardar", "javascript:testAccionesRolGuardar()", "Añadir Rol", "iconoTestRolAccionesGuardar", "cabeceraAccionesRolGuardar", "cuerpoAccionesRolGuardar"];
-	let arraySubAccordionCinco = ["collapseRolAccionesEliminar", "javascript:testAccionesRolEliminar()", "Eliminar Rol", "iconoTestRolAccionesEliminar", "cabeceraAccionesRolEliminar", "cuerpoAccionesRolEliminar"];
-	let arraySubAccordionSeis = ["collapseRolAccionesModificar", "javascript:testAccionesRolModificar()", "Modificar Rol", "iconoTestRolAccionesModificar", "cabeceraAccionesRolModificar", "cuerpoAccionesRolModificar"];
-	let arraySubAccordionSiete = ["collapseRolAccionesBuscar", "javascript:testAccionesRolBuscar()", "Buscar Rol", "iconoTestRolAccionesBuscar", "cabeceraAccionesRolBuscar", "cuerpoAccionesRolBuscar"];
-	let arrayAccordionDos = ["accordion8", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete];
+	let arraySubAccordionCuatro = ["collapseRolAccionesGuardar", "javascript:testRol('Guardar', 'Acciones')", "Añadir Rol", "iconoTestRolAccionesGuardar", "cabeceraAccionesRolGuardar", "cuerpoAccionesRolGuardar"];
+	let arraySubAccordionCinco = ["collapseRolAccionesEliminar", "javascript:testRol('Eliminar', 'Acciones')", "Eliminar Rol", "iconoTestRolAccionesEliminar", "cabeceraAccionesRolEliminar", "cuerpoAccionesRolEliminar"];
+	let arraySubAccordionSeis = ["collapseRolAccionesModificar", "javascript:testRol('Modificar', 'Acciones')", "Modificar Rol", "iconoTestRolAccionesModificar", "cabeceraAccionesRolModificar", "cuerpoAccionesRolModificar"];
+	let arraySubAccordionSiete = ["collapseRolAccionesBuscar", "javascript:testRol('Buscar', 'Acciones')", "Buscar Rol", "iconoTestRolAccionesBuscar", "cabeceraAccionesRolBuscar", "cuerpoAccionesRolBuscar"];
+	let arraySubAccordionOcho = ["collapseRolAccionesReactivar", "javascript:testRol('Reactivar', 'Acciones')", "Reactivar Rol", "iconoTestRolAccionesReactivar", "cabeceraAccionesRolReactivar", "cuerpoAccionesRolReactivar"];
+	let arrayAccordionDos = ["accordion8", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
 
 	let arrayAccordionTres = ["accordion6", "collapseRolAtributos", null, "Atributos", "iconoTestRolAtributos", null, null, arrayAccordionUno, "collapseRolAcciones", null, "Acciones", 
 							 "iconoTestRolAcciones", null, null, arrayAccordionDos];
@@ -193,23 +194,23 @@ function cargarTestGestionFuncionalidades(){
 
 	$("#testFuncionalidad").html("");
 
-	let arraySubAccordionUno = ["collapseFuncionalidadAtributosGuardar", "javascript:testAtributosFuncionalidadGuardar()", "Añadir Funcionalidad", "iconoTestFuncionalidadAtributosGuardar", 
+	let arraySubAccordionUno = ["collapseFuncionalidadAtributosGuardar", "javascript:testFuncionalidad('Guardar', 'Atributos')", "Añadir Funcionalidad", "iconoTestFuncionalidadAtributosGuardar", 
 							   "cabeceraAtributosFuncionalidadGuardar", "cuerpoAtributosFuncionalidadGuardar"];
-	let arraySubAccordionDos = ["collapseFuncionalidadAtributoBuscar", "javascript:testAtributosFuncionalidadBuscar()", "Buscar Funcionalidad", "iconoTestFuncionalidadAtributosBuscar", 
+	let arraySubAccordionDos = ["collapseFuncionalidadAtributoBuscar", "javascript:testFuncionalidad('Buscar', 'Atributos')", "Buscar Funcionalidad", "iconoTestFuncionalidadAtributosBuscar", 
 							   "cabeceraAtributosFuncionalidadBuscar", "cuerpoAtributosFuncionalidadBuscar"];
-	let arraySubAccordionTres = ["collapseFuncionalidadAtributoModificar", "javascript:testAtributosFuncionalidadModificar()", "Modificar Funcionalidad", "iconoTestFuncionalidadAtributosModificar", 
+	let arraySubAccordionTres = ["collapseFuncionalidadAtributoModificar", "javascript:testFuncionalidad('Modificar', 'Atributos')", "Modificar Funcionalidad", "iconoTestFuncionalidadAtributosModificar", 
 							    "cabeceraAtributosFuncionalidadModificar", "cuerpoAtributosFuncionalidadModificar"];
 	let arrayAccordionUno = ["accordion10", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapseFuncionalidadAccionesGuardar", "javascript:testAccionesFuncionalidadGuardar()", "Añadir Funcionalidad", "iconoTestFuncionalidadAccionesGuardar", 
+	let arraySubAccordionCuatro = ["collapseFuncionalidadAccionesGuardar", "javascript:testFuncionalidad('Guardar', 'Acciones')", "Añadir Funcionalidad", "iconoTestFuncionalidadAccionesGuardar", 
 								  "cabeceraAccionesFuncionalidadGuardar", "cuerpoAccionesFuncionalidadGuardar"];
-	let arraySubAccordionCinco = ["collapseFuncionalidadAccionesEliminar", "javascript:testAccionesFuncionalidadEliminar()", "Eliminar Funcionalidad", "iconoTestFuncionalidadAccionesEliminar", 
+	let arraySubAccordionCinco = ["collapseFuncionalidadAccionesEliminar", "javascript:testFuncionalidad('Eliminar', 'Acciones')", "Eliminar Funcionalidad", "iconoTestFuncionalidadAccionesEliminar", 
 								 "cabeceraAccionesFuncionalidadEliminar", "cuerpoAccionesFuncionalidadEliminar"];
-	let arraySubAccordionSeis = ["collapseFuncionalidadAccionesModificar", "javascript:testAccionesFuncionalidadModificar()", "Modificar Funcionalidad", "iconoTestFuncionalidadAccionesModificar", 
+	let arraySubAccordionSeis = ["collapseFuncionalidadAccionesModificar", "javascript:testFuncionalidad('Modificar', 'Acciones')", "Modificar Funcionalidad", "iconoTestFuncionalidadAccionesModificar", 
 								"cabeceraAccionesFuncionalidadModificar", "cuerpoAccionesFuncionalidadModificar"];
-	let arraySubAccordionSiete = ["collapseFuncionalidadAccionesBuscar", "javascript:testAccionesFuncionalidadBuscar()", "Buscar Funcionalidad", "iconoTestFuncionalidadAccionesBuscar", 
+	let arraySubAccordionSiete = ["collapseFuncionalidadAccionesBuscar", "javascript:testFuncionalidad('Buscar', 'Acciones')", "Buscar Funcionalidad", "iconoTestFuncionalidadAccionesBuscar", 
 								 "cabeceraAccionesFuncionalidadBuscar", "cuerpoAccionesFuncionalidadBuscar"];
-	let arraySubAccordionOcho = ["collapseFuncionalidadAccionesReactivar", "javascript:testAccionesFuncionalidadReactivar()", "Reactivar Funcionalidad", "iconoTestFuncionalidadAccionesReactivar", 
+	let arraySubAccordionOcho = ["collapseFuncionalidadAccionesReactivar", "javascript:testFuncionalidad('Reactivar', 'Acciones')", "Reactivar Funcionalidad", "iconoTestFuncionalidadAccionesReactivar", 
 							    "cabeceraAccionesFuncionalidadReactivar", "cuerpoAccionesFuncionalidadReactivar"];
 	let arrayAccordionDos = ["accordion11", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
 
@@ -226,27 +227,27 @@ function cargarTestGestionAcciones(){
 
 	$("#testAccion").html("");
 
-	let arraySubAccordionUno = ["collapseAccionAtributosGuardar", "javascript:testAtributosAccionGuardar()", "Añadir Acción", "iconoTestAccionAtributosGuardar", 
+	let arraySubAccordionUno = ["collapseAccionAtributosGuardar", "javascript:testAccion('Guardar', 'Atributos')", "Añadir Acción", "iconoTestAccionAtributosGuardar", 
 							   "cabeceraAtributosAccionGuardar", "cuerpoAtributosAccionGuardar"];
-	let arraySubAccordionDos = ["collapseAccionAtributoBuscar", "javascript:testAtributosAccionBuscar()", "Buscar Acción", "iconoTestAccionAtributosBuscar", 
+	let arraySubAccordionDos = ["collapseAccionAtributoBuscar", "javascript:testAccion('Buscar', 'Atributos')", "Buscar Acción", "iconoTestAccionAtributosBuscar", 
 							   "cabeceraAtributosAccionBuscar", "cuerpoAtributosAccionBuscar"];
-	let arraySubAccordionTres = ["collapseAccionAtributoModificar", "javascript:testAtributosAccionModificar()", "Modificar Acción", "iconoTestAccionAtributosModificar", 
+	let arraySubAccordionTres = ["collapseAccionAtributoModificar", "javascript:testAccion('Modificar', 'Atributos')", "Modificar Acción", "iconoTestAccionAtributosModificar", 
 							    "cabeceraAtributosAccionModificar", "cuerpoAtributosAccionModificar"];
 	let arrayAccordionUno = ["accordion13", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapseAccionAccionesGuardar", "javascript:testAccionesAccionGuardar()", "Añadir Acción", "iconoTestAccionAccionesGuardar", 
+	let arraySubAccordionCuatro = ["collapseAccionAccionesGuardar", "javascript:testAccion('Guardar', 'Acciones')", "Añadir Acción", "iconoTestAccionAccionesGuardar", 
 								  "cabeceraAccionesAccionGuardar", "cuerpoAccionesAccionGuardar"];
-	let arraySubAccordionCinco = ["collapseAccionAccionesModificar", "javascript:testAccionesAccionModificar()", "Modificar Acción", "iconoTestAccionAccionesModificar", 
+	let arraySubAccordionCinco = ["collapseAccionAccionesModificar", "javascript:testAccion('Modificar', 'Acciones')", "Modificar Acción", "iconoTestAccionAccionesModificar", 
 								 "cabeceraAccionesAccionModificar", "cuerpoAccionesAccionModificar"];
-	let arraySubAccordionSeis = ["collapseAccionAccionesEliminar", "javascript:testAccionesAccionEliminar()", "Eliminar Acción", "iconoTestAccionAccionesEliminar", 
+	let arraySubAccordionSeis = ["collapseAccionAccionesEliminar", "javascript:testAccion('Eliminar', 'Acciones')", "Eliminar Acción", "iconoTestAccionAccionesEliminar", 
 								"cabeceraAccionesAccionEliminar", "cuerpoAccionesAccionEliminar"];
-	let arraySubAccordionSiete = ["collapseAccionAccionesBuscar", "javascript:testAccionesAccionBuscar()", "Buscar Acción", "iconoTestAccionAccionesBuscar", 
+	let arraySubAccordionSiete = ["collapseAccionAccionesBuscar", "javascript:testAccion('Buscar', 'Acciones')", "Buscar Acción", "iconoTestAccionAccionesBuscar", 
 								 "cabeceraAccionesAccionBuscar", "cuerpoAccionesAccionBuscar"];
-	let arraySubAccordionOcho = ["collapseAccionAccionesReactivar", "javascript:testAccionesAccionReactivar()", "Reactivar Acción", "iconoTestAccionAccionesReactivar", 
+	let arraySubAccordionOcho = ["collapseAccionAccionesReactivar", "javascript:testAccion('Reactivar', 'Acciones')", "Reactivar Acción", "iconoTestAccionAccionesReactivar", 
 							    "cabeceraAccionesAccionReactivar", "cuerpoAccionesAccionReactivar"];
-	let arraySubAccordionNueve = ["collapseAccionAccionesAsignar", "javascript:testAccionesAccionAsignar()", "Asignar Acción", "iconoTestAccionAccionesAsignar", 
+	let arraySubAccordionNueve = ["collapseAccionAccionesAsignar", "javascript:testAccion('Asignar', 'Acciones')", "Asignar Acción", "iconoTestAccionAccionesAsignar", 
 							    "cabeceraAccionesAccionAsignar", "cuerpoAccionesAccionAsignar"];
-	let arraySubAccordionDiez = ["collapseAccionAccionesRevocar", "javascript:testAccionesAccionRevocar()", "Revocar Acción", "iconoTestAccionAccionesRevocar", 
+	let arraySubAccordionDiez = ["collapseAccionAccionesRevocar", "javascript:testAccion('Revocar', 'Acciones')", "Revocar Acción", "iconoTestAccionAccionesRevocar", 
 							    "cabeceraAccionesAccionRevocar", "cuerpoAccionesAccionRevocar"];
 	let arrayAccordionDos = ["accordion14", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho, arraySubAccordionNueve, arraySubAccordionDiez];
 
@@ -262,21 +263,21 @@ function cargarTestGestionUsuarios(){
 
 	$("#testUsuario").html("");
 
-	let arraySubAccordionUno = ["collapseUsuarioAtributosModificarRolUsuario", "javascript:testAtributosUsuarioModificarRolUsuario()", "Modificar Rol Usuario", "iconoTestUsuarioAtributosModificarRolUsuario", 
+	let arraySubAccordionUno = ["collapseUsuarioAtributosModificarRolUsuario", "javascript:testUsuario('ModificarRolUsuario', 'Atributos')", "Modificar Rol Usuario", "iconoTestUsuarioAtributosModificarRolUsuario", 
 							   "cabeceraAtributosUsuarioModificarRolUsuario", "cuerpoAtributosUsuarioModificarRolUsuario"];
-	let arraySubAccordionDos = ["collapseUsuarioAtributoBuscar", "javascript:testAtributosUsuarioBuscar()", "Buscar Usuario", "iconoTestUsuarioAtributosBuscar", 
+	let arraySubAccordionDos = ["collapseUsuarioAtributoBuscar", "javascript:testUsuario('Buscar', 'Atributos')", "Buscar Usuario", "iconoTestUsuarioAtributosBuscar", 
 							   "cabeceraAtributosUsuarioBuscar", "cuerpoAtributosUsuarioBuscar"];
 	let arrayAccordionUno = ["accordion16", arraySubAccordionUno, arraySubAccordionDos];
 
-	let arraySubAccordionTres = ["collapseUsuarioAccionesBuscar", "javascript:testAccionesUsuarioBuscar()", "Buscar Usuario", "iconoTestUsuarioAccionesBuscar", 
+	let arraySubAccordionTres = ["collapseUsuarioAccionesBuscar", "javascript:testUsuario('Buscar', 'Acciones')", "Buscar Usuario", "iconoTestUsuarioAccionesBuscar", 
 								  "cabeceraAccionesUsuarioBuscar", "cuerpoAccionesUsuarioBuscar"];
-	let arraySubAccordionCuatro = ["collapseUsuarioAccionesEliminar", "javascript:testAccionesUsuarioEliminar()", "Eliminar Usuario", "iconoTestUsuarioAccionesEliminar", 
+	let arraySubAccordionCuatro = ["collapseUsuarioAccionesEliminar", "javascript:testUsuario('Eliminar', 'Acciones')", "Eliminar Usuario", "iconoTestUsuarioAccionesEliminar", 
 								 "cabeceraAccionesUsuarioEliminar", "cuerpoAccionesUsuarioEliminar"];
-	let arraySubAccordionCinco = ["collapseUsuarioAccionesModificarRolUsuario", "javascript:testAccionesUsuarioModificarRolUsuario()", "Modificar Rol Usuario", "iconoTestUsuarioAccionesModificarRolUsuario", 
+	let arraySubAccordionCinco = ["collapseUsuarioAccionesModificarRolUsuario", "javascript:testUsuario('ModificarRolUsuario', 'Acciones')", "Modificar Rol Usuario", "iconoTestUsuarioAccionesModificarRolUsuario", 
 								"cabeceraAccionesUsuarioModificarRolUsuario", "cuerpoAccionesUsuarioModificarRolUsuario"];
-	let arraySubAccordionSeis = ["collapseUsuarioAccionesModificarPasswdUsuario", "javascript:testAccionesUsuarioModificarPasswdUsuario()", "Modificar Contraseña Usuario", "iconoTestUsuarioAccionesModificarPasswdUsuario", 
+	let arraySubAccordionSeis = ["collapseUsuarioAccionesModificarPasswdUsuario", "javascript:testUsuario('ModificarPasswdUsuario', 'Acciones')", "Modificar Contraseña Usuario", "iconoTestUsuarioAccionesModificarPasswdUsuario", 
 								 "cabeceraAccionesUsuarioModificarPasswdUsuario", "cuerpoAccionesUsuarioModificarPasswdUsuario"];
-	let arraySubAccordionSiete = ["collapseUsuarioAccionesReactivar", "javascript:testAccionesUsuarioReactivar()", "Reactivar Usuario", "iconoTestUsuarioAccionesReactivar", 
+	let arraySubAccordionSiete = ["collapseUsuarioAccionesReactivar", "javascript:testUsuario('Reactivar', 'Acciones')", "Reactivar Usuario", "iconoTestUsuarioAccionesReactivar", 
 							    "cabeceraAccionesUsuarioReactivar", "cuerpoAccionesUsuarioReactivar"];
 	let arrayAccordionDos = ["accordion17", arraySubAccordionTres, arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete];
 
@@ -293,21 +294,21 @@ function cargarTestGestionNoticias(){
 
 	$("#testNoticia").html("");
 
-	let arraySubAccordionUno = ["collapseNoticiaAtributosGuardar", "javascript:testAtributosNoticiaGuardar()", "Añadir Noticia", "iconoTestNoticiaAtributosGuardar", 
+	let arraySubAccordionUno = ["collapseNoticiaAtributosGuardar", "javascript:testNoticia('Guardar', 'Atributos')", "Añadir Noticia", "iconoTestNoticiaAtributosGuardar", 
 							   "cabeceraAtributosNoticiaGuardar", "cuerpoAtributosNoticiaGuardar"];
-	let arraySubAccordionDos = ["collapseNoticiaAtributoBuscar", "javascript:testAtributosNoticiaBuscar()", "Buscar Noticia", "iconoTestNoticiaAtributosBuscar", 
+	let arraySubAccordionDos = ["collapseNoticiaAtributoBuscar", "javascript:testNoticia('Buscar', 'Atributos')", "Buscar Noticia", "iconoTestNoticiaAtributosBuscar", 
 							   "cabeceraAtributosNoticiaBuscar", "cuerpoAtributosNoticiaBuscar"];
-	let arraySubAccordionTres = ["collapseNoticiaAtributoModificar", "javascript:testAtributosNoticiaModificar()", "Modificar Noticia", "iconoTestNoticiaAtributosModificar", 
+	let arraySubAccordionTres = ["collapseNoticiaAtributoModificar", "javascript:testNoticia('Modificar', 'Atributos')", "Modificar Noticia", "iconoTestNoticiaAtributosModificar", 
 							    "cabeceraAtributosNoticiaModificar", "cuerpoAtributosNoticiaModificar"];
 	let arrayAccordionUno = ["accordion19", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapseNoticiaAccionesGuardar", "javascript:testAccionesNoticiaGuardar()", "Añadir Noticia", "iconoTestNoticiaAccionesGuardar", 
+	let arraySubAccordionCuatro = ["collapseNoticiaAccionesGuardar", "javascript:testNoticia('Guardar', 'Acciones')", "Añadir Noticia", "iconoTestNoticiaAccionesGuardar", 
 								  "cabeceraAccionesNoticiaGuardar", "cuerpoAccionesNoticiaGuardar"];
-	let arraySubAccordionCinco = ["collapseNoticiaAccionesEliminar", "javascript:testAccionesNoticiaEliminar()", "Eliminar Noticia", "iconoTestNoticiaAccionesEliminar", 
+	let arraySubAccordionCinco = ["collapseNoticiaAccionesEliminar", "javascript:testNoticia('Eliminar', 'Acciones')", "Eliminar Noticia", "iconoTestNoticiaAccionesEliminar", 
 								 "cabeceraAccionesNoticiaEliminar", "cuerpoAccionesNoticiaEliminar"];
-	let arraySubAccordionSeis = ["collapseNoticiaAccionesModificar", "javascript:testAccionesNoticiaModificar()", "Modificar Noticia", "iconoTestNoticiaAccionesModificar", 
+	let arraySubAccordionSeis = ["collapseNoticiaAccionesModificar", "javascript:testNoticia('Modificar', 'Acciones')", "Modificar Noticia", "iconoTestNoticiaAccionesModificar", 
 								"cabeceraAccionesNoticiaModificar", "cuerpoAccionesNoticiaModificar"];
-	let arraySubAccordionSiete = ["collapseNoticiaAccionesBuscar", "javascript:testAccionesNoticiaBuscar()", "Buscar Noticia", "iconoTestNoticiaAccionesBuscar", 
+	let arraySubAccordionSiete = ["collapseNoticiaAccionesBuscar", "javascript:testNoticia('Buscar', 'Acciones')", "Buscar Noticia", "iconoTestNoticiaAccionesBuscar", 
 								"cabeceraAccionesNoticiaBuscar", "cuerpoAccionesNoticiaBuscar"];
 	let arrayAccordionDos = ["accordion20", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete];
 
@@ -324,21 +325,21 @@ function cargarTestGestionPersonas(){
 
 	$("#testPersona").html("");
 
-	let arraySubAccordionUno = ["collapsePersonaAtributosGuardar", "javascript:testAtributosPersonaGuardar()", "Añadir Persona", "iconoTestPersonaAtributosGuardar", 
+	let arraySubAccordionUno = ["collapsePersonaAtributosGuardar", "javascript:testPersona('Guardar', 'Atributos')", "Añadir Persona", "iconoTestPersonaAtributosGuardar", 
 							   "cabeceraAtributosPersonaGuardar", "cuerpoAtributosPersonaGuardar"];
-	let arraySubAccordionDos = ["collapsePersonaAtributosModificar", "javascript:testAtributosPersonaModificar()", "Modificar Persona", "iconoTestPersonaAtributosModificar", 
+	let arraySubAccordionDos = ["collapsePersonaAtributosModificar", "javascript:testPersona('Modificar', 'Atributos')", "Modificar Persona", "iconoTestPersonaAtributosModificar", 
 							   "cabeceraAtributosPersonaModificar", "cuerpoAtributosPersonaModificar"];
-	let arraySubAccordionTres = ["collapsePersonaAtributosBuscar", "javascript:testAtributosPersonaBuscar()", "Buscar Persona", "iconoTestPersonaAtributosBuscar", 
+	let arraySubAccordionTres = ["collapsePersonaAtributosBuscar", "javascript:testPersona('Buscar', 'Atributos')", "Buscar Persona", "iconoTestPersonaAtributosBuscar", 
 							    "cabeceraAtributosPersonaBuscar", "cuerpoAtributosPersonaBuscar"];
 	let arrayAccordionUno = ["accordion22", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapsePersonaAccionesBuscar", "javascript:testAccionesPersonaBuscar()", "Buscar Persona", "iconoTestPersonaAccionesBuscar", 
+	let arraySubAccordionCuatro = ["collapsePersonaAccionesBuscar", "javascript:testPersona('Buscar', 'Acciones')", "Buscar Persona", "iconoTestPersonaAccionesBuscar", 
 								  "cabeceraAccionesPersonaBuscar", "cuerpoAccionesPersonaBuscar"];
-	let arraySubAccordionCinco = ["collapsePersonaAccionesGuardar", "javascript:testAccionesPersonaGuardar()", "Guardar Persona", "iconoTestPersonaAccionesGuardar", 
+	let arraySubAccordionCinco = ["collapsePersonaAccionesGuardar", "javascript:testPersona('Guardar', 'Acciones')", "Guardar Persona", "iconoTestPersonaAccionesGuardar", 
 								 "cabeceraAccionesPersonaGuardar", "cuerpoAccionesPersonaGuardar"];
-	let arraySubAccordionSeis = ["collapsePersonaAccionesEliminar", "javascript:testAccionesPersonaEliminar()", "Eliminar Persona", "iconoTestPersonaAccionesEliminar", 
+	let arraySubAccordionSeis = ["collapsePersonaAccionesEliminar", "javascript:testPersona('Eliminar', 'Acciones')", "Eliminar Persona", "iconoTestPersonaAccionesEliminar", 
 								"cabeceraAccionesPersonaEliminar", "cuerpoAccionesPersonaEliminar"];
-	let arraySubAccordionSiete = ["collapsePersonaAccionesModificar", "javascript:testAccionesPersonaModificar()", "Modificar Persona", "iconoTestPersonaAccionesModificar", 
+	let arraySubAccordionSiete = ["collapsePersonaAccionesModificar", "javascript:testPersona('Modificar', 'Acciones')", "Modificar Persona", "iconoTestPersonaAccionesModificar", 
 								"cabeceraAccionesPersonaModificar", "cuerpoAccionesPersonaModificar"];
 	let arrayAccordionDos = ["accordion23", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete];
 
@@ -355,23 +356,23 @@ function cargarTestGestionEmpresas(){
 
 	$("#testEmpresa").html("");
 
-	let arraySubAccordionUno = ["collapseEmpresaAtributosGuardar", "javascript:testAtributosEmpresaGuardar()", "Añadir Empresa", "iconoTestEmpresaAtributosGuardar", 
+	let arraySubAccordionUno = ["collapseEmpresaAtributosGuardar", "javascript:testEmpresa('Guardar', 'Atributos')", "Añadir Empresa", "iconoTestEmpresaAtributosGuardar", 
 							   "cabeceraAtributosEmpresaGuardar", "cuerpoAtributosEmpresaGuardar"];
-	let arraySubAccordionDos = ["collapseEmpresaAtributosModificar", "javascript:testAtributosEmpresaModificar()", "Modificar Empresa", "iconoTestEmpresaAtributosModificar", 
+	let arraySubAccordionDos = ["collapseEmpresaAtributosModificar", "javascript:testEmpresa('Modificar', 'Atributos')", "Modificar Empresa", "iconoTestEmpresaAtributosModificar", 
 							   "cabeceraAtributosEmpresaModificar", "cuerpoAtributosEmpresaModificar"];
-	let arraySubAccordionTres = ["collapseEmpresaAtributosBuscar", "javascript:testAtributosEmpresaBuscar()", "Buscar Empresa", "iconoTestEmpresaAtributosBuscar", 
+	let arraySubAccordionTres = ["collapseEmpresaAtributosBuscar", "javascript:testEmpresa('Buscar', 'Atributos')", "Buscar Empresa", "iconoTestEmpresaAtributosBuscar", 
 							    "cabeceraAtributosEmpresaBuscar", "cuerpoAtributosEmpresaBuscar"];
 	let arrayAccordionUno = ["accordion25", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapseEmpresaAccionesBuscar", "javascript:testAccionesEmpresaBuscar()", "Buscar Empresa", "iconoTestEmpresaAccionesBuscar", 
+	let arraySubAccordionCuatro = ["collapseEmpresaAccionesBuscar", "javascript:testEmpresa('Buscar', 'Acciones')", "Buscar Empresa", "iconoTestEmpresaAccionesBuscar", 
 								  "cabeceraAccionesEmpresaBuscar", "cuerpoAccionesEmpresaBuscar"];
-	let arraySubAccordionCinco = ["collapseEmpresaAccionesGuardar", "javascript:testAccionesEmpresaGuardar()", "Guardar Empresa", "iconoTestEmpresaAccionesGuardar", 
+	let arraySubAccordionCinco = ["collapseEmpresaAccionesGuardar", "javascript:testEmpresa('Guardar', 'Acciones')", "Guardar Empresa", "iconoTestEmpresaAccionesGuardar", 
 								 "cabeceraAccionesEmpresaGuardar", "cuerpoAccionesEmpresaGuardar"];
-	let arraySubAccordionSeis = ["collapseEmpresaAccionesEliminar", "javascript:testAccionesEmpresaEliminar()", "Eliminar Empresa", "iconoTestEmpresaAccionesEliminar", 
+	let arraySubAccordionSeis = ["collapseEmpresaAccionesEliminar", "javascript:testEmpresa('Eliminar', 'Acciones')", "Eliminar Empresa", "iconoTestEmpresaAccionesEliminar", 
 								"cabeceraAccionesEmpresaEliminar", "cuerpoAccionesEmpresaEliminar"];
-	let arraySubAccordionSiete = ["collapseEmpresaAccionesModificar", "javascript:testAccionesEmpresaModificar()", "Modificar Empresa", "iconoTestEmpresaAccionesModificar", 
+	let arraySubAccordionSiete = ["collapseEmpresaAccionesModificar", "javascript:testEmpresa('Modificar', 'Acciones')", "Modificar Empresa", "iconoTestEmpresaAccionesModificar", 
 								"cabeceraAccionesEmpresaModificar", "cuerpoAccionesEmpresaModificar"];
-	let arraySubAccordionOcho = ["collapseEmpresaAccionesReactivar", "javascript:testAccionesEmpresaReactivar()", "Reactivar Empresa", "iconoTestEmpresaAccionesReactivar", 
+	let arraySubAccordionOcho = ["collapseEmpresaAccionesReactivar", "javascript:testEmpresa('Reactivar', 'Acciones')", "Reactivar Empresa", "iconoTestEmpresaAccionesReactivar", 
 								"cabeceraAccionesEmpresaReactivar", "cuerpoAccionesEmpresaReactivar"];
 	let arrayAccordionDos = ["accordion26", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
 
@@ -388,23 +389,23 @@ function cargarTestGestionObjetivos(){
 
 	$("#testObjetivo").html("");
 
-	let arraySubAccordionUno = ["collapseObjetivoAtributosObjetivo", "javascript:testAtributosObjetivoGuardar()", "Añadir Objetivo", "iconoTestObjetivoAtributosObjetivo", 
+	let arraySubAccordionUno = ["collapseObjetivoAtributosObjetivo", "javascript:testObjetivo('Guardar', 'Atributos')", "Añadir Objetivo", "iconoTestObjetivoAtributosObjetivo", 
 							   "cabeceraAtributosObjetivoGuardar", "cuerpoAtributosObjetivoGuardar"];
-	let arraySubAccordionDos = ["collapseObjetivoAtributosModificar", "javascript:testAtributosObjetivoModificar()", "Modificar Objetivo", "iconoTestObjetivoAtributosModificar", 
+	let arraySubAccordionDos = ["collapseObjetivoAtributosModificar", "javascript:testObjetivo('Modificar', 'Atributos')", "Modificar Objetivo", "iconoTestObjetivoAtributosModificar", 
 							   "cabeceraAtributosObjetivoModificar", "cuerpoAtributosObjetivoModificar"];
-	let arraySubAccordionTres = ["collapseObjetivoAtributosBuscar", "javascript:testAtributosObjetivoBuscar()", "Buscar Objetivo", "iconoTestObjetivoAtributosBuscar", 
+	let arraySubAccordionTres = ["collapseObjetivoAtributosBuscar", "javascript:testObjetivo('Buscar', 'Atributos')", "Buscar Objetivo", "iconoTestObjetivoAtributosBuscar", 
 							    "cabeceraAtributosObjetivoBuscar", "cuerpoAtributosObjetivoBuscar"];
 	let arrayAccordionUno = ["accordion28", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
 
-	let arraySubAccordionCuatro = ["collapseObjetivoAccionesBuscar", "javascript:testAccionesObjetivoBuscar()", "Buscar Objetivo", "iconoTestObjetivoAccionesBuscar", 
+	let arraySubAccordionCuatro = ["collapseObjetivoAccionesBuscar", "javascript:testObjetivo('Buscar', 'Acciones')", "Buscar Objetivo", "iconoTestObjetivoAccionesBuscar", 
 								  "cabeceraAccionesObjetivoBuscar", "cuerpoAccionesObjetivoBuscar"];
-	let arraySubAccordionCinco = ["collapseObjetivoAccionesGuardar", "javascript:testAccionesObjetivoGuardar()", "Guardar Objetivo", "iconoTestObjetivoAccionesGuardar", 
+	let arraySubAccordionCinco = ["collapseObjetivoAccionesGuardar", "javascript:testObjetivo('Guardar', 'Acciones')", "Guardar Objetivo", "iconoTestObjetivoAccionesGuardar", 
 								 "cabeceraAccionesObjetivoGuardar", "cuerpoAccionesObjetivoGuardar"];
-	let arraySubAccordionSeis = ["collapseObjetivoAccionesEliminar", "javascript:testAccionesObjetivoEliminar()", "Eliminar Objetivo", "iconoTestObjetivoAccionesEliminar", 
+	let arraySubAccordionSeis = ["collapseObjetivoAccionesEliminar", "javascript:testObjetivo('Eliminar', 'Acciones')", "Eliminar Objetivo", "iconoTestObjetivoAccionesEliminar", 
 								"cabeceraAccionesObjetivoEliminar", "cuerpoAccionesObjetivoEliminar"];
-	let arraySubAccordionSiete = ["collapseObjetivoAccionesModificar", "javascript:testAccionesObjetivoModificar()", "Modificar Objetivo", "iconoTestObjetivoAccionesModificar", 
+	let arraySubAccordionSiete = ["collapseObjetivoAccionesModificar", "javascript:testObjetivo('Modificar', 'Acciones')", "Modificar Objetivo", "iconoTestObjetivoAccionesModificar", 
 								"cabeceraAccionesObjetivoModificar", "cuerpoAccionesObjetivoModificar"];
-	let arraySubAccordionOcho = ["collapseObjetivoAccionesReactivar", "javascript:testAccionesObjetivoReactivar()", "Reactivar Objetivo", "iconoTestObjetivoAccionesReactivar", 
+	let arraySubAccordionOcho = ["collapseObjetivoAccionesReactivar", "javascript:testObjetivo('Reactivar', 'Acciones')", "Reactivar Objetivo", "iconoTestObjetivoAccionesReactivar", 
 								"cabeceraAccionesObjetivoReactivar", "cuerpoAccionesObjetivoReactivar"];
 	let arrayAccordionDos = ["accordion29", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
 
