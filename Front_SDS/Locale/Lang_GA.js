@@ -38,6 +38,7 @@ arrayGA={
 	'FECHA_NOTICIA' : 'Data noticia',
 	'NOMBRE_OBJETIVO' : 'Nome obxectivo',
 	'DESCRIPCION_OBJETIVO' : 'Descripción obxectivo',
+	'TEXTO_RESPUESTA_POSIBLE' : 'Texto resposta posible',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -184,7 +185,7 @@ arrayGA={
 	'TITULO_NOTICIA_MENOR_QUE_3' : 'O título da noticia ten menos de 3 caracteres',
 	'TITULO_NOTICIA_MAYOR_QUE_256' : 'O título da noticia ten máis de 256 caracteres',
 	'TEXTO_NOTICIA_VACIO' : 'Texto noticia vacío',
-	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da noticia só pode conter letras, números, espacios e sinais de puntuación',
+	'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da noticia só pode conter letras, números, espazos e sinais de puntuación',
 	'OBJETIVO_NAME_VACIO' : 'Nome obxectivo vacío',
 	'OBJETIVO_NAME_ALFANUMERICO_INCORRECTO' : 'O nome do obxectivo tan só pode conter letras, números e espacios',
 	'OBJETIVO_NAME_MENOR_QUE_3' : 'O nome do obxectivo ten menos de 3 caracteres',
@@ -196,6 +197,10 @@ arrayGA={
 	'FECHA_MAYOR_QUE_8' : 'A data ten menos de 8 díxitos',
 	'FECHA_NUMERICA_INCORRECTA' : 'Formato de data incorrecto',
 	'TEXTO_NOTICIA_MENOR_QUE_3' : 'O texto da noticia ten menos de 3 caracteres',
+	'TEXTO_RESPUESTA_VACIO' : 'O texto da resposta posible é vacío',
+	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da resposta posible tan só pode conter letras, números, espazos e signos de puntuación',
+	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'O texto da resposta posible ten menos de 2 caracteres',
+
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -295,6 +300,14 @@ arrayGA={
 	'DETAIL_OBJECTIVE' : 'DETALLE OBXECTIVO',
 	'SEARCH_OBJETIVO' : 'BUSCAR OBXECTIVO',
 	'ADD_OBJETIVO' : 'ENGADIR OBXECTIVO',
+	'GESTION_RESPUESTAS_POSIBLES' : 'Xestión de respostas posibles',
+	'REACTIVATE_RESPUESTA_POSIBLE' : 'REACTIVAR RESPOSTA POSIBLE',
+	'SEGURO_REACTIVAR_RESP' : 'Estás seguro de que queres reactivar a resposta posible?',
+	'DELETE_RESPUESTA_POSIBLE' : 'ELIMINAR RESPOSTA POSIBLE',
+	'EDIT_RESPUESTA_POSIBLE' : 'EDITAR RESPOSTA POSIBLE',
+	'DETAIL_RESPUESTA_POSIBLE' : 'DETALLE RESPOSTA POSIBLE',
+	'SEARCH_RESPUESTA_POSIBLE' : 'BUSCAR RESPOSTA POSIBLE',
+	'ADD_RESPUESTA_POSIBLE' : 'ENGADIR RESPOSTA POSIBLE',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -378,6 +391,17 @@ arrayGA={
 	'OBJETIVOS_LISTADOS' : 'Os obxectivos listáronse correctamente',
 	'OBJETIVO_ELIMINADO' : 'O obxectivo eliminouse correctamente',
 	'OBJETIVO_MODIFICADO' : 'O obxectivo modificouse correctamente',
-	'OBJETIVO_GUARDADO' : 'O obxectivo gardouse correctamente'
+	'OBJETIVO_GUARDADO' : 'O obxectivo gardouse correctamente',
+	'RESPUESTA_POSIBLE_REACTIVADA_OK' : 'RESPOSTA POSIBLE REACTIVADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_ELIMINADA_OK' : 'RESPOSTA POSIBLE ELIMINADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_EDITADA_OK' : 'RESPOSTA POSIBLE EDITADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_GUARDADA_OK' : 'RESPOSTA POSIBLE GARDADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_REACTIVADA' : 'A resposta posible reactivouse correctamente',
+	'RESPUESTA_POSIBLE_ENCONTRADA' : 'A resposta posible encontrouse correctamente',
+	'RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS' : 'As respostas posibles eliminadas encontráronse correctamente',
+	'RESPUESTAS_POSIBLES_LISTADAS' : 'As respostas posibles listáronse correctamente',
+	'RESPUESTA_POSIBLE_ELIMINADA' : 'A resposta posible eliminouse correctamente',
+	'RESPUESTA_POSIBLE_MODIFICADA' : 'A resposta posible modificouse correctamente',
+	'RESPUESTA_POSIBLE_GUARDADA' : 'A resposta posible gardouse correctamente'
 	
 }

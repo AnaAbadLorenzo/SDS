@@ -15,6 +15,7 @@ var urlFuncionalidad = "/funcionalidad";
 var urlAccion = "/accion";
 var urlLog = "/log";
 var urlNoticia = "/noticia";
+var urlRespuestaPosible = "/respuestaPosible";
 var urlPersona = "/persona";
 var urlTest = "/test";
 var urlAtributos = "/atributos";
@@ -99,6 +100,15 @@ var urlPeticionAjaxListadoObjetivos = urlComun + urlObjetivo  + "/listarObjetivo
 var urlPeticionAjaxEditarObjetivo = urlComun + urlObjetivo  + "/modificarObjetivo";
 var urlPeticionAjaxAddObjetivo = urlComun + urlObjetivo  + "/objetivo";
 var urlPeticionAjaxDeleteObjetivo = urlComun + urlObjetivo  + "/eliminarObjetivo";
+
+/**Urls respuestas posibles*/
+var urlPeticionAjaxReactivarRespuestaPosible = urlComun + urlRespuestaPosible + "/reactivarRespuestaPosible";
+var urlPeticionAjaxListarRespuestaPosible = urlComun + urlRespuestaPosible + "/listarRespuestaPosible";
+var urlPeticionAjaxListarRespuestasPosiblesEliminadas = urlComun + urlRespuestaPosible + "/listarRespuestasPosiblesEliminadas";
+var urlPeticionAjaxListadoRespuestasPosibles = urlComun + urlRespuestaPosible  + "/listarRespuestasPosibles";
+var urlPeticionAjaxEditarRespuestaPosible = urlComun + urlRespuestaPosible  + "/modificarRespuestaPosible";
+var urlPeticionAjaxAddRespuestaPosible = urlComun + urlRespuestaPosible  + "/respuestaPosible";
+var urlPeticionAjaxDeleteRespuestaPosible = urlComun + urlRespuestaPosible  + "/eliminarRespuestaPosible";
 
 
 /**Urls usuarios*/

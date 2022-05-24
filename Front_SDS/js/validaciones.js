@@ -1308,6 +1308,68 @@ function comprobarBuscarObjetivo(){
 	}
 }
 
+/** Funcion que valida el formato del Texto de la respuesta posible **/
+function comprobarTextoRespuestaPosible(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 2, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/**Función que valida el editar de la respuesta posible **/
+function comprobarEditRespuestaPosible(){
+	if(comprobarTextoRespuestaPosible('textoRespuestaPosible', 'errorFormatoTextoRespuestaPosible', 'textoRespuestaPosible')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el texto de la respuesta posible en el buscar*/
+function comprobarTextoRespuestaPosibleSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (xcomprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida el buscar de la respuesta posible **/
+function comprobarBuscarRespuestaPosible(){
+	if(comprobarTextoRespuestaPosibleSearch('textoRespuestaPosible', 'errorFormatoTextoRespuestaPosible', 'textoRespuestaPosible')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el añadir de la respuesta posible **/
+function comprobarAddRespuestaPosible(){
+	if(comprobarTextoRespuestaPosible('textoRespuestaPosible', 'errorFormatoTextoRespuestaPosible', 'textoRespuestaPosible')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
 
@@ -1401,6 +1463,9 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			break;
 			case 'descripcionObjetivo':
 				codigo = "OBJETIVO_DESCRIPTION_VACIO";
+			break;
+			case 'textoRespuestaPosible':
+				codigo = "TEXTO_RESPUESTA_VACIO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -1499,6 +1564,9 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			break;
 			case 'descripcionObjetivo':
 				codigo = "OBJETIVO_DESCRIPTION_MENOR_QUE_3";
+			break;
+			case 'textoRespuesta' :
+				codigo = "TEXTO_RESPUESTA_MENOR_QUE_2";
 			break;
 
 		}
@@ -1854,6 +1922,9 @@ function comprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError,
     	switch(campo) {
 			case 'textoNoticia' :
 				codigo = "TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO";
+			break;
+			case 'textoRespuestaPosible' : 
+				codigo = "TEXTO_RESPUESTA_ALAFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

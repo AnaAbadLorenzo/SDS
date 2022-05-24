@@ -38,6 +38,7 @@ arrayEN={
 	'FECHA_NOTICIA' : 'New date',
 	'NOMBRE_OBJETIVO' : 'Objective name',
 	'DESCRIPCION_OBJETIVO' : 'Objective description',
+	'TEXTO_RESPUESTA_POSIBLE' : 'Posible answer text',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -199,6 +200,9 @@ arrayEN={
 	'FECHA_VACIA' : 'Date empty',
 	'FECHA_MAYOR_QUE_8' : 'Date size is bigger than 8 characteres',
 	'FECHA_NUMERICA_INCORRECTA' : 'Date format is incorrect',
+	'TEXTO_RESPUESTA_VACIO' : 'Posible answer`s text is empty',
+	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'Posible answer`s text can only contain letters, numbers, spaces and puntuaction marks',
+	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'Posible answer`s size is minor than 2 characteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -297,6 +301,14 @@ arrayEN={
 	'DETAIL_OBJECTIVE' : 'DETAIL OBJECTIVE',
 	'SEARCH_OBJETIVO' : 'SEARCH OBJECTIVE',
 	'ADD_OBJETIVO' : 'ADD OBJECTIVE',
+	'GESTION_RESPUESTAS_POSIBLES' : 'Posible answers management',
+	'REACTIVATE_RESPUESTA_POSIBLE' : 'REACTIVATE POSIBLE ANSWER',
+	'SEGURO_REACTIVAR_RESP' : 'Are you sure that you want to reactivate the posible answer?',
+	'DELETE_RESPUESTA_POSIBLE' : 'DELETE POSIBLE ANSWER',
+	'EDIT_RESPUESTA_POSIBLE' : 'EDIT POSIBLE ANSWER',
+	'DETAIL_RESPUESTA_POSIBLE' : 'DETAIL POSIBLE ANSWER',
+	'SEARCH_RESPUESTA_POSIBLE' : 'SEARCH POSIBLE ANSWER',
+	'ADD_RESPUESTA_POSIBLE' : 'ADD POSIBLE ANSWER',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -381,6 +393,17 @@ arrayEN={
 	'OBJETIVOS_LISTADOS' : 'The objectives has been found correctly',
 	'OBJETIVO_ELIMINADO' : 'The objective has been deleted correctly',
 	'OBJETIVO_MODIFICADO' : 'The objective has been modified correctly',
-	'OBJETIVO_GUARDADO' : 'The objective has been saved correctly'
+	'OBJETIVO_GUARDADO' : 'The objective has been saved correctly',
+	'RESPUESTA_POSIBLE_REACTIVADA_OK' : 'POSIBLE ANSWER REACTIVATED CORRECTLY',
+	'RESPUESTA_POSIBLE_ELIMINADA_OK' : 'POSIBLE ANSWER DELETED CORRECTLY',
+	'RESPUESTA_POSIBLE_EDITADA_OK' : 'POSIBLE ANSWER MODIFIED CORRECTLY',
+	'RESPUESTA_POSIBLE_GUARDADA_OK' : 'POSIBLE ANSWER SAVED CORRECTLY',
+	'RESPUESTA_POSIBLE_REACTIVADA' : 'The posible answer has been reactivated correctly',
+	'RESPUESTA_POSIBLE_ENCONTRADA' : 'The posible answer has been found correctly',
+	'RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS' : 'The deleted posible answers han been found correctly',
+	'RESPUESTAS_POSIBLES_LISTADAS' : 'The posible answers has been listed correctly',
+	'RESPUESTA_POSIBLE_ELIMINADA' : 'The posible answers has been deleted correctly',
+	'RESPUESTA_POSIBLE_MODIFICADA' : 'The posible answer has been modified correctly',
+	'RESPUESTA_POSIBLE_GUARDADA' : 'The posible answer has been saved correctly'
 
 }

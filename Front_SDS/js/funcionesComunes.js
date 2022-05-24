@@ -460,6 +460,11 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + fila.descripObjetivo;
         break;
 
+        case 'RESPUESTA_POSIBLE' :
+        	atributosFunciones = ["'" + fila.textoRespuesta + "'","'" + fila.idRespuesta + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.textoRespuesta;
+        break;
+
 	};
 
 	if(entidad == 'PERSONA'){
@@ -574,6 +579,11 @@ function construyeFilaEliminados(entidad, fila) {
                 '</td> <td>' + fila.descripObjetivo;
         break;
 
+        case 'RESPUESTA_POSIBLE' :
+        	atributosFunciones = ["'" + fila.textoRespuesta + "'","'" + fila.idRespuesta + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.textoRespuesta;
+        break;
+
 	};
 
 	var reactivar = '<div class="tooltip6"><img class="reactivar reactivarPermiso" src="images/reactivar2.png" data-toggle="" data-target="" onclick="showReactivar(' + atributosFunciones + 
@@ -682,6 +692,10 @@ function cargarHref(dato){
 		case 'Gestión de objetivos':
 			href="GestionDeObjetivos.html";
 		break;
+
+		case 'Gestión de respuestas posibles':
+			href="GestionDeRespuestasPosibles.html";
+		break;
 	}
 
 	return href;
@@ -732,6 +746,10 @@ function cargarClass(dato){
 
 		case 'Gestión de objetivos':
 			href = "GESTION_OBJETIVOS";
+		break;
+
+		case 'Gestión de respuestas posibles':
+			href = "GESTION_RESPUESTAS_POSIBLES";
 		break;
 	}
 
@@ -961,6 +979,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'OBJETIVO' :
 			cargarPermisosFuncObjetivo();
 		break;
+
+		case 'RESPUESTA_POSIBLE' :
+			cargarPermisosFuncRespuestaPosible();
+		break;
 	}
 	
 }
@@ -1006,6 +1028,10 @@ function cargarPermisosSegunEntidad(entidad){
 		
 		case 'OBJETIVO' :
 			cargarPermisosFuncObjetivo();
+		break;
+
+		case 'RESPUESTA_POSIBLE' :
+			cargarPermisosFuncRespuestaPosible();
 		break;
 
 	}

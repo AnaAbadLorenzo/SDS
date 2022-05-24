@@ -89,7 +89,7 @@ public class RespuestaPosibleController {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, respuestaPosible);
 				}
 			} catch (final RespuestaPosibleYaExisteException respuestaPosibleAlreadyExists) {
-				return new RespEntity(RespCode.RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION, respuestaPosibleAlreadyExists);
+				return new RespEntity(RespCode.RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION, respuestaPosible);
 			}
 		}
 

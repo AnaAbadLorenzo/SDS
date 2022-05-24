@@ -882,7 +882,8 @@ form button[type="button"]:hover {
 .iconoSearchLogExcepciones, .iconoAddNoticia, .iconoSearchNoticia, .iconoEditarNoticia, 
 .iconoSearchRol, .iconoAddRol, .iconoEditarRol, .iconoSearchUsuario, .iconoEditarRolUsuario,
 .iconoAddPersona, .iconoSearchPersona, .iconoEditarPersona, .iconoAddEmpresa,
-.iconoSearchEmpresa, .iconoEditarEmpresa, .iconoAddObjetivo, .iconoSearchObjetivo, .iconoEditarObjetivo {
+.iconoSearchEmpresa, .iconoEditarEmpresa, .iconoAddObjetivo, .iconoSearchObjetivo, .iconoEditarObjetivo,
+.iconoAddRespuestaPosible, .iconoSearchRespuestaPosible, .iconoEditarRespuestaPosible {
   position: relative;
   width: 30px;
   display:block;
@@ -1016,7 +1017,7 @@ form button[type="button"]:hover {
 .rolNameColumn, .rolDescriptionColumn, .rolIdColumn,
 .dniUsuarioColumn, .usuarioActivoColumn, .rolColumn, .cifEmpresaColumn,
 .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, .nombreObjetivoColumn, 
-.descripcionObjetivoColumn {
+.descripcionObjetivoColumn, .textoRespuestaPosibleColumn, .idRespuestaPosibleColumn {
   display: inline;
 }
 
@@ -1031,7 +1032,8 @@ form button[type="button"]:hover {
 .ordenarIconRolName, .ordenarIconRolDescription, .ordenarIconRolId,
 .ordenarIconDniUsuario, .ordenarIconActivo, .ordenarIconRol, .ordenarIconCifEmpresa,
 .ordenarIconNombreEmpresa, .ordenarIconDireccionEmpresa, .ordenarIconTelefonoEmpresa,
-.ordenarIconIdEmpresa, .ordenarIconNombreObjetivo, .ordenarIconDescripcionObjetivo  {
+.ordenarIconIdEmpresa, .ordenarIconNombreObjetivo, .ordenarIconDescripcionObjetivo,
+.ordenarTextoRespuestaPosible, .ordenarIdRespuestaPosible  {
   margin-left: 2%;
   cursor:  pointer;
 }

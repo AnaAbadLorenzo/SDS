@@ -39,6 +39,7 @@ arrayES={
 	'FECHA_NOTICIA' : 'Fecha noticia',
 	'NOMBRE_OBJETIVO' : 'Nombre objetivo',
 	'DESCRIPCION_OBJETIVO' : 'Descripción objetivo',
+	'TEXTO_RESPUESTA_POSIBLE' : 'Texto respuesta posible',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -200,6 +201,9 @@ arrayES={
 	'FECHA_VACIA' : 'Fecha vacía',
 	'FECHA_MAYOR_QUE_8' : 'La fecha tiene más de 8 dígitos',
 	'FECHA_NUMERICA_INCORRECTA' : 'El formato de la fecha es incorrecto',
+	'TEXTO_RESPUESTA_VACIO' : 'El texto de la respuesta posible es vacío',
+	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'El texto de la respuesta posible sólo puede contener letras, números, espacios y signos de puntuación',
+	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'El texto de la respuesta posible tiene menos de 2 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -299,6 +303,14 @@ arrayES={
 	'DETAIL_OBJECTIVE' : 'DETALLE OBJETIVO',
 	'SEARCH_OBJETIVO' : 'BUSCAR OBJETIVO',
 	'ADD_OBJETIVO' : 'AÑADIR OBJETIVO',
+	'GESTION_RESPUESTAS_POSIBLES' : 'Gestión de respuestas posibles',
+	'REACTIVATE_RESPUESTA_POSIBLE' : 'REACTIVAR RESPUESTA POSIBLE',
+	'SEGURO_REACTIVAR_RESP' : '¿Esta seguro de que desea reactivar la respuesta posible?',
+	'DELETE_RESPUESTA_POSIBLE' : 'ELIMINAR RESPUESTA POSIBLE',
+	'EDIT_RESPUESTA_POSIBLE' : 'EDITAR RESPUESTA POSIBLE',
+	'DETAIL_RESPUESTA_POSIBLE' : 'DETALLE RESPUESTA POSIBLE',
+	'SEARCH_RESPUESTA_POSIBLE' : 'BUSCAR RESPUESTA POSIBLE',
+	'ADD_RESPUESTA_POSIBLE' : 'AÑADIR RESPUESTA POSIBLE',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -383,5 +395,16 @@ arrayES={
 	'OBJETIVOS_LISTADOS' : 'Los objetivos se han listado correctamente',
 	'OBJETIVO_ELIMINADO' : 'Los objetivos se han eliminado correctamente',
 	'OBJETIVO_MODIFICADO' : 'Los objetivos se han modificado correctamente',
-	'OBJETIVO_GUARDADO' : 'Los objetivos se han guardado correctamente'
+	'OBJETIVO_GUARDADO' : 'Los objetivos se han guardado correctamente',
+	'RESPUESTA_POSIBLE_REACTIVADA_OK' : 'RESPUESTA POSIBLE REACTIVADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_ELIMINADA_OK' : 'RESPUESTA POSIBLE ELIMINADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_EDITADA_OK' : 'RESPUESTA POSIBLE EDITADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_GUARDADA_OK' : 'RESPUESTA POSIBLE GUARDADA CORRECTAMENTE',
+	'RESPUESTA_POSIBLE_REACTIVADA' : 'La respuesta posible se ha reactivado correctamente',
+	'RESPUESTA_POSIBLE_ENCONTRADA' : 'La respuesta posible se ha encontrado correctamente',
+	'RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS' : 'Las respuestas posibles eliminadas se han encontrado correctamente',
+	'RESPUESTAS_POSIBLES_LISTADAS' : 'Las respuestas posibles se han listado correctamente',
+	'RESPUESTA_POSIBLE_ELIMINADA' : 'La respuesta posible se ha eliminado correctamente',
+	'RESPUESTA_POSIBLE_MODIFICADA' : 'La respuesta posible se ha editado correctamente',
+		'RESPUESTA_POSIBLE_GUARDADA' : 'La respuesta posible se ha guardado correctamente'
 }

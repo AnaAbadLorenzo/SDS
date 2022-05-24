@@ -242,9 +242,9 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 								.getTipoNameByCodigo(CodeMessageErrors.RESPUESTA_POSIBLE_ASOCIADA_PROCESO.getCodigo()));
 
 			} else {
-				respuestaPosibleEntity.setBorradoRespuesta(1);
+				respuestaPosibleBD.get().setBorradoRespuesta(1);
 
-				respuestaPosible.setRespuestaPosibleEntity(respuestaPosibleEntity);
+				respuestaPosible.setRespuestaPosibleEntity(respuestaPosibleBD.get());
 
 				modificarRespuestaPosible(respuestaPosible);
 				resultado = Constantes.OK;
@@ -344,7 +344,7 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 					CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo(), CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
-			respuestaPosibleEntity.setBorradoRespuesta(1);
+			respuestaPosibleEntity.setBorradoRespuesta(0);
 			respuestaPosible.setRespuestaPosibleEntity(respuestaPosibleEntity);
 			resultado = modificarRespuestaPosible(respuestaPosible);
 

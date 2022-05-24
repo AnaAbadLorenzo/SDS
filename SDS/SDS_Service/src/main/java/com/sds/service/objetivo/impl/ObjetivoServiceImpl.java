@@ -225,8 +225,8 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 			}
 
 			if (Boolean.TRUE.equals(eliminarObjetivo)) {
-				objetivoEntity.setBorradoObjetivo(1);
-				objetivo.setObjetivo(objetivoEntity);
+				objetivoBD.get().setBorradoObjetivo(1);
+				objetivo.setObjetivo(objetivoBD.get());
 				modificarObjetivo(objetivo);
 				resultado = Constantes.OK;
 			} else {

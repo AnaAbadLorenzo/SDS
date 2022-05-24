@@ -126,6 +126,9 @@ function escogeTamanho(entidad){
         case 'OBJETIVO' : 
             tamanho = tamanhoPaginaObjetivo;
         break;
+        case 'RESPUESTA_POSIBLE' :
+            tamanho = tamanhoPaginaRespuestaPosible;
+        break;
     }
 
     return tamanho;
@@ -373,6 +376,28 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                     }
                 break;
                 case 'buscarEliminadosObjetivo' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaObjetivo + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+        }
+        break;
+        case 'RESPUESTA_POSIBLE':
+            switch(funcionalidad){
+                case 'cargarRespuestasPosibles': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarRespuestasPosibles(' 
+                            + (i+1) + ',' + tamanhoPaginaRespuestaPosible + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarRespuestaPosible' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarRespuestaPosible(' 
+                            + (i+1) + ',' + tamanhoPaginaRespuestaPosible + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosRespuestaPosible' :
                     for(var i = 0; i< 3; i++){
                         paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
                             + (i+1) + ',' + tamanhoPaginaObjetivo + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';

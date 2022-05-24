@@ -1,6 +1,7 @@
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;
+  display:  block;
 }
 
 .formmodal-container input[type=text]{
@@ -43,12 +44,6 @@
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-}
-
-.formmodal-container p, .labelForm {
-  font-family: Roboto;
-  color: #311B92;
-  display:  block;
 }
 
 
