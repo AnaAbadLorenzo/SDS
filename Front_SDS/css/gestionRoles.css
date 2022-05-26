@@ -34,13 +34,20 @@
   border: 2px solid #4527A0 !important;
 }
 
-.cabecera, .cabeceraEliminados {
+.cabecera{
   position:  fixed;
   top: 12%;
-  left: 8%;
+  left: 6%;
+  width: 100%;
+}
+
+.cabeceraEliminados {
+  position:  fixed;
+  top: 13%;
+  left: 6%;
   width: 100%;
 }
 
 .refreshIcon {
-  margin-left: 62%;
+  margin-left: 65%;
 }

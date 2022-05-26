@@ -110,7 +110,6 @@ var urlPeticionAjaxEditarRespuestaPosible = urlComun + urlRespuestaPosible  + "/
 var urlPeticionAjaxAddRespuestaPosible = urlComun + urlRespuestaPosible  + "/respuestaPosible";
 var urlPeticionAjaxDeleteRespuestaPosible = urlComun + urlRespuestaPosible  + "/eliminarRespuestaPosible";
 
-
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";
 var urlPeticionAjaxListarTodosUsuarios = urlComun + urlUsuario + "/listarUsuarios";
