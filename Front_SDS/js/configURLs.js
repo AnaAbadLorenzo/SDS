@@ -121,7 +121,6 @@ var urlPeticionAjaxEditarPlan = urlComun + urlPlan  + "/modificarPlan";
 var urlPeticionAjaxAddPlan = urlComun + urlPlan  + "/plan";
 var urlPeticionAjaxDeletePlan = urlComun + urlPlan  + "/eliminarPlan";
 
-
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";
 var urlPeticionAjaxListarTodosUsuarios = urlComun + urlUsuario + "/listarUsuarios";
