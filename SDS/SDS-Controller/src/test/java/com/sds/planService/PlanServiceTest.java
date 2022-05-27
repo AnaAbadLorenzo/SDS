@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -53,10 +54,18 @@ public class PlanServiceTest {
 	public void PlanService_buscarPlan() throws IOException, ParseException, java.text.ParseException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.BUSCAR_PLAN);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		plan.getPlan().setObjetivo(objetivo);
 
 		final ReturnBusquedas<PlanEntity> planEncontrado = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
+
+		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		objetivoRepository.deleteObjetivo(objetivoEliminar.get(0).getIdObjetivo());
 
 		assertNotNull(planEncontrado.getListaBusquedas());
 	}
@@ -65,10 +74,18 @@ public class PlanServiceTest {
 	public void PlanService_buscarPlanNombreVacio() throws IOException, ParseException, java.text.ParseException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.NOMBRE_PLAN_VACIO);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		plan.getPlan().setObjetivo(objetivo);
 
 		final ReturnBusquedas<PlanEntity> planEncontrado = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
+
+		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		objetivoRepository.deleteObjetivo(objetivoEliminar.get(0).getIdObjetivo());
 
 		assertNotNull(planEncontrado.getListaBusquedas());
 	}
@@ -77,10 +94,18 @@ public class PlanServiceTest {
 	public void PlanService_buscarPlanDescripcionVacio() throws IOException, ParseException, java.text.ParseException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.DESCRIPCION_PLAN_VACIO);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		plan.getPlan().setObjetivo(objetivo);
 
 		final ReturnBusquedas<PlanEntity> planEncontrado = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
+
+		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		objetivoRepository.deleteObjetivo(objetivoEliminar.get(0).getIdObjetivo());
 
 		assertNotNull(planEncontrado.getListaBusquedas());
 	}
@@ -89,10 +114,18 @@ public class PlanServiceTest {
 	public void PlanService_buscarPlanFechaVacia() throws IOException, ParseException, java.text.ParseException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.FECHA_PLAN_VACIA);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		plan.getPlan().setObjetivo(objetivo);
 
 		final ReturnBusquedas<PlanEntity> planEncontrado = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
+
+		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		objetivoRepository.deleteObjetivo(objetivoEliminar.get(0).getIdObjetivo());
 
 		assertNotNull(planEncontrado.getListaBusquedas());
 	}
@@ -101,10 +134,18 @@ public class PlanServiceTest {
 	public void PlanService_buscarPlanDatosPlanVacios() throws IOException, ParseException, java.text.ParseException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.DATOS_PLAN_VACIOS);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		plan.getPlan().setObjetivo(objetivo);
 
 		final ReturnBusquedas<PlanEntity> planEncontrado = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
+
+		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		objetivoRepository.deleteObjetivo(objetivoEliminar.get(0).getIdObjetivo());
 
 		assertNotNull(planEncontrado.getListaBusquedas());
 	}
@@ -116,7 +157,7 @@ public class PlanServiceTest {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.GUARDAR_PLAN);
 		final PlanEntity planEntity = plan.getPlan();
-
+		planEntity.setFechaPlan(new Date());
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
@@ -128,7 +169,7 @@ public class PlanServiceTest {
 		assertEquals(Constantes.OK, respuesta);
 
 		final ReturnBusquedas<PlanEntity> planEncontrado = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
 		final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
 				objetivo.getDescripObjetivo());
 
@@ -219,7 +260,7 @@ public class PlanServiceTest {
 		assertEquals(CodeMessageErrors.PLAN_VACIO.name(), respuesta);
 	}
 
-	@Test
+	@Test(expected = FechaAnteriorFechaActualException.class)
 	public void PlanService_guardarPlanFechaPlanAnteriorActual() throws IOException, ParseException,
 			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, PlanYaExisteException,
 			java.text.ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException {
@@ -229,15 +270,18 @@ public class PlanServiceTest {
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
 
-		String respuesta = StringUtils.EMPTY;
-
-		respuesta = planService.anadirPlan(plan);
-
-		final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
-				objetivo.getDescripObjetivo());
-		objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
-
-		assertEquals(CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.name(), respuesta);
+		try {
+			planService.anadirPlan(plan);
+		} catch (final FechaAnteriorFechaActualException fechaAnteriorFechaActualException) {
+			throw new FechaAnteriorFechaActualException(
+					CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo()));
+		} finally {
+			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
+					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
+			objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
+		}
 
 	}
 
@@ -250,6 +294,8 @@ public class PlanServiceTest {
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
+		plan.getPlan().setFechaPlan(new Date());
+		planService.anadirPlan(plan);
 
 		try {
 			planService.anadirPlan(plan);
@@ -257,8 +303,14 @@ public class PlanServiceTest {
 			throw new PlanYaExisteException(CodeMessageErrors.PLAN_YA_EXISTE_EXCEPTION.getCodigo(),
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PLAN_YA_EXISTE_EXCEPTION.getCodigo()));
 		} finally {
+			final LocalDate fechaActual = LocalDate.now();
+			final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+					+ fechaActual.getDayOfMonth();
 			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
 					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
+			final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getPlan().getNombrePlan(),
+					plan.getPlan().getDescripPlan(), fechaActualString, plan.getPlan().getObjetivo());
+			planRepository.deletePlan(planEncontrado.get(0).getIdPlan());
 			objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
 		}
 
@@ -270,6 +322,7 @@ public class PlanServiceTest {
 			FechaAnteriorFechaActualException, PlanNoExisteException, ObjetivoNoExisteException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.MODIFICAR_PLAN);
+		plan.getPlan().setFechaPlan(new Date());
 		final PlanEntity planEntity = plan.getPlan();
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
@@ -280,7 +333,7 @@ public class PlanServiceTest {
 		planService.anadirPlan(plan);
 
 		final ReturnBusquedas<PlanEntity> planModificar = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
 
 		planModificar.getListaBusquedas().get(0).setDescripPlan("Descripcion modificada");
 
@@ -379,7 +432,7 @@ public class PlanServiceTest {
 		assertEquals(CodeMessageErrors.PLAN_VACIO.name(), respuesta);
 	}
 
-	@Test
+	@Test(expected = FechaAnteriorFechaActualException.class)
 	public void PlanService_modificarPlanFechaPlanAnteriorActual()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			PlanYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException, PlanNoExisteException,
@@ -389,16 +442,36 @@ public class PlanServiceTest {
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
-		String respuesta = StringUtils.EMPTY;
+		final Date fechaAnteriorActual = plan.getPlan().getFechaPlan();
+		final LocalDate fecha = LocalDate.now();
+		plan.getPlan().setFechaPlan(new Date());
+		final String fechaActualString = fecha.getYear() + "-0" + fecha.getMonthValue() + "-" + fecha.getDayOfMonth();
 
-		respuesta = planService.modificarPlan(plan);
+		planService.anadirPlan(plan);
 
-		final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
-				objetivo.getDescripObjetivo());
-		objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
+		final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getPlan().getNombrePlan(),
+				plan.getPlan().getDescripPlan(), fechaActualString, plan.getPlan().getObjetivo());
 
-		assertEquals(CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.name(), respuesta);
+		planEncontrado.get(0).setFechaPlan(fechaAnteriorActual);
 
+		try {
+			planService.modificarPlan(new Plan(plan.getUsuario(), planEncontrado.get(0)));
+		} catch (final FechaAnteriorFechaActualException fechaAnteriorFechaActualException) {
+			throw new FechaAnteriorFechaActualException(
+					CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo()));
+		} finally {
+			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
+					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
+			final LocalDate fechaActual = LocalDate.now();
+			final String fechaPlan = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+					+ fechaActual.getDayOfMonth();
+			final List<PlanEntity> planEliminar = planRepository.findPlan(plan.getPlan().getNombrePlan(),
+					plan.getPlan().getDescripPlan(), fechaPlan, plan.getPlan().getObjetivo());
+			planRepository.deletePlan(planEliminar.get(0).getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
+		}
 	}
 
 	@Test(expected = PlanNoExisteException.class)
@@ -421,11 +494,12 @@ public class PlanServiceTest {
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		planEntity.setFechaPlan(new Date());
 
 		planService.anadirPlan(plan);
 
 		final ReturnBusquedas<PlanEntity> planEliminar = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
 		planEliminar.getListaBusquedas().get(0).setBorradoPlan(1);
 
 		final String respuesta = planService
@@ -461,12 +535,13 @@ public class PlanServiceTest {
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
 		final PlanEntity planEntity = plan.getPlan();
+		planEntity.setFechaPlan(new Date());
 
 		plan.getPlan().setBorradoPlan(1);
 		planService.anadirPlan(plan);
 
 		final ReturnBusquedas<PlanEntity> planReactivar = planService.buscarPlan(planEntity.getNombrePlan(),
-				planEntity.getDescripPlan(), planEntity.getFechaPlan(), 0, 1);
+				planEntity.getDescripPlan(), planEntity.getFechaPlan(), planEntity.getObjetivo(), 0, 1);
 
 		planReactivar.getListaBusquedas().get(0).setBorradoPlan(0);
 

@@ -2,11 +2,14 @@ package com.sds.service.plan.model;
 
 import java.util.Date;
 
+import com.sds.model.ObjetivoEntity;
+
 public class PlanBuscar {
 
 	private String nombrePlan;
 	private String descripPlan;
 	private Date fechaPlan;
+	private ObjetivoEntity objetivo;
 	private int inicio;
 	private int tamanhoPagina;
 
@@ -14,12 +17,13 @@ public class PlanBuscar {
 		super();
 	}
 
-	public PlanBuscar(final String nombrePlan, final String descripPlan, final Date fechaPlan, final int inicio,
-			final int tamanhoPagina) {
+	public PlanBuscar(final String nombrePlan, final String descripPlan, final Date fechaPlan,
+			final ObjetivoEntity objetivo, final int inicio, final int tamanhoPagina) {
 		super();
 		this.nombrePlan = nombrePlan;
 		this.descripPlan = descripPlan;
 		this.fechaPlan = fechaPlan;
+		this.objetivo = objetivo;
 		this.inicio = inicio;
 		this.tamanhoPagina = tamanhoPagina;
 	}
@@ -46,6 +50,14 @@ public class PlanBuscar {
 
 	public void setFechaPlan(final Date fechaPlan) {
 		this.fechaPlan = fechaPlan;
+	}
+
+	public ObjetivoEntity getObjetivo() {
+		return objetivo;
+	}
+
+	public void setObjetivo(final ObjetivoEntity objetivo) {
+		this.objetivo = objetivo;
 	}
 
 	public int getInicio() {

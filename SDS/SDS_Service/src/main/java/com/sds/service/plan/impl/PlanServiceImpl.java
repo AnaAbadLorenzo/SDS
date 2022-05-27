@@ -63,9 +63,11 @@ public class PlanServiceImpl implements PlanService {
 
 	@Override
 	public ReturnBusquedas<PlanEntity> buscarPlan(final String nombrePlan, final String descripPlan,
-			final Date fechaPlan, final int inicio, final int tamanhoPagina) {
+			final Date fechaPlan, final ObjetivoEntity objetivo, final int inicio, final int tamanhoPagina) {
 		final List<PlanEntity> planToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
+		List<PlanEntity> planes = new ArrayList<>();
+		Integer numberTotalResults = 0;
 		String fecha = StringUtils.EMPTY;
 
 		if (fechaPlan != null) {
@@ -76,12 +78,22 @@ public class PlanServiceImpl implements PlanService {
 			fecha = StringUtils.EMPTY;
 		}
 
-		final List<PlanEntity> planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDPLAN)
-				.setParameter(Constantes.NOMBRE_PLAN, nombrePlan).setParameter(Constantes.DESCRIPCION_PLAN, descripPlan)
-				.setParameter(Constantes.FECHA_PLAN, fecha).setFirstResult(inicio).setMaxResults(tamanhoPagina)
-				.getResultList();
-
-		final Integer numberTotalResults = planRepository.numberFindPlan(nombrePlan, descripPlan, fecha);
+		if (objetivo == null) {
+			planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDPLAN)
+					.setParameter(Constantes.NOMBRE_PLAN, nombrePlan)
+					.setParameter(Constantes.DESCRIPCION_PLAN, descripPlan).setParameter(Constantes.FECHA_PLAN, fecha)
+					.setParameter(Constantes.OBJETIVO, StringUtils.EMPTY).setFirstResult(inicio)
+					.setMaxResults(tamanhoPagina).getResultList();
+			numberTotalResults = planRepository.numberFindPlan(nombrePlan, descripPlan, fecha);
+		} else {
+			final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(objetivo.getIdObjetivo());
+			planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDPLAN)
+					.setParameter(Constantes.NOMBRE_PLAN, nombrePlan)
+					.setParameter(Constantes.DESCRIPCION_PLAN, descripPlan).setParameter(Constantes.FECHA_PLAN, fecha)
+					.setParameter(Constantes.OBJETIVO, objetivoBD.get()).setFirstResult(inicio)
+					.setMaxResults(tamanhoPagina).getResultList();
+			numberTotalResults = planRepository.numberFindPlanWithObjetivo(nombrePlan, descripPlan, fecha, objetivo);
+		}
 
 		if (!planes.isEmpty()) {
 			for (final PlanEntity plan : planes) {
@@ -98,6 +110,9 @@ public class PlanServiceImpl implements PlanService {
 		datosBusqueda.add(Constantes.NOMBRE_PLAN + Constantes.DOS_PUNTOS + nombrePlan);
 		datosBusqueda.add(Constantes.DESCRIPCION_PLAN + Constantes.DOS_PUNTOS + descripPlan);
 		datosBusqueda.add(Constantes.FECHA_PLAN + Constantes.DOS_PUNTOS + fecha);
+		if (objetivo != null) {
+			datosBusqueda.add(Constantes.OBJETIVO + Constantes.DOS_PUNTOS + objetivo.getIdObjetivo());
+		}
 
 		final ReturnBusquedas<PlanEntity> result = new ReturnBusquedas<>(planToret, datosBusqueda, numberTotalResults,
 				planToret.size(), inicio);
@@ -185,7 +200,10 @@ public class PlanServiceImpl implements PlanService {
 						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PLAN_YA_EXISTE_EXCEPTION.getCodigo()));
 			} else {
 				final LocalDate fechaActual = LocalDate.now();
-				final String fechaIntroducidaUsuario = plan.getPlan().getFechaPlan().toString();
+				final LocalDate dateIntroducidaUsuario = plan.getPlan().getFechaPlan().toInstant()
+						.atZone(ZoneId.systemDefault()).toLocalDate();
+				final String fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+						+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
 				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
 						+ fechaActual.getDayOfMonth();
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {

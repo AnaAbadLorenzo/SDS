@@ -169,6 +169,7 @@ public class Constantes {
 	public static final String TEXTO_NOTICIA = "textoNoticia";
 	public static final String FECHA_NOTICIA = "fechaNoticia";
 
+	public static final String OBJETIVO = "objetivo";
 	public static final String OBJETIVO_ID = "idObjetivo";
 	public static final String NOMBRE_OBJETIVO = "nombreObjetivo";
 	public static final String DESCRIPCION_OBJETIVO = "descripObjetivo";

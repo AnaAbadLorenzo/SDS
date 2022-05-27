@@ -44,7 +44,8 @@ public class PlanController {
 	public RespEntity buscarPlan(@RequestBody final PlanBuscar plan) {
 
 		final ReturnBusquedas<PlanEntity> resultado = planService.buscarPlan(plan.getNombrePlan(),
-				plan.getDescripPlan(), plan.getFechaPlan(), plan.getInicio(), plan.getTamanhoPagina());
+				plan.getDescripPlan(), plan.getFechaPlan(), plan.getObjetivo(), plan.getInicio(),
+				plan.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PLAN_ENCONTRADO, resultado);
 

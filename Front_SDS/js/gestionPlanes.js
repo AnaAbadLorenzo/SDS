@@ -49,6 +49,18 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
     var token = getCookie('tokenUsuario');
 
     if(accion == "buscarModal"){
+      var idObj = $('#selectObjetivos').val();
+      if(idObj == 0){
+        var objetivo = null;
+      }else{
+         var objetivo = {
+          idObjetivo : idObj,
+          nombreObjetivo : "",
+          descripObjetivo : "",
+          borradoObjetivo : ""
+        }
+      }
+
       if($('#fechaPlan').val() == '1900-01-01'){
         var fecha = "";
       }else{
@@ -58,6 +70,7 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         nombrePlan : $('#nombrePlan').val(),
         descripPlan : $('#descripPlan').val(),
         fechaPlan : fecha,
+        objetivo : objetivo,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaPlan),
         tamanhoPagina : tamanhoPaginaPlan
       }
@@ -84,10 +97,22 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         var fechaString = convierteFecha(fechaP);
       }
 
+      if(getCookie('objetivo') == null || getCookie('objetivo') == ""){
+         var objetivo = null;
+      }else{
+        var objetivo = {
+          idObjetivo : getCookie('objetivo'),
+          nombreObjetivo : "",
+          descripObjetivo : "",
+          borradoObjetivo : ""
+        }
+      }
+
       var data = {
         nombrePlan : nombreP,
         descripPlan : descripP,
         fechaPlan : fechaString,
+        objetivo : objetivo,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaPlan),
         tamanhoPagina : tamanhoPaginaPlan
       }
@@ -791,7 +816,7 @@ function showBuscarPlan() {
   $('#labelDescripcionPlan').attr('hidden', true);
   $('#labelFechaPlan').attr('hidden', true);
   $('#labelNombreObjetivo').attr('hidden', true);
-  $('#selectObjetivos').attr('hidden', true);
+  $('#selectObjetivos').attr('hidden', false);
   $('#labelDescripcionObjetivo').attr('hidden', true);
   $('#descripcionObjetivo').attr('hidden', true);
   $('#subtitulo').attr('hidden', true);

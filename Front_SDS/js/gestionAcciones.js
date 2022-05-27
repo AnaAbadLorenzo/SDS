@@ -1177,9 +1177,6 @@ function cargarAccionesPermisos(funcionalidad,acciones){
 async function asignarPermiso(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
   await asignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad)
   .then((res) => {
-      respuestaAjaxOK("ACCION_ASIGNADA_OK", res.code);
-      setLang(getCookie('lang'));
-      document.getElementById("modal").style.display = "block";
       permisosUsuarios();
   }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -1244,9 +1241,6 @@ function asignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borrad
 async function desasignarPermiso(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
   await desasignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad)
   .then((res) => {
-      respuestaAjaxOK("ACCION_REVOCADA_OK", res.code);
-      setLang(getCookie('lang'));
-      document.getElementById("modal").style.display = "block";
       permisosUsuarios();
   }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -1257,8 +1251,6 @@ async function desasignarPermiso(idAccion, nombreAccion, descripAccion, borradoA
 
 function desasignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
   return new Promise(function(resolve, reject) {
-
-    
     var token = getCookie('tokenUsuario');
 
     var rolAccionFuncionalidad = {

@@ -33,8 +33,8 @@
 		"usuario" : "ana",
 		
 		"idPlan" : "",
-		"nombrePlan" : "Plan",
-		"descripPlan" : "Plan para verificar el objetivo fin de la pobreza",
+		"nombrePlan" : "Plan existe",
+		"descripPlan" : "Este es un plan que ya existe",
 		"fechaPlan" : "2022-05-21",
 		"borradoPlan" : 0
 	},
@@ -84,7 +84,7 @@
 		"usuario" : "ana",
 		
 		"idPlan" : "",
-		"nombrePlan" : "Plan",
+		"nombrePlan" : "Descrip plan vacio",
 		"descripPlan" : "",
 		"fechaPlan" : "2022-05-20",
 		"borradoPlan" : 0
@@ -94,7 +94,7 @@
 		"usuario" : "ana",
 		
 		"idPlan" : "",
-		"nombrePlan" : "Plan",
+		"nombrePlan" : "Fecha plan vacia",
 		"descripPlan" : "Esta es la descripción del plan",
 		"fechaPlan" : "",
 		"borradoPlan" : 0
@@ -104,9 +104,20 @@
 		"usuario" : "ana",
 		
 		"idPlan":"",
-		"nombrePlan": "Plan",
+		"nombrePlan": "Fecha introducida menor que actual",
 		"descripPlan" : "Esta es la descripcion del plan con fecha anterior a la actual",
 		"fechaPlan" : "2021-05-20",
+		"borradoPlan": 0
+	},
+	
+	"datosPlanVacios":{
+	
+		"usuario" : "ana",
+		
+		"idPlan":"",
+		"nombrePlan": "",
+		"descripPlan" : "",
+		"fechaPlan" : "",
 		"borradoPlan": 0
 	}
 }

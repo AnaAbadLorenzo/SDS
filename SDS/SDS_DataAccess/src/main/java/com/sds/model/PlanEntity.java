@@ -23,8 +23,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "PlanEntity.findPlanByName", query = "SELECT p FROM PlanEntity p WHERE p.nombrePlan =: nombrePlan"),
 		@NamedQuery(name = "PlanEntity.findAllPlanes", query = "SELECT p FROM PlanEntity p WHERE p.borradoPlan = 0"),
 		@NamedQuery(name = "PlanEntity.numberFindAllPlanes", query = "SELECT COUNT(p) FROM PlanEntity p WHERE p.borradoPlan = 0"),
-		@NamedQuery(name = "PlanEntity.findPlan", query = "SELECT p FROM PlanEntity p WHERE p.nombrePlan LIKE CONCAT('%', :nombrePlan, '%') AND p.descripPlan LIKE CONCAT('%', :descripPlan, '%') AND p.fechaPlan LIKE CONCAT ('%', :fechaPlan, '%') AND p.borradoPlan=0"),
+		@NamedQuery(name = "PlanEntity.findPlan", query = "SELECT p FROM PlanEntity p WHERE p.nombrePlan LIKE CONCAT('%', :nombrePlan, '%') AND p.descripPlan LIKE CONCAT('%', :descripPlan, '%') AND p.fechaPlan LIKE CONCAT ('%', :fechaPlan, '%') AND p.objetivo LIKE CONCAT('%', :objetivo, '%') AND p.borradoPlan=0"),
 		@NamedQuery(name = "PlanEntity.numberFindPlan", query = "SELECT COUNT(p) FROM PlanEntity p WHERE p.nombrePlan LIKE CONCAT('%', :nombrePlan, '%') AND p.descripPlan LIKE CONCAT('%', :descripPlan, '%') AND p.fechaPlan LIKE CONCAT ('%', :fechaPlan, '%') AND p.borradoPlan=0"),
+		@NamedQuery(name = "PlanEntity.numberFindPlanWithObjetivo", query = "SELECT COUNT(p) FROM PlanEntity p WHERE p.nombrePlan LIKE CONCAT('%', :nombrePlan, '%') AND p.descripPlan LIKE CONCAT('%', :descripPlan, '%') AND p.fechaPlan LIKE CONCAT ('%', :fechaPlan, '%') AND p.objetivo LIKE CONCAT('%', :objetivo, '%') AND p.borradoPlan=0"),
 		@NamedQuery(name = "PlanEntity.findPlanesEliminados", query = "SELECT p FROM PlanEntity p WHERE p.borradoPlan = 1"),
 		@NamedQuery(name = "PlanEntity.numberFindPlanesEliminados", query = "SELECT COUNT(p) FROM PlanEntity p WHERE p.borradoPlan = 1 ") })
 public class PlanEntity {

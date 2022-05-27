@@ -599,9 +599,18 @@ public class TestPlanServiceImpl implements TestPlanService {
 		fechaSql = new java.sql.Date(plan.getFechaPlan().getTime());
 		final String fecha = fechaSql.toString();
 
-		planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(), fecha);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		plan.setObjetivo(objetivo);
+
+		planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(), fecha, plan.getObjetivo());
 
 		resultado = CodigosMensajes.BUSCAR_PLAN_CORRECTO + " - " + Mensajes.PLAN_BUSCADO_CORRECTAMENTE;
+
+		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		objetivoRepository.deleteObjetivo(objetivoEliminar.get(0).getIdObjetivo());
 
 		return resultado;
 	}

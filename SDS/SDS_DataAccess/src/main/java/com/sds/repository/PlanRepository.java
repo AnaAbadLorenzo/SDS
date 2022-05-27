@@ -8,22 +8,27 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
 
 @Component
 public interface PlanRepository extends JpaRepository<PlanEntity, Integer> {
 
-	Integer findIdPlanByName(String nombrePlan);
+	Integer findIdPlanByName(final String nombrePlan);
 
-	PlanEntity findPlanByName(String nombrePlan);
+	PlanEntity findPlanByName(final String nombrePlan);
 
 	List<PlanEntity> findAllPlanes();
 
 	Integer numberFindAllPlanes();
 
-	List<PlanEntity> findPlan(String nombrePlan, String descripPlan, String fechaPlan);
+	List<PlanEntity> findPlan(final String nombrePlan, final String descripPlan, final String fechaPlan,
+			final ObjetivoEntity objetivo);
 
-	Integer numberFindPlan(String nombrePlan, String descripPlan, String fechaPlan);
+	Integer numberFindPlan(final String nombrePlan, final String descripPlan, final String fechaPlan);
+
+	Integer numberFindPlanWithObjetivo(final String nombrePlan, final String descripPlan, final String fechaPlan,
+			final ObjetivoEntity objetivo);
 
 	List<PlanEntity> findPlanesEliminados();
 

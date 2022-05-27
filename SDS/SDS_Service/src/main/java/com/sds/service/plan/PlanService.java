@@ -3,6 +3,7 @@ package com.sds.service.plan;
 import java.text.ParseException;
 import java.util.Date;
 
+import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
@@ -16,7 +17,7 @@ import com.sds.service.plan.model.Plan;
 public interface PlanService {
 
 	ReturnBusquedas<PlanEntity> buscarPlan(final String nombrePlan, final String descripPlan, final Date fechaPlan,
-			final int inicio, final int tamanhoPagina);
+			final ObjetivoEntity objetivo, final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<PlanEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
