@@ -1111,7 +1111,7 @@ function gestionarPermisosPlan(idElementoList) {
 $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {
 
-    let idElementoErrorList = ["errorFormatoNombrePlan", "errorFormatoDescripcionPlan", "errorFormatoFecha", "errorFormatoObjetivo"];
+    let idElementoErrorList = ["errorFormatoNombrePlan", "errorFormatoDescripPlan", "errorFormatoFechaPlan", "errorFormatoObjetivo"];
 
     let idElementoList = ["nombrePlan", "descripPlan", "fechaPlan"];
 
