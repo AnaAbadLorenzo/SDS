@@ -39,6 +39,7 @@
 	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
 	await cargarObjetivos(0, tamanhoPaginaObjetivo, 'PaginadorNo');
 	await cargarPermisosFuncObjetivo();
+	construyeSelect();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('OBJETIVO')},30000);
   })();">  
 	<div id="topMenu"></div>

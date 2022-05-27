@@ -39,6 +39,8 @@ arrayEN={
 	'NOMBRE_OBJETIVO' : 'Objective name',
 	'DESCRIPCION_OBJETIVO' : 'Objective description',
 	'TEXTO_RESPUESTA_POSIBLE' : 'Posible answer text',
+	'NOMBRE_PLAN' : 'Plan name',
+	'DESCRIPCION_PLAN' : 'Plan description',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -203,6 +205,18 @@ arrayEN={
 	'TEXTO_RESPUESTA_VACIO' : 'Posible answer`s text is empty',
 	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'Posible answer`s text can only contain letters, numbers, spaces and puntuaction marks',
 	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'Posible answer`s size is minor than 2 characteres',
+	'NOMBRE_PLAN_VACIO' : 'Plan`s name empty',
+	'NOMBRE_PLAN_ALFABETICO_INCORRECTO' : 'Plan`s name can only contain letters and spaces',
+	'NOMBRE_PLAN_MENOR_QUE_3' : 'Plan`s name size is minor than 3 characteres',
+	'NOMBRE_PLAN_MAYOR_QUE_48' : 'Plan`s name size is bigger than 48 characteres',
+	'DESCRIPCION_PLAN_VACIO' : 'Plan`s description empty',
+	'DESCRIPCION_PLAN_ALBAFETICO_INCORRECTO' : 'Plan`s description can only contain letters and spaces',
+	'DESCRIPCION_PLAN_MENOR_QUE_3' : 'Plan`s description size is minor than 3 characteres',
+	'FECHA_PLAN_VACIA' : 'Plan`s date empty',
+	'FECHA_PLAN_NUMERICA_INCORRECTA' : 'Plan`s date can only contain numbers',
+	'FECHA_PLAN_MENOR_QUE_8' : 'Plan`s date is minor than 8 characteres',
+	'FECHA_PLAN_MAYOR_QUE_8' : 'Plan`s date is bigger than 8 characteres',
+
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -309,6 +323,16 @@ arrayEN={
 	'DETAIL_RESPUESTA_POSIBLE' : 'DETAIL POSIBLE ANSWER',
 	'SEARCH_RESPUESTA_POSIBLE' : 'SEARCH POSIBLE ANSWER',
 	'ADD_RESPUESTA_POSIBLE' : 'ADD POSIBLE ANSWER',
+	'GESTION_PLANES' : 'Plan management',
+	'REACTIVATE_PLAN' : 'REACTIVATE PLAN',
+	'SEGURO_REACTIVAR_PLAN' : 'Are you sure that you want to reactivate the plan?',
+	'SEGURO_ELIMINAR_PLAN' : 'Are you sure that you want to delete the plan?',
+	'DELETE_PLAN' : 'DELETE PLAN',
+	'EDIT_PLAN' : 'EDIT PLAN',
+	'DETAIL_PLAN' : 'DETAIL PLAN',
+	'SEARCH_PLAN' : 'SEARCH PLAN',
+	'ADD_PLAN' : 'ADD PLAN',
+	'OPCION_DEFECTO_OBJETIVO' : 'Please, select the objective',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -404,6 +428,17 @@ arrayEN={
 	'RESPUESTAS_POSIBLES_LISTADAS' : 'The posible answers has been listed correctly',
 	'RESPUESTA_POSIBLE_ELIMINADA' : 'The posible answers has been deleted correctly',
 	'RESPUESTA_POSIBLE_MODIFICADA' : 'The posible answer has been modified correctly',
-	'RESPUESTA_POSIBLE_GUARDADA' : 'The posible answer has been saved correctly'
+	'RESPUESTA_POSIBLE_GUARDADA' : 'The posible answer has been saved correctly',
+	'PLAN_REACTIVADO_OK' : 'PLAN REACTIVATED CORRECTLY',
+	'PLAN_ELIMINADO_OK' : 'PLAN DELETED CORRECTLY',
+	'PLAN_EDITADO_OK' : 'PLAN MODIFIED CORRECTLY',
+	'PLAN_GUARDADO_OK' : 'PLAN SAVED CORRECTLY',
+	'PLAN_REACTIVADO' : 'The plan has been reactivated correctly',
+	'PLAN_ENCONTRADO' : 'The plan has been found correctly',
+	'PLANES_ELIMINADOS_LISTADOS' : 'The deleted plans has been found correctly',
+	'PLANES_LISTADOS' : 'The plans has been listed correctly',
+	'PLAN_ELIMINADO' : 'The plan has been deleted correctly',
+	'PLAN_MODIFICADO' : 'The plan has been modified correctly',
+	'PLAN_GUARDADO' : 'The plan has been saved correctly'
 
 }

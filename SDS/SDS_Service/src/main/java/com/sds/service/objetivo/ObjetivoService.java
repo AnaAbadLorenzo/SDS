@@ -16,6 +16,8 @@ public interface ObjetivoService {
 
 	ReturnBusquedas<ObjetivoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
+	ReturnBusquedas<ObjetivoEntity> buscarTodosSinP();
+
 	ReturnBusquedas<ObjetivoEntity> buscarObjetivosEliminados(final int inicio, final int tamanhoPagina);
 
 	String anadirObjetivo(final Objetivo objetivo)

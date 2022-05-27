@@ -1,6 +1,7 @@
 package com.sds.controller.objetivo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,6 +53,14 @@ public class ObjetivoController {
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<ObjetivoEntity> resultado = objetivoService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.OBJETIVOS_LISTADOS, resultado);
+	}
+
+	@GetMapping(value = "/listarObjetivosSinP")
+	@ResponseBody
+	public RespEntity buscarTodosSinP() {
+		final ReturnBusquedas<ObjetivoEntity> resultado = objetivoService.buscarTodosSinP();
 
 		return new RespEntity(RespCode.OBJETIVOS_LISTADOS, resultado);
 	}

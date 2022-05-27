@@ -2,6 +2,7 @@ package com.sds.service.plan.impl;
 
 import java.text.ParseException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -18,13 +19,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
+import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.PlanYaExisteException;
 import com.sds.service.log.LogService;
@@ -42,6 +46,9 @@ public class PlanServiceImpl implements PlanService {
 
 	@Autowired
 	PlanRepository planRepository;
+
+	@Autowired
+	ObjetivoRepository objetivoRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -78,8 +85,11 @@ public class PlanServiceImpl implements PlanService {
 
 		if (!planes.isEmpty()) {
 			for (final PlanEntity plan : planes) {
+				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(plan.getObjetivo().getIdObjetivo(),
+						plan.getObjetivo().getNombreObjetivo(), plan.getObjetivo().getDescripObjetivo(),
+						plan.getObjetivo().getBorradoObjetivo());
 				final PlanEntity planEntity = new PlanEntity(plan.getIdPlan(), plan.getNombrePlan(),
-						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan());
+						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan(), objetivoEntity);
 				planToret.add(planEntity);
 
 			}
@@ -87,6 +97,7 @@ public class PlanServiceImpl implements PlanService {
 
 		datosBusqueda.add(Constantes.NOMBRE_PLAN + Constantes.DOS_PUNTOS + nombrePlan);
 		datosBusqueda.add(Constantes.DESCRIPCION_PLAN + Constantes.DOS_PUNTOS + descripPlan);
+		datosBusqueda.add(Constantes.FECHA_PLAN + Constantes.DOS_PUNTOS + fecha);
 
 		final ReturnBusquedas<PlanEntity> result = new ReturnBusquedas<>(planToret, datosBusqueda, numberTotalResults,
 				planToret.size(), inicio);
@@ -104,8 +115,11 @@ public class PlanServiceImpl implements PlanService {
 
 		if (!planes.isEmpty()) {
 			for (final PlanEntity plan : planes) {
+				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(plan.getObjetivo().getIdObjetivo(),
+						plan.getObjetivo().getNombreObjetivo(), plan.getObjetivo().getDescripObjetivo(),
+						plan.getObjetivo().getBorradoObjetivo());
 				final PlanEntity planEntity = new PlanEntity(plan.getIdPlan(), plan.getNombrePlan(),
-						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan());
+						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan(), objetivoEntity);
 				planToret.add(planEntity);
 
 			}
@@ -120,15 +134,18 @@ public class PlanServiceImpl implements PlanService {
 	@Override
 	public ReturnBusquedas<PlanEntity> buscarPlanesEliminados(final int inicio, final int tamanhoPagina) {
 		final List<PlanEntity> planToret = new ArrayList<>();
-		final List<PlanEntity> planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDALL)
+		final List<PlanEntity> planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDELIMINADOS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
 		final Integer numberTotalResults = planRepository.numberFindPlanesEliminados();
 
 		if (!planes.isEmpty()) {
 			for (final PlanEntity plan : planes) {
+				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(plan.getObjetivo().getIdObjetivo(),
+						plan.getObjetivo().getNombreObjetivo(), plan.getObjetivo().getDescripObjetivo(),
+						plan.getObjetivo().getBorradoObjetivo());
 				final PlanEntity planEntity = new PlanEntity(plan.getIdPlan(), plan.getNombrePlan(),
-						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan());
+						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan(), objetivoEntity);
 				planToret.add(planEntity);
 
 			}
@@ -143,7 +160,7 @@ public class PlanServiceImpl implements PlanService {
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String anadirPlan(final Plan plan) throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			PlanYaExisteException, ParseException, FechaAnteriorFechaActualException {
+			PlanYaExisteException, ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException {
 		final PlanEntity planEntity = plan.getPlan();
 		final Boolean planValido = validaciones.comprobarPlanBlank(planEntity);
 		String resultado = StringUtils.EMPTY;
@@ -190,21 +207,45 @@ public class PlanServiceImpl implements PlanService {
 							CodeMessageErrors.getTipoNameByCodigo(
 									CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo()));
 				} else {
-					planEntity.setBorradoPlan(0);
-					planRepository.saveAndFlush(planEntity);
+					final ObjetivoEntity objetivo = planEntity.getObjetivo();
+					final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(objetivo.getIdObjetivo());
 
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(plan.getUsuario(),
-							Constantes.ACCION_AÑADIR_PLAN, plan.getPlan().toString());
+					if (!objetivoBD.isPresent()) {
+						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(plan.getUsuario(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()),
+								CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo());
 
-					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
+
+						throw new ObjetivoNoExisteException(CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()));
+					} else {
+						planEntity.setObjetivo(objetivoBD.get());
+						planEntity.setBorradoPlan(0);
+						planRepository.saveAndFlush(planEntity);
+
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(plan.getUsuario(),
+								Constantes.ACCION_AÑADIR_PLAN, plan.getPlan().toString());
+
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						}
+
+						resultado = Constantes.OK;
 					}
 
-					resultado = Constantes.OK;
 				}
 
 			}
@@ -251,8 +292,9 @@ public class PlanServiceImpl implements PlanService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String modificarPlan(final Plan plan) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, PlanNoExisteException, ParseException, FechaAnteriorFechaActualException {
+	public String modificarPlan(final Plan plan)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, PlanNoExisteException,
+			ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException {
 		final PlanEntity planEntity = plan.getPlan();
 		final Boolean planValido = validaciones.comprobarPlanBlank(planEntity);
 
@@ -279,11 +321,18 @@ public class PlanServiceImpl implements PlanService {
 			} else {
 
 				final LocalDate fechaActual = LocalDate.now();
-				final String fechaIntroducidaUsuario = plan.getPlan().getFechaPlan().toString();
+				final LocalDate dateIntroducidaUsuario = plan.getPlan().getFechaPlan().toInstant()
+						.atZone(ZoneId.systemDefault()).toLocalDate();
+				final LocalDate datePlanBD = planBD.get().getFechaPlan().toInstant().atZone(ZoneId.systemDefault())
+						.toLocalDate();
+				final String fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+						+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
 				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
 						+ fechaActual.getDayOfMonth();
+				final String fechaPlanString = datePlanBD.getYear() + "-0" + datePlanBD.getMonthValue() + "-"
+						+ datePlanBD.getDayOfMonth();
 
-				if (!fechaIntroducidaUsuario.equals(planBD.get().getFechaPlan().toString())) {
+				if (!fechaIntroducidaUsuario.equals(fechaPlanString)) {
 					if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(plan.getUsuario(),
 								CodeMessageErrors.getTipoNameByCodigo(
@@ -305,25 +354,47 @@ public class PlanServiceImpl implements PlanService {
 					}
 
 				} else {
-					planBD.get().setNombrePlan(planEntity.getNombrePlan());
-					planBD.get().setDescripPlan(planEntity.getDescripPlan());
-					planBD.get().setFechaPlan(planEntity.getFechaPlan());
-					planBD.get().setBorradoPlan(planEntity.getBorradoPlan());
+					final ObjetivoEntity objetivo = planEntity.getObjetivo();
+					final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(objetivo.getIdObjetivo());
 
-					planRepository.saveAndFlush(planBD.get());
+					if (!objetivoBD.isPresent()) {
+						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(plan.getUsuario(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()),
+								CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo());
 
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(plan.getUsuario(),
-							Constantes.ACCION_MODIFICAR_PLAN, plan.getPlan().toString());
+						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
 
-					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						throw new ObjetivoNoExisteException(CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()));
+					} else {
+						planBD.get().setNombrePlan(planEntity.getNombrePlan());
+						planBD.get().setDescripPlan(planEntity.getDescripPlan());
+						planBD.get().setFechaPlan(planEntity.getFechaPlan());
+						planBD.get().setBorradoPlan(planEntity.getBorradoPlan());
+
+						planRepository.saveAndFlush(planBD.get());
+
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(plan.getUsuario(),
+								Constantes.ACCION_MODIFICAR_PLAN, plan.getPlan().toString());
+
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						}
+
+						resultado = Constantes.OK;
 					}
-
-					resultado = Constantes.OK;
 				}
 
 			}

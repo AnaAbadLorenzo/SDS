@@ -39,6 +39,8 @@ arrayGA={
 	'NOMBRE_OBJETIVO' : 'Nome obxectivo',
 	'DESCRIPCION_OBJETIVO' : 'Descripción obxectivo',
 	'TEXTO_RESPUESTA_POSIBLE' : 'Texto resposta posible',
+	'NOMBRE_PLAN' : 'Nome plan',
+	'DESCRIPCION_PLAN' : 'Descripción plan',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -200,7 +202,17 @@ arrayGA={
 	'TEXTO_RESPUESTA_VACIO' : 'O texto da resposta posible é vacío',
 	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da resposta posible tan só pode conter letras, números, espazos e signos de puntuación',
 	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'O texto da resposta posible ten menos de 2 caracteres',
-
+	'NOMBRE_PLAN_VACIO' : 'Nome plan vacío',
+	'NOMBRE_PLAN_ALFABETICO_INCORRECTO' : 'O nome do plan an só pode conter letras e espazos',
+	'NOMBRE_PLAN_MENOR_QUE_3' : 'O nome do plan ten menos de 3 caracteres',
+	'NOMBRE_PLAN_MAYOR_QUE_48' : 'O nome do plan te máis de 48 caracteres',
+	'DESCRIPCION_PLAN_VACIO' : 'Descripción plan vacía',
+	'DESCRIPCION_PLAN_ALBAFETICO_INCORRECTO' : 'A descripción do plan tan só pode conter letras e espazos',
+	'DESCRIPCION_PLAN_MENOR_QUE_3' : 'A descripción do plan te menos de 3 caracteres',
+	'FECHA_PLAN_VACIA' : 'Data plan vacía',
+	'FECHA_PLAN_NUMERICA_INCORRECTA' : 'A data do plan tan só pode conter números',
+	'FECHA_PLAN_MENOR_QUE_8' : 'A data do plan ten menos de 8 caracteres',
+	'FECHA_PLAN_MAYOR_QUE_8' : 'A data do plan ten máis de 8 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -308,6 +320,17 @@ arrayGA={
 	'DETAIL_RESPUESTA_POSIBLE' : 'DETALLE RESPOSTA POSIBLE',
 	'SEARCH_RESPUESTA_POSIBLE' : 'BUSCAR RESPOSTA POSIBLE',
 	'ADD_RESPUESTA_POSIBLE' : 'ENGADIR RESPOSTA POSIBLE',
+	'GESTION_PLANES' : 'Xestión de plans',
+	'REACTIVATE_PLAN' : 'REACTIVAR PLAN',
+	'SEGURO_REACTIVAR_PLAN' : 'Estás seguro de que queres reactivar o plan?',
+	'SEGURO_ELIMINAR_PLAN' : 'Estás seguro de que queres eliminar o plan?',
+	'DELETE_PLAN' : 'ELIMINAR PLAN',
+	'EDIT_PLAN' : 'EDITAR PLAN',
+	'DETAIL_PLAN' : 'DETALLE PLAN',
+	'SEARCH_PLAN' : 'BUSCAR PLAN',
+	'ADD_PLAN' : 'ENGADIR PLAN',
+	'OPCION_DEFECTO_OBJETIVO' : 'Por favor, selecciona o obxectivo',
+
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -402,6 +425,19 @@ arrayGA={
 	'RESPUESTAS_POSIBLES_LISTADAS' : 'As respostas posibles listáronse correctamente',
 	'RESPUESTA_POSIBLE_ELIMINADA' : 'A resposta posible eliminouse correctamente',
 	'RESPUESTA_POSIBLE_MODIFICADA' : 'A resposta posible modificouse correctamente',
-	'RESPUESTA_POSIBLE_GUARDADA' : 'A resposta posible gardouse correctamente'
+	'RESPUESTA_POSIBLE_GUARDADA' : 'A resposta posible gardouse correctamente',
+	'PLAN_REACTIVADO_OK' : 'PLAN REACTIVADO CORRECTAMENTE',
+	'PLAN_ELIMINADO_OK' : 'PLAN ELIMINADO CORRECTAMENTE',
+	'PLAN_EDITADO_OK' : 'PLAN EDITADO CORRECTAMENTE',
+	'PLAN_GUARDADO_OK' : 'PLAN GARDADO CORRECTAMENTE',
+	'PLAN_REACTIVADO' : 'O plan reactivouse correctamente',
+	'PLAN_ENCONTRADO' : 'O plan encontrouse correctamente',
+	'PLANES_ELIMINADOS_LISTADOS' : 'Os plans eliminados listáronse correctamente',
+	'PLANES_LISTADOS' : 'Os plans listáronse correctamente',
+	'PLAN_ELIMINADO' : 'O plan eliminouse correctamente',
+	'PLAN_MODIFICADO' : 'O plan modificouse correctamente',
+	'PLAN_GUARDADO' : 'O plan gardouse correctamente'
+
+
 	
 }

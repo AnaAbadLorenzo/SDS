@@ -40,6 +40,8 @@ arrayES={
 	'NOMBRE_OBJETIVO' : 'Nombre objetivo',
 	'DESCRIPCION_OBJETIVO' : 'Descripción objetivo',
 	'TEXTO_RESPUESTA_POSIBLE' : 'Texto respuesta posible',
+	'NOMBRE_PLAN' : 'Nombre plan',
+	'DESCRIPCION_PLAN' : 'Descripcion plan',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -204,6 +206,18 @@ arrayES={
 	'TEXTO_RESPUESTA_VACIO' : 'El texto de la respuesta posible es vacío',
 	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'El texto de la respuesta posible sólo puede contener letras, números, espacios y signos de puntuación',
 	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'El texto de la respuesta posible tiene menos de 2 caracteres',
+	'NOMBRE_PLAN_VACIO' : 'Nombre plan vacío',
+	'NOMBRE_PLAN_ALFABETICO_INCORRECTO' : 'El nombre del plan tan sólo puede contener letras y espacios',
+	'NOMBRE_PLAN_MENOR_QUE_3' : 'El nombre del plan tiene menos de 3 caracteres',
+	'NOMBRE_PLAN_MAYOR_QUE_48' : 'El nombre del plan tiene más de 48 caracteres',
+	'DESCRIPCION_PLAN_VACIO' : 'Descripción plan vacía',
+	'DESCRIPCION_PLAN_ALBAFETICO_INCORRECTO' : 'La descripción del plan tan sólo puede contener letras y espacios',
+	'DESCRIPCION_PLAN_MENOR_QUE_3' : 'La descripción del plan tiene menos de 3 caracteres',
+	'FECHA_PLAN_VACIA' : 'Fecha plan vacía',
+	'FECHA_PLAN_NUMERICA_INCORRECTA' : 'La fecha del plan tan sólo puede contener números',
+	'FECHA_PLAN_MENOR_QUE_8' : 'La fecha del plan tiene menos de 8 caracteres',
+	'FECHA_PLAN_MAYOR_QUE_8' : 'La fecha del plan tiene más de 8 caracteres',
+
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -311,6 +325,17 @@ arrayES={
 	'DETAIL_RESPUESTA_POSIBLE' : 'DETALLE RESPUESTA POSIBLE',
 	'SEARCH_RESPUESTA_POSIBLE' : 'BUSCAR RESPUESTA POSIBLE',
 	'ADD_RESPUESTA_POSIBLE' : 'AÑADIR RESPUESTA POSIBLE',
+	'GESTION_PLANES' : 'Gestión de planes',
+	'REACTIVATE_PLAN' : 'REACTIVAR PLAN',
+	'SEGURO_REACTIVAR_PLAN' : '¿Estás seguro de que quieres reactivar el plan?',
+	'SEGURO_ELIMINAR_PLAN' : '¿Estás seguro de que quieres eliminar el plan?',
+	'DELETE_PLAN' : 'ELIMINAR PLAN',
+	'EDIT_PLAN' : 'EDITAR PLAN',
+	'DETAIL_PLAN' : 'DETALLE PLAN',
+	'SEARCH_PLAN' : 'BUSCAR PLAN',
+	'ADD_PLAN' : 'AÑADIR PLAN',
+	'OPCION_DEFECTO_OBJETIVO' : 'Por favor, selecciona el objetivo',
+
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -406,5 +431,19 @@ arrayES={
 	'RESPUESTAS_POSIBLES_LISTADAS' : 'Las respuestas posibles se han listado correctamente',
 	'RESPUESTA_POSIBLE_ELIMINADA' : 'La respuesta posible se ha eliminado correctamente',
 	'RESPUESTA_POSIBLE_MODIFICADA' : 'La respuesta posible se ha editado correctamente',
-		'RESPUESTA_POSIBLE_GUARDADA' : 'La respuesta posible se ha guardado correctamente'
+	'RESPUESTA_POSIBLE_GUARDADA' : 'La respuesta posible se ha guardado correctamente',
+	'PLAN_REACTIVADO_OK' : 'PLAN REACTIVADO CORRECTAMENTE',
+	'PLAN_ELIMINADO_OK' : 'PLAN ELIMINADO CORRECTAMENTE',
+	'PLAN_EDITADO_OK' : 'PLAN EDITADO CORRECTAMENTE',
+	'PLAN_GUARDADO_OK' : 'PLAN GUARDADO CORRECTAMENTE',
+	'PLAN_REACTIVADO' : 'El plan se ha reactivado correctamente',
+	'PLAN_ENCONTRADO' : 'El plan se ha encontrado correctamente',
+	'PLANES_ELIMINADOS_LISTADOS' : 'Los planes eliminados se han listado correctamente',
+	'PLANES_LISTADOS' : 'Los planes se han listado correctamente',
+	'PLAN_ELIMINADO' : 'El plan se ha eliminado correctamente',
+	'PLAN_MODIFICADO' : 'El plan se ha modificado correctamente',
+	'PLAN_GUARDADO' : 'El plan se ha guardado correctamente'
+
+
+
 }

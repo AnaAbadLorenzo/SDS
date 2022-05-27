@@ -631,7 +631,7 @@ function comprobarApellidosSearch(idElemento, idElementoError, campo) {
 function comprobarFechaNacimiento(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
-	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 128,  idElementoError, campo) && comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 10,  idElementoError, campo) && comprobarFormatoFechas(idElemento, idElementoError, campo)) {
 		validacionOK(idElemento, idElementoError); 
         return true;
 	} else{
@@ -1336,7 +1336,7 @@ function comprobarTextoRespuestaPosibleSearch(idElemento, idElementoError, campo
 	document.getElementById(idElemento).style.borderWidth = "2px";
 		
 	if (validaNoVacio(idElemento, idElementoError, campo)) {
-		if (xcomprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo)) {
+		if (comprobarTextoAlfanumericoSignosPuntuacion(idElemento, idElementoError, campo)) {
 			validacionOK(idElemento, idElementoError);
 			return true;
 		
@@ -1369,6 +1369,149 @@ function comprobarAddRespuestaPosible(){
 		return false;
 	}
 }
+
+/** Funcion que valida el formato del Nombre del plan **/
+function comprobarNombrePlan(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la descripcion del plan **/
+function comprobarDescripcionPlan(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloLetras(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la fecha del plan **/
+function comprobarFechaPlan(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 10,  idElementoError, campo) && comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError); 
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/**Función que valida el editar del plan **/
+function comprobarEditPlan(){
+	if(comprobarNombrePlan('nombrePlan', 'errorFormatoNombrePlan', 'nombrePlan') && comprobarDescripcionPlan('descripPlan', 'errorFormatoDescripPlan', 'descripPlan')
+		&& comprobarFechaPlan('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el añadir del plan **/
+function comprobarAddPlan(){
+	if(comprobarNombrePlan('nombrePlan', 'errorFormatoNombrePlan', 'nombrePlan') && comprobarDescripcionPlan('descripPlan', 'errorFormatoDescripPlan', 'descripPlan')
+		&& comprobarFechaPlan('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el nombre del plan en el buscar*/
+function comprobarNombrePlanSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la descripcion del plan en el buscar*/
+function comprobarDescripcionPlanSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloLetras(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/** Funcion que valida el formato de la fecha de plan **/
+function comprobarFechaPlanSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 10, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida el buscar del plan **/
+function comprobarBuscarPlan(){
+	if(comprobarNombrePlanSearch('nombrePlan', 'errorFormatoNombrePlan', 'nombrePlan') && comprobarDescripcionPlanSearch('descripPlan', 'errorFormatoDescripPlan', 'descripPlan')
+		&& comprobarFechaPlanSearch('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
@@ -1467,6 +1610,19 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			case 'textoRespuestaPosible':
 				codigo = "TEXTO_RESPUESTA_VACIO";
 			break;
+			case 'nombrePlan' :
+				codigo = "NOMBRE_PLAN_VACIO";
+			break;
+			case 'descripPlan' :
+				codigo = "NOMBRE_PLAN_VACIO";
+			break;
+			case 'nombrePlan' :
+				codigo = "DESCRIPCION_PLAN_VACIO";
+			break;
+			case 'fechaPlan' :
+				codigo = "FECHA_PLAN_VACIA";
+			break;
+
 		}
 		addCodeError(idElementoError, codigo);
 	    return false;
@@ -1568,7 +1724,15 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			case 'textoRespuesta' :
 				codigo = "TEXTO_RESPUESTA_MENOR_QUE_2";
 			break;
-
+			case 'nombrePlan' :
+				codigo = "NOMBRE_PLAN_MENOR_QUE_3";
+			break;
+			case 'descripPlan' :
+				codigo = "DESCRIPCION_PLAN_MENOR_QUE_3";
+			break;
+			case 'fechaPlan' :
+				codigo = "FECHA_PLAN_MENOR_QUE_8";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -1653,6 +1817,12 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			break;
 			case 'nombreObjetivo':
 				codigo = "OBJETIVO_NAME_MAYOR_QUE_48" ;
+			break;
+			case 'nombrePlan' :
+				codigo = "NOMBRE_PLAN_MAYOR_QUE_48";
+			break;
+			case 'fechaPlan' :
+				codigo = "FECHA_PLAN_MAYOR_QUE_8";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -1870,6 +2040,12 @@ function comprobarSoloLetras(idElemento, idElementoError, campo) {
 			case 'tituloNoticia' :
 				codigo = "TITULO_NOTICIA_ALFABETICO_INCORRECTO";
 			break;
+			case 'nombrePlan' :
+				codigo = "NOMBRE_PLAN_ALFABETICO_INCORRECTO";
+			break;
+			case 'descripPlan' :
+				codigo = " DESCRIPCION_PLAN_ALBAFETICO_INCORRECTO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
         return false;
@@ -1954,6 +2130,9 @@ function comprobarFormatoFechas(idElemento, idElementoError, campo) {
 			break;
 			case 'fecha' : 
 		  		codigo = "FECHA_NUMERICA_INCORRECTA";
+			break;
+			case 'fechaPlan' :
+				codigo = "FECHA_PLAN_NUMERICA_INCORRECTA";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

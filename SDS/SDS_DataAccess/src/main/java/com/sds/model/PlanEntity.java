@@ -10,10 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -46,7 +46,7 @@ public class PlanEntity {
 	@Column(name = "borrado_plan")
 	private Integer borradoPlan;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "id_objetivo", referencedColumnName = "id_objetivo", updatable = false)
 	private ObjetivoEntity objetivo;
 
@@ -64,6 +64,17 @@ public class PlanEntity {
 		this.descripPlan = descripPlan;
 		this.fechaPlan = fechaPlan;
 		this.borradoPlan = borradoPlan;
+	}
+
+	public PlanEntity(final Integer idPlan, final String nombrePlan, final String descripPlan, final Date fechaPlan,
+			final Integer borradoPlan, final ObjetivoEntity objetivo) {
+		super();
+		this.idPlan = idPlan;
+		this.nombrePlan = nombrePlan;
+		this.descripPlan = descripPlan;
+		this.fechaPlan = fechaPlan;
+		this.borradoPlan = borradoPlan;
+		this.objetivo = objetivo;
 	}
 
 	public PlanEntity(final Integer idPlan, final String nombrePlan, final String descripPlan, final Date fechaPlan,

@@ -17,6 +17,7 @@ var urlLog = "/log";
 var urlNoticia = "/noticia";
 var urlRespuestaPosible = "/respuestaPosible";
 var urlPersona = "/persona";
+var urlPlan = "/plan";
 var urlTest = "/test";
 var urlAtributos = "/atributos";
 var urlAcciones = "/acciones";
@@ -97,6 +98,7 @@ var urlPeticionAjaxReactivarObjetivo = urlComun + urlObjetivo + "/reactivarObjet
 var urlPeticionAjaxListarObjetivo = urlComun + urlObjetivo + "/listarObjetivo";
 var urlPeticionAjaxListarObjetivosEliminados = urlComun + urlObjetivo + "/listarObjetivosEliminados";
 var urlPeticionAjaxListadoObjetivos = urlComun + urlObjetivo  + "/listarObjetivos";
+var urlPeticionAjaxListadoObjetivosSinP = urlComun + urlObjetivo  + "/listarObjetivosSinP";
 var urlPeticionAjaxEditarObjetivo = urlComun + urlObjetivo  + "/modificarObjetivo";
 var urlPeticionAjaxAddObjetivo = urlComun + urlObjetivo  + "/objetivo";
 var urlPeticionAjaxDeleteObjetivo = urlComun + urlObjetivo  + "/eliminarObjetivo";
@@ -109,6 +111,15 @@ var urlPeticionAjaxListadoRespuestasPosibles = urlComun + urlRespuestaPosible  +
 var urlPeticionAjaxEditarRespuestaPosible = urlComun + urlRespuestaPosible  + "/modificarRespuestaPosible";
 var urlPeticionAjaxAddRespuestaPosible = urlComun + urlRespuestaPosible  + "/respuestaPosible";
 var urlPeticionAjaxDeleteRespuestaPosible = urlComun + urlRespuestaPosible  + "/eliminarRespuestaPosible";
+
+/**Urls planes*/
+var urlPeticionAjaxReactivarPlan = urlComun + urlPlan + "/reactivarPlan";
+var urlPeticionAjaxListarPlan = urlComun + urlPlan + "/listarPlan";
+var urlPeticionAjaxListarPlanesEliminados = urlComun + urlPlan + "/listarPlanesEliminados";
+var urlPeticionAjaxListadoPlanes = urlComun + urlPlan  + "/listarPlanes";
+var urlPeticionAjaxEditarPlan = urlComun + urlPlan  + "/modificarPlan";
+var urlPeticionAjaxAddPlan = urlComun + urlPlan  + "/plan";
+var urlPeticionAjaxDeletePlan = urlComun + urlPlan  + "/eliminarPlan";
 
 
 /**Urls usuarios*/

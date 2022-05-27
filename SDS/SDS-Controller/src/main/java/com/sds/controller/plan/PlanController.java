@@ -17,6 +17,7 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.PlanYaExisteException;
 import com.sds.service.plan.PlanService;
@@ -89,6 +90,8 @@ public class PlanController {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, plan);
 				} catch (final FechaAnteriorFechaActualException fechaAnteriorfechaActualException) {
 					return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, plan);
+				} catch (final ObjetivoNoExisteException funcionalidadNoExists) {
+					return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, plan);
 				}
 			}
 		} catch (final PlanYaExisteException planExists) {
@@ -103,7 +106,6 @@ public class PlanController {
 	@PostMapping(value = "/modificarPlan")
 	@ResponseBody
 	public RespEntity modificarPlan(@RequestBody final Plan plan) {
-
 		try {
 			final Boolean planValido = validaciones.comprobarPlanBlank(plan.getPlan());
 
@@ -114,13 +116,15 @@ public class PlanController {
 					if (CodeMessageErrors.PLAN_VACIO.name().equals(resultado)) {
 						return new RespEntity(RespCode.PLAN_VACIO, resultado);
 					}
-					return new RespEntity(RespCode.PLAN_GUARDADO, resultado);
+					return new RespEntity(RespCode.PLAN_MODIFICADO, resultado);
 				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
 					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, plan);
 				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, plan);
 				} catch (final FechaAnteriorFechaActualException fechaAnteriorfechaActualException) {
 					return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, plan);
+				} catch (final ObjetivoNoExisteException funcionalidadNoExists) {
+					return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, plan);
 				}
 			}
 		} catch (final PlanNoExisteException planNoExists) {

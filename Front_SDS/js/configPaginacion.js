@@ -9,3 +9,4 @@ var tamanhoPaginaNoticia = 2;
 var tamanhoPaginaEmpresa = 2;
 var tamanhoPaginaObjetivo = 2; 
 var tamanhoPaginaRespuestaPosible = 2; 
+var tamanhoPaginaPlan = 2;

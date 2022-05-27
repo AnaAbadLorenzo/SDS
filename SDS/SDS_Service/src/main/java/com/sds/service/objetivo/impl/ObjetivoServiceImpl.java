@@ -111,6 +111,29 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 	}
 
 	@Override
+	public ReturnBusquedas<ObjetivoEntity> buscarTodosSinP() {
+		final List<ObjetivoEntity> objetivoToret = new ArrayList<>();
+		final List<ObjetivoEntity> objetivos = entityManager.createNamedQuery(Constantes.OBJETIVO_QUERY_FINDALL)
+				.getResultList();
+
+		final Integer numberTotalResults = objetivoRepository.numberFindAllObjetivos();
+
+		if (!objetivos.isEmpty()) {
+			for (final ObjetivoEntity objetivo : objetivos) {
+				final ObjetivoEntity ob = new ObjetivoEntity(objetivo.getIdObjetivo(), objetivo.getNombreObjetivo(),
+						objetivo.getDescripObjetivo(), objetivo.getBorradoObjetivo());
+				objetivoToret.add(ob);
+
+			}
+		}
+
+		final ReturnBusquedas<ObjetivoEntity> result = new ReturnBusquedas<>(objetivoToret, numberTotalResults,
+				objetivoToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
 	public ReturnBusquedas<ObjetivoEntity> buscarObjetivosEliminados(final int inicio, final int tamanhoPagina) {
 		final List<ObjetivoEntity> objetivoToret = new ArrayList<>();
 		final List<ObjetivoEntity> objetivos = entityManager.createNamedQuery(Constantes.OBJETIVO_QUERY_FINDELIMINADOS)

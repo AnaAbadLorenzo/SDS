@@ -465,6 +465,16 @@ function construyeFila(entidad, fila) {
 			filaTabla = '<tr class="impar"> <td>' + fila.textoRespuesta;
         break;
 
+        case 'PLAN':
+        var fechaPlan = new Date(fila.fechaPlan);
+
+		atributosFunciones = ["'" + fila.nombrePlan + "'", "'" + fila.descripPlan + "'", "'" + convertirFecha(fechaPlan.toString()) + "'", "'" + fila.objetivo.nombreObjetivo + "'", "'" + fila.objetivo.descripObjetivo + "'","'" + fila.idPlan + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombrePlan + 
+                '</td> <td>' + fila.descripPlan +
+                '</td> <td>' + convertirFecha(fechaPlan.toString()) +
+                '</td> <td>' + fila.objetivo.nombreObjetivo; 
+        break;
+
 	};
 
 	if(entidad == 'PERSONA'){
@@ -584,6 +594,17 @@ function construyeFilaEliminados(entidad, fila) {
 			filaTabla = '<tr class="impar"> <td>' + fila.textoRespuesta;
         break;
 
+        case 'PLAN':
+        var fechaPlan = new Date(fila.fechaPlan);
+
+		atributosFunciones = ["'" + fila.nombrePlan + "'", "'" + fila.descripPlan + "'", "'" + convertirFecha(fechaPlan.toString()) + "'", "'" + fila.objetivo.nombreObjetivo + "'", "'" + fila.objetivo.descripObjetivo + "'","'" + fila.idPlan + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombrePlan + 
+                '</td> <td>' + fila.descripPlan +
+                '</td> <td>' + convertirFecha(fechaPlan.toString()) + 
+                '</td> <td>' + fila.objetivo.nombreObjetivo; 
+        break;
+
+
 	};
 
 	var reactivar = '<div class="tooltip6"><img class="reactivar reactivarPermiso" src="images/reactivar2.png" data-toggle="" data-target="" onclick="showReactivar(' + atributosFunciones + 
@@ -696,6 +717,10 @@ function cargarHref(dato){
 		case 'Gestión de respuestas posibles':
 			href="GestionDeRespuestasPosibles.html";
 		break;
+
+		case 'Gestión de planes' :
+			href = "GestionDePlanes.html";
+		break;
 	}
 
 	return href;
@@ -750,6 +775,10 @@ function cargarClass(dato){
 
 		case 'Gestión de respuestas posibles':
 			href = "GESTION_RESPUESTAS_POSIBLES";
+		break;
+
+		case 'Gestión de planes':
+			href = "GESTION_PLANES";
 		break;
 	}
 
@@ -983,6 +1012,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'RESPUESTA_POSIBLE' :
 			cargarPermisosFuncRespuestaPosible();
 		break;
+
+		case 'PLAN' :
+			cargarPermisosFuncPlan();
+		break;
 	}
 	
 }
@@ -1032,6 +1065,10 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'RESPUESTA_POSIBLE' :
 			cargarPermisosFuncRespuestaPosible();
+		break;
+
+		case 'PLAN' :
+			cargarPermisosFuncPlan();
 		break;
 
 	}
