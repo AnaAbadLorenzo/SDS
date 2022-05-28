@@ -31,10 +31,10 @@
     <title>Sustainable Development Society</title>
 </head>
 <body onload="(async ()=>{
+	comprobarTokenUsuario('usuario');
 	await includeTopMenu();
     await funcionalidadesUsuario();
-    modalCambioPass();
-	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+    cambiarTituloGestion('usuario');modalCambioPass(); cargarIdioma();includeFooter();setLang('');
 	await cargarUsuarios(0, tamanhoPaginaUsuario, 'PaginadorNo');
 	await cargarPermisosFuncUsuario();
 	construyeSelect();
@@ -45,7 +45,7 @@
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	</div>
 
-	<h1 class="gestion GESTION_USUARIOS"></h1>
+	<h1 id="gestion" class="gestion"></h1>
 
 	<div id="cardUsuario" class="card card-user" hidden>
 	</div>
@@ -194,7 +194,7 @@
 		</div>
   	</div>
 
-	<div class="volver">
+	<div id="volver" class="volver" style="display:none">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         		<img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         		<span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>

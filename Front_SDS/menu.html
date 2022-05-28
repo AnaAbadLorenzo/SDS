@@ -29,16 +29,16 @@
 
 <body onload="
   (async ()=>{
+  	comprobarTokenUsuario('menu');
   	await includeTopMenu();
     await funcionalidadesUsuario();
-    modalCambioPass();
-		cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario()
+    modalCambioPass(); cargarIdioma();includeFooter();setLang('');
 		await cargarNoticias();
   })();">
 	
 	<div id="topMenu"></div>
 
-	<div class="bienvenida MENSAJE_BIENVENIDA">Bienvenido a SDS</div>
+	<div id="bienvenida" class="bienvenida MENSAJE_BIENVENIDA" style="display: none;">Bienvenido a SDS</div>
 
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	</div>

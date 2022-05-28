@@ -30,10 +30,11 @@
 </head>
 
 <body onload="(async ()=>{
+	comprobarTokenUsuario('test');
   await includeTopMenu();
-   await funcionalidadesUsuario();
-   modalCambioPass();
-	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+  await funcionalidadesUsuario();
+  modalCambioPass();
+	cargarIdioma();includeFooter();setLang('');
   })();">  
 
 	<div id="topMenu"></div>
@@ -41,9 +42,9 @@
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	</div>
 
-	<div class="test MENSAJE_TEST">Tests</div> 
+	<div id="mensajeTest" class="test MENSAJE_TEST" style="display: none;">Tests</div> 
 
-	<div id="accordion">
+	<div id="accordion" style="display: none;">
 
 		<div class="card">
 	    <div class="card-header">
@@ -187,7 +188,7 @@
 
 	</div>
 
-	<div class="volver">
+	<div id="volver" class="volver" style="display: none;">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         <span class="tooltiptext iconBack ICONO_VOLVER">Menú</span>
