@@ -829,6 +829,7 @@ function cambiarTituloGestion(funcionalidad){
 		case 'empresa':
 			if (rol !== 'admin'){
 				 $("#gestion").addClass("GESTION_EMPRESAS_NO_ADMIN");
+				 document.getElementById("gestion").style.left = "44.5%";
 			} else {
 				 $("#gestion").addClass("GESTION_EMPRESAS");
 			}
@@ -836,6 +837,7 @@ function cambiarTituloGestion(funcionalidad){
 		case 'persona':
 			if (rol !== 'admin'){
 				 $("#gestion").addClass("GESTION_PERSONAS_NO_ADMIN");
+				 document.getElementById("gestion").style.left = "40%";
 			} else {
 				$("#gestion").addClass("GESTION_PERSONAS");
 			}
