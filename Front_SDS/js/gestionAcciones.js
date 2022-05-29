@@ -507,11 +507,8 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
+      document.getElementById('cabecera').style.display="block";
+      document.getElementById('cabeceraEliminados').style.display="none";
       
       $("#datosAccion").html("");
       $("#checkboxColumnas").html("");
@@ -950,6 +947,13 @@ function gestionarPermisosAccion(idElementoList) {
           }
 
         }
+
+        if(document.getElementById('permisos').style.display == "block"){
+           document.getElementById('cabeceraEliminados').style.display = "block";
+           $('#itemPaginacion').attr('hidden', true);
+          
+
+        }
       break;
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');
@@ -972,6 +976,7 @@ function gestionarPermisosAccion(idElementoList) {
 async function permisosUsuarios(){
   await cargarFuncionalidadesAjaxPromesa()
   .then((res) => {
+      document.getElementById('cabeceraEliminados').style.display = "block";
       cargarTablaPermisos(res.data.listaBusquedas);
       var cardAbierta = getCookie('cardPermiso');
       if(cardAbierta != null && cardAbierta != ""){
@@ -1307,8 +1312,8 @@ function cargarTablaPermisos(datos){
   $('#accordion').html('');
   $('#itemPaginacion').attr('hidden', true);
   $('#paginacion').attr('hidden', true);
-  $('.cabecera').attr('hidden', true);
-  $('.cabeceraEliminados').attr('hidden', false);
+  document.getElementById('cabecera').style.display="none";
+  document.getElementById('cabeceraEliminados').style.display="block";
 
   for(var i = 0; i<datos.length; i++){
     if((datos[i].nombreFuncionalidad).includes(" ")){

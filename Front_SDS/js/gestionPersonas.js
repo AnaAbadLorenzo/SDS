@@ -1976,8 +1976,6 @@ $(document).ready(function() {
 
     let idElementosRadioButtons = ["quitarEmpresaSi", "quitarEmpresaNo"];
 
-
-    limpiarFormulario(idElementoList);
     limpiaRadioButton(idElementosRadioButtons);
     
     $('#labelSelectEmpresa').attr('hidden',true);

@@ -105,6 +105,12 @@
     max-height: 350px;
 }
 
+.formularioComun h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: roboto;
+  color: #311B92;
+}
 
 /********* ICONOS ***********/
 
