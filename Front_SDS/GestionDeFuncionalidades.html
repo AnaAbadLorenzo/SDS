@@ -31,10 +31,10 @@
 </head>
 
 <body onload="(async ()=>{
+	comprobarTokenUsuario('funcionalidad');
   	await includeTopMenu();
     await funcionalidadesUsuario();
-    modalCambioPass();
-	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+    modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarFuncionalidades(0, tamanhoPaginaFuncionalidad, 'PaginadorNo');
 	await cargarPermisosFuncFuncionalidad();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('FUNCIONALIDAD')},30000);
@@ -46,7 +46,7 @@
 
 	<h1 class="gestion GESTION_FUNCIONALIDADES"></h1>
 
-	<div class="cabecera">
+	<div id="cabecera" class="cabecera" style="display:none">
 		<div id="divAddFuncionalidad" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddFuncionalidades()" class="tooltip6 addIcon">
         <img id="btnAddFuncionalidad" class="iconoAdd" src="images/add.png" alt="Añadir" />
         <span class="tooltiptext iconAddFuncionalidad ICONO_ADD"></span>
@@ -80,7 +80,7 @@
     	</div> 
     </div>    
 
-	<div class="table-responsive" id="tablaDatos">
+	<div class="table-responsive" id="tablaDatos" style="display:none">
 		<table class="table table-bordered" id="tablaFuncionalidades">
 			<thead>
 		    	<tr>
@@ -171,7 +171,7 @@
 		</div>
 	</div>
 
-	<div class="volver">
+	<div id="volver" class="volver" style="display:none">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         <span class="tooltiptext iconBack">Volver</span>

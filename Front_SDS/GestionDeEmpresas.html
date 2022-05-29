@@ -30,10 +30,10 @@
     <title>Sustainable Development Society</title>
 </head>
 <body onload="(async ()=>{
+	comprobarTokenUsuario();
 	await includeTopMenu();
-    await funcionalidadesUsuario();
-    modalCambioPass();
-	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+  await funcionalidadesUsuario();
+  cambiarTituloGestion('empresa');modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarEmpresas(0, tamanhoPaginaEmpresa, 'PaginadorNo');
 	await cargarPermisosFuncEmpresa();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('EMPRESA')},30000);
@@ -43,7 +43,7 @@
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	</div>
 
-	<h1 class="gestion GESTION_EMPRESAS"></h1>
+	<h1 id="gestion" class="gestion"></h1>
 
 	<div id="cardEmpresa" class="card card-enterprise" hidden>
 	</div>

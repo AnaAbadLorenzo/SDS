@@ -333,6 +333,9 @@ arrayEN={
 	'SEARCH_PLAN' : 'SEARCH PLAN',
 	'ADD_PLAN' : 'ADD PLAN',
 	'OPCION_DEFECTO_OBJETIVO' : 'Please, select the objective',
+	'GESTION_USUARIOS_NO_ADMIN' : 'My user data',
+	'GESTION_PERSONAS_NO_ADMIN' : 'My personal data',
+	'GESTION_EMPRESAS_NO_ADMIN' : 'My company',
 
 	//Acciones
 	'CERRARMODAL': 'Close',

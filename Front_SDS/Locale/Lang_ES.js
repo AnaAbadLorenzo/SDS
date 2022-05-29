@@ -335,7 +335,9 @@ arrayES={
 	'SEARCH_PLAN' : 'BUSCAR PLAN',
 	'ADD_PLAN' : 'AÑADIR PLAN',
 	'OPCION_DEFECTO_OBJETIVO' : 'Por favor, selecciona el objetivo',
-
+	'GESTION_USUARIOS_NO_ADMIN' : 'Mis datos de usuario',
+	'GESTION_PERSONAS_NO_ADMIN' : 'Mis datos personales',
+	'GESTION_EMPRESAS_NO_ADMIN' : 'Mi empresa',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

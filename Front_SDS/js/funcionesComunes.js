@@ -304,15 +304,40 @@ function limpiaRadioButton(idElementos){
 }
 
 /**Función para comprobar que el token del usuario se encuentra en las cookies**/
-function comprobarTokenUsuario(){
+function comprobarTokenUsuario(funcionalidad){
 	var token = getCookie('tokenUsuario');
 	var idioma = getCookie('lang');
 
 	if(token === null || token === ""){
 		errorAutenticado("ERROR_AUTENTICACION", idioma);
 	}else{
-		return true;
-		
+		switch(funcionalidad){
+			case 'menu':
+				document.getElementById("bienvenida").style.display = "block";
+			break;
+			case 'accion':
+			case 'funcionalidad':
+			case 'noticias':
+			case 'objetivo':
+			case 'respuestaPosible':
+			case 'rol':
+			case 'plan':
+			case 'logAcciones':
+			case 'logExcepciones':
+				document.getElementById("cabecera").style.display = "block";
+				document.getElementById("tablaDatos").style.display = "block";
+				document.getElementById("volver").style.display = "block";
+			break;
+			case 'persona':
+			case 'usuario':
+				document.getElementById("volver").style.display = "block";
+			break;
+			case 'test':
+				document.getElementById("mensajeTest").style.display = "block";
+				document.getElementById("accordion").style.display = "block";
+				document.getElementById("volver").style.display = "block";
+			break;
+		}
 	}
 }
 
@@ -666,7 +691,7 @@ function hideShowRevert(clase, posElement) {
 }
 
 /**Función para cargar los HREF de cada pagina*/
-function cargarHref(dato){
+function cargarHref(dato, rol){
 	var href=""
 
 	switch(dato){
@@ -728,8 +753,7 @@ function cargarHref(dato){
 
 
 /**Función para cargar los class de cada pagina **/
-
-function cargarClass(dato){
+function cargarClass(dato, rol){
 	var clase=""
 
 	switch(dato){
@@ -746,11 +770,19 @@ function cargarClass(dato){
 		break;
 
 		case 'Gestión de usuarios':
-			clase="GESTION_USUARIOS";
+			if (rol !== 'admin'){
+				clase = "GESTION_USUARIOS_NO_ADMIN";
+			} else {
+				clase="GESTION_USUARIOS";
+			}
 		break;
 
 		case 'Gestión de personas':
-			clase="GESTION_PERSONAS";
+			if (rol !== 'admin'){
+				clase = "GESTION_PERSONAS_NO_ADMIN";
+			} else {
+				clase="GESTION_PERSONAS";
+			}
 		break; 
 
 		case 'Gestión de acciones':
@@ -758,31 +790,66 @@ function cargarClass(dato){
 		break; 
 
 		case 'Log de excepciones':
-			href="GESTION_LOG_EXCEPCIONES";
+			clase="GESTION_LOG_EXCEPCIONES";
 		break;
 
 		case 'Gestión de noticias':
-			href = "GESTION_NOTICIAS";
+			clase = "GESTION_NOTICIAS";
 		break;
 
 		case 'Gestión de empresas':
-			href = "GESTION_EMPRESAS";
+			if (rol !== 'admin'){
+				clase = "GESTION_EMPRESAS_NO_ADMIN";
+			} else {
+				clase = "GESTION_EMPRESAS";
+			}
 		break;
 
 		case 'Gestión de objetivos':
-			href = "GESTION_OBJETIVOS";
+			clase = "GESTION_OBJETIVOS";
 		break;
 
 		case 'Gestión de respuestas posibles':
-			href = "GESTION_RESPUESTAS_POSIBLES";
+			clase = "GESTION_RESPUESTAS_POSIBLES";
 		break;
 
 		case 'Gestión de planes':
-			href = "GESTION_PLANES";
+			clase = "GESTION_PLANES";
 		break;
 	}
 
 	return clase;
+}
+
+/*Función para cambiar el título de las gestiones*/
+function cambiarTituloGestion(funcionalidad){
+	var rol = getCookie('rolUsuario');
+
+	switch(funcionalidad){
+		case 'empresa':
+			if (rol !== 'admin'){
+				 $("#gestion").addClass("GESTION_EMPRESAS_NO_ADMIN");
+				 document.getElementById("gestion").style.left = "44.5%";
+			} else {
+				 $("#gestion").addClass("GESTION_EMPRESAS");
+			}
+		break;
+		case 'persona':
+			if (rol !== 'admin'){
+				 $("#gestion").addClass("GESTION_PERSONAS_NO_ADMIN");
+				 document.getElementById("gestion").style.left = "40%";
+			} else {
+				$("#gestion").addClass("GESTION_PERSONAS");
+			}
+		break; 
+		case 'usuario':
+			if (rol !== 'admin'){
+				$("#gestion").addClass("GESTION_USUARIOS_NO_ADMIN");
+			} else {
+				$("#gestion").addClass("GESTION_USUARIOS");
+			}
+		break;
+	}
 }
 
 /* Función para comprobar errrores en los tabs de registro */

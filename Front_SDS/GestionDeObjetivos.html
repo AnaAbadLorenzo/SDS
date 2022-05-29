@@ -31,13 +31,12 @@
 </head>
 
 <body onload="(async ()=>{
+	comprobarTokenUsuario('objetivo');
   	await includeTopMenu();
     await funcionalidadesUsuario();
-    modalCambioPass();
-	cargarIdioma();includeFooter();setLang('');comprobarTokenUsuario();
+    modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarObjetivos(0, tamanhoPaginaObjetivo, 'PaginadorNo');
 	await cargarPermisosFuncObjetivo();
-	construyeSelect();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('OBJETIVO')},30000);
   })();">  
 	<div id="topMenu"></div>
@@ -47,7 +46,7 @@
 
 	<h1 class="gestion GESTION_OBJETIVOS"></h1>
 
-	<div class="cabecera">
+	<div id="cabecera" class="cabecera" style="display: none;">
 		<div id="divAddObjetivo" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddObjetivos()" class="tooltip6 addIcon">
         <img id="btnAddObjetivo" class="iconoAdd" src="images/add.png" alt="Añadir" />
         <span class="tooltiptext iconAddObjetivo ICONO_ADD"></span>
@@ -81,7 +80,7 @@
     	</div> 
     </div>    
 
-	<div class="table-responsive" id="tablaDatos">
+	<div class="table-responsive" id="tablaDatos" style="display: none;">
 		<table class="table table-bordered" id="tablaObjetivos">
 			<thead>
 		    	<tr>
@@ -173,7 +172,7 @@
 		</div>
 	</div>
 
-	<div class="volver">
+	<div id="volver" class="volver" style="display: none;">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
         <span class="tooltiptext iconBack">Volver</span>
