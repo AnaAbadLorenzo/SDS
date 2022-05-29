@@ -74,14 +74,14 @@
     </div>     
 	</div>
 
-	<div class = "cabeceraEliminados" hidden>
+	<div class = "cabeceraEliminados" id="cabeceraEliminados" style="display: none;">
 		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaPlan)" class="tooltip6 volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 
     </div>    
 
-	<div class="table-responsive" id="tablaDatos" hidden>
+	<div class="table-responsive" id="tablaDatos" style="display:none;">
 		<table class="table table-bordered" id="tablaPlanes">
 			<thead>
 		    	<tr>
@@ -134,7 +134,7 @@
 		</table>
 	</div>
 
-	<div class="filasTabla">
+	<div class="filasTabla" id="filasTabla" style="display: none;">
 			<div id="paginacion"></div>
 	</div>
 

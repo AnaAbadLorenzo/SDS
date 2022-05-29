@@ -744,6 +744,11 @@ function rellenarFormulario(tituloNoticia, textoNoticia, fechaNoticia) {
 
 /** Función para gestionar los iconos dependiendo de los permisos de los usuarios **/
 function gestionarPermisosNoticia(idElementoList) {
+  document.getElementById('cabecera').style.display = "none";
+  document.getElementById('tablaDatos').style.display = "none";
+  document.getElementById('filasTabla').style.display = "none";
+  $('#itemPaginacion').attr('hidden', true);
+
   idElementoList.forEach( function (idElemento) {
     switch(idElemento){
       case "Añadir":
@@ -772,6 +777,16 @@ function gestionarPermisosNoticia(idElementoList) {
         $('#btnListarNoticias').css("cursor", "pointer");
         $('#divListarNoticias').attr("data-toggle", "modal");
         $('#divListarNoticias').attr("data-target", "#form-modal");
+
+        document.getElementById('cabecera').style.display = "block";
+        document.getElementById('tablaDatos').style.display = "block";
+        document.getElementById('filasTabla').style.display = "block";
+        $('#itemPaginacion').attr('hidden', false);
+
+        if(document.getElementById('cabeceraEliminados').style.display == "block"){
+          document.getElementById('cabecera').style.display = "none";
+        }
+      break;
 
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');

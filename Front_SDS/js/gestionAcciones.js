@@ -566,8 +566,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
      
-      
-
+    
       $("#datosAccion").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -577,8 +576,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         }
 
         if(res.data.listaBusquedas.length == 0){
-          $('.cabecera').attr('hidden', true);
-          $('.cabeceraEliminados').attr('hidden', false);
+          document.getElementById('cabecera').style.display = "none";
+          document.getElementById('cabeceraEliminados').style.display = "block";
         }
       
       var div = createHideShowColumnsWindow({ACCION_DESCRIPTION_COLUMN:2});
@@ -900,6 +899,11 @@ function gestionarPermisosAccion(idElementoList) {
   }else{
     $('#btnPermisos').attr('hidden', true);
   }
+
+  document.getElementById('cabecera').style.display = "none";
+  document.getElementById('tablaDatos').style.display = "none";
+  document.getElementById('filasTabla').style.display = "none";
+  $('#itemPaginacion').attr('hidden', true);
   
   idElementoList.forEach( function (idElemento) {
     switch(idElemento){
@@ -932,6 +936,20 @@ function gestionarPermisosAccion(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaAccion\')");
         $('#divListarAcciones').attr("data-toggle", "modal");
         $('#divListarAcciones').attr("data-target", "#form-modal");
+        document.getElementById('cabecera').style.display = "block";
+        document.getElementById('tablaDatos').style.display = "block";
+        document.getElementById('filasTabla').style.display = "block";
+         $('#itemPaginacion').attr('hidden', false);
+
+        if(document.getElementById('cabeceraEliminados').style.display == "block"){
+           document.getElementById('cabecera').style.display = "none";
+
+           var texto = document.getElementById('paginacion').innerHTML;
+           if(texto == "0 - 0 total 0"){
+           $('#itemPaginacion').attr('hidden', true);
+          }
+
+        }
       break;
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');

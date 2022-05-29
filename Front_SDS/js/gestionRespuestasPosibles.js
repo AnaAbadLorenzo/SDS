@@ -523,14 +523,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
-
-      if(res.data.listaBusquedas.length == 0){
-          $('.cabecera').attr('hidden', true);
-          $('.cabeceraEliminados').attr('hidden', false);
+        document.getElementById('cabecera').style.display = "none";
+        document.getElementById('cabeceraEliminados').style.display = "block";    
       }
 
       $("#datosRespuestaPosible").html("");
@@ -702,7 +696,7 @@ function showAddRespuesta() {
 }
 
 /** Funcion para buscar una respuesta posible **/
-function showBuscarRespuestaPosible() {
+function showBuscarRespuesta() {
   var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_RESPUESTA_POSIBLE', 'javascript:buscarRespuestaPosible(0,' + tamanhoPaginaRespuestaPosible + ', \'buscarModal\'' + ',\'PaginadorNo\');', 
@@ -842,6 +836,11 @@ function rellenarFormulario(textoRespuestaPosible) {
 
 /** Función para gestionar los iconos dependiendo de los permisos de los usuarios **/
 function gestionarPermisosRespuestaPosible(idElementoList) {
+  document.getElementById('cabecera').style.display = "none";
+  document.getElementById('tablaDatos').style.display = "none";
+  document.getElementById('filasTabla').style.display = "none";
+  $('#itemPaginacion').attr('hidden', true);
+
   idElementoList.forEach( function (idElemento) {
     switch(idElemento){
       case "Añadir":
@@ -873,6 +872,21 @@ function gestionarPermisosRespuestaPosible(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaRespuestaPosible\', \'PaginadorNo\')");
         $('#divListarRespuestas').attr("data-toggle", "modal");
         $('#divListarRespuestas').attr("data-target", "#form-modal");
+        document.getElementById('cabecera').style.display = "block";
+        document.getElementById('tablaDatos').style.display = "block";
+        document.getElementById('filasTabla').style.display = "block";
+         $('#itemPaginacion').attr('hidden', false);
+
+        if(document.getElementById('cabeceraEliminados').style.display == "block"){
+           document.getElementById('cabecera').style.display = "none";
+
+           var texto = document.getElementById('paginacion').innerHTML;
+           if(texto == "0 - 0 total 0"){
+           $('#itemPaginacion').attr('hidden', true);
+          }
+
+        }
+      break;
 
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');

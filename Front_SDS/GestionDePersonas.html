@@ -56,7 +56,7 @@
   </div>
 
   <div id="personaInfoParaAdmin" hidden>
-      <div class="cabecera">
+      <div class="cabecera" id="cabecera" style="display:none;">
         <div id="divAddPersona" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddPersonas()" 
           class=" tooltip6 addIcon">
             <img id="btnAddPersona" class="iconoAdd" src="images/add.png" alt="Añadir" />
@@ -85,7 +85,7 @@
         </div>     
       </div>
 
-      <div class = "cabeceraEliminados" hidden>
+      <div class = "cabeceraEliminados" id="cabeceraEliminados" style="display:none;">
         <div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaPersona)" class="tooltip6 volverAtrasIcon">
               <img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
               <span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
@@ -192,7 +192,7 @@
               <form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item">
-                    <a class="nav-link active DATOS_PERSONALES" data-toggle="tab" href="#datosPersonales"></a>
+                    <a id="datosPer" class="nav-link active DATOS_PERSONALES" data-toggle="tab" href="#datosPersonales"></a>
                     <img class="iconTab" id="iconoTabDatosPersonales" src="images/failed.png" hidden>
                   </li>
                   <li class="nav-item">

@@ -806,10 +806,19 @@ function eliminarPersonaAjaxPromesa(){
         emailP : $('#emailP').val(),
         borradoP : 1
     }
+
+    var empresa = {
+          idEmpresa : "",
+          cifEmpresa : $('#cifEmpresa').val(),
+          nombreEmpresa : $('#nombreEmpresa').val(),
+          direccionEmpresa : $('#direccionEmpresa').val(),
+          telefonoEmpresa : $('#telefonoEmpresa').val()
+        }
     
     var data = {
       usuario : getCookie('usuario'),
-      persona: personaEntity
+      persona: personaEntity,
+      empresa : empresa
     }
 
       $.ajax({
@@ -1073,6 +1082,45 @@ async function asociarPersonaEmpresa(dniPersona){
 /** Funcion para mostrar el formulario para añadir una persona **/
 function showAddPersonas() {
   var idioma = getCookie('lang');
+
+    if($('#datosUser').hasClass('active')){
+      $('#datosUser').removeClass('active');
+    }
+
+    if($('#datosEmp').hasClass('active')){
+      $('#datosEmp').removeClass('active');
+    }
+
+    if($('#datosUser').hasClass('show')){
+      $('#datosUser').removeClass('show');
+    }
+
+    if($('#datosEmp').hasClass('show')){
+      $('#datosEmp').removeClass('show');
+    }
+
+    if($('#datosUsuario').hasClass('active')){
+      $('#d#datosUsuario').removeClass('active');
+    }
+
+    if($('#datosEmpresa').hasClass('active')){
+      $('#datosEmpresa').removeClass('active');
+    }
+
+    if($('#datosUsuario').hasClass('show')){
+      $('#datosUsuario').removeClass('show');
+    }
+
+    if($('#datosEmpresa').hasClass('show')){
+      $('#datosEmpresa').removeClass('show');
+    }
+
+    $('#datosPer').addClass('active');
+    $('#datosPer').addClass('show');
+    $('#datosPersonales').addClass('active');
+    $('#datosPersonales').addClass('show');
+
+
   cambiarFormulario('ADD_PERSONA', 'javascript:addPersona();', 'return comprobarAddPersona();');
   cambiarOnBlurCampos('return comprobarDNI(\'dniP\', \'errorFormatoDni\', \'dniPersona\');', 
     'return comprobarNombre(\'nombreP\', \'errorFormatoNombrePersona\', \'nombrePersonaRegistro\');',
@@ -1125,8 +1173,45 @@ function showAddPersonas() {
 }
 
 /** Funcion para editar una persona **/
-function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
+function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa, idEmpresa) {
   var idioma = getCookie('lang');
+
+    if($('#datosUser').hasClass('active')){
+      $('#datosUser').removeClass('active');
+    }
+
+    if($('#datosEmp').hasClass('active')){
+      $('#datosEmp').removeClass('active');
+    }
+
+    if($('#datosUser').hasClass('show')){
+      $('#datosUser').removeClass('show');
+    }
+
+    if($('#datosEmp').hasClass('show')){
+      $('#datosEmp').removeClass('show');
+    }
+
+    if($('#datosUsuario').hasClass('active')){
+      $('#d#datosUsuario').removeClass('active');
+    }
+
+    if($('#datosEmpresa').hasClass('active')){
+      $('#datosEmpresa').removeClass('active');
+    }
+
+    if($('#datosUsuario').hasClass('show')){
+      $('#datosUsuario').removeClass('show');
+    }
+
+    if($('#datosEmpresa').hasClass('show')){
+      $('#datosEmpresa').removeClass('show');
+    }
+
+    $('#datosPer').addClass('active');
+    $('#datosPer').addClass('show');
+    $('#datosPersonales').addClass('active');
+    $('#datosPersonales').addClass('show');
 
     cambiarFormulario('EDIT_PERSONA', 'javascript:editPersona();', 'return comprobarEditPersona();');
     cambiarOnBlurCampos('return comprobarDNI(\'dniP\', \'errorFormatoDni\', \'dniPersona\');', 
@@ -1174,7 +1259,10 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     }
 
     rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa);
-    insertacampo(document.formularioGenerico,'idEmpresa', idEmpresa);
+    
+    if(idEmpresa != ''){
+      insertacampo(document.formularioGenerico,'idEmpresa', idEmpresa);
+    }
 
     let campos = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
       "usuario", "passwdUsuario1", "passwdUsuario2", "cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
@@ -1195,6 +1283,43 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
 function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
   
     var idioma = getCookie('lang');
+
+     if($('#datosUser').hasClass('active')){
+      $('#datosUser').removeClass('active');
+    }
+
+    if($('#datosEmp').hasClass('active')){
+      $('#datosEmp').removeClass('active');
+    }
+
+    if($('#datosUser').hasClass('show')){
+      $('#datosUser').removeClass('show');
+    }
+
+    if($('#datosEmp').hasClass('show')){
+      $('#datosEmp').removeClass('show');
+    }
+
+    if($('#datosUsuario').hasClass('active')){
+      $('#d#datosUsuario').removeClass('active');
+    }
+
+    if($('#datosEmpresa').hasClass('active')){
+      $('#datosEmpresa').removeClass('active');
+    }
+
+    if($('#datosUsuario').hasClass('show')){
+      $('#datosUsuario').removeClass('show');
+    }
+
+    if($('#datosEmpresa').hasClass('show')){
+      $('#datosEmpresa').removeClass('show');
+    }
+
+    $('#datosPer').addClass('active');
+    $('#datosPer').addClass('show');
+    $('#datosPersonales').addClass('active');
+    $('#datosPersonales').addClass('show');
 
     cambiarFormulario('DELETE_PERSONA', 'javascript:deletePersona();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
@@ -1253,6 +1378,43 @@ function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP,
   
     var idioma = getCookie('lang');
 
+    if($('#datosUser').hasClass('active')){
+      $('#datosUser').removeClass('active');
+    }
+
+    if($('#datosEmp').hasClass('active')){
+      $('#datosEmp').removeClass('active');
+    }
+
+    if($('#datosUser').hasClass('show')){
+      $('#datosUser').removeClass('show');
+    }
+
+    if($('#datosEmp').hasClass('show')){
+      $('#datosEmp').removeClass('show');
+    }
+
+    if($('#datosUsuario').hasClass('active')){
+      $('#d#datosUsuario').removeClass('active');
+    }
+
+    if($('#datosEmpresa').hasClass('active')){
+      $('#datosEmpresa').removeClass('active');
+    }
+
+    if($('#datosUsuario').hasClass('show')){
+      $('#datosUsuario').removeClass('show');
+    }
+
+    if($('#datosEmpresa').hasClass('show')){
+      $('#datosEmpresa').removeClass('show');
+    }
+
+    $('#datosPer').addClass('active');
+    $('#datosPer').addClass('show');
+    $('#datosPersonales').addClass('active');
+    $('#datosPersonales').addClass('show');
+
     cambiarFormulario('DETAIL_PERSONA', 'javascript:detallePersona();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
    
@@ -1307,6 +1469,43 @@ function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP,
 /** Funcion para buscar una persona **/
 function showBuscarPersona() {
   var idioma = getCookie('lang');
+
+    if($('#datosUser').hasClass('active')){
+      $('#datosUser').removeClass('active');
+    }
+
+    if($('#datosEmp').hasClass('active')){
+      $('#datosEmp').removeClass('active');
+    }
+
+    if($('#datosUser').hasClass('show')){
+      $('#datosUser').removeClass('show');
+    }
+
+    if($('#datosEmp').hasClass('show')){
+      $('#datosEmp').removeClass('show');
+    }
+
+    if($('#datosUsuario').hasClass('active')){
+      $('#d#datosUsuario').removeClass('active');
+    }
+
+    if($('#datosEmpresa').hasClass('active')){
+      $('#datosEmpresa').removeClass('active');
+    }
+
+    if($('#datosUsuario').hasClass('show')){
+      $('#datosUsuario').removeClass('show');
+    }
+
+    if($('#datosEmpresa').hasClass('show')){
+      $('#datosEmpresa').removeClass('show');
+    }
+
+    $('#datosPer').addClass('active');
+    $('#datosPer').addClass('show');
+    $('#datosPersonales').addClass('active');
+    $('#datosPersonales').addClass('show');
 
    cambiarFormulario('SEARCH_PERSONA', 'javascript:buscarPersona(0,' + tamanhoPaginaPersona + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarPersona();');
    cambiarOnBlurCampos('return comprobarDNISearch(\'dniP\', \'errorFormatoDni\', \'dniPersona\');', 
@@ -1743,7 +1942,7 @@ function cargarEmpresasAjaxPromesa(){
 
 $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {
-    
+
     let idElementoErrorList = ["errorFormatoDni", "errorFormatoNombrePersona", "errorFormatoApellidosP", "errorFormatoFecha", "errorFormatoDireccion", "errorFormatoTelefono",
       "errorFormatoEmail", "errorFormatoUserRegistro", "errorFormatoPassRegistro", "errorFormatoPassRegistro2", "errorFormatoCifEmpresa", "errorFormatoNombreEmpresa", "errorFormatoDireccionEmpresa", "errorFormatoTelefonoEmpresa",
       "bloqueoMayusculasRegistro"];

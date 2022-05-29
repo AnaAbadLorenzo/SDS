@@ -24,9 +24,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "UsuarioEntity.findUsuariosEliminados", query = "SELECT u FROM UsuarioEntity u WHERE u.borradoUsuario = 1"),
 		@NamedQuery(name = "UsuarioEntity.numberFindUsuariosEliminados", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.borradoUsuario = 1"),
 		@NamedQuery(name = "UsuarioEntity.findByDni", query = "SELECT u.dniUsuario FROM UsuarioEntity u WHERE u.dniUsuario =: dniUsuario"),
-		@NamedQuery(name = "UsuarioEntity.findUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.rol LIKE CONCAT('%', :rol, '%') AND u.borradoUsuario = 0"),
-		@NamedQuery(name = "UsuarioEntity.numberFindUsuarioWithRol", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.rol LIKE CONCAT('%', :rol, '%') AND u.borradoUsuario = 0"),
-		@NamedQuery(name = "UsuarioEntity.numberFindUsuario", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.dniUsuario LIKE CONCAT('%', :dniUsuario, '%') AND u.usuario LIKE CONCAT('%', :usuario, '%') AND u.borradoUsuario = 0"),
+		@NamedQuery(name = "UsuarioEntity.findUsuario", query = "SELECT u FROM UsuarioEntity u WHERE u.dniUsuario LIKE UPPER(CONCAT('%', :dniUsuario, '%')) AND u.usuario LIKE UPPER(CONCAT('%', :usuario, '%')) AND u.rol LIKE CONCAT('%', :rol, '%') AND u.borradoUsuario = 0"),
+		@NamedQuery(name = "UsuarioEntity.numberFindUsuarioWithRol", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.dniUsuario LIKE UPPER(CONCAT('%', :dniUsuario, '%')) AND u.usuario LIKE UPPER(CONCAT('%', :usuario, '%')) AND u.rol LIKE CONCAT('%', :rol, '%') AND u.borradoUsuario = 0"),
+		@NamedQuery(name = "UsuarioEntity.numberFindUsuario", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.dniUsuario LIKE UPPER(CONCAT('%', :dniUsuario, '%')) AND u.usuario LIKE UPPER(CONCAT('%', :usuario, '%')) AND u.borradoUsuario = 0"),
 		@NamedQuery(name = "UsuarioEntity.findAllUsuarios", query = "SELECT u FROM UsuarioEntity u WHERE u.borradoUsuario = 0"),
 		@NamedQuery(name = "UsuarioEntity.numberFindAllUsuarios", query = "SELECT COUNT(u) FROM UsuarioEntity u WHERE u.borradoUsuario = 0"), })
 public class UsuarioEntity {

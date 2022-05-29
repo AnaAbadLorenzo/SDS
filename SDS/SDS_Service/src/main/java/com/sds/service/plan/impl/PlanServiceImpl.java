@@ -439,7 +439,7 @@ public class PlanServiceImpl implements PlanService {
 						planBD.get().setDescripPlan(planEntity.getDescripPlan());
 						planBD.get().setFechaPlan(planEntity.getFechaPlan());
 						planBD.get().setBorradoPlan(planEntity.getBorradoPlan());
-						planBD.get().setObjetivo(planEntity.getObjetivo());
+						planBD.get().setObjetivo(objetivoBD.get());
 
 						planRepository.saveAndFlush(planBD.get());
 

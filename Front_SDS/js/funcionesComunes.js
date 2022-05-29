@@ -374,8 +374,8 @@ function construyeFila(entidad, fila) {
 	let atributosFunciones="";
 	var filaTabla = "";
 
-	$('.cabecera').attr('hidden', false);
-	$('.cabeceraEliminados').attr('hidden', true);
+	document.getElementById('cabecera').style.display = "block";
+	document.getElementById('cabeceraEliminados').style.display = "none";
 
 	switch(entidad){
 		case 'ROL':
@@ -436,18 +436,20 @@ function construyeFila(entidad, fila) {
         		var filaEmpresaDireccion = "";
         		var filaEmpresaTelefono = "";
         		var filaEmpresa = "";
+        		var filaIdEmpresa = "";
         	}else{
         		var filaEmpresaCif = fila.empresa.cifEmpresa;
         		var filaEmpresaNombre = fila.empresa.nombreEmpresa;
         		var filaEmpresaDireccion = fila.empresa.direccionEmpresa;
         		var filaEmpresaTelefono = fila.empresa.telefonoEmpresa;
+        		var filaIdEmpresa = fila.empresa.idEmpresa;
         	}
 
         	var fechaNacimiento = new Date(fila.fechaNacP);
         	atributosFunciones = ["'" + fila.dniP + "'", "'" + fila.nombreP + "'", "'" + fila.apellidosP + "'", "'" + convertirFecha(fechaNacimiento.toString()) + "'"
         	, "'" + fila.direccionP + "'", "'" + fila.telefonoP + "'", "'" + fila.emailP + "'", "'" + fila.borradoP + "'",
         	"'" + fila.usuario.usuario + "'", "'" + fila.usuario.rol.rolName + "'", "'" + fila.usuario.borradoUsuario + "'", "'" + filaEmpresaCif + "'", "'" + filaEmpresaNombre + "'", "'" + filaEmpresaDireccion + "'"
-        	, "'" + filaEmpresaTelefono + "'"];
+        	, "'" + filaEmpresaTelefono + "'", "'" + filaIdEmpresa + "'"];
 			
         	if(filaEmpresaNombre == ""){
         		var filaEmpresaNombreTabla = " - ";
@@ -534,8 +536,8 @@ function construyeFilaEliminados(entidad, fila) {
 	let atributosFunciones="";
 	var filaTabla = "";
 
-	$('.cabecera').attr('hidden', true);
-	$('.cabeceraEliminados').attr('hidden', false);
+	document.getElementById('cabecera').style.display = "none";
+	document.getElementById('cabeceraEliminados').style.display = "block";
 
 	switch(entidad){
 		case 'ROL':

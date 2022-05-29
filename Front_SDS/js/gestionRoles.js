@@ -291,11 +291,8 @@ async function cargarRoles(numeroPagina, tamanhoPagina, paginadorCreado){
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
       
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
+      document.getElementById('cabecera').style.display="block";
+      document.getElementById('cabeceraEliminados').style.display="none";
 
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
@@ -344,12 +341,9 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         inicio = parseInt(res.data.inicio)+1;
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-      
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
+
+      document.getElementById('cabecera').style.display="block";
+      document.getElementById('cabeceraEliminados').style.display="none";
 
 	   	$("#datosRol").html("");
 	   	$("#checkboxColumnas").html("");
@@ -596,10 +590,10 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
+          document.getElementById('cabecera').style.display="none";
+          document.getElementById('cabeceraEliminados').style.display="block";
       }
+
 
       $("#datosRol").html("");
       $("#checkboxColumnas").html("");
@@ -908,6 +902,21 @@ function gestionarPermisosRol(idElementoList) {
         $('#divListarRol').attr("data-toggle", "modal");
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0, \'tamanhoPaginaRol\', \'PaginadorNo\')");
         $('#divListarRol').attr("data-target", "#form-modal");
+        document.getElementById('cabecera').style.display = "block";
+        document.getElementById('tablaDatos').style.display = "block";
+        document.getElementById('filasTabla').style.display = "block";
+         $('#itemPaginacion').attr('hidden', false);
+
+        if(document.getElementById('cabeceraEliminados').style.display == "block"){
+           document.getElementById('cabecera').style.display = "none";
+
+           var texto = document.getElementById('paginacion').innerHTML;
+           if(texto == "0 - 0 total 0"){
+           $('#itemPaginacion').attr('hidden', true);
+          }
+
+        }
+      break;
       break;
 
       case "Visualizar" :

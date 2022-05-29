@@ -821,6 +821,7 @@ function showEditar(dniUsuario,usuario,borrado,rol) {
     anadirReadonly(campos);
     deshabilitaCampos(["dniUsuario", "loginUsuario", "esActivo"]);
     habilitaCampos(["selectRoles"]);
+    mostrarObligatorios(obligatorios);
 
 }
 

@@ -20,8 +20,8 @@ import javax.persistence.Table;
 		@NamedQuery(name = "AccionEntity.findAccionByName", query = "SELECT a FROM AccionEntity a WHERE a.nombreAccion =: nombreAccion"),
 		@NamedQuery(name = "AccionEntity.findAllAccion", query = "SELECT a FROM AccionEntity a WHERE a.borradoAccion = 0"),
 		@NamedQuery(name = "AccionEntity.numberFindAllAccion", query = "SELECT COUNT(a) FROM AccionEntity a WHERE a.borradoAccion = 0 "),
-		@NamedQuery(name = "AccionEntity.findAccion", query = "SELECT a FROM AccionEntity a WHERE a.nombreAccion LIKE CONCAT('%', :nombreAccion, '%') AND a.descripAccion LIKE CONCAT('%',:descripAccion, '%') AND a.borradoAccion=0"),
-		@NamedQuery(name = "AccionEntity.numberFindAccion", query = "SELECT COUNT(a) FROM AccionEntity a WHERE a.nombreAccion LIKE CONCAT('%', :nombreAccion, '%') AND a.descripAccion LIKE CONCAT('%', :descripAccion, '%') AND a.borradoAccion=0"),
+		@NamedQuery(name = "AccionEntity.findAccion", query = "SELECT a FROM AccionEntity a WHERE a.nombreAccion LIKE UPPER (CONCAT('%', :nombreAccion, '%')) AND a.descripAccion LIKE UPPER (CONCAT('%',:descripAccion, '%')) AND a.borradoAccion=0"),
+		@NamedQuery(name = "AccionEntity.numberFindAccion", query = "SELECT COUNT(a) FROM AccionEntity a WHERE a.nombreAccion LIKE UPPER (CONCAT('%', :nombreAccion, '%')) AND a.descripAccion LIKE UPPER (CONCAT('%', :descripAccion, '%')) AND a.borradoAccion=0"),
 		@NamedQuery(name = "AccionEntity.findAccionesEliminadas", query = "SELECT a FROM AccionEntity a WHERE a.borradoAccion = 1"),
 		@NamedQuery(name = "AccionEntity.numberFindAccionesEliminadas", query = "SELECT COUNT(a) FROM AccionEntity a WHERE a.borradoAccion = 1") })
 public class AccionEntity {

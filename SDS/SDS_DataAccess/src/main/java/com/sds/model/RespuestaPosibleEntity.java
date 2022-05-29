@@ -18,11 +18,11 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "RespuestaPosibleEntity.findAllRespuestasPosibles", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 0"),
 		@NamedQuery(name = "RespuestaPosibleEntity.numberFindAllRespuestasPosibles", query = "SELECT COUNT(r) FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 0"),
-		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosible", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%')"),
-		@NamedQuery(name = "RespuestaPosibleEntity.numberFindRespuestaPosible", query = "SELECT COUNT(r) FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%')"),
+		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosible", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE UPPER(CONCAT('%', :textoRespuesta, '%'))"),
+		@NamedQuery(name = "RespuestaPosibleEntity.numberFindRespuestaPosible", query = "SELECT COUNT(r) FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE UPPER(CONCAT('%', :textoRespuesta, '%'))"),
 		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestasPosiblesEliminadas", query = "SELECT r FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 1"),
 		@NamedQuery(name = "RespuestaPosibleEntity.numberFindRespuestasPosiblesEliminadas", query = "SELECT  COUNT(r) FROM RespuestaPosibleEntity r WHERE r.borradoRespuesta = 1"),
-		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosibleByText", query = " SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE CONCAT('%', :textoRespuesta, '%')") })
+		@NamedQuery(name = "RespuestaPosibleEntity.findRespuestaPosibleByText", query = " SELECT r FROM RespuestaPosibleEntity r WHERE r.textoRespuesta LIKE UPPER(CONCAT('%', :textoRespuesta, '%'))") })
 public class RespuestaPosibleEntity {
 
 	@Id

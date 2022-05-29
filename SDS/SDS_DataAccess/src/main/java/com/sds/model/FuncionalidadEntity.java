@@ -25,8 +25,8 @@ import javax.persistence.Table;
 		@NamedQuery(name = "FuncionalidadEntity.findFuncionalityByName", query = "SELECT f FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad =: nombreFuncionalidad"),
 		@NamedQuery(name = "FuncionalidadEntity.findAllFuncionalities", query = "SELECT f FROM FuncionalidadEntity f WHERE f.borradoFuncionalidad = 0"),
 		@NamedQuery(name = "FuncionalidadEntity.numberFindAllFuncionalities", query = "SELECT COUNT(f) FROM FuncionalidadEntity f WHERE f.borradoFuncionalidad = 0"),
-		@NamedQuery(name = "FuncionalidadEntity.findFuncionality", query = "SELECT f FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad LIKE CONCAT('%', :nombreFuncionalidad, '%') AND f.descripFuncionalidad LIKE CONCAT('%', :descripFuncionalidad, '%') AND f.borradoFuncionalidad=0"),
-		@NamedQuery(name = "FuncionalidadEntity.numberFindFuncionality", query = "SELECT COUNT(f) FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad LIKE CONCAT('%', :nombreFuncionalidad, '%') AND f.descripFuncionalidad LIKE CONCAT('%', :descripFuncionalidad, '%') AND f.borradoFuncionalidad=0"),
+		@NamedQuery(name = "FuncionalidadEntity.findFuncionality", query = "SELECT f FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad LIKE UPPER (CONCAT('%', :nombreFuncionalidad, '%')) AND f.descripFuncionalidad LIKE UPPER (CONCAT('%', :descripFuncionalidad, '%')) AND f.borradoFuncionalidad=0"),
+		@NamedQuery(name = "FuncionalidadEntity.numberFindFuncionality", query = "SELECT COUNT(f) FROM FuncionalidadEntity f WHERE f.nombreFuncionalidad LIKE UPPER (CONCAT('%', :nombreFuncionalidad, '%')) AND f.descripFuncionalidad LIKE UPPER (CONCAT('%', :descripFuncionalidad, '%')) AND f.borradoFuncionalidad=0"),
 		@NamedQuery(name = "FuncionalidadEntity.findFuncionalidadesEliminadas", query = "SELECT f FROM FuncionalidadEntity f WHERE f.borradoFuncionalidad = 1"),
 		@NamedQuery(name = "FuncionalidadEntity.numberFindFuncionalidadesEliminadas", query = "SELECT COUNT(f) FROM FuncionalidadEntity f WHERE f.borradoFuncionalidad = 1") })
 public class FuncionalidadEntity {

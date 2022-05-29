@@ -334,6 +334,19 @@ public class PersonaServiceImpl implements PersonaService {
 		} else {
 			final Optional<UsuarioEntity> user = usuarioRepository.findById(personaEntity.getDniP());
 
+			if (persona.getEmpresa() != null) {
+				if (persona.getEmpresa().getCifEmpresa().equals("")) {
+					final Optional<EmpresaEntity> empresaBD = empresaRepository
+							.findById(persona.getEmpresa().getIdEmpresa());
+					person.get().setEmpresa(empresaBD.get());
+				} else {
+					final EmpresaEntity empresaBD = empresaRepository.findByCif(persona.getEmpresa().getCifEmpresa());
+					person.get().setEmpresa(empresaBD);
+				}
+			} else {
+				person.get().setEmpresa(null);
+			}
+
 			if (user.isPresent()) {
 				user.get().setBorradoUsuario(1);
 				usuarioRepository.saveAndFlush(user.get());
