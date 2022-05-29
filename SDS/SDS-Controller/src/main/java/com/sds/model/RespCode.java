@@ -153,7 +153,22 @@ public enum RespCode {
 	PLAN_BORRADO("PLAN_BORRADO", "El plan se ha borrado correctamente"), //
 	PLAN_YA_EXISTE_EXCEPTION("PLAN_YA_EXISTE_EXCEPTION", "El plan ya existe"), //
 	PLAN_NO_EXISTE_EXCEPTION("PLAN_NO_EXISTE_EXCEPTION", "El plan no existe"), //
+	PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION("PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION",
+			"El plan se encuentra asociado a un procedimiento"), //
 	PLAN_VACIO("PLAN_VACIO", "El nombre, la descripción y/o la fecha del plan están vacíos"), //
+	PROCEDIMIENTO_ENCONTRADO("PROCEDIMIENTO_ENCONTRADO", "El procedimiento se ha encontrado correctamente"), //
+	PROCEDIMIENTOS_LISTADOS("PROCEDIMIENTOS_LISTADOS", "Los procedimientos se han listado correctamente"), //
+	PROCEDIMIENTOS_ELIMINADOS_LISTADOS("PROCEDIMIENTOS_ELIMINADOS_LISTADOS",
+			"Los procedimientos eliminados se han listado correctamente"), //
+	PROCEDIMIENTO_GUARDADO("PROCEDIMIENTO_GUARDADO", "El procedimiento se ha guardado correctamente"), //
+	PROCEDIMIENTO_MODIFICADO("PROCEDIMIENTO_MODIFICADO", "El procedimiento se ha modificado correctamente"), //
+	PROCEDIMIENTO_ELIMINADO("PROCEDIMIENTO_ELIMINADO", "El procedimiento se ha eliminado correctamente"), //
+	PROCEDIMIENTO_REACTIVADO("PROCEDIMIENTO_REACTIVADO", "El procedimiento se ha reactivado correctamente"), //
+	PROCEDIMIENTO_BORRADO("PROCEDIMIENTO_BORRADO", "El procedimiento se ha borrado correctamente"), //
+	PROCEDIMIENTO_YA_EXISTE_EXCEPTION("PROCEDIMIENTO_YA_EXISTE_EXCEPTION", "El procedimiento ya existe"), //
+	PROCEDIMIENTO_NO_EXISTE_EXCEPTION("PROCEDIMIENTO_NO_EXISTE_EXCEPTION", "El procedimiento no existe"), //
+	PROCEDIMIENTO_VACIO("PROCEDIMIENTO_VACIO",
+			"El nombre, la descripción, la fecha del procedimiento y/o el check de publicación están vacíos"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
@@ -259,7 +274,15 @@ public enum RespCode {
 	TEST_ACCIONES_PLAN_KO("TEST_ACCIONES_PLAN_KO",
 			"Se ha producido un error al ejecutar los test de acciones para los planes"), //
 	TEST_ACCIONES_PLAN_OK("TEST_ACCIONES_PLAN_OK",
-			"Los test de acciones para los planes se han ejecutado correctamente");
+			"Los test de acciones para los planes se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_PROCEDIMIENTO_OK("TEST_ATRIBUTOS_PROCEDIMIENTO_OK",
+			"Los test de atributo para los procedimientos se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_PROCEDIMIENTO_KO("TEST_ATRIBUTOS_PROCEDIMIENTO_KO",
+			"Se ha producido un error al ejecutar los test de atributos para los procedimientos"), //
+	TEST_ACCIONES_PROCEDIMIENTO_KO("TEST_ACCIONES_PROCEDIMIENTO_KO",
+			"Se ha producido un error al ejecutar los test de acciones para los procedimientos"), //
+	TEST_ACCIONES_PROCEDIMIENTO_OK("TEST_ACCIONES_PROCEDIMIENTO_OK",
+			"Los test de acciones para los procedimientos se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

@@ -18,6 +18,7 @@ import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
+import com.sds.service.exception.PlanAsociadoProcedimientoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.PlanYaExisteException;
 import com.sds.service.plan.PlanService;
@@ -91,7 +92,7 @@ public class PlanController {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, plan);
 				} catch (final FechaAnteriorFechaActualException fechaAnteriorfechaActualException) {
 					return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, plan);
-				} catch (final ObjetivoNoExisteException funcionalidadNoExists) {
+				} catch (final ObjetivoNoExisteException objetivoNoExists) {
 					return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, plan);
 				}
 			}
@@ -124,7 +125,7 @@ public class PlanController {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, plan);
 				} catch (final FechaAnteriorFechaActualException fechaAnteriorfechaActualException) {
 					return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, plan);
-				} catch (final ObjetivoNoExisteException funcionalidadNoExists) {
+				} catch (final ObjetivoNoExisteException objetivoNoExists) {
 					return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, plan);
 				}
 			}
@@ -152,6 +153,12 @@ public class PlanController {
 				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, plan);
 			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, plan);
+			} catch (final PlanAsociadoProcedimientoException planAsociadoProcedimientoException) {
+				return new RespEntity(RespCode.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION, plan);
+			} catch (final ObjetivoNoExisteException objetivoNoExisteException) {
+				return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, plan);
+			} catch (final FechaAnteriorFechaActualException fechaAnteriorfechaActualException) {
+				return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, plan);
 			}
 
 		} catch (final PlanNoExisteException planNoExists) {

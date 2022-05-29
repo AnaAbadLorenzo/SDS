@@ -15,6 +15,7 @@ import com.sds.model.NoticiasEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
+import com.sds.model.ProcedimientoEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
@@ -399,6 +400,57 @@ public class Validaciones {
 		Date date = null;
 		date = formato.parse("0000-00-00");
 		if (fechaPlan.equals(date)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarProcedimientoBlank(final ProcedimientoEntity procedimientoEntity) throws ParseException {
+		if (StringUtils.isBlank(procedimientoEntity.getNombreProcedimiento())
+				|| StringUtils.isBlank(procedimientoEntity.getDescripProcedimiento())
+				|| StringUtils.isBlank(procedimientoEntity.getCheckUsuario().toString())) {
+			return false;
+		} else {
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = formato.parse("0000-00-00");
+			if (procedimientoEntity.getFechaProcedimiento().equals(date)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean comprobarNombreProcedimientoBlank(final String nombreProcedimiento) {
+		if (StringUtils.isBlank(nombreProcedimiento)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarDescripProcedimientoBlank(final String descripProcedimiento) {
+		if (StringUtils.isBlank(descripProcedimiento)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarFechaProcedimientoBlank(final Date fechaProcedimiento) throws ParseException {
+		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		date = formato.parse("0000-00-00");
+		if (fechaProcedimiento.equals(date)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarCheckUsuarioBlank(final Boolean checkUsuario) {
+		if (StringUtils.isBlank(checkUsuario.toString())) {
 			return false;
 		} else {
 			return true;

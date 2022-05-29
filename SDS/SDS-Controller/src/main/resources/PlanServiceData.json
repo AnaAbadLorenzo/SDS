@@ -59,6 +59,18 @@
 		"borradoPlan" : 0
 	},
 	
+	"planAsociadoProcedimiento" :  {
+	
+		"usuario" : "ana",
+		
+		"idPlan" : "",
+		"nombrePlan" : "Plan asociado a procedimiento",
+		"descripPlan" : "Esta es la descripción del plan asociado al procedimiento",
+		"fechaPlan" : "2022-05-20",
+		"borradoPlan" : 0
+	
+	},
+	
 	
 	"reactivarPlan": {
 		"usuario" : "ana",

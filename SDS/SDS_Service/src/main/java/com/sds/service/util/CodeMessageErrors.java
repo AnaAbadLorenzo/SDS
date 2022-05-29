@@ -55,8 +55,12 @@ public enum CodeMessageErrors {
 	RESPUESTA_POSIBLE_VACIA("El texto y/o la fecha de la respuesta están vacíos"), //
 	PLAN_YA_EXISTE_EXCEPTION("El plan ya existe"), //
 	PLAN_NO_EXISTE_EXCEPTION("El plan no existe"), //
+	PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El plan se encuentra asociado a un procedimiento"), //
 	PLAN_VACIO("El nombre, la descripción y/o la fecha del plan son vacíos"),
-	FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL("La fecha introducida por el usuario es anterior a la fecha actual");
+	FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL("La fecha introducida por el usuario es anterior a la fecha actual"), //
+	PROCEDIMIENTO_NO_EXISTE_EXCEPTION("El procedimiento no existe"), //
+	PROCEDIMIENTO_YA_EXISTE_EXCEPTION("El procedimiento ya existe"), //
+	PROCEDIMIENTO_VACIO("Procedimiento vacío");
 
 	private String codigo;
 

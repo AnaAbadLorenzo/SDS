@@ -3,6 +3,7 @@ package com.sds.service.test.impl;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,10 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
+import com.sds.model.ProcedimientoEntity;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
+import com.sds.repository.ProcedimientoRepository;
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
@@ -45,6 +48,9 @@ public class TestPlanServiceImpl implements TestPlanService {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	ProcedimientoRepository procedimientoRepository;
 
 	public TestPlanServiceImpl() {
 		testAtributoNombrePlan = new TestAtributoNombrePlan();
@@ -322,9 +328,13 @@ public class TestPlanServiceImpl implements TestPlanService {
 				Constantes.ELIMINAR_PLAN);
 		final PlanEntity datosEntradaEliminarPlanNoExiste = generarJSON.generarPlan(Constantes.URL_JSON_PLAN_DATA,
 				Constantes.PLAN_NO_EXISTE);
+		final PlanEntity datosEntradaEliminarPlanAsociadoProcedimiento = generarJSON
+				.generarPlan(Constantes.URL_JSON_PLAN_DATA, Constantes.PLAN_ASOCIADO_PROCEDIMIENTO);
 
 		datosPruebaAcciones.add(getTestEliminarPlanCorrecto(datosEntradaEliminarPlanCorrecto));
 		datosPruebaAcciones.add(getTestEliminarPlanNoExiste(datosEntradaEliminarPlanNoExiste));
+		datosPruebaAcciones
+				.add(getTestEliminarPlanAsociadoProcedimiento(datosEntradaEliminarPlanAsociadoProcedimiento));
 
 		return datosPruebaAcciones;
 	}
@@ -566,6 +576,20 @@ public class TestPlanServiceImpl implements TestPlanService {
 				getValorPlan(datosEntradaAccionEliminarPlanNoExiste));
 	}
 
+	private DatosPruebaAcciones getTestEliminarPlanAsociadoProcedimiento(
+			final PlanEntity datosEntradaAccionEliminarPlanAsociadoProcedimiento) throws java.text.ParseException {
+
+		final String resultadoObtenido = eliminarPlanAsociadoProcedimiento(
+				datosEntradaAccionEliminarPlanAsociadoProcedimiento);
+
+		final String resultadoEsperado = CodigosMensajes.PLAN_ASOCIADO_PROCEDIMIENTO + " - "
+				+ Mensajes.PLAN_ASOCIADO_PROCEDIMIENTO;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.PLAN_ASOCIADO_PROCEDIMIENTO, Constantes.ERROR,
+				getValorPlan(datosEntradaAccionEliminarPlanAsociadoProcedimiento));
+	}
+
 	private DatosPruebaAcciones getTestReactivarPlanCorrecto(final PlanEntity datosEntradaAccionReactivarPlanCorrecto)
 			throws java.text.ParseException {
 
@@ -788,6 +812,54 @@ public class TestPlanServiceImpl implements TestPlanService {
 			resultado = CodigosMensajes.PLAN_NO_EXISTE + " - " + Mensajes.PLAN_NO_EXISTE;
 
 		}
+		return resultado;
+	}
+
+	private String eliminarPlanAsociadoProcedimiento(final PlanEntity plan) {
+		final PlanEntity planBD = planRepository.findPlanByName(plan.getNombrePlan());
+		String resultado = StringUtils.EMPTY;
+		Boolean eliminarPlan = Boolean.FALSE;
+
+		if (planBD == null) {
+			plan.setBorradoPlan(0);
+			final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
+			objetivoRepository.saveAndFlush(objetivo);
+			plan.setObjetivo(objetivo);
+			planRepository.saveAndFlush(plan);
+			final PlanEntity planBuscar = planRepository.findPlanByName(plan.getNombrePlan());
+			final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
+					"Procedimiento de pruebas", new Date(), 0, Boolean.FALSE);
+			procedimiento.setPlan(planBuscar);
+			procedimientoRepository.saveAndFlush(procedimiento);
+
+			final List<ProcedimientoEntity> procedimientos = procedimientoRepository.findAll();
+
+			if (!procedimientos.isEmpty()) {
+				for (final ProcedimientoEntity procedimientoEntity : procedimientos) {
+					if (!procedimientoEntity.getPlan().getIdPlan().equals(planBuscar.getIdPlan())) {
+						eliminarPlan = true;
+					} else {
+						eliminarPlan = false;
+						break;
+					}
+				}
+			}
+
+			if (Boolean.FALSE.equals(eliminarPlan)) {
+				resultado = CodigosMensajes.PLAN_ASOCIADO_PROCEDIMIENTO + " - " + Mensajes.PLAN_ASOCIADO_PROCEDIMIENTO;
+			}
+
+			final ObjetivoEntity objetivoEncontrado = objetivoRepository
+					.findObjetivoByName(objetivo.getNombreObjetivo());
+			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+
+			procedimientoRepository.delete(procedimientoEncontrado);
+			planRepository.delete(planBuscar);
+			objetivoRepository.delete(objetivoEncontrado);
+
+		}
+
 		return resultado;
 	}
 

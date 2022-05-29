@@ -245,6 +245,8 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 						break;
 					}
 				}
+			} else {
+				eliminarObjetivo = true;
 			}
 
 			if (Boolean.TRUE.equals(eliminarObjetivo)) {

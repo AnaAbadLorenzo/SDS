@@ -638,23 +638,12 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 
 			if (Boolean.FALSE.equals(eliminarObjetivo)) {
 				resultado = CodigosMensajes.OBJETIVO_ASOCIADO_PLAN + " - " + Mensajes.OBJETIVO_ASOCIADO_PLAN;
-			} else {
-				final ObjetivoEntity objetivoBDBorrar = objetivoRepository
-						.findObjetivoByName(objetivo.getNombreObjetivo());
-
-				objetivoBDBorrar.setBorradoObjetivo(1);
-				objetivoRepository.saveAndFlush(objetivoBDBorrar);
-
-				final ObjetivoEntity objetivoBDNuevo = objetivoRepository
-						.findObjetivoByName(objetivo.getNombreObjetivo());
-				final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
-
-				planRepository.deletePlan(planBDNuevo.getIdPlan());
-				objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
-
-				resultado = CodigosMensajes.ELIMINAR_OBJETIVO_CORRECTO + " - "
-						+ Mensajes.OBJETIVO_ELIMINADO_CORRECTAMENTE;
 			}
+
+			final PlanEntity planBuscar = planRepository.findPlanByName(plan.getNombrePlan());
+
+			planRepository.delete(planBuscar);
+			objetivoRepository.delete(objetivoBuscar);
 
 		}
 

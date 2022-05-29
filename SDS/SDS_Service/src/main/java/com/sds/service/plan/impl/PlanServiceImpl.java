@@ -21,14 +21,17 @@ import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
+import com.sds.model.ProcedimientoEntity;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
+import com.sds.repository.ProcedimientoRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
+import com.sds.service.exception.PlanAsociadoProcedimientoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.PlanYaExisteException;
 import com.sds.service.log.LogService;
@@ -49,6 +52,9 @@ public class PlanServiceImpl implements PlanService {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	ProcedimientoRepository procedimientoRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -276,10 +282,12 @@ public class PlanServiceImpl implements PlanService {
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminaPlan(final Plan plan) throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			PlanNoExisteException, ParseException {
+			PlanNoExisteException, ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException,
+			PlanAsociadoProcedimientoException {
 		final PlanEntity planEntity = plan.getPlan();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		Boolean eliminarPlan = Boolean.FALSE;
 
 		final Optional<PlanEntity> planBD = planRepository.findById(planEntity.getIdPlan());
 
@@ -299,10 +307,44 @@ public class PlanServiceImpl implements PlanService {
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PLAN_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
 
-			planBD.get().setBorradoPlan(1);
-			planRepository.saveAndFlush(planBD.get());
-			plan.setPlan(planBD.get());
-			resultado = Constantes.OK;
+			final List<ProcedimientoEntity> procedimientos = procedimientoRepository.findAll();
+
+			if (!procedimientos.isEmpty()) {
+				for (final ProcedimientoEntity procedimientoEntity : procedimientos) {
+					if (!procedimientoEntity.getPlan().getIdPlan().equals(planEntity.getIdPlan())) {
+						eliminarPlan = true;
+					} else {
+						eliminarPlan = false;
+						break;
+					}
+				}
+			} else {
+				eliminarPlan = true;
+			}
+
+			if (Boolean.TRUE.equals(eliminarPlan)) {
+				planBD.get().setBorradoPlan(1);
+				plan.setPlan(planBD.get());
+				modificarPlan(plan);
+				resultado = Constantes.OK;
+			} else {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(plan.getUsuario(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new PlanAsociadoProcedimientoException(
+						CodeMessageErrors.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()));
+			}
 		}
 
 		return resultado;
@@ -397,6 +439,7 @@ public class PlanServiceImpl implements PlanService {
 						planBD.get().setDescripPlan(planEntity.getDescripPlan());
 						planBD.get().setFechaPlan(planEntity.getFechaPlan());
 						planBD.get().setBorradoPlan(planEntity.getBorradoPlan());
+						planBD.get().setObjetivo(planEntity.getObjetivo());
 
 						planRepository.saveAndFlush(planBD.get());
 

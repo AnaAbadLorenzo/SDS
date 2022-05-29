@@ -63,6 +63,21 @@ public class ValidacionesAtributosMayor {
 
 		}
 
+		if (atr.equals(Atributo.FECHA_PROCEDIMIENTO)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_PROCEDIMIENTO_MAYOR_QUE_8 + " - "
+						+ Mensajes.FECHA_PROCEDIMIENTO_NO_PUEDE_SER_MAYOR_QUE_8;
+
+			}
+
+		}
+
 		if (atributo.length() > tamanhoMiaximo) {
 			switch (funcionalidad) {
 			case LOGIN:
@@ -264,6 +279,13 @@ public class ValidacionesAtributosMayor {
 				case NOMBRE_PLAN:
 					resultado = CodigosMensajes.NOMBRE_PLAN_MAYOR_QUE_48 + " - "
 							+ Mensajes.NOMBRE_PLAN_NO_PUEDE_SER_MAYOR_QUE_48;
+					break;
+				}
+			case GESTION_PROCEDIMIENTOS:
+				switch (atr) {
+				case NOMBRE_PROCEDIMIENTO:
+					resultado = CodigosMensajes.NOMBRE_PROCEDIMIENTO_MAYOR_QUE_48 + " - "
+							+ Mensajes.NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_MAYOR_QUE_48;
 					break;
 				}
 			default:

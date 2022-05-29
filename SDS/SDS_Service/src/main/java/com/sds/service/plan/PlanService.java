@@ -10,6 +10,7 @@ import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
+import com.sds.service.exception.PlanAsociadoProcedimientoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.PlanYaExisteException;
 import com.sds.service.plan.model.Plan;
@@ -27,7 +28,8 @@ public interface PlanService {
 			PlanYaExisteException, ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException;
 
 	String eliminaPlan(Plan plan) throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			PlanNoExisteException, ParseException;
+			PlanNoExisteException, ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException,
+			PlanAsociadoProcedimientoException;
 
 	String modificarPlan(final Plan plan) throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			PlanNoExisteException, ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException;

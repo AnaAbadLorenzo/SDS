@@ -150,6 +150,14 @@ public class DefinicionPruebas {
 	public static final String PLAN_YA_EXISTE = "El plan ya existe";
 	public static final String PLAN_NO_EXISTE = "El plan no existe";
 	public static final String ELIMINAR_PLAN_CORRECTO = "El plan se ha eliminado correctamente";
+	public static final String PLAN_ASOCIADO_PROCEDIMIENTO = "El plan se encuentra asociado a un procedimiento";
 	public static final String REACTIVAR_PLAN_CORRECTO = "El plan se ha reactivado correctamente";
+
+	public static final String GUARDAR_PROCEDIMIENTO_CORRECTO = "El procedimiento se ha guardado correctamente";
+	public static final String MODIFICAR_PROCEDIMIENTO_CORRECTO = "El procedimiento se ha modificado correctamente";
+	public static final String PROCEDIMIENTO_YA_EXISTE = "El procedimiento ya existe";
+	public static final String PROCEDIMIENTO_NO_EXISTE = "El procedimiento no existe";
+	public static final String ELIMINAR_PROCEDIMIENTO_CORRECTO = "El procedimiento se ha eliminado correctamente";
+	public static final String REACTIVAR_PROCEDIMIENTO_CORRECTO = "El procedimiento se ha reactivado correctamente";
 
 }

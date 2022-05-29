@@ -21,8 +21,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.sds.app.SDSApplication;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
+import com.sds.model.ProcedimientoEntity;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
+import com.sds.repository.ProcedimientoRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -30,6 +32,7 @@ import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
+import com.sds.service.exception.PlanAsociadoProcedimientoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.PlanYaExisteException;
 import com.sds.service.plan.PlanService;
@@ -49,6 +52,9 @@ public class PlanServiceTest {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	ProcedimientoRepository procedimientoRepository;
 
 	@Test
 	public void PlanService_buscarPlan() throws IOException, ParseException, java.text.ParseException {
@@ -486,9 +492,10 @@ public class PlanServiceTest {
 	}
 
 	@Test
-	public void PlanService_eliminarPlanCorrecto() throws IOException, ParseException, LogAccionesNoGuardadoException,
-			LogExcepcionesNoGuardadoException, java.text.ParseException, PlanYaExisteException,
-			FechaAnteriorFechaActualException, PlanNoExisteException, ObjetivoNoExisteException {
+	public void PlanService_eliminarPlanCorrecto()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			java.text.ParseException, PlanYaExisteException, FechaAnteriorFechaActualException, PlanNoExisteException,
+			ObjetivoNoExisteException, PlanAsociadoProcedimientoException {
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.ELIMINAR_PLAN);
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
@@ -523,6 +530,45 @@ public class PlanServiceTest {
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.PLAN_NO_EXISTE);
 
 		planService.deletePlan(plan.getPlan());
+
+	}
+
+	@Test(expected = PlanAsociadoProcedimientoException.class)
+	public void PlanService_eliminarPlanAsociadoProcedimiento()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			PlanYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
+			ObjetivoNoExisteException, PlanNoExisteException, PlanAsociadoProcedimientoException {
+
+		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.PLAN_ASOCIADO_PROCEDIMIENTO);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		plan.getPlan().setFechaPlan(new Date());
+		plan.getPlan().setObjetivo(objetivo);
+		planService.anadirPlan(plan);
+
+		final ReturnBusquedas<PlanEntity> planEliminar = planService.buscarPlan(plan.getPlan().getNombrePlan(),
+				plan.getPlan().getDescripPlan(), new Date(), objetivo, 0, 1);
+
+		final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
+				"Descripción procedimiento", new Date(), 0, Boolean.FALSE);
+		procedimiento.setPlan(planEliminar.getListaBusquedas().get(0));
+		procedimientoRepository.saveAndFlush(procedimiento);
+
+		try {
+			planService.eliminaPlan(new Plan(plan.getUsuario(), planEliminar.getListaBusquedas().get(0)));
+		} catch (final PlanAsociadoProcedimientoException planAsociadoProcedimientoException) {
+			throw new PlanAsociadoProcedimientoException(
+					CodeMessageErrors.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo(), CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()));
+		} finally {
+			final ObjetivoEntity objetivoDelete = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+			final PlanEntity planDelete = planRepository.findPlanByName(plan.getPlan().getNombrePlan());
+			final ProcedimientoEntity procedimientoDelete = procedimientoRepository
+					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+			procedimientoRepository.deleteProcedimiento(procedimientoDelete.getIdProcedimiento());
+			planRepository.deletePlan(planDelete.getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoDelete.getIdObjetivo());
+		}
 
 	}
 

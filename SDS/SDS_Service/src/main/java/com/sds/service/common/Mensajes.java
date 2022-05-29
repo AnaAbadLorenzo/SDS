@@ -244,6 +244,32 @@ public class Mensajes {
 	public static final String PLAN_GUARDADO_CORRECTAMENTE = "El plan se ha guardado correctamente";
 	public static final String PLAN_MODIFICADO_CORRECTAMENTE = "El plan se ha modificado correctamente";
 	public static final String PLAN_ELIMINADO_CORRECTAMENTE = "El plan se ha eliminado correctamente";
+	public static final String PLAN_ASOCIADO_PROCEDIMIENTO = "El plan se encuentra asociado a un procedimiento";
 	public static final String PLAN_REACTIVADO_CORRECTAMENTE = "El plan se ha reactivado correctamente";
 
+	public static final String NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_VACIO = "El nombre del procedimiento no puede ser vacío";
+	public static final String NOMBRE_PROCEDIMIENTO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS = "El nombre del procedimiento solo puede contener letras, números y espacios";
+	public static final String NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre del procedimiento no puede ser menor que 3";
+	public static final String NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_MAYOR_QUE_48 = "El nombre del procedimiento no puede ser mayor que 48";
+
+	public static final String DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_VACIA = "La descripción del procedimiento no puede ser vacía";
+	public static final String DESCRIPCION_PROCEDIMIENTO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS = "La descripción del procedimiento sólo puede contener letras, números y espacios";
+	public static final String DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción del procedimiento no puede ser menor que 3";
+
+	public static final String FECHA_PROCEDIMIENTO_NO_PUEDE_SER_VACIA = "La fecha del procedimiento no puede ser vacía";
+	public static final String FECHA_PROCEDIMIENTO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS = "La fecha del procedimiento solo puede contener numeros";
+	public static final String FECHA_PROCEDIMIENTO_NO_PUEDE_SER_MENOR_QUE_8 = "La fecha del procedimiento no puede ser menor que 8";
+	public static final String FECHA_PROCEDIMIENTO_NO_PUEDE_SER_MAYOR_QUE_8 = "La fecha del procedimiento no puede ser mayor que 8";
+
+	public static final String CHECK_USUARIO_NO_PUEDE_SER_VACIO = "El check de usuario no puede ser vacío";
+
+	public static final String PROCEDIMIENTO_NO_PUEDE_SER_VACIO = "El nombre, descripción y/o fecha del plan no pueden ser vacíos";
+
+	public static final String PROCEDIMIENTO_BUSCADO_CORRECTAMENTE = "El procedimiento se ha encontrado correctamente";
+	public static final String PROCEDIMIENTO_YA_EXISTE = "El procedimiento ya existe";
+	public static final String PROCEDIMIENTO_NO_EXISTE = "El procedimiento no existe";
+	public static final String PROCEDIMIENTO_GUARDADO_CORRECTAMENTE = "El procedimiento se ha guardado correctamente";
+	public static final String PROCEDIMIENTO_MODIFICADO_CORRECTAMENTE = "El procedimiento se ha modificado correctamente";
+	public static final String PROCEDIMIENTO_ELIMINADO_CORRECTAMENTE = "El procedimiento se ha eliminado correctamente";
+	public static final String PROCEDIMIENTO_REACTIVADO_CORRECTAMENTE = "El procedimiento se ha reactivado correctamente";
 }

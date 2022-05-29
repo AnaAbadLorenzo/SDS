@@ -20,6 +20,7 @@ public class Constantes {
 	public static final String GESTION_OBJETIVOS = "Gestión de objetivos";
 	public static final String GESTION_RESPUESTAS_POSIBLES = "Gestión de respuestas posibles";
 	public static final String GESTION_PLANES = "Gestión de planes";
+	public static final String GESTION_PROCEDIMIENTOS = "Gestión de procedimientos";
 	public static final String TEST = "Test";
 	public static final String LOG_ACCIONES = "Log de acciones";
 	public static final String LOG_EXCEPCIONES = "Log de excepciones";
@@ -87,6 +88,12 @@ public class Constantes {
 	public static final String ACCION_BUSCAR_PLAN = "Buscar plan";
 	public static final String ACCION_ELIMINAR_PLAN = "Eliminar plan";
 	public static final String ACCION_REACTIVAR_PLAN = "Reactivar plan";
+
+	public static final String ACCION_AÑADIR_PROCEDIMIENTO = "Añadir procedimiento";
+	public static final String ACCION_MODIFICAR_PROCEDIMIENTO = "Modificar procedimiento";
+	public static final String ACCION_BUSCAR_PROCEDIMIENTO = "Buscar procedimiento";
+	public static final String ACCION_ELIMINAR_PROCEDIMIENTO = "Eliminar procedimiento";
+	public static final String ACCION_REACTIVAR_PROCEDIMIENTO = "Reactivar procedimiento";
 
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
@@ -178,10 +185,17 @@ public class Constantes {
 	public static final String TEXTO_RESPUESTA_POSIBLE = "textoRespuesta";
 	public static final String FECHA_RESPUESTA_POSIBLE = "fechaRespuesta";
 
+	public static final String PLAN = "plan";
 	public static final String PLAN_ID = "idPlan";
 	public static final String NOMBRE_PLAN = "nombrePlan";
 	public static final String DESCRIPCION_PLAN = "descripPlan";
 	public static final String FECHA_PLAN = "fechaPlan";
+
+	public static final String PROCEDIMIENTO_ID = "idProcedimiento";
+	public static final String NOMBRE_PROCEDIMIENTO = "nombreProcedimiento";
+	public static final String DESCRIPCION_PROCEDIMIENTO = "descripProcedimiento";
+	public static final String FECHA_PROCEDIMIENTO = "fechaProcedimiento";
+	public static final String CHECK_USUARIO = "checkUsuario";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -246,6 +260,10 @@ public class Constantes {
 	public static final String URL_JSON_PLAN_ATRIBUTOS_DESCRIPCION_PLAN = "classpath:PlanServiceAtributosDescripcionPlan.json";
 	public static final String URL_JSON_PLAN_ATRIBUTOS_FECHA_PLAN = "classpath:PlanServiceAtributosFechaPlan.json";
 	public static final String URL_JSON_PLAN_DATA = "classpath:PlanServiceData.json";
+	public static final String URL_JSON_PROCEDIMIENTO_ATRIBUTOS_NOMBRE_PROCEDIMIENTO = "classpath:ProcedimientoServiceAtributosNombreProcedimiento.json";
+	public static final String URL_JSON_PROCEDIMIENTO_ATRIBUTOS_DESCRIPCION_PROCEDIMIENTO = "classpath:ProcedimientoServiceAtributosDescripcionProcedimiento.json";
+	public static final String URL_JSON_PROCEDIMIENTO_ATRIBUTOS_FECHA_PROCEDIMIENTO = "classpath:ProcedimientoServiceAtributosFechaProcedimiento.json";
+	public static final String URL_JSON_PROCEDIMIENTO_DATA = "classpath:ProcedimientoServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -576,13 +594,45 @@ public class Constantes {
 
 	public static final String DATOS_PLAN_VACIOS = "datosPlanVacios";
 
+	public static final String NOMBRE_PROCEDIMIENTO_VACIO = "nombreProcedimientoVacio";
+	public static final String NOMBRE_PROCEDIMIENTO_CARACTERESESPECIALES = "nombreProcedimientoCaracteresEspeciales";
+	public static final String NOMBRE_PROCEDIMIENTO_MENOR_3 = "nombreProcedimientoMenor3";
+	public static final String NOMBRE_PROCEDIMIENTO_MAYOR_48 = "nombreProcedimientoMayor48";
+	public static final String NOMBRE_PROCEDIMIENTO_CORRECTO = "nombreProcedimientoCorrecto";
+
+	public static final String DESCRIPCION_PROCEDIMIENTO_VACIO = "descripcionProcedimientoVacio";
+	public static final String DESCRIPCION_PROCEDIMIENTO_CARACTERESESPECIALES = "descripcionProcedimientoCaracteresEspeciales";
+	public static final String DESCRIPCION_PROCEDIMIENTO_MENOR_3 = "descripcionProcedimientoMenor3";
+	public static final String DESCRIPCION_PROCEDIMIENTO_CORRECTO = "descripcionProcedimientoAlfabeticoCorrecto";
+
+	public static final String FECHA_PROCEDIMIENTO_VACIA = "fechaProcedimientoVacia";
+	public static final String FECHA_PROCEDIMIENTO_ACENTOS = "fechaProcedimientoAcentos";
+	public static final String FECHA_PROCEDIMIENTO_ENHE = "fechaProcedimientoEnhe";
+	public static final String FECHA_PROCEDIMIENTO_CARACTERESESPECIALES = "fechaProcedimientoCaracteresEspeciales";
+	public static final String FECHA_PROCEDIMIENTO_MENOR_8 = "fechaProcedimientoMenor8";
+	public static final String FECHA_PROCEDIMIENTO_MAYOR_8 = "fechaProcedimientoMayor8";
+	public static final String FECHA_PROCEDIMIENTO_CORRECTO = "fechaProcedimientoNumericoCorrecto";
+
+	public static final String CHECK_USUARIO_VACIO = "checkUsuarioVacio";
+
+	public static final String DATOS_PROCEDIMIENTO_VACIOS = "datosProcedimientoVacios";
+
 	public static final String BUSCAR_PLAN = "buscarPlan";
 	public static final String GUARDAR_PLAN = "guardarPlan";
 	public static final String MODIFICAR_PLAN = "modificarPlan";
 	public static final String PLAN_YA_EXISTE = "planYaExiste";
 	public static final String PLAN_NO_EXISTE = "planNoExiste";
 	public static final String ELIMINAR_PLAN = "eliminarPlan";
+	public static final String PLAN_ASOCIADO_PROCEDIMIENTO = "planAsociadoProcedimiento";
 	public static final String REACTIVAR_PLAN = "reactivarPlan";
+
+	public static final String BUSCAR_PROCEDIMIENTO = "buscarProcedimiento";
+	public static final String GUARDAR_PROCEDIMIENTO = "guardarProcedimiento";
+	public static final String MODIFICAR_PROCEDIMIENTO = "modificarProcedimiento";
+	public static final String PROCEDIMIENTO_YA_EXISTE = "procedimientoYaExiste";
+	public static final String PROCEDIMIENTO_NO_EXISTE = "procedimientoNoExiste";
+	public static final String ELIMINAR_PROCEDIMIENTO = "eliminarProcedimiento";
+	public static final String REACTIVAR_PROCEDIMIENTO = "reactivarProcedimiento";
 
 	public static final String OK = "OK";
 
@@ -665,4 +715,8 @@ public class Constantes {
 	public static final String PLAN_QUERY_FINDALL = "PlanEntity.findAllPlanes";
 	public static final String PLAN_QUERY_FINDPLAN = "PlanEntity.findPlan";
 	public static final String PLAN_QUERY_FINDELIMINADOS = "PlanEntity.findPlanesEliminados";
+
+	public static final String PROCEDIMIENTO_QUERY_FINDALL = "ProcedimientoEntity.findAllProcedimientos";
+	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO = "ProcedimientoEntity.findProcedimiento";
+	public static final String PROCEDIMIENTO_QUERY_FINDELIMINADOS = "ProcedimientoEntity.findProcedimientosEliminados";
 }
