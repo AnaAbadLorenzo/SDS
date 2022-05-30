@@ -80,6 +80,7 @@ arrayES={
 	'ICON_INICIAR_PROCEDIMIENTO' : 'Iniciar procedimiento',
 	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continuar procedimiento',
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedimiento finalizado',
+	'ICON_PLAN': 'Plan',
 
 	//Mensajes error
 	'ERROR': 'ERROR',

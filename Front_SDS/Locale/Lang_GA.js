@@ -77,6 +77,7 @@ arrayGA={
 	'ICON_INICIAR_PROCEDIMIENTO' : 'Iniciar procedemento',
 	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continuar procedemiento',
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedemiento finalizado',
+	'ICON_PLAN': 'Plan',
 
 	//Mensajes error
 	'ERROR': 'ERRO',

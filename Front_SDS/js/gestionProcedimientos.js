@@ -10,6 +10,7 @@ function cambiarDatosProcedimientos() {
 
   if (accesoDesdePlan === 'false'){
     document.getElementById("iconoIniciarProcedimiento").style.marginLeft = "250%";
+    document.getElementById("procesos").style.display = "block"; 
     document.getElementById("puntuacion").style.display = "block"; 
     document.getElementById("fecha").style.display = "block";
     document.getElementById("continuarProcedimiento").style.display = "inline-block"; 
@@ -17,12 +18,14 @@ function cambiarDatosProcedimientos() {
     $("#iconoIniciarProcedimiento").attr('onclick', 'javascript:iniciarProcedimientoUsuario()'); 
 
     document.getElementById("iconoIniciarProcedimiento2").style.marginLeft = "250%";
+    document.getElementById("procesos2").style.display = "block"; 
     document.getElementById("puntuacion2").style.display = "block"; 
     document.getElementById("fecha2").style.display = "block";
     document.getElementById("continuarProcedimiento2").style.display = "inline-block"; 
     document.getElementById("finalizadoProcedimiento2").style.display = "inline-block";
 
     document.getElementById("iconoIniciarProcedimiento3").style.marginLeft = "250%";
+    document.getElementById("procesos3").style.display = "block"; 
     document.getElementById("puntuacion3").style.display = "block"; 
     document.getElementById("fecha3").style.display = "block";
     document.getElementById("continuarProcedimiento3").style.display = "inline-block"; 

@@ -77,6 +77,7 @@ arrayEN={
 	'ICON_INICIAR_PROCEDIMIENTO' : 'Start procedure',
 	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continue procedure',
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedure completed',
+	'ICON_PLAN': 'Plan',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
