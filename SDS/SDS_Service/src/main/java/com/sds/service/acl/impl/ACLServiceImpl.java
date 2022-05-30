@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.RolEntity;
+import com.sds.model.UsuarioEntity;
 import com.sds.repository.AccionRepository;
 import com.sds.repository.FuncionalidadRepository;
 import com.sds.repository.RolAccionFuncionalidadRepository;
@@ -62,12 +63,17 @@ public class ACLServiceImpl implements ACLService {
 		final List<String> acciones = new ArrayList<>();
 		final List<Integer> idAcciones;
 
-		final Integer idFuncionalidad = funcionalidadRepository.findIdFuncionalidadByName(funcionalidad);
+		final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario);
 
-		idAcciones = rolAccionFuncionalidadRepository.findAccionByIdFuncionality(idFuncionalidad);
+		if (usuarioBD != null) {
+			final Integer idFuncionalidad = funcionalidadRepository.findIdFuncionalidadByName(funcionalidad);
+			idAcciones = rolAccionFuncionalidadRepository.findAccionByIdFuncionalityAndIdRol(idFuncionalidad,
+					usuarioBD.getRol().getIdRol());
 
-		for (final Integer accion : idAcciones) {
-			acciones.add(accionRepository.findNombreAccionById(accion));
+			for (final Integer accion : idAcciones) {
+				acciones.add(accionRepository.findNombreAccionById(accion));
+			}
+
 		}
 
 		return acciones;

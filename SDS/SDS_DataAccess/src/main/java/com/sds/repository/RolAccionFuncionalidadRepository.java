@@ -19,6 +19,8 @@ public interface RolAccionFuncionalidadRepository
 
 	List<Integer> findAccionByIdFuncionality(Integer idFuncionalidad);
 
+	List<Integer> findAccionByIdFuncionalityAndIdRol(Integer idFuncionalidad, Integer idRol);
+
 	List<RolAccionFuncionalidadEntity> findByAccionId(Integer idAccion);
 
 	List<RolAccionFuncionalidadEntity> findAllPermissions();
