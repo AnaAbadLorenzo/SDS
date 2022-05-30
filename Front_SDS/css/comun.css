@@ -725,6 +725,270 @@ form button[type="button"]:hover {
   opacity: 1;
 }
 
+/**************** TOOLTIP PLANES OBJETIVOS ***********/
+.tooltip8 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip8 .tooltiptext {
+    visibility: hidden;
+    width: 110px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 120%;
+    left: 11%;
+    margin-left: -66px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip8 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: -34%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4527A0 transparent transparent transparent;
+}
+
+.tooltip8:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip9 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip9 .tooltiptext {
+    visibility: hidden;
+    width: 110px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 119%;
+    left: 551%;
+    margin-left: -66px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip9 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: -11%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #4527A0 transparent transparent transparent;
+}
+
+.tooltip9:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip10 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 3001;
+}
+
+.tooltip10 .tooltiptext {
+    visibility: hidden;
+    width: 155px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -153%;
+    left: 253%;
+    margin-left: -66px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip10 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #4527A0 transparent;
+}
+
+.tooltip10:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip11 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip11 .tooltiptext {
+    visibility: hidden;
+    width: 155px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -165%;
+    left: 86%;
+    margin-left: -66px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip11 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #4527A0 transparent;
+}
+
+.tooltip11:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip12 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip12 .tooltiptext {
+    visibility: hidden;
+    width: 155px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -69%;
+    left: 152%;
+    margin-left: -66px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip12 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #4527A0 transparent;
+}
+
+.tooltip12:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip13 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip13 .tooltiptext {
+    visibility: hidden;
+    width: 155px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 270%;
+    margin-left: -66px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip13 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 40%;
+  left: 104%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #4527A0;
+}
+
+.tooltip13:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
 
 /********** TESTING ************/
 .card-header a {

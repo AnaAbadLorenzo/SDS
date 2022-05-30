@@ -34,7 +34,7 @@
 	comprobarTokenUsuario('plan');
   	await includeTopMenu();
     await funcionalidadesUsuario();
-    modalCambioPass();cargarIdioma();includeFooter();setLang('');
+    cambiarTituloGestion('plan');modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarPlanes(0, tamanhoPaginaPlan, 'PaginadorNo');
 	await cargarPermisosFuncPlan();
 	await construyeSelectObjetivos();
@@ -45,7 +45,7 @@
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	</div>
 
-	<h1 class="gestion GESTION_PLANES"></h1>
+	<h1 id="gestion" class="gestion"></h1>
 
 	<div id="cabecera" class="cabecera" style="display: none;">
 		<div id="divAddPlan" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddPlanes()" class="tooltip6 addIcon">

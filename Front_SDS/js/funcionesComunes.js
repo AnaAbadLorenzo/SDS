@@ -232,11 +232,19 @@ function cerrarModalNoToken(idElement){
 
 /**Función para desconectar la aplicación */
 function desconectar(){
-	setCookie('tokenUsuario', '');
-	setCookie('usuario', '');
-	setCookie('rolUsuario', '');
-	setCookie('lang', '');
+	deleteAllCookies();
 }
+
+/*Función que elimina todas las cookies para que no quede basura en ellas*/
+function deleteAllCookies() {
+     var cookies = document.cookie.split(";");
+     for (var i = 0; i < cookies.length; i++) {
+         var cookie = cookies[i];
+         var eqPos = cookie.indexOf("=");
+         var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+         setCookie(name, '');
+     }
+ }
 
 /**Función para eliminar los mensajes de validación de error*/
 function eliminarMensajesValidacionError(idElementoErrorList, idElementoList){
@@ -307,6 +315,7 @@ function limpiaRadioButton(idElementos){
 function comprobarTokenUsuario(funcionalidad){
 	var token = getCookie('tokenUsuario');
 	var idioma = getCookie('lang');
+	var rol = getCookie('rolUsuario');
 
 	if(token === null || token === ""){
 		errorAutenticado("ERROR_AUTENTICACION", idioma);
@@ -321,7 +330,6 @@ function comprobarTokenUsuario(funcionalidad){
 			case 'objetivo':
 			case 'respuestaPosible':
 			case 'rol':
-			case 'plan':
 			case 'logAcciones':
 			case 'logExcepciones':
 				document.getElementById("cabecera").style.display = "block";
@@ -336,6 +344,28 @@ function comprobarTokenUsuario(funcionalidad){
 				document.getElementById("mensajeTest").style.display = "block";
 				document.getElementById("accordion").style.display = "block";
 				document.getElementById("volver").style.display = "block";
+			break;
+			case 'plan':
+				if (rol !== 'admin' && rol !== 'gestor'){
+					document.getElementById("cabecera").style.display = "block";
+					document.getElementById("tablaDatos").style.display = "none";
+					document.getElementById("volver").style.display = "block";
+				} else {
+					document.getElementById("cabecera").style.display = "block";
+					document.getElementById("tablaDatos").style.display = "block";
+					document.getElementById("volver").style.display = "block";
+				}
+			break;
+			case 'procedimiento':
+				if (rol !== 'admin' && rol !== 'gestor'){
+					document.getElementById("cabecera").style.display = "block";
+					document.getElementById("tablaDatos").style.display = "none";
+					document.getElementById("volver").style.display = "block";
+				} else {
+					document.getElementById("cabecera").style.display = "block";
+					document.getElementById("tablaDatos").style.display = "block";
+					document.getElementById("volver").style.display = "block";
+				}
 			break;
 		}
 	}
@@ -374,8 +404,12 @@ function construyeFila(entidad, fila) {
 	let atributosFunciones="";
 	var filaTabla = "";
 
-	document.getElementById('cabecera').style.display = "block";
-	document.getElementById('cabeceraEliminados').style.display = "none";
+	if(entidad == 'LOG_EXCEPCIONES' || entidad == 'LOG_ACCIONES'){
+	 	document.getElementById('cabecera').style.display = "block";
+	} else {
+	 	document.getElementById('cabecera').style.display = "block";
+		document.getElementById('cabeceraEliminados').style.display = "none";
+	}
 
 	switch(entidad){
 		case 'ROL':
@@ -795,6 +829,10 @@ function cargarClass(dato, rol){
 			clase="GESTION_LOG_EXCEPCIONES";
 		break;
 
+		case 'Log de acciones':
+			clase="GESTION_LOG_ACCIONES";
+		break;
+
 		case 'Gestión de noticias':
 			clase = "GESTION_NOTICIAS";
 		break;
@@ -816,7 +854,19 @@ function cargarClass(dato, rol){
 		break;
 
 		case 'Gestión de planes':
-			clase = "GESTION_PLANES";
+			if (rol !== 'admin' && rol !== 'gestor'){
+				clase = "GESTION_PLANES_NO_ADMIN";
+			} else {
+				clase="GESTION_PLANES";
+			}
+		break;
+		
+		case 'Gestión de procedimientos':
+			if (rol !== 'admin' && rol !== 'gestor'){
+				clase = "GESTION_PROCEDIMIENTOS_NO_ADMIN";
+			} else {
+				clase="GESTION_PROCEDIMIENTOS";
+			}
 		break;
 	}
 
@@ -824,7 +874,8 @@ function cargarClass(dato, rol){
 }
 
 /*Función para cambiar el título de las gestiones*/
-function cambiarTituloGestion(funcionalidad){
+function cambiarTituloGestion(funcionalidad){	
+	var accesoDesdePlan = getCookie('accesoDesdePlan');
 	var rol = getCookie('rolUsuario');
 
 	switch(funcionalidad){
@@ -849,6 +900,27 @@ function cambiarTituloGestion(funcionalidad){
 				$("#gestion").addClass("GESTION_USUARIOS_NO_ADMIN");
 			} else {
 				$("#gestion").addClass("GESTION_USUARIOS");
+			}
+		break;
+		case 'plan':
+			if (rol !== 'admin' && rol !== 'gestor'){
+				$("#gestion").addClass("GESTION_PLANES_NO_ADMIN");
+			} else {
+				$("#gestion").addClass("GESTION_PLANES");
+			}
+		break;
+		/* En este caso tenemos que añadir una cookie para poder saber si accedemos desde plan o si accede el usuario desde
+		los procedimientos que ha iniciado, para poder cambiar el texto, en caso de que acceda desde sus procedimientos deberá
+		usarse GESTION_PROCEDIMIENTOS_NO_ADMIN y si viene de plan GESTION_PROCEDIMIENTOS_DESDE_PLAN**/
+		case 'procedimiento':
+			if (rol !== 'admin' && rol !== 'gestor'){
+				if (accesoDesdePlan === 'true'){
+					$("#gestion").addClass("GESTION_PROCEDIMIENTOS_DESDE_PLAN");
+				} else {
+					$("#gestion").addClass("GESTION_PROCEDIMIENTOS_NO_ADMIN");
+				}
+			} else {
+				$("#gestion").addClass("GESTION_PROCEDIMIENTOS");
 			}
 		break;
 	}

@@ -75,6 +75,11 @@ arrayES={
 	'ICONO_DETALLE' : 'Detalle',
 	'QUITAR_PERMISO' : 'Quitar permiso',
 	'DAR_PERMISO': 'Dar permiso',
+	'ICON_OBJETIVO' : 'Objetivo',
+	'ICON_PROCEDIMIENTO' : 'Acceder a los procedimientos',
+	'ICON_INICIAR_PROCEDIMIENTO' : 'Iniciar procedimiento',
+	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continuar procedimiento',
+	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedimiento finalizado',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
@@ -338,6 +343,10 @@ arrayES={
 	'GESTION_USUARIOS_NO_ADMIN' : 'Mis datos de usuario',
 	'GESTION_PERSONAS_NO_ADMIN' : 'Mis datos personales',
 	'GESTION_EMPRESAS_NO_ADMIN' : 'Mi empresa',
+	'GESTION_PLANES_NO_ADMIN' : 'Consultar planes',
+	'GESTION_PROCEDIMIENTOS_NO_ADMIN' : 'Mis procedimientos',
+	'GESTION_PROCEDIMIENTOS' : 'Gestión de procedimientos',
+	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedimientos disponibles',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

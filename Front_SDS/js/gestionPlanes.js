@@ -382,57 +382,66 @@ function reactivarPlanesAjaxPromesa(){
 
 /* Función para obtener los planes del sistema */
 async function cargarPlanes(numeroPagina, tamanhoPagina, paginadorCreado){
-  await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
-    .then((res) => {
+  if(getCookie('rolUsuario') == "usuario"){
 
-      var numResults = res.data.numResultados + '';
-      var totalResults = res.data.tamanhoTotal + '';
-        var inicio = 0;
-      if(res.data.listaBusquedas.length == 0){
-        inicio = 0;
-      }else{
-        inicio = parseInt(res.data.inicio)+1;
-      }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+    /**Cambiar esta parte con la lógica que haga falta ahora sólo se va a mostrar el comportamiento de la plantilla
+     * para un usuario pero con datos falsos */
 
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
+        window.location.href = "consultarPlanes.html";
 
-      $("#datosPlan").html("");
-      $("#checkboxColumnas").html("");
-      $("#paginacion").html("");
+  }else if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
+    await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
+      .then((res) => {
 
-      for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFila('PLAN', res.data.listaBusquedas[i]);
-          $("#datosPlan").append(tr);
-        }
-
-        var div = createHideShowColumnsWindow({DESCRIPCION_PLAN_COLUMN:2, DATE_COLUMN:3, NOMBRE_OBJETIVO_COLUMN:4});
-        $("#checkboxColumnas").append(div);
-        $("#paginacion").append(textPaginacion);
-        setLang(getCookie('lang'));
-
-        if(paginadorCreado != 'PaginadorCreado'){
-          paginador(totalResults, 'cargarPlanes', 'PLAN');
-        }
-
-        if(numeroPagina == 0){
-          $('#' + (numeroPagina+1)).addClass("active");
-          var numPagCookie = numeroPagina+1;
+        var numResults = res.data.numResultados + '';
+        var totalResults = res.data.tamanhoTotal + '';
+          var inicio = 0;
+        if(res.data.listaBusquedas.length == 0){
+          inicio = 0;
         }else{
-          $('#' + numeroPagina).addClass("active");
-           var numPagCookie = numeroPagina;
+          inicio = parseInt(res.data.inicio)+1;
+        }
+        var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+        if(res.data.listaBusquedas.length == 0){
+          $('#itemPaginacion').attr('hidden',true);
+        }else{
+          $('#itemPaginacion').attr('hidden',false);
         }
 
-        setCookie('numeroPagina', numPagCookie);
+        $("#datosPlan").html("");
+        $("#checkboxColumnas").html("");
+        $("#paginacion").html("");
 
-    }).catch((res) => {
-        respuestaAjaxKO(res.code);
-        document.getElementById("modal").style.display = "block";
-    });
+        for (var i = 0; i < res.data.listaBusquedas.length; i++){
+            var tr = construyeFila('PLAN', res.data.listaBusquedas[i]);
+            $("#datosPlan").append(tr);
+          }
+
+          var div = createHideShowColumnsWindow({DESCRIPCION_PLAN_COLUMN:2, DATE_COLUMN:3, NOMBRE_OBJETIVO_COLUMN:4});
+          $("#checkboxColumnas").append(div);
+          $("#paginacion").append(textPaginacion);
+          setLang(getCookie('lang'));
+
+          if(paginadorCreado != 'PaginadorCreado'){
+            paginador(totalResults, 'cargarPlanes', 'PLAN');
+          }
+
+          if(numeroPagina == 0){
+            $('#' + (numeroPagina+1)).addClass("active");
+            var numPagCookie = numeroPagina+1;
+          }else{
+            $('#' + numeroPagina).addClass("active");
+             var numPagCookie = numeroPagina;
+          }
+
+          setCookie('numeroPagina', numPagCookie);
+
+      }).catch((res) => {
+          respuestaAjaxKO(res.code);
+          document.getElementById("modal").style.display = "block";
+      });
+    }
 }
 /** Funcion añadir plan **/
 async function addPlan(){
@@ -1140,3 +1149,9 @@ $(document).ready(function() {
   });
 
 }); 
+
+/**Función para que el usuario acceda a los prodecimientos desde una plan*/
+function accederProcedimientosPlan(){
+  setCookie('accesoDesdePlan', 'true');
+  window.location.href = "GestionDeProcedimientos.html";
+}

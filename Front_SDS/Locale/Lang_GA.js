@@ -72,6 +72,11 @@ arrayGA={
 	'ICONO_BACK' : 'Volver',
 	'ICON_PERMISOS' : 'Gestión de permisos',
 	'ICONO_DETALLE' : 'Detalle',
+	'ICON_OBJETIVO' : 'Obxectivo',
+	'ICON_PROCEDIMIENTO' : 'Acceder a los procedemientos',
+	'ICON_INICIAR_PROCEDIMIENTO' : 'Iniciar procedemento',
+	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continuar procedemiento',
+	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedemiento finalizado',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
@@ -333,6 +338,10 @@ arrayGA={
 	'GESTION_USUARIOS_NO_ADMIN' : 'Os meus datos de usuario',
 	'GESTION_PERSONAS_NO_ADMIN' : 'Os meus datos persoais',
 	'GESTION_EMPRESAS_NO_ADMIN' : 'A miña empresa',
+	'GESTION_PLANES_NO_ADMIN' : 'Consultar plans',
+	'GESTION_PROCEDIMIENTOS_NO_ADMIN' : 'Os meus procedementos',
+	'GESTION_PROCEDIMIENTOS' : 'Xestión de procedementos',
+	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedementos dispoñibles',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

@@ -72,6 +72,11 @@ arrayEN={
 	'ICONO_BACK' : 'Back',
 	'ICON_PERMISOS' : 'Permissions management',
 	'ICONO_DETALLE' : 'Detail',
+	'ICON_OBJETIVO' : 'Objetive',
+	'ICON_PROCEDIMIENTO' : 'Go to procedures',
+	'ICON_INICIAR_PROCEDIMIENTO' : 'Start procedure',
+	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continue procedure',
+	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedure completed',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
@@ -336,6 +341,10 @@ arrayEN={
 	'GESTION_USUARIOS_NO_ADMIN' : 'My user data',
 	'GESTION_PERSONAS_NO_ADMIN' : 'My personal data',
 	'GESTION_EMPRESAS_NO_ADMIN' : 'My company',
+	'GESTION_PLANES_NO_ADMIN' : 'Consult plans',
+	'GESTION_PROCEDIMIENTOS_NO_ADMIN' : 'My procedures',
+	'GESTION_PROCEDIMIENTOS' : 'Procedures management',
+	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Available procedures',
 
 	//Acciones
 	'CERRARMODAL': 'Close',

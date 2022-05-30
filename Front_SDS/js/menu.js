@@ -181,6 +181,8 @@ function cargarFuncionalidadesUsuario(datos){
 
   $("#listadoFuncionalidades").append(htmlMenu);
 
+  setLang(getCookie('lang'));
+
 
 }
 
