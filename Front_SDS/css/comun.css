@@ -824,7 +824,7 @@ form button[type="button"]:hover {
 
 .tooltip10 .tooltiptext {
     visibility: hidden;
-    width: 155px;
+    width: 110px;
     font-size: 11pt;
     font-family: 'Times New Roman';
     background-color: #4527A0;
@@ -835,8 +835,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -153%;
-    left: 253%;
+    bottom: -260%;
+    left: 263.5%;
     margin-left: -66px;
     opacity: 0;
     transition: opacity 1s;
@@ -845,7 +845,7 @@ form button[type="button"]:hover {
 .tooltip10 .tooltiptext::after {
   content: "";
   position: absolute;
-  bottom: 105%;
+  bottom: 102%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
@@ -868,7 +868,7 @@ form button[type="button"]:hover {
 
 .tooltip11 .tooltiptext {
     visibility: hidden;
-    width: 155px;
+    width: 110px;
     font-size: 11pt;
     font-family: 'Times New Roman';
     background-color: #4527A0;
@@ -879,8 +879,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -165%;
-    left: 86%;
+    bottom: -260%;
+    left: 91%;
     margin-left: -66px;
     opacity: 0;
     transition: opacity 1s;
@@ -889,7 +889,7 @@ form button[type="button"]:hover {
 .tooltip11 .tooltiptext::after {
   content: "";
   position: absolute;
-  bottom: 105%;
+  bottom: 102%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;
@@ -912,7 +912,7 @@ form button[type="button"]:hover {
 
 .tooltip12 .tooltiptext {
     visibility: hidden;
-    width: 155px;
+    width: 110px;
     font-size: 11pt;
     font-family: 'Times New Roman';
     background-color: #4527A0;
@@ -923,8 +923,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -69%;
-    left: 152%;
+    bottom: -136%;
+    left: 157.5%;
     margin-left: -66px;
     opacity: 0;
     transition: opacity 1s;
@@ -933,7 +933,7 @@ form button[type="button"]:hover {
 .tooltip12 .tooltiptext::after {
   content: "";
   position: absolute;
-  bottom: 105%;
+  bottom: 102%;
   left: 50%;
   margin-left: -5px;
   border-width: 5px;

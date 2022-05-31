@@ -727,7 +727,8 @@ function hideShowRevert(clase, posElement) {
 }
 
 /**Función para cargar los HREF de cada pagina*/
-function cargarHref(dato, rol){
+function cargarHref(dato){
+	var rol = getCookie('rolUsuario');
 	var href=""
 
 	switch(dato){
@@ -781,6 +782,18 @@ function cargarHref(dato, rol){
 
 		case 'Gestión de planes' :
 			href = "GestionDePlanes.html";
+		break;
+
+		case 'Gestión de procedimientos' :
+			if (rol !== 'admin' && rol !== 'gestor'){
+				href = "MisProcedimientos.html";
+			} else {
+				href = "GestionDeProcedimientos.html";
+			}
+		break;
+
+		case 'Gestión de procesos' :
+			href = "GestionDeProcesos.html";
 		break;
 	}
 
@@ -875,7 +888,6 @@ function cargarClass(dato, rol){
 
 /*Función para cambiar el título de las gestiones*/
 function cambiarTituloGestion(funcionalidad){	
-	var accesoDesdePlan = getCookie('accesoDesdePlan');
 	var rol = getCookie('rolUsuario');
 
 	switch(funcionalidad){
@@ -909,16 +921,9 @@ function cambiarTituloGestion(funcionalidad){
 				$("#gestion").addClass("GESTION_PLANES");
 			}
 		break;
-		/* En este caso tenemos que añadir una cookie para poder saber si accedemos desde plan o si accede el usuario desde
-		los procedimientos que ha iniciado, para poder cambiar el texto, en caso de que acceda desde sus procedimientos deberá
-		usarse GESTION_PROCEDIMIENTOS_NO_ADMIN y si viene de plan GESTION_PROCEDIMIENTOS_DESDE_PLAN**/
 		case 'procedimiento':
 			if (rol !== 'admin' && rol !== 'gestor'){
-				if (accesoDesdePlan === 'true'){
-					$("#gestion").addClass("GESTION_PROCEDIMIENTOS_DESDE_PLAN");
-				} else {
-					$("#gestion").addClass("GESTION_PROCEDIMIENTOS_NO_ADMIN");
-				}
+				$("#gestion").addClass("GESTION_PROCEDIMIENTOS_DESDE_PLAN");
 			} else {
 				$("#gestion").addClass("GESTION_PROCEDIMIENTOS");
 			}

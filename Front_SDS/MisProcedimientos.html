@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<link rel="stylesheet" href="css/bootstrap.min.css" >
 	<link rel="stylesheet" type="text/css" href="css/comun.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="css/gestionProcedimientos.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/misProcedimientos.css" media="screen" />
 	<script src="js/jquery-3.6.0.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -21,7 +21,7 @@
 	<script type="text/javascript" src="js/md5.js"></script>
 	<script type="text/javascript" src="js/validaciones.js"></script>
 	<script type="text/javascript" src="js/menu.js"></script>
-	<script type="text/javascript" src="js/gestionProcedimientos.js"></script>
+	<script type="text/javascript" src="js/misProcedimientos.js"></script>
 	<script type="text/javascript" src="Locale/idioma.js"></script>
     <script type="text/javascript" src="Locale/Lang_EN.js"></script>
     <script type="text/javascript" src="Locale/Lang_ES.js"></script>
@@ -34,14 +34,14 @@
 	comprobarTokenUsuario('procedimiento');
   	await includeTopMenu();
     await funcionalidadesUsuario();
-    cambiarTituloGestion('procedimiento');modalCambioPass();cargarIdioma();includeFooter();setLang('');
+    modalCambioPass();cargarIdioma();includeFooter();setLang('');
   })();">  
 	<div id="topMenu"></div>
 
 	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 	</div>
 
-	<h1 id="gestion" class="gestion"></h1>
+	<h1 id="gestion" class="gestion GESTION_PROCEDIMIENTOS_NO_ADMIN"></h1>
 
 	<div id="cabecera" class="cabecera" style="display: none;">
 	</div>
@@ -50,16 +50,27 @@
 		
 	</div>
 
-	<div id="procedimientosUsuario" class="procedimientos overflow-auto" style="display:block;">
+	<div class="procedimientos overflow-auto">
 		<div id="procedimientos" class="row">
 			<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
                 <div class="card">
                     <div class="card-body-plan">
                     	<div class="card-title">Procedimiento 1</div>
                       	<div class="card-text">Procedimiento 1</div>
-                      	<div id="iniciarProcedimiento" class="tooltip13 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>
+                      	<div class="procesos">0/10</div>
+                      	<div class="puntuacion" >Puntuación: 0%</div>
+                      	<div class="fecha">20/05/2022</div>
+                      	<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">
+					        <img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario();"/>
 					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
+					    </div>
+					    <div id="continuarProcedimiento" class="tooltip11 continuarIcon">
+					        <img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>
+					        <span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>
+					    </div>
+					    <div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">
+					        <img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>
+					        <span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>
 					    </div>
                     </div>
                     <div class="card-footer">
@@ -77,9 +88,20 @@
                     <div class="card-body-plan">
                     	<div class="card-title">Procedimiento 2</div>
                       	<div class="card-text">Procedimiento 2</div>
-                      	<div id="iniciarProcedimiento2" class="tooltip13 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento2" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>
+                      	<div class="procesos">5/10</div>
+                      	<div class="puntuacion">Puntuación: 50%</div>
+                      	<div class="fecha">20/05/2022</div>
+                      	<div id="iniciarProcedimiento2" class="tooltip10 procedimientoIcon">
+					        <img id="iconoIniciarProcedimiento2" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=""/>
 					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
+					    </div>
+					    <div id="continuarProcedimiento2" class="tooltip11 continuarIcon">
+					        <img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick=""/>
+					        <span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>
+					    </div>
+					    <div id="finalizadoProcedimiento2" class="tooltip12 finalizadoIcon">
+					        <img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>
+					        <span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>
 					    </div>
                     </div>
                     <div class="card-footer">
@@ -97,9 +119,20 @@
                     <div class="card-body-plan">
                     	<div class="card-title">Procedimiento 3</div>
                       	<div class="card-text">Procedimiento 3</div>
-                      	<div id="iniciarProcedimiento3" class="tooltip13 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento3" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>
+                      	<div class="procesos">10/10</div>
+                      	<div class="puntuacion">Puntuación: 100%</div>
+                      	<div class="fecha">20/05/2022</div>
+                      	<div id="iniciarProcedimiento3" class="tooltip10 procedimientoIcon">
+					        <img id="iconoIniciarProcedimiento3" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=""/>
 					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
+					    </div>
+					    <div id="continuarProcedimiento3" class="tooltip11 continuarIcon">
+					        <img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>
+					        <span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>
+					    </div>
+					    <div id="finalizadoProcedimiento3" class="tooltip12 finalizadoIcon">
+					        <img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado.png" alt="Procedimiento finalizado" onclick=""/>
+					        <span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>
 					    </div>
                     </div>
                     <div class="card-footer">
