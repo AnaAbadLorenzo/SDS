@@ -367,6 +367,17 @@ function comprobarTokenUsuario(funcionalidad){
 					document.getElementById("volver").style.display = "block";
 				}
 			break;
+			case 'proceso':
+				if (rol !== 'admin' && rol !== 'gestor'){
+					document.getElementById("cabecera").style.display = "block";
+					document.getElementById("tablaDatos").style.display = "none";
+					document.getElementById("volver").style.display = "block";
+				} else {
+					document.getElementById("cabecera").style.display = "block";
+					document.getElementById("tablaDatos").style.display = "block";
+					document.getElementById("volver").style.display = "block";
+				}
+			break;
 		}
 	}
 }
@@ -928,6 +939,13 @@ function cambiarTituloGestion(funcionalidad){
 				$("#gestion").addClass("GESTION_PROCEDIMIENTOS");
 			}
 		break;
+		case 'proceso':
+			if (rol !== 'admin' && rol !== 'gestor'){
+				$("#gestion").addClass("GESTION_PROCESOS_NO_ADMIN");
+			} else {
+				$("#gestion").addClass("GESTION_PROCESOS");
+			}
+		break;
 	}
 }
 
@@ -1360,6 +1378,11 @@ function mostrarDatos(idsElementos){
 	idsElementos.forEach(function(idElemento){
 		$('#' + idElemento).attr('hidden', true);
 	})
+}
+
+/**Función para limpiar los textarea*/
+function limpiarTextArea(idElemento){
+	 $("#" + idElemento).val("");
 }
 
 $(document).ready(function(){

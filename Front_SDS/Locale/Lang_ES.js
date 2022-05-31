@@ -348,6 +348,8 @@ arrayES={
 	'GESTION_PROCEDIMIENTOS_NO_ADMIN' : 'Mis procedimientos',
 	'GESTION_PROCEDIMIENTOS' : 'Gestión de procedimientos',
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedimientos disponibles',
+	'GESTION_PROCESOS' : 'Gestión de procesos',
+	'GESTION_PROCESOS_NO_ADMIN' : 'Procesos',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

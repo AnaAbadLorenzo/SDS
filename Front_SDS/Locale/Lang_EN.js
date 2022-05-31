@@ -346,6 +346,8 @@ arrayEN={
 	'GESTION_PROCEDIMIENTOS_NO_ADMIN' : 'My procedures',
 	'GESTION_PROCEDIMIENTOS' : 'Procedures management',
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Available procedures',
+	'GESTION_PROCESOS' : 'Process  management',
+	'GESTION_PROCESOS_NO_ADMIN' : 'Processes',
 
 	//Acciones
 	'CERRARMODAL': 'Close',

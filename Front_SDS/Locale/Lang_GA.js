@@ -343,6 +343,8 @@ arrayGA={
 	'GESTION_PROCEDIMIENTOS_NO_ADMIN' : 'Os meus procedementos',
 	'GESTION_PROCEDIMIENTOS' : 'Xestión de procedementos',
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedementos dispoñibles',
+	'GESTION_PROCESOS' : 'Xestión de procesos',
+	'GESTION_PROCESOS_NO_ADMIN' : 'Procesos',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
