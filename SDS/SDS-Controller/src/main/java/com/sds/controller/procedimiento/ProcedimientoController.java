@@ -47,7 +47,8 @@ public class ProcedimientoController {
 
 		final ReturnBusquedas<ProcedimientoEntity> resultado = procedimientoService.buscarProcedimiento(
 				procedimiento.getNombreProcedimiento(), procedimiento.getDescripProcedimiento(),
-				procedimiento.getFechaProcedimiento(), procedimiento.getCheckUsuario(), procedimiento.getPlan(), 0, 1);
+				procedimiento.getFechaProcedimiento(), procedimiento.getCheckUsuario(), procedimiento.getPlan(),
+				procedimiento.getInicio(), procedimiento.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCEDIMIENTO_ENCONTRADO, resultado);
 

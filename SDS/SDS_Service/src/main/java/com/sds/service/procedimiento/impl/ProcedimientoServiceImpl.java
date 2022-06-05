@@ -27,6 +27,7 @@ import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioRepository;
 import com.sds.repository.ProcesoProcedimientoRepository;
+import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
@@ -190,7 +191,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 				.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDELIMINADOS).setFirstResult(inicio)
 				.setMaxResults(tamanhoPagina).getResultList();
 
-		final Integer numberTotalResults = procedimientoRepository.numberFindAllProcedimientos();
+		final Integer numberTotalResults = procedimientoRepository.numberFindProcedimientosEliminados();
 
 		if (!procedimientos.isEmpty()) {
 			for (final ProcedimientoEntity procedimiento : procedimientos) {
@@ -227,6 +228,8 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 		final Boolean procedimientoValido = validaciones.comprobarProcedimientoBlank(procedimientoEntity);
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String fechaIntroducidaUsuario = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
 
 		if (procedimientoValido) {
 			final ProcedimientoEntity procedimientoBD = procedimientoRepository
@@ -252,10 +255,23 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 				final LocalDate fechaActual = LocalDate.now();
 				final LocalDate dateIntroducidaUsuario = procedimientoEntity.getFechaProcedimiento().toInstant()
 						.atZone(ZoneId.systemDefault()).toLocalDate();
-				final String fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
-						+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
+
+				if (CommonUtilities.countDigit(dateIntroducidaUsuario.getDayOfMonth()) == 1) {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-0" + dateIntroducidaUsuario.getDayOfMonth();
+				} else {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
+				}
+
+				if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+							+ fechaActual.getDayOfMonth();
+				} else {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+							+ fechaActual.getDayOfMonth();
+				}
+
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 							procedimiento.getUsuario(),
@@ -421,6 +437,9 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String fechaIntroducidaUsuario = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
+		String fechaProcedimientoString = StringUtils.EMPTY;
 
 		if (procedimientoValido) {
 			final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
@@ -449,14 +468,32 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 						.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 				final LocalDate dateProcedimientoBD = procedimientoBD.get().getFechaProcedimiento().toInstant()
 						.atZone(ZoneId.systemDefault()).toLocalDate();
-				final String fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
-						+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
-				final String fechaPlanString = dateProcedimientoBD.getYear() + "-0"
-						+ dateProcedimientoBD.getMonthValue() + "-" + dateProcedimientoBD.getDayOfMonth();
 
-				if (!fechaIntroducidaUsuario.equals(fechaPlanString)) {
+				if (CommonUtilities.countDigit(dateIntroducidaUsuario.getDayOfMonth()) == 1) {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-0" + dateIntroducidaUsuario.getDayOfMonth();
+				} else {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
+				}
+
+				if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+							+ fechaActual.getDayOfMonth();
+				} else {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+							+ fechaActual.getDayOfMonth();
+				}
+
+				if (CommonUtilities.countDigit(dateProcedimientoBD.getDayOfMonth()) == 1) {
+					fechaProcedimientoString = dateProcedimientoBD.getYear() + "-0"
+							+ dateProcedimientoBD.getMonthValue() + "-0" + dateProcedimientoBD.getDayOfMonth();
+				} else {
+					fechaProcedimientoString = dateProcedimientoBD.getYear() + "-0"
+							+ dateProcedimientoBD.getMonthValue() + "-" + dateProcedimientoBD.getDayOfMonth();
+				}
+
+				if (!fechaIntroducidaUsuario.equals(fechaProcedimientoString)) {
 					if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 								procedimiento.getUsuario(),
