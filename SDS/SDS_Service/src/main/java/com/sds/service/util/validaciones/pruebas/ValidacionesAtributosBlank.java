@@ -74,6 +74,20 @@ public class ValidacionesAtributosBlank {
 
 		}
 
+		if (atr.equals(Atributo.FECHA_PROCESO)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_PROCESO_VACIA + " - " + Mensajes.FECHA_PROCESO_NO_PUEDE_SER_VACIA;
+
+			}
+
+		}
+
 		if (StringUtils.isBlank(atributo)) {
 			switch (funcionalidad) {
 			case LOGIN:
@@ -308,6 +322,20 @@ public class ValidacionesAtributosBlank {
 				case DESCRIP_PROCEDIMIENTO:
 					resultado = CodigosMensajes.DESCRIPCION_PROCEDIMIENTO_VACIO + " - "
 							+ Mensajes.DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_VACIA;
+					break;
+				default:
+					break;
+				}
+				break;
+			case GESTION_PROCESOS:
+				switch (atr) {
+				case NOMBRE_PROCESO:
+					resultado = CodigosMensajes.NOMBRE_PROCESO_VACIO + " - "
+							+ Mensajes.NOMBRE_PROCESO_NO_PUEDE_SER_VACIO;
+					break;
+				case DESCRIP_PROCESO:
+					resultado = CodigosMensajes.DESCRIPCION_PROCESO_VACIO + " - "
+							+ Mensajes.DESCRIPCION_PROCESO_NO_PUEDE_SER_VACIA;
 					break;
 				default:
 					break;

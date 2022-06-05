@@ -143,12 +143,26 @@ public class NoticiaServiceTest {
 	}
 
 	@Test(expected = NoticiaYaExisteException.class)
-	public void NoticiasService_guardarNoticiaYaExiste() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, NoticiaYaExisteException {
+	public void NoticiasService_guardarNoticiaYaExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			NoticiaYaExisteException, NoticiaNoExisteException {
 
 		final Noticia noticia = generateNoticia(Constantes.URL_JSON_NOTICIA_DATA, Constantes.NOTICIA_YA_EXISTE);
 
 		noticiasService.añadirNoticia(noticia);
+
+		try {
+			noticiasService.añadirNoticia(noticia);
+		} catch (final NoticiaYaExisteException noticiaYaExisteException) {
+			throw new NoticiaYaExisteException(CodeMessageErrors.NOTICIA_YA_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.NOTICIA_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+
+			final ReturnBusquedas<NoticiasEntity> noticiaDelete = noticiasService.buscarNoticia(
+					noticia.getNoticiaEntity().getTituloNoticia(), noticia.getNoticiaEntity().getTextoNoticia(),
+					new Date(), 0, 1);
+			noticiasService.deleteNoticia(new Noticia(noticia.getUsuario(), noticiaDelete.getListaBusquedas().get(0)));
+		}
 	}
 
 	@Test

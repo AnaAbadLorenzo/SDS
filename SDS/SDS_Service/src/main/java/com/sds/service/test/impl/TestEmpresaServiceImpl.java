@@ -343,7 +343,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 	public List<DatosPruebaAcciones> getPruebasAccionesEmpresaBuscar()
 			throws IOException, ParseException, java.text.ParseException {
 
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final EmpresaEntity datosEntradaEmpresaBuscarEmpresa = generarJSON
 				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.BUSCAR_EMPRESA);
@@ -371,7 +371,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesEmpresaGuardar()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final EmpresaEntity datosEntradaEmpresaGuardarEmpresa = generarJSON
 				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.GUARDAR_EMPRESA_CORRECTO);
@@ -402,7 +402,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesEmpresaEliminar()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final EmpresaEntity datosEntradaEmpresaEliminarEmpresa = generarJSON
 				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.ELIMINAR_EMPRESA_CORRECTO);
@@ -422,7 +422,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesEmpresaModificar()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final EmpresaEntity datosEntradaEmpresaModificarEmpresa = generarJSON
 				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.MODIFICAR_EMPRESA_CORRECTO);
@@ -454,7 +454,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesEmpresaReactivar()
 			throws IOException, ParseException, java.text.ParseException {
-		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList();
+		final List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
 
 		final EmpresaEntity datosEntradaEmpresaReactivarEmpresa = generarJSON
 				.generateEmpresa(Constantes.URL_JSON_EMPRESA_DATA, Constantes.REACTIVAR_EMPRESA_CORRECTO);
@@ -494,7 +494,7 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 
 	private DatosPruebaAcciones getTestGuardarEmpresaYaExiste(final EmpresaEntity datosEntradaGuardarEmpresaYaExiste) {
 
-		final String resultadoObtenido = guardarEmpresa(datosEntradaGuardarEmpresaYaExiste);
+		final String resultadoObtenido = guardarEmpresaYaExiste(datosEntradaGuardarEmpresaYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.EMPRESA_YA_EXISTE + " - " + Mensajes.EMPRESA_YA_EXISTE;
 
@@ -748,8 +748,37 @@ public class TestEmpresaServiceImpl implements TestEmpresaService {
 
 				empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
 
-			} else {
+			}
+		}
+
+		return resultado;
+	}
+
+	private String guardarEmpresaYaExiste(final EmpresaEntity empresa) {
+		String resultado = StringUtils.EMPTY;
+		empresaRepository.saveAndFlush(empresa);
+
+		if (!validaciones.comprobarCifEmpresa(empresa.getCifEmpresa())
+				&& !validaciones.comprobarNombreEmpresa(empresa.getNombreEmpresa())
+				&& !validaciones.comprobarDireccionEmpresa(empresa.getDireccionEmpresa())
+				&& !validaciones.comprobarTelefonoEmpresa(empresa.getTelefonoEmpresa())) {
+			resultado = CodigosMensajes.EMPRESA_VACIA + " - " + Mensajes.EMPRESA_NO_PUEDE_SER_VACIA;
+		} else if (!validaciones.comprobarCifEmpresa(empresa.getCifEmpresa())) {
+			resultado = CodigosMensajes.CIF_EMPRESA_VACIO + " - " + Mensajes.CIF_EMPRESA_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarNombreEmpresa(empresa.getNombreEmpresa())) {
+			resultado = CodigosMensajes.NOMBRE_VACIO + " - " + Mensajes.NOMBRE_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarDireccionEmpresa(empresa.getDireccionEmpresa())) {
+			resultado = CodigosMensajes.DIRECCION_VACIO + " - " + Mensajes.DIRECCION_NO_PUEDE_SER_VACIA;
+		} else if (!validaciones.comprobarTelefonoEmpresa(empresa.getTelefonoEmpresa())) {
+			resultado = CodigosMensajes.TELEFONO_VACIO + " - " + Mensajes.TELEFONO_NO_PUEDE_SER_VACIO;
+		} else {
+			final EmpresaEntity empresaBD = empresaRepository.findByCif(empresa.getCifEmpresa());
+
+			if (empresaBD != null) {
 				resultado = CodigosMensajes.EMPRESA_YA_EXISTE + " - " + Mensajes.EMPRESA_YA_EXISTE;
+
+				empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+
 			}
 		}
 

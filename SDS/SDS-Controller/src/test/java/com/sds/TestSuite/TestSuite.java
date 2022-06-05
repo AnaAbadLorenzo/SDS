@@ -12,6 +12,7 @@ import com.sds.noticiaService.NoticiaServiceTest;
 import com.sds.objetivoService.ObjetivoServiceTest;
 import com.sds.personaService.PersonaServiceTest;
 import com.sds.planService.PlanServiceTest;
+import com.sds.procedimientoService.ProcedimientoServiceTest;
 import com.sds.registroService.RegistroServiceTest;
 import com.sds.respuestaPosibleService.RespuestaPosibleServiceTest;
 import com.sds.rolService.RolServiceTest;
@@ -20,6 +21,7 @@ import com.sds.usuarioService.UsuarioServiceTest;
 @RunWith(Suite.class)
 @SuiteClasses({ RegistroServiceTest.class, LoginServiceTest.class, AccionServiceTest.class, EmpresaServiceTest.class,
 		FuncionalidadServiceTest.class, PersonaServiceTest.class, RolServiceTest.class, UsuarioServiceTest.class,
-		NoticiaServiceTest.class, ObjetivoServiceTest.class, RespuestaPosibleServiceTest.class, PlanServiceTest.class })
+		NoticiaServiceTest.class, ObjetivoServiceTest.class, RespuestaPosibleServiceTest.class, PlanServiceTest.class,
+		ProcedimientoServiceTest.class })
 public class TestSuite {
 }

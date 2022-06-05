@@ -120,6 +120,14 @@ function obtenerValor(valor, atributos, entidad){
 			case 'Objetivo':
 				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombreObjetivo + '", "' + atributos[1] + '" : "' + valor.descripObjetivo +  '"';
 			break;
+
+			case 'Respuestas Posibles':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.textoRespuesta +  '"';
+			break;
+
+			case 'Plan':
+				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombrePlan + '", "' + atributos[1] + '" : "' + valor.descripPlan +  '"' + '", "' + atributos[2] + '" : "' + valor.fechaPlan +  '"';
+			break;
 		}
 
 	} else {

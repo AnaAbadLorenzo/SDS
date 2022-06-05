@@ -1,0 +1,148 @@
+{
+	"buscarProcedimiento" : {
+		"usuario" : "ana",
+	
+		"idProcedimiento" : 1,
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"guardarProcedimiento" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento para guardar",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento para guardar",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	},
+	"procedimientoYaExiste" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento ya existe",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento que ya existe",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	},
+	"procedimientoNoExiste" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento no existe",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento que no existe",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	},
+	
+	"eliminarProcedimiento" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento eliminar",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento a eliminar",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	},
+	"reactivarProcedimiento" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento reactivar",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento a reactivar",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	},
+	"modificarProcedimiento" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento para modificar",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento para modificar",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	},
+	
+	"nombreProcedimientoVacio" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"descripcionProcedimientoVacio" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento con descripción vacía",
+		"descripProcedimiento" : "",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoVacia" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento con la fecha vacia",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"checkUsuarioVacio" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento con el check vacio",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : ""
+	},
+	
+	"datosProcedimientoVacios" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "",
+		"descripProcedimiento" : "",
+		"fechaProcedimiento" : "",
+		"borradoProcedimiento" : "",
+		"checkUsuario" : "false"
+	},
+	
+	"fechaIntroducidaAnteriorFechaActual" : {
+		"usuario" : "ana",
+		
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento no existe",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento que no existe",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	
+	}
+
+}

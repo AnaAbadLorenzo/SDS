@@ -22,8 +22,11 @@ import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
+import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
+import com.sds.repository.ProcedimientoUsuarioRepository;
+import com.sds.repository.ProcesoProcedimientoRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
@@ -32,6 +35,8 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoAsociadoProcedimientoException;
+import com.sds.service.exception.UsuarioAsociadoProcedimientoException;
 import com.sds.service.log.LogService;
 import com.sds.service.procedimiento.ProcedimientoService;
 import com.sds.service.procedimiento.model.Procedimiento;
@@ -50,6 +55,12 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 
 	@Autowired
 	PlanRepository planRepository;
+
+	@Autowired
+	ProcesoProcedimientoRepository procesoProcedimientoRepository;
+
+	@Autowired
+	ProcedimientoUsuarioRepository procedimientoUsuarioRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -84,16 +95,19 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 			procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO)
 					.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
 					.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
-					.setParameter(Constantes.FECHA_PLAN, fecha).setParameter(Constantes.PLAN, StringUtils.EMPTY)
-					.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+					.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
+					.setParameter(Constantes.CHECK_USUARIO, checkUsuario)
+					.setParameter(Constantes.PLAN, StringUtils.EMPTY).setFirstResult(inicio)
+					.setMaxResults(tamanhoPagina).getResultList();
 			numberTotalResults = procedimientoRepository.numberFindProcedimiento(nombreProcedimiento,
 					descripProcedimiento, fecha, checkUsuario);
 		} else {
 			final Optional<PlanEntity> planBD = planRepository.findById(plan.getIdPlan());
-			procedimientos = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDPLAN)
+			procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO)
 					.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
 					.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
-					.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha).setParameter(Constantes.PLAN, planBD.get())
+					.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
+					.setParameter(Constantes.CHECK_USUARIO, checkUsuario).setParameter(Constantes.PLAN, planBD.get())
 					.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 			numberTotalResults = procedimientoRepository.numberFindProcedimientoWithPlan(nombreProcedimiento,
 					descripProcedimiento, fecha, checkUsuario, plan);
@@ -307,7 +321,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 
 			}
 		} else {
-			resultado = CodeMessageErrors.PLAN_VACIO.name();
+			resultado = CodeMessageErrors.PROCEDIMIENTO_VACIO.name();
 		}
 		return resultado;
 	}
@@ -315,7 +329,8 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String eliminaProcedimiento(final Procedimiento procedimiento)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcedimientoNoExisteException {
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcedimientoNoExisteException,
+			ProcesoAsociadoProcedimientoException, UsuarioAsociadoProcedimientoException {
 		final ProcedimientoEntity procedimientoEntity = procedimiento.getProcedimientoEntity();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
@@ -340,11 +355,57 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 					CodeMessageErrors
 							.getTipoNameByCodigo(CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
+			final List<Integer> idsProcesos = procesoProcedimientoRepository
+					.findIdProcesoByIdProcedimiento(procedimientoEntity.getIdProcedimiento());
 
-			procedimientoBD.get().setBorradoProcedimiento(1);
-			procedimientoRepository.saveAndFlush(procedimientoBD.get());
-			procedimiento.setProcedimientoEntity(procedimientoBD.get());
-			resultado = Constantes.OK;
+			if (!idsProcesos.isEmpty()) {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(procedimiento.getUsuario(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new ProcesoAsociadoProcedimientoException(
+						CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()));
+			} else {
+				final List<ProcedimientoUsuarioEntity> procedimientoUsuario = procedimientoUsuarioRepository
+						.findProcedimientoUsuarioByProcedimiento(procedimientoEntity);
+
+				if (!procedimientoUsuario.isEmpty()) {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+							procedimiento.getUsuario(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()),
+							CodeMessageErrors.USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo());
+
+					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new UsuarioAsociadoProcedimientoException(
+							CodeMessageErrors.USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()));
+				} else {
+					procedimientoBD.get().setBorradoProcedimiento(1);
+					procedimientoRepository.saveAndFlush(procedimientoBD.get());
+					procedimiento.setProcedimientoEntity(procedimientoBD.get());
+					resultado = Constantes.OK;
+				}
+
+			}
 		}
 
 		return resultado;

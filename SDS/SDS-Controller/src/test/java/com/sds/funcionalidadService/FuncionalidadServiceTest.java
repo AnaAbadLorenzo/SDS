@@ -16,6 +16,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
 import com.sds.model.FuncionalidadEntity;
+import com.sds.model.RolAccionFuncionalidadEntity;
+import com.sds.repository.RolAccionFuncionalidadRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -35,6 +37,9 @@ public class FuncionalidadServiceTest {
 
 	@Autowired
 	FuncionalidadService funcionalidadService;
+
+	@Autowired
+	RolAccionFuncionalidadRepository rolAccionFuncionalidadRepository;
 
 	@Test
 	public void FuncionalidadService_buscarFuncionalidad()
@@ -160,13 +165,27 @@ public class FuncionalidadServiceTest {
 	}
 
 	@Test(expected = FuncionalidadYaExisteException.class)
-	public void FuncionalidadService_guardarFunciondalidadYaExiste() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, FuncionalidadYaExisteException {
+	public void FuncionalidadService_guardarFunciondalidadYaExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			FuncionalidadYaExisteException, FuncionalidadNoExisteException {
 
 		final Funcionalidad funcionalidad = generateFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
 				Constantes.FUNCIONALIDAD_YA_EXISTE);
 
 		funcionalidadService.anadirFuncionalidad(funcionalidad);
+
+		try {
+			funcionalidadService.anadirFuncionalidad(funcionalidad);
+		} catch (final FuncionalidadYaExisteException funcionalidadyaExisteException) {
+			throw new FuncionalidadYaExisteException(CodeMessageErrors.FUNCIONALIDAD_YA_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.FUNCIONALIDAD_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+			final ReturnBusquedas<FuncionalidadEntity> funcionalidadDelete = funcionalidadService.buscarFuncionalidad(
+					funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
+					funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
+			funcionalidadService.deleteFuncionalidad(funcionalidadDelete.getListaBusquedas().get(0));
+		}
 	}
 
 	@Test
@@ -286,12 +305,36 @@ public class FuncionalidadServiceTest {
 	@Test(expected = FuncionalidadAsociadaRolAccionException.class)
 	public void FuncionalidadService_eliminarFuncionalidadAsociadaRolAccion()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException {
+			FuncionalidadNoExisteException, FuncionalidadAsociadaRolAccionException, FuncionalidadYaExisteException {
 
 		final Funcionalidad funcionalidad = generateFuncionalidad(Constantes.URL_JSON_FUNCIONALIDAD_DATA,
 				Constantes.ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION);
+		funcionalidadService.anadirFuncionalidad(funcionalidad);
 
-		funcionalidadService.eliminarFuncionalidad(funcionalidad);
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadBuscar = funcionalidadService.buscarFuncionalidad(
+				funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
+				funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
+
+		final RolAccionFuncionalidadEntity rolAccionFuncionalidad = new RolAccionFuncionalidadEntity(2,
+				funcionalidadBuscar.getListaBusquedas().get(0).getIdFuncionalidad(), 2);
+		rolAccionFuncionalidadRepository.saveAndFlush(rolAccionFuncionalidad);
+
+		try {
+			funcionalidadService.eliminarFuncionalidad(
+					new Funcionalidad(funcionalidad.getUsuario(), funcionalidadBuscar.getListaBusquedas().get(0)));
+		} catch (final FuncionalidadAsociadaRolAccionException funcionalidadAsociadaRolAccionException) {
+			throw new FuncionalidadAsociadaRolAccionException(
+					CodeMessageErrors.FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.FUNCIONALIDAD_ASOCIADA_ROL_ACCION_EXCEPTION.getCodigo()));
+		} finally {
+			rolAccionFuncionalidadRepository.deleteRolAccionFuncionalidad(rolAccionFuncionalidad.getIdAccion(),
+					rolAccionFuncionalidad.getIdRol(), rolAccionFuncionalidad.getIdFuncionalidad());
+			final ReturnBusquedas<FuncionalidadEntity> funcionalidadDelete = funcionalidadService.buscarFuncionalidad(
+					funcionalidad.getFuncionalidadEntity().getNombreFuncionalidad(),
+					funcionalidad.getFuncionalidadEntity().getDescripFuncionalidad(), 0, 1);
+			funcionalidadService.deleteFuncionalidad(funcionalidadDelete.getListaBusquedas().get(0));
+		}
 
 	}
 

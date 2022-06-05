@@ -23,8 +23,8 @@ import javax.persistence.Table;
 		@NamedQuery(name = "ObjetivoEntity.findObjetivoByName", query = "SELECT o FROM ObjetivoEntity o WHERE o.nombreObjetivo =: nombreObjetivo"),
 		@NamedQuery(name = "ObjetivoEntity.findAllObjetivos", query = "SELECT o FROM ObjetivoEntity o WHERE o.borradoObjetivo = 0"),
 		@NamedQuery(name = "ObjetivoEntity.numberFindAllObjetivos", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE o.borradoObjetivo = 0"),
-		@NamedQuery(name = "ObjetivoEntity.findObjetivo", query = "SELECT o FROM ObjetivoEntity o WHERE o.nombreObjetivo LIKE UPPER(CONCAT('%', :nombreObjetivo, '%')) AND o.descripObjetivo LIKE UPPER(CONCAT('%', :descripObjetivo, '%')) AND o.borradoObjetivo=0"),
-		@NamedQuery(name = "ObjetivoEntity.numberFindObjetivo", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE o.nombreObjetivo LIKE UPPER(CONCAT('%', :nombreObjetivo, '%')) AND o.descripObjetivo LIKE UPPER(CONCAT('%', :descripObjetivo, '%')) AND o.borradoObjetivo=0"),
+		@NamedQuery(name = "ObjetivoEntity.findObjetivo", query = "SELECT o FROM ObjetivoEntity o WHERE LOWER(o.nombreObjetivo) LIKE LOWER(CONCAT('%', :nombreObjetivo, '%')) AND LOWER(o.descripObjetivo) LIKE LOWER(CONCAT('%', :descripObjetivo, '%')) AND o.borradoObjetivo=0"),
+		@NamedQuery(name = "ObjetivoEntity.numberFindObjetivo", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE LOWER(o.nombreObjetivo) LIKE LOWER(CONCAT('%', :nombreObjetivo, '%')) AND LOWER(o.descripObjetivo) LIKE LOWER(CONCAT('%', :descripObjetivo, '%')) AND o.borradoObjetivo=0"),
 		@NamedQuery(name = "ObjetivoEntity.findObjetivosEliminados", query = "SELECT o FROM ObjetivoEntity o WHERE o.borradoObjetivo = 1"),
 		@NamedQuery(name = "ObjetivoEntity.numberFindObjetivosEliminados", query = "SELECT COUNT(o) FROM ObjetivoEntity o WHERE o.borradoObjetivo = 1") })
 public class ObjetivoEntity {

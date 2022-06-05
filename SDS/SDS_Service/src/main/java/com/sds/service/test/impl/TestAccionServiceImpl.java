@@ -375,7 +375,7 @@ public class TestAccionServiceImpl implements TestAccionService {
 	private DatosPruebaAcciones getTestGuardarAccionYaExiste(
 			final AccionEntity datosEntradaAccionGuardarAccionYaExiste) {
 
-		final String resultadoObtenido = guardarAccion(datosEntradaAccionGuardarAccionYaExiste);
+		final String resultadoObtenido = guardarAccionYaExiste(datosEntradaAccionGuardarAccionYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.ACCION_YA_EXISTE + " - " + Mensajes.ACCION_YA_EXISTE;
 
@@ -673,15 +673,44 @@ public class TestAccionServiceImpl implements TestAccionService {
 		} else {
 			final AccionEntity accionBD = accionRepository.findAccionByName(accion.getNombreAccion());
 
-			if (accionBD != null) {
+			if (accionBD == null) {
 				resultado = CodigosMensajes.ACCION_YA_EXISTE + " - " + Mensajes.ACCION_YA_EXISTE;
-			} else {
+
 				accionRepository.saveAndFlush(accion);
 				resultado = CodigosMensajes.GUARDAR_ACCION_CORRECTO + " - " + Mensajes.GUARDAR_ACCION_CORRECTO;
 
 				final AccionEntity nuevaAccion = accionRepository.findAccionByName(accion.getNombreAccion());
 
 				accionRepository.deleteAccion(nuevaAccion.getIdAccion());
+
+			}
+		}
+
+		return resultado;
+	}
+
+	private String guardarAccionYaExiste(final AccionEntity accion) {
+		String resultado = StringUtils.EMPTY;
+		accionRepository.saveAndFlush(accion);
+
+		if (!validaciones.comprobarNombreAccionBlank(accion.getNombreAccion())
+				&& !validaciones.comprobarDescripcionAccionBlank(accion.getDescripAccion())) {
+			resultado = CodigosMensajes.ACCION_VACIA + " - " + Mensajes.ACCION_VACIA;
+		} else if (!validaciones.comprobarNombreAccionBlank(accion.getNombreAccion())) {
+			resultado = CodigosMensajes.ACCION_NAME_VACIO + " - " + Mensajes.ACCION_NAME_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarDescripcionAccionBlank(accion.getDescripAccion())) {
+			resultado = CodigosMensajes.ACCION_DESCRIPTION_VACIO + " - "
+					+ Mensajes.ACCION_DESCRIPTION_NO_PUEDE_SER_VACIO;
+		} else {
+			final AccionEntity accionBD = accionRepository.findAccionByName(accion.getNombreAccion());
+
+			if (accionBD != null) {
+				resultado = CodigosMensajes.ACCION_YA_EXISTE + " - " + Mensajes.ACCION_YA_EXISTE;
+
+				final AccionEntity nuevaAccion = accionRepository.findAccionByName(accion.getNombreAccion());
+
+				accionRepository.deleteAccion(nuevaAccion.getIdAccion());
+
 			}
 		}
 

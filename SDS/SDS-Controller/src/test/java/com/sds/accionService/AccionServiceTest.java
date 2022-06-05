@@ -178,12 +178,24 @@ public class AccionServiceTest {
 	}
 
 	@Test(expected = AccionYaExisteException.class)
-	public void AccionService_guardarAccionYaExiste() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, AccionYaExisteException {
+	public void AccionService_guardarAccionYaExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			AccionYaExisteException, AccionNoExisteException {
 
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA, Constantes.ACCION_YA_EXISTE);
 
 		accionService.anadirAccion(accion);
+
+		try {
+			accionService.anadirAccion(accion);
+		} catch (final AccionYaExisteException accionyaExisteException) {
+			throw new AccionYaExisteException(CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ACCION_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+			final ReturnBusquedas<AccionEntity> accionDelete = accionService
+					.buscarAccion(accion.getAccion().getNombreAccion(), accion.getAccion().getDescripAccion(), 0, 1);
+			accionService.deleteAccion(accionDelete.getListaBusquedas().get(0));
+		}
 
 	}
 
@@ -296,12 +308,45 @@ public class AccionServiceTest {
 	@Test(expected = AccionAsociadaRolFuncionalidadException.class)
 	public void AccionService_eliminarAccionAsociadaRolFuncionalidad()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			AccionNoExisteException, AccionAsociadaRolFuncionalidadException {
+			AccionNoExisteException, AccionAsociadaRolFuncionalidadException, AccionYaExisteException,
+			RolYaExisteException, FuncionalidadYaExisteException, RolNoExisteException, FuncionalidadNoExisteException {
 
 		final Accion accion = generateAccion(Constantes.URL_JSON_ACCION_DATA,
 				Constantes.ELIMINAR_ACCION_ASOCIADA_ROL_FUNCIONALIDAD);
+		accionService.anadirAccion(accion);
+		final RolEntity rolEntity = new RolEntity("Nombre rol", "Descripción rol", 0);
+		rolService.guardarRol(new Rol(accion.getUsuario(), rolEntity));
+		final FuncionalidadEntity funcionalidadEntity = new FuncionalidadEntity("Nombre funcionalidad",
+				"Descripción funcionalidad", 0);
+		funcionalidadService.anadirFuncionalidad(new Funcionalidad(accion.getUsuario(), funcionalidadEntity));
+		final ReturnBusquedas<AccionEntity> accionEncontrada = accionService
+				.buscarAccion(accion.getAccion().getNombreAccion(), accion.getAccion().getDescripAccion(), 0, 1);
+		final ReturnBusquedas<FuncionalidadEntity> funcionalidadEncontrada = funcionalidadService.buscarFuncionalidad(
+				funcionalidadEntity.getNombreFuncionalidad(), funcionalidadEntity.getDescripFuncionalidad(), 0, 1);
+		final ReturnBusquedas<RolEntity> rolEncontrado = rolService.buscarRol(rolEntity.getRolName(),
+				rolEntity.getRolDescription(), 0, 1);
+		final RolAccionFuncionalidadEntity rolAccionFuncionalidadEntity = new RolAccionFuncionalidadEntity(
+				accionEncontrada.getListaBusquedas().get(0).getIdAccion(),
+				funcionalidadEncontrada.getListaBusquedas().get(0).getIdFuncionalidad(),
+				rolEncontrado.getListaBusquedas().get(0).getIdRol());
+		rolAccionFuncionalidadRepository.saveAndFlush(rolAccionFuncionalidadEntity);
 
-		accionService.eliminarAccion(accion);
+		try {
+			accionService.eliminarAccion(new Accion(accion.getUsuario(), accionEncontrada.getListaBusquedas().get(0)));
+		} catch (final AccionAsociadaRolFuncionalidadException accionAsociadaRolFuncionalidadException) {
+			throw new AccionAsociadaRolFuncionalidadException(
+					CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.ACCION_ASOCIADA_ROL_FUNCIONALIDAD_EXCEPTION.getCodigo()));
+		} finally {
+			rolAccionFuncionalidadRepository.deleteRolAccionFuncionalidad(
+					accionEncontrada.getListaBusquedas().get(0).getIdAccion(),
+					rolEncontrado.getListaBusquedas().get(0).getIdRol(),
+					funcionalidadEncontrada.getListaBusquedas().get(0).getIdFuncionalidad());
+			rolService.deleteRol(new Rol(accion.getUsuario(), rolEncontrado.getListaBusquedas().get(0)));
+			accionService.deleteAccion(accionEncontrada.getListaBusquedas().get(0));
+			funcionalidadService.deleteFuncionalidad(funcionalidadEncontrada.getListaBusquedas().get(0));
+		}
 
 	}
 

@@ -389,7 +389,7 @@ function cargarTestGestionObjetivos(){
 
 	$("#testObjetivo").html("");
 
-	let arraySubAccordionUno = ["collapseObjetivoAtributosObjetivo", "javascript:testObjetivo('Guardar', 'Atributos')", "Añadir Objetivo", "iconoTestObjetivoAtributosObjetivo", 
+	let arraySubAccordionUno = ["collapseObjetivoAtributosGuardar", "javascript:testObjetivo('Guardar', 'Atributos')", "Añadir Objetivo", "iconoTestObjetivoAtributosGuardar", 
 							   "cabeceraAtributosObjetivoGuardar", "cuerpoAtributosObjetivoGuardar"];
 	let arraySubAccordionDos = ["collapseObjetivoAtributosModificar", "javascript:testObjetivo('Modificar', 'Atributos')", "Modificar Objetivo", "iconoTestObjetivoAtributosModificar", 
 							   "cabeceraAtributosObjetivoModificar", "cuerpoAtributosObjetivoModificar"];
@@ -415,4 +415,70 @@ function cargarTestGestionObjetivos(){
 	var contenidoTest = crearTest(arrayAccordionTres);
 
 	$("#testObjetivo").append(contenidoTest);
-} 
+}
+
+/*Función para cargar las opciones de Tests de Respuestas Posibles*/
+function cargarTestGestionRespuestasPosibles(){
+
+	$("#testRespuestasPosibles").html("");
+
+	let arraySubAccordionUno = ["collapseRespuestasPosiblesAtributosGuardar", "javascript:testRespuestasPosibles('Guardar', 'Atributos')", "Añadir Respuesta Posible", "iconoTestRespuestasPosiblesAtributosGuardar", 
+							   "cabeceraAtributosRespuestasPosiblesGuardar", "cuerpoAtributosRespuestasPosiblesGuardar"];
+	let arraySubAccordionDos = ["collapseRespuestasPosiblesAtributosModificar", "javascript:testRespuestasPosibles('Modificar', 'Atributos')", "Modificar Respuesta Posible", "iconoTestRespuestasPosiblesAtributosModificar", 
+							   "cabeceraAtributosRespuestasPosiblesModificar", "cuerpoAtributosRespuestasPosiblesModificar"];
+	let arraySubAccordionTres = ["collapseRespuestasPosiblesAtributosBuscar", "javascript:testRespuestasPosibles('Buscar', 'Atributos')", "Buscar Respuesta Posible", "iconoTestRespuestasPosiblesAtributosBuscar", 
+							    "cabeceraAtributosRespuestasPosiblesBuscar", "cuerpoAtributosRespuestasPosiblesBuscar"];
+	let arrayAccordionUno = ["accordion31", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
+
+	let arraySubAccordionCuatro = ["collapseRespuestasPosiblesAccionesBuscar", "javascript:testRespuestasPosibles('Buscar', 'Acciones')", "Buscar Respuesta Posible", "iconoTestRespuestasPosiblesAccionesBuscar", 
+								  "cabeceraAccionesRespuestasPosiblesBuscar", "cuerpoAccionesRespuestasPosiblesBuscar"];
+	let arraySubAccordionCinco = ["collapseRespuestasPosiblesAccionesGuardar", "javascript:testRespuestasPosibles('Guardar', 'Acciones')", "Guardar Respuesta Posible", "iconoTestRespuestasPosiblesAccionesGuardar", 
+								 "cabeceraAccionesRespuestasPosiblesGuardar", "cuerpoAccionesRespuestasPosiblesGuardar"];
+	let arraySubAccordionSeis = ["collapseRespuestasPosiblesAccionesEliminar", "javascript:testRespuestasPosibles('Eliminar', 'Acciones')", "Eliminar Respuesta Posible", "iconoTestRespuestasPosiblesAccionesEliminar", 
+								"cabeceraAccionesRespuestasPosiblesEliminar", "cuerpoAccionesRespuestasPosiblesEliminar"];
+	let arraySubAccordionSiete = ["collapseRespuestasPosiblesAccionesModificar", "javascript:testRespuestasPosibles('Modificar', 'Acciones')", "Modificar Respuesta Posible", "iconoTestRespuestasPosiblesAccionesModificar", 
+								"cabeceraAccionesRespuestasPosiblesModificar", "cuerpoAccionesRespuestasPosiblesModificar"];
+	let arraySubAccordionOcho = ["collapseRespuestasPosiblesAccionesReactivar", "javascript:testRespuestasPosibles('Reactivar', 'Acciones')", "Reactivar Respuesta Posible", "iconoTestRespuestasPosiblesAccionesReactivar", 
+								"cabeceraAccionesRespuestasPosiblesReactivar", "cuerpoAccionesRespuestasPosiblesReactivar"];
+	let arrayAccordionDos = ["accordion32", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
+
+	let arrayAccordionTres = ["accordion30", "collapseRespuestasPosiblesAtributos", null, "Atributos", "iconoTestRespuestasPosiblesAtributos", null, null, arrayAccordionUno, "collapseRespuestasPosiblesAcciones", null, "Acciones", 
+							 "iconoTestRespuestasPosiblesAcciones", null, null, arrayAccordionDos];
+
+	var contenidoTest = crearTest(arrayAccordionTres);
+
+	$("#testRespuestasPosibles").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de planes*/
+function cargarTestGestionPlanes(){
+
+	$("#testPlan").html("");
+
+	let arraySubAccordionUno = ["collapsePlanAtributosGuardar", "javascript:testPlan('Guardar', 'Atributos')", "Añadir Plan", "iconoTestPlanAtributosGuardar", 
+							   "cabeceraAtributosPlanGuardar", "cuerpoAtributosPlanGuardar"];
+	let arraySubAccordionDos = ["collapsePlanAtributosModificar", "javascript:testPlan('Modificar', 'Atributos')", "Modificar Plan", "iconoTestPlanAtributosModificar", 
+							   "cabeceraAtributosPlanModificar", "cuerpoAtributosPlanModificar"];
+	let arraySubAccordionTres = ["collapsePlanAtributosBuscar", "javascript:testPlan('Buscar', 'Atributos')", "Buscar Plan", "iconoTestPlanAtributosBuscar", 
+							    "cabeceraAtributosPlanBuscar", "cuerpoAtributosPlanBuscar"];
+	let arrayAccordionUno = ["accordion34", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
+
+	let arraySubAccordionCuatro = ["collapsePlanAccionesBuscar", "javascript:testPlan('Buscar', 'Acciones')", "Buscar Plan", "iconoTestPlanAccionesBuscar", 
+								  "cabeceraAccionesPlanBuscar", "cuerpoAccionesPlanBuscar"];
+	let arraySubAccordionCinco = ["collapsePlanAccionesGuardar", "javascript:testPlan('Guardar', 'Acciones')", "Guardar Plan", "iconoTestPlanAccionesGuardar", 
+								 "cabeceraAccionesPlanGuardar", "cuerpoAccionesPlanGuardar"];
+	let arraySubAccordionSeis = ["collapsePlanAccionesEliminar", "javascript:testPlan('Eliminar', 'Acciones')", "Eliminar Plan", "iconoTestPlanAccionesEliminar", 
+								"cabeceraAccionesPlanEliminar", "cuerpoAccionesPlanEliminar"];
+	let arraySubAccordionSiete = ["collapsePlanAccionesModificar", "javascript:testPlan('Modificar', 'Acciones')", "Modificar Plan", "iconoTestPlanAccionesModificar", 
+								"cabeceraAccionesPlanModificar", "cuerpoAccionesPlanModificar"];
+	let arraySubAccordionOcho = ["collapsePlanAccionesReactivar", "javascript:testPlan('Reactivar', 'Acciones')", "Reactivar Plan", "iconoTestPlanAccionesReactivar", 
+								"cabeceraAccionesPlanReactivar", "cuerpoAccionesPlanReactivar"];
+	let arrayAccordionDos = ["accordion35", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
+
+	let arrayAccordionTres = ["accordion33", "collapsePlanAtributos", null, "Atributos", "iconoTestPlanAtributos", null, null, arrayAccordionUno, "collapsePlanAcciones", null, "Acciones", 
+							 "iconoTestPlanAcciones", null, null, arrayAccordionDos];
+
+	var contenidoTest = crearTest(arrayAccordionTres);
+
+	$("#testPlan").append(contenidoTest);
+}

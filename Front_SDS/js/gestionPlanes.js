@@ -5,10 +5,9 @@ function anadirPlanAjaxPromesa(){
 
     var objetivo = {
       idObjetivo : $('#selectObjetivos option:selected').val(),
-      nombrePlan : "",
-      descripPlan : "",
-      fechaPlan : "",
-      borradoPlan : ""
+      nombreObjetivo : "",
+      descripObjetivo : "",
+      borradoObjetivo : ""
     }
 
     var plan = {
@@ -383,16 +382,11 @@ function reactivarPlanesAjaxPromesa(){
 /* Función para obtener los planes del sistema */
 async function cargarPlanes(numeroPagina, tamanhoPagina, paginadorCreado){
   if(getCookie('rolUsuario') == "usuario"){
-
-    /**Cambiar esta parte con la lógica que haga falta ahora sólo se va a mostrar el comportamiento de la plantilla
-     * para un usuario pero con datos falsos */
-
-        window.location.href = "consultarPlanes.html";
-
+    window.location.href = "consultarPlanes.html";
   }else if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
     await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
       .then((res) => {
-
+        cargarPermisosFuncPlan();
         var numResults = res.data.numResultados + '';
         var totalResults = res.data.tamanhoTotal + '';
           var inicio = 0;
@@ -443,6 +437,60 @@ async function cargarPlanes(numeroPagina, tamanhoPagina, paginadorCreado){
       });
     }
 }
+
+/**Funcion para cargar los planes ne vista de usuario **/
+async function cargarPlanesUsuario(numeroPagina, tamanhoPagina, paginadorCreado){
+  await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
+        .then((res) => {
+          cargarPermisosFuncPlan();
+          $('#planes').html('');
+          var numResults = res.data.numResultados + '';
+          var totalResults = res.data.tamanhoTotal + '';
+            var inicio = 0;
+          if(res.data.listaBusquedas.length == 0){
+            inicio = 0;
+          }else{
+            inicio = parseInt(res.data.inicio)+1;
+          }
+          var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+          if(res.data.listaBusquedas.length == 0){
+            $('#itemPaginacion').attr('hidden',true);
+          }else{
+            $('#itemPaginacion').attr('hidden',false);
+          }
+
+          $("#paginacion").html("");
+
+          for (var i = 0; i < res.data.listaBusquedas.length; i++){
+              var tr = construyePlanUsuario(res.data.listaBusquedas[i]);
+              $("#planes").append(tr);
+          }
+        
+          $("#paginacion").append(textPaginacion);
+          setLang(getCookie('lang'));
+
+            if(paginadorCreado != 'PaginadorCreado'){
+              paginador(totalResults, 'cargarPlanesUsuario', 'PLAN');
+            }
+
+            if(numeroPagina == 0){
+              $('#' + (numeroPagina+1)).addClass("active");
+              var numPagCookie = numeroPagina+1;
+            }else{
+              $('#' + numeroPagina).addClass("active");
+               var numPagCookie = numeroPagina;
+            }
+
+            setCookie('numeroPagina', numPagCookie);
+
+        }).catch((res) => {
+            respuestaAjaxKO(res.code);
+            document.getElementById("modal").style.display = "block";
+        });
+    }
+
+
 /** Funcion añadir plan **/
 async function addPlan(){
   await anadirPlanAjaxPromesa()
@@ -459,6 +507,7 @@ async function addPlan(){
     $('#nombrePlan').val(getCookie('nombrePlan'));
     $('#descripPlan').val(getCookie('descripPlan'));
     $('#fechaPlan').val(getCookie('fechaPlan'));
+    $('#objetivo').val(getCookie('objetivo'));
     buscarPlan(getCookie('numeroPagina'), tamanhoPaginaPlan, 'buscarPaginacion', 'PaginadorNo');
 
   }).catch((res) => {
@@ -480,6 +529,7 @@ async function addPlan(){
 async function buscarPlan(numeroPagina, tamanhoPagina, accion, paginadorCreado){
   await buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina,accion)
   .then((res) => {
+      $('#paginacion').html('');
       cargarPermisosFuncPlan();
       if($('#form-modal').is(':visible')) {
          $("#form-modal").modal('toggle');
@@ -501,20 +551,29 @@ async function buscarPlan(numeroPagina, tamanhoPagina, accion, paginadorCreado){
         $('#itemPaginacion').attr('hidden',false);
       }
 
-      $("#datosPlan").html("");
-      $("#checkboxColumnas").html("");
-      $("#paginacion").html("");
+      if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
+        $("#datosPlan").html("");
+        $("#checkboxColumnas").html("");
+        $("#paginacion").html("");
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
           var tr = construyeFila('PLAN', res.data.listaBusquedas[i]);
           $("#datosPlan").append(tr);
         }
 
-      var div = createHideShowColumnsWindow({DESCRIPCION_PLAN_COLUMN:2, DATE_COLUMN:3, NOMBRE_OBJETIVO_COLUMN:4});
+        var div = createHideShowColumnsWindow({DESCRIPCION_PLAN_COLUMN:2, DATE_COLUMN:3, NOMBRE_OBJETIVO_COLUMN:4});
 
-      $("#checkboxColumnas").append(div);
-      $("#paginacion").append(textPaginacion);
+        $("#checkboxColumnas").append(div);
+      
+      }else{
+        $('#planes').html('');
+        for (var i = 0; i < res.data.listaBusquedas.length; i++){
+              var tr = construyePlanUsuario(res.data.listaBusquedas[i]);
+              $("#planes").append(tr);
+          }
+      }
+
       setLang(getCookie('lang'));
-
+      $("#paginacion").append(textPaginacion);
       if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'buscarPlan', 'PLAN');
       }
@@ -544,63 +603,68 @@ async function buscarPlan(numeroPagina, tamanhoPagina, accion, paginadorCreado){
 
 /*Función que refresca la tabla por si hay algún cambio en BD */
 async function refrescarTabla(numeroPagina, tamanhoPagina){
-  await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
-  .then((res) => {
-      cargarPermisosFuncPlan();
-      setCookie('nombrePlan', '');
-      setCookie('descripPlan', '');
-      setCookie('fechaPlan', '');
-      var numResults = res.data.numResultados + '';
-      var totalResults = res.data.tamanhoTotal + '';
-      var inicio = 0;
-      if(res.data.listaBusquedas.length == 0){
-        inicio = 0;
-      }else{
-        inicio = parseInt(res.data.inicio)+1;
-      }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+  if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
+    await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
+    .then((res) => {
+        cargarPermisosFuncPlan();
+        setCookie('nombrePlan', '');
+        setCookie('descripPlan', '');
+        setCookie('fechaPlan', '');
+        var numResults = res.data.numResultados + '';
+        var totalResults = res.data.tamanhoTotal + '';
+        var inicio = 0;
+        if(res.data.listaBusquedas.length == 0){
+          inicio = 0;
+        }else{
+          inicio = parseInt(res.data.inicio)+1;
+        }
+        var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
-
-      $("#datosPlan").html("");
-      $("#checkboxColumnas").html("");
-      $("#paginacion").html("");
-        for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFila('PLAN', res.data.listaBusquedas[i]);
-          $("#datosPlan").append(tr);
+        if(res.data.listaBusquedas.length == 0){
+          $('#itemPaginacion').attr('hidden',true);
+        }else{
+          $('#itemPaginacion').attr('hidden',false);
         }
 
-      var div = createHideShowColumnsWindow({DESCRIPCION_PLAN_COLUMN:2, DATE_COLUMN:3, NOMBRE_OBJETIVO_COLUMN:4});
-      $("#checkboxColumnas").append(div);
-      $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
+        $("#datosPlan").html("");
+        $("#checkboxColumnas").html("");
+        $("#paginacion").html("");
+          for (var i = 0; i < res.data.listaBusquedas.length; i++){
+            var tr = construyeFila('PLAN', res.data.listaBusquedas[i]);
+            $("#datosPlan").append(tr);
+          }
 
-      setCookie('nombrePlan', '');
-      setCookie('descripPlan', '');
-      setCookie('fechaPlan', '');
+        var div = createHideShowColumnsWindow({DESCRIPCION_PLAN_COLUMN:2, DATE_COLUMN:3, NOMBRE_OBJETIVO_COLUMN:4});
+        $("#checkboxColumnas").append(div);
+        $("#paginacion").append(textPaginacion);
+        setLang(getCookie('lang'));
 
-      paginador(totalResults, 'cargarPlanes', 'PLAN');
+        setCookie('nombrePlan', '');
+        setCookie('descripPlan', '');
+        setCookie('fechaPlan', '');
 
-      if(numeroPagina == 0){
-        $('#' + (numeroPagina+1)).addClass("active");
-        var numPagCookie = numeroPagina + 1 ;
-      }else{
-        $('#' + numeroPagina).addClass("active");
-         var numPagCookie = numeroPagina;
-      }
+        paginador(totalResults, 'cargarPlanes', 'PLAN');
 
-      setCookie('numeroPagina', numPagCookie);
+        if(numeroPagina == 0){
+          $('#' + (numeroPagina+1)).addClass("active");
+          var numPagCookie = numeroPagina + 1 ;
+        }else{
+          $('#' + numeroPagina).addClass("active");
+           var numPagCookie = numeroPagina;
+        }
 
-    }).catch((res) => {
+        setCookie('numeroPagina', numPagCookie);
 
-      respuestaAjaxKO(res.code);
-      setLang(getCookie('lang'));
-      document.getElementById("modal").style.display = "block";
-  });
+      }).catch((res) => {
+
+        respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
+        document.getElementById("modal").style.display = "block";
+    });
+  }else if(getCookie('rolUsuario') == "usuario"){
+    cargarPlanesUsuario(numeroPagina, tamanhoPagina, 'PaginadorNo');
+  }
+  
 }
 
 /*Función que busca los eliminados de la tabla de plan*/
@@ -1101,20 +1165,28 @@ function gestionarPermisosPlan(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaPlan\', \'PaginadorNo\')");
         $('#divListarPlanes').attr("data-toggle", "modal");
         $('#divListarPlanes').attr("data-target", "#form-modal");
-        document.getElementById('cabecera').style.display = "block";
-        document.getElementById('tablaDatos').style.display = "block";
-        document.getElementById('filasTabla').style.display = "block";
-         $('#itemPaginacion').attr('hidden', false);
+        if(getCookie('rolUsuario') == "admin"){
+          document.getElementById('cabecera').style.display = "block";
+          document.getElementById('tablaDatos').style.display = "block";
+          document.getElementById('filasTabla').style.display = "block";
+          $('#itemPaginacion').attr('hidden', false);
 
-        if(document.getElementById('cabeceraEliminados').style.display == "block"){
-           document.getElementById('cabecera').style.display = "none";
+          if(document.getElementById('cabeceraEliminados').style.display == "block"){
+            document.getElementById('cabecera').style.display = "none";
 
            var texto = document.getElementById('paginacion').innerHTML;
            if(texto == "0 - 0 total 0"){
-           $('#itemPaginacion').attr('hidden', true);
-          }
-
+            $('#itemPaginacion').attr('hidden', true);
+           }
         }
+        
+        }else{
+          document.getElementById('cabecera').style.display = "block";
+          document.getElementById('listaPlanes').style.display = "block";
+          document.getElementById('filasTabla').style.display = "block";
+          $('#itemPaginacion').attr('hidden', false);
+        }
+        
       break;
 
       case "Visualizar" :
@@ -1134,6 +1206,61 @@ function gestionarPermisosPlan(idElementoList) {
     } 
     }); 
 }
+
+function construyePlanUsuario(planUsuario){
+  var plan = "";
+  var objective = planUsuario.objetivo;
+
+  var atributosFunciones = ["'" + planUsuario.objetivo.nombreObjetivo + "'", "'" + planUsuario.objetivo.descripObjetivo + "'"]; 
+
+  plan = '<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">' + 
+          '<div class="card">' + 
+            '<div class="card-body-plan">' + 
+              '<div class="card-title">' + planUsuario.nombrePlan + '</div>' + 
+              '<div class="card-text">' + planUsuario.descripPlan + '</div>' + 
+
+              '<div class="tooltip9 procedimientoIcon">' + 
+                '<img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento" onclick="accederProcedimientosPlan();"/>' + 
+                '<span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>' + 
+              '</div>' + 
+            '</div>' + 
+            '<div class="card-footer">' + 
+              '<div class="tooltip8 objetivoIcon">' +
+                '<img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo" data-toggle="modal" data-target="#modalMostrarObjetivo" onclick="showObjetivo(' + atributosFunciones + ')"/>' + 
+                '<span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>' + 
+              '</div>' +
+            '<div class="card-title-objetivo">Objetivo:' + planUsuario.objetivo.nombreObjetivo + '</div>' +
+            '</div>' + 
+          '</div>' + 
+        '</div>';
+
+  return plan;
+}
+
+function showObjetivo(nombreObjetivo, descripObjetivo){
+
+    $('#tituloFormsModalMostrarObjetivo').addClass('DETAIL_OBJECTIVE');
+    $('#iconoAccionesMostrarObjetivo').attr('src', 'images/close2.png');
+    $("#iconoAccionesMostrarObjetivo").removeClass();
+    $('#iconoAccionesMostrarObjetivo').addClass('ICONO_DETALLE');
+    $('#iconoAccionesMostrarObjetivo').addClass('iconoCerrar');
+    $('#iconoAccionesMostrarObjetivo').attr('alt', 'Editar');
+    $('#spanAccionesMostrarObjetivo').removeClass();
+    $('#spanAccionesMostrarObjetivo').addClass('tooltiptext');
+    $('#spanAccionesMostrarObjetivo').addClass('ICONO_DETALLE');
+    $('#btnAccionesMostrarObjetivo').attr('value', 'Detalle');
+
+    $('#labelNombreObjetivoMostrarObjetivo').attr('hidden', false);
+    $('#labelDescripcionObjetivoMostrarObjetivo').attr('hidden', false);
+    $('#nombreObjetivo').val(nombreObjetivo);
+    $('#descripcionObjetivoMostrarObjetivo').val(descripObjetivo);
+
+    deshabilitaCampos(['nombreObjetivo', 'descripcionObjetivoMostrarObjetivo']);
+    anadirReadonly(['nombreObjetivo', 'descripcionObjetivoMostrarObjetivo']);
+   
+    setLang(getCookie('lang'));
+}
+
 
 $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {

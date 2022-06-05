@@ -34,6 +34,8 @@
 	comprobarTokenUsuario('plan');
   	await includeTopMenu();
     await funcionalidadesUsuario();
+    await cargarPlanesUsuario(0, tamanhoPaginaPlan, 'PaginadorNo');
+    await construyeSelectObjetivos();
     cambiarTituloGestion('plan');modalCambioPass();cargarIdioma();includeFooter();setLang('');
   })();">  
 	<div id="topMenu"></div>
@@ -58,110 +60,10 @@
 	</div>   
 
 	<div class="listado" id="tablaDatos" style="display:none;">
-		
 	</div>
 
-	<div class="planes overflow-auto">
+	<div id="listaPlanes" class="planes overflow-auto" style="display: none;">
 		<div id="planes" class="row">
-			<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Plan</div>
-                      	<div class="card-text">Plan para verificar el objetivo fin de la pobreza</div>
-                      	<div class="tooltip9 procedimientoIcon">
-					        <img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento" onclick="accederProcedimientosPlan();"/>
-					        <span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 objetivoIcon">
-					        <img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo"/>
-					        <span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>
-					    </div>
-                    	<div class="card-title-objetivo">Objetivo: Fin de la pobreza</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Plan sandra</div>
-                      	<div class="card-text">plan de prueba de sandra</div>
-                      	<div class="tooltip9 procedimientoIcon">
-					        <img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento"/>
-					        <span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 objetivoIcon">
-					        <img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo"/>
-					        <span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>
-					    </div>
-                    	<div class="card-title-objetivo">Objetivo: Objetivo Sandra </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Plan</div>
-                      	<div class="card-text">Plan para verificar el objetivo fin de la pobreza</div>
-                      	<div class="tooltip9 procedimientoIcon">
-					        <img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento"/>
-					        <span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 objetivoIcon">
-					        <img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo"/>
-					        <span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>
-					    </div>
-                    	<div class="card-title-objetivo">Objetivo: Fin de la pobreza</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Plan sandra</div>
-                      	<div class="card-text">plan de prueba de sandra</div>
-                      	<div class="tooltip9 procedimientoIcon">
-					        <img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento"/>
-					        <span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 objetivoIcon">
-					        <img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo"/>
-					        <span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>
-					    </div>
-                    	<div class="card-title-objetivo">Objetivo: Objetivo Sandra </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Plan</div>
-                      	<div class="card-text">Plan para verificar el objetivo fin de la pobreza</div>
-                      	<div class="tooltip9 procedimientoIcon">
-					        <img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento"/>
-					        <span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 objetivoIcon">
-					        <img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo"/>
-					        <span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>
-					    </div>
-                    	<div class="card-title-objetivo">Objetivo: Fin de la pobreza</div>
-                    </div>
-                </div>
-            </div>
 		</div>
 	</div>
 
@@ -175,6 +77,93 @@
 		  	</ul>
 		</nav>
 	</div>
+
+	<div class="modal modal2 fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+			<div class="formmodal-container">
+				<div id="formularioAcciones">
+      			<div id="contenidoForm">
+              			<div class="formularioComun">
+              				<h1 id="tituloForms" class="datos"></h1>
+              				<p id = "subtitulo" class="SEGURO_ELIMINAR_PLAN" hidden></p>
+                    	<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
+                    	  <label class="labelForm NOMBRE_PLAN" id="labelNombrePlan" hidden></label>                            
+                          <input type="text" maxlength="48" size="48" placeholder="NOMBRE_PLAN" name="NOMBRE_PLAN" id="nombrePlan" class="NOMBRE_PLAN" onblur=""/>
+                           <div class="obligatorio tooltip2" id="obligatorioNombrePlan">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+                          <div style="display:none" id="errorFormatoNombrePlan"></div>
+                          
+                          <label class="labelForm DESCRIPCION_PLAN" id="labelDescripcionPlan" hidden></label>
+	                      <input type="text" placeholder="DESCRIPCION_PLAN" name="DESCRIPCION_PLAN" id="descripPlan" class="DESCRIPCION_PLAN" onblur=""/>
+	                       <div class="obligatorio tooltip2" id="obligatorioDescripPlan">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+	                      <div style="display:none" id="errorFormatoDescripPlan"></div>
+
+	                      <label class="labelForm DATE" id="labelFechaPlan" hidden></label>
+                    	  <input type="date" name="fechaPlan" id="fechaPlan" value="1900-01-01" min="1900-01-01" max="3000-01-01" onblur="">
+                    	  <div class="obligatorio tooltip2" id="obligatorioFechaPlan">*
+                      		<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    	  </div>
+                    	  <div style="display:none" id="errorFormatoFechaPlan"></div>
+
+                    	  <label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivo" hidden></label>
+                    	  <select id="selectObjetivos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"></select>
+  						  <div class="obligatorio tooltip2" id="obligatorioObjetivos">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+  						  <div style="display:none" id="errorFormatoNombreObjetivoSelect"></div>
+
+  						  <label class="labelForm DESCRIPCION_OBJETIVO" id="labelDescripcionObjetivo" hidden></label>
+  						  <input type="text" placeholder="DESCRIPCION_OBJETIVO" name="DESCRIPCION_OBJETIVO" id="descripcionObjetivo" class="DESCRIPCION_OBJETIVO" hidden />
+  						   <div class="obligatorio tooltip2" id="obligatorioDescripcionObjetivo" hidden>*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+  						  <div style="display:none" id="errorFormatoNombreDescripcionObjetivo"></div>
+
+                          <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
+                              <img class="" src="" alt="" id="iconoAcciones" />
+                              <span class="tooltiptext" id="spanAcciones"></span>
+                          </button>
+                      </form>
+                    </div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal modal2 fade" id="modalMostrarObjetivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="formmodal-container">
+        <div id="formularioMostrarObjetivo">
+          <div id="contenidoFormMostrarObjetivo">
+            <div class="formularioComun">
+              <h1 id="tituloFormsModalMostrarObjetivo" class="datos"></h1>
+              <form name="formularioGenerico" id="formularioGenericoModalMostrarObjetivo" action="" onsubmit="">
+                <label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivoMostrarObjetivo" hidden></label>                            
+                <input type="text" maxlength="48" size="48" placeholder="NOMBRE_OBJETIVO" name="NOMBRE_OBJETIVO" id="nombreObjetivo" class="NOMBRE_OBJETIVO" onblur=""/>
+               
+                <div style="display:none" id="errorFormatoNombreObjetivo"></div>
+                          
+                <label class="labelForm DESCRIPCION_OBJETIVO" id="labelDescripcionObjetivoMostrarObjetivo" hidden></label>
+	            <input type="text" placeholder="DESCRIPCION_OBJETIVO" name="DESCRIPCION_OBJETIVO" id="descripcionObjetivoMostrarObjetivo" class="DESCRIPCION_OBJETIVO" onblur=""/>
+	            
+	            <div style="display:none" id="errorFormatoDescripcionObjetivo"></div>
+
+                <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAccionesMostrarObjetivo">
+                    <img class="" src="" alt="" id="iconoAccionesMostrarObjetivo" />
+                    <span class="tooltiptext" id="spanAccionesMostrarObjetivo"></span>
+                </button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 	<div id="volver" class="volver" style="display: none;">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">

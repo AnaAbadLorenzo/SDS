@@ -261,7 +261,7 @@ public class TestNoticiaServiceImpl implements TestNoticiaService {
 	private DatosPruebaAcciones getTestGuardarNoticiaYaExiste(
 			final NoticiasEntity datosEntradaAccionGuardarNoticiaYaExiste) {
 
-		final String resultadoObtenido = guardarNoticia(datosEntradaAccionGuardarNoticiaYaExiste);
+		final String resultadoObtenido = guardarNoticiaYaExiste(datosEntradaAccionGuardarNoticiaYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.NOTICIA_YA_EXISTE + " - " + Mensajes.NOTICIA_YA_EXISTE;
 
@@ -387,7 +387,7 @@ public class TestNoticiaServiceImpl implements TestNoticiaService {
 				+ Mensajes.NOTICIA_ELIMINADA_CORRECTAMENTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ELIMINAR_NOTICIA_CORRECTO, Constantes.ERROR,
+				DefinicionPruebas.ELIMINAR_NOTICIA_CORRECTO, Constantes.EXITO,
 				getValorNoticia(datosEntradaAccionEliminarNoticia));
 
 	}
@@ -438,13 +438,42 @@ public class TestNoticiaServiceImpl implements TestNoticiaService {
 		} else {
 			final NoticiasEntity noticiaBD = noticiasRepository.findByTituloNoticia(noticia.getTituloNoticia());
 
-			if (noticiaBD != null) {
-				resultado = CodigosMensajes.NOTICIA_YA_EXISTE + " - " + Mensajes.NOTICIA_YA_EXISTE;
-			} else {
+			if (noticiaBD == null) {
+
 				final java.util.Date fechaActual = new Date();
 				noticia.setFechaNoticia(fechaActual);
 				noticiasRepository.saveAndFlush(noticia);
 				resultado = CodigosMensajes.GUARDAR_NOTICIA_CORRECTO + " - " + Mensajes.NOTICIA_GUARDADA_CORRECTAMENTE;
+
+				final NoticiasEntity noticiaBDNueva = noticiasRepository
+						.findByTituloNoticia(noticia.getTituloNoticia());
+
+				noticiasRepository.deleteNoticia(noticiaBDNueva.getIdNoticia());
+			}
+		}
+
+		return resultado;
+	}
+
+	private String guardarNoticiaYaExiste(final NoticiasEntity noticia) {
+		String resultado = StringUtils.EMPTY;
+
+		final java.util.Date fechaActual = new Date();
+		noticia.setFechaNoticia(fechaActual);
+		noticiasRepository.saveAndFlush(noticia);
+
+		if (!validaciones.comprobarTituloNoticiaBlank(noticia.getTituloNoticia())
+				&& !validaciones.comprobarTextoNoticiaBlank(noticia.getTextoNoticia())) {
+			resultado = CodigosMensajes.NOTICIA_VACIA + " - " + Mensajes.NOTICIA_NO_PUEDE_SER_VACIA;
+		} else if (!validaciones.comprobarTituloNoticiaBlank(noticia.getTituloNoticia())) {
+			resultado = CodigosMensajes.TITULO_NOTICIA_VACIO + " - " + Mensajes.TITULO_NOTICIA_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarTextoNoticiaBlank(noticia.getTextoNoticia())) {
+			resultado = CodigosMensajes.TEXTO_NOTICIA_VACIO + " - " + Mensajes.TEXTO_NOTICIA_NO_PUEDE_SER_VACIO;
+		} else {
+			final NoticiasEntity noticiaBD = noticiasRepository.findByTituloNoticia(noticia.getTituloNoticia());
+
+			if (noticiaBD != null) {
+				resultado = CodigosMensajes.NOTICIA_YA_EXISTE + " - " + Mensajes.NOTICIA_YA_EXISTE;
 
 				final NoticiasEntity noticiaBDNueva = noticiasRepository
 						.findByTituloNoticia(noticia.getTituloNoticia());

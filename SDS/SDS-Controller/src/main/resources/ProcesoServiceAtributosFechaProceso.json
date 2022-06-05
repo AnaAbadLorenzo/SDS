@@ -1,0 +1,57 @@
+{
+	"fechaProcesoVacia" : {
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoAcentos" : {
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022-06-áá",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoEnhe" : {
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022-06-ññ",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoCaracteresEspeciales" : {
+		"idProceso" : "",
+		"nombreProceso" : "",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "@@@@-06-03",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoMenor8" : {
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoMayor8" : {
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022-06-032",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoNumericoCorrecto" : {
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	}
+}

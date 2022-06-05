@@ -16,6 +16,7 @@ import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
+import com.sds.model.ProcesoEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
@@ -407,9 +408,18 @@ public class Validaciones {
 	}
 
 	public boolean comprobarProcedimientoBlank(final ProcedimientoEntity procedimientoEntity) throws ParseException {
+		Boolean esBlanco = Boolean.FALSE;
+		if (procedimientoEntity.getCheckUsuario() == null) {
+			esBlanco = Boolean.TRUE;
+		} else {
+			if (StringUtils.isBlank(procedimientoEntity.getCheckUsuario().toString())) {
+				esBlanco = Boolean.TRUE;
+			} else {
+				esBlanco = Boolean.FALSE;
+			}
+		}
 		if (StringUtils.isBlank(procedimientoEntity.getNombreProcedimiento())
-				|| StringUtils.isBlank(procedimientoEntity.getDescripProcedimiento())
-				|| StringUtils.isBlank(procedimientoEntity.getCheckUsuario().toString())) {
+				|| StringUtils.isBlank(procedimientoEntity.getDescripProcedimiento()) || esBlanco) {
 			return false;
 		} else {
 			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -451,6 +461,48 @@ public class Validaciones {
 
 	public boolean comprobarCheckUsuarioBlank(final Boolean checkUsuario) {
 		if (StringUtils.isBlank(checkUsuario.toString())) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarProcesoBlank(final ProcesoEntity procesoEntity) throws ParseException {
+		if (StringUtils.isBlank(procesoEntity.getNombreProceso())
+				|| StringUtils.isBlank(procesoEntity.getDescripProceso())) {
+			return false;
+		} else {
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = formato.parse("0000-00-00");
+			if (procesoEntity.getFechaProceso().equals(date)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean comprobarNombreProcesoBlank(final String nombreProceso) {
+		if (StringUtils.isBlank(nombreProceso)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarDescripProcesoBlank(final String descripProceso) {
+		if (StringUtils.isBlank(descripProceso)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public boolean comprobarFechaProcesoBlank(final Date fechaProceso) throws ParseException {
+		final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = null;
+		date = formato.parse("0000-00-00");
+		if (fechaProceso.equals(date)) {
 			return false;
 		} else {
 			return true;

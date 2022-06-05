@@ -295,6 +295,7 @@ public class PlanServiceTest {
 	public void PlanService_guardarPlanYaExiste() throws IOException, ParseException, LogAccionesNoGuardadoException,
 			LogExcepcionesNoGuardadoException, java.text.ParseException, PlanYaExisteException,
 			FechaAnteriorFechaActualException, ObjetivoNoExisteException {
+		String fechaActualString = StringUtils.EMPTY;
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.PLAN_YA_EXISTE);
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
@@ -310,8 +311,13 @@ public class PlanServiceTest {
 					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.PLAN_YA_EXISTE_EXCEPTION.getCodigo()));
 		} finally {
 			final LocalDate fechaActual = LocalDate.now();
-			final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-					+ fechaActual.getDayOfMonth();
+			if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+						+ fechaActual.getDayOfMonth();
+			} else {
+				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+						+ fechaActual.getDayOfMonth();
+			}
 			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
 					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
 			final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getPlan().getNombrePlan(),
@@ -443,15 +449,23 @@ public class PlanServiceTest {
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			PlanYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException, PlanNoExisteException,
 			ObjetivoNoExisteException {
+		String fechaActualString = StringUtils.EMPTY;
+
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA,
 				Constantes.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL);
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripción objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		plan.getPlan().setObjetivo(objetivo);
 		final Date fechaAnteriorActual = plan.getPlan().getFechaPlan();
-		final LocalDate fecha = LocalDate.now();
+		final LocalDate fechaActual = LocalDate.now();
 		plan.getPlan().setFechaPlan(new Date());
-		final String fechaActualString = fecha.getYear() + "-0" + fecha.getMonthValue() + "-" + fecha.getDayOfMonth();
+		if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+			fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+					+ fechaActual.getDayOfMonth();
+		} else {
+			fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+					+ fechaActual.getDayOfMonth();
+		}
 
 		planService.anadirPlan(plan);
 
@@ -470,11 +484,8 @@ public class PlanServiceTest {
 		} finally {
 			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
 					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
-			final LocalDate fechaActual = LocalDate.now();
-			final String fechaPlan = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-					+ fechaActual.getDayOfMonth();
 			final List<PlanEntity> planEliminar = planRepository.findPlan(plan.getPlan().getNombrePlan(),
-					plan.getPlan().getDescripPlan(), fechaPlan, plan.getPlan().getObjetivo());
+					plan.getPlan().getDescripPlan(), fechaActualString, plan.getPlan().getObjetivo());
 			planRepository.deletePlan(planEliminar.get(0).getIdPlan());
 			objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
 		}
@@ -523,9 +534,8 @@ public class PlanServiceTest {
 	}
 
 	@Test(expected = PlanNoExisteException.class)
-	public void ObjetivoService_eliminarPlanNoExiste()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			java.text.ParseException, PlanNoExisteException {
+	public void PlanService_eliminarPlanNoExiste() throws IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, java.text.ParseException, PlanNoExisteException {
 
 		final Plan plan = generatePlan(Constantes.URL_JSON_PLAN_DATA, Constantes.PLAN_NO_EXISTE);
 

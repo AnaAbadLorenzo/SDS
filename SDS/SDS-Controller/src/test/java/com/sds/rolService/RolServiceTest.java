@@ -169,11 +169,22 @@ public class RolServiceTest {
 
 	@Test(expected = RolYaExisteException.class)
 	public void RolService_guardarRolRolYaExiste() throws RolYaExisteException, IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolNoExisteException {
 
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA, Constantes.ROL_YA_EXISTE);
 
 		rolService.guardarRol(rol);
+
+		try {
+			rolService.guardarRol(rol);
+		} catch (final RolYaExisteException respuestaPosibleYaExisteException) {
+			throw new RolYaExisteException(CodeMessageErrors.ROL_YA_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ROL_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+			final ReturnBusquedas<RolEntity> rolDelete = rolService.buscarRol(rol.getRol().getRolName(),
+					rol.getRol().getRolDescription(), 0, 1);
+			rolService.deleteRol(new Rol(rol.getUsuario(), rolDelete.getListaBusquedas().get(0)));
+		}
 
 	}
 

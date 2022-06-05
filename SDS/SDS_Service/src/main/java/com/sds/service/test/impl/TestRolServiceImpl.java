@@ -347,7 +347,7 @@ public class TestRolServiceImpl implements TestRolService {
 
 	private DatosPruebaAcciones getTestGuardarRolYaExiste(final RolEntity datosEntradaRolGuardarRolYaExiste) {
 
-		final String resultadoObtenido = guardarRol(datosEntradaRolGuardarRolYaExiste);
+		final String resultadoObtenido = guardarRolYaExiste(datosEntradaRolGuardarRolYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.GUARDAR_ROL_YA_EXISTE + " - " + Mensajes.GUARDAR_ROL_YA_EXISTE;
 
@@ -479,7 +479,7 @@ public class TestRolServiceImpl implements TestRolService {
 		final String resultadoEsperado = CodigosMensajes.ROL_NO_EXISTE + " - " + Mensajes.ROL_NO_EXISTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ROL_NO_EXISTE, Constantes.EXITO, getValorRol(datosEntradaAccionReactivarRolNoExiste));
+				DefinicionPruebas.ROL_NO_EXISTE, Constantes.ERROR, getValorRol(datosEntradaAccionReactivarRolNoExiste));
 
 	}
 
@@ -513,9 +513,34 @@ public class TestRolServiceImpl implements TestRolService {
 
 				final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
 				rolRepository.deleteRol(rolBD.getIdRol());
+			}
 
-			} else {
+		}
+
+		return resultado;
+	}
+
+	private String guardarRolYaExiste(final RolEntity rol) {
+		String resultado = StringUtils.EMPTY;
+		rolRepository.saveAndFlush(rol);
+
+		if (!validaciones.comprobarNombreRolBlank(rol.getRolName())
+				&& !validaciones.comprobarDescriptionRolBlank(rol.getRolDescription())) {
+			resultado = CodigosMensajes.ROL_VACIO + " - " + Mensajes.ROL_VACIO;
+		} else if (!validaciones.comprobarNombreRolBlank(rol.getRolName())) {
+			resultado = CodigosMensajes.ROL_NAME_VACIO + " - " + Mensajes.ROL_NAME_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarDescriptionRolBlank(rol.getRolDescription())) {
+			resultado = CodigosMensajes.ROL_DESCRIPTION_VACIO + " - " + Mensajes.ROL_DESCRIPTION_NO_PUEDE_SER_VACIO;
+
+		} else {
+			final RolEntity rolUsuario = rolRepository.findByRolName(rol.getRolName());
+
+			if (rolUsuario != null) {
 				resultado = CodigosMensajes.GUARDAR_ROL_YA_EXISTE + " - " + Mensajes.GUARDAR_ROL_YA_EXISTE;
+
+				final RolEntity rolBD = rolRepository.findByRolName(rol.getRolName());
+				rolRepository.deleteRol(rolBD.getIdRol());
+
 			}
 
 		}

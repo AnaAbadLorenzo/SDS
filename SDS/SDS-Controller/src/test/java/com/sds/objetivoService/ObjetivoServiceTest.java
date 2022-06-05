@@ -155,6 +155,18 @@ public class ObjetivoServiceTest {
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.OBJETIVO_YA_EXISTE);
 
 		objetivoService.anadirObjetivo(objetivo);
+
+		try {
+			objetivoService.anadirObjetivo(objetivo);
+		} catch (final ObjetivoYaExisteException objetivoYaExisteException) {
+			throw new ObjetivoYaExisteException(CodeMessageErrors.OBJETIVO_YA_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+
+			final ReturnBusquedas<ObjetivoEntity> objetivoDelete = objetivoService.buscarObjetivo(
+					objetivo.getObjetivo().getNombreObjetivo(), objetivo.getObjetivo().getNombreObjetivo(), 0, 1);
+			objetivoService.deleteObjetivo(objetivoDelete.getListaBusquedas().get(0));
+		}
 	}
 
 	@Test

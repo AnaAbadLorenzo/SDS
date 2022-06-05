@@ -4,7 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
@@ -16,8 +18,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.sds.app.SDSApplication;
+import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoRespuestaPosibleEntity;
 import com.sds.model.RespuestaPosibleEntity;
+import com.sds.repository.ProcesoRepository;
 import com.sds.repository.ProcesoRespuestaPosibleRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
@@ -45,6 +49,9 @@ public class RespuestaPosibleServiceTest {
 	@Autowired
 	ProcesoRespuestaPosibleRepository procesoRespuestaPosibleRepository;
 
+	@Autowired
+	ProcesoRepository procesoRepository;
+
 	@Test
 	public void RespuestaPosibleService_buscarRespuestaPosible()
 			throws IOException, ParseException, java.text.ParseException {
@@ -65,34 +72,6 @@ public class RespuestaPosibleServiceTest {
 
 		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
 				Constantes.TEXTO_RESPUESTA_POSIBLE_VACIO);
-		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
-
-		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(), 0, 1);
-
-		assertNotNull(respuestaPosibleEncontrada.getListaBusquedas());
-	}
-
-	@Test
-	public void RespuestaPosibleService_buscarRespuestaPosibleFechaRespuestaVacio()
-			throws IOException, ParseException, java.text.ParseException {
-
-		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
-				Constantes.FECHA_RESPUESTA_POSIBLE_VACIA);
-		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
-
-		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
-				.buscarRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta(), 0, 1);
-
-		assertNotNull(respuestaPosibleEncontrada.getListaBusquedas());
-	}
-
-	@Test
-	public void RespuestaPosibleService_buscarRespuestaPosibleDatosRespuestaPosibleVacio()
-			throws IOException, ParseException, java.text.ParseException {
-
-		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
-				Constantes.DATOS_RESPUESTA_POSIBLE_VACIA);
 		final RespuestaPosibleEntity respuestaPosibleEntity = respuestaPosible.getRespuestaPosibleEntity();
 
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleService
@@ -138,12 +117,24 @@ public class RespuestaPosibleServiceTest {
 	@Test(expected = RespuestaPosibleYaExisteException.class)
 	public void RespuestaPosibleService_guardarRespuestaPosibleYaExiste()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			java.text.ParseException, RespuestaPosibleYaExisteException {
+			java.text.ParseException, RespuestaPosibleYaExisteException, RespuestaPosibleNoExisteException {
 
 		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
 				Constantes.RESPUESTA_POSIBLE_YA_EXISTE);
 
 		respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
+
+		try {
+			respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
+		} catch (final RespuestaPosibleYaExisteException respuestaPosibleYaExisteException) {
+			throw new RespuestaPosibleYaExisteException(
+					CodeMessageErrors.RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION.getCodigo(), CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+			final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleDelete = respuestaPosibleService
+					.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
+			respuestaPosibleService.deleteRespuestaPosible(respuestaPosibleDelete.getListaBusquedas().get(0));
+		}
 	}
 
 	@Test
@@ -230,25 +221,52 @@ public class RespuestaPosibleServiceTest {
 			java.text.ParseException, RespuestaPosibleYaExisteException, RespuestaPosibleNoExisteException,
 			RespuestaPosibleAsociadaProcesoException {
 
+		String fechaProcesoString = StringUtils.EMPTY;
+
 		final RespuestaPosible respuestaPosible = generateRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
 				Constantes.RESPUESTA_POSIBLE_ASOCIADA_PROCESO);
 
 		respuestaPosibleService.anadirRespuestaPosible(respuestaPosible);
 
+		final ProcesoEntity proceso = new ProcesoEntity("Nombre proceso", "Descrip proceso", new Date(), 0);
+		procesoRepository.saveAndFlush(proceso);
+
+		final LocalDate fechaActualProceso = LocalDate.now();
+
+		if (CommonUtilities.countDigit(fechaActualProceso.getDayOfMonth()) == 1) {
+			fechaProcesoString = fechaActualProceso.getYear() + "-0" + fechaActualProceso.getMonthValue() + "-0"
+					+ fechaActualProceso.getDayOfMonth();
+		} else {
+			fechaProcesoString = fechaActualProceso.getYear() + "-0" + fechaActualProceso.getMonthValue() + "-"
+					+ fechaActualProceso.getDayOfMonth();
+		}
+
 		final ReturnBusquedas<RespuestaPosibleEntity> respuestaPosibleAsociarProceso = respuestaPosibleService
 				.buscarRespuestaPosible(respuestaPosible.getRespuestaPosibleEntity().getTextoRespuesta(), 0, 1);
 
-		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(1,
+		final List<ProcesoEntity> procesoBuscado = procesoRepository.findProceso(proceso.getNombreProceso(),
+				proceso.getDescripProceso(), fechaProcesoString);
+
+		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(
+				procesoBuscado.get(0).getIdProceso(),
 				respuestaPosibleAsociarProceso.getListaBusquedas().get(0).getIdRespuesta(), new Date());
+
 		procesoRespuestaPosibleRepository.saveAndFlush(procesoRespuestaPosible);
 
-		respuestaPosibleService.eliminarRespuestaPosible(new RespuestaPosible(respuestaPosible.getUsuario(),
-				respuestaPosibleAsociarProceso.getListaBusquedas().get(0)));
-
-		procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(procesoRespuestaPosible.getIdRespuesta(),
-				procesoRespuestaPosible.getIdProceso());
-
-		respuestaPosibleService.deleteRespuestaPosible(respuestaPosibleAsociarProceso.getListaBusquedas().get(0));
+		try {
+			respuestaPosibleService.eliminarRespuestaPosible(new RespuestaPosible(respuestaPosible.getUsuario(),
+					respuestaPosibleAsociarProceso.getListaBusquedas().get(0)));
+		} catch (final RespuestaPosibleAsociadaProcesoException respuestaPosibleAsociadaProcesoException) {
+			throw new RespuestaPosibleAsociadaProcesoException(
+					CodeMessageErrors.RESPUESTA_POSIBLE_ASOCIADA_PROCESO.getCodigo(), CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.RESPUESTA_POSIBLE_ASOCIADA_PROCESO.getCodigo()));
+		} finally {
+			procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(
+					respuestaPosibleAsociarProceso.getListaBusquedas().get(0).getIdRespuesta(),
+					procesoBuscado.get(0).getIdProceso());
+			procesoRepository.deleteProceso(procesoBuscado.get(0).getIdProceso());
+			respuestaPosibleService.deleteRespuestaPosible(respuestaPosibleAsociarProceso.getListaBusquedas().get(0));
+		}
 
 	}
 

@@ -64,6 +64,21 @@ public class ValidacionesAtributosEspacios {
 
 		}
 
+		if (atr.equals(Atributo.FECHA_PROCESO)) {
+			final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+			Date fecha;
+			java.sql.Date fechaSql = null;
+
+			fecha = format.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+			if (atributo.equals(fechaSql.toString())) {
+				resultado = CodigosMensajes.FECHA_PROCESO_NUMERICA_INCORRECTA + " - "
+						+ Mensajes.FECHA_PROCESO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS;
+
+			}
+
+		}
+
 		if (atributo.contains(Constantes.ESPACIO)) {
 			switch (funcionalidad) {
 			case LOGIN:

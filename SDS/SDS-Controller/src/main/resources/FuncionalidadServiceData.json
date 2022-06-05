@@ -30,57 +30,57 @@
 	"funcionalidadNoExiste": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva no existe",
+		"descripFuncionalidad": "Nueva no existe",
 		"borradoFuncionalidad": 0
 	},
 	"guardarFuncionalidadCorrecto": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva funcionalidad para guardar",
+		"descripFuncionalidad": "Nueva no existe",
 		"borradoFuncionalidad": 0
 	},
 	"funcionalidadYaExiste": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Gestión de usuarios",
-		"descripFuncionalidad": "Permite realizar acciones sobre los usuarios de la aplicación",
+		"nombreFuncionalidad": "Funcionalidad ya existe",
+		"descripFuncionalidad": "Esta funcionalidad ya existe",
 		"borradoFuncionalidad": 0
 	},
 	"modificarFuncionalidad": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva funcionalidad para modificar",
+		"descripFuncionalidad": "Nueva funcionalidad para modificar",
 		"borradoFuncionalidad": 0
 	},
 	"eliminarFuncionalidad": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva funcionalidad para eliminar",
+		"descripFuncionalidad": "Nueva funcionalidad para eliminar",
 		"borradoFuncionalidad": 0
 	},
 	"eliminarFuncionalidadNoExiste": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva funcionalidad no existe",
+		"descripFuncionalidad": "Nueva funcionalidad no existe",
 		"borradoFuncionalidad": 0
 	},
 	"eliminarFuncionalidadAsociadaRolAccion":{
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva funcionalidad asociada rol accion",
+		"descripFuncionalidad": "Nueva funcionalidad asociada rol accion",
 		"borradoFuncionalidad": 0
 	},
 	"reactivarFuncionalidadCorrecto": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "Nueva",
-		"descripFuncionalidad": "Nueva",
+		"nombreFuncionalidad": "Nueva funcionalidad reactivar",
+		"descripFuncionalidad": "Nueva funcionalidad reactivar",
 		"borradoFuncionalidad": 1
 	}
 }

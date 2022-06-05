@@ -12,11 +12,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "procedimientousuario")
+@NamedQueries({
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByProcedimiento", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.procedimiento =: procedimiento"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND LOWER(p.usuario) LIKE LOWER(CONCAT('%', :usuario, '%')) AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0") })
 public class ProcedimientoUsuarioEntity {
 
 	@Id
@@ -56,6 +61,17 @@ public class ProcedimientoUsuarioEntity {
 		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
 		this.fechaProcedimientoUsuario = fechaProcedimientoUsuario;
 		this.borradoProcedimientoUsuario = borradoProcedimientoUsuario;
+	}
+
+	public ProcedimientoUsuarioEntity(final Integer puntuacionProcedimientoUsuario,
+			final Date fechaProcedimientoUsuario, final Integer borradoProcedimientoUsuario,
+			final ProcedimientoEntity procedimiento, final UsuarioEntity usuario) {
+		super();
+		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
+		this.fechaProcedimientoUsuario = fechaProcedimientoUsuario;
+		this.borradoProcedimientoUsuario = borradoProcedimientoUsuario;
+		this.procedimiento = procedimiento;
+		this.usuario = usuario;
 	}
 
 	public Integer getIdProcedimientoUsuario() {

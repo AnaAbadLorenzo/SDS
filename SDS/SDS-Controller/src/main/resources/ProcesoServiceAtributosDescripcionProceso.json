@@ -1,0 +1,34 @@
+{
+	"descripcionProcesoVacio" : {
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	},
+	
+	"descripcionProcesoCaracteresEspeciales" : {
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "@@@**",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	},
+	
+	"descripcionProcesoMenor3" : {
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "Es",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	},
+	
+	"descripcionProcesoAlfanumericoCorrecto" : {
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "Este es el proceso,el primero",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	}
+	
+}

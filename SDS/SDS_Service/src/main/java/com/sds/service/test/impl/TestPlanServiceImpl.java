@@ -20,6 +20,7 @@ import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
 import com.sds.service.common.CodigosMensajes;
+import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
@@ -383,7 +384,7 @@ public class TestPlanServiceImpl implements TestPlanService {
 	private DatosPruebaAcciones getTestGuardarPlanYaExiste(final PlanEntity datosEntradaAccionGuardarPlanYaExiste)
 			throws java.text.ParseException {
 
-		final String resultadoObtenido = guardarPlan(datosEntradaAccionGuardarPlanYaExiste);
+		final String resultadoObtenido = guardarPlanYaExiste(datosEntradaAccionGuardarPlanYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.PLAN_YA_EXISTE + " - " + Mensajes.PLAN_YA_EXISTE;
 
@@ -641,6 +642,7 @@ public class TestPlanServiceImpl implements TestPlanService {
 
 	private String guardarPlan(final PlanEntity plan) throws java.text.ParseException {
 		String resultado = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
 
 		if (!validaciones.comprobarNombrePlanBlank(plan.getNombrePlan())
 				&& !validaciones.comprobarDescripPlanBlank(plan.getDescripPlan())
@@ -655,13 +657,18 @@ public class TestPlanServiceImpl implements TestPlanService {
 		} else {
 			final PlanEntity planBD = planRepository.findPlanByName(plan.getNombrePlan());
 
-			if (planBD != null) {
-				resultado = CodigosMensajes.PLAN_YA_EXISTE + " - " + Mensajes.PLAN_YA_EXISTE;
-			} else {
+			if (planBD == null) {
+
 				final LocalDate fechaActual = LocalDate.now();
 				final String fechaIntroducidaUsuario = plan.getFechaPlan().toString();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
+
+				if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+							+ fechaActual.getDayOfMonth();
+				} else {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+							+ fechaActual.getDayOfMonth();
+				}
 
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 					resultado = CodigosMensajes.FECHA_INTRODUCIDA_MENOR_FECHA_ACTUAL + " - "
@@ -689,8 +696,47 @@ public class TestPlanServiceImpl implements TestPlanService {
 		return resultado;
 	}
 
+	private String guardarPlanYaExiste(final PlanEntity plan) throws java.text.ParseException {
+		String resultado = StringUtils.EMPTY;
+		plan.setBorradoPlan(0);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+
+		if (!validaciones.comprobarNombrePlanBlank(plan.getNombrePlan())
+				&& !validaciones.comprobarDescripPlanBlank(plan.getDescripPlan())
+				&& !validaciones.comprobarFechaPlanBlank(plan.getFechaPlan())) {
+			resultado = CodigosMensajes.PLAN_VACIO + " - " + Mensajes.PLAN_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarNombrePlanBlank(plan.getNombrePlan())) {
+			resultado = CodigosMensajes.NOMBRE_PLAN_VACIO + " - " + Mensajes.NOMBRE_PLAN_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarDescripPlanBlank(plan.getDescripPlan())) {
+			resultado = CodigosMensajes.DESCRIPCION_PLAN_VACIO + " - " + Mensajes.DESCRIPCION_PLAN_NO_PUEDE_SER_VACIA;
+		} else if (!validaciones.comprobarFechaPlanBlank(plan.getFechaPlan())) {
+			resultado = CodigosMensajes.FECHA_PLAN_VACIA + " - " + Mensajes.FECHA_PLAN_NO_PUEDE_SER_VACIA;
+		} else {
+			final PlanEntity planBD = planRepository.findPlanByName(plan.getNombrePlan());
+
+			if (planBD != null) {
+				resultado = CodigosMensajes.PLAN_YA_EXISTE + " - " + Mensajes.PLAN_YA_EXISTE;
+
+				final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+				final ObjetivoEntity objetivoBDNuevo = objetivoRepository
+						.findObjetivoByName(objetivo.getNombreObjetivo());
+
+				planRepository.delete(planBDNuevo);
+				objetivoRepository.delete(objetivoBDNuevo);
+
+			}
+		}
+
+		return resultado;
+
+	}
+
 	private String modificarPlan(final PlanEntity plan) throws java.text.ParseException {
 		String resultado = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
 		Boolean modificar = Boolean.FALSE;
 
 		if (!validaciones.comprobarNombrePlanBlank(plan.getNombrePlan())
@@ -714,8 +760,13 @@ public class TestPlanServiceImpl implements TestPlanService {
 
 			final LocalDate fechaActual = LocalDate.now();
 			final String fechaIntroducidaUsuario = plan.getFechaPlan().toString();
-			final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-					+ fechaActual.getDayOfMonth();
+			if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+						+ fechaActual.getDayOfMonth();
+			} else {
+				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+						+ fechaActual.getDayOfMonth();
+			}
 
 			if (!fechaIntroducidaUsuario.equals(planBD.getFechaPlan().toString())) {
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {

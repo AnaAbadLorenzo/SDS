@@ -564,3 +564,117 @@ async function testObjetivo(accion, tipoTest){
       cargarModalErroresTest(res.code);
   });
 }
+
+/*Función que obtiene los test respuestas posibles */
+async function testRespuestasPosibles(accion, tipoTest){
+  
+  var url = "";
+  var code = "";
+
+  switch(tipoTest){
+    case 'Atributos':
+      code = 'TEST_ATRIBUTOS_RESPUESTA_POSIBLE_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestRespuestaPosibleAtributosAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestRespuestaPosibleAtributosAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestRespuestaPosibleAtributosAccionModificar;
+        break;
+      }
+    break;
+    case 'Acciones':
+      code = 'TEST_ACCIONES_RESPUESTA_POSIBLE_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestRespuestasPosiblesAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestRespuestasPosiblesAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestRespuestasPosiblesAccionModificar;
+        break;
+        case 'Eliminar':
+          url = urlPeticionAjaxTestRespuestasPosiblesAccionEliminar;
+        break;
+        case 'Reactivar':
+          url = urlPeticionAjaxTestRespuestasPosiblesAccionReactivar;
+        break;
+      }
+    break;
+  }
+
+  await test(url, code)
+  .then((res) => {
+    let idElementoList = ["iconoTestRespuestasPosibles", "iconoTestRespuestasPosibles" + tipoTest, "iconoTestRespuestasPosibles" + tipoTest + accion];
+    if (tipoTest === 'Acciones') {
+      let atributosValor = ["textoRespuesta"];
+      cargarRespuestaOkTest(res.data.datosPruebaAcciones, "cabeceraAccionesRespuestasPosibles" + accion, "cuerpoAccionesRespuestasPosibles" + accion, atributosValor, "Respuestas Posibles", idElementoList, "acciones");
+    } else if (tipoTest === 'Atributos'){
+      cargarRespuestaOkTest(res.data.datosPruebaAtributos, "cabeceraAtributosRespuestasPosibles" + accion, "cuerpoAtributosRespuestasPosibles" + accion, "", "", idElementoList, "atributos");
+    }
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+/*Función que obtiene los test planes */
+async function testPlan(accion, tipoTest){
+  
+  var url = "";
+  var code = "";
+
+  switch(tipoTest){
+    case 'Atributos':
+      code = 'TEST_ATRIBUTOS_PLAN_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestPlanAtributosAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestPlanAtributosAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestPlanAtributosAccionModificar;
+        break;
+      }
+    break;
+    case 'Acciones':
+      code = 'TEST_ACCIONES_PLAN_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestPlanAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestPlanAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestPlanAccionModificar;
+        break;
+        case 'Eliminar':
+          url = urlPeticionAjaxTestPlanAccionEliminar;
+        break;
+        case 'Reactivar':
+          url = urlPeticionAjaxTestPlanAccionReactivar;
+        break;
+      }
+    break;
+  }
+
+  await test(url, code)
+  .then((res) => {
+    let idElementoList = ["iconoTestPlan", "iconoTestPlan" + tipoTest, "iconoTestPlan" + tipoTest + accion];
+    if (tipoTest === 'Acciones') {
+      let atributosValor = ["nombrePlan", "descripPlan", "fechaPlan"];
+      cargarRespuestaOkTest(res.data.datosPruebaAcciones, "cabeceraAccionesPlan" + accion, "cuerpoAccionesPlan" + accion, atributosValor, "Plan", idElementoList, "acciones");
+    } else if (tipoTest === 'Atributos'){
+      cargarRespuestaOkTest(res.data.datosPruebaAtributos, "cabeceraAtributosPlan" + accion, "cuerpoAtributosPlan" + accion, "", "", idElementoList, "atributos");
+    }
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}

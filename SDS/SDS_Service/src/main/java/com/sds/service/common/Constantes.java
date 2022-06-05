@@ -95,6 +95,12 @@ public class Constantes {
 	public static final String ACCION_ELIMINAR_PROCEDIMIENTO = "Eliminar procedimiento";
 	public static final String ACCION_REACTIVAR_PROCEDIMIENTO = "Reactivar procedimiento";
 
+	public static final String ACCION_AÑADIR_PROCESO = "Añadir proceso";
+	public static final String ACCION_MODIFICAR_PROCESO = "Modificar proceso";
+	public static final String ACCION_BUSCAR_PROCESO = "Buscar proceso";
+	public static final String ACCION_ELIMINAR_PROCESO = "Eliminar proceso";
+	public static final String ACCION_REACTIVAR_PROCESO = "Reactivar proceso";
+
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";
@@ -183,7 +189,6 @@ public class Constantes {
 
 	public static final String RESPUESTA_POSIBLE_ID = "idRespuesta";
 	public static final String TEXTO_RESPUESTA_POSIBLE = "textoRespuesta";
-	public static final String FECHA_RESPUESTA_POSIBLE = "fechaRespuesta";
 
 	public static final String PLAN = "plan";
 	public static final String PLAN_ID = "idPlan";
@@ -196,6 +201,11 @@ public class Constantes {
 	public static final String DESCRIPCION_PROCEDIMIENTO = "descripProcedimiento";
 	public static final String FECHA_PROCEDIMIENTO = "fechaProcedimiento";
 	public static final String CHECK_USUARIO = "checkUsuario";
+
+	public static final String PROCESO_ID = "idProceso";
+	public static final String NOMBRE_PROCESO = "nombreProceso";
+	public static final String DESCRIP_PROCESO = "descripProceso";
+	public static final String FECHA_PROCESO = "fechaProcedimiento";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -264,6 +274,10 @@ public class Constantes {
 	public static final String URL_JSON_PROCEDIMIENTO_ATRIBUTOS_DESCRIPCION_PROCEDIMIENTO = "classpath:ProcedimientoServiceAtributosDescripcionProcedimiento.json";
 	public static final String URL_JSON_PROCEDIMIENTO_ATRIBUTOS_FECHA_PROCEDIMIENTO = "classpath:ProcedimientoServiceAtributosFechaProcedimiento.json";
 	public static final String URL_JSON_PROCEDIMIENTO_DATA = "classpath:ProcedimientoServiceData.json";
+	public static final String URL_JSON_PROCESO_ATRIBUTOS_NOMBRE_PROCESO = "classpath:ProcesoServiceAtributosNombreProceso.json";
+	public static final String URL_JSON_PROCESO_ATRIBUTOS_DESCRIPCION_PROCESO = "classpath:ProcesoServiceAtributosDescripcionProceso.json";
+	public static final String URL_JSON_PROCESO_ATRIBUTOS_FECHA_PROCESO = "classpath:ProcesoServiceAtributosFechaProceso.json";
+	public static final String URL_JSON_PROCESO_DATA = "classpath:ProcesoServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -559,10 +573,6 @@ public class Constantes {
 	public static final String TEXTO_RESPUESTA_POSIBLE_NUMERICO = "textoRespuestaPosibleNumerico";
 	public static final String TEXTO_RESPUESTA_POSIBLE_CORRECTO = "textoRespuestaPosibleAlfanumericoCorrecto";
 
-	public static final String FECHA_RESPUESTA_POSIBLE_VACIA = "fechaRespuestaPosibleVacia";
-
-	public static final String DATOS_RESPUESTA_POSIBLE_VACIA = "respuestaPosibleVacia";
-
 	public static final String BUSCAR_RESPUESTA_POSIBLE = "buscarRespuestaPosible";
 	public static final String GUARDAR_RESPUESTA_POSIBLE = "guardarRespuestaPosible";
 	public static final String MODIFICAR_RESPUESTA_POSIBLE = "modificarRespuestaPosible";
@@ -613,6 +623,27 @@ public class Constantes {
 	public static final String FECHA_PROCEDIMIENTO_MAYOR_8 = "fechaProcedimientoMayor8";
 	public static final String FECHA_PROCEDIMIENTO_CORRECTO = "fechaProcedimientoNumericoCorrecto";
 
+	public static final String DATOS_PROCESO_VACIOS = "datosProcesoVacios";
+
+	public static final String NOMBRE_PROCESO_VACIO = "nombreProcesoVacio";
+	public static final String NOMBRE_PROCESO_CARACTERESESPECIALES = "nombreProcesoCaracteresEspeciales";
+	public static final String NOMBRE_PROCESO_MENOR_3 = "nombreProcesoMenor3";
+	public static final String NOMBRE_PROCESO_MAYOR_48 = "nombreProcesoMayor48";
+	public static final String NOMBRE_PROCESO_CORRECTO = "nombreProcesoCorrecto";
+
+	public static final String DESCRIPCION_PROCESO_VACIO = "descripcionProcesoVacio";
+	public static final String DESCRIPCION_PROCESO_CARACTERESESPECIALES = "descripcionProcesoCaracteresEspeciales";
+	public static final String DESCRIPCION_PROCESO_MENOR_3 = "descripcionProcesoMenor3";
+	public static final String DESCRIPCION_PROCESO_CORRECTO = "descripcionProcesoAlfanumericoCorrecto";
+
+	public static final String FECHA_PROCESO_VACIA = "fechaProcesoVacia";
+	public static final String FECHA_PROCESO_ACENTOS = "fechaProcesoAcentos";
+	public static final String FECHA_PROCESO_ENHE = "fechaProcesoEnhe";
+	public static final String FECHA_PROCESO_CARACTERESESPECIALES = "fechaProcesoCaracteresEspeciales";
+	public static final String FECHA_PROCESO_MENOR_8 = "fechaProcesoMenor8";
+	public static final String FECHA_PROCESO_MAYOR_8 = "fechaProcesoMayor8";
+	public static final String FECHA_PROCESO_CORRECTO = "fechaProcesoNumericoCorrecto";
+
 	public static final String CHECK_USUARIO_VACIO = "checkUsuarioVacio";
 
 	public static final String DATOS_PROCEDIMIENTO_VACIOS = "datosProcedimientoVacios";
@@ -633,6 +664,16 @@ public class Constantes {
 	public static final String PROCEDIMIENTO_NO_EXISTE = "procedimientoNoExiste";
 	public static final String ELIMINAR_PROCEDIMIENTO = "eliminarProcedimiento";
 	public static final String REACTIVAR_PROCEDIMIENTO = "reactivarProcedimiento";
+	public static final String PROCEDIMIENTO_ASOCIADO_PROCESO = "procedimientoAsociadoProceso";
+	public static final String PROCEDIMIENTO_ASOCIADO_USUARIO = "procedimientoAsociadoUsuario";
+
+	public static final String BUSCAR_PROCESO = "buscarProceso";
+	public static final String GUARDAR_PROCESO = "guardarProceso";
+	public static final String MODIFICAR_PROCESO = "modificarProceso";
+	public static final String PROCESO_YA_EXISTE = "procesoYaExiste";
+	public static final String PROCESO_NO_EXISTE = "procesoNoExiste";
+	public static final String ELIMINAR_PROCESO = "eliminarProceso";
+	public static final String REACTIVAR_PROCESO = "reactivarProceso";
 
 	public static final String OK = "OK";
 
@@ -719,4 +760,8 @@ public class Constantes {
 	public static final String PROCEDIMIENTO_QUERY_FINDALL = "ProcedimientoEntity.findAllProcedimientos";
 	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO = "ProcedimientoEntity.findProcedimiento";
 	public static final String PROCEDIMIENTO_QUERY_FINDELIMINADOS = "ProcedimientoEntity.findProcedimientosEliminados";
+
+	public static final String PROCESO_QUERY_FINDALL = "ProcesoEntity.findAllProcesos";
+	public static final String PROCESO_QUERY_FINDPROCESO = "ProcesoEntity.findProceso";
+	public static final String PROCESO_QUERY_FINDELIMINADOS = "ProcesoEntity.findProcesosEliminados";
 }

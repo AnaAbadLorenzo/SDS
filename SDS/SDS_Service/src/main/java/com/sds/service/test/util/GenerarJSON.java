@@ -192,22 +192,22 @@ public class GenerarJSON {
 	public AccionEntity generarAccion(final String fichero, final String nombrePrueba)
 			throws IOException, ParseException {
 
-		final JSONObject jsonRolVacio = new Util().getDatosJson(fichero, nombrePrueba);
+		final JSONObject jsonAccionVacio = new Util().getDatosJson(fichero, nombrePrueba);
 
 		final AccionEntity accion = new AccionEntity();
 
-		if (new String((jsonRolVacio.get(Constantes.ACCION_ID).toString()).getBytes("UTF-8"))
+		if (new String((jsonAccionVacio.get(Constantes.ACCION_ID).toString()).getBytes("UTF-8"))
 				.equals(StringUtils.EMPTY)) {
 			accion.setIdAccion(0);
 		} else {
 			accion.setIdAccion(Integer
-					.parseInt(new String((jsonRolVacio.get(Constantes.ACCION_ID).toString()).getBytes("UTF-8"))));
+					.parseInt(new String((jsonAccionVacio.get(Constantes.ACCION_ID).toString()).getBytes("UTF-8"))));
 		}
 		accion.setNombreAccion(CommonUtilities.coalesce(
-				new String((jsonRolVacio.get(Constantes.ACCION_NAME).toString()).getBytes("UTF-8")),
+				new String((jsonAccionVacio.get(Constantes.ACCION_NAME).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
 		accion.setDescripAccion(CommonUtilities.coalesce(
-				new String((jsonRolVacio.get(Constantes.ACCION_DESCRIPTION).toString()).getBytes("UTF-8")),
+				new String((jsonAccionVacio.get(Constantes.ACCION_DESCRIPTION).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
 
 		accion.setBorradoAccion(0);
@@ -464,44 +464,6 @@ public class GenerarJSON {
 		final JSONObject jsonRespuestaPosibleVacia = new Util().getDatosJson(fichero, nombrePrueba);
 
 		final RespuestaPosibleEntity respuestaPosible = new RespuestaPosibleEntity();
-
-		boolean acentos = false;
-		boolean caracEspeciales = false;
-
-		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		final String date = CommonUtilities.coalesce(new String(
-				(jsonRespuestaPosibleVacia.get(Constantes.FECHA_RESPUESTA_POSIBLE).toString()).getBytes("UTF-8")),
-				StringUtils.EMPTY);
-		Date fecha = null;
-		java.sql.Date fechaSql = null;
-
-		for (int i = 0; i < date.length(); i++) {
-
-			final String letra = date.charAt(i) + "";
-
-			final Pattern patronAcentos = Pattern.compile(Constantes.PATRON_ACENTOS);
-			final Matcher comprobacionAcentos = patronAcentos.matcher(letra);
-			final Pattern patronEspeciales = Pattern.compile(Constantes.PATRON_CARACTERES_ESPECIALES);
-			final Matcher comprobacionEspeciales = patronEspeciales.matcher(letra);
-
-			if (comprobacionAcentos.matches()) {
-				acentos = true;
-			}
-
-			if (comprobacionEspeciales.matches()) {
-				caracEspeciales = true;
-			}
-		}
-
-		if (date.equals("") || date.contains(Constantes.ENHE) || acentos || caracEspeciales
-				|| date.contains(Constantes.ESPACIO) || date.length() < 8 || date.length() > 10) {
-			fecha = sdf.parse("0000-00-00");
-			fechaSql = new java.sql.Date(fecha.getTime());
-		} else {
-			fecha = sdf.parse(date);
-			fechaSql = new java.sql.Date(fecha.getTime());
-
-		}
 
 		if (new String((jsonRespuestaPosibleVacia.get(Constantes.RESPUESTA_POSIBLE_ID).toString()).getBytes("UTF-8"))
 				.equals(StringUtils.EMPTY)) {

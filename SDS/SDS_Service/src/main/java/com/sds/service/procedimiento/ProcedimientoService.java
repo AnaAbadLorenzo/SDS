@@ -12,6 +12,8 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoAsociadoProcedimientoException;
+import com.sds.service.exception.UsuarioAsociadoProcedimientoException;
 import com.sds.service.procedimiento.model.Procedimiento;
 
 public interface ProcedimientoService {
@@ -29,7 +31,8 @@ public interface ProcedimientoService {
 			FechaAnteriorFechaActualException, PlanNoExisteException, ParseException;
 
 	String eliminaProcedimiento(final Procedimiento procedimiento)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcedimientoNoExisteException;
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcedimientoNoExisteException,
+			ProcesoAsociadoProcedimientoException, UsuarioAsociadoProcedimientoException;
 
 	String modificarProcedimiento(final Procedimiento procedimiento)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcedimientoNoExisteException,

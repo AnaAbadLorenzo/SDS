@@ -311,7 +311,7 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 	private DatosPruebaAcciones getTestGuardarFuncionalidadYaExiste(
 			final FuncionalidadEntity datosEntradaAccionGuardarFuncionalidadYaExiste) {
 
-		final String resultadoObtenido = guardarFuncionalidad(datosEntradaAccionGuardarFuncionalidadYaExiste);
+		final String resultadoObtenido = guardarFuncionalidadYaExiste(datosEntradaAccionGuardarFuncionalidadYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.FUNCIONALIDAD_YA_EXISTE + " - "
 				+ Mensajes.FUNCIONALIDAD_YA_EXISTE;
@@ -536,12 +536,40 @@ public class TestFuncionalidadServiceImpl implements TestFuncionalidadService {
 			final FuncionalidadEntity funcionalidadBD = funcionalidadRepository
 					.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
 
-			if (funcionalidadBD != null) {
-				resultado = CodigosMensajes.FUNCIONALIDAD_YA_EXISTE + " - " + Mensajes.FUNCIONALIDAD_YA_EXISTE;
-			} else {
+			if (funcionalidadBD == null) {
 				funcionalidadRepository.saveAndFlush(funcionalidad);
 				resultado = CodigosMensajes.GUARDAR_FUNCIONALIDAD_CORRECTO + " - "
 						+ Mensajes.GUARDAR_FUNCIONALIDAD_CORRECTO;
+
+				final FuncionalidadEntity nuevaFuncionalidad = funcionalidadRepository
+						.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+
+				funcionalidadRepository.deleteFuncionalidad(nuevaFuncionalidad.getIdFuncionalidad());
+			}
+		}
+
+		return resultado;
+	}
+
+	private String guardarFuncionalidadYaExiste(final FuncionalidadEntity funcionalidad) {
+		String resultado = StringUtils.EMPTY;
+		funcionalidadRepository.saveAndFlush(funcionalidad);
+
+		if (!validaciones.comprobarNombreFuncionalidadBlank(funcionalidad.getNombreFuncionalidad())
+				&& !validaciones.comprobarDescripcionFuncionalidadBlank(funcionalidad.getDescripFuncionalidad())) {
+			resultado = CodigosMensajes.FUNCIONALIDAD_VACIA + " - " + Mensajes.FUNCIONALIDAD_VACIA;
+		} else if (!validaciones.comprobarNombreFuncionalidadBlank(funcionalidad.getNombreFuncionalidad())) {
+			resultado = CodigosMensajes.FUNCIONALIDAD_NAME_VACIA + " - "
+					+ Mensajes.FUNCIONALIDAD_NAME_NO_PUEDE_SER_VACIA;
+		} else if (!validaciones.comprobarDescripcionFuncionalidadBlank(funcionalidad.getDescripFuncionalidad())) {
+			resultado = CodigosMensajes.FUNCIONALIDAD_DESCRIPTION_VACIA + " - "
+					+ Mensajes.FUNCIONALIDAD_DESCRIPTION_NO_PUEDE_SER_VACIA;
+		} else {
+			final FuncionalidadEntity funcionalidadBD = funcionalidadRepository
+					.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());
+
+			if (funcionalidadBD != null) {
+				resultado = CodigosMensajes.FUNCIONALIDAD_YA_EXISTE + " - " + Mensajes.FUNCIONALIDAD_YA_EXISTE;
 
 				final FuncionalidadEntity nuevaFuncionalidad = funcionalidadRepository
 						.findFuncionalityByName(funcionalidad.getNombreFuncionalidad());

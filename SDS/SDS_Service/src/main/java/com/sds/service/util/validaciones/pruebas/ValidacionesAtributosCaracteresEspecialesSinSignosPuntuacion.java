@@ -51,6 +51,16 @@ public class ValidacionesAtributosCaracteresEspecialesSinSignosPuntuacion {
 					}
 					break;
 
+				case GESTION_PROCESOS:
+					switch (atr) {
+					case DESCRIP_PROCESO:
+						resultado = CodigosMensajes.DESCRIPCION_PROCESO_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.DESCRIPCION_PROCESO_PUEDE_CONTENER_LETRAS_NUMEROS_SIGNOS_PUNTUACION_Y_ESPACIOS;
+						break;
+					default:
+						break;
+					}
+
 				default:
 					break;
 				}

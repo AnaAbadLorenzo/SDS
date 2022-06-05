@@ -169,6 +169,28 @@ public enum RespCode {
 	PROCEDIMIENTO_NO_EXISTE_EXCEPTION("PROCEDIMIENTO_NO_EXISTE_EXCEPTION", "El procedimiento no existe"), //
 	PROCEDIMIENTO_VACIO("PROCEDIMIENTO_VACIO",
 			"El nombre, la descripción, la fecha del procedimiento y/o el check de publicación están vacíos"), //
+	USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION",
+			"El procedimiento tiene usuarios asociados"), //
+	PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION",
+			"El procedimiento tiene procesos asociados"), //
+	PROCESO_ENCONTRADO("PROCESO_ENCONTRADO", "El proceso se ha encontrado correctamente"), //
+	PROCESOS_LISTADOS("PROCESOS_LISTADOS", "Los procesos se han listado correctamente"), //
+	PROCESOS_ELIMINADOS_LISTADOS("PROCESOS_ELIMINADOS_LISTADOS",
+			"Los procesos eliminados se han listado correctamente"), //
+	PROCESO_GUARDADO("PROCESO_GUARDADO", "El proceso se ha guardado correctamente"), //
+	PROCESO_MODIFICADO("PROCESO_MODIFICADO", "El proceso se ha modificado correctamente"), //
+	PROCESO_ELIMINADO("PROCESO_ELIMINADO", "El proceso se ha eliminado correctamente"), //
+	PROCESO_REACTIVADO("PROCESO_REACTIVADO", "El proceso se ha reactivado correctamente"), //
+	PROCESO_BORRADO("PROCESO_BORRADO", "El proceso se ha borrado correctamente"), //
+	PROCESO_YA_EXISTE_EXCEPTION("PROCESO_YA_EXISTE_EXCEPTION", "El proceso ya existe"), //
+	PROCESO_NO_EXISTE_EXCEPTION("PROCESO_NO_EXISTE_EXCEPTION", "El proceso no existe"), //
+	PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION("PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION",
+			"El proceso tiene asociados usuarios y procedimientos"), //
+	PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION("PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION",
+			"El proceso tiene asociadas respuestas posibles"), //
+	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION",
+			"El proceso tiene asociados procedimientos"), //
+	PROCESO_VACIO("PROCESO_VACIO", "El nombre, la descripción y/o la fecha del proceso son vacíos"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",

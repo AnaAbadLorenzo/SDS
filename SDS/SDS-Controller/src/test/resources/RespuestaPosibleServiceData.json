@@ -56,8 +56,8 @@
 	"respuestaPosibleYaExiste" : {
 		"usuario" : "ana",
 		
-		"idRespuesta" : 1,
-		"textoRespuesta" : "Sí",
+		"idRespuesta" : "",
+		"textoRespuesta" : "Respuesta posible ya existe",
 		"borradoRespuesta" : 0
 	},
 	
@@ -65,7 +65,7 @@
 		"usuario" : "ana",
 		
 		"idRespuesta" : "",
-		"textoRespuesta" : "Tal vez",
+		"textoRespuesta" : "Respuesta posible no existe",
 		"borradoRespuesta" : 0
 	},
 	

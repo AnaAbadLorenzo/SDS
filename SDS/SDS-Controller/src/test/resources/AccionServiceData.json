@@ -8,7 +8,7 @@
 	},
 	"accionNameVacio": {
 		"usuario": "ana",
-		"idAccion": 1,
+		"idAccion": "",
 		"nombreAccion": "",
 		"descripAccion": "añadir",
 		"borradoAccion": 0
@@ -23,8 +23,8 @@
 	"guardarAccionCorrecto": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "Accion",
-		"descripAccion": "accion",
+		"nombreAccion": "Accion para guardar",
+		"descripAccion": "Accion para guardar",
 		"borradoAccion": 0
 	},
 	"accionDescriptionVacio": {
@@ -44,29 +44,29 @@
 	"reactivarAccionCorrecto": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "accion",
-		"descripAccion": "Reactivar esta accion",
+		"nombreAccion": "Accion para reactivar",
+		"descripAccion": "Esta es una accion para reactivar",
 		"borradoAccion": 1
 	},
 	"accionYaExiste": {
 		"usuario": "ana",
-		"idAccion": 1,
-		"nombreAccion": "Añadir",
-		"descripAccion": "Añadir",
+		"idAccion": "",
+		"nombreAccion": "Accion ya existe",
+		"descripAccion": "Esta acción ya existe",
 		"borradoAccion": 0
 	},
 	"eliminarAccionNoExiste": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "Accion",
-		"descripAccion": "accion",
+		"nombreAccion": "Accion no existe",
+		"descripAccion": "Esta acción no existe",
 		"borradoAccion": 0
 	},
 	"eliminarAccionAsociadaRolFuncionalidad": {
 		"usuario": "ana",
-		"idAccion": 1,
-		"nombreAccion": "Añadir",
-		"descripAccion": "Añadir",
+		"idAccion": "",
+		"nombreAccion": "Acción asociada a rol y a funcionalidad",
+		"descripAccion": "Esta acción está asociada a un rol y a una funcionalidad",
 		"borradoAccion": 0
 	},
 	"asignarAccionCorrecto": {

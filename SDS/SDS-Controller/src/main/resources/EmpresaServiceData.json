@@ -13,7 +13,7 @@
 	"cifEmpresaVacio": {
 		"usuario":"ana",
 		
-		"idEmpresa":1,
+		"idEmpresa":"",
 		"cifEmpresa":"",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"Prueba",
@@ -23,7 +23,7 @@
 	"nombreEmpresaVacio": {
 		"usuario":"ana",
 		
-		"idEmpresa":1,
+		"idEmpresa":"",
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"",
 		"direccionEmpresa":"Prueba",
@@ -33,7 +33,7 @@
 	"direccionEmpresaVacio": {
 		"usuario":"ana",
 		
-		"idEmpresa":1,
+		"idEmpresa":"",
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"",
@@ -43,7 +43,7 @@
 	"telefonoEmpresaVacio": {
 		"usuario":"ana",
 		
-		"idEmpresa":1,
+		"idEmpresa":"",
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"Prueba",
@@ -65,8 +65,8 @@
 	"empresaYaExiste":{
 		"usuario":"ana",
 		
-		"idEmpresa":1,
-		"cifEmpresa":"J26903286",
+		"idEmpresa":"",
+		"cifEmpresa":"A12121212",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"Prueba",
 		"telefonoEmpresa":"988212121",
@@ -95,9 +95,9 @@
 	"empresaNoExiste":{
 		"usuario":"ana",
 		
-		"idEmpresa":3,
+		"idEmpresa":"",
 		"cifEmpresa":"E98745148",
-		"nombreEmpresa":"Emp",
+		"nombreEmpresa":"Empresa no existe",
 		"direccionEmpresa":"Direccion",
 		"telefonoEmpresa":"988232323",
 		"borradoEmpresa":0

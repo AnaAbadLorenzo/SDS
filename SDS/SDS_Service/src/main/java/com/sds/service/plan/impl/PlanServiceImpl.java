@@ -25,6 +25,7 @@ import com.sds.model.ProcedimientoEntity;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
+import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
@@ -186,6 +187,8 @@ public class PlanServiceImpl implements PlanService {
 		final Boolean planValido = validaciones.comprobarPlanBlank(planEntity);
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String fechaIntroducidaUsuario = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
 
 		if (planValido) {
 			final PlanEntity planBD = planRepository.findPlanByName(planEntity.getNombrePlan());
@@ -208,10 +211,22 @@ public class PlanServiceImpl implements PlanService {
 				final LocalDate fechaActual = LocalDate.now();
 				final LocalDate dateIntroducidaUsuario = plan.getPlan().getFechaPlan().toInstant()
 						.atZone(ZoneId.systemDefault()).toLocalDate();
-				final String fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
-						+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
+				if (CommonUtilities.countDigit(dateIntroducidaUsuario.getDayOfMonth()) == 1) {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-0" + dateIntroducidaUsuario.getDayOfMonth();
+				} else {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
+				}
+
+				if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+							+ fechaActual.getDayOfMonth();
+				} else {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+							+ fechaActual.getDayOfMonth();
+				}
+
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(plan.getUsuario(),
 							CodeMessageErrors.getTipoNameByCodigo(
@@ -360,6 +375,9 @@ public class PlanServiceImpl implements PlanService {
 
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
+		String fechaIntroducidaUsuario = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
+		String fechaPlanString = StringUtils.EMPTY;
 
 		if (planValido) {
 			final Optional<PlanEntity> planBD = planRepository.findById(planEntity.getIdPlan());
@@ -385,12 +403,29 @@ public class PlanServiceImpl implements PlanService {
 						.atZone(ZoneId.systemDefault()).toLocalDate();
 				final LocalDate datePlanBD = planBD.get().getFechaPlan().toInstant().atZone(ZoneId.systemDefault())
 						.toLocalDate();
-				final String fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
-						+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
-				final String fechaPlanString = datePlanBD.getYear() + "-0" + datePlanBD.getMonthValue() + "-"
-						+ datePlanBD.getDayOfMonth();
+				if (CommonUtilities.countDigit(dateIntroducidaUsuario.getDayOfMonth()) == 1) {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-0" + dateIntroducidaUsuario.getDayOfMonth();
+				} else {
+					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
+							+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
+				}
+
+				if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+							+ fechaActual.getDayOfMonth();
+				} else {
+					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+							+ fechaActual.getDayOfMonth();
+				}
+
+				if (CommonUtilities.countDigit(datePlanBD.getDayOfMonth()) == 1) {
+					fechaPlanString = datePlanBD.getYear() + "-0" + datePlanBD.getMonthValue() + "-0"
+							+ datePlanBD.getDayOfMonth();
+				} else {
+					fechaPlanString = datePlanBD.getYear() + "-0" + datePlanBD.getMonthValue() + "-"
+							+ datePlanBD.getDayOfMonth();
+				}
 
 				if (!fechaIntroducidaUsuario.equals(fechaPlanString)) {
 					if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {

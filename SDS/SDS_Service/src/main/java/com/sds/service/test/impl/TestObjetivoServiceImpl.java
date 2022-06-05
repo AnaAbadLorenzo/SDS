@@ -293,7 +293,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 	private DatosPruebaAcciones getTestGuardarObjetivoYaExiste(
 			final ObjetivoEntity datosEntradaAccionGuardarObjetivoYaExiste) {
 
-		final String resultadoObtenido = guardarObjetivo(datosEntradaAccionGuardarObjetivoYaExiste);
+		final String resultadoObtenido = guardarObjetivoYaExiste(datosEntradaAccionGuardarObjetivoYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.OBJETIVO_YA_EXISTE + " - " + Mensajes.OBJETIVO_YA_EXISTE;
 
@@ -419,7 +419,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 				+ Mensajes.OBJETIVO_ELIMINADO_CORRECTAMENTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.ELIMINAR_OBJETIVO_CORRECTO, Constantes.ERROR,
+				DefinicionPruebas.ELIMINAR_OBJETIVO_CORRECTO, Constantes.EXITO,
 				getValorObjetivo(datosEntradaAccionEliminarObjetivo));
 
 	}
@@ -460,7 +460,7 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 				+ Mensajes.OBJETIVO_REACTIVADO_CORRECTAMENTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.REACTIVAR_OBJETIVO_CORRECTO, Constantes.ERROR,
+				DefinicionPruebas.REACTIVAR_OBJETIVO_CORRECTO, Constantes.EXITO,
 				getValorObjetivo(datosEntradaAccionEliminarObjetivo));
 
 	}
@@ -502,13 +502,41 @@ public class TestObjetivoServiceImpl implements TestObjetivoService {
 		} else {
 			final ObjetivoEntity objetivoBD = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 
-			if (objetivoBD != null) {
-				resultado = CodigosMensajes.OBJETIVO_YA_EXISTE + " - " + Mensajes.OBJETIVO_YA_EXISTE;
-			} else {
+			if (objetivoBD == null) {
+
 				objetivo.setBorradoObjetivo(0);
 				objetivoRepository.saveAndFlush(objetivo);
 				resultado = CodigosMensajes.GUARDAR_OBJETIVO_CORRECTO + " - "
 						+ Mensajes.OBJETIVO_GUARDADO_CORRECTAMENTE;
+
+				final ObjetivoEntity objetivoBDNueva = objetivoRepository
+						.findObjetivoByName(objetivo.getNombreObjetivo());
+
+				objetivoRepository.delete(objetivoBDNueva);
+			}
+		}
+
+		return resultado;
+	}
+
+	private String guardarObjetivoYaExiste(final ObjetivoEntity objetivo) {
+		String resultado = StringUtils.EMPTY;
+		objetivo.setBorradoObjetivo(0);
+		objetivoRepository.saveAndFlush(objetivo);
+
+		if (!validaciones.comprobarNombreObjetivoBlank(objetivo.getNombreObjetivo())
+				&& !validaciones.comprobarDescripcionObjetivoBlank(objetivo.getDescripObjetivo())) {
+			resultado = CodigosMensajes.OBJETIVO_VACIO + " - " + Mensajes.OBJETIVO_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarNombreObjetivoBlank(objetivo.getNombreObjetivo())) {
+			resultado = CodigosMensajes.OBJETIVO_NAME_VACIO + " - " + Mensajes.NOMBRE_OBJETIVO_NO_PUEDE_SER_VACIO;
+		} else if (!validaciones.comprobarDescripcionObjetivoBlank(objetivo.getDescripObjetivo())) {
+			resultado = CodigosMensajes.OBJETIVO_DESCRIPTION_VACIO + " - "
+					+ Mensajes.DESCRIPCION_OBJETIVO_NO_PUEDE_SER_VACIO;
+		} else {
+			final ObjetivoEntity objetivoBD = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+
+			if (objetivoBD != null) {
+				resultado = CodigosMensajes.OBJETIVO_YA_EXISTE + " - " + Mensajes.OBJETIVO_YA_EXISTE;
 
 				final ObjetivoEntity objetivoBDNueva = objetivoRepository
 						.findObjetivoByName(objetivo.getNombreObjetivo());

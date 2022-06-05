@@ -1,0 +1,64 @@
+{
+	"fechaProcedimientoVacia" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoAcentos" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-áá",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoEnhe" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-ññ",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoCaracteresEspeciales" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-@@",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoMenor8" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoMayor8" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-3111",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"fechaProcedimientoNumericoCorrecto" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	}
+}

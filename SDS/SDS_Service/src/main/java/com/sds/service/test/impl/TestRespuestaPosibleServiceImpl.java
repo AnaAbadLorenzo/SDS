@@ -1,7 +1,9 @@
 package com.sds.service.test.impl;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,11 +13,14 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoRespuestaPosibleEntity;
 import com.sds.model.RespuestaPosibleEntity;
+import com.sds.repository.ProcesoRepository;
 import com.sds.repository.ProcesoRespuestaPosibleRepository;
 import com.sds.repository.RespuestaPosibleRepository;
 import com.sds.service.common.CodigosMensajes;
+import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
@@ -40,6 +45,9 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 
 	@Autowired
 	ProcesoRespuestaPosibleRepository procesoRespuestaPosibleRepository;
+
+	@Autowired
+	ProcesoRepository procesoRepository;
 
 	public TestRespuestaPosibleServiceImpl() {
 		testAtributoTextoRespuestaPosible = new TestAtributoTextoRespuestaPosible();
@@ -111,16 +119,9 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 				Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA, Constantes.BUSCAR_RESPUESTA_POSIBLE);
 		final RespuestaPosibleEntity datosEntradaBuscarRespuestaPosibleTextoVacio = generarJSON.generarRespuestaPosible(
 				Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA, Constantes.TEXTO_RESPUESTA_POSIBLE_VACIO);
-		final RespuestaPosibleEntity datosEntradaBuscarRespuestaPosibleFechaVacia = generarJSON.generarRespuestaPosible(
-				Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA, Constantes.FECHA_RESPUESTA_POSIBLE_VACIA);
-		final RespuestaPosibleEntity datosEntradaBuscarRespuestaPosibleRespuestaVacia = generarJSON
-				.generarRespuestaPosible(Constantes.URL_JSON_RESPUESTA_POSIBLE_DATA,
-						Constantes.DATOS_RESPUESTA_POSIBLE_VACIA);
 
 		datosPruebaAcciones.add(getTestBuscarRespuestaPosible(datosEntradaBuscarRespuestaPosibleCorrecto));
 		datosPruebaAcciones.add(getTestBuscarRespuestaPosible(datosEntradaBuscarRespuestaPosibleTextoVacio));
-		datosPruebaAcciones.add(getTestBuscarRespuestaPosible(datosEntradaBuscarRespuestaPosibleFechaVacia));
-		datosPruebaAcciones.add(getTestBuscarRespuestaPosible(datosEntradaBuscarRespuestaPosibleRespuestaVacia));
 
 		return datosPruebaAcciones;
 	}
@@ -217,8 +218,8 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 
 		final String resultadoObtenido = buscarRespuestaPosible(datosEntradaBuscarRespuestaPosible);
 
-		final String resultadoEsperado = CodigosMensajes.BUSCAR_FUNCIONALIDAD_CORRECTO + " - "
-				+ Mensajes.BUSCAR_FUNCIONALIDAD_CORRECTO;
+		final String resultadoEsperado = CodigosMensajes.BUSCAR_RESPUESTA_POSIBLE_CORRECTO + " - "
+				+ Mensajes.RESPUESTA_POSIBLE_BUSCADA_CORRECTAMENTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO,
@@ -243,13 +244,14 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 	private DatosPruebaAcciones getTestGuardarRespuestaPosibleYaExiste(
 			final RespuestaPosibleEntity datosEntradaAccionGuardarRespuestaPosibleYaExiste) {
 
-		final String resultadoObtenido = guardarRespuestaPosible(datosEntradaAccionGuardarRespuestaPosibleYaExiste);
+		final String resultadoObtenido = guardarRespuestaPosibleYaExiste(
+				datosEntradaAccionGuardarRespuestaPosibleYaExiste);
 
 		final String resultadoEsperado = CodigosMensajes.RESPUESTA_POSIBLE_YA_EXISTE + " - "
 				+ Mensajes.RESPUESTA_POSIBLE_YA_EXISTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.FUNCIONALIDAD_YA_EXISTE, Constantes.ERROR,
+				DefinicionPruebas.RESPUESTA_POSIBLE_YA_EXISTE, Constantes.ERROR,
 				getValorRespuestaPosible(datosEntradaAccionGuardarRespuestaPosibleYaExiste));
 
 	}
@@ -406,13 +408,34 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 			final RespuestaPosibleEntity respuestaPosibleBD = respuestaPosibleRepository
 					.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 
-			if (respuestaPosibleBD != null) {
-				resultado = CodigosMensajes.RESPUESTA_POSIBLE_YA_EXISTE + " - " + Mensajes.RESPUESTA_POSIBLE_YA_EXISTE;
+			if (respuestaPosibleBD == null) {
 
-			} else {
 				respuestaPosibleRepository.saveAndFlush(respuestaPosible);
 				resultado = CodigosMensajes.GUARDAR_RESPUESTA_POSIBLE_CORRECTO + " - "
 						+ Mensajes.RESPUESTA_POSIBLE_GUARDADA_CORRECTAMENTE;
+
+				final RespuestaPosibleEntity nuevaRespuestaPosible = respuestaPosibleRepository
+						.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
+
+				respuestaPosibleRepository.deleteRespuestaPosible(nuevaRespuestaPosible.getIdRespuesta());
+			}
+		}
+
+		return resultado;
+	}
+
+	private String guardarRespuestaPosibleYaExiste(final RespuestaPosibleEntity respuestaPosible) {
+		String resultado = StringUtils.EMPTY;
+		respuestaPosibleRepository.saveAndFlush(respuestaPosible);
+
+		if (!validaciones.comprobarTextoRespuestaPosibleBlank(respuestaPosible.getTextoRespuesta())) {
+			resultado = CodigosMensajes.TEXTO_RESPUESTA_VACIO + " - " + Mensajes.TEXTO_RESPUESTA_NO_PUEDE_SER_VACIO;
+		} else {
+			final RespuestaPosibleEntity respuestaPosibleBD = respuestaPosibleRepository
+					.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
+
+			if (respuestaPosibleBD != null) {
+				resultado = CodigosMensajes.RESPUESTA_POSIBLE_YA_EXISTE + " - " + Mensajes.RESPUESTA_POSIBLE_YA_EXISTE;
 
 				final RespuestaPosibleEntity nuevaRespuestaPosible = respuestaPosibleRepository
 						.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
@@ -435,10 +458,10 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 			final RespuestaPosibleEntity respuestaPosibleBuscar = respuestaPosibleRepository
 					.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 			respuestaPosibleBuscar.setTextoRespuesta("Texto respuesta modificado");
-			respuestaPosibleRepository.saveAndFlush(respuestaPosible);
+			respuestaPosibleRepository.saveAndFlush(respuestaPosibleBuscar);
 			resultado = CodigosMensajes.MODIFICAR_RESPUESTA_POSIBLE_CORRECTO + " - "
 					+ Mensajes.RESPUESTA_POSIBLE_MODIFICADA_CORRECTAMENTE;
-			respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosible.getIdRespuesta());
+			respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleBuscar.getIdRespuesta());
 
 		}
 
@@ -471,26 +494,41 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 		final RespuestaPosibleEntity respuestaPosibleBuscar = respuestaPosibleRepository
 				.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 		respuestaPosibleBuscar.setBorradoRespuesta(1);
-		respuestaPosibleRepository.saveAndFlush(respuestaPosible);
+		respuestaPosibleRepository.saveAndFlush(respuestaPosibleBuscar);
 		resultado = CodigosMensajes.ELIMINAR_RESPUESTA_POSIBLE_CORRECTO + " - "
 				+ Mensajes.RESPUESTA_POSIBLE_ELIMINADA_CORRECTAMENTE;
-		respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosible.getIdRespuesta());
+
+		respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleBuscar.getIdRespuesta());
 
 		return resultado;
 	}
 
 	private String eliminarRespuestaPosibleAsociadaProceso(final RespuestaPosibleEntity respuestaPosible) {
 		String resultado = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
 
 		respuestaPosibleRepository.saveAndFlush(respuestaPosible);
 
 		final RespuestaPosibleEntity respuestaPosibleBuscar = respuestaPosibleRepository
 				.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 
-		// TODO Revisar porque ahora tiene la fecha el objeto
-		// ProcesoRespuestaPosibleEntity
-		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(1,
-				respuestaPosibleBuscar.getIdRespuesta(), null);
+		final ProcesoEntity procesoEntity = new ProcesoEntity("Nombre proceso", "Descripción proceso", new Date(), 0);
+		procesoRepository.saveAndFlush(procesoEntity);
+
+		final LocalDate fechaActual = LocalDate.now();
+
+		if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+			fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+					+ fechaActual.getDayOfMonth();
+		} else {
+			fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+					+ fechaActual.getDayOfMonth();
+		}
+
+		final List<ProcesoEntity> procesoBuscar = procesoRepository.findProceso(procesoEntity.getNombreProceso(),
+				procesoEntity.getDescripProceso(), fechaActualString);
+		final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(
+				procesoBuscar.get(0).getIdProceso(), respuestaPosibleBuscar.getIdRespuesta(), new Date());
 		procesoRespuestaPosibleRepository.saveAndFlush(procesoRespuestaPosible);
 
 		if (respuestaPosibleBuscar != null) {
@@ -505,7 +543,9 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 			}
 		}
 
-		procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(respuestaPosible.getIdRespuesta(), 1);
+		procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(respuestaPosibleBuscar.getIdRespuesta(),
+				procesoBuscar.get(0).getIdProceso());
+		procesoRepository.deleteProceso(procesoBuscar.get(0).getIdProceso());
 		respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleBuscar.getIdRespuesta());
 		return resultado;
 	}
@@ -529,11 +569,12 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 
 		final RespuestaPosibleEntity respuestaPosibleBuscar = respuestaPosibleRepository
 				.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
-		respuestaPosibleBuscar.setBorradoRespuesta(1);
-		respuestaPosibleRepository.saveAndFlush(respuestaPosible);
-		resultado = CodigosMensajes.REACTIVAR_FUNCIONALIDAD_CORRECTO + " - "
-				+ Mensajes.FUNCIONALIDAD_REACTIVADA_CORRECTAMENTE;
-		respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosible.getIdRespuesta());
+		respuestaPosibleBuscar.setBorradoRespuesta(0);
+		respuestaPosibleRepository.saveAndFlush(respuestaPosibleBuscar);
+		resultado = CodigosMensajes.REACTIVAR_RESPUESTA_POSIBLE_CORRECTO + " - "
+				+ Mensajes.RESPUESTA_POSIBLE_REACTIVADA_CORRECTAMENTE;
+
+		respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleBuscar.getIdRespuesta());
 
 		return resultado;
 	}

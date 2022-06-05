@@ -33,8 +33,8 @@
 		"usuario" : "ana",
 		
 		"idPlan" : "",
-		"nombrePlan" : "Plan",
-		"descripPlan" : "Plan para verificar el objetivo fin de la pobreza",
+		"nombrePlan" : "Plan ya existe",
+		"descripPlan" : "Este es un plan que ya existe",
 		"fechaPlan" : "2022-05-21",
 		"borradoPlan" : 0
 	},

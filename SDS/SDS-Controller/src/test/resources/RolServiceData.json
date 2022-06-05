@@ -56,9 +56,9 @@
 	"rolYaExiste":{
 		"usuario": "aicuna",
 		
-		"idRol":"1",
-		"rolName":"admin",
-		"rolDescription":"admin",
+		"idRol":"",
+		"rolName":"Rol ya existe",
+		"rolDescription":"rol ya existe",
 		"borradoRol": 0
 	},
 	
@@ -67,7 +67,7 @@
 		"usuario": "aicuna",
 		
 		"idRol":"",
-		"rolName": "rol",
+		"rolName": "rol eliminar",
 		"rolDescription": "Este es un rol",
 		"borradoRol": 0
 	},

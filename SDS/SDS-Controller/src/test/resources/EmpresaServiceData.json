@@ -1,6 +1,7 @@
 {
 	"buscarEmpresaCorrecto":{
 		"usuario":"ana",
+		
 		"idEmpresa":1,
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
@@ -11,7 +12,8 @@
 	
 	"cifEmpresaVacio": {
 		"usuario":"ana",
-		"idEmpresa":1,
+		
+		"idEmpresa":"",
 		"cifEmpresa":"",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"Prueba",
@@ -20,7 +22,8 @@
 	}, 
 	"nombreEmpresaVacio": {
 		"usuario":"ana",
-		"idEmpresa":1,
+		
+		"idEmpresa":"",
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"",
 		"direccionEmpresa":"Prueba",
@@ -29,7 +32,8 @@
 	},
 	"direccionEmpresaVacio": {
 		"usuario":"ana",
-		"idEmpresa":1,
+		
+		"idEmpresa":"",
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"",
@@ -38,7 +42,8 @@
 	},
 	"telefonoEmpresaVacio": {
 		"usuario":"ana",
-		"idEmpresa":1,
+		
+		"idEmpresa":"",
 		"cifEmpresa":"J26903286",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"Prueba",
@@ -48,6 +53,7 @@
 	
 	"parametrosEmpresaVacios":{
 		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"",
 		"nombreEmpresa":"",
@@ -58,8 +64,9 @@
 	
 	"empresaYaExiste":{
 		"usuario":"ana",
-		"idEmpresa":1,
-		"cifEmpresa":"J26903286",
+		
+		"idEmpresa":"",
+		"cifEmpresa":"A12121212",
 		"nombreEmpresa":"Prueba",
 		"direccionEmpresa":"Prueba",
 		"telefonoEmpresa":"988212121",
@@ -67,6 +74,7 @@
 	},
 	"guardarEmpresaCorrecto":{
 		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E32589671",
 		"nombreEmpresa":"Empresa",
@@ -76,6 +84,7 @@
 	},
 	"modificarEmpresaCorrecto":{
 		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E32589671",
 		"nombreEmpresa":"Empresa",
@@ -85,15 +94,17 @@
 	},
 	"empresaNoExiste":{
 		"usuario":"ana",
-		"idEmpresa":3,
+		
+		"idEmpresa":"",
 		"cifEmpresa":"E98745148",
-		"nombreEmpresa":"Emp",
+		"nombreEmpresa":"Empresa no existe",
 		"direccionEmpresa":"Direccion",
 		"telefonoEmpresa":"988232323",
 		"borradoEmpresa":0
 	},
 	"eliminarEmpresaCorrecto":{
 		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E32589671",
 		"nombreEmpresa":"Empresa",
@@ -103,6 +114,7 @@
 	},
 	"eliminarEmpresaAsociadaPersonas":{
 		"usuario":"ana",
+		
 		"idEmpresa":"",
 		"cifEmpresa":"E22222222",
 		"nombreEmpresa":"Empresa",
@@ -110,7 +122,6 @@
 		"telefonoEmpresa":"988232323",
 		"borradoEmpresa":0
 	},
-	
 	"reactivarEmpresaCorrecto":{
 		"usuario":"ana",
 		

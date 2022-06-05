@@ -35,9 +35,11 @@
 	},
 	
 	"objetivoYaExiste":{
+		"usuario": "ana",
+		
 		"idObjetivo":"",
-		"nombreObjetivo":"Fin de la pobreza",
-		"descripObjetivo":"Objetivo de la ONU 2030 número 1",
+		"nombreObjetivo":"Objetivo ya existe",
+		"descripObjetivo":"Este objetivo ya existe",
 		"borradoObjetivo": 0
 	},
 	

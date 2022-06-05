@@ -11,4 +11,8 @@ public class CommonUtilities {
 			return two;
 		}
 	}
+
+	public static int countDigit(final int x) {
+		return (int) Math.floor(Math.log10(x) + 1);
+	}
 }

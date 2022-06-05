@@ -20,6 +20,8 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.PlanNoExisteException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoAsociadoProcedimientoException;
+import com.sds.service.exception.UsuarioAsociadoProcedimientoException;
 import com.sds.service.procedimiento.ProcedimientoService;
 import com.sds.service.procedimiento.model.Procedimiento;
 import com.sds.service.procedimiento.model.ProcedimientoBuscar;
@@ -154,6 +156,10 @@ public class ProcedimientoController {
 				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, procedimiento);
 			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
 				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, procedimiento);
+			} catch (final UsuarioAsociadoProcedimientoException usuarioAsociadoProcedimientoException) {
+				return new RespEntity(RespCode.USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION, procedimiento);
+			} catch (final ProcesoAsociadoProcedimientoException procesoAsociadoProcedimientoException) {
+				return new RespEntity(RespCode.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION, procedimiento);
 			}
 
 		} catch (final ProcedimientoNoExisteException planNoExists) {

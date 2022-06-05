@@ -2,103 +2,120 @@
 	"buscarAccionCorrecto": {
 		"usuario": "ana",
 		"idAccion": 1,
-		"nombreAccion": "add",
-		"descripAccion": "añadir",
+		"nombreAccion": "Añadir",
+		"descripAccion": "Añadir",
 		"borradoAccion": 0
 	},
 	"accionNameVacio": {
 		"usuario": "ana",
-		"idAccion": 1,
+		"idAccion": "",
 		"nombreAccion": "",
 		"descripAccion": "añadir",
-		"borradoAccion": 0
-	},
-	"accionDescriptionVacio": {
-		"usuario": "ana",
-		"idAccion": 1,
-		"nombreAccion": "añadir",
-		"descripAccion": "",
-		"borradoAccion": 0
-	},
-	"accionNameDescriptionVacios": {
-		"usuario": "ana",
-		"idAccion": 1,
-		"nombreAccion": "",
-		"descripAccion": "",
-		"borradoAccion": 0
-	},
-	"accionNoExiste": {
-		"usuario": "ana",
-		"idAccion": "",
-		"nombreAccion": "Accion",
-		"descripAccion": "accion",
-		"borradoAccion": 0
-	},
-	"guardarAccionCorrecto": {
-		"usuario": "ana",
-		"idAccion": "",
-		"nombreAccion": "Accion",
-		"descripAccion": "accion",
-		"borradoAccion": 0
-	},
-	"accionYaExiste": {
-		"usuario": "ana",
-		"idAccion": 1,
-		"nombreAccion": "Añadir",
-		"descripAccion": "Añadir",
 		"borradoAccion": 0
 	},
 	"modificarAccion": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "Accion",
-		"descripAccion": "accion",
+		"nombreAccion": "Accion para modificar",
+		"descripAccion": "Esta accion es para modificar",
 		"borradoAccion": 0
 	},
-	"eliminarAccion": {
+	
+	"eliminarAccion" : {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion para eliminar",
+		"descripAccion": "Esta accion es para eliminar",
+		"borradoAccion": 0
+	},
+	"accionNoExiste": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion no existe",
+		"descripAccion": "Esta accion no existe",
+		"borradoAccion": 0
+	},
+	"guardarAccionCorrecto": {
+		"usuario": "ana",
+		"idAccion": "",
+		"nombreAccion": "Accion para guardar",
+		"descripAccion": "Accion para guardar",
+		"borradoAccion": 0
+	},
+	"accionDescriptionVacio": {
 		"usuario": "ana",
 		"idAccion": "",
 		"nombreAccion": "Accion",
-		"descripAccion": "accion",
+		"descripAccion": "",
 		"borradoAccion": 0
 	},
-	"eliminarAccionAsociadaRolFuncionalidad":{
+	"accionNameDescriptionVacios": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "accion",
-		"descripAccion": "accion",
+		"nombreAccion": "",
+		"descripAccion": "",
 		"borradoAccion": 0
 	},
-	"reactivarAccionCorrecto":{
+	"reactivarAccionCorrecto": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "accion",
-		"descripAccion": "Reactivar esta accion",
+		"nombreAccion": "Accion para reactivar",
+		"descripAccion": "Esta es una accion para reactivar",
 		"borradoAccion": 1
 	},
-	"asignarAccionCorrecto": {
+	"accionYaExiste": {
 		"usuario": "ana",
 		"idAccion": "",
-		"nombreAccion": "nuevaAccion",
-		"descripAccion": "Descripcion",
+		"nombreAccion": "Accion ya existe",
+		"descripAccion": "Esta acción ya existe",
 		"borradoAccion": 0
 	},
-	"asignarAccionRolCorrecto":{
+	"eliminarAccionNoExiste": {
 		"usuario": "ana",
-		
-		"idRol":"",
-		"rolName":"Rol",
-		"rolDescription": "Descripcion",
-		"borradoRol":0
-		
+		"idAccion": "",
+		"nombreAccion": "Accion no existe",
+		"descripAccion": "Esta acción no existe",
+		"borradoAccion": 0
 	},
-	"asignarAccionFuncionalidadCorrecto": {
+	"eliminarAccionAsociadaRolFuncionalidad": {
 		"usuario": "ana",
+		"idAccion": 4,
+		"nombreAccion": "Listar",
+		"descripAccion": "Listar",
+		"borradoAccion": 0
+	},
+	"asignarAccionCorrecto": {
+		"idAccion": "",
+		"nombreAccion": "accionPrueba",
+		"descripAccion": "Descripcion",
+		"borradoAccion": 0,
+		"idRol": "",
+		"rolName": "nombreRol",
+		"rolDescription": "descripRol",
+		"borradoRol": 0,
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "funcionalidad",
-		"descripFuncionalidad": "funcionalidad",
-		"borradoFuncionalidad": 0
+		"nombreFuncionalidad": "nombreFuncionalidad",
+		"descripFuncionalidad": "descripcionFuncionalidad",
+		"borradoFuncionalidad": 0,
+		"usuario": "ana"
 	},
+	
+	"asignarAccionRolCorrecto" : {
+		"usuario" : "ana",
+		"idRol" : "",
+		"rolName" : "Rol para asignar",
+		"rolDescription" : "Esta es la descripción del rol",
+		"borradoRol" : 0
+	},
+	
+	"asignarAccionFuncionalidadCorrecto" : {
+		"usuario" : "ana",
+		"idFuncionalidad" : "",
+		"nombreFuncionalidad" : "Funcionalidad para asignar",
+		"descripFuncionalidad" : "Esta es la descripción de la funcionalidad",
+		"borradoFuncionalidad" : 0
+	},
+	
 	"rolNoExiste":{
 		"usuario": "aicuna",
 		
@@ -107,11 +124,12 @@
 		"rolDescription": "prueba",
 		"borradoRol": 0
 	},
+	
 	"funcionalidadNoExiste": {
 		"usuario": "ana",
 		"idFuncionalidad": "",
-		"nombreFuncionalidad": "funcionalidad",
-		"descripFuncionalidad": "funcionalidad",
+		"nombreFuncionalidad": "Nueva no existe",
+		"descripFuncionalidad": "Nueva no existe",
 		"borradoFuncionalidad": 0
 	}
 }

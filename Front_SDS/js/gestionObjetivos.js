@@ -720,6 +720,7 @@ function showAddObjetivos() {
   $('#subtitulo').attr('hidden', true);
   $('#labelNombreObjetivo').attr('hidden', true);
   $('#labelDescripcionObjetivo').attr('hidden', true);
+  $('#labelNombreObjetivo').attr('hidden', true);
 
   let campos = ["nombreObjetivo", "descripcionObjetivo"];
   let obligatorios = ["obligatorioNombreObjetivo", "obligatorioDescripcionObjetivo"];
@@ -742,6 +743,7 @@ function showBuscarObjetivo() {
   $('#subtitulo').attr('hidden', true);
   $('#labelNombreObjetivo').attr('hidden', true);
   $('#labelDescripcionObjetivo').attr('hidden', true);
+  $('#labelNombreObjetivo').attr('hidden', true);
 
   let campos = ["nombreObjetivo", "descripcionObjetivo"];
   let obligatorios = ["obligatorioNombreObjetivo", "obligatorioDescripcionObjetivo"];
@@ -789,6 +791,7 @@ function showEditar(nombreObjetivo, descripcionObjetivo, idObjetivo) {
     $('#subtitulo').attr('hidden', true);
     $('#labelNombreObjetivo').attr('hidden', true);
     $('#labelDescripcionObjetivo').attr('hidden', true);
+    $('#labelNombreObjetivo').attr('hidden', true);
 
     rellenarFormulario(nombreObjetivo, descripcionObjetivo);
     insertacampo(document.formularioGenerico,'idObjetivo', idObjetivo);

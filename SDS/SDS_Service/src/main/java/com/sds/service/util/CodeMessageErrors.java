@@ -60,7 +60,15 @@ public enum CodeMessageErrors {
 	FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL("La fecha introducida por el usuario es anterior a la fecha actual"), //
 	PROCEDIMIENTO_NO_EXISTE_EXCEPTION("El procedimiento no existe"), //
 	PROCEDIMIENTO_YA_EXISTE_EXCEPTION("El procedimiento ya existe"), //
-	PROCEDIMIENTO_VACIO("Procedimiento vacío");
+	PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene procesos asociados"), //
+	USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene usuarios asociados"), //
+	PROCEDIMIENTO_VACIO("Procedimiento vacío"), //
+	PROCESO_YA_EXISTE_EXCEPTION("El proceso ya existe"), //
+	PROCESO_NO_EXISTE_EXCEPTION("El proceso no existe"), //
+	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("El proceso tiene procedimientos asociados"), //
+	PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION("El proceso tiene respuestas posibles asociadas"), //
+	PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION("El proceso tiene asociados usuarios y procedimientos"), //
+	PROCESO_VACIO("Proceso vacío");
 
 	private String codigo;
 

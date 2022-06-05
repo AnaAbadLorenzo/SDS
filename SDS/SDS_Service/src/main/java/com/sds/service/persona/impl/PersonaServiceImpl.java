@@ -660,8 +660,9 @@ public class PersonaServiceImpl implements PersonaService {
 					CodeMessageErrors.PERSONA_NO_EXISTE_EXCEPTION.getCodigo());
 		} else {
 
-			personaEntity.setBorradoP(0);
-			persona.setPersona(personaEntity);
+			person.get().setBorradoP(0);
+			persona.setEmpresa(person.get().getEmpresa());
+			persona.setPersona(person.get());
 			resultado = modificarPersona(persona);
 
 		}

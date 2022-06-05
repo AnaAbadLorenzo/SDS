@@ -173,6 +173,18 @@ public class EmpresaServiceTest {
 
 		empresaService.añadirEmpresa(empresa);
 
+		try {
+			empresaService.añadirEmpresa(empresa);
+		} catch (final EmpresaYaExisteException empresayaExisteException) {
+			throw new EmpresaYaExisteException(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.EMPRESA_YA_EXISTE_EXCEPTION.getCodigo()));
+		} finally {
+			final ReturnBusquedas<EmpresaEntity> empresaDelete = empresaService.buscarEmpresa(
+					empresa.getEmpresa().getCifEmpresa(), empresa.getEmpresa().getNombreEmpresa(),
+					empresa.getEmpresa().getDireccionEmpresa(), empresa.getEmpresa().getTelefonoEmpresa(), 0, 1);
+			empresaService.deleteEmpresa(empresaDelete.getListaBusquedas().get(0));
+		}
+
 	}
 
 	@Test

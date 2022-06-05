@@ -1,0 +1,37 @@
+{
+	"descripcionProcedimientoVacio" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"descripcionProcedimientoCaracteresEspeciales" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "@@@@@****",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"descripcionProcedimientoMenor3" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "De",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	},
+	
+	"descripcionProcedimientoAlfabeticoCorrecto" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Descripcion",
+		"fechaProcedimiento" : "2022-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
+	}
+}

@@ -14,11 +14,22 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "proceso")
+@NamedQueries({
+		@NamedQuery(name = "ProcesoEntity.findIdProcesoByName", query = "SELECT p.idProceso FROM ProcesoEntity p WHERE p.nombreProceso =: nombreProceso"),
+		@NamedQuery(name = "ProcesoEntity.findProcesoByName", query = "SELECT p FROM ProcesoEntity p WHERE p.nombreProceso =: nombreProceso"),
+		@NamedQuery(name = "ProcesoEntity.findAllProcesos", query = "SELECT p FROM ProcesoEntity p WHERE p.borradoProceso = 0"),
+		@NamedQuery(name = "ProcesoEntity.numberFindAllProcesos", query = "SELECT COUNT(p) FROM ProcesoEntity p WHERE p.borradoProceso = 0"),
+		@NamedQuery(name = "ProcesoEntity.findProceso", query = "SELECT p FROM ProcesoEntity p WHERE LOWER(p.nombreProceso) LIKE LOWER(CONCAT('%', :nombreProceso, '%')) AND LOWER(p.descripProceso) LIKE LOWER(CONCAT('%', :descripProceso, '%')) AND p.fechaProceso LIKE CONCAT ('%', :fechaProceso, '%') AND p.borradoProceso=0"),
+		@NamedQuery(name = "ProcesoEntity.numberFindProceso", query = "SELECT COUNT(p) FROM ProcesoEntity p WHERE LOWER(p.nombreProceso) LIKE LOWER(CONCAT('%', :nombreProceso, '%')) AND LOWER(p.descripProceso) LIKE LOWER(CONCAT('%', :descripProceso, '%')) AND p.fechaProceso LIKE CONCAT ('%', :fechaProceso, '%') AND p.borradoProceso=0"),
+		@NamedQuery(name = "ProcesoEntity.findProcesosEliminados", query = "SELECT p FROM ProcesoEntity p WHERE p.borradoProceso = 1"),
+		@NamedQuery(name = "ProcesoEntity.numberFindProcesosEliminados", query = "SELECT COUNT(p) FROM ProcesoEntity p WHERE p.borradoProceso = 1") })
 public class ProcesoEntity {
 
 	@Id
@@ -57,6 +68,15 @@ public class ProcesoEntity {
 			final Date fechaProceso, final Integer borradoProceso) {
 		super();
 		this.idProceso = idProceso;
+		this.nombreProceso = nombreProceso;
+		this.descripProceso = descripProceso;
+		this.fechaProceso = fechaProceso;
+		this.borradoProceso = borradoProceso;
+	}
+
+	public ProcesoEntity(final String nombreProceso, final String descripProceso, final Date fechaProceso,
+			final Integer borradoProceso) {
+		super();
 		this.nombreProceso = nombreProceso;
 		this.descripProceso = descripProceso;
 		this.fechaProceso = fechaProceso;

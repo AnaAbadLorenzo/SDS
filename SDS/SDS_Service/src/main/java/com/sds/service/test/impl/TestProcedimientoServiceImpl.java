@@ -1,6 +1,7 @@
 package com.sds.service.test.impl;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -15,12 +16,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sds.model.ObjetivoEntity;
+import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
+import com.sds.model.ProcedimientoUsuarioEntity;
+import com.sds.model.ProcesoEntity;
+import com.sds.model.ProcesoProcedimientoEntity;
+import com.sds.model.RolEntity;
+import com.sds.model.UsuarioEntity;
 import com.sds.repository.ObjetivoRepository;
+import com.sds.repository.PersonaRepository;
 import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
+import com.sds.repository.ProcedimientoUsuarioRepository;
+import com.sds.repository.ProcesoProcedimientoRepository;
+import com.sds.repository.ProcesoRepository;
+import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.CodigosMensajes;
+import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
@@ -52,6 +65,21 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	ProcesoRepository procesoRepository;
+
+	@Autowired
+	ProcedimientoUsuarioRepository procedimientoUsuarioRepository;
+
+	@Autowired
+	ProcesoProcedimientoRepository procesoProcedimientoRepository;
+
+	@Autowired
+	UsuarioRepository usuarioRepository;
+
+	@Autowired
+	PersonaRepository personaRepository;
 
 	public TestProcedimientoServiceImpl() {
 		testAtributoNombreProcedimiento = new TestAtributoNombreProcedimiento();
@@ -337,9 +365,17 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.ELIMINAR_PROCEDIMIENTO);
 		final ProcedimientoEntity datosEntradaEliminarProcedimientoNoExiste = generarJSON
 				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.PROCEDIMIENTO_NO_EXISTE);
+		final ProcedimientoEntity datosEntradaEliminarProcedimientoAsociadoProceso = generarJSON.generarProcedimiento(
+				Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.PROCEDIMIENTO_ASOCIADO_PROCESO);
+		final ProcedimientoEntity datosEntradaEliminarProcedimientoAsociadoUsuario = generarJSON.generarProcedimiento(
+				Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.PROCEDIMIENTO_ASOCIADO_USUARIO);
 
 		datosPruebaAcciones.add(getTestEliminarProcedimientoCorrecto(datosEntradaEliminarProcedimientoCorrecto));
 		datosPruebaAcciones.add(getTestEliminarProcedimientoNoExiste(datosEntradaEliminarProcedimientoNoExiste));
+		datosPruebaAcciones
+				.add(getTestEliminarProcedimientoAsociadoProceso(datosEntradaEliminarProcedimientoAsociadoProceso));
+		datosPruebaAcciones
+				.add(getTestEliminarProcedimientoAsociadoUsuario(datosEntradaEliminarProcedimientoAsociadoUsuario));
 
 		return datosPruebaAcciones;
 	}
@@ -681,6 +717,36 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 				getValorProcedimiento(datosEntradaAccionEliminarProcedimientoNoExiste));
 	}
 
+	private DatosPruebaAcciones getTestEliminarProcedimientoAsociadoProceso(
+			final ProcedimientoEntity datosEntradaAccionEliminarProcedimientoAsociadoProceso)
+			throws java.text.ParseException {
+
+		final String resultadoObtenido = eliminarProcedimientoAsociadoProceso(
+				datosEntradaAccionEliminarProcedimientoAsociadoProceso);
+
+		final String resultadoEsperado = CodigosMensajes.PROCEDIMIENTO_ASOCIADO_PROCESO + " - "
+				+ Mensajes.PROCEDIMIENTO_ASOCIADO_PROCESO;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.PROCEDIMIENTO_ASOCIADO_PROCESO, Constantes.ERROR,
+				getValorProcedimiento(datosEntradaAccionEliminarProcedimientoAsociadoProceso));
+	}
+
+	private DatosPruebaAcciones getTestEliminarProcedimientoAsociadoUsuario(
+			final ProcedimientoEntity datosEntradaAccionEliminarProcedimientoAsociadoUsuario)
+			throws java.text.ParseException {
+
+		final String resultadoObtenido = eliminarProcedimientoAsociadoUsuario(
+				datosEntradaAccionEliminarProcedimientoAsociadoUsuario);
+
+		final String resultadoEsperado = CodigosMensajes.PROCEDIMIENTO_ASOCIADO_USUARIO + " - "
+				+ Mensajes.PROCEDIMIENTO_ASOCIADO_USUARIO;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.PROCEDIMIENTO_ASOCIADO_PROCESO, Constantes.ERROR,
+				getValorProcedimiento(datosEntradaAccionEliminarProcedimientoAsociadoUsuario));
+	}
+
 	private DatosPruebaAcciones getTestReactivarProcedimientoCorrecto(
 			final ProcedimientoEntity datosEntradaAccionReactivarProcedimientoCorrecto)
 			throws java.text.ParseException {
@@ -787,6 +853,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 					plan.setObjetivo(objetivo);
 					planRepository.saveAndFlush(plan);
 					procedimiento.setPlan(plan);
+					procedimiento.setFechaProcedimiento(new Date());
 					procedimientoRepository.saveAndFlush(procedimiento);
 					resultado = CodigosMensajes.GUARDAR_PROCEDIMIENTO_CORRECTO + " - "
 							+ Mensajes.PROCEDIMIENTO_GUARDADO_CORRECTAMENTE;
@@ -837,6 +904,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			plan.setObjetivo(objetivo);
 			planRepository.saveAndFlush(plan);
 			procedimiento.setPlan(plan);
+			procedimiento.setFechaProcedimiento(new Date());
 			procedimientoRepository.saveAndFlush(procedimiento);
 
 			final ProcedimientoEntity procedimientoBD = procedimientoRepository
@@ -930,6 +998,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			plan.setObjetivo(objetivo);
 			planRepository.saveAndFlush(plan);
 			procedimiento.setPlan(plan);
+			procedimiento.setFechaProcedimiento(new Date());
 			procedimientoRepository.saveAndFlush(procedimiento);
 
 			final ProcedimientoEntity procedimientoBDABorrar = procedimientoRepository
@@ -964,6 +1033,137 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			resultado = CodigosMensajes.PROCEDIMIENTO_NO_EXISTE + " - " + Mensajes.PROCEDIMIENTO_NO_EXISTE;
 
 		}
+		return resultado;
+	}
+
+	private String eliminarProcedimientoAsociadoProceso(final ProcedimientoEntity procedimiento) {
+		final ProcedimientoEntity procedimientoBD = procedimientoRepository
+				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+		String resultado = StringUtils.EMPTY;
+
+		if (procedimientoBD == null) {
+			procedimiento.setBorradoProcedimiento(0);
+			final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+			objetivoRepository.saveAndFlush(objetivo);
+			final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+			plan.setObjetivo(objetivo);
+			planRepository.saveAndFlush(plan);
+			procedimiento.setPlan(plan);
+			procedimiento.setFechaProcedimiento(new Date());
+			procedimientoRepository.saveAndFlush(procedimiento);
+
+			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+
+			final ProcesoEntity procesoEntity = new ProcesoEntity("Nombre proceso", "Descripción proceso", new Date(),
+					0);
+			procesoRepository.saveAndFlush(procesoEntity);
+
+			final List<ProcesoEntity> procesoEncontrado = procesoRepository
+					.findProceso(procesoEntity.getNombreProceso(), procesoEntity.getDescripProceso(), resultado);
+			final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(
+					procesoEncontrado.get(0).getIdProceso(), procedimientoEncontrado.getIdProcedimiento(), 3);
+			procesoProcedimientoRepository.saveAndFlush(procesoProcedimientoEntity);
+
+			final List<Integer> procesoProcedimientos = procesoProcedimientoRepository
+					.findIdProcesoByIdProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+
+			if (!procesoProcedimientos.isEmpty()) {
+				resultado = CodigosMensajes.PROCEDIMIENTO_ASOCIADO_PROCESO + " - "
+						+ Mensajes.PROCEDIMIENTO_ASOCIADO_PROCESO;
+			}
+
+			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(procesoEncontrado.get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
+			planRepository.delete(planBDNuevo);
+			objetivoRepository.delete(objetivoBDNuevo);
+
+		}
+
+		return resultado;
+	}
+
+	private String eliminarProcedimientoAsociadoUsuario(final ProcedimientoEntity procedimiento)
+			throws java.text.ParseException {
+		final ProcedimientoEntity procedimientoBD = procedimientoRepository
+				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+		String resultado = StringUtils.EMPTY;
+		String fechaActualString = StringUtils.EMPTY;
+		final SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");
+
+		if (procedimientoBD == null) {
+			procedimiento.setBorradoProcedimiento(0);
+			final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+			objetivoRepository.saveAndFlush(objetivo);
+			final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+			plan.setObjetivo(objetivo);
+			planRepository.saveAndFlush(plan);
+			procedimiento.setPlan(plan);
+			procedimiento.setFechaProcedimiento(new Date());
+			procedimientoRepository.saveAndFlush(procedimiento);
+
+			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+
+			final PersonaEntity persona = new PersonaEntity("80004674W", "Pepe", "Pepe pepe",
+					format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, null);
+			personaRepository.saveAndFlush(persona);
+			final UsuarioEntity usuario = new UsuarioEntity(persona.getDniP(), "pepeUsuario", 0);
+			usuarioRepository.saveAndFlush(usuario);
+
+			final RolEntity rolEntity = new RolEntity(2, "usuario",
+					"Contendrá a todos los usuarios registrados de la aplicación", 0);
+
+			final List<UsuarioEntity> usuarioEncontrado = usuarioRepository.findUsuario(usuario.getDniUsuario(),
+					usuario.getUsuario(), rolEntity);
+			final List<PersonaEntity> personaEncontrada = personaRepository.findPersona(persona.getDniP(),
+					persona.getNombreP(), persona.getApellidosP(), "2022-02-02", persona.getDireccionP(),
+					persona.getTelefonoP(), persona.getEmailP());
+
+			final ProcedimientoUsuarioEntity procedimientoUsuarioEntity = new ProcedimientoUsuarioEntity(1, new Date(),
+					0, procedimientoEncontrado, usuarioEncontrado.get(0));
+			procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuarioEntity);
+
+			final LocalDate fechaActual = LocalDate.now();
+
+			if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
+				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
+						+ fechaActual.getDayOfMonth();
+			} else {
+				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
+						+ fechaActual.getDayOfMonth();
+			}
+
+			final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
+					.findProcedimientoUsuario(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario(),
+							fechaActualString, usuario, procedimientoEncontrado);
+
+			final List<ProcedimientoUsuarioEntity> procedimientoUsuario = procedimientoUsuarioRepository
+					.findProcedimientoUsuarioByProcedimiento(procedimientoEncontrado);
+
+			if (!procedimientoUsuario.isEmpty()) {
+				resultado = CodigosMensajes.PROCEDIMIENTO_ASOCIADO_USUARIO + " - "
+						+ Mensajes.PROCEDIMIENTO_ASOCIADO_USUARIO;
+			}
+
+			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+
+			procedimientoUsuarioRepository
+					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+			usuarioRepository.deleteUsuario(usuarioEncontrado.get(0).getDniUsuario());
+			personaRepository.deletePersona(personaEncontrada.get(0).getDniP());
+			planRepository.delete(planBDNuevo);
+			objetivoRepository.delete(objetivoBDNuevo);
+
+		}
+
 		return resultado;
 	}
 

@@ -159,5 +159,7 @@ public class DefinicionPruebas {
 	public static final String PROCEDIMIENTO_NO_EXISTE = "El procedimiento no existe";
 	public static final String ELIMINAR_PROCEDIMIENTO_CORRECTO = "El procedimiento se ha eliminado correctamente";
 	public static final String REACTIVAR_PROCEDIMIENTO_CORRECTO = "El procedimiento se ha reactivado correctamente";
+	public static final String PROCEDIMIENTO_ASOCIADO_PROCESO = "El procedimiento tiene asociado un proceso";
+	public static final String PROCEDIMIENTO_ASOCIADO_USUARIO = "El procedimiento tiene asociado un usuario";
 
 }

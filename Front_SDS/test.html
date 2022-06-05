@@ -130,7 +130,35 @@
     	</div>
   	</div>
 
-		<div class="card">
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapsePlan" onclick="javascript:cargarTestGestionPlanes()">
+	         Gestión de Planes 
+	      </a>
+	      <img class="iconTab" id="iconoTestPlan" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapsePlan" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testPlan">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRespuestasPosibles" onclick="javascript:cargarTestGestionRespuestasPosibles()">
+	         Gestión de Respuestas Posibles 
+	      </a>
+	      <img class="iconTab" id="iconoTestRespuestasPosibles" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseRespuestasPosibles" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testRespuestasPosibles">
+      	</div>
+    	</div>
+  	</div>
+
+	<div class="card">
 	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRol" onclick="javascript:cargarTestGestionRoles()">
 	         Gestión de Roles 

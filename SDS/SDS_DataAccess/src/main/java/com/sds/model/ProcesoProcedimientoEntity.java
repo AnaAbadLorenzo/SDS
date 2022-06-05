@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.sds.model.compositekey.ProcesoProcedimientoKey;
@@ -11,6 +13,8 @@ import com.sds.model.compositekey.ProcesoProcedimientoKey;
 @Entity
 @IdClass(ProcesoProcedimientoKey.class)
 @Table(name = "procesoprocedimiento")
+@NamedQueries({
+		@NamedQuery(name = "ProcesoProcedimientoEntity.findIdProcesoByIdProcedimiento", query = "SELECT p.idProceso FROM ProcesoProcedimientoEntity p WHERE p.idProcedimiento =: idProcedimiento") })
 public class ProcesoProcedimientoEntity {
 
 	@Id

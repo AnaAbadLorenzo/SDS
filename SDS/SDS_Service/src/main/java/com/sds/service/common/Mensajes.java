@@ -272,4 +272,31 @@ public class Mensajes {
 	public static final String PROCEDIMIENTO_MODIFICADO_CORRECTAMENTE = "El procedimiento se ha modificado correctamente";
 	public static final String PROCEDIMIENTO_ELIMINADO_CORRECTAMENTE = "El procedimiento se ha eliminado correctamente";
 	public static final String PROCEDIMIENTO_REACTIVADO_CORRECTAMENTE = "El procedimiento se ha reactivado correctamente";
+	public static final String PROCEDIMIENTO_ASOCIADO_PROCESO = "El procedimiento se encuentra asociado a un proceso";
+	public static final String PROCEDIMIENTO_ASOCIADO_USUARIO = "El procedimiento se encuentra asociado a un usuario";
+
+	public static final String NOMBRE_PROCESO_NO_PUEDE_SER_VACIO = "El nombre del proceso no puede ser vacío";
+	public static final String NOMBRE_PROCESO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS = "El nombre del proceso solo puede contener letras, números y espacios";
+	public static final String NOMBRE_PROCESO_NO_PUEDE_SER_MENOR_QUE_3 = "El nombre del proceso no puede ser menor que 3";
+	public static final String NOMBRE_PROCESO_NO_PUEDE_SER_MAYOR_QUE_48 = "El nombre del proceso no puede ser mayor que 48";
+
+	public static final String DESCRIPCION_PROCESO_NO_PUEDE_SER_VACIA = "La descripción del proceso no puede ser vacía";
+	public static final String DESCRIPCION_PROCESO_PUEDE_CONTENER_LETRAS_NUMEROS_SIGNOS_PUNTUACION_Y_ESPACIOS = "La descripción del proceso sólo puede contener letras, números, signos de puntuación y espacios";
+	public static final String DESCRIPCION_PROCESO_NO_PUEDE_SER_MENOR_QUE_3 = "La descripción del proceso no puede ser menor que 3";
+
+	public static final String FECHA_PROCESO_NO_PUEDE_SER_VACIA = "La fecha del proceso no puede ser vacía";
+	public static final String FECHA_PROCESO_NO_PUEDE_CONTENER_MAS_QUE_NUMEROS = "La fecha del proceso solo puede contener numeros";
+	public static final String FECHA_PROCESO_NO_PUEDE_SER_MENOR_QUE_8 = "La fecha del proceso no puede ser menor que 8";
+	public static final String FECHA_PROCESO_NO_PUEDE_SER_MAYOR_QUE_8 = "La fecha del proceso no puede ser mayor que 8";
+
+	public static final String PROCESO_NO_PUEDE_SER_VACIO = "El nombre, descripción y/o fecha del proceso no pueden ser vacíos";
+
+	public static final String PROCESO_BUSCADO_CORRECTAMENTE = "El proceso se ha encontrado correctamente";
+	public static final String PROCESO_YA_EXISTE = "El proceso ya existe";
+	public static final String PROCESO_NO_EXISTE = "El proceso no existe";
+	public static final String PROCESO_GUARDADO_CORRECTAMENTE = "El proceso se ha guardado correctamente";
+	public static final String PROCESO_MODIFICADO_CORRECTAMENTE = "El proceso se ha modificado correctamente";
+	public static final String PROCESO_ELIMINADO_CORRECTAMENTE = "El proceso se ha eliminado correctamente";
+	public static final String PROCESO_REACTIVADO_CORRECTAMENTE = "El proceso se ha reactivado correctamente";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "El proceso tiene asociados procedimientos";
 }

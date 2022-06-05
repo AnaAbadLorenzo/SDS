@@ -175,6 +175,14 @@ var urlPeticionAjaxTestObjetivoAtributosAccionGuardar = urlComun + urlTest + url
 var urlPeticionAjaxTestObjetivoAtributosAccionBuscar = urlComun + urlTest + urlObjetivo + urlAtributos + urlBuscar;
 var urlPeticionAjaxTestObjetivoAtributosAccionModificar = urlComun + urlTest + urlObjetivo + urlAtributos + urlModificar;
 
+var urlPeticionAjaxTestRespuestaPosibleAtributosAccionGuardar = urlComun + urlTest + urlRespuestaPosible + urlAtributos + urlGuardar;
+var urlPeticionAjaxTestRespuestaPosibleAtributosAccionBuscar = urlComun + urlTest + urlRespuestaPosible + urlAtributos + urlBuscar;
+var urlPeticionAjaxTestRespuestaPosibleAtributosAccionModificar = urlComun + urlTest + urlRespuestaPosible + urlAtributos + urlModificar;
+
+var urlPeticionAjaxTestPlanAtributosAccionGuardar = urlComun + urlTest + urlPlan + urlAtributos + urlGuardar;
+var urlPeticionAjaxTestPlanAtributosAccionBuscar = urlComun + urlTest + urlPlan + urlAtributos + urlBuscar;
+var urlPeticionAjaxTestPlanAtributosAccionModificar = urlComun + urlTest + urlPlan + urlAtributos + urlModificar;
+
 /**Urls de las peticiones Ajax de test de acciones*/
 var urlPeticionAjaxTestLoginAcciones = urlComun + urlTest + urlLogin + urlAcciones;
 var urlPeticionAjaxTestRecuperarPassAcciones = urlComun + urlTest + urlRecuperarPass + urlAcciones;
@@ -227,3 +235,15 @@ var urlPeticionAjaxTestObjetivoAccionGuardar = urlComun + urlTest + urlObjetivo 
 var urlPeticionAjaxTestObjetivoAccionModificar = urlComun + urlTest + urlObjetivo + urlAccion + urlModificar;
 var urlPeticionAjaxTestObjetivoAccionEliminar = urlComun + urlTest + urlObjetivo + urlAccion + urlEliminar;
 var urlPeticionAjaxTestObjetivoAccionReactivar = urlComun + urlTest + urlObjetivo + urlAccion + urlReactivar;
+
+var urlPeticionAjaxTestRespuestasPosiblesAccionBuscar = urlComun + urlTest + urlRespuestaPosible + urlAccion + urlBuscar;
+var urlPeticionAjaxTestRespuestasPosiblesAccionGuardar = urlComun + urlTest + urlRespuestaPosible + urlAccion + urlGuardar;
+var urlPeticionAjaxTestRespuestasPosiblesAccionModificar = urlComun + urlTest + urlRespuestaPosible + urlAccion + urlModificar;
+var urlPeticionAjaxTestRespuestasPosiblesAccionEliminar = urlComun + urlTest + urlRespuestaPosible + urlAccion + urlEliminar;
+var urlPeticionAjaxTestRespuestasPosiblesAccionReactivar = urlComun + urlTest + urlRespuestaPosible + urlAccion + urlReactivar;
+
+var urlPeticionAjaxTestPlanAccionBuscar = urlComun + urlTest + urlPlan + urlAccion + urlBuscar;
+var urlPeticionAjaxTestPlanAccionGuardar = urlComun + urlTest + urlPlan + urlAccion + urlGuardar;
+var urlPeticionAjaxTestPlanAccionModificar = urlComun + urlTest + urlPlan + urlAccion + urlModificar;
+var urlPeticionAjaxTestPlanAccionEliminar = urlComun + urlTest + urlPlan + urlAccion + urlEliminar;
+var urlPeticionAjaxTestPlanAccionReactivar = urlComun + urlTest + urlPlan + urlAccion + urlReactivar;

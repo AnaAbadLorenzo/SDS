@@ -50,8 +50,8 @@
 	"noticiaYaExiste" : {
 		"usuario": "ana",
 		"idNoticia":"",
-		"tituloNoticia":"Bienvenidos a SDS",
-		"textoNoticia": "Os damos la bienvenida a SDS, una web donde podréis certificaros con los objetivos de la ONU 2030",
+		"tituloNoticia":"Noticia ya existe",
+		"textoNoticia": "Esta noticia ya existe",
 		"fechaNoticia": "2022-04-15"
 	},
 	
