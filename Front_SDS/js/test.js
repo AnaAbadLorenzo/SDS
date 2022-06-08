@@ -30,7 +30,7 @@ function cuerpoTablaAtributosTest(fila){
 
 	filaTabla = '<tr> <td>' + fila.campo + 
             	'</td> <td>' + fila.prueba +
-            	'</td> <td>' + valorAcortado(fila.valor) +
+            	'</td> <td>' + valorAcortado(convertirCaracteres(fila.valor)) +
             	'</td> <td>' + fila.resultadoEsperado +
             	'</td> <td>' + fila.resultadoObtenido +
             	'</td> <td>' + fila.tipoPrueba +
@@ -73,60 +73,65 @@ function obtenerValor(valor, atributos, entidad){
 
 		switch(entidad){
 			case 'Login':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.usuario + '", "' + atributos[1] + '" : "' + valor.passwdUsuario +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.usuario) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.passwdUsuario) +  '"';
 			break;
 			case 'RecuperarPass':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.emailP + '", "' + atributos[1] + '" : "' + valor.usuario +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.emailP) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.usuario) +  '"';
 			break;
 			case 'Registrar':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombreP + '", "' + atributos[1] + '" : "' + valor.apellidosP + '", "' + atributos[2] + '" : "' + valor.fechaNacP  
-							+ '", "' + atributos[3] + '" : "' + valor.telefonoEmpresa + '", "' + atributos[4] + '" : "' + valor.nombreEmpresa + '", "' + atributos[5] + '" : "' + valor.direccionP 
-							+ '", "' + atributos[6] + '" : "' + valor.emailP + '", "' + atributos[7] + '" : "' + valor.cifEmpresa + '", "' + atributos[8] + '" : "' + valor.direccionEmpresa
-							+ '", "' + atributos[9] + '" : "' + valor.seleccionarEmpresa + '", "' + atributos[10] + '" : "' + valor.telefonoP + '", "' + atributos[11] + '" : "' + valor.usuario
-							+ '", "' + atributos[12] + '" : "' + valor.dniP + '", "' + atributos[13] + '" : "' + valor.passwdUsuario
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombreP) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.apellidosP) 
+				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaNacP) + '", "' + atributos[3] + '" : "' + convertirCaracteres(valor.telefonoEmpresa)
+				      + '", "' + atributos[4] + '" : "' + convertirCaracteres(valor.nombreEmpresa) + '", "' + atributos[5] + '" : "' + convertirCaracteres(valor.direccionP) 
+							+ '", "' + atributos[6] + '" : "' + convertirCaracteres(valor.emailP) + '", "' + atributos[7] + '" : "' + convertirCaracteres(valor.cifEmpresa) 
+							+ '", "' + atributos[8] + '" : "' + convertirCaracteres(valor.direccionEmpresa)	+ '", "' + atributos[9] + '" : "' + convertirCaracteres(valor.seleccionarEmpresa)
+							+ '", "' + atributos[10] + '" : "' + convertirCaracteres(valor.telefonoP) + '", "' + atributos[11] + '" : "' + convertirCaracteres(valor.usuario)
+							+ '", "' + atributos[12] + '" : "' + convertirCaracteres(valor.dniP) + '", "' + atributos[13] + '" : "' + convertirCaracteres(valor.passwdUsuario)
 							+ '"';
 			break;
 			case 'Rol':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.rolDescription + '", "' + atributos[1] + '" : "' + valor.rolName +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.rolDescription) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.rolName) +  '"';
 			break;
 
 			case 'Funcionalidad':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.descripFuncionalidad + '", "' + atributos[1] + '" : "' + valor.nombreFuncionalidad +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.descripFuncionalidad) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.nombreFuncionalidad) +  '"';
 			break;
 
 			case 'Accion':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.descripAccion + '", "' + atributos[1] + '" : "' + valor.nombreAccion +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.descripAccion) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.nombreAccion) +  '"';
 			break;
 
 			case 'Usuario':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.dniUsuario + '", "' + atributos[1] + '" : "' + valor.usuario +  '"' + '", "' + atributos[2] + '" : "' + valor.passwdUsuario +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.dniUsuario) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.usuario) +  '"' 
+				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.passwdUsuario) +  '"';
 			break;
 
 			case 'Noticia':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.tituloNoticia + '", "' + atributos[1] + '" : "' + valor.textoNoticia +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.tituloNoticia) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.textoNoticia) +  '"';
 			break;
 
 			case 'Persona':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.dniP + '", "' + atributos[1] + '" : "' + valor.nombreP +  '", "' + atributos[2] + '" : "' + valor.apellidosP +
-								'", "' + atributos[3] + '" : "' + valor.fechaNacP +  '", "' + atributos[4] + '" : "' + valor.direccionP +  '", "' + atributos[4] + '" : "' + valor.emailP + 
-								'", "' + atributos[5] + '" : "' + valor.telefonoP +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.dniP) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.nombreP) 
+							+ '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.apellidosP) + '", "' + atributos[3] + '" : "' + convertirCaracteres(valor.fechaNacP)
+							+ '", "' + atributos[4] + '" : "' + convertirCaracteres(valor.direccionP) +  '", "' + atributos[4] + '" : "' + convertirCaracteres(valor.emailP) 
+							+ '", "' + atributos[5] + '" : "' + convertirCaracteres(valor.telefonoP) +  '"';
 			break;
 
 			case 'Empresa':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.cifEmpresa + '", "' + atributos[1] + '" : "' + valor.nombreEmpresa +  '", "' + atributos[2] + '" : "' + valor.direccionEmpresa +
-								'", "' + atributos[3] + '" : "' + valor.telefonoEmpresa + '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.cifEmpresa) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.nombreEmpresa) 
+				      +  '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.direccionEmpresa) + '", "' + atributos[3] + '" : "' + convertirCaracteres(valor.telefonoEmpresa) + '"';
 			break;
 
 			case 'Objetivo':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombreObjetivo + '", "' + atributos[1] + '" : "' + valor.descripObjetivo +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombreObjetivo) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.descripObjetivo) +  '"';
 			break;
 
 			case 'Respuestas Posibles':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.textoRespuesta +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.textoRespuesta) +  '"';
 			break;
 
 			case 'Plan':
-				resultadoValor = '"' + atributos[0] + '" : "' + valor.nombrePlan + '", "' + atributos[1] + '" : "' + valor.descripPlan +  '"' + '", "' + atributos[2] + '" : "' + valor.fechaPlan +  '"';
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombrePlan) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.descripPlan) +  '"' 
+				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaPlan) +  '"';
 			break;
 		}
 
@@ -222,4 +227,59 @@ function validarDatosTabla(datos, idElementoList, tipoTest){
 	}
 
 	
+}
+
+/**Función para convertir los caracteres raros en su caracter correcto*/
+function convertirCaracteres(valor){
+
+	var ENHE_ERROR = "ÃƒÂ±";
+	var ENHE = "ñ";
+	var O_ACENTO_ERROR = "ÃƒÂ³";
+	var O_ACENTO = "ó"
+	var A_ACENTO_ERROR = "ÃƒÂ¡";
+	var A_ACENTO = "á";
+	var E_ACENTO_ERROR = "ÃƒÂ©";
+	var E_ACENTO = "é"
+	var U_ACENTO_ERROR = "ÃƒÂº";
+	var U_ACENTO = "ú"
+	var I_ACENTO_ERROR = "ÃƒÂ­";
+	var I_ACENTO = "í"
+	var O_MAYUSCULA_ACENTO_ERROR = "Ãƒâ€œ";
+	var O_MAYUSCULA = "Ó";
+	var E_MAYUSCULA_ACENTO_ERROR = "Ãƒâ€°";
+	var E_MAYUSCULA = "É";
+
+	if (valor.includes(ENHE_ERROR)) {
+		valor = valor.replaceAll(ENHE_ERROR, ENHE);
+	}
+
+	if (valor.includes(O_ACENTO_ERROR)) {
+		valor = valor.replaceAll(O_ACENTO_ERROR, O_ACENTO);
+	}
+
+	if (valor.includes(A_ACENTO_ERROR)) {
+		valor = valor.replaceAll(A_ACENTO_ERROR, A_ACENTO);
+	}
+
+	if (valor.includes(E_ACENTO_ERROR)) {
+		valor = valor.replaceAll(E_ACENTO_ERROR, E_ACENTO);
+	}
+
+	if (valor.includes(U_ACENTO_ERROR)) {
+		valor = valor.replaceAll(U_ACENTO_ERROR, U_ACENTO);
+	}
+
+	if (valor.includes(I_ACENTO_ERROR)) {
+		valor = valor.replaceAll(I_ACENTO_ERROR, I_ACENTO);
+	}
+
+	if (valor.includes(O_MAYUSCULA_ACENTO_ERROR)) {
+		valor = valor.replaceAll(O_MAYUSCULA_ACENTO_ERROR, O_MAYUSCULA);
+	}
+
+	if (valor.includes(E_MAYUSCULA_ACENTO_ERROR)) {
+		valor = valor.replaceAll(E_MAYUSCULA_ACENTO_ERROR, E_MAYUSCULA);
+	}
+
+	return valor;
 }
