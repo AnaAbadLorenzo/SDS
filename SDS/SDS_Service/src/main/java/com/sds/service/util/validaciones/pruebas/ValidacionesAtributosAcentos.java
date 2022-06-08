@@ -107,7 +107,8 @@ public class ValidacionesAtributosAcentos {
 					|| atributo.contains(Constantes.A_ACENTO_ERROR)
 					|| atributo.contains(Constantes.O_MAYUSCULA_ACENTO_ERROR)
 					|| atributo.contains(Constantes.E_ACENTO_ERROR)
-					|| atributo.contains(Constantes.E_MAYUSCULA_ACENTO_ERROR)) {
+					|| atributo.contains(Constantes.E_MAYUSCULA_ACENTO_ERROR)
+					|| atributo.contains(Constantes.I_ACENTO_ERROR) || atributo.contains(Constantes.U_ACENTO_ERROR)) {
 				switch (funcionalidad) {
 				case LOGIN:
 					switch (atr) {
