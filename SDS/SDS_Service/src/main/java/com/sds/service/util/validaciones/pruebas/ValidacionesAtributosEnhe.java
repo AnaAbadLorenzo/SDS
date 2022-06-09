@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sds.service.common.CodigosMensajes;
 import com.sds.service.common.Constantes;
@@ -13,6 +15,8 @@ import com.sds.service.common.enumerados.Atributo;
 import com.sds.service.common.enumerados.Funcionalidad;
 
 public class ValidacionesAtributosEnhe {
+
+	public final static Logger LOGGER = LoggerFactory.getLogger(ValidacionesAtributosEnhe.class);
 
 	public String comprobarAtributoEnhe(final String atributo, final Funcionalidad funcionalidad, final Atributo atr)
 			throws ParseException {
@@ -94,7 +98,7 @@ public class ValidacionesAtributosEnhe {
 
 		}
 
-		if (atributo.contains(Constantes.ENHE)) {
+		if (atributo.contains(Constantes.ENHE) || atributo.contains(Constantes.ENHE_ERROR)) {
 			switch (funcionalidad) {
 			case LOGIN:
 				switch (atr) {
@@ -217,6 +221,8 @@ public class ValidacionesAtributosEnhe {
 				break;
 			}
 		}
+
+		LOGGER.debug("Resultado '{}'", resultado);
 
 		return resultado;
 	}

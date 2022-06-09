@@ -427,6 +427,11 @@ form button[type="button"]:hover {
   color: #ffffff !important;
 }
 
+#listadoFuncionalidades {
+  height: 472px;
+  overflow-y: scroll;
+}
+
 #btnEspanol {
   background-color: transparent;
   background-image:url(../images/Spain2.png);

@@ -694,6 +694,14 @@ public class Constantes {
 
 	// Constantes validaciones
 	public static final String ENHE = "ñ";
+	public static final String ENHE_ERROR = "ÃƒÂ±";
+	public static final String O_ACENTO_ERROR = "ÃƒÂ³";
+	public static final String A_ACENTO_ERROR = "ÃƒÂ¡";
+	public static final String E_ACENTO_ERROR = "ÃƒÂ©";
+	public static final String U_ACENTO_ERROR = "ÃƒÂº";
+	public static final String I_ACENTO_ERROR = "ÃƒÂ­";
+	public static final String O_MAYUSCULA_ACENTO_ERROR = "Ãƒâ€œ";
+	public static final String E_MAYUSCULA_ACENTO_ERROR = "Ãƒâ€°";
 	public static final String PATRON_ACENTOS = "[áéíóúÁÉÍÓÚ]";
 	public static final String PATRON_CARACTERES_ESPECIALES = "[/¡/!/¿/?/@/#/$/%/(/)/=/+/-/€/./,//]";
 	public static final String PATRON_CARACTERES_ESPECIALES_SIN_SIGNOS_PUNTUACION = "[/¡/!/¿/?/@/#/$/%/(/)/=/+/-/€//]";
