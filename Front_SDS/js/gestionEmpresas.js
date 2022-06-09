@@ -1011,7 +1011,7 @@ function showBuscarEmpresa() {
   let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];    
   let obligatorios = ["obligatorioCifEmpresa", "obligatorioNombreEmpresa", "obligatorioDireccionEmpresa", "obligatorioTelefonoEmpresa"];
   eliminarReadonly(campos);
-  mostrarObligatorios(obligatorios);
+  ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
 
 }

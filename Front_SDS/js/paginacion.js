@@ -132,6 +132,9 @@ function escogeTamanho(entidad){
         case 'PLAN' :
             tamanho = tamanhoPaginaPlan;
         break;
+        case 'PROCEDIMIENTO' :
+            tamanho = tamanhoPaginaProcedimiento;
+        break;
     }
 
     return tamanho;
@@ -436,6 +439,29 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                 break;
         }
         break;
+         case 'PROCEDIMIENTO':
+            switch(funcionalidad){
+                case 'cargarProcedimientos': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarProcedimientos(' 
+                            + (i+1) + ',' + tamanhoPaginaProcedimiento + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarProcedimiento' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarProcedimiento(' 
+                            + (i+1) + ',' + tamanhoPaginaProcedimiento + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosProcedimiento' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaProcedimiento+ '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+        }
+        break;
+
 
 
 

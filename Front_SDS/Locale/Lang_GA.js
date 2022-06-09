@@ -41,6 +41,11 @@ arrayGA={
 	'TEXTO_RESPUESTA_POSIBLE' : 'Texto resposta posible',
 	'NOMBRE_PLAN' : 'Nome plan',
 	'DESCRIPCION_PLAN' : 'Descripción plan',
+	'NOMBRE_PROCEDIMIENTO' : 'Nome procedemento',
+	'DESCRIPCION_PROCEDIMIENTO' : 'Descripción procedemento',
+	'CHECK_USUARIO' : 'Publicado',
+	'PUBLICADO' : 'Publicado',
+	'NO_PUBLICADO' : 'No publicado',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -209,9 +214,9 @@ arrayGA={
 	'TEXTO_RESPUESTA_ALFANUMERICO_SIGNOS_PUNTUACION_INCORRECTO' : 'O texto da resposta posible tan só pode conter letras, números, espazos e signos de puntuación',
 	'TEXTO_RESPUESTA_MENOR_QUE_2' : 'O texto da resposta posible ten menos de 2 caracteres',
 	'NOMBRE_PLAN_VACIO' : 'Nome plan vacío',
-	'NOMBRE_PLAN_ALFABETICO_INCORRECTO' : 'O nome do plan an só pode conter letras e espazos',
+	'NOMBRE_PLAN_ALFABETICO_INCORRECTO' : 'O nome do plan tan só pode conter letras e espazos',
 	'NOMBRE_PLAN_MENOR_QUE_3' : 'O nome do plan ten menos de 3 caracteres',
-	'NOMBRE_PLAN_MAYOR_QUE_48' : 'O nome do plan te máis de 48 caracteres',
+	'NOMBRE_PLAN_MAYOR_QUE_48' : 'O nome do plan ten máis de 48 caracteres',
 	'DESCRIPCION_PLAN_VACIO' : 'Descripción plan vacía',
 	'DESCRIPCION_PLAN_ALBAFETICO_INCORRECTO' : 'A descripción do plan tan só pode conter letras e espazos',
 	'DESCRIPCION_PLAN_MENOR_QUE_3' : 'A descripción do plan te menos de 3 caracteres',
@@ -219,6 +224,17 @@ arrayGA={
 	'FECHA_PLAN_NUMERICA_INCORRECTA' : 'A data do plan tan só pode conter números',
 	'FECHA_PLAN_MENOR_QUE_8' : 'A data do plan ten menos de 8 caracteres',
 	'FECHA_PLAN_MAYOR_QUE_8' : 'A data do plan ten máis de 8 caracteres',
+	'NOMBRE_PROCEDIMIENTO_VACIO' : 'Nome procedemento vacío',
+	'NOMBRE_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO' : 'O nome do procedemento tan só pode conter letras, números e espazos',
+	'NOMBRE_PROCEDIMIENTO_MENOR_QUE_3' : 'O nome do procedemento ten menos de 3 caracteres',
+	'NOMBRE_PROCEDIMIENTO_MAYOR_QUE_48' : 'O nome do procedemento ten máis de 48 caracteres',
+	'DESCRIPCION_PROCEDIMIENTO_VACIO' : 'Descripción procedimento vacía',
+	'DESCRIPCION_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO' : 'A descripción do procedemento tan só pode conter letras, números e espazos',
+	'DESCRIPCION_PROCEDIMIENTO_MENOR_QUE_3' : 'A descripción do procedemento ten menos de 3 caracteres',
+	'FECHA_PROCEDIMIENTO_VACIA' : 'Data procedemento vacía',
+	'FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA' : 'A data do procedemento tan só pode conter números',
+	'FECHA_PROCEDIMIENTO_MENOR_QUE_8' : 'A data do procedemento ten menos de 8 caracteres',
+	'FECHA_PROCEDIMIENTO_MAYOR_QUE_8' : 'A data do procedemento ten máis de 8 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -345,6 +361,15 @@ arrayGA={
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedementos dispoñibles',
 	'GESTION_PROCESOS' : 'Xestión de procesos',
 	'GESTION_PROCESOS_NO_ADMIN' : 'Procesos',
+	'REACTIVATE_PROCEDIMIENTO' : 'REACTIVAR PROCEDEMENTO',
+	'DELETE_PROCEDEMIENTO' : 'ELIMINAR PROCEDEMENTO',
+	'EDIT_PROCEDIMIENTO' : 'EDITAR PROCEDEMENTO',
+	'DETAIL_PROCEDIMIENTO' : 'DETALLE PROCEDEMENTO',
+	'SEARCH_PROCEDIMIENTO' : 'BUSCAR PROCEDEMENTO',
+	'ADD_PROCEDIMIENTO' : 'ENGADIR PROCEDEMENTO',
+	'OPCION_DEFECTO_PLAN' : 'Por favor, selecciona o plan',
+	'PUBLICAR_PROCEDIMIENTO' : '¿Publicar procedemento?',
+	'NO_ESPECIFICADO' : 'Non especificado',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -450,7 +475,18 @@ arrayGA={
 	'PLANES_LISTADOS' : 'Os plans listáronse correctamente',
 	'PLAN_ELIMINADO' : 'O plan eliminouse correctamente',
 	'PLAN_MODIFICADO' : 'O plan modificouse correctamente',
-	'PLAN_GUARDADO' : 'O plan gardouse correctamente'
+	'PLAN_GUARDADO' : 'O plan gardouse correctamente',
+	'PROCEDIMIENTO_REACTIVADO_OK' : 'PROCEDEMENTO REACTIVADO CORRECTAMENTE',
+	'PROCEDIMIENTO_REACTIVADO_OK' : 'PROCEDEMENTO ELIMINADO CORRECTAMENTE',
+	'PROCEDIMIENTO_EDITADO_OK' : 'PROCEDEMENTO EDITADO CORRECTAMENTE',
+	'PROCEDIMIENTO_GUARDADO_OK' : 'PROCEDEMENTO GARDADO CORRECTAMENTE',
+	'PROCEDIMIENTO_REACTIVADO' : 'O procedemento reactivouse correctamente',
+	'PROCEDIMIENTO_ENCONTRADO' : 'O procedemento encontrouse correctamente',
+	'PROCEDIMIENTOS_ELIMINADOS_LISTADOS' : 'Os procedementos eliminados listáronse correctamente',
+	'PROCEDIMIENTOS_LISTADOS' : 'Os procedementos listáronse correctamente',
+	'PROCEDIMIENTO_ELIMINADO' : 'Os procedementos elimináronse correctamente',
+	'PROCEDIMIENTO_MODIFICADO' : 'O procedemento modificouse correctamente',
+	'PROCEDIMIENTO_GUARDADO' : 'O procedemento gardouse correctamente'
 
 
 	

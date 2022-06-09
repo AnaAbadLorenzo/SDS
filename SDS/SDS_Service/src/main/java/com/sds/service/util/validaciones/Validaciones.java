@@ -16,6 +16,7 @@ import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
+import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -507,5 +508,29 @@ public class Validaciones {
 		} else {
 			return true;
 		}
+	}
+
+	public boolean comprobarProcedimientoUsuarioBlank(final ProcedimientoUsuarioEntity procedimientoUsuarioEntity)
+			throws ParseException {
+		if (tieneValor(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario().toString())
+				|| StringUtils.isBlank(procedimientoUsuarioEntity.getUsuario().getDniUsuario())
+				|| tieneValor(procedimientoUsuarioEntity.getProcedimiento().getIdProcedimiento().toString())) {
+			return false;
+		} else {
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = formato.parse("0000-00-00");
+			if (procedimientoUsuarioEntity.getFechaProcedimientoUsuario().equals(date)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean tieneValor(final String value) {
+		if (value != null && Integer.parseInt(value) > 0) {
+			return true;
+		}
+		return false;
 	}
 }

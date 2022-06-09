@@ -11,4 +11,7 @@ public interface ProcedimientoUsuarioProcesoRepository
 		extends JpaRepository<ProcedimientoUsuarioProcesoEntity, ProcedimientoUsuarioProcesoKey> {
 
 	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProceso(final Integer idProceso);
+
+	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProcedimientoUsuario(
+			final Integer idProcedimientoUsuario);
 }

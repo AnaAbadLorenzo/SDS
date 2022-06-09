@@ -13,11 +13,31 @@ import com.sds.model.UsuarioEntity;
 
 public interface ProcedimientoUsuarioRepository extends JpaRepository<ProcedimientoUsuarioEntity, Integer> {
 
+	List<ProcedimientoUsuarioEntity> findAllProcedimientosUsuario(final int inicio, final int tamanhoPagina);
+
+	ProcedimientoUsuarioEntity findProcedimientoUsuarioByProcedimientoAndUsuario(
+			final ProcedimientoEntity procedimientoEntity, final UsuarioEntity usuarioEntity);
+
+	Integer numberFindAllProcedimientosUsuario();
+
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByProcedimiento(final ProcedimientoEntity procedimiento);
 
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
 			final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
 			final ProcedimientoEntity procedimiento);
+
+	Integer numberFindProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
+			final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
+			final ProcedimientoEntity procedimiento);
+
+	Integer numberFindProcedimientoUsuarioWithoutUsuario(final Integer puntuacionProcedimientoUsuario,
+			final String fechaProcedimientoUsuario, final ProcedimientoEntity procedimiento);
+
+	Integer numberFindProcedimientoUsuarioWithoutProcedimiento(final Integer puntuacionProcedimientoUsuario,
+			final String fechaProcedimientoUsuario, final UsuarioEntity usuario);
+
+	Integer numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario(final Integer puntuacionProcedimientoUsuario,
+			final String fechaProcedimientoUsuario);
 
 	@Transactional
 	@Modifying

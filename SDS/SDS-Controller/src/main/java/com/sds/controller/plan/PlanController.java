@@ -1,8 +1,10 @@
 package com.sds.controller.plan;
 
 import java.text.ParseException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,6 +59,14 @@ public class PlanController {
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<PlanEntity> resultado = planService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.PLANES_LISTADOS, resultado);
+	}
+
+	@GetMapping(value = "/listarPlanesSinP")
+	@ResponseBody
+	public RespEntity buscarTodos() {
+		final List<PlanEntity> resultado = planService.buscarTodosSinP();
 
 		return new RespEntity(RespCode.PLANES_LISTADOS, resultado);
 	}

@@ -21,7 +21,16 @@ import javax.persistence.Table;
 @Table(name = "procedimientousuario")
 @NamedQueries({
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByProcedimiento", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.procedimiento =: procedimiento"),
-		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND LOWER(p.usuario) LIKE LOWER(CONCAT('%', :usuario, '%')) AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0") })
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByProcedimientoAndUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindAllProcedimientosUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuarioEliminados", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 1"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindAllProcedimientosUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 1"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutProcedimiento", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%')  AND p.borradoProcedimientoUsuario = 0") })
 public class ProcedimientoUsuarioEntity {
 
 	@Id
@@ -67,6 +76,19 @@ public class ProcedimientoUsuarioEntity {
 			final Date fechaProcedimientoUsuario, final Integer borradoProcedimientoUsuario,
 			final ProcedimientoEntity procedimiento, final UsuarioEntity usuario) {
 		super();
+		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
+		this.fechaProcedimientoUsuario = fechaProcedimientoUsuario;
+		this.borradoProcedimientoUsuario = borradoProcedimientoUsuario;
+		this.procedimiento = procedimiento;
+		this.usuario = usuario;
+	}
+
+	public ProcedimientoUsuarioEntity(final Integer idProcedimientoUsuario,
+			final Integer puntuacionProcedimientoUsuario, final Date fechaProcedimientoUsuario,
+			final Integer borradoProcedimientoUsuario, final ProcedimientoEntity procedimiento,
+			final UsuarioEntity usuario) {
+		super();
+		this.idProcedimientoUsuario = idProcedimientoUsuario;
 		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
 		this.fechaProcedimientoUsuario = fechaProcedimientoUsuario;
 		this.borradoProcedimientoUsuario = borradoProcedimientoUsuario;

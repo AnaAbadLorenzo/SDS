@@ -42,6 +42,12 @@ arrayES={
 	'TEXTO_RESPUESTA_POSIBLE' : 'Texto respuesta posible',
 	'NOMBRE_PLAN' : 'Nombre plan',
 	'DESCRIPCION_PLAN' : 'Descripcion plan',
+	'NOMBRE_PROCEDIMIENTO' : 'Nombre procedimiento',
+	'DESCRIPCION_PROCEDIMIENTO' : 'Descripción procedimiento',
+	'CHECK_USUARIO' : 'Publicado',
+	'PUBLICADO' : 'Publicado',
+	'NO_PUBLICADO' : 'No publicado',
+	'NO_ESPECIFICADO' : 'No especificado',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -223,6 +229,17 @@ arrayES={
 	'FECHA_PLAN_NUMERICA_INCORRECTA' : 'La fecha del plan tan sólo puede contener números',
 	'FECHA_PLAN_MENOR_QUE_8' : 'La fecha del plan tiene menos de 8 caracteres',
 	'FECHA_PLAN_MAYOR_QUE_8' : 'La fecha del plan tiene más de 8 caracteres',
+	'NOMBRE_PROCEDIMIENTO_VACIO' : 'Nombre procedimiento vacío',
+	'NOMBRE_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO' : 'El nombre del procedimiento sólo puede contener letras, números y espacios',
+	'NOMBRE_PROCEDIMIENTO_MENOR_QUE_3' : 'El nombre del procedimiento tiene menos de 3 caracteres',
+	'NOMBRE_PROCEDIMIENTO_MAYOR_QUE_48' : 'El nombre del procedimiento tiene más de 48 caracteres',
+	'DESCRIPCION_PROCEDIMIENTO_VACIO' : 'Descripción procedimiento vacía',
+	'DESCRIPCION_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO' : 'La descripción del procedimiento sólo puede contener números, letras y espacios',
+	'DESCRIPCION_PROCEDIMIENTO_MENOR_QUE_3' : 'La descripción del procedimiento tiene menos de 3 caracteres',
+	'FECHA_PROCEDIMIENTO_VACIA' : 'Fecha del procedimiento vacía',
+	'FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA' : 'La fecha del procedimiento sólo puede contener números',
+	'FECHA_PROCEDIMIENTO_MENOR_QUE_8' : 'La fecha del procedimiento tiene menos de 8 caracteres',
+	'FECHA_PROCEDIMIENTO_MAYOR_QUE_8' : 'La fecha del procedimiento tiene más de 8 caracteres',
 
 
 	//Mensajes
@@ -350,6 +367,14 @@ arrayES={
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedimientos disponibles',
 	'GESTION_PROCESOS' : 'Gestión de procesos',
 	'GESTION_PROCESOS_NO_ADMIN' : 'Procesos',
+	'REACTIVATE_PROCEDIMIENTO' : 'REACTIVAR PROCEDIMIENTO',
+	'DELETE_PROCEDIMIENTO' : 'ELIMINAR PROCEDIMIENTO',
+	'EDIT_PROCEDIMIENTO' : 'EDITAR PROCEDIMIENTO',
+	'DETAIL_PROCEDIMIENTO' : 'DETALLE PROCEDIMIENTO',
+	'SEARCH_PROCEDIMIENTO' : 'BUSCAR PROCEDIMIENTO',
+	'ADD_PROCEDIMIENTO' : 'AÑADIR PROCEDIMIENTO',
+	'OPCION_DEFECTO_PLAN' : 'Por favor, selecciona el plan',
+	'PUBLICAR_PROCEDIMIENTO' : '¿Publicar procedimiento?',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -456,7 +481,18 @@ arrayES={
 	'PLANES_LISTADOS' : 'Los planes se han listado correctamente',
 	'PLAN_ELIMINADO' : 'El plan se ha eliminado correctamente',
 	'PLAN_MODIFICADO' : 'El plan se ha modificado correctamente',
-	'PLAN_GUARDADO' : 'El plan se ha guardado correctamente'
+	'PLAN_GUARDADO' : 'El plan se ha guardado correctamente',
+	'PROCEDIMIENTO_REACTIVADO_OK' : 'PROCEDIMIENTO REACTIVADO CORRECTAMENTE',
+	'PROCEDIMIENTO_ELIMINADO_OK' : 'PROCEDIMIENTO ELIMINADO CORRECTAMENTE',
+	'PROCEDIMIENTO_EDITADO_OK' : 'PROCEDIMIENTO EDITADO CORRECTAMENTE',
+	'PROCEDIMIENTO_GUARDADO_OK' : 'PROCEDIMIENTO GUARDADO CORRECTAMENTE',
+	'PROCEDIMIENTO_REACTIVADO' : 'El procedimiento se ha reactivado correctamente',
+	'PROCEDIMIENTO_ENCONTRADO' : 'El procedimiento se ha encontrado correctamente',
+	'PROCEDIMIENTOS_ELIMINADOS_LISTADOS' : 'Los procedimientos eliminados se han listado correctamente',
+	'PROCEDIMIENTOS_LISTADOS' : 'Los procedimientos se han listado correctamente',
+	'PROCEDIMIENTO_ELIMINADO' : 'El procedimiento se ha eliminado correctamente',
+	'PROCEDIMIENTO_MODIFICADO' : 'El procedimiento se ha modificado correctamente',
+	'PROCEDIMIENTO_GUARDADO' : 'El procedimiento se ha guardado correctamente'
 
 
 

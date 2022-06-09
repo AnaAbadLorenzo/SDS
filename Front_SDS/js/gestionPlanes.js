@@ -48,7 +48,7 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
     var token = getCookie('tokenUsuario');
 
     if(accion == "buscarModal"){
-      var idObj = $('#selectObjetivos').val();
+      var idObj = $('#selectObjetivos option:selected').val();
       if(idObj == 0){
         var objetivo = null;
       }else{
@@ -316,10 +316,18 @@ function detallePlanAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
+    var objetivo = {
+      idObjetivo : $('#selectObjetivos option:selected').val(),
+      nombreObjetivo : "",
+      descripObjetivo : "",
+      borradoObjetivo : ""
+    }
+
     var data = {
       nombrePlan : $('#nombrePlan').val(),
       descripPlan : $('#descripPlan').val(),
       fechaPlan : $('#fechaPlan').val(),
+      objetivo : objetivo, 
       inicio : 0,
       tamanhoPagina : 1
     }
@@ -710,6 +718,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
 
       setCookie('nombrePlan', '');
       setCookie('descripPlan', '');
+      setCookie('fechaPlan', '');
 
       if(paginadorCreado != 'PaginadorCreado'){
          paginador(totalResults, 'buscarEliminadosPlan', 'PLAN');
@@ -1078,7 +1087,7 @@ async function construyeSelectObjetivos(){
 
     var token = getCookie('tokenUsuario');
 
-        options = '<option selected value=0><label class="OPCION_DEFECTO_OBJETIVO">Selecciona el Objetivo</label></option>';
+        options = '<option selected value=0><label class="OPCION_DEFECTO_OBJETIVO"></label></option>';
         for(var i = 0; i< res.data.listaBusquedas.length ; i++){
           options += '<option value=' + res.data.listaBusquedas[i].idObjetivo + '>' + res.data.listaBusquedas[i].nombreObjetivo + '</option>';
         }
@@ -1094,19 +1103,6 @@ async function construyeSelectObjetivos(){
 function listarObjetivosAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
-
-    var plan = {
-      idPlan: "",
-      nombrePlan : $('#nombrePlan').val(),
-      descripPlan : $('#descripPlan').val(),
-      fechaPlan : $('#fechaPlan').val(),
-      borradoPlan : 0
-    }
-
-    var data = {
-      usuario : getCookie('usuario'),
-      plan : plan
-    }
 
     $.ajax({
       method: "GET",

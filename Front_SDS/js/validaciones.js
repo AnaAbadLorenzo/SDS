@@ -1512,6 +1512,152 @@ function comprobarBuscarPlan(){
 	}
 }
 
+/** Funcion que valida el formato del Nombre del procedimiento **/
+function comprobarNombreProcedimiento(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 48,  idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la descripcion del procedimiento **/
+function comprobarDescripcionProcedimiento(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que valida el formato de la fecha del procedimiento **/
+function comprobarFechaProcedimiento(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarTamañoMinimo(idElemento, 3, idElementoError, campo) && comprobarTamañoMaximo(idElemento, 10,  idElementoError, campo) && comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError); 
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+
+/**Función que valida el editar del procedimiento **/
+function comprobarEditProcedimiento(){
+	if(comprobarNombreProcedimiento('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
+		comprobarDescripcionProcedimiento('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')
+		&& comprobarFechaProcedimiento('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el añadir del procedimiento **/
+function comprobarAddProcedimiento(){
+	if(comprobarNombreProcedimiento('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
+		comprobarDescripcionProcedimiento('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')
+		&& comprobarFechaProcedimiento('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el nombre del procedimiento en el buscar*/
+function comprobarNombreProcedimientoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 48, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la descripcion del procedimiento en el buscar*/
+function comprobarDescripcionProcedimientoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo)) {
+			validacionOK(idElemento, idElementoError);
+			return true;
+		
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/** Funcion que valida el formato de la fecha de procedimiento **/
+function comprobarFechaProcedimientoSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 10, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida el buscar del procedimiento **/
+function comprobarBuscarProcedimiento(){
+	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
+		comprobarDescripcionProcedimientoSearch('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')
+		&& comprobarFechaProcedimientoSearch('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
@@ -1614,13 +1760,19 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 				codigo = "NOMBRE_PLAN_VACIO";
 			break;
 			case 'descripPlan' :
-				codigo = "NOMBRE_PLAN_VACIO";
-			break;
-			case 'nombrePlan' :
 				codigo = "DESCRIPCION_PLAN_VACIO";
 			break;
 			case 'fechaPlan' :
 				codigo = "FECHA_PLAN_VACIA";
+			break;
+			case 'nombreProcedimiento' :
+				codigo = "NOMBRE_PROCEDIMIENTO_VACIO";
+			break;
+			case 'descripProcedimiento' :
+				codigo = "DESCRIPCION_PROCEDIMIENTO_VACIO";
+			break;
+			case 'fechaProcedimiento' :
+				codigo = "FECHA_PROCEDIMIENTO_VACIA";
 			break;
 
 		}
@@ -1733,6 +1885,15 @@ function comprobarTamañoMinimo(idElemento, sizeMin, idElementoError, campo){
 			case 'fechaPlan' :
 				codigo = "FECHA_PLAN_MENOR_QUE_8";
 			break;
+			case 'nombreProcedimiento' :
+				codigo = "NOMBRE_PROCEDIMIENTO_MENOR_QUE_3";
+			break;
+			case 'descripProcedimiento' :
+				codigo = "DESCRIPCION_PROCEDIMIENTO_MENOR_QUE_3";
+			break;
+			case 'fechaProcedimiento' :
+				codigo = "FECHA_PROCEDIMIENTO_MENOR_QUE_8";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -1824,6 +1985,12 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			case 'fechaPlan' :
 				codigo = "FECHA_PLAN_MAYOR_QUE_8";
 			break;
+			case 'nombreProcedimiento' :
+				codigo = "NOMBRE_PROCEDIMIENTO_MAYOR_QUE_48";
+			break;
+			case 'fechaProcedimiento' :
+				codigo = "FECHA_PROCEDIMIENTO_MAYOR_QUE_8";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -1874,7 +2041,7 @@ function comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) {
 
 	var valor = document.getElementById(idElemento).value;
  
- 	var patron = /^[a-zA-Z0-9\u00f1\u00d1\s]+$/;
+ 	var patron = /^[a-zA-Z0-9À-ÿ\u00f1\u00d1\s]+$/;
 		
 	if (!patron.test(valor)) { 
     	switch(campo) {
@@ -1883,6 +2050,12 @@ function comprobarLetrasNumerosEspacios(idElemento, idElementoError, campo) {
 			break;
 			case 'descripcionObjetivo':
 				codigo = "OBJETIVO_DESCRIPTION_ALFANUMERICO_INCORRECTO";
+			break;
+			case 'nombreProcedimiento' :
+				codigo = "NOMBRE_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO";
+			break;
+			case 'descripProcedimiento' :
+				codigo = "DESCRIPCION_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO";
 			break;
 			
 		}
@@ -2133,6 +2306,9 @@ function comprobarFormatoFechas(idElemento, idElementoError, campo) {
 			break;
 			case 'fechaPlan' :
 				codigo = "FECHA_PLAN_NUMERICA_INCORRECTA";
+			break;
+			case 'fechaProcedimiento' :
+				codigo = "FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

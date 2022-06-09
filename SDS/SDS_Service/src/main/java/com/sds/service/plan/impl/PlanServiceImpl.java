@@ -154,6 +154,28 @@ public class PlanServiceImpl implements PlanService {
 	}
 
 	@Override
+	public List<PlanEntity> buscarTodosSinP() {
+		final List<PlanEntity> planToret = new ArrayList<>();
+		final List<PlanEntity> planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDALL).getResultList();
+
+		final Integer numberTotalResults = planRepository.numberFindAllPlanes();
+
+		if (!planes.isEmpty()) {
+			for (final PlanEntity plan : planes) {
+				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(plan.getObjetivo().getIdObjetivo(),
+						plan.getObjetivo().getNombreObjetivo(), plan.getObjetivo().getDescripObjetivo(),
+						plan.getObjetivo().getBorradoObjetivo());
+				final PlanEntity planEntity = new PlanEntity(plan.getIdPlan(), plan.getNombrePlan(),
+						plan.getDescripPlan(), plan.getFechaPlan(), plan.getBorradoPlan(), objetivoEntity);
+				planToret.add(planEntity);
+
+			}
+		}
+
+		return planToret;
+	}
+
+	@Override
 	public ReturnBusquedas<PlanEntity> buscarPlanesEliminados(final int inicio, final int tamanhoPagina) {
 		final List<PlanEntity> planToret = new ArrayList<>();
 		final List<PlanEntity> planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDELIMINADOS)

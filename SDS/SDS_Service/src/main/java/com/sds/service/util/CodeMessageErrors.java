@@ -60,6 +60,11 @@ public enum CodeMessageErrors {
 	FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL("La fecha introducida por el usuario es anterior a la fecha actual"), //
 	PROCEDIMIENTO_NO_EXISTE_EXCEPTION("El procedimiento no existe"), //
 	PROCEDIMIENTO_YA_EXISTE_EXCEPTION("El procedimiento ya existe"), //
+	PROCEDIMIENTOUSUARIO_YA_EXISTE_EXCEPTION("La relación procedimiento usuario ya existe"), //
+	PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION("La relación procedimiento usuario no existe"), //
+	PROCEDIMIENTOUSUARIO_VACIO("El procedimiento y/o el usuario son vacíos"), //
+	PROCEDIMIENTOUSUARIOPROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO(
+			"La relacion procedimiento usuario tiene una relación con un proceso"), //
 	PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene procesos asociados"), //
 	USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene usuarios asociados"), //
 	PROCEDIMIENTO_VACIO("Procedimiento vacío"), //

@@ -547,6 +547,23 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + fila.objetivo.nombreObjetivo; 
         break;
 
+        case 'PROCEDIMIENTO':
+        var fechaProcedimiento = new Date(fila.fechaProcedimiento);
+
+        if(fila.checkUsuario == 0){
+        	var publicado = "No publicado";
+        }else{
+        	var publicado = "Publicado" ;
+        }
+
+		atributosFunciones = ["'" + fila.nombreProcedimiento + "'", "'" + fila.descripProcedimiento + "'", "'" + convertirFecha(fechaProcedimiento.toString()) + "'", "'" + publicado + "'","'" + fila.plan.nombrePlan + "'", "'" + fila.plan.descripPlan + "'","'" + fila.idProcedimiento + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreProcedimiento + 
+                '</td> <td>' + fila.descripProcedimiento +
+                '</td> <td>' + convertirFecha(fechaProcedimiento.toString()) +
+                '</td> <td>' + publicado +  
+                '</td> <td>' + fila.plan.nombrePlan; 
+        break;
+
 	};
 
 	if(entidad == 'PERSONA'){
@@ -674,6 +691,23 @@ function construyeFilaEliminados(entidad, fila) {
                 '</td> <td>' + fila.descripPlan +
                 '</td> <td>' + convertirFecha(fechaPlan.toString()) + 
                 '</td> <td>' + fila.objetivo.nombreObjetivo; 
+        break;
+
+        case 'PROCEDIMIENTO':
+        var fechaProcedimiento = new Date(fila.fechaProcedimiento);
+
+        if(fila.checkUsuario == 0){
+        	var publicado = "No publicado";
+        }else{
+        	var publicado = "Publicado" ;
+        }
+
+		atributosFunciones = ["'" + fila.nombreProcedimiento + "'", "'" + fila.descripProcedimiento + "'", "'" + convertirFecha(fechaProcedimiento.toString()) + "'", "'" + publicado + "'","'" + fila.plan.nombrePlan + "'", "'" + fila.plan.descripPlan + "'","'" + fila.idProcedimiento + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreProcedimiento + 
+                '</td> <td>' + fila.descripProcedimiento +
+                '</td> <td>' + convertirFecha(fechaProcedimiento.toString()) +
+                '</td> <td>' + publicado +  
+                '</td> <td>' + fila.plan.nombrePlan; 
         break;
 
 
@@ -1180,6 +1214,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'PLAN' :
 			cargarPermisosFuncPlan();
 		break;
+
+		case 'PROCEDIMIENTO' :
+			cargarPermisosFuncProcedimiento();
+		break;
 	}
 	
 }
@@ -1233,6 +1271,10 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'PLAN' :
 			cargarPermisosFuncPlan();
+		break;
+
+		case 'PROCEDIMIENTO' :
+			cargarPermisosFuncProcedimiento();
 		break;
 
 	}

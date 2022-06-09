@@ -41,6 +41,12 @@ arrayEN={
 	'TEXTO_RESPUESTA_POSIBLE' : 'Posible answer text',
 	'NOMBRE_PLAN' : 'Plan name',
 	'DESCRIPCION_PLAN' : 'Plan description',
+	'NOMBRE_PROCEDIMIENTO' : 'Procedure name',
+	'DESCRIPCION_PROCEDIMIENTO' : 'Procedure description',
+	'CHECK_USUARIO' : 'Publicated',
+	'PUBLICADO' : 'Publicate',
+	'NO_PUBLICADO' : 'Not publicate',
+	'NO_ESPECIFICADO' : 'Not specified',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -222,7 +228,17 @@ arrayEN={
 	'FECHA_PLAN_NUMERICA_INCORRECTA' : 'Plan`s date can only contain numbers',
 	'FECHA_PLAN_MENOR_QUE_8' : 'Plan`s date is minor than 8 characteres',
 	'FECHA_PLAN_MAYOR_QUE_8' : 'Plan`s date is bigger than 8 characteres',
-
+	'NOMBRE_PROCEDIMIENTO_VACIO' : 'Procedure`s name empty',
+	'NOMBRE_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO' : 'Procedure`s name can only contain letters, numbers and spaces',
+	'NOMBRE_PROCEDIMIENTO_MENOR_QUE_3' : 'Procedure`s name size is minor than 3 characteres',
+	'NOMBRE_PROCEDIMIENTO_MAYOR_QUE_48' : 'Procedure`s name sizer is bigger than 48 characteres',
+	'DESCRIPCION_PROCEDIMIENTO_VACIO' : 'Procedure`s description empty',
+	'DESCRIPCION_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO' : 'Procedure`s description can only contain letters, numbers and spaces',
+	'DESCRIPCION_PROCEDIMIENTO_MENOR_QUE_3' : 'Procedure`s description size is minor than 3 characteres',
+	'FECHA_PROCEDIMIENTO_VACIA' : 'Procedure`s date empty',
+	'FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA' : 'Procedure`s date can only contain numbers',
+	'FECHA_PROCEDIMIENTO_MENOR_QUE_8' : 'Procedure`s date is minor than 8 characteres',
+	'FECHA_PROCEDIMIENTO_MAYOR_QUE_8' : 'Procedure`s date is bigger than 8 characteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -348,6 +364,14 @@ arrayEN={
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Available procedures',
 	'GESTION_PROCESOS' : 'Process  management',
 	'GESTION_PROCESOS_NO_ADMIN' : 'Processes',
+	'REACTIVATE_PROCEDIMIENTO' : 'REACTIVATE PROCEDURE',
+	'DELETE_PROCEDIMIENTO' : 'DELETE PROCEDURE',
+	'EDIT_PROCEDIMIENTO' : 'EDIT PROCEDURE',
+	'DETAIL_PROCEDIMIENTO' : 'DETAIL PROCEDURE',
+	'SEARCH_PROCEDIMIENTO' : 'SEARCH PROCEDURE',
+	'ADD_PROCEDIMIENTO' : 'ADD PROCEDURE',
+	'OPCION_DEFECTO_PLAN' : 'Please, select the plan',
+	'PUBLICAR_PROCEDIMIENTO' : 'Publish procedure?',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -454,6 +478,17 @@ arrayEN={
 	'PLANES_LISTADOS' : 'The plans has been listed correctly',
 	'PLAN_ELIMINADO' : 'The plan has been deleted correctly',
 	'PLAN_MODIFICADO' : 'The plan has been modified correctly',
-	'PLAN_GUARDADO' : 'The plan has been saved correctly'
+	'PLAN_GUARDADO' : 'The plan has been saved correctly',
+	'PROCEDIMIENTO_REACTIVADO_OK' : 'PROCEDURE REACTIVATED CORRECTLY',
+	'PROCEDIMIENTO_REACTIVADO_OK' : 'PROCEDURE DELETED CORRECTLY',
+	'PROCEDIMIENTO_EDITADO_OK' : 'PROCEDURE MODIFIED CORRECTLY',
+	'PROCEDIMIENTO_GUARDADO_OK' : 'PROCEDURE SAVED CORRECTLY',
+	'PROCEDIMIENTO_REACTIVADO' : 'The procedure has been reactivated correctly',
+	'PROCEDIMIENTO_ENCONTRADO' : 'The procedure has been found correctly',
+	'PROCEDIMIENTOS_ELIMINADOS_LISTADOS' : 'The deleted procedures has been found correctly',
+	'PROCEDIMIENTOS_LISTADOS' : 'The procedures has been found correctly',
+	'PROCEDIMIENTO_ELIMINADO' : 'The procedure has been deleted correctly',
+	'PROCEDIMIENTO_MODIFICADO' : 'The procedure has been modified correctly',
+	'PROCEDIMIENTO_GUARDADO' : 'The procedure has been saved correctly'
 
 }

@@ -94,12 +94,11 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
         inicio = parseInt(res.data.inicio)+1;
         $('#itemPaginacion').attr('hidden', false);
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
+        document.getElementById('cabecera').style.display = "none";
+        document.getElementById('cabeceraEliminados').style.display = "block";
       }
       
       $("#datosUsuarios").html("");
@@ -108,11 +107,6 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
           var tr = construyeFilaEliminados('USUARIO', res.data.listaBusquedas[i]);
           $("#datosUsuarios").append(tr);
-        }
-      
-         if(res.data.listaBusquedas.length == 0){
-          $('.cabecera').attr('hidden', true);
-          $('.cabeceraEliminados').attr('hidden', false);
         }
 
       var div = createHideShowColumnsWindow({DNI_COLUMN:1,ACTIVO_COLUMN:3,ROL_COLUMN:4});
@@ -155,16 +149,15 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
       var inicio = 0;
       if(res.data.listaBusquedas.length == 0){
         inicio = 0;
+        document.getElementById('itemPaginacion').style.display = "none";
       }else{
         inicio = parseInt(res.data.inicio)+1;
+        document.getElementById('itemPaginacion').style.display = "block";
       }
-      var textPaginacion = inicio +  " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults; 
-
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+      
+      document.getElementById('cabecera').style.display = "block";
+      document.getElementById('cabeceraEliminados').style.display = "none";
       
       $("#datosUsuarios").html("");
       $("#checkboxColumnas").html("");
@@ -947,6 +940,22 @@ function gestionarPermisosUsuario(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminadosUsuario(0,\'tamanhoPaginaUsuario\')");
         $('#divListarUsuario').attr("data-toggle", "modal");
         $('#divListarUsuario').attr("data-target", "#form-modal");
+        if(getCookie('rolUsuario') == "admin"){
+          $('#infoAdmin').attr('hidden', false);
+          document.getElementById('cabecera').style.display = "block";
+          document.getElementById('tablaDatos').style.display = "block";
+          document.getElementById('filasTabla').style.display = "block";
+          $('#itemPaginacion').attr('hidden', false);
+
+          if(document.getElementById('cabeceraEliminados').style.display == "block"){
+            document.getElementById('cabecera').style.display = "none";
+
+           var texto = document.getElementById('paginacion').innerHTML;
+           if(texto == "0 - 0 total 0"){
+            $('#itemPaginacion').attr('hidden', true);
+           }
+        }
+      }
       break;
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');

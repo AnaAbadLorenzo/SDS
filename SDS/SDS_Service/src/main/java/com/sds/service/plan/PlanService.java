@@ -2,6 +2,7 @@ package com.sds.service.plan;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
@@ -21,6 +22,8 @@ public interface PlanService {
 			final ObjetivoEntity objetivo, final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<PlanEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+
+	List<PlanEntity> buscarTodosSinP();
 
 	ReturnBusquedas<PlanEntity> buscarPlanesEliminados(final int inicio, final int tamanhoPagina);
 

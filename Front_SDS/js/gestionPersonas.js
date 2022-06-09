@@ -1523,7 +1523,7 @@ function showBuscarPersona() {
     $('#labelNombrePersona').attr('hidden', true);
     $('#labelApellidosPersona').attr('hidden', true);
     $('#labelFechaNacimiento').attr('hidden', true);
-    $('#labelDireccion').attr('hidden', true);
+    $('#labelDireccionPersona').attr('hidden', true);
     $('#labelTelefono').attr('hidden', true);
     $('#labelEmail').attr('hidden', true);
     $('#labelLoginUsuario').attr('hidden', true);

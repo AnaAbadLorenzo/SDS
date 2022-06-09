@@ -35,85 +35,110 @@
   	await includeTopMenu();
     await funcionalidadesUsuario();
     cambiarTituloGestion('procedimiento');modalCambioPass();cargarIdioma();includeFooter();setLang('');
+    await cargarProcedimientos(0,tamanhoPaginaProcedimiento, 'PaginadorNo');
+	await cargarPermisosFuncProcedimiento();
+	await construyeSelectPlanes();
+	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('PROCEDIMIENTO')},30000);
   })();">  
 	<div id="topMenu"></div>
 
-	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-	</div>
-
-	<h1 id="gestion" class="gestion"></h1>
+	<h1 class="gestion GESTION_PROCEDIMIENTOS"></h1>
 
 	<div id="cabecera" class="cabecera" style="display: none;">
+		<div id="divAddProcedimiento" name="btnAdd" value="Añadir" data-toggle="" data-target="" onclick="javascript:showAddProcedimientos()" class="tooltip6 addIcon">
+        <img id="btnAddProcedimiento" class="iconoAdd" src="images/add.png" alt="Añadir" />
+        <span class="tooltiptext iconAddProcedimiento ICONO_ADD"></span>
+    	</div>      
+
+    <div id="divListarProcedimiento" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarProcedimiento()" class="tooltip6 searchIcon">
+        <img id="btnListarProcedimientos" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Procedimiento" />
+        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
+    </div>
+
+    <div id="divSearchDelete" name="btnSearchDelete" value="Buscar Eliminados" onclick="" class="tooltip6 searchDeleteIcon">
+        <img id = "btnSearchDelete" class="iconoSearchDelete iconSearchDelete" src="images/searchDelete4.png" alt="Buscar Procedimientos Eliminados" />
+        <span class="tooltiptext iconSearchDelete ICONO_SEARCH_DELETE"></span>
+    </div>
+
+    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaProcedimiento)" class="tooltip6 refreshIcon">
+        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
+        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
+    </div>
+
+    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
+        <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
+        <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
+    </div>     
 	</div>
 
-	<div class="listado" id="tablaDatos" style="display:none;">
-		
+	<div class = "cabeceraEliminados" id="cabeceraEliminados" style="display:none;">
+		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaProcedimiento)" class="tooltip6 volverAtrasIcon">
+        	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
+        	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
+    	</div> 
+    </div>    
+
+	<div class="table-responsive" id="tablaDatos" style="display: none;">
+		<table class="table table-bordered" id="tablaProcedimientos">
+			<thead>
+		    	<tr>
+			      <th scope="col" class="colFirst NOMBRE_PROCEDIMIENTO_COLUMN">
+			      	<div class="NOMBRE_PROCEDIMIENTO nombreProcedimientoColumn"></div>
+                  <div name="btnOrdenar" value="Ordenar" onclick="sortTable(0, 'tablaProcedimientos')" class="tooltip7 ordenarIconNombreProcedimiento">
+                      <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+                      <span class="tooltiptext ORDENAR"></span>
+              		</div>
+						</th>
+			      	
+					  <th scope="col" class="DESCRIPCION_PROCEDIMIENTO_COLUMN">
+					    <div class="DESCRIPCION_PROCEDIMIENTO descripcionProcedimientoColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(1, 'tablaProcedimientos')" class="tooltip7 ordenarIconDescripcionProcedimiento">
+		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+		                    <span class="tooltiptext ORDENAR"></span>
+		              </div>
+					  </th>
+
+					  <th scope="col" class="DATE_COLUMN">
+					    <div class="DATE fechaProcedimientoColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(2, 'tablaProcedimientos')" class="tooltip7 ordenarIconFechaProcedimiento">
+		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+		                    <span class="tooltiptext ORDENAR"></span>
+		              </div>
+					  </th>
+
+					  <th scope="col" class="CHECK_USUARIO_COLUMN">
+					    <div class="CHECK_USUARIO checkUsuarioColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaProcedimientos')" class="tooltip7 ordenarIconCheckUsuario">
+		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+		                    <span class="tooltiptext ORDENAR"></span>
+		              </div>
+					  </th>
+
+					  <th scope="col" class="NOMBRE_PLAN_COLUMN">
+					    <div class="NOMBRE_PLAN nombrePlanColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(4, 'tablaProcedimientos')" class="tooltip7 ordenarIconNombrePlan">
+		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+		                    <span class="tooltiptext ORDENAR"></span>
+		              </div>
+					  </th>
+
+					  <th scope="col" class="PROCEDIMIENTO_ID_COLUMN" hidden>
+					    <div class="PROCEDIMIENTO_ID idProcedimientoColumn"></div>
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(5, 'tablaProcedimientos')" class="tooltip7 
+		              ordenarIconIdProcedimiento">
+		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
+		                    <span class="tooltiptext ORDENAR"></span>
+		              </div>
+					  </th>
+			  		
+			  		<th scope="col" class="colLast ACCIONES"></th>
+		    	
+		    	</tr>
+		  </thead>
+		  <tbody id="datosProcedimiento" class="bodyGestionProcedimientos"></tbody>
+		</table>
 	</div>
-
-	<div id="procedimientosUsuario" class="procedimientos overflow-auto" style="display:block;">
-		<div id="procedimientos" class="row">
-			<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Procedimiento 1</div>
-                      	<div class="card-text">Procedimiento 1</div>
-                      	<div id="iniciarProcedimiento" class="tooltip13 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>
-					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 planIcon">
-					        <img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>
-					        <span class="tooltiptext iconPlan ICON_PLAN"></span>
-					    </div>
-                    	<div class="card-title-plan">Plan: Plan</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Procedimiento 2</div>
-                      	<div class="card-text">Procedimiento 2</div>
-                      	<div id="iniciarProcedimiento2" class="tooltip13 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento2" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>
-					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 planIcon">
-					        <img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>
-					        <span class="tooltiptext iconPlan ICON_PLAN"></span>
-					    </div>
-                    	<div class="card-title-plan">Plan: Plan</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Procedimiento 3</div>
-                      	<div class="card-text">Procedimiento 3</div>
-                      	<div id="iniciarProcedimiento3" class="tooltip13 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento3" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>
-					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 planIcon">
-					        <img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>
-					        <span class="tooltiptext iconPlan ICON_PLAN"></span>
-					    </div>
-                    	<div class="card-title-plan">Plan: Plan</div>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</div>
-
+	
 	<div class="filasTabla" id="filasTabla" style="display: none;">
 			<div id="paginacion"></div>
 	</div>
@@ -123,6 +148,82 @@
 			<ul class="pagination">
 		  	</ul>
 		</nav>
+	</div>
+
+	<div class="modal modal2 fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+			<div class="formmodal-container">
+				<div id="formularioAcciones">
+      			<div id="contenidoForm">
+              			<div class="formularioComun">
+              				<h1 id="tituloForms" class="datos"></h1>
+              				<p id = "subtitulo" class="SEGURO_ELIMINAR_OBJ" hidden></p>
+                    	<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
+                    	  <label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento" hidden></label>                            
+                          <input type="text" maxlength="48" size="48" placeholder="NOMBRE_PROCEDIMIENTO" name="NOMBRE_PROCEDIMIENTO" id="nombreProcedimiento" class="NOMBRE_PROCEDIMIENTO" onblur=""/>
+                           <div class="obligatorio tooltip2" id="obligatorioNombreProcedimiento">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+                          <div style="display:none" id="errorFormatoNombreProcedimiento"></div>
+                          
+                          <label class="labelForm DESCRIPCION_PROCEDIMIENTO" id="labelDescripcionProcedimiento" hidden></label>
+	                      <input type="text" placeholder="DESCRIPCION_PROCEDIMIENTO" name="DESCRIPCION_PROCEDIMIENTO" id="descripProcedimiento" class="DESCRIPCION_PROCEDIMIENTO" onblur=""/>
+	                       <div class="obligatorio tooltip2" id="obligatorioDescripcionProcedimiento">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+	                      <div style="display:none" id="errorFormatoDescripcionProcedimiento"></div>
+
+	                      <label class="labelForm DATE" id="labelFechaProcedimiento" hidden></label>
+                    	  <input type="date" name="fechaProcedimiento" id="fechaProcedimiento" value="1900-01-01" min="1900-01-01" max="3000-01-01" onblur="">
+                    	  <div class="obligatorio tooltip2" id="obligatorioFechaProcedimiento">*
+                      		<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    	  </div>
+                    	  <div style="display:none" id="errorFormatoFechaProcedimiento"></div>
+
+                    	  <div id="checkUsuario" class="preguntaCheck">
+                    	  	  <label class="PUBLICAR_PROCEDIMIENTO labelEtiqueta labelForm"></label>
+                    	  	   <div class="obligatorio tooltip2" id="obligatorioCheck">*
+	                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+	              			  </div>
+	              			  <div class="form-check-inline" id="noEspecificadoCheck" hidden>
+	  						  		<input class="form-check-input" type="radio" value="noEspecificado" name="checkUsuario" id="checkUsuarioNoEspecificado">
+	  						  		<label class="form-check-label NO_ESPECIFICADO" for="flexCheckDefault"></label>
+							  </div>
+		                      <div class="form-check-inline">
+	  						  		<input class="form-check-input" type="radio" value="publicado" name="checkUsuario" id="checkUsuarioPublicar">
+	  						  		<label class="form-check-label PUBLICADO" for="flexCheckDefault"></label>
+							  </div>
+							  <div class="form-check-inline">
+		  					  		<input class="form-check-input" type="radio" value="noPublicado" id="checkUsuarioNoPublicar" name="checkUsuario">
+		  					  		<label class="form-check-label NO_PUBLICADO" for="flexCheckChecked"></label>
+	                      	  </div>
+	                      </div>
+	                      <div style="display:none" id="errorFormatoCheckUsuario"></div>
+
+                    	  <label class="labelForm NOMBRE_PLAN" id="labelNombrePlan" hidden></label>
+                    	  <select id="selectPlanes" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"></select>
+  						  <div class="obligatorio tooltip2" id="obligatorioPlanes">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+  						  <div style="display:none" id="errorFormatoNombrePlanSelect"></div>
+
+  						  <label class="labelForm DESCRIPCION_PLAN" id="labelDescripcionPlan" hidden></label>
+	                      <input type="text" placeholder="DESCRIPCION_PLAN" name="DESCRIPCION_PLAN" id="descripPlan" class="DESCRIPCION_PLAN" onblur=""/>
+	                       	<div class="obligatorio tooltip2" id="obligatorioDescripPlan" hidden>*
+                  				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  	</div>
+	                      <div style="display:none" id="errorFormatoDescripPlan"></div>
+
+                          <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
+                            <img class="" src="" alt="" id="iconoAcciones" />
+                            <span class="tooltiptext" id="spanAcciones"></span>
+                          </button>
+                      </form>
+                    </div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div id="volver" class="volver" style="display: none;">

@@ -93,25 +93,52 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 		}
 
 		if (plan == null) {
-			procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO)
-					.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
-					.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
-					.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
-					.setParameter(Constantes.CHECK_USUARIO, checkUsuario)
-					.setParameter(Constantes.PLAN, StringUtils.EMPTY).setFirstResult(inicio)
-					.setMaxResults(tamanhoPagina).getResultList();
-			numberTotalResults = procedimientoRepository.numberFindProcedimiento(nombreProcedimiento,
-					descripProcedimiento, fecha, checkUsuario);
+			if (checkUsuario == null) {
+				procedimientos = entityManager
+						.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTOWITHOUTCHECK)
+						.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
+						.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
+						.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
+						.setParameter(Constantes.PLAN, StringUtils.EMPTY).setFirstResult(inicio)
+						.setMaxResults(tamanhoPagina).getResultList();
+				numberTotalResults = procedimientoRepository.numberFindProcedimientoWithoutCheck(nombreProcedimiento,
+						descripProcedimiento, fecha);
+			} else {
+				procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO)
+						.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
+						.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
+						.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
+						.setParameter(Constantes.CHECK_USUARIO, checkUsuario)
+						.setParameter(Constantes.PLAN, StringUtils.EMPTY).setFirstResult(inicio)
+						.setMaxResults(tamanhoPagina).getResultList();
+				numberTotalResults = procedimientoRepository.numberFindProcedimiento(nombreProcedimiento,
+						descripProcedimiento, fecha, checkUsuario);
+			}
+
 		} else {
-			final Optional<PlanEntity> planBD = planRepository.findById(plan.getIdPlan());
-			procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO)
-					.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
-					.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
-					.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
-					.setParameter(Constantes.CHECK_USUARIO, checkUsuario).setParameter(Constantes.PLAN, planBD.get())
-					.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
-			numberTotalResults = procedimientoRepository.numberFindProcedimientoWithPlan(nombreProcedimiento,
-					descripProcedimiento, fecha, checkUsuario, plan);
+			if (checkUsuario == null) {
+				final Optional<PlanEntity> planBD = planRepository.findById(plan.getIdPlan());
+				procedimientos = entityManager
+						.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTOWITHOUTCHECK)
+						.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
+						.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
+						.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha).setParameter(Constantes.PLAN, planBD.get())
+						.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+				numberTotalResults = procedimientoRepository.numberFindProcedimientoWithoutCheckAndPlan(
+						nombreProcedimiento, descripProcedimiento, fecha, plan);
+			} else {
+				final Optional<PlanEntity> planBD = planRepository.findById(plan.getIdPlan());
+				procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO)
+						.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, nombreProcedimiento)
+						.setParameter(Constantes.DESCRIPCION_PROCEDIMIENTO, descripProcedimiento)
+						.setParameter(Constantes.FECHA_PROCEDIMIENTO, fecha)
+						.setParameter(Constantes.CHECK_USUARIO, checkUsuario)
+						.setParameter(Constantes.PLAN, planBD.get()).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+						.getResultList();
+				numberTotalResults = procedimientoRepository.numberFindProcedimientoWithPlan(nombreProcedimiento,
+						descripProcedimiento, fecha, checkUsuario, plan);
+			}
+
 		}
 
 		if (!procedimientos.isEmpty()) {
@@ -137,7 +164,9 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 		datosBusqueda.add(Constantes.NOMBRE_PROCEDIMIENTO + Constantes.DOS_PUNTOS + nombreProcedimiento);
 		datosBusqueda.add(Constantes.DESCRIPCION_PROCEDIMIENTO + Constantes.DOS_PUNTOS + descripProcedimiento);
 		datosBusqueda.add(Constantes.FECHA_PROCEDIMIENTO + Constantes.DOS_PUNTOS + fecha);
-		datosBusqueda.add(Constantes.CHECK_USUARIO + Constantes.DOS_PUNTOS + checkUsuario.toString());
+		if (checkUsuario != null) {
+			datosBusqueda.add(Constantes.CHECK_USUARIO + Constantes.DOS_PUNTOS + checkUsuario.toString());
+		}
 		if (plan != null) {
 			datosBusqueda.add(Constantes.PLAN + Constantes.DOS_PUNTOS + plan.getIdPlan());
 		}
@@ -599,7 +628,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 							.getTipoNameByCodigo(CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
 		} else {
 
-			procedimientoBD.get().setBorradoProcedimiento(1);
+			procedimientoBD.get().setBorradoProcedimiento(0);
 			procedimientoRepository.saveAndFlush(procedimientoBD.get());
 			procedimiento.setProcedimientoEntity(procedimientoBD.get());
 			resultado = Constantes.OK;

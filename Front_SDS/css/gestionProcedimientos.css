@@ -44,6 +44,10 @@ select option:checked{
   color:  #ffffff;
 }
 
+.preguntaCheck {
+    font-size: 14px !important;
+}
+
 
 /********* ICONOS ***********/
 

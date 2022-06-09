@@ -101,6 +101,10 @@ public class Constantes {
 	public static final String ACCION_ELIMINAR_PROCESO = "Eliminar proceso";
 	public static final String ACCION_REACTIVAR_PROCESO = "Reactivar proceso";
 
+	public static final String ACCION_AÑADIR_PROCEDIMIENTOUSUARIO = "Añadir procedimiento usuario";
+	public static final String ACCION_BUSCAR_PROCEDIMIENTOUSUARIO = "Buscar procedimiento usuario";
+	public static final String ACCION_ELIMINAR_PROCEDIMIENTOUSUARIO = "Eliminar procedimiento usuario";
+
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";
@@ -206,6 +210,11 @@ public class Constantes {
 	public static final String NOMBRE_PROCESO = "nombreProceso";
 	public static final String DESCRIP_PROCESO = "descripProceso";
 	public static final String FECHA_PROCESO = "fechaProcedimiento";
+
+	public static final String PROCEDIMIENTO = "procedimiento";
+	public static final String PROCEDIMIENTOUSUARIO_ID = "idProcedimientoUsuario";
+	public static final String PUNTUACION_PROCEDIMIENTOUSUARIO = "puntuacionProcedimientoUsuario";
+	public static final String FECHA_PROCEDIMIENTO_USUARIO = "fechaProcedimientoUsuario";
 
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
@@ -759,9 +768,14 @@ public class Constantes {
 
 	public static final String PROCEDIMIENTO_QUERY_FINDALL = "ProcedimientoEntity.findAllProcedimientos";
 	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO = "ProcedimientoEntity.findProcedimiento";
+	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTOWITHOUTCHECK = "ProcedimientoEntity.findProcedimientoWithoutCheck";
 	public static final String PROCEDIMIENTO_QUERY_FINDELIMINADOS = "ProcedimientoEntity.findProcedimientosEliminados";
 
 	public static final String PROCESO_QUERY_FINDALL = "ProcesoEntity.findAllProcesos";
 	public static final String PROCESO_QUERY_FINDPROCESO = "ProcesoEntity.findProceso";
 	public static final String PROCESO_QUERY_FINDELIMINADOS = "ProcesoEntity.findProcesosEliminados";
+
+	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDALL = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuario";
+	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO = "ProcedimientoUsuarioEntity.findProcedimientoUsuario";
+	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOSUSUARIOELIMINADOS = "ProcedimientoUsuarioEntity.findProcedimientosUsuarioEliminados";
 }
