@@ -18,6 +18,7 @@ import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
@@ -106,7 +107,8 @@ public class ProcesoController {
 
 	@PostMapping(value = "/modificarProceso")
 	@ResponseBody
-	public RespEntity modificarProceso(@RequestBody final Proceso proceso) {
+	public RespEntity modificarProceso(@RequestBody final Proceso proceso)
+			throws ProcesoAsociadoUsuarioProcedimientoException {
 		try {
 			final Boolean procesoValido = validaciones.comprobarProcesoBlank(proceso.getProceso());
 
@@ -124,6 +126,8 @@ public class ProcesoController {
 					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, proceso);
 				} catch (final FechaAnteriorFechaActualException fechaAnteriorfechaActualException) {
 					return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, proceso);
+				} catch (final ProcesoAsociadoUsuarioProcedimientoException procesoAsociadoUsuarioProcedimientoException) {
+					return new RespEntity(RespCode.PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION, proceso);
 				}
 			}
 		} catch (final ProcesoNoExisteException procesoNoExists) {
@@ -158,6 +162,8 @@ public class ProcesoController {
 				return new RespEntity(RespCode.PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION, proceso);
 			} catch (final ProcedimientoAsociadoProcesoException procedimientoAsociadoProcesoException) {
 				return new RespEntity(RespCode.PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION, proceso);
+			} catch (final ProcesoAsociadoObjetivoException procesoAsociadoObjetivoException) {
+				return new RespEntity(RespCode.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION, proceso);
 			}
 
 		} catch (final ProcesoNoExisteException procesoNoExists) {

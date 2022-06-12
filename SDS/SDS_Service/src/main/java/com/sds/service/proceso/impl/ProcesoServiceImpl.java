@@ -19,9 +19,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.NivelEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoRespuestaPosibleEntity;
+import com.sds.repository.NivelRepository;
 import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.repository.ProcesoProcedimientoRepository;
@@ -34,6 +36,7 @@ import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
@@ -65,6 +68,9 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 	@Autowired
 	ProcedimientoUsuarioProcesoRepository procedimientoUsuarioProcesoRepository;
+
+	@Autowired
+	NivelRepository nivelRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -266,10 +272,10 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String eliminaProceso(final Proceso proceso)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoNoExisteException,
-			ParseException, FechaAnteriorFechaActualException, ProcedimientoAsociadoProcesoException,
-			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoUsuarioProcedimientoException {
+	public String eliminaProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException, FechaAnteriorFechaActualException,
+			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcesoAsociadoObjetivoException {
 		final ProcesoEntity procesoEntity = proceso.getProceso();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
@@ -359,9 +365,33 @@ public class ProcesoServiceImpl implements ProcesoService {
 										CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION
 												.getCodigo()));
 					} else {
-						procesoBD.get().setBorradoProceso(1);
-						proceso.setProceso(procesoEntity);
-						resultado = modificarProceso(proceso);
+						final List<NivelEntity> niveles = nivelRepository
+								.findNivelByIdProceso(procesoBD.get().getIdProceso());
+						if (!niveles.isEmpty()) {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									proceso.getUsuario(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo()),
+									CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo());
+
+							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new ProcesoAsociadoObjetivoException(
+									CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo()));
+						} else {
+							procesoBD.get().setBorradoProceso(1);
+							proceso.setProceso(procesoEntity);
+							resultado = modificarProceso(proceso);
+						}
 					}
 				}
 
@@ -376,7 +406,7 @@ public class ProcesoServiceImpl implements ProcesoService {
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String modificarProceso(final Proceso proceso)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoNoExisteException,
-			ParseException, FechaAnteriorFechaActualException {
+			ParseException, FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException {
 		final ProcesoEntity procesoEntity = proceso.getProceso();
 		final Boolean procesoValido = validaciones.comprobarProcesoBlank(procesoEntity);
 
@@ -459,25 +489,49 @@ public class ProcesoServiceImpl implements ProcesoService {
 					}
 
 				} else {
-					procesoBD.get().setNombreProceso(procesoEntity.getNombreProceso());
-					procesoBD.get().setDescripProceso(procesoEntity.getDescripProceso());
-					procesoBD.get().setFechaProceso(procesoEntity.getFechaProceso());
-					procesoBD.get().setBorradoProceso(procesoEntity.getBorradoProceso());
+					final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
+							.findProcedimientoUsuarioProcesoByIdProceso(procesoBD.get().getIdProceso());
+					if (!procedimientoUsuarioProceso.isEmpty()) {
+						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+								proceso.getUsuario(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION.getCodigo()),
+								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION.getCodigo());
 
-					procesoRepository.saveAndFlush(procesoBD.get());
+						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-					final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(proceso.getUsuario(),
-							Constantes.ACCION_MODIFICAR_PROCESO, proceso.getProceso().toString());
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
 
-					resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+						throw new ProcesoAsociadoUsuarioProcedimientoException(
+								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION.getCodigo(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION
+												.getCodigo()));
+					} else {
+						procesoBD.get().setNombreProceso(procesoEntity.getNombreProceso());
+						procesoBD.get().setDescripProceso(procesoEntity.getDescripProceso());
+						procesoBD.get().setFechaProceso(procesoEntity.getFechaProceso());
+						procesoBD.get().setBorradoProceso(procesoEntity.getBorradoProceso());
 
-					if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
-								CodeMessageErrors
-										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						procesoRepository.saveAndFlush(procesoBD.get());
+
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(proceso.getUsuario(),
+								Constantes.ACCION_MODIFICAR_PROCESO, proceso.getProceso().toString());
+
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						}
+
+						resultado = Constantes.OK;
 					}
-
-					resultado = Constantes.OK;
 				}
 			}
 

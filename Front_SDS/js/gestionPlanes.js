@@ -390,10 +390,62 @@ function reactivarPlanesAjaxPromesa(){
 /* Función para obtener los planes del sistema */
 async function cargarPlanes(numeroPagina, tamanhoPagina, paginadorCreado){
   if(getCookie('rolUsuario') == "usuario"){
-    window.location.href = "consultarPlanes.html";
+    await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
+        .then((res) => {
+          document.getElementById('listaPlanes').style.display = "block";
+          document.getElementById('tablaDatos').style.display = "none"; 
+          cargarPermisosFuncPlan();
+          $('#planes').html('');
+          var numResults = res.data.numResultados + '';
+          var totalResults = res.data.tamanhoTotal + '';
+            var inicio = 0;
+          if(res.data.listaBusquedas.length == 0){
+            inicio = 0;
+          }else{
+            inicio = parseInt(res.data.inicio)+1;
+          }
+          var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+          if(res.data.listaBusquedas.length == 0){
+            $('#itemPaginacion').attr('hidden',true);
+          }else{
+            $('#itemPaginacion').attr('hidden',false);
+          }
+
+          $("#paginacion").html("");
+
+          for (var i = 0; i < res.data.listaBusquedas.length; i++){
+              var tr = construyePlanUsuario(res.data.listaBusquedas[i]);
+              $("#planes").append(tr);
+          }
+        
+          $("#paginacion").append(textPaginacion);
+          setLang(getCookie('lang'));
+
+            if(paginadorCreado != 'PaginadorCreado'){
+              paginador(totalResults, 'cargarPlanesUsuario', 'PLAN');
+            }
+
+            if(numeroPagina == 0){
+              $('#' + (numeroPagina+1)).addClass("active");
+              var numPagCookie = numeroPagina+1;
+            }else{
+              $('#' + numeroPagina).addClass("active");
+               var numPagCookie = numeroPagina;
+            }
+
+            setCookie('numeroPagina', numPagCookie);
+
+        }).catch((res) => {
+            respuestaAjaxKO(res.code);
+            document.getElementById("modal").style.display = "block";
+        });
+
   }else if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
     await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
       .then((res) => {
+        document.getElementById('listaPlanes').style.display = "none";
+        document.getElementById('tablaDatos').style.display = "block"; 
         cargarPermisosFuncPlan();
         var numResults = res.data.numResultados + '';
         var totalResults = res.data.tamanhoTotal + '';

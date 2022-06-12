@@ -99,7 +99,7 @@ public class TestAtributoNombreProcedimiento {
 				Constantes.NOMBRE_PROCEDIMIENTO);
 	}
 
-	public DatosPruebaAtributos getTestNombreProcedimientoCorrectoAlfabetico(
+	public DatosPruebaAtributos gestTestNombreProcedimientoCorrectoAlfanumerico(
 			final ProcedimientoEntity datosEntradaProcedimiento) {
 
 		final String resultadoObtenido = validacionesAtributosCorrectoAlfanumerico

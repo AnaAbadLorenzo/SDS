@@ -81,7 +81,7 @@
     	</div> 
     </div>    
 
-	<div class="table-responsive" id="tablaDatos" style="display:none;">
+	<div class="table-responsive listado" id="tablaDatos" style="display:none;">
 		<table class="table table-bordered" id="tablaPlanes">
 			<thead>
 		    	<tr>
@@ -132,6 +132,11 @@
 		  </thead>
 		  <tbody id="datosPlan" class="bodyGestionPlanes"></tbody>
 		</table>
+	</div>
+
+	<div id="listaPlanes" class="planes overflow-auto" style="display: none;">
+		<div id="planes" class="row">
+		</div>
 	</div>
 
 	<div class="filasTabla" id="filasTabla" style="display: none;">
@@ -209,6 +214,36 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal modal2 fade" id="modalMostrarObjetivo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="formmodal-container">
+        <div id="formularioMostrarObjetivo">
+          <div id="contenidoFormMostrarObjetivo">
+            <div class="formularioComun">
+              <h1 id="tituloFormsModalMostrarObjetivo" class="datos"></h1>
+              <form name="formularioGenerico" id="formularioGenericoModalMostrarObjetivo" action="" onsubmit="">
+                <label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivoMostrarObjetivo" hidden></label>                            
+                <input type="text" maxlength="48" size="48" placeholder="NOMBRE_OBJETIVO" name="NOMBRE_OBJETIVO" id="nombreObjetivo" class="NOMBRE_OBJETIVO" onblur=""/>
+               
+                <div style="display:none" id="errorFormatoNombreObjetivo"></div>
+                          
+                <label class="labelForm DESCRIPCION_OBJETIVO" id="labelDescripcionObjetivoMostrarObjetivo" hidden></label>
+	            <input type="text" placeholder="DESCRIPCION_OBJETIVO" name="DESCRIPCION_OBJETIVO" id="descripcionObjetivoMostrarObjetivo" class="DESCRIPCION_OBJETIVO" onblur=""/>
+	            
+	            <div style="display:none" id="errorFormatoDescripcionObjetivo"></div>
+
+                <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAccionesMostrarObjetivo">
+                    <img class="" src="" alt="" id="iconoAccionesMostrarObjetivo" />
+                    <span class="tooltiptext" id="spanAccionesMostrarObjetivo"></span>
+                </button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<div id="volver" class="volver" style="display: none;">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
@@ -233,7 +268,6 @@
 			</div>
 		</div>
 	</div>
-
 	<div id="footer"></div>
 </body>
 </html>

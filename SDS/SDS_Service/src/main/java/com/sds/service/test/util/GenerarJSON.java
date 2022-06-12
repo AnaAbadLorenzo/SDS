@@ -18,6 +18,7 @@ import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
+import com.sds.model.ProcesoEntity;
 import com.sds.model.RespuestaPosibleEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
@@ -626,6 +627,79 @@ public class GenerarJSON {
 		procedimiento.setBorradoProcedimiento(0);
 
 		return procedimiento;
+
+	}
+
+	public ProcesoEntity generarProceso(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException, java.text.ParseException {
+
+		final JSONObject jsonProcesoVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final ProcesoEntity proceso = new ProcesoEntity();
+
+		final Date fechaActual = new Date();
+
+		boolean acentos = false;
+		boolean caracEspeciales = false;
+
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String date = CommonUtilities.coalesce(
+				new String((jsonProcesoVacio.get(Constantes.FECHA_PROCESO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY);
+		Date fecha = null;
+		java.sql.Date fechaSql = null;
+
+		for (int i = 0; i < date.length(); i++) {
+
+			final String letra = date.charAt(i) + "";
+
+			final Pattern patronAcentos = Pattern.compile(Constantes.PATRON_ACENTOS);
+			final Matcher comprobacionAcentos = patronAcentos.matcher(letra);
+			final Pattern patronEspeciales = Pattern.compile(Constantes.PATRON_CARACTERES_ESPECIALES);
+			final Matcher comprobacionEspeciales = patronEspeciales.matcher(letra);
+
+			if (comprobacionAcentos.matches()) {
+				acentos = true;
+			}
+
+			if (comprobacionEspeciales.matches()) {
+				caracEspeciales = true;
+			}
+		}
+
+		if (date.equals("") || date.contains(Constantes.ENHE) || acentos || caracEspeciales
+				|| date.contains(Constantes.ESPACIO) || date.length() < 8 || date.length() > 10) {
+			fecha = sdf.parse("0000-00-00");
+			fechaSql = new java.sql.Date(fecha.getTime());
+		} else {
+			if (Constantes.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.equals(nombrePrueba)) {
+				fecha = sdf.parse(date);
+				fechaSql = new java.sql.Date(fecha.getTime());
+			} else {
+				fechaSql = new java.sql.Date(fechaActual.getTime());
+
+			}
+		}
+
+		if (new String((jsonProcesoVacio.get(Constantes.PROCESO_ID).toString()).getBytes("UTF-8"))
+				.equals(StringUtils.EMPTY)) {
+			proceso.setIdProceso(0);
+		} else {
+			proceso.setIdProceso(Integer
+					.parseInt(new String((jsonProcesoVacio.get(Constantes.PROCESO_ID).toString()).getBytes("UTF-8"))));
+		}
+		proceso.setNombreProceso(CommonUtilities.coalesce(
+				new String((jsonProcesoVacio.get(Constantes.NOMBRE_PROCESO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+		proceso.setDescripProceso(CommonUtilities.coalesce(
+				new String((jsonProcesoVacio.get(Constantes.DESCRIP_PROCESO).toString()).getBytes("UTF-8")),
+				StringUtils.EMPTY));
+
+		proceso.setFechaProceso(fechaSql);
+
+		proceso.setBorradoProceso(0);
+
+		return proceso;
 
 	}
 

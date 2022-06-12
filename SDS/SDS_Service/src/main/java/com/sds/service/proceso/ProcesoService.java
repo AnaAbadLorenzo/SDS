@@ -9,6 +9,7 @@ import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
@@ -27,13 +28,14 @@ public interface ProcesoService {
 	String anadirProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
 			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException;
 
-	String eliminaProceso(final Proceso proceso)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoNoExisteException,
-			ParseException, FechaAnteriorFechaActualException, ProcedimientoAsociadoProcesoException,
-			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoUsuarioProcedimientoException;
+	String eliminaProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException, FechaAnteriorFechaActualException,
+			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcesoAsociadoObjetivoException;
 
-	String modificarProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException, FechaAnteriorFechaActualException;
+	String modificarProceso(final Proceso proceso)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoNoExisteException,
+			ParseException, FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException;
 
 	String reactivarProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
 			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException;

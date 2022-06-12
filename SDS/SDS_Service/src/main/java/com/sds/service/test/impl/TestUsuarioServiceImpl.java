@@ -558,8 +558,10 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 		if (usuarioBD == null) {
 			final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
 					format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0);
-			final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
-			persona.setEmpresa(empresa);
+			final EmpresaEntity empresa = new EmpresaEntity("R56789865", "Empresa", "Direccion", "988526352", 0);
+			empresaRepository.saveAndFlush(empresa);
+			final EmpresaEntity empresaEncontrada = empresaRepository.findByCif(empresa.getCifEmpresa());
+			persona.setEmpresa(empresaEncontrada);
 			personaRepository.saveAndFlush(persona);
 
 			usuarioRepository.saveAndFlush(usuario);
@@ -571,7 +573,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 
 			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 			personaRepository.deletePersona(usuario.getDniUsuario());
-			empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+			empresaRepository.deleteEmpresa(empresaEncontrada.getCifEmpresa());
 
 		}
 
@@ -610,12 +612,15 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			if (usuarioBD == null) {
 				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-				final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
+				final EmpresaEntity empresa = new EmpresaEntity("R56789865", "Empresa", "Direccion", "988526352", 0);
+				empresaRepository.saveAndFlush(empresa);
+
+				final EmpresaEntity empresaEncontrada = empresaRepository.findByCif(empresa.getCifEmpresa());
 
 				final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
 						format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
 
-				persona.setEmpresa(empresa);
+				persona.setEmpresa(empresaEncontrada);
 				personaRepository.saveAndFlush(persona);
 
 				usuarioRepository.saveAndFlush(usuario);
@@ -636,7 +641,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 
 				usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 				personaRepository.deletePersona(persona.getDniP());
-				empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+				empresaRepository.deleteEmpresa(empresaEncontrada.getCifEmpresa());
 				rolRepository.deleteRol(rolBD.get(0).getIdRol());
 			}
 
@@ -711,12 +716,15 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 			if (usuarioBD == null) {
 				final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-				final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
+				final EmpresaEntity empresa = new EmpresaEntity("R56789865", "Empresa", "Direccion", "988526352", 0);
+				empresaRepository.saveAndFlush(empresa);
+
+				final EmpresaEntity empresaEncontrada = empresaRepository.findByCif(empresa.getCifEmpresa());
 
 				final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
 						format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, empresa);
 
-				persona.setEmpresa(empresa);
+				persona.setEmpresa(empresaEncontrada);
 				personaRepository.saveAndFlush(persona);
 
 				usuarioRepository.saveAndFlush(usuario);
@@ -730,7 +738,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 
 				usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 				personaRepository.deletePersona(persona.getDniP());
-				empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+				empresaRepository.deleteEmpresa(empresaEncontrada.getCifEmpresa());
 
 			}
 		}
@@ -764,8 +772,11 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 		if (usuarioBD == null) {
 			final PersonaEntity persona = new PersonaEntity(usuario.getDniUsuario(), "Pepe", "Pepe pepe",
 					format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0);
-			final EmpresaEntity empresa = new EmpresaEntity(2, "R56789865", "Empresa", "Direccion", "988526352", 0);
-			persona.setEmpresa(empresa);
+			final EmpresaEntity empresa = new EmpresaEntity("R56789865", "Empresa", "Direccion", "988526352", 0);
+			empresaRepository.saveAndFlush(empresa);
+
+			final EmpresaEntity empresaEncontrada = empresaRepository.findByCif(empresa.getCifEmpresa());
+			persona.setEmpresa(empresaEncontrada);
 			personaRepository.saveAndFlush(persona);
 
 			usuarioRepository.saveAndFlush(usuario);
@@ -777,7 +788,7 @@ public class TestUsuarioServiceImpl implements TestUsuarioService {
 
 			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 			personaRepository.deletePersona(usuario.getDniUsuario());
-			empresaRepository.deleteEmpresa(empresa.getCifEmpresa());
+			empresaRepository.deleteEmpresa(empresaEncontrada.getCifEmpresa());
 
 		}
 

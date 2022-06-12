@@ -335,7 +335,7 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 				datosEntradaAccionEliminarRespuestaPosibleAsociadaProceso);
 
 		final String resultadoEsperado = CodigosMensajes.ELIMINAR_RESPUESTA_POSIBLE_ASOCIADA_PROCESO + " - "
-				+ Mensajes.RESPUESTA_POSIBLE_ASOCIADA_PROCESO;
+				+ Mensajes.PROCESO_ASOCIADO_RESPUESTA_POSIBLES;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ELIMINAR_FUNCIONALIDAD_ASOCIADA_ROL_ACCION, Constantes.ERROR,
@@ -538,7 +538,7 @@ public class TestRespuestaPosibleServiceImpl implements TestRespuestaPosibleServ
 			for (int i = 0; i < procesoRespuestaPosibleBD.size(); i++) {
 				if (procesoRespuestaPosibleBD.get(i).getIdRespuesta().equals(respuestaPosibleBuscar.getIdRespuesta())) {
 					resultado = CodigosMensajes.ELIMINAR_RESPUESTA_POSIBLE_ASOCIADA_PROCESO + " - "
-							+ Mensajes.RESPUESTA_POSIBLE_ASOCIADA_PROCESO;
+							+ Mensajes.PROCESO_ASOCIADO_RESPUESTA_POSIBLES;
 				}
 			}
 		}

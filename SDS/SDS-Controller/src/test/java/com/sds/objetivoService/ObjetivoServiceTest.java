@@ -25,6 +25,7 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoAsociadoPlanException;
+import com.sds.service.exception.ObjetivoAsociadoProcesoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.exception.RolNoExisteException;
@@ -244,9 +245,9 @@ public class ObjetivoServiceTest {
 	}
 
 	@Test
-	public void ObjetivoService_eliminarObjetivoCorrecto()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ObjetivoNoExisteException, ObjetivoYaExisteException, ObjetivoAsociadoPlanException {
+	public void ObjetivoService_eliminarObjetivoCorrecto() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ObjetivoNoExisteException,
+			ObjetivoYaExisteException, ObjetivoAsociadoPlanException, ObjetivoAsociadoProcesoException {
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
 
 		objetivoService.anadirObjetivo(objetivo);
@@ -276,9 +277,9 @@ public class ObjetivoServiceTest {
 	}
 
 	@Test(expected = ObjetivoAsociadoPlanException.class)
-	public void ObjetivoService_eliminarObjetivoAsociadoPlan()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ObjetivoNoExisteException, ObjetivoYaExisteException, ObjetivoAsociadoPlanException {
+	public void ObjetivoService_eliminarObjetivoAsociadoPlan() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ObjetivoNoExisteException,
+			ObjetivoYaExisteException, ObjetivoAsociadoPlanException, ObjetivoAsociadoProcesoException {
 
 		final Objetivo objetivo = generateObjetivo(Constantes.URL_JSON_OBJETIVO_DATA, Constantes.ELIMINAR_OBJETIVO);
 		objetivoService.anadirObjetivo(objetivo);

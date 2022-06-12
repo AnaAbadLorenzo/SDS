@@ -103,6 +103,7 @@ public class Constantes {
 
 	public static final String ACCION_AÑADIR_PROCEDIMIENTOUSUARIO = "Añadir procedimiento usuario";
 	public static final String ACCION_BUSCAR_PROCEDIMIENTOUSUARIO = "Buscar procedimiento usuario";
+	public static final String ACCION_MODIFICAR_PROCEDIMIENTOUSUARIO = "Modificar procedimiento usuario";
 	public static final String ACCION_ELIMINAR_PROCEDIMIENTOUSUARIO = "Eliminar procedimiento usuario";
 
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
@@ -683,6 +684,8 @@ public class Constantes {
 	public static final String PROCESO_NO_EXISTE = "procesoNoExiste";
 	public static final String ELIMINAR_PROCESO = "eliminarProceso";
 	public static final String REACTIVAR_PROCESO = "reactivarProceso";
+	public static final String PROCESO_ASOCIADO_RESPUESTA_POSIBLE = "respuestaPosibleAsociadoProceso";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "procedimientoUsuarioAsociadoProceso";
 
 	public static final String OK = "OK";
 

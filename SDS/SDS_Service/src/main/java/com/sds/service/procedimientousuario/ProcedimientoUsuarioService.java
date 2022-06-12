@@ -7,7 +7,6 @@ import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.common.ReturnBusquedas;
-import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
@@ -26,9 +25,12 @@ public interface ProcedimientoUsuarioService {
 	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
 	String anadirProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, FechaAnteriorFechaActualException,
-			UsuarioNoEncontradoException, ParseException, ProcedimientoUsuarioYaExisteException,
-			ProcedimientoNoExisteException;
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
+			ParseException, ProcedimientoUsuarioYaExisteException, ProcedimientoNoExisteException;
+
+	String modificarProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
+			ParseException, ProcedimientoUsuarioNoExisteException, ProcedimientoNoExisteException;
 
 	String eliminaProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,

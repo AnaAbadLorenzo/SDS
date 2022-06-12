@@ -121,7 +121,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		datosPruebaAtributos.add(testAtributoNombreProcedimiento
 				.getTestNombreProcedimientoAlfanumericoMayor48(datosEntradaNombreProcedimientoMayor48));
 		datosPruebaAtributos.add(testAtributoNombreProcedimiento
-				.getTestNombreProcedimientoCorrectoAlfabetico(datosEntradaNombreProcedimientoAlfanumericoCorrecto));
+				.gestTestNombreProcedimientoCorrectoAlfanumerico(datosEntradaNombreProcedimientoAlfanumericoCorrecto));
 
 		return datosPruebaAtributos;
 	}
@@ -147,7 +147,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		datosPruebaAtributos.add(testAtributoNombreProcedimiento
 				.getTestNombreProcedimientoAlfanumericoMayor48(datosEntradaNombreProcedimientoMayor48));
 		datosPruebaAtributos.add(testAtributoNombreProcedimiento
-				.getTestNombreProcedimientoCorrectoAlfabetico(datosEntradaNombreProcedimientoAlfanumericoCorrecto));
+				.gestTestNombreProcedimientoCorrectoAlfanumerico(datosEntradaNombreProcedimientoAlfanumericoCorrecto));
 
 		return datosPruebaAtributos;
 	}
@@ -412,7 +412,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		datosPruebaAcciones.add(getTestModificarFechaProcedimientoVacio(datosEntradaModificarFechaProcedimientoVacia));
 		datosPruebaAcciones.add(
 				getTestModificarCheckUsuarioProcedimientoVacio(datosEntradaModificarCheckUsuarioProcedimientoVacio));
-		datosPruebaAcciones.add(getTestModificarNombreDescripcionFechaCheckProcedimientoVacio(
+		datosPruebaAcciones.add(getTestModificarNombreDescripcionFechaCheckProcedimientoVacios(
 				datosEntradaModificarDatosProcedimientoVacios));
 		datosPruebaAcciones.add(getTestModificarFechaProcedimientoAnteriorFechaActual(
 				datosEntradaModificarFechaProcedimientoAnteriorFechaActual));
@@ -660,19 +660,19 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 
 	}
 
-	private DatosPruebaAcciones getTestModificarNombreDescripcionFechaCheckProcedimientoVacio(
-			final ProcedimientoEntity datosEntradaAccionModificarNombreDescripcionFechaCheckProcedimientoVacio)
+	private DatosPruebaAcciones getTestModificarNombreDescripcionFechaCheckProcedimientoVacios(
+			final ProcedimientoEntity datosEntradaAccionModificarNombreDescripcionFechaCheckProcedimientoVacios)
 			throws java.text.ParseException {
 
 		final String resultadoObtenido = modificarProcedimiento(
-				datosEntradaAccionModificarNombreDescripcionFechaCheckProcedimientoVacio);
+				datosEntradaAccionModificarNombreDescripcionFechaCheckProcedimientoVacios);
 
 		final String resultadoEsperado = CodigosMensajes.PROCEDIMIENTO_VACIO + " - "
 				+ Mensajes.PROCEDIMIENTO_NO_PUEDE_SER_VACIO;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.VACIO, Constantes.ERROR,
-				getValorProcedimiento(datosEntradaAccionModificarNombreDescripcionFechaCheckProcedimientoVacio));
+				getValorProcedimiento(datosEntradaAccionModificarNombreDescripcionFechaCheckProcedimientoVacios));
 	}
 
 	private DatosPruebaAcciones getTestModificarFechaProcedimientoAnteriorFechaActual(
@@ -822,7 +822,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		} else if (!validaciones.comprobarNombreProcedimientoBlank(procedimiento.getNombreProcedimiento())) {
 			resultado = CodigosMensajes.NOMBRE_PROCEDIMIENTO_VACIO + " - "
 					+ Mensajes.NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_VACIO;
-		} else if (!!validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())) {
+		} else if (!validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())) {
 			resultado = CodigosMensajes.DESCRIPCION_PROCEDIMIENTO_VACIO + " - "
 					+ Mensajes.DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_VACIA;
 		} else if (!validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())) {
@@ -864,9 +864,9 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 					final ObjetivoEntity objetivoBDNuevo = objetivoRepository
 							.findObjetivoByName(objetivo.getNombreObjetivo());
 
-					procedimientoRepository.delete(procedimientoBDNuevo);
-					planRepository.delete(planBDNuevo);
-					objetivoRepository.delete(objetivoBDNuevo);
+					procedimientoRepository.deleteProcedimiento(procedimientoBDNuevo.getIdProcedimiento());
+					planRepository.deletePlan(planBDNuevo.getIdPlan());
+					objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 
 				}
 
@@ -941,9 +941,9 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 
-			procedimientoRepository.delete(procedimientoBDNuevo);
-			planRepository.delete(planBDNuevo);
-			objetivoRepository.delete(objetivoBDNuevo);
+			procedimientoRepository.deleteProcedimiento(procedimientoBDNuevo.getIdProcedimiento());
+			planRepository.deletePlan(planBDNuevo.getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 
 		}
 
@@ -1015,9 +1015,9 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 
-			procedimientoRepository.delete(procedimientoBDNuevo);
-			planRepository.delete(planBDNuevo);
-			objetivoRepository.delete(objetivoBDNuevo);
+			procedimientoRepository.deleteProcedimiento(procedimientoBDNuevo.getIdProcedimiento());
+			planRepository.deletePlan(planBDNuevo.getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 
 		}
 

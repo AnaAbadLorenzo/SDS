@@ -15,8 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.NivelEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
+import com.sds.repository.NivelRepository;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PlanRepository;
 import com.sds.service.common.Constantes;
@@ -24,6 +26,7 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoAsociadoPlanException;
+import com.sds.service.exception.ObjetivoAsociadoProcesoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.log.LogService;
@@ -44,6 +47,9 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 
 	@Autowired
 	PlanRepository planRepository;
+
+	@Autowired
+	NivelRepository nivelRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -209,12 +215,14 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String eliminaObjetivo(final Objetivo objetivo) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, ObjetivoNoExisteException, ObjetivoAsociadoPlanException {
+	public String eliminaObjetivo(final Objetivo objetivo)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ObjetivoNoExisteException,
+			ObjetivoAsociadoPlanException, ObjetivoAsociadoProcesoException {
 		final ObjetivoEntity objetivoEntity = objetivo.getObjetivo();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 		Boolean eliminarObjetivo = Boolean.FALSE;
+		Boolean eliminarObjetivoProceso = Boolean.FALSE;
 
 		final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(objetivoEntity.getIdObjetivo());
 
@@ -245,31 +253,64 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 						break;
 					}
 				}
-			} else {
-				eliminarObjetivo = true;
 			}
 
-			if (Boolean.TRUE.equals(eliminarObjetivo)) {
+			final List<NivelEntity> niveles = nivelRepository.findNivelByIdObjetivo(objetivoBD.get().getIdObjetivo());
+			if (!niveles.isEmpty()) {
+				for (final NivelEntity nivelEntity : niveles) {
+					if (!nivelEntity.getIdObjetivo().equals(objetivoBD.get().getIdObjetivo())) {
+						eliminarObjetivoProceso = true;
+					} else {
+						eliminarObjetivoProceso = false;
+						break;
+					}
+				}
+			}
+
+			if (Boolean.TRUE.equals(eliminarObjetivo) && Boolean.TRUE.equals(eliminarObjetivoProceso)) {
 				objetivoBD.get().setBorradoObjetivo(1);
 				objetivo.setObjetivo(objetivoBD.get());
 				modificarObjetivo(objetivo);
 				resultado = Constantes.OK;
 			} else {
-				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(objetivo.getUsuario(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()),
-						CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo());
+				if (Boolean.FALSE.equals(eliminarObjetivo)) {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(objetivo.getUsuario(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()),
+							CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo());
 
-				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
-				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new ObjetivoAsociadoPlanException(
+							CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()));
 				}
+				if (Boolean.FALSE.equals(eliminarObjetivoProceso)) {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(objetivo.getUsuario(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.OBJETIVO_ASOCIADO_PROCESO_EXCEPTION.getCodigo()),
+							CodeMessageErrors.OBJETIVO_ASOCIADO_PROCESO_EXCEPTION.getCodigo());
 
-				throw new ObjetivoAsociadoPlanException(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo(),
-						CodeMessageErrors
-								.getTipoNameByCodigo(CodeMessageErrors.OBJETIVO_ASOCIADO_PLAN_EXCEPTION.getCodigo()));
+					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new ObjetivoAsociadoProcesoException(
+							CodeMessageErrors.OBJETIVO_ASOCIADO_PROCESO_EXCEPTION.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.OBJETIVO_ASOCIADO_PROCESO_EXCEPTION.getCodigo()));
+				}
 			}
 		}
 

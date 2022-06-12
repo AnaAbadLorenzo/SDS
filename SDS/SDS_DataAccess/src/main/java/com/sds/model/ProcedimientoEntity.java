@@ -26,7 +26,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "ProcedimientoEntity.findIdProcedimientoByName", query = "SELECT p.idProcedimiento FROM ProcedimientoEntity p WHERE p.nombreProcedimiento =: nombreProcedimiento"),
 		@NamedQuery(name = "ProcedimientoEntity.findProcedimientoByName", query = "SELECT p FROM ProcedimientoEntity p WHERE p.nombreProcedimiento =: nombreProcedimiento"),
 		@NamedQuery(name = "ProcedimientoEntity.findAllProcedimientos", query = "SELECT p FROM ProcedimientoEntity p WHERE p.borradoProcedimiento = 0"),
-		@NamedQuery(name = "ProcedimientoEntity.numberFindAllProcedimientos", query = "SELECT COUNT(p) FROM ProcedimientoEntity p WHERE p.borradoProcedimiento = 0"),
+		@NamedQuery(name = "ProcedimientoEntity.findProcedimientosEliminados", query = "SELECT p FROM ProcedimientoEntity p WHERE p.borradoProcedimiento = 1"),
+		@NamedQuery(name = "ProcedimientoEntity.numberFindAllProcedimientos", query = "SELECT COUNT(p) FROM ProcedimientoEntity p WHERE p.borradoProcedimiento = 1"),
+		@NamedQuery(name = "ProcedimientoEntity.numberFindProcedimientosEliminados", query = "SELECT COUNT(p) FROM ProcedimientoEntity p WHERE p.borradoProcedimiento = 0"),
 		@NamedQuery(name = "ProcedimientoEntity.findProcedimiento", query = "SELECT p FROM ProcedimientoEntity p WHERE LOWER(p.nombreProcedimiento) LIKE LOWER(CONCAT('%', :nombreProcedimiento, '%')) AND LOWER(p.descripProcedimiento) LIKE LOWER(CONCAT('%', :descripProcedimiento, '%')) AND p.fechaProcedimiento LIKE CONCAT ('%', :fechaProcedimiento, '%') AND p.checkUsuario =: checkUsuario AND p.plan LIKE CONCAT('%', :plan, '%') AND p.borradoProcedimiento=0"),
 		@NamedQuery(name = "ProcedimientoEntity.findProcedimientoWithoutCheck", query = "SELECT p FROM ProcedimientoEntity p WHERE LOWER(p.nombreProcedimiento) LIKE LOWER(CONCAT('%', :nombreProcedimiento, '%')) AND LOWER(p.descripProcedimiento) LIKE LOWER(CONCAT('%', :descripProcedimiento, '%')) AND p.fechaProcedimiento LIKE CONCAT ('%', :fechaProcedimiento, '%') AND p.plan LIKE CONCAT('%', :plan, '%') AND p.borradoProcedimiento=0"),
 		@NamedQuery(name = "ProcedimientoEntity.numberFindProcedimiento", query = "SELECT COUNT(p) FROM ProcedimientoEntity p WHERE LOWER(p.nombreProcedimiento) LIKE LOWER(CONCAT('%', :nombreProcedimiento, '%')) AND LOWER(p.descripProcedimiento) LIKE LOWER(CONCAT('%', :descripProcedimiento, '%')) AND p.fechaProcedimiento LIKE CONCAT ('%', :fechaProcedimiento, '%') AND p.checkUsuario =: checkUsuario AND p.borradoProcedimiento=0"),
@@ -104,6 +106,18 @@ public class ProcedimientoEntity {
 		this.fechaProcedimiento = fechaProcedimiento;
 		this.borradoProcedimiento = borradoProcedimiento;
 		this.checkUsuario = checkUsuario;
+	}
+
+	public ProcedimientoEntity(final String nombreProcedimiento, final String descripProcedimiento,
+			final Date fechaProcedimiento, final Integer borradoProcedimiento, final Boolean checkUsuario,
+			final PlanEntity plan) {
+		super();
+		this.nombreProcedimiento = nombreProcedimiento;
+		this.descripProcedimiento = descripProcedimiento;
+		this.fechaProcedimiento = fechaProcedimiento;
+		this.borradoProcedimiento = borradoProcedimiento;
+		this.checkUsuario = checkUsuario;
+		this.plan = plan;
 	}
 
 	public Integer getIdProcedimiento() {

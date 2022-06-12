@@ -16,6 +16,7 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ObjetivoAsociadoPlanException;
+import com.sds.service.exception.ObjetivoAsociadoProcesoException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ObjetivoYaExisteException;
 import com.sds.service.objetivo.ObjetivoService;
@@ -147,6 +148,8 @@ public class ObjetivoController {
 				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, objetivo);
 			} catch (final ObjetivoAsociadoPlanException objetivoAsociadoPlanException) {
 				return new RespEntity(RespCode.OBJETIVO_ASOCIADO_PLAN_EXCEPTION, objetivo);
+			} catch (final ObjetivoAsociadoProcesoException objetivoAsociadoProcesoException) {
+				return new RespEntity(RespCode.OBJETIVO_ASOCIADO_PROCESO_EXCEPTION, objetivo);
 			}
 		} catch (final ObjetivoNoExisteException funcionalidadNoExists) {
 			return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, objetivo);

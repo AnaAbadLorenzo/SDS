@@ -63,6 +63,16 @@ public class EmpresaEntity {
 		this.borradoEmpresa = borradoEmpresa;
 	}
 
+	public EmpresaEntity(final String cifEmpresa, final String nombreEmpresa, final String direccionEmpresa,
+			final String telefonoEmpresa, final Integer borradoEmpresa) {
+		super();
+		this.cifEmpresa = cifEmpresa;
+		this.nombreEmpresa = nombreEmpresa;
+		this.direccionEmpresa = direccionEmpresa;
+		this.telefonoEmpresa = telefonoEmpresa;
+		this.borradoEmpresa = borradoEmpresa;
+	}
+
 	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}

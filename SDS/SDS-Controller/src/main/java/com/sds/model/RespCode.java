@@ -126,6 +126,8 @@ public enum RespCode {
 	OBJETIVO_YA_EXISTE_EXCEPTION("OBJETIVO_YA_EXISTE_EXCEPTION", "El objetivo ya existe"), //
 	OBJETIVO_NO_EXISTE_EXCEPTION("OBJETIVO_NO_EXISTE_EXCEPTION", "El objetivo no existe"), //
 	OBJETIVO_ASOCIADO_PLAN_EXCEPTION("OBJETIVO_ASOCIADO_PLAN_EXCEPTION", "El objetivo se encuentra asociado a un plan"), //
+	OBJETIVO_ASOCIADO_PROCESO_EXCEPTION("OBJETIVO_ASOCIADO_PROCESO_EXCEPTION",
+			"El objetivo se encuentra asociado a un proceso"), //
 	NOTICIA_NO_EXISTE_EXCEPTION("NOTICIA_NO_EXISTE", "La noticia no existe"), //
 	RESPUESTA_POSIBLE_ECONTRADA("RESPUESTA_POSIBLE_ENCONTRADA",
 			"Las respuestas posibles se han encontrado correctamente"), //
@@ -188,6 +190,7 @@ public enum RespCode {
 			"El proceso tiene asociados usuarios y procedimientos"), //
 	PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION("PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION",
 			"El proceso tiene asociadas respuestas posibles"), //
+	PROCESO_ASOCIADO_OBJETIVO_EXCEPTION("PROCESO_ASOCIADO_OBJETIVO_EXCEPTION", "El proceso tiene asociado un objetivo"), //
 	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION",
 			"El proceso tiene asociados procedimientos"), //
 	PROCESO_VACIO("PROCESO_VACIO", "El nombre, la descripción y/o la fecha del proceso son vacíos"), //

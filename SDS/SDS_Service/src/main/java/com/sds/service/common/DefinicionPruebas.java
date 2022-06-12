@@ -162,4 +162,14 @@ public class DefinicionPruebas {
 	public static final String PROCEDIMIENTO_ASOCIADO_PROCESO = "El procedimiento tiene asociado un proceso";
 	public static final String PROCEDIMIENTO_ASOCIADO_USUARIO = "El procedimiento tiene asociado un usuario";
 
+	public static final String GUARDAR_PROCESO_CORRECTO = "El proceso se ha guardado correctamente";
+	public static final String MODIFICAR_PROCESO_CORRECTO = "El proceso se ha modificado correctamente";
+	public static final String PROCESO_YA_EXISTE = "El proceso ya existe";
+	public static final String PROCESO_NO_EXISTE = "El proceso no existe";
+	public static final String ELIMINAR_PROCESO_CORRECTO = "El proceso se ha eliminado correctamente";
+	public static final String REACTIVAR_PROCESO_CORRECTO = "El proceso se ha reactivado correctamente";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "El proceso tiene asociado procedimientos";
+	public static final String PROCESO_ASOCIADO_RESPUESTA_POSIBLE = "El proceso tiene asociado respuestas posible";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "El proceso tiene asociado procedimientos y usuarios";
+
 }

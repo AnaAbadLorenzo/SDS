@@ -217,7 +217,7 @@ public class Mensajes {
 	public static final String RESPUESTA_POSIBLE_GUARDADA_CORRECTAMENTE = "La respuesta posible se ha guardado correctamente";
 	public static final String RESPUESTA_POSIBLE_MODIFICADA_CORRECTAMENTE = "La respuesta posible se ha modificado correctamente";
 	public static final String RESPUESTA_POSIBLE_ELIMINADA_CORRECTAMENTE = "La respuesta posible se ha eliminado correctamente";
-	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "La respuesta posible no ha podido eliminarse porque está asociada a un proceso";
+	public static final String PROCESO_ASOCIADO_RESPUESTA_POSIBLES = "La respuesta posible no ha podido eliminarse porque está asociada a un proceso";
 	public static final String RESPUESTA_POSIBLE_REACTIVADA_CORRECTAMENTE = "La respuesta posible se ha reactivado correctamente";
 
 	public static final String NOMBRE_PLAN_NO_PUEDE_SER_VACIO = "El nombre del plan no puede ser vacío";
@@ -298,5 +298,7 @@ public class Mensajes {
 	public static final String PROCESO_MODIFICADO_CORRECTAMENTE = "El proceso se ha modificado correctamente";
 	public static final String PROCESO_ELIMINADO_CORRECTAMENTE = "El proceso se ha eliminado correctamente";
 	public static final String PROCESO_REACTIVADO_CORRECTAMENTE = "El proceso se ha reactivado correctamente";
-	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "El proceso tiene asociados procedimientos";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "El proceso no ha podido eliminarse porque tiene procedimientos asociados";
+	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "El proceso no ha podido eliminarse porque tiene respuestas posibles asociadas";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "El proceso no ha podido eliminarse porque tiene procedimientos y usuarios asociados";
 }

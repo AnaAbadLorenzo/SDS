@@ -48,6 +48,7 @@ public enum CodeMessageErrors {
 	OBJETIVO_YA_EXISTE_EXCEPTION("El objetivo ya existe"), //
 	OBJETIVO_NO_EXISTE_EXCEPTION("El objetivo no existe"), //
 	OBJETIVO_ASOCIADO_PLAN_EXCEPTION("El objetivo se encuentra asociado a un plan"), //
+	OBJETIVO_ASOCIADO_PROCESO_EXCEPTION("El objetivo se encuentra asociado a un proceso"), //
 	OBJETIVO_VACIO("El nombre y/o la descripción del objetivo están vacíos"), //
 	RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION("La respuesta posible ya existe"), //
 	RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION("La respuesta posible no existe"), //
@@ -65,12 +66,13 @@ public enum CodeMessageErrors {
 	PROCEDIMIENTOUSUARIO_VACIO("El procedimiento y/o el usuario son vacíos"), //
 	PROCEDIMIENTOUSUARIOPROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO(
 			"La relacion procedimiento usuario tiene una relación con un proceso"), //
-	PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene procesos asociados"), //
 	USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene usuarios asociados"), //
+	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("El proceso tiene procedimientos asociados"), //
 	PROCEDIMIENTO_VACIO("Procedimiento vacío"), //
 	PROCESO_YA_EXISTE_EXCEPTION("El proceso ya existe"), //
 	PROCESO_NO_EXISTE_EXCEPTION("El proceso no existe"), //
-	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("El proceso tiene procedimientos asociados"), //
+	PROCESO_ASOCIADO_OBJETIVO_EXCEPTION("El proceso se encuentra asociado a un proceso"), //
+	PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene procesos asociados"), //
 	PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION("El proceso tiene respuestas posibles asociadas"), //
 	PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION("El proceso tiene asociados usuarios y procedimientos"), //
 	PROCESO_VACIO("Proceso vacío");

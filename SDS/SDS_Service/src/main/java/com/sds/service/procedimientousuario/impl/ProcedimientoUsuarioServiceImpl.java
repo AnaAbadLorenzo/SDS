@@ -1,8 +1,6 @@
 package com.sds.service.procedimientousuario.impl;
 
 import java.text.ParseException;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,10 +25,8 @@ import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.repository.ProcedimientoUsuarioRepository;
 import com.sds.repository.UsuarioRepository;
-import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
-import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
@@ -44,6 +41,7 @@ import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
 
+@Service
 public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioService {
 
 	@PersistenceContext
@@ -226,16 +224,13 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String anadirProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, FechaAnteriorFechaActualException,
-			UsuarioNoEncontradoException, ParseException, ProcedimientoUsuarioYaExisteException,
-			ProcedimientoNoExisteException {
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
+			ParseException, ProcedimientoUsuarioYaExisteException, ProcedimientoNoExisteException {
 		final ProcedimientoUsuarioEntity procedimientoUsuarioEntity = procedimientoUsuario.getProcedimientoUsuario();
 		final Boolean procedimientoUsuarioValido = validaciones
 				.comprobarProcedimientoUsuarioBlank(procedimientoUsuarioEntity);
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
-		String fechaIntroducidaUsuario = StringUtils.EMPTY;
-		String fechaActualString = StringUtils.EMPTY;
 
 		if (procedimientoUsuarioValido) {
 			final ProcedimientoUsuarioEntity procedimientoUsuarioBD = procedimientoUsuarioRepository
@@ -262,32 +257,19 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 						CodeMessageErrors.getTipoNameByCodigo(
 								CodeMessageErrors.PROCEDIMIENTOUSUARIO_YA_EXISTE_EXCEPTION.getCodigo()));
 			} else {
-				final LocalDate fechaActual = LocalDate.now();
-				final LocalDate dateIntroducidaUsuario = procedimientoUsuarioEntity.getFechaProcedimientoUsuario()
-						.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+				final ProcedimientoEntity procedimiento = procedimientoUsuario.getProcedimientoUsuario()
+						.getProcedimiento();
+				final UsuarioEntity usuario = procedimientoUsuario.getProcedimientoUsuario().getUsuario();
+				final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
+						.findById(procedimiento.getIdProcedimiento());
+				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuario.getDniUsuario());
 
-				if (CommonUtilities.countDigit(dateIntroducidaUsuario.getDayOfMonth()) == 1) {
-					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
-							+ dateIntroducidaUsuario.getMonthValue() + "-0" + dateIntroducidaUsuario.getDayOfMonth();
-				} else {
-					fechaIntroducidaUsuario = dateIntroducidaUsuario.getYear() + "-0"
-							+ dateIntroducidaUsuario.getMonthValue() + "-" + dateIntroducidaUsuario.getDayOfMonth();
-				}
-
-				if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
-					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
-							+ fechaActual.getDayOfMonth();
-				} else {
-					fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-							+ fechaActual.getDayOfMonth();
-				}
-
-				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
+				if (!procedimientoBD.isPresent()) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 							procedimientoUsuario.getUsuario(),
 							CodeMessageErrors.getTipoNameByCodigo(
-									CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo()),
-							CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo());
+									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()),
+							CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo());
 
 					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
@@ -297,24 +279,17 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
 					}
 
-					throw new FechaAnteriorFechaActualException(
-							CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo(),
+					throw new ProcedimientoNoExisteException(
+							CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo(),
 							CodeMessageErrors.getTipoNameByCodigo(
-									CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo()));
+									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
 				} else {
-					final ProcedimientoEntity procedimiento = procedimientoUsuario.getProcedimientoUsuario()
-							.getProcedimiento();
-					final UsuarioEntity usuario = procedimientoUsuario.getProcedimientoUsuario().getUsuario();
-					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
-							.findById(procedimiento.getIdProcedimiento());
-					final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuario.getDniUsuario());
-
-					if (!procedimientoBD.isPresent()) {
+					if (!usuarioBD.isPresent()) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 								procedimientoUsuario.getUsuario(),
 								CodeMessageErrors.getTipoNameByCodigo(
-										CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()),
-								CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo());
+										CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
+								CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
 
 						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
 
@@ -324,51 +299,30 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
 						}
 
-						throw new ProcedimientoNoExisteException(
-								CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo(),
+						throw new UsuarioNoEncontradoException(
+								CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
 								CodeMessageErrors.getTipoNameByCodigo(
-										CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
+										CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 					} else {
-						if (!usuarioBD.isPresent()) {
-							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
-									procedimientoUsuario.getUsuario(),
-									CodeMessageErrors.getTipoNameByCodigo(
-											CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
-									CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
+						procedimientoUsuarioEntity.setProcedimiento(procedimientoBD.get());
+						procedimientoUsuarioEntity.setUsuario(usuarioBD.get());
+						procedimientoUsuarioEntity.setBorradoProcedimientoUsuario(0);
+						procedimientoUsuarioEntity.setPuntuacionProcedimientoUsuario(0);
+						procedimientoUsuarioEntity.setFechaProcedimientoUsuario(new Date());
 
-							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(
+								procedimientoUsuario.getUsuario(), Constantes.ACCION_AÑADIR_PROCEDIMIENTOUSUARIO,
+								procedimientoUsuario.getProcedimientoUsuario().toString());
 
-							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
-								throw new LogExcepcionesNoGuardadoException(
-										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
-										CodeMessageErrors.getTipoNameByCodigo(
-												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
-							}
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
 
-							throw new UsuarioNoEncontradoException(
-									CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
-									CodeMessageErrors.getTipoNameByCodigo(
-											CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
-						} else {
-							procedimientoUsuarioEntity.setProcedimiento(procedimientoBD.get());
-							procedimientoUsuarioEntity.setUsuario(usuarioBD.get());
-							procedimientoUsuarioEntity.setBorradoProcedimientoUsuario(0);
-
-							final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(
-									procedimientoUsuario.getUsuario(), Constantes.ACCION_AÑADIR_PROCEDIMIENTOUSUARIO,
-									procedimientoUsuario.getProcedimientoUsuario().toString());
-
-							resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
-
-							if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
-								throw new LogAccionesNoGuardadoException(
-										CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(), CodeMessageErrors
-												.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
-							}
-
-							resultado = Constantes.OK;
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
 						}
 
+						resultado = Constantes.OK;
 					}
 
 				}
@@ -381,10 +335,127 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 	}
 
 	@Override
+	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
+	public String modificarProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
+			ParseException, ProcedimientoUsuarioNoExisteException, ProcedimientoNoExisteException {
+		final ProcedimientoUsuarioEntity procedimientoUsuarioEntity = procedimientoUsuario.getProcedimientoUsuario();
+		final Boolean procedimientoUsuarioValido = validaciones
+				.comprobarProcedimientoUsuarioBlank(procedimientoUsuarioEntity);
+		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
+
+		if (procedimientoUsuarioValido) {
+			final ProcedimientoUsuarioEntity procedimientoUsuarioBD = procedimientoUsuarioRepository
+					.findProcedimientoUsuarioByProcedimientoAndUsuario(
+							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento(),
+							procedimientoUsuario.getProcedimientoUsuario().getUsuario());
+
+			if (procedimientoUsuarioBD == null) {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+						procedimientoUsuario.getUsuario(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo()),
+						CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new ProcedimientoUsuarioNoExisteException(
+						CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(
+								CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo()));
+			} else {
+				final ProcedimientoEntity procedimiento = procedimientoUsuario.getProcedimientoUsuario()
+						.getProcedimiento();
+				final UsuarioEntity usuario = procedimientoUsuario.getProcedimientoUsuario().getUsuario();
+				final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
+						.findById(procedimiento.getIdProcedimiento());
+				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuario.getDniUsuario());
+
+				if (!procedimientoBD.isPresent()) {
+					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+							procedimientoUsuario.getUsuario(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()),
+							CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo());
+
+					resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+					if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+						throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+								CodeMessageErrors
+										.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+					}
+
+					throw new ProcedimientoNoExisteException(
+							CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(
+									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
+				} else {
+					if (!usuarioBD.isPresent()) {
+						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+								procedimientoUsuario.getUsuario(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()),
+								CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo());
+
+						resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+						if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogExcepcionesNoGuardadoException(
+									CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(), CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+						}
+
+						throw new UsuarioNoEncontradoException(
+								CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo(),
+								CodeMessageErrors.getTipoNameByCodigo(
+										CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
+					} else {
+						procedimientoUsuarioBD.setProcedimiento(procedimientoBD.get());
+						procedimientoUsuarioBD.setUsuario(usuarioBD.get());
+						procedimientoUsuarioBD.setBorradoProcedimientoUsuario(
+								procedimientoUsuarioEntity.getBorradoProcedimientoUsuario());
+						procedimientoUsuarioBD.setPuntuacionProcedimientoUsuario(
+								procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario());
+						procedimientoUsuarioBD.setFechaProcedimientoUsuario(
+								procedimientoUsuarioEntity.getFechaProcedimientoUsuario());
+						procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuarioBD);
+
+						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(
+								procedimientoUsuario.getUsuario(), Constantes.ACCION_MODIFICAR_PROCEDIMIENTOUSUARIO,
+								procedimientoUsuario.getProcedimientoUsuario().toString());
+
+						resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+						if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+							throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+									CodeMessageErrors
+											.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+						}
+
+						resultado = Constantes.OK;
+
+					}
+				}
+			}
+
+		} else {
+			resultado = CodeMessageErrors.PROCEDIMIENTOUSUARIO_VACIO.name();
+		}
+
+		return resultado;
+	}
+
+	@Override
 	public String eliminaProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
 			ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException, ProcedimientoUsuarioNoExisteException {
-		final ProcedimientoUsuarioEntity procedimientoUsuarioEntity = procedimientoUsuario.getProcedimientoUsuario();
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 

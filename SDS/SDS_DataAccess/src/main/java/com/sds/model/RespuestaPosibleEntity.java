@@ -51,6 +51,12 @@ public class RespuestaPosibleEntity {
 		this.borradoRespuesta = borradoRespuesta;
 	}
 
+	public RespuestaPosibleEntity(final String textoRespuesta, final Integer borradoRespuesta) {
+		super();
+		this.textoRespuesta = textoRespuesta;
+		this.borradoRespuesta = borradoRespuesta;
+	}
+
 	public Integer getIdRespuesta() {
 		return idRespuesta;
 	}
