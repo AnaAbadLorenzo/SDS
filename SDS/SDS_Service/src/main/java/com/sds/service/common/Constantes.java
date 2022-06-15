@@ -214,7 +214,7 @@ public class Constantes {
 	public static final String PROCESO_ID = "idProceso";
 	public static final String NOMBRE_PROCESO = "nombreProceso";
 	public static final String DESCRIP_PROCESO = "descripProceso";
-	public static final String FECHA_PROCESO = "fechaProcedimiento";
+	public static final String FECHA_PROCESO = "fechaProceso";
 
 	public static final String PROCEDIMIENTO = "procedimiento";
 	public static final String PROCEDIMIENTOUSUARIO_ID = "idProcedimientoUsuario";
@@ -690,6 +690,8 @@ public class Constantes {
 	public static final String REACTIVAR_PROCESO = "reactivarProceso";
 	public static final String PROCESO_ASOCIADO_RESPUESTA_POSIBLE = "respuestaPosibleAsociadoProceso";
 	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "procedimientoUsuarioAsociadoProceso";
+	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "procedimientoAsociadoProceso";
+	public static final String PROCESO_ASOCIADO_OBJETIVO = "objetivoAsociadoProceso";
 
 	public static final String OK = "OK";
 

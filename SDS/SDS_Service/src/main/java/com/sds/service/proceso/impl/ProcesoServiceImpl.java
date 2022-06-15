@@ -320,7 +320,7 @@ public class ProcesoServiceImpl implements ProcesoService {
 								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()));
 			} else {
 				final List<ProcesoRespuestaPosibleEntity> procesoRespuestaPosible = procesoRespuestaPosibleRepository
-						.findRespuestaPosibleByIdProceso(procesoEntity.getIdProceso());
+						.findRespuestaPosibleByIdProceso(procesoBD.get().getIdProceso());
 
 				if (!procesoRespuestaPosible.isEmpty()) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(proceso.getUsuario(),

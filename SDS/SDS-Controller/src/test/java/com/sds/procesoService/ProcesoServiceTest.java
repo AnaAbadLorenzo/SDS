@@ -25,6 +25,9 @@ import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
+import com.sds.model.ProcesoProcedimientoEntity;
+import com.sds.model.ProcesoRespuestaPosibleEntity;
+import com.sds.model.RespuestaPosibleEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PersonaRepository;
@@ -32,7 +35,10 @@ import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.repository.ProcedimientoUsuarioRepository;
+import com.sds.repository.ProcesoProcedimientoRepository;
 import com.sds.repository.ProcesoRepository;
+import com.sds.repository.ProcesoRespuestaPosibleRepository;
+import com.sds.repository.RespuestaPosibleRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
@@ -40,6 +46,10 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ObjetivoNoExisteException;
+import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcesoAsociadoObjetivoException;
+import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
@@ -78,6 +88,15 @@ public class ProcesoServiceTest {
 
 	@Autowired
 	ProcedimientoUsuarioRepository procedimientoUsuarioRepository;
+
+	@Autowired
+	ProcesoProcedimientoRepository procesoProcedimientoRepository;
+
+	@Autowired
+	RespuestaPosibleRepository respuestaPosibleRepository;
+
+	@Autowired
+	ProcesoRespuestaPosibleRepository procesoRespuestaPosibleRepository;
 
 	@Test
 	public void ProcesoService_buscarProceso() throws IOException, ParseException, java.text.ParseException {
@@ -257,8 +276,7 @@ public class ProcesoServiceTest {
 			LogExcepcionesNoGuardadoException, java.text.ParseException, FechaAnteriorFechaActualException,
 			ProcesoYaExisteException, ProcesoNoExisteException, ProcesoAsociadoUsuarioProcedimientoException {
 
-		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA,
-				Constantes.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL);
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.MODIFICAR_PROCESO);
 		proceso.getProceso().setFechaProceso(new Date());
 		String respuesta = StringUtils.EMPTY;
 		procesoService.anadirProceso(proceso);
@@ -408,6 +426,268 @@ public class ProcesoServiceTest {
 
 	}
 
+	@Test
+	public void ProcesoService_eliminarProcesoCorrecto() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcesoAsociadoObjetivoException {
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.ELIMINAR_PROCESO);
+		proceso.getProceso().setFechaProceso(new Date());
+		procesoService.anadirProceso(proceso);
+
+		final ReturnBusquedas<ProcesoEntity> procesoEliminar = procesoService.buscarProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
+
+		final String respuesta = procesoService
+				.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEliminar.getListaBusquedas().get(0)));
+
+		procesoService.deleteProceso(procesoEliminar.getListaBusquedas().get(0));
+
+		assertEquals(Constantes.OK, respuesta);
+	}
+
+	@Test(expected = ProcesoNoExisteException.class)
+	public void ProcesoService_eliminarProcesoNoExiste() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException {
+
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_NO_EXISTE);
+
+		procesoService.eliminaProceso(proceso);
+
+	}
+
+	@Test(expected = ProcedimientoAsociadoProcesoException.class)
+	public void ProcesoService_eliminarProcesoProcedimientoAsociado() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException {
+
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA,
+				Constantes.PROCESO_ASOCIADO_PROCEDIMIENTO);
+		proceso.getProceso().setFechaProceso(new Date());
+		procesoService.anadirProceso(proceso);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
+				"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		procedimientoRepository.saveAndFlush(procedimiento);
+		final ReturnBusquedas<ProcesoEntity> procesoEncontrado = procesoService.buscarProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+
+		final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(
+				procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+				procedimientoEncontrado.getIdProcedimiento(), 3);
+		procesoProcedimientoRepository.saveAndFlush(procesoProcedimientoEntity);
+
+		try {
+			procesoService
+					.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.getListaBusquedas().get(0)));
+		} catch (final ProcedimientoAsociadoProcesoException procedimientoAsociadoProcesoException) {
+			throw new ProcedimientoAsociadoProcesoException(
+					CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION.getCodigo()));
+		} finally {
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(
+					procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
+			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+			procesoRepository.deleteProceso(procesoEncontrado.getListaBusquedas().get(0).getIdProceso());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+			planRepository.deletePlan(planBDNuevo.getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
+		}
+	}
+
+	@Test(expected = ProcesoAsociadoRespuestaPosibleException.class)
+	public void ProcesoService_eliminarProcesoRespuestaPosibleAsociada() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException {
+
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA,
+				Constantes.PROCESO_ASOCIADO_RESPUESTA_POSIBLE);
+		proceso.getProceso().setFechaProceso(new Date());
+		procesoService.anadirProceso(proceso);
+		final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity("Esta es la respuesta posible",
+				0);
+		respuestaPosibleRepository.saveAndFlush(respuestaPosibleEntity);
+
+		final ReturnBusquedas<ProcesoEntity> procesoEncontrado = procesoService.buscarProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
+		final List<RespuestaPosibleEntity> respuestaPosibleEncontrada = respuestaPosibleRepository
+				.findRespuestaPosible(respuestaPosibleEntity.getTextoRespuesta());
+
+		final ProcesoRespuestaPosibleEntity procesoRespuestaPosibleEntity = new ProcesoRespuestaPosibleEntity(
+				procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+				respuestaPosibleEncontrada.get(0).getIdRespuesta(), new Date());
+		procesoRespuestaPosibleRepository.saveAndFlush(procesoRespuestaPosibleEntity);
+
+		try {
+			procesoService
+					.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.getListaBusquedas().get(0)));
+		} catch (final ProcesoAsociadoRespuestaPosibleException procesoAsociadoRespuestaPosibleException) {
+			throw new ProcesoAsociadoRespuestaPosibleException(
+					CodeMessageErrors.PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION.getCodigo()));
+		} finally {
+			procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(
+					respuestaPosibleEncontrada.get(0).getIdRespuesta(),
+					procesoEncontrado.getListaBusquedas().get(0).getIdProceso());
+			;
+			procesoRepository.deleteProceso(procesoEncontrado.getListaBusquedas().get(0).getIdProceso());
+			respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleEncontrada.get(0).getIdRespuesta());
+		}
+	}
+
+	@Test(expected = ProcesoAsociadoUsuarioProcedimientoException.class)
+	public void ProcesoService_eliminarProcesoProcedimientoUsuarioAsociado() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException {
+
+		final String resultado = StringUtils.EMPTY;
+		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
+				"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		final PersonaEntity persona = new PersonaEntity("04149249A", "Pepe", "Pepe pepe", format.parse("2022-02-02"),
+				"Calle de prueba", "988745121", "email@email.com", 0, null);
+		final UsuarioEntity usuario = new UsuarioEntity(persona.getDniP(), "pepeUsuario", 0);
+		personaRepository.saveAndFlush(persona);
+		usuarioRepository.saveAndFlush(usuario);
+		procedimientoRepository.saveAndFlush(procedimiento);
+
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.GUARDAR_PROCESO);
+		proceso.getProceso().setFechaProceso(new Date());
+		procesoService.anadirProceso(proceso);
+
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+		final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), resultado);
+
+		final ProcedimientoUsuarioEntity procedimientoUsuario = new ProcedimientoUsuarioEntity(0, new Date(), 0,
+				procedimiento, usuario);
+		procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuario);
+
+		final ProcedimientoUsuarioEntity procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
+				.findProcedimientoUsuarioByProcedimientoAndUsuario(procedimientoEncontrado, usuario);
+		final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso = new ProcedimientoUsuarioProcesoEntity(
+				procesoEncontrado.get(0).getIdProceso(), procedimientoUsuarioEncontrado.getIdProcedimientoUsuario(),
+				new Date(), 0);
+		procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProceso);
+
+		try {
+			procesoService.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.get(0)));
+		} catch (final ProcesoAsociadoUsuarioProcedimientoException procesoAsociadoUsuarioProcedimientoException) {
+			throw new ProcesoAsociadoUsuarioProcedimientoException(
+					CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION.getCodigo()));
+		} finally {
+			procedimientoUsuarioProcesoRepository.deleteProcedimientoUsuarioProceso(
+					procesoEncontrado.get(0).getIdProceso(),
+					procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
+			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+			procedimientoUsuarioRepository
+					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
+			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+			planRepository.deletePlan(planBDNuevo.getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
+			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
+			personaRepository.deletePersona(persona.getDniP());
+		}
+	}
+
+	@Test(expected = ProcesoAsociadoObjetivoException.class)
+	public void ProcesoService_eliminarProcesoObjetivoAsociado() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException {
+
+		final String resultado = StringUtils.EMPTY;
+
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_ASOCIADO_OBJETIVO);
+		proceso.getProceso().setFechaProceso(new Date());
+		procesoService.anadirProceso(proceso);
+
+		final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), resultado);
+
+		try {
+			procesoService.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.get(0)));
+		} catch (final ProcesoAsociadoObjetivoException procesoAsociadoObjetivoException) {
+			throw new ProcesoAsociadoObjetivoException(
+					CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo(), CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo()));
+		} finally {
+			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
+
+		}
+	}
+
+	@Test
+	public void ProcesoService_reactivarProcesoCorrecto() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoYaExisteException,
+			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoNoExisteException {
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.REACTIVAR_PROCESO);
+		proceso.getProceso().setBorradoProceso(1);
+		proceso.getProceso().setFechaProceso(new Date());
+		procesoService.anadirProceso(proceso);
+
+		final ReturnBusquedas<ProcesoEntity> procesoReactivar = procesoService.buscarProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
+
+		procesoReactivar.getListaBusquedas().get(0).setBorradoProceso(0);
+
+		final String respuesta = procesoService
+				.reactivarProceso(new Proceso(proceso.getUsuario(), procesoReactivar.getListaBusquedas().get(0)));
+
+		procesoService.deleteProceso(procesoReactivar.getListaBusquedas().get(0));
+
+		assertEquals(Constantes.OK, respuesta);
+
+	}
+
+	@Test(expected = ObjetivoNoExisteException.class)
+	public void ObjetivoService_reactivarObjetivoNoExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ObjetivoNoExisteException, java.text.ParseException, ProcesoNoExisteException {
+
+		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_NO_EXISTE);
+
+		procesoService.reactivarProceso(proceso);
+
+	}
+
 	private Proceso generateProceso(final String fichero, final String nombrePrueba)
 			throws IOException, ParseException, java.text.ParseException {
 
@@ -439,7 +719,7 @@ public class ProcesoServiceTest {
 		procesoEntity.setDescripProceso(CommonUtilities.coalesce(
 				new String((jsonProcesoVacios.get(Constantes.DESCRIP_PROCESO).toString()).getBytes("UTF-8")),
 				StringUtils.EMPTY));
-
+		procesoEntity.setFechaProceso(date);
 		procesoEntity.setBorradoProceso(0);
 
 		proceso.setUsuario(

@@ -14,7 +14,8 @@ import com.sds.model.compositekey.ProcesoProcedimientoKey;
 @IdClass(ProcesoProcedimientoKey.class)
 @Table(name = "procesoprocedimiento")
 @NamedQueries({
-		@NamedQuery(name = "ProcesoProcedimientoEntity.findIdProcesoByIdProcedimiento", query = "SELECT p.idProceso FROM ProcesoProcedimientoEntity p WHERE p.idProcedimiento =: idProcedimiento") })
+		@NamedQuery(name = "ProcesoProcedimientoEntity.findIdProcesoByIdProcedimiento", query = "SELECT p.idProceso FROM ProcesoProcedimientoEntity p WHERE p.idProcedimiento =: idProcedimiento"),
+		@NamedQuery(name = "ProcesoProcedimientoEntity.findIdProcedimientoByIdProceso", query = "SELECT p.idProcedimiento FROM ProcesoProcedimientoEntity p WHERE p.idProceso =: idProceso") })
 public class ProcesoProcedimientoEntity {
 
 	@Id

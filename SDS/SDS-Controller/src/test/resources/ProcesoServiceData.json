@@ -1,0 +1,153 @@
+{
+	"buscarProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : 1,
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "Descripción proceso",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"guardarProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso para guardar",
+		"descripProceso" : "Este es un proceso para guardar",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+
+	"modificarProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso para modificar",
+		"descripProceso" : "Este es un proceso para modificar",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"procesoYaExiste" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso ya existe",
+		"descripProceso" : "Este es un proceso que ya existe",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"procesoNoExiste" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso no existe",
+		"descripProceso" : "Este es un proceso que no existe",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"eliminarProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso para eliminar",
+		"descripProceso" : "Este es un proceso para eliminar",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"reactivarProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso para reactivar",
+		"descripProceso" : "Este es un proceso para reactivar",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"respuestaPosibleAsociadoProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso asociado a una respuesta posible",
+		"descripProceso" : "Este es un proceso que está asociado a una respuesta posible",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"procedimientoUsuarioAsociadoProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso asociado a un procedimiento y a un usuario",
+		"descripProceso" : "Este es un proceso que está asociado a un procedimiento y a un usuario",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"procedimientoAsociadoProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso asociado a procedimiento",
+		"descripProceso" : "Este es un proceso que está asociado a un procedimiento",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"objetivoAsociadoProceso" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso asociado a objetivo",
+		"descripProceso" : "Este es un proceso que está asociado a un objetivo",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"nombreProcesoVacio" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso" : "",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	},
+	
+	"descripcionProcesoVacio" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoVacia" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "",
+		"borradoProceso" : 0
+	},
+	
+	"fechaIntroducidaAnteriorFechaActual" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso" : "Proceso",
+		"descripProceso" : "Esta es la descripción del proceso",
+		"fechaProceso" : "2022-06-03",
+		"borradoProceso" : 0
+	}
+	
+	
+}
