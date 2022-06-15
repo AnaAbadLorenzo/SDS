@@ -1153,7 +1153,8 @@ form button[type="button"]:hover {
 .iconoAddPersona, .iconoSearchPersona, .iconoEditarPersona, .iconoAddEmpresa,
 .iconoSearchEmpresa, .iconoEditarEmpresa, .iconoAddObjetivo, .iconoSearchObjetivo, .iconoEditarObjetivo,
 .iconoAddRespuestaPosible, .iconoSearchRespuestaPosible, .iconoEditarRespuestaPosible,
-.iconoAddPlan, .iconoSearchPlan, .iconoEditarPlan {
+.iconoAddPlan, .iconoSearchPlan, .iconoEditarPlan,
+.iconoAddProcedimiento, .iconoSearchProcedimiento, .iconoEditarProcedimiento {
   position: relative;
   width: 30px;
   display:block;
@@ -1288,7 +1289,8 @@ form button[type="button"]:hover {
 .dniUsuarioColumn, .usuarioActivoColumn, .rolColumn, .cifEmpresaColumn,
 .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, .nombreObjetivoColumn, 
 .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, .idRespuestaPosibleColumn,
-.nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn {
+.nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn, .nombreProcedimientoColumn,
+.descripcionProcedimientoColumn, .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn{
   display: inline;
 }
 
@@ -1305,7 +1307,9 @@ form button[type="button"]:hover {
 .ordenarIconNombreEmpresa, .ordenarIconDireccionEmpresa, .ordenarIconTelefonoEmpresa,
 .ordenarIconIdEmpresa, .ordenarIconNombreObjetivo, .ordenarIconDescripcionObjetivo,
 .ordenarTextoRespuestaPosible, .ordenarIdRespuestaPosible, .ordenarIconNombrePlan,
-.ordenarIconDescripcionPlan, .ordenarIconFechaPlan, .ordenarIconNombreObjetivo  {
+.ordenarIconDescripcionPlan, .ordenarIconFechaPlan, .ordenarIconNombreObjetivo
+.ordenarIconNombreProcedimiento, .ordenarIconDescripcionProcedimiento,
+.ordenarIconFechaProcedimiento, .ordenarIconCheckUsuario, .ordenarIconIdProcedimiento  {
   margin-left: 2%;
   cursor:  pointer;
 }

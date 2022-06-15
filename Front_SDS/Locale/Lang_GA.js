@@ -46,6 +46,8 @@ arrayGA={
 	'CHECK_USUARIO' : 'Publicado',
 	'PUBLICADO' : 'Publicado',
 	'NO_PUBLICADO' : 'No publicado',
+	'SI' : 'Sí',
+	'NO' : 'Non',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',

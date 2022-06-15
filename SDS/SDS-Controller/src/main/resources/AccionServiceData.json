@@ -79,9 +79,9 @@
 	},
 	"eliminarAccionAsociadaRolFuncionalidad": {
 		"usuario": "ana",
-		"idAccion": 4,
-		"nombreAccion": "Listar",
-		"descripAccion": "Listar",
+		"idAccion": "",
+		"nombreAccion": "Accion asociada a rol y funcionalidad",
+		"descripAccion": "Esta es una accón listada a un rol y a una funcionalidad",
 		"borradoAccion": 0
 	},
 	"asignarAccionCorrecto": {

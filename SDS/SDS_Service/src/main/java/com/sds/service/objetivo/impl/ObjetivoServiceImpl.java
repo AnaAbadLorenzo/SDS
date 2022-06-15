@@ -253,6 +253,8 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 						break;
 					}
 				}
+			} else {
+				eliminarObjetivo = true;
 			}
 
 			final List<NivelEntity> niveles = nivelRepository.findNivelByIdObjetivo(objetivoBD.get().getIdObjetivo());
@@ -265,6 +267,8 @@ public class ObjetivoServiceImpl implements ObjetivoService {
 						break;
 					}
 				}
+			} else {
+				eliminarObjetivoProceso = true;
 			}
 
 			if (Boolean.TRUE.equals(eliminarObjetivo) && Boolean.TRUE.equals(eliminarObjetivoProceso)) {

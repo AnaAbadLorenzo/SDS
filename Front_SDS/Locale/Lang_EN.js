@@ -47,6 +47,8 @@ arrayEN={
 	'PUBLICADO' : 'Publicate',
 	'NO_PUBLICADO' : 'Not publicate',
 	'NO_ESPECIFICADO' : 'Not specified',
+	'SI' : 'Yes',
+	'NO' : 'No',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',

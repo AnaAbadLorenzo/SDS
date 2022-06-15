@@ -85,6 +85,7 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
 		await cargarDatosPersonaAjaxPromesa()
 		  .then((res) => {
         cargarPermisosFuncPersona();
+        cargarPermisosFuncEmpresaPersona();
 		  	 $('#personaInfoParaAdmin').attr('hidden', true);
 		  	 $('#personaInfoParaUsuario').attr('hidden', false);
 		     cargaDatosPersona(res.data.listaBusquedas);
@@ -1100,7 +1101,7 @@ function showAddPersonas() {
     }
 
     if($('#datosUsuario').hasClass('active')){
-      $('#d#datosUsuario').removeClass('active');
+      $('#datosUsuario').removeClass('active');
     }
 
     if($('#datosEmpresa').hasClass('active')){
@@ -1555,6 +1556,19 @@ async function cargarPermisosFuncPersona(){
   });
 }
 
+/*Función que comprueba los permisos del usuario sobre la funcionalidad*/
+async function cargarPermisosFuncEmpresaPersona(){
+  await cargarPermisosFuncEmpresaPersonaAjaxPromesa()
+  .then((res) => {
+    gestionarPermisosEmpresaPersona(res.data);
+    
+    }).catch((res) => {
+      respuestaAjaxKO(res.code);
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+  });
+}
+
 async function cargarEmpresasSelect(selector){
   await cargarEmpresasAjaxPromesa()
   .then((res) => {
@@ -1625,6 +1639,32 @@ function cargarPermisosFuncPersonaAjaxPromesa(){
   });
 }
 
+/** Función para recuperar los permisos de un usuario sobre la funcionalidad **/
+function cargarPermisosFuncEmpresaPersonaAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+    var nombreUsuario = getCookie('usuario');
+    var token = getCookie('tokenUsuario');
+    
+    var usuario = nombreUsuario;
+  
+    $.ajax({
+      method: "GET",
+      url: urlPeticionAjaxAccionesUsuario,
+      contentType : "application/json",
+      data: { usuario : usuario, funcionalidad : 'Gestión de empresas'},  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'ACCIONES_USUARIO_OK') {
+          reject(res);
+        }
+        resolve(res);
+    }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /** Función para gestionar los iconos dependiendo de los permisos de los usuarios **/
 function gestionarPermisosPersona(idElementoList) {
   idElementoList.forEach( function (idElemento) {
@@ -1641,10 +1681,6 @@ function gestionarPermisosPersona(idElementoList) {
         $('.editarPermiso').css("cursor", "default");
         $('.editarPermiso').attr("data-toggle", "modal");
         $('.editarPermiso').attr("data-target", "#form-modal");
-        $('.editarPermisoEmpresa').attr('src', 'images/edit3.png');
-        $('.editarPermisoEmpresa').css("cursor", "default");
-        $('.editarPermisoEmpresa').attr("data-toggle", "modal");
-        $('.editarPermisoEmpresa').attr("data-target", "#modalSeleccionEmpresa");
       break;
 
       case "Eliminar" :
@@ -1677,6 +1713,21 @@ function gestionarPermisosPersona(idElementoList) {
         $('.reactivarPermiso').css("cursor", "default");
         $('.reactivarPermiso').attr("data-toggle", "modal");
         $('.reactivarPermiso').attr("data-target", "#form-modal");
+      break;
+    } 
+    }); 
+}
+
+
+/** Función para gestionar los iconos dependiendo de los permisos de los usuarios **/
+function gestionarPermisosEmpresaPersona(idElementoList) {
+  idElementoList.forEach( function (idElemento) {
+    switch(idElemento){
+      case "Modificar" : 
+        $('.editarPermisoEmpresa').attr('src', 'images/edit3.png');
+        $('.editarPermisoEmpresa').css("cursor", "default");
+        $('.editarPermisoEmpresa').attr("data-toggle", "modal");
+        $('.editarPermisoEmpresa').attr("data-target", "#modalSeleccionEmpresa");
       break;
     } 
     }); 

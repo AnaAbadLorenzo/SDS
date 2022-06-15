@@ -19,10 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.NoticiasEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
+import com.sds.repository.NoticiasRepository;
 import com.sds.repository.PlanRepository;
 import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioRepository;
@@ -62,6 +64,9 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 
 	@Autowired
 	ProcedimientoUsuarioRepository procedimientoUsuarioRepository;
+
+	@Autowired
+	NoticiasRepository noticiasRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -347,6 +352,17 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 						procedimientoEntity.setBorradoProcedimiento(0);
 						procedimientoRepository.saveAndFlush(procedimientoEntity);
 
+						if (Boolean.TRUE.equals(procedimientoEntity.getCheckUsuario())) {
+							final NoticiasEntity noticia = new NoticiasEntity(
+									String.format(Constantes.TITULO_ANADIR_NOTICIA_PROCEDIMIENTO,
+											procedimientoEntity.getNombreProcedimiento()),
+									String.format(Constantes.TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO,
+											procedimientoEntity.getNombreProcedimiento(),
+											procedimientoEntity.getDescripProcedimiento(), fechaIntroducidaUsuario),
+									new Date());
+							noticiasRepository.saveAndFlush(noticia);
+						}
+
 						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(procedimiento.getUsuario(),
 								Constantes.ACCION_AÑADIR_PROCEDIMIENTO,
 								procedimiento.getProcedimientoEntity().toString());
@@ -575,6 +591,17 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 						procedimientoBD.get().setPlan(procedimientoEntity.getPlan());
 
 						procedimientoRepository.saveAndFlush(procedimientoBD.get());
+
+						if (Boolean.TRUE.equals(procedimientoEntity.getCheckUsuario())) {
+							final NoticiasEntity noticia = new NoticiasEntity(
+									String.format(Constantes.TITULO_ANADIR_NOTICIA_PROCEDIMIENTO,
+											procedimientoEntity.getNombreProcedimiento()),
+									String.format(Constantes.TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO,
+											procedimientoEntity.getNombreProcedimiento(),
+											procedimientoEntity.getDescripProcedimiento(), fechaIntroducidaUsuario),
+									new Date());
+							noticiasRepository.saveAndFlush(noticia);
+						}
 
 						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(procedimiento.getUsuario(),
 								Constantes.ACCION_MODIFICAR_PROCEDIMIENTO,

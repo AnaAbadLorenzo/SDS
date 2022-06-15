@@ -471,24 +471,6 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
         
 }
 
-function comprobarOcultos(){
-     $('#tablaDatos tr th').each(function(index){
-                var clase = $(this).attr('class');
-                var display = ($(this).attr('style'));
-                if(clase.includes("colFirst")){
-                    if(typeof display != 'undefined' && display !== false && (display.split(": "))[1] == "none;"){
-                        var claseColumn = clase.split(" ");
-                         hideShowRevert(claseColumn[1], (index+1));
-                    }
-                }else{
-                    var claseColumn = clase;
-                    if(typeof display != 'undefined' && display !== false && (display.split(": "))[1] == "none;"){
-                         hideShowRevert(claseColumn, (index+1));
-                    }
-                }
-            });
-}
-
 function cargarPosicion(posicionArray, boton, entidad){
 
     var posicionActual = 0;

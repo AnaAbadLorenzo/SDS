@@ -2,13 +2,12 @@
 function iniciarProcedimientoUsuario(){
   window.location.href = "MisProcedimientos.html";
 }
-
 /** Función para añadir procedimientos con ajax y promesas **/
 function anadirProcedimientoAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
-    var check = $('input[name=checkUsuario]').val();
+    var check = $('input[name=checkUsuarioAnadir]:checked').val();
     if(check == "publicado"){
       var checkMarcado = true;
     }else{
@@ -123,9 +122,9 @@ function buscarProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       }
 
       if(getCookie('checkUsuario') == null || getCookie('checkUsuario') == ""){
-        var check = null;
+        var checkMarcado = null;
       }else{
-        var check = getCookie('checkUsuario');
+        var checkMarcado = getCookie('checkUsuario');
       }
 
       if(getCookie('plan') == null || getCookie('plan') == ""){
@@ -145,7 +144,7 @@ function buscarProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         nombreProcedimiento : nombreP,
         descripProcedimiento : descripP,
         fechaProcedimiento : fechaString,
-        checkUsuario : check,
+        checkUsuario : checkMarcado,
         plan : plan,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaProcedimiento),
         tamanhoPagina : tamanhoPaginaProcedimiento
@@ -458,7 +457,8 @@ function reactivarProcedimientosAjaxPromesa(){
 /* Función para obtener los procedimientos del sistema */
 async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado){
   if(getCookie('rolUsuario') == "usuario"){
-    window.location.href = "MisProcedimientos.html";
+    document.getElementById('procedimientosUsuario').style.display = "block";
+    cargarProcedimientosPlan();
   }else if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
     await cargarProcedimientosAjaxPromesa(numeroPagina, tamanhoPagina)
       .then((res) => {
@@ -468,16 +468,12 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
           var inicio = 0;
         if(res.data.listaBusquedas.length == 0){
           inicio = 0;
+           $('#itemPaginacion').attr('hidden',true);
         }else{
           inicio = parseInt(res.data.inicio)+1;
+            $('#itemPaginacion').attr('hidden',false);
         }
         var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-
-        if(res.data.listaBusquedas.length == 0){
-          $('#itemPaginacion').attr('hidden',true);
-        }else{
-          $('#itemPaginacion').attr('hidden',false);
-        }
 
         $("#datosProcedimiento").html("");
         $("#checkboxColumnas").html("");
@@ -758,7 +754,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         $('#itemPaginacion').attr('hidden', true);
       }else{
         inicio = parseInt(res.data.inicio)+1;
-        $('#itemPaginacion').attr('hidden', true);
+        $('#itemPaginacion').attr('hidden', false);
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
@@ -947,13 +943,17 @@ function showAddProcedimientos() {
   $('#labelFechaProcedimiento').attr('hidden', true);
   $('#labelDescripcionPlan').attr('hidden', true);
   $('#descripPlan').attr('hidden', true);
-  $('#noEspecificadoCheck').attr('hidden', true);
+  $('#noEspecificadoCheckAnadir').attr('hidden', true);
+  document.getElementById('checkUsuarioAnadir').style.display = "block";
+  document.getElementById('checkUsuario').style.display = "none";
+ 
 
   let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
-  let obligatorios =  ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheckPublicado", "obligatorioCheckNoPulicado", "obligatorioPlanes"];
+  let obligatorios =  ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheckAnadir", "obligatorioPlanes"];
   
   eliminarReadonly(idElementoList);
   mostrarObligatorios(obligatorios);
+  ocultarObligatorios(["obligatorioCheck"]);
   habilitaCampos(idElementoList);
 
 }
@@ -978,9 +978,11 @@ function showBuscarProcedimiento() {
   $('#descripPlan').attr('hidden', true);
   $('#subtitulo').attr('hidden', true);
   $('#noEspecificadoCheck').attr('hidden', false);
+  document.getElementById('checkUsuarioAnadir').style.display = "none";
+  document.getElementById('checkUsuario').style.display = "block";
 
   let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
-  let obligatorios = ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheckPublicado", "obligatorioCheckNoPulicado", "obligatorioPlanes", "obligatorioDescripPlan"];
+  let obligatorios = ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheck", "obligatorioCheckAnadir", "obligatorioPlanes", "obligatorioDescripPlan"];
   
   eliminarReadonly(idElementoList);
   ocultarObligatorios(obligatorios);
@@ -1006,11 +1008,13 @@ function showDetalle(nombreProcedimiento, descripProcedimiento , fechaProcedimie
     $('#descripPlan').removeAttr('hidden');
     $('#subtitulo').attr('hidden', true);
     $('#noEspecificadoCheck').attr('hidden', true);
+    document.getElementById('checkUsuarioAnadir').style.display = "none";
+    document.getElementById('checkUsuario').style.display = "block";
 
     rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan);
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
-    let obligatorios =  ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheckPublicado", "obligatorioCheckNoPulicado", "obligatorioPlanes", "obligatorioDescripPlan"];
+    let obligatorios =  ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheck", "obligatorioPlanes", "obligatorioDescripPlan"];
 
     anadirReadonly(idElementoList);
     ocultarObligatorios(obligatorios);
@@ -1037,7 +1041,8 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
     $('#labelDescripcionPlan').attr('hidden', true);
     $('#selectPlanes').attr('hidden', false);
     $('#descripPlan').attr('hidden', true);
-    $('#noEspecificadoCheck').attr('hidden', true);
+    document.getElementById('checkUsuarioAnadir').style.display = "none";
+    document.getElementById('checkUsuario').style.display = "block";
 
     rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan);
     insertacampo(document.formularioGenerico,'idProcedimiento', idProcedimiento);
@@ -1072,7 +1077,9 @@ function showEliminar(nombreProcedimiento, descripProcedimiento , fechaProcedimi
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_ELIMINAR_PROCEDIMIENTO');
     $('#subtitulo').attr('hidden', false);
-     $('#noEspecificadoCheck').attr('hidden', true);
+    $('#noEspecificadoCheck').attr('hidden', true);
+    document.getElementById('checkUsuarioAnadir').style.display = "none";
+    document.getElementById('checkUsuario').style.display = "block";
 
     rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento);
     insertacampo(document.formularioGenerico,'idProcedimiento', idProcedimiento);
@@ -1104,7 +1111,9 @@ function showReactivar(nombreProcedimiento, descripProcedimiento , fechaProcedim
     $('#subtitulo').empty();
     $('#subtitulo').attr('class', 'SEGURO_REACTIVAR_PROCEDIMIENTO');
     $('#subtitulo').attr('hidden', false);
-     $('#noEspecificadoCheck').attr('hidden', true);
+    $('#noEspecificadoCheck').attr('hidden', true);
+    document.getElementById('checkUsuarioAnadir').style.display = "none";
+    document.getElementById('checkUsuario').style.display = "block";
 
 
     rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento);
@@ -1286,6 +1295,35 @@ function listarPlanesAjaxPromesa(){
         errorFailAjax(jqXHR.status);
       });
   });
+}
+
+function cargarProcedimientosPlan(){
+
+  $('#procedimientos').html('');
+
+  var procedimientos= '<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">' + 
+                        '<div class="card">' + 
+                          '<div class="card-body-plan">' + 
+                            '<div class="card-title">Procedimiento 1</div>' + 
+                            '<div class="card-text">Procedimiento 1</div>' +
+                            '<div id="iniciarProcedimiento" class="tooltip13 procedimientoIcon">' +
+                              '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>' +
+                              '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
+                            '</div>' + 
+                          '</div>'+
+                          '<div class="card-footer">' + 
+                            '<div class="tooltip8 planIcon">' + 
+                              '<img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>' + 
+                              '<span class="tooltiptext iconPlan ICON_PLAN"></span>' + 
+                            '</div>' + 
+                          '<div class="card-title-plan">Plan: Plan</div>' + 
+                        '</div>' +
+                      '</div>' + 
+                    '</div>';
+
+  $('#procedimientos').append(procedimientos);
+
+
 }
 
 $(document).ready(function() {

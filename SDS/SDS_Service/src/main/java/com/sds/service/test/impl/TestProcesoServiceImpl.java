@@ -1026,7 +1026,6 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 			procedimientoUsuarioProcesoRepository.deleteProcedimientoUsuarioProceso(
 					procesoEncontrado.get(0).getIdProceso(),
 					procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
-			;
 			procedimientoUsuarioRepository
 					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());

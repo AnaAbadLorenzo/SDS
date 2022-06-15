@@ -74,6 +74,18 @@
     </div>     
 	</div>
 
+	<div id="cabeceraConsultaPlanes" class="cabecera" style="display: none;">
+		<div id="divListarPlan" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarPlan()" class="tooltip6 searchIcon">
+	        <img id="btnListarPlanes" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Plan" />
+	        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
+    	</div>
+    	<div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaPlan)" class="tooltip6 refreshIcon">
+	        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
+	        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
+    	</div>
+    </div>
+
+
 	<div class = "cabeceraEliminados" id="cabeceraEliminados" style="display: none;">
 		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaPlan)" class="tooltip6 volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
@@ -209,7 +221,7 @@
                           </button>
                       </form>
                     </div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -221,7 +233,7 @@
           <div id="contenidoFormMostrarObjetivo">
             <div class="formularioComun">
               <h1 id="tituloFormsModalMostrarObjetivo" class="datos"></h1>
-              <form name="formularioGenerico" id="formularioGenericoModalMostrarObjetivo" action="" onsubmit="">
+              <form name="formularioModalMostrarObjetivo" id="formularioModalMostrarObjetivo" action="" onsubmit="">
                 <label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivoMostrarObjetivo" hidden></label>                            
                 <input type="text" maxlength="48" size="48" placeholder="NOMBRE_OBJETIVO" name="NOMBRE_OBJETIVO" id="nombreObjetivo" class="NOMBRE_OBJETIVO" onblur=""/>
                

@@ -771,6 +771,40 @@ function hideShowRevert(clase, posElement) {
 
 }
 
+/**Función que oculta o muestra las columnas de una tabla*/
+function hideShowRevertWithoutClase(posElement) {
+    $('td:nth-child(' + posElement + ')').toggle();
+
+}
+
+
+function comprobarOcultos(){
+     $('#tablaDatos tr th').each(function(index){
+                var clase = $(this).attr('class');
+                var display = ($(this).attr('style'));
+                if(clase.includes("colFirst")){
+                    if(typeof display != 'undefined' && display !== false && (display.split(": "))[1] == "none;"){
+                        var claseColumn = clase.split(" ");
+                         hideShowRevert(claseColumn[1], (index+1));
+                    }
+                }else{
+                    var claseColumn = clase;
+                    if(typeof display != 'undefined' && display !== false && (display.split(": "))[1] == "none;"){
+                         hideShowRevert(claseColumn, (index+1));
+                    }
+                }
+            });
+
+    $('#tablaDatos tbody tr td').each(function(index){
+            var display = ($(this).attr('style'));
+               
+            if(typeof display != 'undefined' && display !== false && (display.split(": "))[1] == "none;"){
+                hideShowRevertWithoutClase((index+1));
+            }
+                
+    });
+}
+
 /**Función para cargar los HREF de cada pagina*/
 function cargarHref(dato){
 	var rol = getCookie('rolUsuario');

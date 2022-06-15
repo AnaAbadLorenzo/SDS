@@ -37,6 +37,7 @@
   cambiarTituloGestion('persona');modalCambioPass();cargarIdioma();includeFooter();setLang('');
   await cargarPersonas(0, tamanhoPaginaPersona, 'PaginadorNo');
   await cargarPermisosFuncPersona();
+  await cargarPermisosFuncEmpresaPersona();
   ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('PERSONA')},30000);
   })();">  
 	<div id="topMenu"></div>

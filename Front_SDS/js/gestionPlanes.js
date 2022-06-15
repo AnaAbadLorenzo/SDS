@@ -502,6 +502,8 @@ async function cargarPlanes(numeroPagina, tamanhoPagina, paginadorCreado){
 async function cargarPlanesUsuario(numeroPagina, tamanhoPagina, paginadorCreado){
   await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
         .then((res) => {
+          document.getElementById('cabecera').style.display = "none";
+          document.getElementById('cabeceraConsultaPlanes').style.display = "block";
           cargarPermisosFuncPlan();
           $('#planes').html('');
           var numResults = res.data.numResultados + '';
@@ -666,6 +668,8 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
   if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
     await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina)
     .then((res) => {
+        document.getElementById('cabecera').style.display = "block";
+        document.getElementById('cabeceraConsultaPlanes').style.display = "none";
         cargarPermisosFuncPlan();
         setCookie('nombrePlan', '');
         setCookie('descripPlan', '');
@@ -714,6 +718,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         }
 
         setCookie('numeroPagina', numPagCookie);
+        comprobarOcultos();
 
       }).catch((res) => {
 
@@ -1012,7 +1017,7 @@ function showEditar(nombrePlan, descripPlan , fechaPlan, nombreObjetivo, descrip
     $('#descripcionObjetivo').attr('hidden', true);
 
     rellenarFormulario(nombrePlan, descripPlan , fechaPlan, nombreObjetivo, "");
-    insertacampo(document.formularioGenerico,'idPlan', idPlan);
+   insertacampo(document.formularioGenerico,'idPlan', idPlan);
 
     let campos = ["nombrePlan", "descripPlan", "fechaPlan", "selectObjetivos", "descripcionObjetivo"];
     let obligatorios = ["obligatorioNombrePlan", "obligatorioDescripPlan", "obligatorioFechaPlan", "obligatorioObjetivos", "obligatorioDescripcionObjetivo"];
@@ -1229,7 +1234,7 @@ function gestionarPermisosPlan(idElementoList) {
         }
         
         }else{
-          document.getElementById('cabecera').style.display = "block";
+          document.getElementById('cabecera').style.display = "none";
           document.getElementById('listaPlanes').style.display = "block";
           document.getElementById('filasTabla').style.display = "block";
           $('#itemPaginacion').attr('hidden', false);
@@ -1256,6 +1261,8 @@ function gestionarPermisosPlan(idElementoList) {
 }
 
 function construyePlanUsuario(planUsuario){
+  document.getElementById('cabecera').style.display = "none";
+  document.getElementById('cabeceraConsultaPlanes').style.display = "block";
   var plan = "";
   var objective = planUsuario.objetivo;
 

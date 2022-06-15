@@ -130,6 +130,10 @@ public class Constantes {
 	public static final String FIRMA_GA = "O administador de Sustanaile Development Society";
 	public static final String FIRMA_EN = "The Sustanaile Development Society Administrator";
 
+	// Constantes para la adiccion de noticias
+	public static final String TITULO_ANADIR_NOTICIA_PROCEDIMIENTO = "Se ha publicado el procedimiento %s";
+	public static final String TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO = "Se ha publicado el procedimiento %s, con descripción %s el día %s";
+
 	// Constantes para las acciones
 	public static final String AÑADIR = "Añadir";
 	public static final String BUSCAR = "Buscar";

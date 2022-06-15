@@ -42,6 +42,9 @@
   })();">  
 	<div id="topMenu"></div>
 
+	<div class="modal modal3 fade" id="changePass-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	</div>
+
 	<h1 class="gestion GESTION_PROCEDIMIENTOS"></h1>
 
 	<div id="cabecera" class="cabecera" style="display: none;">
@@ -76,7 +79,12 @@
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />
         	<span class="tooltiptext iconoVolverAtras ICONO_BACK"></span>
     	</div> 
-    </div>    
+    </div>  
+
+    <div id="procedimientosUsuario" class="procedimientos overflow-auto" style="display:none;">
+		<div id="procedimientos" class="row">
+        </div>
+    </div>
 
 	<div class="table-responsive" id="tablaDatos" style="display: none;">
 		<table class="table table-bordered" id="tablaProcedimientos">
@@ -143,7 +151,16 @@
 			<div id="paginacion"></div>
 	</div>
 
-	<div id="itemPaginacion" class="paginacion">
+	<div id="showHideColumns" style="display: none;">
+    	<a id="cerrar" href="#" onclick="cerrarModal('showHideColumns')" class="tooltip5">
+          <img class="iconCerrar" alt="Cerrar" src="images/close2.png"/>
+          <span class="tooltiptext5 ICONO_CERRAR"></span>
+        </a>
+    	<div id='checkboxColumnas'>
+    	</div>
+  	</div>
+
+	<div id="itemPaginacion" class="paginacion" hidden>
 		<nav aria-label="Page navigation example">
 			<ul class="pagination">
 		  	</ul>
@@ -180,22 +197,40 @@
                     	  </div>
                     	  <div style="display:none" id="errorFormatoFechaProcedimiento"></div>
 
-                    	  <div id="checkUsuario" class="preguntaCheck">
+                    	  <div id="checkUsuarioAnadir" class="preguntaCheck" style="display: none;">
+                    	  	  <label class="PUBLICAR_PROCEDIMIENTO labelEtiqueta labelForm"></label>
+                    	  	   <div class="obligatorio tooltip2" id="obligatorioCheckAnadir">*
+	                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+	              			  </div>
+	              			  <div class="form-check-inline" id="noEspecificadoCheckAnadir" hidden>
+	  						  		<input class="form-check-input" type="radio" value="noEspecificado" name="checkUsuarioAnadir" id="checkUsuarioNoEspecificadoAnadir">
+	  						  		<label class="form-check-label NO_ESPECIFICADO" for="noEspecificado"></label>
+							  </div>
+		                      <div class="form-check-inline">
+	  						  		<input class="form-check-input" type="radio" value="publicado" name="checkUsuarioAnadir" id="checkUsuarioPublicarAnadir">
+	  						  		<label class="form-check-label SI" for="publicado"></label>
+							  </div>
+							  <div class="form-check-inline">
+		  					  		<input class="form-check-input" type="radio" value="noPublicado" id="checkUsuarioNoPublicarAnadir" name="checkUsuarioAnadir">
+		  					  		<label class="form-check-label NO" for="noPublicado"></label>
+	                      	  </div>
+	                      </div>
+	                      <div id="checkUsuario" class="preguntaCheck" style="display: none;">
                     	  	  <label class="PUBLICAR_PROCEDIMIENTO labelEtiqueta labelForm"></label>
                     	  	   <div class="obligatorio tooltip2" id="obligatorioCheck">*
 	                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
 	              			  </div>
 	              			  <div class="form-check-inline" id="noEspecificadoCheck" hidden>
 	  						  		<input class="form-check-input" type="radio" value="noEspecificado" name="checkUsuario" id="checkUsuarioNoEspecificado">
-	  						  		<label class="form-check-label NO_ESPECIFICADO" for="flexCheckDefault"></label>
+	  						  		<label class="form-check-label NO_ESPECIFICADO" for="noEspecificado"></label>
 							  </div>
 		                      <div class="form-check-inline">
 	  						  		<input class="form-check-input" type="radio" value="publicado" name="checkUsuario" id="checkUsuarioPublicar">
-	  						  		<label class="form-check-label PUBLICADO" for="flexCheckDefault"></label>
+	  						  		<label class="form-check-label PUBLICADO" for="publicado"></label>
 							  </div>
 							  <div class="form-check-inline">
 		  					  		<input class="form-check-input" type="radio" value="noPublicado" id="checkUsuarioNoPublicar" name="checkUsuario">
-		  					  		<label class="form-check-label NO_PUBLICADO" for="flexCheckChecked"></label>
+		  					  		<label class="form-check-label NO_PUBLICADO" for="noPublicado"></label>
 	                      	  </div>
 	                      </div>
 	                      <div style="display:none" id="errorFormatoCheckUsuario"></div>

@@ -50,6 +50,13 @@ public class NoticiasEntity {
 		this.fechaNoticia = fechaNoticia;
 	}
 
+	public NoticiasEntity(final String tituloNoticia, final String textoNoticia, final Date fechaNoticia) {
+		super();
+		this.tituloNoticia = tituloNoticia;
+		this.textoNoticia = textoNoticia;
+		this.fechaNoticia = fechaNoticia;
+	}
+
 	public Integer getIdNoticia() {
 		return idNoticia;
 	}

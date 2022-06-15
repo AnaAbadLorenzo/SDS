@@ -48,6 +48,8 @@ arrayES={
 	'PUBLICADO' : 'Publicado',
 	'NO_PUBLICADO' : 'No publicado',
 	'NO_ESPECIFICADO' : 'No especificado',
+	'SI' : 'Si',
+	'NO' : 'No',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
