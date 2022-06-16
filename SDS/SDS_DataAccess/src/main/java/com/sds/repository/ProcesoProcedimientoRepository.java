@@ -15,6 +15,10 @@ import com.sds.model.compositekey.ProcesoProcedimientoKey;
 public interface ProcesoProcedimientoRepository
 		extends JpaRepository<ProcesoProcedimientoEntity, ProcesoProcedimientoKey> {
 
+	List<ProcesoProcedimientoEntity> findProcesoProcedimiento(final Integer idProceso, final Integer idProcedimiento);
+
+	Integer numberFindProcesoProcedimiento(final Integer idProceso, final Integer idProcedimiento);
+
 	List<Integer> findIdProcesoByIdProcedimiento(final Integer idProcedimiento);
 
 	List<Integer> findIdProcedimientoByIdProceso(final Integer idProceso);

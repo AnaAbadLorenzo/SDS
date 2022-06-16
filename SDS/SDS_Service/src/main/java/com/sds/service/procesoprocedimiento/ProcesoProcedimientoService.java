@@ -1,11 +1,9 @@
 package com.sds.service.procesoprocedimiento;
 
+import java.text.ParseException;
 import java.util.List;
 
-import com.sds.model.ProcedimientoEntity;
-import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoProcedimientoEntity;
-import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
@@ -16,25 +14,22 @@ import com.sds.service.procesoprocedimiento.model.ProcesoProcedimiento;
 
 public interface ProcesoProcedimientoService {
 
-	ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcedimientoUsuario(final ProcesoEntity proceso,
-			final ProcedimientoEntity procedimiento, final Integer ordenProceso, final int inicio,
-			final int tamanhoPagina);
+	List<ProcesoProcedimientoEntity> buscarProcedimientoUsuario(final Integer idProceso, final Integer idProcedimiento);
 
-	ReturnBusquedas<ProcesoProcedimientoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
-
-	List<ProcesoProcedimientoEntity> buscarTodosSinP();
-
-	String anadirProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
+	public String anadirProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException, ProcesoNoExisteException;
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException, ProcesoNoExisteException,
+			ParseException;
 
 	String modificarProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			ProcesoProcedimientoNoExisteException, ProcedimientoNoExisteException, ProcesoNoExisteException;
+			ProcesoProcedimientoNoExisteException, ProcedimientoNoExisteException, ProcesoNoExisteException,
+			ParseException;
 
 	String eliminaProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException;
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			ProcesoProcedimientoNoExisteException;
 
 	void deleteProcesoProcedimiento(final ProcesoProcedimientoEntity procesoProcedimientoEntity)
-			throws ProcesoProcedimientoNoExisteException;
+			throws ProcesoProcedimientoNoExisteException, ParseException;
 }

@@ -130,6 +130,22 @@ arrayEN={
 	'EMPRESA_YA_EXISTE' : 'The enterprise already exists',
 	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'The enterprise doesn`t exists',
 	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'The enterprise is associated with certain individuals',
+	'OBJETIVO_ASOCIADO_PLAN_EXCEPTION' : 'The objective is associated with certain plans',
+	'OBJETIVO_ASOCIADO_PROCESO_EXCEPTION' : 'The objective is associated with certain process',
+	'FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL' : 'The date introduced by the user is before the current date',
+	'PLAN_YA_EXISTE_EXCEPTION' : 'The plan already exists',
+	'PLAN_VACIO' : 'The name, description, date and/or the objective of the plan are empty',
+	'PLAN_NO_EXISTE_EXCEPTION' : 'The plan doesn´t exists',
+	'PLAN_ASOCIADO_PROCEDIMIENTO_EXCEPTION' : 'The plan is associated with certain procedures',
+	'PROCEDIMIENTO_YA_EXISTE_EXCEPTION' : 'The procedure already exists',
+	'PROCEDIMIENTO_VACIO' : 'The name, description, date, publication and/or the plan of the procedure are empty',
+	'PROCEDIMIENTO_NO_EXISTE_EXCEPTION' : 'The procedure doesn´t exists',
+	'USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION' : 'The procedure is associated with certain individuals',
+	'PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION' : 'The procedure is associated with certain process',
+	'RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION' : 'The possible answer already exists',
+	'RESPUESTA_POSIBLE_VACIA' : 'The text of the possible answer is empty',
+	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'The possible answer doesn´t exists',
+	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'The possible answer is associated with a process',
 
 
 	

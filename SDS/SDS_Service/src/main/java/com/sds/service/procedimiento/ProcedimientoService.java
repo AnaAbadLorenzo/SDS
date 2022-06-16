@@ -22,6 +22,9 @@ public interface ProcedimientoService {
 			final String descripProcedimiento, final Date fechaProcedimiento, final Boolean checkUsuario,
 			final PlanEntity plan, final int inicio, final int tamanhoPagina);
 
+	ReturnBusquedas<ProcedimientoEntity> buscarProcedimientoByPlan(final PlanEntity plan, final int inicio,
+			final int tamanhoPagina);
+
 	ReturnBusquedas<ProcedimientoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<ProcedimientoEntity> buscarProcedimientosEliminados(final int inicio, final int tamanhoPagina);

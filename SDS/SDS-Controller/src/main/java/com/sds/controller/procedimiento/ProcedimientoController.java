@@ -25,6 +25,7 @@ import com.sds.service.exception.UsuarioAsociadoProcedimientoException;
 import com.sds.service.procedimiento.ProcedimientoService;
 import com.sds.service.procedimiento.model.Procedimiento;
 import com.sds.service.procedimiento.model.ProcedimientoBuscar;
+import com.sds.service.procedimiento.model.ProcedimientosPlan;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -59,6 +60,15 @@ public class ProcedimientoController {
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<ProcedimientoEntity> resultado = procedimientoService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.PROCEDIMIENTOS_LISTADOS, resultado);
+	}
+
+	@PostMapping(value = "/listarProcedimientosByPlan")
+	@ResponseBody
+	public RespEntity buscarProcedimientosByPlan(@RequestBody final ProcedimientosPlan procedimientosPlan) {
+		final ReturnBusquedas<ProcedimientoEntity> resultado = procedimientoService.buscarProcedimientoByPlan(
+				procedimientosPlan.getPlan(), procedimientosPlan.getInicio(), procedimientosPlan.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCEDIMIENTOS_LISTADOS, resultado);
 	}

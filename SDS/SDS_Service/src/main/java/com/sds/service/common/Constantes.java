@@ -106,6 +106,10 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_PROCEDIMIENTOUSUARIO = "Modificar procedimiento usuario";
 	public static final String ACCION_ELIMINAR_PROCEDIMIENTOUSUARIO = "Eliminar procedimiento usuario";
 
+	public static final String ACCION_AÑADIR_PROCESOPROCEDIMIENTO = "Añadir proceso procedimiento";
+	public static final String ACCION_MODIFICAR_PROCESOPROCEDIMIENTO = "Modificar proceso procedimiento";
+	public static final String ACCION_ELIMINAR_PROCESOPROCEDIMIENTO = "Eliminar proceso procedimiento";
+
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";
@@ -205,18 +209,21 @@ public class Constantes {
 	public static final String DESCRIPCION_PLAN = "descripPlan";
 	public static final String FECHA_PLAN = "fechaPlan";
 
+	public static final String PROCEDIMIENTO = "procedimiento";
 	public static final String PROCEDIMIENTO_ID = "idProcedimiento";
 	public static final String NOMBRE_PROCEDIMIENTO = "nombreProcedimiento";
 	public static final String DESCRIPCION_PROCEDIMIENTO = "descripProcedimiento";
 	public static final String FECHA_PROCEDIMIENTO = "fechaProcedimiento";
 	public static final String CHECK_USUARIO = "checkUsuario";
 
+	public static final String PROCESO = "proceso";
 	public static final String PROCESO_ID = "idProceso";
 	public static final String NOMBRE_PROCESO = "nombreProceso";
 	public static final String DESCRIP_PROCESO = "descripProceso";
 	public static final String FECHA_PROCESO = "fechaProceso";
 
-	public static final String PROCEDIMIENTO = "procedimiento";
+	public static final String ORDEN_PROCESO = "ordenProceso";
+
 	public static final String PROCEDIMIENTOUSUARIO_ID = "idProcedimientoUsuario";
 	public static final String PUNTUACION_PROCEDIMIENTOUSUARIO = "puntuacionProcedimientoUsuario";
 	public static final String FECHA_PROCEDIMIENTO_USUARIO = "fechaProcedimientoUsuario";
@@ -787,6 +794,7 @@ public class Constantes {
 	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTO = "ProcedimientoEntity.findProcedimiento";
 	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTOWITHOUTCHECK = "ProcedimientoEntity.findProcedimientoWithoutCheck";
 	public static final String PROCEDIMIENTO_QUERY_FINDELIMINADOS = "ProcedimientoEntity.findProcedimientosEliminados";
+	public static final String PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTOSBYPLAN = "ProcedimientoEntity.findProcedimientosByPlan";
 
 	public static final String PROCESO_QUERY_FINDALL = "ProcesoEntity.findAllProcesos";
 	public static final String PROCESO_QUERY_FINDPROCESO = "ProcesoEntity.findProceso";
@@ -795,4 +803,6 @@ public class Constantes {
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDALL = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuario";
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO = "ProcedimientoUsuarioEntity.findProcedimientoUsuario";
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOSUSUARIOELIMINADOS = "ProcedimientoUsuarioEntity.findProcedimientosUsuarioEliminados";
+
+	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTO = "ProcesoProcedimientoEntity.findProcesoProcedimiento";
 }

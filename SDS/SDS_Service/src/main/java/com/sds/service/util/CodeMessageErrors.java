@@ -75,7 +75,10 @@ public enum CodeMessageErrors {
 	PROCESO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene procesos asociados"), //
 	PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION("El proceso tiene respuestas posibles asociadas"), //
 	PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION("El proceso tiene asociados usuarios y procedimientos"), //
-	PROCESO_VACIO("Proceso vacío");
+	PROCESO_VACIO("Proceso vacío"), //
+	PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION("La relación entre el proceso y el procedimiento ya existe"), //
+	PROCESO_PROCEDIMIENTO_NO_EXISTE_EXCEPTION("La relación entre el proceso y el procedimiento no existe"), //
+	PROCESO_PROCEDIMIENTO_VACIO("La relación proceso procedimiento es vacía");
 
 	private String codigo;
 

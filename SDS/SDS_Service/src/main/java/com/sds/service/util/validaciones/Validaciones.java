@@ -18,6 +18,7 @@ import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcesoEntity;
+import com.sds.model.ProcesoProcedimientoEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
@@ -527,7 +528,18 @@ public class Validaciones {
 		return true;
 	}
 
-	public boolean tieneValor(final String value) {
+	public boolean comprobarProcesoProcedimientoBlank(final ProcesoProcedimientoEntity procesoProcedimientoEntity)
+			throws ParseException {
+		if (tieneValor(procesoProcedimientoEntity.getIdProceso().toString())
+				|| tieneValor(procesoProcedimientoEntity.getOrdenProceso().toString())
+				|| tieneValor(procesoProcedimientoEntity.getIdProcedimiento().toString())) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private boolean tieneValor(final String value) {
 		if (value != null && Integer.parseInt(value) > 0) {
 			return true;
 		}

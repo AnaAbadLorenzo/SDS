@@ -1275,7 +1275,7 @@ function construyePlanUsuario(planUsuario){
               '<div class="card-text">' + planUsuario.descripPlan + '</div>' + 
 
               '<div class="tooltip9 procedimientoIcon">' + 
-                '<img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento" onclick="accederProcedimientosPlan();"/>' + 
+                '<img class="iconoProcedimiento iconProcedimiento" src="images/procedimiento.png" alt="Acceder al procedimiento" onclick="accederProcedimientosPlan(' + planUsuario.idPlan + ');"/>' + 
                 '<span class="tooltiptext iconProcedimiento ICON_PROCEDIMIENTO"></span>' + 
               '</div>' + 
             '</div>' + 
@@ -1333,7 +1333,8 @@ $(document).ready(function() {
 }); 
 
 /**Función para que el usuario acceda a los prodecimientos desde una plan*/
-function accederProcedimientosPlan(){
-  setCookie('accesoDesdePlan', 'true');
+function accederProcedimientosPlan(idPlan){
+  //setCookie('accesoDesdePlan', 'true');
+  setCookie('idPlan', idPlan)
   window.location.href = "GestionDeProcedimientos.html";
 }

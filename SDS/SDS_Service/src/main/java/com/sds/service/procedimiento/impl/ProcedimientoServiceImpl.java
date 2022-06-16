@@ -183,6 +183,49 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 	}
 
 	@Override
+	public ReturnBusquedas<ProcedimientoEntity> buscarProcedimientoByPlan(final PlanEntity plan, final int inicio,
+			final int tamanhoPagina) {
+		final List<ProcedimientoEntity> procedimientoToret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
+		List<ProcedimientoEntity> procedimientos = new ArrayList<>();
+		Integer numberTotalResults = 0;
+
+		final Optional<PlanEntity> planBD = planRepository.findById(plan.getIdPlan());
+		procedimientos = entityManager.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDPROCEDIMIENTOSBYPLAN)
+				.setParameter(Constantes.PLAN, planBD.get()).setFirstResult(inicio).setMaxResults(tamanhoPagina)
+				.getResultList();
+		numberTotalResults = procedimientoRepository.numberFindProcedimientosByPlan(planBD.get());
+
+		if (!procedimientos.isEmpty()) {
+			for (final ProcedimientoEntity procedimiento : procedimientos) {
+				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(
+						procedimiento.getPlan().getObjetivo().getIdObjetivo(),
+						procedimiento.getPlan().getObjetivo().getNombreObjetivo(),
+						procedimiento.getPlan().getObjetivo().getDescripObjetivo(),
+						procedimiento.getPlan().getObjetivo().getBorradoObjetivo());
+				final PlanEntity planEntity = new PlanEntity(procedimiento.getPlan().getIdPlan(),
+						procedimiento.getPlan().getNombrePlan(), procedimiento.getPlan().getDescripPlan(),
+						procedimiento.getPlan().getFechaPlan(), procedimiento.getPlan().getBorradoPlan(),
+						objetivoEntity);
+				final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity(
+						procedimiento.getIdProcedimiento(), procedimiento.getNombreProcedimiento(),
+						procedimiento.getDescripProcedimiento(), procedimiento.getFechaProcedimiento(),
+						procedimiento.getBorradoProcedimiento(), procedimiento.getCheckUsuario(), planEntity);
+				procedimientoToret.add(procedimientoEntity);
+
+			}
+		}
+
+		datosBusqueda.add(Constantes.PLAN + Constantes.DOS_PUNTOS + plan.getIdPlan());
+
+		final ReturnBusquedas<ProcedimientoEntity> result = new ReturnBusquedas<>(procedimientoToret, datosBusqueda,
+				numberTotalResults, procedimientoToret.size(), inicio);
+
+		return result;
+
+	}
+
+	@Override
 	public ReturnBusquedas<ProcedimientoEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<ProcedimientoEntity> procedimientoToret = new ArrayList<>();
 		final List<ProcedimientoEntity> procedimientos = entityManager

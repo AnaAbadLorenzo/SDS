@@ -25,11 +25,15 @@ public interface ProcedimientoRepository extends JpaRepository<ProcedimientoEnti
 	List<ProcedimientoEntity> findProcedimiento(final String nombreProcedimiento, final String descripProcedimiento,
 			final String fechaProcedimiento, final Boolean checkUsuario, final PlanEntity plan);
 
+	List<ProcedimientoEntity> findProcedimientosByPlan(final PlanEntity plan);
+
 	List<ProcedimientoEntity> findProcedimientoWithoutCheck(final String nombreProcedimiento,
 			final String descripProcedimiento, final String fechaProcedimiento, final PlanEntity plan);
 
 	Integer numberFindProcedimiento(final String nombreProcedimiento, final String descripProcedimiento,
 			final String fechaProcedimiento, final Boolean checkUsuario);
+
+	Integer numberFindProcedimientosByPlan(final PlanEntity plan);
 
 	Integer numberFindProcedimientoWithoutCheck(final String nombreProcedimiento, final String descripProcedimiento,
 			final String fechaProcedimiento);

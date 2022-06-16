@@ -310,6 +310,8 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 						procedimientoUsuarioEntity.setPuntuacionProcedimientoUsuario(0);
 						procedimientoUsuarioEntity.setFechaProcedimientoUsuario(new Date());
 
+						procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuarioEntity);
+
 						final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(
 								procedimientoUsuario.getUsuario(), Constantes.ACCION_AÑADIR_PROCEDIMIENTOUSUARIO,
 								procedimientoUsuario.getProcedimientoUsuario().toString());

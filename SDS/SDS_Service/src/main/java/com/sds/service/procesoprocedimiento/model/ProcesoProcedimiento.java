@@ -1,26 +1,20 @@
 package com.sds.service.procesoprocedimiento.model;
 
-import com.sds.model.ProcedimientoEntity;
-import com.sds.model.ProcesoEntity;
+import com.sds.model.ProcesoProcedimientoEntity;
 
 public class ProcesoProcedimiento {
 
 	private String usuario;
-	private ProcesoEntity proceso;
-	private ProcedimientoEntity procedimiento;
-	private Integer ordenProceso;
+	private ProcesoProcedimientoEntity procesoProcedimientoEntity;
 
 	public ProcesoProcedimiento() {
 		super();
 	}
 
-	public ProcesoProcedimiento(final String usuario, final ProcesoEntity proceso,
-			final ProcedimientoEntity procedimiento, final Integer ordenProceso) {
+	public ProcesoProcedimiento(final String usuario, final ProcesoProcedimientoEntity procesoProcedimientoEntity) {
 		super();
 		this.usuario = usuario;
-		this.proceso = proceso;
-		this.procedimiento = procedimiento;
-		this.ordenProceso = ordenProceso;
+		this.procesoProcedimientoEntity = procesoProcedimientoEntity;
 	}
 
 	public String getUsuario() {
@@ -31,33 +25,18 @@ public class ProcesoProcedimiento {
 		this.usuario = usuario;
 	}
 
-	public ProcesoEntity getProceso() {
-		return proceso;
+	public ProcesoProcedimientoEntity getProcesoProcedimientoEntity() {
+		return procesoProcedimientoEntity;
 	}
 
-	public void setProceso(final ProcesoEntity proceso) {
-		this.proceso = proceso;
-	}
-
-	public ProcedimientoEntity getProcedimiento() {
-		return procedimiento;
-	}
-
-	public void setProcedimiento(final ProcedimientoEntity procedimiento) {
-		this.procedimiento = procedimiento;
-	}
-
-	public Integer getOrdenProceso() {
-		return ordenProceso;
-	}
-
-	public void setOrdenProceso(final Integer ordenProceso) {
-		this.ordenProceso = ordenProceso;
+	public void setProcesoProcedimientoEntity(final ProcesoProcedimientoEntity procesoProcedimientoEntity) {
+		this.procesoProcedimientoEntity = procesoProcedimientoEntity;
 	}
 
 	@Override
 	public String toString() {
-		return "ProcesoProcedimiento [usuario=" + usuario + ", proceso=" + proceso + ", procedimiento=" + procedimiento
-				+ ", ordenProceso=" + ordenProceso + "]";
+		return "ProcesoProcedimiento [usuario=" + usuario + ", procesoProcedimientoEntity=" + procesoProcedimientoEntity
+				+ "]";
 	}
+
 }

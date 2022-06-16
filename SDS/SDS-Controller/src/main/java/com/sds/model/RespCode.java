@@ -194,6 +194,15 @@ public enum RespCode {
 	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION",
 			"El proceso tiene asociados procedimientos"), //
 	PROCESO_VACIO("PROCESO_VACIO", "El nombre, la descripción y/o la fecha del proceso son vacíos"), //
+	PROCESOS_PROCEDIMIENTOS_LISTADOS("PROCESOS_PROCEDIMIENTOS_LISTADOS",
+			"Los procesos asociados al procedimiento se han listado correctamente"), //
+	PROCESO_PROCEDIMIENTO_GUARDADO("PROCESO_PROCEDIMIENTO_GUARDADO",
+			"La relación entre el proceso y el procedimiento se ha guardado correctamente"), //
+	PROCESO_PROCEDIMIENTO_ELIMINADO("PROCESO_PROCEDIMIENTO_ELIMINADO",
+			"La relación entre el proceso y le procedimiento se ha eliminado"), //
+	PROCESO_PROCEDIMIENTO_VACIO("PROCESO_PROCEDIMIENTO_VACIO", "El procedimiento, el proceso o el orden son vacíos"), //
+	PROCESO_PROCEDIMIENTO_YA_EXISTE("PROCESO_PROCEDIMIENTO_YA_EXISTE", "La relación proceso procedimiento ya existe"), //
+	PROCESO_PROCEDIMIENTO_NO_EXISTE("PROCESO_PROCEDIMIENTO_NO_EXISTE", "La relación proceso procedimiento no existe"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
