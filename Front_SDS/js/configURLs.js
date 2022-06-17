@@ -129,6 +129,7 @@ var urlPeticionAjaxReactivarProcedimiento = urlComun + urlProcedimiento + "/reac
 var urlPeticionAjaxListarProcedimiento = urlComun + urlProcedimiento + "/listarProcedimiento";
 var urlPeticionAjaxListarProcedimientosEliminados = urlComun + urlProcedimiento + "/listarProcedimientosEliminados";
 var urlPeticionAjaxListadoProcedimientos = urlComun + urlProcedimiento  + "/listarProcedimientos";
+var urlPeticionAjaxListadoProcedimientosPlan = urlComun + urlProcedimiento + "/listarProcedimientosByPlan";
 var urlPeticionAjaxEditarProcedimiento = urlComun + urlProcedimiento  + "/modificarProcedimiento";
 var urlPeticionAjaxAddProcedimiento = urlComun + urlProcedimiento  + "/procedimiento";
 var urlPeticionAjaxDeleteProcedimiento = urlComun + urlProcedimiento  + "/eliminarProcedimiento";

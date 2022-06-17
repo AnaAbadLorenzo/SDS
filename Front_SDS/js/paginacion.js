@@ -439,7 +439,7 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                 break;
         }
         break;
-         case 'PROCEDIMIENTO':
+        case 'PROCEDIMIENTO':
             switch(funcionalidad){
                 case 'cargarProcedimientos': 
                     for(var i = 0; i< 3; i++){
@@ -459,8 +459,15 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                             + (i+1) + ',' + tamanhoPaginaProcedimiento+ '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
                     }
                 break;
+                case 'cargarProcedimientosSegunPlan' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarProcedimientosSegunPlan(' 
+                            + (i+1) + ',' + tamanhoPaginaProcedimiento+ '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
         }
         break;
+
 
 
 

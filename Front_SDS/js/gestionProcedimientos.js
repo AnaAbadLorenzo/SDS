@@ -55,6 +55,51 @@ function anadirProcedimientoAjaxPromesa(){
   });
 }
 
+function cargarProcedimientosSegunPlan(numeroPagina, tamanhoPagina){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+      var objetivo = {
+      idObjetivo: "",
+      nombreObjetivo : '',
+      descripObjetivo : '',
+      borradoObjetivo : ''
+    }
+
+    var plan = {
+      idPlan : getCookie('idPlan'),
+      nombrePlan : '',
+      descripPlan : '',
+      fechaPlan : '',
+      borradoPlan : '',
+      objetivo : objetivo
+
+    }
+    var procedimientosPlan = {
+      usuario : getCookie('usuario'),
+      plan : plan,
+      inicio: calculaInicio(numeroPagina, tamanhoPaginaProcedimiento),
+      tamanhoPagina : tamanhoPaginaProcedimiento
+    }
+
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListadoProcedimientosPlan,
+      contentType : "application/json",
+      data: JSON.stringify(procedimientosPlan),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCEDIMIENTOS_LISTADOS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /** Función para buscar procedimientos con ajax y promesas **/
 function buscarProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
   return new Promise(function(resolve, reject) {
@@ -457,8 +502,49 @@ function reactivarProcedimientosAjaxPromesa(){
 /* Función para obtener los procedimientos del sistema */
 async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado){
   if(getCookie('rolUsuario') == "usuario"){
-    document.getElementById('procedimientosUsuario').style.display = "block";
-    cargarProcedimientosPlan();
+    await cargarProcedimientosSegunPlan(numeroPagina, tamanhoPagina)
+    .then((res) => {
+        document.getElementById('procedimientosUsuario').style.display = "block";
+        cargarPermisosFuncProcedimiento();
+        var numResults = res.data.numResultados + '';
+        var totalResults = res.data.tamanhoTotal + '';
+          var inicio = 0;
+        if(res.data.listaBusquedas.length == 0){
+          inicio = 0;
+           $('#itemPaginacion').attr('hidden',true);
+        }else{
+          inicio = parseInt(res.data.inicio)+1;
+            $('#itemPaginacion').attr('hidden',false);
+        }
+        var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+        $('#procedimientos').html('');
+        for (var i = 0; i < res.data.listaBusquedas.length; i++){
+            var tr = cargarProcedimientosPlan(res.data.listaBusquedas[i]);
+            $('#procedimientos').append(tr);
+        }
+
+          setLang(getCookie('lang'));
+
+          if(paginadorCreado != 'PaginadorCreado'){
+            paginador(totalResults, 'cargarProcedimientosSegunPlan', 'PROCEDIMIENTO');
+          }
+
+          if(numeroPagina == 0){
+            $('#' + (numeroPagina+1)).addClass("active");
+            var numPagCookie = numeroPagina+1;
+          }else{
+            $('#' + numeroPagina).addClass("active");
+             var numPagCookie = numeroPagina;
+          }
+
+          setCookie('numeroPagina', numPagCookie);
+
+      }).catch((res) => {
+          respuestaAjaxKO(res.code);
+          document.getElementById("modal").style.display = "block";
+      });
+  
   }else if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
     await cargarProcedimientosAjaxPromesa(numeroPagina, tamanhoPagina)
       .then((res) => {
@@ -1297,15 +1383,39 @@ function listarPlanesAjaxPromesa(){
   });
 }
 
-function cargarProcedimientosPlan(){
+function showPlan(nombrePlan, descripPlan){
 
-  $('#procedimientos').html('');
+    $('#tituloFormsModalMostrarPlan').addClass('DETAIL_PLAN');
+    $('#iconoAccionesMostrarPlan').attr('src', 'images/close2.png');
+    $('#iconoAccionesMostrarPlan').removeClass();
+    $('#iconoAccionesMostrarPlan').addClass('ICONO_DETALLE');
+    $('#iconoAccionesMostrarPlan').addClass('iconoCerrar');
+    $('#iconoAccionesMostrarPlan').attr('alt', 'Editar');
+    $('#spanAccionesMostrarPlan').removeClass();
+    $('#spanAccionesMostrarPlan').addClass('tooltiptext');
+    $('#spanAccionesMostrarPlan').addClass('ICONO_DETALLE');
+    $('#btnAccionesMostrarPlan').attr('value', 'Detalle');
+
+    $('#labelNombrePlanMostrarPlan').attr('hidden', false);
+    $('#labelDescripcionPlanMostrarPlan').attr('hidden', false);
+    $('#nombrePlan').val(nombrePlan);
+    $('#descripcionPlanMostrarPlan').val(descripPlan);
+
+    deshabilitaCampos(['nombrePlan', 'descripcionPlanMostrarPlan']);
+    anadirReadonly(['nombrePlan', 'descripcionPlanMostrarPlan']);
+   
+    setLang(getCookie('lang'));
+}
+
+function cargarProcedimientosPlan(procedimiento){
+
+   var atributosFunciones = ["'" + procedimiento.plan.nombrePlan + "'", "'" + procedimiento.plan.descripPlan + "'"]; 
 
   var procedimientos= '<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">' + 
                         '<div class="card">' + 
                           '<div class="card-body-plan">' + 
-                            '<div class="card-title">Procedimiento 1</div>' + 
-                            '<div class="card-text">Procedimiento 1</div>' +
+                            '<div class="card-title">' + procedimiento.nombreProcedimiento + '</div>' + 
+                            '<div class="card-text">' + procedimiento.descripProcedimiento + '</div>' +
                             '<div id="iniciarProcedimiento" class="tooltip13 procedimientoIcon">' +
                               '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>' +
                               '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
@@ -1313,10 +1423,10 @@ function cargarProcedimientosPlan(){
                           '</div>'+
                           '<div class="card-footer">' + 
                             '<div class="tooltip8 planIcon">' + 
-                              '<img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>' + 
+                              '<img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan" data-toggle="modal" data-target="#modalMostrarPlan" onclick="showPlan(' + atributosFunciones + ')"/>' + 
                               '<span class="tooltiptext iconPlan ICON_PLAN"></span>' + 
                             '</div>' + 
-                          '<div class="card-title-plan">Plan: Plan</div>' + 
+                          '<div class="card-title-plan">Plan: ' + procedimiento.plan.nombrePlan + '</div>' + 
                         '</div>' +
                       '</div>' + 
                     '</div>';

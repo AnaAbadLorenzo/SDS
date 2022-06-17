@@ -261,6 +261,36 @@
 		</div>
 	</div>
 
+	<div class="modal modal2 fade" id="modalMostrarPlan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+      <div class="formmodal-container">
+        <div id="formularioMostrarPlan">
+          <div id="contenidoFormMostrarPlan">
+            <div class="formularioComun">
+              <h1 id="tituloFormsModalMostrarPlan" class="datos"></h1>
+              <form name="formularioModalMostrarPlan" id="formularioModalMostrarPlan" action="" onsubmit="">
+                <label class="labelForm NOMBRE_PLAN" id="labelNombrePlanMostrarPlan" hidden></label>                            
+                <input type="text" maxlength="48" size="48" placeholder="NOMBRE_PLAN" name="NOMBRE_PLAN" id="nombrePlan" class="NOMBRE_PLAN" onblur=""/>
+               
+                <div style="display:none" id="errorFormatoNombrePlan"></div>
+                          
+                <label class="labelForm DESCRIPCION_PLAN" id="labelDescripcionPlanMostrarPlan" hidden></label>
+	            <input type="text" placeholder="DESCRIPCION_PLAN" name="DESCRIPCION_PLAN" id="descripcionPlanMostrarPlan" class="DESCRIPCION_PLAN" onblur=""/>
+	            
+	            <div style="display:none" id="errorFormatoDescripcionPlan"></div>
+
+                <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAccionesMostrarPlan">
+                    <img class="" src="" alt="" id="iconoAccionesMostrarPlan" />
+                    <span class="tooltiptext" id="spanAccionesMostrarPlan"></span>
+                </button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<div id="volver" class="volver" style="display: none;">
 		<div name="btnBack" value="Volver" onclick="javascript:volver()" class="tooltip6 backIcon">
         <img class="iconoBack iconBack" src="images/home2.png" alt="Volver" />
