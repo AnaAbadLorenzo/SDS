@@ -158,8 +158,6 @@ public class PlanServiceImpl implements PlanService {
 		final List<PlanEntity> planToret = new ArrayList<>();
 		final List<PlanEntity> planes = entityManager.createNamedQuery(Constantes.PLAN_QUERY_FINDALL).getResultList();
 
-		final Integer numberTotalResults = planRepository.numberFindAllPlanes();
-
 		if (!planes.isEmpty()) {
 			for (final PlanEntity plan : planes) {
 				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(plan.getObjetivo().getIdObjetivo(),
