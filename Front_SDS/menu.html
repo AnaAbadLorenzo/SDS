@@ -30,9 +30,9 @@
 <body onload="
   (async ()=>{
   	comprobarTokenUsuario('menu');
-  	await includeTopMenu();
+  	await includeTopMenu('menu');
     await funcionalidadesUsuario();
-    modalCambioPass(); cargarIdioma();includeFooter();setLang('');
+    modalCambioPass();cargarIdioma();includeFooter();setLang('');
 		await cargarNoticias();
   })();">
 	

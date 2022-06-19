@@ -32,7 +32,7 @@
 
 <body onload="(async ()=>{
 	comprobarTokenUsuario('noticias');
-  	await includeTopMenu();
+  	await includeTopMenu('noticias');
     await funcionalidadesUsuario();
     modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarNoticiasTabla(0, tamanhoPaginaNoticia, 'PaginadorNo');

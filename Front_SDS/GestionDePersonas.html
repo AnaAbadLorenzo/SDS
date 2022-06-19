@@ -32,9 +32,9 @@
 </head>
 <body onload="(async ()=>{
   comprobarTokenUsuario('persona');
-	await includeTopMenu();
+	await includeTopMenu('persona');
   await funcionalidadesUsuario();
-  cambiarTituloGestion('persona');modalCambioPass();cargarIdioma();includeFooter();setLang('');
+  cambiarTituloGestion('persona');posicionarTitulo('persona');modalCambioPass();cargarIdioma();includeFooter();setLang('');
   await cargarPersonas(0, tamanhoPaginaPersona, 'PaginadorNo');
   await cargarPermisosFuncPersona();
   await cargarPermisosFuncEmpresaPersona();

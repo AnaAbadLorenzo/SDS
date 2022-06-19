@@ -46,6 +46,11 @@
   -moz-box-sizing: border-box;
 }
 
+/********** TITULO *********/
+.gestion {
+  left: 42%;
+}
+
 
 /********* ICONOS ***********/
 

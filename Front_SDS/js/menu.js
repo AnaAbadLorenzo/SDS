@@ -167,22 +167,26 @@ function cargarNoticiasAjaxPromesa(){
 /**Función que carga las funcionalidades asociadas al usuario**/
 function cargarFuncionalidadesUsuario(datos){
   var i;
+  var rolUsuario = getCookie('rolUsuario');
 
   $("#listadoFuncionalidades").html("");
 
   var htmlMenu = '';
 
   for(i = 0; i<(datos.funcionalidades.length) - 1; i++) {
-    htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i], getCookie('rolUsuario')) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a> <div class="dropdown-divider"></div>';
+    htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i], rolUsuario) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a> <div class="dropdown-divider"></div>';
   }
 
-  htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i], getCookie('rolUsuario')) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a>';
+  htmlMenu = htmlMenu + '<a class="dropdown-item ' + cargarClass(datos.funcionalidades[i], rolUsuario) + '" href="' + cargarHref(datos.funcionalidades[i]) + '">' + datos.funcionalidades[i] + '</a>';
 
+  if (rolUsuario === 'usuario'){
+    document.getElementById('listadoFuncionalidades').style.height = "236px"; 
+    document.getElementById('listadoFuncionalidades').style.overflowY =  "hidden";
+  }
 
   $("#listadoFuncionalidades").append(htmlMenu);
 
   setLang(getCookie('lang'));
-
 
 }
 

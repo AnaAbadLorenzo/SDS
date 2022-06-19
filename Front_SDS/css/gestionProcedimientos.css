@@ -89,6 +89,7 @@ select option:checked{
   display: inline;
   margin-left: 3%;
   margin-top: -0.5%;
+  cursor: pointer;
 }
 
 /*********** CARDS ****************/
@@ -151,4 +152,9 @@ select option:checked{
   padding: 0.5em;
   background-color: #efe5ff;
   height: 55px;
+}
+
+/********** TITULO *********/
+.gestion {
+  left: 37%;
 }

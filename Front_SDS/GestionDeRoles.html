@@ -31,7 +31,7 @@
 </head>
 <body onload="(async ()=>{
 	comprobarTokenUsuario('rol');
-  	await includeTopMenu();
+  	await includeTopMenu('rol');
     await funcionalidadesUsuario();
     modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarRoles(0,tamanhoPaginaRol, 'PaginadorNo');
