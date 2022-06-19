@@ -519,6 +519,7 @@ form button[type="button"]:hover {
     position: relative;
     display: inline-block;
     opacity: 1;
+    z-index: 1;
 }
 
 .tooltip .tooltiptext {

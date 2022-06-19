@@ -230,6 +230,8 @@ public class ProcesoServiceTest {
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_YA_EXISTE);
 
+		proceso.getProceso().setFechaProceso(new Date());
+
 		procesoService.anadirProceso(proceso);
 
 		try {

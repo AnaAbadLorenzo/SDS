@@ -75,8 +75,9 @@ select option:checked{
 .iconObjetivo {
   width: 8%;
   display: inline;
-  margin-left: 5%;
+  margin-left: 4%;
   margin-top: -0.5%;
+  cursor: pointer;
 }
 
 .iconProcedimiento {
@@ -147,4 +148,19 @@ select option:checked{
   padding: 0.5em;
   background-color: #efe5ff;
   height: 55px;
+}
+
+/************** CABECERA ****************/
+#cabeceraConsultaPlanes {
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+#cabeceraConsultaPlanes .refreshIcon {
+  margin-left:  74%;
+}
+
+/********** TITULO *********/
+.gestion {
+  left: 42%;
 }

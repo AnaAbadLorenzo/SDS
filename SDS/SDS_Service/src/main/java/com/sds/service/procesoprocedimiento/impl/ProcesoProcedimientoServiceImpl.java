@@ -74,9 +74,6 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 				.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento)
 				.setParameter(Constantes.PROCESO_ID, idProceso).getResultList();
 
-		final Integer numberTotalResults = procesoProcedimientoRepository.numberFindProcesoProcedimiento(idProceso,
-				idProcedimiento);
-
 		if (!procesoProcedimientos.isEmpty()) {
 			for (final ProcesoProcedimientoEntity procesoProcedimiento : procesoProcedimientos) {
 				final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(

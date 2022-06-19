@@ -32,7 +32,7 @@
 
 <body onload="(async ()=>{
 	comprobarTokenUsuario('plan');
-  	await includeTopMenu();
+  	await includeTopMenu('plan');
     await funcionalidadesUsuario();
     cambiarTituloGestion('plan');modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarPlanes(0, tamanhoPaginaPlan, 'PaginadorNo');

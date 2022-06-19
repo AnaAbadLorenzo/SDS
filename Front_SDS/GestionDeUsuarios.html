@@ -32,9 +32,9 @@
 </head>
 <body onload="(async ()=>{
 	comprobarTokenUsuario('usuario');
-	await includeTopMenu();
+	await includeTopMenu('usuario');
     await funcionalidadesUsuario();
-    cambiarTituloGestion('usuario');modalCambioPass(); cargarIdioma();includeFooter();setLang('');
+    cambiarTituloGestion('usuario');posicionarTitulo('usuario');modalCambioPass(); cargarIdioma();includeFooter();setLang('');
 	await cargarUsuarios(0, tamanhoPaginaUsuario, 'PaginadorNo');
 	await cargarPermisosFuncUsuario();
 	construyeSelect();

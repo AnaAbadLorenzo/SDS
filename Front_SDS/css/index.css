@@ -482,6 +482,7 @@ form button[type="button"]:hover {
     position: relative;
     display: inline-block;
     opacity: 1;
+    z-index: 1;
 }
 
 .tooltip .tooltiptext {
@@ -499,7 +500,7 @@ form button[type="button"]:hover {
   z-index: 1;
   bottom: 125%;
   left: 94%;
-  margin-left: -66px;
+  margin-left: -90px !important;
   opacity: 0;
   transition: opacity 1s;
 }
@@ -516,10 +517,10 @@ form button[type="button"]:hover {
   border: 1px solid #4527A0;
   padding: 5px 0;
   position: absolute;
-  z-index: 1;
+  z-index: 1 !important;
   bottom: 125%;
   left: 5%;
-  margin-left: -66px;
+  margin-left: -51px !important;
   opacity: 0;
   transition: opacity 1s;
 }
@@ -601,4 +602,15 @@ form button[type="button"]:hover {
 .tooltip5:hover .tooltiptext5 {
   visibility: visible;
   opacity: 1;
+}
+
+
+/************ ICONOS **************/
+.iconoLogin {
+  width: 53%;
+  margin-top: -2px;
+}
+
+.iconoRegistro {
+  width: 45%;
 }

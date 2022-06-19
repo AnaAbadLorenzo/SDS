@@ -32,7 +32,7 @@
 
 <body onload="(async ()=>{
 	comprobarTokenUsuario('procedimiento');
-  	await includeTopMenu();
+  	await includeTopMenu('procedimiento');
     await funcionalidadesUsuario();
     cambiarTituloGestion('procedimiento');modalCambioPass();cargarIdioma();includeFooter();setLang('');
     await cargarProcedimientos(0,tamanhoPaginaProcedimiento, 'PaginadorNo');

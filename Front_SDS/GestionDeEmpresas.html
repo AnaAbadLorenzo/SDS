@@ -31,9 +31,9 @@
 </head>
 <body onload="(async ()=>{
 	comprobarTokenUsuario();
-	await includeTopMenu();
+	await includeTopMenu('empresa');
   await funcionalidadesUsuario();
-  cambiarTituloGestion('empresa');modalCambioPass();cargarIdioma();includeFooter();setLang('');
+  cambiarTituloGestion('empresa');posicionarTitulo('empresa');modalCambioPass();cargarIdioma();includeFooter();setLang('');
 	await cargarEmpresas(0, tamanhoPaginaEmpresa, 'PaginadorNo');
 	await cargarPermisosFuncEmpresa();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('EMPRESA')},30000);

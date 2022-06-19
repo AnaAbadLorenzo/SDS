@@ -1284,7 +1284,7 @@ function construyePlanUsuario(planUsuario){
                 '<img class="iconoObjetivo iconObjetivo" src="images/objetivo.png" alt="Objetivo" data-toggle="modal" data-target="#modalMostrarObjetivo" onclick="showObjetivo(' + atributosFunciones + ')"/>' + 
                 '<span class="tooltiptext iconObjetivo ICON_OBJETIVO"></span>' + 
               '</div>' +
-            '<div class="card-title-objetivo">Objetivo:' + planUsuario.objetivo.nombreObjetivo + '</div>' +
+            '<div class="card-title-objetivo">Objetivo: ' + planUsuario.objetivo.nombreObjetivo + '</div>' +
             '</div>' + 
           '</div>' + 
         '</div>';

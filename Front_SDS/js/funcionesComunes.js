@@ -1,5 +1,5 @@
 /**Función para cambiar las banderas de idiomas*/
-function cargarIdioma(idioma){
+function cargarIdioma(idioma, funcionalidad){
 	if (idioma == "spanish"){
 		document.getElementById("imagenIdioma").src = "images/Spain.png";
 		setLang('ES');
@@ -10,6 +10,7 @@ function cargarIdioma(idioma){
 		document.getElementById("imagenIdioma").src = "images/Galicia.png";
 		setLang('GA');
 	}
+	posicionarTitulo(funcionalidad);
 }
 
 /**Función para incluir el footer*/
@@ -26,7 +27,7 @@ function includeFooter() {
 }
 
 /**Función para incluir el menú superior*/
-function includeTopMenu() {
+function includeTopMenu(funcionalidad) {
 	$("#topMenu").html("");
 
 	var topMenu = '<nav class="fixed-top navbar navbar-expand-md navbar-dark menuIdioma">' + 
@@ -43,16 +44,16 @@ function includeTopMenu() {
 				'<img class="nav-link dropdown-toggle" id="imagenIdioma" src=""/>' +
 				'</a>' +
 				'<div class="dropdown-menu" aria-labelledby="navbarDropdown">' +
-				'<a class="dropdown-item" href="#" onclick="cargarIdioma(\'spanish\');">' + 
-				'<input type="submit" name="btnEspanol" id="btnEspanol" value="" onclick="cargarIdioma(\'spanish\');" />' +
+				'<a class="dropdown-item" href="#" onclick="cargarIdioma(\'spanish\', \'' + funcionalidad + '\');">' + 
+				'<input type="submit" name="btnEspanol" id="btnEspanol" value="" onclick="cargarIdioma(\'spanish\', \'' + funcionalidad + '\');" />' +
 				'</a>' +
 				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="#" onclick="cargarIdioma(\'english\');">' +
-				'<input type="submit" name="btnIngles" id="btnIngles" value="" onclick="cargarIdioma(\'english\');" />' +
+				'<a class="dropdown-item" href="#" onclick="cargarIdioma(\'english\', \'' + funcionalidad + '\');">' +
+				'<input type="submit" name="btnIngles" id="btnIngles" value="" onclick="cargarIdioma(\'english\', \'' + funcionalidad + '\');" />' +
 				'</a>' +
 				'<div class="dropdown-divider"></div>' +
-				'<a class="dropdown-item" href="#" onclick="cargarIdioma(\'galego\');">' +
-				'<input type="submit" name="btnGallego" id="btnGallego" value="" onclick="cargarIdioma(\'galego\');" />' +
+				'<a class="dropdown-item" href="#" onclick="cargarIdioma(\'galego\', \'' + funcionalidad + '\');">' +
+				'<input type="submit" name="btnGallego" id="btnGallego" value="" onclick="cargarIdioma(\'galego\', \'' + funcionalidad + '\');" />' +
 				'</a>' +
 				'</div>' +
 				'</li>' +
@@ -1459,6 +1460,102 @@ function mostrarDatos(idsElementos){
 /**Función para limpiar los textarea*/
 function limpiarTextArea(idElemento){
 	 $("#" + idElemento).val("");
+}
+
+/**Función para colocar los títulos de menú dependiendo del idioma y del usuario*/
+function posicionarTitulo(funcionalidad){
+	var rol = getCookie('rolUsuario');
+	var idioma = getCookie('lang');
+
+	switch(funcionalidad) {
+		case 'empresa':
+			switch(idioma) {
+				case 'ES':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "44.5%";
+					}
+				break;
+				case 'EN':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "44%";
+					}
+				break;
+				case 'GA':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "42.5%";
+					}
+				break;
+			}
+		break;
+		case 'persona':
+			switch(idioma) {
+				case 'ES':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "40%";
+					}
+				break;
+				case 'EN':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "41.7%";
+					}
+				break;
+				case 'GA':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "38.5%";
+					}
+				break;
+			}
+		break;
+		case 'usuario':
+			switch(idioma) {
+				case 'ES':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "40%";
+					}
+				break;
+				case 'EN':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "43.7%";
+					}
+				break;
+				case 'GA':
+					if (rol === 'usuario' || rol === 'gestor') {
+						document.getElementById('gestion').style.top = "104px";
+						document.getElementById('gestion').style.left = "37.5%";
+					}
+				break;
+			}
+		break;
+		case 'misprocedimiento':
+			switch(idioma) {
+				case 'ES':
+					if (rol === 'usuario') {
+						document.getElementById('gestion').style.left = "41%";
+					}
+				break;
+				case 'EN':
+					if (rol === 'usuario') {
+						document.getElementById('gestion').style.left = "43%";
+					}
+				break;
+				case 'GA':
+					if (rol === 'usuario') {
+						document.getElementById('gestion').style.left = "37.5%";
+					}
+				break;
+			}
+		break;
+	}
+
+
 }
 
 $(document).ready(function(){
