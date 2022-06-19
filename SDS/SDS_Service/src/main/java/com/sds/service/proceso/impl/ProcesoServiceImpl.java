@@ -157,7 +157,7 @@ public class ProcesoServiceImpl implements ProcesoService {
 		final List<ProcesoEntity> procesos = entityManager.createNamedQuery(Constantes.PROCESO_QUERY_FINDELIMINADOS)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
-		final Integer numberTotalResults = procesoRepository.numberFindAllProcesos();
+		final Integer numberTotalResults = procesoRepository.numberFindProcesosEliminados();
 
 		if (!procesos.isEmpty()) {
 			for (final ProcesoEntity proceso : procesos) {

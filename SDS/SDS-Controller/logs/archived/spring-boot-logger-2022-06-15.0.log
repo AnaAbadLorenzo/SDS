@@ -1,0 +1,130 @@
+2022-06-15 14:49:27,466 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 8752 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 14:49:29,362 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 14:49:33,137 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 14:49:55,225 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 30.617 seconds (JVM running for 32.147)
+2022-06-15 15:08:31,265 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 8752 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 15:08:31,266 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 15:08:31,266 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 15:08:36,181 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 9.584 seconds (JVM running for 1153.101)
+2022-06-15 15:09:04,469 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 3244 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 15:09:04,477 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 15:09:04,478 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 15:09:15,472 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 11.991 seconds (JVM running for 13.231)
+2022-06-15 15:12:22,524 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 2080 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 15:12:22,529 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 15:12:22,530 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 15:12:31,475 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 9.612 seconds (JVM running for 10.528)
+2022-06-15 16:17:09,295 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 9188 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 16:17:09,306 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 16:17:09,307 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 16:17:20,252 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 12.165 seconds (JVM running for 13.488)
+2022-06-15 20:08:07,660 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 9104 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:08:07,665 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:08:07,682 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:08:31,098 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 24.482 seconds (JVM running for 27.015)
+2022-06-15 20:09:13,346 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4184 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:09:13,350 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:09:13,357 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:09:56,546 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 45.033 seconds (JVM running for 48.225)
+2022-06-15 20:11:32,815 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 5068 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:11:32,821 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:11:32,826 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:12:04,026 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 32.992 seconds (JVM running for 37.681)
+2022-06-15 20:15:28,798 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 7408 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:15:28,800 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:15:28,803 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:15:47,484 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 19.819 seconds (JVM running for 25.204)
+2022-06-15 20:16:14,735 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 1328 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:16:14,739 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:16:14,751 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:16:32,517 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 18.959 seconds (JVM running for 22.566)
+2022-06-15 20:20:30,681 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 7420 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:20:30,684 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:20:30,686 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:20:41,522 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 11.467 seconds (JVM running for 12.591)
+2022-06-15 20:20:56,606 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 9024 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:20:56,609 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:20:56,612 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:21:11,974 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 16.331 seconds (JVM running for 18.189)
+2022-06-15 20:22:09,511 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 1328 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:22:09,515 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:22:09,518 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:22:24,202 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 15.602 seconds (JVM running for 20.626)
+2022-06-15 20:22:55,334 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 5132 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:22:55,338 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:22:55,340 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:23:13,421 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 18.977 seconds (JVM running for 22.219)
+2022-06-15 20:25:32,234 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 9744 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:25:32,236 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:25:32,242 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:25:45,405 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 13.839 seconds (JVM running for 18.735)
+2022-06-15 20:26:08,218 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 6756 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:26:08,229 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:26:08,232 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:27:34,677 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 7376 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:27:34,683 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:27:34,690 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:27:48,678 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 14.714 seconds (JVM running for 19.619)
+2022-06-15 20:28:07,458 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 9572 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:28:07,461 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:28:07,466 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:28:25,671 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 19.285 seconds (JVM running for 23.237)
+2022-06-15 20:29:01,610 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 9080 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:29:01,615 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:29:01,626 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:29:20,193 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 19.69 seconds (JVM running for 24.87)
+2022-06-15 20:30:11,334 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 8748 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:30:11,340 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:30:11,344 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:30:38,628 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 28.468 seconds (JVM running for 30.591)
+2022-06-15 20:32:43,432 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 3936 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:32:43,436 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:32:43,443 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:32:56,943 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 14.192 seconds (JVM running for 15.553)
+2022-06-15 20:34:32,221 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 5692 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:34:32,224 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:34:32,232 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:35:23,864 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4332 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:35:23,866 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:35:23,870 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:35:36,926 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 13.75 seconds (JVM running for 15.114)
+2022-06-15 20:36:19,010 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 8360 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:36:19,015 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:36:19,027 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:36:47,963 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 30.823 seconds (JVM running for 33.961)
+2022-06-15 20:37:50,928 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 8900 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:37:50,933 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:37:50,936 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:38:09,084 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 19.303 seconds (JVM running for 21.455)
+2022-06-15 20:38:20,908 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 3252 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:38:20,913 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:38:20,936 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:38:38,528 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 18.738 seconds (JVM running for 20.775)
+2022-06-15 20:40:40,572 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 9372 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:40:40,603 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:40:40,609 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:41:01,886 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 22.343 seconds (JVM running for 24.568)
+2022-06-15 20:43:11,189 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 8200 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 20:43:11,191 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 20:43:11,198 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 20:43:24,259 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 13.697 seconds (JVM running for 15.058)
+2022-06-15 21:43:01,346 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4740 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 21:43:01,371 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 21:43:01,375 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 21:43:27,179 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 27.397 seconds (JVM running for 30.112)
+2022-06-15 21:46:17,589 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 5052 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 21:46:17,597 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 21:46:17,599 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 21:46:42,869 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 26.939 seconds (JVM running for 29.53)
+2022-06-15 21:47:52,742 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 8776 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 21:47:52,747 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 21:47:52,773 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 21:48:18,702 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 28.467 seconds (JVM running for 31.379)
+2022-06-15 21:50:48,300 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 1184 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 21:50:48,303 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 21:50:48,308 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 21:51:22,218 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 35.425 seconds (JVM running for 38.3)
+2022-06-15 21:52:20,164 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4980 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-15 21:52:20,170 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-15 21:52:20,173 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-15 21:52:45,614 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 27.234 seconds (JVM running for 29.956)

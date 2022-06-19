@@ -14,7 +14,7 @@ import com.sds.service.procesoprocedimiento.model.ProcesoProcedimiento;
 
 public interface ProcesoProcedimientoService {
 
-	List<ProcesoProcedimientoEntity> buscarProcedimientoUsuario(final Integer idProceso, final Integer idProcedimiento);
+	List<ProcesoProcedimientoEntity> buscarProcesoProcedimiento(final Integer idProceso, final Integer idProcedimiento);
 
 	public String anadirProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,

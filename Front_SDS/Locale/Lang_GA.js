@@ -105,6 +105,8 @@ arrayGA={
 	'ERR_CONNECTION_REFUSED' : 'Erro interno da aplicación. Conexión denegada. Contacte co administrador ou intente acceder nuns minutos.',
 	'ROL_YA_EXISTE' : 'O rol ya existe. Comproba tamén a táboa de roles eliminados',
 	'ROL_NO_EXISTE' : 'O rol non existe',
+	'ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION' : 'O rol está asociado a unha funcionalidade e a unha acción',
+	'ROL_ASOCIADO_USUARIO' : 'O rol está asociado a un usuario',
 	'TEST_ATRIBUTOS_LOGIN_KO' : 'Produciuse un erro ó executar os tests de atributos para o login',
 	'FUNCIONALIDAD_VACIA' : 'O nome e/ou a descripción da funcionalidade están vacíos',
 	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'A funcionalidade xa existe. Comproba tamén a táboa de funcionalidades eliminadas',

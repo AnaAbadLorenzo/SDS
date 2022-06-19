@@ -64,7 +64,7 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 	}
 
 	@Override
-	public List<ProcesoProcedimientoEntity> buscarProcedimientoUsuario(final Integer idProceso,
+	public List<ProcesoProcedimientoEntity> buscarProcesoProcedimiento(final Integer idProceso,
 			final Integer idProcedimiento) {
 		final List<ProcesoProcedimientoEntity> procesoProcedimientoToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();

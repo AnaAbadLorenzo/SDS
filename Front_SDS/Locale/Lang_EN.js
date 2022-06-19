@@ -106,6 +106,8 @@ arrayEN={
 	'ERR_CONNECTION_REFUSED' : 'Internal server error. Connection refused. Contact the administrator or try to log in in a few minutes.',
 	'ROL_YA_EXISTE' : 'Role already exists. Check also the table of deleted roles',
 	'ROL_NO_EXISTE' : 'Role doesn´t exists',
+	'ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION' : 'Role associated with a funcionality and an action',
+	'ROL_ASOCIADO_USUARIO': 'Role associated with an user',
 	'TEST_ATRIBUTOS_LOGIN_KO' : 'An error occurred when running the attribute tests for login',
 	'FUNCIONALIDAD_VACIA' : 'The name and/or description of the funcionality are empty',
 	'FUNCIONALIDAD_YA_EXISTE_EXCEPTION' : 'Funcionality already exists. Check also the table of deleted funcionalities',

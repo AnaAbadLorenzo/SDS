@@ -42,7 +42,7 @@ public class ProcesoProcedimientoController {
 	@ResponseBody
 	public RespEntity buscarProcesoProcedimiento(
 			@RequestBody final ProcesoProcedimientoBuscar procesoProcedimientoBuscar) {
-		final List<ProcesoProcedimientoEntity> resultado = procesoProcedimientoService.buscarProcedimientoUsuario(
+		final List<ProcesoProcedimientoEntity> resultado = procesoProcedimientoService.buscarProcesoProcedimiento(
 				procesoProcedimientoBuscar.getIdProceso(), procesoProcedimientoBuscar.getIdProcedimiento());
 
 		return new RespEntity(RespCode.PROCESOS_PROCEDIMIENTOS_LISTADOS, resultado);
