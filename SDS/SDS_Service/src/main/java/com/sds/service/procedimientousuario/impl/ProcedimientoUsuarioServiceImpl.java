@@ -235,8 +235,8 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		if (procedimientoUsuarioValido) {
 			final ProcedimientoUsuarioEntity procedimientoUsuarioBD = procedimientoUsuarioRepository
 					.findProcedimientoUsuarioByProcedimientoAndUsuario(
-							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento(),
-							procedimientoUsuario.getProcedimientoUsuario().getUsuario());
+							procedimientoUsuario.getProcedimientoUsuario().getUsuario(),
+							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento());
 
 			if (procedimientoUsuarioBD != null) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
@@ -350,8 +350,8 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		if (procedimientoUsuarioValido) {
 			final ProcedimientoUsuarioEntity procedimientoUsuarioBD = procedimientoUsuarioRepository
 					.findProcedimientoUsuarioByProcedimientoAndUsuario(
-							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento(),
-							procedimientoUsuario.getProcedimientoUsuario().getUsuario());
+							procedimientoUsuario.getProcedimientoUsuario().getUsuario(),
+							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento());
 
 			if (procedimientoUsuarioBD == null) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
@@ -485,7 +485,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		} else {
 			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoBD = procedimientoUsuarioProcesoRepository
 					.findProcedimientoUsuarioProcesoByIdProcedimientoUsuario(
-							procedimientoUsuario.getProcedimientoUsuario().getIdProcedimientoUsuario());
+							procedimientoUsuario.getProcedimientoUsuario());
 
 			if (!procedimientoUsuarioProcesoBD.isEmpty()) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(

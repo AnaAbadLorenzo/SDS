@@ -104,7 +104,7 @@ CREATE TABLE `funcionalidad` (
 --
 
 LOCK TABLES `funcionalidad` WRITE;
-INSERT INTO `funcionalidad` VALUES (1,'Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0),(2,'Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0),(3,'Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0),(4,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),(5,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),(6,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),(7,'Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0),(8,'Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0),(9,'Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0),('10', 'Gestión de noticias', 'Permite realizar acciones sobre las noticias de la aplicación', '0'), ('11', 'Gestión de objetivos', 'Permite realizar acciones sobre los objetivos de la aplicación', '0'),('12', 'Gestión de planes', 'Permite realizar acciones sobre los planes de la aplicación', '0'), ('13', 'Gestión de respuestas posibles', 'Permite realizar acciones sobre las respuestas posibles de la aplicación', '0');
+INSERT INTO `funcionalidad` VALUES (1,'Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0),(2,'Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0),(3,'Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0),(4,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),(5,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),(6,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),(7,'Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0),(8,'Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0),(9,'Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0),('10', 'Gestión de noticias', 'Permite realizar acciones sobre las noticias de la aplicación', '0'), ('11', 'Gestión de objetivos', 'Permite realizar acciones sobre los objetivos de la aplicación', '0'),('12', 'Gestión de planes', 'Permite realizar acciones sobre los planes de la aplicación', '0'), ('13', 'Gestión de respuestas posibles', 'Permite realizar acciones sobre las respuestas posibles de la aplicación', '0'), ('14', 'Gestión de procesos', 'Permite realizar acciones sobre los procesos de la aplicación'), ('15', 'Gestión de procedimientos', 'Permite realizar acciones sobre los procedimientos de la aplicación');
 UNLOCK TABLES;
 
 --
@@ -114,7 +114,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `logacciones`;
 CREATE TABLE `logacciones` (
   `id_logAcciones` int NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(32) NOT NULL,
+  `usuario` varchar(45) NOT NULL,
   `accion` varchar(50) NOT NULL,
   `datos` varchar(2000) NOT NULL,
   `fecha` datetime NOT NULL,
@@ -136,7 +136,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `logexcepciones`;
 CREATE TABLE `logexcepciones` (
   `id_logExcepciones` int NOT NULL AUTO_INCREMENT,
-  `usuario` varchar(32) NOT NULL,
+  `usuario` varchar(45) NOT NULL,
   `tipo_excepcion` varchar(50) NOT NULL,
   `descripcion_excepcion` varchar(200) NOT NULL,
   `fecha` datetime NOT NULL,
@@ -429,12 +429,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `procedimientousuarioproceso`;
 CREATE TABLE `procedimientousuarioproceso` (
+  `id_procedimiento_usuario_proceso`int NOT NULL AUTO_INCREMENT,
   `id_procedimiento_usuario` int NOT NULL,
   `fecha_procedimiento_usuario_proceso` date NOT NULL,
   `borrado_procedimiento_usuario_proceso` int NOT NULL,
   `id_respuesta` int NOT NULL,
   `id_proceso` int NOT NULL,
-  PRIMARY KEY (`id_procedimiento_usuario`,`id_proceso`),
+  PRIMARY KEY (`id_procedimiento_usuario_proceso`),
   KEY `id_procedimiento_usuario_proceso_idx` (`id_procedimiento_usuario`),
   KEY `id_proceso_procedimiento_usuario_proceso_idx` (`id_proceso`),
   KEY `idRespuesta_procedimiento_usuario_proceso_fk` (`id_respuesta`),
@@ -511,14 +512,12 @@ CREATE TABLE `evidencia` (
   `fecha_evidencia` date NOT NULL,
   `nombre_fichero` varchar(128) NOT NULL,
   `borrado_evidencia` int NOT NULL,
-  `id_procedimiento_usuario` int NOT NULL,
-  `id_proceso` int NOT NULL,
+  `id_procedimiento_usuario_proceso` int NOT NULL,
   PRIMARY KEY (`id_evidencia`),
-  KEY `idProcedimiento_usuario_fk` (`id_procedimiento_usuario`),
-  KEY `idProceso_fk` (`id_proceso`),
-  CONSTRAINT `idProcedimiento_usuario_fk` FOREIGN KEY (`id_procedimiento_usuario`) REFERENCES `procedimientousuario` (`id_procedimiento_usuario`),  
-  CONSTRAINT `idProceso_fk` FOREIGN KEY (`id_proceso`) REFERENCES `proceso` (`id_proceso`)
+  KEY `idProcedimiento_usuario_proceso_fk` (`id_procedimiento_usuario_proceso`),
+  CONSTRAINT `idProcedimiento_usuario_proceso_fk` FOREIGN KEY (`id_procedimiento_usuario_proceso`) REFERENCES `procedimientousuarioproceso` (`id_procedimiento_usuario_proceso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
+
 
 --
 -- Dumping data for table `evidencia`

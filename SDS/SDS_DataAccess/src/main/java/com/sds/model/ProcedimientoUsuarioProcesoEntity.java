@@ -6,8 +6,9 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -15,21 +16,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.sds.model.compositekey.ProcedimientoUsuarioProcesoKey;
-
 @Entity
-@IdClass(ProcedimientoUsuarioProcesoKey.class)
 @Table(name = "procedimientousuarioproceso")
 @NamedQueries({
-		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProceso", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.idProceso =: idProceso") })
-@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.idProcedimientoUsuario =: idProcedimientoUsuario")
+		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProceso", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.proceso LIKE CONCAT ('%', :proceso, '%')"),
+		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.procedimientoUsuario LIKE CONCAT ('%', :procedimientoUsuario, '%')"),
+		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProceso", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.procedimientoUsuario LIKE CONCAT ('%', :procedimientoUsuario, '%') AND p.proceso LIKE CONCAT ('%', :proceso, '%')") })
 public class ProcedimientoUsuarioProcesoEntity {
 
 	@Id
-	private Integer idProceso;
-
-	@Id
-	private Integer idProcedimientoUsuario;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_procedimiento_usuario_proceso")
+	private Integer idProcedimientoUsuarioProceso;
 
 	@Column(name = "fecha_procedimiento_usuario_proceso")
 	private Date fechaProcedimientoUsuarioProceso;
@@ -37,15 +35,15 @@ public class ProcedimientoUsuarioProcesoEntity {
 	@Column(name = "borrado_procedimiento_usuario_proceso")
 	private Integer borradoProcedimientoUsuarioProceso;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_respuesta", referencedColumnName = "id_respuesta")
 	private RespuestaPosibleEntity respuestaPosible;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_proceso", referencedColumnName = "id_proceso")
 	private ProcesoEntity proceso;
 
-	@ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_procedimiento_usuario", referencedColumnName = "id_procedimiento_usuario")
 	private ProcedimientoUsuarioEntity procedimientoUsuario;
 
@@ -56,29 +54,36 @@ public class ProcedimientoUsuarioProcesoEntity {
 		super();
 	}
 
-	public ProcedimientoUsuarioProcesoEntity(final Integer idProceso, final Integer idProcedimientoUsuario,
-			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso) {
+	public ProcedimientoUsuarioProcesoEntity(final Integer idProcedimientoUsuarioProceso,
+			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso,
+			final RespuestaPosibleEntity respuestaPosible, final ProcesoEntity proceso,
+			final ProcedimientoUsuarioEntity procedimientoUsuario) {
 		super();
-		this.idProceso = idProceso;
-		this.idProcedimientoUsuario = idProcedimientoUsuario;
+		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
 		this.fechaProcedimientoUsuarioProceso = fechaProcedimientoUsuarioProceso;
 		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
+		this.respuestaPosible = respuestaPosible;
+		this.proceso = proceso;
+		this.procedimientoUsuario = procedimientoUsuario;
 	}
 
-	public Integer getIdProceso() {
-		return idProceso;
+	public ProcedimientoUsuarioProcesoEntity(final Date fechaProcedimientoUsuarioProceso,
+			final Integer borradoProcedimientoUsuarioProceso, final RespuestaPosibleEntity respuestaPosible,
+			final ProcesoEntity proceso, final ProcedimientoUsuarioEntity procedimientoUsuario) {
+		super();
+		this.fechaProcedimientoUsuarioProceso = fechaProcedimientoUsuarioProceso;
+		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
+		this.respuestaPosible = respuestaPosible;
+		this.proceso = proceso;
+		this.procedimientoUsuario = procedimientoUsuario;
 	}
 
-	public void setIdProceso(final Integer idProceso) {
-		this.idProceso = idProceso;
+	public Integer getIdProcedimientoUsuarioProceso() {
+		return idProcedimientoUsuarioProceso;
 	}
 
-	public Integer getIdProcedimientoUsuario() {
-		return idProcedimientoUsuario;
-	}
-
-	public void setIdProcedimientoUsuario(final Integer idProcedimientoUsuario) {
-		this.idProcedimientoUsuario = idProcedimientoUsuario;
+	public void setIdProcedimientoUsuarioProceso(final Integer idProcedimientoUsuarioProceso) {
+		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
 	}
 
 	public void setEvidencia(final EvidenciaEntity evidencia) {
@@ -131,9 +136,11 @@ public class ProcedimientoUsuarioProcesoEntity {
 
 	@Override
 	public String toString() {
-		return "ProcedimientoUsuarioProcesoEntity [idProceso=" + idProceso + ", idProcedimientoUsuario="
-				+ idProcedimientoUsuario + ", fechaProcedimientoUsuarioProceso=" + fechaProcedimientoUsuarioProceso
-				+ ", borradoProcedimientoUsuarioProceso=" + borradoProcedimientoUsuarioProceso + "]";
+		return "ProcedimientoUsuarioProcesoEntity [idProcedimientoUsuarioProceso=" + idProcedimientoUsuarioProceso
+				+ ", fechaProcedimientoUsuarioProceso=" + fechaProcedimientoUsuarioProceso
+				+ ", borradoProcedimientoUsuarioProceso=" + borradoProcedimientoUsuarioProceso + ", respuestaPosible="
+				+ respuestaPosible + ", proceso=" + proceso + ", procedimientoUsuario=" + procedimientoUsuario
+				+ ", evidencia=" + evidencia + "]";
 	}
 
 }

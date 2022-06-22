@@ -203,6 +203,7 @@ public enum RespCode {
 	PROCESO_PROCEDIMIENTO_VACIO("PROCESO_PROCEDIMIENTO_VACIO", "El procedimiento, el proceso o el orden son vacíos"), //
 	PROCESO_PROCEDIMIENTO_YA_EXISTE("PROCESO_PROCEDIMIENTO_YA_EXISTE", "La relación proceso procedimiento ya existe"), //
 	PROCESO_PROCEDIMIENTO_NO_EXISTE("PROCESO_PROCEDIMIENTO_NO_EXISTE", "La relación proceso procedimiento no existe"), //
+	NIVEL_YA_EXISTE_EXCEPTION("NIVEL_YA_EXISTE_EXCEPTION", "El nivel ya existe"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",

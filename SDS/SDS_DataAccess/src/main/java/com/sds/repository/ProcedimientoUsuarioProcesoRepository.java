@@ -8,20 +8,24 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
-import com.sds.model.compositekey.ProcedimientoUsuarioProcesoKey;
+import com.sds.model.ProcesoEntity;
 
 @Component
 public interface ProcedimientoUsuarioProcesoRepository
-		extends JpaRepository<ProcedimientoUsuarioProcesoEntity, ProcedimientoUsuarioProcesoKey> {
+		extends JpaRepository<ProcedimientoUsuarioProcesoEntity, Integer> {
 
-	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProceso(final Integer idProceso);
+	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProceso(final ProcesoEntity proceso);
 
 	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProcedimientoUsuario(
-			final Integer idProcedimientoUsuario);
+			final ProcedimientoUsuarioEntity procedimientoUsuario);
+
+	ProcedimientoUsuarioProcesoEntity findProcedimientoUsuarioProceso(
+			final ProcedimientoUsuarioEntity procedimientoUsuario, final ProcesoEntity proceso);
 
 	@Transactional
 	@Modifying
-	@Query("DELETE FROM ProcedimientoUsuarioProcesoEntity p WHERE p.idProceso = ?1 AND p.idProcedimientoUsuario = ?2")
-	void deleteProcedimientoUsuarioProceso(Integer idProceso, Integer idProcedimientoUsuario);
+	@Query("DELETE FROM ProcedimientoUsuarioProcesoEntity p WHERE p.idProcedimientoUsuarioProceso = ?1")
+	void deleteProcedimientoUsuarioProceso(Integer idProcedimientoUsuarioProceso);
 }

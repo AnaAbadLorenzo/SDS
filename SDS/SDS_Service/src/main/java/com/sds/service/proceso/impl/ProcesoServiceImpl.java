@@ -20,10 +20,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.NivelEntity;
+import com.sds.model.ObjetivoEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoRespuestaPosibleEntity;
 import com.sds.repository.NivelRepository;
+import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.repository.ProcesoProcedimientoRepository;
@@ -35,6 +37,8 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.NivelYaExisteException;
+import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
@@ -42,6 +46,8 @@ import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
 import com.sds.service.log.LogService;
+import com.sds.service.nivel.NivelService;
+import com.sds.service.nivel.model.Nivel;
 import com.sds.service.proceso.ProcesoService;
 import com.sds.service.proceso.model.Proceso;
 import com.sds.service.util.CodeMessageErrors;
@@ -71,6 +77,12 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 	@Autowired
 	NivelRepository nivelRepository;
+
+	@Autowired
+	NivelService nivelService;
+
+	@Autowired
+	ObjetivoRepository objetivoRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -177,9 +189,9 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String anadirProceso(final Proceso proceso)
-			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoYaExisteException,
-			ParseException, FechaAnteriorFechaActualException {
+	public String anadirProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException,
+			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException {
 		final ProcesoEntity procesoEntity = proceso.getProceso();
 		final Boolean procesoValido = validaciones.comprobarProcesoBlank(procesoEntity);
 		String resultado = StringUtils.EMPTY;
@@ -257,6 +269,40 @@ public class ProcesoServiceImpl implements ProcesoService {
 						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
 								CodeMessageErrors
 										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+					}
+
+					final List<ObjetivoEntity> objetivos = proceso.getObjetivos();
+					for (int i = 0; i < objetivos.size(); i++) {
+						final Optional<ObjetivoEntity> objetivoBD = objetivoRepository
+								.findById(objetivos.get(i).getIdObjetivo());
+
+						if (objetivoBD == null) {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									proceso.getUsuario(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()),
+									CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo());
+
+							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new ObjetivoNoExisteException(
+									CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()));
+						} else {
+							final ProcesoEntity procesoGuardado = procesoRepository
+									.findProcesoByName(procesoEntity.getNombreProceso());
+							final NivelEntity nivel = new NivelEntity(objetivoBD.get().getIdObjetivo(),
+									procesoGuardado.getIdProceso(), proceso.getNiveles().get(i), new Date());
+							nivelService.añadirNivel(new Nivel(proceso.getUsuario(), nivel));
+						}
 					}
 
 					resultado = Constantes.OK;
@@ -342,7 +388,7 @@ public class ProcesoServiceImpl implements ProcesoService {
 									CodeMessageErrors.PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION.getCodigo()));
 				} else {
 					final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
-							.findProcedimientoUsuarioProcesoByIdProceso(procesoEntity.getIdProceso());
+							.findProcedimientoUsuarioProcesoByIdProceso(procesoEntity);
 
 					if (!procedimientoUsuarioProceso.isEmpty()) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
@@ -490,7 +536,7 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 				} else {
 					final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
-							.findProcedimientoUsuarioProcesoByIdProceso(procesoBD.get().getIdProceso());
+							.findProcedimientoUsuarioProcesoByIdProceso(procesoBD.get());
 					if (!procedimientoUsuarioProceso.isEmpty()) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 								proceso.getUsuario(),

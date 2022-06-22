@@ -1003,17 +1003,21 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 					procedimiento, usuario);
 			procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuario);
 			final ProcedimientoUsuarioEntity procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
-					.findProcedimientoUsuarioByProcedimientoAndUsuario(procedimientoEncontrado, usuario);
+					.findProcedimientoUsuarioByProcedimientoAndUsuario(usuario, procedimientoEncontrado);
 			final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(proceso.getNombreProceso(),
 					proceso.getDescripProceso(), resultado);
+			final RespuestaPosibleEntity respuestaPosible = new RespuestaPosibleEntity("Respuesta posible", 0);
+			respuestaPosibleRepository.saveAndFlush(respuestaPosible);
+			final RespuestaPosibleEntity respuestaPosibleEncontrada = respuestaPosibleRepository
+					.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 
 			final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso = new ProcedimientoUsuarioProcesoEntity(
-					procesoEncontrado.get(0).getIdProceso(), procedimientoUsuarioEncontrado.getIdProcedimientoUsuario(),
-					new Date(), 0);
+					new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0),
+					procedimientoUsuarioEncontrado);
 			procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProceso);
 
 			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoBD = procedimientoUsuarioProcesoRepository
-					.findProcedimientoUsuarioProcesoByIdProceso(procesoEncontrado.get(0).getIdProceso());
+					.findProcedimientoUsuarioProcesoByIdProceso(procesoEncontrado.get(0));
 
 			if (!procedimientoUsuarioProcesoBD.isEmpty()) {
 				resultado = CodigosMensajes.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO + " - "
@@ -1024,14 +1028,14 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 
 			procedimientoUsuarioProcesoRepository.deleteProcedimientoUsuarioProceso(
-					procesoEncontrado.get(0).getIdProceso(),
-					procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
+					procedimientoUsuarioProcesoBD.get(0).getIdProcedimientoUsuarioProceso());
 			procedimientoUsuarioRepository
 					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
 			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
 			planRepository.deletePlan(planBDNuevo.getIdPlan());
 			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
+			respuestaPosibleRepository.findById(respuestaPosibleEncontrada.getIdRespuesta());
 			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 			personaRepository.deletePersona(persona.getDniP());
 

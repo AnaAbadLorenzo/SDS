@@ -147,6 +147,16 @@
 		"descripProceso" : "Esta es la descripción del proceso",
 		"fechaProceso" : "2022-06-03",
 		"borradoProceso" : 0
+	},
+	
+	"datosProcesoVacios" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso" : "",
+		"descripProceso" : "",
+		"fechaProceso" : "",
+		"borradoProceso" : 0
 	}
 	
 	

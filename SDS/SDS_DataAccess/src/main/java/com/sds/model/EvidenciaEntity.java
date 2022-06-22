@@ -30,8 +30,7 @@ public class EvidenciaEntity {
 	private String nombreFichero;
 
 	@OneToOne
-	@JoinColumn(name = "id_proceso", referencedColumnName = "id_proceso", updatable = false)
-	@JoinColumn(name = "id_procedimiento_usuario", referencedColumnName = "id_procedimiento_usuario", updatable = false)
+	@JoinColumn(name = "id_procedimiento_usuario_proceso", referencedColumnName = "id_procedimiento_usuario_proceso", updatable = false)
 	private ProcedimientoUsuarioProcesoEntity procedimientosUsuarioProceso;
 
 	public EvidenciaEntity() {

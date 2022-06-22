@@ -19,6 +19,8 @@ public interface ProcesoRespuestaPosibleRepository
 
 	List<ProcesoRespuestaPosibleEntity> findRespuestaPosibleByIdProceso(final Integer idProceso);
 
+	List<ProcesoRespuestaPosibleEntity> findProcesoRespuestaPosible(final Integer idProceso, final Integer idRespuesta);
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM ProcesoRespuestaPosibleEntity p WHERE p.idRespuesta = ?1 AND p.idProceso =?2")

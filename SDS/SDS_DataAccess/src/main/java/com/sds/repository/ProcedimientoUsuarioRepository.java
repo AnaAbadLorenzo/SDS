@@ -17,8 +17,8 @@ public interface ProcedimientoUsuarioRepository extends JpaRepository<Procedimie
 
 	List<ProcedimientoUsuarioEntity> findAllProcedimientosUsuario(final int inicio, final int tamanhoPagina);
 
-	ProcedimientoUsuarioEntity findProcedimientoUsuarioByProcedimientoAndUsuario(
-			final ProcedimientoEntity procedimientoEntity, final UsuarioEntity usuarioEntity);
+	ProcedimientoUsuarioEntity findProcedimientoUsuarioByProcedimientoAndUsuario(final UsuarioEntity usuario,
+			final ProcedimientoEntity procedimiento);
 
 	Integer numberFindAllProcedimientosUsuario();
 

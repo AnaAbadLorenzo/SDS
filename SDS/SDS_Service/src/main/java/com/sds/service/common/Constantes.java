@@ -110,6 +110,12 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_PROCESOPROCEDIMIENTO = "Modificar proceso procedimiento";
 	public static final String ACCION_ELIMINAR_PROCESOPROCEDIMIENTO = "Eliminar proceso procedimiento";
 
+	public static final String ACCION_AÑADIR_NIVEL = "Añadir nivel";
+	public static final String ACCION_ELIMINAR_NIVEL = "Eliminar nivel";
+
+	public static final String ACCION_AÑADIR_PROCESO_RESPUESTA = "Añadir relación proceso respuesta posible";
+	public static final String ACCION_ELIMINAR_PROCESO_RESPUESTA = "Eliminar relación proceso respuesta posible";
+
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";
@@ -805,4 +811,8 @@ public class Constantes {
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOSUSUARIOELIMINADOS = "ProcedimientoUsuarioEntity.findProcedimientosUsuarioEliminados";
 
 	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTO = "ProcesoProcedimientoEntity.findProcesoProcedimiento";
+
+	public static final String NIVEL_QUERY_FINDNIVEL = "NivelEntity.findNivel";
+
+	public static final String PROCESO_RESPUESTA_POSIBLE_FINDPROCESORESPUESTAPOSIBLE = "ProcesoRespuestaPosibleEntity.findProcesoRespuestaPosible";
 }

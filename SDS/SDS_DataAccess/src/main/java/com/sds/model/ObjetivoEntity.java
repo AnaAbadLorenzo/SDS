@@ -7,9 +7,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -46,7 +49,9 @@ public class ObjetivoEntity {
 	@OneToMany(mappedBy = "objetivo", cascade = CascadeType.ALL)
 	private List<PlanEntity> plan;
 
-	@ManyToMany(mappedBy = "objetivos")
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinTable(name = "nivel", joinColumns = { @JoinColumn(name = "id_objetivo") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_proceso") })
 	private final Set<ProcesoEntity> procesos = new HashSet<>();
 
 	public ObjetivoEntity() {

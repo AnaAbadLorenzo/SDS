@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.sds.model.compositekey.NivelKey;
@@ -13,6 +15,10 @@ import com.sds.model.compositekey.NivelKey;
 @Entity
 @IdClass(NivelKey.class)
 @Table(name = "nivel")
+@NamedQueries({
+		@NamedQuery(name = "NivelEntity.findNivelByIdProceso", query = "SELECT n FROM NivelEntity n WHERE n.idProceso =: idProceso"),
+		@NamedQuery(name = "NivelEntity.findNivelByIdObjetivo", query = "SELECT n FROM NivelEntity n WHERE n.idObjetivo =: idObjetivo "),
+		@NamedQuery(name = "NivelEntity.findNivel", query = "SELECT n FROM NivelEntity n WHERE n.idObjetivo =: idObjetivo AND n.idProceso =: idProceso") })
 public class NivelEntity {
 
 	@Id

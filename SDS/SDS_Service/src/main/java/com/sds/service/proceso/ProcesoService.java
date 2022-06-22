@@ -8,6 +8,8 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.NivelYaExisteException;
+import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
@@ -26,7 +28,8 @@ public interface ProcesoService {
 	ReturnBusquedas<ProcesoEntity> buscarProcesosEliminados(final int inicio, final int tamanhoPagina);
 
 	String anadirProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException;
+			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException,
+			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException;
 
 	String eliminaProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
 			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException, FechaAnteriorFechaActualException,

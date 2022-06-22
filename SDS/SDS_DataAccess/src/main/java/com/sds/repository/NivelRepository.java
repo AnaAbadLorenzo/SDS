@@ -16,8 +16,10 @@ public interface NivelRepository extends JpaRepository<NivelEntity, NivelKey> {
 
 	List<NivelEntity> findNivelByIdObjetivo(final Integer idObjetivo);
 
+	List<NivelEntity> findNivel(final Integer idObjetivo, final Integer idProceso);
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM NivelEntity n WHERE n.idObjetivo = ?1 AND n.idProceso = ?2")
-	void deleteNivel(final Integer idObjetivo, final Integer idNivel);
+	void deleteNivel(final Integer idObjetivo, final Integer idProceso);
 }

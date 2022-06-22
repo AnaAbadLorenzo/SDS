@@ -17,6 +17,8 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.FechaAnteriorFechaActualException;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.NivelYaExisteException;
+import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
@@ -98,6 +100,12 @@ public class ProcesoController {
 			}
 		} catch (final ProcesoYaExisteException procesoExists) {
 			return new RespEntity(RespCode.PROCESO_YA_EXISTE_EXCEPTION, proceso);
+		} catch (final ProcesoNoExisteException procesoNoExists) {
+			return new RespEntity(RespCode.PROCESO_NO_EXISTE_EXCEPTION, proceso);
+		} catch (final NivelYaExisteException nivelAlreadyExists) {
+			return new RespEntity(RespCode.NIVEL_YA_EXISTE_EXCEPTION, proceso);
+		} catch (final ObjetivoNoExisteException objetivoNoExists) {
+			return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, proceso);
 		} catch (final ParseException parseException) {
 			return new RespEntity(RespCode.PARSE_EXCEPTION, proceso);
 		}

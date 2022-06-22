@@ -11,6 +11,7 @@ import com.sds.model.EmpresaEntity;
 import com.sds.model.FuncionalidadEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.NivelEntity;
 import com.sds.model.NoticiasEntity;
 import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
@@ -19,6 +20,7 @@ import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoProcedimientoEntity;
+import com.sds.model.ProcesoRespuestaPosibleEntity;
 import com.sds.model.RolEntity;
 import com.sds.model.UsuarioEntity;
 import com.sds.service.login.model.Login;
@@ -513,9 +515,9 @@ public class Validaciones {
 
 	public boolean comprobarProcedimientoUsuarioBlank(final ProcedimientoUsuarioEntity procedimientoUsuarioEntity)
 			throws ParseException {
-		if (tieneValor(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario().toString())
+		if (!tieneValor(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario().toString())
 				|| StringUtils.isBlank(procedimientoUsuarioEntity.getUsuario().getDniUsuario())
-				|| tieneValor(procedimientoUsuarioEntity.getProcedimiento().getIdProcedimiento().toString())) {
+				|| !tieneValor(procedimientoUsuarioEntity.getProcedimiento().getIdProcedimiento().toString())) {
 			return false;
 		} else {
 			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -530,13 +532,44 @@ public class Validaciones {
 
 	public boolean comprobarProcesoProcedimientoBlank(final ProcesoProcedimientoEntity procesoProcedimientoEntity)
 			throws ParseException {
-		if (tieneValor(procesoProcedimientoEntity.getIdProceso().toString())
-				|| tieneValor(procesoProcedimientoEntity.getOrdenProceso().toString())
-				|| tieneValor(procesoProcedimientoEntity.getIdProcedimiento().toString())) {
+		if (!tieneValor(procesoProcedimientoEntity.getIdProceso().toString())
+				|| !tieneValor(procesoProcedimientoEntity.getOrdenProceso().toString())
+				|| !tieneValor(procesoProcedimientoEntity.getIdProcedimiento().toString())) {
 			return false;
 		} else {
 			return true;
 		}
+	}
+
+	public boolean comprobarNivelBlank(final NivelEntity nivelEntity) throws ParseException {
+		if (!tieneValor(nivelEntity.getIdObjetivo().toString()) || !tieneValor(nivelEntity.getIdProceso().toString())
+				|| !tieneValor(nivelEntity.getNivel().toString())) {
+			return false;
+		} else {
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = formato.parse("0000-00-00");
+			if (nivelEntity.getFechaNivel().equals(date)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean comprobarProcesoRespuestaPosibleBlank(
+			final ProcesoRespuestaPosibleEntity procesoRespuestaPosibleEntity) throws ParseException {
+		if (!tieneValor(procesoRespuestaPosibleEntity.getIdProceso().toString())
+				|| !tieneValor(procesoRespuestaPosibleEntity.getIdRespuesta().toString())) {
+			return false;
+		} else {
+			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = null;
+			date = formato.parse("0000-00-00");
+			if (procesoRespuestaPosibleEntity.getFechaRespuesta().equals(date)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	private boolean tieneValor(final String value) {
