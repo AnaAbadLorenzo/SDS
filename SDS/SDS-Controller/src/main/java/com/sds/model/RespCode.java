@@ -203,6 +203,22 @@ public enum RespCode {
 	PROCESO_PROCEDIMIENTO_VACIO("PROCESO_PROCEDIMIENTO_VACIO", "El procedimiento, el proceso o el orden son vacíos"), //
 	PROCESO_PROCEDIMIENTO_YA_EXISTE("PROCESO_PROCEDIMIENTO_YA_EXISTE", "La relación proceso procedimiento ya existe"), //
 	PROCESO_PROCEDIMIENTO_NO_EXISTE("PROCESO_PROCEDIMIENTO_NO_EXISTE", "La relación proceso procedimiento no existe"), //
+	PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS("PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS",
+			"Las relaciones procedimientos -  usuarios - procesos se an listado correctamente"), //
+	PROCEDIMIENTO_USUARIO_NO_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_PROCESO_NO_EXISTE",
+			"La relación procedimiento - usuario no existe"), //
+	PROCEDIMIENTO_USUARIO_PROCESO_GUARDADO("PROCEDIMIENTO_USUARIO_PROCESO_GUARDADO",
+			"La relación procedimiento - usuario - proceso se ha guardado correctamente"), //
+	PROCEDIMIENTO_USUARIO_PROCESO_MODIFICADO("PROCEDIMIENTO_USUARIO_PROCESO_MODIFICADO",
+			"La relación procedimiento - usuario - proceso se ha modificado correctamente"), //
+	PROCEDIMIENTO_USUARIO_PROCESO_ELIMINADO("PROCEDIMIENTO_USUARIO_PROCESO_ELIMINADO",
+			"La relación procedimiento - usuario - proceso se ha eliminado correctamente"), //
+	PROCEDIMIENTO_USUARIO_PROCESO_VACIO("PROCEDIMIENTO_USUARIO_PROCESO_VACIO",
+			"La relación procedimiento - usuario - proceso es vacía"), //
+	PROCEDIMIENTO_USUARIO_PROCESO_YA_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_PROCESO_YA_EXISTE_EXCEPTION",
+			"La relación procedimiento - usuario - proceso ya existe"), //
+	PROCEDIMIENTO_USUARIO_PROCESO_NO_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_PROCESO_NO_EXISTE_EXCEPTION",
+			"La relación procedimiento - usuario - proceso no existe"), //
 	NIVEL_YA_EXISTE_EXCEPTION("NIVEL_YA_EXISTE_EXCEPTION", "El nivel ya existe"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //

@@ -136,6 +136,10 @@ public class ProcesoController {
 					return new RespEntity(RespCode.FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL, proceso);
 				} catch (final ProcesoAsociadoUsuarioProcedimientoException procesoAsociadoUsuarioProcedimientoException) {
 					return new RespEntity(RespCode.PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION, proceso);
+				} catch (final NivelYaExisteException nivelAlreadyExists) {
+					return new RespEntity(RespCode.NIVEL_YA_EXISTE_EXCEPTION, proceso);
+				} catch (final ObjetivoNoExisteException objetivoNoExists) {
+					return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, proceso);
 				}
 			}
 		} catch (final ProcesoNoExisteException procesoNoExists) {
@@ -172,6 +176,10 @@ public class ProcesoController {
 				return new RespEntity(RespCode.PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION, proceso);
 			} catch (final ProcesoAsociadoObjetivoException procesoAsociadoObjetivoException) {
 				return new RespEntity(RespCode.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION, proceso);
+			} catch (final NivelYaExisteException nivelAlreadyExists) {
+				return new RespEntity(RespCode.NIVEL_YA_EXISTE_EXCEPTION, proceso);
+			} catch (final ObjetivoNoExisteException objetivoNoExists) {
+				return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, proceso);
 			}
 
 		} catch (final ProcesoNoExisteException procesoNoExists) {

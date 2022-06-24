@@ -24,6 +24,11 @@ public interface ProcedimientoUsuarioProcesoRepository
 	ProcedimientoUsuarioProcesoEntity findProcedimientoUsuarioProceso(
 			final ProcedimientoUsuarioEntity procedimientoUsuario, final ProcesoEntity proceso);
 
+	List<ProcedimientoUsuarioProcesoEntity> findAllProcedimientosUsuariosProcesos(final int inicio,
+			final int tamanhoPagina);
+
+	Integer numberFindAllProcedimientosUsuariosProcesos();
+
 	@Transactional
 	@Modifying
 	@Query("DELETE FROM ProcedimientoUsuarioProcesoEntity p WHERE p.idProcedimientoUsuarioProceso = ?1")

@@ -18,6 +18,7 @@ import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
+import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.ProcesoProcedimientoEntity;
 import com.sds.model.ProcesoRespuestaPosibleEntity;
@@ -520,14 +521,9 @@ public class Validaciones {
 				|| !tieneValor(procedimientoUsuarioEntity.getProcedimiento().getIdProcedimiento().toString())) {
 			return false;
 		} else {
-			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = null;
-			date = formato.parse("0000-00-00");
-			if (procedimientoUsuarioEntity.getFechaProcedimientoUsuario().equals(date)) {
-				return false;
-			}
+			return true;
 		}
-		return true;
+
 	}
 
 	public boolean comprobarProcesoProcedimientoBlank(final ProcesoProcedimientoEntity procesoProcedimientoEntity)
@@ -546,14 +542,9 @@ public class Validaciones {
 				|| !tieneValor(nivelEntity.getNivel().toString())) {
 			return false;
 		} else {
-			final SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-			Date date = null;
-			date = formato.parse("0000-00-00");
-			if (nivelEntity.getFechaNivel().equals(date)) {
-				return false;
-			}
+			return true;
+
 		}
-		return true;
 	}
 
 	public boolean comprobarProcesoRespuestaPosibleBlank(
@@ -570,6 +561,19 @@ public class Validaciones {
 			}
 		}
 		return true;
+	}
+
+	public boolean comprobarProcedimientoUsuarioProcesoBlank(
+			final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoEntity) {
+		if (!tieneValor(
+				procedimientoUsuarioProcesoEntity.getProcedimientoUsuario().getIdProcedimientoUsuario().toString())
+				|| !tieneValor(procedimientoUsuarioProcesoEntity.getRespuestaPosible().getIdRespuesta().toString())
+				|| !tieneValor(procedimientoUsuarioProcesoEntity.getProceso().getIdProceso().toString())) {
+			return false;
+		} else {
+			return true;
+		}
+
 	}
 
 	private boolean tieneValor(final String value) {

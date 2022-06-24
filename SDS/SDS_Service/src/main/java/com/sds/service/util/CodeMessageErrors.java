@@ -84,7 +84,10 @@ public enum CodeMessageErrors {
 	NIVEL_VACIO("Nivel vacío"), //
 	PROCESO_RESPUESTA_POSIBLE_YA_EXISTE("La relación proceso - respuesta posible ya existe"), //
 	PROCESO_RESPUESTA_POSIBLE_NO_EXISTE("La relación proceso - respuesta posible no existe"), //
-	PROCESO_RESPUESTA_POSIBLE_VACIO("Relación proceso - respuesta posible vacía");
+	PROCESO_RESPUESTA_POSIBLE_VACIO("Relación proceso - respuesta posible vacía"), //
+	PROCEDIMIENTOUSUARIOPROCESO_YA_EXISTE_EXCEPTION("La relación procedimiento - usuario - proceso ya existe"), //
+	PROCEDIMIENTOUSUARIOPROCESO_NO_EXISTE_EXCEPTION("La relación procedimiento - usuario - proceso no existe"), //
+	PROCEDIMIENTOUSUARIOPROCESO_VACIO("La relación procedimiento - usuario - proceso es vacía");
 
 	private String codigo;
 

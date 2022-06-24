@@ -1,0 +1,34 @@
+package com.sds.service.procedimientousuarioproceso;
+
+import com.sds.model.ProcedimientoUsuarioProcesoEntity;
+import com.sds.service.common.ReturnBusquedas;
+import com.sds.service.exception.LogAccionesNoGuardadoException;
+import com.sds.service.exception.LogExcepcionesNoGuardadoException;
+import com.sds.service.exception.ProcedimientoUsuarioNoExisteException;
+import com.sds.service.exception.ProcedimientoUsuarioProcesoNoExisteException;
+import com.sds.service.exception.ProcedimientoUsuarioProcesoYaExisteException;
+import com.sds.service.exception.ProcesoNoExisteException;
+import com.sds.service.exception.RespuestaPosibleNoExisteException;
+import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProceso;
+
+public interface ProcedimientoUsuarioProcesoService {
+
+	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodos();
+
+	String anadirProcedimientoUsuarioProceso(final ProcedimientoUsuarioProceso procedimientoUsuarioProceso)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			ProcedimientoUsuarioProcesoYaExisteException, ProcedimientoUsuarioNoExisteException,
+			ProcesoNoExisteException, RespuestaPosibleNoExisteException;
+
+	String modificarProcedimientoUsuarioProceso(final ProcedimientoUsuarioProceso procedimientoUsuarioProceso)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			ProcedimientoUsuarioProcesoNoExisteException, ProcedimientoUsuarioNoExisteException,
+			ProcesoNoExisteException, RespuestaPosibleNoExisteException;
+
+	String eliminaProcedimientoUsuarioProceso(final ProcedimientoUsuarioProceso procedimientoUsuarioProceso)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
+			ProcedimientoUsuarioProcesoNoExisteException;
+
+	void deleteProcedimientoUsuarioProceso(final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoEntity)
+			throws ProcedimientoUsuarioProcesoNoExisteException;
+}

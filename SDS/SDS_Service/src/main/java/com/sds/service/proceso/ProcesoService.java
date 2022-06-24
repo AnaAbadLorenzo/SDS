@@ -31,14 +31,15 @@ public interface ProcesoService {
 			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException,
 			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException;
 
-	String eliminaProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException, FechaAnteriorFechaActualException,
-			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
-			ProcesoAsociadoUsuarioProcedimientoException, ProcesoAsociadoObjetivoException;
-
-	String modificarProceso(final Proceso proceso)
+	String eliminaProceso(final Proceso proceso)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoNoExisteException,
-			ParseException, FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException;
+			ParseException, FechaAnteriorFechaActualException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoUsuarioProcedimientoException,
+			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException;
+
+	String modificarProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
+			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException;
 
 	String reactivarProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
 			LogAccionesNoGuardadoException, ProcesoNoExisteException, ParseException;
