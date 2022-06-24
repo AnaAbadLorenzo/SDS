@@ -58,7 +58,12 @@ CREATE TABLE `accion` (
 --
 
 LOCK TABLES `accion` WRITE;
-INSERT INTO `accion` VALUES (1,'Añadir','Permite añadir nuevos datos a la aplicación',0),(2,'Modificar','Permite modificar datos de la aplicación',0),(3,'Eliminar','Permite eliminar datos de la aplicación',0),(4,'Listar','Permite visualizar los datos de la aplicación en forma de listado',0),(5,'Visualizar','Permite ver en detalle los datos de la aplicación',0),(6,'Reactivar','Permite reactivar los datos eliminados de la aplicación',0);
+INSERT INTO `accion` VALUES (1,'Añadir','Permite añadir nuevos datos a la aplicación',0),
+(2,'Modificar','Permite modificar datos de la aplicación',0),
+(3,'Eliminar','Permite eliminar datos de la aplicación',0),
+(4,'Listar','Permite visualizar los datos de la aplicación en forma de listado',0),
+(5,'Visualizar','Permite ver en detalle los datos de la aplicación',0),
+(6,'Reactivar','Permite reactivar los datos eliminados de la aplicación',0);
 UNLOCK TABLES;
 
 --
@@ -104,7 +109,23 @@ CREATE TABLE `funcionalidad` (
 --
 
 LOCK TABLES `funcionalidad` WRITE;
-INSERT INTO `funcionalidad` VALUES (1,'Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0),(2,'Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0),(3,'Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0),(4,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),(5,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),(6,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),(7,'Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0),(8,'Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0),(9,'Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0),('10', 'Gestión de noticias', 'Permite realizar acciones sobre las noticias de la aplicación', '0'), ('11', 'Gestión de objetivos', 'Permite realizar acciones sobre los objetivos de la aplicación', '0'),('12', 'Gestión de planes', 'Permite realizar acciones sobre los planes de la aplicación', '0'), ('13', 'Gestión de respuestas posibles', 'Permite realizar acciones sobre las respuestas posibles de la aplicación', '0'), ('14', 'Gestión de procesos', 'Permite realizar acciones sobre los procesos de la aplicación', '0'), ('15', 'Gestión de procedimientos', 'Permite realizar acciones sobre los procedimientos de la aplicación', '0');
+INSERT INTO `funcionalidad` VALUES (1,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),
+(2,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),
+(3,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),
+('4', 'Gestión de noticias', 'Permite realizar acciones sobre las noticias de la aplicación', '0'),
+('5', 'Gestión de objetivos', 'Permite realizar acciones sobre los objetivos de la aplicación', '0'),
+(6,'Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0),
+('7', 'Gestión de planes', 'Permite realizar acciones sobre los planes de la aplicación', '0'), 
+('8', 'Gestión de procedimientos', 'Permite realizar acciones sobre los procedimientos de la aplicación', '0'),
+('9', 'Gestión de procedimientos ejecutados', 'Permite realizar acciones sobre los procedimientos ejecutados por los usuarios de la aplicación', '0'),
+('10', 'Gestión de procesos', 'Permite realizar acciones sobre los procesos de la aplicación', '0'),
+('11', 'Gestión de procesos ejecutados', 'Permite realizar acciones sobre los procesos ejecutados por los usuarios de la aplicación', '0'),
+('12', 'Gestión de respuestas posibles', 'Permite realizar acciones sobre las respuestas posibles de la aplicación', '0'), 
+(13,'Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0),
+(14,'Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0),
+(15,'Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0),
+(16,'Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0),
+(17,'Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0);
 UNLOCK TABLES;
 
 --
@@ -126,7 +147,6 @@ CREATE TABLE `logacciones` (
 --
 
 LOCK TABLES `logacciones` WRITE;
-INSERT INTO `logacciones` VALUES (1,'aicuna','Login','com.sds.service.login.model.Login@1180aee','2022-01-15 00:00:00'),(2,'aicuna','Login','Login [usuario=aicuna, passwdUsuario=aicuna]','2022-01-15 00:00:00');
 UNLOCK TABLES;
 
 --
@@ -148,7 +168,6 @@ CREATE TABLE `logexcepciones` (
 --
 
 LOCK TABLES `logexcepciones` WRITE;
-INSERT INTO `logexcepciones` VALUES (1,'usuario_generico','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','2022-01-15 00:00:00'),(2,'aicuna','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','2022-01-15 00:00:00'),(3,'pepito','USUARIO_NO_ENCONTRADO_EXCEPTION','No se ha encontrado el usuario','2022-01-15 00:00:00'),(4,'aicuna','PASSWORD_INCORRECTO_EXCEPTION','El password es incorrecto','2022-01-15-00-00 00:00:00'),(5,'pepito','USUARIO_NO_ENCONTRADO_EXCEPTION','No se ha encontrado el usuario','2022-01-15-00-00 00:00:00');
 UNLOCK TABLES;
 
 --
@@ -242,7 +261,9 @@ CREATE TABLE `rol` (
 --
 
 LOCK TABLES `rol` WRITE;
-INSERT INTO `rol` VALUES (1,'admin','admin',0),(2,'usuario','Contendra a todos los usuarios registrados de la aplicacion',0),(3,'superadministrador','Contendrá a todos los superadministradores de la aplicacion',1);
+INSERT INTO `rol` VALUES (1,'admin','Contendrá a todos los administradores de la aplicación',0),
+(2,'usuario','Contendra a todos los usuarios registrados de la aplicacion',0),
+(3,'gestor','Contendrá a todos los gestores de la aplicación',1);
 UNLOCK TABLES;
 
 --
@@ -271,7 +292,7 @@ CREATE TABLE `rolaccionfuncionalidad` (
 --
 
 LOCK TABLES `rolaccionfuncionalidad` WRITE;
-INSERT INTO `rolaccionfuncionalidad` VALUES (1,1,1),(1,1,2),(1,1,3),(1,1,4),(1,1,5),(1,1,6),(1,1,7),(1,1,8),(1,1,9);
+INSERT INTO `rolaccionfuncionalidad` VALUES (1,1,1), (1,2,1), (1,3,1), (1,4,1), (1,5,1), (1,6,1);
 UNLOCK TABLES;
 
 --

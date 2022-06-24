@@ -86,6 +86,7 @@ arrayEN={
 	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continue procedure',
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedure completed',
 	'ICON_PLAN': 'Plan',
+	'ICONO_UPLOAD' : 'Upload request',
 
 	//Mensajes error
 	'ERROR': 'WARNING',
@@ -384,6 +385,8 @@ arrayEN={
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Available procedures',
 	'GESTION_PROCESOS' : 'Process  management',
 	'GESTION_PROCESOS_NO_ADMIN' : 'Processes',
+	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Executed procedures management',
+	'GESTION_PROCESOS_EJECUTADOS' : 'Executed process management',
 	'REACTIVATE_PROCEDIMIENTO' : 'REACTIVATE PROCEDURE',
 	'DELETE_PROCEDIMIENTO' : 'DELETE PROCEDURE',
 	'EDIT_PROCEDIMIENTO' : 'EDIT PROCEDURE',
