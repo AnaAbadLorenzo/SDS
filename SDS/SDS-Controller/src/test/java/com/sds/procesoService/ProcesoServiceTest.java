@@ -309,10 +309,10 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_modificarProcesoNombreProcesoVacio()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ProcesoNoExisteException, ProcesoAsociadoUsuarioProcedimientoException {
+	public void ProcesoService_modificarProcesoNombreProcesoVacio() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoYaExisteException,
+			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoNoExisteException,
+			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.NOMBRE_PROCESO_VACIO);
 
 		String respuesta = StringUtils.EMPTY;
@@ -322,9 +322,10 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_modificarProcesoDescripcionProcesoVacio() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
-			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException {
+	public void ProcesoService_modificarProcesoDescripcionProcesoVacio()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ProcesoNoExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.DESCRIPCION_PROCESO_VACIO);
 
 		String respuesta = StringUtils.EMPTY;
@@ -335,9 +336,10 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_modificarProcesoFechaProcesoVacio() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
-			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException {
+	public void ProcesoService_modificarProcesoFechaProcesoVacio()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ProcesoNoExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.FECHA_PROCESO_VACIA);
 
 		String respuesta = StringUtils.EMPTY;
@@ -348,9 +350,10 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_modificarProcesoDatosProcesoVacio() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
-			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException {
+	public void ProcesoService_modificarProcesoDatosProcesoVacio()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ProcesoNoExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.DATOS_PROCESO_VACIOS);
 
 		String respuesta = StringUtils.EMPTY;
@@ -361,10 +364,10 @@ public class ProcesoServiceTest {
 	}
 
 	@Test(expected = ProcesoNoExisteException.class)
-	public void ProcesoService_modificarProcesoNoExiste()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException {
+	public void ProcesoService_modificarProcesoNoExiste() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException {
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_NO_EXISTE);
 
@@ -485,11 +488,12 @@ public class ProcesoServiceTest {
 	}
 
 	@Test(expected = ProcesoNoExisteException.class)
-	public void ProcesoService_eliminarProcesoNoExiste() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
-			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
-			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
-			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException {
+	public void ProcesoService_eliminarProcesoNoExiste()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
+			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException,
+			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
+			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException {
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_NO_EXISTE);
 
