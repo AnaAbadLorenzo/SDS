@@ -72,7 +72,9 @@ public class SDSApplication extends SpringBootServletInitializer {
 					.permitAll().antMatchers(HttpMethod.POST, "/plan/*").permitAll()
 					.antMatchers(HttpMethod.GET, "/procedimiento/*").permitAll()
 					.antMatchers(HttpMethod.POST, "/procedimiento").permitAll()
-					.antMatchers(HttpMethod.POST, "/procedimiento/*").permitAll().anyRequest().authenticated();
+					.antMatchers(HttpMethod.POST, "/procedimiento/*").permitAll()
+					.antMatchers(HttpMethod.POST, "/evidencia").permitAll().antMatchers(HttpMethod.POST, "/evidencia/*")
+					.permitAll().anyRequest().authenticated();
 
 		}
 	}

@@ -32,3 +32,34 @@ function addObjetivosNiveles(){
 function eliminarObjetivosNiveles(idObjetivosNiveles){
 	$("#" + idObjetivosNiveles).remove();
 }
+
+/**Función que envía el fichero a back IMPORTANTE ES UNA FUNCIÓN DE PRUEBA QUE HABRÁ QUE CAMBIAR
+ * PARA QUE QUEDE COMO LAS DEMÁS COMO UNA PROMESA, ESTO ES SÓLO PARA EL ENVIO DEL FICHERO CON 
+ * PETICIÓN AJAX*/
+function enviarRespuesta(idFile){
+    var token = getCookie('tokenUsuario');
+    var evidencia = $("#" + idFile).prop("files")[0];
+
+    var formData = new FormData();
+    formData.append("file", evidencia);
+    formData.append("idProceso", 1);
+    formData.append("idProcedimientoUsuario", 1);
+
+    $.ajax({
+      	method: "POST",
+      	url: "http://localhost:8090/SDS/evidencia/guardaEvidencia",
+      	contentType : "application/json",
+      	data: formData,  
+      	cache: false,
+    	contentType: false,
+    	processData: false,
+      	headers: {'Authorization': token},
+      	}).done(res => {
+        	if (res.code != 'PLAN_GUARDADO') {
+          	reject(res);
+        	}
+        	resolve(res);
+      	}).fail( function( jqXHR ) {
+        	errorFailAjax(jqXHR.status);
+      	});
+}
