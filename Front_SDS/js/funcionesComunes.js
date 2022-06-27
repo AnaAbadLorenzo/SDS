@@ -875,6 +875,14 @@ function cargarHref(dato){
 		case 'Gestión de procesos' :
 			href = "GestionDeProcesos.html";
 		break;
+
+		case 'Gestión de procedimientos ejecutados' : 
+			href = "GestionDeProcedimientosEjecutados.html";
+		break;
+
+		case 'Gestión de procesos ejecutados' : 
+			href = "GestionDeProcesosEjecutados.html";
+		break;
 	}
 
 	return href;
@@ -960,6 +968,22 @@ function cargarClass(dato, rol){
 			} else {
 				clase="GESTION_PROCEDIMIENTOS";
 			}
+		break;
+
+		case 'Gestión de procesos':
+			if (rol !== 'admin' && rol !== 'gestor'){
+				clase = "GESTION_PROCESOS_NO_ADMIN";
+			} else {
+				clase="GESTION_PROCESOS";
+			}
+		break; 
+
+		case 'Gestión de procedimientos ejecutados' : 
+			clase = "GESTION_PROCEDIMIENTOS_EJECUTADOS";
+		break;
+
+		case 'Gestión de procesos ejecutados' : 
+			clase = "GESTION_PROCESOS_EJECUTADOS";
 		break;
 	}
 

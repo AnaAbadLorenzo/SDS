@@ -85,6 +85,7 @@ arrayGA={
 	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continuar procedemiento',
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedemiento finalizado',
 	'ICON_PLAN': 'Plan',
+	'ICONO_UPLOAD' : 'Enviar resposta',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
@@ -378,6 +379,8 @@ arrayGA={
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedementos dispoñibles',
 	'GESTION_PROCESOS' : 'Xestión de procesos',
 	'GESTION_PROCESOS_NO_ADMIN' : 'Procesos',
+	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Xestión de procedimientos executados',
+	'GESTION_PROCESOS_EJECUTADOS' : 'Xestión de procesos executados',
 	'REACTIVATE_PROCEDIMIENTO' : 'REACTIVAR PROCEDEMENTO',
 	'DELETE_PROCEDEMIENTO' : 'ELIMINAR PROCEDEMENTO',
 	'EDIT_PROCEDIMIENTO' : 'EDITAR PROCEDEMENTO',

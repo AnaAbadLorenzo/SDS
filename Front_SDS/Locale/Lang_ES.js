@@ -89,6 +89,7 @@ arrayES={
 	'ICON_CONTINUAR_PROCEDIMIENTO' : 'Continuar procedimiento',
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedimiento finalizado',
 	'ICON_PLAN': 'Plan',
+	'ICONO_UPLOAD' : 'Enviar respuesta',
 
 	//Mensajes error
 	'ERROR': 'ERROR',
@@ -384,6 +385,8 @@ arrayES={
 	'GESTION_PROCEDIMIENTOS_DESDE_PLAN' : 'Procedimientos disponibles',
 	'GESTION_PROCESOS' : 'Gestión de procesos',
 	'GESTION_PROCESOS_NO_ADMIN' : 'Procesos',
+	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Gestión de procedimientos ejecutados',
+	'GESTION_PROCESOS_EJECUTADOS' : 'Gestión de procesos ejecutados',
 	'REACTIVATE_PROCEDIMIENTO' : 'REACTIVAR PROCEDIMIENTO',
 	'DELETE_PROCEDIMIENTO' : 'ELIMINAR PROCEDIMIENTO',
 	'EDIT_PROCEDIMIENTO' : 'EDITAR PROCEDIMIENTO',
@@ -392,6 +395,7 @@ arrayES={
 	'ADD_PROCEDIMIENTO' : 'AÑADIR PROCEDIMIENTO',
 	'OPCION_DEFECTO_PLAN' : 'Por favor, selecciona el plan',
 	'PUBLICAR_PROCEDIMIENTO' : '¿Publicar procedimiento?',
+
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
