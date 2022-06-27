@@ -400,6 +400,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 									String.format(Constantes.TITULO_ANADIR_NOTICIA_PROCEDIMIENTO,
 											procedimientoEntity.getNombreProcedimiento()),
 									String.format(Constantes.TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO,
+											procedimientoEntity.getPlan().getNombrePlan(),
 											procedimientoEntity.getNombreProcedimiento(),
 											procedimientoEntity.getDescripProcedimiento(), fechaIntroducidaUsuario),
 									new Date());

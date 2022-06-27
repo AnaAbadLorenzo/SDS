@@ -146,7 +146,7 @@ public class Constantes {
 
 	// Constantes para la adiccion de noticias
 	public static final String TITULO_ANADIR_NOTICIA_PROCEDIMIENTO = "Se ha publicado el procedimiento %s";
-	public static final String TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO = "Se ha publicado el procedimiento %s, con descripción %s el día %s";
+	public static final String TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO = "Se ha publicado el procedimiento asociado al plan %s, con nombre %s y descripción %s el día %s";
 
 	// Constantes para las acciones
 	public static final String AÑADIR = "Añadir";

@@ -1,0 +1,134 @@
+2022-06-24 12:42:34,413 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4924 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:42:40,057 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:42:40,075 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:42:59,190 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4924 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:42:59,191 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:42:59,193 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:43:01,721 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4924 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:43:01,721 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:43:01,722 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:43:03,875 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4924 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:43:03,876 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:43:03,877 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:43:05,616 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4924 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:43:05,617 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:43:05,619 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:43:07,521 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4924 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:43:07,521 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:43:07,521 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:44:23,768 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 2476 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:44:23,771 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:44:23,775 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:44:46,564 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 11944 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:44:46,567 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:44:46,569 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:44:59,750 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 11944 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:44:59,750 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:44:59,752 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:45:02,913 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 11944 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:45:02,913 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:45:02,914 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:45:05,360 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 11944 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:45:05,360 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:45:05,361 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:45:07,636 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 11944 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:45:07,637 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:45:07,637 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:45:59,289 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 6220 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:45:59,293 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:45:59,296 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:46:07,892 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 6220 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:46:07,892 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:46:07,895 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:46:11,091 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 6220 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:46:11,092 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:46:11,092 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:46:13,363 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 6220 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:46:13,364 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:46:13,365 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:47:57,532 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 2232 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:47:57,535 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:47:57,537 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:48:08,406 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 11.451 seconds (JVM running for 18.216)
+2022-06-24 12:54:15,872 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 2472 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:54:15,875 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:54:15,883 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:54:26,434 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 11.293 seconds (JVM running for 16.459)
+2022-06-24 12:58:40,629 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 13764 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 12:58:40,633 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 12:58:40,636 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 12:58:50,757 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 10.719 seconds (JVM running for 19.24)
+2022-06-24 13:00:20,304 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 14832 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 13:00:20,308 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 13:00:20,310 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 13:00:33,058 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 13.626 seconds (JVM running for 18.574)
+2022-06-24 13:01:27,010 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 4320 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 13:01:27,013 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 13:01:27,022 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 13:01:40,570 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 14.491 seconds (JVM running for 16.226)
+2022-06-24 13:04:13,166 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 8076 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 13:04:13,171 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 13:04:13,174 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 13:04:25,517 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 13.22 seconds (JVM running for 14.915)
+2022-06-24 13:05:06,166 INFO [main] org.springframework.boot.StartupInfoLogger : Starting ProcesoServiceTest using Java 17 on DESKTOP-U349J0B with PID 5488 (started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 13:05:06,169 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 13:05:06,173 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 13:05:17,095 INFO [main] org.springframework.boot.StartupInfoLogger : Started ProcesoServiceTest in 11.509 seconds (JVM running for 12.746)
+2022-06-24 14:09:37,156 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 3256 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-24 14:09:37,160 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-24 14:09:37,161 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-24 14:09:44,252 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 7.521 seconds (JVM running for 9.166)
+2022-06-24 14:26:39,201 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TITULO_NOTICIA_VACIO - El título de la noticia no puede ser vacío'
+2022-06-24 14:26:39,202 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TITULO_NOTICIA_VACIO - El título de la noticia no puede ser vacío'
+2022-06-24 14:26:39,202 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Vacío'
+2022-06-24 14:26:39,203 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,203 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor ''
+2022-06-24 14:26:39,203 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'tituloNoticia'
+2022-06-24 14:26:39,203 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TITULO_NOTICIA_ALFABETICO_INCORRECTO - El título de la noticia solo puede contener letras'
+2022-06-24 14:26:39,204 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TITULO_NOTICIA_ALFABETICO_INCORRECTO - El título de la noticia solo puede contener letras'
+2022-06-24 14:26:39,204 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfabético y caracteres especiales'
+2022-06-24 14:26:39,204 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,204 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor '*@@@@'
+2022-06-24 14:26:39,204 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'tituloNoticia'
+2022-06-24 14:26:39,206 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TITULO_NOTICIA_MENOR_QUE_3 - El título de la noticia no puede ser menor que 3'
+2022-06-24 14:26:39,206 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TITULO_NOTICIA_MENOR_QUE_3 - El título de la noticia no puede ser menor que 3'
+2022-06-24 14:26:39,206 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfabético menor de 3 caracteres'
+2022-06-24 14:26:39,207 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,207 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor 'ti'
+2022-06-24 14:26:39,207 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'tituloNoticia'
+2022-06-24 14:26:39,208 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TITULO_NOTICIA_MAYOR_QUE_256 - El título de la noticia no puede ser mayor que 256'
+2022-06-24 14:26:39,208 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TITULO_NOTICIA_MAYOR_QUE_256 - El título de la noticia no puede ser mayor que 256'
+2022-06-24 14:26:39,208 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfabético mayor de 256 caracteres'
+2022-06-24 14:26:39,208 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,208 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssssssss'
+2022-06-24 14:26:39,209 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'tituloNoticia'
+2022-06-24 14:26:39,209 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'Avanza al siguiente campo'
+2022-06-24 14:26:39,209 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'Avanza al siguiente campo'
+2022-06-24 14:26:39,209 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfabético sin caracateres especiales, tamaño mayor que 3'
+2022-06-24 14:26:39,209 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Éxito'
+2022-06-24 14:26:39,210 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor 'Titulo'
+2022-06-24 14:26:39,211 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'tituloNoticia'
+2022-06-24 14:26:39,217 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TEXTO_NOTICIA_VACIO - El texto de la noticia no puede ser vacío'
+2022-06-24 14:26:39,218 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TEXTO_NOTICIA_VACIO - El texto de la noticia no puede ser vacío'
+2022-06-24 14:26:39,218 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Vacío'
+2022-06-24 14:26:39,218 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,218 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor ''
+2022-06-24 14:26:39,218 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'textoNoticia'
+2022-06-24 14:26:39,218 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO - El texto de la noticia solo puede contener letras, números y signos de puntuacion'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TEXTO_NOTICIA_ALFANMERICO_SIGNOS_PUNTUACION_INCORRECTO - El texto de la noticia solo puede contener letras, números y signos de puntuacion'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfabético y caracteres especiales'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor '@@*********'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'textoNoticia'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'TEXTO_NOTICIA_MENOR_QUE_3 - El texto de la noticia no puede ser menor que 3'
+2022-06-24 14:26:39,219 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'TEXTO_NOTICIA_MENOR_QUE_3 - El texto de la noticia no puede ser menor que 3'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfabético menor de 3 caracteres'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Error'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor 'Es'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'textoNoticia'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Obtenido 'Avanza al siguiente campo'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Resultado Esperado 'Avanza al siguiente campo'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Prueba 'Alfanumérico que puede contener signos de puntuación'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Tipo Prueba 'Éxito'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Valor 'Bienvenidos,amigos.'
+2022-06-24 14:26:39,220 DEBUG [http-nio-8090-exec-1] com.sds.service.test.util.CrearDatosPruebaAtributos : Campo 'textoNoticia'

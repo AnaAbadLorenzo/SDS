@@ -34,6 +34,7 @@
 	comprobarTokenUsuario('procedimiento');
   	await includeTopMenu('misprocedimiento');
     await funcionalidadesUsuario();
+    await cargarProcedimientosUsuarioEjecutados();
     posicionarTitulo('misprocedimiento');modalCambioPass();cargarIdioma();includeFooter();setLang('');
   })();">  
 	<div id="topMenu"></div>
@@ -50,100 +51,8 @@
 		
 	</div>
 
-	<div class="procedimientos overflow-auto">
+	<div id="misProcedimientos" class="procedimientos overflow-auto" style="display: none;">
 		<div id="procedimientos" class="row">
-			<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Procedimiento 1</div>
-                      	<div class="card-text">Procedimiento 1</div>
-                      	<div class="procesos">0/10</div>
-                      	<div class="puntuacion" >Puntuación: 0%</div>
-                      	<div class="fecha">20/05/2022</div>
-                      	<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario();"/>
-					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
-					    </div>
-					    <div id="continuarProcedimiento" class="tooltip11 continuarIcon">
-					        <img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>
-					        <span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>
-					    </div>
-					    <div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">
-					        <img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>
-					        <span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 planIcon">
-					        <img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>
-					        <span class="tooltiptext iconPlan ICON_PLAN"></span>
-					    </div>
-                    	<div class="card-title-plan">Plan: Plan</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Procedimiento 2</div>
-                      	<div class="card-text">Procedimiento 2</div>
-                      	<div class="procesos">5/10</div>
-                      	<div class="puntuacion">Puntuación: 50%</div>
-                      	<div class="fecha">20/05/2022</div>
-                      	<div id="iniciarProcedimiento2" class="tooltip10 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento2" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=""/>
-					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
-					    </div>
-					    <div id="continuarProcedimiento2" class="tooltip11 continuarIcon">
-					        <img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick=""/>
-					        <span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>
-					    </div>
-					    <div id="finalizadoProcedimiento2" class="tooltip12 finalizadoIcon">
-					        <img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>
-					        <span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 planIcon">
-					        <img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>
-					        <span class="tooltiptext iconPlan ICON_PLAN"></span>
-					    </div>
-                    	<div class="card-title-plan">Plan: Plan</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">
-                <div class="card">
-                    <div class="card-body-plan">
-                    	<div class="card-title">Procedimiento 3</div>
-                      	<div class="card-text">Procedimiento 3</div>
-                      	<div class="procesos">10/10</div>
-                      	<div class="puntuacion">Puntuación: 100%</div>
-                      	<div class="fecha">20/05/2022</div>
-                      	<div id="iniciarProcedimiento3" class="tooltip10 procedimientoIcon">
-					        <img id="iconoIniciarProcedimiento3" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=""/>
-					        <span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>
-					    </div>
-					    <div id="continuarProcedimiento3" class="tooltip11 continuarIcon">
-					        <img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>
-					        <span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>
-					    </div>
-					    <div id="finalizadoProcedimiento3" class="tooltip12 finalizadoIcon">
-					        <img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado.png" alt="Procedimiento finalizado" onclick=""/>
-					        <span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>
-					    </div>
-                    </div>
-                    <div class="card-footer">
-                    	<div class="tooltip8 planIcon">
-					        <img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan"/>
-					        <span class="tooltiptext iconPlan ICON_PLAN"></span>
-					    </div>
-                    	<div class="card-title-plan">Plan: Plan</div>
-                    </div>
-                </div>
-            </div>
 		</div>
 	</div>
 

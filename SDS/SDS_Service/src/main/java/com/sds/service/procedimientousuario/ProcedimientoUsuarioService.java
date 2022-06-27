@@ -22,7 +22,7 @@ public interface ProcedimientoUsuarioService {
 			final Date fechaProcedimiento, final UsuarioEntity usuario, final ProcedimientoEntity procedimiento,
 			final int inicio, final int tamanhoPagina);
 
-	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos();
 
 	String anadirProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,

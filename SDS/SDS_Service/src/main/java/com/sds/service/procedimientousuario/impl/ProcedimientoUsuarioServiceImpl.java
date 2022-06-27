@@ -182,14 +182,14 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 	}
 
 	@Override
-	public ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
+	public ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos() {
 		final List<ProcedimientoUsuarioEntity> procedimientoUsuarioToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 		List<ProcedimientoUsuarioEntity> procedimientosUsuario = new ArrayList<>();
 		Integer numberTotalResults = 0;
 
 		procedimientosUsuario = entityManager.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDALL)
-				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+				.getResultList();
 		numberTotalResults = procedimientoUsuarioRepository.numberFindAllProcedimientosUsuario();
 
 		if (!procedimientosUsuario.isEmpty()) {
@@ -215,7 +215,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		}
 
 		final ReturnBusquedas<ProcedimientoUsuarioEntity> result = new ReturnBusquedas<>(procedimientoUsuarioToret,
-				datosBusqueda, numberTotalResults, procedimientoUsuarioToret.size(), inicio);
+				datosBusqueda, numberTotalResults, procedimientoUsuarioToret.size(), 0);
 
 		return result;
 
