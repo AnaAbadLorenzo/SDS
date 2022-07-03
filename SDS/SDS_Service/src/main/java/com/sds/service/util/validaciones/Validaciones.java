@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.model.AccionEntity;
 import com.sds.model.EmpresaEntity;
@@ -514,11 +515,42 @@ public class Validaciones {
 		}
 	}
 
-	public boolean comprobarProcedimientoUsuarioBlank(final ProcedimientoUsuarioEntity procedimientoUsuarioEntity)
-			throws ParseException {
-		if (!tieneValor(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario().toString())
-				|| StringUtils.isBlank(procedimientoUsuarioEntity.getUsuario().getDniUsuario())
-				|| !tieneValor(procedimientoUsuarioEntity.getProcedimiento().getIdProcedimiento().toString())) {
+	public boolean comprobarProcedimientoUsuarioBlank(final ProcedimientoUsuarioEntity procedimientoUsuarioEntity) {
+		if (!comprobarPuntuacionProcedimientoUsuarioBlank(
+				procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario())
+				|| !comprobarUsuarioProcedimientoUsuario(procedimientoUsuarioEntity.getUsuario())
+				|| !comprobarProcedimientoProcedimientoUsuario(procedimientoUsuarioEntity.getProcedimiento())) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	public boolean comprobarPuntuacionProcedimientoUsuarioBlank(final Integer puntuacionProcedimientoUsuario) {
+		if (puntuacionProcedimientoUsuario != null) {
+			if (!tieneValor(puntuacionProcedimientoUsuario.toString())) {
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+
+	}
+
+	public boolean comprobarUsuarioProcedimientoUsuarioBlank(final String usuario) {
+		if (StringUtils.isBlank(usuario)) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
+	public boolean comprobarProcedimientoProcedimientoUsuarioBlank(final Integer idProcedimiento) {
+		if (!tieneValor(idProcedimiento.toString())) {
 			return false;
 		} else {
 			return true;
@@ -576,10 +608,50 @@ public class Validaciones {
 
 	}
 
+	public boolean comprobarEvidenciaBlank(final Integer idProceso, final Integer idProcedimientoUsuario,
+			final MultipartFile evidencia) {
+		if (!tieneValor(idProceso.toString()) || !tieneValor(idProcedimientoUsuario.toString())
+				|| evidencia.isEmpty()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
 	private boolean tieneValor(final String value) {
-		if (value != null && Integer.parseInt(value) > 0) {
+		if (value != null && Integer.parseInt(value) >= 0) {
 			return true;
 		}
 		return false;
 	}
+
+	private boolean comprobarUsuarioProcedimientoUsuario(final UsuarioEntity usuario) {
+		if (usuario != null) {
+			if (StringUtils.isBlank(usuario.getUsuario())) {
+				return false;
+			} else {
+				return true;
+			}
+
+		} else {
+
+			return false;
+
+		}
+	}
+
+	private boolean comprobarProcedimientoProcedimientoUsuario(final ProcedimientoEntity procedimiento) {
+		if (procedimiento != null) {
+			if (!tieneValor(procedimiento.getIdProcedimiento().toString())) {
+				return false;
+			} else {
+				return true;
+			}
+
+		} else {
+			return false;
+
+		}
+	}
+
 }

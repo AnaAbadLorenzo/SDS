@@ -26,7 +26,7 @@ public interface ProcedimientoUsuarioService {
 
 	String anadirProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
-			ParseException, ProcedimientoUsuarioYaExisteException, ProcedimientoNoExisteException;
+			ProcedimientoUsuarioYaExisteException, ProcedimientoNoExisteException;
 
 	String modificarProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
@@ -34,7 +34,8 @@ public interface ProcedimientoUsuarioService {
 
 	String eliminaProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,
-			ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException, ProcedimientoUsuarioNoExisteException;
+			ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException, ProcedimientoUsuarioNoExisteException,
+			UsuarioNoEncontradoException, ParseException, ProcedimientoNoExisteException;
 
 	void deleteProcedimientoUsuario(final ProcedimientoUsuarioEntity procedimientoUsuarioEntity)
 			throws ParseException, ProcedimientoUsuarioNoExisteException;

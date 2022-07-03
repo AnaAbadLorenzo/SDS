@@ -2,6 +2,7 @@ package com.sds.controller.evidencia;
 
 import java.io.IOException;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,21 +31,50 @@ public class EvidenciaController {
 
 	@PostMapping(value = "/guardaEvidencia")
 	@ResponseBody
-	public RespEntity guardaEvidencia(@RequestParam("idProceso") final String idProceso,
-			@RequestParam("idProcedimientoUsuario") final String idProcedimientoUsuario,
+	public RespEntity guardaEvidencia(@RequestParam("idProceso") final Integer idProceso,
+			@RequestParam("idProcedimientoUsuario") final Integer idProcedimientoUsuario,
 			@RequestParam("file") final MultipartFile document) {
 
-		// TODO modificar porque ahora sólo se va a hacer la parte de guardar en una
-		// carpeta la evidencia
+		String resultado = StringUtils.EMPTY;
 
 		try {
-			evidenciaService.guardarEvidencia(document);
+			final Boolean evidenciaValida = validaciones.comprobarEvidenciaBlank(idProceso, idProcedimientoUsuario,
+					document);
+
+			if (evidenciaValida) {
+				resultado = evidenciaService.guardarEvidencia(idProceso, idProcedimientoUsuario, document);
+				return new RespEntity(RespCode.EVIDENCIA_GUARDADA, resultado);
+			}
+
 		} catch (final IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return new RespEntity(RespCode.LECTURA_FICHERO_ERRONEA, resultado);
 		}
 
-		return new RespEntity(RespCode.PROCESO_ENCONTRADO, "");
+		return new RespEntity(RespCode.EVIDENCIA_VACIA, resultado);
+	}
+
+	@PostMapping(value = "/modificaEvidencia")
+	@ResponseBody
+	public RespEntity modificaEvidencia(@RequestParam("idProceso") final Integer idProceso,
+			@RequestParam("idProcedimientoUsuario") final Integer idProcedimientoUsuario,
+			@RequestParam("file") final MultipartFile document) {
+
+		String resultado = StringUtils.EMPTY;
+
+		try {
+			final Boolean evidenciaValida = validaciones.comprobarEvidenciaBlank(idProceso, idProcedimientoUsuario,
+					document);
+
+			if (evidenciaValida) {
+				resultado = evidenciaService.modificarEvidencia(idProceso, idProcedimientoUsuario, document);
+				return new RespEntity(RespCode.EVIDENCIA_GUARDADA, resultado);
+			}
+
+		} catch (final IOException e) {
+			return new RespEntity(RespCode.LECTURA_FICHERO_ERRONEA, resultado);
+		}
+
+		return new RespEntity(RespCode.EVIDENCIA_VACIA, resultado);
 	}
 
 }

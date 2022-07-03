@@ -19,7 +19,10 @@ public interface ProcedimientoUsuarioProcesoRepository
 	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProceso(final ProcesoEntity proceso);
 
 	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProcedimientoUsuario(
-			final ProcedimientoUsuarioEntity procedimientoUsuario);
+			final Integer idProcedimientoUsuario);
+
+	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProcedimientoUsuarioAndIdProceso(
+			final Integer idProcedimientoUsuario, final Integer idProceso);
 
 	ProcedimientoUsuarioProcesoEntity findProcedimientoUsuarioProceso(
 			final ProcedimientoUsuarioEntity procedimientoUsuario, final ProcesoEntity proceso);

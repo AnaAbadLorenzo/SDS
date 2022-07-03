@@ -1,0 +1,113 @@
+{
+
+	"buscarProcedimientoUsuario" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+
+	"puntuacionProcedimientoUsuarioVacio" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : "",
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"usuarioProcedimientoUsuarioVacio" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"procedimientoProcedimientoUsuarioVacio" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"datosProcedimientoUsuarioVacios" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" :"",
+		"fechaProcedimientoUsuario" : "",
+		"borradoProcedimientoUsuario" : "",
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+
+	
+	"guardarProcedimientoUsuario" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"eliminarProcedimientoUsuario" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"procedimientoUsuarioNoExiste" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"procedimientoUsuarioAsociadoProceso" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"modificarProcedimientoUsuario" : {
+		"user": "ana",
+		
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	}
+}

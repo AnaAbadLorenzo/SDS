@@ -372,6 +372,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }
 
       setCookie('numeroPagina', numPagCookie);
+      comprobarOcultos();
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -905,7 +906,7 @@ function gestionarPermisosRol(idElementoList) {
         document.getElementById('cabecera').style.display = "block";
         document.getElementById('tablaDatos').style.display = "block";
         document.getElementById('filasTabla').style.display = "block";
-         $('#itemPaginacion').attr('hidden', false);
+        $('#itemPaginacion').attr('hidden', false);
 
         if(document.getElementById('cabeceraEliminados').style.display == "block"){
            document.getElementById('cabecera').style.display = "none";

@@ -19,9 +19,13 @@ public interface ProcesoProcedimientoRepository
 
 	Integer numberFindProcesoProcedimiento(final Integer idProceso, final Integer idProcedimiento);
 
+	Integer numberFindProcesoProcedimientoByIdProcedimiento(final Integer idProcedimiento);
+
 	List<Integer> findIdProcesoByIdProcedimiento(final Integer idProcedimiento);
 
 	List<Integer> findIdProcedimientoByIdProceso(final Integer idProceso);
+
+	List<Integer> findProcedimientoByIdProcedimiento(final Integer idProcedimiento);
 
 	@Transactional
 	@Modifying

@@ -19,6 +19,8 @@ var urlRespuestaPosible = "/respuestaPosible";
 var urlPersona = "/persona";
 var urlPlan = "/plan";
 var urlProcedimiento = "/procedimiento";
+var urlProcedimientosUsuario = "/procedimientoUsuario";
+var urlProcesoProcedimiento = "/procesoProcedimiento";
 var urlTest = "/test";
 var urlAtributos = "/atributos";
 var urlAcciones = "/acciones";
@@ -133,6 +135,14 @@ var urlPeticionAjaxListadoProcedimientosPlan = urlComun + urlProcedimiento + "/l
 var urlPeticionAjaxEditarProcedimiento = urlComun + urlProcedimiento  + "/modificarProcedimiento";
 var urlPeticionAjaxAddProcedimiento = urlComun + urlProcedimiento  + "/procedimiento";
 var urlPeticionAjaxDeleteProcedimiento = urlComun + urlProcedimiento  + "/eliminarProcedimiento";
+
+/**Urls procedimientoUsuario **/
+var urlPeticionAjaxListarProcedimientosUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientosUsuario';
+var urlPeticionAjaxAddProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/procedimientoUsuario';
+var urlPeticionAjaxListarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuario';
+
+/**Urls procesoProcedimiento **/
+var urlPeticionAjaxListadoProcesosProcedimiento = urlComun + urlProcesoProcedimiento + '/listarProcesosProcedimiento';
 
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";

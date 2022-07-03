@@ -302,18 +302,6 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 		return datosPruebaAcciones;
 	}
 
-	private DatosPruebaAcciones getTestBuscarProceso(final ProcesoEntity datosEntradaAccionBuscarProceso) {
-
-		final String resultadoObtenido = buscarProceso(datosEntradaAccionBuscarProceso);
-
-		final String resultadoEsperado = CodigosMensajes.BUSCAR_PROCESO_CORRECTO + " - "
-				+ Mensajes.PROCESO_BUSCADO_CORRECTAMENTE;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO, getValorProceso(datosEntradaAccionBuscarProceso));
-
-	}
-
 	@Override
 	public List<DatosPruebaAcciones> getPruebasAccionesProcesoGuardar()
 			throws IOException, ParseException, java.text.ParseException {
@@ -422,6 +410,18 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 		datosPruebaAcciones.add(getTestReactivarProcesoNoExiste(datosEntradaReactivarProcesoNoExiste));
 
 		return datosPruebaAcciones;
+	}
+
+	private DatosPruebaAcciones getTestBuscarProceso(final ProcesoEntity datosEntradaAccionBuscarProceso) {
+
+		final String resultadoObtenido = buscarProceso(datosEntradaAccionBuscarProceso);
+
+		final String resultadoEsperado = CodigosMensajes.BUSCAR_PROCESO_CORRECTO + " - "
+				+ Mensajes.PROCESO_BUSCADO_CORRECTAMENTE;
+
+		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
+				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO, getValorProceso(datosEntradaAccionBuscarProceso));
+
 	}
 
 	private DatosPruebaAcciones getTestGuardarProcesoCorrecto(final ProcesoEntity datosEntradaAccionGuardarProceso)
@@ -1002,7 +1002,7 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 			final ProcedimientoUsuarioEntity procedimientoUsuario = new ProcedimientoUsuarioEntity(0, new Date(), 0,
 					procedimiento, usuario);
 			procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuario);
-			final ProcedimientoUsuarioEntity procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
+			final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
 					.findProcedimientoUsuarioByProcedimientoAndUsuario(usuario, procedimientoEncontrado);
 			final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(proceso.getNombreProceso(),
 					proceso.getDescripProceso(), resultado);
@@ -1013,7 +1013,7 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 
 			final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso = new ProcedimientoUsuarioProcesoEntity(
 					new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0),
-					procedimientoUsuarioEncontrado);
+					procedimientoUsuarioEncontrado.get(0));
 			procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProceso);
 
 			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoBD = procedimientoUsuarioProcesoRepository
@@ -1030,7 +1030,7 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 			procedimientoUsuarioProcesoRepository.deleteProcedimientoUsuarioProceso(
 					procedimientoUsuarioProcesoBD.get(0).getIdProcedimientoUsuarioProceso());
 			procedimientoUsuarioRepository
-					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
+					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
 			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
 			planRepository.deletePlan(planBDNuevo.getIdPlan());

@@ -24,6 +24,7 @@ import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcesoProcedimientoRepository;
 import com.sds.repository.ProcesoRepository;
 import com.sds.service.common.Constantes;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
@@ -64,15 +65,31 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 	}
 
 	@Override
-	public List<ProcesoProcedimientoEntity> buscarProcesoProcedimiento(final Integer idProceso,
+	public ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesoProcedimiento(final Integer idProceso,
 			final Integer idProcedimiento) {
 		final List<ProcesoProcedimientoEntity> procesoProcedimientoToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
+		List<ProcesoProcedimientoEntity> procesoProcedimientos = new ArrayList<>();
+		Integer numberTotalResults = 0;
 
-		final List<ProcesoProcedimientoEntity> procesoProcedimientos = entityManager
-				.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTO)
-				.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento)
-				.setParameter(Constantes.PROCESO_ID, idProceso).getResultList();
+		if (idProceso == null) {
+			procesoProcedimientos = entityManager
+					.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTOBYDIDPROCEDEMIENTO)
+					.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).getResultList();
+
+			numberTotalResults = procesoProcedimientoRepository
+					.numberFindProcesoProcedimientoByIdProcedimiento(idProcedimiento);
+
+		} else {
+			procesoProcedimientos = entityManager
+					.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTO)
+					.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento)
+					.setParameter(Constantes.PROCESO_ID, idProceso).getResultList();
+
+			numberTotalResults = procesoProcedimientoRepository.numberFindProcesoProcedimiento(idProceso,
+					idProcedimiento);
+
+		}
 
 		if (!procesoProcedimientos.isEmpty()) {
 			for (final ProcesoProcedimientoEntity procesoProcedimiento : procesoProcedimientos) {
@@ -87,7 +104,10 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 		datosBusqueda.add(Constantes.PROCEDIMIENTO_ID + Constantes.DOS_PUNTOS + idProcedimiento);
 		datosBusqueda.add(Constantes.PROCESO_ID + Constantes.DOS_PUNTOS + idProceso);
 
-		return procesoProcedimientoToret;
+		final ReturnBusquedas<ProcesoProcedimientoEntity> result = new ReturnBusquedas<>(procesoProcedimientoToret,
+				datosBusqueda, numberTotalResults, procesoProcedimientoToret.size(), 0);
+
+		return result;
 	}
 
 	@Override

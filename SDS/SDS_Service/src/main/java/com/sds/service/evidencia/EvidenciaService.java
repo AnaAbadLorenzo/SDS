@@ -6,5 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface EvidenciaService {
 
-	void guardarEvidencia(final MultipartFile evidencia) throws IOException;
+	String guardarEvidencia(final Integer idProceso, final Integer idProcedimientoUsuario,
+			final MultipartFile evidencia) throws IOException;
+
+	String modificarEvidencia(final Integer idProceso, final Integer idProcedimientoUsuario,
+			final MultipartFile evidencia) throws IOException;
 }

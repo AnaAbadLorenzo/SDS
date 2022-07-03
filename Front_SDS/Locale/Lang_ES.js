@@ -149,6 +149,7 @@ arrayES={
 	'RESPUESTA_POSIBLE_VACIA' : 'El texto de la respuesta posible es vacío',
 	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'La respuesta posible no existe',
 	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'La respuesta posible está asociada a un proceso',
+	'MENSAJE_CONTINUAR_PROCEDIMIENTO' : 'Usted ya ha iniciado este procedimiento. ¿Desea continuar?',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',

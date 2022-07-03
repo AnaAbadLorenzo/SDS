@@ -17,12 +17,14 @@ public interface ProcedimientoUsuarioRepository extends JpaRepository<Procedimie
 
 	List<ProcedimientoUsuarioEntity> findAllProcedimientosUsuario(final int inicio, final int tamanhoPagina);
 
-	ProcedimientoUsuarioEntity findProcedimientoUsuarioByProcedimientoAndUsuario(final UsuarioEntity usuario,
+	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByProcedimientoAndUsuario(final UsuarioEntity usuario,
 			final ProcedimientoEntity procedimiento);
 
 	Integer numberFindAllProcedimientosUsuario();
 
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByProcedimiento(final ProcedimientoEntity procedimiento);
+
+	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByUsuario(final UsuarioEntity usuario);
 
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
 			final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
@@ -31,6 +33,8 @@ public interface ProcedimientoUsuarioRepository extends JpaRepository<Procedimie
 	Integer numberFindProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
 			final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
 			final ProcedimientoEntity procedimiento);
+
+	Integer numberFindProcedimientoUsuarioByUsuario(final UsuarioEntity usuario);
 
 	Integer numberFindProcedimientoUsuarioWithoutUsuario(final Integer puntuacionProcedimientoUsuario,
 			final String fechaProcedimientoUsuario, final ProcedimientoEntity procedimiento);

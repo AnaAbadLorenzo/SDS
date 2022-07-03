@@ -1,6 +1,102 @@
 /**Función para que el usuario pueda iniciar un procedimiento*/
-function iniciarProcedimientoUsuario(){
-  window.location.href = "MisProcedimientos.html";
+async function iniciarProcedimientoUsuario(identificadorProcedimiento, funcionalidad){
+  if(funcionalidad == "volverGuardar"){
+     await anadirProcedimientoUsuarioAjaxPromesa(identificadorProcedimiento, "Si")
+    .then((res) => {
+      window.location.href = "MisProcedimientos.html";
+    }).catch((res) => {
+          if(res.code == "PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION"){
+            respuestaAjaxProcedimientoUsuario(identificadorProcedimiento);
+            document.getElementById("modal").style.display = "block";
+          }else{
+            respuestaAjaxKO(res.code);
+            document.getElementById("modal").style.display = "block";
+          }
+          
+    });
+  }else{
+    await anadirProcedimientoUsuarioAjaxPromesa(identificadorProcedimiento, "No")
+    .then((res) => {
+      window.location.href = "MisProcedimientos.html";
+    }).catch((res) => {
+          if(res.code == "PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION"){
+            respuestaAjaxProcedimientoUsuario(identificadorProcedimiento);
+            document.getElementById("modal").style.display = "block";
+          }else{
+            respuestaAjaxKO(res.code);
+            document.getElementById("modal").style.display = "block";
+          }
+          
+    });
+  }
+  
+}
+
+/**Función para asociar un procedimiento con un usuario**/
+function anadirProcedimientoUsuarioAjaxPromesa(identificadorProcedimiento, volverGuardar){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var procedimiento = {
+      idProcedimiento: identificadorProcedimiento,
+      nombreProcedimiento : '',
+      descripProcedimiento : '',
+      fechaProcedimiento : '',
+      checkUsuario : '',
+      plan : {
+        idPlan : '',
+        nombrePlan : '',
+        descripPlan : '',
+        fechaPlan : '',
+        borradoPlan : '',
+        objetivo : {
+          idObjetivo : '',
+          nombreObjetivo : '',
+          descripObjetivo : '',
+          borradoObjetivo : ''
+        }
+      },
+      borradoProcedimiento : ''
+    }
+
+    var usuario = {
+      dniUsuario : '',
+      usuario : getCookie('usuario'),
+      passwdUsuario : '',
+      borradoUsuario : '',
+    }
+
+    var procedimientoUsuario = {
+      idProcedimientoUsuario: '',
+      puntuacionProcedimientoUsuario : 0,
+      fechaProcedimientoUsuario : '',
+      borradoProcedimientoUsuario : 0,
+      procedimiento : procedimiento,
+      usuario : usuario
+    }
+
+    var data = {
+      usuario : getCookie('usuario'),
+      procedimientoUsuario : procedimientoUsuario,
+      volverGuardar : volverGuardar
+    }
+
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxAddProcedimientoUsuario,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCEDIMIENTO_USUARIO_GUARDADO') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
 }
 /** Función para añadir procedimientos con ajax y promesas **/
 function anadirProcedimientoAjaxPromesa(){
@@ -814,6 +910,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         }
 
         setCookie('numeroPagina', numPagCookie);
+        comprobarOcultos();
 
       }).catch((res) => {
 
@@ -843,12 +940,6 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         $('#itemPaginacion').attr('hidden', false);
       }
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
 
       if(res.data.listaBusquedas.length == 0){
           document.getElementById('cabecera').style.display="none";
@@ -1265,7 +1356,7 @@ function gestionarPermisosProcedimiento(idElementoList) {
   document.getElementById('cabecera').style.display = "none";
   document.getElementById('tablaDatos').style.display = "none";
   document.getElementById('filasTabla').style.display = "none";
-  $('#itemPaginacion').attr('hidden', true);
+  
 
   idElementoList.forEach( function (idElemento) {
     switch(idElemento){
@@ -1298,7 +1389,7 @@ function gestionarPermisosProcedimiento(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaProcedimiento\', \'PaginadorNo\')");
         $('#divListarProcedimientos').attr("data-toggle", "modal");
         $('#divListarProcedimientos').attr("data-target", "#form-modal");
-        if(getCookie('rolUsuario') == "admin"){
+        if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
           document.getElementById('cabecera').style.display = "block";
           document.getElementById('tablaDatos').style.display = "block";
           document.getElementById('filasTabla').style.display = "block";
@@ -1409,7 +1500,7 @@ function showPlan(nombrePlan, descripPlan){
 
 function cargarProcedimientosPlan(procedimiento){
 
-   var atributosFunciones = ["'" + procedimiento.plan.nombrePlan + "'", "'" + procedimiento.plan.descripPlan + "'"]; 
+  var atributosFunciones = ["'" + procedimiento.plan.nombrePlan + "'", "'" + procedimiento.plan.descripPlan + "'"]; 
 
   var procedimientos= '<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">' + 
                         '<div class="card">' + 
@@ -1417,7 +1508,7 @@ function cargarProcedimientosPlan(procedimiento){
                             '<div class="card-title">' + procedimiento.nombreProcedimiento + '</div>' + 
                             '<div class="card-text">' + procedimiento.descripProcedimiento + '</div>' +
                             '<div id="iniciarProcedimiento" class="tooltip13 procedimientoIcon">' +
-                              '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario()"/>' +
+                              '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario(' + procedimiento.idProcedimiento + ', \'primero\')"/>' +
                               '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
                             '</div>' + 
                           '</div>'+

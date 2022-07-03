@@ -301,4 +301,18 @@ public class Mensajes {
 	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "El proceso no ha podido eliminarse porque tiene procedimientos asociados";
 	public static final String RESPUESTA_POSIBLE_ASOCIADA_PROCESO = "El proceso no ha podido eliminarse porque tiene respuestas posibles asociadas";
 	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "El proceso no ha podido eliminarse porque tiene procedimientos y usuarios asociados";
+
+	public static final String PROCEDIMIENTO_USUARIO_NO_PUEDE_SER_VACIO = "La relación procedimiento - usuario no puede ser vacía";
+	public static final String PUNTUACION_PROCEDIMIENTO_USUARIO_NO_PUEDE_SER_VACIA = "La puntuación de la relación procedimiento - usuario no puede ser vacía";
+	public static final String USUARIO_PROCEDIMIENTO_USUARIO_NO_PUEDE_SER_VACIO = "El usuario de la relación procedimiento - usuario no puede ser vacío";
+	public static final String PROCEDIMIENTO_PROCEDIMIENTO_USUARIO_NO_PUEDE_SER_VACIO = "El procedimiento de la relación procedimiento - usuario no puede ser vacío";
+
+	public static final String PROCEDIMIENTOUSUARIO_BUSCADO_CORRECTAMENTE = "La relacion procedimiento - usuario se ha encontrado correctamente";
+	public static final String PROCEDIMIENTOUSUARIO_GUARDADO_CORRECTAMENTE = "La relacion procedimiento - usuario se ha guardado correctamente";
+	public static final String PROCEDIMIENTOUSUARIO_MODIFICADO_CORRECTAMENTE = "La relacion procedimiento - usuario se ha modificado correctamente";
+	public static final String PROCEDIMIENTOUSUARIO_ELIMINADO_CORRECTAMENTE = "La relacion procedimiento - usuario se ha eliminado correctamente";
+	public static final String PROCEDIMIENTOUSUARIO_ASOCIADO_PROCESO = "La relacion procedimiento - usuario se encuentra asociada a un proceso";
+	public static final String PROCEDIMIENTOUSUARIO_NO_EXISTE = "La relación procedimiento - usuario no existe";
+
+	public static final String DATOS_PROCEDIMIENTOUSUARIO_VACIOS = "Los datos del procedimiento - usuario son vacíos";
 }

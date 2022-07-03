@@ -220,12 +220,24 @@ public enum RespCode {
 	PROCEDIMIENTO_USUARIO_PROCESO_NO_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_PROCESO_NO_EXISTE_EXCEPTION",
 			"La relación procedimiento - usuario - proceso no existe"), //
 	NIVEL_YA_EXISTE_EXCEPTION("NIVEL_YA_EXISTE_EXCEPTION", "El nivel ya existe"), //
+	PROCEDIMIENTOS_USUARIO_LISTADOS("PROCEDIMIENTOS_USUARIO_LISTADOS",
+			"Los procedimientos del usuario se han lisado correctamente"), //
+	PROCEDIMIENTO_USUARIO_GUARDADO("PROCEDIMIENTO_USUARIO_GUARDADO",
+			"La relación procedimiento - usuario se ha guardado correctamente"), //
+	PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION",
+			"La relación procedimiento - usuario ya existe"), //
+	PROCEDIMIENTO_USUARIO_VACIO("PROCEDIMIENTO_USUARIO_VACIO",
+			"Los datos de la relación procedimiento - usuario es vacía"), //
 	LOG_EXCEPCIONES_LISTADOS("LOG_EXCEPCIONES_LISTADOS", "Los logs de excepciones se han listado correctamente"), //
 	LOG_ACCIONES_LISTADOS("LOG_ACCIONES_LISTADOS", "Los logs de acciones se han listado correctamente"), //
 	LOG_ACCIONES_NO_GUARDADO("LOG_ACCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de acciones en la base de datos"), //
 	LOG_EXCEPCIONES_NO_GUARDADO("LOG_EXCEPCIONES_NO_GUARDADO",
 			"No se ha guardado el registro de excepciones en la base de datos"), //
+	LECTURA_FICHERO_ERRONEA("LECTURA_FICHERO_ERRONEA", "La lectura del fichero ha fallado"), //
+	EVIDENCIA_GUARDADA("EVIDENCIA_GUARDADA", "La evidencia se ha guardado correctamente"), //
+	EVIDENCIA_MODIFICADA("EVIDENCIA_MODIFICADA", "La evidencia se ha modificado correctamente"), //
+	EVIDENCIA_VACIA("EVIDENCIA_VACIA", "La evidencia es vacía"), //
 	TEST_ATRIBUTOS_LOGIN_OK("TEST_ATRIBUTOS_LOGIN_OK",
 			"Los tests de atributos para el login se han ejecutado correctamente"), //
 	TEST_ATRIBUTOS_LOGIN_KO("TEST_ATRIBUTOS_LOGIN_KO",

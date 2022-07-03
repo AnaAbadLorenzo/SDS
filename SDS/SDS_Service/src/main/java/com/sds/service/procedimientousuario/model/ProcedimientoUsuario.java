@@ -6,15 +6,18 @@ public class ProcedimientoUsuario {
 
 	private String usuario;
 	private ProcedimientoUsuarioEntity procedimientoUsuario;
+	private String volverGuardar;
 
 	public ProcedimientoUsuario() {
 		super();
 	}
 
-	public ProcedimientoUsuario(final String usuario, final ProcedimientoUsuarioEntity procedimientoUsuario) {
+	public ProcedimientoUsuario(final String usuario, final ProcedimientoUsuarioEntity procedimientoUsuario,
+			final String volverGuardar) {
 		super();
 		this.usuario = usuario;
 		this.procedimientoUsuario = procedimientoUsuario;
+		this.volverGuardar = volverGuardar;
 	}
 
 	public String getUsuario() {
@@ -33,8 +36,17 @@ public class ProcedimientoUsuario {
 		this.procedimientoUsuario = procedimientoUsuario;
 	}
 
+	public String getVolverGuardar() {
+		return volverGuardar;
+	}
+
+	public void setVolverGuardar(final String volverGuardar) {
+		this.volverGuardar = volverGuardar;
+	}
+
 	@Override
 	public String toString() {
-		return "ProcedimientoUsuario [usuario=" + usuario + ", procedimientoUsuario=" + procedimientoUsuario + "]";
+		return "ProcedimientoUsuario [usuario=" + usuario + ", procedimientoUsuario=" + procedimientoUsuario
+				+ ", volverGuardar=" + volverGuardar + "]";
 	}
 }

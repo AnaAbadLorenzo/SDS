@@ -186,6 +186,7 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
       }
 
       setCookie('numeroPagina', numPagCookie);
+      comprobarOcultos();
     
     }).catch((res) => {
       

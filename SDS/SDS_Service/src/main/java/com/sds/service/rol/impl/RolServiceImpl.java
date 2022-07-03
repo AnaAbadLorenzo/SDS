@@ -86,8 +86,8 @@ public class RolServiceImpl implements RolService {
 		datosBusqueda.add(Constantes.ROL_NAME + Constantes.DOS_PUNTOS + rolName);
 		datosBusqueda.add(Constantes.ROL_DESCRIPTION + Constantes.DOS_PUNTOS + rolDescription);
 
-		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<RolEntity>(toret, datosBusqueda,
-				numberTotalResults, toret.size(), inicio);
+		final ReturnBusquedas<RolEntity> result = new ReturnBusquedas<>(toret, datosBusqueda, numberTotalResults,
+				toret.size(), inicio);
 		return result;
 
 	}

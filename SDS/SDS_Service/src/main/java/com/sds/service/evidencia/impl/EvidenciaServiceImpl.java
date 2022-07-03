@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -12,9 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sds.model.EvidenciaEntity;
+import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.repository.EvidenciaRepository;
+import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
+import com.sds.service.common.Constantes;
 import com.sds.service.evidencia.EvidenciaService;
 import com.sds.service.log.LogService;
+import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -23,6 +30,9 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 	@Autowired
 	EvidenciaRepository evidenciaRepository;
+
+	@Autowired
+	ProcedimientoUsuarioProcesoRepository procedimientoUsuarioProcesoRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -38,51 +48,151 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 	}
 
 	@Override
-	public void guardarEvidencia(final MultipartFile evidencia) throws IOException {
+	public String guardarEvidencia(final Integer idProceso, final Integer idProcedimientoUsuario,
+			final MultipartFile evidencia) throws IOException {
+		String resultado = StringUtils.EMPTY;
 
-		final String sSistemaOperativo = System.getProperty("os.name");
-		String ubicacionArchivo = StringUtils.EMPTY;
-		final Path path = Paths.get("");
-		final String directoryName = path.toAbsolutePath().toString();
+		final Boolean evidenciaValida = validaciones.comprobarEvidenciaBlank(idProceso, idProcedimientoUsuario,
+				evidencia);
 
-		if (sSistemaOperativo.toLowerCase().indexOf("windows") != -1) {
+		if (evidenciaValida) {
+			final String sSistemaOperativo = System.getProperty("os.name");
+			String ubicacionArchivo = StringUtils.EMPTY;
+			final Path path = Paths.get("");
+			final String directoryName = path.toAbsolutePath().toString();
 
-			if (directoryName.indexOf("SDS") != -1) {
+			if (sSistemaOperativo.toLowerCase().indexOf("windows") != -1) {
 
-				ubicacionArchivo = directoryName + File.separator + "evidencias" + File.separator;
+				if (directoryName.indexOf("SDS") != -1) {
 
-				crearDirectorioEvidencias(ubicacionArchivo);
+					ubicacionArchivo = directoryName + File.separator + "evidencias" + File.separator;
+
+					crearDirectorioEvidencias(ubicacionArchivo);
+
+				} else {
+
+					final String rutaTomcat = "webapps" + File.separator + "SDS" + File.separator + "WEB-INF"
+							+ File.separator + "classes" + File.separator + "com" + File.separator + "sds";
+					ubicacionArchivo = directoryName + File.separator + rutaTomcat + File.separator + "evidencias"
+							+ File.separator;
+
+					crearDirectorioEvidencias(ubicacionArchivo);
+
+				}
 
 			} else {
-
-				final String rutaTomcat = "webapps" + File.separator + "SDS" + File.separator + "WEB-INF"
-						+ File.separator + "classes" + File.separator + "com" + File.separator + "sds";
-				ubicacionArchivo = directoryName + File.separator + rutaTomcat + File.separator + "evidencias"
-						+ File.separator;
-
-				crearDirectorioEvidencias(ubicacionArchivo);
-
+				if (directoryName.indexOf("SDS") != -1) {
+					ubicacionArchivo = directoryName + "/evidencias/";
+				} else {
+					// TODO Pendiente ver la ruta que se genera en Linux para ver cómo añadirla y
+					// meter la creación de la carpeta
+				}
 			}
 
+			LOGGER.debug("Ubicacion archivo '{}'", ubicacionArchivo);
+
+			final String nombreEvidencia = evidencia.getOriginalFilename();
+
+			final File file = new File(ubicacionArchivo, nombreEvidencia);
+
+			if (!file.exists()) {
+				file.createNewFile();
+				evidencia.transferTo(file);
+			}
+
+			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
+					.findProcedimientoUsuarioProcesoByIdProcedimientoUsuarioAndIdProceso(idProcedimientoUsuario,
+							idProceso);
+
+			if (!procedimientoUsuarioProceso.isEmpty()) {
+				final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoBD = procedimientoUsuarioProceso
+						.get(0);
+
+				final EvidenciaEntity evidenciaEntity = new EvidenciaEntity(new Date(), 0, file.getName());
+				evidenciaEntity.setProcedimientosUsuarioProceso(procedimientoUsuarioProcesoBD);
+				evidenciaRepository.saveAndFlush(evidenciaEntity);
+				resultado = Constantes.OK;
+			}
 		} else {
-			if (directoryName.indexOf("SDS") != -1) {
-				ubicacionArchivo = directoryName + "/evidencias/";
+			resultado = CodeMessageErrors.EVIDENCIA_VACIA.name();
+		}
+
+		return resultado;
+
+	}
+
+	@Override
+	public String modificarEvidencia(final Integer idProceso, final Integer idProcedimientoUsuario,
+			final MultipartFile evidencia) throws IOException {
+		String resultado = StringUtils.EMPTY;
+
+		final Boolean evidenciaValida = validaciones.comprobarEvidenciaBlank(idProceso, idProcedimientoUsuario,
+				evidencia);
+
+		if (evidenciaValida) {
+			final String sSistemaOperativo = System.getProperty("os.name");
+			String ubicacionArchivo = StringUtils.EMPTY;
+			final Path path = Paths.get("");
+			final String directoryName = path.toAbsolutePath().toString();
+
+			if (sSistemaOperativo.toLowerCase().indexOf("windows") != -1) {
+
+				if (directoryName.indexOf("SDS") != -1) {
+
+					ubicacionArchivo = directoryName + File.separator + "evidencias" + File.separator;
+
+					crearDirectorioEvidencias(ubicacionArchivo);
+
+				} else {
+
+					final String rutaTomcat = "webapps" + File.separator + "SDS" + File.separator + "WEB-INF"
+							+ File.separator + "classes" + File.separator + "com" + File.separator + "sds";
+					ubicacionArchivo = directoryName + File.separator + rutaTomcat + File.separator + "evidencias"
+							+ File.separator;
+
+					crearDirectorioEvidencias(ubicacionArchivo);
+
+				}
+
 			} else {
-				// TODO Pendiente ver la ruta que se genera en Linux para ver cómo añadirla y
-				// meter la creación de la carpeta
+				if (directoryName.indexOf("SDS") != -1) {
+					ubicacionArchivo = directoryName + "/evidencias/";
+				} else {
+					// TODO Pendiente ver la ruta que se genera en Linux para ver cómo añadirla y
+					// meter la creación de la carpeta
+				}
 			}
+
+			LOGGER.debug("Ubicacion archivo '{}'", ubicacionArchivo);
+
+			final String nombreEvidencia = evidencia.getOriginalFilename();
+
+			final File file = new File(ubicacionArchivo, nombreEvidencia);
+
+			if (!file.exists()) {
+				file.createNewFile();
+				evidencia.transferTo(file);
+
+			}
+
+			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
+					.findProcedimientoUsuarioProcesoByIdProcedimientoUsuarioAndIdProceso(idProcedimientoUsuario,
+							idProceso);
+
+			if (!procedimientoUsuarioProceso.isEmpty()) {
+				final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoBD = procedimientoUsuarioProceso
+						.get(0);
+				final EvidenciaEntity evidenciaBD = evidenciaRepository.findEvidenciaByIdProcedimientoUsuarioProceso(
+						procedimientoUsuarioProcesoBD.getIdProcedimientoUsuarioProceso());
+				evidenciaBD.setNombreFichero(file.getName());
+				evidenciaRepository.saveAndFlush(evidenciaBD);
+				resultado = Constantes.OK;
+			}
+		} else {
+			resultado = CodeMessageErrors.EVIDENCIA_VACIA.name();
 		}
 
-		LOGGER.debug("Ubicacion archivo '{}'", ubicacionArchivo);
-
-		final String nombreEvidencia = evidencia.getOriginalFilename();
-
-		final File file = new File(ubicacionArchivo, nombreEvidencia);
-
-		if (!file.exists()) {
-			file.createNewFile();
-			evidencia.transferTo(file);
-		}
+		return resultado;
 
 	}
 

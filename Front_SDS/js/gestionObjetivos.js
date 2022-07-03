@@ -523,6 +523,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       }
 
       setCookie('numeroPagina', numPagCookie);
+      comprobarOcultos();
 
     }).catch((res) => {
 

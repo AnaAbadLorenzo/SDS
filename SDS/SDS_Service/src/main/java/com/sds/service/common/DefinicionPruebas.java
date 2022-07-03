@@ -172,4 +172,9 @@ public class DefinicionPruebas {
 	public static final String PROCESO_ASOCIADO_RESPUESTA_POSIBLE = "El proceso tiene asociado respuestas posible";
 	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "El proceso tiene asociado procedimientos y usuarios";
 
+	public static final String GUARDAR_PROCEDIMIENTOUSUARIO_CORRECTO = "La relación procedimiento - usuario se ha guardado correctamente";
+	public static final String MODIFICAR_PROCEDIMIENTOUSUARIO_CORRECTO = "La relación procedimiento - usuario se ha modificado correctamente";
+	public static final String ELIMINAR_PROCEDIMIENTOUSUARIO_CORRECTO = "La relación procedimiento - usuario se ha eliminado correctamente";
+	public static final String PROCEDIMIENTOUSUARIO_ASOCIADO_PROCESO = "La relación procedimiento - usuario se encuentra asociada a un proceso";
+	public static final String PROCEDIMIENTOUSUARIO_NO_EXISTE = "La relación procedimiento - usuario no existe";
 }

@@ -425,15 +425,16 @@ public class ProcesoServiceTest {
 		final RespuestaPosibleEntity respuestaPosibleEncontrada = respuestaPosibleRepository
 				.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
 
-		final ProcedimientoUsuarioEntity procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
+		final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
 				.findProcedimientoUsuarioByProcedimientoAndUsuario(usuario, procedimientoEncontrado);
 		final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso = new ProcedimientoUsuarioProcesoEntity(
-				new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0), procedimientoUsuarioEncontrado);
+				new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0),
+				procedimientoUsuarioEncontrado.get(0));
 
 		procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProceso);
 
 		final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoBD = procedimientoUsuarioProcesoRepository
-				.findProcedimientoUsuarioProceso(procedimientoUsuarioEncontrado, procesoEncontrado.get(0));
+				.findProcedimientoUsuarioProceso(procedimientoUsuarioEncontrado.get(0), procesoEncontrado.get(0));
 
 		try {
 			procesoService.modificarProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.get(0)));
@@ -447,7 +448,7 @@ public class ProcesoServiceTest {
 					procedimientoUsuarioProcesoBD.getIdProcedimientoUsuarioProceso());
 			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
 			procedimientoUsuarioRepository
-					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
+					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
 			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
 			planRepository.deletePlan(planBDNuevo.getIdPlan());
@@ -652,15 +653,16 @@ public class ProcesoServiceTest {
 				procedimiento, usuario);
 		procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuario);
 
-		final ProcedimientoUsuarioEntity procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
+		final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
 				.findProcedimientoUsuarioByProcedimientoAndUsuario(usuario, procedimientoEncontrado);
 		final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso = new ProcedimientoUsuarioProcesoEntity(
-				new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0), procedimientoUsuarioEncontrado);
+				new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0),
+				procedimientoUsuarioEncontrado.get(0));
 
 		procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProceso);
 
 		final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoBD = procedimientoUsuarioProcesoRepository
-				.findProcedimientoUsuarioProceso(procedimientoUsuarioEncontrado, procesoEncontrado.get(0));
+				.findProcedimientoUsuarioProceso(procedimientoUsuarioEncontrado.get(0), procesoEncontrado.get(0));
 
 		try {
 			procesoService.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.get(0)));
@@ -675,7 +677,7 @@ public class ProcesoServiceTest {
 			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 			procedimientoUsuarioRepository
-					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.getIdProcedimientoUsuario());
+					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
 			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
 			planRepository.deletePlan(planBDNuevo.getIdPlan());

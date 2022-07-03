@@ -636,12 +636,22 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 
 						procedimientoRepository.saveAndFlush(procedimientoBD.get());
 
+						if (Boolean.FALSE.equals(procedimientoEntity.getCheckUsuario())) {
+							final NoticiasEntity noticiaBD = noticiasRepository
+									.findByTituloNoticia(String.format(Constantes.TITULO_ANADIR_NOTICIA_PROCEDIMIENTO,
+											procedimientoEntity.getNombreProcedimiento()));
+
+							if (noticiaBD != null) {
+								noticiasRepository.deleteNoticia(noticiaBD.getIdNoticia());
+							}
+						}
+
 						if (Boolean.TRUE.equals(procedimientoEntity.getCheckUsuario())) {
 							final NoticiasEntity noticia = new NoticiasEntity(
 									String.format(Constantes.TITULO_ANADIR_NOTICIA_PROCEDIMIENTO,
 											procedimientoEntity.getNombreProcedimiento()),
 									String.format(Constantes.TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO,
-											procedimientoEntity.getNombreProcedimiento(),
+											planBD.get().getNombrePlan(), procedimientoEntity.getNombreProcedimiento(),
 											procedimientoEntity.getDescripProcedimiento(), fechaIntroducidaUsuario),
 									new Date());
 							noticiasRepository.saveAndFlush(noticia);

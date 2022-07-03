@@ -2,7 +2,6 @@ package com.sds.service.procesoprocedimiento.model;
 
 public class ProcesoProcedimientoBuscar {
 
-	private String usuario;
 	private Integer idProceso;
 	private Integer idProcedimiento;
 
@@ -10,19 +9,10 @@ public class ProcesoProcedimientoBuscar {
 		super();
 	}
 
-	public ProcesoProcedimientoBuscar(final String usuario, final Integer idProceso, final Integer idProcedimiento) {
+	public ProcesoProcedimientoBuscar(final Integer idProceso, final Integer idProcedimiento) {
 		super();
-		this.usuario = usuario;
 		this.idProceso = idProceso;
 		this.idProcedimiento = idProcedimiento;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(final String usuario) {
-		this.usuario = usuario;
 	}
 
 	public Integer getIdProceso() {
@@ -43,8 +33,7 @@ public class ProcesoProcedimientoBuscar {
 
 	@Override
 	public String toString() {
-		return "ProcesoProcedimientoBuscar [usuario=" + usuario + ", idProceso=" + idProceso + ", idProcedimiento="
-				+ idProcedimiento + "]";
+		return "ProcesoProcedimientoBuscar [idProceso=" + idProceso + ", idProcedimiento=" + idProcedimiento + "]";
 	}
 
 }

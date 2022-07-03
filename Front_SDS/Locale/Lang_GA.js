@@ -145,6 +145,7 @@ arrayGA={
 	'RESPUESTA_POSIBLE_VACIA' : 'O texto da resposta posible es vacío',
 	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'A resposta posible posible non existe',
 	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'A resposta posible posible está asociada a un proceso',
+	'MENSAJE_CONTINUAR_PROCEDIMIENTO' : 'Usted xa iniciou este procedemento. ¿Desexa continuar?',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',

@@ -1,0 +1,90 @@
+2022-06-28 07:57:38,647 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 12428 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 07:57:40,373 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 07:57:40,389 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 07:58:38,466 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 62.638 seconds (JVM running for 70.792)
+2022-06-28 17:53:36,199 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7448 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 17:53:36,215 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 17:53:36,215 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 17:54:04,159 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 30.042 seconds (JVM running for 32.324)
+2022-06-28 18:01:29,602 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7448 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 18:01:29,603 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 18:01:29,604 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 18:01:37,609 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 8.991 seconds (JVM running for 485.774)
+2022-06-28 18:05:52,296 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7448 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 18:05:52,298 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 18:05:52,298 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 18:06:23,616 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 35.117 seconds (JVM running for 771.782)
+2022-06-28 18:36:09,256 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7736 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 18:36:09,305 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 18:36:09,306 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 18:36:37,186 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 30.264 seconds (JVM running for 32.642)
+2022-06-28 19:05:46,353 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13756 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:05:46,373 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:05:46,375 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:06:16,147 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 34.028 seconds (JVM running for 36.385)
+2022-06-28 19:18:17,946 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 6884 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:18:17,959 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:18:17,963 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:18:40,827 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 24.338 seconds (JVM running for 25.9)
+2022-06-28 19:20:56,133 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 6884 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:20:56,133 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:20:56,134 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:21:16,977 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 21.173 seconds (JVM running for 182.049)
+2022-06-28 19:22:12,350 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 6884 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:22:12,350 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:22:12,351 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:22:16,985 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 4.727 seconds (JVM running for 242.058)
+2022-06-28 19:22:54,714 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 6884 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:22:54,715 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:22:54,716 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:23:59,119 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13136 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:23:59,133 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:23:59,135 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:24:15,545 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 17.62 seconds (JVM running for 18.873)
+2022-06-28 19:32:20,068 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13136 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:32:20,068 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:32:20,068 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:32:23,064 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 3.063 seconds (JVM running for 506.391)
+2022-06-28 19:33:13,776 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13136 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:33:13,777 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:33:13,777 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:33:17,815 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 4.14 seconds (JVM running for 561.142)
+2022-06-28 19:34:32,640 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13136 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:34:32,640 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:34:32,640 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:44:59,638 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 5612 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 19:44:59,643 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 19:44:59,644 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 19:45:13,251 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 14.368 seconds (JVM running for 28.075)
+2022-06-28 20:05:31,097 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 5612 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 20:05:31,097 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 20:05:31,098 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 20:05:34,943 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 3.928 seconds (JVM running for 1249.767)
+2022-06-28 23:03:05,666 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 9684 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:03:05,671 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:03:05,671 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:03:28,614 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 23.699 seconds (JVM running for 24.564)
+2022-06-28 23:03:49,633 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 1332 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:03:49,641 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:03:49,641 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:03:59,000 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 10.134 seconds (JVM running for 10.997)
+2022-06-28 23:07:38,055 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 1064 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:07:38,063 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:07:38,063 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:07:49,473 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 12.425 seconds (JVM running for 13.631)
+2022-06-28 23:09:05,111 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 1064 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:09:05,111 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:09:05,112 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:09:08,544 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 3.532 seconds (JVM running for 92.701)
+2022-06-28 23:11:15,543 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 1064 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:11:15,544 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:11:15,544 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:11:18,921 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 3.496 seconds (JVM running for 223.078)
+2022-06-28 23:13:19,869 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 1064 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:13:19,870 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:13:19,870 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:13:24,542 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 4.832 seconds (JVM running for 348.699)
+2022-06-28 23:40:01,718 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13660 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-06-28 23:40:01,731 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-06-28 23:40:01,732 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-06-28 23:40:11,005 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 10.033 seconds (JVM running for 10.868)

@@ -1,7 +1,6 @@
 package com.sds.controller.procesoprocedimiento;
 
 import java.text.ParseException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.ProcesoProcedimientoEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
@@ -38,12 +38,13 @@ public class ProcesoProcedimientoController {
 		validaciones = new Validaciones();
 	}
 
-	@PostMapping(value = "/listarProcesosProcedimientos")
+	@PostMapping(value = "/listarProcesosProcedimiento")
 	@ResponseBody
 	public RespEntity buscarProcesoProcedimiento(
 			@RequestBody final ProcesoProcedimientoBuscar procesoProcedimientoBuscar) {
-		final List<ProcesoProcedimientoEntity> resultado = procesoProcedimientoService.buscarProcesoProcedimiento(
-				procesoProcedimientoBuscar.getIdProceso(), procesoProcedimientoBuscar.getIdProcedimiento());
+		final ReturnBusquedas<ProcesoProcedimientoEntity> resultado = procesoProcedimientoService
+				.buscarProcesoProcedimiento(procesoProcedimientoBuscar.getIdProceso(),
+						procesoProcedimientoBuscar.getIdProcedimiento());
 
 		return new RespEntity(RespCode.PROCESOS_PROCEDIMIENTOS_LISTADOS, resultado);
 	}

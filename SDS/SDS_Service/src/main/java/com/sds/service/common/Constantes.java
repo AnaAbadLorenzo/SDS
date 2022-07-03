@@ -309,6 +309,7 @@ public class Constantes {
 	public static final String URL_JSON_PROCESO_ATRIBUTOS_DESCRIPCION_PROCESO = "classpath:ProcesoServiceAtributosDescripcionProceso.json";
 	public static final String URL_JSON_PROCESO_ATRIBUTOS_FECHA_PROCESO = "classpath:ProcesoServiceAtributosFechaProceso.json";
 	public static final String URL_JSON_PROCESO_DATA = "classpath:ProcesoServiceData.json";
+	public static final String URL_JSON_PROCEDIMIENTOUSUARIO_DATA = "classpath:ProcedimientoUsuarioServiceData.json";
 
 	public static final String USUARIO_CONTRASENA_VACIOS_DATA = "usuarioContrasenaVacios";
 	public static final String USUARIO_CONTRASENA_CORRECTOS = "usuarioContrasenaCorrectos";
@@ -679,6 +680,11 @@ public class Constantes {
 
 	public static final String DATOS_PROCEDIMIENTO_VACIOS = "datosProcedimientoVacios";
 
+	public static final String PUNTUACION_PROCEDIMIENTOUSUARIO_VACIO = "puntuacionProcedimientoUsuarioVacio";
+	public static final String USUARIO_PROCEDIMIENTOUSUARIO_VACIO = "usuarioProcedimientoUsuarioVacio";
+	public static final String PROCEDIMIENTO_PROCEDIMIENTOUSUARIO_VACIO = "procedimientoProcedimientoUsuarioVacio";
+	public static final String DATOS_PROCEDIMIENTOUSUARIO_VACIO = "datosProcedimientoUsuarioVacios";
+
 	public static final String BUSCAR_PLAN = "buscarPlan";
 	public static final String GUARDAR_PLAN = "guardarPlan";
 	public static final String MODIFICAR_PLAN = "modificarPlan";
@@ -709,6 +715,13 @@ public class Constantes {
 	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO = "procedimientoUsuarioAsociadoProceso";
 	public static final String PROCESO_ASOCIADO_PROCEDIMIENTO = "procedimientoAsociadoProceso";
 	public static final String PROCESO_ASOCIADO_OBJETIVO = "objetivoAsociadoProceso";
+
+	public static final String BUSCAR_PROCEDIMIENTOUSUARIO = "buscarProcedimientoUsuario";
+	public static final String GUARDAR_PROCEDIMIENTOUSUARIO = "guardarProcedimientoUsuario";
+	public static final String MODIFICAR_PROCEDIMIENTOUSUARIO = "modificarProcedimientoUsuario";
+	public static final String PROCEDIMIENTOUSUARIO_NO_EXISTE = "procedimientoUsuarioNoExiste";
+	public static final String ELIMINAR_PROCEDIMIENTOUSUARIO = "eliminarProcedimientoUsuario";
+	public static final String PROCEDIMIENTOUSUARIO_ASOCIADO_PROCESO = "procedimientoUsuarioAsociadoProceso";
 
 	public static final String OK = "OK";
 
@@ -812,9 +825,11 @@ public class Constantes {
 
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDALL = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuario";
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO = "ProcedimientoUsuarioEntity.findProcedimientoUsuario";
+	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOSUSUARIOBYUSUARIO = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByUsuario";
 	public static final String PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOSUSUARIOELIMINADOS = "ProcedimientoUsuarioEntity.findProcedimientosUsuarioEliminados";
 
 	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTO = "ProcesoProcedimientoEntity.findProcesoProcedimiento";
+	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTOBYDIDPROCEDEMIENTO = "ProcesoProcedimientoEntity.findProcesoProcedimientoByIdProcedimiento";
 
 	public static final String NIVEL_QUERY_FINDNIVEL = "NivelEntity.findNivel";
 

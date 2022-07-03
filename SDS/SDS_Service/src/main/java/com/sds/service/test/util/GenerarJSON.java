@@ -18,6 +18,7 @@ import com.sds.model.ObjetivoEntity;
 import com.sds.model.PersonaEntity;
 import com.sds.model.PlanEntity;
 import com.sds.model.ProcedimientoEntity;
+import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.RespuestaPosibleEntity;
 import com.sds.model.RolEntity;
@@ -700,6 +701,35 @@ public class GenerarJSON {
 		proceso.setBorradoProceso(0);
 
 		return proceso;
+
+	}
+
+	public ProcedimientoUsuarioEntity generarProcedimientoUsuario(final String fichero, final String nombrePrueba)
+			throws IOException, ParseException, java.text.ParseException {
+
+		final JSONObject jsonProcedimientoUsuarioVacio = new Util().getDatosJson(fichero, nombrePrueba);
+
+		final ProcedimientoUsuarioEntity procedimientoUsuario = new ProcedimientoUsuarioEntity();
+
+		if (new String(
+				(jsonProcedimientoUsuarioVacio.get(Constantes.PROCEDIMIENTOUSUARIO_ID).toString()).getBytes("UTF-8"))
+						.equals(StringUtils.EMPTY)) {
+			procedimientoUsuario.setIdProcedimientoUsuario(0);
+		} else {
+			procedimientoUsuario.setIdProcedimientoUsuario(Integer.parseInt(
+					new String((jsonProcedimientoUsuarioVacio.get(Constantes.PROCEDIMIENTOUSUARIO_ID).toString())
+							.getBytes("UTF-8"))));
+		}
+		procedimientoUsuario.setPuntuacionProcedimientoUsuario(Integer.parseInt(CommonUtilities.coalesce(
+				new String((jsonProcedimientoUsuarioVacio.get(Constantes.PUNTUACION_PROCEDIMIENTOUSUARIO).toString())
+						.getBytes("UTF-8")),
+				StringUtils.EMPTY)));
+
+		procedimientoUsuario.setFechaProcedimientoUsuario(new Date());
+
+		procedimientoUsuario.setBorradoProcedimientoUsuario(0);
+
+		return procedimientoUsuario;
 
 	}
 

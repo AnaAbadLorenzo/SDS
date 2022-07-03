@@ -149,6 +149,7 @@ arrayEN={
 	'RESPUESTA_POSIBLE_VACIA' : 'The text of the possible answer is empty',
 	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'The possible answer doesn´t exists',
 	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'The possible answer is associated with a process',
+	'MENSAJE_CONTINUAR_PROCEDIMIENTO' : 'You had already started this procedure. Do you want to continue?',
 
 
 	

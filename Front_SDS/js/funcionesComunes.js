@@ -1200,6 +1200,7 @@ function respuestaAjaxOK(clase, codigo){
     document.getElementById("modal-title").style.fontSize = "23px";
     $("#modal-title").removeClass();
     $("#modal-title").addClass(clase);
+    $('#seguir').attr('hidden',true);
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
 }
@@ -1212,8 +1213,23 @@ function respuestaAjaxKO(codigo){
     document.getElementById("modal-title").style.top = "13%";
     document.getElementById("modal-title").style.fontSize = "23px";
     $(".imagenAviso").attr('src', 'images/failed.png');
+    $('#seguir').attr('hidden',true);
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
+}
+
+/** Función para mostrar las modales de error **/
+function respuestaAjaxProcedimientoUsuario(identificadorProcedimiento){
+	$("#modal-title").removeClass();
+    $("#modal-title").addClass("ERROR");
+    document.getElementById("modal-title").style.color = "#a50707";    
+    document.getElementById("modal-title").style.top = "13%";
+    document.getElementById("modal-title").style.fontSize = "23px";
+    $(".imagenAviso").attr('src', 'images/failed.png');
+    $('#seguir').attr('hidden',false);
+    $('#seguir').attr('onclick', 'iniciarProcedimientoUsuario(' + identificadorProcedimiento +', \'volverGuardar\')')
+    $("#modal-mensaje").removeClass();
+    $("#modal-mensaje").addClass('MENSAJE_CONTINUAR_PROCEDIMIENTO');
 }
 
 /** Función que ejecuta la comprobacion de una fucnion cada cierto tiempo **/

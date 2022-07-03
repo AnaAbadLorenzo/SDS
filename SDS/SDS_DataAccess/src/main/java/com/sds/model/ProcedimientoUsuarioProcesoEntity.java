@@ -20,7 +20,8 @@ import javax.persistence.Table;
 @Table(name = "procedimientousuarioproceso")
 @NamedQueries({
 		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProceso", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.proceso LIKE CONCAT ('%', :proceso, '%')"),
-		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.procedimientoUsuario LIKE CONCAT ('%', :procedimientoUsuario, '%')"),
+		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.procedimientoUsuario.idProcedimientoUsuario =: idProcedimientoUsuario"),
+		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByIdProcedimientoUsuarioAndIdProceso", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.procedimientoUsuario.idProcedimientoUsuario =: idProcedimientoUsuario AND p.proceso.idProceso =: idProceso"),
 		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProceso", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.procedimientoUsuario LIKE CONCAT ('%', :procedimientoUsuario, '%') AND p.proceso LIKE CONCAT ('%', :proceso, '%')"),
 		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.findAllProcedimientosUsuariosProcesos", query = "SELECT p FROM ProcedimientoUsuarioProcesoEntity p WHERE p.borradoProcedimientoUsuarioProceso = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioProcesoEntity.numberFindAllProcedimientosUsuariosProcesos", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioProcesoEntity p WHERE p.borradoProcedimientoUsuarioProceso = 0") })

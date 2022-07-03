@@ -1,0 +1,93 @@
+{
+
+	"buscarProcedimientoUsuario" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+
+	"puntuacionProcedimientoUsuarioVacio" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : "",
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"usuarioProcedimientoUsuarioVacio" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"procedimientoProcedimientoUsuarioVacio" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"datosProcedimientoUsuarioVacios" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" :"",
+		"fechaProcedimientoUsuario" : "",
+		"borradoProcedimientoUsuario" : "",
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+
+	
+	"guardarProcedimientoUsuario" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"eliminarProcedimientoUsuario" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"procedimientoUsuarioNoExiste" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"procedimientoUsuarioAsociadoProceso" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	},
+	
+	"modificarProcedimientoUsuario" : {
+		"idProcedimientoUsuario" : "",
+		"puntuacionProcedimientoUsuario" : 0,
+		"fechaProcedimientoUsuario" : "2022-07-03",
+		"borradoProcedimientoUsuario" : 0,
+		"usuario" : "",
+		"procedimiento" : ""
+	}
+}

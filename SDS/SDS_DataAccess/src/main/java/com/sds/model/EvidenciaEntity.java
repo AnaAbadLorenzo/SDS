@@ -8,11 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "evidencia")
+@NamedQueries({
+		@NamedQuery(name = "EvidenciaEntity.findEvidenciaByIdProcedimientoUsuarioProceso", query = "SELECT e FROM EvidenciaEntity e WHERE e.procedimientosUsuarioProceso.idProcedimientoUsuarioProceso =: idProcedimientoUsuarioProceso") })
 public class EvidenciaEntity {
 
 	@Id
@@ -41,6 +45,13 @@ public class EvidenciaEntity {
 			final String nombreFichero) {
 		super();
 		this.idEvidencia = idEvidencia;
+		this.fechaEvidencia = fechaEvidencia;
+		this.borradoEvidencia = borradoEvidencia;
+		this.nombreFichero = nombreFichero;
+	}
+
+	public EvidenciaEntity(final Date fechaEvidencia, final Integer borradoEvidencia, final String nombreFichero) {
+		super();
 		this.fechaEvidencia = fechaEvidencia;
 		this.borradoEvidencia = borradoEvidencia;
 		this.nombreFichero = nombreFichero;

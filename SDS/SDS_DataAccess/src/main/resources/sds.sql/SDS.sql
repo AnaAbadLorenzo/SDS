@@ -292,7 +292,7 @@ CREATE TABLE `rolaccionfuncionalidad` (
 --
 
 LOCK TABLES `rolaccionfuncionalidad` WRITE;
-INSERT INTO `rolaccionfuncionalidad` VALUES (1,1,1), (1,2,1), (1,3,1), (1,4,1), (1,5,1), (1,6,1);
+INSERT INTO `rolaccionfuncionalidad` (`id_rol`, `id_funcionalidad`, `id_accion`) VALUES (1,1,1), (1,2,1), (1,3,1), (1,4,1), (1,5,1), (1,6,1), (1,1,4);
 UNLOCK TABLES;
 
 --
