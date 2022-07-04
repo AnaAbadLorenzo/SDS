@@ -15,11 +15,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sds.model.EvidenciaEntity;
+import com.sds.model.LogAccionesEntity;
+import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.repository.EvidenciaRepository;
 import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.evidencia.EvidenciaService;
+import com.sds.service.exception.LecturaFicheroErroneaException;
+import com.sds.service.exception.LogAccionesNoGuardadoException;
+import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.log.LogService;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
@@ -49,8 +54,10 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 	@Override
 	public String guardarEvidencia(final Integer idProceso, final Integer idProcedimientoUsuario,
-			final MultipartFile evidencia) throws IOException {
+			final MultipartFile evidencia, final String usuario)
+			throws LecturaFicheroErroneaException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
 
 		final Boolean evidenciaValida = validaciones.comprobarEvidenciaBlank(idProceso, idProcedimientoUsuario,
 				evidencia);
@@ -95,9 +102,25 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 			final File file = new File(ubicacionArchivo, nombreEvidencia);
 
-			if (!file.exists()) {
-				file.createNewFile();
-				evidencia.transferTo(file);
+			try {
+				if (!file.exists()) {
+					file.createNewFile();
+					evidencia.transferTo(file);
+				}
+			} catch (final IOException ioException) {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario,
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo()),
+						CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new LecturaFicheroErroneaException(CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo()));
 			}
 
 			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
@@ -111,6 +134,16 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 				final EvidenciaEntity evidenciaEntity = new EvidenciaEntity(new Date(), 0, file.getName());
 				evidenciaEntity.setProcedimientosUsuarioProceso(procedimientoUsuarioProcesoBD);
 				evidenciaRepository.saveAndFlush(evidenciaEntity);
+
+				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario,
+						Constantes.ACCION_AÑADIR_EVIDENCIA, "Evidencia subida: " + evidencia.getName());
+
+				resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+				if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+				}
 				resultado = Constantes.OK;
 			}
 		} else {
@@ -123,8 +156,10 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 	@Override
 	public String modificarEvidencia(final Integer idProceso, final Integer idProcedimientoUsuario,
-			final MultipartFile evidencia) throws IOException {
+			final MultipartFile evidencia, final String usuario)
+			throws LecturaFicheroErroneaException, LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException {
 		String resultado = StringUtils.EMPTY;
+		String resultadoLog = StringUtils.EMPTY;
 
 		final Boolean evidenciaValida = validaciones.comprobarEvidenciaBlank(idProceso, idProcedimientoUsuario,
 				evidencia);
@@ -169,10 +204,26 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 			final File file = new File(ubicacionArchivo, nombreEvidencia);
 
-			if (!file.exists()) {
-				file.createNewFile();
-				evidencia.transferTo(file);
+			try {
+				if (!file.exists()) {
+					file.createNewFile();
+					evidencia.transferTo(file);
 
+				}
+			} catch (final IOException ioException) {
+				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario,
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo()),
+						CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo());
+
+				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+				if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogExcepcionesNoGuardadoException(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+				}
+
+				throw new LecturaFicheroErroneaException(CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo(),
+						CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.ERROR_LECTURA_FICHERO.getCodigo()));
 			}
 
 			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProceso = procedimientoUsuarioProcesoRepository
@@ -186,6 +237,17 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 						procedimientoUsuarioProcesoBD.getIdProcedimientoUsuarioProceso());
 				evidenciaBD.setNombreFichero(file.getName());
 				evidenciaRepository.saveAndFlush(evidenciaBD);
+
+				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario,
+						Constantes.ACCION_AÑADIR_EVIDENCIA, "Evidencia subida: " + evidencia.getName());
+
+				resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+				if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+					throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
+							CodeMessageErrors.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+				}
+
 				resultado = Constantes.OK;
 			}
 		} else {

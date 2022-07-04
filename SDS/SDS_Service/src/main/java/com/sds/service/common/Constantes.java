@@ -120,6 +120,9 @@ public class Constantes {
 	public static final String ACCION_MODIFICAR_PROCEDIMIENTOUSUARIOPROCESO = "Modificar relación procedimiento - usuario - proceso";
 	public static final String ACCION_ELIMINAR_PROCEDIMIENTOUSUARIOPROCESO = "Eliminar relación procedimiento - usuario - proceso";
 
+	public static final String ACCION_AÑADIR_EVIDENCIA = "Añadir evidencia";
+	public static final String ACCION_MODIFICAR_EVIDENCIA = "Modificar evidencia";
+
 	public static final String EMISOR_EMAIL = "sustanaibledevelopmentsystem@gmail.com";
 	public static final String ASUNTO_EMAIL_RECU = "Recuperación de contraseña";
 	public static final String TIPO_CONTENIDO = "text/plain";

@@ -1022,6 +1022,8 @@ async function cargarInfoPermiso(funcionalidad){
         var nombre = (funcionalidad).split(" ");
         if(funcionalidad == "Log de acciones"){
          var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+        }else if(funcionalidad == "Gestión de procedimientos ejecutados" || funcionalidad == "Gestión de procesos ejecutados"){
+         var nombreCollapse = nombre[1] + nombre[2] + nombre[3];
         }else{
         var nombreCollapse = nombre[1] + nombre[2];
         }
@@ -1072,6 +1074,8 @@ function cargarAccionesPermisos(funcionalidad,acciones){
         var nombre = (funcionalidad).split(" ");
         if(funcionalidad == "Log de acciones"){
          var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+        }else if(funcionalidad == "Gestión de procedimientos ejecutados" || funcionalidad == "Gestión de procesos ejecutados"){
+           var nombreCollapse = nombre[1] + nombre[2] + nombre[3];
         }else{
         var nombreCollapse = nombre[1] + nombre[2];
         }
@@ -1319,8 +1323,10 @@ function cargarTablaPermisos(datos){
   for(var i = 0; i<datos.length; i++){
     if((datos[i].nombreFuncionalidad).includes(" ")){
       var nombre = (datos[i].nombreFuncionalidad).split(" ");
-      if((datos[i].nombreFuncionalidad) == "Log de acciones"){
-         var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      if((datos[i].nombreFuncionalidad) == "Log de acciones" ){
+        var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      }else if((datos[i].nombreFuncionalidad) == "Gestión de procedimientos ejecutados" || (datos[i].nombreFuncionalidad) == "Gestión de procesos ejecutados"){
+        var nombreCollapse = nombre[1] + nombre[2] + nombre[3];
       }else{
         var nombreCollapse = nombre[1] + nombre[2];
       }
@@ -1359,6 +1365,8 @@ function cargarCardAbierta(nombreFuncionalidad){
       var nombre = (nombreFuncionalidad).split(" ");
       if((nombreFuncionalidad) == "Log de acciones"){
          var nombreCollapse = nombre[0] + nombre[1] + nombre[2];
+      }else if((nombreFuncionalidad) == "Gestión de procedimientos ejecutados" || (nombreFuncionalidad) == "Gestión de procesos ejecutados"){
+         var nombreCollapse = nombre[1] + nombre[2] + nombre[3];
       }else{
         var nombreCollapse = nombre[1] + nombre[2];
       }
