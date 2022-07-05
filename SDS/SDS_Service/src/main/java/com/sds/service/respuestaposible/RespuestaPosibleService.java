@@ -16,6 +16,8 @@ public interface RespuestaPosibleService {
 
 	ReturnBusquedas<RespuestaPosibleEntity> buscarTodas(final int inicio, final int tamanhoPagina);
 
+	ReturnBusquedas<RespuestaPosibleEntity> buscarTodas();
+
 	ReturnBusquedas<RespuestaPosibleEntity> buscarRespuestasPosiblesEliminadas(final int inicio,
 			final int tamanhoPagina);
 

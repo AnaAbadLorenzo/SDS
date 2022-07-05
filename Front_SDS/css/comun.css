@@ -1159,7 +1159,8 @@ form button[type="button"]:hover {
 .iconoSearchEmpresa, .iconoEditarEmpresa, .iconoAddObjetivo, .iconoSearchObjetivo, .iconoEditarObjetivo,
 .iconoAddRespuestaPosible, .iconoSearchRespuestaPosible, .iconoEditarRespuestaPosible,
 .iconoAddPlan, .iconoSearchPlan, .iconoEditarPlan,
-.iconoAddProcedimiento, .iconoSearchProcedimiento, .iconoEditarProcedimiento {
+.iconoAddProcedimiento, .iconoSearchProcedimiento, .iconoEditarProcedimiento,
+.iconoAddProceso, .iconoEditarProceso, .iconoSearchProceso {
   position: relative;
   width: 30px;
   display:block;
@@ -1295,7 +1296,8 @@ form button[type="button"]:hover {
 .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, .nombreObjetivoColumn, 
 .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, .idRespuestaPosibleColumn,
 .nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn, .nombreProcedimientoColumn,
-.descripcionProcedimientoColumn, .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn{
+.descripcionProcedimientoColumn, .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn,
+.nombreProcesoColumn, .descripcionProcesoColumn, .fechaProcesoColumn, .idProcesoColumn{
   display: inline;
 }
 
@@ -1314,7 +1316,9 @@ form button[type="button"]:hover {
 .ordenarTextoRespuestaPosible, .ordenarIdRespuestaPosible, .ordenarIconNombrePlan,
 .ordenarIconDescripcionPlan, .ordenarIconFechaPlan, .ordenarIconNombreObjetivo
 .ordenarIconNombreProcedimiento, .ordenarIconDescripcionProcedimiento,
-.ordenarIconFechaProcedimiento, .ordenarIconCheckUsuario, .ordenarIconIdProcedimiento  {
+.ordenarIconFechaProcedimiento, .ordenarIconCheckUsuario, .ordenarIconIdProcedimiento,
+.ordenarIconNombreProceso, .ordenarIconDescripcionProceso, .ordenarIconFechaProceso,
+.ordenarIconIdProceso  {
   margin-left: 2%;
   cursor:  pointer;
 }

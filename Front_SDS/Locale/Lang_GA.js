@@ -48,6 +48,11 @@ arrayGA={
 	'NO_PUBLICADO' : 'No publicado',
 	'SI' : 'Sí',
 	'NO' : 'Non',
+	'ESTADO_PROCEDIMIENTO' : 'Estado do procedemento',
+	'NOMBRE_PROCESO': 'Nome proceso',
+	'DESCRIPCION_PROCESO' : 'Descripción proceso',
+	'NIVEL': 'Nivel',
+	'SELECCIONAR_RESPUESTA_POSIBLE' : 'Escolle as respostas posibles',
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -254,6 +259,17 @@ arrayGA={
 	'FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA' : 'A data do procedemento tan só pode conter números',
 	'FECHA_PROCEDIMIENTO_MENOR_QUE_8' : 'A data do procedemento ten menos de 8 caracteres',
 	'FECHA_PROCEDIMIENTO_MAYOR_QUE_8' : 'A data do procedemento ten máis de 8 caracteres',
+	'NOMBRE_PROCESO_VACIO' : 'Nome proceso vacío',
+	'NOMBRE_PROCESO_ALFANUMERICO_INCORRECTO' : 'O nome do proceso tan só pode conter números, letras e espazos',
+	'NOMBRE_PROCESO_MENOR_QUE_3' : 'O nome do proceso ten menos de 3 caracteres',
+	'NOMBRE_PROCESO_MAYOR_QUE_48' : 'O nome do proceso ten tiene máis de 48 caracteres',
+	'DESCRIPCION_PROCESO_VACIO' : 'Descripción proceso vacía',
+	'DESCRIPCION_PROCESO_ALFANUMERICO_INCORRECTO' : 'A descripción do proceso sólo tan só pode conter números, letras e espazos',
+	'DESCRIPCION_PROCESO_MENOR_QUE_3' : 'A descripción do proceso ten menos de 3 caracteres',
+	'FECHA_PROCESO_VACIA' : 'Data proceso vacía',
+	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'A data do proceso tan só pode conter números',
+	'FECHA_PROCESO_MENOR_QUE_8' : 'A data do proceso ten menos de 8 caracteres',
+	'FECHA_PROCESO_MAYOR_QUE_8' : 'A data do proceso ten maís de 8 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -391,6 +407,11 @@ arrayGA={
 	'OPCION_DEFECTO_PLAN' : 'Por favor, selecciona o plan',
 	'PUBLICAR_PROCEDIMIENTO' : '¿Publicar procedemento?',
 	'NO_ESPECIFICADO' : 'Non especificado',
+	'ADD_PROCESO' : 'ENGADIR PROCEDEMENTO',
+	'OPCION_DEFECTO_PROCEDIMIENTO' : 'Por favor, selecciona o procedemento',
+	'FORMATO_MULTIPLES_PROCEDIMIENTOS' : 'Si pulsas Ctr, podes seleccionar multiples procedmentos pulsando sobre eles',
+	'SEARCH_PROCESO' : 'BUSCAR PROCESO',
+	'EDIT_PROCESO' : 'EDITAR PROCESO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -507,7 +528,9 @@ arrayGA={
 	'PROCEDIMIENTOS_LISTADOS' : 'Os procedementos listáronse correctamente',
 	'PROCEDIMIENTO_ELIMINADO' : 'Os procedementos elimináronse correctamente',
 	'PROCEDIMIENTO_MODIFICADO' : 'O procedemento modificouse correctamente',
-	'PROCEDIMIENTO_GUARDADO' : 'O procedemento gardouse correctamente'
+	'PROCEDIMIENTO_GUARDADO' : 'O procedemento gardouse correctamente',
+	'PROCESO_GUARDADO' : 'O proceso gardouse correctamente',
+	'PROCESO_GUARDADO_OK' : 'PROCESO GUARDADO CORRECTAMENTE'
 
 
 	

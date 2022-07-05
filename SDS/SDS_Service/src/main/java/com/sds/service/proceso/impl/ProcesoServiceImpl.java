@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,9 +23,12 @@ import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.NivelEntity;
 import com.sds.model.ObjetivoEntity;
+import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
+import com.sds.model.ProcesoProcedimientoEntity;
 import com.sds.model.ProcesoRespuestaPosibleEntity;
+import com.sds.model.RespuestaPosibleEntity;
 import com.sds.repository.NivelRepository;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.ProcedimientoRepository;
@@ -31,6 +36,7 @@ import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.repository.ProcesoProcedimientoRepository;
 import com.sds.repository.ProcesoRepository;
 import com.sds.repository.ProcesoRespuestaPosibleRepository;
+import com.sds.repository.RespuestaPosibleRepository;
 import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
@@ -40,16 +46,24 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.NivelYaExisteException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
+import com.sds.service.exception.ProcesoProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoRespuestaPosibleYaExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
+import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.log.LogService;
 import com.sds.service.nivel.NivelService;
 import com.sds.service.nivel.model.Nivel;
 import com.sds.service.proceso.ProcesoService;
 import com.sds.service.proceso.model.Proceso;
+import com.sds.service.procesoprocedimiento.ProcesoProcedimientoService;
+import com.sds.service.procesoprocedimiento.model.ProcesoProcedimiento;
+import com.sds.service.procesorespuestaposible.ProcesoRespuestaPosibleService;
+import com.sds.service.procesorespuestaposible.model.ProcesoRespuestaPosible;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -70,7 +84,13 @@ public class ProcesoServiceImpl implements ProcesoService {
 	ProcesoProcedimientoRepository procesoProcedimientoRepository;
 
 	@Autowired
+	ProcesoProcedimientoService procesoProcedimientoService;
+
+	@Autowired
 	ProcesoRespuestaPosibleRepository procesoRespuestaPosibleRepository;
+
+	@Autowired
+	ProcesoRespuestaPosibleService procesoRespuestaPosibleService;
 
 	@Autowired
 	ProcedimientoUsuarioProcesoRepository procedimientoUsuarioProcesoRepository;
@@ -83,6 +103,9 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 	@Autowired
 	ObjetivoRepository objetivoRepository;
+
+	@Autowired
+	RespuestaPosibleRepository respuestaPosibleRepository;
 
 	@Autowired
 	LogService logServiceImpl;
@@ -101,6 +124,10 @@ public class ProcesoServiceImpl implements ProcesoService {
 		final List<ProcesoEntity> procesoToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 		List<ProcesoEntity> procesos = new ArrayList<>();
+		final Set<ProcedimientoEntity> procedimientos = new HashSet<>();
+		final Set<ObjetivoEntity> objetivos = new HashSet<>();
+		final Set<RespuestaPosibleEntity> respuestasPosibles = new HashSet<>();
+
 		Integer numberTotalResults = 0;
 		String fecha = StringUtils.EMPTY;
 
@@ -120,10 +147,48 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 		if (!procesos.isEmpty()) {
 			for (final ProcesoEntity proceso : procesos) {
+				final List<Integer> procedimientoProceso = procesoProcedimientoRepository
+						.findIdProcedimientoByIdProceso(proceso.getIdProceso());
+				for (final Integer idProcedimiento : procedimientoProceso) {
+					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
+							.findById(idProcedimiento);
+					final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity(
+							procedimientoBD.get().getIdProcedimiento(), procedimientoBD.get().getNombreProcedimiento(),
+							procedimientoBD.get().getDescripProcedimiento(),
+							procedimientoBD.get().getFechaProcedimiento(),
+							procedimientoBD.get().getBorradoProcedimiento(), procedimientoBD.get().getCheckUsuario(),
+							procedimientoBD.get().getPlan());
+					procedimientos.add(procedimientoEntity);
+
+				}
+
+				final List<NivelEntity> objetivosProceso = nivelRepository.findNivelByIdProceso(proceso.getIdProceso());
+				for (final NivelEntity nivel : objetivosProceso) {
+					final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(nivel.getIdObjetivo());
+					final ObjetivoEntity objetivoEntity = new ObjetivoEntity(objetivoBD.get().getIdObjetivo(),
+							objetivoBD.get().getNombreObjetivo(), objetivoBD.get().getDescripObjetivo(),
+							objetivoBD.get().getBorradoObjetivo());
+					objetivos.add(objetivoEntity);
+
+				}
+
+				final List<ProcesoRespuestaPosibleEntity> respuestasProceso = procesoRespuestaPosibleRepository
+						.findRespuestaPosibleByIdProceso(proceso.getIdProceso());
+				for (final ProcesoRespuestaPosibleEntity procesoRespuestaPosible : respuestasProceso) {
+					final Optional<RespuestaPosibleEntity> respuestaPosibleBD = respuestaPosibleRepository
+							.findById(procesoRespuestaPosible.getIdRespuesta());
+					final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity(
+							respuestaPosibleBD.get().getIdRespuesta(), respuestaPosibleBD.get().getTextoRespuesta(),
+							respuestaPosibleBD.get().getBorradoRespuesta());
+					respuestasPosibles.add(respuestaPosibleEntity);
+
+				}
 				final ProcesoEntity procesoEntity = new ProcesoEntity(proceso.getIdProceso(),
 						proceso.getNombreProceso(), proceso.getDescripProceso(), proceso.getFechaProceso(),
 						proceso.getBorradoProceso());
-
+				procesoEntity.setProcedimientos(procedimientos);
+				procesoEntity.setObjetivos(objetivos);
+				procesoEntity.setRespuestasPosibles(respuestasPosibles);
 				procesoToret.add(procesoEntity);
 
 			}
@@ -142,6 +207,10 @@ public class ProcesoServiceImpl implements ProcesoService {
 	@Override
 	public ReturnBusquedas<ProcesoEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
 		final List<ProcesoEntity> procesoToret = new ArrayList<>();
+		final Set<ProcedimientoEntity> procedimientos = new HashSet<>();
+		final Set<ObjetivoEntity> objetivos = new HashSet<>();
+		final Set<RespuestaPosibleEntity> respuestasPosibles = new HashSet<>();
+
 		final List<ProcesoEntity> procesos = entityManager.createNamedQuery(Constantes.PROCESO_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
 
@@ -149,9 +218,48 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 		if (!procesos.isEmpty()) {
 			for (final ProcesoEntity proceso : procesos) {
+				final List<Integer> procedimientoProceso = procesoProcedimientoRepository
+						.findIdProcedimientoByIdProceso(proceso.getIdProceso());
+				for (final Integer idProcedimiento : procedimientoProceso) {
+					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
+							.findById(idProcedimiento);
+					final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity(
+							procedimientoBD.get().getIdProcedimiento(), procedimientoBD.get().getNombreProcedimiento(),
+							procedimientoBD.get().getDescripProcedimiento(),
+							procedimientoBD.get().getFechaProcedimiento(),
+							procedimientoBD.get().getBorradoProcedimiento(), procedimientoBD.get().getCheckUsuario(),
+							procedimientoBD.get().getPlan());
+					procedimientos.add(procedimientoEntity);
+
+				}
+
+				final List<NivelEntity> objetivosProceso = nivelRepository.findNivelByIdProceso(proceso.getIdProceso());
+				for (final NivelEntity nivel : objetivosProceso) {
+					final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(nivel.getIdObjetivo());
+					final ObjetivoEntity objetivoEntity = new ObjetivoEntity(objetivoBD.get().getIdObjetivo(),
+							objetivoBD.get().getNombreObjetivo(), objetivoBD.get().getDescripObjetivo(),
+							objetivoBD.get().getBorradoObjetivo());
+					objetivos.add(objetivoEntity);
+
+				}
+
+				final List<ProcesoRespuestaPosibleEntity> respuestasProceso = procesoRespuestaPosibleRepository
+						.findRespuestaPosibleByIdProceso(proceso.getIdProceso());
+				for (final ProcesoRespuestaPosibleEntity procesoRespuestaPosible : respuestasProceso) {
+					final Optional<RespuestaPosibleEntity> respuestaPosibleBD = respuestaPosibleRepository
+							.findById(procesoRespuestaPosible.getIdRespuesta());
+					final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity(
+							respuestaPosibleBD.get().getIdRespuesta(), respuestaPosibleBD.get().getTextoRespuesta(),
+							respuestaPosibleBD.get().getBorradoRespuesta());
+					respuestasPosibles.add(respuestaPosibleEntity);
+
+				}
 				final ProcesoEntity procesoEntity = new ProcesoEntity(proceso.getIdProceso(),
 						proceso.getNombreProceso(), proceso.getDescripProceso(), proceso.getFechaProceso(),
 						proceso.getBorradoProceso());
+				procesoEntity.setProcedimientos(procedimientos);
+				procesoEntity.setObjetivos(objetivos);
+				procesoEntity.setRespuestasPosibles(respuestasPosibles);
 				procesoToret.add(procesoEntity);
 
 			}
@@ -189,15 +297,18 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
-	public String anadirProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException,
-			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException {
+	public String anadirProceso(final Proceso proceso)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoYaExisteException,
+			ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException, NivelYaExisteException,
+			ProcesoNoExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final ProcesoEntity procesoEntity = proceso.getProceso();
 		final Boolean procesoValido = validaciones.comprobarProcesoBlank(procesoEntity);
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 		String fechaIntroducidaUsuario = StringUtils.EMPTY;
 		String fechaActualString = StringUtils.EMPTY;
+		int ordenProceso = 0;
 
 		if (procesoValido) {
 			final ProcesoEntity procesoBD = procesoRepository.findProcesoByName(procesoEntity.getNombreProceso());
@@ -269,6 +380,87 @@ public class ProcesoServiceImpl implements ProcesoService {
 						throw new LogAccionesNoGuardadoException(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(),
 								CodeMessageErrors
 										.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+					}
+					final List<ProcedimientoEntity> procedimientos = proceso.getProcedimientos();
+					for (int i = 0; i < procedimientos.size(); i++) {
+						final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
+								.findById(proceso.getProcedimientos().get(i).getIdProcedimiento());
+
+						if (!procedimientoBD.isPresent()) {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									proceso.getUsuario(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()),
+									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo());
+
+							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new ProcedimientoNoExisteException(
+									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
+						} else {
+							final List<ProcesoProcedimientoEntity> procesoProcedimiento = procesoProcedimientoRepository
+									.findAllOrderByOrden();
+							if (procesoProcedimiento.isEmpty()) {
+								ordenProceso = 1;
+							} else {
+								ordenProceso = (procesoProcedimiento.get(procesoProcedimiento.size() - 1))
+										.getOrdenProceso();
+								ordenProceso++;
+							}
+							final ProcesoEntity procesoGuardado = procesoRepository
+									.findProcesoByName(procesoEntity.getNombreProceso());
+							final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(
+									procesoGuardado.getIdProceso(), procedimientoBD.get().getIdProcedimiento(),
+									ordenProceso);
+							procesoProcedimientoService.anadirProcesoProcedimiento(
+									new ProcesoProcedimiento(proceso.getUsuario(), procesoProcedimientoEntity));
+						}
+
+					}
+
+					final List<RespuestaPosibleEntity> respuestasPosibles = proceso.getRespuestasPosibles();
+					for (int i = 0; i < respuestasPosibles.size(); i++) {
+						final Optional<RespuestaPosibleEntity> respuestaPosibleBD = respuestaPosibleRepository
+								.findById(respuestasPosibles.get(i).getIdRespuesta());
+
+						if (respuestaPosibleBD == null) {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									proceso.getUsuario(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo()),
+									CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo());
+
+							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new RespuestaPosibleNoExisteException(
+									CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION.getCodigo()));
+						} else {
+							final ProcesoEntity procesoGuardado = procesoRepository
+									.findProcesoByName(procesoEntity.getNombreProceso());
+							final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(
+									procesoGuardado.getIdProceso(), respuestasPosibles.get(i).getIdRespuesta(),
+									new Date());
+							procesoRespuestaPosibleService.anadirProcesoRespuestaPosible(
+									new ProcesoRespuestaPosible(proceso.getUsuario(), procesoRespuestaPosible));
+						}
 					}
 
 					final List<ObjetivoEntity> objetivos = proceso.getObjetivos();

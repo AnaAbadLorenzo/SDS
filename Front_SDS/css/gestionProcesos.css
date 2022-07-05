@@ -4,6 +4,13 @@
   display:  block;
 }
 
+small {
+  font-family: Roboto;
+  color: #4527A0;
+  display:  block;
+}
+
+
 
 .formmodal-container input[type=text]{
   height: 30px;

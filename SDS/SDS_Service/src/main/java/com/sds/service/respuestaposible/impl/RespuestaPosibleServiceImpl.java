@@ -112,6 +112,29 @@ public class RespuestaPosibleServiceImpl implements RespuestaPosibleService {
 	}
 
 	@Override
+	public ReturnBusquedas<RespuestaPosibleEntity> buscarTodas() {
+		final List<RespuestaPosibleEntity> respuestasPosiblesToret = new ArrayList<>();
+
+		final List<RespuestaPosibleEntity> respuestasPosibles = entityManager
+				.createNamedQuery(Constantes.RESPUESTA_POSIBLE_QUERY_FINDALL).getResultList();
+
+		final Integer numberTotalResults = respuestaPosibleRepository.numberFindAllRespuestasPosibles();
+
+		if (!respuestasPosibles.isEmpty()) {
+			for (final RespuestaPosibleEntity respuestaPosible : respuestasPosibles) {
+				final RespuestaPosibleEntity respuesta = new RespuestaPosibleEntity(respuestaPosible.getIdRespuesta(),
+						respuestaPosible.getTextoRespuesta(), respuestaPosible.getBorradoRespuesta());
+
+				respuestasPosiblesToret.add(respuesta);
+			}
+		}
+		final ReturnBusquedas<RespuestaPosibleEntity> result = new ReturnBusquedas<RespuestaPosibleEntity>(
+				respuestasPosiblesToret, numberTotalResults, respuestasPosiblesToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
 	public ReturnBusquedas<RespuestaPosibleEntity> buscarRespuestasPosiblesEliminadas(final int inicio,
 			final int tamanhoPagina) {
 		final List<RespuestaPosibleEntity> respuestasPosiblesToret = new ArrayList<>();

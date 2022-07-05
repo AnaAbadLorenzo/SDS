@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -52,11 +54,15 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.NivelYaExisteException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
+import com.sds.service.exception.ProcesoProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoRespuestaPosibleYaExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
+import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.proceso.ProcesoService;
 import com.sds.service.proceso.model.Proceso;
 import com.sds.service.util.CodeMessageErrors;
@@ -162,18 +168,31 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_guardarProceso()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ProcesoNoExisteException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_guardarProceso() throws IOException, ParseException, LogAccionesNoGuardadoException,
+			LogExcepcionesNoGuardadoException, ProcesoYaExisteException, java.text.ParseException,
+			FechaAnteriorFechaActualException, ProcesoNoExisteException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.GUARDAR_PROCESO);
 
 		String respuesta = StringUtils.EMPTY;
+		String dateActualPlanString = StringUtils.EMPTY;
 		proceso.getProceso().setFechaProceso(new Date());
 		final List<ObjetivoEntity> objetivosProceso = new ArrayList<>();
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
 		proceso.setObjetivos(objetivosProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setNivel(nivelesProceso);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		proceso.setProcedimiento(procedimientoEntity);
+		procedimientoRepository.saveAndFlush(procedimientoEntity);
 		respuesta = procesoService.anadirProceso(proceso);
 
 		assertEquals(Constantes.OK, respuesta);
@@ -181,6 +200,27 @@ public class ProcesoServiceTest {
 		final ReturnBusquedas<ProcesoEntity> procesoEncontrado = procesoService.buscarProceso(
 				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
 
+		final LocalDate dateActualPlan = plan.getFechaPlan().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		if (CommonUtilities.countDigit(dateActualPlan.getDayOfMonth()) == 1) {
+			dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-0"
+					+ dateActualPlan.getDayOfMonth();
+		} else {
+			dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-"
+					+ dateActualPlan.getDayOfMonth();
+		}
+		final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(),
+				dateActualPlanString, plan.getObjetivo());
+		final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimientoEntity.getNombreProcedimiento());
+		procesoProcedimientoRepository.deleteProcesoProcedimiento(
+				procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+				procedimientoEncontrado.getIdProcedimiento());
+		procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+		planRepository.deletePlan(planEncontrado.get(0).getIdPlan());
+		objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
 		procesoService.deleteProceso(procesoEncontrado.getListaBusquedas().get(0));
 	}
 
@@ -188,7 +228,9 @@ public class ProcesoServiceTest {
 	public void ProcesoService_guardarProcesoNombreProcesoVacio()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException {
+			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.NOMBRE_PROCESO_VACIO);
 
 		String respuesta = StringUtils.EMPTY;
@@ -201,7 +243,9 @@ public class ProcesoServiceTest {
 	public void ProcesoService_guardarProcesoDescripcionProcesoVacio()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException {
+			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.DESCRIPCION_PROCESO_VACIO);
 
 		String respuesta = StringUtils.EMPTY;
@@ -215,7 +259,9 @@ public class ProcesoServiceTest {
 	public void ProcesoService_guardarProcesoFechaProcesoVacio()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException {
+			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.FECHA_PROCESO_VACIA);
 
 		String respuesta = StringUtils.EMPTY;
@@ -229,7 +275,9 @@ public class ProcesoServiceTest {
 	public void ProcesoService_guardarProcesoDatosProcesoVacio()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException {
+			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.DATOS_PROCESO_VACIOS);
 
 		String respuesta = StringUtils.EMPTY;
@@ -243,15 +291,29 @@ public class ProcesoServiceTest {
 	public void ProcesoService_guardarProcesoYaExiste()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ObjetivoNoExisteException, NivelYaExisteException {
+			FechaAnteriorFechaActualException, ObjetivoNoExisteException, NivelYaExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
+		String dateActualPlanString = StringUtils.EMPTY;
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_YA_EXISTE);
 
 		proceso.getProceso().setFechaProceso(new Date());
 		final List<ObjetivoEntity> objetivosProceso = new ArrayList<>();
 		proceso.setObjetivos(objetivosProceso);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setNivel(nivelesProceso);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		procedimientoRepository.saveAndFlush(procedimientoEntity);
+		proceso.setProcedimiento(procedimientoEntity);
 		procesoService.anadirProceso(proceso);
 
 		try {
@@ -265,6 +327,29 @@ public class ProcesoServiceTest {
 					proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0,
 					1);
 
+			final LocalDate dateActualPlan = plan.getFechaPlan().toInstant().atZone(ZoneId.systemDefault())
+					.toLocalDate();
+			if (CommonUtilities.countDigit(dateActualPlan.getDayOfMonth()) == 1) {
+				dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-0"
+						+ dateActualPlan.getDayOfMonth();
+			} else {
+				dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-"
+						+ dateActualPlan.getDayOfMonth();
+			}
+			final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(),
+					dateActualPlanString, plan.getObjetivo());
+			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
+					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
+
+			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+					.findProcedimientoByName(procedimientoEntity.getNombreProcedimiento());
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(
+					procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+			planRepository.deletePlan(planEncontrado.get(0).getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
+
 			procesoService.deleteProceso(procesoEncontrado.getListaBusquedas().get(0));
 		}
 	}
@@ -273,7 +358,9 @@ public class ProcesoServiceTest {
 	public void PlanService_guardarProcesoFechaProcesoAnteriorActual()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoYaExisteException,
-			ProcesoNoExisteException, ObjetivoNoExisteException, NivelYaExisteException {
+			ProcesoNoExisteException, ObjetivoNoExisteException, NivelYaExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA,
 				Constantes.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL);
 		procesoService.anadirProceso(proceso);
@@ -281,18 +368,33 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_modificarProceso() throws IOException, ParseException, LogAccionesNoGuardadoException,
-			LogExcepcionesNoGuardadoException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ProcesoYaExisteException, ProcesoNoExisteException, ProcesoAsociadoUsuarioProcedimientoException,
-			ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_modificarProceso()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			java.text.ParseException, FechaAnteriorFechaActualException, ProcesoYaExisteException,
+			ProcesoNoExisteException, ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
+
+		String respuesta = StringUtils.EMPTY;
+		String dateActualPlanString = StringUtils.EMPTY;
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.MODIFICAR_PROCESO);
 		proceso.getProceso().setFechaProceso(new Date());
 		final List<ObjetivoEntity> objetivosProceso = new ArrayList<>();
 		proceso.setObjetivos(objetivosProceso);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setNivel(nivelesProceso);
-		String respuesta = StringUtils.EMPTY;
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		proceso.setProcedimiento(procedimientoEntity);
+		procedimientoRepository.saveAndFlush(procedimientoEntity);
 		procesoService.anadirProceso(proceso);
 
 		final ReturnBusquedas<ProcesoEntity> procesoModificar = procesoService.buscarProceso(
@@ -305,6 +407,31 @@ public class ProcesoServiceTest {
 
 		assertEquals(Constantes.OK, respuesta);
 
+		final ReturnBusquedas<ProcesoEntity> procesoEncontrado = procesoService.buscarProceso(
+				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
+
+		final LocalDate dateActualPlan = plan.getFechaPlan().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		if (CommonUtilities.countDigit(dateActualPlan.getDayOfMonth()) == 1) {
+			dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-0"
+					+ dateActualPlan.getDayOfMonth();
+		} else {
+			dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-"
+					+ dateActualPlan.getDayOfMonth();
+		}
+		final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(),
+				dateActualPlanString, plan.getObjetivo());
+		final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimientoEntity.getNombreProcedimiento());
+		procesoProcedimientoRepository.deleteProcesoProcedimiento(
+				procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+				procedimientoEncontrado.getIdProcedimiento());
+		procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+		planRepository.deletePlan(planEncontrado.get(0).getIdPlan());
+		objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
+		procesoService.deleteProceso(procesoEncontrado.getListaBusquedas().get(0));
 		procesoService.deleteProceso(procesoModificar.getListaBusquedas().get(0));
 	}
 
@@ -376,12 +503,15 @@ public class ProcesoServiceTest {
 	}
 
 	@Test(expected = ProcesoAsociadoUsuarioProcedimientoException.class)
-	public void ProcesoService_modificarProcesoAsociadoUsuarioProcedimiento() throws IOException, ParseException,
-			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
-			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
-			ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_modificarProcesoAsociadoUsuarioProcedimiento()
+			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
+			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
+			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 
 		final String resultado = StringUtils.EMPTY;
+		String dateActualPlanString = StringUtils.EMPTY;
 		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
@@ -406,9 +536,15 @@ public class ProcesoServiceTest {
 		final List<ObjetivoEntity> objetivosProceso = new ArrayList<>();
 		objetivosProceso.add(objetivoBDNuevo);
 		proceso.setObjetivos(objetivosProceso);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		nivelesProceso.add(1);
 		proceso.setNivel(nivelesProceso);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		proceso.setProcedimiento(procedimientoEntity);
+
 		procesoService.anadirProceso(proceso);
 
 		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
@@ -444,15 +580,31 @@ public class ProcesoServiceTest {
 					CodeMessageErrors.getTipoNameByCodigo(
 							CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION.getCodigo()));
 		} finally {
+
+			final LocalDate dateActualPlan = plan.getFechaPlan().toInstant().atZone(ZoneId.systemDefault())
+					.toLocalDate();
+			if (CommonUtilities.countDigit(dateActualPlan.getDayOfMonth()) == 1) {
+				dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-0"
+						+ dateActualPlan.getDayOfMonth();
+			} else {
+				dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-"
+						+ dateActualPlan.getDayOfMonth();
+			}
+			final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(),
+					dateActualPlanString, plan.getObjetivo());
+			final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository
+					.findObjetivo(objetivo.getNombreObjetivo(), objetivo.getDescripObjetivo());
+
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(procesoEncontrado.get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
 			procedimientoUsuarioProcesoRepository.deleteProcedimientoUsuarioProceso(
 					procedimientoUsuarioProcesoBD.getIdProcedimientoUsuarioProceso());
-			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
 			procedimientoUsuarioRepository
 					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
 			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
-			planRepository.deletePlan(planBDNuevo.getIdPlan());
-			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
+			planRepository.deletePlan(planEncontrado.get(0).getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
 			respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleEncontrada.getIdRespuesta());
 			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
 			personaRepository.deletePersona(persona.getDniP());
@@ -461,18 +613,31 @@ public class ProcesoServiceTest {
 	}
 
 	@Test
-	public void ProcesoService_eliminarProcesoCorrecto()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ProcedimientoAsociadoProcesoException,
-			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoUsuarioProcedimientoException,
-			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_eliminarProcesoCorrecto() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcesoAsociadoObjetivoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
+		String dateActualPlanString = StringUtils.EMPTY;
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.ELIMINAR_PROCESO);
 		proceso.getProceso().setFechaProceso(new Date());
 		final List<ObjetivoEntity> objetivosProceso = new ArrayList<>();
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setObjetivos(objetivosProceso);
 		proceso.setNivel(nivelesProceso);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		proceso.setProcedimiento(procedimientoEntity);
+		procedimientoRepository.saveAndFlush(procedimientoEntity);
 		procesoService.anadirProceso(proceso);
 
 		final ReturnBusquedas<ProcesoEntity> procesoEliminar = procesoService.buscarProceso(
@@ -482,6 +647,27 @@ public class ProcesoServiceTest {
 		final String respuesta = procesoService
 				.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEliminar.getListaBusquedas().get(0)));
 
+		final LocalDate dateActualPlan = plan.getFechaPlan().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		if (CommonUtilities.countDigit(dateActualPlan.getDayOfMonth()) == 1) {
+			dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-0"
+					+ dateActualPlan.getDayOfMonth();
+		} else {
+			dateActualPlanString = dateActualPlan.getYear() + "-0" + dateActualPlan.getMonthValue() + "-"
+					+ dateActualPlan.getDayOfMonth();
+		}
+		final List<PlanEntity> planEncontrado = planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(),
+				dateActualPlanString, plan.getObjetivo());
+		final List<ObjetivoEntity> objetivoEncontrado = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
+				objetivo.getDescripObjetivo());
+
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimientoEntity.getNombreProcedimiento());
+		procesoProcedimientoRepository.deleteProcesoProcedimiento(
+				procesoEliminar.getListaBusquedas().get(0).getIdProceso(),
+				procedimientoEncontrado.getIdProcedimiento());
+		procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+		planRepository.deletePlan(planEncontrado.get(0).getIdPlan());
+		objetivoRepository.deleteObjetivo(objetivoEncontrado.get(0).getIdObjetivo());
 		procesoService.deleteProceso(procesoEliminar.getListaBusquedas().get(0));
 
 		assertEquals(Constantes.OK, respuesta);
@@ -503,12 +689,13 @@ public class ProcesoServiceTest {
 	}
 
 	@Test(expected = ProcedimientoAsociadoProcesoException.class)
-	public void ProcesoService_eliminarProcesoProcedimientoAsociado()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException,
-			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
-			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_eliminarProcesoProcedimientoAsociado() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA,
 				Constantes.PROCESO_ASOCIADO_PROCEDIMIENTO);
@@ -517,19 +704,23 @@ public class ProcesoServiceTest {
 		proceso.setObjetivos(objetivosProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setNivel(nivelesProceso);
-		procesoService.anadirProceso(proceso);
-		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
 		plan.setObjetivo(objetivo);
 		planRepository.saveAndFlush(plan);
-		final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
-				"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
-		procedimientoRepository.saveAndFlush(procedimiento);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		proceso.setProcedimiento(procedimientoEntity);
+		procedimientoRepository.saveAndFlush(procedimientoEntity);
+		procesoService.anadirProceso(proceso);
+
 		final ReturnBusquedas<ProcesoEntity> procesoEncontrado = procesoService.buscarProceso(
 				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
 		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
-				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+				.findProcedimientoByName(procedimientoEntity.getNombreProcedimiento());
 
 		final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(
 				procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
@@ -558,12 +749,13 @@ public class ProcesoServiceTest {
 	}
 
 	@Test(expected = ProcesoAsociadoRespuestaPosibleException.class)
-	public void ProcesoService_eliminarProcesoRespuestaPosibleAsociada()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException,
-			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
-			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_eliminarProcesoRespuestaPosibleAsociada() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA,
 				Constantes.PROCESO_ASOCIADO_RESPUESTA_POSIBLE);
@@ -572,6 +764,17 @@ public class ProcesoServiceTest {
 		proceso.setObjetivos(objetivosProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setNivel(nivelesProceso);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nombre objetivo", "Descripcion objetivo", 0);
+		objetivoRepository.saveAndFlush(objetivo);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity("Nombre procedimiento",
+				"Descrip procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		proceso.setProcedimiento(procedimientoEntity);
+		procedimientoRepository.saveAndFlush(procedimientoEntity);
 		procesoService.anadirProceso(proceso);
 		final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity("Esta es la respuesta posible",
 				0);
@@ -599,19 +802,29 @@ public class ProcesoServiceTest {
 			procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(
 					respuestaPosibleEncontrada.get(0).getIdRespuesta(),
 					procesoEncontrado.getListaBusquedas().get(0).getIdProceso());
-			;
+			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+					.findProcedimientoByName(procedimientoEntity.getNombreProcedimiento());
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(
+					procesoEncontrado.getListaBusquedas().get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
+			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+			planRepository.deletePlan(planBDNuevo.getIdPlan());
+			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 			procesoRepository.deleteProceso(procesoEncontrado.getListaBusquedas().get(0).getIdProceso());
 			respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleEncontrada.get(0).getIdRespuesta());
 		}
 	}
 
 	@Test(expected = ProcesoAsociadoUsuarioProcedimientoException.class)
-	public void ProcesoService_eliminarProcesoProcedimientoUsuarioAsociado()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException,
-			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
-			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_eliminarProcesoProcedimientoUsuarioAsociado() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 
 		final String resultado = StringUtils.EMPTY;
 		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -638,6 +851,9 @@ public class ProcesoServiceTest {
 		proceso.setObjetivos(objetivosProceso);
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		proceso.setNivel(nivelesProceso);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
+		proceso.setProcedimiento(procedimiento);
 		procesoService.anadirProceso(proceso);
 
 		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
@@ -678,6 +894,8 @@ public class ProcesoServiceTest {
 			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 			procedimientoUsuarioRepository
 					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(procesoEncontrado.get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
 			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
 			planRepository.deletePlan(planBDNuevo.getIdPlan());
@@ -689,18 +907,23 @@ public class ProcesoServiceTest {
 	}
 
 	@Test(expected = ProcesoAsociadoObjetivoException.class)
-	public void ProcesoService_eliminarProcesoObjetivoAsociado()
-			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
-			ProcesoNoExisteException, java.text.ParseException, ProcesoYaExisteException,
-			FechaAnteriorFechaActualException, ProcesoAsociadoUsuarioProcedimientoException,
-			ProcedimientoAsociadoProcesoException, ProcesoAsociadoRespuestaPosibleException,
-			ProcesoAsociadoObjetivoException, ObjetivoNoExisteException, NivelYaExisteException {
+	public void ProcesoService_eliminarProcesoObjetivoAsociado() throws IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, ProcesoNoExisteException,
+			java.text.ParseException, ProcesoYaExisteException, FechaAnteriorFechaActualException,
+			ProcesoAsociadoUsuarioProcedimientoException, ProcedimientoAsociadoProcesoException,
+			ProcesoAsociadoRespuestaPosibleException, ProcesoAsociadoObjetivoException, ObjetivoNoExisteException,
+			NivelYaExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 
 		final String resultado = StringUtils.EMPTY;
 
 		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
 
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_ASOCIADO_OBJETIVO);
 		proceso.getProceso().setFechaProceso(new Date());
@@ -710,10 +933,19 @@ public class ProcesoServiceTest {
 		final List<Integer> nivelesProceso = new ArrayList<>();
 		nivelesProceso.add(1);
 		proceso.setNivel(nivelesProceso);
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
+		final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
+				"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		procedimientoRepository.saveAndFlush(procedimiento);
+		proceso.setProcedimiento(procedimiento);
 		procesoService.anadirProceso(proceso);
 
 		final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(
 				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), resultado);
+
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
 
 		try {
 			procesoService.eliminaProceso(new Proceso(proceso.getUsuario(), procesoEncontrado.get(0)));
@@ -723,7 +955,11 @@ public class ProcesoServiceTest {
 							.getTipoNameByCodigo(CodeMessageErrors.PROCESO_ASOCIADO_OBJETIVO_EXCEPTION.getCodigo()));
 		} finally {
 			nivelRepository.deleteNivel(objetivoBDNuevo.getIdObjetivo(), procesoEncontrado.get(0).getIdProceso());
+			procesoProcedimientoRepository.deleteProcesoProcedimiento(procesoEncontrado.get(0).getIdProceso(),
+					procedimientoEncontrado.getIdProcedimiento());
+			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
 			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
+			planRepository.deletePlan(planBDNuevo.getIdPlan());
 			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 
 		}
@@ -733,7 +969,9 @@ public class ProcesoServiceTest {
 	public void ProcesoService_reactivarProcesoCorrecto()
 			throws IOException, ParseException, LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException,
 			ProcesoYaExisteException, java.text.ParseException, FechaAnteriorFechaActualException,
-			ProcesoNoExisteException, ObjetivoNoExisteException, NivelYaExisteException {
+			ProcesoNoExisteException, ObjetivoNoExisteException, NivelYaExisteException,
+			RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException {
 		final Proceso proceso = generateProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.REACTIVAR_PROCESO);
 		proceso.getProceso().setBorradoProceso(1);
 		proceso.getProceso().setFechaProceso(new Date());
@@ -742,20 +980,37 @@ public class ProcesoServiceTest {
 		final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
 		proceso.setObjetivos(new ArrayList<>(objetivoBDNuevo.getIdObjetivo()));
 		proceso.setNivel(new ArrayList<>(1));
+		final List<RespuestaPosibleEntity> respuestaPosibleProceso = new ArrayList<>();
+		proceso.setRespuestasPosibles(respuestaPosibleProceso);
+		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
+		plan.setObjetivo(objetivo);
+		planRepository.saveAndFlush(plan);
+		final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
+		final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
+				"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
+		procedimientoRepository.saveAndFlush(procedimiento);
+		proceso.setProcedimiento(procedimiento);
 		procesoService.anadirProceso(proceso);
 
 		final ReturnBusquedas<ProcesoEntity> procesoReactivar = procesoService.buscarProceso(
 				proceso.getProceso().getNombreProceso(), proceso.getProceso().getDescripProceso(), new Date(), 0, 1);
+
+		final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
+				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
 
 		procesoReactivar.getListaBusquedas().get(0).setBorradoProceso(0);
 
 		final String respuesta = procesoService
 				.reactivarProceso(new Proceso(proceso.getUsuario(), procesoReactivar.getListaBusquedas().get(0)));
 
-		procesoService.deleteProceso(procesoReactivar.getListaBusquedas().get(0));
-
 		assertEquals(Constantes.OK, respuesta);
 
+		procesoProcedimientoRepository.deleteProcesoProcedimiento(
+				procesoReactivar.getListaBusquedas().get(0).getIdProceso(),
+				procedimientoEncontrado.getIdProcedimiento());
+		procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
+		procesoRepository.deleteProceso(procesoReactivar.getListaBusquedas().get(0).getIdProceso());
+		planRepository.deletePlan(planBDNuevo.getIdPlan());
 		objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
 
 	}

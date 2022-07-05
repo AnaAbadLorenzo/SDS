@@ -21,6 +21,7 @@ var urlPlan = "/plan";
 var urlProcedimiento = "/procedimiento";
 var urlProcedimientosUsuario = "/procedimientoUsuario";
 var urlProcesoProcedimiento = "/procesoProcedimiento";
+var urlProceso = "/proceso";
 var urlTest = "/test";
 var urlAtributos = "/atributos";
 var urlAcciones = "/acciones";
@@ -112,6 +113,7 @@ var urlPeticionAjaxReactivarRespuestaPosible = urlComun + urlRespuestaPosible + 
 var urlPeticionAjaxListarRespuestaPosible = urlComun + urlRespuestaPosible + "/listarRespuestaPosible";
 var urlPeticionAjaxListarRespuestasPosiblesEliminadas = urlComun + urlRespuestaPosible + "/listarRespuestasPosiblesEliminadas";
 var urlPeticionAjaxListadoRespuestasPosibles = urlComun + urlRespuestaPosible  + "/listarRespuestasPosibles";
+var urlPeticionAjaxListadoRespuestasPosiblesSinP = urlComun + urlRespuestaPosible  + "/listarRespuestasPosiblesSinP";
 var urlPeticionAjaxEditarRespuestaPosible = urlComun + urlRespuestaPosible  + "/modificarRespuestaPosible";
 var urlPeticionAjaxAddRespuestaPosible = urlComun + urlRespuestaPosible  + "/respuestaPosible";
 var urlPeticionAjaxDeleteRespuestaPosible = urlComun + urlRespuestaPosible  + "/eliminarRespuestaPosible";
@@ -131,6 +133,7 @@ var urlPeticionAjaxReactivarProcedimiento = urlComun + urlProcedimiento + "/reac
 var urlPeticionAjaxListarProcedimiento = urlComun + urlProcedimiento + "/listarProcedimiento";
 var urlPeticionAjaxListarProcedimientosEliminados = urlComun + urlProcedimiento + "/listarProcedimientosEliminados";
 var urlPeticionAjaxListadoProcedimientos = urlComun + urlProcedimiento  + "/listarProcedimientos";
+var urlPeticionAjaxListadoProcedimientosSinP = urlComun + urlProcedimiento  + "/listarProcedimientosSinP";
 var urlPeticionAjaxListadoProcedimientosPlan = urlComun + urlProcedimiento + "/listarProcedimientosByPlan";
 var urlPeticionAjaxEditarProcedimiento = urlComun + urlProcedimiento  + "/modificarProcedimiento";
 var urlPeticionAjaxAddProcedimiento = urlComun + urlProcedimiento  + "/procedimiento";
@@ -161,6 +164,11 @@ var urlPeticionAjaxPersonaGuardar = urlComun + urlPersona + "/anadirPersona";
 var urlPeticionAjaxEditPersona = urlComun + urlPersona + "/modificarPersona";
 var urlPeticionAjaxDeletePersona = urlComun + urlPersona + "/eliminarPersona";
 var urlPeticionAjaxAsociarPersonaEmpresa = urlComun + urlPersona + "/asociarPersonaEmpresa";
+
+/**Urls procesos*/
+var urlPeticionAjaxListarTodosProcesos = urlComun + urlProceso + "/listarProcesos";
+var urlPeticionAjaxAddProceso = urlComun + urlProceso + '/proceso';
+var urlPeticionAjaxListarProceso = urlComun + urlProceso + "/listarProceso";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;

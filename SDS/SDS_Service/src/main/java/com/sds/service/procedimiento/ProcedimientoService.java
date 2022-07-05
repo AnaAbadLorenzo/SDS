@@ -27,6 +27,8 @@ public interface ProcedimientoService {
 
 	ReturnBusquedas<ProcedimientoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
+	ReturnBusquedas<ProcedimientoEntity> buscarTodos();
+
 	ReturnBusquedas<ProcedimientoEntity> buscarProcedimientosEliminados(final int inicio, final int tamanhoPagina);
 
 	String anadirProcedimiento(final Procedimiento procedimiento)

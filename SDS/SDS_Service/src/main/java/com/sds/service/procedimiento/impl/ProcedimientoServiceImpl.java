@@ -261,6 +261,40 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 	}
 
 	@Override
+	public ReturnBusquedas<ProcedimientoEntity> buscarTodos() {
+		final List<ProcedimientoEntity> procedimientoToret = new ArrayList<>();
+		final List<ProcedimientoEntity> procedimientos = entityManager
+				.createNamedQuery(Constantes.PROCEDIMIENTO_QUERY_FINDALL).getResultList();
+
+		final Integer numberTotalResults = procedimientoRepository.numberFindAllProcedimientos();
+
+		if (!procedimientos.isEmpty()) {
+			for (final ProcedimientoEntity procedimiento : procedimientos) {
+				final ObjetivoEntity objetivoEntity = new ObjetivoEntity(
+						procedimiento.getPlan().getObjetivo().getIdObjetivo(),
+						procedimiento.getPlan().getObjetivo().getNombreObjetivo(),
+						procedimiento.getPlan().getObjetivo().getDescripObjetivo(),
+						procedimiento.getPlan().getObjetivo().getBorradoObjetivo());
+				final PlanEntity planEntity = new PlanEntity(procedimiento.getPlan().getIdPlan(),
+						procedimiento.getPlan().getNombrePlan(), procedimiento.getPlan().getDescripPlan(),
+						procedimiento.getPlan().getFechaPlan(), procedimiento.getPlan().getBorradoPlan(),
+						objetivoEntity);
+				final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity(
+						procedimiento.getIdProcedimiento(), procedimiento.getNombreProcedimiento(),
+						procedimiento.getDescripProcedimiento(), procedimiento.getFechaProcedimiento(),
+						procedimiento.getBorradoProcedimiento(), procedimiento.getCheckUsuario(), planEntity);
+				procedimientoToret.add(procedimientoEntity);
+
+			}
+		}
+
+		final ReturnBusquedas<ProcedimientoEntity> result = new ReturnBusquedas<>(procedimientoToret,
+				numberTotalResults, procedimientoToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
 	public ReturnBusquedas<ProcedimientoEntity> buscarProcedimientosEliminados(final int inicio,
 			final int tamanhoPagina) {
 		final List<ProcedimientoEntity> procedimientoToret = new ArrayList<>();
@@ -307,6 +341,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 		String resultadoLog = StringUtils.EMPTY;
 		String fechaIntroducidaUsuario = StringUtils.EMPTY;
 		String fechaActualString = StringUtils.EMPTY;
+		String fechaDescripNoticia = StringUtils.EMPTY;
 
 		if (procedimientoValido) {
 			final ProcedimientoEntity procedimientoBD = procedimientoRepository
@@ -395,6 +430,9 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 						procedimientoEntity.setBorradoProcedimiento(0);
 						procedimientoRepository.saveAndFlush(procedimientoEntity);
 
+						final String[] arrayNoticia = fechaIntroducidaUsuario.split("-");
+						fechaDescripNoticia = arrayNoticia[2] + "- " + arrayNoticia[1] + "-" + arrayNoticia[0];
+
 						if (Boolean.TRUE.equals(procedimientoEntity.getCheckUsuario())) {
 							final NoticiasEntity noticia = new NoticiasEntity(
 									String.format(Constantes.TITULO_ANADIR_NOTICIA_PROCEDIMIENTO,
@@ -402,7 +440,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 									String.format(Constantes.TEXTO_ANADIR_NOTICIA_PROCEDIMIENTO,
 											procedimientoEntity.getPlan().getNombrePlan(),
 											procedimientoEntity.getNombreProcedimiento(),
-											procedimientoEntity.getDescripProcedimiento(), fechaIntroducidaUsuario),
+											procedimientoEntity.getDescripProcedimiento(), fechaDescripNoticia),
 									new Date());
 							noticiasRepository.saveAndFlush(noticia);
 						}

@@ -565,6 +565,17 @@ function construyeFila(entidad, fila) {
                 '</td> <td>' + fila.plan.nombrePlan; 
         break;
 
+
+        case 'PROCESO':
+        var fechaProceso = new Date(fila.fechaProceso);
+		atributosFunciones = ["'" + fila.nombreProceso + "'", "'" + fila.descripProceso + "'", "'" + convertirFecha(fechaProceso.toString()) + "'", "'" + fila.idProceso + "'", "'" + fila.procedimientos + "'", "'" + fila.objetivos + "'", "'" + fila.respuestasPosibles + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreProceso + 
+                '</td> <td>' + fila.descripProceso +
+                '</td> <td>' + convertirFecha(fechaProceso.toString());
+         
+        break;
+
+
 	};
 
 	if(entidad == 'PERSONA'){
@@ -1293,6 +1304,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'PROCEDIMIENTO' :
 			cargarPermisosFuncProcedimiento();
 		break;
+
+		case 'PROCESOS' :
+			cargarPermisosFuncProceso();
+		break;
 	}
 	
 }
@@ -1350,6 +1365,10 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'PROCEDIMIENTO' :
 			cargarPermisosFuncProcedimiento();
+		break;
+
+		case 'PROCESO' :
+			cargarPermisosFuncProceso();
 		break;
 
 	}

@@ -20,11 +20,15 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.NivelYaExisteException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
+import com.sds.service.exception.ProcesoProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoRespuestaPosibleYaExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
+import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.proceso.ProcesoService;
 import com.sds.service.proceso.model.Proceso;
 import com.sds.service.proceso.model.ProcesoBuscar;
@@ -108,8 +112,15 @@ public class ProcesoController {
 			return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, proceso);
 		} catch (final ParseException parseException) {
 			return new RespEntity(RespCode.PARSE_EXCEPTION, proceso);
+		} catch (final RespuestaPosibleNoExisteException respuestaPosibleNoExiste) {
+			return new RespEntity(RespCode.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION, proceso);
+		} catch (final ProcesoRespuestaPosibleYaExisteException procesoRespPosibleYaExiste) {
+			return new RespEntity(RespCode.PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION, proceso);
+		} catch (final ProcesoProcedimientoYaExisteException procesoProcedimientoYaExiste) {
+			return new RespEntity(RespCode.PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION, proceso);
+		} catch (final ProcedimientoNoExisteException procedimientoNoExiste) {
+			return new RespEntity(RespCode.PROCEDIMIENTO_NO_EXISTE_EXCEPTION, proceso);
 		}
-
 		return new RespEntity(RespCode.PROCESO_VACIO, proceso);
 	}
 

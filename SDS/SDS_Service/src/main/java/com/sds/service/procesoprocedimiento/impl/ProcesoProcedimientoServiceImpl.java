@@ -130,7 +130,7 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 			final Optional<ProcesoProcedimientoEntity> procesoProcedimientoBD = procesoProcedimientoRepository
 					.findById(procesoProcedimientoKey);
 
-			if (procesoProcedimientoBD != null) {
+			if (procesoProcedimientoBD.isPresent()) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 						procesoProcedimiento.getUsuario(),
 						CodeMessageErrors.getTipoNameByCodigo(
@@ -152,7 +152,7 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 				final Optional<ProcesoEntity> procesoBD = procesoRepository
 						.findById(procesoProcedimientoEntity.getIdProceso());
 
-				if (procesoBD != null) {
+				if (procesoBD == null) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 							procesoProcedimiento.getUsuario(),
 							CodeMessageErrors
@@ -173,7 +173,7 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 				} else {
 					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
 							.findById(procesoProcedimientoEntity.getIdProcedimiento());
-					if (procedimientoBD != null) {
+					if (procedimientoBD == null) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 								procesoProcedimiento.getUsuario(),
 								CodeMessageErrors.getTipoNameByCodigo(

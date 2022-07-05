@@ -3,6 +3,7 @@ package com.sds.controller.procedimiento;
 import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +61,14 @@ public class ProcedimientoController {
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<ProcedimientoEntity> resultado = procedimientoService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.PROCEDIMIENTOS_LISTADOS, resultado);
+	}
+
+	@GetMapping(value = "/listarProcedimientosSinP")
+	@ResponseBody
+	public RespEntity buscarTodos() {
+		final ReturnBusquedas<ProcedimientoEntity> resultado = procedimientoService.buscarTodos();
 
 		return new RespEntity(RespCode.PROCEDIMIENTOS_LISTADOS, resultado);
 	}

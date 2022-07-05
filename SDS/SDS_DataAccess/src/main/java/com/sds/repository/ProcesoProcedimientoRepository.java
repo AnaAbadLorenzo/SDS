@@ -17,6 +17,8 @@ public interface ProcesoProcedimientoRepository
 
 	List<ProcesoProcedimientoEntity> findProcesoProcedimiento(final Integer idProceso, final Integer idProcedimiento);
 
+	List<ProcesoProcedimientoEntity> findAllOrderByOrden();
+
 	Integer numberFindProcesoProcedimiento(final Integer idProceso, final Integer idProcedimiento);
 
 	Integer numberFindProcesoProcedimientoByIdProcedimiento(final Integer idProcedimiento);

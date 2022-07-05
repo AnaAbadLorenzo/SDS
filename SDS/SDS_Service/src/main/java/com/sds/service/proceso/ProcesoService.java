@@ -11,11 +11,15 @@ import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.NivelYaExisteException;
 import com.sds.service.exception.ObjetivoNoExisteException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
+import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
+import com.sds.service.exception.ProcesoProcedimientoYaExisteException;
+import com.sds.service.exception.ProcesoRespuestaPosibleYaExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
+import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.proceso.model.Proceso;
 
 public interface ProcesoService {
@@ -27,9 +31,11 @@ public interface ProcesoService {
 
 	ReturnBusquedas<ProcesoEntity> buscarProcesosEliminados(final int inicio, final int tamanhoPagina);
 
-	String anadirProceso(final Proceso proceso) throws LogExcepcionesNoGuardadoException,
-			LogAccionesNoGuardadoException, ProcesoYaExisteException, ParseException, FechaAnteriorFechaActualException,
-			ObjetivoNoExisteException, NivelYaExisteException, ProcesoNoExisteException;
+	String anadirProceso(final Proceso proceso)
+			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoYaExisteException,
+			ParseException, FechaAnteriorFechaActualException, ObjetivoNoExisteException, NivelYaExisteException,
+			ProcesoNoExisteException, RespuestaPosibleNoExisteException, ProcesoRespuestaPosibleYaExisteException,
+			ProcesoProcedimientoYaExisteException, ProcedimientoNoExisteException;
 
 	String eliminaProceso(final Proceso proceso)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoNoExisteException,

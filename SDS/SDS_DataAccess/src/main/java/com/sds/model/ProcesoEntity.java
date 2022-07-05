@@ -50,12 +50,17 @@ public class ProcesoEntity {
 	private Integer borradoProceso;
 
 	@ManyToMany(mappedBy = "procesos")
-	private final Set<ProcedimientoEntity> procedimientos = new HashSet<>();
+	private Set<ProcedimientoEntity> procedimientos = new HashSet<>();
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "nivel", joinColumns = { @JoinColumn(name = "id_proceso") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_objetivo") })
-	private final Set<ObjetivoEntity> objetivos = new HashSet<>();
+	private Set<ObjetivoEntity> objetivos = new HashSet<>();
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name = "procesorespuesta_posible", joinColumns = {
+			@JoinColumn(name = "id_proceso") }, inverseJoinColumns = { @JoinColumn(name = "id_respuesta") })
+	private Set<RespuestaPosibleEntity> respuestasPosibles = new HashSet<>();
 
 	@OneToMany(mappedBy = "proceso")
 	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesos = new HashSet<>();
@@ -123,12 +128,28 @@ public class ProcesoEntity {
 		this.borradoProceso = borradoProceso;
 	}
 
+	public void setProcedimientos(final Set<ProcedimientoEntity> procedimientos) {
+		this.procedimientos = procedimientos;
+	}
+
 	public Set<ProcedimientoEntity> getProcedimientos() {
 		return procedimientos;
 	}
 
 	public Set<ObjetivoEntity> getObjetivos() {
 		return objetivos;
+	}
+
+	public void setObjetivos(final Set<ObjetivoEntity> objetivos) {
+		this.objetivos = objetivos;
+	}
+
+	public Set<RespuestaPosibleEntity> getRespuestasPosibles() {
+		return respuestasPosibles;
+	}
+
+	public void setRespuestasPosibles(final Set<RespuestaPosibleEntity> respuestasPosibles) {
+		this.respuestasPosibles = respuestasPosibles;
 	}
 
 	public Set<ProcedimientoUsuarioProcesoEntity> getProcedimientoUsuarioProcesos() {

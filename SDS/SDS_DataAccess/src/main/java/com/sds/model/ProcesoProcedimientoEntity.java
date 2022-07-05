@@ -19,7 +19,8 @@ import com.sds.model.compositekey.ProcesoProcedimientoKey;
 		@NamedQuery(name = "ProcesoProcedimientoEntity.findProcesoProcedimientoByIdProcedimiento", query = "SELECT p FROM ProcesoProcedimientoEntity p WHERE p.idProcedimiento =: idProcedimiento"),
 		@NamedQuery(name = "ProcesoProcedimientoEntity.findProcesoProcedimiento", query = "SELECT p FROM ProcesoProcedimientoEntity p WHERE p.idProceso =: idProceso AND p.idProcedimiento =: idProcedimiento"),
 		@NamedQuery(name = "ProcesoProcedimientoEntity.numberFindProcesoProcedimiento", query = "SELECT COUNT(p) FROM ProcesoProcedimientoEntity p WHERE p.idProceso =: idProceso AND p.idProcedimiento =: idProcedimiento"),
-		@NamedQuery(name = "ProcesoProcedimientoEntity.numberFindProcesoProcedimientoByIdProcedimiento", query = "SELECT COUNT(p) FROM ProcesoProcedimientoEntity p WHERE p.idProcedimiento =: idProcedimiento") })
+		@NamedQuery(name = "ProcesoProcedimientoEntity.numberFindProcesoProcedimientoByIdProcedimiento", query = "SELECT COUNT(p) FROM ProcesoProcedimientoEntity p WHERE p.idProcedimiento =: idProcedimiento"),
+		@NamedQuery(name = "ProcesoProcedimientoEntity.findAllOrderByOrden", query = "SELECT p FROM ProcesoProcedimientoEntity p ORDER BY p.ordenProceso ASC") })
 public class ProcesoProcedimientoEntity {
 
 	@Id

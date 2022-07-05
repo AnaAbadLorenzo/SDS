@@ -88,7 +88,7 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         var descripP = getCookie('descripPlan');
       }
 
-       if(getCookie('fechaPlan') == null || getCookie('fechaPlan') == "null" || getCookie('fechaPlan') == "" ){
+      if(getCookie('fechaPlan') == null || getCookie('fechaPlan') == "null" || getCookie('fechaPlan') == "" ){
         var fechaP= "";
         var fechaString = "";
       }else{

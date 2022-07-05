@@ -190,6 +190,10 @@ public enum RespCode {
 			"El proceso tiene asociados usuarios y procedimientos"), //
 	PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION("PROCESO_ASOCIADO_RESPUESTA_POSIBLE_EXCEPTION",
 			"El proceso tiene asociadas respuestas posibles"), //
+	PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION("PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION",
+			"La relación proceso - respuesta posible ya existe"), //
+	PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION("PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION",
+			"La relación proceso - procedimiento ya existe"), //
 	PROCESO_ASOCIADO_OBJETIVO_EXCEPTION("PROCESO_ASOCIADO_OBJETIVO_EXCEPTION", "El proceso tiene asociado un objetivo"), //
 	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION",
 			"El proceso tiene asociados procedimientos"), //

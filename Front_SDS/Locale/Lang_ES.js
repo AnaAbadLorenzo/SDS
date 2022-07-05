@@ -50,6 +50,11 @@ arrayES={
 	'NO_ESPECIFICADO' : 'No especificado',
 	'SI' : 'Si',
 	'NO' : 'No',
+	'ESTADO_PROCEDIMIENTO' : 'Estado del procedimiento',
+	'NOMBRE_PROCESO': 'Nombre proceso',
+	'DESCRIPCION_PROCESO' : 'Descripción proceso',
+	'NIVEL' : 'Nivel',
+	'SELECCIONAR_RESPUESTA_POSIBLE' : 'Selecciona las respuestas posibles',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -259,7 +264,17 @@ arrayES={
 	'FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA' : 'La fecha del procedimiento sólo puede contener números',
 	'FECHA_PROCEDIMIENTO_MENOR_QUE_8' : 'La fecha del procedimiento tiene menos de 8 caracteres',
 	'FECHA_PROCEDIMIENTO_MAYOR_QUE_8' : 'La fecha del procedimiento tiene más de 8 caracteres',
-
+	'NOMBRE_PROCESO_VACIO' : 'Nombre proceso vacío',
+	'NOMBRE_PROCESO_ALFANUMERICO_INCORRECTO' : 'El nombre del proceso sólo puede contener números, letras y espacios',
+	'NOMBRE_PROCESO_MENOR_QUE_3' : 'El nombre del proceso tiene menos de 3 caracteres',
+	'NOMBRE_PROCESO_MAYOR_QUE_48' : 'El nombre del proceso tiene más de 48 caracteres',
+	'DESCRIPCION_PROCESO_VACIO' : 'Descripción proceso vacía',
+	'DESCRIPCION_PROCESO_ALFANUMERICO_INCORRECTO' : 'La descripción del proceso sólo puede contener números, letras y espacios',
+	'DESCRIPCION_PROCESO_MENOR_QUE_3' : 'La descripción del proceso tiene menos de 3 caracteres',
+	'FECHA_PROCESO_VACIA' : 'Fecha proceso vacía',
+	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'la fecha del proceso solo puede contener números',
+	'FECHA_PROCESO_MENOR_QUE_8' : 'La fecha del proceso tiene menos de 8 caracteres',
+	'FECHA_PROCESO_MAYOR_QUE_8' : 'La fecha del proceso tiene más de 8 caracteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -396,6 +411,11 @@ arrayES={
 	'ADD_PROCEDIMIENTO' : 'AÑADIR PROCEDIMIENTO',
 	'OPCION_DEFECTO_PLAN' : 'Por favor, selecciona el plan',
 	'PUBLICAR_PROCEDIMIENTO' : '¿Publicar procedimiento?',
+	'ADD_PROCESO' : 'AÑADIR PROCESO',
+	'OPCION_DEFECTO_PROCEDIMIENTO' : 'Por favor, selecciona el procedimiento',
+	'FORMATO_MULTIPLES_PROCEDIMIENTOS' : 'Si pulsas Ctr, puedes seleccionar múltiples procedimientos pulsando sobre ellos',
+	'SEARCH_PROCESO' : 'BUSCAR PROCESO',
+	'EDIT_PROCESO' : 'EDITAR PROCESO',
 
 
 	//Acciones
@@ -514,7 +534,9 @@ arrayES={
 	'PROCEDIMIENTOS_LISTADOS' : 'Los procedimientos se han listado correctamente',
 	'PROCEDIMIENTO_ELIMINADO' : 'El procedimiento se ha eliminado correctamente',
 	'PROCEDIMIENTO_MODIFICADO' : 'El procedimiento se ha modificado correctamente',
-	'PROCEDIMIENTO_GUARDADO' : 'El procedimiento se ha guardado correctamente'
+	'PROCEDIMIENTO_GUARDADO' : 'El procedimiento se ha guardado correctamente',
+	'PROCESO_GUARDADO' : 'EL proceso se ha guardado correctamente',
+	'PROCESO_GUARDADO_OK' : 'PROCESO GUARDADO CORRECTAMENTE'
 
 
 

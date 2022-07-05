@@ -138,6 +138,9 @@ function escogeTamanho(entidad){
         case 'PROCEDIMIENTOSEJECUTADOS' :
                 tamanho = tamanhoPaginaProcedimientoUsuario;
         break;
+         case 'PROCESO' :
+                tamanho = tamanhoPaginaProceso;
+        break;
     }
 
     return tamanho;
@@ -480,6 +483,29 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
                 break;  
             }
             break;
+        case 'PROCESO':
+            switch(funcionalidad){
+                case 'cargarProcesos': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarProcesos(' 
+                            + (i+1) + ',' + tamanhoPaginaProceso + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarProceso' : 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarProceso(' 
+                            + (i+1) + ',' + tamanhoPaginaProceso + ", \'buscarPaginacion\'" + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                case 'buscarEliminadosProceso' :
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="buscarEliminados(' 
+                            + (i+1) + ',' + tamanhoPaginaProceso + '); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+                
+        }
+        break;
 
     }
 

@@ -991,6 +991,7 @@ async function detalleProcedimiento(){
     $("#form-modal").modal('toggle');
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
+    
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
@@ -1218,8 +1219,9 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
     $('#labelDescripcionPlan').attr('hidden', true);
     $('#selectPlanes').attr('hidden', false);
     $('#descripPlan').attr('hidden', true);
-    document.getElementById('checkUsuarioAnadir').style.display = "none";
-    document.getElementById('checkUsuario').style.display = "block";
+    $('#noEspecificadoCheckAnadir').attr('hidden', true);
+    document.getElementById('checkUsuarioAnadir').style.display = "block";
+    document.getElementById('checkUsuario').style.display = "none";
 
     rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan);
     insertacampo(document.formularioGenerico,'idProcedimiento', idProcedimiento);
@@ -1230,8 +1232,8 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
     eliminarReadonly(idElementoList);
     mostrarObligatorios(obligatorios);
     habilitaCampos(idElementoList);
-    deshabilitaCampos(["nombrePlan"]);
-    anadirReadonly(["nombrePlan"]);
+    deshabilitaCampos(["nombreProcedimiento"]);
+    anadirReadonly(["nombreProcedimiento"]);
 
 }
 

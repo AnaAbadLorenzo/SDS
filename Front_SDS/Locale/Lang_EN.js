@@ -49,6 +49,11 @@ arrayEN={
 	'NO_ESPECIFICADO' : 'Not specified',
 	'SI' : 'Yes',
 	'NO' : 'No',
+	'ESTADO_PROCEDIMIENTO' : 'Procedure state',
+	'NOMBRE_PROCESO': 'Process name',
+	'DESCRIPCION_PROCESO' : 'Process description',
+	'NIVEL': 'Level',
+	'SELECCIONAR_RESPUESTA_POSIBLE' : 'Select the possible answers',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -261,6 +266,17 @@ arrayEN={
 	'FECHA_PROCEDIMIENTO_NUMERICA_INCORRECTA' : 'Procedure`s date can only contain numbers',
 	'FECHA_PROCEDIMIENTO_MENOR_QUE_8' : 'Procedure`s date is minor than 8 characteres',
 	'FECHA_PROCEDIMIENTO_MAYOR_QUE_8' : 'Procedure`s date is bigger than 8 characteres',
+	'NOMBRE_PROCESO_VACIO' : 'Process name empty',
+	'NOMBRE_PROCESO_ALFANUMERICO_INCORRECTO' : 'Process`s name can only contain numbers, spaces and letters',
+	'NOMBRE_PROCESO_MENOR_QUE_3' : 'Process`s name size is minor than 3 characteres',
+	'NOMBRE_PROCESO_MAYOR_QUE_48' : 'Process`s name size is bigger than 48 characteres',
+	'DESCRIPCION_PROCESO_VACIO' : 'Process`s description empty',
+	'DESCRIPCION_PROCESO_ALFANUMERICO_INCORRECTO' : 'Process description can only contain letters, numbers and spaces',
+	'DESCRIPCION_PROCESO_MENOR_QUE_3' : 'Process`s description size is minor than 3 characteres',
+	'FECHA_PROCESO_VACIA' : 'Process`s date empty',
+	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'Process`s date can only contain numbers',
+	'FECHA_PROCESO_MENOR_QUE_8' : 'Process`s date is minor than 8 characteres',
+	'FECHA_PROCESO_MAYOR_QUE_8' : 'Process`s date is bigger than 8 characteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -396,6 +412,11 @@ arrayEN={
 	'ADD_PROCEDIMIENTO' : 'ADD PROCEDURE',
 	'OPCION_DEFECTO_PLAN' : 'Please, select the plan',
 	'PUBLICAR_PROCEDIMIENTO' : 'Publish procedure?',
+	'ADD_PROCESO' : 'ADD PROCEDURE',
+	'OPCION_DEFECTO_PROCEDIMIENTO' : 'Please, select the procedure',
+	'FORMATO_MULTIPLES_PROCEDIMIENTOS' : 'If you press Ctr, you can choose multiple procedures by doing click on them',
+	'SEARCH_PROCESO' : 'SEARCH PROCESS',
+	'EDIT_PROCESO' : 'EDIT PROCESS',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -513,6 +534,8 @@ arrayEN={
 	'PROCEDIMIENTOS_LISTADOS' : 'The procedures has been found correctly',
 	'PROCEDIMIENTO_ELIMINADO' : 'The procedure has been deleted correctly',
 	'PROCEDIMIENTO_MODIFICADO' : 'The procedure has been modified correctly',
-	'PROCEDIMIENTO_GUARDADO' : 'The procedure has been saved correctly'
+	'PROCEDIMIENTO_GUARDADO' : 'The procedure has been saved correctly',
+	'PROCESO_GUARDADO_OK' : 'PROCESS SAVED CORRECTLY',
+	'PROCESO_GUARDADO' : 'THe process has been saved correctly'
 
 }
