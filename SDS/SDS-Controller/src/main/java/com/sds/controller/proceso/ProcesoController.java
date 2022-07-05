@@ -32,6 +32,7 @@ import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.proceso.ProcesoService;
 import com.sds.service.proceso.model.Proceso;
 import com.sds.service.proceso.model.ProcesoBuscar;
+import com.sds.service.proceso.model.ProcesoReturn;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -63,7 +64,7 @@ public class ProcesoController {
 	@PostMapping(value = "/listarProcesos")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
-		final ReturnBusquedas<ProcesoEntity> resultado = procesoService.buscarTodos(paginacion.getInicio(),
+		final ReturnBusquedas<ProcesoReturn> resultado = procesoService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCESOS_LISTADOS, resultado);

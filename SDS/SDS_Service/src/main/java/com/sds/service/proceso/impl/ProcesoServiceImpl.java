@@ -59,7 +59,11 @@ import com.sds.service.log.LogService;
 import com.sds.service.nivel.NivelService;
 import com.sds.service.nivel.model.Nivel;
 import com.sds.service.proceso.ProcesoService;
+import com.sds.service.proceso.model.Objetivo;
+import com.sds.service.proceso.model.Procedimiento;
 import com.sds.service.proceso.model.Proceso;
+import com.sds.service.proceso.model.ProcesoReturn;
+import com.sds.service.proceso.model.RespuestaPosible;
 import com.sds.service.procesoprocedimiento.ProcesoProcedimientoService;
 import com.sds.service.procesoprocedimiento.model.ProcesoProcedimiento;
 import com.sds.service.procesorespuestaposible.ProcesoRespuestaPosibleService;
@@ -205,11 +209,11 @@ public class ProcesoServiceImpl implements ProcesoService {
 	}
 
 	@Override
-	public ReturnBusquedas<ProcesoEntity> buscarTodos(final int inicio, final int tamanhoPagina) {
-		final List<ProcesoEntity> procesoToret = new ArrayList<>();
-		final Set<ProcedimientoEntity> procedimientos = new HashSet<>();
-		final Set<ObjetivoEntity> objetivos = new HashSet<>();
-		final Set<RespuestaPosibleEntity> respuestasPosibles = new HashSet<>();
+	public ReturnBusquedas<ProcesoReturn> buscarTodos(final int inicio, final int tamanhoPagina) {
+		final List<ProcesoReturn> procesoToret = new ArrayList<>();
+		final Set<Procedimiento> procedimientos = new HashSet<>();
+		final Set<Objetivo> objetivos = new HashSet<>();
+		final Set<RespuestaPosible> respuestasPosibles = new HashSet<>();
 
 		final List<ProcesoEntity> procesos = entityManager.createNamedQuery(Constantes.PROCESO_QUERY_FINDALL)
 				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
@@ -223,12 +227,8 @@ public class ProcesoServiceImpl implements ProcesoService {
 				for (final Integer idProcedimiento : procedimientoProceso) {
 					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
 							.findById(idProcedimiento);
-					final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity(
-							procedimientoBD.get().getIdProcedimiento(), procedimientoBD.get().getNombreProcedimiento(),
-							procedimientoBD.get().getDescripProcedimiento(),
-							procedimientoBD.get().getFechaProcedimiento(),
-							procedimientoBD.get().getBorradoProcedimiento(), procedimientoBD.get().getCheckUsuario(),
-							procedimientoBD.get().getPlan());
+					final Procedimiento procedimientoEntity = new Procedimiento(
+							procedimientoBD.get().getIdProcedimiento(), procedimientoBD.get().getNombreProcedimiento());
 					procedimientos.add(procedimientoEntity);
 
 				}
@@ -236,9 +236,8 @@ public class ProcesoServiceImpl implements ProcesoService {
 				final List<NivelEntity> objetivosProceso = nivelRepository.findNivelByIdProceso(proceso.getIdProceso());
 				for (final NivelEntity nivel : objetivosProceso) {
 					final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(nivel.getIdObjetivo());
-					final ObjetivoEntity objetivoEntity = new ObjetivoEntity(objetivoBD.get().getIdObjetivo(),
-							objetivoBD.get().getNombreObjetivo(), objetivoBD.get().getDescripObjetivo(),
-							objetivoBD.get().getBorradoObjetivo());
+					final Objetivo objetivoEntity = new Objetivo(objetivoBD.get().getIdObjetivo(),
+							objetivoBD.get().getNombreObjetivo());
 					objetivos.add(objetivoEntity);
 
 				}
@@ -248,24 +247,20 @@ public class ProcesoServiceImpl implements ProcesoService {
 				for (final ProcesoRespuestaPosibleEntity procesoRespuestaPosible : respuestasProceso) {
 					final Optional<RespuestaPosibleEntity> respuestaPosibleBD = respuestaPosibleRepository
 							.findById(procesoRespuestaPosible.getIdRespuesta());
-					final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity(
-							respuestaPosibleBD.get().getIdRespuesta(), respuestaPosibleBD.get().getTextoRespuesta(),
-							respuestaPosibleBD.get().getBorradoRespuesta());
+					final RespuestaPosible respuestaPosibleEntity = new RespuestaPosible(
+							respuestaPosibleBD.get().getIdRespuesta(), respuestaPosibleBD.get().getTextoRespuesta());
 					respuestasPosibles.add(respuestaPosibleEntity);
 
 				}
-				final ProcesoEntity procesoEntity = new ProcesoEntity(proceso.getIdProceso(),
+				final ProcesoReturn procesoEntity = new ProcesoReturn(proceso.getIdProceso(),
 						proceso.getNombreProceso(), proceso.getDescripProceso(), proceso.getFechaProceso(),
-						proceso.getBorradoProceso());
-				procesoEntity.setProcedimientos(procedimientos);
-				procesoEntity.setObjetivos(objetivos);
-				procesoEntity.setRespuestasPosibles(respuestasPosibles);
+						proceso.getBorradoProceso(), procedimientos, objetivos, respuestasPosibles);
 				procesoToret.add(procesoEntity);
 
 			}
 		}
 
-		final ReturnBusquedas<ProcesoEntity> result = new ReturnBusquedas<>(procesoToret, numberTotalResults,
+		final ReturnBusquedas<ProcesoReturn> result = new ReturnBusquedas<>(procesoToret, numberTotalResults,
 				procesoToret.size(), inicio);
 
 		return result;

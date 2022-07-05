@@ -21,13 +21,14 @@ import com.sds.service.exception.ProcesoRespuestaPosibleYaExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
 import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.proceso.model.Proceso;
+import com.sds.service.proceso.model.ProcesoReturn;
 
 public interface ProcesoService {
 
 	ReturnBusquedas<ProcesoEntity> buscarProceso(final String nombreProceso, final String descripProceso,
 			final Date fechaProceso, final int inicio, final int tamanhoPagina);
 
-	ReturnBusquedas<ProcesoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+	ReturnBusquedas<ProcesoReturn> buscarTodos(final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<ProcesoEntity> buscarProcesosEliminados(final int inicio, final int tamanhoPagina);
 
