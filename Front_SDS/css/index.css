@@ -1,14 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
-*{
-  margin: 0px;
-  padding: 0px;
-}
-
-.container {
-  max-height: 350px;
-}
-
 /* For mobile phones: */
 
 @media only screen and (min-width: 320px) and (max-width : 415px) {
@@ -67,6 +58,8 @@
   #modal-title { left: 14% !important; font-size: 19px !important;}
 
   .imagenAviso { margin-top: 1% !important;}
+
+  .tooltip2 .tooltiptext2 {  width: 130px !important; font-size: 11pt !important; left: -66% !important; }
 }
 
 @media only screen and (min-width: 425px) {
@@ -512,7 +505,7 @@ form button[type="button"]:hover {
 }
 
 /*********** TOOLTIPS ICONOS ***************/
-.tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5 {
+.tooltip, .tooltip22, .tooltip3, .tooltip4, .tooltip5 {
     position: relative;
     display: inline-block;
     opacity: 1;
@@ -539,7 +532,7 @@ form button[type="button"]:hover {
   transition: opacity 1s;
 }
 
-.tooltip2 .tooltiptext2 {
+.tooltip22 .tooltiptext2 {
   visibility: hidden;
   width: 130px;
   font-size: 11pt;
