@@ -11,9 +11,23 @@
 
 /* For mobile phones: */
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 320px) and (max-width : 415px) {
   /* For mobile: */
-  .col1 {width: 100%;}
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+
+  .img-s-1 {width: 25%;}
+  .img-s-2 {margin-top: 5%; margin-bottom: 5%; width: 60%;}
 
   .img1 {width: 35%;}
   .img2 {margin-top: 8%; margin-bottom: 5%; width: 75%;}
@@ -21,18 +35,38 @@
   .modal {top: 15% !important}
   .modal2 {top: 15% !important}
   .modal3 {top: 15.5% !important}
-}
 
-@media only screen and (min-width: 375px) {
-  /* For mobile: */
-  .col-xs-1 {width: 100%;}
+  .footer {font-size: 15px;}
 
-  .img-xs-1 {width: 35%;}
-  .img-xs-2 {margin-top: 8%; margin-bottom: 5%; width: 75%;}
+  #navbardrop {height: 42px !important;}
 
-  .modal {top: 15% !important}
-  .modal2 {top: 15% !important}
-  .modal3 {top: 15.5% !important}
+  .dropdown-menu {margin: 0.1rem 0 0 !important; padding: 0; border: 1px #4527A0 solid;}
+
+  .dropdown-item {border: 0.5px #4527a0 solid;}
+
+  .loginmodal-container h1, .registromodal-container h1, .recuperarcontrasenamodal-container h1 { font-size: 1.3em !important;}
+
+  .loginmodal-container input[type=text], .loginmodal-container input[type=password], .recuperarcontrasenamodal-container input[type=text] {height: 37px !important; font-size: 14px !important;}
+
+  form button[type="submit"], form button[type="button"] { height: 39px !important;}
+
+  .recuperarcontrasenamodal-container input[type=email] { height: 37px !important; font-size: 14px !important; width: 51% !important;}
+
+  .registromodal-container input[type=email] { height: 37px !important; font-size: 14px !important; width: 41% !important;}
+
+  .nav-tabs { font-size: 10px !important;}
+
+  small { font-size: 69% !important;}
+
+  #modal-dialog { left: 3% !important;}
+
+  .modal-content {width: 94% !important;}
+
+  #modal-mensaje { font-size: 15px !important;}
+
+  #modal-title { left: 14% !important; font-size: 19px !important;}
+
+  .imagenAviso { margin-top: 1% !important;}
 }
 
 @media only screen and (min-width: 425px) {
