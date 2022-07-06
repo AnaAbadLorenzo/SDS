@@ -6,6 +6,32 @@
 
 .table thead tr th { width: 14% !important;}
 
+.personaInfoParaUsuario { position: fixed !important; top: 18% !important; width: 90% !important; height: 70% !important; margin-left: 5% !important;  overflow-x: hidden;  overflow-y: auto;}
+
+.card-person { width: 75% !important; position: absolute !important; top: 0 !important; left: 15% !important; }
+
+.h4, h4 { font-size: 1.2rem !important; }
+
+.card-person .card-body { height: 258px !important; }
+
+.card-text { font-size: 0.9rem !important; }
+
+.card-body { padding: 1rem !important; }
+
+.editarCard { width: 31px !important; margin-top: -50px !important; margin-left: 214px !important;}
+
+.card-body .tooltip .tooltiptext { width: 94px !important; bottom: 264% !important; left: 101% !important;}
+
+.card-user { width: 75% !important; position: absolute !important; top: 86% !important; left: 15% !important; }
+
+.card-user .card-body { height: 172px !important; }
+
+.card-enterprise { width: 75% !important; position: absolute !important; top: 158% !important;  left: 15% !important; }
+
+.card-enterprise .card-body { height: 182px !important; }
+
+#tituloFormsModal3 { font-size: 1.4rem !important; margin-left: 16% !important;}
+
 }
 
 .formmodal-container p, .labelForm {

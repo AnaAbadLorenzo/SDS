@@ -6,6 +6,26 @@
 
 .table thead tr th { width: 21% !important;}
 
+#cabeceraConsultaPlanes { margin-left: 6% !important; }
+
+#cabeceraConsultaPlanes .refreshIcon { margin-left: 63.5% !important; }
+
+.planes { width: 87% !important; top: 20% !important; }
+
+.card-body-plan { height: 96px !important; }
+
+.card-title { font-size: 21px !important; }
+
+.card-text {  font-size: 16px !important; width: 82% !important; }
+
+.tooltip8 .tooltiptext { width: 83px !important; font-size: 10pt !important; left: 16% !important; }
+
+.card-title-objetivo { margin-left: -85% !important; font-size: 16px !important; }
+
+.iconProcedimiento { margin-left: 104% !important; margin-top: -40% !important; width: 15% !important; }
+
+.tooltip9 .tooltiptext { width: 88px !important; font-size: 10pt !important; left: -12% !important; bottom: -58% !important; }
+
 }
 
 .formmodal-container p, .labelForm {

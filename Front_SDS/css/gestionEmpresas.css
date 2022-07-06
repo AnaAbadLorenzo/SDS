@@ -6,7 +6,9 @@
 
 .table thead tr th { width: 19% !important;}
 
-}
+.card-enterprise { width: 80% !important; left: 10% !important; }
+
+#tituloFormsModal3 { font-size: 1.4rem !important; margin-left: 16% !important;}
 
 }
 

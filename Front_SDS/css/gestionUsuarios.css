@@ -6,6 +6,8 @@
 
 .table thead tr th { width: 21% !important;}
 
+.card-user { width: 80% !important; left: 10% !important; }
+
 }
 
 .formmodal-container p, .labelForm {
