@@ -66,7 +66,7 @@
 			</a>
 		</div>
 		<div class="col-xl-1 col-s-5">
-			<a href="#" data-toggle="modal" data-target="#registro-modal" class="tooltip22" onclick="obtenerEmpresas()">
+			<a href="#" data-toggle="modal" data-target="#registro-modal" class="tooltip2" onclick="obtenerEmpresas()">
 				<img src="images/registrar.png" class="float-left iconoRegistro"></img>
 				<span class="tooltiptext2 ICONO_REGISTRAR"></span>
 			</a>
@@ -124,45 +124,45 @@
 					<div class="tab-content">
 					    <div id="datosPersonales" class="container tab-pane active overflow-auto"><br>
 					      	<input type="text" name="dni" placeholder="DNI" id="dniP" class="dni DNI" maxlength="9" size="9" onblur="return comprobarDNI('dniP', 'errorFormatoDni', 'dniPersona')">
-					      	<div class="obligatorio tooltip22" id="obligatorioDNI">*
+					      	<div class="obligatorio tooltip2" id="obligatorioDNI">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                   			</div>
 							<small class="FORMATO_DNI"></small>
 							<div style="display:none" id="errorFormatoDni"></div>
 							
 							<input type="text" name="nombre" id="nombreP" placeholder="Nombre" class="NOMBRE_PERSONA" maxlength="56" size="56" onblur="return comprobarNombre('nombreP', 'errorFormatoNombrePersona', 'nombrePersonaRegistro')">
-							<div class="obligatorio tooltip22" id="obligatorioNombre">*
+							<div class="obligatorio tooltip2" id="obligatorioNombre">*
                  				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoNombrePersona"></div>
 
 							<input type="text" name="apellidos" id='apellidosP' placeholder="Apellidos" class="APELLIDOS_PERSONA" onblur="return comprobarApellidos('apellidosP', 'errorFormatoApellidosP', 'apellidosPersonaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioApellidos">*
+							<div class="obligatorio tooltip2" id="obligatorioApellidos">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoApellidosP"></div>
 							
 							<input type="date" name="fechaNacimiento" id='fechaNacP' value="1900-01-01" min="1900-01-01" max="3000-01-01" onblur="return comprobarFechaNacimiento('fechaNacP', 'errorFormatoFecha', 'fechaPersonaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioFechaNac">*
+							<div class="obligatorio tooltip2" id="obligatorioFechaNac">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoFecha"></div>
 
 							<input type="text" name="direccion" id='direccionP' placeholder="Direccion" class="DIRECCION_PERSONA" maxlength="128" size="128" onblur="return comprobarDireccion('direccionP', 'errorFormatoDireccion', 'direccionPersonaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioDireccion">*
+							<div class="obligatorio tooltip2" id="obligatorioDireccion">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoDireccion"></div>
 
 							<input type="tel" name="telefono" id='telefonoP' placeholder="988212121" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoP', 'errorFormatoTelefono', 'telefonoPersonaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioTelefono">*
+							<div class="obligatorio tooltip2" id="obligatorioTelefono">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<small class="FORMATO_TELF"></small>
 							<div style="display:none" id="errorFormatoTelefono"></div>
 
 							<input type="email" name="email" id="emailP" placeholder="Email" class="EMAIL_USUARIO" maxlength="48" size="48" onblur="return comprobarEmail('emailP', 'errorFormatoEmail', 'emailPersonaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioEmail">*
+							<div class="obligatorio tooltip2" id="obligatorioEmail">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<small class="FORMAT_EMAIL"></small>
@@ -171,19 +171,19 @@
 					    
 					    <div id="datosUsuario" class="container tab-pane fade"><br>
 					      	<input type="text" name="user" id="usuario" placeholder="Usuario" class="LOGIN_USUARIO"  maxlength="45" size="45" onblur="return comprobarUser('usuario', 'errorFormatoUserRegistro', 'loginUsuario');" autocomplete="username">
-					      	<div class="obligatorio tooltip22" id="obligatorioUsuario">*
+					      	<div class="obligatorio tooltip2" id="obligatorioUsuario">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 					      	<div style="display:none" id="errorFormatoUserRegistro"></div>
 
 							<input type="password" name="pass" id="passwdUsuario1" placeholder="Contraseña" class="PASS_USUARIO" maxlength="45" size="45" onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur="return comprobarPass('passwdUsuario1', 'errorFormatoPassRegistro', 'passwdUsuarioRegistro');" autocomplete="new-password">
-							<div class="obligatorio tooltip22" id="obligatorioPass1">*
+							<div class="obligatorio tooltip2" id="obligatorioPass1">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoPassRegistro"></div>
 
 							<input type="password" name="confirmarPass" id="passwdUsuario2" placeholder="ConfirmarContraseña" class="CONFIRMAR_PASS_USUARIO" maxlength="45" size="45" maxlength="45" size="45" 	onKeyPress="capLock(event, 'bloqueoMayusculasRegistro');" onblur="return comprobarPassRepetida('passwdUsuario2', 'errorFormatoPassRegistro2', 'passwdUsuarioRegistro');" autocomplete="new-password">
-							<div class="obligatorio tooltip22" id="obligatorioPass2">*
+							<div class="obligatorio tooltip2" id="obligatorioPass2">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoPassRegistro2"></div>	
@@ -194,7 +194,7 @@
 					    <div id="datosEmpresa" class="container tab-pane fade"><br>
 							<div class="preguntasEmpresa">
 								<label class="ASOCIARTE_EMPRESA asociarteEmpresa"></label>
-								<div class="obligatorio tooltip22" id="obligatorioPreg1Em">*
+								<div class="obligatorio tooltip2" id="obligatorioPreg1Em">*
                   					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               					</div>
 								<div class="form-check-inline">
@@ -212,7 +212,7 @@
 							</div>
 						<div class="preguntasEmpresa" id="selectEmpresas" hidden>
 							<label class="SELECCIONAR_EMPRESA"></label>
-							<div class="obligatorio tooltip22" id="obligatorioPreg2Em">*
+							<div class="obligatorio tooltip2" id="obligatorioPreg2Em">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div class="form-check-inline">
@@ -231,7 +231,7 @@
 						<div class="preguntasEmpresa">
 							<div id="selectEmpresasDisponibles" hidden>
 								<label class="EMPRESAS_DISPONIBLES"></label>
-								<div class="obligatorio tooltip22" id="obligatorioSelectEmpresas">*
+								<div class="obligatorio tooltip2" id="obligatorioSelectEmpresas">*
                   					<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               					</div>
 								<select class="form-control" id="empresasDisponibles" disabled></select>
@@ -239,26 +239,26 @@
 						</div>
 						<div id="formRegistroEmpresa" hidden>
 							<input type="text" name="cif" placeholder="CIF" id="cifEmpresa" class="cif CIF" maxlength="9" size="9" onblur="return comprobarCIF('cifEmpresa', 'errorFormatoCifEmpresa', 'cifEmpresaRegistro')">
-							<div class="obligatorio tooltip22" id="obligatorioCifEmpresa">*
+							<div class="obligatorio tooltip2" id="obligatorioCifEmpresa">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
               				<small class="FORMATO_CIF"></small>
 							<div style="display:none" id="errorFormatoCifEmpresa"></div>	
 
 							<input type="text" name="nombre" id="nombreEmpresa" placeholder="Nombre" class="NOMBRE_EMPRESA"  maxlength="48" size="48" onblur="return comprobarNombreEmpresa('nombreEmpresa', 'errorFormatoNombreEmpresa', 'nombreEmpresaRegistro')">
-							<div class="obligatorio tooltip22" id="obligatorioNombreEmpresa">*
+							<div class="obligatorio tooltip2" id="obligatorioNombreEmpresa">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoNombreEmpresa"></div>
 
 							<input type="text" name="direccion" id="direccionEmpresa" placeholder="Direccion" class="DIRECCION_EMPRESA" maxlength="128" size="128" onblur="return comprobarDireccion('direccionEmpresa', 'errorFormatoDireccionEmpresa', 'direccionEmpresaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioDireccionEmpresa">*
+							<div class="obligatorio tooltip2" id="obligatorioDireccionEmpresa">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
 							<div style="display:none" id="errorFormatoDireccionEmpresa"></div>
 
 							<input type="tel" name="telefono" id="telefonoEmpresa" placeholder="988212121" pattern="[0-9]{3}[0-9]{3}[0-9]{3}" maxlength="9" size="9" onblur="return comprobarTelefono('telefonoEmpresa', 'errorFormatoTelefonoEmpresa', 'telefonoEmpresaRegistro');">
-							<div class="obligatorio tooltip22" id="obligatorioTelefonoEmp">*
+							<div class="obligatorio tooltip2" id="obligatorioTelefonoEmp">*
                   				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               				</div>
               				<small class="FORMATO_TELF"></small>

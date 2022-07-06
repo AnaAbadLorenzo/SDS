@@ -6,6 +6,18 @@
 
 }
 
+@media (min-width: 1300px) and (max-width:  1900px){
+
+#accordion { margin-top: 11% !important; height: 385px !important; }
+
+.volver { bottom: 9% !important; }
+
+.table thead tr th { width: 29% !important;}
+
+.controlTamTabla { height: 285px !important; overflow-y: scroll !important; overflow-x: scroll !important; font-size: 13.5px !important; }
+
+}
+
 .test {
   text-align: center;
   position: fixed;

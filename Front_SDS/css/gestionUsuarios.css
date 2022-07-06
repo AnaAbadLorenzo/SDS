@@ -10,6 +10,18 @@
 
 }
 
+@media (min-width: 1300px) and (max-width:  1900px){
+
+#infoAdmin .cabecera { top: 21% !important; }
+
+.refreshIcon { margin-left: 67.5% !important;}
+
+.card-user { width: 14% !important; top: 25% !important; left: 46% !important; }
+
+.card-text { font-size: 0.8rem !important; }
+
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;

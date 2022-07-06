@@ -28,6 +28,28 @@
 
 }
 
+@media (min-width: 1300px) and (max-width:  1900px){
+
+.refreshIcon { margin-left: 61.5% !important;}
+
+.table thead tr th { width: 21% !important;}
+
+#form-modal .modal-dialog { margin: 2rem auto !important; }
+
+#cabeceraConsultaPlanes { margin-left: -1% !important; }
+
+#cabeceraConsultaPlanes .refreshIcon { margin-left: 73.5% !important; }
+
+.planes { top: 27% !important; }
+
+.card-title-objetivo { margin-left: -41% !important; }
+
+.iconProcedimiento { margin-left: 398% !important; margin-top: -36% !important; }
+
+.tooltip9 .tooltiptext { left: -17% !important; bottom: -122% !important; }
+
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;

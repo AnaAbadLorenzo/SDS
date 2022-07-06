@@ -1,32 +1,5 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto);
-
-/* For mobile phones: */
-
 @media only screen and (min-width: 320px) and (max-width : 415px) {
-  /* For mobile: */
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
-
-  .img-s-1 {width: 25%;}
-  .img-s-2 {margin-top: 5%; margin-bottom: 5%; width: 60%;}
-
-  .img1 {width: 35%;}
-  .img2 {margin-top: 8%; margin-bottom: 5%; width: 75%;}
-
-  .modal {top: 15% !important}
-  .modal2 {top: 15% !important}
-  .modal3 {top: 15.5% !important}
-
+ 
   .footer {font-size: 15px;}
 
   #navbardrop {height: 42px !important;}
@@ -43,11 +16,13 @@
 
   .recuperarcontrasenamodal-container input[type=email] { height: 37px !important; font-size: 14px !important; width: 51% !important;}
 
-  .registromodal-container input[type=email] { height: 37px !important; font-size: 14px !important; width: 41% !important;}
+  .registromodal-container input[type=email] { height: 30px !important; font-size: 14px !important; width: 41% !important;}
 
   .nav-tabs { font-size: 10px !important;}
 
   small { font-size: 69% !important;}
+
+  .modal-dialog { margin: 4rem auto !important; }
 
   #modal-dialog { left: 3% !important;}
 
@@ -59,69 +34,14 @@
 
   .imagenAviso { margin-top: 1% !important;}
 
-  .tooltip2 .tooltiptext2 {  width: 130px !important; font-size: 11pt !important; left: -66% !important; }
+  .row .tooltip2 .tooltiptext2 {  width: 130px !important; font-size: 11pt !important; left: 16% !important; }
 }
 
-@media only screen and (min-width: 425px) {
-  /* For tablets: */
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
+@media (min-width: 1300px) and (max-width:  1900px){
 
-  .img-s-1 {width: 25%;}
-  .img-s-2 {margin-top: 5%; margin-bottom: 5%; width: 60%;}
-}
+  .modal-dialog { margin: 10rem auto !important; }
 
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-
-  .img-1 {width: 12%;}
-  .img-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
-
-  .modal {top: 25% !important}
-  .modal2 {top: 20% !important}
-  .modal3 {top: 25.5% !important}
-
-  .modal-dialog {max-width: 600px;}
-}
-
-@media only screen and (min-width: 1367px){
-  .col-xl-1 {width: 8.33%;}
-  .col-xl-2 {width: 16.66%;}
-  .col-xl-3 {width: 25%;}
-  .col-xl-4 {width: 33.33%;}
-  .col-xl-5 {width: 41.66%;}
-  .col-xl-6 {width: 50%;}
-  .col-xl-7 {width: 58.33%;}
-  .col-xl-8 {width: 66.66%;}
-  .col-xl-9 {width: 75%;}
-  .col-xl-10 {width: 83.33%;}
-  .col-xl-11 {width: 91.66%;}
-  .col-xl-12 {width: 100%;}
-
-  .img-xl-1 {width: 12%;}
-  .img-xl-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
+  #registro-modal .modal-dialog { margin: 6rem auto !important; }
 }
 
 /****** LOGIN Y REGISTRO MODAL ******/
@@ -532,6 +452,26 @@ form button[type="button"]:hover {
   transition: opacity 1s;
 }
 
+.tooltip2 .tooltiptext2 {
+  visibility: hidden;
+  width: 130px;
+  font-size: 11pt;
+  font-family: 'Times New Roman'; 
+  background-color: #4527A0;
+  color: #ffffff;
+  text-align: center;
+  border-radius: 6px;
+  border: 1px solid #4527A0;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 14%;
+  margin-left: -66px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
 .tooltip22 .tooltiptext2 {
   visibility: hidden;
   width: 130px;
@@ -640,4 +580,15 @@ form button[type="button"]:hover {
 
 .iconoRegistro {
   width: 45%;
+}
+
+#datosPersonales {
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  height: 300px;
+}
+
+.modal-dialog {
+    max-width: 500px;
+    margin: 15rem auto;
 }

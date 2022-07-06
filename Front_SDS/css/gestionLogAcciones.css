@@ -6,6 +6,14 @@
 
 }
 
+@media (min-width: 1300px) and (max-width:  1900px){
+
+#cabecera { top: 21% !important; }
+
+.table thead tr th { width: 29% !important;}
+
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;

@@ -11,6 +11,12 @@
 
 }
 
+@media (min-width: 1300px) and (max-width:  1900px){
+
+.refreshIcon { margin-left: 55.5% !important;}
+
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;

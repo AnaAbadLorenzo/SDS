@@ -1,5 +1,6 @@
-/* For mobile phones: */
+
 @media only screen and (min-width: 320px) and (max-width : 415px) {
+
   .col-s-1 {width: 8.33%;}
   .col-s-2 {width: 16.66%;}
   .col-s-3 {width: 25%;}
@@ -13,11 +14,11 @@
   .col-s-11 {width: 91.66%;}
   .col-s-12 {width: 100%;}
 
-  .img-s-1 {width: 25%;}
-  .img-s-2 {margin-top: 5%; margin-bottom: 5%; width: 60%;}
+  .img-s-1 {width: 25% !important; }
+  .img-s-2 {margin-top: 5% !important; margin-bottom: 5% !important; width: 60% !important;}
 
-  .img1 {width: 35%;}
-  .img2 {margin-top: 8%; margin-bottom: 5%; width: 75%;}
+  .img1 {width: 35% !important;}
+  .img2 {margin-top: 8% !important; margin-bottom: 5% !important; width: 75% !important;}
 
   .modal {top: 15% !important}
   .modal2 {top: 15% !important}
@@ -109,51 +110,8 @@
 
 }
 
-@media only screen and (min-width: 600px) {
-  /* For tablets: */
-  .col-s-1 {width: 8.33%;}
-  .col-s-2 {width: 16.66%;}
-  .col-s-3 {width: 25%;}
-  .col-s-4 {width: 33.33%;}
-  .col-s-5 {width: 41.66%;}
-  .col-s-6 {width: 50%;}
-  .col-s-7 {width: 58.33%;}
-  .col-s-8 {width: 66.66%;}
-  .col-s-9 {width: 75%;}
-  .col-s-10 {width: 83.33%;}
-  .col-s-11 {width: 91.66%;}
-  .col-s-12 {width: 100%;}
+@media (min-width: 1300px) and (max-width:  1900px){
 
-  .img-s-1 {width: 25%;}
-  .img-s-2 {margin-top: 5%; margin-bottom: 5%; width: 60%;}
-}
-
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-
-  .img-1 {width: 12%;}
-  .img-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
-
-  .modal {top: 25% !important}
-  .modal2 {top: 20% !important}
-  .modal3 {top: 25.5% !important}
-
-  .modal-dialog {max-width: 600px;}
-}
-
-@media only screen and (min-width:  1300px){
   .col-xl-1 {width: 8.33%;}
   .col-xl-2 {width: 16.66%;}
   .col-xl-3 {width: 25%;}
@@ -167,8 +125,36 @@
   .col-xl-11 {width: 91.66%;}
   .col-xl-12 {width: 100%;}
 
-  .img-xl-1 {width: 12%;}
-  .img-xl-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
+  .img-1 {width: 12%;}
+  .img-2 {margin-top: 3% !important;; margin-bottom: 2% !important;; width: 24% !important;;}
+
+  .cabecera { top: 17% !important; left: 8% !important; }
+
+  .cabeceraEliminados { top: 19% !important; left: 8% !important; }
+
+  #showHideColumns { margin-left: 70% !important;  margin-top: 12.6% !important; width: 20.5% !important;}
+
+  .modal-dialog { margin: 8rem auto !important; }
+
+  #tablaDatos { height: 48% !important; }
+
+  #modal-dialog { top: 10% !important; }
+
+  #cerrar { left: 91% !important; }
+
+  #permisos { margin-top: 14.4% !important; margin-left: 8.7% !important; height: 336px !important; }
+
+  .table thead .colLast { width: 34% !important;}
+
+}
+
+.img-2 {
+  margin-bottom: 2%;
+  width: 26%;
+}
+
+.modal-dialog { 
+  margin: 12rem auto;
 }
 
 .row {
@@ -214,7 +200,7 @@ body {
 }
 
 #modal-dialog {
-  top: 30%;
+  top: 19%;
 }
 
 #modal-mensaje{
@@ -237,7 +223,7 @@ body {
 }
 
 #cerrar {
-  left: 85%;
+  left: 92%;
 }
 
 #seguir {
@@ -618,7 +604,7 @@ form button[type="button"]:hover {
 
 /******** TOOLTIPS ********************/
 
-.tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5 {
+.tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5, .tooltip22 {
     position: relative;
     display: inline-block;
     opacity: 1;
@@ -659,7 +645,7 @@ form button[type="button"]:hover {
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 5%;
+  left: 14%;
   margin-left: -66px;
   opacity: 0;
   transition: opacity 1s;
