@@ -1676,21 +1676,21 @@ function gestionarPermisosPersona(idElementoList) {
     switch(idElemento){
       case "Añadir":
         $('#btnAddPersona').attr('src', 'images/add3.png');
-        $('#btnAddPersona').css("cursor", "default");
+        $('#btnAddPersona').css("cursor", "pointer");
         $('#divAddPersona').attr("data-toggle", "modal");
         $('#divAddPersona').attr("data-target", "#form-modal");
       break;
 
       case "Modificar" : 
         $('.editarPermiso').attr('src', 'images/edit3.png');
-        $('.editarPermiso').css("cursor", "default");
+        $('.editarPermiso').css("cursor", "pointer");
         $('.editarPermiso').attr("data-toggle", "modal");
         $('.editarPermiso').attr("data-target", "#form-modal");
       break;
 
       case "Eliminar" :
         $('.eliminarPermiso').attr('src', 'images/delete3.png');
-        $('.eliminarPermiso').css("cursor", "default");
+        $('.eliminarPermiso').css("cursor", "pointer");
         $('.eliminarPermiso').attr("data-toggle", "modal");
         $('.eliminarPermiso').attr("data-target", "#form-modal");
       break;
@@ -1708,14 +1708,14 @@ function gestionarPermisosPersona(idElementoList) {
 
       case "Visualizar" :
         $('.detallePermiso').attr('src', 'images/detail3.png');
-        $('.detallePermiso').css("cursor", "default");
+        $('.detallePermiso').css("cursor", "pointer");
         $('.detallePermiso').attr("data-toggle", "modal");
         $('.detallePermiso').attr("data-target", "#form-modal");
       break;
 
       case "Reactivar" : 
         $('.reactivarPermiso').attr('src', 'images/reactivar.png');
-        $('.reactivarPermiso').css("cursor", "default");
+        $('.reactivarPermiso').css("cursor", "pointer");
         $('.reactivarPermiso').attr("data-toggle", "modal");
         $('.reactivarPermiso').attr("data-target", "#form-modal");
       break;
