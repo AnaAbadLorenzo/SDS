@@ -30,9 +30,9 @@
 
   h1 { font-size: 2rem !important;}
 
-  .gestion { left: 15% !important;}
+  .gestion { left: 11% !important;}
 
-  .cabecera { top:  15% !important; left: 4% !important;}
+  .cabecera { top:  17% !important; left: 4% !important;}
 
   .iconoAdd, .iconoBack, .iconoPermisos { width: 2.5em !important; height: 2.5em !important;}
 
@@ -40,11 +40,11 @@
 
   .iconoHideShow { width: 1.5em !important; height: 1.5em !important;}
 
-  #tablaDatos { left: 20px !important; width: 91% !important;  height: 60% !important; }
+  #tablaDatos { left: 20px !important; width: 91% !important;  height: 54% !important; top: 24% !important;}
 
-  .filasTabla { bottom: 16% !important; font-size: 12px;}
+  .filasTabla { bottom: 19% !important; font-size: 12px;}
 
-  .paginacion { left: 28% !important;}
+  .paginacion { left: 28% !important; bottom: 13% !important;}
 
   .page-item.disabled .page-link { height: 34px !important;}
 
@@ -58,15 +58,15 @@
   .activoColumn, .nombreEmpresaColumn, .rolNameColumn, .rolDescriptionColumn, .rolIdColumn, .dniUsuarioColumn, .usuarioActivoColumn, .rolColumn, .cifEmpresaColumn, 
   .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, .nombreObjetivoColumn, .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, 
   .idRespuestaPosibleColumn, .nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn, .nombreProcedimientoColumn, .descripcionProcedimientoColumn, 
-  .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn { font-size: 0.8rem !important;}
+  .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn { font-size: 0.7rem !important;}
 
-  .table thead .colLast { font-size: 0.8rem !important; width: 34% !important;}
+  .table thead .colLast { font-size: 0.7rem !important; width: 38% !important;}
 
-  .iconoOrdenar { width: 1em !important;}
+  .iconoOrdenar { width: 0.9em !important;}
 
-  .impar { font-size: 12px !important;}
+  .impar { font-size: 11px !important;}
 
-  .detalle, .editar, .eliminar, .reactivar { width: 28px !important;}
+  .detalle, .editar, .eliminar, .reactivar { width: 26px !important;}
 
   #checkboxColumnas { font-size: 0.8rem !important;}
 
@@ -78,7 +78,7 @@
 
   #cerrar { left: 85% !important; width: 10% !important;}
 
-  #showHideColumns { margin-left: 42% !important;  margin-top: 42.6% !important; width: 45.5% !important;}
+  #showHideColumns { margin-left: 42% !important;  margin-top: 46.6% !important; width: 45.5% !important;}
 
   .formmodal-container h1 { font-size: 1.6rem !important; }
 
@@ -92,7 +92,7 @@
 
   .iconoVolverAtras { width: 2em !important; height: 2em !important; }
 
-  .cabeceraEliminados { top: 15.5% !important; }
+  .cabeceraEliminados { top: 17.5% !important; }
 
   #modal-title { left: 13% !important; font-size: 18px !important; }
 
@@ -104,9 +104,11 @@
 
   .imagenAviso { margin-top: -0.2% !important; margin-left: -2% !important;}
 
-  .card-header a { font-size: 14px !important; }
+  .card-header a { font-size: 12px !important; }
 
-  .cabeceraTablasTest { font-size: 12px !important; }
+  .cabeceraTablasTest { font-size: 10px !important; }
+
+  .modal-dialog { margin: 8rem auto !important; }
 
 }
 

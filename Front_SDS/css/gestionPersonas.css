@@ -6,7 +6,7 @@
 
 .table thead tr th { width: 14% !important;}
 
-.personaInfoParaUsuario { position: fixed !important; top: 18% !important; width: 90% !important; height: 70% !important; margin-left: 5% !important;  overflow-x: hidden;  overflow-y: auto;}
+.personaInfoParaUsuario { position: fixed !important; top: 20% !important; width: 90% !important; height: 70% !important; margin-left: 5% !important;  overflow-x: hidden;  overflow-y: auto;}
 
 .card-person { width: 75% !important; position: absolute !important; top: 0 !important; left: 15% !important; }
 
@@ -22,15 +22,19 @@
 
 .card-body .tooltip .tooltiptext { width: 94px !important; bottom: 264% !important; left: 101% !important;}
 
-.card-user { width: 75% !important; position: absolute !important; top: 86% !important; left: 15% !important; }
+.card-user { width: 75% !important; position: absolute !important; top: 105% !important; left: 15% !important; }
 
 .card-user .card-body { height: 172px !important; }
 
-.card-enterprise { width: 75% !important; position: absolute !important; top: 158% !important;  left: 15% !important; }
+.card-enterprise { width: 75% !important; position: absolute !important; top: 193% !important;  left: 15% !important; }
 
 .card-enterprise .card-body { height: 182px !important; }
 
 #tituloFormsModal3 { font-size: 1.4rem !important; margin-left: 16% !important;}
+
+#form-modal .modal-dialog { margin: 1rem auto !important; }
+
+.nav-item { font-size: 0.8rem !important; width: 32% !!important;}
 
 }
 
