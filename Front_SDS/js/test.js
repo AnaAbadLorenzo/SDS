@@ -133,6 +133,16 @@ function obtenerValor(valor, atributos, entidad){
 				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombrePlan) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.descripPlan) +  '"' 
 				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaPlan) +  '"';
 			break;
+
+			case 'Procedimiento':
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombreProcedimiento) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.descripProcedimiento) +  '"' 
+				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaProcedimiento) +  '"';
+			break;
+
+			case 'Proceso':
+				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombreProceso) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.descripProceso) +  '"' 
+				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaProceso) +  '"';
+			break;
 		}
 
 	} else {
