@@ -605,8 +605,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         }
 
         if(res.data.listaBusquedas.length == 0){
-          $('.cabecera').attr('hidden', true);
-          $('.cabeceraEliminados').attr('hidden', false);
+          document.getElementById('cabecera').style.display="none";
+          document.getElementById('cabeceraEliminados').style.display="block";
         }
       
       var div = createHideShowColumnsWindow({ROL_DESCRIPTION_COLUMN:2});
