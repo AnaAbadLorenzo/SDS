@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.sds.model.ProcesoEntity;
@@ -29,7 +30,7 @@ public interface ProcesoRepository extends JpaRepository<ProcesoEntity, Integer>
 
 	Integer numberFindProcesosEliminados();
 
-	@Transactional
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	@Modifying
 	@Query("DELETE FROM ProcesoEntity p WHERE p.idProceso = ?1")
 	void deleteProceso(Integer idProceso);

@@ -833,6 +833,7 @@ public class Constantes {
 
 	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTO = "ProcesoProcedimientoEntity.findProcesoProcedimiento";
 	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOPROCEDIMIENTOBYDIDPROCEDEMIENTO = "ProcesoProcedimientoEntity.findProcesoProcedimientoByIdProcedimiento";
+	public static final String PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOSBYPROCEDIMIENTOORDERBYORDEN = "ProcesoProcedimientoEntity.findAllProcesosOrderByOrden";
 
 	public static final String NIVEL_QUERY_FINDNIVEL = "NivelEntity.findNivel";
 

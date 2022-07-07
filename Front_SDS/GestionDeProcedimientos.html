@@ -74,6 +74,23 @@
     </div>     
 	</div>
 
+	<div id="cabeceraUsuario" class="cabecera" style="display: none;">
+		<div id="divListarProcedimientoUsuario" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscarProcedimiento()" class="tooltip6 searchIcon">
+        <img id="btnListarProcedimientosUsuario" class="iconoSearch iconSearch" src="images/search.png" alt="Buscar Procedimiento" />
+        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
+    </div>
+     <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaProcedimiento)" class="tooltip6 refreshIcon">
+        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
+        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
+    </div>
+
+    <div name="btnHideShowColumns" value="Buscar" onclick="javascript:hideShowColumnsWindow();" class="tooltip6 hideShowIcon">
+        <img class="iconoHideShow iconHideShow" src="images/hideTable.png" alt="Ocultar/Mostrar Columnas" />
+        <span class="tooltiptext iconHideShow ICON_SHOW_HIDE_COLUMNS"></span>
+    </div>     
+	</div>
+
+
 	<div class = "cabeceraEliminados" id="cabeceraEliminados" style="display:none;">
 		<div id="divVolverAtras" name="btnVolverAtras" value="Volver" onclick="javascript:refrescarTabla(0, tamanhoPaginaProcedimiento)" class="tooltip6 volverAtrasIcon">
         	<img id="btnVolverAtras" class="iconoVolverAtras" src="images/back3.png" alt="Volver" />

@@ -64,8 +64,7 @@ public enum CodeMessageErrors {
 	PROCEDIMIENTOUSUARIO_YA_EXISTE_EXCEPTION("La relación procedimiento usuario ya existe"), //
 	PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION("La relación procedimiento usuario no existe"), //
 	PROCEDIMIENTOUSUARIO_VACIO("El procedimiento y/o el usuario son vacíos"), //
-	PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO(
-			"La relacion procedimiento usuario tiene una relación con un proceso"), //
+	PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO("La relacion procedimiento usuario tiene una relación con un proceso"), //
 	USUARIO_ASOCIADO_PROCEDIMIENTO_EXCEPTION("El procedimiento tiene usuarios asociados"), //
 	PROCEDIMIENTO_ASOCIADO_PROCESO_EXCEPTION("El proceso tiene procedimientos asociados"), //
 	PROCEDIMIENTO_VACIO("Procedimiento vacío"), //
@@ -89,7 +88,8 @@ public enum CodeMessageErrors {
 	PROCEDIMIENTOUSUARIOPROCESO_NO_EXISTE_EXCEPTION("La relación procedimiento - usuario - proceso no existe"), //
 	PROCEDIMIENTOUSUARIOPROCESO_VACIO("La relación procedimiento - usuario - proceso es vacía"), //
 	ERROR_LECTURA_FICHERO("Ha ocurrido un error durante la lectura del fichero"),
-	EVIDENCIA_VACIA("Los datos de la evidencia son vacíos");
+	EVIDENCIA_VACIA("Los datos de la evidencia son vacíos"),
+	ORDEN_PROCESO_INCORRECTO("Ya existe un proceso en ese orden desntro del procedimiento");
 
 	private String codigo;
 

@@ -1,4 +1,6 @@
-function iniciarProcedimientoUsuario(){
+function iniciarProcedimientoUsuario(idProcedimiento, idProcedimientoUsuario){
+  setCookie('idProcedimiento', idProcedimiento)
+  setCookie('idProcedimientoUsuario', idProcedimientoUsuario)
 	window.location.href = "GestionDeProcesos.html";
 }
 
@@ -163,7 +165,7 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario){
 										'<div class="puntuacion">Puntuación: ' + procedimientosUsuario.puntuacionProcedimientoUsuario +'%</div>' +
 										'<div class="fecha">' + fecha + '</div>' + 
 										'<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
-											'<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario();"/>' +
+											'<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario('+ procedimientosUsuario.procedimiento.idProcedimiento + ', '+ procedimientosUsuario.idProcedimientoUsuario+');"/>' +
 											'<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
 										'</div>' + 
 										'<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 

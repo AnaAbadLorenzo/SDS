@@ -1564,6 +1564,45 @@ function comprobarNombreProceso(idElemento, idElementoError, campo){
 	}
 }
 
+/**Funcion que comprueba el selec de procedimiento **/
+function comprobarSelect(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaOptionsSelect(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que comprueba si hay divs de procedimientos **/
+function comprobarDivProcedimientoVacio(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaDivVacio(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que comprueba si hay divs de objetivos **/
+function comprobarDivObjetivoVacio(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaDivVacio(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
 /** Funcion que valida el formato de la descripcion del proceso **/
 function comprobarDescripcionProceso(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
@@ -1618,7 +1657,9 @@ function comprobarAddProcedimiento(){
 function comprobarAddProceso(){
 	if(comprobarNombreProceso('nombreProceso', 'errorFormatoNombreProceso', 'nombreProceso') && 
 		comprobarDescripcionProceso('descripcionProceso', 'errorFormatoDescripcionProceso', 'descripProceso')
-		&& comprobarFechaProceso('fechaProceso', 'errorFormatoFechaProceso', 'fechaProceso')){
+		&& comprobarFechaProceso('fechaProceso', 'errorFormatoFechaProceso', 'fechaProceso')
+		&& comprobarDivProcedimientoVacio('procedimientosOrden', 'errorFormatoProcedimientos', 'divProcedimiento')
+		&& comprobarDivObjetivoVacio('objetivosNiveles', 'errorFormatoObjetivos', 'divObjetivo')){
 		return true;
 	}else{
 		return false;
@@ -1635,6 +1676,20 @@ function comprobarEditProceso(){
 		return false;
 	}
 }
+
+/** Funcion que comprueba el nivel del objetivo **/
+function comprobarNivel(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloNumeros(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
 
 /**Función que valida el nombre del procedimiento en el buscar*/
 function comprobarNombreProcedimientoSearch(idElemento, idElementoError, campo) {
@@ -1805,7 +1860,6 @@ function comprobarBuscarProceso(){
 }
 
 
-
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
 
@@ -1929,6 +1983,12 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			break;
 			case 'fechaProceso' :
 				codigo = "FECHA_PROCESO_VACIA";
+			break;
+			case 'nivel' :
+				codigo = 'NIVEL_VACIO';
+			break;
+			case 'orden' :
+				codigo = "ORDEN_VACIO";
 			break;
 
 		}
@@ -2308,6 +2368,12 @@ function comprobarSoloNumeros(idElemento, idElementoError, campo) {
 			case 'telefonoEmpresaRegistro' : 
 		  		codigo = "TELEFONO_NUMERICO_INCORRECTO";
 			break;
+			case 'nivel' : 
+		  		codigo = "NIVEL_NUMERICO_INCORRECTO";
+			break;
+			case 'orden' : 
+		  		codigo = "ORDEN_NUMERICO_INCORRECTO";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -2589,6 +2655,74 @@ function comprobarFormatoCIF(idElemento, idElementoError, campo) {
 		switch(campo) {
 	    	case 'cifEmpresaRegistro' :
 				codigo = "CIF_EMPRESA_ALFANUMERICO_INCORRECTO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+		return false;
+	}
+
+    return true;
+}
+
+/**Función para comprobar el formato del CIF **/
+function validaSelect(idElemento, idElementoError, campo) {
+	
+	var codigo = "";
+
+	if (idElemento.length == 0) {
+		switch(campo) {
+	    	case 'selectProcedimientos' :
+				codigo = "SELECT_PROCEDIMIENTOS_VACIO";
+			break;
+			case 'selectObjetivos' :
+				codigo = "SELECT_OBJETIVOS_VACIO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+		return false;
+	}
+
+    return true;
+}
+
+function validaOptionsSelect(idElemento, idElementoError, campo) {
+	
+	var codigo = "";
+	var select = $('#' +idElemento);
+
+	if ($(select).children("option:selected").val()== "" || $(select).children("option:selected").val()== 0 ||$(select).children("option:selected").val()== null) {
+		switch(campo) {
+	    	case 'selectProcedimientosOptions' :
+				codigo = "RELLENA_PROCEDIMIENTO";
+			break;
+			case 'selectObjetivosOptions' :
+				codigo = "RELLENA_OBJETIVO";
+			break;
+		}
+		addCodeError(idElementoError, codigo);
+		return false;
+	}
+
+    return true;
+}
+
+function validaDivVacio(idElemento, idElementoError, campo) {
+	var codigo = "";
+	var select = $('#' +idElemento);
+
+	if(idElemento == 'procedimientosOrden'){
+		var elemento = 'labelNombreProcedimiento1';
+	}else{
+		var elemento = 'labelNombreObjetivo1';
+	}
+
+	if (!($('#'+elemento).length > 0)){
+		switch(campo) {
+	    	case 'divProcedimiento' :
+				codigo = "SELECT_PROCEDIMIENTOS_VACIO";
+			break;
+			case 'divObjetivo' :
+				codigo = "SELECT_OBJETIVOS_VACIO";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

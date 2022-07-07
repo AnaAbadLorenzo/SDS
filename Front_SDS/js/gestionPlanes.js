@@ -93,7 +93,7 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
         var fechaString = "";
       }else{
         var fechaP = getCookie('fechaPlan');
-        var fechaString = convierteFecha(fechaP);
+        var fechaString = convierteFechaGuion(fechaP);
       }
 
       if(getCookie('objetivo') == null || getCookie('objetivo') == ""){
@@ -110,7 +110,7 @@ function buscarPlanAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       var data = {
         nombrePlan : nombreP,
         descripPlan : descripP,
-        fechaPlan : fechaString,
+        fechaPlan : fechaP,
         objetivo : objetivo,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaPlan),
         tamanhoPagina : tamanhoPaginaPlan

@@ -19,20 +19,22 @@ import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.NivelYaExisteException;
 import com.sds.service.exception.ObjetivoNoExisteException;
+import com.sds.service.exception.OrdenProcesoIncorrectoException;
 import com.sds.service.exception.ProcedimientoAsociadoProcesoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
 import com.sds.service.exception.ProcesoAsociadoObjetivoException;
 import com.sds.service.exception.ProcesoAsociadoRespuestaPosibleException;
 import com.sds.service.exception.ProcesoAsociadoUsuarioProcedimientoException;
 import com.sds.service.exception.ProcesoNoExisteException;
+import com.sds.service.exception.ProcesoProcedimientoNoExisteException;
 import com.sds.service.exception.ProcesoProcedimientoYaExisteException;
 import com.sds.service.exception.ProcesoRespuestaPosibleYaExisteException;
 import com.sds.service.exception.ProcesoYaExisteException;
 import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.proceso.ProcesoService;
+import com.sds.service.proceso.model.DatosProcesoReturn;
 import com.sds.service.proceso.model.Proceso;
 import com.sds.service.proceso.model.ProcesoBuscar;
-import com.sds.service.proceso.model.ProcesoReturn;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -61,13 +63,33 @@ public class ProcesoController {
 
 	}
 
+	@PostMapping(value = "/listarProcesoById")
+	@ResponseBody
+	public RespEntity buscarProcesoById(@RequestBody final Integer idProceso) {
+
+		final ProcesoEntity resultado = procesoService.buscarProcesoByIdProceso(idProceso);
+
+		return new RespEntity(RespCode.PROCESO_ENCONTRADO, resultado);
+
+	}
+
 	@PostMapping(value = "/listarProcesos")
 	@ResponseBody
 	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
-		final ReturnBusquedas<ProcesoReturn> resultado = procesoService.buscarTodos(paginacion.getInicio(),
+		final ReturnBusquedas<ProcesoEntity> resultado = procesoService.buscarTodos(paginacion.getInicio(),
 				paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCESOS_LISTADOS, resultado);
+	}
+
+	@PostMapping(value = "/listarDatosProceso")
+	@ResponseBody
+	public RespEntity buscarDatosProceso(@RequestBody final String id) {
+		final Integer idProceso = Integer.parseInt(id);
+		final DatosProcesoReturn resultado = procesoService.obtenerDatosProceso(idProceso);
+
+		return new RespEntity(RespCode.DATOS_PROCESOS_LISTADOS, resultado);
+
 	}
 
 	@PostMapping(value = "/listarProcesosEliminados")
@@ -152,6 +174,18 @@ public class ProcesoController {
 					return new RespEntity(RespCode.NIVEL_YA_EXISTE_EXCEPTION, proceso);
 				} catch (final ObjetivoNoExisteException objetivoNoExists) {
 					return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, proceso);
+				} catch (final ProcesoRespuestaPosibleYaExisteException procesoRespPosibleYaExiste) {
+					return new RespEntity(RespCode.PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION, proceso);
+				} catch (final ProcesoProcedimientoYaExisteException procesoProcedimientoYaExiste) {
+					return new RespEntity(RespCode.PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION, proceso);
+				} catch (final RespuestaPosibleNoExisteException respuestaPosibleNoExiste) {
+					return new RespEntity(RespCode.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION, proceso);
+				} catch (final OrdenProcesoIncorrectoException ordeProcesoIncorrecto) {
+					return new RespEntity(RespCode.ORDEN_PROCESO_INCORRECTO, proceso);
+				} catch (final ProcedimientoNoExisteException procedimientoNoExiste) {
+					return new RespEntity(RespCode.PROCEDIMIENTO_NO_EXISTE_EXCEPTION, proceso);
+				} catch (final ProcesoProcedimientoNoExisteException procesoProcedimientoNoExists) {
+					return new RespEntity(RespCode.PROCESO_PROCEDIMIENTO_NO_EXISTE, proceso);
 				}
 			}
 		} catch (final ProcesoNoExisteException procesoNoExists) {
@@ -192,6 +226,18 @@ public class ProcesoController {
 				return new RespEntity(RespCode.NIVEL_YA_EXISTE_EXCEPTION, proceso);
 			} catch (final ObjetivoNoExisteException objetivoNoExists) {
 				return new RespEntity(RespCode.OBJETIVO_NO_EXISTE_EXCEPTION, proceso);
+			} catch (final ProcesoRespuestaPosibleYaExisteException procesoRespPosibleYaExiste) {
+				return new RespEntity(RespCode.PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION, proceso);
+			} catch (final ProcesoProcedimientoYaExisteException procesoProcedimientoYaExiste) {
+				return new RespEntity(RespCode.PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION, proceso);
+			} catch (final RespuestaPosibleNoExisteException respuestaPosibleNoExiste) {
+				return new RespEntity(RespCode.RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION, proceso);
+			} catch (final OrdenProcesoIncorrectoException ordeProcesoIncorrecto) {
+				return new RespEntity(RespCode.ORDEN_PROCESO_INCORRECTO, proceso);
+			} catch (final ProcedimientoNoExisteException procedimientoNoExiste) {
+				return new RespEntity(RespCode.PROCEDIMIENTO_NO_EXISTE_EXCEPTION, proceso);
+			} catch (final ProcesoProcedimientoNoExisteException procesoProcedimientoNoExists) {
+				return new RespEntity(RespCode.PROCESO_PROCEDIMIENTO_NO_EXISTE, proceso);
 			}
 
 		} catch (final ProcesoNoExisteException procesoNoExists) {

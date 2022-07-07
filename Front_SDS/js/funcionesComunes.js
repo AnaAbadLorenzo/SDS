@@ -263,6 +263,21 @@ function eliminarMensajesValidacionError(idElementoErrorList, idElementoList){
 	});
 }
 
+
+/**Función para eliminar los mensajes de validación de error*/
+function eliminarMensajesValidacionErrorUnElemento(idElementoError, idElemento){
+	
+	
+	$("#"+idElementoError).removeClass();
+	$("#"+idElementoError).html('');
+	$("#"+idElementoError).css("display", "none");
+		
+	$("#"+idElemento).removeAttr("style");
+	$("#"+idElemento).css("border", "1px solid #D1C4E9");
+	$("#"+idElemento).css("borderTop",  "2px solid #B39DDB");
+	
+}
+
 /**Función para limpiar los campos de un formulario*/
 function limpiarFormulario(idElementoList){
 	
@@ -568,14 +583,12 @@ function construyeFila(entidad, fila) {
 
         case 'PROCESO':
         var fechaProceso = new Date(fila.fechaProceso);
-		atributosFunciones = ["'" + fila.nombreProceso + "'", "'" + fila.descripProceso + "'", "'" + convertirFecha(fechaProceso.toString()) + "'", "'" + fila.idProceso + "'", "'" + fila.procedimientos + "'", "'" + fila.objetivos + "'", "'" + fila.respuestasPosibles + "'"];
+		atributosFunciones = ["'" + fila.nombreProceso + "'", "'" + fila.descripProceso + "'", "'" + convertirFecha(fechaProceso.toString()) + "'", "'" + fila.idProceso + "'", fila.procedimientos, fila.objetivos, fila.respuestasPosibles];
 			filaTabla = '<tr class="impar"> <td>' + fila.nombreProceso + 
                 '</td> <td>' + fila.descripProceso +
                 '</td> <td>' + convertirFecha(fechaProceso.toString());
          
         break;
-
-
 	};
 
 	if(entidad == 'PERSONA'){
@@ -604,6 +617,76 @@ function construyeFila(entidad, fila) {
 
     return filaTabla;
 }
+
+/**Función que construye cada línea que se va a rellenar en la tabla*/
+function construyeFilaProceso(entidad, fila, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
+	
+	document.getElementById('cabecera').style.display = "block";
+	document.getElementById('cabeceraEliminados').style.display = "none";
+
+	let atributosFunciones="";
+	var filaTabla = "";
+	var listProcedimientos=[];
+	var listObjetivos = [];
+	var listRespuestasPosibles=[];
+	var listNiveles=[];
+	var listOrdenProcesos = [];
+
+	switch(entidad){
+        case 'PROCESO':
+        var fechaProceso = new Date(fila.fechaProceso);
+
+        for(var i = 0; i<procedimientos.length; i++){
+        	listProcedimientos.push(procedimientos[i].idProcedimiento);
+        	listProcedimientos.push(procedimientos[i].nombreProcedimiento);
+        }
+
+        for(var i = 0; i<objetivos.length; i++){
+        	listObjetivos.push(objetivos[i].idObjetivo);
+        	listObjetivos.push(objetivos[i].nombreObjetivo);
+        }
+
+        for(var i = 0; i<respuestasPosibles.length; i++){
+        	listRespuestasPosibles.push(respuestasPosibles[i].idRespuesta);
+        	listRespuestasPosibles.push(respuestasPosibles[i].textoRespuesta);
+        }
+
+        for(var i = 0; i<niveles.length; i++){
+        	listNiveles.push(niveles[i]);
+        }
+
+         for(var i = 0; i<ordenProceso.length; i++){
+        	listOrdenProcesos.push(ordenProceso[i]);
+        }
+
+		atributosFunciones = ["'" + fila.nombreProceso + "'", "'" + fila.descripProceso + "'", "'" + convertirFecha(fechaProceso.toString()) + "'", "'" + fila.idProceso + "'", "'" + listProcedimientos + "'", "'" + listObjetivos +"'", "'" + listRespuestasPosibles + "'", "'" + listNiveles + "'", "'" + listOrdenProcesos + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreProceso + 
+                '</td> <td>' + fila.descripProceso +
+                '</td> <td>' + convertirFecha(fechaProceso.toString());
+         
+        break;
+	};
+
+	
+	var celdaAccionesEditar = '<div class="tooltip6"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
+                               ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
+	var celdaAccionesDetalle = '<div class="tooltip6"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
+                               ')" alt="Detalle"/><span class="tooltiptext iconDetailUser ICONO_DETALLE">Detalle</span></div>';
+    var celdaAccionesEliminar = '<div class="tooltip6"><img class="eliminar eliminarPermiso" src="images/delete.png" data-toggle="" data-target="" onclick="showEliminar(' + atributosFunciones + 
+                               ')" alt="Eliminar"/><span class="tooltiptext iconDeleteUser ICONO_ELIMINAR">Eliminar</span></div>';
+
+
+   
+    var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar + celdaAccionesEliminar;
+
+    	filaTabla = filaTabla + 
+                '</td> <td class="acciones">' + celdaAcciones +  
+                '</td> </tr>';
+    
+
+    return filaTabla;
+}
+
 
 /**Función que construye cada línea de los elementos eliminados con los que se va a rellenar en la tabla*/
 function construyeFilaEliminados(entidad, fila) {
@@ -739,6 +822,68 @@ function construyeFilaEliminados(entidad, fila) {
 	
     return filaTabla;
 }
+
+/**Función que construye cada línea que se va a rellenar en la tabla*/
+function construyeFilaProcesoEliminado(entidad, fila, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
+
+	document.getElementById('cabecera').style.display = "none";
+	document.getElementById('cabeceraEliminados').style.display = "block";
+
+	let atributosFunciones="";
+	var filaTabla = "";
+	var listProcedimientos=[];
+	var listObjetivos = [];
+	var listRespuestasPosibles=[];
+	var listNiveles=[];
+	var listOrdenProcesos = [];
+
+	switch(entidad){
+        case 'PROCESO':
+        var fechaProceso = new Date(fila.fechaProceso);
+
+        for(var i = 0; i<procedimientos.length; i++){
+        	listProcedimientos.push(procedimientos[i].idProcedimiento);
+        	listProcedimientos.push(procedimientos[i].nombreProcedimiento);
+        }
+
+        for(var i = 0; i<objetivos.length; i++){
+        	listObjetivos.push(objetivos[i].idObjetivo);
+        	listObjetivos.push(objetivos[i].nombreObjetivo);
+        }
+
+        for(var i = 0; i<respuestasPosibles.length; i++){
+        	listRespuestasPosibles.push(respuestasPosibles[i].idRespuesta);
+        	listRespuestasPosibles.push(respuestasPosibles[i].textoRespuesta);
+        }
+
+        for(var i = 0; i<niveles.length; i++){
+        	listNiveles.push(niveles[i]);
+        }
+
+         for(var i = 0; i<ordenProceso.length; i++){
+        	listOrdenProcesos.push(ordenProceso[i]);
+        }
+
+		atributosFunciones = ["'" + fila.nombreProceso + "'", "'" + fila.descripProceso + "'", "'" + convertirFecha(fechaProceso.toString()) + "'", "'" + fila.idProceso + "'", "'" + listProcedimientos + "'", "'" + listObjetivos +"'", "'" + listRespuestasPosibles + "'", "'" + listNiveles + "'", "'" + listOrdenProcesos + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.nombreProceso + 
+                '</td> <td>' + fila.descripProceso +
+                '</td> <td>' + convertirFecha(fechaProceso.toString());
+         
+        break;
+	};
+
+	
+	var reactivar = '<div class="tooltip6"><img class="reactivar reactivarPermiso" src="images/reactivar2.png" data-toggle="" data-target="" onclick="showReactivar(' + atributosFunciones + 
+                               ')" alt="Reactivar"/><span class="tooltiptext iconReactivar ICONO_REACTIVAR">Reactivar</span></div>';
+    
+
+    filaTabla = filaTabla + 
+                '</td> <td class="acciones">' + reactivar +  
+                '</td> </tr>';
+
+    return filaTabla;
+}
+
 
 
 /**Función que crea según las columnas que le pasemos un div con checkbox para marcar y así ocultar las columnas*/
@@ -1418,6 +1563,19 @@ function convierteFecha(fecha){
 	var fechaCorrecta = "";
 
 	fechaCorrecta = fechaSeparada[5] + "-" + mes + "-" + fechaSeparada[2];
+
+	return fechaCorrecta;
+}
+
+/** Funcion para tratar las fechas en formato yyyy-mm-dd **/
+function convierteFechaGuion(fecha){
+	var fechaSeparada = fecha.split('-');
+	
+	var mes = convierteMes(fechaSeparada[1]);
+	
+	var fechaCorrecta = "";
+
+	fechaCorrecta = fechaSeparada[0] + "-" + fechaSeparada[1] + "-" + fechaSeparada[2];
 
 	return fechaCorrecta;
 }

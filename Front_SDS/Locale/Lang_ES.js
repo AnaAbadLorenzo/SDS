@@ -55,6 +55,9 @@ arrayES={
 	'DESCRIPCION_PROCESO' : 'Descripción proceso',
 	'NIVEL' : 'Nivel',
 	'SELECCIONAR_RESPUESTA_POSIBLE' : 'Selecciona las respuestas posibles',
+	'SELECCIONAR_PROCEDIMIENTO' : 'Selecciona los procedimientos',
+	'SELECCIONAR_OBJETIVO' : 'Seleccciona los objetivos',
+	'ORDEN_PROCESO': 'Orden proceso',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -155,6 +158,15 @@ arrayES={
 	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'La respuesta posible no existe',
 	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'La respuesta posible está asociada a un proceso',
 	'MENSAJE_CONTINUAR_PROCEDIMIENTO' : 'Usted ya ha iniciado este procedimiento. ¿Desea continuar?',
+	'PROCESO_VACIO' : 'El nombre, la descripción, la fecha, los procedimientos, las respuestas posibles y/o los objetivos son vacíos',
+	'PROCESO_YA_EXISTE_EXCEPTION' : 'El proceso ya existe',
+	'PROCESO_NO_EXISTE_EXCEPTION' : 'El proceso no existe',
+	'NIVEL_YA_EXISTE_EXCEPTION' : 'La relación entre el objetivo y el proceso ya existe',
+	'PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION' : 'La relación entre la respuesta posible y el proceso ya existe',
+	'PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION' : 'La relación entre el proceso y el procedimiento ya existe',
+	'PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION' : 'El proceso está asociado a un procedimiento y a un usuario',
+	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'La relación entre el proceso y el procedimiento no existe',
+	'ORDEN_PROCESO_INCORRECTO' : 'El orden de uno de los procedimientos es incorrecto',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -275,6 +287,14 @@ arrayES={
 	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'la fecha del proceso solo puede contener números',
 	'FECHA_PROCESO_MENOR_QUE_8' : 'La fecha del proceso tiene menos de 8 caracteres',
 	'FECHA_PROCESO_MAYOR_QUE_8' : 'La fecha del proceso tiene más de 8 caracteres',
+	'RELLENA_PROCEDIMIENTO' : 'Por favor, selecciona un procedimiento',
+	'RELLENA_OBJETIVO' : 'Por favor, selecciona un objetivo',
+	'SELECT_PROCEDIMIENTOS_VACIO' : 'Por favor, añade un procedimiento minimo',
+	'SELECT_OBJETIVOS_VACIO' : 'Por favor, añade un objetivo minimo',
+	'NIVEL_VACIO' : 'Nivel vacio',
+	'ORDEN_VACIO' : 'orden vacío',
+	'NIVEL_NUMERICO_INCORRECTO' : 'El nivel sólo puede contener números',
+	'ORDEN_NUMERICO_INCORRECTO' : 'El orden sólo puede contener números',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -416,6 +436,10 @@ arrayES={
 	'FORMATO_MULTIPLES_PROCEDIMIENTOS' : 'Si pulsas Ctr, puedes seleccionar múltiples procedimientos pulsando sobre ellos',
 	'SEARCH_PROCESO' : 'BUSCAR PROCESO',
 	'EDIT_PROCESO' : 'EDITAR PROCESO',
+	'DETAIL_PROCESO' : 'DETALLE PROCESO',
+	'DELETE_PROCESO' : 'ELIMINAR PROCESO',
+	'REACTIVATE_PROCESO' : 'REACTIVAR PROCESO',
+
 
 
 	//Acciones
@@ -536,7 +560,13 @@ arrayES={
 	'PROCEDIMIENTO_MODIFICADO' : 'El procedimiento se ha modificado correctamente',
 	'PROCEDIMIENTO_GUARDADO' : 'El procedimiento se ha guardado correctamente',
 	'PROCESO_GUARDADO' : 'EL proceso se ha guardado correctamente',
-	'PROCESO_GUARDADO_OK' : 'PROCESO GUARDADO CORRECTAMENTE'
+	'PROCESO_GUARDADO_OK' : 'PROCESO GUARDADO CORRECTAMENTE',
+	'PROCESO_EDITADO_OK' : 'PROCESO MODIFICADO CORRECTAMENTE',
+	'PROCESO_MODIFICADO' : 'El proceso se ha modificado correctamente',
+	'PROCESO_ELIMINADO_OK' : 'PROCESO ELIMINADO CORRECTAMENTE',
+	'PROCESO_ELIMINADO' : 'El proceso ha sido eliminado correctamente',
+	'PROCESO_REACTIVADO_OK'  : 'PROCESO REACTIVADO CORRECTAMENTE',
+	'PROCESO_REACTIVADO' : 'El proceso se ha reactivado correctamente'
 
 
 

@@ -108,7 +108,6 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

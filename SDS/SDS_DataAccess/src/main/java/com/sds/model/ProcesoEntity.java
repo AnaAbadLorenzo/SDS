@@ -52,7 +52,7 @@ public class ProcesoEntity {
 	@ManyToMany(mappedBy = "procesos")
 	private Set<ProcedimientoEntity> procedimientos = new HashSet<>();
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "nivel", joinColumns = { @JoinColumn(name = "id_proceso") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_objetivo") })
 	private Set<ObjetivoEntity> objetivos = new HashSet<>();

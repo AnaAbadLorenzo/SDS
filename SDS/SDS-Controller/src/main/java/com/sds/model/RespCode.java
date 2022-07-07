@@ -207,6 +207,7 @@ public enum RespCode {
 	PROCESO_PROCEDIMIENTO_VACIO("PROCESO_PROCEDIMIENTO_VACIO", "El procedimiento, el proceso o el orden son vacíos"), //
 	PROCESO_PROCEDIMIENTO_YA_EXISTE("PROCESO_PROCEDIMIENTO_YA_EXISTE", "La relación proceso procedimiento ya existe"), //
 	PROCESO_PROCEDIMIENTO_NO_EXISTE("PROCESO_PROCEDIMIENTO_NO_EXISTE", "La relación proceso procedimiento no existe"), //
+	DATOS_PROCESOS_LISTADOS("DATOS_PROCESOS_LISTADOS", "Los datos del proceso se han listado correctamente"), //
 	PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS("PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS",
 			"Las relaciones procedimientos -  usuarios - procesos se an listado correctamente"), //
 	PROCEDIMIENTO_USUARIO_NO_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_PROCESO_NO_EXISTE",
@@ -242,6 +243,7 @@ public enum RespCode {
 	EVIDENCIA_GUARDADA("EVIDENCIA_GUARDADA", "La evidencia se ha guardado correctamente"), //
 	EVIDENCIA_MODIFICADA("EVIDENCIA_MODIFICADA", "La evidencia se ha modificado correctamente"), //
 	EVIDENCIA_VACIA("EVIDENCIA_VACIA", "La evidencia es vacía"), //
+	ORDEN_PROCESO_INCORRECTO("ORDEN_PROCESO_INCORRECTO", "El orden del proceso es incorrecto"), //
 	TEST_ATRIBUTOS_LOGIN_OK("TEST_ATRIBUTOS_LOGIN_OK",
 			"Los tests de atributos para el login se han ejecutado correctamente"), //
 	TEST_ATRIBUTOS_LOGIN_KO("TEST_ATRIBUTOS_LOGIN_KO",

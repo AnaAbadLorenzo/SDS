@@ -1,7 +1,6 @@
 package com.sds.service.proceso.model;
 
 import java.util.Date;
-import java.util.Set;
 
 public class ProcesoReturn {
 
@@ -10,9 +9,20 @@ public class ProcesoReturn {
 	private String descripProceso;
 	private Date fechaProceso;
 	private Integer borradoProceso;
-	private Set<Procedimiento> procedimientos;
-	private Set<Objetivo> objetivos;
-	private Set<RespuestaPosible> respuestasPosibles;
+
+	public ProcesoReturn() {
+		super();
+	}
+
+	public ProcesoReturn(final Integer idProceso, final String nombreProceso, final String descripProceso,
+			final Date fechaProceso, final Integer borradoProceso) {
+		super();
+		this.idProceso = idProceso;
+		this.nombreProceso = nombreProceso;
+		this.descripProceso = descripProceso;
+		this.fechaProceso = fechaProceso;
+		this.borradoProceso = borradoProceso;
+	}
 
 	public Integer getIdProceso() {
 		return idProceso;
@@ -54,30 +64,10 @@ public class ProcesoReturn {
 		this.borradoProceso = borradoProceso;
 	}
 
-	public ProcesoReturn(final Integer idProceso, final String nombreProceso, final String descripProceso,
-			final Date fechaProceso, final Integer borradoProceso, final Set<Procedimiento> procedimientos,
-			final Set<Objetivo> objetivos, final Set<RespuestaPosible> respuestasPosibles) {
-		super();
-		this.idProceso = idProceso;
-		this.nombreProceso = nombreProceso;
-		this.descripProceso = descripProceso;
-		this.fechaProceso = fechaProceso;
-		this.borradoProceso = borradoProceso;
-		this.procedimientos = procedimientos;
-		this.objetivos = objetivos;
-		this.respuestasPosibles = respuestasPosibles;
-	}
-
-	public ProcesoReturn() {
-		super();
-	}
-
 	@Override
 	public String toString() {
 		return "ProcesoReturn [idProceso=" + idProceso + ", nombreProceso=" + nombreProceso + ", descripProceso="
-				+ descripProceso + ", fechaProceso=" + fechaProceso + ", borradoProceso=" + borradoProceso
-				+ ", procedimientos=" + procedimientos + ", objetivos=" + objetivos + ", respuestasPosibles="
-				+ respuestasPosibles + "]";
+				+ descripProceso + ", fechaProceso=" + fechaProceso + ", borradoProceso=" + borradoProceso + "]";
 	}
 
 }

@@ -6,8 +6,8 @@ function addObjetivosNiveles(){
 	var listaBusquedasObjetivos = $.parseJSON(getCookie('objetivosSelect'));
 	var idObjetivoNivel = parseInt(getCookie('numeroObjNivel')) + 1;
 	objetivosNiveles = '<div id="objetivosNiveles' + idObjetivoNivel + '" class="objetivosNiveles">' +
-			                '<label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivo" hidden></label>' +
-	            	  		'<select id="selectObjetivos'+ idObjetivoNivel + '" name="objetivos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">' + 
+			                '<label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivo' + idObjetivoNivel +'" hidden></label>' +
+	            	  		'<select id="selectObjetivos'+ idObjetivoNivel + '" name="objetivos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onblur="comprobarSelect(\'selectObjetivos' +idObjetivoNivel+ '\', \'errorFormatoNombreObjetivoSelect' +idObjetivoNivel+ '\', \'selectObjetivosOptions\')">' + 
 	            	  			'<option selected value=0><label class="OPCION_DEFECTO_OBJETIVO"></label></option>';        
 					for(var i = 0; i<listaBusquedasObjetivos.length; i++){
 						options += '<option value=' + (listaBusquedasObjetivos[i])[0] + '>' + (listaBusquedasObjetivos[i])[1]  + '</option>';
@@ -15,17 +15,17 @@ function addObjetivosNiveles(){
 	objetivosNiveles += options;        
 
 	var objetivosNiveles2 =     '</select>' +
-						  		'<div class="obligatorio tooltip2" id="obligatorioObjetivos">*' +
+						  		'<div class="obligatorio tooltip2" id="obligatorioObjetivos'+idObjetivoNivel+'">*' +
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	      			  			'</div>' +
-		          			    '<div style="display:none" id="errorFormatoNombreObjetivoSelect"></div>' +  
+		          			    '<div style="display:none" id="errorFormatoNombreObjetivoSelect'+idObjetivoNivel+'"></div>' +  
 							  	'<label class="labelForm NIVEL" id="labelNombrePlan" hidden></label>'+                           
-	                  			'<input type="text" maxlength="48" size="48" placeholder="NIVEL" name="nivel" id="nivel" class="NIVEL" onblur=""/>' +
-	                   			'<div class="obligatorio tooltip2" id="obligatorioNivel">*' +
+	                  			'<input type="number" maxlength="11" size="11" placeholder="NIVEL" name="nivel" id="nivel' + idObjetivoNivel + '" class="NIVEL" onblur=""/>' +
+	                   			'<div class="obligatorio tooltip2" id="obligatorioNivel'+idObjetivoNivel+'">*' +
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	          			  		'</div>' +
 	                      		'<div style="display:none" id="errorFormatoNivel"></div>' +
-	                      		'<div name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles(\'objetivosNiveles2\')" class="tooltip6 borrarIcon">' +
+	                      		'<div id="btnBorrar' + idObjetivoNivel + '"name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles(\'objetivosNiveles' + idObjetivoNivel+ '\')" class="tooltip6 borrarIcon">' +
 	      			  				'<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />' +
 	        						'<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>' +
 	      			  			'</div>' +
@@ -34,11 +34,58 @@ function addObjetivosNiveles(){
 	objetivosNiveles += objetivosNiveles2;
 
 	$("#objetivosNiveles").append(objetivosNiveles);
+
+	setCookie('numeroObjNivel', idObjetivoNivel);
+}
+
+/**Función para añadir más procedimientos y orden*/
+function addProcedimientosOrden(){
+	var options = "";
+	var procedimientosOrden = "";
+
+	var listaBusquedasProcedimientos = $.parseJSON(getCookie('procedimientosSelect'));
+	var idProcedimientoOrden = parseInt(getCookie('numeroProcedimientosOrden')) + 1;
+	procedimientosOrden = '<div id="procedimientosOrden' + idProcedimientoOrden + '" class="procedimientosOrden">' +
+			                '<label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento' + idProcedimientoOrden +'" hidden></label>' +
+	            	  		'<select id="selectProcedimientos' + idProcedimientoOrden + '" name ="procedimientos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">' + 
+	            	  			'<option selected value=0><label class="OPCION_DEFECTO_PROCEDIMIENTO"></label></option>';        
+					for(var i = 0; i<listaBusquedasProcedimientos.length; i++){
+						options += '<option value=' + (listaBusquedasProcedimientos[i])[0] + '>' + (listaBusquedasProcedimientos[i])[1]  + '</option>';
+					}
+	procedimientosOrden += options;        
+
+	var procedimientosOrden2 =     '</select>' +
+						  		'<div class="obligatorio tooltip2" id="obligatorioProcedimientos'+idProcedimientoOrden+'">*' +
+	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
+	      			  			'</div>' +
+		          			    '<div style="display:none" id="errorFormatoNombreProcedimientoSelect'+idProcedimientoOrden+'"></div>' +  
+							  	'<label class="labelForm ORDEN_PROCESO" id="labelOrdenProceso'+idProcedimientoOrden+'" hidden></label> '+                           
+	                  			'<input type="number" maxlength="11" size="11" placeholder="ORDEN_PROCESO" name="ordenProceso" id="ordenProceso'+idProcedimientoOrden+'" class="ORDEN_PROCESO" onblur="" hidden/>' +
+	                   			'<div class="obligatorio tooltip2" id="obligatorioOrdenProceso'+idProcedimientoOrden+'">*' +
+	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
+	          			  		'</div>' +
+	                      		'<div style="display:none" id="errorFormatoOrdenProceso'+idProcedimientoOrden+'"></div> ' +
+	                      		'<div id="btnBorrarProcedimiento'+idProcedimientoOrden+'" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden(\'procedimientosOrden'+idProcedimientoOrden+'\')" class="tooltip6 borrarIcon">' +
+	      			  				'<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />' +
+	        						'<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>' +
+	      			  			'</div>' +
+	      			  		'</div>';
+
+	procedimientosOrden += procedimientosOrden2;
+
+	$("#procedimientosOrden").append(procedimientosOrden);
+
+	setCookie('numeroProcedimientosOrden', idProcedimientoOrden);
 }
 
 /**Función que eliminar el contenido de un div de objetivos y niveles*/
 function eliminarObjetivosNiveles(idObjetivosNiveles){
 	$("#" + idObjetivosNiveles).remove();
+}
+
+/**Función que eliminar el contenido de un div de procedimientos y orden*/
+function eliminarProcedimientosOrden(idProcedimientosOrden){
+	$("#" + idProcedimientosOrden).remove();
 }
 
 /**Función que envía el fichero a back IMPORTANTE ES UNA FUNCIÓN DE PRUEBA QUE HABRÁ QUE CAMBIAR
@@ -151,6 +198,7 @@ function anadirProcesoAjaxPromesa(){
     var niveles = [];
     var idsRespuestas = [];
     var respuestasPosibles = [];
+    var ordenProceso = [];
 
     var proceso = {
       idProceso : "",
@@ -159,15 +207,44 @@ function anadirProcesoAjaxPromesa(){
       fechaProceso : $('#fechaProceso').val(),
       borradoProceso : 0
     }
+    
 
-    var selectProcedimiento = $('#selectProcedimientos');
+    var selects = $('select[name="objetivos"]');
+    var checksRespuestas = $('input[name=respuestaPosible]');
+    var selectsProcedimientos = $('select[name="procedimientos"]');
 
-  	$('#selectProcedimientos').children(':selected').each((idx, el) => {
-    	idsProcedimientos.push(el.value)
-  	});
+    for(var i = 0; i<selects.length; i++){
+    	var select = $(selects[i]);
+    	idsObjetivos.push($(select).children("option:selected").val());
+    }
 
-  	for(var i = 0; i<idsProcedimientos.length; i++){
-  		var procedimiento = {
+    for(var i = 0; i<selectsProcedimientos.length; i++){
+    	var select = $(selectsProcedimientos[i]);
+    	idsProcedimientos.push($(select).children("option:selected").val());
+    }
+
+    $("input[name='nivel']").each(function() {
+    	niveles.push($(this).val());
+	});
+
+	$("input[name='respuestaPosible']").each(function() {
+		if($(this).is(':checked')){
+           idsRespuestas.push($(this).val());
+        }
+	});
+
+    for(var i = 0; i<idsObjetivos.length; i++){
+    	var objetivo = {
+    		idObjetivo : idsObjetivos[i],
+    		nombreObjetivo : '',
+    		descripObjetivo : '',
+    		borradoObjetivo : '',
+    	}
+    	objetivos.push(objetivo);
+    }
+
+    for(var i = 0; i<idsProcedimientos.length; i++){
+    	var procedimiento = {
 	      idProcedimiento: idsProcedimientos[i],
 	      nombreProcedimiento : '',
 	      descripProcedimiento : '',
@@ -190,19 +267,88 @@ function anadirProcesoAjaxPromesa(){
     	}
 
     	procedimientos.push(procedimiento);
-  	}
+    	ordenProceso.push(0);
+    }
+
+    for(var i = 0; i<idsRespuestas.length; i++){
+    	var respuesta = {
+    		 idRespuesta: idsRespuestas[i],
+     		 textoRespuesta : '',
+      		 borradoRespuesta : 0
+    	}
+    	respuestasPosibles.push(respuesta);
+    }
+
+
+    var data = {
+      usuario : getCookie('usuario'),
+      proceso : proceso,
+      procedimientos : procedimientos,
+      objetivos : objetivos,
+      niveles : niveles,
+      respuestasPosibles: respuestasPosibles,
+      ordenProceso: ordenProceso
+    }
     
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxAddProceso,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCESO_GUARDADO') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/** Función para editar procesos con ajax y promesas **/
+function editarProcesoAjaxPromesa(){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+ 	var idsObjetivos = [];
+    var idsProcedimientos = [];
+    var procedimientos = [];
+    var objetivos = [];
+    var niveles = [];
+    var idsRespuestas = [];
+    var respuestasPosibles = [];
+    var ordenProceso = [];
+
+    var proceso = {
+      idProceso : $('#idProceso').val(),
+      nombreProceso : $('#nombreProceso').val(),
+      descripProceso : $('#descripcionProceso').val(),
+      fechaProceso : $('#fechaProceso').val(),
+      borradoProceso : 0
+    }
 
     var selects = $('select[name="objetivos"]');
     var checksRespuestas = $('input[name=respuestaPosible]');
+    var selectsProcedimientos = $('select[name="procedimientos"]');
 
     for(var i = 0; i<selects.length; i++){
     	var select = $(selects[i]);
     	idsObjetivos.push($(select).children("option:selected").val());
     }
 
+    for(var i = 0; i<selectsProcedimientos.length; i++){
+    	var select = $(selectsProcedimientos[i]);
+    	idsProcedimientos.push($(select).children("option:selected").val());
+    }
+
     $("input[name='nivel']").each(function() {
     	niveles.push($(this).val());
+	});
+
+	 $("input[name='ordenProceso']").each(function() {
+    	ordenProceso.push($(this).val());
 	});
 
 	$("input[name='respuestaPosible']").each(function() {
@@ -230,6 +376,33 @@ function anadirProcesoAjaxPromesa(){
     	respuestasPosibles.push(respuesta);
     }
 
+    for(var i = 0; i<idsProcedimientos.length; i++){
+    	var procedimiento = {
+	      idProcedimiento: idsProcedimientos[i],
+	      nombreProcedimiento : '',
+	      descripProcedimiento : '',
+	      fechaProcedimiento : '',
+	      checkUsuario : '',
+	      plan : {
+	        idPlan : '',
+	        nombrePlan : '',
+	        descripPlan : '',
+	        fechaPlan : '',
+	        borradoPlan : '',
+	        objetivo : {
+	          idObjetivo : '',
+	          nombreObjetivo : '',
+	          descripObjetivo : '',
+	          borradoObjetivo : ''
+	        }
+	      },
+	      borradoProcedimiento : ''
+    	}
+
+    	procedimientos.push(procedimiento);
+    	ordenProceso.push(ordenProceso[i]);
+    }
+
 
     var data = {
       usuario : getCookie('usuario'),
@@ -237,18 +410,19 @@ function anadirProcesoAjaxPromesa(){
       procedimientos : procedimientos,
       objetivos : objetivos,
       niveles : niveles,
-      respuestasPosibles: respuestasPosibles
+      respuestasPosibles: respuestasPosibles,
+      ordenProceso: ordenProceso
     }
     
     $.ajax({
       method: "POST",
-      url: urlPeticionAjaxAddProceso,
+      url: urlPeticionAjaxEditProceso,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'PROCESO_GUARDADO') {
+        if (res.code != 'PROCESO_MODIFICADO') {
           reject(res);
         }
         resolve(res);
@@ -303,7 +477,7 @@ function buscarProcesoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       var data = {
         nombreProceso : nombreP,
         descripProceso : descripP,
-        fechaProceso : fechaString,
+        fechaProceso : fechaP,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaProceso),
         tamanhoPagina : tamanhoPaginaProceso 
       }
@@ -353,67 +527,121 @@ function cargarPermisosFuncProcesoAjaxPromesa(){
   });
 }
 
-/**Función para editar una funcionalidad con ajax y promesas*/
-function editarFuncionalidadAjaxPromesa(){
+/**Función para eliminar un rol proceso con ajax y promesas*/
+function eliminarProcesoAjaxPromesa(){
   return new Promise(function(resolve, reject) {
-    var token = getCookie('tokenUsuario');
+  	var token = getCookie('tokenUsuario');
+    var idsObjetivos = [];
+    var idsProcedimientos = [];
+    var procedimientos = [];
+    var objetivos = [];
+    var niveles = [];
+    var idsRespuestas = [];
+    var respuestasPosibles = [];
+    var ordenProceso = [];
 
-    var funcionalidadEntity = {
-      idFuncionalidad : $("input[name=idFuncionalidad]").val(),
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 0
-    }
-    
-    var data = {
-      usuario : getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+    var proceso = {
+      idProceso : $('#idProceso').val(),
+      nombreProceso : $('#nombreProceso').val(),
+      descripProceso : $('#descripcionProceso').val(),
+      fechaProceso : $('#fechaProceso').val(),
+      borradoProceso : 1
     }
 
-      $.ajax({
-      method: "POST",
-      url: urlPeticionAjaxEditFuncionalidad,
-      contentType : "application/json",
-      data: JSON.stringify(data),  
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_MODIFICADA') {
-          reject(res);
+    var selects = $('select[name="objetivos"]');
+    var checksRespuestas = $('input[name=respuestaPosible]');
+    var selectsProcedimientos = $('select[name="procedimientos"]');
+
+    for(var i = 0; i<selects.length; i++){
+    	var select = $(selects[i]);
+    	idsObjetivos.push($(select).children("option:selected").val());
+    }
+
+    for(var i = 0; i<selectsProcedimientos.length; i++){
+    	var select = $(selectsProcedimientos[i]);
+    	idsProcedimientos.push($(select).children("option:selected").val());
+    }
+
+    $("input[name='nivel']").each(function() {
+    	niveles.push($(this).val());
+	});
+
+	 $("input[name='ordenProceso']").each(function() {
+    	ordenProceso.push($(this).val());
+	});
+
+	$("input[name='respuestaPosible']").each(function() {
+		if($(this).is(':checked')){
+           idsRespuestas.push($(this).val());
         }
-        resolve(res);
-      }).fail( function( jqXHR ) {
-        errorFailAjax(jqXHR.status);
-      });
-  });
-}
+	});
 
-/**Función para eliminar un rol un rol con ajax y promesas*/
-function eliminarFuncionalidadAjaxPromesa(){
-  return new Promise(function(resolve, reject) {
-    var token = getCookie('tokenUsuario');
-
-    var funcionalidadEntity = {
-      idFuncionalidad : $("input[name=idFuncionalidad]").val(),
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 1
+    for(var i = 0; i<idsObjetivos.length; i++){
+    	var objetivo = {
+    		idObjetivo : idsObjetivos[i],
+    		nombreObjetivo : '',
+    		descripObjetivo : '',
+    		borradoObjetivo : '',
+    	}
+    	objetivos.push(objetivo);
     }
-    
+
+    for(var i = 0; i<idsRespuestas.length; i++){
+    	var respuesta = {
+    		 idRespuesta: idsRespuestas[i],
+     		 textoRespuesta : '',
+      		 borradoRespuesta : 0
+    	}
+    	respuestasPosibles.push(respuesta);
+    }
+
+    for(var i = 0; i<idsProcedimientos.length; i++){
+    	var procedimiento = {
+	      idProcedimiento: idsProcedimientos[i],
+	      nombreProcedimiento : '',
+	      descripProcedimiento : '',
+	      fechaProcedimiento : '',
+	      checkUsuario : '',
+	      plan : {
+	        idPlan : '',
+	        nombrePlan : '',
+	        descripPlan : '',
+	        fechaPlan : '',
+	        borradoPlan : '',
+	        objetivo : {
+	          idObjetivo : '',
+	          nombreObjetivo : '',
+	          descripObjetivo : '',
+	          borradoObjetivo : ''
+	        }
+	      },
+	      borradoProcedimiento : ''
+    	}
+
+    	procedimientos.push(procedimiento);
+    	ordenProceso.push(ordenProceso[i]);
+    }
+
+
     var data = {
       usuario : getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+      proceso : proceso,
+      procedimientos : procedimientos,
+      objetivos : objetivos,
+      niveles : niveles,
+      respuestasPosibles: respuestasPosibles,
+      ordenProceso: ordenProceso
     }
-
-      $.ajax({
+    
+    $.ajax({
       method: "POST",
-      url: urlPeticionAjaxDeleteFuncionalidad,
+      url: urlPeticionAjaxDeleteProceso,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_ELIMINADA') {
+        if (res.code != 'PROCESO_ELIMINADO') {
           reject(res);
         }
         resolve(res);
@@ -463,15 +691,19 @@ async function cargarProcedimientos(){
   await cargarProcedimientosAjaxPromesa()
   .then((res) => {
   	var options = "";
+  	var procedimientos = [];
   
-    $('#selectProcedimientos').html('');
+    $('#selectProcedimientos1').html('');
 
-    var token = getCookie('tokenUsuario');
+ 		options = '<option selected value=0 class="OPCION_DEFECTO_PROCEDIMIENTO"></option>';
         for(var i = 0; i< res.data.listaBusquedas.length ; i++){
+          var elementArray = [res.data.listaBusquedas[i].idProcedimiento, res.data.listaBusquedas[i].nombreProcedimiento];
           options += '<option value=' + res.data.listaBusquedas[i].idProcedimiento + '>' + res.data.listaBusquedas[i].nombreProcedimiento + '</option>';
+          procedimientos.push(elementArray);
         }
 
-        $('#selectProcedimientos').append(options);
+        $('#selectProcedimientos1').append(options);
+        setCookie('procedimientosSelect', JSON.stringify(procedimientos));
   	
   }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -488,7 +720,7 @@ async function cargarObjetivos(){
   	var options = "";
   	var objetivos = [];
   
-    $('#selectObjetivos').html('');
+    $('#selectObjetivos1').html('');
 
     var token = getCookie('tokenUsuario');
 
@@ -499,7 +731,7 @@ async function cargarObjetivos(){
           objetivos.push(elementArray);
         }
 
-        $('#selectObjetivos').append(options);
+        $('#selectObjetivos1').append(options);
         setCookie('objetivosSelect', JSON.stringify(objetivos));
   	
   }).catch((res) => {
@@ -537,25 +769,52 @@ function cargarProcesosAjaxPromesa(numeroPagina, tamanhoPagina){
   });
 }
 
-/**Función para recuperar las funcionalidades eliminadas con ajax y promesas*/
+/** Función para recuperar los procesos con ajax y promesas **/
+function cargarDatosProceso(idProceso){
+  return new Promise(function(resolve, reject) {
+  	var token = getCookie('tokenUsuario');
+
+    var data = {
+      id : idProceso.toString()
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarDatosProceso,
+      contentType : "application/json",
+      data: idProceso.toString(),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(result => {
+        if (result.code != 'DATOS_PROCESOS_LISTADOS') {
+          reject(result);
+        }
+        resolve(result);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/**Función para recuperar los procesos eliminados con ajax y promesas*/
 function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
     var data = {
-      inicio : calculaInicio(numeroPagina, tamanhoPaginaFuncionalidad),
-      tamanhoPagina : tamanhoPaginaFuncionalidad
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaProceso),
+      tamanhoPagina : tamanhoPaginaProceso
     }
     
     $.ajax({
       method: "POST",
-      url: urlPeticionAjaxListadoFuncionalidadesEliminadas,
+      url: urlPeticionAjaxListarProcesosEliminados,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDADES_ELIMINADAS_LISTADAS') {
+        if (res.code != 'PROCESOS_ELIMINADOS_LISTADOS') {
           reject(res);
         }
         resolve(res);
@@ -565,27 +824,28 @@ function buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina){
   });
 }
 
-/**Función para ver en detalle una funcionalidad con ajax y promesas*/
-function detalleFuncionalidadAjaxPromesa(){
+/**Función para ver en detalle un proceso con ajax y promesas*/
+function detalleProcesoAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
     
     var data = {
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripFuncionalidad').val(),
+      nombreProceso : $('#nombreProceso').val(),
+      descripProceso : $('#descripcionProceso').val(),
+      fechaProceso : $('#fechaProceso').val(),
       inicio : 0,
       tamanhoPagina : 1
     }
 
       $.ajax({
       method: "POST",
-      url: urlPeticionAjaxListarFuncionalidad,
+      url: urlPeticionAjaxListarProceso,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_ENCONTRADA') {
+        if (res.code != 'PROCESO_ENCONTRADO') {
           reject(res);
         }
         resolve(res);
@@ -596,32 +856,121 @@ function detalleFuncionalidadAjaxPromesa(){
 }
 
 
-/**Función para reactivar una funcionalidad con ajax y promesas*/
-function reactivarFuncionalidadesAjaxPromesa(){
+/**Función para reactivar un proceso con ajax y promesas*/
+function reactivarProcesosAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
-    
-    var funcionalidadEntity = {
-      idFuncionalidad : $("input[name=idFuncionalidad]").val(),
-      nombreFuncionalidad : $('#nombreFuncionalidad').val(),
-      descripFuncionalidad : $('#descripcionFuncionalidad').val(),
-      borradoFuncionalidad : 0
+ 	var idsObjetivos = [];
+    var idsProcedimientos = [];
+    var procedimientos = [];
+    var objetivos = [];
+    var niveles = [];
+    var idsRespuestas = [];
+    var respuestasPosibles = [];
+    var ordenProceso = [];
+
+    var proceso = {
+      idProceso : $('#idProceso').val(),
+      nombreProceso : $('#nombreProceso').val(),
+      descripProceso : $('#descripcionProceso').val(),
+      fechaProceso : $('#fechaProceso').val(),
+      borradoProceso : 0
     }
+
+    var selects = $('select[name="objetivos"]');
+    var checksRespuestas = $('input[name=respuestaPosible]');
+    var selectsProcedimientos = $('select[name="procedimientos"]');
+
+    for(var i = 0; i<selects.length; i++){
+    	var select = $(selects[i]);
+    	idsObjetivos.push($(select).children("option:selected").val());
+    }
+
+    for(var i = 0; i<selectsProcedimientos.length; i++){
+    	var select = $(selectsProcedimientos[i]);
+    	idsProcedimientos.push($(select).children("option:selected").val());
+    }
+
+    $("input[name='nivel']").each(function() {
+    	niveles.push($(this).val());
+	});
+
+	 $("input[name='ordenProceso']").each(function() {
+    	ordenProceso.push($(this).val());
+	});
+
+	$("input[name='respuestaPosible']").each(function() {
+		if($(this).is(':checked')){
+           idsRespuestas.push($(this).val());
+        }
+	});
+
+    for(var i = 0; i<idsObjetivos.length; i++){
+    	var objetivo = {
+    		idObjetivo : idsObjetivos[i],
+    		nombreObjetivo : '',
+    		descripObjetivo : '',
+    		borradoObjetivo : '',
+    	}
+    	objetivos.push(objetivo);
+    }
+
+    for(var i = 0; i<idsRespuestas.length; i++){
+    	var respuesta = {
+    		 idRespuesta: idsRespuestas[i],
+     		 textoRespuesta : '',
+      		 borradoRespuesta : 0
+    	}
+    	respuestasPosibles.push(respuesta);
+    }
+
+    for(var i = 0; i<idsProcedimientos.length; i++){
+    	var procedimiento = {
+	      idProcedimiento: idsProcedimientos[i],
+	      nombreProcedimiento : '',
+	      descripProcedimiento : '',
+	      fechaProcedimiento : '',
+	      checkUsuario : '',
+	      plan : {
+	        idPlan : '',
+	        nombrePlan : '',
+	        descripPlan : '',
+	        fechaPlan : '',
+	        borradoPlan : '',
+	        objetivo : {
+	          idObjetivo : '',
+	          nombreObjetivo : '',
+	          descripObjetivo : '',
+	          borradoObjetivo : ''
+	        }
+	      },
+	      borradoProcedimiento : ''
+    	}
+
+    	procedimientos.push(procedimiento);
+    	ordenProceso.push(ordenProceso[i]);
+    }
+
 
     var data = {
-      usuario: getCookie('usuario'),
-      funcionalidadEntity : funcionalidadEntity
+      usuario : getCookie('usuario'),
+      proceso : proceso,
+      procedimientos : procedimientos,
+      objetivos : objetivos,
+      niveles : niveles,
+      respuestasPosibles: respuestasPosibles,
+      ordenProceso: ordenProceso
     }
-
-      $.ajax({
+    
+    $.ajax({
       method: "POST",
-      url: urlPeticionAjaxReactivarFuncionalidad,
+      url: urlPeticionAjaxEditProceso,
       contentType : "application/json",
       data: JSON.stringify(data),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
-        if (res.code != 'FUNCIONALIDAD_REACTIVADA') {
+        if (res.code != 'PROCESO_MODIFICADO') {
           reject(res);
         }
         resolve(res);
@@ -634,58 +983,67 @@ function reactivarFuncionalidadesAjaxPromesa(){
 /* Función para obtener los procesos del sistema */
 async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
 	if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
-		await cargarProcesosAjaxPromesa(numeroPagina, tamanhoPagina)
-	  .then((res) => {
-	  	
-     	 var numResults = res.data.numResultados + '';
-	  	var totalResults = res.data.tamanhoTotal + '';
+	try {
+		cargarPermisosFuncProceso();
+    	const resultado = await cargarProcesosAjaxPromesa(numeroPagina, tamanhoPagina);
+    	var numResults = resultado.data.numResultados + '';
+	  	var totalResults = resultado.data.tamanhoTotal + '';
         var inicio = 0;
-      if(res.data.listaBusquedas.length == 0){
-        inicio = 0;
-      }else{
-        inicio = parseInt(res.data.inicio)+1;
-      }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+	    if(resultado.data.listaBusquedas.length == 0){
+	        inicio = 0;
+	        $('#itemPaginacion').attr('hidden',true);
+	        document.getElementById('cabecera').style.display = "block";
+            document.getElementById('cabeceraEliminados').style.display = "none";
+	    }else{
+	        inicio = parseInt(resultado.data.inicio)+1;
+	         $('#itemPaginacion').attr('hidden',false);
+	    }
 
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
-	   	
+      	var textPaginacion = inicio + " - " + (parseInt(resultado.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
       	$("#datosProceso").html("");
 	   	$("#checkboxColumnas").html("");
 	   	$("#paginacion").html("");
-    		
-      for (var i = 0; i < res.data.listaBusquedas.length; i++){
-    			var tr = construyeFila('PROCESO', res.data.listaBusquedas[i]);
-    			$("#datosProceso").append(tr);
-    		}
-    	
-    	var div = createHideShowColumnsWindow({DESCRIPCION_PROCESO_COLUMN:2, DATE_COLUMN:3 });
+
+	   	for (var i = 0; i < resultado.data.listaBusquedas.length; i++){
+	   		try{
+	   			const result = await cargarDatosProceso(resultado.data.listaBusquedas[i].idProceso)
+	   			var tr = construyeFilaProceso('PROCESO', resultado.data.listaBusquedas[i], result.data.procedimientos ,result.data.objetivos, result.data.respuestasPosibles, result.data.niveles, result.data.ordenProceso);
+	  			$("#datosProceso").append(tr);
+	   		}catch (resultado) {
+    			respuestaAjaxKO(resultado.code);
+				document.getElementById("modal").style.display = "block";
+  			}
+  		}
+
+  		
+	   	var div = createHideShowColumnsWindow({DESCRIPCION_PROCESO_COLUMN:2, DATE_COLUMN:3});
       	$("#checkboxColumnas").append(div);
       	$("#paginacion").append(textPaginacion);
       	setLang(getCookie('lang'));
 
-        if(paginadorCreado != 'PaginadorCreado'){
-          paginador(totalResults, 'cargarProcesos', 'PROCESO');
-        }
-        
-        if(numeroPagina == 0){
-          $('#' + (numeroPagina+1)).addClass("active");
-          var numPagCookie = numeroPagina+1;
-        }else{
-          $('#' + numeroPagina).addClass("active");
-           var numPagCookie = numeroPagina;
-        }
+		if(paginadorCreado != 'PaginadorCreado'){
+		    paginador(totalResults, 'cargarProcesos', 'PROCESO');
+		}
+		        
+		if(numeroPagina == 0){
+		    $('#' + (numeroPagina+1)).addClass("active");
+		    var numPagCookie = numeroPagina+1;
+		}else{
+		    $('#' + numeroPagina).addClass("active");
+		    var numPagCookie = numeroPagina;
+		}
 
-        setCookie('numeroPagina', numPagCookie);
-	  
-		}).catch((res) => {
-		    respuestaAjaxKO(res.code);
-		    document.getElementById("modal").style.display = "block";
-		});
-	}
+		setCookie('numeroPagina', numPagCookie);
+    
+  	} catch (resultado) {
+    	respuestaAjaxKO(resultado.code);
+		document.getElementById("modal").style.display = "block";
+  	}
+	
+	}else{
+    await cargarProcesosProcedimientoAjaxPromesa(numeroPagina, 4)
+  }
 }
 
 /** Funcion añadir proceso **/
@@ -696,7 +1054,7 @@ async function addProceso(){
     $("#form-modal").modal('toggle');
     respuestaAjaxOK("PROCESO_GUARDADO_OK", res.code);
 
-    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos1", "ordenProceso1","selectObjetivos1", "nivel1"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
@@ -711,7 +1069,7 @@ async function addProceso(){
 
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
+      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos1", "ordenProceso1","selectObjetivos1", "nivel1"];
       resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
@@ -720,238 +1078,30 @@ async function addProceso(){
   });
 }
 
-
-/** Funcion buscar proceso **/
-async function buscarProceso(numeroPagina, tamanhoPagina, accion, paginadorCreado){
-  await buscarProcesoAjaxPromesa(numeroPagina, tamanhoPagina,accion)
-  .then((res) => {
-      cargarPermisosFuncProceso();
-      if($('#form-modal').is(':visible')) {
-         $("#form-modal").modal('toggle');
-      };
-      guardarParametrosBusqueda(res.data.datosBusqueda);
-      var numResults = res.data.numResultados + '';
-      var totalResults = res.data.tamanhoTotal + '';
-        var inicio = 0;
-      if(res.data.listaBusquedas.length == 0){
-        inicio = 0;
-        document.getElementById('itemPaginacion').style.display="none";
-      }else{
-        inicio = parseInt(res.data.inicio)+1;
-        document.getElementById('itemPaginacion').style.display="block";
-      }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-
-      $("#datosProceso").html("");
-      $("#checkboxColumnas").html("");
-      $("#paginacion").html("");
-        for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFila('PROCESO', res.data.listaBusquedas[i]);
-          $("#datosProceso").append(tr);
-        }
-      
-      	var div = createHideShowColumnsWindow({DESCRIPCION_PROCESO_COLUMN:2, DATE_COLUMN:3 });
-      	$("#checkboxColumnas").append(div);
-      	$("#paginacion").append(textPaginacion);
-      	setLang(getCookie('lang'));
-
-      if(paginadorCreado != 'PaginadorCreado'){
-          paginador(totalResults, 'buscarProceso', 'PROCESO');
-      }
-
-      if(numeroPagina == 0){
-        $('#' + (numeroPagina+1)).addClass("active");
-        var numPagCookie = numeroPagina+1;
-      }else{
-        $('#' + numeroPagina).addClass("active");
-        var numPagCookie = numeroPagina;
-      }
-      setCookie('numeroPagina', numPagCookie);
-
-  
-  }).catch((res) => {
-      cargarPermisosFuncProceso();
-      respuestaAjaxKO(res.code);
-
-      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
-      resetearFormulario("formularioGenerico", idElementoList);
-
-      setLang(getCookie('lang'));
-
-      document.getElementById("modal").style.display = "block";
-  });
-}
-
-/*Función que refresca la tabla por si hay algún cambio en BD */
-async function refrescarTabla(numeroPagina, tamanhoPagina){
-  await cargarFuncionalidadesAjaxPromesa(numeroPagina, tamanhoPagina)
-  .then((res) => {
-      cargarPermisosFuncFuncionalidad();
-      setCookie('nombreFuncionalidad', '');
-      setCookie('descripFuncionalidad', '');
-      var numResults = res.data.numResultados + '';
-      var totalResults = res.data.tamanhoTotal + '';
-      var inicio = 0;
-      if(res.data.listaBusquedas.length == 0){
-        inicio = 0;
-      }else{
-        inicio = parseInt(res.data.inicio)+1;
-      }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-
-      if(res.data.listaBusquedas.length == 0){
-        $('#itemPaginacion').attr('hidden',true);
-      }else{
-        $('#itemPaginacion').attr('hidden',false);
-      }
-
-      document.getElementById('cabecera').style.display = "block";
-      document.getElementById('cabeceraEliminados').style.display == "none";
-      
-      $("#datosFuncionalidad").html("");
-      $("#checkboxColumnas").html("");
-      $("#paginacion").html("");
-        for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFila('FUNCIONALIDAD', res.data.listaBusquedas[i]);
-          $("#datosFuncionalidad").append(tr);
-        }
-      
-      var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
-      $("#checkboxColumnas").append(div);
-      $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
-
-      setCookie('nombreFuncionalidad', '');
-      setCookie('descripFuncionalidad', '');
-
-      paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
-
-      if(numeroPagina == 0){
-        $('#' + (numeroPagina+1)).addClass("active");
-        var numPagCookie = numeroPagina + 1 ;
-      }else{
-        $('#' + numeroPagina).addClass("active");
-         var numPagCookie = numeroPagina;
-      }
-
-      setCookie('numeroPagina', numPagCookie);
-      comprobarOcultos();
-    
-    }).catch((res) => {
-      
-      respuestaAjaxKO(res.code);
-      setLang(getCookie('lang'));
-      document.getElementById("modal").style.display = "block";
-  });
-}
-
-/*Función que busca los eliminados de la tabla de rol*/
-async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
-  await buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina)
-  .then((res) => {
-      cargarPermisosFuncFuncionalidad();
-      var numResults = res.data.numResultados + '';
-      var totalResults = res.data.tamanhoTotal + '';
-      var inicio = 0;
-      if(res.data.listaBusquedas.length == 0){
-        inicio = 0;
-        $('#itemPaginacion').attr('hidden', true);
-      }else{
-        inicio = parseInt(res.data.inicio)+1;
-        $('#itemPaginacion').attr('hidden', false);
-      }
-      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-
-      
-      if(res.data.listaBusquedas.length == 0){
-        document.getElementById('cabecera').style.display = "none";
-        document.getElementById('cabeceraEliminados').style.display = "block";    
-      }
-
-      $("#datosFuncionalidad").html("");
-      $("#checkboxColumnas").html("");
-      $("#paginacion").html("");
-        for (var i = 0; i < res.data.listaBusquedas.length; i++){
-          var tr = construyeFilaEliminados('FUNCIONALIDAD', res.data.listaBusquedas[i]);
-          $("#datosFuncionalidad").append(tr);
-        }
-      
-      var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
-      $("#checkboxColumnas").append(div);
-      $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
-
-      setCookie('nombreFuncionalidad', '');
-      setCookie('descripFuncionalidad', '');
-
-      if(paginadorCreado != 'PaginadorCreado'){
-         paginador(totalResults, 'buscarEliminadosFuncionalidad', 'FUNCIONALIDAD');
-      }
-     
-
-      if(numeroPagina == 0){
-        $('#' + (numeroPagina+1)).addClass("active");
-      }else{
-        $('#' + numeroPagina).addClass("active");
-      }
-    
-    }).catch((res) => {
-      
-      respuestaAjaxKO(res.code);
-      setLang(getCookie('lang'));
-      document.getElementById("modal").style.display = "block";
-  
-  });
-}
-
-/** Función que visualiza una funcionalidad **/
-async function detalleFuncionalidad(){
-  await detalleFuncionalidadAjaxPromesa()
+/** Función que edita un proceso **/
+async function editProceso(){
+  await editarProcesoAjaxPromesa()
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
-    $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
-    $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
+    respuestaAjaxOK("PROCESO_EDITADO_OK", res.code);
 
-  }).catch((res) => {
-      $("#form-modal").modal('toggle');
-
-      respuestaAjaxKO(res.code);
-
-      let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-      resetearFormulario("formularioGenerico", idElementoList);
-      
-      setLang(getCookie('lang'));
-
-      document.getElementById("modal").style.display = "block";
-  });
-}
-
-/** Función que edita un rol **/
-async function editFuncionalidad(){
-  await editarFuncionalidadAjaxPromesa()
-  .then((res) => {
-    $("#form-modal").modal('toggle');
-
-    respuestaAjaxOK("FUNCIONALIDAD_EDITADA_OK", res.code);
-
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos1", "ordenProceso1","selectObjetivos1", "nivel1"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
-    $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
-    $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
-    buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorCreado');
+    
+    $('#nombreProceso').val(getCookie('nombreProceso'));
+    $('#descripcionProceso').val(getCookie('descripProceso'));
+    $('#fechaProceso').val(getCookie('fechaProceso'));
+    buscarProceso(getCookie('numeroPagina'), tamanhoPaginaProceso, 'buscarPaginacion', 'PaginadorCreado');
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
 
      respuestaAjaxKO(res.code);
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos1", "ordenProceso1","selectObjetivos1", "nivel1"];
     resetearFormulario("formularioGenerico", idElementoList);
 
     setLang(getCookie('lang'));
@@ -962,28 +1112,254 @@ async function editFuncionalidad(){
   });
 }
 
-/** Función que elimina una funcionalidad **/
-async function deleteFuncionalidad(){
-  await eliminarFuncionalidadAjaxPromesa()
+
+/** Funcion buscar proceso **/
+async function buscarProceso(numeroPagina, tamanhoPagina, accion, paginadorCreado){
+  	try {
+  		const res = await buscarProcesoAjaxPromesa(numeroPagina, tamanhoPagina,accion);
+		if($('#form-modal').is(':visible')) {
+         	$("#form-modal").modal('toggle');
+      	};
+      	guardarParametrosBusqueda(res.data.datosBusqueda);
+    	
+    	var numResults = res.data.numResultados + '';
+	  	var totalResults = res.data.tamanhoTotal + '';
+        var inicio = 0;
+	    if(res.data.listaBusquedas.length == 0){
+	        inicio = 0;
+	        $('#itemPaginacion').attr('hidden',true);
+	    }else{
+	        inicio = parseInt(res.data.inicio)+1;
+	         $('#itemPaginacion').attr('hidden',false);
+	    }
+      	var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      	$("#datosProceso").html("");
+	   	$("#checkboxColumnas").html("");
+	   	$("#paginacion").html("");
+
+	   	for (var i = 0; i < res.data.listaBusquedas.length; i++){
+	   		try{
+	   			const result = await cargarDatosProceso(res.data.listaBusquedas[i].idProceso)
+	   			var tr = construyeFilaProceso('PROCESO', res.data.listaBusquedas[i], result.data.procedimientos ,result.data.objetivos, result.data.respuestasPosibles, result.data.niveles, result.data.ordenProceso);
+	   			$("#datosProceso").append(tr);
+	  
+	   		}catch (resultado) {
+    			respuestaAjaxKO(resultado.code);
+				document.getElementById("modal").style.display = "block";
+  			}
+  		}
+    	cargarPermisosFuncProceso();
+    	var div = createHideShowColumnsWindow({DESCRIPCION_PROCESO_COLUMN:2, DATE_COLUMN:3 });
+      			$("#checkboxColumnas").append(div);
+      			$("#paginacion").append(textPaginacion);
+      			setLang(getCookie('lang'));
+
+		        if(paginadorCreado != 'PaginadorCreado'){
+		          paginador(totalResults, 'buscarProceso', 'PROCESO');
+		        }
+		        
+		        if(numeroPagina == 0){
+		          $('#' + (numeroPagina+1)).addClass("active");
+		          var numPagCookie = numeroPagina+1;
+		        }else{
+		          $('#' + numeroPagina).addClass("active");
+		           var numPagCookie = numeroPagina;
+		        }
+
+		        setCookie('numeroPagina', numPagCookie);
+  	} catch (res) {
+    	respuestaAjaxKO(res.code);
+		document.getElementById("modal").style.display = "block";
+		cargarPermisosFuncProceso();
+      
+      	let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos1", "ordenProceso1","selectObjetivos1", "nivel1"];
+      	resetearFormulario("formularioGenerico", idElementoList);
+
+      	setLang(getCookie('lang'));
+
+      
+  	}
+}
+
+/* Función para obtener los procesos del sistema */
+async function refrescarTabla(numeroPagina, tamanhoPagina, paginadorCreado){
+	if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
+	try {
+    	const resultado = await cargarProcesosAjaxPromesa(numeroPagina, tamanhoPagina);
+    	var numResults = resultado.data.numResultados + '';
+	  	var totalResults = resultado.data.tamanhoTotal + '';
+        var inicio = 0;
+	    if(resultado.data.listaBusquedas.length == 0){
+	        inicio = 0;
+	        $('#itemPaginacion').attr('hidden',true);
+	    }else{
+	        inicio = parseInt(resultado.data.inicio)+1;
+	         $('#itemPaginacion').attr('hidden',false);
+	    }
+      	var textPaginacion = inicio + " - " + (parseInt(resultado.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      	document.getElementById('cabecera').style.display = "block";
+        document.getElementById('cabeceraEliminados').style.display == "none";
+
+      	$("#datosProceso").html("");
+	   	$("#checkboxColumnas").html("");
+	   	$("#paginacion").html("");
+
+	   	for (var i = 0; i < resultado.data.listaBusquedas.length; i++){
+	   		try{
+	   			const result = await cargarDatosProceso(resultado.data.listaBusquedas[i].idProceso)
+	   			var tr = construyeFilaProceso('PROCESO', resultado.data.listaBusquedas[i], result.data.procedimientos ,result.data.objetivos, result.data.respuestasPosibles, result.data.niveles, result.data.ordenProceso);
+	  			$("#datosProceso").append(tr);
+	   		}catch (resultado) {
+    			respuestaAjaxKO(resultado.code);
+				document.getElementById("modal").style.display = "block";
+  			}
+  		}
+
+  		
+	   	var div = createHideShowColumnsWindow({DESCRIPCION_PROCESO_COLUMN:2, DATE_COLUMN:3});
+      	$("#checkboxColumnas").append(div);
+      	$("#paginacion").append(textPaginacion);
+      	setLang(getCookie('lang'));
+
+		 paginador(totalResults, 'cargarProcesos', 'PROCESO');
+		        
+		if(numeroPagina == 0){
+		    $('#' + (numeroPagina+1)).addClass("active");
+		    var numPagCookie = numeroPagina+1;
+		}else{
+		    $('#' + numeroPagina).addClass("active");
+		    var numPagCookie = numeroPagina;
+		}
+		cargarPermisosFuncProceso();
+		setCookie('numeroPagina', numPagCookie);
+		comprobarOcultos();
+    
+  	} catch (resultado) {
+  		cargarPermisosFuncProceso();
+    	respuestaAjaxKO(resultado.code);
+    	setLang(getCookie('lang'));
+		document.getElementById("modal").style.display = "block";
+  	}
+	
+	}
+}
+
+/** Función pra busar los  eliminados de la tabla proceso */
+async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
+	if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
+	try {
+		cargarPermisosFuncProceso();
+    	const resultado = await buscarEliminadosAjaxPromesa(numeroPagina, tamanhoPagina);
+    	var numResults = resultado.data.numResultados + '';
+	  	var totalResults = resultado.data.tamanhoTotal + '';
+        var inicio = 0;
+
+	    if(resultado.data.listaBusquedas.length == 0){
+        	inicio = 0;
+        	$('#itemPaginacion').attr('hidden', true);
+        	document.getElementById('cabecera').style.display = "none";
+            document.getElementById('cabeceraEliminados').style.display = "block";
+      	}else{
+        	inicio = parseInt(resultado.data.inicio)+1;
+        	$('#itemPaginacion').attr('hidden', false);
+      	}
+	    
+      	var textPaginacion = inicio + " - " + (parseInt(resultado.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      	$("#datosProceso").html("");
+	   	$("#checkboxColumnas").html("");
+	   	$("#paginacion").html("");
+
+	   	for (var i = 0; i < resultado.data.listaBusquedas.length; i++){
+	   		try{
+	   			const result = await cargarDatosProceso(resultado.data.listaBusquedas[i].idProceso)
+	   			var tr = construyeFilaProcesoEliminado('PROCESO', resultado.data.listaBusquedas[i], result.data.procedimientos ,result.data.objetivos, result.data.respuestasPosibles, result.data.niveles, result.data.ordenProceso);
+	  			$("#datosProceso").append(tr);
+	   		}catch (resultado) {
+    			respuestaAjaxKO(resultado.code);
+				document.getElementById("modal").style.display = "block";
+  			}
+  		}
+
+	   	var div = createHideShowColumnsWindow({DESCRIPCION_PROCESO_COLUMN:2, DATE_COLUMN:3});
+      	$("#checkboxColumnas").append(div);
+      	$("#paginacion").append(textPaginacion);
+      	setLang(getCookie('lang'));
+
+		if(paginadorCreado != 'PaginadorCreado'){
+		    paginador(totalResults, 'buscarEliminadosProceso', 'PROCESO');
+		}
+		        
+		if(numeroPagina == 0){
+		    $('#' + (numeroPagina+1)).addClass("active");
+		    var numPagCookie = numeroPagina+1;
+		}else{
+		    $('#' + numeroPagina).addClass("active");
+		    var numPagCookie = numeroPagina;
+		}
+
+		setCookie('numeroPagina', numPagCookie);
+		cargarPermisosFuncProceso();
+    
+  	} catch (resultado) {
+    	respuestaAjaxKO(resultado.code);
+		document.getElementById("modal").style.display = "block";
+  	}
+	
+	}
+}
+
+
+/** Función que visualiza un proceso **/
+async function detalleProceso(){
+  await detalleProcesoAjaxPromesa()
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    respuestaAjaxOK("FUNCIONALIDAD_ELIMINADA_OK", res.code);
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos", "nivel1"];
+    resetearFormulario("formularioGenerico", idElementoList);
+    setLang(getCookie('lang'));
+    $('#nombreProceso').val(getCookie('nombreProceso'));
+    $('#descripcionProceso').val(getCookie('descripProceso'));
 
-    let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
+  }).catch((res) => {
+      $("#form-modal").modal('toggle');
+
+      respuestaAjaxKO(res.code);
+
+      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos", "nivel1"];
+      resetearFormulario("formularioGenerico", idElementoList);
+      
+      setLang(getCookie('lang'));
+
+      document.getElementById("modal").style.display = "block";
+  });
+}
+
+/** Función que elimina un proceso **/
+async function deleteProceso(){
+  await eliminarProcesoAjaxPromesa()
+  .then((res) => {
+    $("#form-modal").modal('toggle');
+
+    respuestaAjaxOK("PROCESO_ELIMINADO_OK", res.code);
+
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos1", "nivel1", "ordenProceso1"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
-    refrescarTabla(0, tamanhoPaginaFuncionalidad);
+    refrescarTabla(0, tamanhoPaginaProceso);
 
   }).catch((res) => {
      
      $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-      resetearFormulario("formularioGenerico", idElementoList);
+      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos", "nivel1", "ordenProceso1"];
+    resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));
 
@@ -994,20 +1370,20 @@ async function deleteFuncionalidad(){
 }
 
 /*Función que reactiva los eliminados de la tabla de funcionalidades*/
-async function reactivarFuncionalidad(){
-  await reactivarFuncionalidadesAjaxPromesa()
+async function reactivarProceso(){
+  await reactivarProcesosAjaxPromesa()
   .then((res) => {
 
-    cargarPermisosFuncFuncionalidad();
+    cargarPermisosFuncProceso();
 
     $("#form-modal").modal('toggle');
 
-    respuestaAjaxOK("FUNCIONALIDAD_REACTIVADA_OK", res.code);
+    respuestaAjaxOK("PROCESO_REACTIVADO_OK", res.code);
 
     setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
-    buscarEliminados(0, tamanhoPaginaFuncionalidad, 'PaginadorNo');
+    buscarEliminados(0, tamanhoPaginaProceso, 'PaginadorNo');
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -1039,12 +1415,45 @@ function showAddProcesos() {
   $('#btnAddObjetivoPlan').attr('hidden', false);
   $('#objetivosNiveles').attr('hidden', false);
   $('#formatoProcedimiento').attr('hidden', false);
+  $('#ordenProceso').attr('hidden', true);
+  $('#labelNombreProcedimiento1').attr('hidden', true);
+  $('#btnAddProcedimientoProceso').attr('hidden', false);
+  $('#procedimientosOrden').attr('hidden',false);
+  $('#divRespPosible').attr('hidden', false);
+  $('#labelSeleccionProcedimiento').attr('hidden', false);
+  $('#labelSeleccionObjetivo').attr('hidden', false);
+  $('#labelRespuestaPosible').attr('hidden', true);
+  $('#labelSeleccionRespuestaPosible').attr('hidden', false);
 
-  $('#selectObjetivos option[value=0]').attr('selected', true);
-  $('#selectProcedimientos option[value=0]').attr('selected', true);
+  var numeroObjetivosNivel = getCookie('numeroObjNivel');
+  var numeroProcedimientosOrden = getCookie('numeroProcedimientosOrden');
 
-  let campos = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
-  let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso", "obligatorioProcedimiento", "obligatorioNivel", "obligatorioRespuestaPosible"];
+  $('select[name="procedimientos"] option[value=0]').attr('selected', true);
+  $('select[name="objetivos"] option[value=0]').attr('selected', true);
+  $('input[name="respuestaPosible"]').attr('disabled', false);
+
+  for(var i = 1; i<=numeroObjetivosNivel; i++){
+  	$('#selectObjetivos'+i+' option[value=0]').attr('selected', true);
+  	eliminarReadonly(['selectObjetivos'+i, 'nivel'+i]);
+  	habilitaCampos(['selectObjetivos'+i, 'nivel'+i]);
+  	mostrarObligatorios(['obligatorioObjetivos'+i, 'obligatorioNivel'+i]);
+  	$('#selectObjetivos'+i).attr('onblur', 'comprobarSelect(\'selectObjetivos' +i+ '\', \'errorFormatoNombreObjetivoSelect' +i+ '\', \'selectObjetivosOptions\')');
+  }
+
+   for(var i = 1; i<=numeroProcedimientosOrden; i++){
+  	$('#selectProcedimientos'+i+' option[value=0]').attr('selected', true);
+  	eliminarReadonly(['selectProcedimientos'+i, 'ordenProceso'+i]);
+  	habilitaCampos(['selectProcedimientos'+i, 'ordenProceso'+i]);
+  	mostrarObligatorios(['obligatorioProcedimientos'+i]);
+  	ocultarObligatorios(['obligatorioOrdenProceso'+i]);
+  	$('#ordenProceso'+i).attr('hidden', true);
+  	$('#selectProcedimientos'+i).attr('onblur', 'comprobarSelect(\'selectProcedimientos' +i+ '\', \'errorFormatoNombreProcedimientoSelect' +i+ '\', \'selectProcedimientosOptions\')');
+  }
+  	
+
+
+  let campos = ["nombreProceso", "descripcionProceso", "fechaProceso"];
+  let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso","obligatorioRespuestaPosible"];
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
@@ -1074,6 +1483,14 @@ function showBuscarProceso() {
   $('#btnAddObjetivoPlan').attr('hidden', true);
   $('#objetivosNiveles').attr('hidden', true);
   $('#formatoProcedimiento').attr('hidden', true);
+  $('#ordenProceso').attr('hidden', true);
+  $('#btnAddProcedimientoProceso').attr('hidden', true);
+  $('#procedimientosOrden').attr('hidden',true);
+  $('#divRespPosible').attr('hidden', false);
+  $('#labelSeleccionProcedimiento').attr('hidden', true);
+  $('#labelSeleccionObjetivo').attr('hidden', true);
+  $('#labelRespuestaPosible').attr('hidden', true);
+  $('#labelSeleccionRespuestaPosible').attr('hidden', true);
 
   let campos = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
   let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso", "obligatorioProcedimiento", "obligatorioNivel", "obligatorioRespuestaPosible"];
@@ -1084,24 +1501,76 @@ function showBuscarProceso() {
 
 }
 
-/** Funcion para visualizar una funcionalidad **/
-function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
+/** Funcion para visualizar un proceso **/
+function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
   
     var idioma = getCookie('lang');
 
-    cambiarFormulario('DETAIL_FUNCIONALITY', 'javascript:detalleFuncionalidad();', '');
+    cambiarFormulario('DETAIL_PROCESO', 'javascript:detalleProceso();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
    
     setLang(idioma);
     
-    $('#labelFuncionalidadName').removeAttr('hidden');
-    $('#labelFuncionalidadDescription').removeAttr('hidden');
+    $('#labelNombreProceso').attr('hidden', false);
+  	$('#labelDescripcionProceso').attr('hidden', false);
+  	$('#labelFechaProceso').attr('hidden', false);
+  	$('#labelNombreProcedimiento').attr('hidden', false);
+  	$('#labelNivel').attr('hidden', false);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#selectProcedimientos').attr('hidden', false);
+  	$('#respuestasPosibles').attr('hidden', false);
+  	$('#btnAddObjetivoPlan').attr('hidden', false);
+  	$('#objetivosNiveles').attr('hidden', false);
+  	$('#formatoProcedimiento').attr('hidden', false);
     $('#subtitulo').attr('hidden', '');
+    $('#btnAddObjetivoPlan').attr('hidden', true);
+    $('#btnAddProcedimientoProceso').attr('hidden', true);
+    $('#labelSeleccionProcedimiento').attr('hidden', true);
+  	$('#labelSeleccionObjetivo').attr('hidden', true);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
 
-    rellenarFormulario(nombreFuncionalidad, descripFuncionalidad);
+    rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
 
-    let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
+    $('input[name="respuestaPosible"]').attr('disabled', true);
+
+    var numeroObjetivosNivel = getCookie('numeroObjNivel');
+  	var numeroProcedimientosOrden = getCookie('numeroProcedimientosOrden');
+
+    for(var i = 1; i<=numeroObjetivosNivel; i++){;
+    	var obligatorioOb = 'obligatorioObjetivos'+i;
+    	var obligatorioN = 'obligatorioNivel'+i;
+    	var selectOb = 'selectObjetivos'+i;
+    	var nivel = 'nivel'+i;
+
+    	anadirReadonly([selectOb, nivel]);
+    	ocultarObligatorios([obligatorioOb, obligatorioN]);
+    	deshabilitaCampos([selectOb, nivel])
+    	$('#btnBorrar'+i).attr('hidden', true);
+    	$('#labelNombreObjetivo'+i).attr('hidden', false);
+    	$('#labelNivel'+i).attr('hidden', false);
+    }
+
+
+	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
+	  	var selectPr = 'selectProcedimientos'+i;
+    	var obligatorioO = 'obligatorioOrdenProceso'+i;
+    	var ordenProceso = 'ordenProceso'+i;
+
+    	anadirReadonly([selectPr, ordenProceso]);
+    	ocultarObligatorios([obligatorioPr, obligatorioO]);
+    	deshabilitaCampos([selectPr, ordenProceso])
+
+    	$('#btnBorrarProcedimiento'+i).attr('hidden', true);
+    	$('#labelNombreProcedimiento'+i).attr('hidden', false);
+    	$('#ordenProceso'+i).attr('hidden', false);
+    	$('#labelOrdenProceso'+i).attr('hidden', false);
+	}
+
+	let campos = ["nombreProceso", "descripcionProceso", "fechaProceso"];
+	let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso","obligatorioRespuestaPosible"];
+    
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
@@ -1109,7 +1578,8 @@ function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
 }
 
 /** Funcion para editar un proceso **/
-function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, procedimientos, objetivos, respuestasPosibles) {
+function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
+
   var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_PROCESO', 'javascript:editProceso();', 'return comprobarEditProceso();');
@@ -1127,78 +1597,218 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
   	$('#labelFechaProceso').attr('hidden', true);
   	$('#labelNombreProcedimiento').attr('hidden', true);
   	$('#labelNivel').attr('hidden', true);
-  	$('#labelRespuestaPosible').attr('hidden', true);
-  	$('#selectProcedimientos').attr('hidden', true);
-  	$('#respuestasPosibles').attr('hidden', true);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#selectProcedimientos').attr('hidden', false);
+  	$('#respuestasPosibles').attr('hidden', false);
   	$('#btnAddObjetivoPlan').attr('hidden', false);
   	$('#objetivosNiveles').attr('hidden', false);
   	$('#formatoProcedimiento').attr('hidden', false);
+  	$('#ordenProceso').attr('hidden', false);
+  	$('#btnAddProcedimientoProceso').attr('hidden', false);
+  	$('#procedimientosOrden').attr('hidden',false);
+    $('#divRespPosible').attr('hidden', false);
+    $('#labelSeleccionProcedimiento').attr('hidden', false);
+  	$('#labelSeleccionObjetivo').attr('hidden', false);
+  	$('#labelRespuestaPosible').attr('hidden', true);
+  	$('#labelSeleccionRespuestaPosible').attr('hidden', false);
 
-    rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles);
+  	$('input[name="respuestaPosible"]').attr('disabled', false);
+  	$('#ordenProceso1').attr('hidden', false);
+
+    rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
     insertacampo(document.formularioGenerico,'idProceso', idProceso);
 
-    let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
-    eliminarReadonly(campos);
-    mostrarObligatorios(obligatorios);
-    habilitaCampos(campos);
-    deshabilitaCampos(["nombreFuncionalidad"]);
-    anadirReadonly(["nombreFuncionalidad"]);
+    var numeroObjetivosNivel = getCookie('numeroObjNivel');
+  	var numeroProcedimientosOrden = getCookie('numeroProcedimientosOrden');
+
+    for(var i = 1; i<=numeroObjetivosNivel; i++){;
+    	var obligatorioOb = 'obligatorioObjetivos'+i;
+    	var obligatorioN = 'obligatorioNivel'+i;
+    	var selectOb = 'selectObjetivos'+i;
+    	var nivel = 'nivel'+i;
+
+    	eliminarReadonly([selectOb, nivel]);
+    	mostrarObligatorios([obligatorioOb, obligatorioN]);
+    	habilitaCampos([selectOb, nivel])
+    	$('#btnBorrar'+i).attr('hidden', false);
+    	$('#labelNombreObjetivo'+i).attr('hidden', true);
+    	$('#selectObjetivos'+i).attr('onblur', 'comprobarSelect(\'selectObjetivos' +i+ '\', \'errorFormatoNombreObjetivoSelect' +i+ '\', \'selectObjetivosOptions\')');
+    }
+
+
+	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
+	  	var selectPr = 'selectProcedimientos'+i;
+    	var obligatorioO = 'obligatorioOrdenProceso'+i;
+    	var ordenProceso = 'ordenProceso'+i;
+
+    	eliminarReadonly([selectPr, ordenProceso]);
+    	mostrarObligatorios([obligatorioPr, obligatorioO]);
+    	habilitaCampos([selectPr, ordenProceso])
+    	$('#btnBorrarProcedimiento'+i).attr('hidden', false);
+    	$('#labelNombreProcedimiento'+i).attr('hidden', true);
+    	$('#ordenProceso'+i).attr('hidden', false);
+    	$('#selectProcedimientos'+i).attr('onblur', 'comprobarSelect(\'selectProcedimientos' +i+ '\', \'errorFormatoNombreProcedimientoSelect' +i+ '\', \'selectProcedimientosOptions\')');
+	}
+	  	
+
+
+	  let campos = ["nombreProceso", "descripcionProceso", "fechaProceso"];
+	  let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso","obligatorioRespuestaPosible"];
+	  eliminarReadonly(campos);
+	  mostrarObligatorios(obligatorios);
+	  habilitaCampos(campos);
 
 }
 
 /** Función para eliminar una funcionalidad **/
-function showEliminar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad) {
+function showEliminar(nombreProceso, descripProceso, fechaProceso, idProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
   
     var idioma = getCookie('lang');
 
-    cambiarFormulario('DELETE_FUNCIONALITY', 'javascript:deleteFuncionalidad();', '');
+    cambiarFormulario('DELETE_PROCESO', 'javascript:deleteProceso();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
    
     setLang(idioma);
     
-    $('#labelFuncionalidadName').removeAttr('hidden');
-    $('#labelFuncionalidadDescription').removeAttr('hidden');
-    $('#subtitulo').removeAttr('class');
-    $('#subtitulo').empty();
-    $('#subtitulo').attr('class', 'SEGURO_ELIMINAR_FUNC');
-    $('#subtitulo').attr('hidden', false);
+    $('#labelNombreProceso').attr('hidden', false);
+  	$('#labelDescripcionProceso').attr('hidden', false);
+  	$('#labelFechaProceso').attr('hidden', false);
+  	$('#labelNombreProcedimiento').attr('hidden', false);
+  	$('#labelNivel').attr('hidden', false);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#selectProcedimientos').attr('hidden', false);
+  	$('#respuestasPosibles').attr('hidden', false);
+  	$('#btnAddObjetivoPlan').attr('hidden', false);
+  	$('#objetivosNiveles').attr('hidden', false);
+  	$('#formatoProcedimiento').attr('hidden', false);
+    $('#subtitulo').attr('hidden', '');
+    $('#btnAddObjetivoPlan').attr('hidden', true);
+    $('#btnAddProcedimientoProceso').attr('hidden', true);
+    $('#labelSeleccionProcedimiento').attr('hidden', true);
+  	$('#labelSeleccionObjetivo').attr('hidden', true);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
+
+    rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
+    insertacampo(document.formularioGenerico,'idProceso', idProceso);
+
+    $('input[name="respuestaPosible"]').attr('disabled', true);
+
+    var numeroObjetivosNivel = getCookie('numeroObjNivel');
+  	var numeroProcedimientosOrden = getCookie('numeroProcedimientosOrden');
+
+    for(var i = 1; i<=numeroObjetivosNivel; i++){;
+    	var obligatorioOb = 'obligatorioObjetivos'+i;
+    	var obligatorioN = 'obligatorioNivel'+i;
+    	var selectOb = 'selectObjetivos'+i;
+    	var nivel = 'nivel'+i;
+
+    	anadirReadonly([selectOb, nivel]);
+    	ocultarObligatorios([obligatorioOb, obligatorioN]);
+    	deshabilitaCampos([selectOb, nivel])
+    	$('#btnBorrar'+i).attr('hidden', true);
+    	$('#labelNombreObjetivo'+i).attr('hidden', false);
+    	$('#labelNivel'+i).attr('hidden', false);
+    }
+
+
+	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
+	  	var selectPr = 'selectProcedimientos'+i;
+    	var obligatorioO = 'obligatorioOrdenProceso'+i;
+    	var ordenProceso = 'ordenProceso'+i;
+
+    	anadirReadonly([selectPr, ordenProceso]);
+    	ocultarObligatorios([obligatorioPr, obligatorioO]);
+    	deshabilitaCampos([selectPr, ordenProceso])
+
+    	$('#btnBorrarProcedimiento'+i).attr('hidden', true);
+    	$('#labelNombreProcedimiento'+i).attr('hidden', false);
+    	$('#ordenProceso'+i).attr('hidden', false);
+    	$('#labelOrdenProceso'+i).attr('hidden', false);
+	}
+
+	let campos = ["nombreProceso", "descripcionProceso", "fechaProceso"];
+	let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso","obligatorioRespuestaPosible"];
     
-
-    rellenarFormulario(nombreFuncionalidad, descripFuncionalidad);
-    insertacampo(document.formularioGenerico,'idFuncionalidad', idFuncionalidad);
-
-    let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
 
 }
 
-/** Función para reactivar una funcionalidad **/
-function showReactivar(nombreFuncionalidad, descripFuncionalidad , idFuncionalidad) {
+/** Función para reactivar un proceso **/
+function showReactivar(nombreProceso, descripProceso, fechaProceso, idProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
   
     var idioma = getCookie('lang');
 
-    cambiarFormulario('REACTIVATE_FUNC', 'javascript:reactivarFuncionalidad();', '');
+    cambiarFormulario('REACTIVATE_PROCESO', 'javascript:reactivarProceso();', '');
     cambiarIcono('images/reactivar2.png', 'ICONO_REACTIVAR', 'iconoReactivar', 'Reactivar');
    
     setLang(idioma);
     
-    $('#labelFuncionalidadName').removeAttr('hidden');
-    $('#labelFuncionalidadDescription').removeAttr('hidden');
-    $('#subtitulo').removeAttr('class');
-    $('#subtitulo').empty();
-    $('#subtitulo').attr('class', 'SEGURO_REACTIVAR_FUNC');
-     $('#subtitulo').attr('hidden', false);
+    $('#labelNombreProceso').attr('hidden', false);
+  	$('#labelDescripcionProceso').attr('hidden', false);
+  	$('#labelFechaProceso').attr('hidden', false);
+  	$('#labelNombreProcedimiento').attr('hidden', false);
+  	$('#labelNivel').attr('hidden', false);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#selectProcedimientos').attr('hidden', false);
+  	$('#respuestasPosibles').attr('hidden', false);
+  	$('#btnAddObjetivoPlan').attr('hidden', false);
+  	$('#objetivosNiveles').attr('hidden', false);
+  	$('#formatoProcedimiento').attr('hidden', false);
+    $('#subtitulo').attr('hidden', '');
+    $('#btnAddObjetivoPlan').attr('hidden', true);
+    $('#btnAddProcedimientoProceso').attr('hidden', true);
+    $('#labelSeleccionProcedimiento').attr('hidden', true);
+  	$('#labelSeleccionObjetivo').attr('hidden', true);
+  	$('#labelRespuestaPosible').attr('hidden', false);
+  	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
+
+    rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
+    insertacampo(document.formularioGenerico,'idProceso', idProceso);
+
+    $('input[name="respuestaPosible"]').attr('disabled', true);
+
+    var numeroObjetivosNivel = getCookie('numeroObjNivel');
+  	var numeroProcedimientosOrden = getCookie('numeroProcedimientosOrden');
+
+    for(var i = 1; i<=numeroObjetivosNivel; i++){;
+    	var obligatorioOb = 'obligatorioObjetivos'+i;
+    	var obligatorioN = 'obligatorioNivel'+i;
+    	var selectOb = 'selectObjetivos'+i;
+    	var nivel = 'nivel'+i;
+
+    	anadirReadonly([selectOb, nivel]);
+    	ocultarObligatorios([obligatorioOb, obligatorioN]);
+    	deshabilitaCampos([selectOb, nivel])
+    	$('#btnBorrar'+i).attr('hidden', true);
+    	$('#labelNombreObjetivo'+i).attr('hidden', false);
+    	$('#labelNivel'+i).attr('hidden', false);
+    }
+
+
+	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
+	  	var selectPr = 'selectProcedimientos'+i;
+    	var obligatorioO = 'obligatorioOrdenProceso'+i;
+    	var ordenProceso = 'ordenProceso'+i;
+
+    	anadirReadonly([selectPr, ordenProceso]);
+    	ocultarObligatorios([obligatorioPr, obligatorioO]);
+    	deshabilitaCampos([selectPr, ordenProceso])
+
+    	$('#btnBorrarProcedimiento'+i).attr('hidden', true);
+    	$('#labelNombreProcedimiento'+i).attr('hidden', false);
+    	$('#ordenProceso'+i).attr('hidden', false);
+    	$('#labelOrdenProceso'+i).attr('hidden', false);
+	}
+
+	let campos = ["nombreProceso", "descripcionProceso", "fechaProceso"];
+	let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso","obligatorioRespuestaPosible"];
     
-
-    rellenarFormulario(nombreFuncionalidad, descripFuncionalidad);
-    insertacampo(document.formularioGenerico,'idFuncionalidad', idFuncionalidad);
-
-    let campos = ["nombreFuncionalidad", "descripcionFuncionalidad"];
-    let obligatorios = ["obligatorioFuncionalidadName", "obligatorioFuncionalidadDescription"];
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
@@ -1222,50 +1832,114 @@ function cambiarOnBlurCampos(onBlurNombreProceso, onBlurDescripcionProceso, onBl
 }
 
 /**Función que rellenado los datos del formulario*/
-function rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles) {
+function rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso) {
+	var idsProcedimientos = [];
+	var nombresProcedimientos = [];
+	var idsRespuestas = [];
+	var nombresRespuestas = [];
+	var idsObjetivos = [];
+	var nombresObjetivos = [];
+	var nivel = [];
+	var orden = [];
+
+	var listProcedimientos = procedimientos.split(',');
+	var listRespuestasPosibles = respuestasPosibles.split(',');
+	var listObjetivos = objetivos.split(',');
+	var listNiveles = niveles.split(',');
+	var listOrden = ordenProceso.split(',');
 
     $("#nombreProceso").val(nombreProceso);
-    $("#descripcionProceso").val(descripProceso); 
-    $("#fechaProceso").val(fechaProceso); 
+    $("#descripcionProceso").val(descripProceso);
+    var fecha = fechaProceso.split('-');
+    var fech = fecha[2] + "-" + fecha[1] + "-" + fecha[0]; 
+    $("#fechaProceso").val(fech); 
 
-    var options = document.getElementById('selectProcedimientos').options;
-    var options = document.getElementById('selectObjetivos').options;
-    var options = document.getElementById('respuestasPosibles').options;
+    var optionsR = document.getElementById('respuestasPosibles').options;
 
-    for(var i=0;i<procedimientos.length; i++){
-    	for(var j = 0; j<options.length; j++){
-	      var text = options[j].text;
-	      if(options[j].text == procedimientos[i].nombreProcedimiento){
-	        options[j].selected = true;
-	      }else{
-
-	        options[j].selected = false;
-	      }
-	    }
+    for(var i = 0; i<listProcedimientos.length; i+=2){
+    	idsProcedimientos.push(listProcedimientos[i]);
     }
 
-    for(var i = 0; i<respuestasPosibles.length; i++){
-    	$('[name=respuestaPosible][value=' + respuestasPosibles[i].idRespuesta + ']' ).prop('checked', true);
+     for(var i = 1; i<listProcedimientos.length; i+=2){
+    	nombresProcedimientos.push(listProcedimientos[i]);
     }
 
-    var numeroObjetivos = objetivos.length;
+    for(var i = 0; i<listRespuestasPosibles.length; i+=2){
+    	idsRespuestas.push(listRespuestasPosibles[i]);
+    }
+
+     for(var i = 1; i<listRespuestasPosibles.length; i+=2){
+    	nombresRespuestas.push(listRespuestasPosibles[i]);
+    }
+
+    for(var i = 0; i<listObjetivos.length; i+=2){
+    	idsObjetivos.push(listObjetivos[i]);
+    }
+
+    for(var i = 1; i<listObjetivos.length; i+=2){
+    	nombresObjetivos.push(listObjetivos[i]);
+    }
+
+    for(var i = 0; i<listNiveles.length; i++){
+    	nivel.push(listNiveles[i]);
+    }
+
+    for(var i = 0; i<listOrden.length; i++){
+    	orden.push(listOrden[i]);
+    }
+
+    for(var i = 0; i<nombresRespuestas.length; i++){
+    	$('[name=respuestaPosible][value=' + idsRespuestas[i] + ']' ).prop('checked', true);
+    }
+
+    var numeroObjetivos = nombresObjetivos.length;
+    var numeroProcedimientos = nombresProcedimientos.length;
     setCookie('numeroObjNivel', 1);
+    setCookie('numeroProcedimientosOrden', 1);
 
-    for(var i=0; i<numeroObjetivos; i++){
+    for(var i=0; i<numeroObjetivos-1; i++){
     	addObjetivosNiveles();
     }
 
-    for(var i = 0; i<numeroObjetivos.length; i++){
-    	for(var j = 0; j<options.length; j++){
-	      var text = options[j].text;
-	      if(options[j].text == objetivos[i].nombreObjetivo){
-	        options[j].selected = true;
-	      }else{
-
-	        options[j].selected = false;
-	      }
-	    }
+    for(var i=0; i<numeroProcedimientos-1; i++){
+    	addProcedimientosOrden();
+    	$('#ordenProceso'+(i+1)).attr('hidden', false);
     }
+
+    for(var r=1;r<=numeroObjetivos; r++){
+    	var id='selectObjetivos'+r;
+    	var optionsO = document.getElementById(id).options;
+	    	for(var j = 0; j<optionsO.length; j++){
+		      var text = optionsO[j].text;
+		      if(optionsO[j].text == nombresObjetivos[r-1]){
+		        optionsO[j].selected = true;
+		      }
+		    }
+    }
+
+    var i = 0;
+    for(var j = 1; j<=numeroObjetivos; j++){
+    		$('#nivel' +j).val(nivel[i]);
+    		i++;
+    	}
+
+   	for(var r=1;r<=numeroProcedimientos; r++){
+    	var id='selectProcedimientos'+r;
+    	var optionsP = document.getElementById(id).options;
+	    	for(var j = 0; j<optionsP.length; j++){
+		      var text = optionsP[j].text;
+		      if(optionsP[j].text == nombresProcedimientos[r-1]){
+		        optionsP[j].selected = true;
+		      }
+		    }
+    }
+
+   	var i = 0;
+    for(var j = 1; j<=numeroProcedimientos; j++){
+    		$('#ordenProceso' +j).val(orden[i]);
+    		i++;
+    	}
+    
 
 }
 
@@ -1345,13 +2019,41 @@ function gestionarPermisosProceso(idElementoList) {
 $(document).ready(function() {
   $("#form-modal").on('hidden.bs.modal', function() {
     
-    let idElementoErrorList = ["errorFormatoNombreProceso", "errorFormatoDescripcionProceso", "errorFormatoFechaProceso", "errorFormatoNombreProcedimientoSelect", "errorFormatoNombreObjetivoSelect", "errorFormatoNivel"];
+    let idElementoErrorList = ["errorFormatoNombreProceso", "errorFormatoDescripcionProceso", "errorFormatoFechaProceso", "errorFormatoNombreProcedimientoSelect", "errorFormatoNombreObjetivoSelect", "errorFormatoNivel", "errorFormatoProcedimientos", "errorFormatoObjetivos"];
     
-    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos1", "selectObjetivos1", "nivel1", "ordenProceso1"];
+    var numeroObjetivosModal = getCookie('numeroObjNivel');
+    var numeroProcedimientosModal = getCookie('numeroProcedimientosOrden');
+
+    for(var i = 2; i<=numeroObjetivosModal; i++){
+    	eliminarObjetivosNiveles('objetivosNiveles'+i)
+    }
+
+    for(var i = 1; i<=numeroObjetivosModal; i++){
+    	$('#nivel'+i).val('');
+    	$('#labelNivel'+i).attr('hidden', true);
+    	$('#btnBorrar'+i).attr('hidden', false);
+    	eliminarMensajesValidacionErrorUnElemento('errorFormatoNombreObjetivoSelect'+i, 'selectObjetivos'+i);
+    }
+
+     for(var i = 2; i<=numeroProcedimientosModal; i++){
+    	eliminarProcedimientosOrden('procedimientosOrden'+i);
+    }
+
+    for(var i = 1; i<=numeroProcedimientosModal; i++){
+    	$('#ordenProceso'+i).val('');
+    	$('#labelOrdenProceso'+i).attr('hidden', true);
+    	$('#btnBorrarProcedimiento'+i).attr('hidden', false);
+    	eliminarMensajesValidacionErrorUnElemento('errorFormatoNombreProcedimientoSelect'+i, 'selectProcedimientos'+i);
+    }
+
+    $('#btnAddObjetivoPlan').attr('hidden', false);
+    $('#btnAddProcedimientoProceso').attr('hidden', false);
 
     limpiarFormulario(idElementoList);
     eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
     setLang(getCookie('lang'));
+
   });
 
 });

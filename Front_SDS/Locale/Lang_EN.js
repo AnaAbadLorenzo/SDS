@@ -54,6 +54,9 @@ arrayEN={
 	'DESCRIPCION_PROCESO' : 'Process description',
 	'NIVEL': 'Level',
 	'SELECCIONAR_RESPUESTA_POSIBLE' : 'Select the possible answers',
+	'SELECCIONAR_PROCEDIMIENTO' : 'Select the procedures',
+	'SELECCIONAR_OBJETIVO' : 'Select the objective',
+	'ORDEN_PROCESO': 'Process order',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -155,7 +158,15 @@ arrayEN={
 	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'The possible answer doesn´t exists',
 	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'The possible answer is associated with a process',
 	'MENSAJE_CONTINUAR_PROCEDIMIENTO' : 'You had already started this procedure. Do you want to continue?',
-
+	'PROCESO_VACIO' : 'The name, description, date, procedures, objectives and/or posible answers are empty',
+	'PROCESO_YA_EXISTE_EXCEPTION' : 'The process already exists',
+	'PROCESO_NO_EXISTE_EXCEPTION' : 'The process doesn´t exists',
+	'NIVEL_YA_EXISTE_EXCEPTION' : 'The relation between the objective and the process already exists',
+	'PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION' : 'The relation between the posible answer and the process already exists',
+	'PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION' : 'The relation between the procedure and the process already exists',
+	'PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION' : 'The process is associated with a procedure and a user',
+	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'The relation between the procedure and the process doesn´t exists',
+	'ORDEN_PROCESO_INCORRECTO' : 'The order of one od the procedures is incorrect',
 
 	
 	//Error formato
@@ -277,6 +288,14 @@ arrayEN={
 	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'Process`s date can only contain numbers',
 	'FECHA_PROCESO_MENOR_QUE_8' : 'Process`s date is minor than 8 characteres',
 	'FECHA_PROCESO_MAYOR_QUE_8' : 'Process`s date is bigger than 8 characteres',
+	'RELLENA_PROCEDIMIENTO' : 'Please, select a procedure',
+	'RELLENA_OBJETIVO' : 'Please, select an objetive',
+	'SELECT_PROCEDIMIENTOS_VACIO' : 'Please, add one procedure minimum',
+	'SELECT_OBJETIVOS_VACIO' : 'Please, add one objective minimum',
+	'NIVEL_VACIO' : 'Level empty',
+	'ORDEN_VACIO' : 'Order empty',
+	'NIVEL_NUMERICO_INCORRECTO' : 'The level can only contain numbers',
+	'ORDEN_NUMERICO_INCORRECTO' : 'The order can only contain numbers',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -417,6 +436,9 @@ arrayEN={
 	'FORMATO_MULTIPLES_PROCEDIMIENTOS' : 'If you press Ctr, you can choose multiple procedures by doing click on them',
 	'SEARCH_PROCESO' : 'SEARCH PROCESS',
 	'EDIT_PROCESO' : 'EDIT PROCESS',
+	'DETAIL_PROCESO' : 'DETAIL PROCESS',
+	'DELETE_PROCESO' : 'DELETE PROCESS',
+	'REACTIVATE_PROCESO' : 'REACTIVATE PROCESS',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -536,6 +558,12 @@ arrayEN={
 	'PROCEDIMIENTO_MODIFICADO' : 'The procedure has been modified correctly',
 	'PROCEDIMIENTO_GUARDADO' : 'The procedure has been saved correctly',
 	'PROCESO_GUARDADO_OK' : 'PROCESS SAVED CORRECTLY',
-	'PROCESO_GUARDADO' : 'THe process has been saved correctly'
+	'PROCESO_GUARDADO' : 'THe process has been saved correctly',
+	'PROCESO_EDITADO_OK' : 'PROCESS MODIFIED CORRECTLY',
+	'PROCESO_MODIFICADO' : 'The process has been modified correctly',
+	'PROCESO_ELIMINADO_OK' : 'PROCESS DELETED CORRECTLY',
+	'PROCESO_ELIMINADO' : 'The process has been deleted correctly',
+	'PROCESO_REACTIVADO_OK'  : 'PROCESS REACTIVATED CORRECTLY',
+	'PROCESO_REACTIVADO' : 'the process has been reactivated correctly'
 
 }

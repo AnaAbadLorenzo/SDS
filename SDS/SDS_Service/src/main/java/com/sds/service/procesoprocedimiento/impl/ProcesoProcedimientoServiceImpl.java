@@ -111,6 +111,35 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 	}
 
 	@Override
+	public ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesosByProcedimiento(final Integer idProcedimiento) {
+		final List<ProcesoProcedimientoEntity> procesoProcedimientoToret = new ArrayList<>();
+		final List<String> datosBusqueda = new ArrayList<>();
+		List<ProcesoProcedimientoEntity> procesoProcedimientos = new ArrayList<>();
+		final Integer numberTotalResults = 0;
+
+		procesoProcedimientos = entityManager
+				.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOSBYPROCEDIMIENTOORDERBYORDEN)
+				.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).getResultList();
+
+		if (!procesoProcedimientos.isEmpty()) {
+			for (final ProcesoProcedimientoEntity procesoProcedimiento : procesoProcedimientos) {
+				final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(
+						procesoProcedimiento.getIdProceso(), procesoProcedimiento.getIdProcedimiento(),
+						procesoProcedimiento.getOrdenProceso());
+				procesoProcedimientoToret.add(procesoProcedimientoEntity);
+
+			}
+		}
+
+		datosBusqueda.add(Constantes.PROCEDIMIENTO_ID + Constantes.DOS_PUNTOS + idProcedimiento);
+
+		final ReturnBusquedas<ProcesoProcedimientoEntity> result = new ReturnBusquedas<>(procesoProcedimientoToret,
+				datosBusqueda, numberTotalResults, procesoProcedimientoToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String anadirProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,

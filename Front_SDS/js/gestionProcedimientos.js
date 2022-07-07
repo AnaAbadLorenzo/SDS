@@ -284,7 +284,7 @@ function buscarProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
       var data = {
         nombreProcedimiento : nombreP,
         descripProcedimiento : descripP,
-        fechaProcedimiento : fechaString,
+        fechaProcedimiento : fechaP,
         checkUsuario : checkMarcado,
         plan : plan,
         inicio : calculaInicio(numeroPagina, tamanhoPaginaProcedimiento),
@@ -692,7 +692,7 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
     }
 }
 
-/**Funcion para cargar los procedimientos ne vista de usuario **/
+/**Funcion para cargar los procedimientos en vista de usuario **/
 async function cargarProcedimientosUsuario(numeroPagina, tamanhoPagina, paginadorCreado){
   await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina) 
         .then((res) => {
@@ -819,10 +819,10 @@ async function buscarProcedimiento(numeroPagina, tamanhoPagina, accion, paginado
         $("#checkboxColumnas").append(div);
       
       }else{
-        $('#planes').html('');
+        $('#procedimientos').html('');
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
-              var tr = construyePlanUsuario(res.data.listaBusquedas[i]);
-              $("#planes").append(tr);
+              var tr = cargarProcedimientosPlan(res.data.listaBusquedas[i]);
+              $("#procedimientos").append(tr);
           }
       }
 
@@ -1389,10 +1389,11 @@ function gestionarPermisosProcedimiento(idElementoList) {
         $('#btnListarProcedimientos').css("cursor", "pointer");
         $('.iconoSearchDelete').css("cursor", "pointer");
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaProcedimiento\', \'PaginadorNo\')");
-        $('#divListarProcedimientos').attr("data-toggle", "modal");
-        $('#divListarProcedimientos').attr("data-target", "#form-modal");
+        $('#divListarProcedimiento').attr("data-toggle", "modal");
+        $('#divListarProcedimiento').attr("data-target", "#form-modal");
         if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
           document.getElementById('cabecera').style.display = "block";
+          document.getElementById('cabeceraUsuario').style.display = "none";
           document.getElementById('tablaDatos').style.display = "block";
           document.getElementById('filasTabla').style.display = "block";
           $('#itemPaginacion').attr('hidden', false);
@@ -1407,10 +1408,16 @@ function gestionarPermisosProcedimiento(idElementoList) {
         }
         
         }else{
-          document.getElementById('cabecera').style.display = "block";
-          document.getElementById('listaPlanes').style.display = "block";
+          document.getElementById('cabecera').style.display = "none";
+          document.getElementById('cabeceraUsuario').style.display = "block";
+          document.getElementById('procedimientosUsuario').style.display = "block";
           document.getElementById('filasTabla').style.display = "block";
           $('#itemPaginacion').attr('hidden', false);
+          $('#btnListarProcedimientosUsuario').attr('src', 'images/search3.png');
+          $('#btnListarProcedimientosUsuario').css("cursor", "pointer");
+          $('.iconoSearchDelete').css("cursor", "pointer");
+          $('#divListarProcedimientoUsuario').attr("data-toggle", "modal");
+          $('#divListarProcedimientoUsuario').attr("data-target", "#form-modal");
         }
         
       break;

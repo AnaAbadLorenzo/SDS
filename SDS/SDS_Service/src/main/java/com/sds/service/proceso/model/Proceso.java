@@ -15,6 +15,7 @@ public class Proceso {
 	private List<ObjetivoEntity> objetivos;
 	private List<Integer> niveles;
 	private List<RespuestaPosibleEntity> respuestasPosibles;
+	private List<Integer> ordenProceso;
 
 	public Proceso() {
 		super();
@@ -36,6 +37,19 @@ public class Proceso {
 		this.objetivos = objetivos;
 		this.niveles = niveles;
 		this.respuestasPosibles = respuestasPosibles;
+	}
+
+	public Proceso(final String usuario, final ProcesoEntity proceso, final List<ProcedimientoEntity> procedimientos,
+			final List<ObjetivoEntity> objetivos, final List<Integer> niveles,
+			final List<RespuestaPosibleEntity> respuestasPosibles, final List<Integer> ordenProceso) {
+		super();
+		this.usuario = usuario;
+		this.proceso = proceso;
+		this.procedimientos = procedimientos;
+		this.objetivos = objetivos;
+		this.niveles = niveles;
+		this.respuestasPosibles = respuestasPosibles;
+		this.ordenProceso = ordenProceso;
 	}
 
 	public String getUsuario() {
@@ -90,11 +104,19 @@ public class Proceso {
 		this.niveles = niveles;
 	}
 
+	public List<Integer> getOrdenProceso() {
+		return ordenProceso;
+	}
+
+	public void setOrdenProceso(final List<Integer> ordenProceso) {
+		this.ordenProceso = ordenProceso;
+	}
+
 	@Override
 	public String toString() {
-		return "Proceso [usuario=" + usuario + ", proceso=" + proceso + ", procedimiento=" + procedimientos
+		return "Proceso [usuario=" + usuario + ", proceso=" + proceso + ", procedimientos=" + procedimientos
 				+ ", objetivos=" + objetivos + ", niveles=" + niveles + ", respuestasPosibles=" + respuestasPosibles
-				+ "]";
+				+ ", ordenProceso=" + ordenProceso + "]";
 	}
 
 }

@@ -53,6 +53,10 @@ arrayGA={
 	'DESCRIPCION_PROCESO' : 'Descripción proceso',
 	'NIVEL': 'Nivel',
 	'SELECCIONAR_RESPUESTA_POSIBLE' : 'Escolle as respostas posibles',
+	'SELECCIONAR_PROCEDIMIENTO' : 'Escolle os procedementos',
+	'SELECCIONAR_OBJETIVO' : 'Escolle os obxectivos',
+	'ORDEN_PROCESO': 'Orden proceso',
+
 	
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -151,6 +155,15 @@ arrayGA={
 	'RESPUESTA_POSIBLE_NO_EXISTE_EXCEPTION' : 'A resposta posible posible non existe',
 	'RESPUESTA_ASOCIADA_PROCESO_EXCEPTION' : 'A resposta posible posible está asociada a un proceso',
 	'MENSAJE_CONTINUAR_PROCEDIMIENTO' : 'Usted xa iniciou este procedemento. ¿Desexa continuar?',
+	'PROCESO_VACIO' : 'O nome, a descripción, a data, os procedementos, as respostas posibles e/ou os obxectivos son vacíos',
+	'PROCESO_YA_EXISTE_EXCEPTION' : 'O proceso xa existe',
+	'PROCESO_NO_EXISTE_EXCEPTION' : 'O proceso non existe',
+	'NIVEL_YA_EXISTE_EXCEPTION' : 'A realción entre o obxectivo e o proceso xa existe',
+	'PROCESO_RESPUESTA_POSIBLE_YA_EXISTE_EXCEPTION' : 'A relación entre a resposta posible e o proceso xa existe',
+	'PROCESO_PROCEDIMIENTO_YA_EXISTE_EXCEPTION' : 'A relación entre o proceso e o procedemento xa existe',
+	'PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION' : 'O procedemento está asociado a un proceso e a un usuario',
+	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'A realción entre o proceso e o procedemento non existe',
+	'ORDEN_PROCESO_INCORRECTO' : 'A orde dun dos procedementos é incorrecta',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -270,6 +283,14 @@ arrayGA={
 	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'A data do proceso tan só pode conter números',
 	'FECHA_PROCESO_MENOR_QUE_8' : 'A data do proceso ten menos de 8 caracteres',
 	'FECHA_PROCESO_MAYOR_QUE_8' : 'A data do proceso ten maís de 8 caracteres',
+	'RELLENA_PROCEDIMIENTO' : 'Por favor, selecciona un procedemento',
+	'RELLENA_OBJETIVO' : 'Por favor, selecciona un obxectivo',
+	'SELECT_PROCEDIMIENTOS_VACIO' : 'Por favor, engade un procedemento minimo',
+	'SELECT_OBJETIVOS_VACIO' : 'Por favor, engade un obxectivo minimo',
+	'NIVEL_VACIO' : 'Nivel vacio',
+	'ORDEN_VACIO' : 'Orden vacío',
+	'NIVEL_NUMERICO_INCORRECTO' : 'O nivel tan só pode conter números',
+	'ORDEN_NUMERICO_INCORRECTO' : 'A orde tan só pode conter números',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
@@ -412,6 +433,9 @@ arrayGA={
 	'FORMATO_MULTIPLES_PROCEDIMIENTOS' : 'Si pulsas Ctr, podes seleccionar multiples procedmentos pulsando sobre eles',
 	'SEARCH_PROCESO' : 'BUSCAR PROCESO',
 	'EDIT_PROCESO' : 'EDITAR PROCESO',
+	'DETAIL_PROCESO' : 'DETALLE PROCESO',
+	'DELETE_PROCESO' : 'ELIMINAR PROCESO',
+	'REACTIVATE_PROCESO' : 'REACTIVAR PROCESO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -530,7 +554,13 @@ arrayGA={
 	'PROCEDIMIENTO_MODIFICADO' : 'O procedemento modificouse correctamente',
 	'PROCEDIMIENTO_GUARDADO' : 'O procedemento gardouse correctamente',
 	'PROCESO_GUARDADO' : 'O proceso gardouse correctamente',
-	'PROCESO_GUARDADO_OK' : 'PROCESO GUARDADO CORRECTAMENTE'
+	'PROCESO_GUARDADO_OK' : 'PROCESO GUARDADO CORRECTAMENTE',
+	'PROCESO_EDITADO_OK' : 'PROCESO EDITADO CORRECTAMENTE',
+	'PROCESO_MODIFICADO' : 'O proceso editouse correctamente',
+	'PROCESO_ELIMINADO_OK' : 'PROCESO ELIMINADO CORRECTAMENTE',
+	'PROCESO_ELIMINADO' : 'O proceso eliminouse correctamente',
+	'PROCESO_REACTIVADO_OK'  : 'PROCESO REACTIVADO CORRECTAMENTE',
+	'PROCESO_REACTIVADO' : 'O proceso reactivouse correctamente'
 
 
 	

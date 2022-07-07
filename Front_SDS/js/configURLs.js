@@ -168,7 +168,11 @@ var urlPeticionAjaxAsociarPersonaEmpresa = urlComun + urlPersona + "/asociarPers
 /**Urls procesos*/
 var urlPeticionAjaxListarTodosProcesos = urlComun + urlProceso + "/listarProcesos";
 var urlPeticionAjaxAddProceso = urlComun + urlProceso + '/proceso';
+var urlPeticionAjaxEditProceso = urlComun + urlProceso + '/modificarProceso';
 var urlPeticionAjaxListarProceso = urlComun + urlProceso + "/listarProceso";
+var urlPeticionAjaxListarDatosProceso = urlComun + urlProceso + "/listarDatosProceso";
+var urlPeticionAjaxDeleteProceso = urlComun + urlProceso + "/eliminarProceso";
+var urlPeticionAjaxListarProcesosEliminados = urlComun + urlProceso + "/listarProcesosEliminados";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;

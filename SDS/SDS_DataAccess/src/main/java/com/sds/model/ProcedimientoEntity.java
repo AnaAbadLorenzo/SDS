@@ -63,7 +63,7 @@ public class ProcedimientoEntity {
 	@JoinColumn(name = "id_plan", referencedColumnName = "id_plan")
 	private PlanEntity plan;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "procesoprocedimiento", joinColumns = {
 			@JoinColumn(name = "id_procedimiento") }, inverseJoinColumns = { @JoinColumn(name = "id_proceso") })
 	private final Set<ProcesoEntity> procesos = new HashSet<>();
