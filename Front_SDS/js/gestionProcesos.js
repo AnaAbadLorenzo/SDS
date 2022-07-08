@@ -89,160 +89,135 @@ function eliminarProcedimientosOrden(idProcedimientosOrden){
 	$("#" + idProcedimientosOrden).remove();
 }
 
-/**Función que envía el fichero a back IMPORTANTE ES UNA FUNCIÓN DE PRUEBA QUE HABRÁ QUE CAMBIAR
- * PARA QUE QUEDE COMO LAS DEMÁS COMO UNA PROMESA, ESTO ES SÓLO PARA EL ENVIO DEL FICHERO CON 
- * PETICIÓN AJAX*/
-/*function enviarRespuesta(idFile){
-    var token = getCookie('tokenUsuario');
-    var evidencia = $("#" + idFile).prop("files")[0];
-
-    var formData = new FormData();
-    formData.append("file", evidencia);
-    formData.append("idProceso", $('#idProceso').val());
-    formData.append("idProcedimientoUsuario", 1);
-
-    $.ajax({
-      	method: "POST",
-      	url: "http://localhost:8090/SDS/evidencia/guardaEvidencia",
-      	contentType : "application/json",
-      	data: formData,  
-      	cache: false,
-    	contentType: false,
-    	processData: false,
-      	headers: {'Authorization': token},
-      	}).done(res => {
-        	if (res.code != 'PLAN_GUARDADO') {
-          	reject(res);
-        	}
-        	resolve(res);
-      	}).fail( function( jqXHR ) {
-        	errorFailAjax(jqXHR.status);
-      	});
-}*/
 
 /**Función para enviar respuestas **/
 function enviarRespuesta(idProceso, idFile){
-  return new Promise(function(resolve, reject) {
-    var token = getCookie('tokenUsuario');
-    var evidencia = $("#" + idFile).prop("files")[0];
+  if(comprobarProcesoUsuario()){
+    return new Promise(function(resolve, reject) {
+          var token = getCookie('tokenUsuario');
+          var evidencia = $("#" + idFile).prop("files")[0];
 
-    var formData = new FormData();
-    formData.append("file", evidencia);
-    formData.append("idProceso", idProceso);
-    formData.append("idProcedimientoUsuario", getCookie('idProcedimientoUsuario'));
-    formData.append("usuario", getCookie('usuario'));
+          var formData = new FormData();
+          formData.append("file", evidencia);
+          formData.append("idProceso", idProceso);
+          formData.append("idProcedimientoUsuario", getCookie('idProcedimientoUsuario'));
+          formData.append("usuario", getCookie('usuario'));
 
-    
-    $.ajax({
-      method: "POST",
-        url: urlPeticionAjaxGuardarEvidencia,
+          
+          $.ajax({
+            method: "POST",
+              url: urlPeticionAjaxGuardarEvidencia,
+              contentType : "application/json",
+              data: formData,  
+              cache: false,
+              contentType: false,
+              processData: false,
+              headers: {'Authorization': token},
+              }).done(res => {
+                if (res.code != 'EVIDENCIA_GUARDADA') {
+                  reject(res);
+                }
+                resolve(res);
+              }).fail( function( jqXHR ) {
+                errorFailAjax(jqXHR.status);
+              });
+       
+      });
+  }
+}
+
+/**Funcion para enviar el procedimientoUsuarioProceso **/
+function guardarProcedimientoUsuarioProceso(idProceso){
+    if(comprobarProcesoUsuario()){
+      return new Promise(function(resolve, reject) {
+      var token = getCookie('tokenUsuario');
+
+      var procedimiento = {
+        idProcedimiento: '',
+        nombreProcedimiento : '',
+        descripProcedimiento : '',
+        fechaProcedimiento : '',
+        checkUsuario : '',
+        plan : {
+          idPlan : '',
+          nombrePlan : '',
+          descripPlan : '',
+          fechaPlan : '',
+          borradoPlan : '',
+          objetivo : {
+            idObjetivo : '',
+            nombreObjetivo : '',
+            descripObjetivo : '',
+            borradoObjetivo : ''
+          }
+        },
+        borradoProcedimiento : ''
+      }
+
+      var usuario = {
+        dniUsuario : '',
+        usuario : '',
+        passwdUsuario : '',
+        borradoUsuario : '',
+      }
+      
+      var procedimientoUsuarioProceso = {
+        idProcedimientoUsuarioProceso : "",
+        fechaProcedimientoUsuarioProceso : "",
+        borradoProcedimientoUsuarioProceso : 0,
+        respuestaPosible : {
+          idRespuesta : $('input[name=respuestaPosible]:checked').val(),
+          textoRespuesta : "",
+          borradoRespuesta : ""
+        },
+
+        proceso : {
+          idProceso : idProceso,
+          nombreProceso : "",
+          descripProceso : "",
+          fechaProceso : "",
+          borradoProceso : ""
+        },
+
+        procedimientoUsuario : {
+          idProcedimientoUsuario : getCookie('idProcedimientoUsuario'),
+          puntuacionProcedimientoUsuario : "",
+          fechaProcedimientoUsuario : "",
+          borradoProcedimientoUsuario : "",
+          procedimiento : procedimiento,
+          usuario : usuario
+        },
+
+        /*evidencia : {
+          idEvidencia : '',
+          fechaEvidencia : '',
+          borradoEvidencia : 0,
+          nombreFichero : ''
+        }*/
+      }
+
+      var data = {
+        usuario : getCookie('usuario'),
+        procedimientoUsuarioProceso : procedimientoUsuarioProceso
+      }
+      
+      $.ajax({
+        method: "POST",
+        url: urlPeticionAjaxAddProcedimientoUsuarioProceso,
         contentType : "application/json",
-        data: formData,  
-        cache: false,
-        contentType: false,
-        processData: false,
+        data: JSON.stringify(data),  
+        dataType : 'json',
         headers: {'Authorization': token},
         }).done(res => {
-          if (res.code != 'EVIDENCIA_GUARDADA') {
+          if (res.code != 'PROCEDIMIENTO_USUARIO_PROCESO_GUARDADO') {
             reject(res);
           }
           resolve(res);
         }).fail( function( jqXHR ) {
           errorFailAjax(jqXHR.status);
         });
-  });
-}
-
-/**Funcion para enviar el procedimientoUsuarioProceso **/
-function guardarProcedimientoUsuarioProceso(idProceso){
-    return new Promise(function(resolve, reject) {
-    var token = getCookie('tokenUsuario');
-
-    var procedimiento = {
-      idProcedimiento: '',
-      nombreProcedimiento : '',
-      descripProcedimiento : '',
-      fechaProcedimiento : '',
-      checkUsuario : '',
-      plan : {
-        idPlan : '',
-        nombrePlan : '',
-        descripPlan : '',
-        fechaPlan : '',
-        borradoPlan : '',
-        objetivo : {
-          idObjetivo : '',
-          nombreObjetivo : '',
-          descripObjetivo : '',
-          borradoObjetivo : ''
-        }
-      },
-      borradoProcedimiento : ''
-    }
-
-    var usuario = {
-      dniUsuario : '',
-      usuario : '',
-      passwdUsuario : '',
-      borradoUsuario : '',
-    }
-    
-    var procedimientoUsuarioProceso = {
-      idProcedimientoUsuarioProceso : "",
-      fechaProcedimientoUsuarioProceso : "",
-      borradoProcedimientoUsuarioProceso : 0,
-      respuestaPosible : {
-        idRespuesta : $('input[name=respuestaPosible]:checked').val(),
-        textoRespuesta : "",
-        borradoRespuesta : ""
-      },
-
-      proceso : {
-        idProceso : idProceso,
-        nombreProceso : "",
-        descripProceso : "",
-        fechaProceso : "",
-        borradoProceso : ""
-      },
-
-      procedimientoUsuario : {
-        idProcedimientoUsuario : getCookie('idProcedimientoUsuario'),
-        puntuacionProcedimientoUsuario : "",
-        fechaProcedimientoUsuario : "",
-        borradoProcedimientoUsuario : "",
-        procedimiento : procedimiento,
-        usuario : usuario
-      },
-
-      /*evidencia : {
-        idEvidencia : '',
-        fechaEvidencia : '',
-        borradoEvidencia : 0,
-        nombreFichero : ''
-      }*/
-    }
-
-    var data = {
-      usuario : getCookie('usuario'),
-      procedimientoUsuarioProceso : procedimientoUsuarioProceso
-    }
-    
-    $.ajax({
-      method: "POST",
-      url: urlPeticionAjaxAddProcedimientoUsuarioProceso,
-      contentType : "application/json",
-      data: JSON.stringify(data),  
-      dataType : 'json',
-      headers: {'Authorization': token},
-      }).done(res => {
-        if (res.code != 'PROCEDIMIENTO_USUARIO_PROCESO_GUARDADO') {
-          reject(res);
-        }
-        resolve(res);
-      }).fail( function( jqXHR ) {
-        errorFailAjax(jqXHR.status);
-      });
-  });
+    });
+  }
 }
 
 /**Función para cargar las respuestas posibles de BD **/
@@ -1184,6 +1159,9 @@ function cargarProcesosProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, idP
 
 /* Función para obtener los procesos del sistema */
 async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
+  var paramstr = window.location.search.substr(1);
+  var par = paramstr.split("&");
+
 	if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
     document.getElementById('procesosUsuario').style.display = "none";
     document.getElementById('cabecera').style.display = "block";
@@ -1253,6 +1231,7 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
     document.getElementById('cabecera').style.display = "none";
     document.getElementById('tablaDatos').style.display = "none";
     document.getElementById('filasTabla').style.display = "block";
+    
     try{
       const resultado = await cargarProcesosProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, getCookie('idProcedimiento'));
       var numResults = resultado.data.numResultados + '';
@@ -1273,8 +1252,22 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
           try{
             const resultadoProceso = await listarProcesoById(procesosOrdenados[i].idProceso);
             const res = await cargarDatosProcesoByProcesoAndProcedimiento(procesosOrdenados[i].idProceso, getCookie('idProcedimiento'));
-            var tr = cargarProcesosUsuario(resultadoProceso.data, res.data);
-            $('#procesos').append(tr);
+
+            try{
+
+              if(par[0] == "continuar=si"){
+                  const respuestasProcesos = await cargarProcesosOfProcedimientoUsuario(getCookie('idProcedimientoUsuario'));
+                  cargarProcesosUsuario(resultadoProceso.data, res.data, respuestasProcesos);
+                 
+              }else{
+                const respuestasProcesos = "";
+                cargarProcesosUsuario(resultadoProceso.data, res.data, respuestasProcesos);
+              
+              }
+            }catch(respuestasProcesos){
+                  respuestaAjaxKO(respuestasProcesos.code);
+                  document.getElementById("modal").style.display = "block";
+            }
           }catch(res){
             respuestaAjaxKO(res.code);
             document.getElementById("modal").style.display = "block";
@@ -1308,6 +1301,30 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
     }
     
   }
+}
+
+
+/** Función para obtener los procedimientos de un usuario con ajax y promesas**/
+function cargarProcesosOfProcedimientoUsuario(idProcedimientoUsuario){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarProcedimientoUsuarioProcesoOfProcedimientoUsuario,
+      contentType : "application/json",
+      data: idProcedimientoUsuario.toString(),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
 }
 
 /** Funcion añadir proceso **/
@@ -1582,7 +1599,7 @@ async function detalleProceso(){
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos", "nivel1"];
+    let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos1", "nivel1", "ordenProceso1"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     $('#nombreProceso').val(getCookie('nombreProceso'));
@@ -1671,7 +1688,8 @@ function showAddProcesos() {
   $('#labelNombreProceso').attr('hidden', true);
   $('#labelDescripcionProceso').attr('hidden', true);
   $('#labelFechaProceso').attr('hidden', true);
-  $('#labelNombreProcedimiento').attr('hidden', true);
+  $('#labelNombreProcedimiento1').attr('hidden', true);
+  $('#labelNombreObjetivo1').attr('hidden', true);
   $('#labelNivel').attr('hidden', true);
   $('#labelRespuestaPosible').attr('hidden', true);
   $('#selectProcedimientos').attr('hidden', false);
@@ -1688,6 +1706,7 @@ function showAddProcesos() {
   $('#labelSeleccionObjetivo').attr('hidden', false);
   $('#labelRespuestaPosible').attr('hidden', true);
   $('#labelSeleccionRespuestaPosible').attr('hidden', false);
+  $('#divRespPosible').attr('hidden', false);
 
   var numeroObjetivosNivel = getCookie('numeroObjNivel');
   var numeroProcedimientosOrden = getCookie('numeroProcedimientosOrden');
@@ -1755,6 +1774,8 @@ function showBuscarProceso() {
   $('#labelSeleccionObjetivo').attr('hidden', true);
   $('#labelRespuestaPosible').attr('hidden', true);
   $('#labelSeleccionRespuestaPosible').attr('hidden', true);
+  $('#divRespPosible').attr('hidden', true);
+
 
   let campos = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectProcedimientos", "selectObjetivos", "nivel"];
   let obligatorios = ["obligatorioNombreProceso", "obligatorioDescripcionProceso", "obligatorioFechaProceso", "obligatorioProcedimiento", "obligatorioNivel", "obligatorioRespuestaPosible"];
@@ -1793,6 +1814,8 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
   	$('#labelSeleccionObjetivo').attr('hidden', true);
   	$('#labelRespuestaPosible').attr('hidden', false);
   	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
+    $('#divRespPosible').attr('hidden', false);
+
 
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
 
@@ -1855,7 +1878,7 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
     setLang(idioma);
     
   	$('#subtitulo').attr('hidden', true);
-	$('#subtitulo').attr('hidden', true);
+	  $('#subtitulo').attr('hidden', true);
   	$('#labelNombreProceso').attr('hidden', true);
   	$('#labelDescripcionProceso').attr('hidden', true);
   	$('#labelFechaProceso').attr('hidden', true);
@@ -1875,8 +1898,11 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
   	$('#labelSeleccionObjetivo').attr('hidden', false);
   	$('#labelRespuestaPosible').attr('hidden', true);
   	$('#labelSeleccionRespuestaPosible').attr('hidden', false);
+    $('#divRespPosible').attr('hidden', false);
+
 
   	$('input[name="respuestaPosible"]').attr('disabled', false);
+
   	$('#ordenProceso1').attr('hidden', false);
 
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
@@ -1953,6 +1979,8 @@ function showEliminar(nombreProceso, descripProceso, fechaProceso, idProceso, pr
   	$('#labelSeleccionObjetivo').attr('hidden', true);
   	$('#labelRespuestaPosible').attr('hidden', false);
   	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
+    $('#divRespPosible').attr('hidden', false);
+
 
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
     insertacampo(document.formularioGenerico,'idProceso', idProceso);
@@ -2030,6 +2058,8 @@ function showReactivar(nombreProceso, descripProceso, fechaProceso, idProceso, p
   	$('#labelSeleccionObjetivo').attr('hidden', true);
   	$('#labelRespuestaPosible').attr('hidden', false);
   	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
+    $('#divRespPosible').attr('hidden', false);
+
 
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
     insertacampo(document.formularioGenerico,'idProceso', idProceso);
@@ -2293,7 +2323,7 @@ function gestionarPermisosProceso(idElementoList) {
     }); 
 }
 
-function cargarProcesosUsuario(proceso, datosProceso){
+function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
   var proc = "";
 
   proc = '<div class="col-md-4 col-lg-6 col-xl-6 mb-4 paddingTop">' +
@@ -2303,7 +2333,7 @@ function cargarProcesosUsuario(proceso, datosProceso){
                         '<div class="ordenProceso">' + datosProceso.ordenProceso + '.- </div>' +
                         '<div class="nombreProceso">' + proceso.descripProceso + '</div>' +
                     '</div>' +
-                    '<div class="respuestas">';
+                    '<div id="' + proceso.idProceso + '" class="respuestas">';
 
   for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
     var respuestas = '<input type="radio" id="' + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
@@ -2313,10 +2343,15 @@ function cargarProcesosUsuario(proceso, datosProceso){
   } 
 
   var proceso2 = '</div>' + 
-                    '<div class="evidencia">' + 
+                   '<div style="display:none" id="errorFormatoRespuesta"></div>' +
+                    '<div id="' + proceso.idProceso + '" class="evidencia">' + 
                         '<label for="myfile">Selecciona una evidencia:</label>' + 
                         '<input type="file" id="myfile" name="myfile"><br><br>' + 
                     '</div>' + 
+                    '<div id="' + proceso.idProceso + '" class="nombreEvidencia">' + 
+                        '<label class = "EVIDENCIA_SUBIDA">Evidencia subida:</label>' + 
+                    '</div>' + 
+                    '<div style="display:none" id="errorFormatoArchivo"></div>' +
                   '<div name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso+ ');enviarRespuesta(' + proceso.idProceso + ',\'myfile\')" class="tooltip6 uploadIcon">' +
                       '<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />' +
                       '<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>' + 
@@ -2327,8 +2362,31 @@ function cargarProcesosUsuario(proceso, datosProceso){
 
   proc += proceso2;
 
-  return proc;
+  $('#procesos').append(proc);
 
+  if(respuestasProcesos != ""){
+    for(var i = 0; i<respuestasProcesos.data.procesos.length; i++){
+      if(proceso.nombreProceso == respuestasProcesos.data.procesos[i].nombreProceso){
+        var idRespuestaPosibleMarcada = respuestasProcesos.data.respuestaPosible[i].idRespuesta;
+        var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + idRespuestaPosibleMarcada + ']');
+        var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
+        var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
+        $(selectorRespuesta).prop('checked', true);
+        $(selectorEvidencia).hide();
+        $(selectorNombreEvidencia).show();
+      }else{
+        var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
+        var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
+        $(selectorEvidencia).show();
+        $(selectorNombreEvidencia).hide();
+      }
+    }
+  }else{
+    var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
+    var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
+    $(selectorEvidencia).show();
+    $(selectorNombreEvidencia).hide();
+  }
 }
 
 $(document).ready(function() {

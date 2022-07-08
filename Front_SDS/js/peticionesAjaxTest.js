@@ -681,7 +681,7 @@ async function testPlan(accion, tipoTest){
 
 /*Función que obtiene los test procedimientos */
 async function testProcedimiento(accion, tipoTest){
-  
+
   var url = "";
   var code = "";
 
@@ -739,7 +739,7 @@ async function testProcedimiento(accion, tipoTest){
 
 /*Función que obtiene los test procesos */
 async function testProceso(accion, tipoTest){
-  
+
   var url = "";
   var code = "";
 

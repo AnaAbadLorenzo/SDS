@@ -10,10 +10,13 @@ import com.sds.service.exception.ProcedimientoUsuarioProcesoYaExisteException;
 import com.sds.service.exception.ProcesoNoExisteException;
 import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProceso;
+import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProcesoReturn;
 
 public interface ProcedimientoUsuarioProcesoService {
 
 	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodos();
+
+	ProcedimientoUsuarioProcesoReturn buscarProcesosOfProcedimientoUsuario(final Integer idProcedimientoUsuario);
 
 	String anadirProcedimientoUsuarioProceso(final ProcedimientoUsuarioProceso procedimientoUsuarioProceso)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,

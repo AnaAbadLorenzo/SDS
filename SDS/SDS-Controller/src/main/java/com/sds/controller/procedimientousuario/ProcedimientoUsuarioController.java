@@ -1,5 +1,7 @@
 package com.sds.controller.procedimientousuario;
 
+import java.text.ParseException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +17,8 @@ import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
 import com.sds.service.exception.ProcedimientoNoExisteException;
+import com.sds.service.exception.ProcedimientoUsuarioNoExisteException;
+import com.sds.service.exception.ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException;
 import com.sds.service.exception.ProcedimientoUsuarioYaExisteException;
 import com.sds.service.exception.UsuarioNoEncontradoException;
 import com.sds.service.procedimientousuario.ProcedimientoUsuarioService;
@@ -87,5 +91,47 @@ public class ProcedimientoUsuarioController {
 		}
 
 		return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_VACIO, procedimientoUsuario);
+	}
+
+	@PostMapping(value = "/eliminarProcedimientoUsuario")
+	@ResponseBody
+	public RespEntity eliminarProcedimientoUsuario(@RequestBody final ProcedimientoUsuario procedimientoUsuario) {
+
+		try {
+			String resultado;
+			try {
+				resultado = procedimientoUsuarioService.eliminaProcedimientoUsuario(procedimientoUsuario);
+				return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_ELIMINADO, resultado);
+
+			} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, procedimientoUsuario);
+			} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+				return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, procedimientoUsuario);
+			} catch (final ProcedimientoNoExisteException procedimientoNoExiste) {
+				return new RespEntity(RespCode.PROCEDIMIENTO_NO_EXISTE_EXCEPTION, procedimientoUsuario);
+			} catch (final ParseException parseException) {
+				return new RespEntity(RespCode.PARSE_EXCEPTION, procedimientoUsuario);
+			} catch (final UsuarioNoEncontradoException usuarioNoEncontradoException) {
+				return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, procedimientoUsuario);
+			} catch (final ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException procedimientoUsuarioProcesoException) {
+				return new RespEntity(RespCode.PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION, procedimientoUsuario);
+			}
+
+		} catch (final ProcedimientoUsuarioNoExisteException planNoExists) {
+			return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_NO_EXISTE_EXCEPTION, procedimientoUsuario);
+		}
+	}
+
+	@PostMapping(value = "/borrarProcedimientoUsuario")
+	@ResponseBody
+	public RespEntity borrarProcedimientoUsuario(@RequestBody final ProcedimientoUsuarioEntity procedimientoUsuario) {
+		try {
+			procedimientoUsuarioService.deleteProcedimientoUsuario(procedimientoUsuario);
+			return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_ELIMINADO, procedimientoUsuario);
+		} catch (final ProcedimientoUsuarioNoExisteException planNoExists) {
+			return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_NO_EXISTE_EXCEPTION, procedimientoUsuario);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, procedimientoUsuario);
+		}
 	}
 }

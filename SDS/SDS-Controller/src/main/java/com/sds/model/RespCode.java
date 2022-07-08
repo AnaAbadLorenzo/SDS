@@ -229,6 +229,8 @@ public enum RespCode {
 			"Los procedimientos del usuario se han lisado correctamente"), //
 	PROCEDIMIENTO_USUARIO_GUARDADO("PROCEDIMIENTO_USUARIO_GUARDADO",
 			"La relación procedimiento - usuario se ha guardado correctamente"), //
+	PROCEDIMIENTO_USUARIO_ELIMINADO("PROCEDIMIENTO_USUARIO_ELIMINADO",
+			"La relación procedimiento - usuario se ha eliminado correctamente"), //
 	PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION",
 			"La relación procedimiento - usuario ya existe"), //
 	PROCEDIMIENTO_USUARIO_VACIO("PROCEDIMIENTO_USUARIO_VACIO",
@@ -351,7 +353,15 @@ public enum RespCode {
 	TEST_ACCIONES_PROCEDIMIENTO_KO("TEST_ACCIONES_PROCEDIMIENTO_KO",
 			"Se ha producido un error al ejecutar los test de acciones para los procedimientos"), //
 	TEST_ACCIONES_PROCEDIMIENTO_OK("TEST_ACCIONES_PROCEDIMIENTO_OK",
-			"Los test de acciones para los procedimientos se han ejecutado correctamente");
+			"Los test de acciones para los procedimientos se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_PROCESO_OK("TEST_ATRIBUTOS_PROCESO_OK",
+			"Los test de atributo para los procesos se han ejecutado correctamente"), //
+	TEST_ATRIBUTOS_PROCESO_KO("TEST_ATRIBUTOS_PROCESO_KO",
+			"Se ha producido un error al ejecutar los test de atributos para los procesos"), //
+	TEST_ACCIONES_PROCESO_KO("TEST_ACCIONES_PROCESO_KO",
+			"Se ha producido un error al ejecutar los test de acciones para los procesos"), //
+	TEST_ACCIONES_PROCESO_OK("TEST_ACCIONES_PROCESO_OK",
+			"Los test de acciones para los procesos se han ejecutado correctamente");
 
 	private String code;
 	private String msg;

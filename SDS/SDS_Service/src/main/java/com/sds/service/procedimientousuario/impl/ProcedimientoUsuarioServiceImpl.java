@@ -516,8 +516,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 						procedimientoUsuario.getUsuario(),
 						CodeMessageErrors.getTipoNameByCodigo(
-								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO
-										.getCodigo()),
+								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo()),
 						CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo());
 
 				resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
@@ -530,8 +529,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 				throw new ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException(
 						CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo(),
 						CodeMessageErrors.getTipoNameByCodigo(
-								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO
-										.getCodigo()));
+								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo()));
 			} else {
 				procedimientoUsuarioBD.get().setBorradoProcedimientoUsuario(1);
 				procedimientoUsuario.setProcedimientoUsuario(procedimientoUsuarioBD.get());
@@ -546,23 +544,18 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 	@Override
 	public void deleteProcedimientoUsuario(final ProcedimientoUsuarioEntity procedimientoUsuarioEntity)
 			throws ParseException, ProcedimientoUsuarioNoExisteException {
-		final Boolean procedimientoUsuarioValido = validaciones
-				.comprobarProcedimientoUsuarioBlank(procedimientoUsuarioEntity);
 
-		if (procedimientoUsuarioValido) {
-			final Optional<ProcedimientoUsuarioEntity> procedimientoUsuarioBD = procedimientoUsuarioRepository
-					.findById(procedimientoUsuarioEntity.getIdProcedimientoUsuario());
+		final Optional<ProcedimientoUsuarioEntity> procedimientoUsuarioBD = procedimientoUsuarioRepository
+				.findById(procedimientoUsuarioEntity.getIdProcedimientoUsuario());
 
-			if (!procedimientoUsuarioBD.isPresent()) {
-				throw new ProcedimientoUsuarioNoExisteException(
-						CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo(),
-						CodeMessageErrors.getTipoNameByCodigo(
-								CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo()));
-			} else {
-				procedimientoUsuarioRepository
-						.deleteProcedimientoUsuario(procedimientoUsuarioEntity.getIdProcedimientoUsuario());
-				procedimientoUsuarioRepository.flush();
-			}
+		if (!procedimientoUsuarioBD.isPresent()) {
+			throw new ProcedimientoUsuarioNoExisteException(
+					CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo(),
+					CodeMessageErrors.getTipoNameByCodigo(
+							CodeMessageErrors.PROCEDIMIENTOUSUARIO_NO_EXISTE_EXCEPTION.getCodigo()));
+		} else {
+			procedimientoUsuarioRepository.delete(procedimientoUsuarioEntity);
+			procedimientoUsuarioRepository.flush();
 		}
 
 	}

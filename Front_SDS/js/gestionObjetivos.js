@@ -784,7 +784,8 @@ function showEditar(nombreObjetivo, descripcionObjetivo, idObjetivo) {
 
     cambiarFormulario('EDIT_OBJETIVO', 'javascript:editObjetivo();', 'return comprobarEditObjetivo();');
     cambiarOnBlurCampos('return comprobarNombreObjetivo(\'nombreObjetivo\', \'errorFormatoNombreObjetivo\', \'nombreObjetivo\')', 
-      'return comprobarDescripcionObjetivo(\'descripcionObjetivo\', \'errorFormatoDescripcionObjetivo\', \'descripcionObjetivo\')');
+      'return comprobarDescripcionObjetivo(\'descripcionObjetivo\', \'errorFormatoDescripcionObjetivo\', \'descripcionObjetivo\')'
+     );
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarObjetivo', 'Editar');
 
     setLang(idioma);

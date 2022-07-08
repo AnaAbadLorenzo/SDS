@@ -1005,6 +1005,50 @@ form button[type="button"]:hover {
   opacity: 1;
 }
 
+.tooltip14 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip14 .tooltiptext {
+    visibility: hidden;
+    width: 110px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -10%;
+    left: 125.8%;
+    margin-left: -35px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip14 .tooltiptext::after {
+  content: "";
+  position: absolute;
+  bottom: 102%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #4527A0 transparent;
+}
+
+.tooltip14:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
 /********** TESTING ************/
 .card-header a {
   color: #ffffff;

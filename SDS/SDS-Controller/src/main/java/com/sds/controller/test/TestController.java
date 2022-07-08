@@ -28,6 +28,7 @@ import com.sds.service.test.TestObjetivoService;
 import com.sds.service.test.TestPersonaService;
 import com.sds.service.test.TestPlanService;
 import com.sds.service.test.TestProcedimientoService;
+import com.sds.service.test.TestProcesoService;
 import com.sds.service.test.TestRecuperarPassService;
 import com.sds.service.test.TestRegistrarService;
 import com.sds.service.test.TestRespuestaPosibleService;
@@ -81,6 +82,9 @@ public class TestController {
 
 	@Autowired
 	TestProcedimientoService testProcedimientoService;
+
+	@Autowired
+	TestProcesoService testProcesoService;
 
 	@GetMapping(value = "/login/atributos")
 	@ResponseBody
@@ -2210,6 +2214,207 @@ public class TestController {
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
 		return new RespEntity(RespCode.TEST_ACCIONES_PLAN_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/proceso/atributos/buscar")
+	@ResponseBody
+	public RespEntity TestProcesoAtributosAccionBuscar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombreProceso = testProcesoService
+					.getPruebasAtributoNombreProcesoBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripProceso = testProcesoService
+					.getPruebasAtributoDescripProcesoBuscar();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaProceso = testProcesoService
+					.getPruebasAtributoFechaProcesoBuscar();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreProceso);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripProceso);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaProceso);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_BUSCAR_PROCESO);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCESO_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/proceso/atributos/guardar")
+	@ResponseBody
+	public RespEntity TestProcesoAtributosAccionGuardar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombreProceso = testProcesoService
+					.getPruebasAtributoNombreProceso();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripProceso = testProcesoService
+					.getPruebasAtributoDescripProceso();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaProceso = testProcesoService
+					.getPruebasAtributoFechaProceso();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreProceso);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripProceso);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaProceso);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_AÑADIR_PROCESO);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCESO_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/proceso/atributos/modificar")
+	@ResponseBody
+	public RespEntity TestProcesoAtributosAccionModificar() {
+
+		final RespuestaTestAtributos respuestaTestAtributos = new RespuestaTestAtributos();
+
+		final List<DatosPruebaAtributos> resultadoPruebasAtributos = new ArrayList<>();
+
+		try {
+			final List<DatosPruebaAtributos> pruebaAtributoNombreProceso = testProcesoService
+					.getPruebasAtributoNombreProceso();
+			final List<DatosPruebaAtributos> pruebaAtributoDescripProceso = testProcesoService
+					.getPruebasAtributoDescripProceso();
+			final List<DatosPruebaAtributos> pruebaAtributoFechaProceso = testProcesoService
+					.getPruebasAtributoFechaProceso();
+
+			resultadoPruebasAtributos.addAll(pruebaAtributoNombreProceso);
+			resultadoPruebasAtributos.addAll(pruebaAtributoDescripProceso);
+			resultadoPruebasAtributos.addAll(pruebaAtributoFechaProceso);
+
+		} catch (IOException | ParseException | java.text.ParseException exc) {
+			return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAtributos.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_PROCESO);
+		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
+
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCEDIMIENTO_OK, respuestaTestAtributos);
+
+	}
+
+	@GetMapping(value = "/proceso/accion/buscar")
+	@ResponseBody
+	public RespEntity TestProcesooAccionBuscar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testProcesoService.getPruebasAccionesProcesoBuscar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_BUSCAR_PROCESO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/proceso/accion/guardar")
+	@ResponseBody
+	public RespEntity TestProcesooAccionGuardar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testProcesoService.getPruebasAccionesProcesoGuardar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_AÑADIR_PROCESO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/proceso/accion/modificar")
+	@ResponseBody
+	public RespEntity TestProcesoAccionModificar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testProcesoService.getPruebasAccionesProcesoModificar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_PROCESO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCEDIMIENTO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/proceso/accion/eliminar")
+	@ResponseBody
+	public RespEntity TestProcesoAccionEliminar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testProcesoService.getPruebasAccionesProcesoEliminar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_PROCESO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCEDIMIENTO_OK, respuestaTestAcciones);
+	}
+
+	@GetMapping(value = "/proceso/accion/reactivar")
+	@ResponseBody
+	public RespEntity TestProcesoAccionReactivar() {
+
+		final RespuestaTestAcciones respuestaTestAcciones = new RespuestaTestAcciones();
+		List<DatosPruebaAcciones> datosPruebaAcciones = new ArrayList<>();
+
+		try {
+			datosPruebaAcciones = testProcesoService.getPruebasAccionesProcesoReactivar();
+
+		} catch (IOException | ParseException | java.text.ParseException e) {
+			return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_KO, StringUtils.EMPTY);
+		}
+
+		respuestaTestAcciones.setFuncionalidad(Constantes.GESTION_PROCESOS);
+		respuestaTestAcciones.setAccion(Constantes.ACCION_REACTIVAR_PROCESO);
+		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
+
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_OK, respuestaTestAcciones);
 	}
 
 	@GetMapping(value = "/procedimiento/atributos/buscar")

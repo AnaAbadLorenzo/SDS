@@ -613,6 +613,7 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
             $('#itemPaginacion').attr('hidden',false);
         }
         var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+        $("#paginacion").append(textPaginacion);
 
         $('#procedimientos').html('');
         for (var i = 0; i < res.data.listaBusquedas.length; i++){
@@ -691,60 +692,6 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
       });
     }
 }
-
-/**Funcion para cargar los procedimientos en vista de usuario **/
-async function cargarProcedimientosUsuario(numeroPagina, tamanhoPagina, paginadorCreado){
-  await cargarPlanesAjaxPromesa(numeroPagina, tamanhoPagina) 
-        .then((res) => {
-          cargarPermisosFuncPlan();
-          $('#planes').html('');
-          var numResults = res.data.numResultados + '';
-          var totalResults = res.data.tamanhoTotal + '';
-            var inicio = 0;
-          if(res.data.listaBusquedas.length == 0){
-            inicio = 0;
-          }else{
-            inicio = parseInt(res.data.inicio)+1;
-          }
-          var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-
-          if(res.data.listaBusquedas.length == 0){
-            $('#itemPaginacion').attr('hidden',true);
-          }else{
-            $('#itemPaginacion').attr('hidden',false);
-          }
-
-          $("#paginacion").html("");
-
-          for (var i = 0; i < res.data.listaBusquedas.length; i++){
-              var tr = construyePlanUsuario(res.data.listaBusquedas[i]);
-              $("#planes").append(tr);
-          }
-        
-          $("#paginacion").append(textPaginacion);
-          setLang(getCookie('lang'));
-
-            if(paginadorCreado != 'PaginadorCreado'){
-              paginador(totalResults, 'cargarPlanesUsuario', 'PLAN');
-            }
-
-            if(numeroPagina == 0){
-              $('#' + (numeroPagina+1)).addClass("active");
-              var numPagCookie = numeroPagina+1;
-            }else{
-              $('#' + numeroPagina).addClass("active");
-               var numPagCookie = numeroPagina;
-            }
-
-            setCookie('numeroPagina', numPagCookie);
-
-        }).catch((res) => {
-            respuestaAjaxKO(res.code);
-            document.getElementById("modal").style.display = "block";
-        });
-    }
-
-
 /** Funcion añadir procedimiento **/
 async function addProcedimiento(){
   await anadirProcedimientoAjaxPromesa()
@@ -919,7 +866,47 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         document.getElementById("modal").style.display = "block";
     });
   }else if(getCookie('rolUsuario') == "usuario"){
-    cargarProcedimientosUsuario(numeroPagina, tamanhoPagina, 'PaginadorNo');
+   await cargarProcedimientosSegunPlan(numeroPagina, tamanhoPagina)
+    .then((res) => {
+        document.getElementById('procedimientosUsuario').style.display = "block";
+        cargarPermisosFuncProcedimiento();
+        var numResults = res.data.numResultados + '';
+        var totalResults = res.data.tamanhoTotal + '';
+          var inicio = 0;
+        if(res.data.listaBusquedas.length == 0){
+          inicio = 0;
+           $('#itemPaginacion').attr('hidden',true);
+        }else{
+          inicio = parseInt(res.data.inicio)+1;
+            $('#itemPaginacion').attr('hidden',false);
+        }
+        var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+        $('#procedimientos').html('');
+        for (var i = 0; i < res.data.listaBusquedas.length; i++){
+            var tr = cargarProcedimientosPlan(res.data.listaBusquedas[i]);
+            $('#procedimientos').append(tr);
+        }
+
+          setLang(getCookie('lang'));
+
+          
+          paginador(totalResults, 'cargarProcedimientosSegunPlan', 'PROCEDIMIENTO');
+
+          if(numeroPagina == 0){
+            $('#' + (numeroPagina+1)).addClass("active");
+            var numPagCookie = numeroPagina+1;
+          }else{
+            $('#' + numeroPagina).addClass("active");
+             var numPagCookie = numeroPagina;
+          }
+
+          setCookie('numeroPagina', numPagCookie);
+
+      }).catch((res) => {
+          respuestaAjaxKO(res.code);
+          document.getElementById("modal").style.display = "block";
+      });
   }
   
 }
@@ -1111,7 +1098,8 @@ function showAddProcedimientos() {
   cambiarFormulario('ADD_PROCEDIMIENTO', 'javascript:addProcedimiento();', 'return comprobarAddProcedimiento();');
   cambiarOnBlurCampos('return comprobarNombreProcedimiento(\'nombreProcedimiento\', \'errorFormatoNombreProcedimiento\', \'nombreProcedimiento\')', 
       'return comprobarDescripcionProcedimiento(\'descripProcedimiento\', \'errorFormatoDescripcionProcedimiento\', \'descripProcedimiento\')',
-      'return comprobarFechaProcedimiento(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')');
+      'return comprobarFechaProcedimiento(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')',
+      'return comprobarSelect(\'selectPlanes\', \'errorFormatoNombrePlanSelect\', \'selectPlanesOptions\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddPlan', 'Añadir');
   setLang(idioma);
 
@@ -1207,7 +1195,8 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
     cambiarFormulario('EDIT_PROCEDIMIENTO', 'javascript:editProcedimiento();', 'return comprobarEditProcedimiento();');
     cambiarOnBlurCampos('return comprobarNombreProcedimiento(\'nombreProcedimiento\', \'errorFormatoNombreProcedimiento\', \'nombreProcedimiento\')', 
       'return comprobarDescripcionProcedimiento(\'descripProcedimiento\', \'errorFormatoDescripcionProcedimiento\', \'descripProcedimiento\')',
-      'return comprobarFechaProcedimiento(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')');
+      'return comprobarFechaProcedimiento(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')',
+      'return comprobarSelect(\'selectPlanes\', \'errorFormatoNombrePlanSelect\', \'selectPlanesOptions\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarProcedimiento', 'Editar');
 
     setLang(idioma);
@@ -1307,7 +1296,7 @@ function showReactivar(nombreProcedimiento, descripProcedimiento , fechaProcedim
 }
 
 /**Función para cambiar onBlur de los campos*/
-function cambiarOnBlurCampos(onBlurNombreProcedimiento, onBlurDescripProcedimiento, onBlurFechaProcedimiento) {
+function cambiarOnBlurCampos(onBlurNombreProcedimiento, onBlurDescripProcedimiento, onBlurFechaProcedimiento, onBlurSelect) {
 
     if (onBlurNombreProcedimiento != ''){
         $("#nombreProcedimiento").attr('onblur', onBlurNombreProcedimiento);
@@ -1319,6 +1308,10 @@ function cambiarOnBlurCampos(onBlurNombreProcedimiento, onBlurDescripProcedimien
 
     if (onBlurFechaProcedimiento != ''){
         $("#fechaProcedimiento").attr('onblur', onBlurFechaProcedimiento);
+    }
+
+    if (onBlurSelect != ''){
+        $("#selectPlanes").attr('onblur', onBlurSelect);
     }
 }
 
@@ -1418,6 +1411,13 @@ function gestionarPermisosProcedimiento(idElementoList) {
           $('.iconoSearchDelete').css("cursor", "pointer");
           $('#divListarProcedimientoUsuario').attr("data-toggle", "modal");
           $('#divListarProcedimientoUsuario').attr("data-target", "#form-modal");
+          $('#btnListarProcedimientos').attr('src', 'images/search.png');
+           var texto = document.getElementById('paginacion').innerHTML;
+           if(texto == "0 - 0 total 0"){
+            $('#itemPaginacion').attr('hidden', true);
+            $('#btnListarProcedimientosUsuario').attr('src', 'images/search.png');
+           }
+
         }
         
       break;

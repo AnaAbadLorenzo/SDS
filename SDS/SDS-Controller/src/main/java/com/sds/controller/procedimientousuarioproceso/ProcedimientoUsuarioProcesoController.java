@@ -21,6 +21,7 @@ import com.sds.service.exception.ProcesoNoExisteException;
 import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.procedimientousuarioproceso.ProcedimientoUsuarioProcesoService;
 import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProceso;
+import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProcesoReturn;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -42,6 +43,16 @@ public class ProcedimientoUsuarioProcesoController {
 	public RespEntity buscarTodos() {
 		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> resultado = procedimientoUsuarioProcesoService
 				.buscarTodos();
+
+		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS, resultado);
+	}
+
+	@PostMapping(value = "/listarProcedimientosUsuariosProcesosOfProcedimientoUsuario")
+	@ResponseBody
+	public RespEntity buscarProcedimientosUsuariosProcesosOfProcedimientoUsuario(
+			@RequestBody final String idProcedimientoUsuario) {
+		final ProcedimientoUsuarioProcesoReturn resultado = procedimientoUsuarioProcesoService
+				.buscarProcesosOfProcedimientoUsuario(Integer.parseInt(idProcedimientoUsuario));
 
 		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS, resultado);
 	}
@@ -143,4 +154,5 @@ public class ProcedimientoUsuarioProcesoController {
 					procedimientoUsuarioProceso);
 		}
 	}
+
 }

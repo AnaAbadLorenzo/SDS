@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sds.model.EvidenciaEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
@@ -36,6 +37,7 @@ import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.log.LogService;
 import com.sds.service.procedimientousuarioproceso.ProcedimientoUsuarioProcesoService;
 import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProceso;
+import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProcesoReturn;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.Util;
 import com.sds.service.util.validaciones.Validaciones;
@@ -93,6 +95,48 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 		}
 		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> result = new ReturnBusquedas<>(
 				procedimientoUsuarioProcesoToret, numberTotalResults, procedimientoUsuarioProcesoToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
+	public ProcedimientoUsuarioProcesoReturn buscarProcesosOfProcedimientoUsuario(
+			final Integer idProcedimientoUsuario) {
+		final List<ProcesoEntity> procesos = new ArrayList<>();
+		final List<RespuestaPosibleEntity> respuestasPosibles = new ArrayList<>();
+		final List<EvidenciaEntity> evidencias = new ArrayList<>();
+
+		final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoToret = new ArrayList<>();
+
+		final List<ProcedimientoUsuarioProcesoEntity> procedimientosUsuariosProcesos = entityManager
+				.createNamedQuery(
+						Constantes.PROCEDIMIENTOUSUARIOPROCESO_FINDPROCEDIMIENTOUSUARIOPROCESOOFPROCEDIMIENTOUSUARIO)
+				.setParameter(Constantes.PROCEDIMIENTOUSUARIO_ID, idProcedimientoUsuario).getResultList();
+
+		if (!procedimientosUsuariosProcesos.isEmpty()) {
+			for (final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso : procedimientosUsuariosProcesos) {
+				final ProcesoEntity procesoEntity = new ProcesoEntity(
+						procedimientoUsuarioProceso.getProceso().getIdProceso(),
+						procedimientoUsuarioProceso.getProceso().getNombreProceso(),
+						procedimientoUsuarioProceso.getProceso().getDescripProceso(),
+						procedimientoUsuarioProceso.getProceso().getFechaProceso(),
+						procedimientoUsuarioProceso.getProceso().getBorradoProceso());
+				final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity(
+						procedimientoUsuarioProceso.getRespuestaPosible().getIdRespuesta(),
+						procedimientoUsuarioProceso.getRespuestaPosible().getTextoRespuesta(),
+						procedimientoUsuarioProceso.getRespuestaPosible().getBorradoRespuesta());
+				final EvidenciaEntity evidenciaEntity = new EvidenciaEntity(
+						procedimientoUsuarioProceso.getEvidencia().getIdEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getFechaEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getBorradoEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getNombreFichero());
+				procesos.add(procesoEntity);
+				respuestasPosibles.add(respuestaPosibleEntity);
+				evidencias.add(evidenciaEntity);
+			}
+		}
+		final ProcedimientoUsuarioProcesoReturn result = new ProcedimientoUsuarioProcesoReturn(procesos,
+				respuestasPosibles, evidencias);
 
 		return result;
 	}

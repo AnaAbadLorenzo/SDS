@@ -394,6 +394,8 @@ function comprobarTokenUsuario(funcionalidad){
 					document.getElementById("volver").style.display = "block";
 				}
 			break;
+			case 'procedimientosejecutados':
+			break;
 		}
 	}
 }
@@ -1449,6 +1451,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'PROCESOS' :
 			cargarPermisosFuncProceso();
 		break;
+
+		case 'PROCEDIMIENTOSEJECUTADOS' :
+			cargarPermisosFuncProcedimientosEjecutados();
+		break;
 	}
 	
 }
@@ -1510,6 +1516,10 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'PROCESO' :
 			cargarPermisosFuncProceso();
+		break;
+
+		case 'PROCEDIMIENTOSEJECUTADOS' :
+			cargarPermisosFuncProcedimientosEjecutados();
 		break;
 
 	}

@@ -767,7 +767,7 @@ async function detalleEmpresa(){
   .then((res) => {
     $("#form-modal").modal('toggle');
 
-    let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+    let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     $('#cifEmpresa').val(getCookie('cifEmpresa'));

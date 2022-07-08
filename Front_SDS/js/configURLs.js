@@ -145,9 +145,11 @@ var urlPeticionAjaxDeleteProcedimiento = urlComun + urlProcedimiento  + "/elimin
 var urlPeticionAjaxListarProcedimientosUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientosUsuario';
 var urlPeticionAjaxAddProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/procedimientoUsuario';
 var urlPeticionAjaxListarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuario';
+var urlPeticionAjaxEliminarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/borrarProcedimientoUsuario';
 
 /**Urls procedimientoUsuarioProceso **/
 var urlPeticionAjaxAddProcedimientoUsuarioProceso = urlComun + urlProcedimientoUsuarioProceso + '/procedimientoUsuarioProceso';
+var urlPeticionAjaxListarProcedimientoUsuarioProcesoOfProcedimientoUsuario =  urlComun + urlProcedimientoUsuarioProceso + '/listarProcedimientosUsuariosProcesosOfProcedimientoUsuario';
 
 
 /**Urls procesoProcedimiento **/
@@ -315,4 +317,4 @@ var urlPeticionAjaxTestProcesoAccionBuscar = urlComun + urlTest + urlProceso + u
 var urlPeticionAjaxTestProcesoAccionGuardar = urlComun + urlTest + urlProceso + urlAccion + urlGuardar;
 var urlPeticionAjaxTestProcesoAccionModificar = urlComun + urlTest + urlProceso + urlAccion + urlModificar;
 var urlPeticionAjaxTestProcesoAccionEliminar = urlComun + urlTest + urlProceso + urlAccion + urlEliminar;
-var urlPeticionAjaxTestProcesoAccionReactivar = urlComun + urlTest + urlProceso + urlAccion + urlReactivar;
+var urlPeticionAjaxTestProcesoAccionReactivar = urlComun + urlTest + urlProceso + urlAccion + urlReactivar; 

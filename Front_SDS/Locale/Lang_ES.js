@@ -295,6 +295,11 @@ arrayES={
 	'ORDEN_VACIO' : 'orden vacío',
 	'NIVEL_NUMERICO_INCORRECTO' : 'El nivel sólo puede contener números',
 	'ORDEN_NUMERICO_INCORRECTO' : 'El orden sólo puede contener números',
+	'RELLENA_PLAN' : 'Por favor, selecciona un plan',
+	'RELLENA_RESPUESTA' : 'Por favor, selecciona una respuesta',
+	'FORMATO_INCORRECTO' : 'Solo puedes subir ficheros pdf, jpg, jpeg o png',
+	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
+
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : '¿Olvidó su contraseña?',
@@ -439,6 +444,7 @@ arrayES={
 	'DETAIL_PROCESO' : 'DETALLE PROCESO',
 	'DELETE_PROCESO' : 'ELIMINAR PROCESO',
 	'REACTIVATE_PROCESO' : 'REACTIVAR PROCESO',
+	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Gestión de procedimientos ejecutados',
 
 
 
@@ -566,7 +572,8 @@ arrayES={
 	'PROCESO_ELIMINADO_OK' : 'PROCESO ELIMINADO CORRECTAMENTE',
 	'PROCESO_ELIMINADO' : 'El proceso ha sido eliminado correctamente',
 	'PROCESO_REACTIVADO_OK'  : 'PROCESO REACTIVADO CORRECTAMENTE',
-	'PROCESO_REACTIVADO' : 'El proceso se ha reactivado correctamente'
+	'PROCESO_REACTIVADO' : 'El proceso se ha reactivado correctamente',
+	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'El procedimiento se ha eliminado correctamente'
 
 
 

@@ -365,7 +365,7 @@ function comprobarBuscarPersona(){
 		comprobarApellidosSearch('apellidosP', 'errorFormatoApellidosP', 'apellidosPersonaRegistro')
 		&& comprobarFechaInicioSearch('fechaNacP', 'errorFormatoFecha', 'fechaPersonaRegistro') && 
 		comprobarDireccionSearch('direccionP', 'errorFormatoDireccion', 'direccionPersonaRegistro') && 
-		comporbarTelefonoSearch('telefonoP', 'errorFormatoTelefono', 'telefonoPersonaRegistro')
+		comprobarTelefonoSearch('telefonoP', 'errorFormatoTelefono', 'telefonoPersonaRegistro')
 		&& comprobarEmailSearch('emailP', 'errorFormatoEmail', 'emailPersonaRegistro')){
 
 		return true;
@@ -767,7 +767,7 @@ function comprobarTelefono(idElemento, idElementoError, campo){
 }
 
 /**Función que valida el formato del teléfono al buscar **/
-function comporbarTelefonoSearch(idElemento, idElementoError, campo){
+function comprobarTelefonoSearch(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
 		if (validaNoVacio(idElemento, idElementoError, campo)) {
@@ -1413,7 +1413,8 @@ function comprobarFechaPlan(idElemento, idElementoError, campo){
 /**Función que valida el editar del plan **/
 function comprobarEditPlan(){
 	if(comprobarNombrePlan('nombrePlan', 'errorFormatoNombrePlan', 'nombrePlan') && comprobarDescripcionPlan('descripPlan', 'errorFormatoDescripPlan', 'descripPlan')
-		&& comprobarFechaPlan('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')){
+		&& comprobarFechaPlan('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')
+		&& comprobarSelect('selectObjetivos', 'errorFormatoNombreObjetivoSelect', 'selectObjetivosOptions')){
 		return true;
 	}else{
 		return false;
@@ -1423,7 +1424,8 @@ function comprobarEditPlan(){
 /**Función que valida el añadir del plan **/
 function comprobarAddPlan(){
 	if(comprobarNombrePlan('nombrePlan', 'errorFormatoNombrePlan', 'nombrePlan') && comprobarDescripcionPlan('descripPlan', 'errorFormatoDescripPlan', 'descripPlan')
-		&& comprobarFechaPlan('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')){
+		&& comprobarFechaPlan('fechaPlan', 'errorFormatoFechaPlan', 'fechaPlan')
+		&& comprobarSelect('selectObjetivos', 'errorFormatoNombreObjetivoSelect', 'selectObjetivosOptions')){
 		return true;
 	}else{
 		return false;
@@ -1636,7 +1638,8 @@ function comprobarFechaProceso(idElemento, idElementoError, campo){
 function comprobarEditProcedimiento(){
 	if(comprobarNombreProcedimiento('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
 		comprobarDescripcionProcedimiento('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')
-		&& comprobarFechaProcedimiento('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')){
+		&& comprobarFechaProcedimiento('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')
+		&& comprobarSelect('selectPlanes', 'errorFormatoNombrePlanSelect', 'selectPlanesOptions')){
 		return true;
 	}else{
 		return false;
@@ -1647,7 +1650,8 @@ function comprobarEditProcedimiento(){
 function comprobarAddProcedimiento(){
 	if(comprobarNombreProcedimiento('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
 		comprobarDescripcionProcedimiento('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')
-		&& comprobarFechaProcedimiento('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')){
+		&& comprobarFechaProcedimiento('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')
+		&& comprobarSelect('selectPlanes', 'errorFormatoNombrePlanSelect', 'selectPlanesOptions')){
 		return true;
 	}else{
 		return false;
@@ -1680,7 +1684,9 @@ function comprobarAddProceso(){
 function comprobarEditProceso(){
 	if(comprobarNombreProceso('nombreProceso', 'errorFormatoNombreProceso', 'nombreProceso') && 
 		comprobarDescripcionProceso('descripcionProceso', 'errorFormatoDescripcionProceso', 'descripProceso')
-		&& comprobarFechaProceso('fechaProceso', 'errorFormatoFechaProceso', 'fechaProceso')){
+		&& comprobarFechaProceso('fechaProceso', 'errorFormatoFechaProceso', 'fechaProceso')
+		&& comprobarDivProcedimientoVacio('procedimientosOrden', 'errorFormatoProcedimientos', 'divProcedimiento')
+		&& comprobarDivObjetivoVacio('objetivosNiveles', 'errorFormatoObjetivos', 'divObjetivo')){
 
 		var numeroObjetivosNivel = getCookie('numeroObjNivel');
 		for (var i = 1; i<=numeroObjetivosNivel; i++){
@@ -1901,6 +1907,101 @@ function comprobarBuscarProceso(){
 	}
 }
 
+/** Funcion que comprueba los procesos usuario **/
+function comprobarProcesoUsuario(){
+	if(comprobarRespuesta('respuestaPosible', 'errorFormatoRespuesta', 'respuestas') &&
+		comprobarFormatoArchivo('myfile', 'errorFormatoArchivo', 'archivos')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function comprobarRespuesta(idElemento, idElementoError, campo){
+	if(!validaInputNoVacio(idElemento, idElementoError, campo)){
+		validacionKO(idElemento, idElementoError);
+		return false;
+	}else{
+		document.getElementById(idElementoError).style.display = "none";
+		return true;
+	}
+}
+
+function comprobarFormatoArchivo(idElemento, idElementoError, campo){
+	if(!validaFicheroVacio(idElemento, idElementoError, campo) || !validaFormato(idElemento, idElementoError, campo)){
+		validacionKO(idElemento, idElementoError);
+		return false;
+	}else{
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+function validaInputNoVacio(idElemento, idElementoError, campo){
+	var valor = $('input[name=' + idElemento +']:checked').val();
+	if(valor == "" || valor == null) {
+		switch(campo) {
+	    	case 'respuestas' : 
+		  		codigo = "RELLENA_RESPUESTA";
+			break;
+
+	}
+	addCodeError(idElementoError, codigo);
+	return false;
+	} else {
+	    return true;
+	}
+}
+
+function validaFormato(idElemento, idElementoError, campo){
+	var nombreFichero = $("#" + idElemento).prop("files")[0];
+	var longitudFichero = $("#" + idElemento).val();
+	if(nombreFichero != undefined){
+		var extension = nombreFichero.name.split('.');
+	}
+
+	
+		if(extension[1] != "pdf" && extension[1] != "jpg" && extension[1] != "jpeg" && extension[1] != "png") {
+			switch(campo) {
+		    	case 'archivos' : 
+			  		codigo = "FORMATO_INCORRECTO";
+				break;
+
+
+			}
+
+		
+	addCodeError(idElementoError, codigo);
+	    return false;
+	} else {
+	    return true;
+	}
+}
+
+function validaFicheroVacio(idElemento, idElementoError, campo){
+	var nombreFichero = $("#" + idElemento).prop("files")[0];
+	var longitudFichero = $("#" + idElemento).val();
+	if(nombreFichero != undefined){
+		var extension = nombreFichero.name.split('.');
+	}
+
+	if((longitudFichero == 0) || (longitudFichero == "")){
+		
+			switch(campo) {
+		    	case 'archivos' : 
+			  		codigo = "FORMATO_INCORRECTO";
+				break;
+
+
+			
+
+		}
+	addCodeError(idElementoError, codigo);
+	    return false;
+	} else {
+	    return true;
+	}
+}
 
 /**Función que valida si un campo está vacío*/
 function validaNoVacio(idElemento, idElementoError, campo) {
@@ -2739,6 +2840,9 @@ function validaOptionsSelect(idElemento, idElementoError, campo) {
 			break;
 			case 'selectObjetivosOptions' :
 				codigo = "RELLENA_OBJETIVO";
+			break;
+			case 'selectPlanesOptions' :
+				codigo = "RELLENA_PLAN";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

@@ -21,6 +21,7 @@ public class Constantes {
 	public static final String GESTION_RESPUESTAS_POSIBLES = "Gestión de respuestas posibles";
 	public static final String GESTION_PLANES = "Gestión de planes";
 	public static final String GESTION_PROCEDIMIENTOS = "Gestión de procedimientos";
+	public static final String GESTION_PROCESOS = "Gestión de procesos";
 	public static final String TEST = "Test";
 	public static final String LOG_ACCIONES = "Log de acciones";
 	public static final String LOG_EXCEPCIONES = "Log de excepciones";
@@ -840,4 +841,5 @@ public class Constantes {
 	public static final String PROCESO_RESPUESTA_POSIBLE_FINDPROCESORESPUESTAPOSIBLE = "ProcesoRespuestaPosibleEntity.findProcesoRespuestaPosible";
 
 	public static final String PROCEDIMIENTOUSUARIOPROCESO_FINDALLPROCEDIMIENTOUSUARIOPROCESO = "ProcedimientoUsuarioProcesoEntity.findAllProcedimientosUsuariosProcesos";
+	public static final String PROCEDIMIENTOUSUARIOPROCESO_FINDPROCEDIMIENTOUSUARIOPROCESOOFPROCEDIMIENTOUSUARIO = "ProcedimientoUsuarioProcesoEntity.findProcesosOfProcedimientoUsuario";
 }

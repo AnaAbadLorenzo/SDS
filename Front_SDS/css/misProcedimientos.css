@@ -96,6 +96,14 @@ select option:checked{
   display: inline;
 }
 
+.iconEliminarProcedimiento {
+  margin-left: 125.8%;
+  margin-top: -13.5%;
+  width: 5%;
+  cursor: pointer;
+  display: inline;
+}
+
 .iconPlan {
   width: 8%;
   display: inline;

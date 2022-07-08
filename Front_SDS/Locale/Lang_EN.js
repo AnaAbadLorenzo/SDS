@@ -296,6 +296,10 @@ arrayEN={
 	'ORDEN_VACIO' : 'Order empty',
 	'NIVEL_NUMERICO_INCORRECTO' : 'The level can only contain numbers',
 	'ORDEN_NUMERICO_INCORRECTO' : 'The order can only contain numbers',
+	'RELLENA_PLAN' : 'Please, select a plan',
+	'RELLENA_RESPUESTA' : 'Please, select an answer',
+	'FORMATO_INCORRECTO' : 'You can only upload pdf, jpg, jpeg and png files',
+	'EVIDENCIA_SUBIDA' : 'Evidence uploaded: ',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -439,6 +443,7 @@ arrayEN={
 	'DETAIL_PROCESO' : 'DETAIL PROCESS',
 	'DELETE_PROCESO' : 'DELETE PROCESS',
 	'REACTIVATE_PROCESO' : 'REACTIVATE PROCESS',
+	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Execute procedures management',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -564,6 +569,7 @@ arrayEN={
 	'PROCESO_ELIMINADO_OK' : 'PROCESS DELETED CORRECTLY',
 	'PROCESO_ELIMINADO' : 'The process has been deleted correctly',
 	'PROCESO_REACTIVADO_OK'  : 'PROCESS REACTIVATED CORRECTLY',
-	'PROCESO_REACTIVADO' : 'the process has been reactivated correctly'
+	'PROCESO_REACTIVADO' : 'The process has been reactivated correctly',
+	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'The procedure has been deleted correctly'
 
 }

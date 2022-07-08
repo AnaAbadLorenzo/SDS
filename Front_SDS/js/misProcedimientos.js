@@ -1,51 +1,82 @@
 function iniciarProcedimientoUsuario(idProcedimiento, idProcedimientoUsuario){
+  var selectorIniciarProc = $('#' + idProcedimientoUsuario + ' #iniciarProcedimiento #iconoIniciarProcedimiento');
+
+  $(selectorIniciarProc).attr('src', 'images/iniciarProcedimiento2.png');
+  $(selectorIniciarProc).attr('onclick', '');
+
   setCookie('idProcedimiento', idProcedimiento)
   setCookie('idProcedimientoUsuario', idProcedimientoUsuario)
-	window.location.href = "GestionDeProcesos.html";
+	window.location.href = "GestionDeProcesos.html?continuar=no";
+
+}
+
+function continuarProcedimiento(idProcedimiento, idProcedimientoUsuario){
+   setCookie('idProcedimiento', idProcedimiento)
+   setCookie('idProcedimientoUsuario', idProcedimientoUsuario);
+   window.location.href = "GestionDeProcesos.html?continuar=si";
+}
+
+function finalizarProcedimiento(idProcedimientoUsuario){
+
+   var selectorIniciarProc = $('#' + idProcedimientoUsuario + ' #iniciarProcedimiento #iconoIniciarProcedimiento');
+   var selectorContinuarProc = $('#' + idProcedimientoUsuario + ' #continuarProcedimiento #iconoContinuarProcedimiento');
+   var selectorFinProc = $('#' + idProcedimientoUsuario + ' #finalizadoProcedimiento #iconoFinalizarProcedimiento');
+
+   $(selectorIniciarProc).attr('src', 'images/iniciarProcedimiento2.png');
+   $(selectorIniciarProc).attr('onclick', '');
+   $(selectorContinuarProc).attr('src', 'images/continuarProcedimiento2.png');
+   $(selectorContinuarProc).attr('onclick', '');
+   $(selectorFinProc).attr('src', 'images/procedimientoFinalizado2.png');
 }
 
 /* Función para obtener los procedimientos de un usuario del sistema*/
 async function cargarProcedimientosUsuarioEjecutados(numeroPagina, tamanhoPagina, paginadorCreado){
   if(getCookie('rolUsuario') == "usuario"){
-    await cargarMisProcedimientosAjaxPromesa(numeroPagina, tamanhoPagina)
-    .then((res) => {
-        document.getElementById('misProcedimientos').style.display = "block";
-        var numResults = res.data.numResultados + '';
-        var totalResults = res.data.tamanhoTotal + '';
-          var inicio = 0;
-        if(res.data.listaBusquedas.length == 0){
-          inicio = 0;
-           $('#itemPaginacion').attr('hidden',true);
+    try{
+          const res = await cargarMisProcedimientosAjaxPromesa(numeroPagina, tamanhoPagina);
+          document.getElementById('misProcedimientos').style.display = "block";
+          var numResults = res.data.numResultados + '';
+          var totalResults = res.data.tamanhoTotal + '';
+            var inicio = 0;
+          if(res.data.listaBusquedas.length == 0){
+            inicio = 0;
+             $('#itemPaginacion').attr('hidden',true);
+          }else{
+            inicio = parseInt(res.data.inicio)+1;
+              $('#itemPaginacion').attr('hidden',false);
+          }
+          var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+       
+          $('#procedimientos').html('');
+          for (var i = 0; i < res.data.listaBusquedas.length; i++){
+            try{
+              const result = await cargarProcesosOfProcedimientoUsuario(res.data.listaBusquedas[i].idProcedimientoUsuario);
+          	  cargarMisProcedimientosUsuario(res.data.listaBusquedas[i], result.data);
+            }catch(result) {
+              respuestaAjaxKO(result.code);
+              document.getElementById("modal").style.display = "block";
+            }
+       
+          }
+
+          if(paginadorCreado != 'PaginadorCreado'){
+            paginador(totalResults, 'cargarProcedimientosUsuarioEjecutados', 'PROCEDIMIENTOSEJECUTADOS');
+        	}
+        
+        if(numeroPagina == 0){
+          $('#itemPaginacion #' + (numeroPagina+1)).addClass("active");
         }else{
-          inicio = parseInt(res.data.inicio)+1;
-            $('#itemPaginacion').attr('hidden',false);
-        }
-        var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
-     
-        $('#procedimientos').html('');
-        for (var i = 0; i < res.data.listaBusquedas.length; i++){
-        	cargarMisProcedimientosUsuario(res.data.listaBusquedas[i]);
-     
+          $('#itemPaginacion #' + numeroPagina).addClass("active");
         }
 
-        if(paginadorCreado != 'PaginadorCreado'){
-          paginador(totalResults, 'cargarProcedimientosUsuarioEjecutados', 'PROCEDIMIENTOSEJECUTADOS');
-      	}
-      
-      if(numeroPagina == 0){
-        $('#' + (numeroPagina+1)).addClass("active");
-      }else{
-        $('#' + numeroPagina).addClass("active");
-      }
-
-      setLang(getCookie('lang'));
+        setLang(getCookie('lang'));
 
 
-      }).catch((res) => {
-          respuestaAjaxKO(res.code);
-          document.getElementById("modal").style.display = "block";
-      });
-  
+        }catch(res) {
+            respuestaAjaxKO(res.code);
+            document.getElementById("modal").style.display = "block";
+        };
+    
   	}
 }
 
@@ -90,6 +121,54 @@ function cargarMisProcedimientosAjaxPromesa(numeroPagina, tamanhoPagina){
   });
 }
 
+/** Función para eliminar un procedimiento usuario */
+function eliminarProcedimientoAjaxPromesa(idProcedimientoUsuario){
+   return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var procedimientoUsuario = {
+      idProcedimientoUsuario : idProcedimientoUsuario,
+      puntuacionProcedimientoUsuario : '',
+      fechaProcedimientoUsuario : '',
+      borradoProcedimientoUsuario : 1
+    }
+
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxEliminarProcedimientoUsuario,
+      contentType : "application/json",
+      data: JSON.stringify(procedimientoUsuario),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCEDIMIENTO_USUARIO_ELIMINADO') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+async function eliminarProcedimiento(idProcedimientoUsuario){
+   await eliminarProcedimientoAjaxPromesa(idProcedimientoUsuario)
+    .then((res) => {
+     
+      respuestaAjaxOK("PROCEDIMIENTO_ELIMINADO_OK", res.code);
+
+      setLang(getCookie('lang'));
+      document.getElementById("modal").style.display = "block";
+   
+      cargarProcedimientosUsuarioEjecutados(0, tamanhoPaginaProcedimientoUsuario, 'PaginadorNo');
+
+      }).catch((res) => {
+          respuestaAjaxKO(res.code);
+          document.getElementById("modal").style.display = "block";
+      });
+  
+}
+
 /** Función para obtener el número de procesos asociados al procedimiento **/
 function cargarNumeroProcesosProcedimientos(idProcedimiento, idProceso){
 	return new Promise(function(resolve, reject) {
@@ -118,6 +197,30 @@ function cargarNumeroProcesosProcedimientos(idProcedimiento, idProceso){
   });
 }
 
+/** Función para obtener los procedimientos de un usuario con ajax y promesas**/
+function cargarProcesosOfProcedimientoUsuario(idProcedimientoUsuario){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarProcedimientoUsuarioProcesoOfProcedimientoUsuario,
+      contentType : "application/json",
+      data: idProcedimientoUsuario.toString(),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+
 function showPlan(nombrePlan, descripPlan){
 
     $('#tituloFormsModalMostrarPlan').addClass('DETAIL_PLAN');
@@ -143,7 +246,7 @@ function showPlan(nombrePlan, descripPlan){
 }
 
 /** Función para construir la pantalla de procedimientos - usuario **/
-async function cargarMisProcedimientosUsuario(procedimientosUsuario){
+async function cargarMisProcedimientosUsuario(procedimientosUsuario, procesosProcedimientoUsuario){
 	var procedimientoUsuario = "";
 	await cargarNumeroProcesosProcedimientos(procedimientosUsuario.procedimiento.idProcedimiento, '')
 		.then((res) =>{
@@ -154,40 +257,107 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario){
 					numeroProcesos = res.data.tamanhoTotal;
 				}
 
+        var numeroProcesosEjecutados = procesosProcedimientoUsuario.procesos.length;
+
 				var fechaProcedimientoUsuario = new Date(procedimientosUsuario.fechaProcedimientoUsuario);
 				var fecha = convertirFecha(fechaProcedimientoUsuario.toString());
 				procedimientoUsuario = '<div class="col-md-12 col-lg-12 col-xl-12 mb-12 paddingTop">' + 
-								'<div class="card">' + 
+								'<div id=' + procedimientosUsuario.idProcedimientoUsuario + ' class="card">' + 
 									'<div class="card-body-plan">' + 
 										'<div class="card-title">' + procedimientosUsuario.procedimiento.nombreProcedimiento + '</div>' + 
 										'<div class="card-text">' + procedimientosUsuario.procedimiento.descripProcedimiento + '</div>' +
-										'<div class="procesos">0/' + numeroProcesos + '</div>' + 
+										'<div class="procesos">' + numeroProcesosEjecutados + '/' + numeroProcesos + '</div>' + 
 										'<div class="puntuacion">Puntuación: ' + procedimientosUsuario.puntuacionProcedimientoUsuario +'%</div>' +
-										'<div class="fecha">' + fecha + '</div>' + 
-										'<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
-											'<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick="iniciarProcedimientoUsuario('+ procedimientosUsuario.procedimiento.idProcedimiento + ', '+ procedimientosUsuario.idProcedimientoUsuario+');"/>' +
-											'<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
-										'</div>' + 
-										'<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
-					        				'<img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>' + 
-											    '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
-					    			'</div>' +
-					    			'<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
-					        				'<img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>' + 
-					        				'<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
-					    			'</div>' + 
-                  '</div>' + 
-	                '<div class="card-footer">' + 
-	                    '<div class="tooltip8 planIcon">' + 
-	                    		'<img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan" data-toggle="modal" data-target="#modalMostrarPlan" onclick="showPlan(' + atributosFunciones + ')"/>' + 
-	                    		'<span class="tooltiptext iconPlan ICON_PLAN"></span>' + 
-	                    '</div>' + 
-	                    '<div class="card-title-plan">Plan: ' + procedimientosUsuario.procedimiento.plan.nombrePlan  + '</div>' ;
-	               '</div>' + 
-                '</div>' + 
-              '</div>';
+										'<div class="fecha">' + fecha + '</div>';
+
+                    if(numeroProcesosEjecutados == 0){
+
+                      var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
+                                      '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick=";"/>' + 
+                                      '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
+                                    '</div>' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
+                                          '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>' + 
+                                          '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
+                                    '</div>' +
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
+                                          '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>' + 
+                                          '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
+                                    '</div>' + 
+                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon">' + 
+                                      '<img id="iconoEliminarProcedimiento" class="iconoProcedimiento iconEliminarProcedimiento" src="images/delete3.png" alt="Eliminar procedimiento" onclick="eliminarProcedimiento('+ procedimientosUsuario.idProcedimientoUsuario +');"/>' + 
+                                      '<span class="tooltiptext iconProcedimiento ICONO_ELIMINAR"></span>' + 
+                                    '</div>' + 
+                                  '</div>';
+                    
+                    }else if(numeroProcesosEjecutados > 0 && numeroProcesosEjecutados < numeroProcesos){
+                      var arrayProcesos = [];
+
+                      for(var i = 0; i<procesosProcedimientoUsuario.procesos.length; i++){
+                        arrayProcesos.push(procesosProcedimientoUsuario.procesos);
+                      }
+
+                       var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
+                                      '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=";"/>' + 
+                                      '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
+                                    '</div>' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
+                                          '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick="continuarProcedimiento(' + procedimientosUsuario.procedimiento.idProcedimiento + ',' + procedimientosUsuario.idProcedimientoUsuario + ')"/>' + 
+                                          '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
+                                    '</div>' +
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
+                                          '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>' + 
+                                          '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
+                                    '</div>' + 
+                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon">' + 
+                                      '<img id="iconoEliminarProcedimiento" class="iconoProcedimiento iconEliminarProcedimiento" src="images/delete3.png" alt="Eliminar procedimiento" onclick="eliminarProcedimiento('+ procedimientosUsuario.idProcedimientoUsuario +');"/>' + 
+                                      '<span class="tooltiptext iconProcedimiento ICONO_ELIMINAR"></span>' + 
+                                    '</div>' + 
+                                  '</div>';
+
+                    }else{
+                       var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
+                                      '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=";"/>' + 
+                                      '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
+                                    '</div>' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
+                                          '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick="continuarProcedimiento(' + procedimientosUsuario.procedimiento.idProcedimiento + ',' + procedimientosUsuario.idProcedimientoUsuario + ')"/>' + 
+                                          '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
+                                    '</div>' +
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
+                                          '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado.png" alt="Procedimiento finalizado" onclick="finalizarProcedimiento(' + procedimientosUsuario.idProcedimientoUsuario +')"/>' + 
+                                          '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
+                                    '</div>' + 
+                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon">' + 
+                                      '<img id="iconoEliminarProcedimiento" class="iconoProcedimiento iconEliminarProcedimiento" src="images/delete3.png" alt="Eliminar procedimiento" onclick="eliminarProcedimiento('+ procedimientosUsuario.idProcedimientoUsuario +');"/>' + 
+                                      '<span class="tooltiptext iconProcedimiento ICONO_ELIMINAR"></span>' + 
+                                    '</div>' + 
+                                  '</div>';
+                    }
+
+                    procedimientoUsuario += iconos;
+										 
+	              var procedimientoUsuario2 =   '<div class="card-footer">' + 
+                          	                    '<div class="tooltip8 planIcon">' + 
+                          	                    		'<img class="iconoPlan iconPlan" src="images/plan.png" alt="Plan" data-toggle="modal" data-target="#modalMostrarPlan" onclick="showPlan(' + atributosFunciones + ')"/>' + 
+                          	                    		'<span class="tooltiptext iconPlan ICON_PLAN"></span>' + 
+                          	                    '</div>' + 
+                          	                    '<div class="card-title-plan">Plan: ' + procedimientosUsuario.procedimiento.plan.nombrePlan  + '</div>' ;
+                          	               '</div>' + 
+                                          '</div>' + 
+                                        '</div>';
+
+            procedimientoUsuario += procedimientoUsuario2;
 
          $('#procedimientos').append(procedimientoUsuario);
+
+         if(numeroProcesosEjecutados == 0){
+             var selectorIniciarProc = $('#' + procedimientosUsuario.idProcedimientoUsuario + ' #iniciarProcedimiento #iconoIniciarProcedimiento');
+
+              $(selectorIniciarProc).attr('onclick', 'iniciarProcedimientoUsuario('+ procedimientosUsuario.procedimiento.idProcedimiento + ', '+ procedimientosUsuario.idProcedimientoUsuario+')');
+         }
+         setLang(getCookie('lang'));
+         
 		}).catch((res) => {
           respuestaAjaxKO(res.code);
           document.getElementById("modal").style.display = "block";

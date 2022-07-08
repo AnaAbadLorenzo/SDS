@@ -921,7 +921,8 @@ function showAddPlanes() {
   cambiarFormulario('ADD_PLAN', 'javascript:addPlan();', 'return comprobarAddPlan();');
   cambiarOnBlurCampos('return comprobarNombrePlan(\'nombrePlan\', \'errorFormatoNombrePlan\', \'nombrePlan\')', 
       'return comprobarDescripcionPlan(\'descripPlan\', \'errorFormatoDescripPlan\', \'descripPlan\')',
-      'return comprobarFechaPlan(\'fechaPlan\', \'errorFormatoFechaPlan\', \'fechaPlan\')');
+      'return comprobarFechaPlan(\'fechaPlan\', \'errorFormatoFechaPlan\', \'fechaPlan\')',
+      'return comprobarSelect(\'selectObjetivos\', \'errorFormatoNombreObjetivoSelect\', \'selectObjetivosOptions\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddPlan', 'Añadir');
   setLang(idioma);
 
@@ -1003,7 +1004,8 @@ function showEditar(nombrePlan, descripPlan , fechaPlan, nombreObjetivo, descrip
     cambiarFormulario('EDIT_PLAN', 'javascript:editPlan();', 'return comprobarEditPlan();');
     cambiarOnBlurCampos('return comprobarNombrePlan(\'nombrePlan\', \'errorFormatoNombrePlan\', \'nombrePlan\')', 
       'return comprobarDescripcionPlan(\'descripPlan\', \'errorFormatoDescripPlan\', \'descripPlan\')',
-      'return comprobarFechaPlan(\'fechaPlan\', \'errorFormatoFechaPlan\', \'fechaPlan\')');
+      'return comprobarFechaPlan(\'fechaPlan\', \'errorFormatoFechaPlan\', \'fechaPlan\')',
+      'return comprobarSelect(\'selectObjetivos\', \'errorFormatoNombreObjetivoSelect\', \'selectObjetivosOptions\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarPlan', 'Editar');
 
     setLang(idioma);
@@ -1094,7 +1096,7 @@ function showReactivar(nombrePlan, descripPlan , fechaPlan, nombreObjetivo, desc
 }
 
 /**Función para cambiar onBlur de los campos*/
-function cambiarOnBlurCampos(onBlurNombrePlan, onBlurDescripPlan, onBlurFechaPlan) {
+function cambiarOnBlurCampos(onBlurNombrePlan, onBlurDescripPlan, onBlurFechaPlan, onBlurSelect) {
 
     if (onBlurNombrePlan != ''){
         $("#nombrePlan").attr('onblur', onBlurNombrePlan);
@@ -1106,6 +1108,10 @@ function cambiarOnBlurCampos(onBlurNombrePlan, onBlurDescripPlan, onBlurFechaPla
 
     if (onBlurFechaPlan != ''){
         $("#fechaPlan").attr('onblur', onBlurFechaPlan);
+    }
+
+    if (onBlurSelect != ''){
+        $("#selectObjetivos").attr('onblur', onBlurSelect);
     }
 }
 

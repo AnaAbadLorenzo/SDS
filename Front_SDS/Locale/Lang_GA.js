@@ -283,7 +283,7 @@ arrayGA={
 	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'A data do proceso tan só pode conter números',
 	'FECHA_PROCESO_MENOR_QUE_8' : 'A data do proceso ten menos de 8 caracteres',
 	'FECHA_PROCESO_MAYOR_QUE_8' : 'A data do proceso ten maís de 8 caracteres',
-	'RELLENA_PROCEDIMIENTO' : 'Por favor, selecciona un procedemento',
+	'RELLENA_PROCEDIMIENTO' : 'Por favor, escolle un procedemento',
 	'RELLENA_OBJETIVO' : 'Por favor, selecciona un obxectivo',
 	'SELECT_PROCEDIMIENTOS_VACIO' : 'Por favor, engade un procedemento minimo',
 	'SELECT_OBJETIVOS_VACIO' : 'Por favor, engade un obxectivo minimo',
@@ -291,9 +291,14 @@ arrayGA={
 	'ORDEN_VACIO' : 'Orden vacío',
 	'NIVEL_NUMERICO_INCORRECTO' : 'O nivel tan só pode conter números',
 	'ORDEN_NUMERICO_INCORRECTO' : 'A orde tan só pode conter números',
+	'RELLENA_PLAN' : 'Por favor, escolle un plan',
+	'RELLENA_RESPUESTA' : 'Por favor, escolle unha respuesta',
+	'FORMATO_INCORRECTO' : 'Solo podes subir ficheros pdf, jpg, jpeg ou png',
+	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
+
 
 	//Mensajes
-	'OLVIDAR_CONTRASENA' : 'Olvidou o sei contrasinal?',
+	'OLVIDAR_CONTRASENA' : 'Olvidou o seu contrasinal?',
 	'RELLENAR_FORM_PASS' : 'Enche o formulario para recuperala',
 	'RECUPERAR_PASS' : 'Recuperar contrasinal',
 	'ACCEDER_CUENTA' : 'Accede coa túa conta',
@@ -436,6 +441,7 @@ arrayGA={
 	'DETAIL_PROCESO' : 'DETALLE PROCESO',
 	'DELETE_PROCESO' : 'ELIMINAR PROCESO',
 	'REACTIVATE_PROCESO' : 'REACTIVAR PROCESO',
+	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Xestión de procedementos executados',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -560,7 +566,8 @@ arrayGA={
 	'PROCESO_ELIMINADO_OK' : 'PROCESO ELIMINADO CORRECTAMENTE',
 	'PROCESO_ELIMINADO' : 'O proceso eliminouse correctamente',
 	'PROCESO_REACTIVADO_OK'  : 'PROCESO REACTIVADO CORRECTAMENTE',
-	'PROCESO_REACTIVADO' : 'O proceso reactivouse correctamente'
+	'PROCESO_REACTIVADO' : 'O proceso reactivouse correctamente',
+	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'O procedemento eliminouse correctamente'
 
 
 	
