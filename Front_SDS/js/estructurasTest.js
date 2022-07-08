@@ -482,3 +482,69 @@ function cargarTestGestionPlanes(){
 
 	$("#testPlan").append(contenidoTest);
 }
+
+/*Función para cargar las opciones de Tests de procedimientos*/
+function cargarTestGestionProcedimientos(){
+
+	$("#testProcedimiento").html("");
+
+	let arraySubAccordionUno = ["collapseProcedimientoAtributosGuardar", "javascript:testProcedimiento('Guardar', 'Atributos')", "Añadir Procedimiento", "iconoTestProcedimientoAtributosGuardar", 
+							   "cabeceraAtributosProcedimientoGuardar", "cuerpoAtributosProcedimientoGuardar"];
+	let arraySubAccordionDos = ["collapseProcedimientoAtributosModificar", "javascript:testProcedimiento('Modificar', 'Atributos')", "Modificar Procedimiento", "iconoTestProcedimientoAtributosModificar", 
+							   "cabeceraAtributosProcedimientoModificar", "cuerpoAtributosProcedimientoModificar"];
+	let arraySubAccordionTres = ["collapseProcedimientoAtributosBuscar", "javascript:testProcedimiento('Buscar', 'Atributos')", "Buscar Procedimiento", "iconoTestProcedimientoAtributosBuscar", 
+							    "cabeceraAtributosProcedimientoBuscar", "cuerpoAtributosProcedimientoBuscar"];
+	let arrayAccordionUno = ["accordion37", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
+
+	let arraySubAccordionCuatro = ["collapseProcedimientoAccionesBuscar", "javascript:testProcedimiento('Buscar', 'Acciones')", "Buscar Procedimiento", "iconoTestProcedimientoAccionesBuscar", 
+								  "cabeceraAccionesProcedimientoBuscar", "cuerpoAccionesProcedimientoBuscar"];
+	let arraySubAccordionCinco = ["collapseProcedimientoAccionesGuardar", "javascript:testProcedimiento('Guardar', 'Acciones')", "Guardar Procedimiento", "iconoTestProcedimientoAccionesGuardar", 
+								 "cabeceraAccionesProcedimientoGuardar", "cuerpoAccionesProcedimientoGuardar"];
+	let arraySubAccordionSeis = ["collapseProcedimientoAccionesEliminar", "javascript:testProcedimiento('Eliminar', 'Acciones')", "Eliminar Procedimiento", "iconoTestProcedimientoAccionesEliminar", 
+								"cabeceraAccionesProcedimientoEliminar", "cuerpoAccionesProcedimientoEliminar"];
+	let arraySubAccordionSiete = ["collapseProcedimientoAccionesModificar", "javascript:testProcedimiento('Modificar', 'Acciones')", "Modificar Procedimiento", "iconoTestProcedimientoAccionesModificar", 
+								"cabeceraAccionesProcedimientoModificar", "cuerpoAccionesProcedimientoModificar"];
+	let arraySubAccordionOcho = ["collapseProcedimientoAccionesReactivar", "javascript:testProcedimiento('Reactivar', 'Acciones')", "Reactivar Procedimiento", "iconoTestProcedimientoAccionesReactivar", 
+								"cabeceraAccionesProcedimientoReactivar", "cuerpoAccionesProcedimientoReactivar"];
+	let arrayAccordionDos = ["accordion38", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
+
+	let arrayAccordionTres = ["accordion36", "collapseProcedimientoAtributos", null, "Atributos", "iconoTestProcedimientoAtributos", null, null, arrayAccordionUno, "collapseProcedimientoAcciones", null, "Acciones", 
+							 "iconoTestProcedimientoAcciones", null, null, arrayAccordionDos];
+
+	var contenidoTest = crearTest(arrayAccordionTres);
+
+	$("#testProcedimiento").append(contenidoTest);
+}
+
+/*Función para cargar las opciones de Tests de procesos*/
+function cargarTestGestionProcesos(){
+
+	$("#testProceso").html("");
+
+	let arraySubAccordionUno = ["collapseProcesoAtributosGuardar", "javascript:testProceso('Guardar', 'Atributos')", "Añadir Proceso", "iconoTestProcesoAtributosGuardar", 
+							   "cabeceraAtributosProcesoGuardar", "cuerpoAtributosProcesoGuardar"];
+	let arraySubAccordionDos = ["collapseProcesoAtributosModificar", "javascript:testProceso('Modificar', 'Atributos')", "Modificar Proceso", "iconoTestProcesoAtributosModificar", 
+							   "cabeceraAtributosProcesoModificar", "cuerpoAtributosProcesoModificar"];
+	let arraySubAccordionTres = ["collapseProcesoAtributosBuscar", "javascript:testProceso('Buscar', 'Atributos')", "Buscar Proceso", "iconoTestProcesoAtributosBuscar", 
+							    "cabeceraAtributosProcesoBuscar", "cuerpoAtributosProcesoBuscar"];
+	let arrayAccordionUno = ["accordion40", arraySubAccordionUno, arraySubAccordionDos, arraySubAccordionTres];
+
+	let arraySubAccordionCuatro = ["collapseProcesoAccionesBuscar", "javascript:testProceso('Buscar', 'Acciones')", "Buscar Proceso", "iconoTestProcesoAccionesBuscar", 
+								  "cabeceraAccionesProcesoBuscar", "cuerpoAccionesProcesoBuscar"];
+	let arraySubAccordionCinco = ["collapseProcesoAccionesGuardar", "javascript:testProceso('Guardar', 'Acciones')", "Guardar Proceso", "iconoTestProcesoAccionesGuardar", 
+								 "cabeceraAccionesProcesoGuardar", "cuerpoAccionesProcesoGuardar"];
+	let arraySubAccordionSeis = ["collapseProcesoAccionesEliminar", "javascript:testProceso('Eliminar', 'Acciones')", "Eliminar Proceso", "iconoTestProcesoAccionesEliminar", 
+								"cabeceraAccionesProcesoEliminar", "cuerpoAccionesProcesoEliminar"];
+	let arraySubAccordionSiete = ["collapseProcesoAccionesModificar", "javascript:testProceso('Modificar', 'Acciones')", "Modificar Proceso", "iconoTestProcesoAccionesModificar", 
+								"cabeceraAccionesProcesoModificar", "cuerpoAccionesProcesoModificar"];
+	let arraySubAccordionOcho = ["collapseProcesoAccionesReactivar", "javascript:testProceso('Reactivar', 'Acciones')", "Reactivar Proceso", "iconoTestProcesoAccionesReactivar", 
+								"cabeceraAccionesProcesoReactivar", "cuerpoAccionesProcesoReactivar"];
+	let arrayAccordionDos = ["accordion41", arraySubAccordionCuatro, arraySubAccordionCinco, arraySubAccordionSeis, arraySubAccordionSiete, arraySubAccordionOcho];
+
+	let arrayAccordionTres = ["accordion39", "collapseProcesoAtributos", null, "Atributos", "iconoTestProcesoAtributos", null, null, arrayAccordionUno, "collapseProcesoAcciones", null, "Acciones", 
+							 "iconoTestProcesoAcciones", null, null, arrayAccordionDos];
+
+	var contenidoTest = crearTest(arrayAccordionTres);
+
+	$("#testProceso").append(contenidoTest);
+}

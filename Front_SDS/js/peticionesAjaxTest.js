@@ -678,3 +678,118 @@ async function testPlan(accion, tipoTest){
       cargarModalErroresTest(res.code);
   });
 }
+
+/*Función que obtiene los test procedimientos */
+async function testProcedimiento(accion, tipoTest){
+  
+  var url = "";
+  var code = "";
+
+  switch(tipoTest){
+    case 'Atributos':
+      code = 'TEST_ATRIBUTOS_PROCEDIMIENTO_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestProcedimientoAtributosAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestProcedimientoAtributosAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestProcedimientoAtributosAccionModificar;
+        break;
+      }
+    break;
+    case 'Acciones':
+      code = 'TEST_ACCIONES_PROCEDIMIENTO_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestProcedimientoAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestProcedimientoAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestProcedimientoAccionModificar;
+        break;
+        case 'Eliminar':
+          url = urlPeticionAjaxTestProcedimientoAccionEliminar;
+        break;
+        case 'Reactivar':
+          url = urlPeticionAjaxTestProcedimientoAccionReactivar;
+        break;
+      }
+    break;
+  }
+
+  await test(url, code)
+  .then((res) => {
+    let idElementoList = ["iconoTestProcedimiento", "iconoTestProcedimiento" + tipoTest, "iconoTestProcedimiento" + tipoTest + accion];
+    if (tipoTest === 'Acciones') {
+      let atributosValor = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento"];
+      cargarRespuestaOkTest(res.data.datosPruebaAcciones, "cabeceraAccionesProcedimiento" + accion, "cuerpoAccionesProcedimiento" + accion, atributosValor, "Procedimiento", idElementoList, "acciones");
+    } else if (tipoTest === 'Atributos'){
+      cargarRespuestaOkTest(res.data.datosPruebaAtributos, "cabeceraAtributosProcedimiento" + accion, "cuerpoAtributosProcedimiento" + accion, "", "", idElementoList, "atributos");
+    }
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
+
+
+/*Función que obtiene los test procesos */
+async function testProceso(accion, tipoTest){
+  
+  var url = "";
+  var code = "";
+
+  switch(tipoTest){
+    case 'Atributos':
+      code = 'TEST_ATRIBUTOS_PROCESO_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestProcesoAtributosAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestProcesoAtributosAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestProcesoAtributosAccionModificar;
+        break;
+      }
+    break;
+    case 'Acciones':
+      code = 'TEST_ACCIONES_PROCESO_OK';
+      switch(accion){
+        case 'Guardar':
+          url = urlPeticionAjaxTestProcesoAccionGuardar;
+        break;
+        case 'Buscar':
+          url = urlPeticionAjaxTestProcesoAccionBuscar;
+        break;
+        case 'Modificar':
+          url = urlPeticionAjaxTestProcesoAccionModificar;
+        break;
+        case 'Eliminar':
+          url = urlPeticionAjaxTestProcesoAccionEliminar;
+        break;
+        case 'Reactivar':
+          url = urlPeticionAjaxTestProcesoAccionReactivar;
+        break;
+      }
+    break;
+  }
+
+  await test(url, code)
+  .then((res) => {
+    let idElementoList = ["iconoTestProceso", "iconoTestProceso" + tipoTest, "iconoTestProceso" + tipoTest + accion];
+    if (tipoTest === 'Acciones') {
+      let atributosValor = ["nombreProceso", "descripProceso", "fechaProceso"];
+      cargarRespuestaOkTest(res.data.datosPruebaAcciones, "cabeceraAccionesProceso" + accion, "cuerpoAccionesProceso" + accion, atributosValor, "Proceso", idElementoList, "acciones");
+    } else if (tipoTest === 'Atributos'){
+      cargarRespuestaOkTest(res.data.datosPruebaAtributos, "cabeceraAtributosProceso" + accion, "cuerpoAtributosProceso" + accion, "", "", idElementoList, "atributos");
+    }
+    }).catch((res) => {
+      cargarModalErroresTest(res.code);
+  });
+}
