@@ -170,7 +170,7 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario){
 										'</div>' + 
 										'<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
 					        				'<img class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>' + 
-											'<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
+											    '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
 					    			'</div>' +
 					    			'<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
 					        				'<img class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>' + 

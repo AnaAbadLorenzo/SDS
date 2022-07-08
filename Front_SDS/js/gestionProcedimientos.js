@@ -6,8 +6,8 @@ async function iniciarProcedimientoUsuario(identificadorProcedimiento, funcional
       window.location.href = "MisProcedimientos.html";
     }).catch((res) => {
           if(res.code == "PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION"){
-            respuestaAjaxProcedimientoUsuario(identificadorProcedimiento);
-            document.getElementById("modal").style.display = "block";
+            respuestaAjaxContinuarProcedimiento(identificadorProcedimiento);
+            document.getElementById("modalContinuarProcedimiento").style.display = "block";
           }else{
             respuestaAjaxKO(res.code);
             document.getElementById("modal").style.display = "block";
@@ -20,8 +20,8 @@ async function iniciarProcedimientoUsuario(identificadorProcedimiento, funcional
       window.location.href = "MisProcedimientos.html";
     }).catch((res) => {
           if(res.code == "PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION"){
-            respuestaAjaxProcedimientoUsuario(identificadorProcedimiento);
-            document.getElementById("modal").style.display = "block";
+            respuestaAjaxContinuarProcedimiento(identificadorProcedimiento);
+            document.getElementById("modalContinuarProcedimiento").style.display = "block";
           }else{
             respuestaAjaxKO(res.code);
             document.getElementById("modal").style.display = "block";

@@ -178,8 +178,6 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
         $('#itemPaginacion').attr('hidden',false);
       }
 
-      document.getElementById("cabecera").style.display = "block";
-
       $("#datosPersona").html("");
       $("#checkboxColumnas").html("");
       $("#paginacion").html("");
@@ -497,11 +495,9 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
       
       if(res.data.listaBusquedas.length == 0){
-          document.getElementById("cabecera").style.display = "none";
-          document.getElementById("cabeceraEliminados").style.display = "block";
+          $('.cabecera').attr('hidden', true);
+          $('.cabeceraEliminados').attr('hidden', false);
       }
-
-      document.getElementById("cabeceraEliminados").style.display = "block";
 
       $("#datosPersona").html("");
       $("#checkboxColumnas").html("");

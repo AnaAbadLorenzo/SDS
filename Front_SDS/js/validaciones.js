@@ -126,7 +126,8 @@ function comprobarLogin(){
 
 /** Función que valida el formulario de recuperación de contraseña **/
 function comprobarRecuperarPass(){
-	if(comprobarUser('userRecuperarPass', 'errorFormatoUserPass', 'loginUsuarioRecPass') && comprobarEmail('emailUser', 'errorFormatoEmail', 'emailUsuarioRecPass')){
+	if(comprobarUser('userRecuperarPass', 'errorFormatoUserPass', 'loginUsuarioRecPass') && 
+		comprobarEmail('emailUser', 'errorFormatoEmailRecPass', 'emailUsuarioRecPass')){
 		return true;
 	}else{
 		return false;
@@ -1660,7 +1661,16 @@ function comprobarAddProceso(){
 		&& comprobarFechaProceso('fechaProceso', 'errorFormatoFechaProceso', 'fechaProceso')
 		&& comprobarDivProcedimientoVacio('procedimientosOrden', 'errorFormatoProcedimientos', 'divProcedimiento')
 		&& comprobarDivObjetivoVacio('objetivosNiveles', 'errorFormatoObjetivos', 'divObjetivo')){
-		return true;
+
+		var numeroObjetivosNivel = getCookie('numeroObjNivel');
+		for (var i = 1; i<=numeroObjetivosNivel; i++){
+			if(comprobarNivel('nivel'+i , 'errorFormatoNivel'+i, 'nivel')){
+				var resultado =  true;
+			}else{
+				var resultado =  false;
+			}
+		}
+		return resultado;
 	}else{
 		return false;
 	}
@@ -1671,7 +1681,26 @@ function comprobarEditProceso(){
 	if(comprobarNombreProceso('nombreProceso', 'errorFormatoNombreProceso', 'nombreProceso') && 
 		comprobarDescripcionProceso('descripcionProceso', 'errorFormatoDescripcionProceso', 'descripProceso')
 		&& comprobarFechaProceso('fechaProceso', 'errorFormatoFechaProceso', 'fechaProceso')){
-		return true;
+
+		var numeroObjetivosNivel = getCookie('numeroObjNivel');
+		for (var i = 1; i<=numeroObjetivosNivel; i++){
+			if(comprobarNivel('nivel'+i , 'errorFormatoNivel'+i, 'nivel')){
+				var resultado =  true;
+			}else{
+				var resultado =  false;
+			}
+		}
+
+		var orden = getCookie('numeroProcedimientosOrden');
+		for (var i = 1; i<=numeroObjetivosNivel; i++){
+			if(comprobarOrden('ordenProceso'+i , 'errorFormatoOrdenProceso'+i, 'orden')){
+				var resultado =  true;
+			}else{
+				var resultado =  false;
+			}
+		}
+
+		return resultado;
 	}else{
 		return false;
 	}
@@ -1679,6 +1708,19 @@ function comprobarEditProceso(){
 
 /** Funcion que comprueba el nivel del objetivo **/
 function comprobarNivel(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloNumeros(idElemento, idElementoError, campo)) {
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
+/** Funcion que comprueba el orden del proceso **/
+function comprobarOrden(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
 
 	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloNumeros(idElemento, idElementoError, campo)) {

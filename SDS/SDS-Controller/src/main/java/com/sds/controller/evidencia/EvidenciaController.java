@@ -30,7 +30,7 @@ public class EvidenciaController {
 		this.validaciones = new Validaciones();
 	}
 
-	@PostMapping(value = "/guardaEvidencia")
+	@PostMapping(value = "/evidencia")
 	@ResponseBody
 	public RespEntity guardaEvidencia(@RequestParam("idProceso") final Integer idProceso,
 			@RequestParam("idProcedimientoUsuario") final Integer idProcedimientoUsuario,

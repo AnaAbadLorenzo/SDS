@@ -208,6 +208,8 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 						} else {
 							procedimientoUsuarioProcesoEntity.setBorradoProcedimientoUsuarioProceso(0);
 							procedimientoUsuarioProcesoEntity.setFechaProcedimientoUsuarioProceso(new Date());
+							procedimientoUsuarioProcesoEntity.setRespuestaPosible(respuestaPosibleBD.get());
+							procedimientoUsuarioProcesoEntity.setProceso(procesoBD.get());
 							procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProcesoEntity);
 
 							final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(

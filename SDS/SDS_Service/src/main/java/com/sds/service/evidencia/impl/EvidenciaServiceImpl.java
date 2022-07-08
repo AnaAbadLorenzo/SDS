@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -98,9 +100,15 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 			LOGGER.debug("Ubicacion archivo '{}'", ubicacionArchivo);
 
-			final String nombreEvidencia = evidencia.getOriginalFilename();
+			final Date actualDate = new Date();
+			final Timestamp timeS = new Timestamp(actualDate.getTime());
+			final String s = new SimpleDateFormat("MMddyyyyHHmmss").format(timeS);
 
-			final File file = new File(ubicacionArchivo, nombreEvidencia);
+			final String nombreEvidencia = evidencia.getOriginalFilename();
+			final String[] extension = nombreEvidencia.split("\\.");
+			final String nuevoNombre = s + "." + extension[1];
+
+			final File file = new File(ubicacionArchivo, nuevoNombre);
 
 			try {
 				if (!file.exists()) {

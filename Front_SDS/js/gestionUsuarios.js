@@ -40,10 +40,8 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
 
       if(res.data.listaBusquedas.length == 0){
         $('#itemPaginacion').attr('hidden',true);
-        document.getElementById("itemPaginacion").style.display = "none";
       }else{
         $('#itemPaginacion').attr('hidden',false);
-        document.getElementById("itemPaginacion").style.display = "block";
       }
 
       $("#datosUsuarios").html("");

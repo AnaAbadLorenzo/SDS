@@ -2,7 +2,6 @@ package com.sds.model;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -50,7 +49,7 @@ public class ProcedimientoUsuarioProcesoEntity {
 	@JoinColumn(name = "id_procedimiento_usuario", referencedColumnName = "id_procedimiento_usuario")
 	private ProcedimientoUsuarioEntity procedimientoUsuario;
 
-	@OneToOne(mappedBy = "procedimientosUsuarioProceso", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "procedimientosUsuarioProceso")
 	private EvidenciaEntity evidencia;
 
 	public ProcedimientoUsuarioProcesoEntity() {

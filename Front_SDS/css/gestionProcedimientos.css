@@ -1,32 +1,9 @@
-@media only screen and (min-width: 320px) and (max-width : 415px) {
-
-.gestion { left: 5% !important;}
-
-h1 { font-size: 1.9rem !important;}
-
-.refreshIcon { margin-left: 43.5% !important;}
-
-.table {  width: 250% !important; max-width: 300% !important; }
-
-.table thead tr th { width: 17% !important;}
-
-}
-
-@media (min-width: 1300px) and (max-width:  1900px){
-
-.refreshIcon { margin-left: 61.5% !important;}
-
-.table thead tr th { width: 17% !important;}
-
-#form-modal .modal-dialog { margin: 6rem auto !important; }
-
-}
-
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;
   display:  block;
 }
+
 
 .formmodal-container input[type=text]{
   height: 30px;

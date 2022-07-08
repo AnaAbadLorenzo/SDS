@@ -780,7 +780,7 @@ async function detalleEmpresa(){
 
       respuestaAjaxKO(res.code);
 
-     let campos = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
+     let idElementoList = ["cifEmpresa", "nombreEmpresa", "direccionEmpresa", "telefonoEmpresa"];
      resetearFormulario("formularioGenerico", idElementoList);
       
       setLang(getCookie('lang'));

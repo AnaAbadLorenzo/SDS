@@ -30,13 +30,16 @@ public interface ProcesoService {
 	ReturnBusquedas<ProcesoEntity> buscarProceso(final String nombreProceso, final String descripProceso,
 			final Date fechaProceso, final int inicio, final int tamanhoPagina);
 
-	ReturnBusquedas<ProcesoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
+	ProcesoEntity buscarProcesoById(final Integer idProceso);
 
-	ProcesoEntity buscarProcesoByIdProceso(final Integer idProceso);
+	ReturnBusquedas<ProcesoEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<ProcesoEntity> buscarProcesosEliminados(final int inicio, final int tamanhoPagina);
 
 	DatosProcesoReturn obtenerDatosProceso(final Integer idProceso);
+
+	DatosProcesoReturn obtenerDatosProcesoByProcesoAndProcedimiento(final Integer idProceso,
+			final Integer idProcedimiento);
 
 	String anadirProceso(final Proceso proceso)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, ProcesoYaExisteException,

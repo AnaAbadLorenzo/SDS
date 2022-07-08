@@ -111,15 +111,19 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 	}
 
 	@Override
-	public ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesosByProcedimiento(final Integer idProcedimiento) {
+	public ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesosByProcedimiento(final Integer idProcedimiento,
+			final int inicio, final int tamanhoPagina) {
 		final List<ProcesoProcedimientoEntity> procesoProcedimientoToret = new ArrayList<>();
 		final List<String> datosBusqueda = new ArrayList<>();
 		List<ProcesoProcedimientoEntity> procesoProcedimientos = new ArrayList<>();
-		final Integer numberTotalResults = 0;
+		Integer numberTotalResults = 0;
 
 		procesoProcedimientos = entityManager
 				.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOSBYPROCEDIMIENTOORDERBYORDEN)
-				.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).getResultList();
+				.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		numberTotalResults = procesoProcedimientoRepository.numberFindAllProcesosOrderByOrden(idProcedimiento);
 
 		if (!procesoProcedimientos.isEmpty()) {
 			for (final ProcesoProcedimientoEntity procesoProcedimiento : procesoProcedimientos) {
@@ -134,7 +138,7 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 		datosBusqueda.add(Constantes.PROCEDIMIENTO_ID + Constantes.DOS_PUNTOS + idProcedimiento);
 
 		final ReturnBusquedas<ProcesoProcedimientoEntity> result = new ReturnBusquedas<>(procesoProcedimientoToret,
-				datosBusqueda, numberTotalResults, procesoProcedimientoToret.size(), 0);
+				datosBusqueda, numberTotalResults, procesoProcedimientoToret.size(), inicio);
 
 		return result;
 	}

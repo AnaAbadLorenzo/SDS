@@ -35,6 +35,7 @@ import com.sds.service.proceso.ProcesoService;
 import com.sds.service.proceso.model.DatosProcesoReturn;
 import com.sds.service.proceso.model.Proceso;
 import com.sds.service.proceso.model.ProcesoBuscar;
+import com.sds.service.proceso.model.ProcesoProcedimientoDatos;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -65,9 +66,9 @@ public class ProcesoController {
 
 	@PostMapping(value = "/listarProcesoById")
 	@ResponseBody
-	public RespEntity buscarProcesoById(@RequestBody final Integer idProceso) {
+	public RespEntity buscarProcesoById(@RequestBody final String idProceso) {
 
-		final ProcesoEntity resultado = procesoService.buscarProcesoByIdProceso(idProceso);
+		final ProcesoEntity resultado = procesoService.buscarProcesoById(Integer.parseInt(idProceso));
 
 		return new RespEntity(RespCode.PROCESO_ENCONTRADO, resultado);
 
@@ -87,6 +88,17 @@ public class ProcesoController {
 	public RespEntity buscarDatosProceso(@RequestBody final String id) {
 		final Integer idProceso = Integer.parseInt(id);
 		final DatosProcesoReturn resultado = procesoService.obtenerDatosProceso(idProceso);
+
+		return new RespEntity(RespCode.DATOS_PROCESOS_LISTADOS, resultado);
+
+	}
+
+	@PostMapping(value = "/listarDatosProcesoByProcesoAndProcedimiento")
+	@ResponseBody
+	public RespEntity buscarDatosProceso(@RequestBody final ProcesoProcedimientoDatos procesoProcedimiento) {
+
+		final DatosProcesoReturn resultado = procesoService.obtenerDatosProcesoByProcesoAndProcedimiento(
+				procesoProcedimiento.getIdProceso(), procesoProcedimiento.getIdProcedimiento());
 
 		return new RespEntity(RespCode.DATOS_PROCESOS_LISTADOS, resultado);
 

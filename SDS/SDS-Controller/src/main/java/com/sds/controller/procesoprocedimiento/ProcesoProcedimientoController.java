@@ -22,6 +22,7 @@ import com.sds.service.exception.ProcesoProcedimientoYaExisteException;
 import com.sds.service.procesoprocedimiento.ProcesoProcedimientoService;
 import com.sds.service.procesoprocedimiento.model.ProcesoProcedimiento;
 import com.sds.service.procesoprocedimiento.model.ProcesoProcedimientoBuscar;
+import com.sds.service.procesoprocedimiento.model.ProcesoProcedimientoPaginacion;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
 
@@ -45,6 +46,17 @@ public class ProcesoProcedimientoController {
 		final ReturnBusquedas<ProcesoProcedimientoEntity> resultado = procesoProcedimientoService
 				.buscarProcesoProcedimiento(procesoProcedimientoBuscar.getIdProceso(),
 						procesoProcedimientoBuscar.getIdProcedimiento());
+
+		return new RespEntity(RespCode.PROCESOS_PROCEDIMIENTOS_LISTADOS, resultado);
+	}
+
+	@PostMapping(value = "/listarProcesosProcedimientoByIdProcedimiento")
+	@ResponseBody
+	public RespEntity buscarProcesoProcedimientoByIdProcedimiento(
+			@RequestBody final ProcesoProcedimientoPaginacion procesoProcedimientoPaginacion) {
+		final ReturnBusquedas<ProcesoProcedimientoEntity> resultado = procesoProcedimientoService
+				.buscarProcesosByProcedimiento(procesoProcedimientoPaginacion.getIdProcedimiento(),
+						procesoProcedimientoPaginacion.getInicio(), procesoProcedimientoPaginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCESOS_PROCEDIMIENTOS_LISTADOS, resultado);
 	}

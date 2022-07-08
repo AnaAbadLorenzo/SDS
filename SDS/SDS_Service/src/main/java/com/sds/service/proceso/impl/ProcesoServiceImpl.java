@@ -167,17 +167,19 @@ public class ProcesoServiceImpl implements ProcesoService {
 	}
 
 	@Override
-	public ProcesoEntity buscarProcesoByIdProceso(final Integer idProceso) {
-		final Optional<ProcesoEntity> procesoEntity = procesoRepository.findById(idProceso);
-		ProcesoEntity procesoToret = new ProcesoEntity();
+	public ProcesoEntity buscarProcesoById(final Integer idProceso) {
+		ProcesoEntity procesoEntity = new ProcesoEntity();
 
-		if (!procesoEntity.isPresent()) {
-			procesoToret = new ProcesoEntity(procesoEntity.get().getIdProceso(), procesoEntity.get().getNombreProceso(),
-					procesoEntity.get().getDescripProceso(), procesoEntity.get().getFechaProceso(),
-					procesoEntity.get().getBorradoProceso());
+		final Optional<ProcesoEntity> procesoBD = procesoRepository.findById(idProceso);
+
+		if (procesoBD.isPresent()) {
+			procesoEntity = new ProcesoEntity(procesoBD.get().getIdProceso(), procesoBD.get().getNombreProceso(),
+					procesoBD.get().getDescripProceso(), procesoBD.get().getFechaProceso(),
+					procesoBD.get().getBorradoProceso());
 		}
 
-		return procesoToret;
+		return procesoEntity;
+
 	}
 
 	@Override
@@ -190,6 +192,54 @@ public class ProcesoServiceImpl implements ProcesoService {
 
 		final List<ProcesoProcedimientoEntity> procesosProcedimientos = procesoProcedimientoRepository
 				.findProcesoProcedimientoByIdProceso(idProceso);
+		for (final ProcesoProcedimientoEntity procesoProc : procesosProcedimientos) {
+			final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
+					.findById(procesoProc.getIdProcedimiento());
+			final Procedimiento procedimiento = new Procedimiento(procedimientoBD.get().getIdProcedimiento(),
+					procedimientoBD.get().getNombreProcedimiento());
+			procedimientos.add(procedimiento);
+			ordenProceso.add(procesoProc.getOrdenProceso());
+
+		}
+
+		final List<NivelEntity> objetivosProceso = nivelRepository.findNivelByIdProceso(idProceso);
+		for (final NivelEntity nivel : objetivosProceso) {
+			final Optional<ObjetivoEntity> objetivoBD = objetivoRepository.findById(nivel.getIdObjetivo());
+			final Objetivo objetivo = new Objetivo(objetivoBD.get().getIdObjetivo(),
+					objetivoBD.get().getNombreObjetivo());
+			objetivos.add(objetivo);
+			niveles.add(nivel.getNivel());
+
+		}
+
+		final List<ProcesoRespuestaPosibleEntity> respuestasProceso = procesoRespuestaPosibleRepository
+				.findRespuestaPosibleByIdProceso(idProceso);
+		for (final ProcesoRespuestaPosibleEntity procesoRespuestaPosible : respuestasProceso) {
+			final Optional<RespuestaPosibleEntity> respuestaPosibleBD = respuestaPosibleRepository
+					.findById(procesoRespuestaPosible.getIdRespuesta());
+			final RespuestaPosible respuestaPosible = new RespuestaPosible(respuestaPosibleBD.get().getIdRespuesta(),
+					respuestaPosibleBD.get().getTextoRespuesta());
+			respuestasPosibles.add(respuestaPosible);
+
+		}
+
+		final DatosProcesoReturn datosProceso = new DatosProcesoReturn(procedimientos, objetivos, respuestasPosibles,
+				niveles, ordenProceso);
+
+		return datosProceso;
+	}
+
+	@Override
+	public DatosProcesoReturn obtenerDatosProcesoByProcesoAndProcedimiento(final Integer idProceso,
+			final Integer idProcedimiento) {
+		final List<Procedimiento> procedimientos = new ArrayList<>();
+		final List<Objetivo> objetivos = new ArrayList<>();
+		final List<RespuestaPosible> respuestasPosibles = new ArrayList<>();
+		final List<Integer> niveles = new ArrayList<>();
+		final List<Integer> ordenProceso = new ArrayList<>();
+
+		final List<ProcesoProcedimientoEntity> procesosProcedimientos = procesoProcedimientoRepository
+				.findProcesoProcedimiento(idProceso, idProcedimiento);
 		for (final ProcesoProcedimientoEntity procesoProc : procesosProcedimientos) {
 			final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
 					.findById(procesoProc.getIdProcedimiento());

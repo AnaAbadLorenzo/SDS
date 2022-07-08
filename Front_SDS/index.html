@@ -55,23 +55,23 @@
 	  	</div>  
 	</nav>
 
-	<img src="images/iconoIndex2.png" class="mx-auto d-block img-2 img-s-2"></img>
+	<img src="images/iconoIndex2.png" class="mx-auto d-block img2 img-2 img-s-2"></img>
 
 	<div class="row">
-		 	<div class="col-xl-5 col-s-1"></div>
-	    <div class="col-xl-1 col-s-5">
+		 	<div class="col-xl-5 col col-5 col-s-5"></div>
+	    <div class="col-xl-1 col col-1 col-s-1">
 			<a href="#" data-toggle="modal" data-target="#login-modal" class="tooltip">
 				<img src="images/login.png" class="float-right iconoLogin"></img>
 				<span class="tooltiptext ICONO_LOGIN"></span>
 			</a>
 		</div>
-		<div class="col-xl-1 col-s-5">
+		<div class="col-xl-1 col col-1 col-s-1">
 			<a href="#" data-toggle="modal" data-target="#registro-modal" class="tooltip2" onclick="obtenerEmpresas()">
 				<img src="images/registrar.png" class="float-left iconoRegistro"></img>
 				<span class="tooltiptext2 ICONO_REGISTRAR"></span>
 			</a>
 		</div>
-		<div class="col-xl-5 col-s-1"></div>
+		<div class="col-xl-5 col col-5 col-s-5"></div>
 	</div>
 
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -281,13 +281,13 @@
 			<div class="recuperarcontrasenamodal-container">
 				<h1 class="OLVIDAR_CONTRASENA"></h1>
 				<div class="rellenarPass RELLENAR_FORM_PASS"></div><br>
-				<form name="formularioRecuperarPass" id="formularioRecuperarPass" action="javascript:recuperarPass()" onblur="return comprobarRecuperarPass()">
+				<form name="formularioRecuperarPass" id="formularioRecuperarPass" action="javascript:recuperarPass()" onsubmit="return comprobarRecuperarPass()">
 					
 					<input type="text" name="LOGIN_USUARIO" class="LOGIN_USUARIO" maxlength="45" size="45" id="userRecuperarPass" placeholder="Usuario" onblur="return comprobarUser('userRecuperarPass', 'errorFormatoUserPass', 'loginUsuarioRecPass');">
 					<div style="display:none" id="errorFormatoUserPass"></div>
 					
-					<input type="email" name="EMAIL_USUARIO" class="EMAIL_USUARIO" maxlength="48" size="48" id="emailUser" placeholder="Email" onblur="return comprobarEmail('emailUser', 'errorFormatoEmail', 'emailUsuarioRecPass');">
-					<div style="display:none" id="errorFormatoEmail"></div>
+					<input type="email" name="EMAIL_USUARIO" class="EMAIL_USUARIO" maxlength="48" size="48" id="emailUser" placeholder="Email" onblur="return comprobarEmail('emailUser', 'errorFormatoEmailRecPass', 'emailUsuarioRecPass');">
+					<div style="display:none" id="errorFormatoEmailRecPass"></div>
 					<small>Formato: ejemplo@ejemplo.es</small>
 					
 					<button type="submit" name="btnResetPass" value="Recuperar Contraseña" class="btnResetPass tooltip4">

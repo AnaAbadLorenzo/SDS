@@ -52,7 +52,8 @@ function addProcedimientosOrden(){
 					for(var i = 0; i<listaBusquedasProcedimientos.length; i++){
 						options += '<option value=' + (listaBusquedasProcedimientos[i])[0] + '>' + (listaBusquedasProcedimientos[i])[1]  + '</option>';
 					}
-	procedimientosOrden += options;        
+	
+  procedimientosOrden += options;        
 
 	var procedimientosOrden2 =     '</select>' +
 						  		'<div class="obligatorio tooltip2" id="obligatorioProcedimientos'+idProcedimientoOrden+'">*' +
@@ -91,13 +92,13 @@ function eliminarProcedimientosOrden(idProcedimientosOrden){
 /**Función que envía el fichero a back IMPORTANTE ES UNA FUNCIÓN DE PRUEBA QUE HABRÁ QUE CAMBIAR
  * PARA QUE QUEDE COMO LAS DEMÁS COMO UNA PROMESA, ESTO ES SÓLO PARA EL ENVIO DEL FICHERO CON 
  * PETICIÓN AJAX*/
-function enviarRespuesta(idFile){
+/*function enviarRespuesta(idFile){
     var token = getCookie('tokenUsuario');
     var evidencia = $("#" + idFile).prop("files")[0];
 
     var formData = new FormData();
     formData.append("file", evidencia);
-    formData.append("idProceso", 1);
+    formData.append("idProceso", $('#idProceso').val());
     formData.append("idProcedimientoUsuario", 1);
 
     $.ajax({
@@ -117,6 +118,131 @@ function enviarRespuesta(idFile){
       	}).fail( function( jqXHR ) {
         	errorFailAjax(jqXHR.status);
       	});
+}*/
+
+/**Función para enviar respuestas **/
+function enviarRespuesta(idProceso, idFile){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    var evidencia = $("#" + idFile).prop("files")[0];
+
+    var formData = new FormData();
+    formData.append("file", evidencia);
+    formData.append("idProceso", idProceso);
+    formData.append("idProcedimientoUsuario", getCookie('idProcedimientoUsuario'));
+    formData.append("usuario", getCookie('usuario'));
+
+    
+    $.ajax({
+      method: "POST",
+        url: urlPeticionAjaxGuardarEvidencia,
+        contentType : "application/json",
+        data: formData,  
+        cache: false,
+        contentType: false,
+        processData: false,
+        headers: {'Authorization': token},
+        }).done(res => {
+          if (res.code != 'EVIDENCIA_GUARDADA') {
+            reject(res);
+          }
+          resolve(res);
+        }).fail( function( jqXHR ) {
+          errorFailAjax(jqXHR.status);
+        });
+  });
+}
+
+/**Funcion para enviar el procedimientoUsuarioProceso **/
+function guardarProcedimientoUsuarioProceso(idProceso){
+    return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var procedimiento = {
+      idProcedimiento: '',
+      nombreProcedimiento : '',
+      descripProcedimiento : '',
+      fechaProcedimiento : '',
+      checkUsuario : '',
+      plan : {
+        idPlan : '',
+        nombrePlan : '',
+        descripPlan : '',
+        fechaPlan : '',
+        borradoPlan : '',
+        objetivo : {
+          idObjetivo : '',
+          nombreObjetivo : '',
+          descripObjetivo : '',
+          borradoObjetivo : ''
+        }
+      },
+      borradoProcedimiento : ''
+    }
+
+    var usuario = {
+      dniUsuario : '',
+      usuario : '',
+      passwdUsuario : '',
+      borradoUsuario : '',
+    }
+    
+    var procedimientoUsuarioProceso = {
+      idProcedimientoUsuarioProceso : "",
+      fechaProcedimientoUsuarioProceso : "",
+      borradoProcedimientoUsuarioProceso : 0,
+      respuestaPosible : {
+        idRespuesta : $('input[name=respuestaPosible]:checked').val(),
+        textoRespuesta : "",
+        borradoRespuesta : ""
+      },
+
+      proceso : {
+        idProceso : idProceso,
+        nombreProceso : "",
+        descripProceso : "",
+        fechaProceso : "",
+        borradoProceso : ""
+      },
+
+      procedimientoUsuario : {
+        idProcedimientoUsuario : getCookie('idProcedimientoUsuario'),
+        puntuacionProcedimientoUsuario : "",
+        fechaProcedimientoUsuario : "",
+        borradoProcedimientoUsuario : "",
+        procedimiento : procedimiento,
+        usuario : usuario
+      },
+
+      /*evidencia : {
+        idEvidencia : '',
+        fechaEvidencia : '',
+        borradoEvidencia : 0,
+        nombreFichero : ''
+      }*/
+    }
+
+    var data = {
+      usuario : getCookie('usuario'),
+      procedimientoUsuarioProceso : procedimientoUsuarioProceso
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxAddProcedimientoUsuarioProceso,
+      contentType : "application/json",
+      data: JSON.stringify(data),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCEDIMIENTO_USUARIO_PROCESO_GUARDADO') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
 }
 
 /**Función para cargar las respuestas posibles de BD **/
@@ -431,6 +557,7 @@ function editarProcesoAjaxPromesa(){
       });
   });
 }
+
 
 /** Función para buscar procesos con ajax y promesas **/
 function buscarProcesoAjaxPromesa(numeroPagina, tamanhoPagina, accion){
@@ -773,16 +900,63 @@ function cargarProcesosAjaxPromesa(numeroPagina, tamanhoPagina){
 function cargarDatosProceso(idProceso){
   return new Promise(function(resolve, reject) {
   	var token = getCookie('tokenUsuario');
-
-    var data = {
-      id : idProceso.toString()
-    }
     
     $.ajax({
       method: "POST",
       url: urlPeticionAjaxListarDatosProceso,
       contentType : "application/json",
       data: idProceso.toString(),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(result => {
+        if (result.code != 'DATOS_PROCESOS_LISTADOS') {
+          reject(result);
+        }
+        resolve(result);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/** Función para recuperar los procesos con ajax y promesas **/
+function listarProcesoById(idProceso){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarProcesoById,
+      contentType : "application/json",
+      data: idProceso.toString(),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(result => {
+        if (result.code != 'PROCESO_ENCONTRADO') {
+          reject(result);
+        }
+        resolve(result);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
+/** Función para recuperar los procesos con ajax y promesas **/
+function cargarDatosProcesoByProcesoAndProcedimiento(idProceso, idProcedimiento){
+  return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+
+    var procesoProcedimiento = {
+      idProceso : idProceso,
+      idProcedimiento : parseInt(idProcedimiento)
+    }
+    
+    $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListarDatosProcesoByIdProcesoAndIdProcedimiento,
+      contentType : "application/json",
+      data: JSON.stringify(procesoProcedimiento),  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(result => {
@@ -980,9 +1154,41 @@ function reactivarProcesosAjaxPromesa(){
   });
 }
 
+function cargarProcesosProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, idProcedimiento){
+   return new Promise(function(resolve, reject) {
+    var token = getCookie('tokenUsuario');
+    
+    var procesoProcedimientoPaginacion = {
+      idProcedimiento : idProcedimiento,
+      inicio : calculaInicio(numeroPagina, tamanhoPaginaProceso),
+      tamanhoPagina : tamanhoPaginaProceso
+    }
+
+     $.ajax({
+      method: "POST",
+      url: urlPeticionAjaxListadoProcesosProcedimientoByIdProcedimiento,
+      contentType : "application/json",
+      data: JSON.stringify(procesoProcedimientoPaginacion),  
+      dataType : 'json',
+      headers: {'Authorization': token},
+      }).done(res => {
+        if (res.code != 'PROCESOS_PROCEDIMIENTOS_LISTADOS') {
+          reject(res);
+        }
+        resolve(res);
+      }).fail( function( jqXHR ) {
+        errorFailAjax(jqXHR.status);
+      });
+  });
+}
+
 /* Función para obtener los procesos del sistema */
 async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
 	if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor"){
+    document.getElementById('procesosUsuario').style.display = "none";
+    document.getElementById('cabecera').style.display = "block";
+    document.getElementById('tablaDatos').style.display = "block";
+    document.getElementById('filasTabla').style.display = "block";
 	try {
 		cargarPermisosFuncProceso();
     	const resultado = await cargarProcesosAjaxPromesa(numeroPagina, tamanhoPagina);
@@ -991,19 +1197,19 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
         var inicio = 0;
 	    if(resultado.data.listaBusquedas.length == 0){
 	        inicio = 0;
-	        $('#itemPaginacion').attr('hidden',true);
+	        document.getElementById('itemPaginacion').style.display = "none";
 	        document.getElementById('cabecera').style.display = "block";
-            document.getElementById('cabeceraEliminados').style.display = "none";
+          document.getElementById('cabeceraEliminados').style.display = "none";
 	    }else{
 	        inicio = parseInt(resultado.data.inicio)+1;
-	         $('#itemPaginacion').attr('hidden',false);
+	        document.getElementById('itemPaginacion').style.display = "block";
 	    }
 
       	var textPaginacion = inicio + " - " + (parseInt(resultado.data.inicio)+parseInt(numResults))  + " total " + totalResults;
 
       	$("#datosProceso").html("");
-	   	$("#checkboxColumnas").html("");
-	   	$("#paginacion").html("");
+	   	  $("#checkboxColumnas").html("");
+	   	  $("#paginacion").html("");
 
 	   	for (var i = 0; i < resultado.data.listaBusquedas.length; i++){
 	   		try{
@@ -1038,11 +1244,69 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
     
   	} catch (resultado) {
     	respuestaAjaxKO(resultado.code);
-		document.getElementById("modal").style.display = "block";
+		  document.getElementById("modal").style.display = "block";
   	}
 	
 	}else{
-    await cargarProcesosProcedimientoAjaxPromesa(numeroPagina, 4)
+    $('#procesos').html('');
+    document.getElementById('procesosUsuario').style.display = "block";
+    document.getElementById('cabecera').style.display = "none";
+    document.getElementById('tablaDatos').style.display = "none";
+    document.getElementById('filasTabla').style.display = "block";
+    try{
+      const resultado = await cargarProcesosProcedimientoAjaxPromesa(numeroPagina, tamanhoPagina, getCookie('idProcedimiento'));
+      var numResults = resultado.data.numResultados + '';
+      var totalResults = resultado.data.tamanhoTotal + '';
+      var inicio = 0;
+      if(resultado.data.listaBusquedas.length == 0){
+          inicio = 0;
+          document.getElementById('itemPaginacion').style.display = "none";
+      }else{
+          inicio = parseInt(resultado.data.inicio)+1;
+          document.getElementById('itemPaginacion').style.display = "block";
+      }
+
+      var textPaginacion = inicio + " - " + (parseInt(resultado.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+      var procesosOrdenados = resultado.data.listaBusquedas;
+      
+      for(var i = 0; i<procesosOrdenados.length; i++){
+          try{
+            const resultadoProceso = await listarProcesoById(procesosOrdenados[i].idProceso);
+            const res = await cargarDatosProcesoByProcesoAndProcedimiento(procesosOrdenados[i].idProceso, getCookie('idProcedimiento'));
+            var tr = cargarProcesosUsuario(resultadoProceso.data, res.data);
+            $('#procesos').append(tr);
+          }catch(res){
+            respuestaAjaxKO(res.code);
+            document.getElementById("modal").style.display = "block";
+          }
+      }
+
+      $("#paginacion").html("");
+      $("#paginacion").append(textPaginacion);
+      setLang(getCookie('lang'));
+
+      if(paginadorCreado != 'PaginadorCreado'){
+        paginador(totalResults, 'cargarProcesos', 'PROCESO');
+      }
+            
+      if(numeroPagina == 0){
+        var numero = numeroPagina+1;
+        $('#itemPaginacion li#' + numero).addClass("active");
+        var numPagCookie = numeroPagina+1;
+      }else{
+        $('#itemPaginacion li#' + numeroPagina).addClass("active");
+        var numPagCookie = numeroPagina;
+      }
+
+      setCookie('numeroPagina', numPagCookie);
+    
+
+
+    }catch (resultado) {
+      respuestaAjaxKO(resultado.code);
+      document.getElementById("modal").style.display = "block";
+    }
+    
   }
 }
 
@@ -1948,7 +2212,7 @@ function gestionarPermisosProceso(idElementoList) {
   document.getElementById('cabecera').style.display = "none";
   document.getElementById('tablaDatos').style.display = "none";
   document.getElementById('filasTabla').style.display = "none";
-  $('#itemPaginacion').attr('hidden', true);
+  document.getElementById('itemPaginacion').style.display = "block";
 
   idElementoList.forEach( function (idElemento) {
     switch(idElemento){
@@ -1984,16 +2248,29 @@ function gestionarPermisosProceso(idElementoList) {
         document.getElementById('cabecera').style.display = "block";
         document.getElementById('tablaDatos').style.display = "block";
         document.getElementById('filasTabla').style.display = "block";
-         $('#itemPaginacion').attr('hidden', false);
+        document.getElementById('itemPaginacion').style.display = "block";
 
         if(document.getElementById('cabeceraEliminados').style.display == "block"){
            document.getElementById('cabecera').style.display = "none";
 
            var texto = document.getElementById('paginacion').innerHTML;
            if(texto == "0 - 0 total 0"){
-           $('#itemPaginacion').attr('hidden', true);
+           document.getElementById('itemPaginacion').style.display = "none";
           }
 
+        }
+
+        if(getCookie('rolUsuario') == "usuario"){
+           document.getElementById('cabecera').style.display = "none";
+           document.getElementById('tablaDatos').style.display = "none";
+           document.getElementById('filasTabla').style.display = "block";
+
+          var texto = document.getElementById('paginacion').innerHTML;
+          if(texto == "0 - 0 total 0"){
+           document.getElementById('itemPaginacion').style.display = "none";
+          }else{
+             document.getElementById('itemPaginacion').style.display = "block";
+          }
         }
 
       break;
@@ -2014,6 +2291,44 @@ function gestionarPermisosProceso(idElementoList) {
 
     } 
     }); 
+}
+
+function cargarProcesosUsuario(proceso, datosProceso){
+  var proc = "";
+
+  proc = '<div class="col-md-4 col-lg-6 col-xl-6 mb-4 paddingTop">' +
+              '<form enctype="multipart/form-data" id="" method="post">' + 
+                  '<div class="bordesPreguntas">' + 
+                    '<div class="proceso">' + 
+                        '<div class="ordenProceso">' + datosProceso.ordenProceso + '.- </div>' +
+                        '<div class="nombreProceso">' + proceso.descripProceso + '</div>' +
+                    '</div>' +
+                    '<div class="respuestas">';
+
+  for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
+    var respuestas = '<input type="radio" id="' + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
+                        '<label for="' + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
+
+    proc += respuestas;
+  } 
+
+  var proceso2 = '</div>' + 
+                    '<div class="evidencia">' + 
+                        '<label for="myfile">Selecciona una evidencia:</label>' + 
+                        '<input type="file" id="myfile" name="myfile"><br><br>' + 
+                    '</div>' + 
+                  '<div name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso+ ');enviarRespuesta(' + proceso.idProceso + ',\'myfile\')" class="tooltip6 uploadIcon">' +
+                      '<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />' +
+                      '<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>' + 
+                  '</div>' +
+                '</div>' +
+              '</form>' +
+            '</div>';
+
+  proc += proceso2;
+
+  return proc;
+
 }
 
 $(document).ready(function() {

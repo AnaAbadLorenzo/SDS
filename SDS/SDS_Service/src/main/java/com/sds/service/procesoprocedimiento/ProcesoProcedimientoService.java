@@ -17,7 +17,8 @@ public interface ProcesoProcedimientoService {
 	ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesoProcedimiento(final Integer idProceso,
 			final Integer idProcedimiento);
 
-	ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesosByProcedimiento(final Integer idProcedimiento);
+	ReturnBusquedas<ProcesoProcedimientoEntity> buscarProcesosByProcedimiento(final Integer idProcedimiento,
+			final int inicio, final int tamanhoPagina);
 
 	public String anadirProcesoProcedimiento(final ProcesoProcedimiento procesoProcedimiento)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException,

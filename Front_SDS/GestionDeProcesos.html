@@ -34,7 +34,7 @@
 	comprobarTokenUsuario('proceso');
   	await includeTopMenu('proceso');
     await funcionalidadesUsuario();
-    await cargarProcesos(0,tamanhoPaginaProceso, 'PaginadorNo');
+    await cargarProcesos(0, tamanhoPaginaProceso, 'PaginadorNo');
     await cargarRespuestasPosibles();await cargarProcedimientos();
     await cargarObjetivos();await cargarProcedimientos();
     cambiarTituloGestion('proceso');modalCambioPass();cargarIdioma();includeFooter();setLang('');setCookie('numeroObjNivel', 1);setCookie('numeroProcedimientosOrden', 1)
@@ -127,119 +127,9 @@
 
 	<div id="procesosUsuario" class="procesos overflow-auto" style="display:none;">
 		<div id="procesos" class="row">
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4 paddingTop">	
-				<form enctype="multipart/form-data" id="" method="post">
-					<div class="bordesPreguntas">
-			    		<div class="proceso">
-			    			<div class="ordenProceso">1.-</div>
-			    			<div class="nombreProceso">¿Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.?</div>
-			    		</div>
-			    		<div class="respuestas">
-			    			<input type="radio" id="si" name="respuestaPosible" value="Sí">
-	  						<label for="si">Sí</label><br>
-	  						<input type="radio" id="no" name="respuestaPosible" value="No">
-	  						<label for="no">No</label><br>
-	  						<input type="radio" id="aVeces" name="respuestaPosible" value="A veces">
-	  						<label for="aVeces">A veces</label><br>
-			    		</div>
-			    		<div class="evidencia">
-			    			<label for="myfile">Selecciona una evidencia:</label>
-	  						<input type="file" id="myfile" name="myfile"><br><br>
-			    		</div>
-			    		<div name="btnUpload" value="Upload" onclick="javascript:enviarRespuesta('myfile')" class="tooltip6 uploadIcon">
-	  			  			<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />
-	    					<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>
-	  			  		</div>
-			    	</div>
-			    </form>
-		    </div>
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4 paddingTop">
-				<div class="bordesPreguntas">
-		    		<div class="proceso">
-		    			<div class="ordenProceso">2.-</div>
-		    			<div class="nombreProceso">¿Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.?</div>
-		    		</div>
-		    		<div class="respuestas">
-		    			<input type="radio" id="si" name="respuestaPosible2" value="Sí">
-  						<label for="si">Sí</label><br>
-  						<input type="radio" id="no" name="respuestaPosible2" value="No">
-  						<label for="no">No</label><br>
-  						<input type="radio" id="aVeces" name="respuestaPosible2" value="A veces">
-  						<label for="aVeces">A veces</label><br>
-		    		</div>
-		    		<div class="evidencia">
-		    			<label for="myfile">Selecciona una evidencia:</label>
-  						<input type="file" id="myfile" name="myfile"><br><br>
-		    		</div>
-		    		<div name="btnUpload" value="Upload" onclick="" class="tooltip6 uploadIcon">
-  			  			<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />
-    					<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>
-  			  		</div>
-		    	</div>
-			</div>
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4 paddingTop">	
-				<div class="bordesPreguntas">
-		    		<div class="proceso">
-		    			<div class="ordenProceso">3.-</div>
-		    			<div class="nombreProceso">¿Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.?</div>
-		    		</div>
-		    		<div class="respuestas">
-		    			<input type="radio" id="si" name="respuestaPosible3" value="Sí">
-  						<label for="si">Sí</label><br>
-  						<input type="radio" id="no" name="respuestaPosible3" value="No">
-  						<label for="no">No</label><br>
-  						<input type="radio" id="aVeces" name="respuestaPosible3" value="A veces">
-  						<label for="aVeces">A veces</label><br>
-		    		</div>
-		    		<div class="evidencia">
-		    			<label for="myfile">Selecciona una evidencia:</label>
-  						<input type="file" id="myfile" name="myfile"><br><br>
-		    		</div>
-		    		<div name="btnUpload" value="Upload" onclick="" class="tooltip6 uploadIcon">
-  			  			<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />
-    					<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>
-  			  		</div>
-		    	</div>
-		    </div>
-			<div class="col-md-4 col-lg-6 col-xl-6 mb-4 paddingTop">
-				<div class="bordesPreguntas">
-		    		<div class="proceso">
-		    			<div class="ordenProceso">4.-</div>
-		    			<div class="nombreProceso">¿Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.?</div>
-		    		</div>
-		    		<div class="respuestas">
-		    			<input type="radio" id="si" name="respuestaPosible4" value="Sí">
-  						<label for="si">Sí</label><br>
-  						<input type="radio" id="no" name="respuestaPosible4" value="No">
-  						<label for="no">No</label><br>
-  						<input type="radio" id="aVeces" name="respuestaPosible4" value="A veces">
-  						<label for="aVeces">A veces</label><br>
-		    		</div>
-		    		<div class="evidencia">
-		    			<label for="myfile">Selecciona una evidencia:</label>
-  						<input type="file" id="myfile" name="myfile"><br><br>
-		    		</div>
-		    		<div name="btnUpload" value="Upload" onclick="" class="tooltip6 uploadIcon">
-  			  			<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />
-    					<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>
-  			  		</div>
-		    	</div>
-			</div>
 		</div>
 	</div>
 
-	<div id="anteriorUsuario" class="anterior" style="display: none;">
-		<div name="btnAnterior" value="Anterior" onclick="" class="tooltip6 anteriorIcon">
-	        <img class="iconoAnterior iconAnterior" src="images/anterior2.png" alt="Volver" />
-	        <span class="tooltiptext iconAnterior ICON_ANTERIOR">Anterior</span>
-	    </div>   
-	</div>
-	<div id="siguienteUsuario" class="siguiente" style="display: none;">
-		<div name="btnSiguiente" value="Siguiente" onclick="" class="tooltip6 siguienteIcon">
-	        <img class="iconoSiguiente iconSiguiebte" src="images/siguiente.png" alt="Volver" />
-	        <span class="tooltiptext iconSiguiente ICON_SIGUIENTE">Siguiente</span>
-	    </div>   
-	</div>
 
 	<div class="filasTabla" id="filasTabla" style="display: block;">
 			<div id="paginacion"></div>

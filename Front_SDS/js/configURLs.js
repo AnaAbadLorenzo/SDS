@@ -21,7 +21,9 @@ var urlPlan = "/plan";
 var urlProcedimiento = "/procedimiento";
 var urlProcedimientosUsuario = "/procedimientoUsuario";
 var urlProcesoProcedimiento = "/procesoProcedimiento";
+var urlProcedimientoUsuarioProceso = "/procedimientoUsuarioProceso";
 var urlProceso = "/proceso";
+var urlEvidencia = "/evidencia";
 var urlTest = "/test";
 var urlAtributos = "/atributos";
 var urlAcciones = "/acciones";
@@ -144,8 +146,18 @@ var urlPeticionAjaxListarProcedimientosUsuario = urlComun + urlProcedimientosUsu
 var urlPeticionAjaxAddProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/procedimientoUsuario';
 var urlPeticionAjaxListarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuario';
 
+/**Urls procedimientoUsuarioProceso **/
+var urlPeticionAjaxAddProcedimientoUsuarioProceso = urlComun + urlProcedimientoUsuarioProceso + '/procedimientoUsuarioProceso';
+
+
 /**Urls procesoProcedimiento **/
 var urlPeticionAjaxListadoProcesosProcedimiento = urlComun + urlProcesoProcedimiento + '/listarProcesosProcedimiento';
+var urlPeticionAjaxListadoProcesosProcedimientoByIdProcedimiento = urlComun + urlProcesoProcedimiento + '/listarProcesosProcedimientoByIdProcedimiento';
+
+/**Urls evidencia **/
+var urlPeticionAjaxGuardarEvidencia = urlComun + urlEvidencia + '/evidencia';
+var urlPeticionAjaxListadoProcesosProcedimientoByIdProcedimiento = urlComun + urlProcesoProcedimiento + '/listarProcesosProcedimientoByIdProcedimiento';
+
 
 /**Urls usuarios*/
 var urlPeticionAjaxListarUsuario = urlComun + urlUsuario + "/listarUsuario";
@@ -171,8 +183,10 @@ var urlPeticionAjaxAddProceso = urlComun + urlProceso + '/proceso';
 var urlPeticionAjaxEditProceso = urlComun + urlProceso + '/modificarProceso';
 var urlPeticionAjaxListarProceso = urlComun + urlProceso + "/listarProceso";
 var urlPeticionAjaxListarDatosProceso = urlComun + urlProceso + "/listarDatosProceso";
+var urlPeticionAjaxListarDatosProcesoByIdProcesoAndIdProcedimiento = urlComun + urlProceso + "/listarDatosProcesoByProcesoAndProcedimiento";
 var urlPeticionAjaxDeleteProceso = urlComun + urlProceso + "/eliminarProceso";
 var urlPeticionAjaxListarProcesosEliminados = urlComun + urlProceso + "/listarProcesosEliminados";
+var urlPeticionAjaxListarProcesoById = urlComun + urlProceso + "/listarProcesoById";
 
 /**Urls de las peticiones Ajax de test de atributos*/
 var urlPeticionAjaxTestLoginAtributos = urlComun + urlTest + urlLogin + urlAtributos;
