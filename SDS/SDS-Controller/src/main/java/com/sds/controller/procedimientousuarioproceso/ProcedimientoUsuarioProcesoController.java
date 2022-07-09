@@ -22,6 +22,7 @@ import com.sds.service.exception.ProcesoNoExisteException;
 import com.sds.service.exception.RespuestaPosibleNoExisteException;
 import com.sds.service.procedimientousuarioproceso.ProcedimientoUsuarioProcesoService;
 import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProceso;
+import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProcesoBuscar;
 import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioProcesoReturn;
 import com.sds.service.util.CodeMessageErrors;
 import com.sds.service.util.validaciones.Validaciones;
@@ -44,6 +45,19 @@ public class ProcedimientoUsuarioProcesoController {
 	public RespEntity buscarTodosPaginacion(@RequestBody final Paginacion paginacion) {
 		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> resultado = procedimientoUsuarioProcesoService
 				.buscarTodosPaginacion(paginacion.getInicio(), paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS, resultado);
+	}
+
+	@PostMapping(value = "/listarProcedimientoUsuarioProceso")
+	@ResponseBody
+	public RespEntity buscarTodosPaginacion(
+			@RequestBody final ProcedimientoUsuarioProcesoBuscar procedimientoUsuarioProceso) {
+		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> resultado = procedimientoUsuarioProcesoService
+				.buscarProcedimientoUsuarioProceso(procedimientoUsuarioProceso.getProcedimiento(),
+						procedimientoUsuarioProceso.getUsuario(), procedimientoUsuarioProceso.getProceso(),
+						procedimientoUsuarioProceso.getFechaProcedimientoUsuarioProceso(),
+						procedimientoUsuarioProceso.getInicio(), procedimientoUsuarioProceso.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS, resultado);
 	}

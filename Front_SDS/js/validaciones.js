@@ -1857,6 +1857,31 @@ function comprobarFechaProcedimientoEjecutadoSearch(idElemento, idElementoError,
 	}
 }
 
+/** Funcion que valida el formato de la fecha de procedimiento **/
+function comprobarFechaProcesoEjecutadoSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 10, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
 /**Función que valida el buscar del procedimiento **/
 function comprobarBuscarProcedimiento(){
 	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
@@ -1874,6 +1899,18 @@ function comprobarBuscarProcedimientoEjecutado(){
 		comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario')
 		&& comprobarFechaProcedimientoEjecutadoSearch('fechaProcedimientoEjecutado', 'errorFormatoFechaProcedimientoEjecutado', 'fechaProcedimientoEjecutado')
 		&& comprobarPuntuacionProcedimientoEjecutadoSearch('puntuacionProcedimientoEjecutado', 'errorFormatoPuntuacionProcedimientoEjecutado', 'puntuacionProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el buscar del procedimiento ejecutado **/
+function comprobarBuscarProcedimientoEjecutado(){
+	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
+		comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario') &&
+		comprobarNombreProcesoSearch('nombreProceso', 'errorFormatoNombreProceso', 'nombreProceso') 
+		&& comprobarFechaProcesoEjecutadoSearch('fechaProcedimientoEjecutado', 'errorFormatoFechaProcedimientoEjecutado', 'fechaProcedimientoEjecutado')){
 		return true;
 	}else{
 		return false;
@@ -2217,6 +2254,9 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			case 'fechaProcedimientoEjecutado' :
 				codigo = "FECHA_PROCEDIMIENTO_EJECUTADO_VACIA";
 			break;
+			case 'fechaProcesoEjecutado' :
+				codigo = "FECHA_PROCESO_EJECUTADO_VACIA";
+			break;
 
 		}
 		addCodeError(idElementoError, codigo);
@@ -2451,6 +2491,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			break;
 			case 'fechaProcedimientoEjecutado' :
 				codigo = "FECHA_PROCEDIMIENTO_EJECUTADO_MAYOR_QUE_8";
+			break;
+			case 'fechaProcesoEjecutado' :
+				codigo = "FECHA_PROCESO_EJECUTADO_MAYOR_QUE_8";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -2791,6 +2834,9 @@ function comprobarFormatoFechas(idElemento, idElementoError, campo) {
 			break;
 			case 'fechaProcedimientoEjecutado' :
 				codigo = "FECHA_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA";
+			break;
+			case 'fechaProcesoEjecutado' :
+				codigo = "FECHA_PROCESO_EJECUTADO_NUMERICA_INCORRECTA";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

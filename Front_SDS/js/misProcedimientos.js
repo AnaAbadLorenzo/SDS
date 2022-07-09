@@ -272,19 +272,19 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario, procesosPro
 
                     if(numeroProcesosEjecutados == 0){
 
-                      var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
+                      var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon" style="cursor: pointer;">' + 
                                       '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento.png" alt="Iniciar procedimiento" onclick=";"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' + 
-                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon" style="cursor: not-allowed;">' + 
                                           '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>' + 
                                           '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' +
-                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon" style="cursor: not-allowed;">' + 
                                           '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>' + 
                                           '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
                                     '</div>' + 
-                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon">' + 
+                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon" style="cursor: pointer;">' + 
                                       '<img id="iconoEliminarProcedimiento" class="iconoProcedimiento iconEliminarProcedimiento" src="images/delete3.png" alt="Eliminar procedimiento" onclick="eliminarProcedimiento('+ procedimientosUsuario.idProcedimientoUsuario +');"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICONO_ELIMINAR"></span>' + 
                                     '</div>' + 
@@ -297,38 +297,38 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario, procesosPro
                         arrayProcesos.push(procesosProcedimientoUsuario.procesos);
                       }
 
-                       var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
+                       var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon" style="cursor: not-allowed;">' + 
                                       '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=";"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' + 
-                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon" style="cursor: pointer;">' + 
                                           '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick="continuarProcedimiento(' + procedimientosUsuario.procedimiento.idProcedimiento + ',' + procedimientosUsuario.idProcedimientoUsuario + ')"/>' + 
                                           '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' +
-                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon" style="cursor: not-allowed;">' + 
                                           '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado2.png" alt="Procedimiento finalizado" onclick=""/>' + 
                                           '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
                                     '</div>' + 
-                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon">' + 
+                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon" style="cursor: pointer;">' + 
                                       '<img id="iconoEliminarProcedimiento" class="iconoProcedimiento iconEliminarProcedimiento" src="images/delete3.png" alt="Eliminar procedimiento" onclick="eliminarProcedimiento('+ procedimientosUsuario.idProcedimientoUsuario +');"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICONO_ELIMINAR"></span>' + 
                                     '</div>' + 
                                   '</div>';
 
                     }else{
-                       var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon">' + 
+                       var iconos = '<div id="iniciarProcedimiento" class="tooltip10 procedimientoIcon" style="cursor: not-allowed;">' + 
                                       '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=";"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' + 
-                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon">' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon" style="cursor: pointer;">' + 
                                           '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick="continuarProcedimiento(' + procedimientosUsuario.procedimiento.idProcedimiento + ',' + procedimientosUsuario.idProcedimientoUsuario + ')"/>' + 
                                           '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' +
-                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon">' + 
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon" style="cursor: pointer;">' + 
                                           '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado.png" alt="Procedimiento finalizado" onclick="finalizarProcedimiento(' + procedimientosUsuario.idProcedimientoUsuario +')"/>' + 
                                           '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
                                     '</div>' + 
-                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon">' + 
+                                    '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon" style="cursor: pointer;">' + 
                                       '<img id="iconoEliminarProcedimiento" class="iconoProcedimiento iconEliminarProcedimiento" src="images/delete3.png" alt="Eliminar procedimiento" onclick="eliminarProcedimiento('+ procedimientosUsuario.idProcedimientoUsuario +');"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICONO_ELIMINAR"></span>' + 
                                     '</div>' + 

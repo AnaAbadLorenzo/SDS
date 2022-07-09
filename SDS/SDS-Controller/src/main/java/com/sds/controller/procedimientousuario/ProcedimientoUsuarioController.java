@@ -3,7 +3,6 @@ package com.sds.controller.procedimientousuario;
 import java.text.ParseException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -40,10 +40,11 @@ public class ProcedimientoUsuarioController {
 		validaciones = new Validaciones();
 	}
 
-	@GetMapping(value = "/listarProcedimientosUsuario")
+	@PostMapping(value = "/listarProcedimientosUsuario")
 	@ResponseBody
-	public RespEntity buscarTodos() {
-		final ReturnBusquedas<ProcedimientoUsuarioEntity> resultado = procedimientoUsuarioService.buscarTodos();
+	public RespEntity buscarTodos(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<ProcedimientoUsuarioEntity> resultado = procedimientoUsuarioService
+				.buscarTodos(paginacion.getInicio(), paginacion.getTamanhoPagina());
 
 		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIO_LISTADOS, resultado);
 	}

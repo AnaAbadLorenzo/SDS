@@ -22,7 +22,7 @@ public interface ProcedimientoUsuarioService {
 			final UsuarioEntity usuario, final ProcedimientoEntity procedimiento, final int inicio,
 			final int tamanhoPagina);
 
-	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos();
+	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos(final int inicio, final int tamanhoPagina);
 
 	ProcedimientoUsuarioEntity buscarProcedimientoUsuarioById(final Integer idProcedimientoUsuario);
 

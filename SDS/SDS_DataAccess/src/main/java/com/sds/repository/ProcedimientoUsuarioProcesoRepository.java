@@ -8,13 +8,22 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
+import com.sds.model.UsuarioEntity;
 
 @Component
 public interface ProcedimientoUsuarioProcesoRepository
 		extends JpaRepository<ProcedimientoUsuarioProcesoEntity, Integer> {
+
+	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByProcedimientoProcesoAndUsuario(
+			final ProcedimientoEntity procedimiento, final UsuarioEntity usuario, final ProcesoEntity proceso,
+			final String fechaProcedimientoUsuarioProceso, final int inicio, final int tamanhoPagina);
+
+	Integer numberFindProcedimientoUsuarioProcesoByProcedimientoProcesoAndUsuario(final String nombreProcedimiento,
+			final String usuario, final String nombreProceso, final String fechaProcedimientoUsuarioProceso);
 
 	List<ProcedimientoUsuarioProcesoEntity> findProcedimientoUsuarioProcesoByIdProceso(final ProcesoEntity proceso);
 

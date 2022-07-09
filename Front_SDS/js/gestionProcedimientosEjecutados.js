@@ -249,9 +249,10 @@ function cargarProcedimientosEjecutadosAjaxPromesa(numeroPagina, tamanhoPagina){
     }
 
     $.ajax({
-      method: "GET",
+      method: "POST",
       url: urlPeticionAjaxListarProcedimientosUsuario,
       contentType : "application/json",
+      data: JSON.stringify(data),
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {
@@ -339,6 +340,8 @@ function gestionarPermisosProcedimientosEjecutados(idElementoList) {
       break;
 
       case 'Listar' :
+        document.getElementById('tablaDatos').style.display = "block";
+        document.getElementById('filasTabla').style.display = "block";
         $('#btnListarProcedimientosEjecutados').attr('src', 'images/search3.png');
         $('#btnListarProcedimientosEjecutados').css("cursor", "pointer");
         $('#divListarProcedimientoEjecutado').attr("data-toggle", "modal");
@@ -801,5 +804,22 @@ function cambiarOnBlurCampos(onBlurNombreProcedimientoEjecutado, onBlurLoginUsua
         $("#puntuacionProcedimientoEjecutado").attr('onblur', onBlurPuntuacionProcedimientoEjecutado);
     }
 }
+
+$(document).ready(function() {
+  $("#form-modal").on('hidden.bs.modal', function() {
+
+    let idElementoErrorList = ["errorFormatoNombreProcedimiento", "errorFormatoLoginUsuario", "errorFormatoFechaProcedimientoEjecutado", "errorFormatoEstadoProcedimientoEjecutado", "errorFormatoPuntuacionProcedimientoEjecutado"];
+
+    let idElementoList = ["nombreProcedimiento", "loginUsuario", "fechaProcedimientoEjecutado", "estadoProcedimientoEjecutado", "puntuacionProcedimientoEjecutado"];
+
+    limpiarFormulario(idElementoList);
+    eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
+    setLang(getCookie('lang'));
+
+    resetearFormulario("formularioGenerico", idElementoList);
+
+  });
+
+}); 
 
 

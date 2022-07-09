@@ -154,6 +154,7 @@ var urlPeticionAjaxListarProcedimientoUsuarioById = urlComun + urlProcedimientos
 var urlPeticionAjaxAddProcedimientoUsuarioProceso = urlComun + urlProcedimientoUsuarioProceso + '/procedimientoUsuarioProceso';
 var urlPeticionAjaxListarProcedimientoUsuarioProcesoOfProcedimientoUsuario =  urlComun + urlProcedimientoUsuarioProceso + '/listarProcedimientosUsuariosProcesosOfProcedimientoUsuario';
 var urlPeticionAjaxListarProcedimientosUsuariosProcesos =  urlComun + urlProcedimientoUsuarioProceso + '/listarProcedimientosUsuariosProcesos';
+var urlPeticionAjaxListarProcedimientoUsuarioProceso =  urlComun + urlProcedimientoUsuarioProceso + '/listarProcedimientoUsuarioProceso';
 
 
 /**Urls procesoProcedimiento **/

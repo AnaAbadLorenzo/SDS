@@ -17,14 +17,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.sds.model.EvidenciaEntity;
 import com.sds.model.LogAccionesEntity;
 import com.sds.model.LogExcepcionesEntity;
+import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
 import com.sds.model.RespuestaPosibleEntity;
+import com.sds.model.UsuarioEntity;
+import com.sds.repository.ProcedimientoRepository;
 import com.sds.repository.ProcedimientoUsuarioProcesoRepository;
 import com.sds.repository.ProcedimientoUsuarioRepository;
 import com.sds.repository.ProcesoRepository;
 import com.sds.repository.RespuestaPosibleRepository;
+import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
@@ -58,6 +62,12 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 	ProcesoRepository procesoRepository;
 
 	@Autowired
+	ProcedimientoRepository procedimientoRepository;
+
+	@Autowired
+	UsuarioRepository usuarioRepository;
+
+	@Autowired
 	RespuestaPosibleRepository respuestaPosibleRepository;
 
 	@Autowired
@@ -82,6 +92,93 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 
 		final Integer numberTotalResults = procedimientoUsuarioProcesoRepository
 				.numberFindAllProcedimientosUsuariosProcesos();
+
+		if (!procedimientosUsuariosProcesos.isEmpty()) {
+			for (final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso : procedimientosUsuariosProcesos) {
+				final ProcesoEntity procesoEntity = new ProcesoEntity(
+						procedimientoUsuarioProceso.getProceso().getIdProceso(),
+						procedimientoUsuarioProceso.getProceso().getNombreProceso(),
+						procedimientoUsuarioProceso.getProceso().getDescripProceso(),
+						procedimientoUsuarioProceso.getProceso().getFechaProceso(),
+						procedimientoUsuarioProceso.getProceso().getBorradoProceso());
+				final EvidenciaEntity evidencia = new EvidenciaEntity(
+						procedimientoUsuarioProceso.getEvidencia().getIdEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getFechaEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getBorradoEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getNombreFichero(),
+						procedimientoUsuarioProceso.getEvidencia().getRutaEvidencia());
+				final RespuestaPosibleEntity respuestaPosible = new RespuestaPosibleEntity(
+						procedimientoUsuarioProceso.getRespuestaPosible().getIdRespuesta(),
+						procedimientoUsuarioProceso.getRespuestaPosible().getTextoRespuesta(),
+						procedimientoUsuarioProceso.getRespuestaPosible().getBorradoRespuesta());
+				final ProcedimientoUsuarioEntity procedimientoUsuario = new ProcedimientoUsuarioEntity(
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getIdProcedimientoUsuario(),
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getPuntuacionProcedimientoUsuario(),
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getFechaProcedimientoUsuario(),
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getBorradoProcedimientoUsuario());
+				final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoEntity = new ProcedimientoUsuarioProcesoEntity(
+						procedimientoUsuarioProceso.getIdProcedimientoUsuarioProceso(),
+						procedimientoUsuarioProceso.getFechaProcedimientoUsuarioProceso(),
+						procedimientoUsuarioProceso.getBorradoProcedimientoUsuarioProceso(), respuestaPosible,
+						procesoEntity, procedimientoUsuario, evidencia);
+
+				procedimientoUsuarioProcesoToret.add(procedimientoUsuarioProcesoEntity);
+			}
+		}
+		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> result = new ReturnBusquedas<>(
+				procedimientoUsuarioProcesoToret, numberTotalResults, procedimientoUsuarioProcesoToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
+	public ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarProcedimientoUsuarioProceso(
+			final ProcedimientoEntity procedimiento, final UsuarioEntity usuario, final ProcesoEntity proceso,
+			final Date fechaProcedimientoUsuarioProceso, final int inicio, final int tamanhoPagina) {
+		final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoToret = new ArrayList<>();
+		String usuarioString = StringUtils.EMPTY;
+		String procedimientoString = StringUtils.EMPTY;
+		String procesoString = StringUtils.EMPTY;
+		Integer numberTotalResults = 0;
+		String fecha = StringUtils.EMPTY;
+
+		if (fechaProcedimientoUsuarioProceso != null) {
+			java.sql.Date fechaSql;
+			fechaSql = new java.sql.Date(fechaProcedimientoUsuarioProceso.getTime());
+			fecha = fechaSql.toString();
+		} else {
+			fecha = StringUtils.EMPTY;
+		}
+
+		if (procedimiento.getNombreProcedimiento() == null
+				|| procedimiento.getNombreProcedimiento().equals(StringUtils.EMPTY)) {
+			procedimientoString = StringUtils.EMPTY;
+		} else {
+			procedimientoString = procedimiento.getNombreProcedimiento();
+		}
+
+		if (usuario.getUsuario() == null || usuario.getUsuario().equals(StringUtils.EMPTY)) {
+			usuarioString = StringUtils.EMPTY;
+		} else {
+			usuarioString = usuario.getUsuario();
+		}
+
+		if (proceso.getNombreProceso() == null || proceso.getNombreProceso().equals(StringUtils.EMPTY)) {
+			procesoString = StringUtils.EMPTY;
+		} else {
+			procesoString = proceso.getNombreProceso();
+		}
+
+		final List<ProcedimientoUsuarioProcesoEntity> procedimientosUsuariosProcesos = entityManager
+				.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIOPROCESO_FINDPROCEDIMIENTOUSUARIOPROCESO)
+				.setParameter(Constantes.NOMBRE_PROCEDIMIENTO, procedimientoString)
+				.setParameter(Constantes.USUARIO, usuarioString).setParameter(Constantes.NOMBRE_PROCESO, usuarioString)
+				.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO_PROCESO, usuarioString).setFirstResult(inicio)
+				.setMaxResults(tamanhoPagina).getResultList();
+
+		numberTotalResults = procedimientoUsuarioProcesoRepository
+				.numberFindProcedimientoUsuarioProcesoByProcedimientoProcesoAndUsuario(procedimientoString,
+						usuarioString, procesoString, fecha);
 
 		if (!procedimientosUsuariosProcesos.isEmpty()) {
 			for (final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso : procedimientosUsuariosProcesos) {

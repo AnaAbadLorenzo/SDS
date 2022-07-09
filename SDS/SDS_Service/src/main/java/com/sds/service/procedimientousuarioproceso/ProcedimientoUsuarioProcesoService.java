@@ -1,6 +1,11 @@
 package com.sds.service.procedimientousuarioproceso;
 
+import java.util.Date;
+
+import com.sds.model.ProcedimientoEntity;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
+import com.sds.model.ProcesoEntity;
+import com.sds.model.UsuarioEntity;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -15,6 +20,10 @@ import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioPro
 public interface ProcedimientoUsuarioProcesoService {
 
 	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodosPaginacion(final int inicio, final int tamanhoPagina);
+
+	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarProcedimientoUsuarioProceso(
+			final ProcedimientoEntity procedimiento, final UsuarioEntity usuario, final ProcesoEntity proceso,
+			final Date fechaProcedimientoUsuarioProceso, final int inicio, final int tamanhoPagina);
 
 	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodos();
 

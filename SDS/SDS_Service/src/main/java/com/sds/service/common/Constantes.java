@@ -242,6 +242,8 @@ public class Constantes {
 	public static final String PUNTUACION_PROCEDIMIENTOUSUARIO = "puntuacionProcedimientoUsuario";
 	public static final String FECHA_PROCEDIMIENTO_USUARIO = "fechaProcedimientoUsuario";
 
+	public static final String FECHA_PROCEDIMIENTO_USUARIO_PROCESO = "fechaProcedimientoUsuarioProceso";
+
 	// Constantes para los JSON
 	public static final String URL_JSON_LOGIN_DATA = "classpath:LoginServiceData.json";
 	public static final String URL_JSON_LOGIN_ATRIBUTOS_USUARIO = "classpath:LoginServiceAtributosUsuario.json";
@@ -842,4 +844,5 @@ public class Constantes {
 
 	public static final String PROCEDIMIENTOUSUARIOPROCESO_FINDALLPROCEDIMIENTOUSUARIOPROCESO = "ProcedimientoUsuarioProcesoEntity.findAllProcedimientosUsuariosProcesos";
 	public static final String PROCEDIMIENTOUSUARIOPROCESO_FINDPROCEDIMIENTOUSUARIOPROCESOOFPROCEDIMIENTOUSUARIO = "ProcedimientoUsuarioProcesoEntity.findProcesosOfProcedimientoUsuario";
+	public static final String PROCEDIMIENTOUSUARIOPROCESO_FINDPROCEDIMIENTOUSUARIOPROCESO = "ProcedimientoUsuarioProcesoEntity.findProcedimientoUsuarioProcesoByProcedimientoProcesoAndUsuario";
 }
