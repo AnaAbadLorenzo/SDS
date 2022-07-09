@@ -9,6 +9,56 @@
 		"borradoProceso" : 0
 	},
 	
+	"nombreProcesoVacio" : {
+		"usuario" : "ana",
+		
+		"idProceso" : 1,
+		"nombreProceso"  : "",
+		"descripProceso" : "Descripción proceso",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"descripcionProcesoVacio" : {
+		"usuario" : "ana",
+		
+		"idProceso" : 1,
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "",
+		"fechaProceso" : "2022-06-15",
+		"borradoProceso" : 0
+	},
+	
+	"fechaProcesoVacia" : {
+		"usuario" : "ana",
+		
+		"idProceso" : 1,
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "Descripción proceso",
+		"fechaProceso" : "",
+		"borradoProceso" : 0
+	},
+	
+	"datosProcesoVacios" : {
+		"usuario" : "ana",
+		
+		"idProceso" : "",
+		"nombreProceso"  : "",
+		"descripProceso" : "",
+		"fechaProceso" : "",
+		"borradoProceso" : 0
+	},
+	
+	"fechaIntroducidaAnteriorFechaActual" : {
+		"usuario" : "ana",
+		
+		"idProceso" : 1,
+		"nombreProceso"  : "Proceso",
+		"descripProceso" : "Descripción proceso",
+		"fechaProceso" : "2000-06-15",
+		"borradoProceso" : 0
+	},
+	
 	"guardarProceso" : {
 		"usuario" : "ana",
 		
@@ -33,9 +83,9 @@
 		"usuario" : "ana",
 		
 		"idProceso" : "",
-		"nombreProceso"  : "Proceso ya existe",
-		"descripProceso" : "Este es un proceso que ya existe",
-		"fechaProceso" : "2022-06-15",
+		"nombreProceso"  : "Primer Proceso",
+		"descripProceso" : "Este es el primer proceso",
+		"fechaProceso" : "2022-07-09",
 		"borradoProceso" : 0
 	},
 	

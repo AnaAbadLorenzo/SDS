@@ -1,10 +1,8 @@
 package com.sds.service.test.impl;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,17 +12,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sds.model.ObjetivoEntity;
-import com.sds.model.PersonaEntity;
-import com.sds.model.PlanEntity;
-import com.sds.model.ProcedimientoEntity;
-import com.sds.model.ProcedimientoUsuarioEntity;
-import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.ProcesoEntity;
-import com.sds.model.ProcesoProcedimientoEntity;
-import com.sds.model.ProcesoRespuestaPosibleEntity;
-import com.sds.model.RespuestaPosibleEntity;
-import com.sds.model.UsuarioEntity;
 import com.sds.repository.ObjetivoRepository;
 import com.sds.repository.PersonaRepository;
 import com.sds.repository.PlanRepository;
@@ -37,6 +25,7 @@ import com.sds.repository.ProcesoRespuestaPosibleRepository;
 import com.sds.repository.RespuestaPosibleRepository;
 import com.sds.repository.UsuarioRepository;
 import com.sds.service.common.CodigosMensajes;
+import com.sds.service.common.CommonUtilities;
 import com.sds.service.common.Constantes;
 import com.sds.service.common.DefinicionPruebas;
 import com.sds.service.common.Mensajes;
@@ -344,21 +333,9 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 				.generarProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.ELIMINAR_PROCESO);
 		final ProcesoEntity datosEntradaEliminarProcesoNoExiste = generarJSON
 				.generarProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_NO_EXISTE);
-		final ProcesoEntity datosEntradaEliminarProcesoAsociadoProcedimiento = generarJSON
-				.generarProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCEDIMIENTO_ASOCIADO_PROCESO);
-		final ProcesoEntity datosEntradaEliminarProcesoAsociadoRespuestaPosible = generarJSON
-				.generarProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_ASOCIADO_RESPUESTA_POSIBLE);
-		final ProcesoEntity datosEntradaEliminarProcesoAsociadoProcedimientoUsuario = generarJSON
-				.generarProceso(Constantes.URL_JSON_PROCESO_DATA, Constantes.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO);
 
 		datosPruebaAcciones.add(getTestEliminarProcesoCorrecto(datosEntradaEliminarProcesoCorrecto));
 		datosPruebaAcciones.add(getTestEliminarProcesoNoExiste(datosEntradaEliminarProcesoNoExiste));
-		datosPruebaAcciones
-				.add(getTestEliminarProcesoAsociadoProcedimiento(datosEntradaEliminarProcesoAsociadoProcedimiento));
-		datosPruebaAcciones.add(
-				getTestEliminarProcesoAsociadoRespuestaPosible(datosEntradaEliminarProcesoAsociadoRespuestaPosible));
-		datosPruebaAcciones.add(getTestEliminarProcesoAsociadoProcedimientoUsuario(
-				datosEntradaEliminarProcesoAsociadoProcedimientoUsuario));
 
 		return datosPruebaAcciones;
 	}
@@ -640,51 +617,6 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 				getValorProceso(datosEntradaAccionEliminarProcesoNoExiste));
 	}
 
-	private DatosPruebaAcciones getTestEliminarProcesoAsociadoProcedimiento(
-			final ProcesoEntity datosEntradaAccionEliminarProcesoAsociadoProcedimiento)
-			throws java.text.ParseException {
-
-		final String resultadoObtenido = eliminarProcesoAsociadoProcedimiento(
-				datosEntradaAccionEliminarProcesoAsociadoProcedimiento);
-
-		final String resultadoEsperado = CodigosMensajes.PROCESO_ASOCIADO_PROCEDIMIENTO + " - "
-				+ Mensajes.PROCESO_ASOCIADO_PROCEDIMIENTO;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.PROCESO_ASOCIADO_PROCEDIMIENTO, Constantes.ERROR,
-				getValorProceso(datosEntradaAccionEliminarProcesoAsociadoProcedimiento));
-	}
-
-	private DatosPruebaAcciones getTestEliminarProcesoAsociadoRespuestaPosible(
-			final ProcesoEntity datosEntradaAccionEliminarProcesoAsociadoRespuestaPosible)
-			throws java.text.ParseException, ParseException {
-
-		final String resultadoObtenido = eliminarProcesoAsociadoRespuestaPosible(
-				datosEntradaAccionEliminarProcesoAsociadoRespuestaPosible);
-
-		final String resultadoEsperado = CodigosMensajes.RESPUESTA_POSIBLE_ASOCIADA_PROCESO + " - "
-				+ Mensajes.PROCESO_ASOCIADO_RESPUESTA_POSIBLES;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.PROCESO_ASOCIADO_RESPUESTA_POSIBLE, Constantes.ERROR,
-				getValorProceso(datosEntradaAccionEliminarProcesoAsociadoRespuestaPosible));
-	}
-
-	private DatosPruebaAcciones getTestEliminarProcesoAsociadoProcedimientoUsuario(
-			final ProcesoEntity datosEntradaAccionEliminarProcesoAsociadoProcedimientoUsuario)
-			throws java.text.ParseException {
-
-		final String resultadoObtenido = eliminarProcesoAsociadoProcedimientoUsuario(
-				datosEntradaAccionEliminarProcesoAsociadoProcedimientoUsuario);
-
-		final String resultadoEsperado = CodigosMensajes.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO + " - "
-				+ Mensajes.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO;
-
-		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
-				DefinicionPruebas.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO, Constantes.ERROR,
-				getValorProceso(datosEntradaAccionEliminarProcesoAsociadoProcedimientoUsuario));
-	}
-
 	private DatosPruebaAcciones getTestReactivarProcesoCorrecto(
 			final ProcesoEntity datosEntradaAccionReactivarProcesoCorrecto) throws java.text.ParseException {
 
@@ -746,8 +678,22 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 			} else {
 				final LocalDate fechaActual = LocalDate.now();
 				final String fechaIntroducidaUsuario = proceso.getFechaProceso().toString();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
+
+				final Integer dayInt = fechaActual.getDayOfMonth();
+				String day = dayInt.toString();
+
+				if (CommonUtilities.countDigit(dayInt) == 1) {
+					day = "0" + dayInt;
+				}
+
+				final Integer monthInt = fechaActual.getMonthValue();
+				String month = monthInt.toString();
+
+				if (CommonUtilities.countDigit(monthInt) == 1) {
+					month = "0" + monthInt;
+				}
+
+				final String fechaActualString = fechaActual.getYear() + "-" + month + "-" + day;
 
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 					resultado = CodigosMensajes.FECHA_INTRODUCIDA_MENOR_FECHA_ACTUAL + " - "
@@ -793,8 +739,22 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 
 			final LocalDate fechaActual = LocalDate.now();
 			final String fechaIntroducidaUsuario = proceso.getFechaProceso().toString();
-			final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-					+ fechaActual.getDayOfMonth();
+
+			final Integer dayInt = fechaActual.getDayOfMonth();
+			String day = dayInt.toString();
+
+			if (CommonUtilities.countDigit(dayInt) == 1) {
+				day = "0" + dayInt;
+			}
+
+			final Integer monthInt = fechaActual.getMonthValue();
+			String month = monthInt.toString();
+
+			if (CommonUtilities.countDigit(monthInt) == 1) {
+				month = "0" + monthInt;
+			}
+
+			final String fechaActualString = fechaActual.getYear() + "-" + month + "-" + day;
 
 			if (!fechaIntroducidaUsuario.equals(procesoBD.getFechaProceso().toString())) {
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
@@ -886,161 +846,6 @@ public class TestProcesoServiceImpl implements TestProcesoService {
 			resultado = CodigosMensajes.PROCESO_NO_EXISTE + " - " + Mensajes.PROCESO_NO_EXISTE;
 
 		}
-		return resultado;
-	}
-
-	private String eliminarProcesoAsociadoProcedimiento(final ProcesoEntity proceso) {
-		final ProcesoEntity procesoBD = procesoRepository.findProcesoByName(proceso.getNombreProceso());
-		String resultado = StringUtils.EMPTY;
-
-		if (procesoBD == null) {
-			proceso.setBorradoProceso(0);
-			procesoRepository.saveAndFlush(proceso);
-
-			final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
-			objetivoRepository.saveAndFlush(objetivo);
-			final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
-			plan.setObjetivo(objetivo);
-			planRepository.saveAndFlush(plan);
-			final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
-					"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
-			procedimientoRepository.saveAndFlush(procedimiento);
-
-			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
-					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
-
-			final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(proceso.getNombreProceso(),
-					proceso.getDescripProceso(), resultado);
-			final ProcesoProcedimientoEntity procesoProcedimientoEntity = new ProcesoProcedimientoEntity(
-					procesoEncontrado.get(0).getIdProceso(), procedimientoEncontrado.getIdProcedimiento(), 3);
-			procesoProcedimientoRepository.saveAndFlush(procesoProcedimientoEntity);
-
-			final List<Integer> procesoProcedimientos = procesoProcedimientoRepository
-					.findIdProcesoByIdProcedimiento(procedimientoEncontrado.getIdProcedimiento());
-
-			if (!procesoProcedimientos.isEmpty()) {
-				resultado = CodigosMensajes.PROCESO_ASOCIADO_PROCEDIMIENTO + " - "
-						+ Mensajes.PROCESO_ASOCIADO_PROCEDIMIENTO;
-			}
-
-			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
-			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
-
-			procesoProcedimientoRepository.deleteProcesoProcedimiento(procesoEncontrado.get(0).getIdProceso(),
-					procedimientoEncontrado.getIdProcedimiento());
-			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
-			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
-			planRepository.deletePlan(planBDNuevo.getIdPlan());
-			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
-
-		}
-
-		return resultado;
-	}
-
-	private String eliminarProcesoAsociadoRespuestaPosible(final ProcesoEntity proceso) throws ParseException {
-		final ProcesoEntity procesoBD = procesoRepository.findProcesoByName(proceso.getNombreProceso());
-		String resultado = StringUtils.EMPTY;
-
-		if (procesoBD == null) {
-			proceso.setBorradoProceso(0);
-			procesoRepository.saveAndFlush(proceso);
-
-			final RespuestaPosibleEntity respuestaPosibleEntity = new RespuestaPosibleEntity("Cada 6 meses", 0);
-
-			final RespuestaPosibleEntity respuestaPosibleEncontrada = respuestaPosibleRepository
-					.findRespuestaPosibleByText(respuestaPosibleEntity.getTextoRespuesta());
-
-			final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(proceso.getNombreProceso(),
-					proceso.getDescripProceso(), resultado);
-			final ProcesoRespuestaPosibleEntity procesoRespuestaPosible = new ProcesoRespuestaPosibleEntity(
-					procesoEncontrado.get(0).getIdProceso(), respuestaPosibleEncontrada.getIdRespuesta(), new Date());
-			procesoRespuestaPosibleRepository.saveAndFlush(procesoRespuestaPosible);
-
-			final List<ProcesoRespuestaPosibleEntity> procesoRespuestaPosibleBD = procesoRespuestaPosibleRepository
-					.findRespuestaPosibleByIdProceso(procesoEncontrado.get(0).getIdProceso());
-
-			if (!procesoRespuestaPosibleBD.isEmpty()) {
-				resultado = CodigosMensajes.RESPUESTA_POSIBLE_ASOCIADA_PROCESO + " - "
-						+ Mensajes.PROCESO_ASOCIADO_RESPUESTA_POSIBLES;
-			}
-
-			procesoRespuestaPosibleRepository.deleteProcesoRespuestaPosible(respuestaPosibleEncontrada.getIdRespuesta(),
-					procesoEncontrado.get(0).getIdProceso());
-			respuestaPosibleRepository.deleteRespuestaPosible(respuestaPosibleEncontrada.getIdRespuesta());
-
-		}
-
-		return resultado;
-	}
-
-	private String eliminarProcesoAsociadoProcedimientoUsuario(final ProcesoEntity proceso)
-			throws java.text.ParseException {
-		final ProcesoEntity procesoBD = procesoRepository.findProcesoByName(proceso.getNombreProceso());
-		String resultado = StringUtils.EMPTY;
-		final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-		if (procesoBD == null) {
-			proceso.setBorradoProceso(0);
-			procesoRepository.saveAndFlush(proceso);
-
-			final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
-			objetivoRepository.saveAndFlush(objetivo);
-			final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
-			plan.setObjetivo(objetivo);
-			planRepository.saveAndFlush(plan);
-			final ProcedimientoEntity procedimiento = new ProcedimientoEntity("Nombre procedimiento",
-					"Descripción procedimiento", new Date(), 0, Boolean.FALSE, plan);
-			procedimientoRepository.saveAndFlush(procedimiento);
-			final ProcedimientoEntity procedimientoEncontrado = procedimientoRepository
-					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
-			final PersonaEntity persona = new PersonaEntity("04149249A", "Pepe", "Pepe pepe",
-					format.parse("2022-02-02"), "Calle de prueba", "988745121", "email@email.com", 0, null);
-			final UsuarioEntity usuario = new UsuarioEntity(persona.getDniP(), "pepeUsuario", 0);
-			personaRepository.saveAndFlush(persona);
-			usuarioRepository.saveAndFlush(usuario);
-			final ProcedimientoUsuarioEntity procedimientoUsuario = new ProcedimientoUsuarioEntity(0, new Date(), 0,
-					procedimiento, usuario);
-			procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuario);
-			final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
-					.findProcedimientoUsuarioByProcedimientoAndUsuario(usuario, procedimientoEncontrado);
-			final List<ProcesoEntity> procesoEncontrado = procesoRepository.findProceso(proceso.getNombreProceso(),
-					proceso.getDescripProceso(), resultado);
-			final RespuestaPosibleEntity respuestaPosible = new RespuestaPosibleEntity("Respuesta posible", 0);
-			respuestaPosibleRepository.saveAndFlush(respuestaPosible);
-			final RespuestaPosibleEntity respuestaPosibleEncontrada = respuestaPosibleRepository
-					.findRespuestaPosibleByText(respuestaPosible.getTextoRespuesta());
-
-			final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso = new ProcedimientoUsuarioProcesoEntity(
-					new Date(), 0, respuestaPosibleEncontrada, procesoEncontrado.get(0),
-					procedimientoUsuarioEncontrado.get(0));
-			procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProceso);
-
-			final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoBD = procedimientoUsuarioProcesoRepository
-					.findProcedimientoUsuarioProcesoByIdProceso(procesoEncontrado.get(0));
-
-			if (!procedimientoUsuarioProcesoBD.isEmpty()) {
-				resultado = CodigosMensajes.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO + " - "
-						+ Mensajes.PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO;
-			}
-
-			final PlanEntity planBDNuevo = planRepository.findPlanByName(plan.getNombrePlan());
-			final ObjetivoEntity objetivoBDNuevo = objetivoRepository.findObjetivoByName(objetivo.getNombreObjetivo());
-
-			procedimientoUsuarioProcesoRepository.deleteProcedimientoUsuarioProceso(
-					procedimientoUsuarioProcesoBD.get(0).getIdProcedimientoUsuarioProceso());
-			procedimientoUsuarioRepository
-					.deleteProcedimientoUsuario(procedimientoUsuarioEncontrado.get(0).getIdProcedimientoUsuario());
-			procesoRepository.deleteProceso(procesoEncontrado.get(0).getIdProceso());
-			procedimientoRepository.deleteProcedimiento(procedimientoEncontrado.getIdProcedimiento());
-			planRepository.deletePlan(planBDNuevo.getIdPlan());
-			objetivoRepository.deleteObjetivo(objetivoBDNuevo.getIdObjetivo());
-			respuestaPosibleRepository.findById(respuestaPosibleEncontrada.getIdRespuesta());
-			usuarioRepository.deleteUsuario(usuario.getDniUsuario());
-			personaRepository.deletePersona(persona.getDniP());
-
-		}
-
 		return resultado;
 	}
 

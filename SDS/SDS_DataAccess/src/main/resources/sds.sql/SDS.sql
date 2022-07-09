@@ -429,6 +429,7 @@ CREATE TABLE `proceso` (
 --
 
 LOCK TABLES `proceso` WRITE;
+INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descrip_proceso`, `fecha_proceso`, `borrado_proceso`) VALUES ('1', 'Primer Proceso', 'Este es el primer proceso', '2022-07-09', '0');
 UNLOCK TABLES;
 
 --
