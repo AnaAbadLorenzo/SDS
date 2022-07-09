@@ -146,6 +146,7 @@ var urlPeticionAjaxListarProcedimientosUsuario = urlComun + urlProcedimientosUsu
 var urlPeticionAjaxAddProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/procedimientoUsuario';
 var urlPeticionAjaxListarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuario';
 var urlPeticionAjaxEliminarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/borrarProcedimientoUsuario';
+var urlPeticionAjaxListarTodosProcedimientosUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientosUsuario';
 
 /**Urls procedimientoUsuarioProceso **/
 var urlPeticionAjaxAddProcedimientoUsuarioProceso = urlComun + urlProcedimientoUsuarioProceso + '/procedimientoUsuarioProceso';

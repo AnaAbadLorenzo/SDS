@@ -118,10 +118,17 @@ public class ProcesoProcedimientoServiceImpl implements ProcesoProcedimientoServ
 		List<ProcesoProcedimientoEntity> procesoProcedimientos = new ArrayList<>();
 		Integer numberTotalResults = 0;
 
-		procesoProcedimientos = entityManager
-				.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOSBYPROCEDIMIENTOORDERBYORDEN)
-				.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).setFirstResult(inicio)
-				.setMaxResults(tamanhoPagina).getResultList();
+		if (inicio == 0 && tamanhoPagina == 0) {
+			procesoProcedimientos = entityManager
+					.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOSBYPROCEDIMIENTOORDERBYORDEN)
+					.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).getResultList();
+
+		} else {
+			procesoProcedimientos = entityManager
+					.createNamedQuery(Constantes.PROCESOPROCEDIMIENTO_QUERY_FINDPROCESOSBYPROCEDIMIENTOORDERBYORDEN)
+					.setParameter(Constantes.PROCEDIMIENTO_ID, idProcedimiento).setFirstResult(inicio)
+					.setMaxResults(tamanhoPagina).getResultList();
+		}
 
 		numberTotalResults = procesoProcedimientoRepository.numberFindAllProcesosOrderByOrden(idProcedimiento);
 

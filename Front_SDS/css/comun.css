@@ -1,18 +1,4 @@
-/* For mobile phones: */
-@media only screen and (min-width: 300px) {
-  /* For mobile: */
-  .col1 {width: 100%;}
-
-  .img1 {width: 35%;}
-  .img2 {margin-top: 8%; margin-bottom: 5%; width: 75%;}
-
-  .modal {top: 15% !important}
-  .modal2 {top: 15% !important}
-  .modal3 {top: 15.5% !important}
-}
-
-@media only screen and (min-width: 600px) {
-  /* For tablets: */
+@media only screen and (min-width: 320px) and (max-width : 415px) {
   .col-s-1 {width: 8.33%;}
   .col-s-2 {width: 16.66%;}
   .col-s-3 {width: 25%;}
@@ -26,36 +12,103 @@
   .col-s-11 {width: 91.66%;}
   .col-s-12 {width: 100%;}
 
-  .img-s-1 {width: 25%;}
-  .img-s-2 {margin-top: 5%; margin-bottom: 5%; width: 60%;}
+  .img-s-1 {width: 25% !important; }
+  .img-s-2 {margin-top: 5% !important; margin-bottom: 5% !important; width: 60% !important;}
+  .img1 {width: 35% !important;}
+  .img2 {margin-top: 8% !important; margin-bottom: 5% !important; width: 75% !important;}
+
+  .modal {top: 15% !important}
+  .modal2 {top: 15% !important}
+  .modal3 {top: 15.5% !important}
+
+  .footer {font-size: 15px;}
+
+  .imagenLogo { width: 32px !important;}
+
+  h1 { font-size: 2rem !important;}
+
+  .gestion { left: 11% !important;}
+
+  .cabecera { top:  17% !important; left: 4% !important;}
+
+  .iconoAdd, .iconoBack, .iconoPermisos { width: 2.5em !important; height: 2.5em !important;}
+
+  .iconoSearch, .iconoRefresh, .iconoSearchDelete { width: 1.9em !important; height: 1.9em !important;}
+
+  .iconoHideShow { width: 1.5em !important; height: 1.5em !important;}
+
+   #tablaDatos { left: 20px !important; width: 91% !important;  height: 54% !important; top: 24% !important;}
+
+  .filasTabla { bottom: 19% !important; font-size: 12px;}
+
+  .paginacion { left: 28% !important; bottom: 13% !important;}
+
+  .page-item.disabled .page-link { height: 34px !important;}
+
+  .page-item.active .page-link { height: 33px !important;}
+
+  .page-link {  height: 33px !important;}
+
+  .nombreAccionColumn, .descripAccionColumn, .idAccionColumn, .nombreFuncionalidadColumn, .descripFuncionalidadColumn, .idFuncionalidadColumn, .loginUsuarioColumn, 
+  .actionColumn, .dataColumn, .dateColumn, .typeExcepcionColumn, .descriptionExceptionColumn, .tituloNoticiaColumn, .textoNoticiaColumn, .fechaNoticiaColumn, 
+  .idNoticiaColumn, .dniColumn, .nombrePersonaColumn, .apellidosPersonaColumn, .direccionPersonaColumn, .fechaNacimientoPersonaColumn, .telefonoColumn, .emailColumn, 
+  .activoColumn, .nombreEmpresaColumn, .rolNameColumn, .rolDescriptionColumn, .rolIdColumn, .dniUsuarioColumn, .usuarioActivoColumn, .rolColumn, .cifEmpresaColumn, 
+  .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, .nombreObjetivoColumn, .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, 
+  .idRespuestaPosibleColumn, .nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn, .nombreProcedimientoColumn, .descripcionProcedimientoColumn, 
+  .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn { font-size: 0.7rem !important;}
+
+  .table thead .colLast { font-size: 0.7rem !important; width: 38% !important;}
+
+  .iconoOrdenar { width: 0.9em !important;}
+
+  .impar { font-size: 11px !important;}
+
+  .detalle, .editar, .eliminar, .reactivar { width: 26px !important;}
+
+  #checkboxColumnas { font-size: 0.8rem !important;}
+
+  #cerrar .iconCerrar { width: 103% !important; left: 85%;}
+
+  .modal-footer #cerrar .iconCerrar { width: 8% !important; left: 85%;}
+
+  .modal-footer #cerrar { left: 85% !important; width: 93% !important;}
+
+  #cerrar { left: 85% !important; width: 10% !important;}
+
+  #showHideColumns { margin-left: 42% !important;  margin-top: 46.6% !important; width: 45.5% !important;}
+
+  .formmodal-container h1 { font-size: 1.6rem !important; }
+
+  form button[type="submit"], form button[type="button"] { height: 41px !important;}
+
+  .tooltip6 .tooltiptext { width: 90px !important; font-size: 9pt !important; left: 125% !important;}
+
+  .tooltip7 .tooltiptext { width: 90px !important; font-size: 9pt !important; left: 165% !important;}
+
+  .tooltip2 .tooltiptext2 { width: 90px !important; font-size: 9pt !important; left: 165% !important;}
+
+  .iconoVolverAtras { width: 2em !important; height: 2em !important; }
+
+  .cabeceraEliminados { top: 17.5% !important; }
+
+  #modal-title { left: 13% !important; font-size: 18px !important; }
+
+  #modal-dialog { left: 3% !important;}
+
+  .modal-content {width: 94% !important;}
+
+  #modal-mensaje { font-size: 15px !important;}
+
+  .imagenAviso { margin-top: -0.2% !important; margin-left: -2% !important;}
+
+  .card-header a { font-size: 12px !important; }
+
+  .cabeceraTablasTest { font-size: 10px !important; }
+
+  .modal-dialog { margin: 8rem auto !important; }
 }
 
-@media only screen and (min-width: 768px) {
-  /* For desktop: */
-  .col-1 {width: 8.33%;}
-  .col-2 {width: 16.66%;}
-  .col-3 {width: 25%;}
-  .col-4 {width: 33.33%;}
-  .col-5 {width: 41.66%;}
-  .col-6 {width: 50%;}
-  .col-7 {width: 58.33%;}
-  .col-8 {width: 66.66%;}
-  .col-9 {width: 75%;}
-  .col-10 {width: 83.33%;}
-  .col-11 {width: 91.66%;}
-  .col-12 {width: 100%;}
-
-  .img-1 {width: 12%;}
-  .img-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
-
-  .modal {top: 25% !important}
-  .modal2 {top: 20% !important}
-  .modal3 {top: 25.5% !important}
-
-  .modal-dialog {max-width: 600px;}
-}
-
-@media only screen and (min-width:  1300px){
+@media (min-width: 1300px) and (max-width:  1900px){
   .col-xl-1 {width: 8.33%;}
   .col-xl-2 {width: 16.66%;}
   .col-xl-3 {width: 25%;}
@@ -69,8 +122,36 @@
   .col-xl-11 {width: 91.66%;}
   .col-xl-12 {width: 100%;}
 
-  .img-xl-1 {width: 12%;}
-  .img-xl-2 {margin-top: 3%; margin-bottom: 2%; width: 27%;}
+  ..img-1 {width: 12%;}
+  .img-2 {margin-top: 3% !important;; margin-bottom: 2% !important;; width: 24% !important;;}
+
+  .cabecera { top: 17% !important; left: 8% !important; }
+
+  .cabeceraEliminados { top: 19% !important; left: 8% !important; }
+
+  #showHideColumns { margin-left: 70% !important;  margin-top: 12.6% !important; width: 20.5% !important;}
+
+  .modal-dialog { margin: 8rem auto !important; }
+
+  #tablaDatos { height: 48% !important; }
+
+  #modal-dialog { top: 10% !important; }
+
+  #cerrar { left: 91% !important; }
+
+  #permisos { margin-top: 14.4% !important; margin-left: 8.7% !important; height: 336px !important; }
+
+  .table thead .colLast { width: 34% !important;}
+
+}
+
+.img-2 {
+  margin-bottom: 2%;
+  width: 26%;
+}
+
+.modal-dialog { 
+  margin: 12rem auto;
 }
 
 .row {
@@ -121,7 +202,7 @@ body {
 }
 
 #modal-dialog {
-  top: 30%;
+  top: 19%;
 }
 
 #modal-mensaje, #modal-mensajeContinuar{
@@ -136,6 +217,7 @@ body {
   top: 12%;
   width: auto !important;
   display: inline-block;
+  font-size: 23px;
 }
 
 .imagenAviso {
@@ -143,7 +225,7 @@ body {
 }
 
 #cerrar, #cerrarContinuar {
-  left: 85%;
+  left: 9%;
 }
 
 #seguir {
@@ -524,7 +606,7 @@ form button[type="button"]:hover {
 
 /******** TOOLTIPS ********************/
 
-.tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5 {
+.tooltip, .tooltip2, .tooltip3, .tooltip4, .tooltip5, .tooltip22 {
     position: relative;
     display: inline-block;
     opacity: 1;
@@ -565,7 +647,7 @@ form button[type="button"]:hover {
   position: absolute;
   z-index: 1;
   bottom: 125%;
-  left: 5%;
+  left: 14%;
   margin-left: -66px;
   opacity: 0;
   transition: opacity 1s;

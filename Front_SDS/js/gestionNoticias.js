@@ -585,7 +585,7 @@ async function deleteNoticia(){
 
 
 /** Funcion para mostrar el formulario para añadir una noticia **/
-function showAddNoticias() {s
+function showAddNoticias() {
   var idioma = getCookie('lang');
   cambiarFormulario('ADD_NOTICIA', 'javascript:addNoticia();', 'return comprobarAddNoticia();');
   cambiarOnBlurCampos('return comprobarTituloNoticia(\'tituloNoticia\', \'errorFormatoTituloNoticia\', \'tituloNoticia\')', 

@@ -406,7 +406,6 @@ function errorAutenticado(codigoResponse, idioma){
     $("#modal-title").addClass("STOP");
 	document.getElementById("modal-title").style.color = "#a50707";	
     document.getElementById("modal-title").style.top = "13%";
-    document.getElementById("modal-title").style.fontSize = "23px";
 	$("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigoResponse);   
     $(".imagenAviso").attr('src', "images/stop.png");   
@@ -420,7 +419,6 @@ function errorInternal(codigoResponse, idioma){
     $("#modal-title").addClass("ERROR_INTERNO");
 	document.getElementById("modal-title").style.color = "#a50707";	
     document.getElementById("modal-title").style.top = "10%";
-    document.getElementById("modal-title").style.fontSize = "23px";
 	$("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigoResponse);   
     $(".imagenAviso").attr('src', "images/caution.png");   
@@ -687,6 +685,60 @@ function construyeFilaProceso(entidad, fila, procedimientos, objetivos, respuest
     
 
     return filaTabla;
+}
+
+/** Funcion que construye cada línea de la tabla procedimientos ejecutados **/
+function construyeFilaProcedimientoEjecutado(entidad, fila, numeroProcesosTotal, numeroProcesosEjecutados){
+
+	document.getElementById('cabecera').style.display = "block";
+	document.getElementById('cabeceraEliminados').style.display = "none";
+
+	let atributosFunciones="";
+	var filaTabla = "";
+	var listProcedimientos=[];
+	var listObjetivos = [];
+	var listRespuestasPosibles=[];
+	var listNiveles=[];
+	var listOrdenProcesos = [];
+
+	switch(entidad){
+        case 'PROCEDIMIENTOSEJECUTADOS':
+        var fechaProcedimientoEjecutado = new Date(fila.fechaProcedimientoUsuario);
+
+        if(numeroProcesosEjecutados == 0){
+        	var estado = 'Sin iniciar';
+        }else if(numeroProcesosEjecutados > 0 && numeroProcesosEjecutados < numeroProcesosTotal){
+        	var estado = 'Iniciado';
+        }else{
+        	var estado = 'Finalizado';
+        }
+
+		atributosFunciones = ["'" + fila.procedimiento.nombreProcedimiento + "'", "'" + fila.usuario.usuario + "'", "'" + convertirFecha(fechaProcedimientoUsuario.toString()) + "'", "'" + estado + "'", "'" + fila.idProcedimientoUsuario + "'"];
+			filaTabla = '<tr class="impar"> <td>' + fila.procedimiento.nombreProcedimiento + 
+                '</td> <td>' + fila.usuario.usuario +
+                '</td> <td>' + convertirFecha(fechaProcedimientoUsuario.toString()) +
+                '</td> <td>' + estado;
+         
+        break;
+	};
+
+	
+	var celdaAccionesEditar = '<div class="tooltip6"><img class="editar editarPermiso" src="images/edit.png" data-toggle="" data-target="" onclick="showEditar(' + atributosFunciones + 
+                               ')" alt="Editar"/><span class="tooltiptext iconEditUser ICONO_EDIT">Editar</span></div>';
+	var celdaAccionesDetalle = '<div class="tooltip6"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
+                               ')" alt="Detalle"/><span class="tooltiptext iconDetailUser ICONO_DETALLE">Detalle</span></div>';
+
+
+   
+    var celdaAcciones = celdaAccionesDetalle + celdaAccionesEditar;
+
+    	filaTabla = filaTabla + 
+                '</td> <td class="acciones">' + celdaAcciones +  
+                '</td> </tr>';
+    
+
+    return filaTabla;
+
 }
 
 
@@ -1355,7 +1407,6 @@ function respuestaAjaxOK(clase, codigo){
     $(".imagenAviso").attr('src', 'images/ok.png');
     document.getElementById("modal-title").style.color = "#238f2a";
     document.getElementById("modal-title").style.top = "13%";
-    document.getElementById("modal-title").style.fontSize = "23px";
     $("#modal-title").removeClass();
     $("#modal-title").addClass(clase);
     $("#modal-mensaje").removeClass();
@@ -1368,7 +1419,6 @@ function respuestaAjaxKO(codigo){
     $("#modal-title").addClass("ERROR");
     document.getElementById("modal-title").style.color = "#a50707";    
     document.getElementById("modal-title").style.top = "13%";
-    document.getElementById("modal-title").style.fontSize = "23px";
     $(".imagenAviso").attr('src', 'images/failed.png');
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
@@ -1380,7 +1430,6 @@ function respuestaAjaxContinuarProcedimiento(identificadorProcedimiento){
     $("#modal-titleContinuar").addClass("ERROR");
     document.getElementById("modal-titleContinuar").style.color = "#a50707";    
     document.getElementById("modal-titleContinuar").style.top = "13%";
-    document.getElementById("modal-titleContinuar").style.fontSize = "23px";
     $(".imagenAviso").attr('src', 'images/failed.png');
     $('#seguir').attr('onclick', 'iniciarProcedimientoUsuario('+ identificadorProcedimiento +', \'volverGuardar\')');
 }

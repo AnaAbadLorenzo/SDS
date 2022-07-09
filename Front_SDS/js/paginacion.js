@@ -507,6 +507,16 @@ function escogeEntidadPaginacion(entidad, funcionalidad){
         }
         break;
 
+        case 'PROCEDIMIENTOSEJECUTADOS' :
+            switch(funcionalidad){
+                case 'cargarProcedimientosEjecutados': 
+                    for(var i = 0; i< 3; i++){
+                        paginas += '<li id="' + (i+1) + '" class="page-item boton' + (i+1) + '" style="display:block"><a class="page-link" href="#" onclick="cargarProcedimientosEjecutados(' 
+                            + (i+1) + ',' + tamanhoPaginaProcedimientosEjecutados + ', \'PaginadorNo\' ); activarElemento(' + (i+1) +'); cargarPermisosSegunEntidad(getCookie(\'entidad\')); comprobarOcultos()">' + (i+1) + '</a></li>';
+                    }
+                break;
+            }
+            break;
     }
 
     return paginas;
