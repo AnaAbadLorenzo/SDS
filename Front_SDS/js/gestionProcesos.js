@@ -1715,6 +1715,12 @@ function showAddProcesos() {
   $('select[name="objetivos"] option[value=0]').attr('selected', true);
   $('input[name="respuestaPosible"]').attr('disabled', false);
 
+  $("#procedimientosOrden").css("height", "141px");
+  $('#btnAddProcedimientoProceso').css("cursor", "pointer");
+  $('#btnAddObjetivoPlan').css("cursor", "pointer");   
+  $("#objetivosNiveles").css("height", "141px"); 
+  $('.borrarIcon').css("cursor", "pointer");
+
   for(var i = 1; i<=numeroObjetivosNivel; i++){
   	$('#selectObjetivos'+i+' option[value=0]').attr('selected', true);
   	eliminarReadonly(['selectObjetivos'+i, 'nivel'+i]);
@@ -1724,6 +1730,7 @@ function showAddProcesos() {
   }
 
    for(var i = 1; i<=numeroProcedimientosOrden; i++){
+    document.getElementById("procedimientosOrden" + i).style.height = "131px";
   	$('#selectProcedimientos'+i+' option[value=0]').attr('selected', true);
   	eliminarReadonly(['selectProcedimientos'+i, 'ordenProceso'+i]);
   	habilitaCampos(['selectProcedimientos'+i, 'ordenProceso'+i]);
@@ -1816,7 +1823,7 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
   	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
     $('#divRespPosible').attr('hidden', false);
 
-
+    $("#procedimientosOrden").css("height", "180px");
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
 
     $('input[name="respuestaPosible"]').attr('disabled', true);
@@ -1840,6 +1847,7 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
 
 
 	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+      document.getElementById("procedimientosOrden" + i).style.height = "170px";
 	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
 	  	var selectPr = 'selectProcedimientos'+i;
     	var obligatorioO = 'obligatorioOrdenProceso'+i;
@@ -1900,6 +1908,11 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
   	$('#labelSeleccionRespuestaPosible').attr('hidden', false);
     $('#divRespPosible').attr('hidden', false);
 
+    $("#procedimientosOrden").css("height", "180px");
+    $('#btnAddProcedimientoProceso').css("cursor", "pointer");
+    $('#btnAddObjetivoPlan').css("cursor", "pointer");   
+    $("#objetivosNiveles").css("height", "141px"); 
+    $('.borrarIcon').css("cursor", "pointer");
 
   	$('input[name="respuestaPosible"]').attr('disabled', false);
 
@@ -1927,6 +1940,7 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
 
 
 	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+      document.getElementById("procedimientosOrden" + i).style.height = "170px";
 	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
 	  	var selectPr = 'selectProcedimientos'+i;
     	var obligatorioO = 'obligatorioOrdenProceso'+i;

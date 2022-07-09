@@ -122,7 +122,7 @@
   .col-xl-11 {width: 91.66%;}
   .col-xl-12 {width: 100%;}
 
-  ..img-1 {width: 12%;}
+  .img-1 {width: 12%;}
   .img-2 {margin-top: 3% !important;; margin-bottom: 2% !important;; width: 24% !important;;}
 
   .cabecera { top: 17% !important; left: 8% !important; }
@@ -225,7 +225,7 @@ body {
 }
 
 #cerrar, #cerrarContinuar {
-  left: 9%;
+  left: 93%;
 }
 
 #seguir {
