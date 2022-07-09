@@ -25,7 +25,7 @@ function addObjetivosNiveles(){
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	          			  		'</div>' +
 	                      		'<div style="display:none" id="errorFormatoNivel"></div>' +
-	                      		'<div id="btnBorrar' + idObjetivoNivel + '"name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles(\'objetivosNiveles' + idObjetivoNivel+ '\')" class="tooltip6 borrarIcon">' +
+	                      		'<div id="btnBorrar' + idObjetivoNivel + '"name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles(\'objetivosNiveles' + idObjetivoNivel+ '\')" class="tooltip17 borrarIcon">' +
 	      			  				'<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />' +
 	        						'<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>' +
 	      			  			'</div>' +
@@ -36,6 +36,8 @@ function addObjetivosNiveles(){
 	$("#objetivosNiveles").append(objetivosNiveles);
 
 	setCookie('numeroObjNivel', idObjetivoNivel);
+
+  $('.borrarIcon').css("cursor", "pointer");
 }
 
 /**Función para añadir más procedimientos y orden*/
@@ -66,7 +68,7 @@ function addProcedimientosOrden(){
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	          			  		'</div>' +
 	                      		'<div style="display:none" id="errorFormatoOrdenProceso'+idProcedimientoOrden+'"></div> ' +
-	                      		'<div id="btnBorrarProcedimiento'+idProcedimientoOrden+'" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden(\'procedimientosOrden'+idProcedimientoOrden+'\')" class="tooltip6 borrarIcon">' +
+	                      		'<div id="btnBorrarProcedimiento'+idProcedimientoOrden+'" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden(\'procedimientosOrden'+idProcedimientoOrden+'\')" class="tooltip17 borrarIcon">' +
 	      			  				'<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />' +
 	        						'<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>' +
 	      			  			'</div>' +
@@ -77,6 +79,8 @@ function addProcedimientosOrden(){
 	$("#procedimientosOrden").append(procedimientosOrden);
 
 	setCookie('numeroProcedimientosOrden', idProcedimientoOrden);
+
+  $('.borrarIcon').css("cursor", "pointer");
 }
 
 /**Función que eliminar el contenido de un div de objetivos y niveles*/

@@ -179,75 +179,77 @@
                       				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     	  		</div>
                     	  		<div style="display:none" id="errorFormatoFechaProceso"></div>
-                    	  		<div id ="btnAddProcedimientoProceso" name="btnAddProcedimientoProceso" value="Añadir" onclick="javascript:addProcedimientosOrden();" class="tooltip6 addObjetivoPlanIcon">
-	          			  					<img class="iconoAddObjetivoPlan iconAddObjetivoPlan" src="images/add3.png" alt="Añadir" />
-		        								<span class="tooltiptext iconAddObjetivoPlan ICONO_ADD">Añadir</span>
-	          			  				</div>
-	          			  				<label class="labelForm SELECCIONAR_PROCEDIMIENTO" id="labelSeleccionProcedimiento" hidden></label> 
-                    	  		<div id="procedimientosOrden">
-	                    				<div id="procedimientosOrden1" class="procedimientosOrden">
-			                    			<label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento1" hidden></label>
-			                	  			<select id="selectProcedimientos1" name ="procedimientos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-			                	  			</select>
-									  						<div class="obligatorio tooltip2" id="obligatorioProcedimientos1">*
-	              									<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
-	          			  						</div>
-			          			  			<div style="display:none" id="errorFormatoNombreProcedimientoSelect1"></div>  
-
-			  						  				<label class="labelForm ORDEN_PROCESO" id="labelOrdenProceso1" hidden></label>                            
-			                      			<input type="number" maxlength="11" size="11" placeholder="ORDEN_PROCESO" name="ordenProceso" id="ordenProceso1" class="ORDEN_PROCESO" onblur="" hidden/>
-			                       			<div class="obligatorio tooltip2" id="obligatorioOrdenProceso1">*
-			              						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
-			              			  		</div>
-			                          <div style="display:none" id="errorFormatoOrdenProceso1"></div> 
-
-			                          <div id="btnBorrarProcedimiento1" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden('procedimientosOrden1')" class="tooltip6 borrarIcon">
-			          			  					<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />
-				        									<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>
+                    	  		<div class="opcionesProcedimientoObjetivoRespuestas overflow-auto">
+		                    	  		<div id ="btnAddProcedimientoProceso" name="btnAddProcedimientoProceso" value="Añadir" onclick="javascript:addProcedimientosOrden();" class="tooltip16 addObjetivoPlanIcon">
+			          			  					<img class="iconoAddObjetivoPlan iconAddObjetivoPlan" src="images/add3.png" alt="Añadir" />
+				        								<span class="tooltiptext iconAddObjetivoPlan ICONO_ADD">Añadir</span>
 			          			  				</div>
+			          			  				<label class="labelForm SELECCIONAR_PROCEDIMIENTO" id="labelSeleccionProcedimiento" hidden></label> 
+		                    	  		<div id="procedimientosOrden" class="overflow-auto">
+			                    				<div id="procedimientosOrden1" class="procedimientosOrden">
+					                    			<label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento1" hidden></label>
+					                	  			<select id="selectProcedimientos1" name ="procedimientos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+					                	  			</select>
+											  						<div class="obligatorio tooltip2" id="obligatorioProcedimientos1">*
+			              									<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+			          			  						</div>
+					          			  			<div style="display:none" id="errorFormatoNombreProcedimientoSelect1"></div>  
+
+					  						  				<label class="labelForm ORDEN_PROCESO" id="labelOrdenProceso1" hidden></label>                            
+					                      			<input type="number" maxlength="11" size="11" placeholder="ORDEN_PROCESO" name="ordenProceso" id="ordenProceso1" class="ORDEN_PROCESO" onblur="" hidden/>
+					                       			<div class="obligatorio tooltip2" id="obligatorioOrdenProceso1">*
+					              						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+					              			  		</div>
+					                          <div style="display:none" id="errorFormatoOrdenProceso1"></div> 
+
+					                          <div id="btnBorrarProcedimiento1" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden('procedimientosOrden1')" class="tooltip17 borrarIcon">
+					          			  					<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />
+						        									<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>
+					          			  				</div>
+					          			  		</div>
+			                        </div>
+			                        <div style="display:none" id="errorFormatoProcedimientos"></div> 
+
+			                        <label class="labelForm SELECCIONAR_RESPUESTA_POSIBLE labelRespuestaPosible" id="labelSeleccionRespuestaPosible"></label>
+					          			  	<label class="labelForm RESPUESTA_POSIBLE" id="labelRespuestaPosible" hidden></label> 
+					          			  	<div class="obligatorio tooltip2" id="obligatorioRespuestaPosible">*
+					              				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+					          			  		</div>	                        
+			                        <div id="divRespPosible" class = "respuestaPosible overflow-auto">    			  		
+					          			  		<div id ="respuestasPosibles">
+																</div>
+					          			  		<div style="display:none" id="errorFormatoRespuestaPosibleSelect"></div> 
+					          			  	</div>
+
+		                    		<div id ="btnAddObjetivoPlan" name="btnAddObjetivoPlan" value="Añadir" onclick="javascript:addObjetivosNiveles();" class="tooltip16 addObjetivoPlanIcon">
+			          			  			<img class="iconoAddObjetivoPlan iconAddObjetivoPlan" src="images/add3.png" alt="Añadir" />
+				        						<span class="tooltiptext iconAddObjetivoPlan ICONO_ADD">Añadir</span>
 			          			  		</div>
-	                        </div>
-	                        <div style="display:none" id="errorFormatoProcedimientos"></div> 
-	                        
-	                        <div id="divRespPosible" class = "respuestaPosible">
-			          			  		<label class="labelForm SELECCIONAR_RESPUESTA_POSIBLE labelRespuestaPosible" id="labelSeleccionRespuestaPosible"></label>
-			          			  		<label class="labelForm RESPUESTA_POSIBLE" id="labelRespuestaPosible" hidden></label> 
-			          			  		<div class="obligatorio tooltip2" id="obligatorioRespuestaPosible">*
-			              				<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
-			          			  		</div>
-			          			  		<div id ="respuestasPosibles">
-														</div>
-			          			  		<div style="display:none" id="errorFormatoRespuestaPosibleSelect"></div> 
-			          			  	</div>
+			          			  		<label class="labelForm SELECCIONAR_OBJETIVO" id="labelSeleccionObjetivo" hidden></label>
+		                    			<div id="objetivosNiveles" class="overflow-auto">
+		                    				<div id="objetivosNiveles1" class="objetivosNiveles"> 
+				                    			<label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivo1" hidden></label>
+				                	  			<select id="selectObjetivos1" name ="objetivos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+				                	  			</select>
+										  						<div class="obligatorio tooltip2" id="obligatorioObjetivos1">*
+				              						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+				          			  			</div>
+				          			  			<div style="display:none" id="errorFormatoNombreObjetivoSelect1"></div>  
 
-                    		<div id ="btnAddObjetivoPlan" name="btnAddObjetivoPlan" value="Añadir" onclick="javascript:addObjetivosNiveles();" class="tooltip6 addObjetivoPlanIcon">
-	          			  			<img class="iconoAddObjetivoPlan iconAddObjetivoPlan" src="images/add3.png" alt="Añadir" />
-		        						<span class="tooltiptext iconAddObjetivoPlan ICONO_ADD">Añadir</span>
-	          			  		</div>
-	          			  		<label class="labelForm SELECCIONAR_OBJETIVO" id="labelSeleccionObjetivo" hidden></label>
-                    			<div id="objetivosNiveles">
-                    				<div id="objetivosNiveles1" class="objetivosNiveles"> 
-		                    			<label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivo1" hidden></label>
-		                	  			<select id="selectObjetivos1" name ="objetivos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-		                	  			</select>
-								  						<div class="obligatorio tooltip2" id="obligatorioObjetivos1">*
-		              						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
-		          			  			</div>
-		          			  			<div style="display:none" id="errorFormatoNombreObjetivoSelect1"></div>  
+				  						  				<label class="labelForm NIVEL" id="labelNivel" hidden></label>                            
+				                      			<input type="number" maxlength="11" size="11" placeholder="NIVEL" name="nivel" id="nivel1" class="NIVEL" onblur=""/>
+				                       			<div class="obligatorio tooltip2" id="obligatorioNivel1">*
+				              						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+				              			  		</div>
+				                          		<div style="display:none" id="errorFormatoNivel1"></div> 
 
-		  						  				<label class="labelForm NIVEL" id="labelNivel" hidden></label>                            
-		                      			<input type="number" maxlength="11" size="11" placeholder="NIVEL" name="nivel" id="nivel1" class="NIVEL" onblur=""/>
-		                       			<div class="obligatorio tooltip2" id="obligatorioNivel1">*
-		              						<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
-		              			  		</div>
-		                          		<div style="display:none" id="errorFormatoNivel1"></div> 
-
-		                          <div id="btnBorrar1" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles('objetivosNiveles1')" class="tooltip6 borrarIcon">
-		          			  				<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />
-			        						<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>
-		          			  			</div>
-		          			  		</div>
-	                        </div>             	  		
+				                          <div id="btnBorrar1" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles('objetivosNiveles1')" class="tooltip17 borrarIcon">
+				          			  				<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />
+					        						<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>
+				          			  			</div>
+				          			  		</div>
+			                        </div>
+			                       </div>             	  		
 	                        <div style="display:none" id="errorFormatoObjetivos"></div> 
 	                          	<button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
 	                              	<img class="" src="" alt="" id="iconoAcciones" />
