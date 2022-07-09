@@ -1224,6 +1224,7 @@ function gestionarPermisosPlan(idElementoList) {
         $('#divSearchDelete').attr("onclick", "javascript:buscarEliminados(0,\'tamanhoPaginaPlan\', \'PaginadorNo\')");
         $('#divListarPlanes').attr("data-toggle", "modal");
         $('#divListarPlanes').attr("data-target", "#form-modal");
+        
         if(getCookie('rolUsuario') == "admin"){
           document.getElementById('cabecera').style.display = "block";
           document.getElementById('tablaDatos').style.display = "block";
@@ -1240,6 +1241,10 @@ function gestionarPermisosPlan(idElementoList) {
         }
         
         }else{
+           $('#btnListarPlanesConsulta').attr('src', 'images/search3.png');
+           $('#btnListarPlanesConsulta').css("cursor", "pointer");
+           $('#divListarPlanesConsulta').attr("data-toggle", "modal");
+           $('#divListarPlanesConsulta').attr("data-target", "#form-modal");
           document.getElementById('cabecera').style.display = "none";
           document.getElementById('listaPlanes').style.display = "block";
           document.getElementById('filasTabla').style.display = "block";

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sds.model.ProcedimientoUsuarioProcesoEntity;
 import com.sds.model.RespCode;
 import com.sds.model.RespEntity;
+import com.sds.service.common.Paginacion;
 import com.sds.service.common.ReturnBusquedas;
 import com.sds.service.exception.LogAccionesNoGuardadoException;
 import com.sds.service.exception.LogExcepcionesNoGuardadoException;
@@ -36,6 +37,15 @@ public class ProcedimientoUsuarioProcesoController {
 
 	public ProcedimientoUsuarioProcesoController() {
 		validaciones = new Validaciones();
+	}
+
+	@PostMapping(value = "/listarProcedimientosUsuariosProcesos")
+	@ResponseBody
+	public RespEntity buscarTodosPaginacion(@RequestBody final Paginacion paginacion) {
+		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> resultado = procedimientoUsuarioProcesoService
+				.buscarTodosPaginacion(paginacion.getInicio(), paginacion.getTamanhoPagina());
+
+		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIOS_PROCESOS_LISTADOS, resultado);
 	}
 
 	@GetMapping(value = "/listarProcedimientosUsuariosProcesosSinP")

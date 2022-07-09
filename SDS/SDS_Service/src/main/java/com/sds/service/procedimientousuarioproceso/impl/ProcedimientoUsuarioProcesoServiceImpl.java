@@ -72,6 +72,56 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 	}
 
 	@Override
+	public ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodosPaginacion(final int inicio,
+			final int tamanhoPagina) {
+		final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoToret = new ArrayList<>();
+
+		final List<ProcedimientoUsuarioProcesoEntity> procedimientosUsuariosProcesos = entityManager
+				.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIOPROCESO_FINDALLPROCEDIMIENTOUSUARIOPROCESO)
+				.setFirstResult(inicio).setMaxResults(tamanhoPagina).getResultList();
+
+		final Integer numberTotalResults = procedimientoUsuarioProcesoRepository
+				.numberFindAllProcedimientosUsuariosProcesos();
+
+		if (!procedimientosUsuariosProcesos.isEmpty()) {
+			for (final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProceso : procedimientosUsuariosProcesos) {
+				final ProcesoEntity procesoEntity = new ProcesoEntity(
+						procedimientoUsuarioProceso.getProceso().getIdProceso(),
+						procedimientoUsuarioProceso.getProceso().getNombreProceso(),
+						procedimientoUsuarioProceso.getProceso().getDescripProceso(),
+						procedimientoUsuarioProceso.getProceso().getFechaProceso(),
+						procedimientoUsuarioProceso.getProceso().getBorradoProceso());
+				final EvidenciaEntity evidencia = new EvidenciaEntity(
+						procedimientoUsuarioProceso.getEvidencia().getIdEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getFechaEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getBorradoEvidencia(),
+						procedimientoUsuarioProceso.getEvidencia().getNombreFichero(),
+						procedimientoUsuarioProceso.getEvidencia().getRutaEvidencia());
+				final RespuestaPosibleEntity respuestaPosible = new RespuestaPosibleEntity(
+						procedimientoUsuarioProceso.getRespuestaPosible().getIdRespuesta(),
+						procedimientoUsuarioProceso.getRespuestaPosible().getTextoRespuesta(),
+						procedimientoUsuarioProceso.getRespuestaPosible().getBorradoRespuesta());
+				final ProcedimientoUsuarioEntity procedimientoUsuario = new ProcedimientoUsuarioEntity(
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getIdProcedimientoUsuario(),
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getPuntuacionProcedimientoUsuario(),
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getFechaProcedimientoUsuario(),
+						procedimientoUsuarioProceso.getProcedimientoUsuario().getBorradoProcedimientoUsuario());
+				final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoEntity = new ProcedimientoUsuarioProcesoEntity(
+						procedimientoUsuarioProceso.getIdProcedimientoUsuarioProceso(),
+						procedimientoUsuarioProceso.getFechaProcedimientoUsuarioProceso(),
+						procedimientoUsuarioProceso.getBorradoProcedimientoUsuarioProceso(), respuestaPosible,
+						procesoEntity, procedimientoUsuario, evidencia);
+
+				procedimientoUsuarioProcesoToret.add(procedimientoUsuarioProcesoEntity);
+			}
+		}
+		final ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> result = new ReturnBusquedas<>(
+				procedimientoUsuarioProcesoToret, numberTotalResults, procedimientoUsuarioProcesoToret.size(), 0);
+
+		return result;
+	}
+
+	@Override
 	public ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodos() {
 		final List<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesoToret = new ArrayList<>();
 

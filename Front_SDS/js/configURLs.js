@@ -147,11 +147,13 @@ var urlPeticionAjaxAddProcedimientoUsuario = urlComun + urlProcedimientosUsuario
 var urlPeticionAjaxEditProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/modificaProcedimientoUsuario';
 var urlPeticionAjaxListarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuario';
 var urlPeticionAjaxEliminarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/borrarProcedimientoUsuario';
+var urlPeticionAjaxListarProcedimientoUsuarioById = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuarioById';
 
 
 /**Urls procedimientoUsuarioProceso **/
 var urlPeticionAjaxAddProcedimientoUsuarioProceso = urlComun + urlProcedimientoUsuarioProceso + '/procedimientoUsuarioProceso';
 var urlPeticionAjaxListarProcedimientoUsuarioProcesoOfProcedimientoUsuario =  urlComun + urlProcedimientoUsuarioProceso + '/listarProcedimientosUsuariosProcesosOfProcedimientoUsuario';
+var urlPeticionAjaxListarProcedimientosUsuariosProcesos =  urlComun + urlProcedimientoUsuarioProceso + '/listarProcedimientosUsuariosProcesos';
 
 
 /**Urls procesoProcedimiento **/

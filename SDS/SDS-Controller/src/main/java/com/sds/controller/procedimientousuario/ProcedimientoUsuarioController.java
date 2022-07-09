@@ -60,6 +60,15 @@ public class ProcedimientoUsuarioController {
 		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIO_LISTADOS, resultado);
 	}
 
+	@PostMapping(value = "/listarProcedimientoUsuarioById")
+	@ResponseBody
+	public RespEntity listarProcedimientoUsuarioById(@RequestBody final String idProcedimientoUsuario) {
+		final ProcedimientoUsuarioEntity resultado = procedimientoUsuarioService
+				.buscarProcedimientoUsuarioById(Integer.parseInt(idProcedimientoUsuario));
+
+		return new RespEntity(RespCode.PROCEDIMIENTOS_USUARIO_LISTADOS, resultado);
+	}
+
 	@PostMapping(value = "/procedimientoUsuario")
 	@ResponseBody
 	public RespEntity guardarProcedimientoUsuario(@RequestBody final ProcedimientoUsuario procedimientoUsuario) {
@@ -97,7 +106,7 @@ public class ProcedimientoUsuarioController {
 	public RespEntity modificarProcedimientoUsuario(@RequestBody final ProcedimientoUsuario procedimientoUsuario) {
 		try {
 			final Boolean procedimientoUsuarioValido = validaciones
-					.comprobarProcedimientoUsuarioBlank(procedimientoUsuario.getProcedimientoUsuario());
+					.comprobarProcedimientoUsuarioBlankModificar(procedimientoUsuario.getProcedimientoUsuario());
 
 			if (Boolean.TRUE.equals(procedimientoUsuarioValido)) {
 				String resultado;

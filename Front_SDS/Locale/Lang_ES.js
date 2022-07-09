@@ -60,6 +60,7 @@ arrayES={
 	'ORDEN_PROCESO': 'Orden proceso',
 	'ESTADO_PROCEDIMIENTO_EJECUTADO' : 'Estado procedimiento',
 	'PUNTUACION_PROCEDIMIENTO_EJECUTADO' : 'Puntuacion procedimiento ejecutado',
+	'EVIDENCIA' : 'Evidencia: ',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -456,6 +457,7 @@ arrayES={
 	'EDIT_PROCEDIMIENTO_EJECUTADO' : 'EDITAR PROCEDIMIENTO EJECUTADO',
 	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
 	'SEARCH_PROCEDIMIENTO_EJECUTADO' : 'BUSCAR PROCEDIMIENTO EJECUTADO',
+	'DETAIL_PROCESO_EJECUTADO' : 'DETALLE PROCESO EJECUTADO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',

@@ -527,6 +527,19 @@ public class Validaciones {
 
 	}
 
+	public boolean comprobarProcedimientoUsuarioBlankModificar(
+			final ProcedimientoUsuarioEntity procedimientoUsuarioEntity) {
+		if (!comprobarPuntuacionProcedimientoUsuarioBlank(
+				procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario())
+				|| !comprobarUsuarioProcedimientoUsuario(procedimientoUsuarioEntity.getUsuario())
+				|| !comprobarProcedimientoProcedimientoUsuario(procedimientoUsuarioEntity.getProcedimiento())) {
+			return false;
+		} else {
+			return true;
+		}
+
+	}
+
 	public boolean comprobarPuntuacionProcedimientoUsuarioBlank(final Integer puntuacionProcedimientoUsuario) {
 		if (puntuacionProcedimientoUsuario != null) {
 			if (!tieneValor(puntuacionProcedimientoUsuario.toString())) {

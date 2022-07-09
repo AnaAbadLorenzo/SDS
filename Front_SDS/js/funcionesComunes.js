@@ -740,6 +740,49 @@ function construyeFilaProcedimientoEjecutado(entidad, fila, numeroProcesosTotal,
 
 }
 
+/** Funcion que construye cada línea de la tabla procesos ejecutados **/
+function construyeFilaProcesosEjecutado(entidad, fila, datosProceso){
+
+	document.getElementById('cabecera').style.display = "block";
+
+	let atributosFunciones="";
+	var filaTabla = "";
+	var listProcedimientos=[];
+	var listObjetivos = [];
+	var listRespuestasPosibles=[];
+	var listNiveles=[];
+	var listOrdenProcesos = [];
+
+	switch(entidad){
+        case 'PROCESOSEJECUTADOS':
+        var fechaProcesoEjecutado = new Date(fila.fechaProcedimientoUsuarioProceso);
+
+		atributosFunciones = ["'" + datosProceso.procedimiento.nombreProcedimiento + "'", "'" + datosProceso.usuario.usuario + "'", "'" + fila.proceso.nombreProceso + "'", "'" + convertirFecha(fechaProcesoEjecutado.toString()) + "'", "'" + fila.respuestaPosible.textoRespuesta + "'",  "'" + fila.evidencia.nombreFichero + "'", "'" + fila.idProcedimientoUsuarioProceso + "'"];
+			filaTabla = '<tr class="impar"> <td>' + datosProceso.procedimiento.nombreProcedimiento + 
+                '</td> <td>' + datosProceso.usuario.usuario +
+                '</td> <td>' + fila.proceso.nombreProceso +
+                '</td> <td>' + convertirFecha(fechaProcesoEjecutado.toString());
+  
+        break;
+	};
+
+
+	var celdaAccionesDetalle = '<div class="tooltip6"><img class="detalle detallePermiso" src="images/detail.png" data-toggle="" data-target="" onclick="showDetalle(' + atributosFunciones + 
+                               ')" alt="Detalle"/><span class="tooltiptext iconDetailUser ICONO_DETALLE">Detalle</span></div>';
+
+
+   
+    var celdaAcciones = celdaAccionesDetalle;
+
+    	filaTabla = filaTabla + 
+                '</td> <td class="acciones">' + celdaAcciones +  
+                '</td> </tr>';
+    
+
+    return filaTabla;
+
+}
+
 
 /**Función que construye cada línea de los elementos eliminados con los que se va a rellenar en la tabla*/
 function construyeFilaEliminados(entidad, fila) {
@@ -1236,8 +1279,10 @@ function cambiarTituloGestion(funcionalidad){
 		break;
 		case 'procedimiento':
 			if (rol !== 'admin' && rol !== 'gestor'){
-				$("#gestion").addClass("GESTION_PROCEDIMIENTOS_DESDE_PLAN");
+				$("#gestion").removeClass();
+				$("#gestion").addClass("gestion GESTION_PROCEDIMIENTOS_DESDE_PLAN");
 			} else {
+				$("#gestion").removeClass();
 				$("#gestion").addClass("GESTION_PROCEDIMIENTOS");
 			}
 		break;
@@ -1503,6 +1548,10 @@ function compruebaFuncionalidadesPermisos(entidad){
 		case 'PROCEDIMIENTOSEJECUTADOS' :
 			cargarPermisosFuncProcedimientosEjecutados();
 		break;
+
+		case 'PROCESOSEJECUTADOS' :
+			cargarPermisosFuncProcesosEjecutados();
+		break;
 	}
 	
 }
@@ -1568,6 +1617,10 @@ function cargarPermisosSegunEntidad(entidad){
 
 		case 'PROCEDIMIENTOSEJECUTADOS' :
 			cargarPermisosFuncProcedimientosEjecutados();
+		break;
+
+		case 'PROCESOSEJECUTADOS' :
+			cargarPermisosFuncProcesosEjecutados();
 		break;
 
 	}

@@ -24,6 +24,8 @@ public interface ProcedimientoUsuarioService {
 
 	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos();
 
+	ProcedimientoUsuarioEntity buscarProcedimientoUsuarioById(final Integer idProcedimientoUsuario);
+
 	String anadirProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
 			ProcedimientoUsuarioYaExisteException, ProcedimientoNoExisteException;

@@ -612,6 +612,7 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
           inicio = parseInt(res.data.inicio)+1;
             $('#itemPaginacion').attr('hidden',false);
         }
+
         var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
         $("#paginacion").append(textPaginacion);
 

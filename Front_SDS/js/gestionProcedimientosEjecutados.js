@@ -67,6 +67,76 @@ async function cargarProcedimientosEjecutados(numeroPagina, tamanhoPagina, pagin
 		};
 }
 
+/* Función para obtener las noticias del sistema */
+async function refrescarTabla(numeroPagina, tamanhoPagina){
+  try{
+      const res = await cargarProcedimientosEjecutadosAjaxPromesa(numeroPagina, tamanhoPagina)
+    
+      var numResults = res.data.numResultados + '';
+      var totalResults = res.data.tamanhoTotal + '';
+        var inicio = 0;
+      if(res.data.listaBusquedas.length == 0){
+        inicio = 0;
+      }else{
+        inicio = parseInt(res.data.inicio)+1;
+      }
+      var textPaginacion = inicio + " - " + (parseInt(res.data.inicio)+parseInt(numResults))  + " total " + totalResults;
+
+      if(res.data.listaBusquedas.length == 0){
+        $('#itemPaginacion').attr('hidden',true);
+      }else{
+        $('#itemPaginacion').attr('hidden',false);
+      }
+      
+      $("#datosProcedimientoEjecutado").html("");
+      $("#checkboxColumnas").html("");
+      $("#paginacion").html("");
+        
+      for (var i = 0; i < res.data.listaBusquedas.length; i++){
+          try{
+          const numerosProcesos = await cargarProcesosProcedimientoAjaxPromesa(0, 0, res.data.listaBusquedas[i].idProcedimientoUsuario);
+          
+            try{
+              const numerosProcesosEjecutados = await cargarProcesosOfProcedimientoUsuario(res.data.listaBusquedas[i].idProcedimientoUsuario)
+              var tr = construyeFilaProcedimientoEjecutado('PROCEDIMIENTOSEJECUTADOS', res.data.listaBusquedas[i], numerosProcesos.data.listaBusquedas.length, numerosProcesosEjecutados.data.procesos.length);
+              $("#datosProcedimientoEjecutado").append(tr);
+            }catch(numeroProcesosEjecutados){
+              respuestaAjaxKO(res.code);
+              document.getElementById("modal").style.display = "block";
+            }
+        }catch(numerosProcesos){
+          respuestaAjaxKO(res.code);
+          document.getElementById("modal").style.display = "block";
+        }
+      }
+      
+      var div = createHideShowColumnsWindow({NOMBRE_PROCEDIMIENTO_COLUMN : 1, LOGIN_USUARIO_COLUMN:2, DATE_COLUMN: 3, ESTADO_PROCEDIMIENTO_EJECUTADO_COLUMN: 4});
+        $("#checkboxColumnas").append(div);
+        $("#paginacion").append(textPaginacion);
+         document.getElementById('filasTabla').style.display = "block";
+        setLang(getCookie('lang'));
+
+       
+        paginador(totalResults, 'cargarProcedimientosEjecutados', 'PROCEDIMIENTOSEJECUTADOS');
+        
+        
+        if(numeroPagina == 0){
+          $('#' + (numeroPagina+1)).addClass("active");
+          var numPagCookie = numeroPagina+1;
+        }else{
+          $('#' + numeroPagina).addClass("active");
+           var numPagCookie = numeroPagina;
+        }
+
+        setCookie('numeroPagina', numPagCookie);
+    
+    }catch(res){
+        respuestaAjaxKO(res.code);
+        document.getElementById("modal").style.display = "block";
+    };
+}
+
+
 /** Funcion buscar proceso **/
 async function buscarProcedimientoEjecutado(numeroPagina, tamanhoPagina, accion, paginadorCreado){
     try {
@@ -230,7 +300,7 @@ function cargarPermisosFuncProcedimientosEjecutadosAjaxPromesa(){
       method: "GET",
       url: urlPeticionAjaxAccionesUsuario,
       contentType : "application/json",
-      data: { usuario : usuario, funcionalidad : 'Gestión de empresas'},  
+      data: { usuario : usuario, funcionalidad : 'Gestión de procedimientos ejecutados'},  
       dataType : 'json',
       headers: {'Authorization': token},
       }).done(res => {

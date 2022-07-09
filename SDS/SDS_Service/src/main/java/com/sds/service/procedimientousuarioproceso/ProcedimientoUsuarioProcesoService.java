@@ -14,6 +14,8 @@ import com.sds.service.procedimientousuarioproceso.model.ProcedimientoUsuarioPro
 
 public interface ProcedimientoUsuarioProcesoService {
 
+	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodosPaginacion(final int inicio, final int tamanhoPagina);
+
 	ReturnBusquedas<ProcedimientoUsuarioProcesoEntity> buscarTodos();
 
 	ProcedimientoUsuarioProcesoReturn buscarProcesosOfProcedimientoUsuario(final Integer idProcedimientoUsuario);

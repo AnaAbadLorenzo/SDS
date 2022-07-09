@@ -70,6 +70,20 @@ public class ProcedimientoUsuarioProcesoEntity {
 		this.procedimientoUsuario = procedimientoUsuario;
 	}
 
+	public ProcedimientoUsuarioProcesoEntity(final Integer idProcedimientoUsuarioProceso,
+			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso,
+			final RespuestaPosibleEntity respuestaPosible, final ProcesoEntity proceso,
+			final ProcedimientoUsuarioEntity procedimientoUsuario, final EvidenciaEntity evidencia) {
+		super();
+		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
+		this.fechaProcedimientoUsuarioProceso = fechaProcedimientoUsuarioProceso;
+		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
+		this.respuestaPosible = respuestaPosible;
+		this.proceso = proceso;
+		this.procedimientoUsuario = procedimientoUsuario;
+		this.evidencia = evidencia;
+	}
+
 	public ProcedimientoUsuarioProcesoEntity(final Date fechaProcedimientoUsuarioProceso,
 			final Integer borradoProcedimientoUsuarioProceso, final RespuestaPosibleEntity respuestaPosible,
 			final ProcesoEntity proceso, final ProcedimientoUsuarioEntity procedimientoUsuario) {
@@ -78,6 +92,16 @@ public class ProcedimientoUsuarioProcesoEntity {
 		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
 		this.respuestaPosible = respuestaPosible;
 		this.proceso = proceso;
+		this.procedimientoUsuario = procedimientoUsuario;
+	}
+
+	public ProcedimientoUsuarioProcesoEntity(final Integer idProcedimientoUsuarioProceso,
+			final Date fechaProcedimientoUsuarioProceso, final Integer borradoProcedimientoUsuarioProceso,
+			final ProcedimientoUsuarioEntity procedimientoUsuario) {
+		super();
+		this.idProcedimientoUsuarioProceso = idProcedimientoUsuarioProceso;
+		this.fechaProcedimientoUsuarioProceso = fechaProcedimientoUsuarioProceso;
+		this.borradoProcedimientoUsuarioProceso = borradoProcedimientoUsuarioProceso;
 		this.procedimientoUsuario = procedimientoUsuario;
 	}
 

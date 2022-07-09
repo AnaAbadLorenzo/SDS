@@ -239,6 +239,44 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 	}
 
 	@Override
+	public ProcedimientoUsuarioEntity buscarProcedimientoUsuarioById(final Integer idProcedimientoUsuario) {
+		ProcedimientoUsuarioEntity procedimientoUsuarioEntity = new ProcedimientoUsuarioEntity();
+
+		final Optional<ProcedimientoUsuarioEntity> procedimientoUsuario = procedimientoUsuarioRepository
+				.findById(idProcedimientoUsuario);
+
+		if (procedimientoUsuario.isPresent()) {
+			final PlanEntity plan = new PlanEntity(procedimientoUsuario.get().getProcedimiento().getPlan().getIdPlan(),
+					procedimientoUsuario.get().getProcedimiento().getPlan().getNombrePlan(),
+					procedimientoUsuario.get().getProcedimiento().getPlan().getDescripPlan(),
+					procedimientoUsuario.get().getProcedimiento().getPlan().getFechaPlan(),
+					procedimientoUsuario.get().getProcedimiento().getPlan().getBorradoPlan());
+
+			final ProcedimientoEntity procedimientoEntity = new ProcedimientoEntity(
+					procedimientoUsuario.get().getProcedimiento().getIdProcedimiento(),
+					procedimientoUsuario.get().getProcedimiento().getNombreProcedimiento(),
+					procedimientoUsuario.get().getProcedimiento().getDescripProcedimiento(),
+					procedimientoUsuario.get().getProcedimiento().getFechaProcedimiento(),
+					procedimientoUsuario.get().getProcedimiento().getBorradoProcedimiento(),
+					procedimientoUsuario.get().getProcedimiento().getCheckUsuario(), plan);
+
+			final UsuarioEntity usuarioEntity = new UsuarioEntity(
+					procedimientoUsuario.get().getUsuario().getDniUsuario(),
+					procedimientoUsuario.get().getUsuario().getUsuario(),
+					procedimientoUsuario.get().getUsuario().getBorradoUsuario());
+			procedimientoUsuarioEntity = new ProcedimientoUsuarioEntity(
+					procedimientoUsuario.get().getIdProcedimientoUsuario(),
+					procedimientoUsuario.get().getPuntuacionProcedimientoUsuario(),
+					procedimientoUsuario.get().getFechaProcedimientoUsuario(),
+					procedimientoUsuario.get().getBorradoProcedimientoUsuario(), procedimientoEntity, usuarioEntity);
+
+		}
+
+		return procedimientoUsuarioEntity;
+
+	}
+
+	@Override
 	@Transactional(isolation = Isolation.READ_UNCOMMITTED)
 	public String anadirProcedimientoUsuario(final ProcedimientoUsuario procedimientoUsuario)
 			throws LogExcepcionesNoGuardadoException, LogAccionesNoGuardadoException, UsuarioNoEncontradoException,
@@ -359,7 +397,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 			ParseException, ProcedimientoUsuarioNoExisteException, ProcedimientoNoExisteException {
 		final ProcedimientoUsuarioEntity procedimientoUsuarioEntity = procedimientoUsuario.getProcedimientoUsuario();
 		final Boolean procedimientoUsuarioValido = validaciones
-				.comprobarProcedimientoUsuarioBlank(procedimientoUsuarioEntity);
+				.comprobarProcedimientoUsuarioBlankModificar(procedimientoUsuarioEntity);
 		String resultado = StringUtils.EMPTY;
 		String resultadoLog = StringUtils.EMPTY;
 
