@@ -2308,7 +2308,7 @@ public class TestController {
 		respuestaTestAtributos.setAccion(Constantes.ACCION_MODIFICAR_PROCESO);
 		respuestaTestAtributos.setDatosPruebaAtributos(resultadoPruebasAtributos);
 
-		return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCEDIMIENTO_OK, respuestaTestAtributos);
+		return new RespEntity(RespCode.TEST_ATRIBUTOS_PROCESO_OK, respuestaTestAtributos);
 
 	}
 
@@ -2372,7 +2372,7 @@ public class TestController {
 		respuestaTestAcciones.setAccion(Constantes.ACCION_MODIFICAR_PROCESO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
-		return new RespEntity(RespCode.TEST_ACCIONES_PROCEDIMIENTO_OK, respuestaTestAcciones);
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_OK, respuestaTestAcciones);
 	}
 
 	@GetMapping(value = "/proceso/accion/eliminar")
@@ -2393,7 +2393,7 @@ public class TestController {
 		respuestaTestAcciones.setAccion(Constantes.ACCION_ELIMINAR_PROCESO);
 		respuestaTestAcciones.setDatosPruebaAcciones(datosPruebaAcciones);
 
-		return new RespEntity(RespCode.TEST_ACCIONES_PROCEDIMIENTO_OK, respuestaTestAcciones);
+		return new RespEntity(RespCode.TEST_ACCIONES_PROCESO_OK, respuestaTestAcciones);
 	}
 
 	@GetMapping(value = "/proceso/accion/reactivar")
