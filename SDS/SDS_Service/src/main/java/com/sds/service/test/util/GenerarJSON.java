@@ -623,7 +623,11 @@ public class GenerarJSON {
 
 		procedimiento.setFechaProcedimiento(fechaSql);
 
-		procedimiento.setCheckUsuario(Boolean.FALSE);
+		if (jsonProcedimientoVacio.get(Constantes.CHECK_USUARIO).equals("")) {
+			procedimiento.setCheckUsuario(null);
+		} else {
+			procedimiento.setCheckUsuario(Boolean.FALSE);
+		}
 
 		procedimiento.setBorradoProcedimiento(0);
 
@@ -713,7 +717,7 @@ public class GenerarJSON {
 
 		if (new String(
 				(jsonProcedimientoUsuarioVacio.get(Constantes.PROCEDIMIENTOUSUARIO_ID).toString()).getBytes("UTF-8"))
-						.equals(StringUtils.EMPTY)) {
+				.equals(StringUtils.EMPTY)) {
 			procedimientoUsuario.setIdProcedimientoUsuario(0);
 		} else {
 			procedimientoUsuario.setIdProcedimientoUsuario(Integer.parseInt(

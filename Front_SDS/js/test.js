@@ -135,7 +135,7 @@ function obtenerValor(valor, atributos, entidad){
 			break;
 			case 'Procedimiento':
 				resultadoValor = '"' + atributos[0] + '" : "' + convertirCaracteres(valor.nombreProcedimiento) + '", "' + atributos[1] + '" : "' + convertirCaracteres(valor.descripProcedimiento) +  '"' 
-				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaProcedimiento) +  '"';
+				      + '", "' + atributos[2] + '" : "' + convertirCaracteres(valor.fechaProcedimiento) + '", "' + atributos[3] + '" : "' + convertirCaracteres(valor.checkUsuario) + '"';
 			break;
 
 			case 'Proceso':

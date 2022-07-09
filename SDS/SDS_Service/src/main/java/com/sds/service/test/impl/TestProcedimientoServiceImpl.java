@@ -367,15 +367,11 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.PROCEDIMIENTO_NO_EXISTE);
 		final ProcedimientoEntity datosEntradaEliminarProcedimientoAsociadoProceso = generarJSON.generarProcedimiento(
 				Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.PROCEDIMIENTO_ASOCIADO_PROCESO);
-		final ProcedimientoEntity datosEntradaEliminarProcedimientoAsociadoUsuario = generarJSON.generarProcedimiento(
-				Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.PROCEDIMIENTO_ASOCIADO_USUARIO);
 
 		datosPruebaAcciones.add(getTestEliminarProcedimientoCorrecto(datosEntradaEliminarProcedimientoCorrecto));
 		datosPruebaAcciones.add(getTestEliminarProcedimientoNoExiste(datosEntradaEliminarProcedimientoNoExiste));
 		datosPruebaAcciones
 				.add(getTestEliminarProcedimientoAsociadoProceso(datosEntradaEliminarProcedimientoAsociadoProceso));
-		datosPruebaAcciones
-				.add(getTestEliminarProcedimientoAsociadoUsuario(datosEntradaEliminarProcedimientoAsociadoUsuario));
 
 		return datosPruebaAcciones;
 	}
@@ -396,7 +392,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		final ProcedimientoEntity datosEntradaModificarFechaProcedimientoVacia = generarJSON
 				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.FECHA_PROCEDIMIENTO_VACIA);
 		final ProcedimientoEntity datosEntradaModificarCheckUsuarioProcedimientoVacio = generarJSON
-				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.FECHA_PROCEDIMIENTO_VACIA);
+				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.CHECK_USUARIO_VACIO);
 		final ProcedimientoEntity datosEntradaModificarDatosProcedimientoVacios = generarJSON
 				.generarProcedimiento(Constantes.URL_JSON_PROCEDIMIENTO_DATA, Constantes.DATOS_PROCEDIMIENTO_VACIOS);
 		final ProcedimientoEntity datosEntradaModificarFechaProcedimientoAnteriorFechaActual = generarJSON
@@ -441,8 +437,8 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 
 		final String resultadoObtenido = buscarProcedimiento(datosEntradaAccionBuscarProcedimiento);
 
-		final String resultadoEsperado = CodigosMensajes.BUSCAR_PLAN_CORRECTO + " - "
-				+ Mensajes.PLAN_BUSCADO_CORRECTAMENTE;
+		final String resultadoEsperado = CodigosMensajes.BUSCAR_PROCEDIMIENTO_CORRECTO + " - "
+				+ Mensajes.PROCEDIMIENTO_BUSCADO_CORRECTAMENTE;
 
 		return crearDatosPruebaAcciones.createDatosPruebaAcciones(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.BUSCAR_CORRECTO, Constantes.EXITO,
@@ -797,8 +793,22 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 				+ Mensajes.PROCEDIMIENTO_BUSCADO_CORRECTAMENTE;
 
 		final LocalDate datePlan = plan.getFechaPlan().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-		final String fechaPlanString = datePlan.getYear() + "-0" + datePlan.getMonthValue() + "-"
-				+ datePlan.getDayOfMonth();
+
+		final Integer dayInt = datePlan.getDayOfMonth();
+		String day = dayInt.toString();
+
+		if (CommonUtilities.countDigit(dayInt) == 1) {
+			day = "0" + dayInt;
+		}
+
+		final Integer monthInt = datePlan.getMonthValue();
+		String month = monthInt.toString();
+
+		if (CommonUtilities.countDigit(monthInt) == 1) {
+			month = "0" + monthInt;
+		}
+
+		final String fechaPlanString = datePlan.getYear() + "-" + month + "-" + day;
 
 		final List<PlanEntity> planEliminar = planRepository.findPlan(plan.getNombrePlan(), plan.getDescripPlan(),
 				fechaPlanString, objetivo);
@@ -816,8 +826,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 
 		if (!validaciones.comprobarNombreProcedimientoBlank(procedimiento.getNombreProcedimiento())
 				&& !validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())
-				&& !validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())
-				&& !validaciones.comprobarCheckUsuarioBlank(procedimiento.getCheckUsuario())) {
+				&& !validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())) {
 			resultado = CodigosMensajes.PROCEDIMIENTO_VACIO + " - " + Mensajes.PROCEDIMIENTO_NO_PUEDE_SER_VACIO;
 		} else if (!validaciones.comprobarNombreProcedimientoBlank(procedimiento.getNombreProcedimiento())) {
 			resultado = CodigosMensajes.NOMBRE_PROCEDIMIENTO_VACIO + " - "
@@ -828,7 +837,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		} else if (!validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())) {
 			resultado = CodigosMensajes.FECHA_PROCEDIMIENTO_VACIA + " - "
 					+ Mensajes.FECHA_PROCEDIMIENTO_NO_PUEDE_SER_VACIA;
-		} else if (!validaciones.comprobarCheckUsuarioBlank(procedimiento.getCheckUsuario())) {
+		} else if (procedimiento.getCheckUsuario() == null) {
 			resultado = CodigosMensajes.CHECK_USUARIO_VACIO + " - " + Mensajes.CHECK_USUARIO_NO_PUEDE_SER_VACIO;
 		} else {
 			final ProcedimientoEntity procedimientoBD = procedimientoRepository
@@ -839,8 +848,22 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			} else {
 				final LocalDate fechaActual = LocalDate.now();
 				final String fechaIntroducidaUsuario = procedimiento.getFechaProcedimiento().toString();
-				final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
+
+				final Integer dayInt = fechaActual.getDayOfMonth();
+				String day = dayInt.toString();
+
+				if (CommonUtilities.countDigit(dayInt) == 1) {
+					day = "0" + dayInt;
+				}
+
+				final Integer monthInt = fechaActual.getMonthValue();
+				String month = monthInt.toString();
+
+				if (CommonUtilities.countDigit(monthInt) == 1) {
+					month = "0" + monthInt;
+				}
+
+				final String fechaActualString = fechaActual.getYear() + "-" + month + "-" + day;
 
 				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
 					resultado = CodigosMensajes.FECHA_INTRODUCIDA_MENOR_FECHA_ACTUAL + " - "
@@ -882,21 +905,22 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 
 		if (!validaciones.comprobarNombreProcedimientoBlank(procedimiento.getNombreProcedimiento())
 				&& !validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())
-				&& !validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())
-				&& !validaciones.comprobarCheckUsuarioBlank(procedimiento.getCheckUsuario())) {
+				&& !validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())) {
 			resultado = CodigosMensajes.PROCEDIMIENTO_VACIO + " - " + Mensajes.PROCEDIMIENTO_NO_PUEDE_SER_VACIO;
 		} else if (!validaciones.comprobarNombreProcedimientoBlank(procedimiento.getNombreProcedimiento())) {
 			resultado = CodigosMensajes.NOMBRE_PROCEDIMIENTO_VACIO + " - "
 					+ Mensajes.NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_VACIO;
-		} else if (!!validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())) {
+		} else if (!validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())) {
 			resultado = CodigosMensajes.DESCRIPCION_PROCEDIMIENTO_VACIO + " - "
 					+ Mensajes.DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_VACIA;
 		} else if (!validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())) {
 			resultado = CodigosMensajes.FECHA_PROCEDIMIENTO_VACIA + " - "
 					+ Mensajes.FECHA_PROCEDIMIENTO_NO_PUEDE_SER_VACIA;
-		} else if (!validaciones.comprobarCheckUsuarioBlank(procedimiento.getCheckUsuario())) {
+		} else if (procedimiento.getCheckUsuario() == null) {
 			resultado = CodigosMensajes.CHECK_USUARIO_VACIO + " - " + Mensajes.CHECK_USUARIO_NO_PUEDE_SER_VACIO;
 		} else {
+
+			final String fechaInicial = procedimiento.getFechaProcedimiento().toString();
 
 			final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
 			objetivoRepository.saveAndFlush(objetivo);
@@ -911,12 +935,25 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 					.findProcedimientoByName(procedimiento.getNombreProcedimiento());
 
 			final LocalDate fechaActual = LocalDate.now();
-			final String fechaIntroducidaUsuario = procedimiento.getFechaProcedimiento().toString();
-			final String fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-					+ fechaActual.getDayOfMonth();
 
-			if (!fechaIntroducidaUsuario.equals(procedimientoBD.getFechaProcedimiento().toString())) {
-				if (fechaIntroducidaUsuario.compareTo(fechaActualString) < 0) {
+			final Integer dayInt = fechaActual.getDayOfMonth();
+			String day = dayInt.toString();
+
+			if (CommonUtilities.countDigit(dayInt) == 1) {
+				day = "0" + dayInt;
+			}
+
+			final Integer monthInt = fechaActual.getMonthValue();
+			String month = monthInt.toString();
+
+			if (CommonUtilities.countDigit(monthInt) == 1) {
+				month = "0" + monthInt;
+			}
+
+			final String fechaActualString = fechaActual.getYear() + "-" + month + "-" + day;
+
+			if (!fechaInicial.equals(procedimientoBD.getFechaProcedimiento().toString())) {
+				if (fechaInicial.compareTo(fechaActualString) < 0) {
 					resultado = CodigosMensajes.FECHA_INTRODUCIDA_MENOR_FECHA_ACTUAL + " - "
 							+ Mensajes.FECHA_INTRODUCIDA_NO_PUEDE_SER_MENOR_QUE_FECHA_ACTUAL;
 				} else {
@@ -962,7 +999,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		} else if (!validaciones.comprobarNombreProcedimientoBlank(procedimiento.getNombreProcedimiento())) {
 			resultado = CodigosMensajes.NOMBRE_PROCEDIMIENTO_VACIO + " - "
 					+ Mensajes.NOMBRE_PROCEDIMIENTO_NO_PUEDE_SER_VACIO;
-		} else if (!!validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())) {
+		} else if (!validaciones.comprobarDescripProcedimientoBlank(procedimiento.getDescripProcedimiento())) {
 			resultado = CodigosMensajes.DESCRIPCION_PROCEDIMIENTO_VACIO + " - "
 					+ Mensajes.DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_VACIA;
 		} else if (!validaciones.comprobarFechaProcedimientoBlank(procedimiento.getFechaProcedimiento())) {
@@ -1093,7 +1130,6 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		final ProcedimientoEntity procedimientoBD = procedimientoRepository
 				.findProcedimientoByName(procedimiento.getNombreProcedimiento());
 		String resultado = StringUtils.EMPTY;
-		String fechaActualString = StringUtils.EMPTY;
 		final SimpleDateFormat format = new SimpleDateFormat("yyy-MM-dd");
 
 		if (procedimientoBD == null) {
@@ -1131,13 +1167,21 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 
 			final LocalDate fechaActual = LocalDate.now();
 
-			if (CommonUtilities.countDigit(fechaActual.getDayOfMonth()) == 1) {
-				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-0"
-						+ fechaActual.getDayOfMonth();
-			} else {
-				fechaActualString = fechaActual.getYear() + "-0" + fechaActual.getMonthValue() + "-"
-						+ fechaActual.getDayOfMonth();
+			final Integer dayInt = fechaActual.getDayOfMonth();
+			String day = dayInt.toString();
+
+			if (CommonUtilities.countDigit(dayInt) == 1) {
+				day = "0" + dayInt;
 			}
+
+			final Integer monthInt = fechaActual.getMonthValue();
+			String month = monthInt.toString();
+
+			if (CommonUtilities.countDigit(monthInt) == 1) {
+				month = "0" + monthInt;
+			}
+
+			final String fechaActualString = fechaActual.getYear() + "-" + month + "-" + day;
 
 			final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
 					.findProcedimientoUsuario(fechaActualString, usuario, procedimientoEncontrado);
@@ -1225,7 +1269,11 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 		valor.put(Constantes.NOMBRE_PROCEDIMIENTO, procedimiento.getNombreProcedimiento());
 		valor.put(Constantes.DESCRIPCION_PROCEDIMIENTO, procedimiento.getDescripProcedimiento());
 		valor.put(Constantes.FECHA_PROCEDIMIENTO, procedimiento.getFechaProcedimiento().toString());
-		valor.put(Constantes.CHECK_USUARIO, procedimiento.getCheckUsuario().toString());
+		if (procedimiento.getCheckUsuario() == null) {
+			valor.put(Constantes.CHECK_USUARIO, StringUtils.EMPTY);
+		} else {
+			valor.put(Constantes.CHECK_USUARIO, procedimiento.getCheckUsuario().toString());
+		}
 
 		return valor;
 

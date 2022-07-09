@@ -726,7 +726,7 @@ async function testProcedimiento(accion, tipoTest){
   .then((res) => {
     let idElementoList = ["iconoTestProcedimiento", "iconoTestProcedimiento" + tipoTest, "iconoTestProcedimiento" + tipoTest + accion];
     if (tipoTest === 'Acciones') {
-      let atributosValor = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento"];
+      let atributosValor = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuario"];
       cargarRespuestaOkTest(res.data.datosPruebaAcciones, "cabeceraAccionesProcedimiento" + accion, "cuerpoAccionesProcedimiento" + accion, atributosValor, "Procedimiento", idElementoList, "acciones");
     } else if (tipoTest === 'Atributos'){
       cargarRespuestaOkTest(res.data.datosPruebaAtributos, "cabeceraAtributosProcedimiento" + accion, "cuerpoAtributosProcedimiento" + accion, "", "", idElementoList, "atributos");
