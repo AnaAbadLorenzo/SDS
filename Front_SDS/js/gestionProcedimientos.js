@@ -971,6 +971,20 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
   });
 }
 
+/**Función para cerrar la modal de detalle de procedimiento*/
+function detalleProcedimientoCerrarModal(){
+    $("#form-modal").modal('toggle');
+
+    let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
+    
+    resetearFormulario("formularioGenerico", idElementoList);
+    setLang(getCookie('lang'));
+    $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
+    $('#descripProcedimiento').val(getCookie('descripProcedimiento'));
+    $('#fechaProcedimiento').val(getCookie('fechaProcedimiento'));
+    $('#checkUsuario').val(getCookie('checkUsuario'));
+}
+
 /** Función que visualiza un procedimiento**/
 async function detalleProcedimiento(){
   await detalleProcedimientoAjaxPromesa()
@@ -1161,7 +1175,7 @@ function showDetalle(nombreProcedimiento, descripProcedimiento , fechaProcedimie
 
     var idioma = getCookie('lang');
 
-    cambiarFormulario('DETAIL_PROCEDIMIENTO', 'javascript:detalleProcedimiento();', '');
+    cambiarFormulario('DETAIL_PROCEDIMIENTO', 'javascript:detalleProcedimientoCerrarModal();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
 
     setLang(idioma);
