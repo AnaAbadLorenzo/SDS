@@ -101,6 +101,7 @@ arrayES={
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedimiento finalizado',
 	'ICON_PLAN': 'Plan',
 	'ICONO_UPLOAD' : 'Enviar respuesta',
+	'ICONO_SEGUIR' : 'Continuar',
 
 	//Mensajes error
 	'ERROR': 'ERROR',

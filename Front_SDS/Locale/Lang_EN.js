@@ -98,6 +98,7 @@ arrayEN={
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedure completed',
 	'ICON_PLAN': 'Plan',
 	'ICONO_UPLOAD' : 'Upload request',
+	'ICONO_SEGUIR' : 'Continue',
 
 	//Mensajes error
 	'ERROR': 'WARNING',

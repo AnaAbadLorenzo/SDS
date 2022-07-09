@@ -98,6 +98,7 @@ arrayGA={
 	'ICON_PROCEDIMIENTO_FINALIZADO' : 'Procedemiento finalizado',
 	'ICON_PLAN': 'Plan',
 	'ICONO_UPLOAD' : 'Enviar resposta',
+	'ICONO_SEGUIR' : 'Continuar',
 
 	//Mensajes error
 	'ERROR': 'ERRO',
