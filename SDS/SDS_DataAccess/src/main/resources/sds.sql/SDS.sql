@@ -534,6 +534,7 @@ CREATE TABLE `evidencia` (
   `nombre_fichero` varchar(128) NOT NULL,
   `borrado_evidencia` int NOT NULL,
   `id_procedimiento_usuario_proceso` int NOT NULL,
+  `ruta_evidencia` TEXT NOT NULL,
   PRIMARY KEY (`id_evidencia`),
   KEY `idProcedimiento_usuario_proceso_fk` (`id_procedimiento_usuario_proceso`),
   CONSTRAINT `idProcedimiento_usuario_proceso_fk` FOREIGN KEY (`id_procedimiento_usuario_proceso`) REFERENCES `procedimientousuarioproceso` (`id_procedimiento_usuario_proceso`)

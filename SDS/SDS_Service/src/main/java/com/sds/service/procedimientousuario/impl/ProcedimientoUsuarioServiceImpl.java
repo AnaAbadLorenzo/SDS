@@ -72,8 +72,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 	}
 
 	@Override
-	public ReturnBusquedas<ProcedimientoUsuarioEntity> buscarProcedimientoUsuario(
-			final Integer puntuacionProcedimientoUsuario, final Date fechaProcedimientoUsuario,
+	public ReturnBusquedas<ProcedimientoUsuarioEntity> buscarProcedimientoUsuario(final Date fechaProcedimientoUsuario,
 			final UsuarioEntity usuario, final ProcedimientoEntity procedimiento, final int inicio,
 			final int tamanhoPagina) {
 
@@ -91,7 +90,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 			fecha = StringUtils.EMPTY;
 		}
 
-		if (puntuacionProcedimientoUsuario == null && fechaProcedimientoUsuario == null && procedimiento == null) {
+		if (fechaProcedimientoUsuario == null && procedimiento == null) {
 			final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario.getUsuario());
 			procedimientosUsuario = entityManager
 					.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOSUSUARIOBYUSUARIO)
@@ -101,56 +100,50 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		}
 
 		else {
-			if (usuario == null) {
+			if (usuario == null || usuario.getUsuario() == "") {
 				if (procedimiento == null) {
 					procedimientosUsuario = entityManager
 							.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO)
-							.setParameter(Constantes.PUNTUACION_PROCEDIMIENTOUSUARIO, puntuacionProcedimientoUsuario)
 							.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO, fecha)
 							.setParameter(Constantes.USUARIO, StringUtils.EMPTY)
 							.setParameter(Constantes.PROCEDIMIENTO, StringUtils.EMPTY).setFirstResult(inicio)
 							.setMaxResults(tamanhoPagina).getResultList();
 					numberTotalResults = procedimientoUsuarioRepository
-							.numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario(
-									puntuacionProcedimientoUsuario, fecha);
+							.numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario(fecha);
 				} else {
-					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
-							.findById(procedimiento.getIdProcedimiento());
+					final ProcedimientoEntity procedimientoBD = procedimientoRepository
+							.findProcedimientoByName(procedimiento.getNombreProcedimiento());
 					procedimientosUsuario = entityManager
 							.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO)
-							.setParameter(Constantes.PUNTUACION_PROCEDIMIENTOUSUARIO, puntuacionProcedimientoUsuario)
 							.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO, fecha)
 							.setParameter(Constantes.USUARIO, StringUtils.EMPTY)
-							.setParameter(Constantes.PROCEDIMIENTO, procedimientoBD.get()).setFirstResult(inicio)
+							.setParameter(Constantes.PROCEDIMIENTO, procedimientoBD).setFirstResult(inicio)
 							.setMaxResults(tamanhoPagina).getResultList();
-					numberTotalResults = procedimientoUsuarioRepository.numberFindProcedimientoUsuarioWithoutUsuario(
-							puntuacionProcedimientoUsuario, fecha, procedimientoBD.get());
+					numberTotalResults = procedimientoUsuarioRepository
+							.numberFindProcedimientoUsuarioWithoutUsuario(fecha, procedimientoBD);
 				}
 			} else {
 				final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario.getUsuario());
-				if (procedimiento == null) {
+				if (procedimiento == null || procedimiento.getNombreProcedimiento() == "") {
 					procedimientosUsuario = entityManager
 							.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO)
-							.setParameter(Constantes.PUNTUACION_PROCEDIMIENTOUSUARIO, puntuacionProcedimientoUsuario)
 							.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO, fecha)
 							.setParameter(Constantes.USUARIO, usuarioBD)
 							.setParameter(Constantes.PROCEDIMIENTO, StringUtils.EMPTY).setFirstResult(inicio)
 							.setMaxResults(tamanhoPagina).getResultList();
 					numberTotalResults = procedimientoUsuarioRepository
-							.numberFindProcedimientoUsuarioWithoutProcedimiento(puntuacionProcedimientoUsuario, fecha,
-									usuarioBD);
+							.numberFindProcedimientoUsuarioWithoutProcedimiento(fecha, usuarioBD);
 				} else {
-					final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
-							.findById(procedimiento.getIdProcedimiento());
+					final ProcedimientoEntity procedimientoBD = procedimientoRepository
+							.findProcedimientoByName(procedimiento.getNombreProcedimiento());
 					procedimientosUsuario = entityManager
 							.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO)
-							.setParameter(Constantes.PUNTUACION_PROCEDIMIENTOUSUARIO, puntuacionProcedimientoUsuario)
 							.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO, fecha)
 							.setParameter(Constantes.USUARIO, usuarioBD)
-							.setParameter(Constantes.PROCEDIMIENTO, procedimientoBD.get()).setFirstResult(inicio)
+							.setParameter(Constantes.PROCEDIMIENTO, procedimientoBD).setFirstResult(inicio)
 							.setMaxResults(tamanhoPagina).getResultList();
-					numberTotalResults = procedimientoUsuarioRepository.numberFindProcedimientoUsuario(
-							puntuacionProcedimientoUsuario, fecha, usuarioBD, procedimientoBD.get());
+					numberTotalResults = procedimientoUsuarioRepository.numberFindProcedimientoUsuario(fecha, usuarioBD,
+							procedimientoBD);
 				}
 			}
 		}
@@ -182,15 +175,14 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 			}
 		}
 
-		datosBusqueda.add(
-				Constantes.PUNTUACION_PROCEDIMIENTOUSUARIO + Constantes.DOS_PUNTOS + puntuacionProcedimientoUsuario);
 		datosBusqueda.add(Constantes.FECHA_PROCEDIMIENTO_USUARIO + Constantes.DOS_PUNTOS + fechaProcedimientoUsuario);
 
 		if (procedimiento != null) {
-			datosBusqueda.add(Constantes.PROCEDIMIENTO + Constantes.DOS_PUNTOS + procedimiento.toString());
+			datosBusqueda
+					.add(Constantes.PROCEDIMIENTO + Constantes.DOS_PUNTOS + procedimiento.getNombreProcedimiento());
 		}
 		if (usuario != null) {
-			datosBusqueda.add(Constantes.USUARIO + Constantes.DOS_PUNTOS + usuario.toString());
+			datosBusqueda.add(Constantes.USER + Constantes.DOS_PUNTOS + usuario.getUsuario());
 		}
 
 		final ReturnBusquedas<ProcedimientoUsuarioEntity> result = new ReturnBusquedas<>(procedimientoUsuarioToret,
@@ -373,9 +365,9 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 
 		if (procedimientoUsuarioValido) {
 			final List<ProcedimientoUsuarioEntity> procedimientoUsuarioBD = procedimientoUsuarioRepository
-					.findProcedimientoUsuarioByProcedimientoAndUsuario(
-							procedimientoUsuario.getProcedimientoUsuario().getUsuario(),
-							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento());
+					.findProcedimientoUsuarioByNombreProcedimientoAndLoginUsuario(
+							procedimientoUsuario.getProcedimientoUsuario().getUsuario().getUsuario(),
+							procedimientoUsuario.getProcedimientoUsuario().getProcedimiento().getNombreProcedimiento());
 
 			if (procedimientoUsuarioBD.size() == 0) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
@@ -399,11 +391,11 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 				final ProcedimientoEntity procedimiento = procedimientoUsuario.getProcedimientoUsuario()
 						.getProcedimiento();
 				final UsuarioEntity usuario = procedimientoUsuario.getProcedimientoUsuario().getUsuario();
-				final Optional<ProcedimientoEntity> procedimientoBD = procedimientoRepository
-						.findById(procedimiento.getIdProcedimiento());
-				final Optional<UsuarioEntity> usuarioBD = usuarioRepository.findById(usuario.getDniUsuario());
+				final ProcedimientoEntity procedimientoBD = procedimientoRepository
+						.findProcedimientoByName(procedimiento.getNombreProcedimiento());
+				final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario.getUsuario());
 
-				if (!procedimientoBD.isPresent()) {
+				if (procedimientoBD == null) {
 					final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 							procedimientoUsuario.getUsuario(),
 							CodeMessageErrors.getTipoNameByCodigo(
@@ -423,7 +415,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 							CodeMessageErrors.getTipoNameByCodigo(
 									CodeMessageErrors.PROCEDIMIENTO_NO_EXISTE_EXCEPTION.getCodigo()));
 				} else {
-					if (!usuarioBD.isPresent()) {
+					if (usuarioBD == null) {
 						final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 								procedimientoUsuario.getUsuario(),
 								CodeMessageErrors.getTipoNameByCodigo(
@@ -443,8 +435,8 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 								CodeMessageErrors.getTipoNameByCodigo(
 										CodeMessageErrors.USUARIO_NO_ENCONTRADO_EXCEPTION.getCodigo()));
 					} else {
-						procedimientoUsuarioBD.get(0).setProcedimiento(procedimientoBD.get());
-						procedimientoUsuarioBD.get(0).setUsuario(usuarioBD.get());
+						procedimientoUsuarioBD.get(0).setProcedimiento(procedimientoBD);
+						procedimientoUsuarioBD.get(0).setUsuario(usuarioBD);
 						procedimientoUsuarioBD.get(0).setBorradoProcedimientoUsuario(
 								procedimientoUsuarioEntity.getBorradoProcedimientoUsuario());
 						procedimientoUsuarioBD.get(0).setPuntuacionProcedimientoUsuario(

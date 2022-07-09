@@ -453,9 +453,8 @@ public class TestProcedimientoUsuarioServiceImpl implements TestProcedimientoUsu
 		fechaSql = new java.sql.Date(procedimientoUsuarioEntity.getFechaProcedimientoUsuario().getTime());
 		final String fecha = fechaSql.toString();
 
-		procedimientoUsuarioRepository.findProcedimientoUsuario(
-				procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario(), fecha,
-				procedimientoUsuarioEntity.getUsuario(), procedimientoUsuarioEntity.getProcedimiento());
+		procedimientoUsuarioRepository.findProcedimientoUsuario(fecha, procedimientoUsuarioEntity.getUsuario(),
+				procedimientoUsuarioEntity.getProcedimiento());
 
 		resultado = CodigosMensajes.BUSCAR_PROCEDIMIENTOUSUARIO_CORRECTO + " - "
 				+ Mensajes.PROCEDIMIENTOUSUARIO_BUSCADO_CORRECTAMENTE;

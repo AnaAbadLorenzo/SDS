@@ -58,6 +58,8 @@ arrayES={
 	'SELECCIONAR_PROCEDIMIENTO' : 'Selecciona los procedimientos',
 	'SELECCIONAR_OBJETIVO' : 'Seleccciona los objetivos',
 	'ORDEN_PROCESO': 'Orden proceso',
+	'ESTADO_PROCEDIMIENTO_EJECUTADO' : 'Estado procedimiento',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO' : 'Puntuacion procedimiento ejecutado',
 
 	//Idiomas
 	'ESPAÑOL' : 'Español',
@@ -284,7 +286,7 @@ arrayES={
 	'DESCRIPCION_PROCESO_ALFANUMERICO_INCORRECTO' : 'La descripción del proceso sólo puede contener números, letras y espacios',
 	'DESCRIPCION_PROCESO_MENOR_QUE_3' : 'La descripción del proceso tiene menos de 3 caracteres',
 	'FECHA_PROCESO_VACIA' : 'Fecha proceso vacía',
-	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'la fecha del proceso solo puede contener números',
+	'FECHA_PROCESO_NUMERICA_INCORRECTA' : 'La fecha del proceso solo puede contener números',
 	'FECHA_PROCESO_MENOR_QUE_8' : 'La fecha del proceso tiene menos de 8 caracteres',
 	'FECHA_PROCESO_MAYOR_QUE_8' : 'La fecha del proceso tiene más de 8 caracteres',
 	'RELLENA_PROCEDIMIENTO' : 'Por favor, selecciona un procedimiento',
@@ -298,7 +300,12 @@ arrayES={
 	'RELLENA_PLAN' : 'Por favor, selecciona un plan',
 	'RELLENA_RESPUESTA' : 'Por favor, selecciona una respuesta',
 	'FORMATO_INCORRECTO' : 'Solo puedes subir ficheros pdf, jpg, jpeg o png',
-	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO_VACIA' : 'Puntuación procedimiento ejecutado vacía',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA' : 'La puntuación del procedimiento ejecutado sólo puede contener números',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_VACIA' : 'Fecha procedimiento ejecutado vacía',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_NUMERICA_INCORRECTA' : 'La fecha del procedimiento ejecutado solo puede contener números',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_MENOR_QUE_8' : 'La fecha del procedimiento ejecutado tiene menos de 8 caracteres',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_MAYOR_QUE_8' : 'La fecha del procedimiento ejecutado tiene más de 8 caracteres',
 
 
 	//Mensajes
@@ -445,8 +452,10 @@ arrayES={
 	'DELETE_PROCESO' : 'ELIMINAR PROCESO',
 	'REACTIVATE_PROCESO' : 'REACTIVAR PROCESO',
 	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Gestión de procedimientos ejecutados',
-
-
+	'DETAIL_PROCEDIMIENTO_EJECUTADO' : 'DETALLE PROCEDIMIENTO EJECUTADO',
+	'EDIT_PROCEDIMIENTO_EJECUTADO' : 'EDITAR PROCEDIMIENTO EJECUTADO',
+	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
+	'SEARCH_PROCEDIMIENTO_EJECUTADO' : 'BUSCAR PROCEDIMIENTO EJECUTADO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -573,7 +582,9 @@ arrayES={
 	'PROCESO_ELIMINADO' : 'El proceso ha sido eliminado correctamente',
 	'PROCESO_REACTIVADO_OK'  : 'PROCESO REACTIVADO CORRECTAMENTE',
 	'PROCESO_REACTIVADO' : 'El proceso se ha reactivado correctamente',
-	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'El procedimiento se ha eliminado correctamente'
+	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'El procedimiento se ha eliminado correctamente',
+	'PROCEDIMIENTO_EJECUTADO_EDITADO_OK' : 'PROCEDIMIENTO EJECUTADO MODIFICADO CORRECTAMENTE',
+	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'El procedimiento ejecutado se ha modificado correctamente'
 
 
 

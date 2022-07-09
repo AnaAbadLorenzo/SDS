@@ -229,6 +229,8 @@ public enum RespCode {
 			"Los procedimientos del usuario se han lisado correctamente"), //
 	PROCEDIMIENTO_USUARIO_GUARDADO("PROCEDIMIENTO_USUARIO_GUARDADO",
 			"La relación procedimiento - usuario se ha guardado correctamente"), //
+	PROCEDIMIENTO_USUARIO_MODIFICADO("PROCEDIMIENTO_USUARIO_MODIFICADO",
+			"La relación procedimiento - usuario se ha modificado correctamente"), //
 	PROCEDIMIENTO_USUARIO_ELIMINADO("PROCEDIMIENTO_USUARIO_ELIMINADO",
 			"La relación procedimiento - usuario se ha eliminado correctamente"), //
 	PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION("PROCEDIMIENTO_USUARIO_YA_EXISTE_EXCEPTION",

@@ -691,7 +691,6 @@ function construyeFilaProceso(entidad, fila, procedimientos, objetivos, respuest
 function construyeFilaProcedimientoEjecutado(entidad, fila, numeroProcesosTotal, numeroProcesosEjecutados){
 
 	document.getElementById('cabecera').style.display = "block";
-	document.getElementById('cabeceraEliminados').style.display = "none";
 
 	let atributosFunciones="";
 	var filaTabla = "";
@@ -713,10 +712,10 @@ function construyeFilaProcedimientoEjecutado(entidad, fila, numeroProcesosTotal,
         	var estado = 'Finalizado';
         }
 
-		atributosFunciones = ["'" + fila.procedimiento.nombreProcedimiento + "'", "'" + fila.usuario.usuario + "'", "'" + convertirFecha(fechaProcedimientoUsuario.toString()) + "'", "'" + estado + "'", "'" + fila.idProcedimientoUsuario + "'"];
+		atributosFunciones = ["'" + fila.procedimiento.nombreProcedimiento + "'", "'" + fila.usuario.usuario + "'", "'" + convertirFecha(fechaProcedimientoEjecutado.toString()) + "'", "'" + estado + "'",  "'" + fila.puntuacionProcedimientoUsuario + "'", "'" + fila.idProcedimientoUsuario + "'"];
 			filaTabla = '<tr class="impar"> <td>' + fila.procedimiento.nombreProcedimiento + 
                 '</td> <td>' + fila.usuario.usuario +
-                '</td> <td>' + convertirFecha(fechaProcedimientoUsuario.toString()) +
+                '</td> <td>' + convertirFecha(fechaProcedimientoEjecutado.toString()) +
                 '</td> <td>' + estado;
          
         break;

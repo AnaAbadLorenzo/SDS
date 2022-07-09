@@ -1088,8 +1088,8 @@ public class ProcedimientoServiceTest {
 		procedimientoUsuarioRepository.saveAndFlush(procedimientoUsuarioEntity);
 
 		final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
-				.findProcedimientoUsuario(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario(),
-						fechaActualString, usuario, procedimientoEncontrado.getListaBusquedas().get(0));
+				.findProcedimientoUsuario(fechaActualString, usuario,
+						procedimientoEncontrado.getListaBusquedas().get(0));
 
 		final LocalDate fechaActual = LocalDate.now();
 

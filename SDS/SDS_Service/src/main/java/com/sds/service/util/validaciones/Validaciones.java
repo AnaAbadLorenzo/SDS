@@ -519,7 +519,7 @@ public class Validaciones {
 		if (!comprobarPuntuacionProcedimientoUsuarioBlank(
 				procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario())
 				|| !comprobarUsuarioProcedimientoUsuario(procedimientoUsuarioEntity.getUsuario())
-				|| !comprobarProcedimientoProcedimientoUsuario(procedimientoUsuarioEntity.getProcedimiento())) {
+				|| !comprobarIdProcedimientoProcedimientoUsuario(procedimientoUsuarioEntity.getProcedimiento())) {
 			return false;
 		} else {
 			return true;
@@ -641,6 +641,20 @@ public class Validaciones {
 	}
 
 	private boolean comprobarProcedimientoProcedimientoUsuario(final ProcedimientoEntity procedimiento) {
+		if (procedimiento != null) {
+			if (StringUtils.isBlank(procedimiento.getNombreProcedimiento().toString())) {
+				return false;
+			} else {
+				return true;
+			}
+
+		} else {
+			return false;
+
+		}
+	}
+
+	private boolean comprobarIdProcedimientoProcedimientoUsuario(final ProcedimientoEntity procedimiento) {
 		if (procedimiento != null) {
 			if (!tieneValor(procedimiento.getIdProcedimiento().toString())) {
 				return false;

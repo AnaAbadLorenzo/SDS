@@ -18,9 +18,9 @@ import com.sds.service.procedimientousuario.model.ProcedimientoUsuario;
 
 public interface ProcedimientoUsuarioService {
 
-	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
-			final Date fechaProcedimiento, final UsuarioEntity usuario, final ProcedimientoEntity procedimiento,
-			final int inicio, final int tamanhoPagina);
+	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarProcedimientoUsuario(final Date fechaProcedimiento,
+			final UsuarioEntity usuario, final ProcedimientoEntity procedimiento, final int inicio,
+			final int tamanhoPagina);
 
 	ReturnBusquedas<ProcedimientoUsuarioEntity> buscarTodos();
 

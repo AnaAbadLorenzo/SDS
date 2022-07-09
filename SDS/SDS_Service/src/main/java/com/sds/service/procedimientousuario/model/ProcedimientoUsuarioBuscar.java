@@ -7,7 +7,6 @@ import com.sds.model.UsuarioEntity;
 
 public class ProcedimientoUsuarioBuscar {
 
-	private Integer puntuacionProcedimientoUsuario;
 	private Date fechaProcedimientoUsuario;
 	private UsuarioEntity usuario;
 	private ProcedimientoEntity procedimiento;
@@ -18,24 +17,14 @@ public class ProcedimientoUsuarioBuscar {
 		super();
 	}
 
-	public ProcedimientoUsuarioBuscar(final Integer puntuacionProcedimientoUsuario,
-			final Date fechaProcedimientoUsuario, final UsuarioEntity usuario, final ProcedimientoEntity procedimiento,
-			final int inicio, final int tamanhoPagina) {
+	public ProcedimientoUsuarioBuscar(final Date fechaProcedimientoUsuario, final UsuarioEntity usuario,
+			final ProcedimientoEntity procedimiento, final int inicio, final int tamanhoPagina) {
 		super();
-		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
 		this.fechaProcedimientoUsuario = fechaProcedimientoUsuario;
 		this.usuario = usuario;
 		this.procedimiento = procedimiento;
 		this.inicio = inicio;
 		this.tamanhoPagina = tamanhoPagina;
-	}
-
-	public Integer getPuntuacionProcedimientoUsuario() {
-		return puntuacionProcedimientoUsuario;
-	}
-
-	public void setPuntuacionProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario) {
-		this.puntuacionProcedimientoUsuario = puntuacionProcedimientoUsuario;
 	}
 
 	public Date getFechaProcedimientoUsuario() {
@@ -80,9 +69,9 @@ public class ProcedimientoUsuarioBuscar {
 
 	@Override
 	public String toString() {
-		return "ProcedimientoUsuarioBuscar [puntuacionProcedimientoUsuario=" + puntuacionProcedimientoUsuario
-				+ ", fechaProcedimientoUsuario=" + fechaProcedimientoUsuario + ", usuarioEntity=" + usuario
-				+ ", procedimiento=" + procedimiento + ", inicio=" + inicio + ", tamanhoPagina=" + tamanhoPagina + "]";
+		return "ProcedimientoUsuarioBuscar [fechaProcedimientoUsuario=" + fechaProcedimientoUsuario + ", usuarioEntity="
+				+ usuario + ", procedimiento=" + procedimiento + ", inicio=" + inicio + ", tamanhoPagina="
+				+ tamanhoPagina + "]";
 	}
 
 }

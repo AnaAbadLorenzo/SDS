@@ -118,9 +118,7 @@ public class ProcedimientoUsuarioServiceTest {
 		procedimientoUsuario.getProcedimientoUsuario().setProcedimiento(procedimientoEncontrado);
 
 		final ReturnBusquedas<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioService
-				.buscarProcedimientoUsuario(
-						procedimientoUsuario.getProcedimientoUsuario().getPuntuacionProcedimientoUsuario(), new Date(),
-						usuarioBD, procedimientoEncontrado, 0, 1);
+				.buscarProcedimientoUsuario(new Date(), usuarioBD, procedimientoEncontrado, 0, 1);
 
 		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
 				objetivo.getDescripObjetivo());
@@ -167,9 +165,7 @@ public class ProcedimientoUsuarioServiceTest {
 		procedimientoUsuario.getProcedimientoUsuario().setProcedimiento(procedimientoEncontrado);
 
 		final ReturnBusquedas<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioService
-				.buscarProcedimientoUsuario(
-						procedimientoUsuario.getProcedimientoUsuario().getPuntuacionProcedimientoUsuario(), new Date(),
-						null, procedimientoEncontrado, 0, 1);
+				.buscarProcedimientoUsuario(new Date(), null, procedimientoEncontrado, 0, 1);
 
 		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
 				objetivo.getDescripObjetivo());
@@ -216,9 +212,7 @@ public class ProcedimientoUsuarioServiceTest {
 		procedimientoUsuario.getProcedimientoUsuario().setProcedimiento(procedimientoEncontrado);
 
 		final ReturnBusquedas<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioService
-				.buscarProcedimientoUsuario(
-						procedimientoUsuario.getProcedimientoUsuario().getPuntuacionProcedimientoUsuario(), new Date(),
-						null, procedimientoEncontrado, 0, 1);
+				.buscarProcedimientoUsuario(new Date(), null, procedimientoEncontrado, 0, 1);
 
 		final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
 				objetivo.getDescripObjetivo());
@@ -867,9 +861,8 @@ public class ProcedimientoUsuarioServiceTest {
 					procedimientoUsuario.getUsuario(), procedimientoUsuarioBDNuevo.get(0), "No"));
 		} catch (final ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException procedimientoUsuarioAsociadoProceso) {
 			throw new ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException(
-					CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo(),
-					CodeMessageErrors.getTipoNameByCodigo(
-							CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo()));
+					CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo(), CodeMessageErrors
+							.getTipoNameByCodigo(CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo()));
 		} finally {
 			final List<ObjetivoEntity> objetivoEliminar = objetivoRepository.findObjetivo(objetivo.getNombreObjetivo(),
 					objetivo.getDescripObjetivo());

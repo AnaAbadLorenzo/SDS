@@ -1218,6 +1218,17 @@ function comprobarNombreObjetivo(idElemento, idElementoError, campo){
 	}
 }
 
+/**Función que valida el formato de la puntuacion del procedimiento ejecutado **/
+function comprobarPuntuacionProcedimientoEjecutado(idElemento, idElementoError, campo){
+	if(validaNoVacio(idElemento, idElementoError, campo) && comprobarSoloNumeros(idElemento, idElementoError, campo)){
+		validacionOK(idElemento, idElementoError);
+        return true;
+	} else{
+		validacionKO(idElemento, idElementoError);
+        return false;
+	}
+}
+
 /** Funcion que valida el formato de la descripcion del objetivo **/
 function comprobarDescripcionObjetivo(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
@@ -1712,6 +1723,15 @@ function comprobarEditProceso(){
 	}
 }
 
+/**Función que valida el editar del procedimiento ejecutado **/
+function comprobarEditProcedimientoEjecutado(){
+	if(comprobarPuntuacionProcedimientoEjecutado('puntuacionProcedimientoEjecutado', 'errorFormatoPuntuacionProcedimientoEjecutado', 'puntuacionProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 /** Funcion que comprueba el nivel del objetivo **/
 function comprobarNivel(idElemento, idElementoError, campo){
 	document.getElementById(idElemento).style.borderWidth = "2px";
@@ -1812,11 +1832,48 @@ function comprobarFechaProcedimientoSearch(idElemento, idElementoError, campo){
 	}
 }
 
+/** Funcion que valida el formato de la fecha de procedimiento **/
+function comprobarFechaProcedimientoEjecutadoSearch(idElemento, idElementoError, campo){
+	document.getElementById(idElemento).style.borderWidth = "2px";
+
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarFormatoFechas(idElemento, idElementoError, campo)) {
+			if(!comprobarTamañoMaximo(idElemento, 10, idElementoError, campo)){
+				validacionKO(idElemento, idElementoError);
+				return false;
+			}else{
+				validacionOK(idElemento, idElementoError);
+				return true;
+			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
 /**Función que valida el buscar del procedimiento **/
 function comprobarBuscarProcedimiento(){
 	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
 		comprobarDescripcionProcedimientoSearch('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')
 		&& comprobarFechaProcedimientoSearch('fechaProcedimiento', 'errorFormatoFechaProcedimiento', 'fechaProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+/**Función que valida el buscar del procedimiento ejecutado **/
+function comprobarBuscarProcedimientoEjecutado(){
+	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
+		comprobarUserSearch('loginUsuario', 'errorFormatoLoginUsuario', 'loginUsuario')
+		&& comprobarFechaProcedimientoEjecutadoSearch('fechaProcedimientoEjecutado', 'errorFormatoFechaProcedimientoEjecutado', 'fechaProcedimientoEjecutado')
+		&& comprobarPuntuacionProcedimientoEjecutadoSearch('puntuacionProcedimientoEjecutado', 'errorFormatoPuntuacionProcedimientoEjecutado', 'puntuacionProcedimiento')){
 		return true;
 	}else{
 		return false;
@@ -1837,6 +1894,27 @@ function comprobarNombreProcesoSearch(idElemento, idElementoError, campo) {
 				validacionOK(idElemento, idElementoError);
 				return true;
 			}
+		}
+		else {
+			validacionKO(idElemento, idElementoError);
+			return false;
+		}
+	}
+	else {
+		validacionOK(idElemento, idElementoError);
+		return true;
+	}
+}
+
+/**Función que valida la puntuacion del procedimiento ejecutado en el buscar*/
+function comprobarPuntuacionProcedimientoEjecutadoSearch(idElemento, idElementoError, campo) {
+
+	document.getElementById(idElemento).style.borderWidth = "2px";
+		
+	if (validaNoVacio(idElemento, idElementoError, campo)) {
+		if (comprobarSoloNumeros(idElemento, idElementoError, campo)) {
+				validacionKO(idElemento, idElementoError);
+				return false;
 		}
 		else {
 			validacionKO(idElemento, idElementoError);
@@ -2133,6 +2211,12 @@ function validaNoVacio(idElemento, idElementoError, campo) {
 			case 'orden' :
 				codigo = "ORDEN_VACIO";
 			break;
+			case 'puntuacionProcedimiento' :
+				codigo = "PUNTUACION_PROCEDIMIENTO_EJECUTADO_VACIA";
+			break;
+			case 'fechaProcedimientoEjecutado' :
+				codigo = "FECHA_PROCEDIMIENTO_EJECUTADO_VACIA";
+			break;
 
 		}
 		addCodeError(idElementoError, codigo);
@@ -2365,6 +2449,9 @@ function comprobarTamañoMaximo(idElemento, sizeMax, idElementoError, campo){
 			case 'fechaProceso' :
 				codigo = "FECHA_PROCESO_MAYOR_QUE_8";
 			break;
+			case 'fechaProcedimientoEjecutado' :
+				codigo = "FECHA_PROCEDIMIENTO_EJECUTADO_MAYOR_QUE_8";
+			break;
 		}
 		addCodeError(idElementoError, codigo);
     	return false;
@@ -2516,6 +2603,9 @@ function comprobarSoloNumeros(idElemento, idElementoError, campo) {
 			break;
 			case 'orden' : 
 		  		codigo = "ORDEN_NUMERICO_INCORRECTO";
+			break;
+			case 'puntuacionProcedimiento' :
+				codigo = "PUNTUACION_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA";
 			break;
 		}
 		addCodeError(idElementoError, codigo);
@@ -2698,6 +2788,9 @@ function comprobarFormatoFechas(idElemento, idElementoError, campo) {
 			break;
 			case 'fechaProceso' :
 				codigo = "FECHA_PROCESO_NUMERICA_INCORRECTA";
+			break;
+			case 'fechaProcedimientoEjecutado' :
+				codigo = "FECHA_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA";
 			break;
 		}
 		addCodeError(idElementoError, codigo);

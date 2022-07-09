@@ -129,7 +129,9 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 						procedimientoUsuarioProceso.getEvidencia().getIdEvidencia(),
 						procedimientoUsuarioProceso.getEvidencia().getFechaEvidencia(),
 						procedimientoUsuarioProceso.getEvidencia().getBorradoEvidencia(),
-						procedimientoUsuarioProceso.getEvidencia().getNombreFichero());
+						procedimientoUsuarioProceso.getEvidencia().getNombreFichero(),
+						procedimientoUsuarioProceso.getEvidencia().getRutaEvidencia());
+
 				procesos.add(procesoEntity);
 				respuestasPosibles.add(respuestaPosibleEntity);
 				evidencias.add(evidenciaEntity);

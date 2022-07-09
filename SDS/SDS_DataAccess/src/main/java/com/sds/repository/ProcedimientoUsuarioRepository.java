@@ -20,30 +20,30 @@ public interface ProcedimientoUsuarioRepository extends JpaRepository<Procedimie
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByProcedimientoAndUsuario(final UsuarioEntity usuario,
 			final ProcedimientoEntity procedimiento);
 
+	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByNombreProcedimientoAndLoginUsuario(final String usuario,
+			final String nombreProcedimiento);
+
 	Integer numberFindAllProcedimientosUsuario();
 
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByProcedimiento(final ProcedimientoEntity procedimiento);
 
 	List<ProcedimientoUsuarioEntity> findProcedimientoUsuarioByUsuario(final UsuarioEntity usuario);
 
-	List<ProcedimientoUsuarioEntity> findProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
-			final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
-			final ProcedimientoEntity procedimiento);
+	List<ProcedimientoUsuarioEntity> findProcedimientoUsuario(final String fechaProcedimientoUsuario,
+			final UsuarioEntity usuario, final ProcedimientoEntity procedimiento);
 
-	Integer numberFindProcedimientoUsuario(final Integer puntuacionProcedimientoUsuario,
-			final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
+	Integer numberFindProcedimientoUsuario(final String fechaProcedimientoUsuario, final UsuarioEntity usuario,
 			final ProcedimientoEntity procedimiento);
 
 	Integer numberFindProcedimientoUsuarioByUsuario(final UsuarioEntity usuario);
 
-	Integer numberFindProcedimientoUsuarioWithoutUsuario(final Integer puntuacionProcedimientoUsuario,
-			final String fechaProcedimientoUsuario, final ProcedimientoEntity procedimiento);
+	Integer numberFindProcedimientoUsuarioWithoutUsuario(final String fechaProcedimientoUsuario,
+			final ProcedimientoEntity procedimiento);
 
-	Integer numberFindProcedimientoUsuarioWithoutProcedimiento(final Integer puntuacionProcedimientoUsuario,
-			final String fechaProcedimientoUsuario, final UsuarioEntity usuario);
+	Integer numberFindProcedimientoUsuarioWithoutProcedimiento(final String fechaProcedimientoUsuario,
+			final UsuarioEntity usuario);
 
-	Integer numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario(final Integer puntuacionProcedimientoUsuario,
-			final String fechaProcedimientoUsuario);
+	Integer numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario(final String fechaProcedimientoUsuario);
 
 	@Transactional
 	@Modifying

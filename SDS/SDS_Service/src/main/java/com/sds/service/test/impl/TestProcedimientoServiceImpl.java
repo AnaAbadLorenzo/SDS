@@ -1140,8 +1140,7 @@ public class TestProcedimientoServiceImpl implements TestProcedimientoService {
 			}
 
 			final List<ProcedimientoUsuarioEntity> procedimientoUsuarioEncontrado = procedimientoUsuarioRepository
-					.findProcedimientoUsuario(procedimientoUsuarioEntity.getPuntuacionProcedimientoUsuario(),
-							fechaActualString, usuario, procedimientoEncontrado);
+					.findProcedimientoUsuario(fechaActualString, usuario, procedimientoEncontrado);
 
 			final List<ProcedimientoUsuarioEntity> procedimientoUsuario = procedimientoUsuarioRepository
 					.findProcedimientoUsuarioByProcedimiento(procedimientoEncontrado);

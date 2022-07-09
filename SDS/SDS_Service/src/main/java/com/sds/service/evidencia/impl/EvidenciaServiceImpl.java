@@ -139,7 +139,8 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 				final ProcedimientoUsuarioProcesoEntity procedimientoUsuarioProcesoBD = procedimientoUsuarioProceso
 						.get(0);
 
-				final EvidenciaEntity evidenciaEntity = new EvidenciaEntity(new Date(), 0, file.getName());
+				final EvidenciaEntity evidenciaEntity = new EvidenciaEntity(new Date(), 0, file.getName(),
+						ubicacionArchivo);
 				evidenciaEntity.setProcedimientosUsuarioProceso(procedimientoUsuarioProcesoBD);
 				evidenciaRepository.saveAndFlush(evidenciaEntity);
 

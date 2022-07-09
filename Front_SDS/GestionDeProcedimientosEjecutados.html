@@ -36,7 +36,7 @@
     await funcionalidadesUsuario();
     modalCambioPass();cargarIdioma();includeFooter();setLang('');
     await cargarProcedimientosEjecutados(0,tamanhoPaginaProcedimientosEjecutados, 'PaginadorNo');
-	//await cargarPermisosFuncProcedimientosEjecutados();
+	await cargarPermisosFuncProcedimientosEjecutados();
 	ejecutaFuncion(function(){compruebaFuncionalidadesPermisos('PROCEDIMIENTOSEJECUTADOS')},30000);
   })();">  
 	<div id="topMenu"></div>
@@ -66,7 +66,7 @@
 	</div>
 
 	
-	<div class="table-responsive" id="tablaDatos" style="display: none;">
+	<div class="table-responsive" id="tablaDatos" style="display: block;">
 		<table class="table table-bordered" id="tablaProcedimientosEjecutados">
 			<thead>
 		    	<tr>
@@ -96,7 +96,7 @@
 
 					  <th scope="col" class="ESTADO_PROCEDIMIENTO_EJECUTADO_COLUMN">
 					    <div class="ESTADO_PROCEDIMIENTO_EJECUTADO estadoProcedimientoEjecutadoColumn"></div>
-		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaProcedimientosEjecutados')" class="tooltip7 ordenarIconCheckUsuario">
+		              <div name="btnOrdenar" value="Ordenar" onclick="sortTable(3, 'tablaProcedimientosEjecutados')" class="tooltip7 ordenarEstadoProcedimientoEjecutado">
 		                    <img class="iconoOrdenar iconOrdenar" src="images/ordenacion.png" alt="Ordenar"/>
 		                    <span class="tooltiptext ORDENAR"></span>
 		              </div>
@@ -148,7 +148,7 @@
               				<h1 id="tituloForms" class="datos"></h1>
               				<p id = "subtitulo" class="SEGURO_ELIMINAR_OBJ" hidden></p>
                     	<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
-                    	  <label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento" hidden></label>                            
+                    	  <label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento" hidden></label>                  
                           <input type="text" maxlength="48" size="48" placeholder="NOMBRE_PROCEDIMIENTO" name="NOMBRE_PROCEDIMIENTO" id="nombreProcedimiento" class="NOMBRE_PROCEDIMIENTO" onblur=""/>
                            <div class="obligatorio tooltip2" id="obligatorioNombreProcedimiento">*
                   			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
@@ -160,7 +160,7 @@
 	                       <div class="obligatorio tooltip2" id="obligatorioLoginUsuario">*
                   			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
               			  </div>
-	                      <div style="display:none" id="errorFormatoDescripcionProcedimiento"></div>
+	                      <div style="display:none" id="errorFormatoLoginUsuario"></div>
 
 	                      <label class="labelForm DATE" id="labelFechaProcedimientoEjecutado" hidden></label>
                     	  <input type="date" name="fechaProcedimientoEjecutado" id="fechaProcedimientoEjecutado" value="1900-01-01" min="1900-01-01" max="3000-01-01" onblur="">
@@ -175,6 +175,13 @@
                       		<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
                     	  </div>
                     	  <div style="display:none" id="errorFormatoEstadoProcedimientoEjecutado"></div>
+
+                    	  <label class="labelForm PUNTUACION_PROCEDIMIENTO_EJECUTADO" id="labelPuntuacionProcedimientoEjecutado" hidden></label>
+                    	  <input type="number" maxlength="11" size="11" placeholder="PUNTUACION_PROCEDIMIENTO_EJECUTADO" name="PUNTUACION_PROCEDIMIENTO_EJECUTADO" id="puntuacionProcedimientoEjecutado" class="PUNTUACION_PROCEDIMIENTO_EJECUTADO" onblur=""/>
+                    	  <div class="obligatorio tooltip2" id="obligatorioPuntuacionProcedimientoEjecutado">*
+                      		<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+                    	  </div>
+                    	  <div style="display:none" id="errorFormatoPuntuacionProcedimientoEjecutado"></div>
   						
                           <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
                             <img class="" src="" alt="" id="iconoAcciones" />

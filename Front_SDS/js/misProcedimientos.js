@@ -60,7 +60,7 @@ async function cargarProcedimientosUsuarioEjecutados(numeroPagina, tamanhoPagina
           }
 
           if(paginadorCreado != 'PaginadorCreado'){
-            paginador(totalResults, 'cargarProcedimientosUsuarioEjecutados', 'PROCEDIMIENTOSEJECUTADOS');
+            paginador(totalResults, 'cargarProcedimientosUsuarioEjecutados', 'PROCEDIMIENTOSUSUARIO');
         	}
         
         if(numeroPagina == 0){

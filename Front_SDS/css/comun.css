@@ -122,7 +122,7 @@
   .col-xl-11 {width: 91.66%;}
   .col-xl-12 {width: 100%;}
 
-  ..img-1 {width: 12%;}
+  .img-1 {width: 12%;}
   .img-2 {margin-top: 3% !important;; margin-bottom: 2% !important;; width: 24% !important;;}
 
   .cabecera { top: 17% !important; left: 8% !important; }
@@ -1291,7 +1291,7 @@ form button[type="button"]:hover {
 .iconoAddRespuestaPosible, .iconoSearchRespuestaPosible, .iconoEditarRespuestaPosible,
 .iconoAddPlan, .iconoSearchPlan, .iconoEditarPlan,
 .iconoAddProcedimiento, .iconoSearchProcedimiento, .iconoEditarProcedimiento,
-.iconoAddProceso, .iconoEditarProceso, .iconoSearchProceso {
+.iconoAddProceso, .iconoEditarProceso, .iconoSearchProceso, .iconoSearchProcedimientoEjecutado {
   position: relative;
   width: 30px;
   display:block;
@@ -1428,7 +1428,8 @@ form button[type="button"]:hover {
 .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, .idRespuestaPosibleColumn,
 .nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn, .nombreProcedimientoColumn,
 .descripcionProcedimientoColumn, .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn,
-.nombreProcesoColumn, .descripcionProcesoColumn, .fechaProcesoColumn, .idProcesoColumn{
+.nombreProcesoColumn, .descripcionProcesoColumn, .fechaProcesoColumn, .idProcesoColumn,
+.estadoProcedimientoEjecutadoColumn, .fechaProcedimientosEjecutadosColumn, .idProcedimientoEjecutadoColumn{
   display: inline;
 }
 
@@ -1449,7 +1450,8 @@ form button[type="button"]:hover {
 .ordenarIconNombreProcedimiento, .ordenarIconDescripcionProcedimiento,
 .ordenarIconFechaProcedimiento, .ordenarIconCheckUsuario, .ordenarIconIdProcedimiento,
 .ordenarIconNombreProceso, .ordenarIconDescripcionProceso, .ordenarIconFechaProceso,
-.ordenarIconIdProceso  {
+.ordenarIconIdProceso, .ordenarIconFechaProcedimientosEjecutados, .ordenarEstadoProcedimientoEjecutado,
+.ordenarIconIdProcedimientoEjecutado  {
   margin-left: 2%;
   cursor:  pointer;
 }

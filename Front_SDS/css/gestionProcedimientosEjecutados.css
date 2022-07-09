@@ -5,7 +5,8 @@
 }
 
 
-.formmodal-container input[type=text]{
+.formmodal-container input[type=text], 
+.formmodal-container input[type=number] {
   height: 30px;
   font-size: 14px;
   width: 90%;
@@ -31,21 +32,6 @@
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-}
-
-select, select option{
-  width: 90% !important;
-  font-family: Roboto;
-}
-
-select option:checked{
-  background-color: #B39DDB !important;
-  font-weight: bold;
-  color:  #ffffff;
-}
-
-.preguntaCheck {
-    font-size: 14px !important;
 }
 
 

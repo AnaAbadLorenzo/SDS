@@ -56,6 +56,8 @@ arrayGA={
 	'SELECCIONAR_PROCEDIMIENTO' : 'Escolle os procedementos',
 	'SELECCIONAR_OBJETIVO' : 'Escolle os obxectivos',
 	'ORDEN_PROCESO': 'Orden proceso',
+	'ESTADO_PROCEDIMIENTO_EJECUTADO' : 'Estado procedemento',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO' : 'Puntuación procedimiento ejecutado',
 
 	
 	//Idiomas
@@ -294,7 +296,13 @@ arrayGA={
 	'RELLENA_PLAN' : 'Por favor, escolle un plan',
 	'RELLENA_RESPUESTA' : 'Por favor, escolle unha respuesta',
 	'FORMATO_INCORRECTO' : 'Solo podes subir ficheros pdf, jpg, jpeg ou png',
-	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO_VACIA' : 'Puntuación procedemento executado vacía',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA' : 'A puntuación do procedemento executado tan só pode conter números',
+	'FECHA_PROCEDIMIENTO_EJECUTADO_VACIA' : 'Data procedemento executado vacía',
+	'FECHA_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA' : 'A data do procedemento executado tan só pode conter números',
+	'FECHA_PROCEDIMIENTO_EJECUTADO_MENOR_QUE_8' : 'A data do procedemento executado ten menos de 8 caracteres',
+	'FECHA_PROCEDIMIENTO_EJECUTADO_MAYOR_QUE_8' : 'A data do procedemento executado ten máis de 8 caracteres',
+
 
 
 	//Mensajes
@@ -442,6 +450,10 @@ arrayGA={
 	'DELETE_PROCESO' : 'ELIMINAR PROCESO',
 	'REACTIVATE_PROCESO' : 'REACTIVAR PROCESO',
 	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Xestión de procedementos executados',
+	'DETAIL_PROCEDIMIENTO_EJECUTADO' : 'DETALLE PROCEDEMENTO EXECUTADO',
+	'EDIT_PROCEDIMIENTO_EJECUTADO' : 'EDITAR PROCEDEMENTO EXECUTADO',
+	'EVIDENCIA_SUBIDA' : 'Evidencia subida: ',
+	'SEARCH_PROCEDIMIENTO_EJECUTADO' : 'BUSCAR PROCEDEMENTO EXECUTADO',
 
 	//Acciones
 	'CERRARMODAL': 'Cerrar',
@@ -567,7 +579,9 @@ arrayGA={
 	'PROCESO_ELIMINADO' : 'O proceso eliminouse correctamente',
 	'PROCESO_REACTIVADO_OK'  : 'PROCESO REACTIVADO CORRECTAMENTE',
 	'PROCESO_REACTIVADO' : 'O proceso reactivouse correctamente',
-	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'O procedemento eliminouse correctamente'
+	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'O procedemento eliminouse correctamente',
+	'PROCEDIMIENTO_EJECUTADO_EDITADO_OK' : 'PROCEDEMENTO EXECUTADO MODIFICADO CORRECTAMENTE',
+	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'O procedemento executado modificouse correctamente'
 
 
 	

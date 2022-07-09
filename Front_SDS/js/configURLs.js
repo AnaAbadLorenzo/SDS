@@ -144,9 +144,10 @@ var urlPeticionAjaxDeleteProcedimiento = urlComun + urlProcedimiento  + "/elimin
 /**Urls procedimientoUsuario **/
 var urlPeticionAjaxListarProcedimientosUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientosUsuario';
 var urlPeticionAjaxAddProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/procedimientoUsuario';
+var urlPeticionAjaxEditProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/modificaProcedimientoUsuario';
 var urlPeticionAjaxListarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientoUsuario';
 var urlPeticionAjaxEliminarProcedimientoUsuario = urlComun + urlProcedimientosUsuario + '/borrarProcedimientoUsuario';
-var urlPeticionAjaxListarTodosProcedimientosUsuario = urlComun + urlProcedimientosUsuario + '/listarProcedimientosUsuario';
+
 
 /**Urls procedimientoUsuarioProceso **/
 var urlPeticionAjaxAddProcedimientoUsuarioProceso = urlComun + urlProcedimientoUsuarioProceso + '/procedimientoUsuarioProceso';

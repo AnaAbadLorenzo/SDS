@@ -53,8 +53,7 @@ public class ProcedimientoUsuarioController {
 	public RespEntity listarProcedimientoUsuario(
 			@RequestBody final ProcedimientoUsuarioBuscar procedimientoUsuarioBuscar) {
 		final ReturnBusquedas<ProcedimientoUsuarioEntity> resultado = procedimientoUsuarioService
-				.buscarProcedimientoUsuario(procedimientoUsuarioBuscar.getPuntuacionProcedimientoUsuario(),
-						procedimientoUsuarioBuscar.getFechaProcedimientoUsuario(),
+				.buscarProcedimientoUsuario(procedimientoUsuarioBuscar.getFechaProcedimientoUsuario(),
 						procedimientoUsuarioBuscar.getUsuario(), procedimientoUsuarioBuscar.getProcedimiento(),
 						procedimientoUsuarioBuscar.getInicio(), procedimientoUsuarioBuscar.getTamanhoPagina());
 
@@ -88,6 +87,40 @@ public class ProcedimientoUsuarioController {
 			return new RespEntity(RespCode.PROCEDIMIENTO_NO_EXISTE_EXCEPTION, procedimientoUsuario);
 		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
 			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, procedimientoUsuario);
+		}
+
+		return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_VACIO, procedimientoUsuario);
+	}
+
+	@PostMapping(value = "/modificaProcedimientoUsuario")
+	@ResponseBody
+	public RespEntity modificarProcedimientoUsuario(@RequestBody final ProcedimientoUsuario procedimientoUsuario) {
+		try {
+			final Boolean procedimientoUsuarioValido = validaciones
+					.comprobarProcedimientoUsuarioBlank(procedimientoUsuario.getProcedimientoUsuario());
+
+			if (Boolean.TRUE.equals(procedimientoUsuarioValido)) {
+				String resultado;
+				try {
+					resultado = procedimientoUsuarioService.modificarProcedimientoUsuario(procedimientoUsuario);
+					if (CodeMessageErrors.PROCEDIMIENTOUSUARIO_VACIO.name().equals(resultado)) {
+						return new RespEntity(RespCode.PROCEDIMIENTO_VACIO, procedimientoUsuario);
+					}
+					return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_MODIFICADO, resultado);
+				} catch (final LogAccionesNoGuardadoException logAccionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_ACCIONES_NO_GUARDADO, procedimientoUsuario);
+				} catch (final LogExcepcionesNoGuardadoException logExcepcionesNoGuardadoException) {
+					return new RespEntity(RespCode.LOG_EXCEPCIONES_NO_GUARDADO, procedimientoUsuario);
+				}
+			}
+		} catch (final ProcedimientoUsuarioNoExisteException procedimientoUsuarioNoExiste) {
+			return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_NO_EXISTE_EXCEPTION, procedimientoUsuario);
+		} catch (final ProcedimientoNoExisteException procedimientoDontExists) {
+			return new RespEntity(RespCode.PROCEDIMIENTO_NO_EXISTE_EXCEPTION, procedimientoUsuario);
+		} catch (final UsuarioNoEncontradoException usuarioNoEncontrado) {
+			return new RespEntity(RespCode.USUARIO_NO_ENCONTRADO, procedimientoUsuario);
+		} catch (final ParseException parseException) {
+			return new RespEntity(RespCode.PARSE_EXCEPTION, procedimientoUsuario);
 		}
 
 		return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_VACIO, procedimientoUsuario);

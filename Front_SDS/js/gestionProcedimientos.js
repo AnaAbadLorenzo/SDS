@@ -341,7 +341,7 @@ function editarProcedimientoAjaxPromesa(){
   return new Promise(function(resolve, reject) {
     var token = getCookie('tokenUsuario');
 
-    var check = $('input[name=checkUsuario]:checked').val();
+    var check = $('input[name=checkUsuarioAnadir]:checked').val();
     if(check == "publicado"){
       var checkMarcado = true;
     }else{
@@ -976,6 +976,7 @@ function detalleProcedimientoCerrarModal(){
     $("#form-modal").modal('toggle');
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
+
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
@@ -1190,7 +1191,7 @@ function showDetalle(nombreProcedimiento, descripProcedimiento , fechaProcedimie
     document.getElementById('checkUsuarioAnadir').style.display = "none";
     document.getElementById('checkUsuario').style.display = "block";
 
-    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan);
+    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, "detalle");
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
     let obligatorios =  ["obligatorioNombreProcedimiento", "obligatorioDescripcionProcedimiento", "obligatorioFechaProcedimiento", "obligatorioCheck", "obligatorioPlanes", "obligatorioDescripPlan"];
@@ -1225,7 +1226,7 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
     document.getElementById('checkUsuarioAnadir').style.display = "block";
     document.getElementById('checkUsuario').style.display = "none";
 
-    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan);
+    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, "editar");
     insertacampo(document.formularioGenerico,'idProcedimiento', idProcedimiento);
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar","selectPlanes", "descripPlan"];
@@ -1262,7 +1263,7 @@ function showEliminar(nombreProcedimiento, descripProcedimiento , fechaProcedimi
     document.getElementById('checkUsuarioAnadir').style.display = "none";
     document.getElementById('checkUsuario').style.display = "block";
 
-    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento);
+    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento, "eliminar");
     insertacampo(document.formularioGenerico,'idProcedimiento', idProcedimiento);
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar","selectPlanes", "descripPlan"];
@@ -1297,7 +1298,7 @@ function showReactivar(nombreProcedimiento, descripProcedimiento , fechaProcedim
     document.getElementById('checkUsuario').style.display = "block";
 
 
-    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento);
+    rellenarFormulario(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento, "reactivar");
     insertacampo(document.formularioGenerico,'idProcedimiento', idProcedimiento);
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar","selectPlanes", "descripPlan"];
@@ -1329,7 +1330,7 @@ function cambiarOnBlurCampos(onBlurNombreProcedimiento, onBlurDescripProcedimien
 }
 
 /**Función que rellenado los datos del formulario*/
-function rellenarFormulario(nombreProcedimiento, descripProcedimiento, fechaProcedimiento, checkUsuario, nombrePlan, descripPlan) {
+function rellenarFormulario(nombreProcedimiento, descripProcedimiento, fechaProcedimiento, checkUsuario, nombrePlan, descripPlan, accion) {
 
     $("#nombreProcedimiento").val(nombreProcedimiento);
     $("#descripProcedimiento").val(descripProcedimiento); 
@@ -1349,11 +1350,21 @@ function rellenarFormulario(nombreProcedimiento, descripProcedimiento, fechaProc
       }
     }
 
-    if(checkUsuario == "Publicado"){
-      $('#checkUsuarioPublicar').attr('checked', true);
+    if(accion == "editar"){
+      if(checkUsuario == "Publicado"){
+        $('#checkUsuarioPublicarAnadir').attr('checked', true);
+        }else{
+        $('#checkUsuarioNoPublicarAnadir').attr('checked', true);
+      }
     }else{
-      $('#checkUsuarioNoPublicar').attr('checked', true);
+      if(checkUsuario == "Publicado"){
+        $('#checkUsuarioPublicar').attr('checked', true);
+      }else{
+        $('#checkUsuarioNoPublicar').attr('checked', true);
+      }
     }
+
+    
     $('#descripPlan').val(descripPlan);
 
 }

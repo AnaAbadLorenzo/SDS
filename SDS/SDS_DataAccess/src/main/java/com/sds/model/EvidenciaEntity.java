@@ -33,6 +33,9 @@ public class EvidenciaEntity {
 	@Column(name = "nombre_fichero")
 	private String nombreFichero;
 
+	@Column(name = "ruta_evidencia")
+	private String rutaEvidencia;
+
 	@OneToOne
 	@JoinColumn(name = "id_procedimiento_usuario_proceso", referencedColumnName = "id_procedimiento_usuario_proceso", updatable = false)
 	private ProcedimientoUsuarioProcesoEntity procedimientosUsuarioProceso;
@@ -42,19 +45,22 @@ public class EvidenciaEntity {
 	}
 
 	public EvidenciaEntity(final Integer idEvidencia, final Date fechaEvidencia, final Integer borradoEvidencia,
-			final String nombreFichero) {
+			final String nombreFichero, final String rutaEvidencia) {
 		super();
 		this.idEvidencia = idEvidencia;
 		this.fechaEvidencia = fechaEvidencia;
 		this.borradoEvidencia = borradoEvidencia;
 		this.nombreFichero = nombreFichero;
+		this.rutaEvidencia = rutaEvidencia;
 	}
 
-	public EvidenciaEntity(final Date fechaEvidencia, final Integer borradoEvidencia, final String nombreFichero) {
+	public EvidenciaEntity(final Date fechaEvidencia, final Integer borradoEvidencia, final String nombreFichero,
+			final String rutaEvidencia) {
 		super();
 		this.fechaEvidencia = fechaEvidencia;
 		this.borradoEvidencia = borradoEvidencia;
 		this.nombreFichero = nombreFichero;
+		this.rutaEvidencia = rutaEvidencia;
 	}
 
 	public Integer getIdEvidencia() {
@@ -97,10 +103,19 @@ public class EvidenciaEntity {
 		this.nombreFichero = nombreFichero;
 	}
 
+	public String getRutaEvidencia() {
+		return rutaEvidencia;
+	}
+
+	public void setRutaEvidencia(final String rutaEvidencia) {
+		this.rutaEvidencia = rutaEvidencia;
+	}
+
 	@Override
 	public String toString() {
 		return "EvidenciaEntity [idEvidencia=" + idEvidencia + ", fechaEvidencia=" + fechaEvidencia
-				+ ", borradoEvidencia=" + borradoEvidencia + ", nombreFichero=" + nombreFichero + "]";
+				+ ", borradoEvidencia=" + borradoEvidencia + ", nombreFichero=" + nombreFichero + ", rutaEvidencia="
+				+ rutaEvidencia + ", procedimientosUsuarioProceso=" + procedimientosUsuarioProceso + "]";
 	}
 
 }

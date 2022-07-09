@@ -21,15 +21,16 @@ import javax.persistence.Table;
 @Table(name = "procedimientousuario")
 @NamedQueries({
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByProcedimiento", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.procedimiento =: procedimiento"),
-		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE  p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByProcedimientoAndUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByNombreProcedimientoAndLoginUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE LOWER(p.usuario.usuario) LIKE LOWER(CONCAT('%', :usuario, '%')) AND LOWER(p.procedimiento.nombreProcedimiento) LIKE LOWER(CONCAT('%', :nombreProcedimiento, '%')) AND p.borradoProcedimientoUsuario = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindAllProcedimientosUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.findAllProcedimientosUsuarioEliminados", query = "SELECT p FROM ProcedimientoUsuarioEntity p WHERE p.borradoProcedimientoUsuario = 1"),
-		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
-		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
-		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutProcedimiento", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.borradoProcedimientoUsuario = 0"),
-		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.puntuacionProcedimientoUsuario = :puntuacionProcedimientoUsuario AND p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%')  AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.procedimiento LIKE CONCAT('%', :procedimiento, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutProcedimiento", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%') AND p.usuario LIKE CONCAT('%', :usuario, '%') AND p.borradoProcedimientoUsuario = 0"),
+		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioWithoutProcedimientoAndUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p WHERE p.fechaProcedimientoUsuario LIKE CONCAT ('%', :fechaProcedimientoUsuario, '%')  AND p.borradoProcedimientoUsuario = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.findProcedimientoUsuarioByUsuario", query = "SELECT p FROM ProcedimientoUsuarioEntity p  WHERE p.usuario LIKE CONCAT('%', :usuario, '%') AND p.borradoProcedimientoUsuario = 0"),
 		@NamedQuery(name = "ProcedimientoUsuarioEntity.numberFindProcedimientoUsuarioByUsuario", query = "SELECT COUNT(p) FROM ProcedimientoUsuarioEntity p  WHERE p.usuario LIKE CONCAT('%', :usuario, '%') AND p.borradoProcedimientoUsuario = 0") })
 public class ProcedimientoUsuarioEntity {
@@ -48,14 +49,14 @@ public class ProcedimientoUsuarioEntity {
 	@Column(name = "borrado_procedimiento_usuario")
 	private Integer borradoProcedimientoUsuario;
 
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_procedimiento", referencedColumnName = "id_procedimiento")
 	private ProcedimientoEntity procedimiento;
 
 	@OneToMany(mappedBy = "procedimientoUsuario")
 	private final Set<ProcedimientoUsuarioProcesoEntity> procedimientoUsuarioProcesos = new HashSet<>();
 
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "dni_usuario", referencedColumnName = "dni_usuario")
 	private UsuarioEntity usuario;
 

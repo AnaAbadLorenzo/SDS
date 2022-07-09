@@ -57,6 +57,8 @@ arrayEN={
 	'SELECCIONAR_PROCEDIMIENTO' : 'Select the procedures',
 	'SELECCIONAR_OBJETIVO' : 'Select the objective',
 	'ORDEN_PROCESO': 'Process order',
+	'ESTADO_PROCEDIMIENTO_EJECUTADO' : 'Procedure state',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO' : 'Execute procedure puntuaction',
 
 	//Idiomas
 	'ESPAÑOL' : 'Spanish',
@@ -299,7 +301,12 @@ arrayEN={
 	'RELLENA_PLAN' : 'Please, select a plan',
 	'RELLENA_RESPUESTA' : 'Please, select an answer',
 	'FORMATO_INCORRECTO' : 'You can only upload pdf, jpg, jpeg and png files',
-	'EVIDENCIA_SUBIDA' : 'Evidence uploaded: ',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO_VACIA' : 'Puntuaction of the executed procedure empty',
+	'PUNTUACION_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA' : 'The puntuaction of the executed procedure can only contain numbers',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_VACIA' : 'Execute procedure`s date empty',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_NUMERICA_INCORRECTA' : 'Execute procedure`s can only contain numbers',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_MENOR_QUE_8' : 'Execute procedure`s is minor than 8 characteres',
+	'FECHA_PROCEDIMIENTO_EJCUTADO_MAYOR_QUE_8' : 'Execute procedure`s is bigger than 8 characteres',
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Forgot your password?',
@@ -444,6 +451,10 @@ arrayEN={
 	'DELETE_PROCESO' : 'DELETE PROCESS',
 	'REACTIVATE_PROCESO' : 'REACTIVATE PROCESS',
 	'GESTION_PROCEDIMIENTOS_EJECUTADOS' : 'Execute procedures management',
+	'DETAIL_PROCEDIMIENTO_EJECUTADO' : 'DETAIL EXECUTED PROCEDURE',
+	'EDIT_PROCEDIMIENTO_EJECUTADO' : 'EDIT EXECUTED PROCEDURE',
+	'EVIDENCIA_SUBIDA' : 'Evidence uploaded: ',
+	'SEARCH_PROCEDIMIENTO_EJECUTADO' : 'SEARCH EXECUTED PROCEDURE',
 
 	//Acciones
 	'CERRARMODAL': 'Close',
@@ -570,6 +581,8 @@ arrayEN={
 	'PROCESO_ELIMINADO' : 'The process has been deleted correctly',
 	'PROCESO_REACTIVADO_OK'  : 'PROCESS REACTIVATED CORRECTLY',
 	'PROCESO_REACTIVADO' : 'The process has been reactivated correctly',
-	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'The procedure has been deleted correctly'
+	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'The procedure has been deleted correctly',
+	'PROCEDIMIENTO_EJECUTADO_EDITADO_OK' : 'EXECUTED PROCEDURE MODIFIED CORRECTLY',
+	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'The execute procedure has been edited correctly'
 
 }
