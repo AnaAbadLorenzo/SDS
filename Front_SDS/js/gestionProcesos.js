@@ -25,7 +25,7 @@ function addObjetivosNiveles(){
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	          			  		'</div>' +
 	                      		'<div style="display:none" id="errorFormatoNivel"></div>' +
-	                      		'<div id="btnBorrar' + idObjetivoNivel + '"name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles(\'objetivosNiveles' + idObjetivoNivel+ '\')" class="tooltip6 borrarIcon">' +
+	                      		'<div id="btnBorrar' + idObjetivoNivel + '"name="btnBorrar" value="ELiminar" onclick="javascript:eliminarObjetivosNiveles(\'objetivosNiveles' + idObjetivoNivel+ '\')" class="tooltip17 borrarIcon">' +
 	      			  				'<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />' +
 	        						'<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>' +
 	      			  			'</div>' +
@@ -36,6 +36,8 @@ function addObjetivosNiveles(){
 	$("#objetivosNiveles").append(objetivosNiveles);
 
 	setCookie('numeroObjNivel', idObjetivoNivel);
+
+  $('.borrarIcon').css("cursor", "pointer");
 }
 
 /**Función para añadir más procedimientos y orden*/
@@ -66,7 +68,7 @@ function addProcedimientosOrden(){
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	          			  		'</div>' +
 	                      		'<div style="display:none" id="errorFormatoOrdenProceso'+idProcedimientoOrden+'"></div> ' +
-	                      		'<div id="btnBorrarProcedimiento'+idProcedimientoOrden+'" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden(\'procedimientosOrden'+idProcedimientoOrden+'\')" class="tooltip6 borrarIcon">' +
+	                      		'<div id="btnBorrarProcedimiento'+idProcedimientoOrden+'" name="btnBorrar" value="ELiminar" onclick="javascript:eliminarProcedimientosOrden(\'procedimientosOrden'+idProcedimientoOrden+'\')" class="tooltip17 borrarIcon">' +
 	      			  				'<img class="iconoBorrar iconBorrar" src="images/delete3.png" alt="Eliminar" />' +
 	        						'<span class="tooltiptext iconBorrar ICONO_ELIMINAR">Eliminar</span>' +
 	      			  			'</div>' +
@@ -77,6 +79,8 @@ function addProcedimientosOrden(){
 	$("#procedimientosOrden").append(procedimientosOrden);
 
 	setCookie('numeroProcedimientosOrden', idProcedimientoOrden);
+
+  $('.borrarIcon').css("cursor", "pointer");
 }
 
 /**Función que eliminar el contenido de un div de objetivos y niveles*/
@@ -1715,6 +1719,12 @@ function showAddProcesos() {
   $('select[name="objetivos"] option[value=0]').attr('selected', true);
   $('input[name="respuestaPosible"]').attr('disabled', false);
 
+  $("#procedimientosOrden").css("height", "141px");
+  $('#btnAddProcedimientoProceso').css("cursor", "pointer");
+  $('#btnAddObjetivoPlan').css("cursor", "pointer");   
+  $("#objetivosNiveles").css("height", "141px"); 
+  $('.borrarIcon').css("cursor", "pointer");
+
   for(var i = 1; i<=numeroObjetivosNivel; i++){
   	$('#selectObjetivos'+i+' option[value=0]').attr('selected', true);
   	eliminarReadonly(['selectObjetivos'+i, 'nivel'+i]);
@@ -1724,6 +1734,7 @@ function showAddProcesos() {
   }
 
    for(var i = 1; i<=numeroProcedimientosOrden; i++){
+    document.getElementById("procedimientosOrden" + i).style.height = "131px";
   	$('#selectProcedimientos'+i+' option[value=0]').attr('selected', true);
   	eliminarReadonly(['selectProcedimientos'+i, 'ordenProceso'+i]);
   	habilitaCampos(['selectProcedimientos'+i, 'ordenProceso'+i]);
@@ -1816,7 +1827,7 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
   	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
     $('#divRespPosible').attr('hidden', false);
 
-
+    $("#procedimientosOrden").css("height", "180px");
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
 
     $('input[name="respuestaPosible"]').attr('disabled', true);
@@ -1840,6 +1851,7 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
 
 
 	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+      document.getElementById("procedimientosOrden" + i).style.height = "170px";
 	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
 	  	var selectPr = 'selectProcedimientos'+i;
     	var obligatorioO = 'obligatorioOrdenProceso'+i;
@@ -1900,6 +1912,11 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
   	$('#labelSeleccionRespuestaPosible').attr('hidden', false);
     $('#divRespPosible').attr('hidden', false);
 
+    $("#procedimientosOrden").css("height", "180px");
+    $('#btnAddProcedimientoProceso').css("cursor", "pointer");
+    $('#btnAddObjetivoPlan').css("cursor", "pointer");   
+    $("#objetivosNiveles").css("height", "141px"); 
+    $('.borrarIcon').css("cursor", "pointer");
 
   	$('input[name="respuestaPosible"]').attr('disabled', false);
 
@@ -1927,6 +1944,7 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
 
 
 	for(var i = 1; i<=numeroProcedimientosOrden; i++){
+      document.getElementById("procedimientosOrden" + i).style.height = "170px";
 	  	var obligatorioPr = 'obligatorioProcedimientos'+i;
 	  	var selectPr = 'selectProcedimientos'+i;
     	var obligatorioO = 'obligatorioOrdenProceso'+i;

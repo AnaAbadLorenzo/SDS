@@ -116,6 +116,16 @@ select option:checked{
   cursor: pointer;
 }
 
+.seguir {
+  width: 30%;
+  left: -18%;
+}
+
+.iconSeguir {
+    width: 30% !important;
+    left: 85%;
+}
+
 /*********** CARDS ****************/
 
 .paddingTop {

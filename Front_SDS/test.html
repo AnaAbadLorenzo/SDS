@@ -146,6 +146,34 @@
 
   	<div class="card">
 	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseProcedimiento" onclick="javascript:cargarTestGestionProcedimientos()">
+	         Gestión de Procedimientos 
+	      </a>
+	      <img class="iconTab" id="iconoTestProcedimiento" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseProcedimiento" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testProcedimiento">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
+	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseProceso" onclick="javascript:cargarTestGestionProcesos()">
+	         Gestión de Procesos 
+	      </a>
+	      <img class="iconTab" id="iconoTestProceso" src="images/failed.png" hidden>
+	    </div>
+
+	    <div id="collapseProceso" class="collapse" data-parent="#accordion">
+	      <div class="card-body" id="testProceso">
+      	</div>
+    	</div>
+  	</div>
+
+  	<div class="card">
+	    <div class="card-header">
 	      <a class="collapsed card-link" data-toggle="collapse" href="#collapseRespuestasPosibles" onclick="javascript:cargarTestGestionRespuestasPosibles()">
 	         Gestión de Respuestas Posibles 
 	      </a>
