@@ -1730,7 +1730,7 @@ function gestionarPermisosEmpresaPersona(idElementoList) {
     switch(idElemento){
       case "Modificar" : 
         $('.editarPermisoEmpresa').attr('src', 'images/edit3.png');
-        $('.editarPermisoEmpresa').css("cursor", "default");
+        $('.editarPermisoEmpresa').css("cursor", "pointer");
         $('.editarPermisoEmpresa').attr("data-toggle", "modal");
         $('.editarPermisoEmpresa').attr("data-target", "#modalSeleccionEmpresa");
       break;
