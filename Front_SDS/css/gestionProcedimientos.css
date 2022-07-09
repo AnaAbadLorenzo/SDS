@@ -89,6 +89,13 @@ select option:checked{
   width: 100%;
 }
 
+#cabeceraUsuario {
+  position:  fixed;
+  top: 14%;
+  left: 7%;
+  width: 100%;
+}
+
 .cabeceraEliminados {
   position:  fixed;
   top: 13%;
@@ -124,6 +131,10 @@ select option:checked{
 .iconSeguir {
     width: 30% !important;
     left: 85%;
+}
+
+#cabeceraUsuario .refreshIcon {
+  margin-left: 76%;
 }
 
 /*********** CARDS ****************/

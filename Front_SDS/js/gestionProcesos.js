@@ -65,7 +65,7 @@ function addProcedimientosOrden(){
 		          			    '<div style="display:none" id="errorFormatoNombreProcedimientoSelect'+idProcedimientoOrden+'"></div>' +  
 							  	'<label class="labelForm ORDEN_PROCESO" id="labelOrdenProceso'+idProcedimientoOrden+'" hidden></label> '+                           
 	                  			'<input type="number" maxlength="11" size="11" placeholder="ORDEN_PROCESO" name="ordenProceso" id="ordenProceso'+idProcedimientoOrden+'" class="ORDEN_PROCESO" onblur="" hidden/>' +
-	                   			'<div class="obligatorio tooltip2" id="obligatorioOrdenProceso'+idProcedimientoOrden+'">*' +
+	                   			'<div class="obligatorio tooltip2" id="obligatorioOrdenProceso'+idProcedimientoOrden+'" style="display:none">*' +
 	          						'<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>' +
 	          			  		'</div>' +
 	                      		'<div style="display:none" id="errorFormatoOrdenProceso'+idProcedimientoOrden+'"></div> ' +
