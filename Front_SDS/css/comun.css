@@ -228,11 +228,7 @@ body {
   left: 93%;
 }
 
-#seguir {
-  left: 15%;
-}
-
-.iconCerrar, .iconEliminar, .iconSeguir {
+.iconCerrar, .iconEliminar {
   width: 8% !important;
   left: 85%;
 }
@@ -1215,6 +1211,94 @@ form button[type="button"]:hover {
 }
 
 .tooltip17:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip18 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1050;
+}
+
+.tooltip18 .tooltiptext {
+    visibility: hidden;
+    width: 130px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -11%;
+    left: 63%;
+    margin-left: -364px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip18 .tooltiptext::after{
+  content: "";
+  position: absolute;
+  bottom: 35%;
+  left: 105%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #4527A0;
+}
+
+.tooltip18:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip19 {
+    position: relative;
+    display: inline-block;
+    opacity: 1;
+    font-size: 1rem;
+    z-index: 1001;
+}
+
+.tooltip19 .tooltiptext {
+    visibility: hidden;
+    width: 130px;
+    font-size: 11pt;
+    font-family: 'Times New Roman';
+    background-color: #4527A0;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px solid #4527A0;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -11%;
+    left: 228%;
+    margin-left: -364px;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.tooltip19 .tooltiptext::after{
+  content: "";
+  position: absolute;
+  bottom: 35%;
+  left: 105%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #4527A0;
+}
+
+.tooltip19:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }
