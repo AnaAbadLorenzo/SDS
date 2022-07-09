@@ -976,7 +976,6 @@ function detalleProcedimientoCerrarModal(){
     $("#form-modal").modal('toggle');
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
-
     resetearFormulario("formularioGenerico", idElementoList);
     setLang(getCookie('lang'));
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
