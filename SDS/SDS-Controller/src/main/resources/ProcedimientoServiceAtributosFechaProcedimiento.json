@@ -60,5 +60,14 @@
 		"fechaProcedimiento" : "2022-05-31",
 		"borradoProcedimiento" : 0,
 		"checkUsuario" : "false"
+	},
+	
+	"fechaIntroducidaAnteriorFechaActual" : {
+		"idProcedimiento" : "",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Esta es la descripción del procedimiento",
+		"fechaProcedimiento" : "2000-05-31",
+		"borradoProcedimiento" : 0,
+		"checkUsuario" : "false"
 	}
 }

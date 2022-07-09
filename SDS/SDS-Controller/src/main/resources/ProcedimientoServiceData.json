@@ -26,11 +26,11 @@
 		"usuario" : "ana",
 		
 		"idProcedimiento" : "",
-		"nombreProcedimiento" : "Procedimiento ya existe",
-		"descripProcedimiento" : "Esta es la descripción del procedimiento que ya existe",
-		"fechaProcedimiento" : "2022-05-31",
+		"nombreProcedimiento" : "Procedimiento",
+		"descripProcedimiento" : "Este es el primer procedimiento",
+		"fechaProcedimiento" : "2022-05-20",
 		"borradoProcedimiento" : 0,
-		"checkUsuario" : "false"
+		"checkUsuario" : "true"
 	
 	},
 	"procedimientoNoExiste" : {
@@ -131,7 +131,7 @@
 		"idProcedimiento" : "",
 		"nombreProcedimiento" : "Procedimiento con el check vacio",
 		"descripProcedimiento" : "Esta es la descripción del procedimiento",
-		"fechaProcedimiento" : "",
+		"fechaProcedimiento" : "2022-05-31",
 		"borradoProcedimiento" : 0,
 		"checkUsuario" : ""
 	},
@@ -153,10 +153,9 @@
 		"idProcedimiento" : "",
 		"nombreProcedimiento" : "Procedimiento no existe",
 		"descripProcedimiento" : "Esta es la descripción del procedimiento que no existe",
-		"fechaProcedimiento" : "2022-05-31",
+		"fechaProcedimiento" : "2000-05-31",
 		"borradoProcedimiento" : 0,
 		"checkUsuario" : "false"
-	
 	}
 
 }

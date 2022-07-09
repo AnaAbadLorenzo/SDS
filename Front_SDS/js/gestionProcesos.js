@@ -8,7 +8,7 @@ function addObjetivosNiveles(){
 	objetivosNiveles = '<div id="objetivosNiveles' + idObjetivoNivel + '" class="objetivosNiveles">' +
 			                '<label class="labelForm NOMBRE_OBJETIVO" id="labelNombreObjetivo' + idObjetivoNivel +'" hidden></label>' +
 	            	  		'<select id="selectObjetivos'+ idObjetivoNivel + '" name="objetivos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" onblur="comprobarSelect(\'selectObjetivos' +idObjetivoNivel+ '\', \'errorFormatoNombreObjetivoSelect' +idObjetivoNivel+ '\', \'selectObjetivosOptions\')">' + 
-	            	  			'<option selected value=0><label class="OPCION_DEFECTO_OBJETIVO"></label></option>';        
+	            	  			'<option selected value=0 class="OPCION_DEFECTO_OBJETIVO"></option>';        
 					for(var i = 0; i<listaBusquedasObjetivos.length; i++){
 						options += '<option value=' + (listaBusquedasObjetivos[i])[0] + '>' + (listaBusquedasObjetivos[i])[1]  + '</option>';
 					}
@@ -38,6 +38,7 @@ function addObjetivosNiveles(){
 	setCookie('numeroObjNivel', idObjetivoNivel);
 
   $('.borrarIcon').css("cursor", "pointer");
+  setLang(getCookie('lang'));
 }
 
 /**Función para añadir más procedimientos y orden*/
@@ -50,7 +51,7 @@ function addProcedimientosOrden(){
 	procedimientosOrden = '<div id="procedimientosOrden' + idProcedimientoOrden + '" class="procedimientosOrden">' +
 			                '<label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento' + idProcedimientoOrden +'" hidden></label>' +
 	            	  		'<select id="selectProcedimientos' + idProcedimientoOrden + '" name ="procedimientos" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">' + 
-	            	  			'<option selected value=0><label class="OPCION_DEFECTO_PROCEDIMIENTO"></label></option>';        
+	            	  			'<option selected value=0 class="OPCION_DEFECTO_PROCEDIMIENTO"></option>';        
 					for(var i = 0; i<listaBusquedasProcedimientos.length; i++){
 						options += '<option value=' + (listaBusquedasProcedimientos[i])[0] + '>' + (listaBusquedasProcedimientos[i])[1]  + '</option>';
 					}
@@ -81,6 +82,7 @@ function addProcedimientosOrden(){
 	setCookie('numeroProcedimientosOrden', idProcedimientoOrden);
 
   $('.borrarIcon').css("cursor", "pointer");
+  setLang(getCookie('lang'));
 }
 
 /**Función que eliminar el contenido de un div de objetivos y niveles*/
@@ -830,7 +832,7 @@ async function cargarObjetivos(){
 
     var token = getCookie('tokenUsuario');
 
-        options = '<option selected value=0><label class="OPCION_DEFECTO_OBJETIVO"></label></option>';
+        options = '<option selected value=0 class="OPCION_DEFECTO_OBJETIVO"</option>';
         for(var i = 0; i< res.data.listaBusquedas.length ; i++){
           var elementArray = [res.data.listaBusquedas[i].idObjetivo, res.data.listaBusquedas[i].nombreObjetivo];
           options += '<option value=' + res.data.listaBusquedas[i].idObjetivo + '>' + res.data.listaBusquedas[i].nombreObjetivo + '</option>';

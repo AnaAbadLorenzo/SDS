@@ -56,7 +56,7 @@ public class TestAtributoDescripcionProcedimiento {
 						Funcionalidad.GESTION_PROCEDIMIENTOS, Atributo.DESCRIP_PROCEDIMIENTO);
 
 		final String resultadoEsperado = CodigosMensajes.DESCRIPCION_PROCEDIMIENTO_ALFANUMERICO_INCORRECTO + " - "
-				+ Mensajes.DESCRIPCION_PLAN_PUEDE_CONTENER_LETRAS_Y_ESPACIOS;
+				+ Mensajes.DESCRIPCION_PROCEDIMIENTO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,
 				DefinicionPruebas.ALFANUMERICO_CARACTERES_ESPECIALES, Constantes.ERROR,
@@ -69,9 +69,9 @@ public class TestAtributoDescripcionProcedimiento {
 
 		final String resultadoObtenido = validacionesAtributosMenor.comprobarAtributoMenor(
 				datosEntradaDescripcionProcedimientoAlfanumericoMenor3.getDescripProcedimiento(),
-				Funcionalidad.GESTION_PROCEDIMIENTOS, Atributo.DESCRIP_PLAN, 3);
+				Funcionalidad.GESTION_PROCEDIMIENTOS, Atributo.DESCRIP_PROCEDIMIENTO, 3);
 
-		final String resultadoEsperado = CodigosMensajes.DESCRIPCION_PLAN_MENOR_QUE_3 + " - "
+		final String resultadoEsperado = CodigosMensajes.DESCRIPCION_PROCEDIMIENTO_MENOR_QUE_3 + " - "
 				+ Mensajes.DESCRIPCION_PROCEDIMIENTO_NO_PUEDE_SER_MENOR_QUE_3;
 
 		return crearDatosPruebaAtributos.createDatosPruebaAtributos(resultadoObtenido, resultadoEsperado,

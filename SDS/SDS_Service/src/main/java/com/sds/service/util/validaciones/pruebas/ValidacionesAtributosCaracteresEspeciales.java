@@ -339,6 +339,19 @@ public class ValidacionesAtributosCaracteresEspeciales {
 					default:
 						break;
 					}
+				case GESTION_PROCESOS:
+					switch (atr) {
+					case NOMBRE_PROCESO:
+						resultado = CodigosMensajes.NOMBRE_PROCESO_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.NOMBRE_PROCESO_SOLO_PUEDE_CONTENER_LETRAS_NUMEROS_Y_ESPACIOS;
+						break;
+					case DESCRIP_PROCESO:
+						resultado = CodigosMensajes.DESCRIPCION_PROCESO_ALFANUMERICO_INCORRECTO + " - "
+								+ Mensajes.DESCRIPCION_PROCESO_PUEDE_CONTENER_LETRAS_NUMEROS_SIGNOS_PUNTUACION_Y_ESPACIOS;
+						break;
+					default:
+						break;
+					}
 
 				default:
 					break;

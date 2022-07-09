@@ -80,8 +80,7 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 				} else {
 
-					final String rutaTomcat = "webapps" + File.separator + "SDS" + File.separator + "WEB-INF"
-							+ File.separator + "classes" + File.separator + "com" + File.separator + "sds";
+					final String rutaTomcat = "webapps";
 					ubicacionArchivo = directoryName + File.separator + rutaTomcat + File.separator + "evidencias"
 							+ File.separator;
 
@@ -189,8 +188,7 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 				} else {
 
-					final String rutaTomcat = "webapps" + File.separator + "SDS" + File.separator + "WEB-INF"
-							+ File.separator + "classes" + File.separator + "com" + File.separator + "sds";
+					final String rutaTomcat = "webapps";
 					ubicacionArchivo = directoryName + File.separator + rutaTomcat + File.separator + "evidencias"
 							+ File.separator;
 

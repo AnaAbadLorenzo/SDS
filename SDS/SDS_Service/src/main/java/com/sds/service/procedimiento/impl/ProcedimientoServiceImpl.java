@@ -431,7 +431,7 @@ public class ProcedimientoServiceImpl implements ProcedimientoService {
 						procedimientoRepository.saveAndFlush(procedimientoEntity);
 
 						final String[] arrayNoticia = fechaIntroducidaUsuario.split("-");
-						fechaDescripNoticia = arrayNoticia[2] + "- " + arrayNoticia[1] + "-" + arrayNoticia[0];
+						fechaDescripNoticia = arrayNoticia[2] + "-" + arrayNoticia[1] + "-" + arrayNoticia[0];
 
 						if (Boolean.TRUE.equals(procedimientoEntity.getCheckUsuario())) {
 							final NoticiasEntity noticia = new NoticiasEntity(

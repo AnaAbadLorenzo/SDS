@@ -1207,7 +1207,7 @@ function gestionarPermisosEmpresa(idElementoList) {
         $('.editarPermiso').attr("data-toggle", "modal");
         $('.editarPermiso').attr("data-target", "#form-modal");
         $('.editarPermisoEmpresa').attr('src', 'images/edit3.png');
-        $('.editarPermisoEmpresa').css("cursor", "default");
+        $('.editarPermisoEmpresa').css("cursor", "pointer");
         $('.editarPermisoEmpresa').attr("data-toggle", "modal");
         $('.editarPermisoEmpresa').attr("data-target", "#modalSeleccionEmpresa");
       break;
