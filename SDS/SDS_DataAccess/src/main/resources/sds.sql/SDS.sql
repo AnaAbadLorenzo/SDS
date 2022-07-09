@@ -109,23 +109,23 @@ CREATE TABLE `funcionalidad` (
 --
 
 LOCK TABLES `funcionalidad` WRITE;
-INSERT INTO `funcionalidad` VALUES (1,'Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),
-(2,'Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),
-(3,'Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),
+INSERT INTO `funcionalidad` VALUES ('1','Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),
+('2','Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),
+('3','Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),
 ('4', 'Gestión de noticias', 'Permite realizar acciones sobre las noticias de la aplicación', '0'),
 ('5', 'Gestión de objetivos', 'Permite realizar acciones sobre los objetivos de la aplicación', '0'),
-(6,'Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0),
+('6','Gestión de personas','Permite realizar acciones sobre las personas de la aplicación',0),
 ('7', 'Gestión de planes', 'Permite realizar acciones sobre los planes de la aplicación', '0'), 
 ('8', 'Gestión de procedimientos', 'Permite realizar acciones sobre los procedimientos de la aplicación', '0'),
 ('9', 'Gestión de procedimientos ejecutados', 'Permite realizar acciones sobre los procedimientos ejecutados por los usuarios de la aplicación', '0'),
 ('10', 'Gestión de procesos', 'Permite realizar acciones sobre los procesos de la aplicación', '0'),
 ('11', 'Gestión de procesos ejecutados', 'Permite realizar acciones sobre los procesos ejecutados por los usuarios de la aplicación', '0'),
 ('12', 'Gestión de respuestas posibles', 'Permite realizar acciones sobre las respuestas posibles de la aplicación', '0'), 
-(13,'Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0),
-(14,'Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0),
-(15,'Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0),
-(16,'Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0),
-(17,'Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0);
+('13','Gestión de roles','Permite realizar acciones sobre los roles de la aplicación',0),
+('14','Gestión de usuarios','Permite realizar acciones sobre los usuarios de la aplicación',0),
+('15','Log de acciones','Permite ver los logs almacenados de acciones llevadas a cabo por los usuarios del sistema',0),
+('16','Log de excepciones','Permite ver los logs almacenados de excepciones que se han producido en el sistema',0),
+('17','Test','Permite ver los test de acciones y de atributos realizados sobre las funcionalidades',0);
 UNLOCK TABLES;
 
 --
@@ -263,7 +263,7 @@ CREATE TABLE `rol` (
 LOCK TABLES `rol` WRITE;
 INSERT INTO `rol` VALUES (1,'admin','Contendrá a todos los administradores de la aplicación',0),
 (2,'usuario','Contendra a todos los usuarios registrados de la aplicacion',0),
-(3,'gestor','Contendrá a todos los gestores de la aplicación',1);
+(3,'gestor','Contendrá a todos los gestores de la aplicación',0);
 UNLOCK TABLES;
 
 --
@@ -292,7 +292,14 @@ CREATE TABLE `rolaccionfuncionalidad` (
 --
 
 LOCK TABLES `rolaccionfuncionalidad` WRITE;
-INSERT INTO `rolaccionfuncionalidad` (`id_rol`, `id_funcionalidad`, `id_accion`) VALUES (1,1,1), (1,2,1), (1,3,1), (1,4,1), (1,5,1), (1,6,1), (1,1,4);
+INSERT INTO `rolaccionfuncionalidad` (`id_rol`, `id_accion`, `id_funcionalidad`) VALUES 
+(1,1,1), (1,1,2), (1,1,3), (1,1,4), (1,1,5), (1,1,6), (1,1,7), (1,1,8), (1,1,9), (1,1,10), (1,1,11), (1,1,12), (1,1,13), (1,1,14),
+(1,2,1), (1,2,2), (1,2,3), (1,2,4), (1,2,5), (1,2,6), (1,2,7), (1,2,8), (1,2,9), (1,2,10), (1,2,11), (1,2,12), (1,2,13), (1,2,14),
+(1,3,1), (1,3,2), (1,3,3), (1,3,4), (1,3,5), (1,3,6), (1,3,7), (1,3,8), (1,3,9), (1,3,10), (1,3,11), (1,3,12), (1,3,13), (1,3,14),
+(1,4,1), (1,4,2), (1,4,3), (1,4,4), (1,4,5), (1,4,6), (1,4,7), (1,4,8), (1,4,9), (1,4,10), (1,4,11), (1,4,12), (1,4,13), (1,4,14), (1,4,15), (1,4,16), (1,4,17),
+(1,5,1), (1,5,2), (1,5,3), (1,5,4), (1,5,5), (1,5,6), (1,5,7), (1,5,8), (1,5,9), (1,5,10), (1,5,11), (1,5,12), (1,5,13), (1,5,14), (1,5,15), (1,5,16),
+(1,6,1), (1,6,2), (1,6,3), (1,6,4), (1,6,5), (1,6,6), (1,6,7), (1,6,8), (1,6,9), (1,6,10), (1,6,11), (1,6,12), (1,6,13), (1,6,14),
+(2,2,2), (2,2,6), (2,4,2), (2,4,6), (2,4,7), (2,4,8), (2,4,14), (2,5,14);
 UNLOCK TABLES;
 
 --
@@ -441,7 +448,7 @@ CREATE TABLE `respuesta_posible` (
 --
 
 LOCK TABLES `respuesta_posible` WRITE;
-INSERT INTO `respuesta_posible` (`id_respuesta`, `texto_respuesta`, `borrado_respuesta`) VALUES ('1', 'Sí', '0');
+INSERT INTO `respuesta_posible` (`id_respuesta`, `texto_respuesta`, `borrado_respuesta`) VALUES ('1', 'Sí', '0'), ('2', 'No', 0), ('3', 'A veces', 0), ('4', 'No aplica', 0);
 UNLOCK TABLES;
 
 --
