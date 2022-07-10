@@ -1056,19 +1056,11 @@ function escogeRol(rolId){
 	    	borradoRol : 0
 			}
 		break;
-		case "4":
+		case "3":
 			rol = {
-				idRol : 4,
-	    	rolName : "Responsable",
-	    	rolDescription : "Contendrá a todos los responsables de objetivos de la aplicación",
-	    	borradoRol : 0
-			}
-		break;
-		case "5":
-			rol = {
-				idRol : 5,
+				idRol : 3,
 	    	rolName : "Gestor",
-	    	rolDescription : "Contendrá a todos los gestores de objetivos de la aplicación",
+	    	rolDescription : "Contendrá a todos los gestores de planes y procedimientos de la aplicación",
 	    	borradoRol : 0
 			}
 		break;

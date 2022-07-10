@@ -145,6 +145,8 @@ arrayGA={
 	'EMPRESA_YA_EXISTE' : 'A empresa xa existe',
 	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'A empresa non existe',
 	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'A empresa está asociada a algunhas persoas',
+	'OBJETIVO_ASOCIADO_PLAN_EXCEPTION' : 'O obxectivo encóntrase asociado a un ou varios plans',
+	'OBJETIVO_ASOCIADO_PROCESO_EXCEPTION' : 'O obxectivo encóntrase asociado a un ou varios procesos',
 	'PLAN_YA_EXISTE_EXCEPTION' : 'O plan xa existe',
 	'PLAN_VACIO' : 'O nome, la descripción, a data e/ou o obxectivo do plan son vacíos',
 	'PLAN_NO_EXISTE_EXCEPTION' : 'O plan non existe',
@@ -168,6 +170,7 @@ arrayGA={
 	'PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION' : 'O procedemento está asociado a un proceso e a un usuario',
 	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'A realción entre o proceso e o procedemento non existe',
 	'ORDEN_PROCESO_INCORRECTO' : 'A orde dun dos procedementos é incorrecta',
+	'PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION' : 'O proceso xa foi contestado por un usuario',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -304,8 +307,6 @@ arrayGA={
 	'FECHA_PROCEDIMIENTO_EJECUTADO_NUMERICA_INCORRECTA' : 'A data do procedemento executado tan só pode conter números',
 	'FECHA_PROCEDIMIENTO_EJECUTADO_MENOR_QUE_8' : 'A data do procedemento executado ten menos de 8 caracteres',
 	'FECHA_PROCEDIMIENTO_EJECUTADO_MAYOR_QUE_8' : 'A data do procedemento executado ten máis de 8 caracteres',
-
-
 
 	//Mensajes
 	'OLVIDAR_CONTRASENA' : 'Olvidou o seu contrasinal?',
@@ -583,7 +584,9 @@ arrayGA={
 	'PROCESO_REACTIVADO' : 'O proceso reactivouse correctamente',
 	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'O procedemento eliminouse correctamente',
 	'PROCEDIMIENTO_EJECUTADO_EDITADO_OK' : 'PROCEDEMENTO EXECUTADO MODIFICADO CORRECTAMENTE',
-	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'O procedemento executado modificouse correctamente'
+	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'O procedemento executado modificouse correctamente',
+	'EVIDENCIA_GUARDADA_OK' : 'EVIDENCIA GARDADA CORRECTAMENTE',
+	'EVIDENCIA_GUARDADA' : 'A evidencia gardouse correctamente'
 
 
 	

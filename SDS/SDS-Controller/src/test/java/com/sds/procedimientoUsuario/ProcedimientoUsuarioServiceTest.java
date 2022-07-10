@@ -103,7 +103,7 @@ public class ProcedimientoUsuarioServiceTest {
 
 		final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario.getUsuario());
 
-		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nuevisimo Objetivo", "Objetivo de pruebas", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
 		plan.setObjetivo(objetivo);
@@ -704,7 +704,7 @@ public class ProcedimientoUsuarioServiceTest {
 
 		final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario.getUsuario());
 
-		final ObjetivoEntity objetivo = new ObjetivoEntity("Objetivo", "Objetivo de pruebas", 0);
+		final ObjetivoEntity objetivo = new ObjetivoEntity("Nuevo Objetivo", "Objetivo de pruebas", 0);
 		objetivoRepository.saveAndFlush(objetivo);
 		final PlanEntity plan = new PlanEntity("Nombre plan", "Descripción plan", new Date(), 0);
 		plan.setObjetivo(objetivo);
@@ -724,6 +724,8 @@ public class ProcedimientoUsuarioServiceTest {
 				.findProcedimientoUsuarioByProcedimientoAndUsuario(
 						procedimientoUsuario.getProcedimientoUsuario().getUsuario(),
 						procedimientoUsuario.getProcedimientoUsuario().getProcedimiento());
+		procedimientoUsuarioBDNuevo.get(0).setProcedimiento(procedimientoEncontrado);
+		procedimientoUsuarioBDNuevo.get(0).setUsuario(usuarioBD);
 
 		final String resultado = procedimientoUsuarioService.eliminaProcedimientoUsuario(
 				new ProcedimientoUsuario(procedimientoUsuario.getUsuario(), procedimientoUsuarioBDNuevo.get(0), "No"));
@@ -857,6 +859,8 @@ public class ProcedimientoUsuarioServiceTest {
 						procesoEncontrado.getIdProceso());
 
 		try {
+			procedimientoUsuarioBDNuevo.get(0).setProcedimiento(procedimientoEncontrado);
+			procedimientoUsuarioBDNuevo.get(0).setUsuario(usuarioBD);
 			procedimientoUsuarioService.eliminaProcedimientoUsuario(new ProcedimientoUsuario(
 					procedimientoUsuario.getUsuario(), procedimientoUsuarioBDNuevo.get(0), "No"));
 		} catch (final ProcedimientoUsuarioProcesoAsociadoProcedimientoUsuarioException procedimientoUsuarioAsociadoProceso) {

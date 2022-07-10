@@ -148,6 +148,8 @@ arrayES={
 	'EMPRESA_YA_EXISTE' : 'La empresa ya existe',
 	'EMPRESA_NO_ENCONTRADA_EXCEPTION' : 'La empresa no existe',
 	'EMPRESA_ASOCIADA_PERSONAS_EXCEPTION' : 'La empresa está asociada a algunas personas',
+	'OBJETIVO_ASOCIADO_PLAN_EXCEPTION' : 'El objetivo se encuentra asociado a uno o varios planes',
+	'OBJETIVO_ASOCIADO_PROCESO_EXCEPTION' : 'El objetivo se encuentra asociado a uno o varios procesos',
 	'PLAN_YA_EXISTE_EXCEPTION' : 'El plan ya existe',
 	'PLAN_VACIO' : 'El nombre, la descripción, la fecha y/o el objetivo del plan son vacíos',
 	'PLAN_NO_EXISTE_EXCEPTION' : 'El plan no existe',
@@ -171,6 +173,7 @@ arrayES={
 	'PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION' : 'El proceso está asociado a un procedimiento y a un usuario',
 	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'La relación entre el proceso y el procedimiento no existe',
 	'ORDEN_PROCESO_INCORRECTO' : 'El orden de uno de los procedimientos es incorrecto',
+	'PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION' : 'El proceso ya ha sido contestado por un usuario',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',
@@ -588,7 +591,9 @@ arrayES={
 	'PROCESO_REACTIVADO' : 'El proceso se ha reactivado correctamente',
 	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'El procedimiento se ha eliminado correctamente',
 	'PROCEDIMIENTO_EJECUTADO_EDITADO_OK' : 'PROCEDIMIENTO EJECUTADO MODIFICADO CORRECTAMENTE',
-	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'El procedimiento ejecutado se ha modificado correctamente'
+	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'El procedimiento ejecutado se ha modificado correctamente',
+	'EVIDENCIA_GUARDADA_OK' : 'EVIDENCIA GUARDADA CORRECTAMENTE',
+	'EVIDENCIA_GUARDADA' : 'La evidencia se ha guadado correctamente'
 
 
 

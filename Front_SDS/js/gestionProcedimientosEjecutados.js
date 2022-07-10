@@ -395,7 +395,7 @@ function showEditar(nombreProcedimiento, usuario, fechaProcedimientoEjecutado, e
     var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_PROCEDIMIENTO_EJECUTADO', 'javascript:editProcedimientoEjecutado();', 'return comprobarEditProcedimientoEjecutado();');
-    cambiarOnBlurCampos('return comprobarPuntuacionProcedimientoEjecutado(\'puntuacionProcedimientoEjecutado\', \'errorFormatoPuntuacionProcedimientoEjecutado\', \'puntuacionProcedimiento\')');
+    cambiarOnBlurCampos('', '', '', 'return comprobarPuntuacionProcedimientoEjecutado(\'puntuacionProcedimientoEjecutado\', \'errorFormatoPuntuacionProcedimientoEjecutado\', \'puntuacionProcedimiento\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarPlan', 'Editar');
 
     setLang(idioma);

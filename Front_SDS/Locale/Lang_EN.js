@@ -171,6 +171,7 @@ arrayEN={
 	'PROCESO_ASOCIADO_USUARIO_PROCEDIMIENTO_EXCEPTION' : 'The process is associated with a procedure and a user',
 	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'The relation between the procedure and the process doesn´t exists',
 	'ORDEN_PROCESO_INCORRECTO' : 'The order of one od the procedures is incorrect',
+	'PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION' : 'The process has already been answered by a user',
 
 	
 	//Error formato
@@ -586,6 +587,8 @@ arrayEN={
 	'PROCESO_REACTIVADO' : 'The process has been reactivated correctly',
 	'PROCEDIMIENTO_USUARIO_ELIMINADO' : 'The procedure has been deleted correctly',
 	'PROCEDIMIENTO_EJECUTADO_EDITADO_OK' : 'EXECUTED PROCEDURE MODIFIED CORRECTLY',
-	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'The execute procedure has been edited correctly'
+	'PROCEDIMIENTO_USUARIO_MODIFICADO' : 'The execute procedure has been edited correctly',
+	'EVIDENCIA_GUARDADA_OK' : 'EVIDENCE SAVED CORRECTLY',
+	'EVIDENCIA_GUARDADA' : 'The evidence has been saved correctly'
 
 }

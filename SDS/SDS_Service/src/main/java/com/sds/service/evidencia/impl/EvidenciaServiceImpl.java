@@ -105,7 +105,7 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 			final String nombreEvidencia = evidencia.getOriginalFilename();
 			final String[] extension = nombreEvidencia.split("\\.");
-			final String nuevoNombre = extension[1] + s + "." + extension[1];
+			final String nuevoNombre = extension[0] + s + "." + extension[1];
 
 			final File file = new File(ubicacionArchivo, nuevoNombre);
 

@@ -519,6 +519,11 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		final Optional<ProcedimientoUsuarioEntity> procedimientoUsuarioBD = procedimientoUsuarioRepository
 				.findById(procedimientoUsuario.getProcedimientoUsuario().getIdProcedimientoUsuario());
 
+		final ProcedimientoEntity procedimientoBD = procedimientoRepository.findProcedimientoByName(
+				procedimientoUsuario.getProcedimientoUsuario().getProcedimiento().getNombreProcedimiento());
+		final UsuarioEntity usuarioBD = usuarioRepository
+				.findByUsuario(procedimientoUsuario.getProcedimientoUsuario().getUsuario().getUsuario());
+
 		if (!procedimientoUsuarioBD.isPresent()) {
 			final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
 					procedimientoUsuario.getUsuario(),
@@ -561,6 +566,8 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 						CodeMessageErrors.getTipoNameByCodigo(
 								CodeMessageErrors.PROCESO_ASOCIADO_PROCEDIMIENTOUSUARIO.getCodigo()));
 			} else {
+				procedimientoUsuarioBD.get().setProcedimiento(procedimientoBD);
+				procedimientoUsuarioBD.get().setUsuario(usuarioBD);
 				procedimientoUsuarioBD.get().setBorradoProcedimientoUsuario(1);
 				procedimientoUsuario.setProcedimientoUsuario(procedimientoUsuarioBD.get());
 				modificarProcedimientoUsuario(procedimientoUsuario);

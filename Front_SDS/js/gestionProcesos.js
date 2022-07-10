@@ -121,9 +121,13 @@ function enviarRespuesta(idProceso, idFile){
               headers: {'Authorization': token},
               }).done(res => {
                 if (res.code != 'EVIDENCIA_GUARDADA') {
-                  reject(res);
+                  respuestaAjaxKO(res.code);
+                  document.getElementById('modal').style.display = "block";
+                  setLang(getCookie('lang'));
                 }
-                resolve(res);
+                respuestaAjaxOK('EVIDENCIA_GUARDADA_OK', res.code);
+                document.getElementById('modal').style.display = "block";
+                setLang(getCookie('lang'));
               }).fail( function( jqXHR ) {
                 errorFailAjax(jqXHR.status);
               });
@@ -1616,7 +1620,7 @@ async function detalleProceso(){
 
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos", "nivel1"];
+      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos1", "nivel1"];
       resetearFormulario("formularioGenerico", idElementoList);
       
       setLang(getCookie('lang'));
@@ -1645,7 +1649,7 @@ async function deleteProceso(){
      $("#form-modal").modal('toggle');
       respuestaAjaxKO(res.code);
 
-      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos", "nivel1", "ordenProceso1"];
+      let idElementoList = ["nombreProceso", "descripcionProceso", "fechaProceso", "selectObjetivos1", "selectProcedimientos1", "nivel1", "ordenProceso1"];
     resetearFormulario("formularioGenerico", idElementoList);
 
       setLang(getCookie('lang'));

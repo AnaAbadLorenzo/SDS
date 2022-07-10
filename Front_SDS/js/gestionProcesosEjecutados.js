@@ -508,7 +508,7 @@ $(document).ready(function() {
 
     let idElementoErrorList = ["errorFormatoNombreProcedimiento", "errorFormatoLoginUsuario", "errorFormatoFechaProcesoEjecutado", "errorFormatoNombreProceso", "errorFormatoTextoRespuestaPosible", "errorFormatoEvidencia"];
 
-    let idElementoList =  let campos = ["nombreProcedimiento", "loginUsuario", "fechaProcesoEjecutado", "nombreProceso", "textoRespuestaPosible"];
+    let idElementoList = ["nombreProcedimiento", "loginUsuario", "fechaProcesoEjecutado", "nombreProceso", "textoRespuestaPosible"];
 
     limpiarFormulario(idElementoList);
     eliminarMensajesValidacionError(idElementoErrorList, idElementoList);
