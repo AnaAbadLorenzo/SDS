@@ -1,6 +1,6 @@
 /** Funcion para obtener la informacion del usuario **/
 async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
-	if(getCookie('rolUsuario') == "usuario"){
+	if(getCookie('rolUsuario') == "usuario" || getCookie('rolUsuario') == 'gestor'){
 		await buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPaginaUsuario, "buscarInfo")
 		.then((res) => {
 		
@@ -275,6 +275,15 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
 			    	borradoRol : 0
 		    	}
 		    }
+
+    if(getCookie('rolUsuario') == "gestor"){
+        rol = {
+            idRol : 3,
+            rolName : getCookie('rolUsuario'),
+            rolDescription : "Contendrá a todos los gestores de la aplicación",
+            borradoRol : 0
+          }
+        }
 
 	    var data = {
           dniUsuario : '',

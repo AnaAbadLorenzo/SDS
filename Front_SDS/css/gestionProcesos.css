@@ -228,3 +228,7 @@ select option:checked{
 .modal-dialog {
   margin: 6rem auto !important; 
 }
+
+.respuestas label {
+  padding-left: 1%;
+}

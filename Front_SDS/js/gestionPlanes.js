@@ -1225,7 +1225,7 @@ function gestionarPermisosPlan(idElementoList) {
         $('#divListarPlanes').attr("data-toggle", "modal");
         $('#divListarPlanes').attr("data-target", "#form-modal");
         
-        if(getCookie('rolUsuario') == "admin"){
+        if(getCookie('rolUsuario') == "admin" || getCookie('rolUsuario') == "gestor" ){
           document.getElementById('cabecera').style.display = "block";
           document.getElementById('tablaDatos').style.display = "block";
           document.getElementById('filasTabla').style.display = "block";

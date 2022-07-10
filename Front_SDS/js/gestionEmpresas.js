@@ -454,7 +454,7 @@ function reactivarEmpresasAjaxPromesa(){
 
 /* Función para obtener los usuarios del sistema */
 async function cargarEmpresas(numeroPagina, tamanhoPagina, paginadorCreado){
-	if(getCookie('rolUsuario') == "usuario"){
+	if(getCookie('rolUsuario') == "usuario" || getCookie('rolUsuario') == "gestor"){
     await buscarEmpresaAjaxPromesa(numeroPagina, tamanhoPaginaEmpresa, "buscarInfo")
     .then((res) => {
     
@@ -462,7 +462,7 @@ async function cargarEmpresas(numeroPagina, tamanhoPagina, paginadorCreado){
       $('#infoAdmin').attr('hidden', true);
 
       for(var i = 0; i<res.data.listaBusquedas.length; i++){
-        if(res.data.listaBusquedas[i].usuario.usuario == getCookie('usuario')){
+        if(res.data.listaBusquedas[i].usuario.usuario == getCookie('usuario') || res.data.listaBusquedas[i].usuario.usuario == getCookie('gestor')){
           cargaInformacionEmpresa(res.data.listaBusquedas[i]);
         }
       }
