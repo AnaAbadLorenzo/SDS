@@ -7272,7 +7272,692 @@
 			"item": [
 				{
 					"name": "Planes",
-					"item": []
+					"item": [
+						{
+							"name": "Listar Plan Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombrePlan\": \"Plan\",\r\n    \"descripPlan\" : \"\",\r\n    \"fechaPlan\" : \"\",\r\n    \"objetivo\" : {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n    },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Planes Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLANES_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los planes se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlanes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlanes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Planes Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLANES_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los planes eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlanesEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlanesEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_GUARDADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set('fechaActual', moment().format((\"YYYY-MM-DD\")));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"plan\" : {\r\n\t\t\"nombrePlan\": \"Plan guardar\",\r\n        \"descripPlan\" : \"Plan guardar\",\r\n        \"fechaPlan\" : \"{{fechaActual}}\",\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"\",\r\n            \"descripObjetivo\": \"\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/plan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"plan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Plan Guardado Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"     for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"idPlan\", json.data.listaBusquedas[0].idPlan); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombrePlan\": \"Plan guardar\",\r\n    \"descripPlan\" : \"\",\r\n    \"fechaPlan\" : \"\",\r\n    \"objetivo\" : {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n    },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_MODIFICADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"plan\" : {\r\n        \"idPlan\" : {{idPlan}},\r\n\t\t\"nombrePlan\": \"Plan modificar\",\r\n        \"descripPlan\" : \"Plan modificar\",\r\n        \"fechaPlan\" : \"{{fechaActual}}\",\r\n        \"borradoPlan\" : 0,\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"Fin de la pobreza\",\r\n            \"descripObjetivo\": \"Objetivo de la ONU 2030 número 1\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/modificarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"modificarPlan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Plan Modificado Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"     for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"nombrePlan: \" + json.data.listaBusquedas[0].nombrePlan] = json.data.listaBusquedas[0].nombrePlan === \"Plan modificar\";\r",
+											"    tests[\"descripPlan: \" + json.data.listaBusquedas[0].descripPlan] = json.data.listaBusquedas[0].descripPlan === \"Plan modificar\";\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombrePlan\": \"Plan modificar\",\r\n    \"descripPlan\" : \"\",\r\n    \"fechaPlan\" : \"\",\r\n    \"objetivo\" : {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n    },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_ELIMINADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"plan\" : {\r\n        \"idPlan\" : {{idPlan}},\r\n\t\t\"nombrePlan\": \"Plan modificar\",\r\n        \"descripPlan\" : \"Plan modificar\",\r\n        \"fechaPlan\" : \"{{fechaActual}}\",\r\n        \"borradoPlan\" : 1,\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"Fin de la pobreza\",\r\n            \"descripObjetivo\": \"Objetivo de la ONU 2030 número 1\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/eliminarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"eliminarPlan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Planes Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLANES_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los planes eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlanesEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlanesEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_REACTIVADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"plan\" : {\r\n        \"idPlan\" : {{idPlan}},\r\n\t\t\"nombrePlan\": \"Plan modificar\",\r\n        \"descripPlan\" : \"Plan modificar\",\r\n        \"fechaPlan\" : \"{{fechaActual}}\",\r\n        \"borradoPlan\" : 0,\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"Fin de la pobreza\",\r\n            \"descripObjetivo\": \"Objetivo de la ONU 2030 número 1\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/reactivarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"reactivarPlan"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Planes Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLANES_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los planes se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idPlan: \" + json.data.listaBusquedas[i].idPlan + \", nombrePlan: \" + json.data.listaBusquedas[i].nombrePlan + \", descripPlan: \" + json.data.listaBusquedas[i].descripPlan + \", fechaPlan: \" + json.data.listaBusquedas[i].fechaPlan + \", borradoPlan: \" + json.data.listaBusquedas[i].borradoPlan ] = json.data.listaBusquedas[i].idPlan !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/listarPlanes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"listarPlanes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Plan",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PLAN_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El plan se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idPlan\" : {{idPlan}},\r\n    \"nombrePlan\": \"Plan modificar\",\r\n    \"descripPlan\" : \"Plan modificar\",\r\n    \"fechaPlan\" : \"{{fechaActual}}\",\r\n    \"borradoPlan\" : 0,\r\n    \"objetivo\" : {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"Fin de la pobreza\",\r\n        \"descripObjetivo\": \"Objetivo de la ONU 2030 número 1\",\r\n        \"borradoObjetivo\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/plan/borrarPlan",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"plan",
+										"borrarPlan"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Atributos",
@@ -7734,7 +8419,692 @@
 			"item": [
 				{
 					"name": "Procedimientos",
-					"item": []
+					"item": [
+						{
+							"name": "Listar Procedimiento Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreProcedimiento\": \"Procedimiento\",\r\n    \"descripProcedimiento\" : \"\",\r\n    \"fechaProcedimiento\" : \"\",\r\n    \"checkUsuario\" : true,\r\n    \"plan\" : {\r\n        \"idPlan\" : 1,\r\n        \"nombrePlan\": \"\",\r\n        \"descripPlan\" : \"\",\r\n        \"fechaPlan\" : \"\",\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"\",\r\n            \"descripObjetivo\": \"\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n     },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procedimientos Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procedimientos se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimientos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procedimientos Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTOS_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procedimientos eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimientosEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimientosEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Procedimiento",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_GUARDADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set('fechaActual', moment().format((\"YYYY-MM-DD\")));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"procedimientoEntity\" : {\r\n        \"nombreProcedimiento\": \"Procedimiento guardar\",\r\n        \"descripProcedimiento\" : \"Procedimiento guardar\",\r\n        \"fechaProcedimiento\" : \"{{fechaActual}}\",\r\n        \"checkUsuario\" : true,\r\n        \"plan\" : {\r\n            \"idPlan\" : 1,\r\n            \"nombrePlan\": \"\",\r\n            \"descripPlan\" : \"\",\r\n            \"fechaPlan\" : \"\",\r\n            \"objetivo\" : {\r\n                \"idObjetivo\" : 1,\r\n                \"nombreObjetivo\": \"\",\r\n                \"descripObjetivo\": \"\",\r\n                \"borradoObjetivo\" : 0\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/procedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"procedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Procedimiento Guardado Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"idProcedimiento\", json.data.listaBusquedas[0].idProcedimiento); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreProcedimiento\": \"Procedimiento guardar\",\r\n    \"descripProcedimiento\" : \"\",\r\n    \"fechaProcedimiento\" : \"\",\r\n    \"checkUsuario\" : true,\r\n    \"plan\" : {\r\n        \"idPlan\" : 1,\r\n        \"nombrePlan\": \"\",\r\n        \"descripPlan\" : \"\",\r\n        \"fechaPlan\" : \"\",\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"\",\r\n            \"descripObjetivo\": \"\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n     },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Procedimiento",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_MODIFICADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"procedimientoEntity\" : {\r\n        \"idProcedimiento\" : {{idProcedimiento}},\r\n        \"nombreProcedimiento\": \"Procedimiento modificar\",\r\n        \"descripProcedimiento\" : \"Procedimiento modificar\",\r\n        \"fechaProcedimiento\" : \"{{fechaActual}}\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 0,\r\n        \"plan\" : {\r\n            \"idPlan\" : 1,\r\n            \"nombrePlan\": \"\",\r\n            \"descripPlan\" : \"\",\r\n            \"fechaPlan\" : \"\",\r\n            \"objetivo\" : {\r\n                \"idObjetivo\" : 1,\r\n                \"nombreObjetivo\": \"\",\r\n                \"descripObjetivo\": \"\",\r\n                \"borradoObjetivo\" : 0\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/modificarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"modificarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Procedimiento Modificar Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"     for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"nombreProcedimiento: \" + json.data.listaBusquedas[0].nombreProcedimiento] = json.data.listaBusquedas[0].nombreProcedimiento === \"Procedimiento modificar\";\r",
+											"    tests[\"descripProcedimiento: \" + json.data.listaBusquedas[0].descripProcedimiento] = json.data.listaBusquedas[0].descripProcedimiento === \"Procedimiento modificar\";\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreProcedimiento\": \"Procedimiento modificar\",\r\n    \"descripProcedimiento\" : \"\",\r\n    \"fechaProcedimiento\" : \"\",\r\n    \"checkUsuario\" : true,\r\n    \"plan\" : {\r\n        \"idPlan\" : 1,\r\n        \"nombrePlan\": \"\",\r\n        \"descripPlan\" : \"\",\r\n        \"fechaPlan\" : \"\",\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"\",\r\n            \"descripObjetivo\": \"\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n     },\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Procedimiento",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_ELIMINADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"procedimientoEntity\" : {\r\n        \"idProcedimiento\" : {{idProcedimiento}},\r\n        \"nombreProcedimiento\": \"Procedimiento modificar\",\r\n        \"descripProcedimiento\" : \"Procedimiento modificar\",\r\n        \"fechaProcedimiento\" : \"{{fechaActual}}\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 1,\r\n        \"plan\" : {\r\n            \"idPlan\" : 1,\r\n            \"nombrePlan\": \"\",\r\n            \"descripPlan\" : \"\",\r\n            \"fechaPlan\" : \"\",\r\n            \"objetivo\" : {\r\n                \"idObjetivo\" : 1,\r\n                \"nombreObjetivo\": \"\",\r\n                \"descripObjetivo\": \"\",\r\n                \"borradoObjetivo\" : 0\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/eliminarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"eliminarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procedimientos Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTOS_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procedimientos eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimientosEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimientosEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Procedimiento",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_REACTIVADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"procedimientoEntity\" : {\r\n        \"idProcedimiento\" : {{idProcedimiento}},\r\n        \"nombreProcedimiento\": \"Procedimiento modificar\",\r\n        \"descripProcedimiento\" : \"Procedimiento modificar\",\r\n        \"fechaProcedimiento\" : \"{{fechaActual}}\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 0,\r\n        \"plan\" : {\r\n            \"idPlan\" : 1,\r\n            \"nombrePlan\": \"\",\r\n            \"descripPlan\" : \"\",\r\n            \"fechaPlan\" : \"\",\r\n            \"objetivo\" : {\r\n                \"idObjetivo\" : 1,\r\n                \"nombreObjetivo\": \"\",\r\n                \"descripObjetivo\": \"\",\r\n                \"borradoObjetivo\" : 0\r\n            }\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/reactivarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"reactivarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procedimientos Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procedimientos se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProcedimiento: \" + json.data.listaBusquedas[i].idProcedimiento + \", nombreProcedimiento: \" + json.data.listaBusquedas[i].nombreProcedimiento + \", descripProcedimiento: \" + json.data.listaBusquedas[i].descripProcedimiento + \", fechaProcedimiento: \" + json.data.listaBusquedas[i].fechaProcedimiento + \", borradoProcedimiento: \" + json.data.listaBusquedas[i].borradoProcedimiento ] = json.data.listaBusquedas[i].idProcedimiento !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/listarProcedimientos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"listarProcedimientos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Procedimiento",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCEDIMIENTO_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El procedimiento se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idProcedimiento\" : {{idProcedimiento}},\r\n    \"nombreProcedimiento\": \"Procedimiento modificar\",\r\n    \"descripProcedimiento\" : \"Procedimiento modificar\",\r\n    \"fechaProcedimiento\" : \"{{fechaActual}}\",\r\n    \"checkUsuario\" : true,\r\n    \"borradoProcedimiento\" : 0,\r\n    \"plan\" : {\r\n        \"idPlan\" : 1,\r\n        \"nombrePlan\": \"\",\r\n        \"descripPlan\" : \"\",\r\n        \"fechaPlan\" : \"\",\r\n        \"objetivo\" : {\r\n            \"idObjetivo\" : 1,\r\n            \"nombreObjetivo\": \"\",\r\n            \"descripObjetivo\": \"\",\r\n            \"borradoObjetivo\" : 0\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/procedimiento/borrarProcedimiento",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"procedimiento",
+										"borrarProcedimiento"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Atributos",
@@ -8192,15 +9562,696 @@
 			]
 		},
 		{
-			"name": "Gestión de Procedimientos Ejecutados",
-			"item": []
-		},
-		{
 			"name": "Gestión de Procesos",
 			"item": [
 				{
 					"name": "Procesos",
-					"item": []
+					"item": [
+						{
+							"name": "Listar Proceso Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreProceso\": \"Primer Proceso\",\r\n    \"descripProceso\" : \"\",\r\n    \"fechaProceso\" : \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procesos Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procesos se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProcesos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProcesos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procesos Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESOS_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procesos eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProcesosEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProcesosEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Proceso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_GUARDADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"var moment = require('moment');\r",
+											"\r",
+											"pm.environment.set('fechaActual', moment().format((\"YYYY-MM-DD\")));"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"proceso\" : {\r\n        \"nombreProceso\": \"Proceso guardar\",\r\n        \"descripProceso\" : \"Proceso guardar\",\r\n        \"fechaProceso\" : \"{{fechaActual}}\",\r\n        \"borradoProceso\" : 0\r\n    },\r\n    \"procedimientos\" : [\r\n        {\r\n        \"idProcedimiento\" : 1,\r\n        \"nombreProcedimiento\": \"\",\r\n        \"descripProcedimiento\" : \"\",\r\n        \"fechaProcedimiento\" : \"\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 0\r\n        }\r\n    ],\r\n    \"objetivos\" : [\r\n        {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n\r\n    ],\r\n    \"niveles\" : [\r\n        1\r\n    ], \r\n    \"respuestasPosibles\" : [\r\n        {\r\n        \"idRespuesta\" : 1,\r\n        \"textoRespuesta\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n    ],\r\n    \"ordenProceso\": [\r\n        1\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/proceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"proceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Proceso Guardado Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"idProceso\", json.data.listaBusquedas[0].idProceso); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreProceso\": \"Proceso guardar\",\r\n    \"descripProceso\" : \"\",\r\n    \"fechaProceso\" : \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Proceso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_MODIFICADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"proceso\" : {\r\n        \"idProceso\" : {{idProceso}},\r\n        \"nombreProceso\": \"Proceso modificar\",\r\n        \"descripProceso\" : \"Proceso modificar\",\r\n        \"fechaProceso\" : \"{{fechaActual}}\",\r\n        \"borradoProceso\" : 0\r\n    },\r\n    \"procedimientos\" : [\r\n        {\r\n        \"idProcedimiento\" : 1,\r\n        \"nombreProcedimiento\": \"\",\r\n        \"descripProcedimiento\" : \"\",\r\n        \"fechaProcedimiento\" : \"\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 0\r\n        }\r\n    ],\r\n    \"objetivos\" : [\r\n        {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n\r\n    ],\r\n    \"niveles\" : [\r\n        1\r\n    ], \r\n    \"respuestasPosibles\" : [\r\n        {\r\n        \"idRespuesta\" : 1,\r\n        \"textoRespuesta\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n    ],\r\n    \"ordenProceso\": [\r\n        2\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/modificarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"modificarProceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Proceso Modificar Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_ENCONTRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"nombreProceso: \" + json.data.listaBusquedas[0].nombreProceso] = json.data.listaBusquedas[0].nombreProceso === \"Proceso modificar\";\r",
+											"    tests[\"descripProceso: \" + json.data.listaBusquedas[0].descripProceso] = json.data.listaBusquedas[0].descripProceso === \"Proceso modificar\";\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombreProceso\": \"Proceso modificar\",\r\n    \"descripProceso\" : \"\",\r\n    \"fechaProceso\" : \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Proceso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_ELIMINADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"proceso\" : {\r\n        \"idProceso\" : {{idProceso}},\r\n        \"nombreProceso\": \"Proceso modificar\",\r\n        \"descripProceso\" : \"Proceso modificar\",\r\n        \"fechaProceso\" : \"{{fechaActual}}\",\r\n        \"borradoProceso\" : 1\r\n    },\r\n    \"procedimientos\" : [\r\n        {\r\n        \"idProcedimiento\" : 1,\r\n        \"nombreProcedimiento\": \"\",\r\n        \"descripProcedimiento\" : \"\",\r\n        \"fechaProcedimiento\" : \"\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 0\r\n        }\r\n    ],\r\n    \"objetivos\" : [\r\n        {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n\r\n    ],\r\n    \"niveles\" : [\r\n        1\r\n    ], \r\n    \"respuestasPosibles\" : [\r\n        {\r\n        \"idRespuesta\" : 1,\r\n        \"textoRespuesta\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n    ],\r\n    \"ordenProceso\": [\r\n        2\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/eliminarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"eliminarProceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procesos Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESOS_ELIMINADOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procesos eliminados se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProcesosEliminados",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProcesosEliminados"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Proceso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_REACTIVADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"proceso\" : {\r\n        \"idProceso\" : {{idProceso}},\r\n        \"nombreProceso\": \"Proceso modificar\",\r\n        \"descripProceso\" : \"Proceso modificar\",\r\n        \"fechaProceso\" : \"{{fechaActual}}\",\r\n        \"borradoProceso\" : 0\r\n    },\r\n    \"procedimientos\" : [\r\n        {\r\n        \"idProcedimiento\" : 1,\r\n        \"nombreProcedimiento\": \"\",\r\n        \"descripProcedimiento\" : \"\",\r\n        \"fechaProcedimiento\" : \"\",\r\n        \"checkUsuario\" : true,\r\n        \"borradoProcedimiento\" : 0\r\n        }\r\n    ],\r\n    \"objetivos\" : [\r\n        {\r\n        \"idObjetivo\" : 1,\r\n        \"nombreObjetivo\": \"\",\r\n        \"descripObjetivo\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n\r\n    ],\r\n    \"niveles\" : [\r\n        1\r\n    ], \r\n    \"respuestasPosibles\" : [\r\n        {\r\n        \"idRespuesta\" : 1,\r\n        \"textoRespuesta\": \"\",\r\n        \"borradoObjetivo\" : 0\r\n        }\r\n    ],\r\n    \"ordenProceso\": [\r\n        2\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/reactivarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"reactivarProceso"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todos los Procesos Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESOS_LISTADOS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Los procesos se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idProceso: \" + json.data.listaBusquedas[i].idProceso + \", nombreProceso: \" + json.data.listaBusquedas[i].nombreProceso + \", descripProceso: \" + json.data.listaBusquedas[i].descripProceso + \", fechaProceso: \" + json.data.listaBusquedas[i].fechaProceso + \", borradoProceso: \" + json.data.listaBusquedas[i].borradoProceso ] = json.data.listaBusquedas[i].idProceso !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/listarProcesos",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"listarProcesos"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Proceso",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"PROCESO_BORRADO\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"El proceso se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idProceso\" : {{idProceso}},\r\n    \"nombreProceso\": \"Proceso modificar\",\r\n    \"descripProceso\" : \"Proceso modificar\",\r\n    \"fechaProceso\" : \"{{fechaActual}}\",\r\n    \"borradoProceso\" : 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/proceso/borrarProceso",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"proceso",
+										"borrarProceso"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Atributos",
@@ -8658,15 +10709,694 @@
 			]
 		},
 		{
-			"name": "Gestión de Procesos Ejecutados",
-			"item": []
-		},
-		{
 			"name": "Gestión de Respuestas Posibles",
 			"item": [
 				{
 					"name": "Respuestas Posibles",
-					"item": []
+					"item": [
+						{
+							"name": "Listar Respuesta Posible Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles se han encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"textoRespuesta\" : \"No\",\r\n    \"fechaRespuesta\" : \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Respuestas Posibles Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTAS_POSIBLES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestasPosibles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestasPosibles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Respuestas Posibles Eliminados Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestasPosiblesEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestasPosiblesEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Guardar Respuesta Posible",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_GUARDADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La respuesta posible se ha guardado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"respuestaPosibleEntity\" : {\r\n        \"textoRespuesta\": \"Respuesta de prueba\",\r\n        \"borradoRespuesta\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/respuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"respuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Respuesta Posible Guardada Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles se han encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"}\r",
+											"\r",
+											"postman.setEnvironmentVariable(\"idRespuesta\", json.data.listaBusquedas[0].idRespuesta); "
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"textoRespuesta\" : \"Respuesta de prueba\",\r\n    \"fechaRespuesta\" : \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modificar Respuesta Posible",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_MODIFICADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La respuesta posible se ha modificado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"respuestaPosibleEntity\" : {\r\n        \"idRespuesta\" : {{idRespuesta}},\r\n\t\t\"textoRespuesta\": \"Respuesta modificada\",\r\n        \"borradoRespuesta\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/modificarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"modificarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Respuesta Posible Modificada Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_ENCONTRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles se han encontrado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"\r",
+											"    tests[\"textoRespuesta: \" + json.data.listaBusquedas[0].textoRespuesta] = json.data.listaBusquedas[0].textoRespuesta === \"Respuesta modificada\";\r",
+											"\r",
+											"}\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"textoRespuesta\" : \"Respuesta modificada\",\r\n    \"fechaRespuesta\" : \"\",\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Lógico Respuesta Posible",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_ELIMINADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La respuesta posible se ha eliminado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"respuestaPosibleEntity\" : {\r\n        \"idRespuesta\" : {{idRespuesta}},\r\n\t\t\"textoRespuesta\": \"Respuesta modificada\",\r\n        \"borradoRespuesta\" : 1\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/eliminarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"eliminarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Respuestas Posibles Eliminados Tamaño de Página 2 Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTAS_POSIBLES_ELIMINADAS_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles eliminadas se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestasPosiblesEliminadas",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestasPosiblesEliminadas"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reactivar Respuesta Posible",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_REACTIVADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La respuesta posible se ha reactivado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"aicuna\",\r\n    \"respuestaPosibleEntity\" : {\r\n        \"idRespuesta\" : {{idRespuesta}},\r\n\t\t\"textoRespuesta\": \"Respuesta modificada\",\r\n        \"borradoRespuesta\" : 0\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/reactivarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"reactivarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Listar Todas las Respuestas Posibles Tamaño de Página 2",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTAS_POSIBLES_LISTADAS\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"Las respuestas posibles se han listado correctamente\";\r",
+											"\r",
+											"tests[\"Body has listaBusquedas\"] = responseBody.has(\"listaBusquedas\");\r",
+											"\r",
+											"tests[\"Tamaño: \" + json.data.listaBusquedas.length] = json.data.listaBusquedas.length >= 0;\r",
+											"\r",
+											"if (json.data.listaBusquedas.length > 0){\r",
+											"    for (i = 0; i < json.data.listaBusquedas.length; i++) {\r",
+											"        tests[\"Validación idRespuesta: \" + json.data.listaBusquedas[i].idRespuesta + \", textoRespuesta: \" + json.data.listaBusquedas[i].textoRespuesta + \", borradoRespuesta: \" + json.data.listaBusquedas[i].borradoRespuesta ] = json.data.listaBusquedas[i].idRespuesta !== null\r",
+											"    }\r",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"inicio\": 0,\r\n    \"tamanhoPagina\" : 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/listarRespuestasPosibles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"listarRespuestasPosibles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Borrado Físico Respuesta Posible",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+											"\r",
+											"var json = JSON.parse(responseBody);\r",
+											"\r",
+											"tests[\"Código: \" + json.code] = json.code === \"RESPUESTA_POSIBLE_BORRADA\";\r",
+											"tests[\"Mensaje: \" + json.msg] = json.msg === \"La respuesta posible se ha borrado correctamente\";"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{tokenUsuario}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idRespuesta\" : {{idRespuesta}},\r\n    \"textoRespuesta\": \"Respuesta modificada\",\r\n    \"borradoObjetivo\" : 0\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/respuestaPosible/borrarRespuestaPosible",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"respuestaPosible",
+										"borrarRespuestaPosible"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Atributos",
