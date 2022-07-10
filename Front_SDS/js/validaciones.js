@@ -2023,9 +2023,9 @@ function comprobarBuscarProceso(){
 }
 
 /** Funcion que comprueba los procesos usuario **/
-function comprobarProcesoUsuario(){
+function comprobarProcesoUsuario(idFile){
 	if(comprobarRespuesta('respuestaPosible', 'errorFormatoRespuesta', 'respuestas') &&
-		comprobarFormatoArchivo('myfile', 'errorFormatoArchivo', 'archivos')){
+		comprobarFormatoArchivo('myfile'+idFile, 'errorFormatoArchivo', 'archivos')){
 		return true;
 	}else{
 		return false;

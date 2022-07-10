@@ -98,7 +98,7 @@ function eliminarProcedimientosOrden(idProcedimientosOrden){
 
 /**Función para enviar respuestas **/
 function enviarRespuesta(idProceso, idFile){
-  if(comprobarProcesoUsuario()){
+  if(comprobarProcesoUsuario(idProceso)){
     return new Promise(function(resolve, reject) {
           var token = getCookie('tokenUsuario');
           var evidencia = $("#" + idFile).prop("files")[0];
@@ -136,9 +136,49 @@ function enviarRespuesta(idProceso, idFile){
   }
 }
 
+/**Función para enviar respuestas **/
+function modificarRespuesta(idProceso, idFile){
+  if(comprobarProcesoUsuario(idProceso)){
+    return new Promise(function(resolve, reject) {
+          var token = getCookie('tokenUsuario');
+          var evidencia = $("#" + idFile).prop("files")[0];
+
+          var formData = new FormData();
+          formData.append("file", evidencia);
+          formData.append("idProceso", idProceso);
+          formData.append("idProcedimientoUsuario", getCookie('idProcedimientoUsuario'));
+          formData.append("usuario", getCookie('usuario'));
+
+          
+          $.ajax({
+            method: "POST",
+              url: urlPeticionAjaxModificarEvidencia,
+              contentType : "application/json",
+              data: formData,  
+              cache: false,
+              contentType: false,
+              processData: false,
+              headers: {'Authorization': token},
+              }).done(res => {
+                if (res.code != 'EVIDENCIA_MODIFICADA') {
+                  respuestaAjaxKO(res.code);
+                  document.getElementById('modal').style.display = "block";
+                  setLang(getCookie('lang'));
+                }
+                respuestaAjaxOK('EVIDENCIA_GUARDADA_OK', res.code);
+                document.getElementById('modal').style.display = "block";
+                setLang(getCookie('lang'));
+              }).fail( function( jqXHR ) {
+                errorFailAjax(jqXHR.status);
+              });
+       
+      });
+  }
+}
+
 /**Funcion para enviar el procedimientoUsuarioProceso **/
-function guardarProcedimientoUsuarioProceso(idProceso){
-    if(comprobarProcesoUsuario()){
+function guardarProcedimientoUsuarioProceso(idProceso, idFile){
+    if(comprobarProcesoUsuario(idFile)){
       return new Promise(function(resolve, reject) {
       var token = getCookie('tokenUsuario');
 
@@ -2369,14 +2409,11 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
   var proceso2 = '</div>' + 
                    '<div style="display:none" id="errorFormatoRespuesta"></div>' +
                     '<div id="' + proceso.idProceso + '" class="evidencia">' + 
-                        '<label for="myfile">Selecciona una evidencia:</label>' + 
-                        '<input type="file" id="myfile" name="myfile"><br><br>' + 
-                    '</div>' + 
-                    '<div id="' + proceso.idProceso + '" class="nombreEvidencia">' + 
-                        '<label class = "EVIDENCIA_SUBIDA">Evidencia subida:</label>' + 
+                        '<label for="myfile' + proceso.idProceso +'">Selecciona una evidencia:</label>' + 
+                        '<input type="file" id="myfile' + proceso.idProceso +'" name="myfile"><br><br>' + 
                     '</div>' + 
                     '<div style="display:none" id="errorFormatoArchivo"></div>' +
-                  '<div name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso+ ');enviarRespuesta(' + proceso.idProceso + ',\'myfile\')" class="tooltip20 uploadIcon">' +
+                  '<div id="btnUpload'+ proceso.idProceso +'" name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');enviarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')" class="tooltip20 uploadIcon">' +
                       '<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />' +
                       '<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>' + 
                   '</div>' +
@@ -2389,20 +2426,16 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
   $('#procesos').append(proc);
 
   if(respuestasProcesos != ""){
+
     for(var i = 0; i<respuestasProcesos.data.procesos.length; i++){
+      $('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
       if(proceso.nombreProceso == respuestasProcesos.data.procesos[i].nombreProceso){
         var idRespuestaPosibleMarcada = respuestasProcesos.data.respuestaPosible[i].idRespuesta;
         var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + idRespuestaPosibleMarcada + ']');
         var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
         var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
         $(selectorRespuesta).prop('checked', true);
-        $(selectorEvidencia).hide();
-        $(selectorNombreEvidencia).show();
-      }else{
-        var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
-        var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
-        $(selectorEvidencia).show();
-        $(selectorNombreEvidencia).hide();
+       
       }
     }
   }else{

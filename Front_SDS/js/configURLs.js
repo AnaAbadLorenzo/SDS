@@ -163,6 +163,7 @@ var urlPeticionAjaxListadoProcesosProcedimientoByIdProcedimiento = urlComun + ur
 
 /**Urls evidencia **/
 var urlPeticionAjaxGuardarEvidencia = urlComun + urlEvidencia + '/evidencia';
+var urlPeticionAjaxModificarEvidencia = urlComun + urlEvidencia + '/modificaEvidencia';
 var urlPeticionAjaxListadoProcesosProcedimientoByIdProcedimiento = urlComun + urlProcesoProcedimiento + '/listarProcesosProcedimientoByIdProcedimiento';
 
 

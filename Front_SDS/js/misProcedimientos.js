@@ -320,12 +320,12 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario, procesosPro
                                       '<img id="iconoIniciarProcedimiento" class="iconoProcedimiento iconProcedimiento" src="images/iniciarProcedimiento2.png" alt="Iniciar procedimiento" onclick=";"/>' + 
                                       '<span class="tooltiptext iconProcedimiento ICON_INICIAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' + 
-                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon" style="cursor: pointer;">' + 
-                                          '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento.png" alt="Continuar procedimiento" onclick="continuarProcedimiento(' + procedimientosUsuario.procedimiento.idProcedimiento + ',' + procedimientosUsuario.idProcedimientoUsuario + ')"/>' + 
+                                    '<div id="continuarProcedimiento" class="tooltip11 continuarIcon" style="cursor: not-allowed;">' + 
+                                          '<img id="iconoContinuarProcedimiento" class="iconoContinuar iconContinuar" src="images/continuarProcedimiento2.png" alt="Continuar procedimiento" onclick=""/>' + 
                                           '<span class="tooltiptext iconContinuar ICON_CONTINUAR_PROCEDIMIENTO"></span>' + 
                                     '</div>' +
-                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon" style="cursor: pointer;">' + 
-                                          '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado.png" alt="Procedimiento finalizado" onclick="finalizarProcedimiento(' + procedimientosUsuario.idProcedimientoUsuario +')"/>' + 
+                                    '<div id="finalizadoProcedimiento" class="tooltip12 finalizadoIcon"">' + 
+                                          '<img id="iconoFinalizarProcedimiento" class="iconoFinalizado iconFinalizado" src="images/procedimientoFinalizado.png" alt="Procedimiento finalizado" onclick=""/>' + 
                                           '<span class="tooltiptext iconFinalizado ICON_PROCEDIMIENTO_FINALIZADO"></span>' + 
                                     '</div>' + 
                                     '<div id="eliminarProcedimiento" class="tooltip14 procedimientoIcon" style="cursor: pointer;">' + 

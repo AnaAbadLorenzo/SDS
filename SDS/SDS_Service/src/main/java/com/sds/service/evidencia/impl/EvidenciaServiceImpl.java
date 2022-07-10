@@ -223,9 +223,15 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 			LOGGER.debug("Ubicacion archivo '{}'", ubicacionArchivo);
 
-			final String nombreEvidencia = evidencia.getOriginalFilename();
+			final Date actualDate = new Date();
+			final Timestamp timeS = new Timestamp(actualDate.getTime());
+			final String s = new SimpleDateFormat("MMddyyyyHHmmss").format(timeS);
 
-			final File file = new File(ubicacionArchivo, nombreEvidencia);
+			final String nombreEvidencia = evidencia.getOriginalFilename();
+			final String[] extension = nombreEvidencia.split("\\.");
+			final String nuevoNombre = extension[0] + s + "." + extension[1];
+
+			final File file = new File(ubicacionArchivo, nuevoNombre);
 
 			try {
 				if (!file.exists()) {
