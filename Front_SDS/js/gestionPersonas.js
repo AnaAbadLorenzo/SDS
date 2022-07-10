@@ -81,7 +81,7 @@ $(function() {
 
 /** Función para cargar los datos de persona **/
 async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
-	if(getCookie('rolUsuario') == "usuario"){
+	if(getCookie('rolUsuario') == "usuario" || getCookie('rolUsuario') == "gestor"){
 		await cargarDatosPersonaAjaxPromesa()
 		  .then((res) => {
         cargarPermisosFuncPersona();
@@ -1258,7 +1258,7 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     $('#empresasDisponibles').attr('disabled', false);
     $('#quitarEmpresaId1').attr('hidden', false);
     
-    if(getCookie('rolUsuario') == "usuario"){
+    if(getCookie('rolUsuario') == "usuario" || getCookie('rolUsuario') == 'gestor'){
       $('#datosEmp').attr('hidden', true);
     }else{
        $('#datosEmp').attr('hidden', false);
