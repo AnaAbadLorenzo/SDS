@@ -2372,7 +2372,7 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
                         '<label class = "EVIDENCIA_SUBIDA">Evidencia subida:</label>' + 
                     '</div>' + 
                     '<div style="display:none" id="errorFormatoArchivo"></div>' +
-                  '<div name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso+ ');enviarRespuesta(' + proceso.idProceso + ',\'myfile\')" class="tooltip6 uploadIcon">' +
+                  '<div name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso+ ');enviarRespuesta(' + proceso.idProceso + ',\'myfile\')" class="tooltip20 uploadIcon">' +
                       '<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />' +
                       '<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>' + 
                   '</div>' +

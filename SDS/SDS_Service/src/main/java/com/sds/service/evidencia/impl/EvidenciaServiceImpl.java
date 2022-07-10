@@ -105,14 +105,18 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 			final String nombreEvidencia = evidencia.getOriginalFilename();
 			final String[] extension = nombreEvidencia.split("\\.");
-			final String nuevoNombre = extension[1] + s + "." + extension[1];
+			final String nuevoNombre = extension[0] + s + "." + extension[1];
 
 			final File file = new File(ubicacionArchivo, nuevoNombre);
+
+			LOGGER.debug("Nombre archivo '{}'", nuevoNombre);
 
 			try {
 				if (!file.exists()) {
 					file.createNewFile();
 					evidencia.transferTo(file);
+
+					LOGGER.debug("Se ha guardado el archivo en '{}' con nombre '{}'", ubicacionArchivo, nuevoNombre);
 				}
 			} catch (final IOException ioException) {
 				final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(usuario,
@@ -140,7 +144,19 @@ public class EvidenciaServiceImpl implements EvidenciaService {
 
 				final EvidenciaEntity evidenciaEntity = new EvidenciaEntity(new Date(), 0, file.getName(),
 						ubicacionArchivo);
+
+				LOGGER.debug("La evidencia tiene la fecha '{}', nombre '{}' y ubicacion '{}'",
+						evidenciaEntity.getFechaEvidencia(), evidenciaEntity.getNombreFichero(),
+						evidenciaEntity.getRutaEvidencia());
+
 				evidenciaEntity.setProcedimientosUsuarioProceso(procedimientoUsuarioProcesoBD);
+
+				LOGGER.debug(
+						"La evidencia tiene asociado un procedimientoUsuarioProceso con id '{}', un proceso con id '{}' y un procedimientoUsuario con id '{}'",
+						procedimientoUsuarioProcesoBD.getIdProcedimientoUsuarioProceso(),
+						procedimientoUsuarioProcesoBD.getProceso().getIdProceso(),
+						procedimientoUsuarioProcesoBD.getProcedimientoUsuario().getIdProcedimientoUsuario());
+
 				evidenciaRepository.saveAndFlush(evidenciaEntity);
 
 				final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(usuario,

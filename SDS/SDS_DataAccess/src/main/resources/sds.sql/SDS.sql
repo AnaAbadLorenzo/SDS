@@ -58,7 +58,8 @@ CREATE TABLE `accion` (
 --
 
 LOCK TABLES `accion` WRITE;
-INSERT INTO `accion` VALUES (1,'Añadir','Permite añadir nuevos datos a la aplicación',0),
+INSERT INTO `accion` VALUES 
+(1,'Añadir','Permite añadir nuevos datos a la aplicación',0),
 (2,'Modificar','Permite modificar datos de la aplicación',0),
 (3,'Eliminar','Permite eliminar datos de la aplicación',0),
 (4,'Listar','Permite visualizar los datos de la aplicación en forma de listado',0),
@@ -109,7 +110,8 @@ CREATE TABLE `funcionalidad` (
 --
 
 LOCK TABLES `funcionalidad` WRITE;
-INSERT INTO `funcionalidad` VALUES ('1','Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),
+INSERT INTO `funcionalidad` VALUES 
+('1','Gestión de acciones','Permite realizar acciones sobre las acciones de la aplicación',0),
 ('2','Gestión de empresas','Permite realizar acciones sobre las empresas de la aplicación',0),
 ('3','Gestión de funcionalidades','Permite realizar acciones sobre las funcionalidades de la aplicación',0),
 ('4', 'Gestión de noticias', 'Permite realizar acciones sobre las noticias de la aplicación', '0'),
@@ -240,7 +242,10 @@ CREATE TABLE `persona` (
 --
 
 LOCK TABLES `persona` WRITE;
-INSERT INTO `persona` VALUES ('44460662Y','Alexandra','Iglesias','1987-03-09','Prueba','988222222','a@a.com',0,1);
+INSERT INTO `persona` VALUES 
+('44460662Y', 'Alexandra', 'Iglesias', '1987-03-09', 'Prueba', '988222222', 'a@a.com', 0, 1),
+('44460663F', 'UsuarioGenerico', 'UsuarioGenerico', '1980-01-01', 'Dirección Genérica', '988222222', 'b@b.com', 0, NULL),
+('10128407N', 'UsuarioGestor', 'UsuarioGestor', '1966-01-01', 'Dirección Gestor', '988525225', 'c@c.com', '0', NULL);
 UNLOCK TABLES;
 
 --
@@ -261,7 +266,8 @@ CREATE TABLE `rol` (
 --
 
 LOCK TABLES `rol` WRITE;
-INSERT INTO `rol` VALUES (1,'admin','Contendrá a todos los administradores de la aplicación',0),
+INSERT INTO `rol` VALUES 
+(1,'admin','Contendrá a todos los administradores de la aplicación',0),
 (2,'usuario','Contendra a todos los usuarios registrados de la aplicacion',0),
 (3,'gestor','Contendrá a todos los gestores de la aplicación',0);
 UNLOCK TABLES;
@@ -299,7 +305,13 @@ INSERT INTO `rolaccionfuncionalidad` (`id_rol`, `id_accion`, `id_funcionalidad`)
 (1,4,1), (1,4,2), (1,4,3), (1,4,4), (1,4,5), (1,4,6), (1,4,7), (1,4,8), (1,4,9), (1,4,10), (1,4,11), (1,4,12), (1,4,13), (1,4,14), (1,4,15), (1,4,16), (1,4,17),
 (1,5,1), (1,5,2), (1,5,3), (1,5,4), (1,5,5), (1,5,6), (1,5,7), (1,5,8), (1,5,9), (1,5,10), (1,5,11), (1,5,12), (1,5,13), (1,5,14), (1,5,15), (1,5,16),
 (1,6,1), (1,6,2), (1,6,3), (1,6,4), (1,6,5), (1,6,6), (1,6,7), (1,6,8), (1,6,9), (1,6,10), (1,6,11), (1,6,12), (1,6,13), (1,6,14),
-(2,2,2), (2,2,6), (2,4,2), (2,4,6), (2,4,7), (2,4,8), (2,4,14), (2,5,14);
+(2,2,2), (2,2,6), (2,4,2), (2,4,6), (2,4,7), (2,4,8), (2,4,14), (2,5,14),
+(3,1,4), (3,1,5), (3,1,7), (3,1,8), (3,1,9), (3,1,10), (3,1,11), (3,1,12),
+(3,2,2), (3,2,4), (3,2,5), (3,2,6), (3,2,7), (3,2,8), (3,2,9), (3,2,10), (3,2,11), (3,2,12), 
+(3,3,4), (3,3,5), (3,3,7), (3,3,8), (3,3,9), (3,3,10), (3,3,11), (3,3,12), 
+(3,4,2), (3,4,4), (3,4,5), (3,4,6), (3,4,7), (3,4,8), (3,4,9), (3,4,10), (3,4,11), (3,4,12), (3,4,14), 
+(3,5,4), (3,5,5), (3,5,7), (3,5,8), (3,5,9), (3,5,10), (3,5,11), (3,5,12), (3,5,14), 
+(3,6,4), (3,6,5), (3,6,7), (3,6,8), (3,6,9), (3,6,10), (3,6,11), (3,6,12);
 UNLOCK TABLES;
 
 --
@@ -326,7 +338,10 @@ CREATE TABLE `usuario` (
 --
 
 LOCK TABLES `usuario` WRITE;
-INSERT INTO `usuario` VALUES ('44460662Y','aicuna','43c73508499069fa09afaa010c6ef2f6',0,1);
+INSERT INTO `usuario` VALUES 
+('44460662Y', 'aicuna', '43c73508499069fa09afaa010c6ef2f6', 0, 1),
+('44460663F', 'UsuarioGenerico', '9731bc6492878b96f1d7b55bc2d289b9', '0', '2'),
+('10128407N', 'UsuarioGestor', 'a0489287a565763b5681bb057204dc33', '0', '3');
 UNLOCK TABLES;
 
 
@@ -353,7 +368,8 @@ CREATE TABLE `plan` (
 --
 
 LOCK TABLES `plan` WRITE;
-INSERT INTO `plan` (`id_plan`, `nombre_plan`, `descrip_plan`, `fecha_plan`, `borrado_plan`, `id_objetivo`) VALUES ('1', 'Plan', 'Plan para verificar el objetivo fin de la pobreza', '2022-05-20', '0', '1');
+INSERT INTO `plan` (`id_plan`, `nombre_plan`, `descrip_plan`, `fecha_plan`, `borrado_plan`, `id_objetivo`) VALUES 
+('1', 'Plan', 'Plan para verificar el objetivo fin de la pobreza', '2022-05-20', '0', '1');
 UNLOCK TABLES;
 
 --
@@ -380,7 +396,8 @@ CREATE TABLE `procedimiento` (
 --
 
 LOCK TABLES `procedimiento` WRITE;
-INSERT INTO `procedimiento` (`id_procedimiento`, `nombre_procedimiento`, `descrip_procedimiento`, `fecha_procedimiento`, `borrado_procedimiento`, `check_usuario`, `id_plan`) VALUES ('1', 'Procedimiento', 'Este es el primer procedimiento', '2022-05-20', '0', '0', '1');
+INSERT INTO `procedimiento` (`id_procedimiento`, `nombre_procedimiento`, `descrip_procedimiento`, `fecha_procedimiento`, `borrado_procedimiento`, `check_usuario`, `id_plan`) VALUES 
+('1', 'Procedimiento', 'Este es el primer procedimiento', '2022-05-20', '0', '1', '1');
 UNLOCK TABLES;
 
 --
@@ -429,7 +446,8 @@ CREATE TABLE `proceso` (
 --
 
 LOCK TABLES `proceso` WRITE;
-INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descrip_proceso`, `fecha_proceso`, `borrado_proceso`) VALUES ('1', 'Primer Proceso', 'Este es el primer proceso', '2022-07-09', '0');
+INSERT INTO `proceso` (`id_proceso`, `nombre_proceso`, `descrip_proceso`, `fecha_proceso`, `borrado_proceso`) VALUES 
+('1', 'Primer Proceso', 'Este es el primer proceso', '2022-07-09', '0');
 UNLOCK TABLES;
 
 --
@@ -449,7 +467,8 @@ CREATE TABLE `respuesta_posible` (
 --
 
 LOCK TABLES `respuesta_posible` WRITE;
-INSERT INTO `respuesta_posible` (`id_respuesta`, `texto_respuesta`, `borrado_respuesta`) VALUES ('1', 'Sí', '0'), ('2', 'No', 0), ('3', 'A veces', 0), ('4', 'No aplica', 0);
+INSERT INTO `respuesta_posible` (`id_respuesta`, `texto_respuesta`, `borrado_respuesta`) VALUES 
+('1', 'Sí', '0'), ('2', 'No', 0), ('3', 'A veces', 0), ('4', 'No aplica', 0);
 UNLOCK TABLES;
 
 --
@@ -504,6 +523,8 @@ CREATE TABLE `nivel` (
 --
 
 LOCK TABLES `nivel` WRITE;
+INSERT INTO `nivel` (`id_objetivo`, `id_proceso`, `nivel`, `fecha_nivel`) VALUES 
+(1, 1, 1, '2022-07-09');
 UNLOCK TABLES;
 
 --
@@ -529,6 +550,7 @@ CREATE TABLE `procesoprocedimiento` (
 --
 
 LOCK TABLES `procesoprocedimiento` WRITE;
+INSERT INTO `procesoprocedimiento` (`id_proceso`, `id_procedimiento`, `orden_proceso`) VALUES (1, 1, 1);
 UNLOCK TABLES;
 
 --
@@ -537,7 +559,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `evidencia`;
 CREATE TABLE `evidencia` (
-  `id_evidencia` int NOT NULL,
+  `id_evidencia` int NOT NULL AUTO_INCREMENT,
   `fecha_evidencia` date NOT NULL,
   `nombre_fichero` varchar(128) NOT NULL,
   `borrado_evidencia` int NOT NULL,
@@ -579,6 +601,8 @@ CREATE TABLE `procesorespuesta_posible` (
 --
 
 LOCK TABLES `procesorespuesta_posible` WRITE;
+INSERT INTO `procesorespuesta_posible` (`id_proceso`, `id_respuesta`, `fecha_respuesta`) VALUES 
+(1, 1, '2022-07-09'), (1, 2, '2022-07-09'), (1, 3, '2022-07-09');
 UNLOCK TABLES;
 
 COMMIT;
