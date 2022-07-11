@@ -71,7 +71,7 @@ h1 { font-size: 1.5rem !important;}
 
 .cabecera {
   position:  fixed;
-  top: 12%;
+  top: 14%;
   left: 6%;
   width: 100%;
 }
@@ -84,7 +84,7 @@ h1 { font-size: 1.5rem !important;}
 }
 
 .refreshIcon {
-  margin-left: 65%;
+  margin-left: 74%;
 }
 
 .iconProcedimiento {
@@ -167,5 +167,5 @@ h1 { font-size: 1.5rem !important;}
 
 /********** TITULO *********/
 .gestion {
-  left: 37%;
+  left: 36%;
 }

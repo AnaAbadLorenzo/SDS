@@ -77,6 +77,41 @@ select option:checked{
 
 /********* ICONOS ***********/
 
+#iniciarProcedimiento, #continuarProcedimiento, #finalizadoProcedimiento,
+#eliminarProcedimiento, #verProcedimiento {
+  width: 4%;
+  position: absolute;
+}
+
+#iniciarProcedimiento {
+  margin-left: 83.5%;
+  margin-top: -2%;
+}
+
+#continuarProcedimiento {
+  margin-left: 88%;
+  margin-top: -2%;
+
+}
+
+#finalizadoProcedimiento {
+  margin-left: 93%;
+  margin-top: -2%;
+
+}
+
+#eliminarProcedimiento {
+  margin-left: 79%;
+  margin-top: -2%;
+
+}
+
+#verProcedimiento {
+  margin-left: 74.5%;
+  margin-top: -2%;
+
+}
+
 .btn-reactivar{
   background-color: #4527A0;
   color:  #ffffff;
@@ -86,8 +121,8 @@ select option:checked{
 
 .cabecera {
   position:  fixed;
-  top: 12%;
-  left: 6%;
+  top: 13%;
+  left: 7%;
   width: 100%;
 }
 
@@ -99,45 +134,35 @@ select option:checked{
 }
 
 .refreshIcon {
-  margin-left: 65%;
+  margin-left: 75%;
 }
 
 .iconProcedimiento {
-  margin-left: 257%;
-  margin-top: -6%;
-  width: 9%;
+  width: 85%;
   cursor: pointer;
   display: inline;
 }
 
 .iconContinuar {
-  margin-left: 87%;
-  margin-top: -3%;
-  width: 6%;
+  width: 103%;
   cursor: pointer;
   display: inline;
 }
 
 .iconFinalizado {
-  margin-left: 152.5%;
-  margin-top: -8%;
-  width: 8%;
+  width: 145%;
   cursor: pointer;
   display: inline;
 }
 
 .iconEliminarProcedimiento {
-  margin-left: 125.8%;
-  margin-top: -13.5%;
-  width: 5%;
+  width: 85%;
   cursor: pointer;
   display: inline;
 }
 
 .iconVerProcedimiento {
-  margin-left: 118.8%;
-  margin-top: -18.2%;
-  width: 5%;
+  width: 85%;
   cursor: pointer;
   display: inline;
   

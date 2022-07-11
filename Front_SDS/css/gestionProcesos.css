@@ -10,6 +10,13 @@
 
 }
 
+.evidenciaFile {
+  color: #4527a0;
+  padding-bottom: 3%;
+  font-weight: bold;
+  opacity: 1;
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;

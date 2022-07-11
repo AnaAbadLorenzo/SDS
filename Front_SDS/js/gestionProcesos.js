@@ -893,6 +893,7 @@ async function cargarPermisosFuncProceso(){
   await cargarPermisosFuncProcesoAjaxPromesa()
   .then((res) => {
     gestionarPermisosProceso(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -914,6 +915,7 @@ async function cargarRespuestasPosibles(){
   									'<label class="form-check-label" for="' + idCheckBox + '">' + idCheckBox + '</label>' + 
   								 '</div>';
   		$('#respuestasPosibles').append(respuestasPosibles);
+      setLang(getCookie('lang'));
   	}
   	
   }).catch((res) => {
@@ -941,6 +943,7 @@ async function cargarProcedimientos(){
 
         $('#selectProcedimientos1').append(options);
         setCookie('procedimientosSelect', JSON.stringify(procedimientos));
+        setLang(getCookie('lang'));
   	
   }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -970,6 +973,7 @@ async function cargarObjetivos(){
 
         $('#selectObjetivos1').append(options);
         setCookie('objetivosSelect', JSON.stringify(objetivos));
+        setLang(getCookie('lang'));
   	
   }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -1354,9 +1358,11 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
 		}
 
 		setCookie('numeroPagina', numPagCookie);
+    setLang(getCookie('lang'));
     
   	} catch (resultado) {
     	respuestaAjaxKO(resultado.code);
+      setLang(getCookie('lang'));
 		  document.getElementById("modal").style.display = "block";
   	}
 	
@@ -1427,11 +1433,12 @@ async function cargarProcesos(numeroPagina, tamanhoPagina, paginadorCreado){
       }
 
       setCookie('numeroPagina', numPagCookie);
-    
+    setLang(getCookie('lang'));
 
 
     }catch (resultado) {
       respuestaAjaxKO(resultado.code);
+      setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
     }
     
@@ -1479,6 +1486,7 @@ async function addProceso(){
     $('#descripcionProceso').val(getCookie('descripProceso'));
     $('#fechaProceso').val(getCookie('fechaProceso'));
     buscarProceso(getCookie('numeroPagina'), tamanhoPaginaProceso, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -1511,6 +1519,7 @@ async function editProceso(){
     $('#descripcionProceso').val(getCookie('descripProceso'));
     $('#fechaProceso').val(getCookie('fechaProceso'));
     buscarProceso(getCookie('numeroPagina'), tamanhoPaginaProceso, 'buscarPaginacion', 'PaginadorCreado');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -1584,6 +1593,7 @@ async function buscarProceso(numeroPagina, tamanhoPagina, accion, paginadorCread
 		        }
 
 		        setCookie('numeroPagina', numPagCookie);
+            setLang(getCookie('lang'));
   	} catch (res) {
     	respuestaAjaxKO(res.code);
 		document.getElementById("modal").style.display = "block";
@@ -1651,6 +1661,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina, paginadorCreado){
 		cargarPermisosFuncProceso();
 		setCookie('numeroPagina', numPagCookie);
 		comprobarOcultos();
+    setLang(getCookie('lang'));
     
   	} catch (resultado) {
   		cargarPermisosFuncProceso();
@@ -1718,9 +1729,11 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
 
 		setCookie('numeroPagina', numPagCookie);
 		cargarPermisosFuncProceso();
+    setLang(getCookie('lang'));
     
   	} catch (resultado) {
     	respuestaAjaxKO(resultado.code);
+      setLang(getCookie('lang'));
 		document.getElementById("modal").style.display = "block";
   	}
 	
@@ -1882,6 +1895,7 @@ function showAddProcesos() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -1925,6 +1939,7 @@ function showBuscarProceso() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -2004,6 +2019,7 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -2097,6 +2113,7 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
 	  eliminarReadonly(campos);
 	  mostrarObligatorios(obligatorios);
 	  habilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -2176,6 +2193,7 @@ function showEliminar(nombreProceso, descripProceso, fechaProceso, idProceso, pr
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -2255,6 +2273,7 @@ function showReactivar(nombreProceso, descripProceso, fechaProceso, idProceso, p
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -2383,7 +2402,7 @@ function rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedi
     		i++;
     	}
     
-
+setLang(getCookie('lang'));
 }
 
 /** Función para gestionar los iconos dependiendo de los permisos de los usuarios **/
@@ -2470,6 +2489,7 @@ function gestionarPermisosProceso(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
@@ -2485,8 +2505,10 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
                     '<div id="' + proceso.idProceso + '" class="respuestas">';
 
   for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
+
     var respuestas = '<input type="radio" id="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
-                        '<label for="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
+
+     '<label for="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
 
     proc += respuestas;
   } 
@@ -2498,6 +2520,7 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
                         '<input type="file" id="myfile' + proceso.idProceso +'" name="myfile"><br><br>' + 
                     '</div>' + 
                     '<div style="display:none" id="errorFormatoArchivo"></div>' +
+                    '<a class="evidenciaFile" id="evidenciaFile' + proceso.idProceso + '" href="" download=""></a>' +
                   '<div id="btnUpload'+ proceso.idProceso +'" name="btnUpload" value="Upload" onclick="javascript:guardarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');enviarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')" class="tooltip20 uploadIcon">' +
                       '<img class="iconoUpload iconUpload" src="images/upload.png" alt="Enviar Respuesta" />' +
                       '<span class="tooltiptext iconUpload ICONO_UPLOAD">Enviar Respuesta</span>' + 
@@ -2517,16 +2540,16 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
         var idRespuestaPosibleMarcada = respuestasProcesos.data.respuestaPosible[i].idRespuesta;
         var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + proceso.idProceso + idRespuestaPosibleMarcada + ']');
         var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
-        var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
+        $('#evidenciaFile' + proceso.idProceso ).attr('href', '../evidencias/' + respuestasProcesos.data.evidencia[i].nombreFichero);
+        $('#evidenciaFile' + proceso.idProceso ).attr('download', respuestasProcesos.data.evidencia[i].nombreFichero);
+        $('#evidenciaFile' + proceso.idProceso ).html('Evidencia: ' + respuestasProcesos.data.evidencia[i].nombreFichero);
         $(selectorRespuesta).prop('checked', true);
        
       }
     }
   }else{
     var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
-    var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
     $(selectorEvidencia).show();
-    $(selectorNombreEvidencia).hide();
   }
 
   var paramstr = window.location.search.substr(1);
@@ -2538,13 +2561,16 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
     }
     
     $('#evidencia' + proceso.idProceso).attr('hidden', true);
+    $('#btnUpload' + proceso.idProceso).attr('hidden', true);
 
   }else{
     for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
       $('#'+proceso.idProceso +datosProceso.respuestasPosibles[i].idRespuesta).attr('disabled', false);
     }
     $('#evidencia' + proceso.idProceso).attr('hidden', false);
+    $('#btnUpload' + proceso.idProceso).attr('hidden', false);
   }
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

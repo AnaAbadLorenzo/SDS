@@ -930,8 +930,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -260%;
-    left: 263.5%;
+    bottom: -134%;
+    left: 64.5%;
     margin-left: -66px;
     opacity: 0;
     transition: opacity 1s;
@@ -974,8 +974,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -260%;
-    left: 91%;
+    bottom: -138%;
+    left: 70%;
     margin-left: -66px;
     opacity: 0;
     transition: opacity 1s;
@@ -1018,8 +1018,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -136%;
-    left: 157.5%;
+    bottom: -169%;
+    left: 91.5%;
     margin-left: -66px;
     opacity: 0;
     transition: opacity 1s;
@@ -1106,8 +1106,8 @@ form button[type="button"]:hover {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: -10%;
-    left: 125.8%;
+    bottom: -90%;
+    left: 12.8%;
     margin-left: -35px;
     opacity: 0;
     transition: opacity 1s;
