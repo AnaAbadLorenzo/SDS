@@ -10,6 +10,12 @@ function iniciarProcedimientoUsuario(idProcedimiento, idProcedimientoUsuario){
 
 }
 
+function continuarProcedimiento(idProcedimiento, idProcedimientoUsuario){
+   setCookie('idProcedimiento', idProcedimiento)
+   setCookie('idProcedimientoUsuario', idProcedimientoUsuario);
+   window.location.href = "GestionDeProcesos.html?continuar=si&ver=si";
+}
+
 function verProcedimiento(idProcedimiento, idProcedimientoUsuario){
    setCookie('idProcedimiento', idProcedimiento)
    setCookie('idProcedimientoUsuario', idProcedimientoUsuario);
