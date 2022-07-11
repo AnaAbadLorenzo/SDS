@@ -119,7 +119,7 @@ public class ProcedimientoUsuarioProcesoController {
 		return new RespEntity(RespCode.PROCEDIMIENTO_USUARIO_PROCESO_VACIO, procedimientoUsuarioProceso);
 	}
 
-	@PostMapping(value = "/modificarProcesoProcedimiento")
+	@PostMapping(value = "/modificarProcedimientoUsuarioProceso")
 	@ResponseBody
 	public RespEntity modificarProcedimientoUsuarioProceso(
 			@RequestBody final ProcedimientoUsuarioProceso procedimientoUsuarioProceso) {

@@ -174,6 +174,7 @@ arrayES={
 	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'La relación entre el proceso y el procedimiento no existe',
 	'ORDEN_PROCESO_INCORRECTO' : 'El orden de uno de los procedimientos es incorrecto',
 	'PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION' : 'El proceso ya ha sido contestado por un usuario',
+	'FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL' : 'La fecha introducida es anterior a la fecha actual',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',

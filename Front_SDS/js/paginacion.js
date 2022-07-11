@@ -782,7 +782,9 @@ function ocultarBloques(numeroIdCrear){
 
 function activarElemento(id){
     var elementoActivo = getCookie('elementoActivo')
+    if(elementoActivo != ""){
         $('#' + elementoActivo).removeClass('active');
-        $('#' + id).addClass('active');
-        setCookie('elementoActivo', id);
+    }
+    $('#' + id).addClass('active');
+    setCookie('elementoActivo', id);
 }

@@ -543,10 +543,11 @@ public class ProcedimientoUsuarioProcesoServiceImpl implements ProcedimientoUsua
 							procedimientoUsuarioProcesoBD.setProcedimientoUsuario(procedimientoUsuarioBD.get());
 							procedimientoUsuarioProcesoBD.setRespuestaPosible(respuestaPosibleBD.get());
 							procedimientoUsuarioProcesoBD.setProceso(procesoBD.get());
+							procedimientoUsuarioProcesoBD.setEvidencia(procedimientoUsuarioProcesoBD.getEvidencia());
 							procedimientoUsuarioProcesoBD.setBorradoProcedimientoUsuarioProceso(
 									procedimientoUsuarioProcesoEntity.getBorradoProcedimientoUsuarioProceso());
 							procedimientoUsuarioProcesoEntity.setFechaProcedimientoUsuarioProceso(new Date());
-							procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProcesoEntity);
+							procedimientoUsuarioProcesoRepository.saveAndFlush(procedimientoUsuarioProcesoBD);
 
 							final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(
 									procedimientoUsuarioProceso.getUsuario(),

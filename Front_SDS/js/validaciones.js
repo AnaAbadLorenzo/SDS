@@ -2076,7 +2076,7 @@ function validaFormato(idElemento, idElementoError, campo){
 	}
 
 	
-		if(extension[1] != "pdf" && extension[1] != "jpg" && extension[1] != "jpeg" && extension[1] != "png") {
+		if(extension[1] != "pdf" && extension[1] != "PDF" && extension[1] != "jpg" && extension[1] != "JPG" && extension[1] != "jpeg" && extension[1] != "JPEG" && extension[1] != "png" && extension[1] != "PNG") {
 			switch(campo) {
 		    	case 'archivos' : 
 			  		codigo = "FORMATO_INCORRECTO";

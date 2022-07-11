@@ -466,6 +466,53 @@ public class PlanServiceImpl implements PlanService {
 								CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo(),
 								CodeMessageErrors.getTipoNameByCodigo(
 										CodeMessageErrors.FECHA_INTRODUCIDA_ANTERIOR_FECHA_ACTUAL.getCodigo()));
+					} else {
+						final ObjetivoEntity objetivo = planEntity.getObjetivo();
+						final Optional<ObjetivoEntity> objetivoBD = objetivoRepository
+								.findById(objetivo.getIdObjetivo());
+
+						if (!objetivoBD.isPresent()) {
+							final LogExcepcionesEntity logExcepciones = util.generarDatosLogExcepciones(
+									plan.getUsuario(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()),
+									CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo());
+
+							resultadoLog = logServiceImpl.guardarLogExcepciones(logExcepciones);
+
+							if (CodeMessageErrors.LOG_EXCEPCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogExcepcionesNoGuardadoException(
+										CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo(),
+										CodeMessageErrors.getTipoNameByCodigo(
+												CodeMessageErrors.LOG_EXCEPCIONES_VACIO.getCodigo()));
+							}
+
+							throw new ObjetivoNoExisteException(
+									CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo(),
+									CodeMessageErrors.getTipoNameByCodigo(
+											CodeMessageErrors.OBJETIVO_NO_EXISTE_EXCEPTION.getCodigo()));
+						} else {
+							planBD.get().setNombrePlan(planEntity.getNombrePlan());
+							planBD.get().setDescripPlan(planEntity.getDescripPlan());
+							planBD.get().setFechaPlan(planEntity.getFechaPlan());
+							planBD.get().setBorradoPlan(planEntity.getBorradoPlan());
+							planBD.get().setObjetivo(objetivoBD.get());
+
+							planRepository.saveAndFlush(planBD.get());
+
+							final LogAccionesEntity logAcciones = util.generarDatosLogAcciones(plan.getUsuario(),
+									Constantes.ACCION_MODIFICAR_PLAN, plan.getPlan().toString());
+
+							resultadoLog = logServiceImpl.guardarLogAcciones(logAcciones);
+
+							if (CodeMessageErrors.LOG_ACCIONES_VACIO.name().equals(resultadoLog)) {
+								throw new LogAccionesNoGuardadoException(
+										CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo(), CodeMessageErrors
+												.getTipoNameByCodigo(CodeMessageErrors.LOG_ACCIONES_VACIO.getCodigo()));
+							}
+
+							resultado = Constantes.OK;
+						}
 					}
 
 				} else {

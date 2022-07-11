@@ -171,6 +171,7 @@ arrayGA={
 	'PROCESO_PROCEDIMIENTO_NO_EXISTE' : 'A realción entre o proceso e o procedemento non existe',
 	'ORDEN_PROCESO_INCORRECTO' : 'A orde dun dos procedementos é incorrecta',
 	'PROCESO_ASOCIADO_PROCEDIMIENTO_USUARIO_EXCEPTION' : 'O proceso xa foi contestado por un usuario',
+	'FECHA_INTRODUDICA_ANTERIOR_FECHA_ACTUAL' : 'A data introducida é menor que a data actual',
 
 	//Error formato
 	'LOGIN_USUARIO_VACIO' : 'Login de usuario vacío',

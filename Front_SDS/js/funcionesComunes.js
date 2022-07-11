@@ -1283,7 +1283,7 @@ function cambiarTituloGestion(funcionalidad){
 				$("#gestion").addClass("gestion GESTION_PROCEDIMIENTOS_DESDE_PLAN");
 			} else {
 				$("#gestion").removeClass();
-				$("#gestion").addClass("GESTION_PROCEDIMIENTOS");
+				$("#gestion").addClass("gestion GESTION_PROCEDIMIENTOS");
 			}
 		break;
 		case 'proceso':

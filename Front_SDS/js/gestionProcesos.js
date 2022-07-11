@@ -242,6 +242,93 @@ function guardarProcedimientoUsuarioProceso(idProceso, idFile){
           procedimiento : procedimiento,
           usuario : usuario
         },
+      }
+
+      var data = {
+        usuario : getCookie('usuario'),
+        procedimientoUsuarioProceso : procedimientoUsuarioProceso
+      }
+      
+      $.ajax({
+        method: "POST",
+        url: urlPeticionAjaxAddProcedimientoUsuarioProceso,
+        contentType : "application/json",
+        data: JSON.stringify(data),  
+        dataType : 'json',
+        headers: {'Authorization': token},
+        }).done(res => {
+          if (res.code != 'PROCEDIMIENTO_USUARIO_PROCESO_GUARDADO') {
+            reject(res);
+          }
+          resolve(res);
+        }).fail( function( jqXHR ) {
+          errorFailAjax(jqXHR.status);
+        });
+    });
+  }
+}
+
+/**Funcion para enviar el procedimientoUsuarioProceso **/
+function modificarProcedimientoUsuarioProceso(idProceso, idFile){
+    if(comprobarProcesoUsuario(idProceso)){
+      return new Promise(function(resolve, reject) {
+      var token = getCookie('tokenUsuario');
+
+      var procedimiento = {
+        idProcedimiento: '',
+        nombreProcedimiento : '',
+        descripProcedimiento : '',
+        fechaProcedimiento : '',
+        checkUsuario : '',
+        plan : {
+          idPlan : '',
+          nombrePlan : '',
+          descripPlan : '',
+          fechaPlan : '',
+          borradoPlan : '',
+          objetivo : {
+            idObjetivo : '',
+            nombreObjetivo : '',
+            descripObjetivo : '',
+            borradoObjetivo : ''
+          }
+        },
+        borradoProcedimiento : ''
+      }
+
+      var usuario = {
+        dniUsuario : '',
+        usuario : '',
+        passwdUsuario : '',
+        borradoUsuario : '',
+      }
+      
+      var procedimientoUsuarioProceso = {
+        idProcedimientoUsuarioProceso : "",
+        fechaProcedimientoUsuarioProceso : "",
+        borradoProcedimientoUsuarioProceso : 0,
+        respuestaPosible : {
+          idRespuesta : $('input[name=respuestaPosible]:checked').val(),
+          textoRespuesta : "",
+          borradoRespuesta : ""
+        },
+
+        proceso : {
+          idProceso : idProceso,
+          nombreProceso : "",
+          descripProceso : "",
+          fechaProceso : "",
+          borradoProceso : ""
+        },
+
+        procedimientoUsuario : {
+          idProcedimientoUsuario : getCookie('idProcedimientoUsuario'),
+          puntuacionProcedimientoUsuario : "",
+          fechaProcedimientoUsuario : "",
+          borradoProcedimientoUsuario : "",
+          procedimiento : procedimiento,
+          usuario : usuario
+        },
 
         /*evidencia : {
           idEvidencia : '',
@@ -258,7 +345,7 @@ function guardarProcedimientoUsuarioProceso(idProceso, idFile){
       
       $.ajax({
         method: "POST",
-        url: urlPeticionAjaxAddProcedimientoUsuarioProceso,
+        url: urlPeticionAjaxModificarProcedimientoUsuarioProceso,
         contentType : "application/json",
         data: JSON.stringify(data),  
         dataType : 'json',
@@ -2433,7 +2520,7 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
   if(respuestasProcesos != ""){
 
     for(var i = 0; i<respuestasProcesos.data.procesos.length; i++){
-      $('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
+      $('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
       if(proceso.nombreProceso == respuestasProcesos.data.procesos[i].nombreProceso){
         var idRespuestaPosibleMarcada = respuestasProcesos.data.respuestaPosible[i].idRespuesta;
         var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + idRespuestaPosibleMarcada + ']');
