@@ -2493,7 +2493,7 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
 
   for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
     var respuestas = '<input type="radio" id="' + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
-                        '<label for="' + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
+                        '<label for="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
 
     proc += respuestas;
   } 
@@ -2520,8 +2520,8 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
   if(respuestasProcesos != ""){
 
     for(var i = 0; i<respuestasProcesos.data.procesos.length; i++){
-      $('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
       if(proceso.nombreProceso == respuestasProcesos.data.procesos[i].nombreProceso){
+	$('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
         var idRespuestaPosibleMarcada = respuestasProcesos.data.respuestaPosible[i].idRespuesta;
         var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + idRespuestaPosibleMarcada + ']');
         var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
