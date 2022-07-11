@@ -514,6 +514,9 @@ function rellenarFormulario(nombreProcedimiento, usuario, nombreProceso, fechaPr
   $('#nombreProceso').val(nombreProceso);
   $('#fechaProcedimientoUsuarioProceso').val(fechaProcedimientoUsuarioProceso);
   $('#textoRespuestaPosible').val(respuesta);
+  $('#evidencia').attr('href', '../evidencias/' + evidencia);
+  $('#evidencia').attr('download', evidencia);
+  $('#evidencia').html(evidencia);
   setLang(getCookie('lang'));
 }
 
