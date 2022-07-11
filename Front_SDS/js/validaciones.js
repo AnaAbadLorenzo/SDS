@@ -1893,6 +1893,16 @@ function comprobarBuscarProcedimiento(){
 	}
 }
 
+/**Función que valida el buscar del procedimiento **/
+function comprobarBuscarProcedimientoUsuario(){
+	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 
+		comprobarDescripcionProcedimientoSearch('descripProcedimiento', 'errorFormatoDescripcionProcedimiento', 'descripProcedimiento')){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 /**Función que valida el buscar del procedimiento ejecutado **/
 function comprobarBuscarProcedimientoEjecutado(){
 	if(comprobarNombreProcedimientoSearch('nombreProcedimiento', 'errorFormatoNombreProcedimiento', 'nombreProcedimiento') && 

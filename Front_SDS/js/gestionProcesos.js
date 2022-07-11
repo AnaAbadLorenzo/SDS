@@ -2485,10 +2485,12 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
                     '<div id="' + proceso.idProceso + '" class="respuestas">';
 
   for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
-
+<<<<<<< HEAD
     var respuestas = '<input type="radio" id="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
-
-     '<label for="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
+=======
+    var respuestas = '<input type="radio" id="' + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
+>>>>>>> bda0b9e8f67c90e2aec7fe9f73a28227844979bf
+                        '<label for="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
 
     proc += respuestas;
   } 

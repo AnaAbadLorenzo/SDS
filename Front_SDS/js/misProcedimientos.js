@@ -437,7 +437,7 @@ async function cargarMisProcedimientosUsuario(procedimientosUsuario, procesosPro
 function showBuscar() {
   var idioma = getCookie('lang');
 
-  cambiarFormulario('SEARCH_PROCEDIMIENTO_EJECUTADO', 'javascript:buscarProcedimientoEjecutado(0,' + tamanhoPaginaProcedimiento + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarProcedimiento();');
+  cambiarFormulario('SEARCH_PROCEDIMIENTO_EJECUTADO', 'javascript:buscarProcedimientoEjecutado(0,' + tamanhoPaginaProcedimiento + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarProcedimientoUsuario();');
   cambiarOnBlurCampos('return comprobarNombreProcedimientoSearch(\'nombreProcedimiento\', \'errorFormatoNombreProcedimiento\', \'nombreProcedimiento\')', 
       'return comprobarDescripcionProcedimientoSearch(\'descripProcedimiento\', \'errorFormatoDescripcionProcedimiento\', \'descripProcedimiento\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchProcedimientoEjecutado', 'Buscar');
@@ -548,8 +548,8 @@ function buscarProcedimientoEjecutadoAjaxPromesa(numeroPagina, tamanhoPagina, ac
          fechaProcedimientoUsuario : '',
          procedimiento : procedimiento,
          usuario : usuario,
-         inicio: calculaInicio(numeroPagina, tamanhoPaginaProcedimientosEjecutados),
-         tamanhoPagina: tamanhoPaginaProcedimientosEjecutados
+         inicio: calculaInicio(numeroPagina, tamanhoPaginaProcedimientoUsuario),
+         tamanhoPagina: tamanhoPaginaProcedimientoUsuario
         }
     }
 
