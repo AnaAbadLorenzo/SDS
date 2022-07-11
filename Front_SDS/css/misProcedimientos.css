@@ -104,6 +104,15 @@ select option:checked{
   display: inline;
 }
 
+.iconVerProcedimiento {
+  margin-left: 118.8%;
+  margin-top: -18.2%;
+  width: 5%;
+  cursor: pointer;
+  display: inline;
+  
+}
+
 .iconPlan {
   width: 8%;
   display: inline;

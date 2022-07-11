@@ -44,7 +44,16 @@
 
 	<h1 id="gestion" class="gestion GESTION_PROCEDIMIENTOS_NO_ADMIN"></h1>
 
-	<div id="cabecera" class="cabecera" style="display: none;">
+	<div id="cabecera" class="cabecera" style="display: block;">
+		<div id="divListarProcedimientoUsuario" name="btnSearch" value="Buscar" data-toggle="modal" data-target="#form-modal" onclick="javascript:showBuscar()" class="tooltip6 searchIcon" style="cursor: pointer">
+	        <img id="btnListarProcedimientosUsuario" class="iconoSearch iconSearch" src="images/search3.png" alt="Buscar Log Acciones" />
+	        <span class="tooltiptext iconSearch ICONO_SEARCH"></span>
+	    </div>
+
+	    <div name="btnRefresh" value="Buscar" onclick="javascript:refrescarTabla(0, tamanhoPaginaProcedimientosEjecutados)" class="tooltip6 refreshIcon">
+	        <img class="iconoRefresh iconRefresh" src="images/refresh3.png" alt="Refrescar Tabla" />
+	        <span class="tooltiptext iconRefresh ICON_REFRECH_TABLE"></span>
+	    </div>
 	</div>
 
 	<div class="listado" id="tablaDatos" style="display:none;">
@@ -121,6 +130,40 @@
     </div>
   </div>
 </div>
+
+<div class="modal modal2 fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+			<div class="formmodal-container">
+				<div id="formularioAcciones">
+      			<div id="contenidoForm">
+              			<div class="formularioComun">
+              				<h1 id="tituloForms" class="datos"></h1>
+              				<p id = "subtitulo" class="SEGURO_ELIMINAR_OBJ" hidden></p>
+                    	<form name="formularioGenerico" id="formularioGenerico" action="" onsubmit="">
+                    	  <label class="labelForm NOMBRE_PROCEDIMIENTO" id="labelNombreProcedimiento" hidden></label>                            
+                          <input type="text" maxlength="48" size="48" placeholder="NOMBRE_PROCEDIMIENTO" name="NOMBRE_PROCEDIMIENTO" id="nombreProcedimiento" class="NOMBRE_PROCEDIMIENTO" onblur=""/>
+                           <div class="obligatorio tooltip2" id="obligatorioNombreProcedimiento">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+                          <div style="display:none" id="errorFormatoNombreProcedimiento"></div>
+                          
+                          <label class="labelForm DESCRIPCION_PROCEDIMIENTO" id="labelDescripcionProcedimiento" hidden></label>
+	                      <input type="text" placeholder="DESCRIPCION_PROCEDIMIENTO" name="DESCRIPCION_PROCEDIMIENTO" id="descripProcedimiento" class="DESCRIPCION_PROCEDIMIENTO" onblur=""/>
+	                       <div class="obligatorio tooltip2" id="obligatorioDescripcionProcedimiento">*
+                  			<span class="tooltiptext2 campoObligatorio CAMPO_OBLIGATORIO">Campo obligatorio</span>
+              			  </div>
+	                      <div style="display:none" id="errorFormatoDescripcionProcedimiento"></div>
+                          <button type="submit" name="btnAcciones" value="" class="tooltip6" id="btnAcciones">
+                            <img class="" src="" alt="" id="iconoAcciones" />
+                            <span class="tooltiptext" id="spanAcciones"></span>
+                          </button>
+                      </form>
+                    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<div id="footer"></div>
 </body>

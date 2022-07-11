@@ -328,14 +328,7 @@ function modificarProcedimientoUsuarioProceso(idProceso, idFile){
           borradoProcedimientoUsuario : "",
           procedimiento : procedimiento,
           usuario : usuario
-        },
-
-        /*evidencia : {
-          idEvidencia : '',
-          fechaEvidencia : '',
-          borradoEvidencia : 0,
-          nombreFichero : ''
-        }*/
+        }
       }
 
       var data = {
@@ -2492,15 +2485,15 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
                     '<div id="' + proceso.idProceso + '" class="respuestas">';
 
   for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
-    var respuestas = '<input type="radio" id="' + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
-                        '<label for="' + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
+    var respuestas = '<input type="radio" id="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '" name="respuestaPosible" value="' + datosProceso.respuestasPosibles[i].idRespuesta + '">' + 
+                        '<label for="' + proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta + '"> ' + datosProceso.respuestasPosibles[i].textoRespuesta +'</label><br>';
 
     proc += respuestas;
   } 
 
   var proceso2 = '</div>' + 
                    '<div style="display:none" id="errorFormatoRespuesta"></div>' +
-                    '<div id="' + proceso.idProceso + '" class="evidencia">' + 
+                    '<div id="evidencia' + proceso.idProceso + '" class="evidencia">' + 
                         '<label for="myfile' + proceso.idProceso +'">Selecciona una evidencia:</label>' + 
                         '<input type="file" id="myfile' + proceso.idProceso +'" name="myfile"><br><br>' + 
                     '</div>' + 
@@ -2518,12 +2511,11 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
   $('#procesos').append(proc);
 
   if(respuestasProcesos != ""){
-
     for(var i = 0; i<respuestasProcesos.data.procesos.length; i++){
-      $('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
       if(proceso.nombreProceso == respuestasProcesos.data.procesos[i].nombreProceso){
+        $('#btnUpload'+ proceso.idProceso).attr('onclick', 'modificarProcedimientoUsuarioProceso(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\');modificarRespuesta(' + proceso.idProceso + ',\'myfile' + proceso.idProceso + '\')');
         var idRespuestaPosibleMarcada = respuestasProcesos.data.respuestaPosible[i].idRespuesta;
-        var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + idRespuestaPosibleMarcada + ']');
+        var selectorRespuesta = $('#' + proceso.idProceso + ' input[id=' + proceso.idProceso + idRespuestaPosibleMarcada + ']');
         var selectorEvidencia = $('#' + proceso.idProceso + '.evidencia');
         var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
         $(selectorRespuesta).prop('checked', true);
@@ -2535,6 +2527,23 @@ function cargarProcesosUsuario(proceso, datosProceso, respuestasProcesos){
     var selectorNombreEvidencia = $('#' + proceso.idProceso + '.nombreEvidencia');
     $(selectorEvidencia).show();
     $(selectorNombreEvidencia).hide();
+  }
+
+  var paramstr = window.location.search.substr(1);
+  var par = paramstr.split("&");
+
+  if(par[1]=="ver=si"){
+    for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
+      $('#'+proceso.idProceso + datosProceso.respuestasPosibles[i].idRespuesta).attr('disabled', true);
+    }
+    
+    $('#evidencia' + proceso.idProceso).attr('hidden', true);
+
+  }else{
+    for(var i = 0; i<datosProceso.respuestasPosibles.length; i++){
+      $('#'+proceso.idProceso +datosProceso.respuestasPosibles[i].idRespuesta).attr('disabled', false);
+    }
+    $('#evidencia' + proceso.idProceso).attr('hidden', false);
   }
 }
 

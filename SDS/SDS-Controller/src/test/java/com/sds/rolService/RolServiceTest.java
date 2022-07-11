@@ -20,6 +20,7 @@ import com.sds.model.FuncionalidadEntity;
 import com.sds.model.RolAccionFuncionalidadEntity;
 import com.sds.model.RolEntity;
 import com.sds.repository.RolAccionFuncionalidadRepository;
+import com.sds.repository.RolRepository;
 import com.sds.service.accion.AccionService;
 import com.sds.service.accion.model.Accion;
 import com.sds.service.common.CommonUtilities;
@@ -48,6 +49,9 @@ public class RolServiceTest {
 
 	@Autowired
 	RolService rolService;
+
+	@Autowired
+	RolRepository rolRepository;
 
 	@Autowired
 	AccionService accionService;
@@ -304,10 +308,11 @@ public class RolServiceTest {
 	}
 
 	@Test(expected = RolAsociadoAccionFuncionalidadException.class)
-	public void RolService_eliminarRolAsociadoAccionFuncionalidad() throws RolNoExisteException,
-			RolAsociadoUsuarioException, IOException, ParseException, LogAccionesNoGuardadoException,
-			LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException, AccionYaExisteException,
-			FuncionalidadYaExisteException, AccionNoExisteException, FuncionalidadNoExisteException {
+	public void RolService_eliminarRolAsociadoAccionFuncionalidad()
+			throws RolNoExisteException, RolAsociadoUsuarioException, IOException, ParseException,
+			LogAccionesNoGuardadoException, LogExcepcionesNoGuardadoException, RolAsociadoAccionFuncionalidadException,
+			AccionYaExisteException, FuncionalidadYaExisteException, AccionNoExisteException,
+			FuncionalidadNoExisteException, RolYaExisteException {
 
 		final Rol rol = generateRol(Constantes.URL_JSON_ROL_DATA,
 				Constantes.ELIMINAR_ROL_ASOCIADO_ACCION_FUNCIONALIDAD);
@@ -316,6 +321,7 @@ public class RolServiceTest {
 		final FuncionalidadEntity funcionalidadEntity = new FuncionalidadEntity(0, "nombreFuncionalidad",
 				"descripFuncionalidad", 0);
 
+		rolService.guardarRol(rol);
 		accionService.anadirAccion(new Accion("ana", accionEntity));
 		funcionalidadService.anadirFuncionalidad(new Funcionalidad("ana", funcionalidadEntity));
 
@@ -328,6 +334,8 @@ public class RolServiceTest {
 				accionBuscar.getListaBusquedas().get(0).getIdAccion(),
 				funcionalidadBuscar.getListaBusquedas().get(0).getIdFuncionalidad(), rol.getRol().getIdRol());
 
+		final RolEntity rolBuscar = rolRepository.findByRolName(rol.getRol().getRolName());
+
 		rolAccionFuncionalidadRepository.saveAndFlush(rolAccionFuncionalidad);
 
 		try {
@@ -339,6 +347,7 @@ public class RolServiceTest {
 							CodeMessageErrors.ROL_ASOCIADO_ACCION_FUNCIONALIDAD_EXCEPTION.getCodigo()));
 		} finally {
 			rolAccionFuncionalidadRepository.delete(rolAccionFuncionalidad);
+			rolRepository.deleteRol(rolBuscar.getIdRol());
 			accionService.deleteAccion(accionBuscar.getListaBusquedas().get(0));
 			funcionalidadService.deleteFuncionalidad(funcionalidadBuscar.getListaBusquedas().get(0));
 
