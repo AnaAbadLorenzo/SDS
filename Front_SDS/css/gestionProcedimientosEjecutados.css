@@ -12,7 +12,9 @@ h1 { font-size: 1.5rem !important;}
 
 .table thead tr th { width: 17% !important;}
 
-#form-modal .modal-dialog { margin: 2rem auto !important; }
+#form-modal .modal-dialog { margin: 1rem auto !important; }
+
+#evidencia { padding-bottom: 3% !important; font-size: 14px !important; }
 
 }
 

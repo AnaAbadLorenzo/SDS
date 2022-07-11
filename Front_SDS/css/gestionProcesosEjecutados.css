@@ -16,6 +16,13 @@ h1 { font-size: 1.5rem !important;}
 
 }
 
+#evidencia {
+  color: #4527a0;
+  padding-bottom: 2%;
+  font-weight: bold;
+  opacity: 1;
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;
