@@ -187,6 +187,7 @@ async function cargarPermisosFuncObjetivo(){
   await cargarPermisosFuncObjetivoAjaxPromesa()
   .then((res) => {
     gestionarPermisosObjetivo(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -350,7 +351,6 @@ async function cargarObjetivos(numeroPagina, tamanhoPagina, paginadorCreado){
       var div = createHideShowColumnsWindow({DESCRIPCION_OBJETIVO_COLUMN:2});
         $("#checkboxColumnas").append(div);
         $("#paginacion").append(textPaginacion);
-        setLang(getCookie('lang'));
 
         if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'cargarObjetivos', 'OBJETIVO');
@@ -365,9 +365,11 @@ async function cargarObjetivos(numeroPagina, tamanhoPagina, paginadorCreado){
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 
     }).catch((res) => {
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     });
 }
@@ -382,12 +384,12 @@ async function addObjetivo(){
 
     let idElementoList = ["nombreObjetivo", "descripcionObjetivo"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
 
     $('#nombreObjetivo').val(getCookie('nombreObjetivo'));
     $('#descripcionObjetivo').val(getCookie('descripObjetivo'));
     buscarObjetivo(getCookie('numeroPagina'), tamanhoPaginaObjetivo, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -441,7 +443,6 @@ async function buscarObjetivo(numeroPagina, tamanhoPagina, accion, paginadorCrea
 
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'buscarObjetivo', 'OBJETIVO');
@@ -455,6 +456,7 @@ async function buscarObjetivo(numeroPagina, tamanhoPagina, accion, paginadorCrea
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
+      setLang(getCookie('lang'));
 
 
   }).catch((res) => {
@@ -507,8 +509,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       var div = createHideShowColumnsWindow({DESCRIPCION_OBJETIVO_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
-
       setCookie('nombreObjetivo', '');
       setCookie('descripObjetivo', '');
 
@@ -524,6 +524,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
 
     }).catch((res) => {
 
@@ -566,7 +567,6 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var div = createHideShowColumnsWindow({DESCRIPTION_OBJETIVO_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('nombreObjetivo', '');
       setCookie('descripObjetivo', '');
@@ -581,6 +581,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#' + numeroPagina).addClass("active");
       }
+
+      setLang(getCookie('lang'));
 
     }).catch((res) => {
 
@@ -599,9 +601,9 @@ async function detalleObjetivo(){
 
     let idElementoList = ["nombreObjetivo", "descripcionObjetivo"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     $('#nombreObjetivo').val(getCookie('nombreObjetivo'));
     $('#descripcionObjetivo').val(getCookie('descripObjetivo'));
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -627,11 +629,11 @@ async function editObjetivo(){
 
     let idElementoList = ["nombreObjetivo", "descripcionObjetivo"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     $('#nombreObjetivo').val(getCookie('nombreObjetivo'));
     $('#descripcionObjetivo').val(getCookie('descripObjetivo'));
     buscarObjetivo(getCookie('numeroPagina'), tamanhoPaginaObjetivo, 'buscarPaginacion', 'PaginadorCreado');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -659,10 +661,10 @@ async function deleteObjetivo(){
 
     let idElementoList = ["nombreObjetivo", "descripcionObjetivo"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
 
     refrescarTabla(0, tamanhoPaginaObjetivo);
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
 
@@ -692,11 +694,10 @@ async function reactivarObjetivo(){
     resetearFormulario("formularioGenerico", idElementoList);
 
     respuestaAjaxOK("OBJETIVO_REACTIVADO_OK", res.code);
-
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
 
     buscarEliminados(0, tamanhoPaginaObjetivo, 'PaginadorNo');
+    setLang(getCookie('lang'));
 
     }).catch((res) => {
 
@@ -711,12 +712,10 @@ async function reactivarObjetivo(){
 
 /** Funcion para mostrar el formulario para añadir un objetivo **/
 function showAddObjetivos() {
-  var idioma = getCookie('lang');
   cambiarFormulario('ADD_OBJETIVO', 'javascript:addObjetivo();', 'return comprobarAddObjetivo();');
   cambiarOnBlurCampos('return comprobarNombreObjetivo(\'nombreObjetivo\', \'errorFormatoNombreObjetivo\', \'nombreObjetivo\')', 
       'return comprobarDescripcionObjetivo(\'descripcionObjetivo\', \'errorFormatoDescripcionObjetivo\', \'descripcionObjetivo\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddObjetivo', 'Añadir');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelNombreObjetivo').attr('hidden', true);
@@ -728,18 +727,16 @@ function showAddObjetivos() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para buscar un objetivo **/
 function showBuscarObjetivo() {
-  var idioma = getCookie('lang');
-
   cambiarFormulario('SEARCH_OBJETIVO', 'javascript:buscarObjetivo(0,' + tamanhoPaginaObjetivo + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarObjetivo();');
   cambiarOnBlurCampos('return comprobarNombreObjetivoSearch(\'nombreObjetivo\', \'errorFormatoNombreObjetivo\', \'nombreObjetivo\')', 
       'return comprobarDescripcionObjetivoSearch(\'descripcionObjetivo\', \'errorFormatoDescripcionObjetivo\', \'descripcionObjetivo\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchObjetivo', 'Buscar');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelNombreObjetivo').attr('hidden', true);
@@ -751,18 +748,15 @@ function showBuscarObjetivo() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para visualizar un objetivo **/
 function showDetalle(nombreObjetivo, descripcionObjetivo) {
 
-    var idioma = getCookie('lang');
-
     cambiarFormulario('DETAIL_OBJECTIVE', 'javascript:detalleObjetivo();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-
-    setLang(idioma);
 
     $('#labelNombreObjetivo').removeAttr('hidden');
     $('#labelDescripcionObjetivo').removeAttr('hidden');
@@ -775,20 +769,18 @@ function showDetalle(nombreObjetivo, descripcionObjetivo) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Funcion para editar un objetivo **/
 function showEditar(nombreObjetivo, descripcionObjetivo, idObjetivo) {
-  var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_OBJETIVO', 'javascript:editObjetivo();', 'return comprobarEditObjetivo();');
     cambiarOnBlurCampos('return comprobarNombreObjetivo(\'nombreObjetivo\', \'errorFormatoNombreObjetivo\', \'nombreObjetivo\')', 
       'return comprobarDescripcionObjetivo(\'descripcionObjetivo\', \'errorFormatoDescripcionObjetivo\', \'descripcionObjetivo\')'
      );
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarObjetivo', 'Editar');
-
-    setLang(idioma);
 
     $('#subtitulo').attr('hidden', true);
     $('#labelNombreObjetivo').attr('hidden', true);
@@ -805,18 +797,15 @@ function showEditar(nombreObjetivo, descripcionObjetivo, idObjetivo) {
     habilitaCampos(campos);
     deshabilitaCampos(["nombreObjetivo"]);
     anadirReadonly(["nombreObjetivo"]);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para eliminar un objetivo **/
 function showEliminar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
 
-    var idioma = getCookie('lang');
-
     cambiarFormulario('DELETE_OBJETIVO', 'javascript:deleteObjetivo();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-
-    setLang(idioma);
 
     $('#labelNombreObjetivo').removeAttr('hidden');
     $('#labelDescripcionObjetivo').removeAttr('hidden');
@@ -834,18 +823,15 @@ function showEliminar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para reactivar un objetivo **/
 function showReactivar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
 
-    var idioma = getCookie('lang');
-
     cambiarFormulario('REACTIVATE_OBJETIVO', 'javascript:reactivarObjetivo();', '');
     cambiarIcono('images/reactivar2.png', 'ICONO_REACTIVAR', 'iconoReactivar', 'Reactivar');
-
-    setLang(idioma);
 
     $('#labelNombreObjetivo').removeAttr('hidden');
     $('#labelDescripcionObjetivo').removeAttr('hidden');
@@ -863,6 +849,7 @@ function showReactivar(nombreObjetivo, descripcionObjetivo , idObjetivo) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -957,6 +944,7 @@ function gestionarPermisosObjetivo(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

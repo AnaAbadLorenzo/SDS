@@ -211,6 +211,7 @@ async function cargarPermisosFuncNoticia(){
   await cargarPermisosFuncNoticiaAjaxPromesa()
   .then((res) => {
     gestionarPermisosNoticia(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -311,7 +312,6 @@ async function cargarNoticiasTabla(numeroPagina, tamanhoPagina, paginadorCreado)
     	var div = createHideShowColumnsWindow({TEXTO_NOTICIA_COLUMN:2});
       	$("#checkboxColumnas").append(div);
       	$("#paginacion").append(textPaginacion);
-      	setLang(getCookie('lang'));
 
         if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'cargarNoticias', 'NOTICIA');
@@ -326,6 +326,7 @@ async function cargarNoticiasTabla(numeroPagina, tamanhoPagina, paginadorCreado)
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 	  
 		}).catch((res) => {
 		    respuestaAjaxKO(res.code);
@@ -343,13 +344,13 @@ async function addNoticia(){
 
     let idElementoList = ["tituloNoticia", "textoNoticia"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     
     $('#tituloNoticia').val(getCookie('tituloNoticia'));
     $('#textoNoticia').val(getCookie('textoNoticia'));
     
     buscarNoticia(getCookie('numeroPagina'), tamanhoPaginaNoticia, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -403,7 +404,6 @@ async function buscarNoticia(numeroPagina, tamanhoPagina, accion, paginadorCread
       
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'buscarNoticia', 'NOTICIA');
@@ -417,7 +417,7 @@ async function buscarNoticia(numeroPagina, tamanhoPagina, accion, paginadorCread
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
-
+      setLang(getCookie('lang'));
   
   }).catch((res) => {
       cargarPermisosFuncNoticia();
@@ -466,7 +466,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       var div = createHideShowColumnsWindow({TEXTO_NOTICIA_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('tituloNoticia', '');
       setCookie('textoNoticia', '');
@@ -483,6 +482,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -502,9 +502,9 @@ async function detalleNoticia(){
 
     let idElementoList = ["tituloNoticia", "textoNoticia", "fechaNoticia"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     $('#tituloNoticia').val(getCookie('tituloNoticia'));
     $('#textoNoticia').val(getCookie('textoNoticia'));
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -530,11 +530,11 @@ async function editNoticia(){
 
     let idElementoList = ["tituloNoticia", "textoNoticia"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     $('#tituloNoticia').val(getCookie('tituloNoticia'));
     $('#textoNoticia').val(getCookie('textoNoticia'));
     buscarNoticia(getCookie('numeroPagina'), tamanhoPaginaNoticia, 'buscarPaginacion', 'PaginadorCreado');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -562,10 +562,10 @@ async function deleteNoticia(){
 
     let idElementoList = ["tituloNoticia", "textoNoticia", "fechaNoticia"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
     refrescarTabla(0, tamanhoPaginaNoticia);
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
      
@@ -586,12 +586,10 @@ async function deleteNoticia(){
 
 /** Funcion para mostrar el formulario para añadir una noticia **/
 function showAddNoticias() {
-  var idioma = getCookie('lang');
   cambiarFormulario('ADD_NOTICIA', 'javascript:addNoticia();', 'return comprobarAddNoticia();');
   cambiarOnBlurCampos('return comprobarTituloNoticia(\'tituloNoticia\', \'errorFormatoTituloNoticia\', \'tituloNoticia\')', 
       'return comprobarTextoNoticia(\'textoNoticia\', \'errorFormatoTextoNoticia\', \'textoNoticia\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddNoticia', 'Añadir');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelTituloNoticia').attr('hidden', true);
@@ -604,19 +602,18 @@ function showAddNoticias() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
-  ocultarObligatorios(["obligatorioFechaNoticia"])
+  ocultarObligatorios(["obligatorioFechaNoticia"]);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para buscar una noticia **/
 function showBuscarNoticia() {
-  var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_NOTICIA', 'javascript:buscarNoticia(0,' + tamanhoPaginaNoticia + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarNoticia();');
   cambiarOnBlurCampos('return comprobarTituloNoticiaSearch(\'tituloNoticia\', \'errorFormatoTituloNoticia\', \'tituloNoticia\')', 
       'return comprobarTextoNoticiaSearch(\'textoNoticia\', \'errorFormatoTextoNoticia\', \'textoNoticia\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchNoticia', 'Buscar');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelTituloNoticia').attr('hidden', true);
@@ -629,19 +626,16 @@ function showBuscarNoticia() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para visualizar una funcionalidad **/
 function showDetalle(tituloNoticia, textoNoticia, fechaNoticia, idNoticia) {
-  
-    var idioma = getCookie('lang');
 
     cambiarFormulario('DETAIL_NEW', 'javascript:detalleNoticia();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-   
-    setLang(idioma);
-    
+ 
     $('#labelTituloNoticia').removeAttr('hidden');
     $('#labelTextoNoticia').removeAttr('hidden');
     $('#labelFechaNoticia').removeAttr('hidden');
@@ -656,20 +650,18 @@ function showDetalle(tituloNoticia, textoNoticia, fechaNoticia, idNoticia) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Funcion para editar una noticia **/
 function showEditar(tituloNoticia, textoNoticia, fechaNoticia, idNoticia) {
-  var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_NEW', 'javascript:editNoticia();', 'return comprobarEditNoticia();');
     cambiarOnBlurCampos('return comprobarTituloNoticia(\'tituloNoticia\', \'errorFormatoTituloNoticia\', \'tituloNoticia\')', 
       'return comprobarTextoNoticia(\'textoNoticia\', \'errorFormatoTextoNoticia\', \'textoNoticia\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarNoticia', 'Editar');
-   
-    setLang(idioma);
-    
+
     $('#subtitulo').attr('hidden', true);
     $('#labelTituloNoticia').attr('hidden', true);
     $('#labelTextoNoticia').attr('hidden', true);
@@ -686,19 +678,16 @@ function showEditar(tituloNoticia, textoNoticia, fechaNoticia, idNoticia) {
     habilitaCampos(campos);
     deshabilitaCampos(["tituloNoticia"]);
     anadirReadonly(["tituloNoticia"]);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para eliminar una noticia **/
 function showEliminar(tituloNoticia, textoNoticia, fechaNoticia, idNoticia) {
-  
-    var idioma = getCookie('lang');
 
     cambiarFormulario('DELETE_NEW', 'javascript:deleteNoticia();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-   
-    setLang(idioma);
-    
+  
     $('#labelTituloNoticia').removeAttr('hidden');
     $('#labelTextoNoticia').removeAttr('hidden');
     $('#labelFechaNoticia').removeAttr('hidden');
@@ -717,6 +706,7 @@ function showEliminar(tituloNoticia, textoNoticia, fechaNoticia, idNoticia) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -740,6 +730,8 @@ function rellenarFormulario(tituloNoticia, textoNoticia, fechaNoticia) {
     var fecha = fechaNoticia.split('-');
     var fech = fecha[2] + "-" + fecha[1] + "-" + fecha[0];
     $('#fechaNoticia').val(fech);
+
+    setLang(getCookie('lang'));
 
 }
 
@@ -805,6 +797,7 @@ function gestionarPermisosNoticia(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

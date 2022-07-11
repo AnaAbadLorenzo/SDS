@@ -932,6 +932,7 @@ function showAddPlanes() {
   $('#labelFechaPlan').attr('hidden', true);
   $('#labelDescripcionObjetivo').attr('hidden', true);
   $('#descripcionObjetivo').attr('hidden', true);
+  $('#labelNombreObjetivo').attr('hidden', true);
 
  let campos = ["nombrePlan", "descripPlan", "fechaPlan", "selectObjetivos", "descripcionObjetivo"];
   let obligatorios = ["obligatorioNombrePlan", "obligatorioDescripPlan", "obligatorioFechaPlan", "obligatorioObjetivos", "obligatorioDescripcionObjetivo"];
@@ -1017,6 +1018,7 @@ function showEditar(nombrePlan, descripPlan , fechaPlan, nombreObjetivo, descrip
     $('#labelDescripcionObjetivo').attr('hidden', true);
     $('#selectObjetivos').attr('hidden', false);
     $('#descripcionObjetivo').attr('hidden', true);
+    $('#labelNombreObjetivo').attr('hidden', true);
 
     rellenarFormulario(nombrePlan, descripPlan , fechaPlan, nombreObjetivo, "");
    insertacampo(document.formularioGenerico,'idPlan', idPlan);

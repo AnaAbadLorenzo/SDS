@@ -49,13 +49,15 @@
 
   .page-link {  height: 33px !important;}
 
-  .nombreAccionColumn, .descripAccionColumn, .idAccionColumn, .nombreFuncionalidadColumn, .descripFuncionalidadColumn, .idFuncionalidadColumn, .loginUsuarioColumn, 
-  .actionColumn, .dataColumn, .dateColumn, .typeExcepcionColumn, .descriptionExceptionColumn, .tituloNoticiaColumn, .textoNoticiaColumn, .fechaNoticiaColumn, 
-  .idNoticiaColumn, .dniColumn, .nombrePersonaColumn, .apellidosPersonaColumn, .direccionPersonaColumn, .fechaNacimientoPersonaColumn, .telefonoColumn, .emailColumn, 
-  .activoColumn, .nombreEmpresaColumn, .rolNameColumn, .rolDescriptionColumn, .rolIdColumn, .dniUsuarioColumn, .usuarioActivoColumn, .rolColumn, .cifEmpresaColumn, 
-  .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, .nombreObjetivoColumn, .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, 
-  .idRespuestaPosibleColumn, .nombrePlanColumn, .descripcionPlanColumn, .fechaPlanColumn, .nombreProcedimientoColumn, .descripcionProcedimientoColumn, 
-  .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn { font-size: 0.7rem !important;}
+  .nombreAccionColumn, .descripAccionColumn, .idAccionColumn, .nombreFuncionalidadColumn, .descripFuncionalidadColumn, .idFuncionalidadColumn, 
+  .loginUsuarioColumn, .actionColumn, .dataColumn, .dateColumn, .typeExcepcionColumn, .descriptionExceptionColumn, .tituloNoticiaColumn, 
+  .textoNoticiaColumn, .fechaNoticiaColumn, .idNoticiaColumn, .dniColumn, .nombrePersonaColumn, .apellidosPersonaColumn, .direccionPersonaColumn, 
+  .fechaNacimientoPersonaColumn, .telefonoColumn, .emailColumn, .activoColumn, .nombreEmpresaColumn, .rolNameColumn, .rolDescriptionColumn, .rolIdColumn, 
+  .dniUsuarioColumn, .usuarioActivoColumn, .rolColumn, .cifEmpresaColumn, .nombreEmpresaColumn, .direccionEmpresaColumn, .telefonoColumn, .idEmpresaColumn, 
+  .nombreObjetivoColumn, .descripcionObjetivoColumn, .textoRespuestaPosibleColumn, .idRespuestaPosibleColumn, .nombrePlanColumn, .descripcionPlanColumn, 
+  .fechaPlanColumn, .nombreProcedimientoColumn, .descripcionProcedimientoColumn, .fechaProcedimientoColumn, .checkUsuarioColumn, .idProcedimientoColumn, 
+  .nombreProcesoColumn, .descripcionProcesoColumn, .fechaProcesoColumn, .idProcesoColumn, .estadoProcedimientoEjecutadoColumn, .fechaProcedimientosEjecutadosColumn, 
+  .idProcedimientoEjecutadoColumn, .fechaProcesosEjecutadosColumn { font-size: 0.7rem !important;}
 
   .table thead .colLast { font-size: 0.7rem !important; width: 38% !important;}
 

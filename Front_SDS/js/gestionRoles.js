@@ -316,6 +316,8 @@ async function cargarRoles(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#' + numeroPagina).addClass("active");
       }
+
+      setLang(getCookie('lang'));
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -373,6 +375,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
 	  
 	  }).catch((res) => {
 	    $("#modal-title").removeClass();
@@ -436,6 +439,7 @@ async function buscarRol(numeroPagina, tamanhoPagina, accion, paginadorCreado){
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
+      setLang(getCookie('lang'));
 	  
 	  }).catch((res) => {
       cargarPermisosFuncRol();
@@ -466,6 +470,7 @@ async function addRol(){
     $('#nombreRol').val(getCookie('rolName'));
     $('#descripcionRol').val(getCookie('rolDescription'));
     buscarRol(getCookie('numeroPagina'), tamanhoPaginaRol, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
 	    $("#form-modal").modal('toggle');
@@ -498,6 +503,7 @@ async function editRol(){
     $('#nombreRol').val(getCookie('rolName'));
     $('#descripcionRol').val(getCookie('rolDescription'));
     buscarRol(getCookie('numeroPagina'), tamanhoPaginaRol, 'buscarPaginacion', 'PaginadorCreado');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -529,6 +535,7 @@ async function deleteRol(){
     document.getElementById("modal").style.display = "block";
    
     refrescarTabla(0, tamanhoPaginaRol);
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
 	   
@@ -626,6 +633,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#' + numeroPagina).addClass("active");
       }
+
+      setLang(getCookie('lang'));
       
     
     }).catch((res) => {
@@ -664,6 +673,7 @@ async function cargarPermisosFuncRol(){
   await cargarPermisosFuncRolAjaxPromesa()
   .then((res) => {
     gestionarPermisosRol(res.data);
+    setLang(getCookie('lang'));
     
     }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -691,6 +701,7 @@ function showBuscarRol() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -712,6 +723,7 @@ function showAddRol() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -739,6 +751,7 @@ function showEditar(rolName, rolDescription, idRol) {
     mostrarObligatorios(obligatorios);
     habilitaCampos(campos);
     deshabilitaCampos(["nombreRol"]);
+    setLang(getCookie('lang'));
 
 }
 
@@ -768,6 +781,7 @@ function showEliminar(rolName, rolDescription, idRol) {
     eliminarReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -792,6 +806,7 @@ function showDetalle(rolName, rolDescription) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -821,6 +836,7 @@ function showReactivar(rolName, rolDescription, idRol) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -935,6 +951,7 @@ function gestionarPermisosRol(idElementoList) {
       break;
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

@@ -367,7 +367,6 @@ async function cargarAcciones(numeroPagina, tamanhoPagina, paginadorCreado){
     	var div = createHideShowColumnsWindow({ACCION_DESCRIPTION_COLUMN:2});
       	$("#checkboxColumnas").append(div);
       	$("#paginacion").append(textPaginacion);
-      	setLang(getCookie('lang'));
 
         if(paginadorCreado != 'PaginadorCreado'){
             paginador(totalResults, 'cargarAcciones', 'ACCION');
@@ -382,10 +381,12 @@ async function cargarAcciones(numeroPagina, tamanhoPagina, paginadorCreado){
         }
 	  
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 
 		}).catch((res) => {
 		    respuestaAjaxKO(res.code);
 		    document.getElementById("modal").style.display = "block";
+        setLang(getCookie('lang'));
 		});
 }
 
@@ -399,12 +400,12 @@ async function addAccion(){
 
     let idElementoList = ["nombreAccion", "descripcionAccion"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     
     $('#nombreAccion').val(getCookie('nombreAccion'));
     $('#descripcionAccion').val(getCookie('descripAccion'));
     buscarAccion(getCookie('numeroPagina'), tamanhoPaginaAccion, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -458,7 +459,6 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion, paginadorCreado
       
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       if(paginadorCreado != 'PaginadorCreado'){
         paginador(totalResults, 'buscarAccion', 'ACCION');
@@ -472,6 +472,7 @@ async function buscarAccion(numeroPagina, tamanhoPagina, accion, paginadorCreado
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
+      setLang(getCookie('lang'));
 
   
   }).catch((res) => {
@@ -521,7 +522,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       var div = createHideShowColumnsWindow({ACCION_DESCRIPTION_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('nombreAccion', '');
       setCookie('descripAccion', '');
@@ -538,6 +538,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -581,7 +582,6 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var div = createHideShowColumnsWindow({ACCION_DESCRIPTION_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('nombreAccion', '');
       setCookie('descripAccion', '');
@@ -595,6 +595,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#' + numeroPagina).addClass("active");
       }
+
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -613,9 +615,10 @@ async function detalleAccion(){
 
     let idElementoList = ["nombreAccion", "descripcionAccion"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     $('#nombreAccion').val(getCookie('nombreAccion'));
     $('#descripcionAccion').val(getCookie('descripAccion'));
+
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -641,11 +644,13 @@ async function editAccion(){
 
     let idElementoList = ["nombreAccion", "descripcionAccion"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
+
     document.getElementById("modal").style.display = "block";
     $('#nombreAccion').val(getCookie('nombreAccion'));
     $('#descripcionAccion').val(getCookie('descripAccion'));
     buscarAccion(getCookie('numeroPagina'), tamanhoPaginaAccion, 'buscarPaginacion', 'PaginadorCreado');
+
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -673,10 +678,11 @@ async function deleteAccion(){
 
     let idElementoList = ["nombreAccion", "descripcionAccion"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
     refrescarTabla(0, tamanhoPaginaAccion);
+
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
      
@@ -705,10 +711,10 @@ async function reactivarAccion(){
 
     respuestaAjaxOK("ACCION_REACTIVADA_OK", res.code);
 
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
     buscarEliminados(0, tamanhoPaginaAccion, 'PaginadorNo');
+    setLang(getCookie('lang'));
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -720,12 +726,10 @@ async function reactivarAccion(){
 
 /** Funcion para mostrar el formulario para añadir una acción **/
 function showAddAcciones() {
-  var idioma = getCookie('lang');
   cambiarFormulario('ADD_ACCION', 'javascript:addAccion();', 'return comprobarAddAccion();');
   cambiarOnBlurCampos('return comprobarNombreAccion(\'nombreAccion\', \'errorFormatoNombreAccion\', \'nombreAccion\')', 
   'return comprobarDescripcionAccion(\'descripcionAccion\', \'errorFormatoDescripcionAccion\', \'descripcionAccion\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddAccion', 'Añadir');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelAccionName').attr('hidden', true);
@@ -736,18 +740,17 @@ function showAddAcciones() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para buscar una accion **/
 function showBuscarAccion() {
-  var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_ACCION', 'javascript:buscarAccion(0,' + tamanhoPaginaAccion + ', \'buscarModal\'' + ', \'PaginadorNo\');', 'return comprobarBuscarAccion();');
   cambiarOnBlurCampos('return comprobarNombreAccionSearch(\'nombreAccion\', \'errorFormatoNombreAccion\', \'nombreAccion\')', 
   'return comprobarDescripcionAccionSearch(\'descripcionAccion\', \'errorFormatoDescripcionAccion\', \'descripcionAccion\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchAccion', 'Buscar');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelAccionName').attr('hidden', true);
@@ -758,18 +761,14 @@ function showBuscarAccion() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para visualizar una accion **/
 function showDetalle(nombreAccion, descripAccion) {
-  
-    var idioma = getCookie('lang');
-
     cambiarFormulario('DETAIL_ACTION', 'javascript:detalleAccion();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-   
-    setLang(idioma);
     
     $('#labelAccionName').removeAttr('hidden');
     $('#labelAccionDescription').removeAttr('hidden');
@@ -783,19 +782,17 @@ function showDetalle(nombreAccion, descripAccion) {
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
 
+    setLang(getCookie('lang'));
+
 }
 
 /** Funcion para editar una accion **/
 function showEditar(nombreAccion, descripAccion, idAccion) {
-  var idioma = getCookie('lang');
-
     cambiarFormulario('EDIT_ACCION', 'javascript:editAccion();', 'return comprobarEditAccion();');
     cambiarOnBlurCampos('return comprobarNombreAccion(\'nombreAccion\', \'errorFormatoNombreAccion\', \'nombreAccion\')', 
       'return comprobarDescripcionAccion(\'descripcionAccion\', \'errorFormatoDescripcionAccion\', \'descripcionAccion\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarAccion', 'Editar');
-   
-    setLang(idioma);
-    
+
     $('#subtitulo').attr('hidden', true);
     $('#labelAccionName').attr('hidden', true);
     $('#labelAccionDescription').attr('hidden', true);
@@ -810,17 +807,15 @@ function showEditar(nombreAccion, descripAccion, idAccion) {
     habilitaCampos(campos);
     deshabilitaCampos(["nombreAccion"]);
     anadirReadonly(["nombreAccion"]);
+
+    setLang(getCookie('lang'));
 }
 
 /** Función para eliminar una accion **/
 function showEliminar(nombreAccion, descripAccion, idAccion) {
-  
-    var idioma = getCookie('lang');
 
     cambiarFormulario('DELETE_ACCION', 'javascript:deleteAccion();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-   
-    setLang(idioma);
     
     $('#labelAccionName').removeAttr('hidden');
     $('#labelAccionDescription').removeAttr('hidden');
@@ -839,18 +834,16 @@ function showEliminar(nombreAccion, descripAccion, idAccion) {
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
 
+    setLang(getCookie('lang'));
+
 }
 
 /** Función para reactivar una accion **/
 function showReactivar(nombreAccion, descripAccion , idAccion) {
-  
-    var idioma = getCookie('lang');
 
     cambiarFormulario('REACTIVATE_ACCION', 'javascript:reactivarAccion();', '');
     cambiarIcono('images/reactivar2.png', 'ICONO_REACTIVAR', 'iconoReactivar', 'Reactivar');
-   
-    setLang(idioma);
-    
+
     $('#labelAccionName').removeAttr('hidden');
     $('#labelAccionDescription').removeAttr('hidden');
     $('#subtitulo').removeAttr('class');
@@ -867,6 +860,7 @@ function showReactivar(nombreAccion, descripAccion , idAccion) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -972,6 +966,8 @@ function gestionarPermisosAccion(idElementoList) {
 
     } 
     }); 
+
+  setLang(getCookie('lang'));
 }
 
 async function permisosUsuarios(){
@@ -984,8 +980,10 @@ async function permisosUsuarios(){
           $('#collapseGest' + cardAbierta).addClass('show');
           cargarInfoPermiso(getCookie('nomFuncPermisos'));
       }
+      setLang(getCookie('lang'));
     }).catch((res) => {
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     });
 }
@@ -1062,9 +1060,11 @@ async function cargarInfoPermiso(funcionalidad){
       $('#cabeceraPermisosGest' +nombreCollapse).append(rolesDisponibles);
 
       cargarAccionesPermisos(funcionalidad,res.data);
+      setLang(getCookie('lang'));
 
     }).catch((res) => {
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     });
 }
@@ -1200,12 +1200,15 @@ function cargarAccionesPermisos(funcionalidad,acciones){
         
       }
 
+  setLang(getCookie('lang'));
+
 }
 
 async function asignarPermiso(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad){
   await asignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad)
   .then((res) => {
       permisosUsuarios();
+      setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -1270,6 +1273,7 @@ async function desasignarPermiso(idAccion, nombreAccion, descripAccion, borradoA
   await desasignarPermisoAjaxPromesa(idAccion, nombreAccion, descripAccion, borradoAccion, idRol, rolName, rolDescription, borradoRol, idFuncionalidad, nombreFuncionalidad, descripFuncionalidad, borradoFuncionalidad)
   .then((res) => {
       permisosUsuarios();
+      setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -1355,8 +1359,10 @@ function cargarTablaPermisos(datos){
                     '</div>' + 
                   '</div>';
 
-    $('#accordion').append(permisos);             
+    $('#accordion').append(permisos);   
   }
+
+  setLang(getCookie('lang'));
 }
 
 /** Función para guardar el card del permiso en el que nos encontramos **/
@@ -1376,6 +1382,7 @@ function cargarCardAbierta(nombreFuncionalidad){
 
     setCookie('cardPermiso', nombreCollapse);
     setCookie('nomFuncPermisos', nombreFuncionalidad);
+    setLang(getCookie('lang'));
 
 }
 $(document).ready(function() {

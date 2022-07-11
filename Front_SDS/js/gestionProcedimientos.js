@@ -438,6 +438,7 @@ async function cargarPermisosFuncProcedimiento(){
   await cargarPermisosFuncProcedimientoAjaxPromesa()
   .then((res) => {
     gestionarPermisosProcedimiento(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -622,8 +623,6 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
             $('#procedimientos').append(tr);
         }
 
-          setLang(getCookie('lang'));
-
           if(paginadorCreado != 'PaginadorCreado'){
             paginador(totalResults, 'cargarProcedimientosSegunPlan', 'PROCEDIMIENTO');
           }
@@ -637,9 +636,11 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
           }
 
           setCookie('numeroPagina', numPagCookie);
+          setLang(getCookie('lang'));
 
       }).catch((res) => {
           respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
           document.getElementById("modal").style.display = "block";
       });
   
@@ -671,7 +672,6 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
           var div = createHideShowColumnsWindow({DESCRIPCION_PROCEDIMIENTO_COLUMN:2, DATE_COLUMN:3, CHECK_USUARIO_COLUMN: 4, NOMBRE_PLAN_COLUMN:5});
           $("#checkboxColumnas").append(div);
           $("#paginacion").append(textPaginacion);
-          setLang(getCookie('lang'));
 
           if(paginadorCreado != 'PaginadorCreado'){
             paginador(totalResults, 'cargarProcedimientos', 'PROCEDIMIENTO');
@@ -686,9 +686,11 @@ async function cargarProcedimientos(numeroPagina, tamanhoPagina, paginadorCreado
           }
 
           setCookie('numeroPagina', numPagCookie);
+          setLang(getCookie('lang'));
 
       }).catch((res) => {
           respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
           document.getElementById("modal").style.display = "block";
       });
     }
@@ -703,7 +705,6 @@ async function addProcedimiento(){
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
 
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
@@ -712,6 +713,7 @@ async function addProcedimiento(){
     $('#checkUsuario').val(getCookie('checkUsuario'));
     $('#plan').val(getCookie('plan'));
     buscarProcedimiento(getCookie('numeroPagina'), tamanhoPaginaProcedimiento, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -774,7 +776,6 @@ async function buscarProcedimiento(numeroPagina, tamanhoPagina, accion, paginado
           }
       }
 
-      setLang(getCookie('lang'));
       $("#paginacion").append(textPaginacion);
       if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'buscarProcedimiento', 'PROCEDIMIENTO');
@@ -788,6 +789,7 @@ async function buscarProcedimiento(numeroPagina, tamanhoPagina, accion, paginado
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
+      setLang(getCookie('lang'));
 
 
   }).catch((res) => {
@@ -840,8 +842,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         var div = createHideShowColumnsWindow({DESCRIPCION_PROCEDIMIENTO_COLUMN:2, DATE_COLUMN:3, CHECK_USUARIO_COLUMN: 4, NOMBRE_PLAN_COLUMN:5});
         $("#checkboxColumnas").append(div);
         $("#paginacion").append(textPaginacion);
-        setLang(getCookie('lang'));
-
         setCookie('nombreProcedimiento', '');
         setCookie('descripProcedimiento', '');
         setCookie('fechaProcedimiento', '');
@@ -859,6 +859,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
         setCookie('numeroPagina', numPagCookie);
         comprobarOcultos();
+        setLang(getCookie('lang'));
 
       }).catch((res) => {
 
@@ -888,9 +889,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
             var tr = cargarProcedimientosPlan(res.data.listaBusquedas[i]);
             $('#procedimientos').append(tr);
         }
-
-          setLang(getCookie('lang'));
-
           
           paginador(totalResults, 'cargarProcedimientosSegunPlan', 'PROCEDIMIENTO');
 
@@ -903,9 +901,11 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
           }
 
           setCookie('numeroPagina', numPagCookie);
+          setLang(getCookie('lang'));
 
       }).catch((res) => {
           respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
           document.getElementById("modal").style.display = "block";
       });
   }
@@ -945,7 +945,6 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var div = createHideShowColumnsWindow({DESCRIPCION_PROCEDIMIENTO_COLUMN:2, DATE_COLUMN:3, CHECK_USUARIO_COLUMN: 4, NOMBRE_PLAN_COLUMN:5});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('nombreProcedimiento', '');
       setCookie('descripProcedimiento', '');
@@ -963,6 +962,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         $('#' + numeroPagina).addClass("active");
       }
 
+      setLang(getCookie('lang'));
+
     }).catch((res) => {
 
       respuestaAjaxKO(res.code);
@@ -979,11 +980,12 @@ function detalleProcedimientoCerrarModal(){
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
 
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
     $('#descripProcedimiento').val(getCookie('descripProcedimiento'));
     $('#fechaProcedimiento').val(getCookie('fechaProcedimiento'));
     $('#checkUsuario').val(getCookie('checkUsuario'));
+
+    setLang(getCookie('lang'));
 }
 
 /** Función que visualiza un procedimiento**/
@@ -994,12 +996,13 @@ async function detalleProcedimiento(){
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
     
-    resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
+    resetearFormulario("formularioGenerico", idElementoList)
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
     $('#descripProcedimiento').val(getCookie('descripProcedimiento'));
     $('#fechaProcedimiento').val(getCookie('fechaProcedimiento'));
     $('#checkUsuario').val(getCookie('checkUsuario'));
+
+    setLang(getCookie('lang'));
   
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -1025,13 +1028,13 @@ async function editProcedimiento(){
 
     let idElementoList = ["nombreProcedimiento", "descripProcedimiento", "fechaProcedimiento", "checkUsuarioPublicar", "checkUsuarioNoPublicar", "selectPlanes", "descripPlan"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     $('#nombreProcedimiento').val(getCookie('nombreProcedimiento'));
     $('#descripProcedimiento').val(getCookie('descripProcedimiento'));
     $('#fechaProcedimiento').val(getCookie('fechaProcedimiento'));
     $('#checkUsuario').val(getCookie('checkUsuario'));
     buscarProcedimiento(getCookie('numeroPagina'), tamanhoPaginaProcedimiento, 'buscarPaginacion', 'PaginadorCreado');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -1109,14 +1112,12 @@ async function reactivarProcedimiento(){
 
 /** Funcion para mostrar el formulario para añadir un procedimiento **/
 function showAddProcedimientos() {
-  var idioma = getCookie('lang');
   cambiarFormulario('ADD_PROCEDIMIENTO', 'javascript:addProcedimiento();', 'return comprobarAddProcedimiento();');
   cambiarOnBlurCampos('return comprobarNombreProcedimiento(\'nombreProcedimiento\', \'errorFormatoNombreProcedimiento\', \'nombreProcedimiento\')', 
       'return comprobarDescripcionProcedimiento(\'descripProcedimiento\', \'errorFormatoDescripcionProcedimiento\', \'descripProcedimiento\')',
       'return comprobarFechaProcedimiento(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')',
       'return comprobarSelect(\'selectPlanes\', \'errorFormatoNombrePlanSelect\', \'selectPlanesOptions\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddPlan', 'Añadir');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelNombreProcedimiento').attr('hidden', true);
@@ -1136,19 +1137,18 @@ function showAddProcedimientos() {
   mostrarObligatorios(obligatorios);
   ocultarObligatorios(["obligatorioCheck"]);
   habilitaCampos(idElementoList);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para buscar un plan **/
 function showBuscarProcedimiento() {
-  var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_PROCEDIMIENTO', 'javascript:buscarProcedimiento(0,' + tamanhoPaginaProcedimiento + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarProcedimiento();');
   cambiarOnBlurCampos('return comprobarNombreProcedimientoSearch(\'nombreProcedimiento\', \'errorFormatoNombreProcedimiento\', \'nombreProcedimiento\')', 
       'return comprobarDescripcionProcedimientoSearch(\'descripProcedimiento\', \'errorFormatoDescripcionProcedimiento\', \'descripProcedimiento\')',
       'return comprobarFechaProcedimientoSearch(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchPlan', 'Buscar');
-  setLang(idioma);
 
   $('#labelNombreProcedimiento').attr('hidden', true);
   $('#labelDescripcionProcedimiento').attr('hidden', true);
@@ -1168,18 +1168,16 @@ function showBuscarProcedimiento() {
   eliminarReadonly(idElementoList);
   ocultarObligatorios(obligatorios);
   habilitaCampos(idElementoList);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para visualizar un procedimiento **/
 function showDetalle(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan) {
 
-    var idioma = getCookie('lang');
 
     cambiarFormulario('DETAIL_PROCEDIMIENTO', 'javascript:detalleProcedimientoCerrarModal();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-
-    setLang(idioma);
 
     $('#labelNombreProcedimiento').removeAttr('hidden');
     $('#labelDescripcionProcedimiento').removeAttr('hidden');
@@ -1200,12 +1198,12 @@ function showDetalle(nombreProcedimiento, descripProcedimiento , fechaProcedimie
     anadirReadonly(idElementoList);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(idElementoList);
+    setLang(getCookie('lang'));
 
 }
 
 /** Funcion para editar un procedimiento **/
 function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento) {
-  var idioma = getCookie('lang');
 
     cambiarFormulario('EDIT_PROCEDIMIENTO', 'javascript:editProcedimiento();', 'return comprobarEditProcedimiento();');
     cambiarOnBlurCampos('return comprobarNombreProcedimiento(\'nombreProcedimiento\', \'errorFormatoNombreProcedimiento\', \'nombreProcedimiento\')', 
@@ -1213,8 +1211,6 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
       'return comprobarFechaProcedimiento(\'fechaProcedimiento\', \'errorFormatoFechaProcedimiento\', \'fechaProcedimiento\')',
       'return comprobarSelect(\'selectPlanes\', \'errorFormatoNombrePlanSelect\', \'selectPlanesOptions\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarProcedimiento', 'Editar');
-
-    setLang(idioma);
 
     $('#subtitulo').attr('hidden', true);
     $('#labelNombreProcedimiento').attr('hidden', true);
@@ -1238,18 +1234,15 @@ function showEditar(nombreProcedimiento, descripProcedimiento , fechaProcedimien
     habilitaCampos(idElementoList);
     deshabilitaCampos(["nombreProcedimiento"]);
     anadirReadonly(["nombreProcedimiento"]);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para eliminar un procedimiento **/
 function showEliminar(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento) {
 
-    var idioma = getCookie('lang');
-
     cambiarFormulario('DELETE_PROCEDIMIENTO', 'javascript:deleteProcedimiento();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-
-    setLang(idioma);
 
     $('#labelNombreProcedimiento').removeAttr('hidden');
     $('#labelDescripcionProcedimiento').removeAttr('hidden');
@@ -1272,18 +1265,15 @@ function showEliminar(nombreProcedimiento, descripProcedimiento , fechaProcedimi
     anadirReadonly(idElementoList);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(idElementoList);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para reactivar un procedimiento **/
 function showReactivar(nombreProcedimiento, descripProcedimiento , fechaProcedimiento, checkUsuario, nombrePlan, descripcionPlan, idProcedimiento) {
 
-    var idioma = getCookie('lang');
-
     cambiarFormulario('REACTIVATE_PROCEDIMIENTO', 'javascript:reactivarProcedimiento();', '');
     cambiarIcono('images/reactivar2.png', 'ICONO_REACTIVAR', 'iconoReactivar', 'Reactivar');
-
-    setLang(idioma);
 
     $('#labelNombreProcedimiento').removeAttr('hidden');
     $('#labelDescripcionProcedimiento').removeAttr('hidden');
@@ -1307,6 +1297,7 @@ function showReactivar(nombreProcedimiento, descripProcedimiento , fechaProcedim
     anadirReadonly(idElementoList);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(idElementoList);
+    setLang(getCookie('lang'));
 
 }
 
@@ -1367,6 +1358,7 @@ function rellenarFormulario(nombreProcedimiento, descripProcedimiento, fechaProc
 
     
     $('#descripPlan').val(descripPlan);
+    setLang(getCookie('lang'));
 
 }
 
@@ -1463,6 +1455,8 @@ function gestionarPermisosProcedimiento(idElementoList) {
 
     } 
     }); 
+
+  setLang(getCookie('lang'));
 }
 
 /** Función para construír el select **/
@@ -1481,9 +1475,11 @@ async function construyeSelectPlanes(){
         }
 
         $('#selectPlanes').append(options);
+        setLang(getCookie('lang'));
 
   }).catch((res) => {
      respuestaAjaxKO(res.code);
+     setLang(getCookie('lang'));
   });
 }
 
@@ -1557,6 +1553,8 @@ function cargarProcedimientosPlan(procedimiento){
                     '</div>';
 
   $('#procedimientos').append(procedimientos);
+
+  setLang(getCookie('lang'));
 
 
 }

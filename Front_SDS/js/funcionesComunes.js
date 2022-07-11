@@ -82,6 +82,8 @@ function includeTopMenu(funcionalidad) {
 
 	$("#topMenu").append(topMenu);
 
+	setLang(getCookie('lang'));
+
 }
 
 function modalCambioPass(){
@@ -111,6 +113,8 @@ function modalCambioPass(){
 
 
     $("#changePass-modal").append(contenidoModal);
+
+    setLang(getCookie('lang'));
 
 }
 
@@ -311,6 +315,8 @@ function rellenaSelect(select, datos){
 	option.setAttribute("label", " --- Añadir nueva empresa --- ");
 
 	select.append(option);
+
+	setLang(getCookie('lang'));
 
 }
 
@@ -615,6 +621,8 @@ function construyeFila(entidad, fila) {
                 '</td> </tr>';
     }
 
+    setLang(getCookie('lang'));
+
     return filaTabla;
 }
 
@@ -684,6 +692,8 @@ function construyeFilaProceso(entidad, fila, procedimientos, objetivos, respuest
                 '</td> </tr>';
     
 
+    setLang(getCookie('lang'));
+
     return filaTabla;
 }
 
@@ -736,6 +746,8 @@ function construyeFilaProcedimientoEjecutado(entidad, fila, numeroProcesosTotal,
                 '</td> </tr>';
     
 
+	setLang(getCookie('lang'));
+
     return filaTabla;
 
 }
@@ -778,6 +790,7 @@ function construyeFilaProcesosEjecutado(entidad, fila, datosProceso){
                 '</td> <td class="acciones">' + celdaAcciones +  
                 '</td> </tr>';
     
+	setLang(getCookie('lang'));
 
     return filaTabla;
 
@@ -915,6 +928,8 @@ function construyeFilaEliminados(entidad, fila) {
                 '</td> <td class="acciones">' + reactivar +  
                 '</td> </tr>';
     }
+
+    setLang(getCookie('lang'));
 	
     return filaTabla;
 }
@@ -977,6 +992,8 @@ function construyeFilaProcesoEliminado(entidad, fila, procedimientos, objetivos,
                 '</td> <td class="acciones">' + reactivar +  
                 '</td> </tr>';
 
+	setLang(getCookie('lang'));
+
     return filaTabla;
 }
 
@@ -991,6 +1008,9 @@ function createHideShowColumnsWindow(arrayColumnas) {
         "' name='" + clave + "' value='" + clave + "' onclick='hideShow(" + clave + ", " + arrayColumnas[clave] + 
         ")'><label for='" + clave.replace('_COLUMN', '') + "'></label><br>";
     }
+
+    setLang(getCookie('lang'));
+
     return checkbox;
  
 }
@@ -1239,6 +1259,8 @@ function cargarClass(dato, rol){
 		break;
 	}
 
+	setLang(getCookie('lang'));
+
 	return clase;
 }
 
@@ -1294,6 +1316,8 @@ function cambiarTituloGestion(funcionalidad){
 			}
 		break;
 	}
+
+	setLang(getCookie('lang'));
 }
 
 /* Función para comprobar errrores en los tabs de registro */
@@ -1455,6 +1479,8 @@ function respuestaAjaxOK(clase, codigo){
     $("#modal-title").addClass(clase);
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
+
+    setLang(getCookie('lang'));
 }
 
 /** Función para mostrar las modales de error **/
@@ -1466,6 +1492,8 @@ function respuestaAjaxKO(codigo){
     $(".imagenAviso").attr('src', 'images/failed.png');
     $("#modal-mensaje").removeClass();
     $("#modal-mensaje").addClass(codigo);
+
+    setLang(getCookie('lang'));
 }
 
 /** Función para mostrar las modales de error **/
@@ -1476,6 +1504,8 @@ function respuestaAjaxContinuarProcedimiento(identificadorProcedimiento){
     document.getElementById("modal-titleContinuar").style.top = "13%";
     $(".imagenAviso").attr('src', 'images/failed.png');
     $('#seguir').attr('onclick', 'iniciarProcedimientoUsuario('+ identificadorProcedimiento +', \'volverGuardar\')');
+
+    setLang(getCookie('lang'));
 }
 
 

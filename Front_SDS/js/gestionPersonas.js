@@ -9,6 +9,7 @@ $(function() {
       $('#formRegistroEmpresa').prop("hidden", true);
     }
   });
+  setLang(getCookie('lang'));
 });
 
 
@@ -24,6 +25,7 @@ $(function() {
       $('#formRegistroEmpresa').prop("hidden", true);
     }
   });
+  setLang(getCookie('lang'));
 });
 
 /** Habilitar form para añadir empresa **/
@@ -45,6 +47,7 @@ $(function() {
       $("#empresasDisponibles").prop('disabled', true);
     }
   });
+  setLang(getCookie('lang'));
 });
 
 /** Habilitar form para añadir empresa desde el select de empresas**/
@@ -58,6 +61,7 @@ $(function() {
           $('#formRegistroEmpresa').prop("hidden", true);
         }
       });
+  setLang(getCookie('lang'));
 });
 
 /** Habilitar form para añadir empresa **/
@@ -76,6 +80,7 @@ $(function() {
     
     }
   });
+  setLang(getCookie('lang'));
 });
 
 
@@ -93,7 +98,7 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
          cargaDatosEmpresa(res.data.listaBusquedas);
         
           
-		  
+		  setLang(getCookie('lang'));
 		  }).catch((res) => {
 		      respuestaAjaxKO(res.code);
 
@@ -129,7 +134,6 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
                                                         EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
                 $("#checkboxColumnas").append(div);
                 $("#paginacion").append(textPaginacion);
-                setLang(getCookie('lang'));
 
                 if(paginadorCreado != 'PaginadorCreado'){
                   paginador(totalResults, 'cargarPersonas', 'PERSONA');
@@ -144,6 +148,7 @@ async function cargarPersonas(numeroPagina, tamanhoPagina, paginadorCreado){
                 }
 
                 setCookie('numeroPagina', numPagCookie);
+                setLang(getCookie('lang'));
       
             }).catch((res) => {
                 respuestaAjaxKO(res.code);
@@ -192,8 +197,6 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
                                                         EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
-
       if(paginadorCreado != 'PaginadorCreado'){
          paginador(totalResults, 'buscarPersona', 'PERSONA');
       }
@@ -206,6 +209,7 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       cargarPermisosFuncPersona();
@@ -218,7 +222,7 @@ async function buscarPersona(numeroPagina, tamanhoPagina, accion, paginadorCread
       limpiaRadioButton(idElementosRadioButtons);
 
       respuestaAjaxKO(res.code);
-
+      setLang(getCookie('lang'));
       document.getElementById("modal").style.display = "block";
   });
 }
@@ -229,7 +233,6 @@ async function addPersona(){
   .then((res) => {
     $("#form-modal").modal('toggle');
     respuestaAjaxOK("PERSONA_GUARDADA_OK", res.code);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
 
     let idElementoList = ["dniP", "nombreP", "apellidosP", "fechaNacP", "direccionP", "telefonoP", "emailP", 
@@ -255,6 +258,7 @@ async function addPersona(){
     $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
     
     buscarPersona(getCookie('numeroPagina'), tamanhoPaginaPersona, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -291,7 +295,6 @@ async function editPersona(){
     resetearFormulario("formularioGenerico", idElementoList);
     limpiaRadioButton(idElementosRadioButtons);
 
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     $('#dniP').val(getCookie('dniP'));
     $('#nombreP').val(getCookie('nombreP'));
@@ -312,6 +315,8 @@ async function editPersona(){
     }else{
       cargarPersonas(getCookie('numeroPagina'), tamanhoPaginaPersona, 'PaginadorCreado');
     }
+
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -347,10 +352,10 @@ async function deletePersona(){
     
     resetearFormulario("formularioGenerico", idElementoList);
     limpiaRadioButton(idElementosRadioButtons);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
     refrescarTabla(0, tamanhoPaginaPersona);
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
      
@@ -384,7 +389,6 @@ async function detallePersona(){
     
     resetearFormulario("formularioGenerico", idElementoList);
     limpiaRadioButton(idElementosRadioButtons);
-    setLang(getCookie('lang'));
     
     $('#dniP').val(getCookie('dniP'));
     $('#nombreP').val(getCookie('nombreP'));
@@ -399,6 +403,7 @@ async function detallePersona(){
     $('#nombreEmpresa').val(getCookie('nombreEmpresa'));
     $('#direccionEmpresa').val(getCookie('direccionEmpresa'));
     $('#telefonoEmpresa').val(getCookie('telefonoEmpresa'));
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -456,7 +461,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
                                                         EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       paginador(totalResults, 'cargarPersonas', 'PERSONA');
 
@@ -470,6 +474,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -515,7 +520,6 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
                                                         EMAIL_COLUMN: 4,LOGIN_USUARIO_COLUMN:5, NOMBRE_EMPRESA_COLUMN: 6});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('dniP', '');
       setCookie('nombreP', '');
@@ -539,6 +543,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#' + numeroPagina).addClass("active");
       }
+
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -1087,7 +1093,6 @@ async function asociarPersonaEmpresa(dniPersona){
 
 /** Funcion para mostrar el formulario para añadir una persona **/
 function showAddPersonas() {
-  var idioma = getCookie('lang');
 
     if($('#datosUser').hasClass('active')){
       $('#datosUser').removeClass('active');
@@ -1143,7 +1148,6 @@ function showAddPersonas() {
     'return comprobarDireccion(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
     'return comprobarTelefono(\'telefono\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddPersona', 'Añadir');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelDNI').attr('hidden', true);
@@ -1175,12 +1179,12 @@ function showAddPersonas() {
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
   muestraFormatos(formatos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para editar una persona **/
 function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa, idEmpresa) {
-  var idioma = getCookie('lang');
 
     if($('#datosUser').hasClass('active')){
       $('#datosUser').removeClass('active');
@@ -1232,8 +1236,6 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     'return comprobarDireccion(\'direccionEmpresa\', \'errorFormatoDireccionEmpresa\', \'direccionEmpresaRegistro\')',
     'return comprobarTelefono(\'telefono\', \'errorFormatoTelefonoEmpresa\', \'telefonoEmpresaRegistro\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarPersona', 'Editar');
-   
-    setLang(idioma);
     
     $('#subtitulo').attr('hidden', true);
     $('#labelDNI').attr('hidden', true);
@@ -1282,13 +1284,12 @@ function showEditar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, 
     deshabilitaCampos(["dniP"]);
     anadirReadonly(["dniP"]);
     muestraFormatos(formatos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para eliminar una persona **/
 function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
-  
-    var idioma = getCookie('lang');
 
      if($('#datosUser').hasClass('active')){
       $('#datosUser').removeClass('active');
@@ -1329,9 +1330,7 @@ function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP
 
     cambiarFormulario('DELETE_PERSONA', 'javascript:deletePersona();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-   
-    setLang(idioma);
-    
+
     $('#subtitulo').attr('hidden', false);
     $('#labelDNI').attr('hidden', false);
     $('#labelNombrePersona').attr('hidden', false);
@@ -1376,13 +1375,12 @@ function showEliminar(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP
     deshabilitaCampos(campos);
     anadirReadonly(campos);
     ocultaFormatos(formatos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Funcion para visualizar una persona **/
 function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP, emailP, borradoP, usuario, rol, activo, cifEmpresa, nombreEmpresa, direccionEmpresa, telefonoEmpresa) {
-  
-    var idioma = getCookie('lang');
 
     if($('#datosUser').hasClass('active')){
       $('#datosUser').removeClass('active');
@@ -1423,9 +1421,7 @@ function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP,
 
     cambiarFormulario('DETAIL_PERSONA', 'javascript:detallePersona();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-   
-    setLang(idioma);
-    
+
     $('#subtitulo').attr('hidden', false);
     $('#labelDNI').attr('hidden', false);
     $('#labelNombrePersona').attr('hidden', false);
@@ -1469,12 +1465,12 @@ function showDetalle(dniP, nombreP, apellidosP,fechaNacP, direccionP, telefonoP,
     deshabilitaCampos(campos);
     anadirReadonly(campos);
     ocultaFormatos(formatos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Funcion para buscar una persona **/
 function showBuscarPersona() {
-  var idioma = getCookie('lang');
 
     if($('#datosUser').hasClass('active')){
       $('#datosUser').removeClass('active');
@@ -1522,7 +1518,6 @@ function showBuscarPersona() {
     'return comprobarTelefonoSearch(\'telefonoP\', \'errorFormatoTelefono\', \'telefonoPersonaRegistro\');',
     'return comprobarEmailSearch(\'emailP\', \'errorFormatoEmail\', \'emailPersonaRegistro\');');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchPersona', 'Buscar');
-  setLang(idioma);
 
     $('#subtitulo').attr('hidden', true);
     $('#labelDNI').attr('hidden', true);
@@ -1544,6 +1539,7 @@ function showBuscarPersona() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -1553,7 +1549,7 @@ async function cargarPermisosFuncPersona(){
   await cargarPermisosFuncPersonaAjaxPromesa()
   .then((res) => {
     gestionarPermisosPersona(res.data);
-    
+    setLang(getCookie('lang'));
     }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -1566,7 +1562,7 @@ async function cargarPermisosFuncEmpresaPersona(){
   await cargarPermisosFuncEmpresaPersonaAjaxPromesa()
   .then((res) => {
     gestionarPermisosEmpresaPersona(res.data);
-    
+    setLang(getCookie('lang'));
     }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -1593,6 +1589,7 @@ async function cargarEmpresasSelect(selector){
       
     }
     $('#' + selector).attr('hidden', false);
+    setLang(getCookie('lang'));
 
     }).catch((res) => {
       respuestaAjaxKO(res.code);
@@ -1721,6 +1718,7 @@ function gestionarPermisosPersona(idElementoList) {
       break;
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 
@@ -1736,6 +1734,7 @@ function gestionarPermisosEmpresaPersona(idElementoList) {
       break;
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 /**Función que rellenado los datos del formulario*/
@@ -1783,6 +1782,8 @@ function rellenarFormulario(dniP, nombreP, apellidosP, fechaNacP, direccionP, te
     }else{
        $('#telefonoEmpresa').val(telefonoEmpresa);
     }
+
+    setLang(getCookie('lang'));
 
 }
 
@@ -1846,7 +1847,7 @@ function cambiarOnBlurCampos(onBlurDNI, onBlurNombrePersona, onBlurApellidosPers
         $("#telefonoEmpresa").attr('onblur', onBlurTelefonoEmpresa);
     }
 
-
+    setLang(getCookie('lang'));
 }
 
 function cargaDatosPersona(datos){
@@ -1902,6 +1903,7 @@ function cargaDatosPersona(datos){
      						'</div>';
 
      	$('#cardPersona').append(cardPersona);
+      setLang(getCookie('lang'));
 }
 
 function cargaDatosUsuario(datos){
@@ -1929,6 +1931,7 @@ function cargaDatosUsuario(datos){
 
 
      $('#cardUsuario').append(cardUsuario);
+     setLang(getCookie('lang'));
 }
 
 function cargaDatosEmpresa(datos){
@@ -1973,6 +1976,7 @@ function cargaDatosEmpresa(datos){
 
 
     $('#cardEmpresa').append(cardEmpresa);
+    setLang(getCookie('lang'));
 
 }
 

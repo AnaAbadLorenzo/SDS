@@ -176,6 +176,7 @@ async function cargarPermisosFuncRespuestaPosible(){
   await cargarPermisosFuncRespuestaPosibleAjaxPromesa()
   .then((res) => {
     gestionarPermisosRespuestaPosible(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -349,9 +350,11 @@ async function cargarRespuestasPosibles(numeroPagina, tamanhoPagina, paginadorCr
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 
     }).catch((res) => {
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     });
 }
@@ -371,6 +374,7 @@ async function addRespuestaPosible(){
 
     $('#textoRespuestaPosible').val(getCookie('textoRespuesta'));
     buscarRespuestaPosible(getCookie('numeroPagina'), tamanhoPaginaRespuestaPosible, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -552,6 +556,8 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
         $('#' + numeroPagina).addClass("active");
       }
 
+      setLang(getCookie('lang'));
+
     }).catch((res) => {
 
       respuestaAjaxKO(res.code);
@@ -693,6 +699,7 @@ function showAddRespuesta() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -713,6 +720,7 @@ function showBuscarRespuesta() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -736,6 +744,7 @@ function showDetalle(textoRespuestaPosible, idRespuestaPosible) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -761,6 +770,7 @@ function showEditar(textoRespuestaPosible, idRespuestaPosible) {
     eliminarReadonly(campos);
     mostrarObligatorios(obligatorios);
     habilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -789,6 +799,7 @@ function showEliminar(textoRespuestaPosible, idRespuestaPosible) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -817,6 +828,7 @@ function showReactivar(textoRespuestaPosible, idRespuestaPosible) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -905,6 +917,7 @@ function gestionarPermisosRespuestaPosible(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

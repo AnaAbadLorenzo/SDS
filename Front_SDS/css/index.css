@@ -35,6 +35,8 @@
   .imagenAviso { margin-top: 1% !important;}
 
   .row .tooltip2 .tooltiptext2 {  width: 130px !important; font-size: 11pt !important; left: 16% !important; }
+
+  #registro-modal .modal-dialog { margin: 2rem auto !important; }
 }
 
 @media (min-width: 1300px) and (max-width:  1900px){

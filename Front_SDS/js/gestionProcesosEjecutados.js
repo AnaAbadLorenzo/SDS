@@ -31,6 +31,7 @@ async function cargarProcesosEjecutados(numeroPagina, tamanhoPagina, paginadorCr
             
             }catch(datosProcedimientoAsociado){
               respuestaAjaxKO(datosProcedimientoAsociado.code);
+              setLang(getCookie('lang'));
               document.getElementById("modal").style.display = "block";
             }
        
@@ -55,9 +56,11 @@ async function cargarProcesosEjecutados(numeroPagina, tamanhoPagina, paginadorCr
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 	  
 		}catch(res){
 		    respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
 		    document.getElementById("modal").style.display = "block";
 		};
 }
@@ -99,6 +102,7 @@ async function buscarProcesoEjecutado(numeroPagina, tamanhoPagina, accion, pagin
             
             }catch(datosProcedimientoAsociado){
               respuestaAjaxKO(datosProcedimientoAsociado.code);
+              setLang(getCookie('lang'));
               document.getElementById("modal").style.display = "block";
             }
        
@@ -123,9 +127,11 @@ async function buscarProcesoEjecutado(numeroPagina, tamanhoPagina, accion, pagin
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
     
     }catch(res){
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     };
 }
@@ -164,6 +170,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
             
             }catch(datosProcedimientoAsociado){
               respuestaAjaxKO(datosProcedimientoAsociado.code);
+              setLang(getCookie('lang'));
               document.getElementById("modal").style.display = "block";
             }
        
@@ -188,9 +195,11 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
     
     }catch(res){
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     };
 }
@@ -372,6 +381,7 @@ function showDetalle(nombreProcedimiento, usuario, nombreProceso, fechaProcedimi
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -402,6 +412,7 @@ function showBuscarProcesoEjecutado() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -446,6 +457,7 @@ async function cargarPermisosFuncProcesosEjecutados(){
   await cargarPermisosFuncProcesosEjecutadosAjaxPromesa()
   .then((res) => {
     gestionarPermisosProcesosEjecutados(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -475,6 +487,7 @@ function gestionarPermisosProcesosEjecutados(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 function cambiarOnBlurCampos(onBlurNombreProcedimiento, onBlurLoginUsuario, onBlurNombreProceso, onBlurFecha){
@@ -501,6 +514,10 @@ function rellenarFormulario(nombreProcedimiento, usuario, nombreProceso, fechaPr
   $('#nombreProceso').val(nombreProceso);
   $('#fechaProcedimientoUsuarioProceso').val(fechaProcedimientoUsuarioProceso);
   $('#textoRespuestaPosible').val(respuesta);
+  $('#evidencia').attr('href', '../evidencias/' + evidencia);
+  $('#evidencia').attr('download', evidencia);
+  $('#evidencia').html(evidencia);
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

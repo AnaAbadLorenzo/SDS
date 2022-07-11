@@ -10,7 +10,7 @@
 
 #cabeceraConsultaPlanes .refreshIcon { margin-left: 63.5% !important; }
 
-.planes { width: 87% !important; top: 24% !important; }
+.planes { width: 87% !important; top: 24% !important; height: 53% !important;}
 
 .card-body-plan { height: 96px !important; }
 
@@ -25,6 +25,8 @@
 .iconProcedimiento { margin-left: 100% !important; margin-top: -40% !important; width: 15% !important; }
 
 .tooltip9 .tooltiptext { width: 88px !important; font-size: 10pt !important; left: -12% !important; bottom: -58% !important; }
+
+#form-modal .modal-dialog { margin: 2rem auto !important; }
 
 }
 
