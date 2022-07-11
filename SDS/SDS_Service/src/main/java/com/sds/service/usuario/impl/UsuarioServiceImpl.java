@@ -111,7 +111,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		List<UsuarioEntity> usuarios = new ArrayList<>();
 		Integer numberTotalResults = 0;
 
-		if (rol == null) {
+		if (rol == null || rol.getIdRol() == 0) {
 			usuarios = entityManager.createNamedQuery(Constantes.USUARIO_QUERY_FINDUSUARIO)
 					.setParameter(Constantes.DNI_USUARIO, dniUsuario).setParameter(Constantes.USUARIO, usuario)
 					.setParameter(Constantes.ROL, StringUtils.EMPTY).setFirstResult(inicio).setMaxResults(tamanhoPagina)

@@ -248,6 +248,7 @@ function buscarUsuarioAjaxPromesa(numeroPagina, tamanhoPagina, accion){
 
       }else{
       	var rol = escogeRol(getCookie('rol'));
+        var rolUser = rol;
       }
 
       var data = {
@@ -549,6 +550,8 @@ async function editRolUsuario(){
     if(rolAntiguo == "admin" && getCookie('rolUsuario') == "usuario" && loginUsuario == getCookie('usuario')){
       window.location.reload(true);
 
+    }else if(rolAntiguo == "gestor" && getCookie('rolUsuario') == "usuario" && loginUsuario == getCookie('usuario')){
+      window.location.reload(true);
     }else{
        buscarUsuario(getCookie('numeroPagina'), tamanhoPaginaUsuario, 'buscarPaginacion', 'PaginadorCreado');
     }

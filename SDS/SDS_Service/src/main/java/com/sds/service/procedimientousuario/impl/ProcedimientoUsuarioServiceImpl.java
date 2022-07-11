@@ -100,8 +100,8 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 		}
 
 		else {
-			if (usuario == null || usuario.getUsuario() == "") {
-				if (procedimiento == null) {
+			if (usuario == null || usuario.getUsuario().equals(StringUtils.EMPTY)) {
+				if (procedimiento == null || procedimiento.getNombreProcedimiento().equals(StringUtils.EMPTY)) {
 					procedimientosUsuario = entityManager
 							.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO)
 							.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO, fecha)
@@ -124,7 +124,7 @@ public class ProcedimientoUsuarioServiceImpl implements ProcedimientoUsuarioServ
 				}
 			} else {
 				final UsuarioEntity usuarioBD = usuarioRepository.findByUsuario(usuario.getUsuario());
-				if (procedimiento == null || procedimiento.getNombreProcedimiento() == "") {
+				if (procedimiento == null || procedimiento.getNombreProcedimiento().equals(StringUtils.EMPTY)) {
 					procedimientosUsuario = entityManager
 							.createNamedQuery(Constantes.PROCEDIMIENTOUSUARIO_QUERY_FINDPROCEDIMIENTOUSUARIO)
 							.setParameter(Constantes.FECHA_PROCEDIMIENTO_USUARIO, fecha)

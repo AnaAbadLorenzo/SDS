@@ -194,7 +194,7 @@ async function buscarProcedimientoEjecutado(numeroPagina, tamanhoPagina, accion,
         if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'buscarProcedimientoEjecutado', 'PROCEDIMIENTOSEJECUTADOS');
         }
-        
+        cargarPermisosFuncProcedimientosEjecutados();
         if(numeroPagina == 0){
           $('#' + (numeroPagina+1)).addClass("active");
           var numPagCookie = numeroPagina+1;

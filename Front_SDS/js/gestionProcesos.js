@@ -90,6 +90,11 @@ function eliminarObjetivosNiveles(idObjetivosNiveles){
 	$("#" + idObjetivosNiveles).remove();
 }
 
+/** Función para volver atrás en el html **/
+function volverMisProcedimientos(){
+  window.location.href = "MisProcedimientos.html";
+}
+
 /**Función que eliminar el contenido de un div de procedimientos y orden*/
 function eliminarProcedimientosOrden(idProcedimientosOrden){
 	$("#" + idProcedimientosOrden).remove();
@@ -178,7 +183,7 @@ function modificarRespuesta(idProceso, idFile){
 
 /**Funcion para enviar el procedimientoUsuarioProceso **/
 function guardarProcedimientoUsuarioProceso(idProceso, idFile){
-    if(comprobarProcesoUsuario(idFile)){
+    if(comprobarProcesoUsuario(idProceso)){
       return new Promise(function(resolve, reject) {
       var token = getCookie('tokenUsuario');
 
