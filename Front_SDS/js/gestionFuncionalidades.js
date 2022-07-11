@@ -187,6 +187,7 @@ async function cargarPermisosFuncFuncionalidad(){
   await cargarPermisosFuncFuncionalidadAjaxPromesa()
   .then((res) => {
     gestionarPermisosFuncionalidad(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -350,7 +351,6 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCread
     	var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
       	$("#checkboxColumnas").append(div);
       	$("#paginacion").append(textPaginacion);
-      	setLang(getCookie('lang'));
 
         if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'cargarFuncionalidades', 'FUNCIONALIDAD');
@@ -365,6 +365,7 @@ async function cargarFuncionalidades(numeroPagina, tamanhoPagina, paginadorCread
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 	  
 		}).catch((res) => {
 		    respuestaAjaxKO(res.code);
@@ -382,12 +383,12 @@ async function addFuncionalidad(){
 
     let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     
     $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
     $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
     buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorNo');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -441,7 +442,6 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
       
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       if(paginadorCreado != 'PaginadorCreado'){
           paginador(totalResults, 'buscarFuncionalidad', 'FUNCIONALIDAD');
@@ -455,7 +455,7 @@ async function buscarFuncionalidad(numeroPagina, tamanhoPagina, accion, paginado
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
-
+      setLang(getCookie('lang'));
   
   }).catch((res) => {
       cargarPermisosFuncFuncionalidad();
@@ -507,7 +507,6 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
       var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('nombreFuncionalidad', '');
       setCookie('descripFuncionalidad', '');
@@ -524,6 +523,7 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -567,7 +567,6 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       var div = createHideShowColumnsWindow({FUNCIONALIDAD_DESCRIPTION_COLUMN:2});
       $("#checkboxColumnas").append(div);
       $("#paginacion").append(textPaginacion);
-      setLang(getCookie('lang'));
 
       setCookie('nombreFuncionalidad', '');
       setCookie('descripFuncionalidad', '');
@@ -582,7 +581,7 @@ async function buscarEliminados(numeroPagina, tamanhoPagina, paginadorCreado){
       }else{
         $('#' + numeroPagina).addClass("active");
       }
-    
+    setLang(getCookie('lang'));
     }).catch((res) => {
       
       respuestaAjaxKO(res.code);
@@ -600,9 +599,9 @@ async function detalleFuncionalidad(){
 
     let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
     $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -628,11 +627,11 @@ async function editFuncionalidad(){
 
     let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
     $('#nombreFuncionalidad').val(getCookie('nombreFuncionalidad'));
     $('#descripcionFuncionalidad').val(getCookie('descripFuncionalidad'));
     buscarFuncionalidad(getCookie('numeroPagina'), tamanhoPaginaFuncionalidad, 'buscarPaginacion', 'PaginadorCreado');
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -660,10 +659,10 @@ async function deleteFuncionalidad(){
 
     let idElementoList = ["nombreFuncionalidad", "descripcionFuncionalidad"];
     resetearFormulario("formularioGenerico", idElementoList);
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
    
     refrescarTabla(0, tamanhoPaginaFuncionalidad);
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
      
@@ -691,11 +690,10 @@ async function reactivarFuncionalidad(){
     $("#form-modal").modal('toggle');
 
     respuestaAjaxOK("FUNCIONALIDAD_REACTIVADA_OK", res.code);
-
-    setLang(getCookie('lang'));
     document.getElementById("modal").style.display = "block";
       
     buscarEliminados(0, tamanhoPaginaFuncionalidad, 'PaginadorNo');
+    setLang(getCookie('lang'));
     
     }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -707,12 +705,10 @@ async function reactivarFuncionalidad(){
 
 /** Funcion para mostrar el formulario para añadir una funcionalidad **/
 function showAddFuncionalidades() {
-  var idioma = getCookie('lang');
   cambiarFormulario('ADD_FUNCIONALIDAD', 'javascript:addFuncionalidad();', 'return comprobarAddFuncionalidad();');
   cambiarOnBlurCampos('return comprobarNombreFuncionalidad(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
   'return comprobarDescripcionFuncionalidad(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
   cambiarIcono('images/add.png', 'ICONO_ADD', 'iconoAddFuncionalidad', 'Añadir');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelFuncionalidadName').attr('hidden', true);
@@ -723,18 +719,17 @@ function showAddFuncionalidades() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para buscar una funcionalidad **/
 function showBuscarFuncionalidad() {
-  var idioma = getCookie('lang');
 
   cambiarFormulario('SEARCH_FUNCIONALIDAD', 'javascript:buscarFuncionalidad(0,' + tamanhoPaginaFuncionalidad + ', \'buscarModal\'' + ',\'PaginadorNo\');', 'return comprobarBuscarFuncionalidad();');
   cambiarOnBlurCampos('return comprobarNombreFuncionalidadSearch(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
   'return comprobarDescripcionFuncionalidadSearch(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
   cambiarIcono('images/search.png', 'ICONO_SEARCH', 'iconoSearchFuncionalidad', 'Buscar');
-  setLang(idioma);
 
   $('#subtitulo').attr('hidden', true);
   $('#labelFuncionalidadName').attr('hidden', true);
@@ -745,19 +740,16 @@ function showBuscarFuncionalidad() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
 /** Funcion para visualizar una funcionalidad **/
 function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
-  
-    var idioma = getCookie('lang');
 
     cambiarFormulario('DETAIL_FUNCIONALITY', 'javascript:detalleFuncionalidad();', '');
     cambiarIcono('images/close2.png', 'ICONO_CERRAR', 'iconoCerrar', 'Detalle');
-   
-    setLang(idioma);
-    
+
     $('#labelFuncionalidadName').removeAttr('hidden');
     $('#labelFuncionalidadDescription').removeAttr('hidden');
     $('#subtitulo').attr('hidden', '');
@@ -769,19 +761,16 @@ function showDetalle(nombreFuncionalidad, descripFuncionalidad) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Funcion para editar una funcionalidad **/
 function showEditar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad) {
-  var idioma = getCookie('lang');
-
     cambiarFormulario('EDIT_FUNCIONALITY', 'javascript:editFuncionalidad();', 'return comprobarEditFuncionalidad();');
     cambiarOnBlurCampos('return comprobarNombreFuncionalidad(\'nombreFuncionalidad\', \'errorFormatoNombreFuncionalidad\', \'nombreFuncionalidad\')', 
       'return comprobarDescripcionFuncionalidad(\'descripcionFuncionalidad\', \'errorFormatoDescripcionFuncionalidad\', \'descripcionFuncionalidad\')');
     cambiarIcono('images/edit.png', 'ICONO_EDIT', 'iconoEditarFuncionalidad', 'Editar');
-   
-    setLang(idioma);
     
     $('#subtitulo').attr('hidden', true);
     $('#labelFuncionalidadName').attr('hidden', true);
@@ -797,19 +786,16 @@ function showEditar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad) 
     habilitaCampos(campos);
     deshabilitaCampos(["nombreFuncionalidad"]);
     anadirReadonly(["nombreFuncionalidad"]);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para eliminar una funcionalidad **/
 function showEliminar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad) {
   
-    var idioma = getCookie('lang');
-
-    cambiarFormulario('DELETE_FUNCIONALITY', 'javascript:deleteFuncionalidad();', '');
+   cambiarFormulario('DELETE_FUNCIONALITY', 'javascript:deleteFuncionalidad();', '');
     cambiarIcono('images/delete.png', 'ICONO_ELIMINAR', 'iconoEliminar', 'Eliminar');
-   
-    setLang(idioma);
-    
+
     $('#labelFuncionalidadName').removeAttr('hidden');
     $('#labelFuncionalidadDescription').removeAttr('hidden');
     $('#subtitulo').removeAttr('class');
@@ -826,19 +812,16 @@ function showEliminar(nombreFuncionalidad, descripFuncionalidad, idFuncionalidad
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
 /** Función para reactivar una funcionalidad **/
 function showReactivar(nombreFuncionalidad, descripFuncionalidad , idFuncionalidad) {
-  
-    var idioma = getCookie('lang');
 
     cambiarFormulario('REACTIVATE_FUNC', 'javascript:reactivarFuncionalidad();', '');
     cambiarIcono('images/reactivar2.png', 'ICONO_REACTIVAR', 'iconoReactivar', 'Reactivar');
-   
-    setLang(idioma);
-    
+
     $('#labelFuncionalidadName').removeAttr('hidden');
     $('#labelFuncionalidadDescription').removeAttr('hidden');
     $('#subtitulo').removeAttr('class');
@@ -855,6 +838,7 @@ function showReactivar(nombreFuncionalidad, descripFuncionalidad , idFuncionalid
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -949,6 +933,8 @@ function gestionarPermisosFuncionalidad(idElementoList) {
 
     } 
     }); 
+
+  setLang(getCookie('lang'));
 }
 
 $(document).ready(function() {

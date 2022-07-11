@@ -15,6 +15,7 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
 			}
 
 			$("#cardUsuario").html(datosUsuario);
+      setLang(getCookie('lang'));
 
 		  }).catch((res) => {
 		      respuestaAjaxKO(res.code);
@@ -73,9 +74,11 @@ async function cargarUsuarios(numeroPagina, tamanhoPagina, paginadorCreado){
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 	  
 		}).catch((res) => {
 		    respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
 		    document.getElementById("modal").style.display = "block";
 		});
 	}
@@ -129,6 +132,7 @@ async function buscarEliminadosUsuario(numeroPagina, tamanhoPagina, paginadorCre
       }else{
         $('#' + numeroPagina).addClass("active");
       }
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -189,6 +193,7 @@ async function refrescarTablaUsuario(numeroPagina, tamanhoPagina){
 
       setCookie('numeroPagina', numPagCookie);
       comprobarOcultos();
+      setLang(getCookie('lang'));
     
     }).catch((res) => {
       
@@ -498,7 +503,7 @@ async function buscarUsuario(numeroPagina, tamanhoPagina, accion, paginadorCread
         var numPagCookie = numeroPagina;
       }
       setCookie('numeroPagina', numPagCookie);
-
+setLang(getCookie('lang'));
   
   }).catch((res) => {
       cargarPermisosFuncUsuario();
@@ -555,6 +560,7 @@ async function editRolUsuario(){
     }else{
        buscarUsuario(getCookie('numeroPagina'), tamanhoPaginaUsuario, 'buscarPaginacion', 'PaginadorCreado');
     }
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
     $("#form-modal").modal('toggle');
@@ -632,6 +638,7 @@ async function cargarPermisosFuncUsuario(){
   await cargarPermisosFuncUsuarioAjaxPromesa()
   .then((res) => {
     gestionarPermisosUsuario(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -796,6 +803,7 @@ function showBuscarUsuario() {
   ocultarObligatorios(obligatorios);
   eliminarReadonly(campos);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -830,6 +838,7 @@ function showEditar(dniUsuario,usuario,borrado,rol) {
     deshabilitaCampos(["dniUsuario", "loginUsuario", "esActivo"]);
     habilitaCampos(["selectRoles"]);
     mostrarObligatorios(obligatorios);
+    setLang(getCookie('lang'));
 
 }
 
@@ -861,6 +870,7 @@ function showEliminar(dniUsuario, usuario,borrado,rol) {
     ocultarObligatorios(obligatorios);
     anadirReadonly(campos);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -893,6 +903,7 @@ function showReactivar(dniUsuario, usuario,borrado,rol) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -924,6 +935,7 @@ function showDetalle(dniUsuario, usuario,borrado,rol) {
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -988,6 +1000,7 @@ function gestionarPermisosUsuario(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 /** Funcion para visualizar la información del usuario **/
@@ -1012,6 +1025,8 @@ function cargaInformacion(usuario){
 	      				'<img class="rolImg" src="images/rol.png" alt="rol">' + 
 	      				'<p class="card-text rol">' + usuario.rol.rolName + '</p>' + 
 	      			'</div>';
+              
+  setLang(getCookie('lang'));
 
 	return usuarioHTML;
 

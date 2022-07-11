@@ -932,6 +932,7 @@ function showAddPlanes() {
   $('#labelFechaPlan').attr('hidden', true);
   $('#labelDescripcionObjetivo').attr('hidden', true);
   $('#descripcionObjetivo').attr('hidden', true);
+  $('#labelNombreObjetivo').attr('hidden', true);
 
  let campos = ["nombrePlan", "descripPlan", "fechaPlan", "selectObjetivos", "descripcionObjetivo"];
   let obligatorios = ["obligatorioNombrePlan", "obligatorioDescripPlan", "obligatorioFechaPlan", "obligatorioObjetivos", "obligatorioDescripcionObjetivo"];

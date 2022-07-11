@@ -33,10 +33,12 @@ async function cargarProcedimientosEjecutados(numeroPagina, tamanhoPagina, pagin
               $("#datosProcedimientoEjecutado").append(tr);
             }catch(numeroProcesosEjecutados){
               respuestaAjaxKO(res.code);
+              setLang(getCookie('lang'));
               document.getElementById("modal").style.display = "block";
             }
         }catch(numerosProcesos){
           respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
           document.getElementById("modal").style.display = "block";
         }
     	}
@@ -60,9 +62,11 @@ async function cargarProcedimientosEjecutados(numeroPagina, tamanhoPagina, pagin
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
 	  
 		}catch(res){
 		    respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
 		    document.getElementById("modal").style.display = "block";
 		};
 }
@@ -102,10 +106,12 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
               $("#datosProcedimientoEjecutado").append(tr);
             }catch(numeroProcesosEjecutados){
               respuestaAjaxKO(res.code);
+              setLang(getCookie('lang'));
               document.getElementById("modal").style.display = "block";
             }
         }catch(numerosProcesos){
           respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
           document.getElementById("modal").style.display = "block";
         }
       }
@@ -129,9 +135,11 @@ async function refrescarTabla(numeroPagina, tamanhoPagina){
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
     
     }catch(res){
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     };
 }
@@ -176,11 +184,13 @@ async function buscarProcedimientoEjecutado(numeroPagina, tamanhoPagina, accion,
               $("#datosProcedimientoEjecutado").append(tr);
             }catch(numeroProcesosEjecutados){
               respuestaAjaxKO(res.code);
+              setLang(getCookie('lang'));
               document.getElementById("modal").style.display = "block";
             }
           
         }catch(numerosProcesos){
           respuestaAjaxKO(res.code);
+          setLang(getCookie('lang'));
           document.getElementById("modal").style.display = "block";
         }
       }
@@ -204,9 +214,11 @@ async function buscarProcedimientoEjecutado(numeroPagina, tamanhoPagina, accion,
         }
 
         setCookie('numeroPagina', numPagCookie);
+        setLang(getCookie('lang'));
     
     }catch(res){
         respuestaAjaxKO(res.code);
+        setLang(getCookie('lang'));
         document.getElementById("modal").style.display = "block";
     };
 }
@@ -320,6 +332,7 @@ async function cargarPermisosFuncProcedimientosEjecutados(){
   await cargarPermisosFuncProcedimientosEjecutadosAjaxPromesa()
   .then((res) => {
     gestionarPermisosProcedimientosEjecutados(res.data);
+    setLang(getCookie('lang'));
   }).catch((res) => {
       respuestaAjaxKO(res.code);
       setLang(getCookie('lang'));
@@ -356,6 +369,7 @@ function gestionarPermisosProcedimientosEjecutados(idElementoList) {
 
     } 
     }); 
+  setLang(getCookie('lang'));
 }
 
 /** Funcion para visualizar un procedimiento ejecutado **/
@@ -386,6 +400,7 @@ function showDetalle(nombreProcedimiento, usuario, fechaProcedimientoEjecutado, 
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+    setLang(getCookie('lang'));
 
 }
 
@@ -420,6 +435,7 @@ function showEditar(nombreProcedimiento, usuario, fechaProcedimientoEjecutado, e
     deshabilitaCampos(campos);
     habilitaCampos(["puntuacionProcedimientoEjecutado"]);
     eliminarReadonly(["puntuacionProcedimientoEjecutado"]);
+    setLang(getCookie('lang'));
 
 }
 
@@ -450,6 +466,7 @@ function showBuscarProcedimientoEjecutado() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+  setLang(getCookie('lang'));
 
 }
 
@@ -729,6 +746,7 @@ async function detalleProcedimientoEjecutado(){
     $('#nombreProcedimiento').val(getCookie('procedimiento'));
     $('#loginUsuario').val(getCookie('user'));
     $('#fechaProcedimientoEjecutado').val(getCookie('fechaProcedimientoUsuario'));
+    setLang(getCookie('lang'));
 
   }).catch((res) => {
       $("#form-modal").modal('toggle');
@@ -783,6 +801,7 @@ function rellenarFormulario(nombreProcedimiento, usuario, fechaProcedimientoEjec
   $('#fechaProcedimientoEjecutado').val(fech);
   $('#estadoProcedimientoEjecutado').val(estadoProcedimientoEjecutado);
   $('#puntuacionProcedimientoEjecutado').val(puntuacionProcedimientoUsuario);
+  setLang(getCookie('lang'));
 }
 
 /**Función para cambiar onBlur de los campos*/
