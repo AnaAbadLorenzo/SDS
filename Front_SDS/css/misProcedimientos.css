@@ -1,3 +1,33 @@
+@media only screen and (min-width: 320px) and (max-width : 415px) {
+
+  .procedimientos { width: 87% !important; top: 26% !important; height: 53% !important;}
+
+  .card-body-plan { height: 133px !important; }
+
+  .card-title { font-size: 21px !important; }
+
+  .card-text, .procesos, .puntuacion, .fecha {  font-size: 16px !important; width: 82% !important; }
+
+  .procesos, .puntuacion, .fecha { margin-left: 2% !important; margin-top: 0% !important; }
+
+  .card-title-plan { margin-left: -85% !important; font-size: 16px !important; }
+
+  .tooltip8 .tooltiptext { width: 83px !important; font-size: 10pt !important; left: 16% !important; }
+
+  .tooltip9 .tooltiptext { width: 88px !important; font-size: 10pt !important; left: -12% !important; bottom: -58% !important; }
+
+  .paddingTop { padding-bottom: 1% !important; }
+
+  .iconEliminarProcedimiento { margin-left: 88.8% !important; margin-top: -109.5% !important; width: 10% !important; }
+
+  .iconProcedimiento { margin-left: 88.8% !important; margin-top: -26% !important; width: 10% !important; }
+
+  .iconContinuar { margin-left: 88.8% !important; margin-top: -19% !important; width: 10% !important; }
+
+  .iconFinalizado { margin-left: 88.5% !important; margin-top: -18% !important; width: 11% !important; }
+
+}
+
 .formmodal-container p, .labelForm {
   font-family: Roboto;
   color: #311B92;

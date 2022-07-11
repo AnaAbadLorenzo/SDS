@@ -10,6 +10,34 @@ h1 { font-size: 1.9rem !important;}
 
 .table thead tr th { width: 17% !important;}
 
+#form-modal .modal-dialog { margin: 2rem auto !important; }
+
+#cabeceraUsuario { top: 21% !important; left: 10% !important; }
+
+.procedimientos { width: 87% !important; top: 26% !important; height: 53% !important;}
+
+#cabeceraUsuario .refreshIcon { margin-left: 60.5% !important; }
+
+.card-body-plan { height: 96px !important; }
+
+.card-title { font-size: 21px !important; }
+
+.card-text {  font-size: 16px !important; width: 82% !important; }
+
+.card-title-plan { margin-left: -85% !important; font-size: 16px !important; }
+
+.tooltip8 .tooltiptext { width: 83px !important; font-size: 10pt !important; left: 16% !important; }
+
+.tooltip9 .tooltiptext { width: 88px !important; font-size: 10pt !important; left: -12% !important; bottom: -58% !important; }
+
+.iconProcedimiento { margin-left: 88% !important; margin-top: -40% !important; width: 12% !important; }
+
+.modal-footer .iconSeguir { width: 46% !important; }
+
+.tooltip18 .tooltiptext { width: 107px !important; font-size: 10pt !important; left: 99% !important; bottom: -22% !important;}
+
+.tooltip19 .tooltiptext { width: 107px !important; font-size: 10pt !important; left: 547% !important; bottom: -22% !important;}
+
 }
 
 @media (min-width: 1300px) and (max-width:  1900px){
