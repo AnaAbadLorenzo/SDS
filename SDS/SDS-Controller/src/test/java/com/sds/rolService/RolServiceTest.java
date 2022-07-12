@@ -325,6 +325,8 @@ public class RolServiceTest {
 		accionService.anadirAccion(new Accion("ana", accionEntity));
 		funcionalidadService.anadirFuncionalidad(new Funcionalidad("ana", funcionalidadEntity));
 
+		final RolEntity rolBuscar = rolRepository.findByRolName(rol.getRol().getRolName());
+
 		final ReturnBusquedas<AccionEntity> accionBuscar = accionService.buscarAccion(accionEntity.getNombreAccion(),
 				accionEntity.getDescripAccion(), 0, 1);
 		final ReturnBusquedas<FuncionalidadEntity> funcionalidadBuscar = funcionalidadService.buscarFuncionalidad(
@@ -332,9 +334,7 @@ public class RolServiceTest {
 
 		final RolAccionFuncionalidadEntity rolAccionFuncionalidad = new RolAccionFuncionalidadEntity(
 				accionBuscar.getListaBusquedas().get(0).getIdAccion(),
-				funcionalidadBuscar.getListaBusquedas().get(0).getIdFuncionalidad(), rol.getRol().getIdRol());
-
-		final RolEntity rolBuscar = rolRepository.findByRolName(rol.getRol().getRolName());
+				funcionalidadBuscar.getListaBusquedas().get(0).getIdFuncionalidad(), rolBuscar.getIdRol());
 
 		rolAccionFuncionalidadRepository.saveAndFlush(rolAccionFuncionalidad);
 

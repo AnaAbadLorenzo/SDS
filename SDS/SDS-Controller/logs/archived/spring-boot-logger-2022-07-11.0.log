@@ -1,0 +1,113 @@
+2022-07-11 13:42:00,279 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13856 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 13:42:03,959 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 13:42:07,743 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 13:42:26,653 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 28.833 seconds (JVM running for 30.227)
+2022-07-11 13:45:16,310 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 16264 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 13:45:16,318 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 13:45:16,319 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 13:45:22,737 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 8.202 seconds (JVM running for 9.203)
+2022-07-11 13:52:18,977 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 16264 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 13:52:18,978 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 13:52:18,978 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 13:52:26,585 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 7.72 seconds (JVM running for 433.052)
+2022-07-11 13:52:59,185 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7440 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 13:53:01,967 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 13:53:05,757 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 13:53:12,674 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 14.123 seconds (JVM running for 15.474)
+2022-07-11 13:57:01,150 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 10220 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 13:57:01,154 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 13:57:01,154 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 13:57:06,752 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 6.039 seconds (JVM running for 6.861)
+2022-07-11 14:13:58,027 DEBUG [http-nio-8090-exec-4] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 14:13:58,028 DEBUG [http-nio-8090-exec-4] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Nombre archivo 'Discurso_Merge (3)07112022141358.pdf'
+2022-07-11 14:13:58,099 DEBUG [http-nio-8090-exec-4] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Se ha guardado el archivo en 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\' con nombre 'Discurso_Merge (3)07112022141358.pdf'
+2022-07-11 14:13:58,102 DEBUG [http-nio-8090-exec-4] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene la fecha 'Mon Jul 11 14:13:58 CEST 2022', nombre 'Discurso_Merge (3)07112022141358.pdf' y ubicacion 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 14:13:58,103 DEBUG [http-nio-8090-exec-4] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene asociado un procedimientoUsuarioProceso con id '18', un proceso con id '1' y un procedimientoUsuario con id '7'
+2022-07-11 14:22:31,190 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 14980 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 14:22:31,198 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 14:22:31,199 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 14:22:38,139 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 7.712 seconds (JVM running for 8.885)
+2022-07-11 14:37:12,356 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 14980 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 14:37:12,356 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 14:37:12,357 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 14:37:15,988 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 3.713 seconds (JVM running for 886.735)
+2022-07-11 16:40:17,692 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 16:53:29,729 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13600 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 16:53:29,734 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 16:53:29,734 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 16:53:38,564 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 9.465 seconds (JVM running for 10.728)
+2022-07-11 16:53:52,006 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 16:56:39,473 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13600 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 16:56:39,473 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 16:56:39,474 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 16:56:42,586 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 3.321 seconds (JVM running for 194.75)
+2022-07-11 16:57:26,351 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13600 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 16:57:26,352 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 16:57:26,353 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 16:57:39,761 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 13.508 seconds (JVM running for 251.924)
+2022-07-11 16:57:58,621 DEBUG [http-nio-8090-exec-2] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 16:57:58,623 DEBUG [http-nio-8090-exec-2] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Nombre archivo 'P102003507112022165758.JPG'
+2022-07-11 16:58:00,596 DEBUG [http-nio-8090-exec-2] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Se ha guardado el archivo en 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\' con nombre 'P102003507112022165758.JPG'
+2022-07-11 16:58:00,610 DEBUG [http-nio-8090-exec-2] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene la fecha 'Mon Jul 11 16:58:00 CEST 2022', nombre 'P102003507112022165758.JPG' y ubicacion 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 16:58:00,612 DEBUG [http-nio-8090-exec-2] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene asociado un procedimientoUsuarioProceso con id '20', un proceso con id '1' y un procedimientoUsuario con id '5'
+2022-07-11 16:58:43,667 DEBUG [http-nio-8090-exec-3] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 16:59:47,684 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7904 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 16:59:47,687 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 16:59:47,687 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 16:59:55,209 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 8.096 seconds (JVM running for 9.257)
+2022-07-11 17:00:19,783 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 7704 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:00:19,789 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:00:19,790 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:00:30,168 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 11.137 seconds (JVM running for 12.541)
+2022-07-11 17:02:10,721 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 3932 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:02:15,859 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:02:19,621 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:02:31,419 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 21.503 seconds (JVM running for 23.206)
+2022-07-11 17:04:51,484 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 13864 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:04:51,495 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:04:51,496 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:05:03,015 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 12.672 seconds (JVM running for 14.546)
+2022-07-11 17:08:57,663 DEBUG [http-nio-8090-exec-10] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:23:05,098 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 9696 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:23:05,105 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:23:05,106 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:23:14,827 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 13.145 seconds (JVM running for 14.819)
+2022-07-11 17:37:01,761 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 9696 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:37:01,761 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:37:01,761 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:37:06,044 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 4.409 seconds (JVM running for 846.036)
+2022-07-11 17:37:14,292 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 10396 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:37:14,304 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:37:14,304 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:37:23,159 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 9.686 seconds (JVM running for 10.973)
+2022-07-11 17:52:07,189 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:52:11,442 DEBUG [http-nio-8090-exec-2] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:53:18,660 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:53:18,661 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Nombre archivo 'Encuesta07112022175318.pdf'
+2022-07-11 17:53:22,348 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Se ha guardado el archivo en 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\' con nombre 'Encuesta07112022175318.pdf'
+2022-07-11 17:53:22,383 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene la fecha 'Mon Jul 11 17:53:22 CEST 2022', nombre 'Encuesta07112022175318.pdf' y ubicacion 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:53:22,384 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene asociado un procedimientoUsuarioProceso con id '22', un proceso con id '1' y un procedimientoUsuario con id '5'
+2022-07-11 17:53:24,787 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:53:24,788 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Nombre archivo 'SOLICITUD DE CAMBIO DE EMPRESA DE PRÁCTICAS CURRICULARES07112022175324.pdf'
+2022-07-11 17:53:26,616 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Se ha guardado el archivo en 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\' con nombre 'SOLICITUD DE CAMBIO DE EMPRESA DE PRÁCTICAS CURRICULARES07112022175324.pdf'
+2022-07-11 17:53:26,622 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene la fecha 'Mon Jul 11 17:53:26 CEST 2022', nombre 'SOLICITUD DE CAMBIO DE EMPRESA DE PRÁCTICAS CURRICULARES07112022175324.pdf' y ubicacion 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:53:26,623 DEBUG [http-nio-8090-exec-6] com.sds.service.evidencia.impl.EvidenciaServiceImpl : La evidencia tiene asociado un procedimientoUsuarioProceso con id '23', un proceso con id '22' y un procedimientoUsuario con id '5'
+2022-07-11 17:56:24,013 DEBUG [http-nio-8090-exec-10] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:56:31,504 DEBUG [http-nio-8090-exec-5] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 17:57:16,455 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 12184 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 17:57:16,461 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 17:57:16,461 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 17:57:26,212 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 10.565 seconds (JVM running for 12.044)
+2022-07-11 18:00:14,439 DEBUG [http-nio-8090-exec-9] com.sds.service.evidencia.impl.EvidenciaServiceImpl : Ubicacion archivo 'F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\evidencias\'
+2022-07-11 19:25:43,935 INFO [main] org.springframework.boot.StartupInfoLogger : Starting RegistroServiceTest using Java 1.8.0_202 on MacBook-Pro-de-Ana.local with PID 1791 (started by anaabadlorenzo in /Volumes/KINGSTON/Universidad/TFG/SDS_Definitivo/SDS/SDS/SDS-Controller)
+2022-07-11 19:25:43,945 DEBUG [main] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 19:25:43,959 INFO [main] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 19:26:08,404 INFO [main] org.springframework.boot.StartupInfoLogger : Started RegistroServiceTest in 25.386 seconds (JVM running for 51.162)
+2022-07-11 19:39:19,679 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 1.8.0_202 on MacBook-Pro-de-Ana.local with PID 2635 (/Volumes/KINGSTON/Universidad/TFG/SDS_Definitivo/SDS/SDS/SDS-Controller/target/classes started by anaabadlorenzo in /Volumes/KINGSTON/Universidad/TFG/SDS_Definitivo/SDS/SDS/SDS-Controller)
+2022-07-11 19:39:19,682 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 19:39:19,683 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 19:39:39,488 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 20.726 seconds (JVM running for 23.829)
+2022-07-11 20:51:06,220 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Starting SDSApplication using Java 17 on DESKTOP-U349J0B with PID 6228 (F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller\target\classes started by Ana in F:\Universidad\TFG\SDS_Definitivo\SDS\SDS\SDS-Controller)
+2022-07-11 20:51:06,230 DEBUG [restartedMain] org.springframework.boot.StartupInfoLogger : Running with Spring Boot v2.5.5, Spring v5.3.10
+2022-07-11 20:51:06,230 INFO [restartedMain] org.springframework.boot.SpringApplication : No active profile set, falling back to default profiles: default
+2022-07-11 20:51:25,859 INFO [restartedMain] org.springframework.boot.StartupInfoLogger : Started SDSApplication in 20.558 seconds (JVM running for 21.83)
