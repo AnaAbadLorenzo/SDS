@@ -1,7 +1,22 @@
 @media only screen and (min-width: 320px) and (max-width : 415px) {
+
   #accordion { margin-top: 38% !important; height: 498px !important;}
+
   .card-body tbody tr { font-size: 13px !important;}
+
   .volver { bottom: 9% !important; }
+
+}
+
+@media (min-width: 1200px) and (max-width:  1299px){
+
+#accordion { margin-top: 11% !important; height: 448px !important; }
+
+.volver { bottom: 9% !important; }
+
+.table thead tr th { width: 29% !important;}
+
+.controlTamTabla { height: 285px !important; overflow-y: scroll !important; overflow-x: scroll !important; font-size: 13.5px !important; }
 
 }
 

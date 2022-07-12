@@ -40,6 +40,26 @@ h1 { font-size: 1.9rem !important;}
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+.refreshIcon { margin-left: 61.5% !important;}
+
+.table thead tr th { width: 17% !important;}
+
+#form-modal .modal-dialog { margin: 6rem auto !important; }
+
+#cabeceraUsuario { top: 20% !important; left: 8% !important; }
+
+#cabeceraUsuario .refreshIcon { margin-left: 76.5% !important;}
+
+.procedimientos { width: 87% !important; top: 27% !important; height: 53% !important;}
+
+.iconProcedimiento { margin-left: 209% !important; margin-top: -18% !important; width: 12% !important; }
+
+.tooltip13 .tooltiptext { width: 130px !important; left: -27% !important; }
+
+}
+
 @media (min-width: 1300px) and (max-width:  1900px){
 
 .refreshIcon { margin-left: 61.5% !important;}
@@ -47,6 +67,16 @@ h1 { font-size: 1.9rem !important;}
 .table thead tr th { width: 17% !important;}
 
 #form-modal .modal-dialog { margin: 6rem auto !important; }
+
+#cabeceraUsuario { top: 20% !important; left: 8% !important; }
+
+#cabeceraUsuario .refreshIcon { margin-left: 76.5% !important;}
+
+.procedimientos { width: 87% !important; top: 27% !important; height: 53% !important;}
+
+.iconProcedimiento { margin-left: 209% !important; margin-top: -18% !important; width: 12% !important; }
+
+.tooltip13 .tooltiptext { width: 130px !important; left: -27% !important; }
 
 }
 

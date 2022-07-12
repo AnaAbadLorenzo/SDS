@@ -10,15 +10,31 @@
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+#infoAdmin .cabecera { top: 21% !important; }
+
+.refreshIcon { margin-left: 67.5% !important;}
+
+.card-user { width: 15% !important; top: 25% !important; left: 45% !important; }
+
+.user { font-size: 1rem !important; }
+
+.dni, .pass, .rol { font-size: 0.8rem !important; }
+
+}
+
 @media (min-width: 1300px) and (max-width:  1900px){
 
 #infoAdmin .cabecera { top: 21% !important; }
 
 .refreshIcon { margin-left: 67.5% !important;}
 
-.card-user { width: 14% !important; top: 25% !important; left: 46% !important; }
+.card-user { width: 15% !important; top: 25% !important; left: 45% !important; }
 
-.card-text { font-size: 0.8rem !important; }
+.user { font-size: 1rem !important; }
+
+.dni, .pass, .rol { font-size: 0.8rem !important; }
 
 }
 

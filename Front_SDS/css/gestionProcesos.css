@@ -1,13 +1,70 @@
 @media only screen and (min-width: 320px) and (max-width : 415px) {
 
-  .gestion { left: 32% !important;}
+.gestion { left: 5% !important;}
 
-  .procesos { width: 87% !important; top: 19% !important; height: 59% !important; margin-left: 7% !important; }
+h1 { font-size: 1.9rem !important;}
 
-  .bordesPreguntas { height: 207px !important; font-size: 13px !important;}
+.refreshIcon { margin-left: 43.5% !important;}
 
-  .uploadIcon { left: 86% !important; margin-top: 7% !important; }
+.table {  width: 250% !important; max-width: 300% !important; }
 
+.table thead tr th { width: 17% !important;}
+
+.modal-open .modal2 { top: 0% !important; }
+
+#form-modal .modal-dialog { margin: 0rem auto !important; }
+
+.procesos { width: 87% !important; top: 19% !important; height: 59% !important; margin-left: 7% !important; }
+
+.bordesPreguntas { height: 207px !important; font-size: 13px !important;}
+
+.uploadIcon { left: 86% !important; margin-top: 7% !important; }
+
+.evidenciaFile { position: absolute !important; top: 86% !important; font-size: 9pt !important; }
+
+}
+
+@media (min-width: 1200px) and (max-width:  1299px){
+
+.refreshIcon { margin-left: 61.5% !important;}
+
+.table thead tr th { width: 17% !important;}
+
+#form-modal .modal-dialog { margin: -1rem auto !important; }
+
+.procesos { margin-top: 2% !important; height: 50% !important; }
+
+.evidenciaFile { position: absolute !important; top: 90% !important; font-size: 10pt !important; }
+
+.bordesPreguntas { height: 207px !important; font-size: 14px !important;}
+
+.uploadIcon { left: 86% !important; margin-top: 1% !important; }
+
+}
+
+@media (min-width: 1300px) and (max-width:  1900px){
+
+.refreshIcon { margin-left: 61.5% !important;}
+
+.table thead tr th { width: 17% !important;}
+
+#form-modal .modal-dialog { margin: -1rem auto !important; }
+
+.procesos { margin-top: 2% !important; height: 50% !important; }
+
+.evidenciaFile { position: absolute !important; top: 90% !important; font-size: 10pt !important; }
+
+.bordesPreguntas { height: 207px !important; font-size: 14px !important;}
+
+.uploadIcon { left: 86% !important; margin-top: 1% !important; }
+
+}
+
+.evidenciaFile {
+  color: #4527a0;
+  padding-bottom: 3%;
+  font-weight: bold;
+  opacity: 1;
 }
 
 .formmodal-container p, .labelForm {
