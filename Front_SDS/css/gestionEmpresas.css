@@ -12,6 +12,18 @@
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+.refreshIcon { margin-left: 61.5% !important;}
+
+.card-enterprise { top: 26% !important; left: 44% !important; }
+
+.volver { width: 33% !important; }
+
+.editarCard { margin-left: 141px !important; }
+
+}
+
 @media (min-width: 1300px) and (max-width:  1900px){
 
 .refreshIcon { margin-left: 61.5% !important;}

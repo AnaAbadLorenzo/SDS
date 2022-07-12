@@ -38,6 +38,32 @@
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+.refreshIcon { margin-left: 61.5% !important;}
+
+.table thead tr th { width: 14% !important;}
+
+#form-modal .modal-dialog { margin: 2rem auto !important; }
+
+.personaInfoParaUsuario { position: fixed !important; top: 27% !important; left: 14% !important; width: 70% !important; height: 60% !important; margin-left: 5% !important; overflow-x: hidden; overflow-y: auto;}
+
+.card-person { width: 21% !important; position: absolute !important; top: 0 !important; left: 15% !important; }
+
+.card-user { width: 21% !important; position: absolute !important; top: 0 !important; left: 38% !important; }
+
+.card-enterprise { width: 21% !important; position: absolute !important; top: 0 !important;  left: 61% !important; }
+
+.volver { width: 33%;}
+
+.editarCard { margin-left: 127px !important; }
+
+.nombreApellidos, .user, .nombreE { font-size: 1rem !important; }
+
+.dniP, .fechaNacimiento, .direccion, .telefono, .email, .dni, .pas, .rol, .cif, .direccionE, .telefonoE  { font-size: 0.8rem !important; }
+
+}
+
 @media (min-width: 1300px) and (max-width:  1900px){
 
 .refreshIcon { margin-left: 61.5% !important;}

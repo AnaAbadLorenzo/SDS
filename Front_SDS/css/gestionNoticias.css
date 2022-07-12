@@ -8,6 +8,14 @@
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+.refreshIcon { margin-left: 66.5% !important;}
+
+.table thead tr th { width: 28% !important;}
+
+}
+
 @media (min-width: 1300px) and (max-width:  1900px){
 
 .refreshIcon { margin-left: 66.5% !important;}

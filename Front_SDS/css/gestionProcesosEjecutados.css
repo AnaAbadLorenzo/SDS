@@ -16,6 +16,34 @@ h1 { font-size: 1.5rem !important;}
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+.gestion { left: 30% !important; }
+
+.refreshIcon { margin-left: 70.5% !important;}
+
+.table thead tr th { width: 17% !important;}
+
+#form-modal .modal-dialog { margin: 4rem auto !important; }
+
+.cabecera { top: 22% !important; left: 9% !important; }
+
+}
+
+@media (min-width: 1300px) and (max-width:  1900px){
+
+.gestion { left: 30% !important; }
+
+.refreshIcon { margin-left: 70.5% !important;}
+
+.table thead tr th { width: 17% !important;}
+
+#form-modal .modal-dialog { margin: 4rem auto !important; }
+
+.cabecera { top: 22% !important; left: 9% !important; }
+
+}
+
 #evidencia {
   color: #4527a0;
   padding-bottom: 2%;

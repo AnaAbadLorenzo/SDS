@@ -28,6 +28,15 @@
 
 }
 
+@media (min-width: 1200px) and (max-width:  1299px){
+
+  .bienvenida { top: 9% !important; left: 2% !important; font-size: 3.5em !important; width: 100% !important;}
+
+  .noticias { width: 65% !important; height: 64% !important; top: 22% !important; margin-left: 18% !important;}
+
+  #changePass-modal .modal-dialog { margin: 10rem auto !important; }
+}
+
 @media (min-width: 1300px) and (max-width:  1900px){
 
   .bienvenida { top: 9% !important; left: 2% !important; font-size: 3.5em !important; width: 100% !important;}

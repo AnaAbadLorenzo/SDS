@@ -1593,6 +1593,7 @@ async function buscarProceso(numeroPagina, tamanhoPagina, accion, paginadorCread
 		        }
 
 		        setCookie('numeroPagina', numPagCookie);
+
             setLang(getCookie('lang'));
   	} catch (res) {
     	respuestaAjaxKO(res.code);
@@ -1895,6 +1896,10 @@ function showAddProcesos() {
   eliminarReadonly(campos);
   mostrarObligatorios(obligatorios);
   habilitaCampos(campos);
+
+  $("#btnAcciones").removeAttr("style");
+  $('.formmodal-container').removeAttr("style");
+
   setLang(getCookie('lang'));
 
 }
@@ -1939,6 +1944,12 @@ function showBuscarProceso() {
   eliminarReadonly(campos);
   ocultarObligatorios(obligatorios);
   habilitaCampos(campos);
+
+  document.getElementById('btnAcciones').style.position = "absolute";
+  document.getElementById('btnAcciones').style.top = "75%";
+  document.getElementById('btnAcciones').style.width = "93%";
+  $('.formmodal-container').css('height', '235px');
+
   setLang(getCookie('lang'));
 
 }
@@ -1972,6 +1983,7 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
   	$('#labelRespuestaPosible').attr('hidden', false);
   	$('#labelSeleccionRespuestaPosible').attr('hidden', true);
     $('#divRespPosible').attr('hidden', false);
+    $('#procedimientosOrden').attr('hidden',false);
 
     $("#procedimientosOrden").css("height", "180px");
     rellenarFormulario(nombreProceso, descripProceso, fechaProceso, procedimientos, objetivos, respuestasPosibles, niveles, ordenProceso);
@@ -2019,6 +2031,10 @@ function showDetalle(nombreProceso, descripProceso, fechaProceso, idProceso, pro
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+
+    $("#btnAcciones").removeAttr("style");
+    $('.formmodal-container').removeAttr("style");
+
     setLang(getCookie('lang'));
 
 }
@@ -2113,6 +2129,10 @@ function showEditar(nombreProceso, descripProceso, fechaProceso, idProceso, proc
 	  eliminarReadonly(campos);
 	  mostrarObligatorios(obligatorios);
 	  habilitaCampos(campos);
+
+    $("#btnAcciones").removeAttr("style");
+    $('.formmodal-container').removeAttr("style");
+
     setLang(getCookie('lang'));
 
 }
@@ -2193,6 +2213,10 @@ function showEliminar(nombreProceso, descripProceso, fechaProceso, idProceso, pr
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+
+    $("#btnAcciones").removeAttr("style");
+    $('.formmodal-container').removeAttr("style");
+
     setLang(getCookie('lang'));
 
 }
@@ -2273,6 +2297,10 @@ function showReactivar(nombreProceso, descripProceso, fechaProceso, idProceso, p
     anadirReadonly(campos);
     ocultarObligatorios(obligatorios);
     deshabilitaCampos(campos);
+
+    $("#btnAcciones").removeAttr("style");
+    $('.formmodal-container').removeAttr("style");
+
     setLang(getCookie('lang'));
 
 }
