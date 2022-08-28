@@ -19,3 +19,12 @@ herramienta debe:
   - Gestionar validaciones 
   - Gestionar unidades 
   - Gestionar usuarios
+  
+## Metodología
+Para llevar a cabo este proyecto de software se seguirá un paradigma de desarrollo de software iterativo incremental dentro de una metodología Rational Unified Process. Se definirá un conjunto de iteraciones donde al final de cada una habrá un aumento de funcionalidad, consiguiendo la funcionalidad total o finalizando todas las iteraciones
+
+## Tecnologías y Productos de terceros utilizados
+En cuanto a las tecnologías y a los productos de terceros utilizados, podemos destacar:
+  - JAVA, usado como lenguaje base de programación del back-end de la aplicación
+  - JPA, utilizado para la gestión de la persistencia de datos de la aplicación
+  - CSS, utilizado para proporcionar los estilos visuales a todas las pantallas
