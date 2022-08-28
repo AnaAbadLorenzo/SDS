@@ -26,5 +26,33 @@ Para llevar a cabo este proyecto de software se seguirá un paradigma de desarro
 ## Tecnologías y Productos de terceros utilizados
 En cuanto a las tecnologías y a los productos de terceros utilizados, podemos destacar:
   - JAVA, usado como lenguaje base de programación del back-end de la aplicación
+  - SpringBoot, framework del que se han aprovechado los servicios de inyección de dependencias, las librerías de seguridad y de acceso a datos.
+  - Maven, usado para la gestión de las dependencias del proyecto.
+  - MySQL, utilizado como SGBD
   - JPA, utilizado para la gestión de la persistencia de datos de la aplicación
   - CSS, utilizado para proporcionar los estilos visuales a todas las pantallas
+  - HTML y Javascript, para definir el significado y estructura de la página web y proporcionar el comportamiento de la misma
+  - JQuery y Ajax, para permitir realizar peticiones asíncronas desde el Front-end al Back-end de la aplicación
+
+## Pruebas de la aplicación
+Para probar el correcto funcionamiento de la aplicación, se han desarrollado cuatro tipos de testing distintos:
+  - Pruebas de caja blanca: prueban las funcionalidad de un programa conociendo la estructura interna del mismo. Están disponibles desde el apartado Test de la aplicación
+  - Pruebas de caja negra: prueban la funcionalidad de un programa sin necesidad de conocer la lógica o estructura interna del mismo. Están disponibles desde el      apartado Test de la aplicación
+  - Test de regresión: son aquellas que se realizan cuando el software ha sufrido algún cambio para detectar que éste no ha provocado ningún error adicional en el código. Se han realizado mediante la herramienta Postman.
+  - Test unitarios: prueban el comportamiento correcto de cada una de las clases de la aplicación de manera aislada. Se han realizado mediante Junit
+
+Adicionalmente, todo el código de la aplicación ha sido analizdo por SonarQube, una plataforma para evaluar la calidad del código fuente mediante un análisis estático sobre el mismo que permite detectar bugs o código duplicado.
+
+## Diagrama de capas de la herramienta
+![Capas_SDS](https://user-images.githubusercontent.com/88203308/187065354-e8d402e4-c44c-4f47-92db-a79dae4d2a0b.png)
+
+## Usuarios de conexión
+- Conexión como usuario administrador:
+     Usuario: aicuna
+     Password: aicuna
+- Conexión como usuario gestor:
+     Usuario: UsuarioGestor
+     Password: UsuarioGestor
+- Conexión como usuario:
+     Usuario: UsuarioGenerico
+     Password: UsuarioGenerico
