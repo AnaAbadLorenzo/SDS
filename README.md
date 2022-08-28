@@ -48,11 +48,11 @@ Adicionalmente, todo el código de la aplicación ha sido analizdo por SonarQube
 
 ## Usuarios de conexión
 - Conexión como usuario administrador:
-     Usuario: aicuna
-     Password: aicuna
+     1. Usuario: aicuna
+     2. Password: aicuna
 - Conexión como usuario gestor:
-     Usuario: UsuarioGestor
-     Password: UsuarioGestor
+     1. Usuario: UsuarioGestor
+     2. Password: UsuarioGestor
 - Conexión como usuario:
-     Usuario: UsuarioGenerico
-     Password: UsuarioGenerico
+     1. Usuario: UsuarioGenerico
+     2. Password: UsuarioGenerico
