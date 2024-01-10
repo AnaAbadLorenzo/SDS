@@ -13,4 +13,5 @@ install:
 script:
   - cd SDS
   - mvn clean package install
+  - cd SDS-Controller
   - mvn embedded-glassfish:run
