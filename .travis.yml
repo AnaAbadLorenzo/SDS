@@ -10,5 +10,5 @@ install:
   - sudo apt-get install -y maven
 
 script:
-  - cd SDS
+  - cd SDS/SDS-Controller
   - mvn clean install
