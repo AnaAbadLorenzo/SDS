@@ -8,6 +8,6 @@ install:
   - sudo apt-get install -y maven
 
 script:
-  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  - export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
   - cd SDS
   - mvn clean package install
