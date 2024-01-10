@@ -13,3 +13,4 @@ install:
 script:
   - cd SDS
   - mvn clean package install
+  - mvn glassfish:deploy 
