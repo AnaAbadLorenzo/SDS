@@ -1,10 +1,12 @@
 language: java
 
-before_script:
-  - export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
-  
+before_install:
+  - sudo apt-get install -y oracle-java8-installer
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+  - export PATH=$JAVA_HOME/bin:$PATH
+
 jdk:
-  - openjdk8
+  - oraclejdk8
 
 install:
   - sudo apt-get install -y maven
