@@ -1,16 +1,13 @@
 language: java
-
-before_install:
-  - sudo apt-get install -y oracle-java8-installer
-  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-  - export PATH=$JAVA_HOME/bin:$PATH
+dist: bionic
 
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 install:
   - sudo apt-get install -y maven
 
 script:
+  - export JAVA_HOME=/usr/lib/jvm/java-8-oracle
   - cd SDS
   - mvn clean package install
