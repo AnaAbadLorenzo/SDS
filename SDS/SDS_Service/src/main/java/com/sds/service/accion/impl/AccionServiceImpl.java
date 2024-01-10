@@ -73,6 +73,7 @@ public class AccionServiceImpl implements AccionService {
 		util = new Util();
 	}
 
+	//Añadir comment
 	@Override
 	public ReturnBusquedas<AccionEntity> buscarAccion(final String nombreAccion, final String descripAccion,
 			final int inicio, final int tamanhoPagina) {
